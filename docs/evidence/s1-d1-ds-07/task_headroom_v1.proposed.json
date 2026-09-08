@@ -1,0 +1,312 @@
+{
+  "status": "PROPOSED",
+  "scope": {
+    "cohort": "C1",
+    "cohort_users": 388789,
+    "measured_users": 97279,
+    "user_slice": "user_id % 4 == 1",
+    "slice_reason": "C1 holds 17.6M TRAIN events, beyond available memory; whole users kept",
+    "measured_on": "VALIDATION",
+    "test_rows_read": 0,
+    "excluded_sessions_consumed": 4995,
+    "train_events": 4376137,
+    "validation_events": 622013,
+    "validation_sessions": 114507
+  },
+  "verdict": [
+    {
+      "task": "T1 overall",
+      "metric": "MRR@20",
+      "trivial": 0.8232,
+      "best_simple": 0.856,
+      "ceiling": 1.0,
+      "gain_from_context": 0.0328,
+      "room_for_a_model": 0.144
+    },
+    {
+      "task": "T1 category-change slice",
+      "metric": "MRR@20",
+      "trivial": 0.0,
+      "best_simple": 0.3085,
+      "ceiling": 1.0,
+      "gain_from_context": 0.3085,
+      "room_for_a_model": 0.6915
+    },
+    {
+      "task": "T2 purchase likelihood",
+      "metric": "PR-AUC",
+      "trivial": 0.0351,
+      "best_simple": 0.0831,
+      "ceiling": 1.0,
+      "gain_from_context": 0.048,
+      "room_for_a_model": 0.9169
+    },
+    {
+      "task": "T3 candidate ranking",
+      "metric": "e2e NDCG@5",
+      "trivial": 0.1109,
+      "best_simple": 0.2046,
+      "ceiling": 0.8201,
+      "gain_from_context": 0.0937,
+      "room_for_a_model": 0.6155
+    }
+  ],
+  "resolution": [
+    {
+      "task": "T1 overall",
+      "metric": "MRR@20",
+      "n": 438185,
+      "value": 0.856,
+      "half_width": 0.0009,
+      "room_for_a_model": 0.144,
+      "room_in_half_widths": 152.0
+    },
+    {
+      "task": "T1 category-change slice",
+      "metric": "MRR@20",
+      "n": 77457,
+      "value": 0.3085,
+      "half_width": 0.0026,
+      "room_for_a_model": 0.6915,
+      "room_in_half_widths": 269.0
+    },
+    {
+      "task": "T2 purchase likelihood",
+      "metric": "PR-AUC",
+      "n": 322087,
+      "value": 0.0831,
+      "half_width": 0.0029,
+      "room_for_a_model": 0.9169,
+      "room_in_half_widths": 315.0
+    },
+    {
+      "task": "T3 candidate ranking",
+      "metric": "e2e NDCG@5",
+      "n": 18814,
+      "value": 0.2046,
+      "half_width": 0.0048,
+      "room_for_a_model": 0.6155,
+      "room_in_half_widths": 128.0
+    }
+  ],
+  "t1": {
+    "target": "category of the first later event on a different item in the session",
+    "headline_metric": "MRR - unchanged from the plan",
+    "decisions": 438185,
+    "same_category_share": 0.8232,
+    "baselines": [
+      {
+        "baseline": "repeat the current category",
+        "accuracy@1": 0.8232,
+        "mrr@20": 0.8232
+      },
+      {
+        "baseline": "globally most popular category",
+        "accuracy@1": 0.2277,
+        "mrr@20": 0.2841
+      },
+      {
+        "baseline": "TRAIN transition table",
+        "accuracy@1": 0.8235,
+        "mrr@20": 0.856
+      }
+    ],
+    "category_change_slice": {
+      "status": "RECOMMENDED_NEEDS_ADR",
+      "decisions": 77457,
+      "baselines": [
+        {
+          "baseline": "repeat the current category",
+          "accuracy@1": 0.0,
+          "mrr@20": 0.0
+        },
+        {
+          "baseline": "globally most popular (off-diagonal)",
+          "accuracy@1": 0.0622,
+          "mrr@20": 0.1049
+        },
+        {
+          "baseline": "TRAIN transition table (off-diagonal)",
+          "accuracy@1": 0.1862,
+          "mrr@20": 0.3085
+        }
+      ]
+    }
+  },
+  "t2": {
+    "decision": "first view of a product in a session",
+    "label": "the same product purchased later in the session, canonical order",
+    "censoring": "a decision with no observable horizon is censored, never negative",
+    "decisions": 392554,
+    "censored": 70467,
+    "mature": 322087,
+    "positives": 11297,
+    "base_rate": 0.0351,
+    "baselines": [
+      {
+        "baseline": "prevalence (no signal)",
+        "pr_auc": 0.0351,
+        "lift_over_prevalence": 1.0
+      },
+      {
+        "baseline": "TRAIN category purchase rate",
+        "pr_auc": 0.0572,
+        "lift_over_prevalence": 1.63
+      },
+      {
+        "baseline": "TRAIN item popularity",
+        "pr_auc": 0.0831,
+        "lift_over_prevalence": 2.37
+      }
+    ]
+  },
+  "t3": {
+    "queries": 392554,
+    "evaluable_queries": 18814,
+    "e2e_ndcg@5": 0.2046,
+    "reranker_ceiling": 0.8201,
+    "recall@100": 0.8175
+  },
+  "adr_001": {
+    "headline_average": "macro - one vote per client",
+    "reported_alongside": "micro - one vote per decision",
+    "client_strata": [
+      "10-19",
+      "20-49",
+      "50-99",
+      "100+"
+    ],
+    "strata_basis": "TRAIN events per client, what a device would learn from",
+    "averaged_baselines": [
+      {
+        "metric": "T1 overall - repeat current category",
+        "micro": 0.8232,
+        "macro": 0.7879,
+        "clients": 31576,
+        "10-19": 0.794,
+        "20-49": 0.7871,
+        "50-99": 0.789,
+        "100+": 0.7796
+      },
+      {
+        "metric": "T1 overall - transition table MRR@20",
+        "micro": 0.856,
+        "macro": 0.8258,
+        "clients": 31576,
+        "10-19": 0.8335,
+        "20-49": 0.8249,
+        "50-99": 0.8253,
+        "100+": 0.8175
+      },
+      {
+        "metric": "T1 slice - transition table MRR@20",
+        "micro": 0.3085,
+        "macro": 0.3144,
+        "clients": 16096,
+        "10-19": 0.3303,
+        "20-49": 0.3111,
+        "50-99": 0.3088,
+        "100+": 0.3129
+      },
+      {
+        "metric": "T3 - e2e NDCG@5",
+        "micro": 0.2046,
+        "macro": 0.2707,
+        "clients": 4591,
+        "10-19": 0.2929,
+        "20-49": 0.2768,
+        "50-99": 0.2643,
+        "100+": 0.2481
+      },
+      {
+        "metric": "T2 - purchases caught in the client's top 3",
+        "micro": 0.6021,
+        "macro": 0.6021,
+        "clients": 6387,
+        "10-19": 0.7232,
+        "20-49": 0.6518,
+        "50-99": 0.5735,
+        "100+": 0.4047
+      }
+    ],
+    "t2_exception": "PR-AUC does not decompose per client; a top-3 companion is reported"
+  },
+  "task_examples": [
+    {
+      "task": "t1",
+      "rows": 438185,
+      "clients": 31576,
+      "observed": 438185,
+      "censored": 0,
+      "file": "INTERNAL_DO_NOT_UPLOAD_task_examples_t1_v1.proposed.parquet",
+      "kb": 7084.0
+    },
+    {
+      "task": "t2",
+      "rows": 392554,
+      "clients": 42312,
+      "observed": 322087,
+      "censored": 70467,
+      "file": "INTERNAL_DO_NOT_UPLOAD_task_examples_t2_v1.proposed.parquet",
+      "kb": 6696.8
+    },
+    {
+      "task": "t3",
+      "rows": 1096774,
+      "clients": 29330,
+      "observed": 1096774,
+      "censored": 0,
+      "file": "INTERNAL_DO_NOT_UPLOAD_task_examples_t3_v1.proposed.parquet",
+      "kb": 9388.4
+    },
+    {
+      "task": "t1_train",
+      "rows": 3113814,
+      "clients": 95990,
+      "observed": 3113814,
+      "censored": 0,
+      "file": "INTERNAL_DO_NOT_UPLOAD_task_examples_t1_train_v1.proposed.parquet",
+      "kb": 49046.1
+    },
+    {
+      "task": "t2_train",
+      "rows": 2770471,
+      "clients": 97279,
+      "observed": 2291753,
+      "censored": 478718,
+      "file": "INTERNAL_DO_NOT_UPLOAD_task_examples_t2_train_v1.proposed.parquet",
+      "kb": 44419.6
+    },
+    {
+      "task": "t3_train",
+      "rows": 8088359,
+      "clients": 95236,
+      "observed": 8088359,
+      "censored": 0,
+      "file": "INTERNAL_DO_NOT_UPLOAD_task_examples_t3_train_v1.proposed.parquet",
+      "kb": 79389.5
+    }
+  ],
+  "splits_emitted": {
+    "TRAIN": true,
+    "VALIDATION": true,
+    "TEST": "owned by S1-DS-09, after the freeze"
+  },
+  "shared_artifacts": {
+    "vocabulary": "vocabulary_v1.proposed.json",
+    "item_catalog": "item_catalog_v1.proposed.parquet",
+    "candidate_lists": "t3_candidate_lists_v1.proposed.parquet",
+    "price_transform": "price_transform_v1.proposed.json",
+    "why": "a task example's label is a code; without the vocabulary it has no meaning"
+  },
+  "corrections_from_review": [
+    "positives and candidates share one eligibility function, verified in-notebook",
+    "the excluded-session list is consumed, so TEST is never read",
+    "every measurement is restricted to the C1 cohort",
+    "sessions are assembled whole before any sequence logic",
+    "ordering uses (event_time, source_row_number)",
+    "null sessions become provenance singletons",
+    "overall MRR remains the T1 headline; the slice is a recommendation needing an ADR",
+    "room is reported as a difference and the T3 ceiling is a graded NDCG"
+  ]
+}

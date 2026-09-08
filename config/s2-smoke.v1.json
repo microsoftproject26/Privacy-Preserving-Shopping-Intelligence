@@ -1,0 +1,34 @@
+{
+  "status": "NON_AUTHORITATIVE_ENGINEERING_SMOKE",
+  "purpose": "measure whether a GRU beats the simple baselines from S1-D1-DS-07 on real REES46 data",
+  "comparability": {
+    "cohort": "C1",
+    "user_slice": "user_id % 4 == 1",
+    "target": "category of the first later event on a different item in the session",
+    "metric": "MRR@20",
+    "note": "identical to S1-D1-DS-07 so the numbers land in the same table"
+  },
+  "model": {
+    "history_length": 20,
+    "embedding": 64,
+    "hidden": 128,
+    "dropout": 0.1,
+    "tuned": false,
+    "product_buckets": 50000,
+    "product_embedding": 24
+  },
+  "training": {
+    "train_decisions": 1200000,
+    "batch_size": 512,
+    "epochs": 4,
+    "learning_rate": 0.002,
+    "selection": "lowest validation loss, not the last epoch"
+  },
+  "ablation": {
+    "variants": [
+      "category only",
+      "category + product"
+    ],
+    "question": "is product identity the signal a category transition table cannot hold"
+  }
+}

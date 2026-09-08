@@ -1,0 +1,435 @@
+{
+  "status": "PROPOSED",
+  "source": {
+    "parquet": "processed_raw_parquet_v1.parquet",
+    "rows": 42448764,
+    "reconciled_with": "S1-DS-04 data_audit_pass1.json"
+  },
+  "session_policy": {
+    "logical_key": "(user_id, user_session)",
+    "provided_sessions": "preserved as supplied by REES46",
+    "null_fallback": "one singleton session per row, keyed by provenance",
+    "null_rows": 2,
+    "logical_sessions": 9244772,
+    "raw_values_used_by_more_than_one_user": 348
+  },
+  "temporal_split": {
+    "TRAIN": {
+      "start": "2019-10-01 00:00:00+00:00",
+      "end_exclusive": "2019-10-22 00:00:00+00:00",
+      "days": 21,
+      "events": 29218702,
+      "percent": 68.83,
+      "decisions": true
+    },
+    "VALIDATION": {
+      "start": "2019-10-22 00:00:00+00:00",
+      "end_exclusive": "2019-10-27 00:00:00+00:00",
+      "days": 5,
+      "events": 6897095,
+      "percent": 16.25,
+      "decisions": true
+    },
+    "TEST": {
+      "start": "2019-10-27 00:00:00+00:00",
+      "end_exclusive": "2019-10-31 00:00:00+00:00",
+      "days": 4,
+      "events": 5087488,
+      "percent": 11.99,
+      "decisions": true
+    },
+    "LABEL_GRACE": {
+      "start": "2019-10-31 00:00:00+00:00",
+      "end_exclusive": "2019-11-01 00:00:00+00:00",
+      "days": 1,
+      "events": 1245479,
+      "percent": 2.93,
+      "decisions": false
+    }
+  },
+  "boundary_policy": {
+    "rule": "exclude the whole logical session when it crosses TRAIN/VALIDATION or VALIDATION/TEST",
+    "test_to_grace": "not a crossing; a test session may mature into label grace",
+    "crossing_sessions": 4995,
+    "identity_artifact": "INTERNAL_DO_NOT_UPLOAD_excluded_sessions_v1.proposed.parquet",
+    "identity_note": "downstream tasks must read this list instead of recomputing it, because recomputing requires reading intervals they must not read",
+    "crossing_percent": 0.054,
+    "train_events_excluded": 10113,
+    "train_events_excluded_percent": 0.035,
+    "selected_users_touched": 690
+  },
+  "client_density": {
+    "unit": "one client is one user; counts are post-exclusion",
+    "why": "the regimes are compared per client, so a cohort median does not say whether an individual client can be trained or scored",
+    "per_split": [
+      {
+        "split": "TRAIN",
+        "clients_with_data": 388789,
+        "share_of_cohort_%": 100.0,
+        "p10": 13,
+        "median": 29,
+        "p90": 92,
+        "max": 4923
+      },
+      {
+        "split": "VALIDATION",
+        "clients_with_data": 169841,
+        "share_of_cohort_%": 43.68,
+        "p10": 0,
+        "median": 0,
+        "p90": 18,
+        "max": 1895
+      },
+      {
+        "split": "TEST",
+        "clients_with_data": 130464,
+        "share_of_cohort_%": 33.56,
+        "p10": 0,
+        "median": 0,
+        "p90": 12,
+        "max": 1740
+      }
+    ],
+    "clients_with_no_validation_data": 218948,
+    "evaluable_under_a_minimum_rule": [
+      {
+        "min_validation_events": 1,
+        "clients": 169841,
+        "share_of_cohort_%": 43.68
+      },
+      {
+        "min_validation_events": 5,
+        "clients": 106867,
+        "share_of_cohort_%": 27.49
+      },
+      {
+        "min_validation_events": 10,
+        "clients": 69659,
+        "share_of_cohort_%": 17.92
+      },
+      {
+        "min_validation_events": 20,
+        "clients": 36046,
+        "share_of_cohort_%": 9.27
+      },
+      {
+        "min_validation_events": 50,
+        "clients": 9660,
+        "share_of_cohort_%": 2.48
+      }
+    ],
+    "minimum_rule_status": "NOT DECIDED - S1-DS-09 owns it"
+  },
+  "client_skew": {
+    "validation_events_held_by_largest_clients": [
+      {
+        "largest_share_of_clients_%": 1.0,
+        "hold_this_share_of_validation_events_%": 20.19
+      },
+      {
+        "largest_share_of_clients_%": 5.0,
+        "hold_this_share_of_validation_events_%": 49.62
+      },
+      {
+        "largest_share_of_clients_%": 10.0,
+        "hold_this_share_of_validation_events_%": 68.15
+      },
+      {
+        "largest_share_of_clients_%": 25.0,
+        "hold_this_share_of_validation_events_%": 92.43
+      },
+      {
+        "largest_share_of_clients_%": 50.0,
+        "hold_this_share_of_validation_events_%": 100.0
+      }
+    ],
+    "consequence": "macro and micro averages will not agree; FedAvg weights clients by sample count, so the same skew decides how much of the federated model comes from how few devices",
+    "averaging_convention": "NOT DECIDED - S1-DS-09 owns it"
+  },
+  "cohort_rule_after_exclusion": {
+    "still_eligible": 388558,
+    "below_rule": 231,
+    "below_rule_percent": 0.059,
+    "with_no_usable_train_events": 0,
+    "note": "recorded, not acted on; dropping these clients would make membership depend on crossing status, which is future-derived"
+  },
+  "cohort_policy": {
+    "basis": "TRAIN interval only",
+    "active_days": "distinct calendar dates with at least one event",
+    "elapsed_span_used": false,
+    "candidates": {
+      "BROAD": {
+        "min_events": 5,
+        "min_sessions": 1,
+        "min_active_days": 1
+      },
+      "MAIN": {
+        "min_events": 10,
+        "min_sessions": 2,
+        "min_active_days": 3
+      },
+      "STRICT": {
+        "min_events": 20,
+        "min_sessions": 3,
+        "min_active_days": 7
+      }
+    },
+    "selected": "MAIN"
+  },
+  "cohort_results": [
+    {
+      "candidate": "BROAD",
+      "rule": "5/1/1",
+      "users": 1130834,
+      "user_percent": 48.91,
+      "train_events": 26872245,
+      "event_percent": 91.97,
+      "median_events": 13.0,
+      "median_sessions": 3.0,
+      "median_active_days": 2.0
+    },
+    {
+      "candidate": "MAIN",
+      "rule": "10/2/3",
+      "users": 388789,
+      "user_percent": 16.81,
+      "train_events": 17591382,
+      "event_percent": 60.21,
+      "median_events": 29.0,
+      "median_sessions": 6.0,
+      "median_active_days": 4.0
+    },
+    {
+      "candidate": "STRICT",
+      "rule": "20/3/7",
+      "users": 65340,
+      "user_percent": 2.83,
+      "train_events": 6576880,
+      "event_percent": 22.51,
+      "median_events": 73.0,
+      "median_sessions": 14.0,
+      "median_active_days": 8.0
+    }
+  ],
+  "purchase_diagnostic": [
+    {
+      "candidate": "BROAD",
+      "users": 1130834,
+      "with_train_purchase": 229175,
+      "purchase_percent": 20.27
+    },
+    {
+      "candidate": "MAIN",
+      "users": 388789,
+      "with_train_purchase": 122435,
+      "purchase_percent": 31.49
+    },
+    {
+      "candidate": "STRICT",
+      "users": 65340,
+      "with_train_purchase": 30435,
+      "purchase_percent": 46.58
+    }
+  ],
+  "feasibility_gate": {
+    "min_c1_users": 10000,
+    "selected_c1_users": 388789,
+    "status": "PASS"
+  },
+  "cohort_counts": {
+    "C1": {
+      "users": 388789,
+      "percent": 12.86
+    },
+    "C2": {
+      "users": 1923411,
+      "percent": 63.64
+    },
+    "C3_VAL": {
+      "users": 391205,
+      "percent": 12.94
+    },
+    "C3_TEST": {
+      "users": 256884,
+      "percent": 8.5
+    },
+    "GRACE_ONLY": {
+      "users": 62001,
+      "percent": 2.05
+    }
+  },
+  "train_user_distribution": {
+    "events": {
+      "mean": 12.636753741025863,
+      "std": 27.769720009922985,
+      "min": 1.0,
+      "50%": 4.0,
+      "90%": 30.0,
+      "95%": 50.0,
+      "99%": 122.0,
+      "max": 4923.0
+    },
+    "sessions": {
+      "mean": 2.7359073609549345,
+      "std": 5.246025606991203,
+      "min": 1.0,
+      "50%": 1.0,
+      "90%": 6.0,
+      "95%": 9.0,
+      "99%": 18.0,
+      "max": 4902.0
+    },
+    "active_days": {
+      "mean": 1.9108407577199205,
+      "std": 1.729677113092664,
+      "min": 1.0,
+      "50%": 1.0,
+      "90%": 4.0,
+      "95%": 5.0,
+      "99%": 9.0,
+      "max": 21.0
+    }
+  },
+  "totals": {
+    "users": 3022290,
+    "users_in_train": 2312200,
+    "train_events": 29218702,
+    "logical_sessions": 9244772,
+    "raw_session_values": 9244421,
+    "raw_values_used_by_more_than_one_user": 348
+  },
+  "censoring": {
+    "rule": "an outcome that is not yet observable is censored, never a negative label",
+    "representation": "label = null, task_mask = false, status = CENSORED",
+    "owner": "TaskExample builders define label_matures_at per task"
+  },
+  "validation": [
+    {
+      "check": "input rows reconcile with S1-DS-04",
+      "status": "PASS",
+      "detail": "42,448,764"
+    },
+    {
+      "check": "every event lands in exactly one interval",
+      "status": "PASS",
+      "detail": "42,448,764"
+    },
+    {
+      "check": "an event on a cutoff belongs to the later interval",
+      "status": "PASS",
+      "detail": "TRAIN -> VALIDATION"
+    },
+    {
+      "check": "same raw session under two users yields two logical sessions",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "each null session becomes its own singleton",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "null session rows match the audit",
+      "status": "PASS",
+      "detail": "2 rows"
+    },
+    {
+      "check": "crossing patterns classify correctly, including reaching into grace",
+      "status": "PASS",
+      "detail": "6 patterns"
+    },
+    {
+      "check": "cohort statistics use TRAIN rows only",
+      "status": "PASS",
+      "detail": "29,218,702"
+    },
+    {
+      "check": "active days never exceed TRAIN calendar days",
+      "status": "PASS",
+      "detail": "max 21 of 21"
+    },
+    {
+      "check": "active days never exceed a user's TRAIN events",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "every excluded session has a disallowed touch pattern",
+      "status": "PASS",
+      "detail": "4,995 excluded"
+    },
+    {
+      "check": "label grace starts no decision interval",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "cohorts are mutually exclusive and cover every user",
+      "status": "PASS",
+      "detail": "3,022,290"
+    },
+    {
+      "check": "selected cohort meets the feasibility gate (>= 10,000)",
+      "status": "PASS",
+      "detail": "388,789"
+    },
+    {
+      "check": "every excluded session carries the raw pair a non-pandas lane needs",
+      "status": "PASS",
+      "detail": "4,995 sessions"
+    },
+    {
+      "check": "client density covers every decision split",
+      "status": "PASS",
+      "detail": "TRAIN, VALIDATION, TEST"
+    },
+    {
+      "check": "client density never reports more clients than the cohort holds",
+      "status": "PASS",
+      "detail": "cohort 388,789"
+    },
+    {
+      "check": "the cohort rule still holds for almost every client after exclusion",
+      "status": "PASS",
+      "detail": "231 below the rule"
+    },
+    {
+      "check": "the client skew shares form a non-decreasing cumulative series",
+      "status": "PASS",
+      "detail": "top 10% hold 68.15%"
+    }
+  ],
+  "handoff": {
+    "canonical_order": [
+      "event_time",
+      "source_row_number"
+    ],
+    "known_downstream_constraints": {
+      "T1": [
+        "not every session contains a usable sequence",
+        "canonical order is (event_time, source_row_number)",
+        "history must stop before the target decision"
+      ],
+      "T2": [
+        "the session-level purchase rate from S1-DS-04 is not the T2 positive rate",
+        "count eligible decision points after session, split and censoring rules",
+        "an unmatured outcome is censored, never negative"
+      ],
+      "T3": [
+        "REES46 has no remove_from_cart event; no rule may assume one",
+        "cart frequency shifts across the month, so report gain distribution by split",
+        "candidate generation and gain semantics are separate downstream decisions"
+      ]
+    },
+    "next_task": "TaskExample builders (T1/T2/T3)",
+    "receives": [
+      "cohort membership",
+      "split intervals",
+      "session policy",
+      "the excluded-session identity list",
+      "censoring rule",
+      "canonical ordering"
+    ]
+  }
+}

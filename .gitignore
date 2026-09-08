@@ -468,3 +468,45 @@ credentials.*.json
 service-account*.json
 .netrc
 .pypirc
+
+# ============================================================================
+# Research data — NEVER commit
+#
+# This repository is PUBLIC and the project is about privacy-preserving
+# learning. Committing user-level data here would contradict the work itself,
+# and git keeps every version forever — deleting a file later does not remove
+# it from history.
+#
+# Everything below is distributed through the shared drive instead.
+# See docs/data-access.md for the link, the layout, and the checksums.
+# ============================================================================
+
+# Task examples, cohort manifests and per-decision ranks — all carry user_id
+INTERNAL_DO_NOT_UPLOAD_*
+*INTERNAL*
+
+# The source dataset and anything derived from it at row level
+Dataset/
+data/raw/
+*.csv
+*.csv.zip
+2019-*.csv*
+
+# /data/ is already ignored above and stays that way: it is where downloaded
+# research data lands locally. Committed reference artifacts live in fixtures/,
+# which holds item-level files with no user_id.
+*.parquet
+!fixtures/**/*.parquet
+
+# Model weights and checkpoints
+*.pt
+*.pth
+*.onnx
+*.ckpt
+checkpoints/
+
+# Local scratch
+scratchpad/
+_scratch/
+.venv/
+*.log

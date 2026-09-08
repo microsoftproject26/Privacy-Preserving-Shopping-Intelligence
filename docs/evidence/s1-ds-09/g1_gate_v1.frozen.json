@@ -1,0 +1,276 @@
+{
+  "gate": "S1-ALL-G1",
+  "verdict": "GO",
+  "date": "2026-09-01",
+  "criteria": [
+    {
+      "criterion": "the cohort is large enough to simulate a federation",
+      "passed": true,
+      "evidence": "388,789 clients against a gate of 10,000"
+    },
+    {
+      "criterion": "every task has room left above its best model-free rule",
+      "passed": true,
+      "evidence": "smallest room 0.144"
+    },
+    {
+      "criterion": "every task can resolve differences far smaller than that room",
+      "passed": true,
+      "evidence": "weakest task resolves 128 steps"
+    },
+    {
+      "criterion": "a sequence model actually beats the model-free rule on real data",
+      "passed": true,
+      "evidence": "macro gain 0.0348"
+    },
+    {
+      "criterion": "that advantage survives on clients with the least history",
+      "passed": true,
+      "evidence": "smallest bucket gain 0.0184"
+    },
+    {
+      "criterion": "task examples exist for every split a model needs",
+      "passed": true,
+      "evidence": "TRAIN and VALIDATION upstream, TEST sealed here"
+    },
+    {
+      "criterion": "the vocabulary, catalogue and price transform are reproducible",
+      "passed": true,
+      "evidence": "persisted, not rebuilt downstream"
+    },
+    {
+      "criterion": "no TEST row was read before the builders were proven",
+      "passed": true,
+      "evidence": "enforced by the assertion in section 2"
+    },
+    {
+      "criterion": "no metric has been computed on TEST",
+      "passed": true,
+      "evidence": "TEST is used here only to build examples"
+    }
+  ],
+  "conditions": [
+    "every T1 number must say whether it is the overall metric or the category-change slice; the two differ by 0.2757 in what context buys",
+    "every regime comparison reports macro and micro together, and is stratified by client history",
+    "every T3 number is stated with its scope: the protocol covers 56.65% of real next-engagements, not all of them",
+    "every result says the evaluation covers the 33.56% of C1 clients that returned during TEST, and those clients are more active than the cohort average",
+    "the measurement runs on a 25% deterministic slice of C1; re-emitting on the full cohort needs more memory, not different code"
+  ],
+  "decisions": {
+    "evaluation_population": {
+      "rule": "every C1 client with at least one decision in the evaluation split",
+      "reported": "stratified by TRAIN-history bucket",
+      "source": "ADR-001"
+    },
+    "averaging": {
+      "headline": "macro - one vote per client",
+      "alongside": "micro - one vote per decision",
+      "source": "ADR-001"
+    },
+    "t1_comparison_metric": {
+      "metric": "MRR@20 on the category-change slice",
+      "overall_metric": "reported as a product figure, never for regime comparison",
+      "source": "ADR-001"
+    },
+    "t3_eligibility": {
+      "rule": "same category only",
+      "price_band_kept": false,
+      "basis": "resolvable steps on VALIDATION",
+      "experiment": [
+        {
+          "eligibility": "same category + price band",
+          "coverage_%": 37.91,
+          "evaluable_queries": 14075,
+          "recall@100": 0.8916,
+          "e2e_ndcg@5": 0.253,
+          "ceiling": 0.8932,
+          "room": 0.6401,
+          "half_width": 0.006,
+          "resolvable_steps": 107
+        },
+        {
+          "eligibility": "same category only",
+          "coverage_%": 56.65,
+          "evaluable_queries": 18814,
+          "recall@100": 0.8175,
+          "e2e_ndcg@5": 0.2046,
+          "ceiling": 0.8201,
+          "room": 0.6154,
+          "half_width": 0.0048,
+          "resolvable_steps": 128
+        }
+      ]
+    }
+  },
+  "drift_train_to_test_percent": 29.5,
+  "test_examples": [
+    {
+      "task": "t1_test",
+      "rows": 297673,
+      "clients": 23647,
+      "observed": 297673,
+      "censored": 0,
+      "file": "INTERNAL_DO_NOT_UPLOAD_task_examples_t1_test_v1.frozen.parquet",
+      "MB": 4.79
+    },
+    {
+      "task": "t2_test",
+      "rows": 266964,
+      "clients": 32376,
+      "observed": 219328,
+      "censored": 47636,
+      "file": "INTERNAL_DO_NOT_UPLOAD_task_examples_t2_test_v1.frozen.parquet",
+      "MB": 4.56
+    },
+    {
+      "task": "t3_test",
+      "rows": 738560,
+      "clients": 21815,
+      "observed": 738560,
+      "censored": 0,
+      "file": "INTERNAL_DO_NOT_UPLOAD_task_examples_t3_test_v1.frozen.parquet",
+      "MB": 6.48
+    }
+  ],
+  "artifacts": [
+    {
+      "task": "S1-DS-05-06_Cohort_Temporal_Protocol",
+      "file": "data_protocol_v1.proposed.json",
+      "MB": 0.012,
+      "sha256": "09b44e6e794a95e1",
+      "internal": false
+    },
+    {
+      "task": "S1-DS-05-06_Cohort_Temporal_Protocol",
+      "file": "INTERNAL_DO_NOT_UPLOAD_cohort_manifest_v1.proposed.parquet",
+      "MB": 13.421,
+      "sha256": "32d4b8ce4bb84f78",
+      "internal": true
+    },
+    {
+      "task": "S1-DS-05-06_Cohort_Temporal_Protocol",
+      "file": "INTERNAL_DO_NOT_UPLOAD_excluded_sessions_v1.proposed.parquet",
+      "MB": 0.263,
+      "sha256": "60404af5c89f8d1b",
+      "internal": true
+    },
+    {
+      "task": "S1-D1-DS-07_T3_Protocol_and_Task_Examples",
+      "file": "INTERNAL_DO_NOT_UPLOAD_task_examples_t1_train_v1.proposed.parquet",
+      "MB": 47.897,
+      "sha256": "42b1617c1d2f1b5a",
+      "internal": true
+    },
+    {
+      "task": "S1-D1-DS-07_T3_Protocol_and_Task_Examples",
+      "file": "INTERNAL_DO_NOT_UPLOAD_task_examples_t1_v1.proposed.parquet",
+      "MB": 6.918,
+      "sha256": "e5e8522510371741",
+      "internal": true
+    },
+    {
+      "task": "S1-D1-DS-07_T3_Protocol_and_Task_Examples",
+      "file": "INTERNAL_DO_NOT_UPLOAD_task_examples_t2_train_v1.proposed.parquet",
+      "MB": 43.378,
+      "sha256": "72379556cc03dcd9",
+      "internal": true
+    },
+    {
+      "task": "S1-D1-DS-07_T3_Protocol_and_Task_Examples",
+      "file": "INTERNAL_DO_NOT_UPLOAD_task_examples_t2_v1.proposed.parquet",
+      "MB": 6.54,
+      "sha256": "fcb22295c58d70d8",
+      "internal": true
+    },
+    {
+      "task": "S1-D1-DS-07_T3_Protocol_and_Task_Examples",
+      "file": "INTERNAL_DO_NOT_UPLOAD_task_examples_t3_train_v1.proposed.parquet",
+      "MB": 77.529,
+      "sha256": "e9e8ea9d7a0279f3",
+      "internal": true
+    },
+    {
+      "task": "S1-D1-DS-07_T3_Protocol_and_Task_Examples",
+      "file": "INTERNAL_DO_NOT_UPLOAD_task_examples_t3_v1.proposed.parquet",
+      "MB": 9.168,
+      "sha256": "018303badbb4fd0c",
+      "internal": true
+    },
+    {
+      "task": "S1-D1-DS-07_T3_Protocol_and_Task_Examples",
+      "file": "item_catalog_v1.proposed.parquet",
+      "MB": 2.105,
+      "sha256": "25a69348c028d432",
+      "internal": false
+    },
+    {
+      "task": "S1-D1-DS-07_T3_Protocol_and_Task_Examples",
+      "file": "price_transform_v1.proposed.json",
+      "MB": 0.001,
+      "sha256": "2452059fad5cbe13",
+      "internal": false
+    },
+    {
+      "task": "S1-D1-DS-07_T3_Protocol_and_Task_Examples",
+      "file": "t3_candidate_lists_v1.proposed.parquet",
+      "MB": 8.972,
+      "sha256": "6782bf32fe1f6b73",
+      "internal": false
+    },
+    {
+      "task": "S1-D1-DS-07_T3_Protocol_and_Task_Examples",
+      "file": "t3_protocol_v1.proposed.json",
+      "MB": 0.005,
+      "sha256": "c7fc74064d9bb066",
+      "internal": false
+    },
+    {
+      "task": "S1-D1-DS-07_T3_Protocol_and_Task_Examples",
+      "file": "task_headroom_v1.proposed.json",
+      "MB": 0.008,
+      "sha256": "9500c49d8a12335b",
+      "internal": false
+    },
+    {
+      "task": "S1-D1-DS-07_T3_Protocol_and_Task_Examples",
+      "file": "vocabulary_v1.proposed.json",
+      "MB": 0.02,
+      "sha256": "07e7c0618f550b53",
+      "internal": false
+    },
+    {
+      "task": "S1-DS-09_Freeze_and_G1",
+      "file": "g1_gate_v1.frozen.json",
+      "MB": 0.008,
+      "sha256": "66f1f5f0943c950e",
+      "internal": false
+    },
+    {
+      "task": "S1-DS-09_Freeze_and_G1",
+      "file": "INTERNAL_DO_NOT_UPLOAD_task_examples_t1_test_v1.frozen.parquet",
+      "MB": 4.791,
+      "sha256": "5dccd3e9e617d843",
+      "internal": true
+    },
+    {
+      "task": "S1-DS-09_Freeze_and_G1",
+      "file": "INTERNAL_DO_NOT_UPLOAD_task_examples_t2_test_v1.frozen.parquet",
+      "MB": 4.559,
+      "sha256": "d8d2054332531384",
+      "internal": true
+    },
+    {
+      "task": "S1-DS-09_Freeze_and_G1",
+      "file": "INTERNAL_DO_NOT_UPLOAD_task_examples_t3_test_v1.frozen.parquet",
+      "MB": 6.482,
+      "sha256": "33519f3d4cffb9e0",
+      "internal": true
+    }
+  ],
+  "not_decided_here": [
+    "model architecture",
+    "features and vocabulary size",
+    "loss function",
+    "client partitioning for the federated regimes"
+  ]
+}

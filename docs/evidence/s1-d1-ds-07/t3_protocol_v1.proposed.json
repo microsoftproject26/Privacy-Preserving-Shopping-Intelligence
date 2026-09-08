@@ -1,0 +1,198 @@
+{
+  "status": "PROPOSED",
+  "scope": {
+    "cohort": "C1",
+    "cohort_users": 388789,
+    "measured_users": 97279,
+    "user_slice": "user_id % 4 == 1",
+    "slice_reason": "C1 holds 17.6M TRAIN events, beyond available memory; whole users kept",
+    "measured_on": "VALIDATION",
+    "test_rows_read": 0,
+    "excluded_sessions_consumed": 4995,
+    "train_events": 4376137,
+    "validation_events": 622013,
+    "validation_sessions": 114507
+  },
+  "gain_rule": {
+    "selected": "INTENT",
+    "gains": {
+      "purchase": 2,
+      "cart": 1,
+      "view": 0
+    },
+    "basis": "the plan's documented proposal, kept because the measurement shows it is not saturated",
+    "sensitivity_analysis": "ENGAGEMENT"
+  },
+  "retrieval": {
+    "selected": "cooccurrence_then_popularity",
+    "basis": "higher end-to-end NDCG@5 under the selected gain rule",
+    "popularity_half_life_days": 7,
+    "max_candidates": 100
+  },
+  "eligibility": {
+    "rule": "different item, same category, present in the TRAIN catalogue",
+    "price_band_required": false,
+    "applied_to": [
+      "candidate construction",
+      "positive counting"
+    ],
+    "engagements_outside_the_eligible_universe": 0.4335
+  },
+  "metrics": {
+    "headline": "end-to-end NDCG@5",
+    "secondary": [
+      "MRR",
+      "HR@3",
+      "Candidate Recall@100"
+    ],
+    "retrieval_miss": "scores zero",
+    "positive_injection": false,
+    "ceiling": "graded NDCG of a perfect reranking of what was retrieved",
+    "conditional_metrics": "diagnostic only"
+  },
+  "measurement": [
+    {
+      "retrieval": "popularity",
+      "gain_rule": "INTENT",
+      "evaluable_queries": 18814,
+      "evaluable_%": 4.79,
+      "recall@100": 0.7156,
+      "miss_%": 26.88,
+      "e2e_ndcg@5": 0.1109,
+      "reranker_ceiling": 0.7194,
+      "e2e_mrr": 0.1278,
+      "e2e_hr@3": 0.1241
+    },
+    {
+      "retrieval": "popularity",
+      "gain_rule": "ENGAGEMENT",
+      "evaluable_queries": 240850,
+      "evaluable_%": 61.35,
+      "recall@100": 0.5967,
+      "miss_%": 21.53,
+      "e2e_ndcg@5": 0.094,
+      "reranker_ceiling": 0.6801,
+      "e2e_mrr": 0.1615,
+      "e2e_hr@3": 0.1702
+    },
+    {
+      "retrieval": "cooccurrence_then_popularity",
+      "gain_rule": "INTENT",
+      "evaluable_queries": 18814,
+      "evaluable_%": 4.79,
+      "recall@100": 0.8175,
+      "miss_%": 17.05,
+      "e2e_ndcg@5": 0.2046,
+      "reranker_ceiling": 0.8201,
+      "e2e_mrr": 0.2147,
+      "e2e_hr@3": 0.2334
+    },
+    {
+      "retrieval": "cooccurrence_then_popularity",
+      "gain_rule": "ENGAGEMENT",
+      "evaluable_queries": 240850,
+      "evaluable_%": 61.35,
+      "recall@100": 0.7134,
+      "miss_%": 11.37,
+      "e2e_ndcg@5": 0.1714,
+      "reranker_ceiling": 0.7963,
+      "e2e_mrr": 0.2623,
+      "e2e_hr@3": 0.2964
+    }
+  ],
+  "price_transform": {
+    "statistic": "median TRAIN price per item, ignoring non-positive prices",
+    "transform": "log1p",
+    "fitted_on": "TRAIN only",
+    "quantiles": [
+      0.25,
+      0.5,
+      0.75
+    ],
+    "log_edges": [
+      3.420346,
+      4.35927,
+      5.273884
+    ],
+    "price_edges": [
+      29.58,
+      77.2,
+      194.17
+    ],
+    "bands": {
+      "0": "no usable TRAIN price",
+      "1": "cheapest quarter",
+      "2": "second",
+      "3": "third",
+      "4": "most expensive quarter"
+    },
+    "items_without_price": 693,
+    "owner": "S1-SE-06 owns the production module; this is the stand-in to reconcile with"
+  },
+  "price_band_experiment": [
+    {
+      "eligibility": "same category + price band",
+      "coverage_%": 37.91,
+      "evaluable_queries": 14075,
+      "recall@100": 0.8916,
+      "e2e_ndcg@5": 0.253,
+      "ceiling": 0.8932,
+      "room": 0.6401,
+      "half_width": 0.006,
+      "resolvable_steps": 107
+    },
+    {
+      "eligibility": "same category only",
+      "coverage_%": 56.65,
+      "evaluable_queries": 18814,
+      "recall@100": 0.8175,
+      "e2e_ndcg@5": 0.2046,
+      "ceiling": 0.8201,
+      "room": 0.6154,
+      "half_width": 0.0048,
+      "resolvable_steps": 128
+    }
+  ],
+  "price_band_status": "MEASURED HERE, DECIDED IN S1-DS-09",
+  "gain_drift": {
+    "event_mix_by_split": [
+      {
+        "event_type": "view",
+        "TRAIN": 95.834,
+        "VALIDATION": 95.411,
+        "difference": -0.423,
+        "relative_%": -0.4
+      },
+      {
+        "event_type": "cart",
+        "TRAIN": 2.24,
+        "VALIDATION": 2.6,
+        "difference": 0.36,
+        "relative_%": 16.1
+      },
+      {
+        "event_type": "purchase",
+        "TRAIN": 1.926,
+        "VALIDATION": 1.989,
+        "difference": 0.063,
+        "relative_%": 3.3
+      }
+    ],
+    "daily_cart_share_percent": [
+      {
+        "split": "TRAIN",
+        "min": 1.248,
+        "median": 2.42,
+        "max": 3.314
+      },
+      {
+        "split": "VALIDATION",
+        "min": 2.414,
+        "median": 2.621,
+        "max": 2.742
+      }
+    ],
+    "largest_relative_drift_percent": 16.1,
+    "test_split": "not readable here; S1-DS-09 must re-check"
+  }
+}
