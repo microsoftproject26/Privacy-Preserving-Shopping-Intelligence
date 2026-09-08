@@ -1,0 +1,800 @@
+{
+  "source": "processed_raw_parquet_v1.parquet",
+  "rows_audited": 42448764,
+  "reconciliation": [
+    {
+      "check": "rows read == parquet header",
+      "actual": 42448764,
+      "expected": 42448764,
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "check": "rows read == conversion report",
+      "actual": 42448764,
+      "expected": 42448764,
+      "status": "PASS",
+      "note": "S1-DS-02 accepted_rows"
+    },
+    {
+      "check": "event-type counts sum to total",
+      "actual": 42448764,
+      "expected": 42448764,
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "check": "cart count matches S1-DS-02",
+      "actual": 926516,
+      "expected": 926516,
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "check": "purchase count matches S1-DS-02",
+      "actual": 742849,
+      "expected": 742849,
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "check": "view count matches S1-DS-02",
+      "actual": 40779399,
+      "expected": 40779399,
+      "status": "PASS",
+      "note": ""
+    }
+  ],
+  "dataset_totals": {
+    "Total events": 42448764,
+    "Unique users": 3022290,
+    "Unique sessions": 9244772,
+    "Unique items": 166794,
+    "Unique category_id": 624,
+    "Unique category_code": 126,
+    "Unique brands": 3445,
+    "Active days": 31
+  },
+  "event_types": {
+    "view": 40779399,
+    "cart": 926516,
+    "purchase": 742849
+  },
+  "sparsity": {
+    "users with >= 1 cart": {
+      "count": 337117,
+      "percent": 11.15
+    },
+    "users with >= 1 purchase": {
+      "count": 347118,
+      "percent": 11.49
+    },
+    "sessions with >= 1 cart": {
+      "count": 573099,
+      "percent": 6.2
+    },
+    "sessions with >= 1 purchase": {
+      "count": 629560,
+      "percent": 6.81
+    }
+  },
+  "user_activity": {
+    "percentiles": {
+      "count": 3022290.0,
+      "mean": 14.05,
+      "p50": 4.0,
+      "p90": 34.0,
+      "p95": 57.0,
+      "p99": 141.0,
+      "max": 7436.0
+    },
+    "reach": [
+      {
+        "min_events": 1,
+        "users": 3022290,
+        "user_percent": 100.0,
+        "events_held": 42448764,
+        "event_percent": 100.0
+      },
+      {
+        "min_events": 2,
+        "users": 2331044,
+        "user_percent": 77.13,
+        "events_held": 41757518,
+        "event_percent": 98.37
+      },
+      {
+        "min_events": 5,
+        "users": 1503009,
+        "user_percent": 49.73,
+        "events_held": 39442728,
+        "event_percent": 92.92
+      },
+      {
+        "min_events": 10,
+        "users": 971704,
+        "user_percent": 32.15,
+        "events_held": 35908139,
+        "event_percent": 84.59
+      },
+      {
+        "min_events": 20,
+        "users": 544006,
+        "user_percent": 18.0,
+        "events_held": 30045857,
+        "event_percent": 70.78
+      },
+      {
+        "min_events": 50,
+        "users": 183340,
+        "user_percent": 6.07,
+        "events_held": 19029051,
+        "event_percent": 44.83
+      },
+      {
+        "min_events": 100,
+        "users": 59146,
+        "user_percent": 1.96,
+        "events_held": 10569041,
+        "event_percent": 24.9
+      }
+    ],
+    "sessions_per_user": {
+      "count": 3022290.0,
+      "mean": 3.06,
+      "p50": 2.0,
+      "p90": 7.0,
+      "p95": 10.0,
+      "p99": 21.0,
+      "max": 7400.0
+    },
+    "sessions_reach": [
+      {
+        "min_sessions": 1,
+        "users": 3022290,
+        "user_percent": 100.0
+      },
+      {
+        "min_sessions": 2,
+        "users": 1546827,
+        "user_percent": 51.18
+      },
+      {
+        "min_sessions": 3,
+        "users": 981310,
+        "user_percent": 32.47
+      },
+      {
+        "min_sessions": 5,
+        "users": 507985,
+        "user_percent": 16.81
+      },
+      {
+        "min_sessions": 10,
+        "users": 166751,
+        "user_percent": 5.52
+      }
+    ],
+    "single_event_users": 691246,
+    "single_session_users": 1475463,
+    "active_days": {
+      "count": 3022290.0,
+      "mean": 2.14,
+      "p50": 1.0,
+      "p90": 4.0,
+      "p95": 6.0,
+      "p99": 11.0,
+      "max": 31.0
+    },
+    "active_days_reach": [
+      {
+        "min_active_days": 1,
+        "users": 3022290,
+        "user_percent": 100.0
+      },
+      {
+        "min_active_days": 2,
+        "users": 1279795,
+        "user_percent": 42.35
+      },
+      {
+        "min_active_days": 3,
+        "users": 715944,
+        "user_percent": 23.69
+      },
+      {
+        "min_active_days": 7,
+        "users": 138478,
+        "user_percent": 4.58
+      },
+      {
+        "min_active_days": 14,
+        "users": 16928,
+        "user_percent": 0.56
+      }
+    ],
+    "active_span_days": {
+      "count": 3022290.0,
+      "mean": 5.28,
+      "p50": 0.008761574074074074,
+      "p90": 19.84399421296296,
+      "p95": 24.169508680555552,
+      "p99": 28.835988773148127,
+      "max": 30.930925925925926
+    },
+    "active_days_note": "active_days counts distinct calendar dates with at least one event; active_span_days is last_seen - first_seen and is descriptive only"
+  },
+  "session_activity": {
+    "events_per_session": {
+      "count": 9244772.0,
+      "mean": 4.59,
+      "p50": 2.0,
+      "p90": 10.0,
+      "p95": 16.0,
+      "p99": 32.0,
+      "max": 1159.0
+    },
+    "single_event_sessions": 3270069
+  },
+  "session_duration": {
+    "seconds": {
+      "count": 9244772.0,
+      "mean": 1041.84,
+      "p50": 63.0,
+      "p90": 716.0,
+      "p95": 1265.0,
+      "p99": 4713.0,
+      "max": 2640529.0
+    },
+    "buckets": [
+      {
+        "bucket": "zero duration (single instant)",
+        "sessions": 3271644,
+        "percent": 35.39
+      },
+      {
+        "bucket": "under 1 minute",
+        "sessions": 4546154,
+        "percent": 49.18
+      },
+      {
+        "bucket": "over 30 minutes",
+        "sessions": 295153,
+        "percent": 3.19
+      },
+      {
+        "bucket": "over 1 hour",
+        "sessions": 127358,
+        "percent": 1.38
+      },
+      {
+        "bucket": "over 6 hours",
+        "sessions": 31307,
+        "percent": 0.34
+      },
+      {
+        "bucket": "over 24 hours",
+        "sessions": 17086,
+        "percent": 0.18
+      }
+    ]
+  },
+  "time_coverage": {
+    "first_timestamp": "2019-10-01 00:00:00+00:00",
+    "last_timestamp": "2019-10-31 23:59:59+00:00",
+    "days_present": 31,
+    "missing_days": [],
+    "daily": {
+      "2019-10-01": {
+        "cart": 16658,
+        "purchase": 19307,
+        "view": 1208280,
+        "events": 1244245,
+        "users": 190188,
+        "sessions": 268747
+      },
+      "2019-10-02": {
+        "cart": 17268,
+        "purchase": 19469,
+        "view": 1154591,
+        "events": 1191328,
+        "users": 184965,
+        "sessions": 261261
+      },
+      "2019-10-03": {
+        "cart": 19323,
+        "purchase": 19255,
+        "view": 1088725,
+        "events": 1127303,
+        "users": 170668,
+        "sessions": 241096
+      },
+      "2019-10-04": {
+        "cart": 43829,
+        "purchase": 27041,
+        "view": 1346320,
+        "events": 1417190,
+        "users": 209410,
+        "sessions": 300659
+      },
+      "2019-10-05": {
+        "cart": 35497,
+        "purchase": 23494,
+        "view": 1271348,
+        "events": 1330339,
+        "users": 194958,
+        "sessions": 276921
+      },
+      "2019-10-06": {
+        "cart": 32146,
+        "purchase": 22171,
+        "view": 1264062,
+        "events": 1318379,
+        "users": 193210,
+        "sessions": 273049
+      },
+      "2019-10-07": {
+        "cart": 18052,
+        "purchase": 21378,
+        "view": 1161101,
+        "events": 1200531,
+        "users": 186951,
+        "sessions": 263443
+      },
+      "2019-10-08": {
+        "cart": 18442,
+        "purchase": 23072,
+        "view": 1329119,
+        "events": 1370633,
+        "users": 221204,
+        "sessions": 308356
+      },
+      "2019-10-09": {
+        "cart": 18432,
+        "purchase": 22748,
+        "view": 1306363,
+        "events": 1347543,
+        "users": 214140,
+        "sessions": 301232
+      },
+      "2019-10-10": {
+        "cart": 18997,
+        "purchase": 21993,
+        "view": 1243087,
+        "events": 1284077,
+        "users": 205321,
+        "sessions": 295148
+      },
+      "2019-10-11": {
+        "cart": 21450,
+        "purchase": 26224,
+        "view": 1447669,
+        "events": 1495343,
+        "users": 230533,
+        "sessions": 333419
+      },
+      "2019-10-12": {
+        "cart": 20691,
+        "purchase": 25373,
+        "view": 1433832,
+        "events": 1479896,
+        "users": 208355,
+        "sessions": 304379
+      },
+      "2019-10-13": {
+        "cart": 24833,
+        "purchase": 29561,
+        "view": 1584677,
+        "events": 1639071,
+        "users": 225942,
+        "sessions": 333514
+      },
+      "2019-10-14": {
+        "cart": 44858,
+        "purchase": 28405,
+        "view": 1381439,
+        "events": 1454702,
+        "users": 209089,
+        "sessions": 307698
+      },
+      "2019-10-15": {
+        "cart": 49548,
+        "purchase": 26372,
+        "view": 1466305,
+        "events": 1542225,
+        "users": 230135,
+        "sessions": 334656
+      },
+      "2019-10-16": {
+        "cart": 45279,
+        "purchase": 31394,
+        "view": 1445717,
+        "events": 1522390,
+        "users": 230199,
+        "sessions": 328752
+      },
+      "2019-10-17": {
+        "cart": 40378,
+        "purchase": 28318,
+        "view": 1338311,
+        "events": 1407007,
+        "users": 208477,
+        "sessions": 302850
+      },
+      "2019-10-18": {
+        "cart": 40144,
+        "purchase": 25850,
+        "view": 1415805,
+        "events": 1481799,
+        "users": 229463,
+        "sessions": 334984
+      },
+      "2019-10-19": {
+        "cart": 39465,
+        "purchase": 24657,
+        "view": 1385171,
+        "events": 1449293,
+        "users": 217920,
+        "sessions": 321311
+      },
+      "2019-10-20": {
+        "cart": 40534,
+        "purchase": 25098,
+        "view": 1444360,
+        "events": 1509992,
+        "users": 231849,
+        "sessions": 339967
+      },
+      "2019-10-21": {
+        "cart": 36675,
+        "purchase": 25167,
+        "view": 1343574,
+        "events": 1405416,
+        "users": 225269,
+        "sessions": 321304
+      },
+      "2019-10-22": {
+        "cart": 36953,
+        "purchase": 25385,
+        "view": 1354534,
+        "events": 1416872,
+        "users": 223384,
+        "sessions": 316719
+      },
+      "2019-10-23": {
+        "cart": 36407,
+        "purchase": 24731,
+        "view": 1319988,
+        "events": 1381126,
+        "users": 219100,
+        "sessions": 310470
+      },
+      "2019-10-24": {
+        "cart": 35723,
+        "purchase": 23999,
+        "view": 1256779,
+        "events": 1316501,
+        "users": 206937,
+        "sessions": 293605
+      },
+      "2019-10-25": {
+        "cart": 36815,
+        "purchase": 23929,
+        "view": 1374584,
+        "events": 1435328,
+        "users": 223258,
+        "sessions": 318072
+      },
+      "2019-10-26": {
+        "cart": 34776,
+        "purchase": 22653,
+        "view": 1289839,
+        "events": 1347268,
+        "users": 202172,
+        "sessions": 289589
+      },
+      "2019-10-27": {
+        "cart": 34256,
+        "purchase": 23403,
+        "view": 1330894,
+        "events": 1388553,
+        "users": 201359,
+        "sessions": 289854
+      },
+      "2019-10-28": {
+        "cart": 17838,
+        "purchase": 21112,
+        "view": 1221930,
+        "events": 1260880,
+        "users": 195563,
+        "sessions": 281011
+      },
+      "2019-10-29": {
+        "cart": 17455,
+        "purchase": 20374,
+        "view": 1190081,
+        "events": 1227910,
+        "users": 193168,
+        "sessions": 276736
+      },
+      "2019-10-30": {
+        "cart": 16996,
+        "purchase": 20817,
+        "view": 1172332,
+        "events": 1210145,
+        "users": 191965,
+        "sessions": 274919
+      },
+      "2019-10-31": {
+        "cart": 16798,
+        "purchase": 20099,
+        "view": 1208582,
+        "events": 1245479,
+        "users": 198571,
+        "sessions": 281456
+      }
+    }
+  },
+  "missingness": {
+    "category_code": {
+      "rows": 13515609,
+      "percent": 31.8398
+    },
+    "brand": {
+      "rows": 6113008,
+      "percent": 14.4009
+    },
+    "event_time": {
+      "rows": 0,
+      "percent": 0.0
+    },
+    "product_id": {
+      "rows": 0,
+      "percent": 0.0
+    },
+    "event_type": {
+      "rows": 0,
+      "percent": 0.0
+    },
+    "category_id": {
+      "rows": 0,
+      "percent": 0.0
+    },
+    "price": {
+      "rows": 0,
+      "percent": 0.0
+    },
+    "user_id": {
+      "rows": 0,
+      "percent": 0.0
+    },
+    "user_session": {
+      "rows": 2,
+      "percent": 0.0
+    },
+    "source_file": {
+      "rows": 0,
+      "percent": 0.0
+    },
+    "source_row_number": {
+      "rows": 0,
+      "percent": 0.0
+    }
+  },
+  "price_quality": {
+    "conditions": [
+      {
+        "condition": "missing (null)",
+        "rows": 0,
+        "percent": 0.0
+      },
+      {
+        "condition": "not finite",
+        "rows": 0,
+        "percent": 0.0
+      },
+      {
+        "condition": "zero",
+        "rows": 68673,
+        "percent": 0.1618
+      },
+      {
+        "condition": "negative",
+        "rows": 0,
+        "percent": 0.0
+      },
+      {
+        "condition": "non-positive",
+        "rows": 68673,
+        "percent": 0.1618
+      },
+      {
+        "condition": "usable (> 0)",
+        "rows": 42380091,
+        "percent": 99.8382
+      }
+    ],
+    "percentiles": {
+      "count": 42380091.0,
+      "mean": 290.79,
+      "p50": 163.97,
+      "p90": 743.62,
+      "p95": 1011.58,
+      "p99": 1741.34,
+      "max": 2574.07
+    }
+  },
+  "duplicates": [
+    {
+      "check": "duplicate source_row_number",
+      "rows": 0,
+      "percent": 0.0
+    },
+    {
+      "check": "repeated event",
+      "rows": 35207,
+      "percent": 0.0829
+    }
+  ],
+  "ordering": [
+    {
+      "check": "null or invalid timestamps",
+      "count": 0
+    },
+    {
+      "check": "order violations within the file",
+      "count": 0
+    },
+    {
+      "check": "multi-event sessions with zero duration",
+      "count": 1575
+    }
+  ],
+  "extremes": {
+    "max_events_per_user": 7436,
+    "max_sessions_per_user": 7400,
+    "max_events_per_session": 1159,
+    "max_session_duration_seconds": 2640529.0
+  },
+  "cohort_feasibility": {
+    "basis": "full October window, active_days = distinct dates with activity",
+    "status": "feasibility evidence only - not an authoritative cohort",
+    "recomputed_in": "S1-DS-05 / S1-DS-06 on the explicit training interval",
+    "grid": [
+      {
+        "min_events": 5,
+        "min_sessions": 1,
+        "min_active_days": 0,
+        "users": 1503009,
+        "user_percent": 49.73,
+        "events": 39442728,
+        "event_percent": 92.92,
+        "users_with_purchase": 315200
+      },
+      {
+        "min_events": 10,
+        "min_sessions": 2,
+        "min_active_days": 3,
+        "users": 595672,
+        "user_percent": 19.71,
+        "events": 28448158,
+        "event_percent": 67.02,
+        "users_with_purchase": 186867
+      },
+      {
+        "min_events": 20,
+        "min_sessions": 3,
+        "min_active_days": 7,
+        "users": 132930,
+        "user_percent": 4.4,
+        "events": 13338102,
+        "event_percent": 31.42,
+        "users_with_purchase": 60622
+      },
+      {
+        "min_events": 30,
+        "min_sessions": 3,
+        "min_active_days": 7,
+        "users": 121871,
+        "user_percent": 4.03,
+        "events": 13063093,
+        "event_percent": 30.77,
+        "users_with_purchase": 58026
+      },
+      {
+        "min_events": 50,
+        "min_sessions": 5,
+        "min_active_days": 7,
+        "users": 93555,
+        "user_percent": 3.1,
+        "events": 11942797,
+        "event_percent": 28.13,
+        "users_with_purchase": 47980
+      },
+      {
+        "min_events": 100,
+        "min_sessions": 5,
+        "min_active_days": 14,
+        "users": 13140,
+        "user_percent": 0.43,
+        "events": 3369047,
+        "event_percent": 7.94,
+        "users_with_purchase": 8077
+      }
+    ]
+  },
+  "validation": [
+    {
+      "check": "rows read == parquet header",
+      "status": "PASS",
+      "detail": "42,448,764 vs 42,448,764"
+    },
+    {
+      "check": "event-type counts sum to total",
+      "status": "PASS",
+      "detail": "42,448,764"
+    },
+    {
+      "check": "events per user sum to total",
+      "status": "PASS",
+      "detail": "42,448,764"
+    },
+    {
+      "check": "events per session sum to total",
+      "status": "PASS",
+      "detail": "42,448,764"
+    },
+    {
+      "check": "daily events sum to total",
+      "status": "PASS",
+      "detail": "42,448,764"
+    },
+    {
+      "check": "percentiles are ordered",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "no missing count exceeds total rows",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "sessions per user sum to session count",
+      "status": "PASS",
+      "detail": "9,244,772 vs 9,244,772"
+    },
+    {
+      "check": "usable and non-positive prices sum to total",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "active days never exceed the dates covered",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "active days never exceed the month length",
+      "status": "PASS",
+      "detail": "max 31 of 31 days"
+    },
+    {
+      "check": "provenance duplicates reported",
+      "status": "PASS",
+      "detail": "0"
+    }
+  ],
+  "findings": [
+    "User activity is strongly long-tailed: median 4 events against a mean of 14.0, reaching 7,436. Averages alone are misleading here; report percentiles.",
+    "Purchases are 1.75% of events, 11.5% of users and 6.8% of sessions. T2 will be heavily imbalanced; rank-aware metrics such as PR-AUC fit, accuracy does not.",
+    "691,246 users (22.9%) have exactly one event and 1,475,463 (48.8%) have exactly one session. Neither group carries a sequence to learn from.",
+    "35.4% of sessions hold exactly one event, so a large share of sessions carry no within-session sequence.",
+    "category_code is missing on 31.84% of rows while category_id is complete. Modelling can use the 624 ids, but a demo cannot show a readable name for every event.",
+    "The event vocabulary is view, cart and purchase only. There is no remove-from-cart event, so no downstream rule may assume one exists.",
+    "Null sessions are extremely rare (2 rows) but not zero, so session handling still needs a defined path for them.",
+    "1,575 multi-event sessions occur at a single instant, and 35,207 events repeat exactly. Ordering must use the source_row_number tie-break rather than the timestamp alone.",
+    "Median user is active on 1 distinct day(s) while the median calendar span is 0.01 days. Span overstates engagement and should not be used as an eligibility signal on its own.",
+    "The most active user holds 7,436 events and the largest session holds 1,159. These need a downstream policy review before training, but nothing is excluded in this task."
+  ]
+}

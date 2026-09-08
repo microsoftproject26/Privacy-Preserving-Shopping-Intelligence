@@ -1,0 +1,24 @@
+{
+  "status": "PROPOSED",
+  "temporal_split": {
+    "TRAIN": ["2019-10-01 00:00:00", "2019-10-22 00:00:00"],
+    "VALIDATION": ["2019-10-22 00:00:00", "2019-10-27 00:00:00"],
+    "TEST": ["2019-10-27 00:00:00", "2019-10-31 00:00:00"],
+    "LABEL_GRACE": ["2019-10-31 00:00:00", "2019-11-01 00:00:00"]
+  },
+  "decision_splits": ["TRAIN", "VALIDATION", "TEST"],
+  "session_policy": {
+    "logical_key": ["user_id", "user_session"],
+    "provided_sessions": "preserve",
+    "null_fallback_prefix": "__NULL_SINGLETON__"
+  },
+  "cohort_candidates": {
+    "BROAD":  { "min_events": 5,  "min_sessions": 1, "min_active_days": 1 },
+    "MAIN":   { "min_events": 10, "min_sessions": 2, "min_active_days": 3 },
+    "STRICT": { "min_events": 20, "min_sessions": 3, "min_active_days": 7 }
+  },
+  "selected_candidate": "MAIN",
+  "feasibility_gate": {
+    "min_c1_users": 10000
+  }
+}

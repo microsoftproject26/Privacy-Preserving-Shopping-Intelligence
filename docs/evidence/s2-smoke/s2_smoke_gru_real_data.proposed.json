@@ -1,0 +1,293 @@
+{
+  "result_contract": "LocalSmokeOnRealData/experimental-0",
+  "task_id": "S2-SMOKE",
+  "status": "NON_AUTHORITATIVE_ENGINEERING_SMOKE",
+  "authoritative": false,
+  "uses_frozen_protocol": false,
+  "official_r1": false,
+  "scientific_claims": [],
+  "data_mode": "REAL_REES46",
+  "blocked_by": [
+    "S1-ALL-G1 protocol freeze has not happened",
+    "S1-DS-07 TaskExample artifacts have not been emitted",
+    "S1-SE-05 canonical features are not implemented",
+    "S1-SE-06 product hashing contract is not frozen",
+    "S1-PR-05 unified trainer contract is not frozen"
+  ],
+  "why_this_exists": "every S2 artifact so far ran on a synthetic fixture, so nobody knew whether a GRU beats the measured baselines on this dataset",
+  "seed": 13,
+  "environment": {
+    "torch": "2.13.0+cpu",
+    "device": "cpu"
+  },
+  "scope": {
+    "cohort": "C1",
+    "user_slice": "user_id % 4 == 1",
+    "measured_users": 97279,
+    "train_decisions_available": 3113814,
+    "train_decisions_used": 1200000,
+    "validation_decisions": 438185,
+    "test_rows_read": 0
+  },
+  "model": {
+    "type": "single-layer GRU over session history",
+    "variants": {
+      "category only": 190169,
+      "category + product": 1399385
+    },
+    "history_length": 20,
+    "product_hash_buckets": 50000,
+    "epochs_run": 4,
+    "epoch_scored": {
+      "category only": 3,
+      "category + product": 2
+    },
+    "selection": "lowest validation loss, not the last epoch",
+    "tuned": false
+  },
+  "curve": [
+    {
+      "variant": "category only",
+      "epoch": 1,
+      "train_loss": 1.17793,
+      "val_loss": 1.07013,
+      "val_accuracy": 0.8209,
+      "seconds": 158.07005
+    },
+    {
+      "variant": "category only",
+      "epoch": 2,
+      "train_loss": 1.04077,
+      "val_loss": 1.05921,
+      "val_accuracy": 0.82143,
+      "seconds": 158.23066
+    },
+    {
+      "variant": "category only",
+      "epoch": 3,
+      "train_loss": 1.02536,
+      "val_loss": 1.05688,
+      "val_accuracy": 0.82086,
+      "seconds": 160.33514
+    },
+    {
+      "variant": "category only",
+      "epoch": 4,
+      "train_loss": 1.01575,
+      "val_loss": 1.05959,
+      "val_accuracy": 0.82053,
+      "seconds": 159.71011
+    },
+    {
+      "variant": "category + product",
+      "epoch": 1,
+      "train_loss": 1.1818,
+      "val_loss": 1.071,
+      "val_accuracy": 0.82094,
+      "seconds": 196.36116
+    },
+    {
+      "variant": "category + product",
+      "epoch": 2,
+      "train_loss": 1.03412,
+      "val_loss": 1.06174,
+      "val_accuracy": 0.82123,
+      "seconds": 193.75017
+    },
+    {
+      "variant": "category + product",
+      "epoch": 3,
+      "train_loss": 1.00672,
+      "val_loss": 1.06545,
+      "val_accuracy": 0.81982,
+      "seconds": 209.0712
+    },
+    {
+      "variant": "category + product",
+      "epoch": 4,
+      "train_loss": 0.98241,
+      "val_loss": 1.07822,
+      "val_accuracy": 0.81842,
+      "seconds": 219.11895
+    }
+  ],
+  "overall": [
+    {
+      "baseline": "repeat the current category",
+      "accuracy@1": 0.8232,
+      "mrr@20": 0.8232
+    },
+    {
+      "baseline": "globally most popular category",
+      "accuracy@1": 0.2277,
+      "mrr@20": 0.2841
+    },
+    {
+      "baseline": "TRAIN transition table",
+      "accuracy@1": 0.8235,
+      "mrr@20": 0.856
+    },
+    {
+      "baseline": "GRU - category only",
+      "accuracy@1": 0.8209,
+      "mrr@20": 0.8575
+    },
+    {
+      "baseline": "GRU - category + product",
+      "accuracy@1": 0.8212,
+      "mrr@20": 0.8574
+    }
+  ],
+  "category_change_slice": [
+    {
+      "baseline": "repeat the current category",
+      "accuracy@1": 0.0,
+      "mrr@20": 0.0
+    },
+    {
+      "baseline": "globally most popular (off-diagonal)",
+      "accuracy@1": 0.0622,
+      "mrr@20": 0.1049
+    },
+    {
+      "baseline": "TRAIN transition table (off-diagonal)",
+      "accuracy@1": 0.1862,
+      "mrr@20": 0.3085
+    },
+    {
+      "baseline": "GRU - category only",
+      "accuracy@1": 0.223,
+      "mrr@20": 0.3433
+    },
+    {
+      "baseline": "GRU - category + product",
+      "accuracy@1": 0.2203,
+      "mrr@20": 0.3402
+    }
+  ],
+  "summary": [
+    {
+      "variant": "category only",
+      "view": "overall",
+      "best_simple": 0.856,
+      "gru": 0.8575,
+      "gained": 0.0015,
+      "room_that_existed": 0.144,
+      "share_of_room_taken": 0.011
+    },
+    {
+      "variant": "category + product",
+      "view": "overall",
+      "best_simple": 0.856,
+      "gru": 0.8574,
+      "gained": 0.0014,
+      "room_that_existed": 0.144,
+      "share_of_room_taken": 0.01
+    },
+    {
+      "variant": "category only",
+      "view": "category-change slice",
+      "best_simple": 0.3085,
+      "gru": 0.3433,
+      "gained": 0.0348,
+      "room_that_existed": 0.6915,
+      "share_of_room_taken": 0.05
+    },
+    {
+      "variant": "category + product",
+      "view": "category-change slice",
+      "best_simple": 0.3085,
+      "gru": 0.3402,
+      "gained": 0.0317,
+      "room_that_existed": 0.6915,
+      "share_of_room_taken": 0.046
+    }
+  ],
+  "averages": [
+    {
+      "model": "transition table",
+      "overall_micro": 0.856,
+      "overall_macro": 0.8258,
+      "slice_micro": 0.3085,
+      "slice_macro": 0.3144
+    },
+    {
+      "model": "GRU - category only",
+      "overall_micro": 0.8575,
+      "overall_macro": 0.8273,
+      "slice_micro": 0.3433,
+      "slice_macro": 0.3348
+    },
+    {
+      "model": "GRU - category + product",
+      "overall_micro": 0.8574,
+      "overall_macro": 0.8271,
+      "slice_micro": 0.3402,
+      "slice_macro": 0.3317
+    }
+  ],
+  "by_client_history": [
+    {
+      "bucket": "10-19",
+      "clients": 2924,
+      "decisions": 9845,
+      "transition table": 0.3303,
+      "GRU - category only": 0.3519,
+      "GRU - category + product": 0.3471,
+      "gru_gain": 0.0216
+    },
+    {
+      "bucket": "20-49",
+      "clients": 6209,
+      "decisions": 25250,
+      "transition table": 0.3111,
+      "GRU - category only": 0.3329,
+      "GRU - category + product": 0.329,
+      "gru_gain": 0.0217
+    },
+    {
+      "bucket": "50-99",
+      "clients": 3946,
+      "decisions": 19282,
+      "transition table": 0.3088,
+      "GRU - category only": 0.3272,
+      "GRU - category + product": 0.328,
+      "gru_gain": 0.0184
+    },
+    {
+      "bucket": "100+",
+      "clients": 3017,
+      "decisions": 23080,
+      "transition table": 0.3129,
+      "GRU - category only": 0.3323,
+      "GRU - category + product": 0.327,
+      "gru_gain": 0.0194
+    }
+  ],
+  "stratification_note": "clients bucketed by TRAIN events, because that is what a device would have to learn from; macro MRR inside each bucket",
+  "per_decision_ranks": "INTERNAL_DO_NOT_UPLOAD_per_decision_ranks.parquet",
+  "averaging_note": "micro weights decisions, macro weights clients; the cohort's client skew makes them different questions and S1-DS-09 owns the choice",
+  "sequence_gain_on_slice": 0.0348,
+  "product_signal_gain_on_slice": -0.0031,
+  "product_signal_verdict": "inconclusive - stand-in hash and an overfitting curve",
+  "hash_spread": [
+    {
+      "hash": "item % BUCKETS",
+      "buckets_used": 19659,
+      "max_items_per_bucket": 87,
+      "share_of_a_uniform_hash": 0.438
+    },
+    {
+      "hash": "blake2b(str(item))",
+      "buckets_used": 44785,
+      "max_items_per_bucket": 11,
+      "share_of_a_uniform_hash": 0.998
+    }
+  ],
+  "defect_found_and_fixed": {
+    "what": "history windows were left-padded while pack_padded_sequence reads the first `length` positions, so the GRU received padding instead of the session",
+    "symptom": "MRR@20 0.4509, below the trivial repeat-the-current-category baseline",
+    "why_it_hid": "every shape, dtype and range check still passed",
+    "check_added": "the GRU is fed real history, not padding"
+  }
+}

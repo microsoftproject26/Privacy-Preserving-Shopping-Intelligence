@@ -1,0 +1,24 @@
+{
+  "status": "FREEZE",
+  "purpose": "freeze the S1 protocol, seal the TEST examples, and rule on the G1 gate",
+  "reads": [
+    "S1-DS-05-06_Cohort_Temporal_Protocol/output",
+    "S1-D1-DS-07_T3_Protocol_and_Task_Examples/output",
+    "S2-SMOKE_GRU_On_Real_Data/output"
+  ],
+  "fence": {
+    "rule": "no TEST row is read until the example builders are proven identical to the frozen ones",
+    "enforced_by": "an assertion comparing rebuilt VALIDATION counts against the frozen manifest",
+    "why": "a drifted builder would produce a TEST set that does not match TRAIN and VALIDATION, and nothing downstream could detect it"
+  },
+  "test_policy": {
+    "may_build_examples": true,
+    "may_compute_metrics": false,
+    "why": "the project gets one clean measurement on TEST and spends it on final models"
+  },
+  "gate": {
+    "id": "S1-ALL-G1",
+    "question": "is this foundation good enough to build five learning regimes on"
+  },
+  "scope": { "cohort": "C1", "user_slice": "user_id % 4 == 1" }
+}

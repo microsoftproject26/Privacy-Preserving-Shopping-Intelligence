@@ -18,6 +18,57 @@ aggregate conversion report, and reproduction code.
 
 
 
+## Phase 1 research protocol — status: `G1 = GO`
+
+The data foundation every later model stands on is complete and frozen. It answers one question
+before any modelling: **is there anything for a model to gain here?**
+
+### The gate
+
+| Criterion | Evidence |
+|---|---|
+| Cohort large enough to simulate a federation | **388,789** clients against a gate of 10,000 |
+| Every task leaves room above a model-free rule | smallest room **0.144** |
+| Every task can resolve differences far smaller than that room | weakest task **128 steps** |
+| A sequence model beats the model-free rule on real data | macro gain **+0.0204** |
+| That advantage survives on the thinnest clients | smallest bucket **+0.0184** |
+
+Full verdict and the five conditions that travel with every number:
+[`docs/evidence/s1-ds-09/g1_gate_v1.frozen.json`](docs/evidence/s1-ds-09/g1_gate_v1.frozen.json)
+
+### Tasks
+
+| Task | Notebook | Documentation |
+|---|---|---|
+| `S1-DS-03` canonical event | [notebook](notebooks/S1_DS_03_Canonical_Event_EN.ipynb) | [en](docs/s1-ds-03-canonical-event.md) · [ar](docs/ar/s1-ds-03-canonical-event.md) |
+| `S1-DS-04` data audit | [notebook](notebooks/S1_DS_04_Data_Audit.ipynb) | [en](docs/s1-ds-04-data-audit.md) · [ar](docs/ar/s1-ds-04-data-audit.md) |
+| `S1-DS-05/06` cohort + temporal split | [notebook](notebooks/S1_DS_05_06_Cohort_Temporal_Protocol.ipynb) | [en](docs/s1-ds-05-06-cohort-temporal-protocol.md) · [ar](docs/ar/s1-ds-05-06-cohort-temporal-protocol.md) |
+| `S1-ALL-D1` + `S1-DS-07` protocol + task examples | [notebook](notebooks/S1_D1_DS_07_T3_Protocol_and_Task_Examples.ipynb) | [en](docs/s1-d1-ds-07-t3-protocol-and-task-examples.md) · [ar](docs/ar/s1-d1-ds-07-t3-protocol-and-task-examples.md) |
+| `S1-DS-09` freeze + `G1` gate | [notebook](notebooks/S1_DS_09_Freeze_and_G1.ipynb) | [en](docs/s1-ds-09-freeze-and-g1.md) · [ar](docs/ar/s1-ds-09-freeze-and-g1.md) |
+| `S2-SMOKE` first GRU on real data | [notebook](notebooks/S2_SMOKE_GRU_On_Real_Data.ipynb) | [en](docs/s2-smoke-gru-on-real-data.md) · [ar](docs/ar/s2-smoke-gru-on-real-data.md) |
+
+### Decisions
+
+`ADR-001` fixes how every comparison in this project is averaged and which slice `T1` is compared
+on. All three decisions were written **before the numbers they affect existed** — see
+[`docs/decisions/ADR-001-evaluation-protocol.md`](docs/decisions/ADR-001-evaluation-protocol.md).
+
+### Getting the data
+
+Task examples and cohort manifests carry `user_id`, so they are **not in this repository** — this
+repo is public and the project is about privacy-preserving learning.
+
+**Start here:** [`docs/data-access.md`](docs/data-access.md) — what to download for your task,
+where to put it, and how to verify the checksums.
+
+Committed here instead are the artifacts with no user-level data: the protocol, the vocabulary,
+the item catalogue, the candidate lists, the price transform, and the gate verdict.
+
+### What comes next
+
+[`docs/ar/roadmap.md`](docs/ar/roadmap.md) — the remaining tasks per lane, the models to be tried
+beyond the GRU, and how the final comparison table is meant to read.
+
 ## Training / Federated Development Environment
 
 The canonical Phase 1 training environment is defined by:

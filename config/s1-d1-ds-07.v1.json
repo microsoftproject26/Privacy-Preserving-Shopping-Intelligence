@@ -1,0 +1,62 @@
+{
+  "status": "PROPOSED",
+  "measurement_sample": {
+    "population": "C1",
+    "user_modulo": 4,
+    "user_residue": 1,
+    "unit": "whole users, never fragments of a user",
+    "reason": "C1 holds 17.6M TRAIN events, beyond the memory available on this machine",
+    "note": "the same modulo-on-user_id partitioning the federated setting uses for devices"
+  },
+  "t3_protocol": {
+    "scientific_name": "same-category observed next-engagement proxy reranking",
+    "candidate_scope": "same category, different item",
+    "candidate_source": "TRAIN-only snapshot; no validation or test fitting",
+    "max_candidates": 100,
+    "popularity_half_life_days": 7,
+    "positive_injection": false,
+    "retrieval_options": [
+      "popularity",
+      "cooccurrence_then_popularity"
+    ],
+    "default_gain": "INTENT",
+    "gain_options": {
+      "INTENT": {
+        "purchase": 2,
+        "cart": 1,
+        "view": 0
+      },
+      "ENGAGEMENT": {
+        "purchase": 3,
+        "cart": 2,
+        "view": 1
+      }
+    },
+    "headline_metric": "end-to-end NDCG@5",
+    "secondary_metrics": [
+      "MRR",
+      "HR@3",
+      "Candidate Recall@100"
+    ],
+    "retrieval_miss_scores_zero": true,
+    "causal_claim": false,
+    "require_same_price_band": false,
+    "price_band_basis": "measured under both rules; category-only leaves 128 resolvable steps against 107, and covers 56.65% of real next-engagements against 37.91%"
+  },
+  "t1_protocol": {
+    "headline": "category of the first later event on a different item, within the session",
+    "headline_metric": "MRR",
+    "slice": "decisions where the category actually changes"
+  },
+  "t2_protocol": {
+    "decision_point": "first view of a product inside a session",
+    "label": "the same product is purchased later in the same session",
+    "label_aggregation": "maximum over matches, never the first match",
+    "censoring": "an unobservable outcome is censored, never a negative"
+  },
+  "feasibility_gates": {
+    "t1_min_eval_examples": 200000,
+    "t2_min_positives": 5000,
+    "t3_min_evaluable_queries": 5000
+  }
+}
