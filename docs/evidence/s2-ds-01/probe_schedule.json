@@ -1,0 +1,40 @@
+{
+  "reason": "a constant rate kept improving; a schedule is the principled version",
+  "tried": [
+    {
+      "setting": "constant 0.0003",
+      "slice_macro": 0.347,
+      "best_epoch": 14,
+      "source": "probe_lr"
+    },
+    {
+      "setting": "cosine from 0.001",
+      "slice_macro": 0.3478,
+      "best_epoch": 30,
+      "epochs_run": 30,
+      "hit_ceiling": true,
+      "final_gap": 0.04077,
+      "source": "seed 13"
+    },
+    {
+      "setting": "constant 0.0001",
+      "slice_macro": 0.3473,
+      "best_epoch": 40,
+      "epochs_run": 40,
+      "hit_ceiling": true,
+      "final_gap": 0.01314,
+      "source": "seed 13"
+    }
+  ],
+  "winner": {
+    "setting": "cosine from 0.001",
+    "slice_macro": 0.3478,
+    "best_epoch": 30,
+    "epochs_run": 30,
+    "hit_ceiling": true,
+    "final_gap": 0.04077,
+    "source": "seed 13"
+  },
+  "threshold": 0.0033,
+  "baseline": 0.3143
+}
