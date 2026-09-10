@@ -1,0 +1,181 @@
+{
+  "schema": "experiment_result_v1",
+  "version": "1",
+  "run_id": "run-v1__r2a__t1__c1__s13__cfgeb103a319867__a1",
+  "attempt": 1,
+  "state": "SUCCEEDED",
+  "regime": "R2A",
+  "tasks": [
+    "T1"
+  ],
+  "training_cohort": "C1",
+  "evaluation_cohorts": [
+    "C1"
+  ],
+  "seed": 13,
+  "config_ref": {
+    "schema": "artifact_ref_v1",
+    "version": "1",
+    "logical_id": "FLRealSmokeResolvedExperimentConfig",
+    "artifact_schema": "experiment_config_v1",
+    "artifact_version": "1",
+    "uri": "docs/evidence/s1-pr-07/fl_real_smoke_experiment_config.v1.json",
+    "sha256": "eb103a3198679d476c25318fb42ec40b02df552759fd34a42f74cfc4fa5922a1"
+  },
+  "compatibility": {
+    "schema": "comparison_compatibility_v1",
+    "version": "1",
+    "tasks": [
+      "T1"
+    ],
+    "training_cohort": "C1",
+    "evaluation_cohorts": [
+      "C1"
+    ],
+    "seed": 13,
+    "source_dataset_sha256": "1df0e57d7b6e335998a90704e0377b6daae5394737e452454b4d361884dad209",
+    "canonical_data_contract_sha256": "67397fe66fa7a82084cf1ba19c834e3b501fc41e248893a1d839e4335ff98e32",
+    "cohort_manifest_sha256": "32d4b8ce4bb84f789b1baa525f50349be79e60920ad67f5e1bdfdcab9fa6e9d2",
+    "split_manifest_sha256": "67397fe66fa7a82084cf1ba19c834e3b501fc41e248893a1d839e4335ff98e32",
+    "task_examples_manifest_sha256": "1df0e57d7b6e335998a90704e0377b6daae5394737e452454b4d361884dad209",
+    "evaluation_manifest_sha256": "e5e85225103717413306ff056ed477848a39f2bbf72486708a6b724673984aeb",
+    "representation_sha256": "07e7c0618f550b5316a32a168fcf7f240703d6a362f9ec27449bbdbf98f63bd7",
+    "model_config_sha256": "eb6f13e6ca22a854eed1932b955bd65394715c375b98f4f9c0df80a2df6f2b97",
+    "objective_config_sha256": "e374e820625b601d855ceca1b91cefb460d16e1e74349d2c8dcb0a155591c169",
+    "shared_trainer_core_sha256": "42660ba16750ebb64afa1a13f82e93d1264c2529b053670c1ab73d11747b2e4d",
+    "common_initialization_sha256": "8b300661120e3fc914580c1bfcf78d19f916fb63b75edfcd287969f6dc86676d",
+    "evaluation_protocol_sha256": "822c0243cd2a368c4ec421a644cddbf75c1dfcfa588e100339acdd2976fe3eac",
+    "evaluator_sha256": "601aadc2286032f6692b4707ba5e7b1284fac21fd8154b40e434ded4b9e8cf6c",
+    "environment_lock_sha256": "cd86bcdb34077eaedd3ccf84e8ddc52a6424271cfd35f27ba0b7f32d7cbdf0dd",
+    "git_sha": "5e7467b3242de51e3822959c2f3f7adbadeb59f7"
+  },
+  "git_sha": "5e7467b3242de51e3822959c2f3f7adbadeb59f7",
+  "environment_lock_ref": {
+    "schema": "artifact_ref_v1",
+    "version": "1",
+    "logical_id": "uv_lock_v1",
+    "artifact_schema": "uv_lock_v1",
+    "artifact_version": "1",
+    "uri": "uv.lock",
+    "sha256": "cd86bcdb34077eaedd3ccf84e8ddc52a6424271cfd35f27ba0b7f32d7cbdf0dd"
+  },
+  "initialization": {
+    "kind": "COMMON_INITIALIZATION",
+    "common_initialization_ref": {
+      "schema": "artifact_ref_v1",
+      "version": "1",
+      "logical_id": "fl_real_smoke_initialization_v1",
+      "artifact_schema": "fl_real_smoke_initialization_v1",
+      "artifact_version": "1",
+      "uri": "docs/evidence/s1-pr-07/fl_real_smoke_initialization.v1.json",
+      "sha256": "8b300661120e3fc914580c1bfcf78d19f916fb63b75edfcd287969f6dc86676d"
+    }
+  },
+  "started_at_utc": "2026-09-10T04:24:33Z",
+  "ended_at_utc": "2026-09-10T04:25:02Z",
+  "resume_count": 0,
+  "metrics": [
+    {
+      "schema": "metric_record_v1",
+      "version": "1",
+      "metric_id": "smoke_t1_validation_cross_entropy_non_scientific",
+      "task": "T1",
+      "cohort": "C1",
+      "value": 6.3688270300626755,
+      "direction": "MINIMIZE",
+      "unit": "UNITLESS",
+      "support": 256
+    },
+    {
+      "schema": "metric_record_v1",
+      "version": "1",
+      "metric_id": "smoke_t1_validation_accuracy_at_1_non_scientific",
+      "task": "T1",
+      "cohort": "C1",
+      "value": 0.0,
+      "direction": "NEUTRAL",
+      "unit": "FRACTION",
+      "support": 256
+    }
+  ],
+  "artifacts": [
+    {
+      "schema": "artifact_ref_v1",
+      "version": "1",
+      "logical_id": "derived_client_manifest",
+      "artifact_schema": "fl_real_smoke_client_manifest_v1",
+      "artifact_version": "1",
+      "uri": "data/protocol/INTERNAL_DO_NOT_UPLOAD_fl_real_smoke_client_manifest_v1.parquet",
+      "sha256": "fe9397f59bdc23215e0fe63d48acc0b22aff598b2237102c27ab6b35b116f70a"
+    },
+    {
+      "schema": "artifact_ref_v1",
+      "version": "1",
+      "logical_id": "input_evidence",
+      "artifact_schema": "fl_real_smoke_input_manifest_v1",
+      "artifact_version": "1",
+      "uri": "docs/evidence/s1-pr-07/task_example_inputs.v1.json",
+      "sha256": "1df0e57d7b6e335998a90704e0377b6daae5394737e452454b4d361884dad209"
+    },
+    {
+      "schema": "artifact_ref_v1",
+      "version": "1",
+      "logical_id": "initialization_evidence",
+      "artifact_schema": "fl_real_smoke_initialization_v1",
+      "artifact_version": "1",
+      "uri": "docs/evidence/s1-pr-07/fl_real_smoke_initialization.v1.json",
+      "sha256": "8b300661120e3fc914580c1bfcf78d19f916fb63b75edfcd287969f6dc86676d"
+    }
+  ],
+  "system_measurements": {
+    "schema": "system_measurement_reference_set_v1",
+    "version": "1",
+    "status": "NOT_APPLICABLE",
+    "null_reason": "S1-PR-07 makes no system or communication claim"
+  },
+  "federated_metadata": {
+    "purpose": "NON_SCIENTIFIC_REAL_DATA_PIPELINE_SMOKE",
+    "scientific": false,
+    "scientific_claims": [],
+    "num_rounds": 3,
+    "clients_per_round": 4,
+    "local_epochs": 1,
+    "max_examples_per_client": 32,
+    "weight_policy_id": "contributing_rows_smoke_weight_v1_NON_SCIENTIFIC",
+    "round_selection_digests": [
+      "48c02ec02f2b9baae1db84a47047a579c9b574a9af7ce3d9fc2512af615a6cb7",
+      "d714186a4346485492720035ed6ae1f5036fe75d806790a59df21a24a7d9068e",
+      "8b3cb15c3a97b1522779bdf2ec69a05e270b85c5ebccb3675b62e74d8697eef8"
+    ],
+    "successful_client_counts": [
+      4,
+      4,
+      4
+    ],
+    "contributing_examples_per_round": [
+      82,
+      97,
+      46
+    ],
+    "oracle_pass_all_rounds": true,
+    "max_abs_diff_all_rounds": [
+      2.384185791015625e-07,
+      2.384185791015625e-07,
+      2.384185791015625e-07
+    ],
+    "initial_digest": "e5f5dbbf3c39d03a3da556efee065ce7cd3c03a246ccbfeb91f493c2e7262137",
+    "final_digest": "d00626a3355bcbbc87fa3b22d61c3ae71421412f3305c870741c0ff3a5191358",
+    "global_model_changed": true,
+    "repeat_runs": 2,
+    "reproducibility": {
+      "repeat_runs": 2,
+      "pass": true,
+      "reproducibility_pass": true,
+      "selection_digests_match": true,
+      "final_digest_match": true,
+      "validation_metrics_match": true
+    },
+    "raw_events_used": false,
+    "sealed_test_accessed": false
+  }
+}
