@@ -1,0 +1,52 @@
+{
+  "schema": "t1_hand_worked_fixture_v1",
+  "version": "1",
+  "description": "Small exact rank-level oracle. Client names are synthetic fixture labels.",
+  "rows": [
+    {"client_id": "fixture-A", "target_rank": 1, "category_changed": true,  "train_history_count": 12},
+    {"client_id": "fixture-A", "target_rank": 4, "category_changed": true,  "train_history_count": 12},
+    {"client_id": "fixture-A", "target_rank": 25,"category_changed": true,  "train_history_count": 12},
+    {"client_id": "fixture-B", "target_rank": 2, "category_changed": true,  "train_history_count": 25},
+    {"client_id": "fixture-C", "target_rank": 1, "category_changed": false, "train_history_count": 60},
+    {"client_id": "fixture-C", "target_rank": 3, "category_changed": false, "train_history_count": 60},
+    {"client_id": "fixture-D", "target_rank": 20,"category_changed": true,  "train_history_count": 120}
+  ],
+  "expected": {
+    "overall": {
+      "decision_count": 7,
+      "client_count": 4,
+      "mrr_at_20_micro": 0.44761904761904764,
+      "mrr_at_20_macro": 0.4083333333333333,
+      "accuracy_at_1_micro": 0.2857142857142857,
+      "accuracy_at_1_macro": 0.20833333333333331
+    },
+    "next_distinct": {
+      "decision_count": 5,
+      "client_count": 3,
+      "mrr_at_20_micro": 0.36,
+      "mrr_at_20_macro": 0.3222222222222222,
+      "accuracy_at_1_micro": 0.2,
+      "accuracy_at_1_macro": 0.1111111111111111
+    }
+  },
+  "tie_cases": [
+    {
+      "name": "lower_code_wins_tie",
+      "scores": [0.0, 0.0, 1.0, 1.0, 0.0, 0.0],
+      "target_code": 3,
+      "expected_rank": 2
+    },
+    {
+      "name": "target_is_lower_code_in_tie",
+      "scores": [0.0, 0.0, 1.0, 1.0, 0.0, 0.0],
+      "target_code": 2,
+      "expected_rank": 1
+    },
+    {
+      "name": "all_equal_rank_is_code_plus_one",
+      "scores": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0],
+      "target_code": 4,
+      "expected_rank": 5
+    }
+  ]
+}

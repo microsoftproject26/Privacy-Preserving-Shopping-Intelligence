@@ -1,0 +1,54 @@
+{
+  "schema": "t1_evaluator_config_v1",
+  "version": "1",
+  "task": "T1",
+  "cohort": "C1",
+  "category_count": 588,
+  "label_semantics": "DENSE_TRAIN_CATEGORY_CODE",
+  "score_universe": "FULL_FROZEN_CATEGORY_VOCABULARY",
+  "tie_break": "ASCENDING_DENSE_CATEGORY_CODE",
+  "invalid_input_policy": "ERROR_NO_FALLBACK",
+  "empty_slice_policy": "ZERO_SUPPORT_NO_METRIC",
+  "headline_slice": "next_distinct",
+  "headline_metric_id": "t1.next_distinct.mrr_at_20.macro",
+  "mrr_cutoff": 20,
+  "slices": {
+    "next_distinct": {
+      "filter": "category_changed == true",
+      "purpose": "HEADLINE_REGIME_COMPARISON"
+    },
+    "overall": {
+      "filter": "all valid decisions",
+      "purpose": "PRODUCT_DIAGNOSTIC"
+    }
+  },
+  "averaging": {
+    "headline": "macro",
+    "macro_rule": "mean client-level means over clients with slice support",
+    "alongside": "micro",
+    "micro_rule": "mean decision-level contributions"
+  },
+  "history_buckets": [
+    {"id": "BELOW_10_RETAINED_C1", "min_inclusive": 0, "max_inclusive": 9},
+    {"id": "10_19", "min_inclusive": 10, "max_inclusive": 19},
+    {"id": "20_49", "min_inclusive": 20, "max_inclusive": 49},
+    {"id": "50_99", "min_inclusive": 50, "max_inclusive": 99},
+    {"id": "100_plus", "min_inclusive": 100, "max_inclusive": null}
+  ],
+  "emit_metrics": [
+    "mrr_at_20",
+    "accuracy_at_1"
+  ],
+  "deferred_secondary_metrics": [
+    "ndcg_at_5",
+    "hr_at_10",
+    "macro_recall_at_5",
+    "coverage_at_k"
+  ],
+  "real_validation_task_examples": "data/examples/INTERNAL_DO_NOT_UPLOAD_task_examples_t1_v1.proposed.parquet",
+  "merged_input_evidence": "docs/evidence/s1-pr-07/task_example_inputs.v1.json",
+  "vocabulary": "docs/evidence/s1-d1-ds-07/vocabulary_v1.proposed.json",
+  "accepted_protocol": "docs/decisions/ADR-001-evaluation-protocol.md",
+  "g1_gate": "docs/evidence/s1-ds-09/g1_gate_v1.frozen.json",
+  "edge_decision": "docs/decisions/t1-evaluator-edge-semantics.md"
+}
