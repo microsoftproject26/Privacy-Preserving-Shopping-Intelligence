@@ -1,0 +1,134 @@
+{
+  "status": "PROPOSED",
+  "task": "S2-DS-01",
+  "title": "Shared session encoder + T1 head, tuned on the frozen v1 data",
+  "merges": ["S2-DS-04 first centralized R1-T1 pilot"],
+  "merge_reason": "S2-SMOKE already delivered a small training smoke; repeating it produces nothing new",
+
+  "scope": {
+    "cohort": "C1",
+    "user_slice": "user_id % 4 == 1",
+    "measured_users": 97279,
+    "cohort_users": 388789,
+    "data": "frozen v1 artifacts, not rebuilt and not extended",
+    "test_rows_read": 0
+  },
+
+  "batch_spec": {
+    "note": "FROZEN at the end of this task. Renaming a channel or resizing a vocabulary forces S2-SE-01 to re-export and S2-SE-02 to re-benchmark.",
+    "history_categorical": [
+      {"name": "category_id",    "pad_id": 589,   "vocab_size": 590,   "meaning": "0..587 frozen vocabulary_v1 codes, 588 OOV, 589 PAD"},
+      {"name": "product_bucket", "pad_id": 0,     "vocab_size": 50000, "meaning": "blake2b hash of the raw product id, 1..49999, 0 PAD"},
+      {"name": "event_type_id",  "pad_id": 0,     "vocab_size": 4,     "meaning": "1 view, 2 cart, 3 purchase, 0 PAD"},
+      {"name": "brand_bucket",   "pad_id": 0,     "vocab_size": 5000,  "meaning": "blake2b hash of the brand string, 1..4999, 0 PAD"},
+      {"name": "price_band",     "pad_id": 5,     "vocab_size": 6,     "meaning": "0..4 exactly as frozen in price_transform_v1, 5 PAD"}
+    ],
+    "history_continuous_dim": 1,
+    "history_continuous_meaning": ["time_gap = log1p(min(seconds_since_previous_event, 86400))"],
+    "query_categorical": [
+      {"name": "query_category_id",   "pad_id": 589, "vocab_size": 590},
+      {"name": "query_product_bucket","pad_id": 0,   "vocab_size": 50000},
+      {"name": "query_brand_bucket",  "pad_id": 0,   "vocab_size": 5000},
+      {"name": "query_price_band",    "pad_id": 5,   "vocab_size": 6}
+    ],
+    "query_continuous_dim": 0,
+    "query_note": "the canonical validator forbids a pad id anywhere in a query channel, so for a T1-only row the query is the decision's own item, which always exists",
+    "candidate_categorical": [
+      {"name": "candidate_category_id", "pad_id": 589, "vocab_size": 590},
+      {"name": "candidate_price_band",  "pad_id": 5,   "vocab_size": 6}
+    ],
+    "candidate_continuous_dim": 0,
+    "candidate_id_pad_id": 0,
+    "candidate_id_vocab_size": 50000,
+    "t1_absent_fill": 0,
+    "t2_absent_fill": 0.0,
+    "t3_absent_fill": 0.0
+  },
+
+  "model": {
+    "encoder": "GRU",
+    "encoder_note": "the architecture is deliberately NOT frozen here; S2-DS-05 may replace it behind this interface",
+    "readout": "full padded sequence then gather at clamp(lengths-1, min=0)",
+    "readout_reason": "pack_padded_sequence obstructs the ONNX export S2-SE-01 needs; with right-padding the two are mathematically identical and a fixture asserts they agree to 1e-5",
+    "history_length": 20,
+    "category_embedding": 64,
+    "product_embedding": 24,
+    "brand_embedding": 16,
+    "price_band_embedding": 4,
+    "event_embedding": 4,
+    "hidden": 128,
+    "layers": 1,
+    "dropout": 0.1,
+    "output_names": {
+      "t1_logits": "[B, category_count]",
+      "t2_logit": "[B, 1]",
+      "t3_scores": "[B, candidate_width]"
+    },
+    "output_names_note": "FROZEN. S2-SE-08 verifies these by name.",
+    "activation_free": true
+  },
+
+  "training": {
+    "batch_size": 512,
+    "eval_batch_size": 2048,
+    "learning_rate": 0.002,
+    "optimizer": "Adam",
+    "gradient_clip_norm": 1.0,
+    "max_epochs": 12,
+    "early_stopping_patience": 2,
+    "selection": "lowest validation loss, strict <, never the last epoch",
+    "loop": "our own; LocalTrainerCore packs and sha256-hashes the whole state_dict every step, which is unusable at 6081 steps per epoch"
+  },
+
+  "seeds": {
+    "values": [13, 42, 2026],
+    "reason": "S2-PR-09 runs the final R1 across these three, and S2-PR-06 must start R2a from the identical common initialization",
+    "common_initialization": "emitted per seed with its sha256 so R1 and R2a provably start from the same weights"
+  },
+
+  "calibration": {
+    "target": 0.3348,
+    "target_meaning": "S2-SMOKE, GRU category-only, category-change slice, macro",
+    "replica": {"channels": ["category_id", "event_type_id", "time_gap"], "layers": 1, "train_decisions": 1200000, "epochs": 4},
+    "tolerance": "MEASURED, not assumed: the replica runs on all three seeds and the gate is that 0.3348 falls inside the observed seed range",
+    "gate": "hard - if it fails the pipeline is wrong and no number above it means anything"
+  },
+
+  "ladder": [
+    {"rung": 0, "change": "smoke replica", "question": "is the pipeline sound?"},
+    {"rung": 1, "change": "all 3113814 TRAIN decisions", "question": "does more data help?"},
+    {"rung": 2, "change": "+ product_bucket", "question": "does product identity pay at 2.6x the data?", "prediction": "positive; it scored -0.0031 at 1.2M while overfitting from epoch 2"},
+    {"rung": 3, "change": "+ brand_bucket", "question": "does brand add beyond category?"},
+    {"rung": 4, "change": "+ price_band", "question": "does price add beyond category?"},
+    {"rung": 5, "change": "2 layers", "question": "is the board's two-layer ask justified?"},
+    {"rung": 6, "change": "coordinate sweep", "question": "how far do hyperparameters move it?"}
+  ],
+
+  "sweep": {
+    "kind": "coordinate, one axis at a time from the rung-5 winner, not a full grid",
+    "hidden": [128, 256],
+    "category_embedding": [64, 128],
+    "dropout": [0.1, 0.2, 0.3],
+    "learning_rate": [0.001, 0.002],
+    "history_length": [20, 50],
+    "selection_split": "VALIDATION only",
+    "report": "every configuration tried is recorded, not only the winner"
+  },
+
+  "baselines": {
+    "source": "S1-D1-DS-07 task_headroom_v1.proposed.json, asserted not retyped",
+    "t1_overall_trivial": 0.8232,
+    "t1_overall_popularity": 0.2841,
+    "t1_overall_transition_table": 0.8560,
+    "t1_slice_transition_table_micro": 0.3085,
+    "t1_slice_transition_table_macro": 0.3144,
+    "half_width_slice": 0.0026
+  },
+
+  "handoff_bar": {
+    "metric": "T1 category-change slice, macro MRR@20",
+    "must_exceed": 0.3144,
+    "by_more_than": 0.0026,
+    "if_not_met": "hand over anyway with the shortfall stated plainly; the federated comparison still needs a model"
+  }
+}
