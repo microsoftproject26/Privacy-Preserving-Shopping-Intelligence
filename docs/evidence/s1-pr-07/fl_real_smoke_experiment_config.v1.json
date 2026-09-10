@@ -1,0 +1,155 @@
+{
+  "schema": "experiment_config_v1",
+  "version": "1",
+  "config_id": "fl_real_smoke_r2a_t1_v1_non_scientific",
+  "regime": "R2A",
+  "tasks": [
+    "T1"
+  ],
+  "training_cohort": "C1",
+  "evaluation_cohorts": [
+    "C1"
+  ],
+  "seed": 13,
+  "source_dataset_ref": {
+    "schema": "artifact_ref_v1",
+    "version": "1",
+    "logical_id": "fl_real_smoke_input_manifest_v1",
+    "artifact_schema": "fl_real_smoke_input_manifest_v1",
+    "artifact_version": "1",
+    "uri": "docs/evidence/s1-pr-07/task_example_inputs.v1.json",
+    "sha256": "1df0e57d7b6e335998a90704e0377b6daae5394737e452454b4d361884dad209"
+  },
+  "canonical_data_contract_ref": {
+    "schema": "artifact_ref_v1",
+    "version": "1",
+    "logical_id": "data_protocol_v1",
+    "artifact_schema": "data_protocol_v1",
+    "artifact_version": "1",
+    "uri": "docs/evidence/s1-ds-05-06/data_protocol_v1.proposed.json",
+    "sha256": "67397fe66fa7a82084cf1ba19c834e3b501fc41e248893a1d839e4335ff98e32"
+  },
+  "cohort_manifest_ref": {
+    "schema": "artifact_ref_v1",
+    "version": "1",
+    "logical_id": "cohort_manifest_v1",
+    "artifact_schema": "cohort_manifest_v1",
+    "artifact_version": "1",
+    "uri": "data/protocol/INTERNAL_DO_NOT_UPLOAD_cohort_manifest_v1.proposed.parquet",
+    "sha256": "32d4b8ce4bb84f789b1baa525f50349be79e60920ad67f5e1bdfdcab9fa6e9d2"
+  },
+  "split_manifest_ref": {
+    "schema": "artifact_ref_v1",
+    "version": "1",
+    "logical_id": "data_protocol_v1_split",
+    "artifact_schema": "data_protocol_v1",
+    "artifact_version": "1",
+    "uri": "docs/evidence/s1-ds-05-06/data_protocol_v1.proposed.json",
+    "sha256": "67397fe66fa7a82084cf1ba19c834e3b501fc41e248893a1d839e4335ff98e32"
+  },
+  "task_examples_manifest_ref": {
+    "schema": "artifact_ref_v1",
+    "version": "1",
+    "logical_id": "fl_real_smoke_input_manifest_v1",
+    "artifact_schema": "fl_real_smoke_input_manifest_v1",
+    "artifact_version": "1",
+    "uri": "docs/evidence/s1-pr-07/task_example_inputs.v1.json",
+    "sha256": "1df0e57d7b6e335998a90704e0377b6daae5394737e452454b4d361884dad209"
+  },
+  "evaluation_manifest_ref": {
+    "schema": "artifact_ref_v1",
+    "version": "1",
+    "logical_id": "t1_validation_parquet",
+    "artifact_schema": "task_examples_v1",
+    "artifact_version": "1",
+    "uri": "data/examples/INTERNAL_DO_NOT_UPLOAD_task_examples_t1_v1.proposed.parquet",
+    "sha256": "e5e85225103717413306ff056ed477848a39f2bbf72486708a6b724673984aeb"
+  },
+  "representation_ref": {
+    "schema": "artifact_ref_v1",
+    "version": "1",
+    "logical_id": "vocabulary_v1",
+    "artifact_schema": "vocabulary_v1",
+    "artifact_version": "1",
+    "uri": "docs/evidence/s1-d1-ds-07/vocabulary_v1.proposed.json",
+    "sha256": "07e7c0618f550b5316a32a168fcf7f240703d6a362f9ec27449bbdbf98f63bd7"
+  },
+  "model_config_ref": {
+    "schema": "artifact_ref_v1",
+    "version": "1",
+    "logical_id": "fl_real_smoke_config_v1",
+    "artifact_schema": "fl_real_smoke_v1",
+    "artifact_version": "1",
+    "uri": "config/fl_real_smoke.v1.json",
+    "sha256": "eb6f13e6ca22a854eed1932b955bd65394715c375b98f4f9c0df80a2df6f2b97"
+  },
+  "objective_config_ref": {
+    "schema": "artifact_ref_v1",
+    "version": "1",
+    "logical_id": "contract_smoke_objective_v1",
+    "artifact_schema": "python_module_v1",
+    "artifact_version": "1",
+    "uri": "ppsi/training/objective.py",
+    "sha256": "e374e820625b601d855ceca1b91cefb460d16e1e74349d2c8dcb0a155591c169"
+  },
+  "shared_trainer_core_ref": {
+    "schema": "artifact_ref_v1",
+    "version": "1",
+    "logical_id": "shared_trainer_core_manifest_v1",
+    "artifact_schema": "shared_trainer_core_manifest_v1",
+    "artifact_version": "1",
+    "uri": "docs/evidence/s1-pr-05/shared_trainer_core_manifest.v1.json",
+    "sha256": "42660ba16750ebb64afa1a13f82e93d1264c2529b053670c1ab73d11747b2e4d"
+  },
+  "evaluation_protocol_ref": {
+    "schema": "artifact_ref_v1",
+    "version": "1",
+    "logical_id": "adr_001_evaluation_protocol",
+    "artifact_schema": "adr_v1",
+    "artifact_version": "1",
+    "uri": "docs/decisions/ADR-001-evaluation-protocol.md",
+    "sha256": "822c0243cd2a368c4ec421a644cddbf75c1dfcfa588e100339acdd2976fe3eac"
+  },
+  "evaluator_ref": {
+    "schema": "artifact_ref_v1",
+    "version": "1",
+    "logical_id": "fl_real_smoke_script_v1",
+    "artifact_schema": "python_module_v1",
+    "artifact_version": "1",
+    "uri": "scripts/federated/fl_real_smoke.py",
+    "sha256": "601aadc2286032f6692b4707ba5e7b1284fac21fd8154b40e434ded4b9e8cf6c"
+  },
+  "environment_lock_ref": {
+    "schema": "artifact_ref_v1",
+    "version": "1",
+    "logical_id": "uv_lock_v1",
+    "artifact_schema": "uv_lock_v1",
+    "artifact_version": "1",
+    "uri": "uv.lock",
+    "sha256": "cd86bcdb34077eaedd3ccf84e8ddc52a6424271cfd35f27ba0b7f32d7cbdf0dd"
+  },
+  "initialization": {
+    "kind": "COMMON_INITIALIZATION",
+    "common_initialization_ref": {
+      "schema": "artifact_ref_v1",
+      "version": "1",
+      "logical_id": "fl_real_smoke_initialization_v1",
+      "artifact_schema": "fl_real_smoke_initialization_v1",
+      "artifact_version": "1",
+      "uri": "docs/evidence/s1-pr-07/fl_real_smoke_initialization.v1.json",
+      "sha256": "8b300661120e3fc914580c1bfcf78d19f916fb63b75edfcd287969f6dc86676d"
+    }
+  },
+  "regime_config": {
+    "orchestration_type": "FEDAVG",
+    "scientific": false,
+    "purpose": "NON_SCIENTIFIC_REAL_DATA_PIPELINE_SMOKE",
+    "num_rounds": 3,
+    "clients_per_round": 4,
+    "local_epochs": 1,
+    "learning_rate": 0.02,
+    "momentum": 0.0,
+    "optimizer": "SGD",
+    "aggregation_weight_policy": "contributing_rows_smoke_weight_v1_NON_SCIENTIFIC"
+  }
+}

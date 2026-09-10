@@ -63,6 +63,18 @@
 | `ClientPartitionEvidence` | `docs/evidence/s1-pr-06/client_partition_summary.v1.json` | v1 | S1-PR-06 | Review / reproducibility |
 | `ClientPartitioningTests` | `tests/federated/test_client_partitioning.py`, `tests/federated/test_client_sampling.py` | v1 | S1-PR-06 | CI |
 | `ClientPartitioningDocs` | `docs/federated-client-partitioning.md` | v1 | S1-PR-06 | Developers |
+| `FLRealSmokeConfig` | `config/fl_real_smoke.v1.json` | v1 | S1-PR-07 | CI, Developers |
+| `FLRealSmokeTaskExampleAdapter` | `ppsi/federated/task_examples.py` | v1 | S1-PR-07 | S1-PR-07, S2-PR-06 |
+| `FLRealSmokeEntryPoint` | `scripts/federated/fl_real_smoke.py` | v1 | S1-PR-07 | CI, Developers |
+| `FLRealSmokeNotebook` | `notebooks/S1_PR_07_Real_Flower_Smoke.ipynb` | v1 | S1-PR-07 | Developers, Review |
+| `FLRealSmokeDerivedClientManifest` | `data/protocol/INTERNAL_DO_NOT_UPLOAD_fl_real_smoke_client_manifest_v1.parquet` | v1 | S1-PR-07 | S1-PR-07 internal |
+| `FLRealSmokeSamplingTrace` | `data/protocol/INTERNAL_DO_NOT_UPLOAD_fl_real_smoke_sampling_trace_v1.jsonl` | v1 | S1-PR-07 | S1-PR-07 internal |
+| `FLRealSmokeInputEvidence` | `docs/evidence/s1-pr-07/task_example_inputs.v1.json` | v1 | S1-PR-07 | Review / reproducibility |
+| `FLRealSmokeInitializationEvidence` | `docs/evidence/s1-pr-07/fl_real_smoke_initialization.v1.json` | v1 | S1-PR-07 | Review / reproducibility |
+| `FLRealSmokeResolvedExperimentConfig` | `docs/evidence/s1-pr-07/fl_real_smoke_experiment_config.v1.json` | v1 | S1-PR-07 | Review / reproducibility |
+| `FLRealSmokeSummary` | `docs/evidence/s1-pr-07/fl_real_smoke_summary.v1.json` | v1 | S1-PR-07 | Review / reproducibility |
+| `FLRealSmokeTests` | `tests/federated/test_real_task_examples.py`, `tests/federated/test_fl_real_smoke.py` | v1 | S1-PR-07 | CI |
+| `FLRealSmokeDocs` | `docs/federated-real-smoke.md` | v1 | S1-PR-07 | Developers |
 
 ## Rules
 

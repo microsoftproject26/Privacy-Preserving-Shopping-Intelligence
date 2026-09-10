@@ -1,0 +1,130 @@
+{
+  "schema": "fl_real_smoke_summary_v1",
+  "version": "1",
+  "status": "PASS",
+  "purpose": "NON_SCIENTIFIC_REAL_DATA_PIPELINE_SMOKE",
+  "scientific": false,
+  "scientific_claims": [],
+  "execution_provenance": "WORKING_TREE_MVP_SMOKE",
+  "input_identities": {
+    "t1_train_sha256": "42b1617c1d2f1b5a2d2f1020d4c896d43891f4bf00639782955a032eb4fa60bb",
+    "t1_validation_sha256": "e5e85225103717413306ff056ed477848a39f2bbf72486708a6b724673984aeb",
+    "vocabulary_sha256": "07e7c0618f550b5316a32a168fcf7f240703d6a362f9ec27449bbdbf98f63bd7",
+    "base_client_manifest_logical_hash": "a96fb92fc6c43e458f9d8692491c7927e49d17741cb37e72d303420734820764"
+  },
+  "derived_manifest_sha256": "fe9397f59bdc23215e0fe63d48acc0b22aff598b2237102c27ab6b35b116f70a",
+  "initialization_digest": "e5f5dbbf3c39d03a3da556efee065ce7cd3c03a246ccbfeb91f493c2e7262137",
+  "config_sha256": "eb6f13e6ca22a854eed1932b955bd65394715c375b98f4f9c0df80a2df6f2b97",
+  "result_sha256": "3b09203509eee6efc28c8ac1de85b27dab959d33df09f9af165046515e57e22d",
+  "runtime_versions": {
+    "python": "3.11.14",
+    "flower": "1.33.0",
+    "ray": "2.55.1",
+    "torch": "2.13.0+cpu",
+    "platform": "Windows-10-10.0.26200-SP0"
+  },
+  "validation_history": [
+    {
+      "server_round": 0,
+      "cross_entropy": 6.443268805742264,
+      "accuracy_at_1": 0.0,
+      "support": 256
+    },
+    {
+      "server_round": 1,
+      "cross_entropy": 6.423805579543114,
+      "accuracy_at_1": 0.0,
+      "support": 256
+    },
+    {
+      "server_round": 2,
+      "cross_entropy": 6.372134581208229,
+      "accuracy_at_1": 0.0,
+      "support": 256
+    },
+    {
+      "server_round": 3,
+      "cross_entropy": 6.3688270300626755,
+      "accuracy_at_1": 0.0,
+      "support": 256
+    }
+  ],
+  "rounds": [
+    {
+      "server_round": 1,
+      "sampler_round_index": 0,
+      "selection_digest": "48c02ec02f2b9baae1db84a47047a579c9b574a9af7ce3d9fc2512af615a6cb7",
+      "selected_client_count": 4,
+      "successful_client_count": 4,
+      "contributing_examples": 82,
+      "mean_local_train_loss": 6.505381041481382,
+      "aggregation_oracle_pass": true,
+      "max_abs_diff": 2.384185791015625e-07,
+      "server_input_digest": "e5f5dbbf3c39d03a3da556efee065ce7cd3c03a246ccbfeb91f493c2e7262137",
+      "aggregated_digest": "72880226303829e0093a490f9ba335c75d8d7b20e3c14538d7aa2e14b3776d66"
+    },
+    {
+      "server_round": 2,
+      "sampler_round_index": 1,
+      "selection_digest": "d714186a4346485492720035ed6ae1f5036fe75d806790a59df21a24a7d9068e",
+      "selected_client_count": 4,
+      "successful_client_count": 4,
+      "contributing_examples": 97,
+      "mean_local_train_loss": 6.494091238136645,
+      "aggregation_oracle_pass": true,
+      "max_abs_diff": 2.384185791015625e-07,
+      "server_input_digest": "72880226303829e0093a490f9ba335c75d8d7b20e3c14538d7aa2e14b3776d66",
+      "aggregated_digest": "b9834dc1700d6e06a2ec0d14b8b33f03a591bf75372397d442b7919a94203acc"
+    },
+    {
+      "server_round": 3,
+      "sampler_round_index": 2,
+      "selection_digest": "8b3cb15c3a97b1522779bdf2ec69a05e270b85c5ebccb3675b62e74d8697eef8",
+      "selected_client_count": 4,
+      "successful_client_count": 4,
+      "contributing_examples": 46,
+      "mean_local_train_loss": 6.443068834713527,
+      "aggregation_oracle_pass": true,
+      "max_abs_diff": 2.384185791015625e-07,
+      "server_input_digest": "b9834dc1700d6e06a2ec0d14b8b33f03a591bf75372397d442b7919a94203acc",
+      "aggregated_digest": "d00626a3355bcbbc87fa3b22d61c3ae71421412f3305c870741c0ff3a5191358"
+    }
+  ],
+  "reproducibility": {
+    "repeat_runs": 2,
+    "pass": true,
+    "reproducibility_pass": true,
+    "selection_digests_match": true,
+    "final_digest_match": true,
+    "validation_metrics_match": true
+  },
+  "global_model_changed": true,
+  "aggregation_oracle_pass": true,
+  "integration_findings": {
+    "global_model_changed": true,
+    "oracle_pass_all_rounds": true
+  },
+  "limitations": [
+    "Zero-history representation \u2014 no sequential event history",
+    "Non-scientific stub model \u2014 not the final project GRU",
+    "No R1 baseline \u2014 QR not calculated",
+    "No T2/T3 tasks, no TEST set, no communication measurement"
+  ],
+  "source_git_sha": "5e7467b3242de51e3822959c2f3f7adbadeb59f7",
+  "git_sha": "5e7467b3242de51e3822959c2f3f7adbadeb59f7",
+  "tracked_diff_sha256": "2ca10eda896b4352e0760df453af1f3ce4f337b66a19515869732cc7e1bd94b1",
+  "execution_source_files_sha256": {
+    "config/fl_real_smoke.v1.json": "eb6f13e6ca22a854eed1932b955bd65394715c375b98f4f9c0df80a2df6f2b97",
+    "ppsi/federated/task_examples.py": "62af4ec4813d903a22c3ce9e6fca9616cab83f288c4fb1b1e4cf523b953110d9",
+    "scripts/federated/fl_real_smoke.py": "601aadc2286032f6692b4707ba5e7b1284fac21fd8154b40e434ded4b9e8cf6c",
+    "ppsi/federated/clients.py": "772acb5641618c3b6e1f4d1a7a69b99cee7d4469b3b025bc435f33f2c2278b1e",
+    "ppsi/federated/sampling.py": "e329250fce5f4309ceb58f253ccbada81bc4e88d862eb34341edf1976f255b31",
+    "ppsi/training/batch.py": "dc9701e1e19d639faf04fd0e656ffad8a58530d3a79b0ce0eaa28a710cb621f9",
+    "ppsi/training/core.py": "2dddd8c3d3d97d145da6d2bcd46972af37041635b010bbcee8c7edc492db9096",
+    "ppsi/training/flower.py": "45db3cba20a9ae41132d916a53ffb9a4c8fb198420e7628d57310cf58eaf0737",
+    "ppsi/training/objective.py": "e374e820625b601d855ceca1b91cefb460d16e1e74349d2c8dcb0a155591c169",
+    "ppsi/training/stub_model.py": "6e1cb5c4fa2875318865552dfe341764d432d5da2ab9ad1555a359aa66edd69a"
+  },
+  "raw_events_used": false,
+  "sealed_test_accessed": false
+}
