@@ -7,6 +7,12 @@ requires-python = "==3.11.14"
 dependencies = [
     "flwr[simulation]==1.33.0",
     "lightgbm==4.7.0",
+    # Added by S2-DS-01. The rest of the package uses polars; the model lane's window
+    # builder, evaluator and REES46 loader are pandas, and they reproduce the upstream
+    # S1-D1-DS-07 baselines to four decimal places. Rewriting verified numeric code to
+    # avoid a dependency is how this project has produced most of its defects, so the
+    # dependency is declared instead.
+    "pandas==3.0.5",
     "polars==1.43.2",
     "psutil==7.2.2",
     "pyarrow==21.0.0",
