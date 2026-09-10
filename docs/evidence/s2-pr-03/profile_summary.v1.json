@@ -1,0 +1,143 @@
+{
+  "comparative_recommendation_supported": true,
+  "declared_population": 5000,
+  "measurement_limitations": [
+    "Sampled process-tree RSS can double-count shared pages.",
+    "GPU memory is NOT_APPLICABLE on this CPU-only run, not a measured zero.",
+    "Configured concurrency is a cap; observed overlap is reported separately.",
+    "Per-process RSS, tree RSS and system available memory are never mixed."
+  ],
+  "participants_per_round": 20,
+  "points": [
+    {
+      "configured_concurrency": 1,
+      "declared_population": 5000,
+      "max_trial_tree_rss_bytes": 1429106688,
+      "participants_per_round": 20,
+      "pooled_warm_round_wall_seconds": {
+        "max": 1.0016541,
+        "mean": 0.90462346,
+        "min": 0.8463185,
+        "n": 10,
+        "p50": 0.8841391000000001,
+        "p95": 1.0016541
+      },
+      "status": "TWICE_STABLE",
+      "trials": [
+        {
+          "peak_tree_rss_bytes": 1429106688,
+          "reason": null,
+          "source": "MEASURED",
+          "stable": true,
+          "status": "SUCCEEDED",
+          "summary_uri": "docs/evidence/s2-pr-01/trials/n5000-m20-c1-rep1/trial_summary.v1.json",
+          "trial_id": "n5000-m20-c1-rep1",
+          "warm_round_wall_seconds": {
+            "max": 0.9658924,
+            "mean": 0.9059079999999999,
+            "min": 0.8463185,
+            "n": 5,
+            "p50": 0.8869286,
+            "p95": 0.9658924
+          }
+        },
+        {
+          "peak_tree_rss_bytes": 1427922944,
+          "reason": null,
+          "source": "MEASURED",
+          "stable": true,
+          "status": "SUCCEEDED",
+          "summary_uri": "docs/evidence/s2-pr-01/trials/n5000-m20-c1-rep2/trial_summary.v1.json",
+          "trial_id": "n5000-m20-c1-rep2",
+          "warm_round_wall_seconds": {
+            "max": 1.0016541,
+            "mean": 0.90333892,
+            "min": 0.8712678,
+            "n": 5,
+            "p50": 0.8813927,
+            "p95": 1.0016541
+          }
+        }
+      ]
+    },
+    {
+      "configured_concurrency": 2,
+      "declared_population": 5000,
+      "max_trial_tree_rss_bytes": 1916317696,
+      "participants_per_round": 20,
+      "pooled_warm_round_wall_seconds": {
+        "max": 0.7625197,
+        "mean": 0.6313780999999999,
+        "min": 0.5370074,
+        "n": 10,
+        "p50": 0.639322,
+        "p95": 0.7625197
+      },
+      "status": "TWICE_STABLE",
+      "trials": [
+        {
+          "peak_tree_rss_bytes": 1915121664,
+          "source": "REUSED_FROM_SCALE",
+          "summary_uri": "docs/evidence/s2-pr-01/trials/n5000-m20-c2-rep1/trial_summary.v1.json",
+          "trial_id": "n5000-m20-c2-rep1",
+          "warm_round_wall_seconds": {
+            "max": 0.6882155,
+            "mean": 0.6275644,
+            "min": 0.5549371,
+            "n": 5,
+            "p50": 0.6435695,
+            "p95": 0.6882155
+          }
+        },
+        {
+          "peak_tree_rss_bytes": 1916317696,
+          "source": "REUSED_FROM_SCALE",
+          "summary_uri": "docs/evidence/s2-pr-01/trials/n5000-m20-c2-rep2/trial_summary.v1.json",
+          "trial_id": "n5000-m20-c2-rep2",
+          "warm_round_wall_seconds": {
+            "max": 0.7625197,
+            "mean": 0.6351918,
+            "min": 0.5370074,
+            "n": 5,
+            "p50": 0.6350745,
+            "p95": 0.7625197
+          }
+        }
+      ]
+    },
+    {
+      "configured_concurrency": 4,
+      "reason": "hardware does not satisfy the declared concurrency-4 preflight",
+      "status": "NOT_ATTEMPTED_SAFETY"
+    }
+  ],
+  "purpose": "NON_SCIENTIFIC_FL_RUNTIME_BENCHMARK",
+  "scale_summary_ref": {
+    "sha256": "0935c5941ccf1969783ae571db638b85783548dd2cf7d492cbbe72fdee074dba",
+    "uri": "docs/evidence/s2-pr-01/scale_summary.v1.json"
+  },
+  "schema": "fl_profile_summary_v1",
+  "scientific_protocol": false,
+  "statistics": {
+    "caveat": "A p95 over ten observations is descriptive, not a production tail bound.",
+    "p50": "statistics.median",
+    "p95": "nearest rank, sorted[ceil(0.95 * n) - 1]",
+    "pooled_samples_per_point": 10,
+    "samples_per_trial": 5,
+    "warm_rounds": [
+      1
+    ]
+  },
+  "status": "COMPLETE",
+  "timing_definitions": {
+    "aggregation_seconds": "aggregation plus the required oracle checks",
+    "data_load_seconds": "client prepared-slice read, filter and batch construction",
+    "dispatch_to_replies_seconds": "train configure completion to aggregate entry; transport, scheduling and client processing, not the sum of client fits",
+    "local_fit_seconds": "around adapter.fit on each client",
+    "round_wall_seconds": "configure start through that round's evaluation completion",
+    "server_evaluation_seconds": "around the server diagnostic evaluation",
+    "startup_seconds": "simulation entry to the first train configure call",
+    "trial_wall_seconds": "supervised subprocess launch to clean exit"
+  },
+  "version": "1"
+}

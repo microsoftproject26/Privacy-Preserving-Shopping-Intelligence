@@ -1,0 +1,51 @@
+{
+  "admissible_configurations": [
+    1,
+    2
+  ],
+  "chosen_population": 5000,
+  "comparative_recommendation_supported": true,
+  "failed_or_skipped_configurations": [
+    {
+      "configured_concurrency": 4,
+      "status": "NOT_ATTEMPTED_SAFETY"
+    }
+  ],
+  "hardware": {
+    "available_ram_bytes": 7515684864,
+    "device": "cpu",
+    "flwr": "1.33.0",
+    "gpu_memory": "NOT_APPLICABLE",
+    "logical_cpus": 20,
+    "numpy": "2.4.6",
+    "os": "Windows-10-10.0.26200-SP0",
+    "physical_cpus": 14,
+    "polars": "1.43.2",
+    "psutil": "7.2.2",
+    "python": "3.11.14",
+    "ray": "2.55.1",
+    "repo_volume_free_bytes": 123927810048,
+    "schema": "runtime_hardware_identity_v1",
+    "temp_volume_free_bytes": 13828218880,
+    "torch": "2.13.0+cpu",
+    "total_ram_bytes": 16890978304,
+    "version": "1"
+  },
+  "limitations": [
+    "Measured on one machine with one stub workload; not a guarantee elsewhere.",
+    "An untested lower-memory machine is never claimed to be safe."
+  ],
+  "low_memory_concurrency": 1,
+  "low_memory_rationale": "lowest maximum trial process-tree RSS among twice-stable points; ties resolve to lower concurrency",
+  "normal_concurrency": 2,
+  "normal_rationale": "lowest pooled warm-round p50 among twice-stable points; ties resolve to lower concurrency",
+  "participants_per_round": 20,
+  "schema": "fl_runtime_recommendations_v1",
+  "scientific_protocol": false,
+  "status": "COMPLETE",
+  "version": "1",
+  "workload_ref": {
+    "sha256": "20d1cddc322ad6ff0b26cf09101c01fb763f2a506b8f0b28f1c8d93f2bb45ddd",
+    "uri": "config/federated/fl_runtime_workload.v1.json"
+  }
+}

@@ -1,0 +1,319 @@
+{
+  "cleanup": {
+    "cleanup_required": false
+  },
+  "config_ref": {
+    "artifact_schema": "experiment_config_v1",
+    "artifact_version": "1",
+    "logical_id": "fl_runtime_resolved_config_v1",
+    "schema": "artifact_ref_v1",
+    "sha256": "1037db8b0a07c8608624ecdca9a087bb01f24d19fe21375926d10aa0759f679a",
+    "uri": "docs/evidence/s2-pr-01/trials/n5000-m20-c1-rep2/experiment_config.v1.json",
+    "version": "1"
+  },
+  "configured_concurrency": 1,
+  "declared_population": 5000,
+  "final_state_digest": "8e4a137612ba0d6569d95b18ae66052404ec08f3cbafe4dad0641b5d6eaba332",
+  "initial_state_digest": "e5f5dbbf3c39d03a3da556efee065ce7cd3c03a246ccbfeb91f493c2e7262137",
+  "limitations": [
+    "Runtime measurement only; never an R2A scientific result.",
+    "Only M clients train per round; the declared population is not all trained.",
+    "Timings and RSS are observations and are not expected to reproduce exactly."
+  ],
+  "measurement_ref": {
+    "artifact_schema": "runtime_process_tree_measurement_v1",
+    "artifact_version": "1",
+    "logical_id": "fl_runtime_measurement_v1",
+    "schema": "artifact_ref_v1",
+    "sha256": "dfb17fd8e7aca89f5cea213a3c7cd3652c1599db9c0e768ffede14e8b2a20df8",
+    "uri": "docs/evidence/s2-pr-01/trials/n5000-m20-c1-rep2/runtime_measurement.v1.json",
+    "version": "1"
+  },
+  "node_binding": {
+    "declared_population": 5000,
+    "map_frozen": true,
+    "registered_nodes": 5000
+  },
+  "participants_per_round": 20,
+  "reason": null,
+  "result_ref": {
+    "artifact_schema": "experiment_result_v1",
+    "artifact_version": "1",
+    "logical_id": "fl_runtime_experiment_result_v1",
+    "schema": "artifact_ref_v1",
+    "sha256": "014ba386a6a2675f104d18e51e892e93ce4171e4ff2034dbe4d3448c74e679be",
+    "uri": "artifacts/experiment-results/run-v1__r2a__t1__c1__s13__cfg1037db8b0a07__a1.result.json",
+    "version": "1"
+  },
+  "rounds": [
+    {
+      "aggregation_oracle_pass": true,
+      "aggregation_seconds": 0.1363999,
+      "client_data_load_seconds": {
+        "max": 0.0067839,
+        "mean": 0.0033409750000000004,
+        "min": 0.0027775,
+        "n": 20,
+        "p50": 0.0030672499999999997,
+        "p95": 0.003963
+      },
+      "client_local_fit_seconds": {
+        "max": 0.0195307,
+        "mean": 0.01563771,
+        "min": 0.0143696,
+        "n": 20,
+        "p50": 0.015397250000000001,
+        "p95": 0.0170594
+      },
+      "contributing_examples": 640,
+      "dispatch_to_replies_seconds": 7.2035612,
+      "max_abs_diff": 7.152557373046875e-07,
+      "observed_client_span_seconds": 1.6734382,
+      "round_wall_seconds": 7.41395,
+      "selected_client_count": 20,
+      "selection_digest": "7e81145bc7fecc091351cd34e2c5f33738c5de4fea4d0c556855a668e460fa66",
+      "server_evaluation_seconds": 0.0224219,
+      "server_round": 1
+    },
+    {
+      "aggregation_oracle_pass": true,
+      "aggregation_seconds": 0.0614192,
+      "client_data_load_seconds": {
+        "max": 0.003788,
+        "mean": 0.00301182,
+        "min": 0.0026448,
+        "n": 20,
+        "p50": 0.0028858499999999997,
+        "p95": 0.0037586
+      },
+      "client_local_fit_seconds": {
+        "max": 0.0170541,
+        "mean": 0.015042149999999999,
+        "min": 0.0141293,
+        "n": 20,
+        "p50": 0.0148907,
+        "p95": 0.0163616
+      },
+      "contributing_examples": 640,
+      "dispatch_to_replies_seconds": 0.7690151,
+      "max_abs_diff": 3.5762786865234375e-07,
+      "observed_client_span_seconds": 0.6729403,
+      "round_wall_seconds": 0.8868855,
+      "selected_client_count": 20,
+      "selection_digest": "658cfb6b35ad74ece9676f62bba44510f1dbea63f1cd68b58e48d8282f912cd8",
+      "server_evaluation_seconds": 0.0238807,
+      "server_round": 2
+    },
+    {
+      "aggregation_oracle_pass": true,
+      "aggregation_seconds": 0.0616539,
+      "client_data_load_seconds": {
+        "max": 0.0035731,
+        "mean": 0.00296298,
+        "min": 0.0026507,
+        "n": 20,
+        "p50": 0.0029237,
+        "p95": 0.0034375
+      },
+      "client_local_fit_seconds": {
+        "max": 0.0171237,
+        "mean": 0.014955850000000001,
+        "min": 0.0139599,
+        "n": 20,
+        "p50": 0.0148366,
+        "p95": 0.0159463
+      },
+      "contributing_examples": 640,
+      "dispatch_to_replies_seconds": 0.7586924,
+      "max_abs_diff": 7.152557373046875e-07,
+      "observed_client_span_seconds": 0.7229633,
+      "round_wall_seconds": 0.8754945,
+      "selected_client_count": 20,
+      "selection_digest": "6e2cfeefa972456a1d7fc1580a81bc782245bb9bf8fbd4b31a9d8f850282c0f3",
+      "server_evaluation_seconds": 0.02301,
+      "server_round": 3
+    },
+    {
+      "aggregation_oracle_pass": true,
+      "aggregation_seconds": 0.0627638,
+      "client_data_load_seconds": {
+        "max": 0.0037759,
+        "mean": 0.0031508250000000003,
+        "min": 0.0027747,
+        "n": 20,
+        "p50": 0.0031571999999999998,
+        "p95": 0.0034427
+      },
+      "client_local_fit_seconds": {
+        "max": 0.0171081,
+        "mean": 0.01525726,
+        "min": 0.0142664,
+        "n": 20,
+        "p50": 0.01493545,
+        "p95": 0.016636
+      },
+      "contributing_examples": 640,
+      "dispatch_to_replies_seconds": 0.7534629,
+      "max_abs_diff": 3.5762786865234375e-07,
+      "observed_client_span_seconds": 0.7098941,
+      "round_wall_seconds": 0.8712678,
+      "selected_client_count": 20,
+      "selection_digest": "bfff406b839bc851dddb19d8d4b0657fa53e36783e192d12815a351e15d18c2d",
+      "server_evaluation_seconds": 0.0248669,
+      "server_round": 4
+    },
+    {
+      "aggregation_oracle_pass": true,
+      "aggregation_seconds": 0.0568687,
+      "client_data_load_seconds": {
+        "max": 0.0036942,
+        "mean": 0.00306341,
+        "min": 0.0026038,
+        "n": 20,
+        "p50": 0.0030326,
+        "p95": 0.0033821
+      },
+      "client_local_fit_seconds": {
+        "max": 0.0161964,
+        "mean": 0.01507538,
+        "min": 0.0138374,
+        "n": 20,
+        "p50": 0.0150353,
+        "p95": 0.0161259
+      },
+      "contributing_examples": 640,
+      "dispatch_to_replies_seconds": 0.7718584,
+      "max_abs_diff": 1.1920928955078125e-07,
+      "observed_client_span_seconds": 0.6756659,
+      "round_wall_seconds": 0.8813927,
+      "selected_client_count": 20,
+      "selection_digest": "e58201ada8654ae58c91d0fedcc3803d759ad1b82ace42bd771d9ab27a46644c",
+      "server_evaluation_seconds": 0.0223293,
+      "server_round": 5
+    },
+    {
+      "aggregation_oracle_pass": true,
+      "aggregation_seconds": 0.0582665,
+      "client_data_load_seconds": {
+        "max": 0.0037857,
+        "mean": 0.00328173,
+        "min": 0.0028719,
+        "n": 20,
+        "p50": 0.0032451,
+        "p95": 0.0037313
+      },
+      "client_local_fit_seconds": {
+        "max": 0.0177966,
+        "mean": 0.016123955000000002,
+        "min": 0.014403,
+        "n": 20,
+        "p50": 0.016389849999999997,
+        "p95": 0.0176096
+      },
+      "contributing_examples": 640,
+      "dispatch_to_replies_seconds": 0.8809657,
+      "max_abs_diff": 1.1920928955078125e-07,
+      "observed_client_span_seconds": 0.7098833,
+      "round_wall_seconds": 1.0016541,
+      "selected_client_count": 20,
+      "selection_digest": "acba982a01b867c2c5cdf46a10c9751380177589d03634e47d272e88f873eb79",
+      "server_evaluation_seconds": 0.0231441,
+      "server_round": 6
+    }
+  ],
+  "schema": "fl_runtime_trial_summary_v1",
+  "server_entry_to_node_binding_seconds": 0.0447355,
+  "server_evaluations": [
+    {
+      "accuracy_at_1": 0.0,
+      "cross_entropy": 6.443268805742264,
+      "server_round": 0,
+      "state_digest": "e5f5dbbf3c39d03a3da556efee065ce7cd3c03a246ccbfeb91f493c2e7262137",
+      "support": 256
+    },
+    {
+      "accuracy_at_1": 0.0,
+      "cross_entropy": 6.423283502459526,
+      "server_round": 1,
+      "state_digest": "01c7920cc8d3760f5cbc08287ead93221950913461d04c0aa3e19708f8b59368",
+      "support": 256
+    },
+    {
+      "accuracy_at_1": 0.0,
+      "cross_entropy": 6.3941284120082855,
+      "server_round": 2,
+      "state_digest": "43a9cf91ae828339ec85bef1d328c73cf70d6bc7fe6c70d59e7898f989fa1677",
+      "support": 256
+    },
+    {
+      "accuracy_at_1": 0.0,
+      "cross_entropy": 6.384673058986664,
+      "server_round": 3,
+      "state_digest": "0c3c0758769ffeb7135fa8819c9212decdb6947840a603ea4208f6c0d45289f9",
+      "support": 256
+    },
+    {
+      "accuracy_at_1": 0.0,
+      "cross_entropy": 6.3753073662519455,
+      "server_round": 4,
+      "state_digest": "55711b7f31f27c0a8a13d9641baf50ebe45f9fdc28f161f36e9c25f6a8f1a55a",
+      "support": 256
+    },
+    {
+      "accuracy_at_1": 0.0,
+      "cross_entropy": 6.347383573651314,
+      "server_round": 5,
+      "state_digest": "adde4041c0c6db817d4aa985a0f5763ac3ebfe9dba22fd9db1a72e97fe673e73",
+      "support": 256
+    },
+    {
+      "accuracy_at_1": 0.0,
+      "cross_entropy": 6.3329097628593445,
+      "server_round": 6,
+      "state_digest": "8e4a137612ba0d6569d95b18ae66052404ec08f3cbafe4dad0641b5d6eaba332",
+      "support": 256
+    }
+  ],
+  "source_snapshot": {
+    "execution_provenance": "WORKING_TREE_BUNDLE_RUN",
+    "files_sha256": {
+      "config/federated/fl_profile_matrix.v1.json": "968f420477b1550070eec48aab9f162c9226a016690f34d8f4f5e4ea57b39030",
+      "config/federated/fl_runtime_workload.v1.json": "20d1cddc322ad6ff0b26cf09101c01fb763f2a506b8f0b28f1c8d93f2bb45ddd",
+      "config/federated/fl_scale_matrix.v1.json": "d98d9cf6942e5581484729fecfdfed3327c86d8dcb08048933066fc98116901c",
+      "ppsi/federated/convergence.py": "36874c26280136f8b67c44cd18c60ca87444f3c2a0edf09408a8d01c9825afe0",
+      "ppsi/federated/runtime_monitor.py": "5419e4491bafffb2c5be77fc0abb713e2d7f4780743255100a6a0a8f56535ef0",
+      "ppsi/federated/sampling.py": "e329250fce5f4309ceb58f253ccbada81bc4e88d862eb34341edf1976f255b31",
+      "ppsi/federated/task_examples.py": "62af4ec4813d903a22c3ce9e6fca9616cab83f288c4fb1b1e4cf523b953110d9",
+      "ppsi/training/core.py": "2dddd8c3d3d97d145da6d2bcd46972af37041635b010bbcee8c7edc492db9096",
+      "ppsi/training/fixtures.py": "00bd03670356f25a9a0ca82f3b924d59c2883e33f169a8d610a61cb45b3396c9",
+      "ppsi/training/flower.py": "45db3cba20a9ae41132d916a53ffb9a4c8fb198420e7628d57310cf58eaf0737",
+      "ppsi/training/objective.py": "e374e820625b601d855ceca1b91cefb460d16e1e74349d2c8dcb0a155591c169",
+      "ppsi/training/state.py": "31bf24600c22e84b00b12619d7a8d83d7711320da1427a0bef1d04281ce40204",
+      "scripts/federated/fl_real_smoke.py": "601aadc2286032f6692b4707ba5e7b1284fac21fd8154b40e434ded4b9e8cf6c",
+      "scripts/federated/fl_runtime_benchmark.py": "19a55f4988a56b373d3a352317deb42f24694cf6a19cc061a5e0cbd172513b8f",
+      "scripts/federated/fl_synthetic_smoke.py": "d9a4c4af0bce162bba2b5f41293cdf841c6f92d83900161c125a9675f9a9d91a"
+    },
+    "git_head": "ac7bd905e58ccdea3f0c8f30e5c94325772ad8b9",
+    "note": "The driver and monitor are untracked working-tree code at run time, so the git head alone does not identify them; each file is pinned by content.",
+    "schema": "fl_runtime_source_snapshot_v1",
+    "version": "1"
+  },
+  "status": "SUCCEEDED",
+  "supervised_wall_seconds": 16.860000000000582,
+  "total_fit_calls": 120,
+  "trial_id": "n5000-m20-c1-rep2",
+  "trial_wall_seconds": 13.6573116,
+  "unique_participating_clients": 118,
+  "version": "1",
+  "warm_round_wall_seconds": {
+    "max": 1.0016541,
+    "mean": 0.90333892,
+    "min": 0.8712678,
+    "n": 5,
+    "p50": 0.8813927,
+    "p95": 1.0016541
+  },
+  "warm_rounds_excluded": [
+    1
+  ]
+}
