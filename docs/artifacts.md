@@ -55,6 +55,14 @@
 | `UnifiedTrainerContractTests` | `tests/training/` | v1 | S1-PR-05 | CI |
 | `ExperimentResultFiles` | `artifacts/experiment-results/*.result.json` | v1 | Experiment runs | S2-SE-06 |
 | `ExperimentResultsTool` | `scripts/experiments/results.py` | v1 | S2-SE-06 | Developers / CI |
+| `ClientPartitioningModule` | `ppsi/federated/clients.py` | v1 | S1-PR-06 | S1-PR-07, S2-PR-06 |
+| `ClientSamplingModule` | `ppsi/federated/sampling.py` | v1 | S1-PR-06 | S1-PR-07, S2-PR-06 |
+| `ClientManifestV1` | `data/protocol/INTERNAL_DO_NOT_UPLOAD_client_manifest_v1.parquet` | v1 | S1-PR-06 | S1-PR-07, S2-PR-06 |
+| `ClientSamplingTraceV1` | `data/protocol/INTERNAL_DO_NOT_UPLOAD_client_sampling_trace_v1.jsonl` | v1 | S1-PR-06 | S1-PR-07, CI / audit |
+| `ClientManifestBuildCLI` | `scripts/federated/build_client_manifest.py` | v1 | S1-PR-06 | Developers |
+| `ClientPartitionEvidence` | `docs/evidence/s1-pr-06/client_partition_summary.v1.json` | v1 | S1-PR-06 | Review / reproducibility |
+| `ClientPartitioningTests` | `tests/federated/test_client_partitioning.py`, `tests/federated/test_client_sampling.py` | v1 | S1-PR-06 | CI |
+| `ClientPartitioningDocs` | `docs/federated-client-partitioning.md` | v1 | S1-PR-06 | Developers |
 
 ## Rules
 
