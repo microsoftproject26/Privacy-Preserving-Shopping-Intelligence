@@ -1,0 +1,62 @@
+{
+  "adr_001_history_buckets": [
+    "10_19",
+    "20_49",
+    "50_99",
+    "100_plus"
+  ],
+  "approved_edge_history_bucket": "BELOW_10_RETAINED_C1",
+  "category_count": 588,
+  "cohort": "C1",
+  "deferred_secondary_metrics": [
+    "ndcg_at_5",
+    "hr_at_10",
+    "macro_recall_at_5",
+    "coverage_at_k"
+  ],
+  "diagnostic_slice": "overall",
+  "empty_slice_policy": "ZERO_SUPPORT_NO_METRIC",
+  "freeze_status": "ACCEPTED",
+  "headline_metric_id": "t1.next_distinct.mrr_at_20.macro",
+  "headline_slice": "next_distinct",
+  "history_buckets": [
+    "BELOW_10_RETAINED_C1",
+    "10_19",
+    "20_49",
+    "50_99",
+    "100_plus"
+  ],
+  "metric_ids": [
+    "t1.next_distinct.mrr_at_20.macro",
+    "t1.next_distinct.mrr_at_20.micro",
+    "t1.next_distinct.accuracy_at_1.macro",
+    "t1.next_distinct.accuracy_at_1.micro",
+    "t1.overall.mrr_at_20.macro",
+    "t1.overall.mrr_at_20.micro",
+    "t1.overall.accuracy_at_1.macro",
+    "t1.overall.accuracy_at_1.micro"
+  ],
+  "mrr_cutoff": 20,
+  "schema": "t1_metric_spec_v1",
+  "source_references": {
+    "accepted_protocol": {
+      "sha256": "822c0243cd2a368c4ec421a644cddbf75c1dfcfa588e100339acdd2976fe3eac",
+      "uri": "docs/decisions/ADR-001-evaluation-protocol.md"
+    },
+    "edge_decision": {
+      "sha256": "7723242ba1cd34fdfaaa4750fddf61c60254d86110974aec2ed7d5bfc4e7d439",
+      "uri": "docs/decisions/t1-evaluator-edge-semantics.md"
+    },
+    "g1_gate": {
+      "sha256": "12b4b8c397dfacb9fb04f87dbd50e1efdcf5e76c6428b6164ab875287671446b",
+      "uri": "docs/evidence/s1-ds-09/g1_gate_v1.frozen.json"
+    },
+    "vocabulary": {
+      "sha256": "07e7c0618f550b5316a32a168fcf7f240703d6a362f9ec27449bbdbf98f63bd7",
+      "uri": "docs/evidence/s1-d1-ds-07/vocabulary_v1.proposed.json"
+    }
+  },
+  "task": "T1",
+  "tie_break": "ASCENDING_DENSE_CATEGORY_CODE",
+  "version": "1"
+}

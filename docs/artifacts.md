@@ -75,6 +75,17 @@
 | `FLRealSmokeSummary` | `docs/evidence/s1-pr-07/fl_real_smoke_summary.v1.json` | v1 | S1-PR-07 | Review / reproducibility |
 | `FLRealSmokeTests` | `tests/federated/test_real_task_examples.py`, `tests/federated/test_fl_real_smoke.py` | v1 | S1-PR-07 | CI |
 | `FLRealSmokeDocs` | `docs/federated-real-smoke.md` | v1 | S1-PR-07 | Developers |
+| `T1EvaluatorConfig` | `config/evaluation/t1_evaluator.v1.json` | v1 | S2-PR-07 | S2-PR-07, #32, #33, CI |
+| `T1EvaluatorModule` | `ppsi/evaluation/t1.py` | v1 | S2-PR-07 | #32, #33, #54, Evaluators |
+| `T1EvaluatorValidationCLI` | `scripts/evaluation/validate_t1_evaluator.py` | v1 | S2-PR-07 | CI, Developers |
+| `T1EvaluatorHandWorkedFixture` | `fixtures/evaluation/t1_hand_worked.v1.json` | v1 | S2-PR-07 | CI, Tests |
+| `T1EvaluatorEdgeDecision` | `docs/decisions/t1-evaluator-edge-semantics.md` | v1 | S2-PR-07 | Accepted Decision, #32, #33, #54 |
+| `T1EvaluatorMetricSpec` | `docs/evidence/s2-pr-07/t1_metric_spec.v1.json` | v1 | S2-PR-07 | Review / Reproducibility |
+| `T1EvaluatorFixtureMetricRecords` | `docs/evidence/s2-pr-07/t1_hand_worked_metric_records.v1.json` | v1 | S2-PR-07 | Review / Reproducibility |
+| `T1EvaluatorValidationEvidence` | `docs/evidence/s2-pr-07/t1_evaluator_validation.v1.json` | v1 | S2-PR-07 | Review / Reproducibility |
+| `T1EvaluatorNotebook` | `notebooks/S2_PR_07_Frozen_T1_Evaluator.ipynb` | v1 | S2-PR-07 | Developers, Review |
+| `T1EvaluatorTests` | `tests/evaluation/test_t1_evaluator.py` | v1 | S2-PR-07 | CI |
+| `T1EvaluatorDocs` | `docs/t1-evaluation.md` | v1 | S2-PR-07 | Developers |
 
 ## Rules
 
