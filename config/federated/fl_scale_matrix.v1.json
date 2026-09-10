@@ -1,0 +1,57 @@
+{
+  "schema": "fl_scale_matrix_v1",
+  "version": "1",
+  "workload_config": "config/federated/fl_runtime_workload.v1.json",
+  "population_points": [
+    1000,
+    2500,
+    5000
+  ],
+  "pool_order": "ascending_existing_opaque_client_id_nested_prefixes",
+  "concurrency_policy": {
+    "default": 2,
+    "default_min_logical_cpus": 2,
+    "default_min_total_ram_gib": 12,
+    "default_min_available_ram_gib": 6,
+    "fallback": 1
+  },
+  "safety": {
+    "min_total_ram_gib": 8,
+    "min_available_ram_gib": 4,
+    "min_free_disk_gib": 3,
+    "max_trial_wall_seconds": 600,
+    "round_timeout_seconds": 180,
+    "node_registration_timeout_seconds": 90,
+    "monitor_poll_seconds": 0.1,
+    "max_sampled_tree_rss_fraction_total": 0.7,
+    "min_available_ram_during_trial_gib": 2,
+    "min_available_ram_during_trial_fraction_total": 0.1,
+    "maximum_real_execution_budget_seconds": 5400
+  },
+  "stable_point": {
+    "required_completed_rounds": 6,
+    "required_clients_every_round": 20,
+    "expected_examples_every_round": 640,
+    "zero_client_failures": true,
+    "aggregation_oracle_required": true,
+    "global_model_must_change": true,
+    "finite_diagnostics_required": true,
+    "timing_sample_rounds": [
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "max_warm_round_p95_seconds": 120,
+    "selection_rule": "largest_population_passing_all_checks",
+    "repeat_selected_point": 1,
+    "repeat_parameter_atol": 1e-06,
+    "repeat_parameter_rtol": 0.0
+  },
+  "predeclared_failure_behavior": "retain_failure; stop_escalation_after_resource_failure; never_reduce_population_silently",
+  "summary_output": "docs/evidence/s2-pr-01/scale_summary.v1.json",
+  "trial_public_root": "docs/evidence/s2-pr-01/trials",
+  "private_logs_root": "artifacts/federated-runtime",
+  "experiment_result_root": "artifacts/experiment-results"
+}

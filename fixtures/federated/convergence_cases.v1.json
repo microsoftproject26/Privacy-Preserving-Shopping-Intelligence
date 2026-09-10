@@ -1,0 +1,195 @@
+{
+  "schema": "convergence_fixture_v1",
+  "version": "1",
+  "artifact_kind": "FIXTURE_PROOF",
+  "cases": [
+    {
+      "case_id": "inclusive_confirmation",
+      "rounds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "values": [
+        0.95,
+        0.95,
+        0.95,
+        1.0
+      ],
+      "r1_value": 1.0,
+      "expected_self_status": "REACHED",
+      "expected_first_round": 1,
+      "expected_confirmation_round": 3,
+      "expected_target_status": "REACHED",
+      "expected_target_round": 1
+    },
+    {
+      "case_id": "single_spike",
+      "rounds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "values": [
+        0.2,
+        0.97,
+        0.5,
+        1.0
+      ],
+      "r1_value": 1.0,
+      "expected_self_status": "NOT_REACHED",
+      "expected_first_round": null,
+      "expected_confirmation_round": null,
+      "expected_target_status": "REACHED",
+      "expected_target_round": 2
+    },
+    {
+      "case_id": "sustained",
+      "rounds": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "values": [
+        0.2,
+        0.94,
+        0.96,
+        0.95,
+        1.0
+      ],
+      "r1_value": 1.0,
+      "expected_self_status": "REACHED",
+      "expected_first_round": 3,
+      "expected_confirmation_round": 5,
+      "expected_target_status": "REACHED",
+      "expected_target_round": 2
+    },
+    {
+      "case_id": "nan_gap",
+      "rounds": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "values": [
+        0.95,
+        null,
+        0.97,
+        0.96,
+        1.0
+      ],
+      "r1_value": 1.0,
+      "expected_self_status": "REACHED",
+      "expected_first_round": 3,
+      "expected_confirmation_round": 5,
+      "expected_target_status": "REACHED",
+      "expected_target_round": 1
+    },
+    {
+      "case_id": "cadence_gap",
+      "rounds": [
+        1,
+        3,
+        4,
+        5
+      ],
+      "values": [
+        0.95,
+        0.96,
+        0.97,
+        1.0
+      ],
+      "r1_value": 1.0,
+      "expected_self_status": "REACHED",
+      "expected_first_round": 3,
+      "expected_confirmation_round": 5,
+      "expected_target_status": "REACHED",
+      "expected_target_round": 1
+    },
+    {
+      "case_id": "short",
+      "rounds": [
+        1,
+        2
+      ],
+      "values": [
+        0.95,
+        1.0
+      ],
+      "r1_value": 1.0,
+      "expected_self_status": "INSUFFICIENT_VALID_OBSERVATIONS",
+      "expected_first_round": null,
+      "expected_confirmation_round": null,
+      "expected_target_status": "REACHED",
+      "expected_target_round": 1
+    },
+    {
+      "case_id": "zero",
+      "rounds": [
+        1,
+        2,
+        3
+      ],
+      "values": [
+        0,
+        0,
+        0
+      ],
+      "r1_value": 1.0,
+      "expected_self_status": "NO_POSITIVE_REFERENCE",
+      "expected_first_round": null,
+      "expected_confirmation_round": null,
+      "expected_target_status": "NOT_REACHED",
+      "expected_target_round": null
+    },
+    {
+      "case_id": "pending_r1",
+      "rounds": [
+        1,
+        2,
+        3
+      ],
+      "values": [
+        0.95,
+        0.96,
+        1.0
+      ],
+      "r1_value": null,
+      "expected_self_status": "REACHED",
+      "expected_first_round": 1,
+      "expected_confirmation_round": 3,
+      "expected_target_status": "PENDING_R1",
+      "expected_target_round": null
+    }
+  ],
+  "byte_oracle": {
+    "rounds": [
+      {
+        "round": 1,
+        "upload": 10,
+        "download": 100
+      },
+      {
+        "round": 2,
+        "upload": 20,
+        "download": 100
+      },
+      {
+        "round": 3,
+        "upload": 30,
+        "download": 100
+      }
+    ],
+    "through_round": 3,
+    "expected_upload": 60,
+    "expected_download": 300,
+    "expected_total": 360,
+    "actual_measured_flower_traffic": false
+  }
+}

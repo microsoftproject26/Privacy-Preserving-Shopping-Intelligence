@@ -1,0 +1,27 @@
+{
+  "schema": "fl_profile_matrix_v1",
+  "version": "1",
+  "workload_config": "config/federated/fl_runtime_workload.v1.json",
+  "scale_summary": "docs/evidence/s2-pr-01/scale_summary.v1.json",
+  "population": "largest_reproducible_safe_scale_population",
+  "concurrency_points": [
+    1,
+    2,
+    4
+  ],
+  "fresh_trials_per_point": 2,
+  "reuse_identical_successful_scale_trials": true,
+  "concurrency_4_preflight": {
+    "min_logical_cpus": 4,
+    "min_total_ram_gib": 16,
+    "min_available_ram_gib": 8
+  },
+  "peak_definition": "maximum_over_time_of_simultaneous_sum_of_root_and_descendant_rss",
+  "memory_caveat": "sampled_process_tree_RSS; shared_pages_may_be_double_counted; not_unique_physical_RAM",
+  "p50_definition": "statistics.median",
+  "p95_definition": "nearest_rank_ceil_0.95_n_minus_1",
+  "normal_selection": "fastest_p50_among_twice_stable_points; ties_choose_lower_concurrency",
+  "low_memory_selection": "lowest_max_trial_tree_RSS_among_twice_stable_points; ties_choose_lower_concurrency",
+  "summary_output": "docs/evidence/s2-pr-03/profile_summary.v1.json",
+  "runtime_recommendations_output": "docs/evidence/s2-pr-03/runtime_recommendations.v1.json"
+}

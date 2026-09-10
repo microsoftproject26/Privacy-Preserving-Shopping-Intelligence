@@ -1,0 +1,189 @@
+{
+  "benchmark_pool": {
+    "eligible_client_count": 29740,
+    "excluded_from_benchmark_only": 66250,
+    "minimum_train_examples": 32,
+    "note": "An explicit benchmark subset for comparable runtime work. Not a new cohort, not a FedAvg eligibility policy, and never TEST-informed.",
+    "order": "ascending_opaque_client_id_nested_prefixes",
+    "pool_sufficient_for_largest_point": true,
+    "population_points": [
+      1000,
+      2500,
+      5000
+    ]
+  },
+  "chosen_population": 5000,
+  "concurrency_decision": {
+    "admissible": true,
+    "concurrency": 2,
+    "reason": "DEFAULT_ADMITTED"
+  },
+  "hardware": {
+    "available_ram_bytes": 7497195520,
+    "device": "cpu",
+    "flwr": "1.33.0",
+    "gpu_memory": "NOT_APPLICABLE",
+    "logical_cpus": 20,
+    "numpy": "2.4.6",
+    "os": "Windows-10-10.0.26200-SP0",
+    "physical_cpus": 14,
+    "polars": "1.43.2",
+    "psutil": "7.2.2",
+    "python": "3.11.14",
+    "ray": "2.55.1",
+    "repo_volume_free_bytes": 123927810048,
+    "schema": "runtime_hardware_identity_v1",
+    "temp_volume_free_bytes": 13828980736,
+    "torch": "2.13.0+cpu",
+    "total_ram_bytes": 16890978304,
+    "version": "1"
+  },
+  "limitations": [
+    "Runtime benchmark only; not an R2A scientific result and not a capacity guarantee.",
+    "Only 20 clients train per round; the declared population is never fully trained.",
+    "Peak memory is a sampled process-tree RSS upper bound, not unique physical RAM.",
+    "Safety thresholds are conservative plan decisions, not measured hardware capability."
+  ],
+  "local_gate": "PASS",
+  "local_gate_note": "Local technical acceptance for this bundle only. It is not a GitHub closure and no issue is Done before the human merges the delivering PR.",
+  "points": [
+    {
+      "configured_concurrency": 2,
+      "declared_population": 1000,
+      "participants_per_round": 20,
+      "peak_tree_rss_bytes": 1905614848,
+      "reason": null,
+      "result_run_id": "run-v1__r2a__t1__c1__s13__cfgeb049dd8190b__a1",
+      "status": "STABLE",
+      "trial_id": "n1000-m20-c2-rep1",
+      "trial_summary_ref": {
+        "artifact_schema": "fl_runtime_trial_summary_v1",
+        "artifact_version": "1",
+        "logical_id": "fl_runtime_trial_summary_v1",
+        "schema": "artifact_ref_v1",
+        "sha256": "0f134129f17ee3994d0fee89ce4eca3816f0637e51671db2aaaa83f27dea19c1",
+        "uri": "docs/evidence/s2-pr-01/trials/n1000-m20-c2-rep1/trial_summary.v1.json",
+        "version": "1"
+      },
+      "warm_round_wall_seconds": {
+        "max": 0.5404777,
+        "mean": 0.5256053599999999,
+        "min": 0.5144337,
+        "n": 5,
+        "p50": 0.5250401,
+        "p95": 0.5404777
+      }
+    },
+    {
+      "configured_concurrency": 2,
+      "declared_population": 2500,
+      "participants_per_round": 20,
+      "peak_tree_rss_bytes": 1909805056,
+      "reason": null,
+      "result_run_id": "run-v1__r2a__t1__c1__s13__cfgc49de1898f6d__a1",
+      "status": "STABLE",
+      "trial_id": "n2500-m20-c2-rep1",
+      "trial_summary_ref": {
+        "artifact_schema": "fl_runtime_trial_summary_v1",
+        "artifact_version": "1",
+        "logical_id": "fl_runtime_trial_summary_v1",
+        "schema": "artifact_ref_v1",
+        "sha256": "8210e748facfbe04d04bedb948f8e87bd4c307f0459055c96dfa0eb97e02c18f",
+        "uri": "docs/evidence/s2-pr-01/trials/n2500-m20-c2-rep1/trial_summary.v1.json",
+        "version": "1"
+      },
+      "warm_round_wall_seconds": {
+        "max": 0.661774,
+        "mean": 0.61029956,
+        "min": 0.557316,
+        "n": 5,
+        "p50": 0.6176626,
+        "p95": 0.661774
+      }
+    },
+    {
+      "configured_concurrency": 2,
+      "declared_population": 5000,
+      "participants_per_round": 20,
+      "peak_tree_rss_bytes": 1915121664,
+      "reason": null,
+      "result_run_id": "run-v1__r2a__t1__c1__s13__cfg69fedd898775__a1",
+      "status": "STABLE",
+      "trial_id": "n5000-m20-c2-rep1",
+      "trial_summary_ref": {
+        "artifact_schema": "fl_runtime_trial_summary_v1",
+        "artifact_version": "1",
+        "logical_id": "fl_runtime_trial_summary_v1",
+        "schema": "artifact_ref_v1",
+        "sha256": "f078755b9437e912c2e082ed2d2c945f0db26ef0e31fd775a39e31ffca106991",
+        "uri": "docs/evidence/s2-pr-01/trials/n5000-m20-c2-rep1/trial_summary.v1.json",
+        "version": "1"
+      },
+      "warm_round_wall_seconds": {
+        "max": 0.6882155,
+        "mean": 0.6275644,
+        "min": 0.5549371,
+        "n": 5,
+        "p50": 0.6435695,
+        "p95": 0.6882155
+      }
+    },
+    {
+      "configured_concurrency": 2,
+      "declared_population": 5000,
+      "participants_per_round": 20,
+      "peak_tree_rss_bytes": 1916317696,
+      "reason": null,
+      "result_run_id": "run-v1__r2a__t1__c1__s13__cfg405938228619__a1",
+      "status": "STABLE_CONFIRMATION",
+      "trial_id": "n5000-m20-c2-rep2",
+      "trial_summary_ref": {
+        "artifact_schema": "fl_runtime_trial_summary_v1",
+        "artifact_version": "1",
+        "logical_id": "fl_runtime_trial_summary_v1",
+        "schema": "artifact_ref_v1",
+        "sha256": "cf0c7f775954a09c5a641fb61ca34f7e099bacafc788813e5abd802f84a22770",
+        "uri": "docs/evidence/s2-pr-01/trials/n5000-m20-c2-rep2/trial_summary.v1.json",
+        "version": "1"
+      },
+      "warm_round_wall_seconds": {
+        "max": 0.7625197,
+        "mean": 0.6351918,
+        "min": 0.5370074,
+        "n": 5,
+        "p50": 0.6350745,
+        "p95": 0.7625197
+      }
+    }
+  ],
+  "purpose": "NON_SCIENTIFIC_FL_RUNTIME_BENCHMARK",
+  "repeatability": {
+    "atol": 1e-06,
+    "confirmation_reason": null,
+    "confirmation_stable": true,
+    "contributing_examples_identical": true,
+    "final_state_byte_exact": true,
+    "final_state_max_abs_diff": 0.0,
+    "final_state_within_atol": true,
+    "note": "Timing and RSS are observations and are never compared for equality.",
+    "population": 5000,
+    "repeatable": true,
+    "rtol": 0.0,
+    "selection_digests_identical": true
+  },
+  "schema": "fl_scale_summary_v1",
+  "scientific": false,
+  "status": "COMPLETE",
+  "taskexample_counts_before_benchmark_filter": {
+    "client_count": 95990,
+    "max": 1216,
+    "mean": 32.438941556412125,
+    "measure": "T1_TRAIN_TASKEXAMPLE_COUNTS_NOT_RAW_EVENT_HISTORY",
+    "min": 1,
+    "p50": 19,
+    "p90": 71,
+    "p95": 104,
+    "p99": 213
+  },
+  "version": "1"
+}
