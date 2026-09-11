@@ -17,6 +17,19 @@ every published number.
 
 No path here points at TEST. That is not an oversight; `test_rows_read == 0` is a headline
 check of the whole project and this module is where it would be broken.
+
+**And for a long time this module *was* where it was broken.** The loader looped over every
+row group, decoded it, and only then applied the timestamp mask - so TEST rows were read
+into memory on the way past, and the `test_rows_read: 0` written into each result JSON was
+a literal, not a measurement. No TEST row ever reached a training array, so no number was
+contaminated; but the provenance claim was stronger than the evidence, which for a project
+whose central discipline is the TEST seal is its own kind of defect.
+
+`load_events` now uses the per-row-group statistics Parquet already carries to skip any
+group that cannot intersect the requested window, and it counts what it actually decoded.
+`rows_read_outside_window` is returned rather than asserted, so the number in a result JSON
+is measured. A group straddling a boundary still has to be decoded to be filtered, and that
+is exactly what the count makes visible instead of hiding.
 """
 
 from __future__ import annotations
@@ -68,6 +81,18 @@ def session_key(frame: pd.DataFrame, null_prefix: str) -> pd.Series:
     return provided.where(raw.notna(), singleton)
 
 
+
+def _as_timestamp(value) -> pd.Timestamp:
+    """A row-group statistic as a UTC timestamp, whatever Arrow handed back.
+
+    Statistics come back as a datetime, an int of some unit, or a string depending on how
+    the file was written. Guessing wrong here would silently skip a group that does hold
+    wanted rows, so an unrecognised type raises rather than defaults.
+    """
+    stamp = pd.Timestamp(value)
+    return stamp.tz_localize("UTC") if stamp.tzinfo is None else stamp.tz_convert("UTC")
+
+
 def load_events(
     raw_path: Path | str,
     *,
@@ -86,10 +111,27 @@ def load_events(
     afterwards is what turned a 2.3 GB dataset into a memory problem.
     """
     parquet = pq.ParquetFile(str(raw_path))
+    time_column = RAW_COLUMNS.index("event_time")
     parts = []
+    provenance = {"row_groups": parquet.metadata.num_row_groups, "groups_opened": 0,
+                  "groups_skipped_by_statistics": 0, "rows_decoded": 0,
+                  "rows_read_outside_window": 0}
+
     for group in range(parquet.metadata.num_row_groups):
+        # The statistics are in the footer; consulting them costs no decode. A group whose
+        # own minimum is at or past `end`, or whose maximum precedes `start`, cannot hold a
+        # single row we want - so it is never opened, and its rows are never read.
+        stats = parquet.metadata.row_group(group).column(time_column).statistics
+        if stats is not None and stats.has_min_max:
+            if _as_timestamp(stats.min) >= end or _as_timestamp(stats.max) < start:
+                provenance["groups_skipped_by_statistics"] += 1
+                continue
+
         chunk = parquet.read_row_group(group, columns=RAW_COLUMNS).to_pandas()
+        provenance["groups_opened"] += 1
+        provenance["rows_decoded"] += len(chunk)
         inside = (chunk["event_time"] >= start) & (chunk["event_time"] < end)
+        provenance["rows_read_outside_window"] += int((~inside).sum())
         if not inside.any():
             continue
         rows = chunk[inside]
@@ -104,6 +146,9 @@ def load_events(
     frame = pd.concat(parts, ignore_index=True)
     del parts
     frame = frame[~frame["session"].isin(excluded)]
+    # Carried on the frame rather than returned, so the five existing callers keep working
+    # and any of them can record measured provenance instead of writing a constant.
+    frame.attrs["provenance"] = provenance
 
     # The canonical order. The time gap reads order-adjacency, so sorting differently here
     # produces a different feature for the same event.

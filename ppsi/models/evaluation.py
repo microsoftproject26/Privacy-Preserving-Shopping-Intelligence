@@ -252,3 +252,50 @@ def transition_table(current: np.ndarray, following: np.ndarray, categories: int
     table = np.zeros((categories, categories), dtype="float64")
     np.add.at(table, (current, following), 1.0)
     return table
+
+
+def paired_client_bootstrap(per_client_model: "np.ndarray", per_client_baseline: "np.ndarray",
+                            *, resamples: int = 2000, seed: int = 13) -> dict:
+    """A confidence interval for the **gain**, resampling clients rather than seeds.
+
+    The noise floors this project has been quoting - 0.0033 on T1, 0.0029 on T2, 0.0048 on
+    T3 - are seed spreads: the max-minus-min of three runs. That number answers *"how much
+    does this move if I re-run it?"*, which is a real question but not the one a reader of
+    a headline asks. They want *"would this gain survive a different sample of shoppers?"*,
+    and three seeds on one fixed set of clients cannot answer it: every run saw exactly the
+    same people.
+
+    Resampling clients answers it directly, and pairing matters as much as resampling.
+    Taking two independent intervals - one for the model, one for the baseline - and
+    checking whether they overlap is a weaker and wronger test, because the two are
+    measured on the *same* clients and move together. A client whose session is hard drags
+    both scores down at once. Differencing inside each resample cancels that shared
+    difficulty and leaves only what the model actually changed, which is why a paired
+    interval is usually far tighter than the two separate ones suggest.
+
+    Both arrays are one value per client, in the same client order.
+    """
+    import numpy as np
+
+    assert per_client_model.shape == per_client_baseline.shape, (
+        f"{per_client_model.shape} against {per_client_baseline.shape}; a paired test needs "
+        "the same clients in the same order on both sides")
+
+    difference = per_client_model - per_client_baseline
+    clients = len(difference)
+    generator = np.random.default_rng(seed)
+    draws = generator.integers(0, clients, size=(resamples, clients))
+    means = difference[draws].mean(axis=1)
+
+    low, high = np.percentile(means, [2.5, 97.5])
+    return {
+        "clients": int(clients),
+        "gain": round(float(difference.mean()), 6),
+        "ci_low": round(float(low), 6),
+        "ci_high": round(float(high), 6),
+        "half_width": round(float((high - low) / 2), 6),
+        "resamples": int(resamples),
+        # The only claim that matters: does the interval clear zero entirely?
+        "above_zero": bool(low > 0),
+        "method": "paired client bootstrap, 2.5/97.5 percentiles of the mean difference",
+    }

@@ -59,10 +59,23 @@ EVENT_VOCAB = 4
 EVENT_CODE = {"view": EVENT_VIEW, "cart": EVENT_CART, "purchase": EVENT_PURCHASE}
 
 # --- continuous -------------------------------------------------------------------
-# One channel: log1p of the seconds since the previous event in the same session,
+# History: one channel, log1p of the seconds since the previous event in the same session,
 # clipped at one day. Two events a second apart and two an hour apart are different
 # behaviour, and nothing else in the batch carries that.
 HISTORY_CONTINUOUS_DIM = 1
+
+# Candidates: one channel, the normalised retrieval rank.
+#
+# **This was 0 when the spec was first frozen, and that was premature.** T3 is a reranking
+# task: the candidate list arrives already ordered by co-occurrence and popularity, and that
+# ordering *is* the 0.2046 baseline. A reranker that cannot see it has to rediscover
+# popularity from scratch through a randomly-initialised hash embedding. Measured: 0.0996
+# against a 0.2046 baseline - half the number a model-free ordering gets.
+#
+# The spec was frozen at the end of S2-DS-01, before T3 was built, and this is the cost of
+# that. Adding the channel now is free because nothing has been exported yet; adding it
+# after S2-SE-01 would have meant a re-export and a re-benchmark.
+CANDIDATE_CONTINUOUS_DIM = 1
 
 HISTORY_CHANNELS = ("category_id", "product_bucket", "event_type_id", "brand_bucket", "price_band")
 QUERY_CHANNELS = (
@@ -113,7 +126,7 @@ def phase1_batch_spec_v1() -> Phase1BatchSpec:
         ),
         history_continuous_dim=HISTORY_CONTINUOUS_DIM,
         query_continuous_dim=0,
-        candidate_continuous_dim=0,
+        candidate_continuous_dim=CANDIDATE_CONTINUOUS_DIM,
         candidate_id_pad_id=0,
         candidate_id_vocab_size=PRODUCT_BUCKETS,
     )

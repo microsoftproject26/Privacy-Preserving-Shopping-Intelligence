@@ -157,6 +157,33 @@ class SessionGRU(nn.Module):
         candidate_width = 24 + 8 * len(candidate_spec) + self.batch_spec.candidate_continuous_dim
         self.candidate_projection = nn.Linear(candidate_width, hidden)
 
+        # T3 as a residual reranker, not a from-scratch scorer.
+        #
+        # The first T3 attempt asked the model to out-rank a popularity-and-co-occurrence
+        # ordering while giving it no way to see that ordering, and it scored 0.0996
+        # against a 0.2046 baseline. Handing it the retrieval rank as a feature fixed the
+        # collapse but left the model still obliged to *rediscover* the ordering before it
+        # could improve on it - so most of its capacity went on reproducing a number we
+        # already had, and any gain was entangled with how well it did so.
+        #
+        # These two parameters remove that obligation. `t3_rank_weight` starts at -1 so the
+        # score is exactly the negated retrieval rank, and `t3_residual_scale` starts at 0
+        # so the learned term contributes nothing. **At initialisation the model therefore
+        # scores precisely the frozen retrieval order**, which the ladder asserts before
+        # training: an epoch-0 NDCG that is not the baseline to the fourth decimal means
+        # the prior is wired wrong.
+        #
+        # Every later point is then a measured departure from that ordering, and the gain
+        # is the thing being reported rather than a difference of two independent fits.
+        # The zero scale gets gradient immediately - d(loss)/d(scale) is the raw score, not
+        # zero - so this delays learning rather than preventing it. (This is ReZero.)
+        # Shape [1], not a scalar: `LocalTrainerCore` hashes every state_dict tensor by
+        # viewing it as uint8, and a 0-dimensional tensor cannot be viewed. A scalar here
+        # made the federated trainer step raise, which the contract test caught. Both
+        # broadcast against [B, K] identically, so nothing else changes.
+        self.t3_rank_weight = nn.Parameter(torch.tensor([-1.0]))
+        self.t3_residual_scale = nn.Parameter(torch.zeros(1))
+
     # -- Phase1Model -------------------------------------------------------------
     def shared_state_spec(self) -> SharedStateSpec:
         return SharedStateSpec.all_shared_floating(self)
@@ -210,7 +237,15 @@ class SessionGRU(nn.Module):
             candidate_parts.append(batch.candidate_continuous_features)
         candidates = torch.tanh(self.candidate_projection(torch.cat(candidate_parts, dim=-1)))
         # A score per candidate: the session vector against each candidate vector.
-        t3_scores = torch.einsum("bh,bkh->bk", dropped, candidates)
+        residual = torch.einsum("bh,bkh->bk", dropped, candidates)
+
+        # The retrieval rank is channel 0 of the candidate continuous features, normalised
+        # to [0, 1) with 0 the best. Negated, it *is* the frozen ordering.
+        if self.batch_spec.candidate_continuous_dim > 0:
+            rank = batch.candidate_continuous_features[..., 0]
+            t3_scores = self.t3_rank_weight * rank + self.t3_residual_scale * residual
+        else:
+            t3_scores = residual
 
         # No sigmoid, no softmax, no sorting. The contract requires raw activations so
         # that loss and metric code owns those choices.
