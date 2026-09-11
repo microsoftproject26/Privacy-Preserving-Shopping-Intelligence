@@ -89,6 +89,46 @@ holds both tasks at every weight we tried"*, not *"λ = 1.0 is optimal"*.
 
 ---
 
+## `S2-DS-ST1`: what sharing actually costs
+
+Everything above compares *ways of sharing*. It never asks the prior question: **would a
+model built only for T2, owing nothing to T1, do better?** `shared_vs_separate.py` trains
+exactly that - same architecture, same data, same budget, same seed, random weights instead
+of the trained T1 encoder.
+
+| arrangement | T1 | T2 | encoders on the device |
+|---|---:|---:|---:|
+| frozen encoder + T2 head | 0.3479 | 0.1104 | 1 |
+| sequential fine-tune | 0.1791 | 0.1424 | 1 |
+| **joint objective, `λ = 1.0`** | **0.3467** | **0.1337** | **1** |
+| **separate T2 model** | *untouched* | **0.1430** | **2** |
+
+**Sharing costs T2 `0.0093`.** That is thirteen times the `0.0007` seed spread on T1 and
+about an eighth of T2's whole gain over its baseline, so it is a real price and not noise.
+
+One number makes the picture coherent: **separate `0.1430` and sequential `0.1424` are the
+same result.** Fine-tuning the shared encoder for T2 *is* building a separate T2 model — it
+simply throws T1 away in the process rather than starting a second network on purpose.
+
+### The trade, fully quantified
+
+| | one encoder (joint) | two encoders (separate) |
+|---|---:|---:|
+| T1 slice macro | 0.3467 | 0.3479 |
+| T2 PR-AUC | 0.1337 | 0.1430 |
+| encoder parameters carried | **2,379,263** | **4,758,526** |
+
+Sharing costs `0.0012` of T1 and `0.0093` of T2, and halves what a phone carries for two
+tasks — before T3 is considered at all.
+
+**That is a decision, not a finding.** Nothing here says which side to take; it says what
+each side costs, which is what the proposal's shared-versus-separate item was asking for.
+If the device budget is the binding constraint, `0.0093` is cheap. If T2 accuracy is the
+product, two encoders is defensible and the on-device argument has to be made on something
+other than size.
+
+---
+
 ## What this hands to the federated lane
 
 1. **Do not fine-tune the full backbone locally.** Measured: it costs `0.1688` of T1. `R4`
@@ -99,8 +139,12 @@ holds both tasks at every weight we tried"*, not *"λ = 1.0 is optimal"*.
 3. **Evaluate both tasks after every federated round**, against a fixed central validation
    set, and roll back on a T1 non-inferiority break. The failure mode here was invisible to
    the task being optimised, and it will be invisible again.
-4. **`S2-DS-ST1` (shared versus separate) now has numbers**: sharing costs `0.0012` of T1 and
-   buys `+0.0233` of T2 over the frozen control at `λ = 1.0`.
+4. **`S2-DS-ST1` (shared versus separate) now has numbers, and they are not one-sided.**
+   Against the frozen control the joint model buys `+0.0233` of T2 for `0.0012` of T1.
+   Against a **separate** T2 model it gives up `0.0093` of T2 to save 2.38M parameters. The
+   federated argument should quote the second comparison, not only the first — a reviewer
+   who asks "why not just ship two models?" is asking about `0.0093`, and the answer is a
+   device budget rather than a quality claim.
 
 ---
 
