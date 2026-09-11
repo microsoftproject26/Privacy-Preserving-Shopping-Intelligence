@@ -1,0 +1,80 @@
+{
+  "task": "S2-DS-01",
+  "checkpoint": "s2_ds_01_gru_t1_seed13.pt",
+  "decisions": 438185,
+  "accuracy_at_1": 0.8239,
+  "session_versus_lookup": {
+    "decisions_compared": 373970,
+    "share_equal_to_their_category_modal_top1": 0.9797,
+    "distinct_top1_per_category_mean": 6.05,
+    "categories_with_50plus_decisions": 398,
+    "modal_share_on_those_categories": 0.9474,
+    "reading": "1.0 would mean the top-1 is decided by the current category alone and the sequence model is decoration; the shortfall below 1.0 is what the session history changes"
+  },
+  "versus_the_transition_table": {
+    "decisions_with_a_table_row": 438047,
+    "model_top1_equals_table_top1": 0.982,
+    "model_accuracy_at_1": 0.8241,
+    "table_accuracy_at_1": 0.8237,
+    "reading": "if the two top-1s mostly agree while the model still scores higher on MRR, the model's advantage is in the ordering below rank 1, not in what it puts first"
+  },
+  "popularity_correlation": 0.3059,
+  "confidence_reliability": {
+    "bins": [
+      {
+        "from": 0.0,
+        "to": 0.1,
+        "decisions": 522,
+        "share_of_all": 0.0012,
+        "mean_confidence": 0.0775,
+        "accuracy": 0.1226
+      },
+      {
+        "from": 0.1,
+        "to": 0.2,
+        "decisions": 2949,
+        "share_of_all": 0.0067,
+        "mean_confidence": 0.1594,
+        "accuracy": 0.218
+      },
+      {
+        "from": 0.2,
+        "to": 0.3,
+        "decisions": 6069,
+        "share_of_all": 0.0139,
+        "mean_confidence": 0.2542,
+        "accuracy": 0.3198
+      },
+      {
+        "from": 0.3,
+        "to": 0.5,
+        "decisions": 25095,
+        "share_of_all": 0.0573,
+        "mean_confidence": 0.413,
+        "accuracy": 0.4467
+      },
+      {
+        "from": 0.5,
+        "to": 0.7,
+        "decisions": 45149,
+        "share_of_all": 0.103,
+        "mean_confidence": 0.6131,
+        "accuracy": 0.6091
+      },
+      {
+        "from": 0.7,
+        "to": 1.01,
+        "decisions": 358401,
+        "share_of_all": 0.8179,
+        "mean_confidence": 0.902,
+        "accuracy": 0.8919
+      }
+    ],
+    "mean_absolute_gap_on_populated_bins": 0.0344,
+    "reading": "a bin where confidence far exceeds accuracy means the product cannot threshold on confidence to decide when to recommend"
+  },
+  "already_reported_elsewhere": [
+    "category_coverage",
+    "per_client_top1_divergence"
+  ]
+}

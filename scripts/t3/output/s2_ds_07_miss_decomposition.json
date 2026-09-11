@@ -1,0 +1,18 @@
+{
+  "task": "S2-DS-07",
+  "question": "how much of the T3 gap can a reranker reach?",
+  "evaluable_queries": 18814,
+  "buckets": {
+    "no candidate list": 0,
+    "retrieval miss (list exists, item absent)": 3207,
+    "present but ranked outside the top 5": 9835,
+    "already inside the top 5": 5772
+  },
+  "reachable_by_a_reranker": 9835,
+  "reachable_share": 0.5227,
+  "retrieval_order_macro": 0.2707,
+  "perfect_reranking_of_the_same_lists_macro": 0.8782,
+  "contest_worth_macro": 0.6075,
+  "oracle_ceiling_macro": 0.8795,
+  "note": "the oracle ceiling of 0.8795 includes items retrieval never returned. No reranker can reach those, so the number to compare a reranker against is the perfect-reranking figure, not the oracle ceiling."
+}

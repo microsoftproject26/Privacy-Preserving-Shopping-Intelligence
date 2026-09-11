@@ -1,0 +1,28 @@
+{
+  "task": "S2-DS-01",
+  "question": "does the T1 conclusion depend on the slice convention?",
+  "conventions": [
+    {
+      "convention": "suppressed (this lane)",
+      "baseline": 0.3143,
+      "model": 0.3479,
+      "gain": 0.0336,
+      "model_beats_baseline": true
+    },
+    {
+      "convention": "raw (the frozen harness)",
+      "baseline": 0.1892,
+      "model": 0.2174,
+      "gain": 0.0282,
+      "model_beats_baseline": true
+    }
+  ],
+  "conclusion_is_convention_independent": true,
+  "min_gain": 0.0282,
+  "max_gain": 0.0336,
+  "published_pair": {
+    "baseline": 0.3143,
+    "model": 0.3479
+  },
+  "warning": "mixing the two - a baseline measured under one convention against a model measured under the other - gives 0.2174 against 0.3143 and reads as the model losing. That is the only unsafe combination."
+}

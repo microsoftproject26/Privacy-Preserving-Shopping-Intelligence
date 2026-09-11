@@ -1,0 +1,46 @@
+{
+  "task": "S2-DS-06",
+  "question": "did T2 fine-tuning damage T1?",
+  "evaluator": "S2-DS-01 train.score, unchanged",
+  "baseline_slice_macro": 0.3143,
+  "t1_published_mean_over_seeds": 0.3474,
+  "seed_spread": 0.0033,
+  "models": [
+    {
+      "model": "S2-DS-01 encoder, T1 only",
+      "checkpoint": "s2_ds_01_gru_t1_seed13.pt",
+      "slice_macro_mrr": 0.3479,
+      "slice_micro_mrr": 0.3578,
+      "overall_micro_mrr": 0.8604
+    },
+    {
+      "model": "after T2, encoder frozen",
+      "checkpoint": "t2_1.pt",
+      "slice_macro_mrr": 0.3479,
+      "slice_micro_mrr": 0.3578,
+      "overall_micro_mrr": 0.8604
+    },
+    {
+      "model": "after T2, encoder fine-tuned",
+      "checkpoint": "t2_2.pt",
+      "slice_macro_mrr": 0.1791,
+      "slice_micro_mrr": 0.1513,
+      "overall_micro_mrr": 0.4728
+    }
+  ],
+  "control_drift": 0.0,
+  "cost_of_sharing": -0.1688,
+  "beyond_noise": true,
+  "verdict": "catastrophic negative transfer: T2 fine-tuning drives T1 below its own model-free baseline, on both the slice macro and the overall micro",
+  "t1_baselines": {
+    "slice_macro_transition_table": 0.3143,
+    "overall_micro_trivial_repeat_category": 0.8232
+  },
+  "analysis": {
+    "control": "the frozen rung reproduces the T1 encoder to 0.000000. Freezing cannot change an encoder, so this proves the harness measures the encoder and not something incidental to how the checkpoint was loaded.",
+    "magnitude": "slice macro 0.3479 -> 0.1791 and overall micro 0.8604 -> 0.4728. Both land BELOW their own model-free baselines - 0.3143 for the slice and 0.8232 for the trivial repeat-category rule. The encoder has not been degraded, it has lost the category-transition structure outright.",
+    "why_it_is_not_a_bug": "the T2 rung optimises a purchase-likelihood loss and carries no T1 term at all, so nothing was defending T1. This is what unconstrained sequential fine-tuning does; the measurement is of how much, not of whether.",
+    "consequence": "the shared-backbone premise cannot be satisfied by training the heads one after another. S2-DS-08's joint loss is not an optimisation on top of a working arrangement - it is the only thing that makes the arrangement possible, and S2-DS-ST1 now has a measured number for the cost of sharing rather than an assumption.",
+    "what_this_does_not_say": "it does not say a shared encoder cannot serve both tasks. The frozen rung already reaches +0.0347 over the T2 baseline with the T1 encoder untouched, so the T1 representation demonstrably carries purchase signal. What is unmeasured is whether a jointly trained encoder can hold both at once."
+  }
+}

@@ -1,0 +1,242 @@
+{
+  "task": "S2-DS-01",
+  "merges": [
+    "S2-DS-04"
+  ],
+  "status": "PROPOSED",
+  "scope": {
+    "cohort": "C1",
+    "user_slice": "user_id % 4 == 1",
+    "measured_users": 97279,
+    "train_events": 4376137,
+    "train_decisions": 3113814,
+    "validation_decisions": 438185,
+    "test_rows_read": 0
+  },
+  "selected_config": {
+    "channels": [
+      "category_id",
+      "event_type_id"
+    ],
+    "use_gap": true,
+    "hidden": 128,
+    "layers": 1,
+    "dropout": 0.3,
+    "widths": {
+      "category_id": 64,
+      "product_bucket": 24,
+      "event_type_id": 4,
+      "brand_bucket": 16,
+      "price_band": 4
+    },
+    "learning_rate": 0.001,
+    "parameters": 2329789,
+    "schedule": "cosine",
+    "epochs": 30
+  },
+  "baseline": {
+    "slice_macro": 0.3143,
+    "slice_micro": 0.3085,
+    "overall_micro": 0.856
+  },
+  "runs": [
+    {
+      "seed": 13,
+      "best_epoch": 28,
+      "slice_macro": 0.3479,
+      "slice_micro": 0.3578,
+      "overall_micro": 0.8604,
+      "final_train_val_gap": 0.04066
+    },
+    {
+      "seed": 42,
+      "best_epoch": 30,
+      "slice_macro": 0.3472,
+      "slice_micro": 0.357,
+      "overall_micro": 0.8602,
+      "final_train_val_gap": 0.0419
+    },
+    {
+      "seed": 2026,
+      "best_epoch": 29,
+      "slice_macro": 0.3472,
+      "slice_micro": 0.3576,
+      "overall_micro": 0.8602,
+      "final_train_val_gap": 0.04056
+    }
+  ],
+  "mean_slice_macro": 0.3474,
+  "seed_spread": 0.0007,
+  "gain_over_baseline": 0.0331,
+  "comparison_threshold": 0.0033,
+  "beats_threshold": true,
+  "by_client_history": {
+    "13": {
+      "clients": {
+        "10-19": 2924,
+        "20-49": 6209,
+        "50-99": 3946,
+        "100+": 3017
+      },
+      "decisions": {
+        "10-19": 9845,
+        "20-49": 25250,
+        "50-99": 19282,
+        "100+": 23080
+      },
+      "macro": {
+        "10-19": 0.3633,
+        "20-49": 0.3457,
+        "50-99": 0.3396,
+        "100+": 0.3485
+      },
+      "baseline": {
+        "10-19": 0.3302,
+        "20-49": 0.3111,
+        "50-99": 0.3088,
+        "100+": 0.3128
+      },
+      "gain": {
+        "10-19": 0.0331,
+        "20-49": 0.0346,
+        "50-99": 0.0308,
+        "100+": 0.0357
+      }
+    },
+    "42": {
+      "clients": {
+        "10-19": 2924,
+        "20-49": 6209,
+        "50-99": 3946,
+        "100+": 3017
+      },
+      "decisions": {
+        "10-19": 9845,
+        "20-49": 25250,
+        "50-99": 19282,
+        "100+": 23080
+      },
+      "macro": {
+        "10-19": 0.3626,
+        "20-49": 0.345,
+        "50-99": 0.3391,
+        "100+": 0.3476
+      },
+      "baseline": {
+        "10-19": 0.3302,
+        "20-49": 0.3111,
+        "50-99": 0.3088,
+        "100+": 0.3128
+      },
+      "gain": {
+        "10-19": 0.0324,
+        "20-49": 0.0339,
+        "50-99": 0.0303,
+        "100+": 0.0348
+      }
+    },
+    "2026": {
+      "clients": {
+        "10-19": 2924,
+        "20-49": 6209,
+        "50-99": 3946,
+        "100+": 3017
+      },
+      "decisions": {
+        "10-19": 9845,
+        "20-49": 25250,
+        "50-99": 19282,
+        "100+": 23080
+      },
+      "macro": {
+        "10-19": 0.3632,
+        "20-49": 0.3435,
+        "50-99": 0.3401,
+        "100+": 0.3489
+      },
+      "baseline": {
+        "10-19": 0.3302,
+        "20-49": 0.3111,
+        "50-99": 0.3088,
+        "100+": 0.3128
+      },
+      "gain": {
+        "10-19": 0.033,
+        "20-49": 0.0324,
+        "50-99": 0.0313,
+        "100+": 0.0361
+      }
+    }
+  },
+  "diagnostics": {
+    "13": {
+      "coverage": {
+        "distinct_categories_in_top5": 573,
+        "coverage": 0.9745,
+        "concentration_gini": 0.8233
+      },
+      "per_client": {
+        "distinct_top1_overall": 547,
+        "most_common_top1_share": 0.2351,
+        "mean_distinct_top1_per_client": 2.342
+      }
+    },
+    "42": {
+      "coverage": {
+        "distinct_categories_in_top5": 573,
+        "coverage": 0.9745,
+        "concentration_gini": 0.8232
+      },
+      "per_client": {
+        "distinct_top1_overall": 547,
+        "most_common_top1_share": 0.2347,
+        "mean_distinct_top1_per_client": 2.343
+      }
+    },
+    "2026": {
+      "coverage": {
+        "distinct_categories_in_top5": 573,
+        "coverage": 0.9745,
+        "concentration_gini": 0.822
+      },
+      "per_client": {
+        "distinct_top1_overall": 545,
+        "most_common_top1_share": 0.2348,
+        "mean_distinct_top1_per_client": 2.343
+      }
+    }
+  },
+  "checkpoints": {
+    "13": {
+      "file": "s2_ds_01_gru_t1_seed13.pt",
+      "MB": 9.33
+    },
+    "42": {
+      "file": "s2_ds_01_gru_t1_seed42.pt",
+      "MB": 9.33
+    },
+    "2026": {
+      "file": "s2_ds_01_gru_t1_seed2026.pt",
+      "MB": 9.33
+    }
+  },
+  "common_initialization": {
+    "13": {
+      "file": "common_initialization_seed13.pt",
+      "sha256": "f81458a35bdd903c40e9f8ef4b7ea2ac776dd4e8d435de725782fbcbbcbedc9e"
+    },
+    "42": {
+      "file": "common_initialization_seed42.pt",
+      "sha256": "9efa41f72d0f5b2ef85c63e75fc47131007c71cf9bcfb97e6e4b3a4fdd79a395"
+    },
+    "2026": {
+      "file": "common_initialization_seed2026.pt",
+      "sha256": "71102dba0a428525180ca4443dce04255916dda8f0c026c312bbaf66921e7a4e"
+    }
+  },
+  "ci_parity_fixture": "ci_parity_fixture.json",
+  "environment": {
+    "torch": "2.13.0+cu126",
+    "device": "NVIDIA GeForce GTX 1660 Ti"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "task": "S2-DS-06",
+  "question": "did the restored TRAIN negatives change the model?",
+  "restored_train_rows": 478718,
+  "restored_validation_rows": 70467,
+  "baseline_pr_auc_corrected": 0.076,
+  "models": [
+    {
+      "model": "trained on the published mask",
+      "checkpoint": "t2_2_trained_on_published_mask.pt",
+      "pr_auc_corrected": 0.1411,
+      "roc_auc_corrected": 0.7949,
+      "brier_corrected": 0.0268,
+      "pr_auc_published_mask": 0.1797,
+      "mean_probability": 0.0391,
+      "mean_probability_on_restored": 0.0516,
+      "p90_probability_on_restored": 0.1336
+    },
+    {
+      "model": "retrained on corrected labels",
+      "checkpoint": "t2_2.pt",
+      "pr_auc_corrected": 0.1424,
+      "roc_auc_corrected": 0.7923,
+      "brier_corrected": 0.02633,
+      "pr_auc_published_mask": 0.1785,
+      "mean_probability": 0.0324,
+      "mean_probability_on_restored": 0.0406,
+      "p90_probability_on_restored": 0.1007
+    }
+  ],
+  "difference_from_retraining": 0.0013,
+  "verdict": "the defect was a measurement error, not a training error"
+}

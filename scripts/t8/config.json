@@ -1,0 +1,66 @@
+{
+  "status": "PROPOSED",
+  "task": "S2-DS-08",
+  "title": "Joint T1+T2 objective, Pareto-constrained selection",
+  "scope": {
+    "cohort": "C1",
+    "user_slice": "user_id % 4 == 1",
+    "measured_users": 97279,
+    "data": "frozen v1 artifacts, not rebuilt and not extended",
+    "test_seal": {
+      "test_rows_used": 0,
+      "measured": "_SEAL/test_seal_measured.json"
+    }
+  },
+  "encoder": {
+    "channels": [
+      "category_id",
+      "event_type_id"
+    ],
+    "use_gap": true,
+    "hidden": 128,
+    "layers": 1,
+    "dropout": 0.3,
+    "core": "gru",
+    "note": "read from S2-DS-01's selected_config(); never restated by hand"
+  },
+  "selected": {
+    "lambda_t1": 1.0,
+    "lambda_t2": 1.0,
+    "epochs": 8,
+    "batch": 512,
+    "learning_rate": 0.0003,
+    "seed": 13,
+    "seeds_run": 1,
+    "started_from": "s2_ds_01_gru_t1_seed13.pt",
+    "checkpoint": "output/joint_lambda1.0.pt",
+    "why_this_lambda": "best T2 within the T1 margin. T2 rose monotonically with the weight and 1.0 is the edge of the pre-registered ladder, so the breaking point was NOT found. Do not read 1.0 as optimal."
+  },
+  "selection_rule": {
+    "maximise": "T2 PR-AUC",
+    "subject_to": "T1 slice macro within 0.003 of 0.3479",
+    "fixed_before_the_run": true,
+    "source": "round-2 review",
+    "epochs_refused": 0
+  },
+  "results": {
+    "t1": 0.3467,
+    "t2": 0.1337,
+    "t1_cost": -0.0012,
+    "sequential_comparison": {
+      "t1": 0.1791,
+      "t2": 0.1424
+    },
+    "separate_models_comparison": {
+      "t2": 0.143,
+      "sharing_costs_t2": 0.0093,
+      "encoder_parameters_saved": 2379263
+    }
+  },
+  "t3_excluded": "no T3 loss enters the shared encoder: S2-DS-07 has no learned reranker that beats the frozen retrieval order",
+  "consumed_by": [
+    "S2-SE-08",
+    "S2-PR-09",
+    "S2-PR-06"
+  ]
+}

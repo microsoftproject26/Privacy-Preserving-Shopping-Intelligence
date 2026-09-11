@@ -1,0 +1,400 @@
+{
+  "baseline_slice_macro": 0.3143,
+  "noise_floor": 0.0033,
+  "seed": 13,
+  "results": [
+    {
+      "rung": "1. all TRAIN decisions",
+      "best_epoch": 3,
+      "slice_macro": 0.3373,
+      "slice_micro": 0.347,
+      "overall_micro": 0.8585,
+      "gain_over_baseline": 0.023,
+      "step_over_previous": null,
+      "beats_noise": true
+    },
+    {
+      "rung": "2. + product identity",
+      "best_epoch": 2,
+      "slice_macro": 0.3367,
+      "slice_micro": 0.3456,
+      "overall_micro": 0.8578,
+      "gain_over_baseline": 0.0224,
+      "step_over_previous": -0.0006,
+      "beats_noise": true
+    },
+    {
+      "rung": "3. + brand",
+      "best_epoch": 1,
+      "slice_macro": 0.3375,
+      "slice_micro": 0.3464,
+      "overall_micro": 0.8579,
+      "gain_over_baseline": 0.0232,
+      "step_over_previous": 0.0008,
+      "beats_noise": true
+    },
+    {
+      "rung": "4. + price band",
+      "best_epoch": 2,
+      "slice_macro": 0.339,
+      "slice_micro": 0.3475,
+      "overall_micro": 0.8574,
+      "gain_over_baseline": 0.0247,
+      "step_over_previous": 0.0015,
+      "beats_noise": true
+    },
+    {
+      "rung": "5. two layers",
+      "best_epoch": 3,
+      "slice_macro": 0.337,
+      "slice_micro": 0.3439,
+      "overall_micro": 0.8574,
+      "gain_over_baseline": 0.0227,
+      "step_over_previous": -0.002,
+      "beats_noise": true
+    }
+  ],
+  "curves": {
+    "1. all TRAIN decisions": [
+      {
+        "epoch": 1,
+        "train_loss": 1.10416,
+        "val_loss": 1.05132,
+        "gap": -0.05284,
+        "val_accuracy": 0.82167,
+        "seconds": 54.3
+      },
+      {
+        "epoch": 2,
+        "train_loss": 1.03331,
+        "val_loss": 1.05003,
+        "gap": 0.01672,
+        "val_accuracy": 0.82158,
+        "seconds": 53.4
+      },
+      {
+        "epoch": 3,
+        "train_loss": 1.02502,
+        "val_loss": 1.04621,
+        "gap": 0.02119,
+        "val_accuracy": 0.82205,
+        "seconds": 54.0
+      },
+      {
+        "epoch": 4,
+        "train_loss": 1.02051,
+        "val_loss": 1.04707,
+        "gap": 0.02656,
+        "val_accuracy": 0.82218,
+        "seconds": 54.3
+      },
+      {
+        "epoch": 5,
+        "train_loss": 1.01695,
+        "val_loss": 1.04794,
+        "gap": 0.03098,
+        "val_accuracy": 0.8216,
+        "seconds": 53.9
+      }
+    ],
+    "2. + product identity": [
+      {
+        "epoch": 1,
+        "train_loss": 1.10472,
+        "val_loss": 1.05427,
+        "gap": -0.05046,
+        "val_accuracy": 0.82145,
+        "seconds": 58.2
+      },
+      {
+        "epoch": 2,
+        "train_loss": 1.02602,
+        "val_loss": 1.05276,
+        "gap": 0.02674,
+        "val_accuracy": 0.82113,
+        "seconds": 58.0
+      },
+      {
+        "epoch": 3,
+        "train_loss": 1.00851,
+        "val_loss": 1.05372,
+        "gap": 0.04522,
+        "val_accuracy": 0.82088,
+        "seconds": 58.0
+      },
+      {
+        "epoch": 4,
+        "train_loss": 0.99417,
+        "val_loss": 1.06195,
+        "gap": 0.06779,
+        "val_accuracy": 0.82056,
+        "seconds": 57.9
+      }
+    ],
+    "3. + brand": [
+      {
+        "epoch": 1,
+        "train_loss": 1.10583,
+        "val_loss": 1.05358,
+        "gap": -0.05224,
+        "val_accuracy": 0.82136,
+        "seconds": 60.5
+      },
+      {
+        "epoch": 2,
+        "train_loss": 1.02494,
+        "val_loss": 1.05397,
+        "gap": 0.02903,
+        "val_accuracy": 0.8207,
+        "seconds": 60.5
+      },
+      {
+        "epoch": 3,
+        "train_loss": 1.00781,
+        "val_loss": 1.05411,
+        "gap": 0.0463,
+        "val_accuracy": 0.8207,
+        "seconds": 60.5
+      }
+    ],
+    "4. + price band": [
+      {
+        "epoch": 1,
+        "train_loss": 1.10446,
+        "val_loss": 1.0527,
+        "gap": -0.05176,
+        "val_accuracy": 0.82129,
+        "seconds": 63.8
+      },
+      {
+        "epoch": 2,
+        "train_loss": 1.02468,
+        "val_loss": 1.05166,
+        "gap": 0.02698,
+        "val_accuracy": 0.82031,
+        "seconds": 63.4
+      },
+      {
+        "epoch": 3,
+        "train_loss": 1.00779,
+        "val_loss": 1.05304,
+        "gap": 0.04526,
+        "val_accuracy": 0.82098,
+        "seconds": 63.5
+      },
+      {
+        "epoch": 4,
+        "train_loss": 0.99397,
+        "val_loss": 1.06078,
+        "gap": 0.06682,
+        "val_accuracy": 0.8202,
+        "seconds": 63.3
+      }
+    ],
+    "5. two layers": [
+      {
+        "epoch": 1,
+        "train_loss": 1.11744,
+        "val_loss": 1.0576,
+        "gap": -0.05984,
+        "val_accuracy": 0.82106,
+        "seconds": 88.8
+      },
+      {
+        "epoch": 2,
+        "train_loss": 1.03288,
+        "val_loss": 1.05592,
+        "gap": 0.02304,
+        "val_accuracy": 0.82003,
+        "seconds": 4564.6
+      },
+      {
+        "epoch": 3,
+        "train_loss": 1.01974,
+        "val_loss": 1.05486,
+        "gap": 0.03512,
+        "val_accuracy": 0.82094,
+        "seconds": 81.6
+      },
+      {
+        "epoch": 4,
+        "train_loss": 1.0105,
+        "val_loss": 1.05814,
+        "gap": 0.04763,
+        "val_accuracy": 0.82039,
+        "seconds": 85.2
+      },
+      {
+        "epoch": 5,
+        "train_loss": 1.00345,
+        "val_loss": 1.06234,
+        "gap": 0.0589,
+        "val_accuracy": 0.81912,
+        "seconds": 86.7
+      }
+    ]
+  },
+  "diagnostics": {
+    "1. all TRAIN decisions": {
+      "by_client_history": {
+        "clients": {
+          "10-19": 3272,
+          "20-49": 5427,
+          "50-99": 3043,
+          "100+": 2057
+        },
+        "decisions": {
+          "10-19": 12374,
+          "20-49": 23894,
+          "50-99": 16170,
+          "100+": 17405
+        },
+        "macro": {
+          "10-19": 0.3481,
+          "20-49": 0.3281,
+          "50-99": 0.3363,
+          "100+": 0.3354
+        }
+      },
+      "coverage": {
+        "distinct_categories_in_top5": 571,
+        "coverage": 0.9711,
+        "concentration_gini": 0.8202
+      },
+      "per_client": {
+        "distinct_top1_overall": 540,
+        "most_common_top1_share": 0.2352,
+        "mean_distinct_top1_per_client": 2.343
+      }
+    },
+    "2. + product identity": {
+      "by_client_history": {
+        "clients": {
+          "10-19": 3272,
+          "20-49": 5427,
+          "50-99": 3043,
+          "100+": 2057
+        },
+        "decisions": {
+          "10-19": 12374,
+          "20-49": 23894,
+          "50-99": 16170,
+          "100+": 17405
+        },
+        "macro": {
+          "10-19": 0.3499,
+          "20-49": 0.3302,
+          "50-99": 0.3324,
+          "100+": 0.3356
+        }
+      },
+      "coverage": {
+        "distinct_categories_in_top5": 568,
+        "coverage": 0.966,
+        "concentration_gini": 0.8233
+      },
+      "per_client": {
+        "distinct_top1_overall": 546,
+        "most_common_top1_share": 0.2347,
+        "mean_distinct_top1_per_client": 2.334
+      }
+    },
+    "3. + brand": {
+      "by_client_history": {
+        "clients": {
+          "10-19": 3272,
+          "20-49": 5427,
+          "50-99": 3043,
+          "100+": 2057
+        },
+        "decisions": {
+          "10-19": 12374,
+          "20-49": 23894,
+          "50-99": 16170,
+          "100+": 17405
+        },
+        "macro": {
+          "10-19": 0.3475,
+          "20-49": 0.3316,
+          "50-99": 0.3324,
+          "100+": 0.3346
+        }
+      },
+      "coverage": {
+        "distinct_categories_in_top5": 563,
+        "coverage": 0.9575,
+        "concentration_gini": 0.8151
+      },
+      "per_client": {
+        "distinct_top1_overall": 534,
+        "most_common_top1_share": 0.2347,
+        "mean_distinct_top1_per_client": 2.336
+      }
+    },
+    "4. + price band": {
+      "by_client_history": {
+        "clients": {
+          "10-19": 3272,
+          "20-49": 5427,
+          "50-99": 3043,
+          "100+": 2057
+        },
+        "decisions": {
+          "10-19": 12374,
+          "20-49": 23894,
+          "50-99": 16170,
+          "100+": 17405
+        },
+        "macro": {
+          "10-19": 0.3516,
+          "20-49": 0.3311,
+          "50-99": 0.3357,
+          "100+": 0.3383
+        }
+      },
+      "coverage": {
+        "distinct_categories_in_top5": 569,
+        "coverage": 0.9677,
+        "concentration_gini": 0.823
+      },
+      "per_client": {
+        "distinct_top1_overall": 544,
+        "most_common_top1_share": 0.2352,
+        "mean_distinct_top1_per_client": 2.323
+      }
+    },
+    "5. two layers": {
+      "by_client_history": {
+        "clients": {
+          "10-19": 3272,
+          "20-49": 5427,
+          "50-99": 3043,
+          "100+": 2057
+        },
+        "decisions": {
+          "10-19": 12374,
+          "20-49": 23894,
+          "50-99": 16170,
+          "100+": 17405
+        },
+        "macro": {
+          "10-19": 0.3495,
+          "20-49": 0.331,
+          "50-99": 0.3302,
+          "100+": 0.3354
+        }
+      },
+      "coverage": {
+        "distinct_categories_in_top5": 574,
+        "coverage": 0.9762,
+        "concentration_gini": 0.815
+      },
+      "per_client": {
+        "distinct_top1_overall": 540,
+        "most_common_top1_share": 0.2356,
+        "mean_distinct_top1_per_client": 2.331
+      }
+    }
+  },
+  "test_rows_read": 0
+}

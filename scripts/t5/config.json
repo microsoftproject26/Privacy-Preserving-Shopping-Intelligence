@@ -1,0 +1,46 @@
+{
+  "status": "PROPOSED",
+  "task": "S2-DS-05",
+  "title": "Time-boxed sequence-core comparison under one frozen protocol",
+  "scope": {
+    "cohort": "C1",
+    "user_slice": "user_id % 4 == 1",
+    "measured_users": 97279,
+    "data": "frozen v1 artifacts, not rebuilt and not extended",
+    "test_seal": {
+      "test_rows_used": 0,
+      "measured": "_SEAL/test_seal_measured.json"
+    }
+  },
+  "selected": {
+    "core": "gru",
+    "reason": "tied with LSTM inside the 0.0007 seed spread and 27% cheaper to train; ahead of the transformer and the TCN by 5x and 11x that spread"
+  },
+  "budget": {
+    "epochs": 30,
+    "batch": 512,
+    "learning_rate": 0.001,
+    "schedule": "cosine",
+    "seed": 13,
+    "seeds_run": 1,
+    "bias": "this budget is the GRU's own selected configuration, so the comparison favours it. At epoch 18 the transformer's train-minus-validation gap was still negative while the GRU's had reached +0.0464 by epoch 25: the GRU was memorising, the transformer had not finished learning."
+  },
+  "results": {
+    "gru": 0.3477,
+    "lstm": 0.3471,
+    "transformer": 0.344,
+    "tcn": 0.3398,
+    "baseline": 0.3143,
+    "metric": "slice macro MRR@20"
+  },
+  "checkpoints": [
+    "output/t1_gru_seed13.pt",
+    "output/t1_lstm_seed13.pt",
+    "output/t1_tcn_seed13.pt",
+    "output/t1_transformer_seed13.pt"
+  ],
+  "claim": "under the GRU's budget the GRU is no worse than any alternative and cheaper than the one that ties it. NOT 'the GRU is the best architecture'.",
+  "consumed_by": [
+    "S2-ALL-CP-ARCH"
+  ]
+}

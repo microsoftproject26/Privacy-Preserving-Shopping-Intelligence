@@ -1,0 +1,276 @@
+{
+  "purpose": "which checkpoints a downstream task may load, by name and hash",
+  "policy": {
+    "SHARED_ENCODER": {
+      "may_load": true,
+      "reason": "the T1 encoder. This is the only checkpoint any other task should start from until S2-DS-08 demonstrates a joint objective that holds both tasks."
+    },
+    "TASK_HEAD": {
+      "may_load": true,
+      "reason": "a task-specific result. Load it to reproduce that task's number. Do NOT reuse its encoder for another task."
+    },
+    "DIAGNOSTIC_UNDERPERFORMING": {
+      "may_load": false,
+      "reason": "kept as evidence of a losing rung. It scores below the model-free baseline it was meant to beat, so loading it downstream would be strictly worse than doing nothing."
+    },
+    "DIAGNOSTIC_DESTRUCTIVE": {
+      "may_load": false,
+      "reason": "its encoder was fine-tuned for one task and measurably destroys another. Valid as that task's own result; never valid as a shared starting point."
+    },
+    "MULTITASK": {
+      "may_load": true,
+      "reason": "the selected joint model - the only checkpoint that serves T1 and T2 at once. S2-SE-08 exports this; S2-PR-06 and S2-PR-09 federate it."
+    },
+    "MULTITASK_ALTERNATE": {
+      "may_load": true,
+      "reason": "a joint model at a lower T2 weight. Reproducible evidence for the lambda ladder; use the selected one unless you are re-running that comparison."
+    },
+    "ARCHITECTURE_REFERENCE": {
+      "may_load": true,
+      "reason": "the selected sequence core from S2-DS-05, kept so inference cost can be benchmarked without retraining."
+    },
+    "ARCHITECTURE_ALTERNATE": {
+      "may_load": true,
+      "reason": "a losing core from S2-DS-05. Load it only to reproduce that comparison or to benchmark its inference cost - it is not the selected architecture."
+    },
+    "COMMON_INITIALIZATION": {
+      "may_load": true,
+      "reason": "untrained shared weights for a seed. R1 and R2 must both start here or their measured gap is partly a different random start."
+    }
+  },
+  "checkpoints": [
+    {
+      "file": "_CLOUD_HEADS/data/encoder/s2_ds_01_gru_t1_seed13.pt",
+      "name": "s2_ds_01_gru_t1_seed13.pt",
+      "origin": "S2-DS-01",
+      "status": "SHARED_ENCODER",
+      "downstream_may_load": true,
+      "reason": "the T1 encoder. This is the only checkpoint any other task should start from until S2-DS-08 demonstrates a joint objective that holds both tasks.",
+      "megabytes": 9.33,
+      "sha256": "f9e3606997044ad1f38ed74e95962f921550e0b6a477886e4a6145fd3dc55660"
+    },
+    {
+      "file": "S2-DS-01_GRU_T1_Model/output/common_initialization_seed13.pt",
+      "name": "common_initialization_seed13.pt",
+      "origin": "S2-DS-01",
+      "status": "COMMON_INITIALIZATION",
+      "downstream_may_load": true,
+      "reason": "untrained shared weights for a seed. R1 and R2 must both start here or their measured gap is partly a different random start.",
+      "megabytes": 9.33,
+      "sha256": "f8f0b8bd0d50704d5dec6a246195de827cf366c30a502da9ff9831be94b5b5e7"
+    },
+    {
+      "file": "S2-DS-01_GRU_T1_Model/output/common_initialization_seed2026.pt",
+      "name": "common_initialization_seed2026.pt",
+      "origin": "S2-DS-01",
+      "status": "COMMON_INITIALIZATION",
+      "downstream_may_load": true,
+      "reason": "untrained shared weights for a seed. R1 and R2 must both start here or their measured gap is partly a different random start.",
+      "megabytes": 9.33,
+      "sha256": "f060b4d6ed482756a757b9d20122950bd70baaf7df5321e558f70f69f6d15a40"
+    },
+    {
+      "file": "S2-DS-01_GRU_T1_Model/output/common_initialization_seed42.pt",
+      "name": "common_initialization_seed42.pt",
+      "origin": "S2-DS-01",
+      "status": "COMMON_INITIALIZATION",
+      "downstream_may_load": true,
+      "reason": "untrained shared weights for a seed. R1 and R2 must both start here or their measured gap is partly a different random start.",
+      "megabytes": 9.33,
+      "sha256": "5a127e4a133f4edb86055255c78b6204ab85bceef67b937606abc7bbec2fea0c"
+    },
+    {
+      "file": "S2-DS-01_GRU_T1_Model/output/s2_ds_01_gru_t1_seed13.pt",
+      "name": "s2_ds_01_gru_t1_seed13.pt",
+      "origin": "S2-DS-01",
+      "status": "SHARED_ENCODER",
+      "downstream_may_load": true,
+      "reason": "the T1 encoder. This is the only checkpoint any other task should start from until S2-DS-08 demonstrates a joint objective that holds both tasks.",
+      "megabytes": 9.33,
+      "sha256": "f9e3606997044ad1f38ed74e95962f921550e0b6a477886e4a6145fd3dc55660"
+    },
+    {
+      "file": "S2-DS-01_GRU_T1_Model/output/s2_ds_01_gru_t1_seed2026.pt",
+      "name": "s2_ds_01_gru_t1_seed2026.pt",
+      "origin": "S2-DS-01",
+      "status": "SHARED_ENCODER",
+      "downstream_may_load": true,
+      "reason": "the T1 encoder. This is the only checkpoint any other task should start from until S2-DS-08 demonstrates a joint objective that holds both tasks.",
+      "megabytes": 9.33,
+      "sha256": "26283a6de73146c5be02300ae90de8d57c3c4d357344a51110cab4e09a9691ca"
+    },
+    {
+      "file": "S2-DS-01_GRU_T1_Model/output/s2_ds_01_gru_t1_seed42.pt",
+      "name": "s2_ds_01_gru_t1_seed42.pt",
+      "origin": "S2-DS-01",
+      "status": "SHARED_ENCODER",
+      "downstream_may_load": true,
+      "reason": "the T1 encoder. This is the only checkpoint any other task should start from until S2-DS-08 demonstrates a joint objective that holds both tasks.",
+      "megabytes": 9.33,
+      "sha256": "ba970bb6f6db7d14de90add3b27c974191b41e68562e27b5a0da6c11d0e7c8b6"
+    },
+    {
+      "file": "S2-DS-05_Architecture_Exploration/output/t1_gru_seed13.pt",
+      "name": "t1_gru_seed13.pt",
+      "origin": "S2-DS-05, the selected core",
+      "status": "ARCHITECTURE_REFERENCE",
+      "downstream_may_load": true,
+      "reason": "the selected sequence core from S2-DS-05, kept so inference cost can be benchmarked without retraining.",
+      "megabytes": 9.53,
+      "sha256": "400500e96b25002c3b3697db6410b14410a78903eecac8383c2d9c802bae0db9"
+    },
+    {
+      "file": "S2-DS-05_Architecture_Exploration/output/t1_lstm_seed13.pt",
+      "name": "t1_lstm_seed13.pt",
+      "origin": "S2-DS-05, tied on quality, 27% slower",
+      "status": "ARCHITECTURE_ALTERNATE",
+      "downstream_may_load": true,
+      "reason": "a losing core from S2-DS-05. Load it only to reproduce that comparison or to benchmark its inference cost - it is not the selected architecture.",
+      "megabytes": 9.66,
+      "sha256": "a8608dc0f3170c9cc327875d880dc06c37582d8d877e87e50e039391f139b25f"
+    },
+    {
+      "file": "S2-DS-05_Architecture_Exploration/output/t1_tcn_seed13.pt",
+      "name": "t1_tcn_seed13.pt",
+      "origin": "S2-DS-05, -0.0079 against the GRU",
+      "status": "ARCHITECTURE_ALTERNATE",
+      "downstream_may_load": true,
+      "reason": "a losing core from S2-DS-05. Load it only to reproduce that comparison or to benchmark its inference cost - it is not the selected architecture.",
+      "megabytes": 9.33,
+      "sha256": "2ef50234e2b829683c784f0420dc71e03c59c44c34c7b000e8c17e9b438a99fa"
+    },
+    {
+      "file": "S2-DS-05_Architecture_Exploration/output/t1_transformer_seed13.pt",
+      "name": "t1_transformer_seed13.pt",
+      "origin": "S2-DS-05, -0.0037 and undertrained at this budget",
+      "status": "ARCHITECTURE_ALTERNATE",
+      "downstream_may_load": true,
+      "reason": "a losing core from S2-DS-05. Load it only to reproduce that comparison or to benchmark its inference cost - it is not the selected architecture.",
+      "megabytes": 9.7,
+      "sha256": "14dba17224a0306e82e61c8a43ef8beeb9604ad5101d7932176dd60324d8c665"
+    },
+    {
+      "file": "S2-DS-06_T2_Purchase_Head/output/t2_1.pt",
+      "name": "t2_1.pt",
+      "origin": "S2-DS-06, frozen encoder - safe to reuse",
+      "status": "TASK_HEAD",
+      "downstream_may_load": true,
+      "reason": "a task-specific result. Load it to reproduce that task's number. Do NOT reuse its encoder for another task.",
+      "megabytes": 9.33,
+      "sha256": "92245b171c1bd1039ea004119396baa78e82a114fa54f0427badc6a1ce1ca132"
+    },
+    {
+      "file": "S2-DS-06_T2_Purchase_Head/output/t2_2.pt",
+      "name": "t2_2.pt",
+      "origin": "S2-DS-06, fine-tuned encoder",
+      "status": "DIAGNOSTIC_DESTRUCTIVE",
+      "downstream_may_load": false,
+      "reason": "its encoder was fine-tuned for one task and measurably destroys another. Valid as that task's own result; never valid as a shared starting point.",
+      "megabytes": 9.33,
+      "sha256": "e6e62d91c0ad8a69cf93220f2679b608c72fc59b86dc3e1e64562ebf2e550a31"
+    },
+    {
+      "file": "S2-DS-06_T2_Purchase_Head/output/t2_2_trained_on_published_mask.pt",
+      "name": "t2_2_trained_on_published_mask.pt",
+      "origin": "S2-DS-06, pre-correction, kept for the label ablation",
+      "status": "DIAGNOSTIC_DESTRUCTIVE",
+      "downstream_may_load": false,
+      "reason": "its encoder was fine-tuned for one task and measurably destroys another. Valid as that task's own result; never valid as a shared starting point.",
+      "megabytes": 9.33,
+      "sha256": "6c4648ab3c789758748f7ab3275f4d2c830ed7e4ae03e0b84910573d9bd09ecf"
+    },
+    {
+      "file": "S2-DS-06_T2_Purchase_Head/output/t2_finetuned_seed13.pt",
+      "name": "t2_finetuned_seed13.pt",
+      "origin": "S2-DS-06 seed confirmation",
+      "status": "DIAGNOSTIC_DESTRUCTIVE",
+      "downstream_may_load": false,
+      "reason": "its encoder was fine-tuned for one task and measurably destroys another. Valid as that task's own result; never valid as a shared starting point.",
+      "megabytes": 9.33,
+      "sha256": "9721c714d3a4abdc455ecf042bcd36a085ac23ecc2888b34f9ecc2ec3c978537"
+    },
+    {
+      "file": "S2-DS-06_T2_Purchase_Head/output/t2_finetuned_seed2026.pt",
+      "name": "t2_finetuned_seed2026.pt",
+      "origin": "S2-DS-06 seed confirmation",
+      "status": "DIAGNOSTIC_DESTRUCTIVE",
+      "downstream_may_load": false,
+      "reason": "its encoder was fine-tuned for one task and measurably destroys another. Valid as that task's own result; never valid as a shared starting point.",
+      "megabytes": 9.33,
+      "sha256": "7db522eef53a35b4400e93997fa3e1398f8ea3b84f5ee43ffa917a0966331fc1"
+    },
+    {
+      "file": "S2-DS-06_T2_Purchase_Head/output/t2_finetuned_seed42.pt",
+      "name": "t2_finetuned_seed42.pt",
+      "origin": "S2-DS-06 seed confirmation",
+      "status": "DIAGNOSTIC_DESTRUCTIVE",
+      "downstream_may_load": false,
+      "reason": "its encoder was fine-tuned for one task and measurably destroys another. Valid as that task's own result; never valid as a shared starting point.",
+      "megabytes": 9.33,
+      "sha256": "211d6519b04dd35d9f1fd33671e4d2aab05e006d9565ad6119dce8c5247c11da"
+    },
+    {
+      "file": "S2-DS-07_T3_Ranking_Head/output/t3_listwise.pt",
+      "name": "t3_listwise.pt",
+      "origin": "S2-DS-07, query-blind reranker",
+      "status": "DIAGNOSTIC_UNDERPERFORMING",
+      "downstream_may_load": false,
+      "reason": "kept as evidence of a losing rung. It scores below the model-free baseline it was meant to beat, so loading it downstream would be strictly worse than doing nothing.",
+      "megabytes": 9.33,
+      "sha256": "8083e96f362e011a95af32236b5a1777989fb7aab65f8265c3d6b467e5d33570"
+    },
+    {
+      "file": "S2-DS-07_T3_Ranking_Head/output/t3_pointwise.pt",
+      "name": "t3_pointwise.pt",
+      "origin": "S2-DS-07, query-blind reranker",
+      "status": "DIAGNOSTIC_UNDERPERFORMING",
+      "downstream_may_load": false,
+      "reason": "kept as evidence of a losing rung. It scores below the model-free baseline it was meant to beat, so loading it downstream would be strictly worse than doing nothing.",
+      "megabytes": 9.33,
+      "sha256": "18ffcba2b809149ca64fed65fb5a2a6ab1a4fd62a78cb850e7e7f853dbf7766d"
+    },
+    {
+      "file": "S2-DS-08_Joint_Loss/output/joint_lambda0.1.pt",
+      "name": "joint_lambda0.1.pt",
+      "origin": "S2-DS-08, a lower T2 weight",
+      "status": "MULTITASK_ALTERNATE",
+      "downstream_may_load": true,
+      "reason": "a joint model at a lower T2 weight. Reproducible evidence for the lambda ladder; use the selected one unless you are re-running that comparison.",
+      "megabytes": 9.53,
+      "sha256": "aec17e6d210e4d494b9ed28eac19ef4c440d87b63ee3f61f03622559e8d1b69b"
+    },
+    {
+      "file": "S2-DS-08_Joint_Loss/output/joint_lambda0.3.pt",
+      "name": "joint_lambda0.3.pt",
+      "origin": "S2-DS-08, a lower T2 weight",
+      "status": "MULTITASK_ALTERNATE",
+      "downstream_may_load": true,
+      "reason": "a joint model at a lower T2 weight. Reproducible evidence for the lambda ladder; use the selected one unless you are re-running that comparison.",
+      "megabytes": 9.53,
+      "sha256": "6e1c2dd6a87ff88ff096ad1f13dd6849b9087164374bf147c0c8df1c88ad229d"
+    },
+    {
+      "file": "S2-DS-08_Joint_Loss/output/joint_lambda1.0.pt",
+      "name": "joint_lambda1.0.pt",
+      "origin": "S2-DS-08, the selected joint model",
+      "status": "MULTITASK",
+      "downstream_may_load": true,
+      "reason": "the selected joint model - the only checkpoint that serves T1 and T2 at once. S2-SE-08 exports this; S2-PR-06 and S2-PR-09 federate it.",
+      "megabytes": 9.53,
+      "sha256": "6a322126d05ec1d93a4fa124fa6880e1de7e1af952a8fdcda817e47bd8307b26"
+    },
+    {
+      "file": "S2-DS-08_Joint_Loss/output/t2_separate_model.pt",
+      "name": "t2_separate_model.pt",
+      "origin": "S2-DS-ST1, a T2-only model with no shared encoder",
+      "status": "DIAGNOSTIC_DESTRUCTIVE",
+      "downstream_may_load": false,
+      "reason": "its encoder was fine-tuned for one task and measurably destroys another. Valid as that task's own result; never valid as a shared starting point.",
+      "megabytes": 9.53,
+      "sha256": "cb366ccc91801602edf6afdea764100fc013aebfb1aab2bf222a73edcafb465e"
+    }
+  ],
+  "loadable": 15,
+  "refused": 8,
+  "unclassified": []
+}

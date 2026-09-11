@@ -1,0 +1,402 @@
+{
+  "task": "S2-DS-07",
+  "retrieval": "cooccurrence_then_popularity",
+  "gain_rule": {
+    "purchase": 2,
+    "cart": 1,
+    "view": 0
+  },
+  "headline": "macro_ndcg@5",
+  "best_simple_macro": 0.2707,
+  "best_simple_micro": 0.2046,
+  "measured_baseline_macro": 0.2707,
+  "measured_baseline_micro": 0.2046,
+  "ceiling_macro": 0.8795,
+  "ceiling_micro": 0.8201,
+  "noise_floor": 0.0048,
+  "evaluable_queries": 18814,
+  "clients": 4591,
+  "results": [
+    {
+      "loss": "listwise",
+      "gain_interval": {
+        "clients": 4591,
+        "gain": -0.020151,
+        "ci_low": -0.026522,
+        "ci_high": -0.01418,
+        "half_width": 0.006171,
+        "resamples": 2000,
+        "above_zero": false,
+        "method": "paired client bootstrap, 2.5/97.5 percentiles of the mean difference"
+      },
+      "macro_ndcg@5": 0.2505,
+      "micro_ndcg@5": 0.1891,
+      "gain_over_baseline": -0.0202,
+      "share_of_room": -0.0332,
+      "beats_noise": false,
+      "encoder": {
+        "checkpoint": "s2_ds_01_gru_t1_seed13.pt",
+        "seed": 13,
+        "loaded": 22,
+        "dropped": [
+          "candidate_projection.weight"
+        ],
+        "new_parameters": [
+          "candidate_projection.weight",
+          "t3_rank_weight",
+          "t3_residual_scale"
+        ],
+        "batch_spec": null
+      }
+    },
+    {
+      "loss": "pointwise",
+      "gain_interval": {
+        "clients": 4591,
+        "gain": -0.052095,
+        "ci_low": -0.058424,
+        "ci_high": -0.045774,
+        "half_width": 0.006325,
+        "resamples": 2000,
+        "above_zero": false,
+        "method": "paired client bootstrap, 2.5/97.5 percentiles of the mean difference"
+      },
+      "macro_ndcg@5": 0.2186,
+      "micro_ndcg@5": 0.1713,
+      "gain_over_baseline": -0.0521,
+      "share_of_room": -0.0856,
+      "beats_noise": false,
+      "encoder": {
+        "checkpoint": "s2_ds_01_gru_t1_seed13.pt",
+        "seed": 13,
+        "loaded": 22,
+        "dropped": [
+          "candidate_projection.weight"
+        ],
+        "new_parameters": [
+          "candidate_projection.weight",
+          "t3_rank_weight",
+          "t3_residual_scale"
+        ],
+        "batch_spec": null
+      }
+    }
+  ],
+  "curves": {
+    "listwise": [
+      {
+        "epoch": 0,
+        "train_loss": null,
+        "macro_ndcg@5": 0.2707,
+        "micro_ndcg@5": 0.2046,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 0.0
+      },
+      {
+        "epoch": 1,
+        "train_loss": 3.82242,
+        "macro_ndcg@5": 0.2285,
+        "micro_ndcg@5": 0.1809,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 43.1
+      },
+      {
+        "epoch": 2,
+        "train_loss": 3.56417,
+        "macro_ndcg@5": 0.2329,
+        "micro_ndcg@5": 0.1798,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 40.8
+      },
+      {
+        "epoch": 3,
+        "train_loss": 3.42408,
+        "macro_ndcg@5": 0.2406,
+        "micro_ndcg@5": 0.1844,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 41.0
+      },
+      {
+        "epoch": 4,
+        "train_loss": 3.33115,
+        "macro_ndcg@5": 0.2385,
+        "micro_ndcg@5": 0.1827,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 40.6
+      },
+      {
+        "epoch": 5,
+        "train_loss": 3.26459,
+        "macro_ndcg@5": 0.2454,
+        "micro_ndcg@5": 0.1878,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 41.7
+      },
+      {
+        "epoch": 6,
+        "train_loss": 3.21014,
+        "macro_ndcg@5": 0.2465,
+        "micro_ndcg@5": 0.1884,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 41.9
+      },
+      {
+        "epoch": 7,
+        "train_loss": 3.16705,
+        "macro_ndcg@5": 0.2468,
+        "micro_ndcg@5": 0.1883,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 42.5
+      },
+      {
+        "epoch": 8,
+        "train_loss": 3.13199,
+        "macro_ndcg@5": 0.2482,
+        "micro_ndcg@5": 0.1863,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 41.5
+      },
+      {
+        "epoch": 9,
+        "train_loss": 3.10237,
+        "macro_ndcg@5": 0.2499,
+        "micro_ndcg@5": 0.1895,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 41.7
+      },
+      {
+        "epoch": 10,
+        "train_loss": 3.07488,
+        "macro_ndcg@5": 0.2498,
+        "micro_ndcg@5": 0.1889,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 42.1
+      },
+      {
+        "epoch": 11,
+        "train_loss": 3.05223,
+        "macro_ndcg@5": 0.2487,
+        "micro_ndcg@5": 0.1878,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 42.4
+      },
+      {
+        "epoch": 12,
+        "train_loss": 3.03209,
+        "macro_ndcg@5": 0.2496,
+        "micro_ndcg@5": 0.1884,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 41.6
+      },
+      {
+        "epoch": 13,
+        "train_loss": 3.01739,
+        "macro_ndcg@5": 0.2505,
+        "micro_ndcg@5": 0.1891,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 43.3
+      },
+      {
+        "epoch": 14,
+        "train_loss": 3.00552,
+        "macro_ndcg@5": 0.2503,
+        "micro_ndcg@5": 0.1886,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 42.4
+      },
+      {
+        "epoch": 15,
+        "train_loss": 2.99852,
+        "macro_ndcg@5": 0.2498,
+        "micro_ndcg@5": 0.1879,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 41.4
+      },
+      {
+        "epoch": 16,
+        "train_loss": 2.99441,
+        "macro_ndcg@5": 0.2502,
+        "micro_ndcg@5": 0.1885,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 41.3
+      }
+    ],
+    "pointwise": [
+      {
+        "epoch": 0,
+        "train_loss": null,
+        "macro_ndcg@5": 0.2707,
+        "micro_ndcg@5": 0.2046,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 0.0
+      },
+      {
+        "epoch": 1,
+        "train_loss": 0.01089,
+        "macro_ndcg@5": 0.0333,
+        "micro_ndcg@5": 0.0286,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 43.9
+      },
+      {
+        "epoch": 2,
+        "train_loss": 0.00315,
+        "macro_ndcg@5": 0.0378,
+        "micro_ndcg@5": 0.0323,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 42.8
+      },
+      {
+        "epoch": 3,
+        "train_loss": 0.00281,
+        "macro_ndcg@5": 0.0552,
+        "micro_ndcg@5": 0.0442,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 42.3
+      },
+      {
+        "epoch": 4,
+        "train_loss": 0.00257,
+        "macro_ndcg@5": 0.1339,
+        "micro_ndcg@5": 0.1057,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 41.7
+      },
+      {
+        "epoch": 5,
+        "train_loss": 0.00248,
+        "macro_ndcg@5": 0.2186,
+        "micro_ndcg@5": 0.1713,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 41.8
+      },
+      {
+        "epoch": 6,
+        "train_loss": 0.00248,
+        "macro_ndcg@5": 0.218,
+        "micro_ndcg@5": 0.1703,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 41.6
+      },
+      {
+        "epoch": 7,
+        "train_loss": 0.00248,
+        "macro_ndcg@5": 0.177,
+        "micro_ndcg@5": 0.1424,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 42.1
+      },
+      {
+        "epoch": 8,
+        "train_loss": 0.00248,
+        "macro_ndcg@5": 0.1862,
+        "micro_ndcg@5": 0.15,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 42.0
+      },
+      {
+        "epoch": 9,
+        "train_loss": 0.00247,
+        "macro_ndcg@5": 0.1782,
+        "micro_ndcg@5": 0.1403,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 44.7
+      },
+      {
+        "epoch": 10,
+        "train_loss": 0.00247,
+        "macro_ndcg@5": 0.1894,
+        "micro_ndcg@5": 0.1524,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 43.4
+      },
+      {
+        "epoch": 11,
+        "train_loss": 0.00247,
+        "macro_ndcg@5": 0.1798,
+        "micro_ndcg@5": 0.1418,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 42.2
+      },
+      {
+        "epoch": 12,
+        "train_loss": 0.00247,
+        "macro_ndcg@5": 0.1941,
+        "micro_ndcg@5": 0.1522,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 44.6
+      },
+      {
+        "epoch": 13,
+        "train_loss": 0.00247,
+        "macro_ndcg@5": 0.1813,
+        "micro_ndcg@5": 0.1451,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 48.4
+      },
+      {
+        "epoch": 14,
+        "train_loss": 0.00247,
+        "macro_ndcg@5": 0.185,
+        "micro_ndcg@5": 0.1463,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 48.0
+      },
+      {
+        "epoch": 15,
+        "train_loss": 0.00247,
+        "macro_ndcg@5": 0.188,
+        "micro_ndcg@5": 0.1484,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 48.8
+      },
+      {
+        "epoch": 16,
+        "train_loss": 0.00247,
+        "macro_ndcg@5": 0.1909,
+        "micro_ndcg@5": 0.1504,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 50.3
+      }
+    ]
+  },
+  "test_seal": {
+    "test_rows_used": 0,
+    "measured": "_SEAL/test_seal_measured.json",
+    "note": "no TEST row reaches an array, a window, a label or a metric. TRAIN loading decodes zero TEST rows; VALIDATION decodes 384,203 from one boundary-straddling row group and discards them. This is measured, not asserted - it used to be a written constant."
+  }
+}

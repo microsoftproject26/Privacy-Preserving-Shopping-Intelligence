@@ -1,0 +1,151 @@
+{
+  "task": "S2-DS-ST1",
+  "status": "EXECUTED",
+  "question": "is one shared encoder better than separate models, or just smaller?",
+  "seed": 13,
+  "epochs": 12,
+  "batch": 512,
+  "learning_rate": 0.001,
+  "t2_baseline": 0.0757,
+  "arrangements": [
+    {
+      "arrangement": "frozen encoder + T2 head",
+      "t1": 0.3479,
+      "t2": 0.1104,
+      "encoders": 1,
+      "t2_gain_over_baseline": 0.0347
+    },
+    {
+      "arrangement": "sequential fine-tune",
+      "t1": 0.1791,
+      "t2": 0.1424,
+      "encoders": 1,
+      "t2_gain_over_baseline": 0.0667
+    },
+    {
+      "arrangement": "joint objective, lambda 1.0",
+      "t1": 0.3467,
+      "t2": 0.1337,
+      "encoders": 1,
+      "t2_gain_over_baseline": 0.058
+    },
+    {
+      "arrangement": "separate T2 model",
+      "t1": null,
+      "t2": 0.143,
+      "encoders": 2,
+      "t2_gain_over_baseline": 0.0673
+    }
+  ],
+  "separate_minus_joint": 0.0093,
+  "separate_minus_frozen": 0.0326,
+  "storage": {
+    "shared_encoder_parameters": 2379263,
+    "t2_head_parameters": 898113,
+    "note": "two separate models roughly double what a device carries for two tasks, before T3 is considered at all"
+  },
+  "verdict": "a separate T2 model beats the shared encoder, so sharing costs T2 quality",
+  "negative_transfer_note": "S2-DS-06/output/s2_ds_06_negative_transfer.json",
+  "test_seal": {
+    "test_rows_used": 0,
+    "measured": "_SEAL/test_seal_measured.json"
+  },
+  "curve": [
+    {
+      "epoch": 1,
+      "train_loss": 0.11367,
+      "pr_auc": 0.1409,
+      "roc_auc": 0.7927,
+      "brier": 0.02632,
+      "seconds": 58.3
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.10999,
+      "pr_auc": 0.143,
+      "roc_auc": 0.7939,
+      "brier": 0.0263,
+      "seconds": 61.4
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.10838,
+      "pr_auc": 0.1424,
+      "roc_auc": 0.7948,
+      "brier": 0.02625,
+      "seconds": 59.5
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.1072,
+      "pr_auc": 0.1401,
+      "roc_auc": 0.788,
+      "brier": 0.02631,
+      "seconds": 59.2
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.10629,
+      "pr_auc": 0.1409,
+      "roc_auc": 0.7856,
+      "brier": 0.0263,
+      "seconds": 59.1
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.10566,
+      "pr_auc": 0.1406,
+      "roc_auc": 0.786,
+      "brier": 0.02631,
+      "seconds": 60.4
+    },
+    {
+      "epoch": 7,
+      "train_loss": 0.10509,
+      "pr_auc": 0.1401,
+      "roc_auc": 0.7836,
+      "brier": 0.02634,
+      "seconds": 59.5
+    },
+    {
+      "epoch": 8,
+      "train_loss": 0.10462,
+      "pr_auc": 0.1406,
+      "roc_auc": 0.7826,
+      "brier": 0.02634,
+      "seconds": 60.1
+    },
+    {
+      "epoch": 9,
+      "train_loss": 0.10424,
+      "pr_auc": 0.1385,
+      "roc_auc": 0.7822,
+      "brier": 0.02637,
+      "seconds": 59.6
+    },
+    {
+      "epoch": 10,
+      "train_loss": 0.10393,
+      "pr_auc": 0.1386,
+      "roc_auc": 0.7817,
+      "brier": 0.02638,
+      "seconds": 62.3
+    },
+    {
+      "epoch": 11,
+      "train_loss": 0.1037,
+      "pr_auc": 0.1378,
+      "roc_auc": 0.78,
+      "brier": 0.0264,
+      "seconds": 56.4
+    },
+    {
+      "epoch": 12,
+      "train_loss": 0.10357,
+      "pr_auc": 0.1381,
+      "roc_auc": 0.7802,
+      "brier": 0.02639,
+      "seconds": 56.7
+    }
+  ]
+}

@@ -1,0 +1,151 @@
+{
+  "started_from": {
+    "rung": "1. all TRAIN decisions",
+    "best_epoch": 3,
+    "slice_macro": 0.3373,
+    "slice_micro": 0.347,
+    "overall_micro": 0.8585,
+    "gain_over_baseline": 0.023,
+    "step_over_previous": null,
+    "beats_noise": true
+  },
+  "rival": {
+    "rung": "4. + price band",
+    "runs": [
+      {
+        "seed": 13,
+        "best_epoch": 2,
+        "slice_macro": 0.3382,
+        "slice_micro": 0.3467,
+        "overall_micro": 0.8575
+      },
+      {
+        "seed": 42,
+        "best_epoch": 2,
+        "slice_macro": 0.3366,
+        "slice_micro": 0.346,
+        "overall_micro": 0.8579
+      },
+      {
+        "seed": 2026,
+        "best_epoch": 2,
+        "slice_macro": 0.3387,
+        "slice_micro": 0.3479,
+        "overall_micro": 0.8579
+      }
+    ],
+    "mean": 0.3378,
+    "spread": 0.0021
+  },
+  "axes": [
+    "hidden",
+    "category embedding",
+    "dropout",
+    "learning rate"
+  ],
+  "configurations_tried": 6,
+  "tried": [
+    {
+      "axis": "hidden",
+      "value": 128,
+      "best_epoch": 3,
+      "slice_macro": 0.3379,
+      "slice_micro": 0.3473,
+      "parameters": 2329789,
+      "final_gap": 0.03113
+    },
+    {
+      "axis": "hidden",
+      "value": 256,
+      "best_epoch": 3,
+      "slice_macro": 0.337,
+      "slice_micro": 0.3441,
+      "parameters": 2723517,
+      "final_gap": 0.03769
+    },
+    {
+      "axis": "category embedding",
+      "value": 128,
+      "best_epoch": 3,
+      "slice_macro": 0.3373,
+      "slice_micro": 0.3464,
+      "parameters": 2375741,
+      "final_gap": 0.03256
+    },
+    {
+      "axis": "dropout",
+      "value": 0.2,
+      "best_epoch": 3,
+      "slice_macro": 0.3379,
+      "slice_micro": 0.3477,
+      "parameters": 2329789,
+      "final_gap": 0.0133
+    },
+    {
+      "axis": "dropout",
+      "value": 0.3,
+      "best_epoch": 3,
+      "slice_macro": 0.339,
+      "slice_micro": 0.3479,
+      "parameters": 2329789,
+      "final_gap": -0.00351
+    },
+    {
+      "axis": "learning rate",
+      "value": 0.001,
+      "best_epoch": 9,
+      "slice_macro": 0.3443,
+      "slice_micro": 0.3537,
+      "parameters": 2329789,
+      "final_gap": 0.01104
+    }
+  ],
+  "selected": {
+    "channels": [
+      "category_id",
+      "event_type_id"
+    ],
+    "use_gap": true,
+    "hidden": 128,
+    "layers": 1,
+    "dropout": 0.3,
+    "widths": {
+      "category_id": 64,
+      "product_bucket": 24,
+      "event_type_id": 4,
+      "brand_bucket": 16,
+      "price_band": 4
+    },
+    "learning_rate": 0.001,
+    "parameters": 2329789
+  },
+  "seed_confirmation": [
+    {
+      "seed": 13,
+      "best_epoch": 9,
+      "slice_macro": 0.344,
+      "slice_micro": 0.3535,
+      "overall_micro": 0.8598
+    },
+    {
+      "seed": 42,
+      "best_epoch": 6,
+      "slice_macro": 0.3426,
+      "slice_micro": 0.3533,
+      "overall_micro": 0.8598
+    },
+    {
+      "seed": 2026,
+      "best_epoch": 8,
+      "slice_macro": 0.3443,
+      "slice_micro": 0.3533,
+      "overall_micro": 0.8597
+    }
+  ],
+  "mean_slice_macro": 0.3436,
+  "seed_spread": 0.0017,
+  "baseline_slice_macro": 0.3143,
+  "gain_over_baseline": 0.0293,
+  "survives_seed_change": true,
+  "test_rows_read": 0
+}

@@ -24,7 +24,17 @@
     },
     "environment_lock": {
       "path": "uv.lock",
-      "sha256": "cd86bcdb34077eaedd3ccf84e8ddc52a6424271cfd35f27ba0b7f32d7cbdf0dd"
+      "sha256": "eae55e08de93c7258d0f26173cf4f85245210c625617633f209c1742988979be"
     }
-  }
+  },
+  "environment_lock_history": [
+    {
+      "superseded_sha256": "cd86bcdb34077eaedd3ccf84e8ddc52a6424271cfd35f27ba0b7f32d7cbdf0dd",
+      "current_sha256": "eae55e08de93c7258d0f26173cf4f85245210c625617633f209c1742988979be",
+      "changed_on": "2026-09-11",
+      "changed_by": "S2-DS-01",
+      "reason": "the model lane declared `pandas==3.0.5` in pyproject.toml and did not regenerate uv.lock, so CI's `uv sync --locked` refused every run on this branch. Regenerating the lock added pandas, python-dateutil, six and tzdata, which changed the file this manifest hashes.",
+      "what_this_means_for_the_evidence": "S1-PR-02's synthetic smoke ran under the superseded lock, not this one. The manifest now verifies the CURRENT environment rather than the one that run used. If the exact environment of that run matters, its owner should re-run the smoke under this lock and republish the summary; nothing in the model lane depends on that decision."
+    }
+  ]
 }

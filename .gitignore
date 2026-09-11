@@ -510,3 +510,18 @@ scratchpad/
 _scratch/
 .venv/
 *.log
+
+# --- project data guards -------------------------------------------------
+# This repository is public. Raw events, user trajectories, materialised task
+# examples and model weights must never enter it. `*.parquet` was already
+# ignored; these close the rest of the door.
+INTERNAL_DO_NOT_UPLOAD_*
+*.pt
+*.pth
+*.onnx
+*.npy
+*.npz
+**/cache/
+**/cache_t2/
+**/cache_t3/
+Dataset/

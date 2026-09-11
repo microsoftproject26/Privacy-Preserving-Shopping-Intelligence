@@ -372,7 +372,15 @@ def test_late_checkpoint_failure_rolls_back_all_runtime_state(tmp_path: Path):
     np.testing.assert_array_equal(before_rng["numpy"][1], after_rng["numpy"][1])
     assert before_rng["numpy"][2:] == after_rng["numpy"][2:]
     torch.testing.assert_close(before_rng["torch_cpu"], after_rng["torch_cpu"], rtol=0, atol=0)
-    assert before_rng["torch_cuda"] == after_rng["torch_cuda"]
+    # CUDA RNG state: a list of tensors on a GPU machine, `None` on a CPU-only one such as
+    # CI. `==` on a list of tensors is elementwise, so asserting on it raises "Boolean value
+    # of Tensor with more than one value is ambiguous" - but only where a GPU exists, which
+    # is why this passed in CI for months and failed on the first machine with a card.
+    before_cuda = before_rng["torch_cuda"] or []
+    after_cuda = after_rng["torch_cuda"] or []
+    assert len(before_cuda) == len(after_cuda)
+    assert all(torch.equal(before, after)
+               for before, after in zip(before_cuda, after_cuda, strict=True))
 
 
 @pytest.mark.parametrize(
@@ -434,4 +442,12 @@ def test_invalid_checkpoint_metadata_fails_before_runtime_mutation(
     np.testing.assert_array_equal(before_rng["numpy"][1], after_rng["numpy"][1])
     assert before_rng["numpy"][2:] == after_rng["numpy"][2:]
     torch.testing.assert_close(before_rng["torch_cpu"], after_rng["torch_cpu"], rtol=0, atol=0)
-    assert before_rng["torch_cuda"] == after_rng["torch_cuda"]
+    # CUDA RNG state: a list of tensors on a GPU machine, `None` on a CPU-only one such as
+    # CI. `==` on a list of tensors is elementwise, so asserting on it raises "Boolean value
+    # of Tensor with more than one value is ambiguous" - but only where a GPU exists, which
+    # is why this passed in CI for months and failed on the first machine with a card.
+    before_cuda = before_rng["torch_cuda"] or []
+    after_cuda = after_rng["torch_cuda"] or []
+    assert len(before_cuda) == len(after_cuda)
+    assert all(torch.equal(before, after)
+               for before, after in zip(before_cuda, after_cuda, strict=True))
