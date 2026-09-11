@@ -399,3 +399,66 @@ def test_t3_starts_exactly_at_the_retrieval_order(windows) -> None:
     assert torch.equal(scores, expected), (
         "the untrained T3 head does not reproduce the rank prior exactly; the zero "
         "initialisation of the cross head's final layer has been lost")
+
+
+@pytest.mark.parametrize("core", ["gru", "lstm", "tcn", "transformer"])
+def test_every_sequence_core_is_causal(core: str, windows) -> None:
+    """A core that can see past the decision is reading the future, and its metric is a lie.
+
+    The whole padded sequence goes through every core - none of them packs, because packing
+    obstructs ONNX export and `S2-SE-01` has to export whichever wins. That is only
+    equivalent to packing if the core cannot look forward, so this changes everything
+    *after* each row's decision position and requires the encoded vector not to move.
+
+    A TCN with the padding on the wrong side and a transformer without its causal mask both
+    pass every shape and dtype check in this file while quietly failing here.
+    """
+    spec = phase1_batch_spec_v1()
+    batch = windows_to_batch(windows, np.arange(len(windows)), spec)
+    model = build_model(13, config=SessionGRUConfig(core=core)).eval()
+
+    with torch.no_grad():
+        before = model.encode_history(batch)
+
+        # Overwrite every position strictly after the decision with a different category.
+        tampered = {k: v.clone() for k, v in batch.history_categorical_ids.items()}
+        length = batch.history_categorical_ids["category_id"].shape[1]
+        after_decision = (torch.arange(length).unsqueeze(0)
+                          >= batch.lengths.unsqueeze(1))
+        for name, tensor in tampered.items():
+            vocabulary = next(c.vocab_size for c in spec.history_categorical
+                              if c.name == name)
+            tensor[after_decision] = (tensor[after_decision] + 1) % vocabulary
+
+        import dataclasses
+        after = model.encode_history(
+            dataclasses.replace(batch, history_categorical_ids=tampered))
+
+    moved = (after - before).abs().max().item()
+    assert moved < 1e-6, (
+        f"the {core} core moved by {moved:.2e} when only post-decision padding changed. "
+        "It is reading the future, so gathering at lengths-1 is not equivalent to packing "
+        "and every number it produces is contaminated.")
+
+
+def test_the_recurrent_cores_keep_their_published_parameter_names() -> None:
+    """Renaming an encoder parameter orphans every checkpoint, and nothing else complains.
+
+    `S2-DS-05` needed a pluggable sequence core, and the obvious way to write one - wrap
+    each module so they all return a tensor - renames `encoder.weight_ih_l0` to
+    `encoder.module.weight_ih_l0`. Every test in this file still passed. Every checkpoint
+    this project has published stopped loading: `s2_ds_01_gru_t1_seed13.pt`, both T2 heads,
+    all three joint models.
+
+    The loader's guard caught it, which is the only reason it was a wasted afternoon rather
+    than a wrong result. This makes the name itself the contract.
+    """
+    names = set(build_model(13, config=SessionGRUConfig(core="gru")).state_dict())
+    assert "encoder.weight_ih_l0" in names, (
+        "the GRU core's parameters are no longer named encoder.weight_ih_l0. Every "
+        "published checkpoint is now unloadable.")
+    assert not any(key.startswith("encoder.module.") for key in names), (
+        "the recurrent core is wrapped again; that renames every encoder parameter")
+
+    lstm = set(build_model(13, config=SessionGRUConfig(core="lstm")).state_dict())
+    assert "encoder.weight_ih_l0" in lstm

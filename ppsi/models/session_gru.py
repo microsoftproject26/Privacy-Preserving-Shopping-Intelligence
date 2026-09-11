@@ -48,6 +48,117 @@ DEFAULT_WIDTHS = {
     "price_band": 4,
 }
 
+# The sequence cores `S2-DS-05` compares. Every one of them must obey three constraints that
+# the rest of this project depends on, and they are the reason none of them is the textbook
+# version:
+#
+# 1. **No packing.** `pack_padded_sequence` is a known obstacle to ONNX export and
+#    `S2-SE-01` has to export whatever wins. Every core runs the full padded sequence and
+#    the caller gathers at `lengths - 1`, which is identical for a causal model because
+#    padding sits strictly after that position.
+# 2. **Causal.** The state at position `lengths - 1` may not see anything after it, or the
+#    model is reading the future and the metric is meaningless.
+# 3. **All-floating state.** `SharedStateSpec.all_shared_floating` raises on any integer
+#    tensor in the state dict, so no `BatchNorm` (its `num_batches_tracked` is int64) and no
+#    integer buffer that is not `persistent=False`. `LayerNorm` is fine.
+SEQUENCE_CORES = ("gru", "lstm", "tcn", "transformer")
+
+
+class _TemporalConvolution(nn.Module):
+    """A causal dilated convolution stack - the TCN alternative.
+
+    Dilation doubles per layer, so `layers` of kernel 3 see `2^layers + 1` steps back. The
+    left padding is `(kernel - 1) * dilation` and the right end is trimmed, which is what
+    makes it causal: position `t` is a function of `t` and earlier, never later.
+
+    Residual connections and `LayerNorm` rather than `BatchNorm` - the latter would put an
+    int64 counter in the state dict and the federated state spec refuses those.
+    """
+
+    def __init__(self, hidden: int, layers: int, kernel: int = 3,
+                 dropout: float = 0.0) -> None:
+        super().__init__()
+        self.pads, self.convolutions, self.norms = [], nn.ModuleList(), nn.ModuleList()
+        for level in range(layers):
+            dilation = 2 ** level
+            self.pads.append((kernel - 1) * dilation)
+            self.convolutions.append(
+                nn.Conv1d(hidden, hidden, kernel, dilation=dilation))
+            self.norms.append(nn.LayerNorm(hidden))
+        self.activation = nn.ReLU()
+        self.dropout = nn.Dropout(dropout)
+
+    def forward(self, x: Tensor) -> Tensor:
+        out = x.transpose(1, 2)                       # [B, H, L] for Conv1d
+        for pad, convolution, norm in zip(self.pads, self.convolutions, self.norms,
+                                          strict=True):
+            padded = nn.functional.pad(out, (pad, 0))
+            shifted = self.dropout(self.activation(convolution(padded)))
+            out = out + shifted
+            out = norm(out.transpose(1, 2)).transpose(1, 2)
+        return out.transpose(1, 2)                    # back to [B, L, H]
+
+
+class _CausalTransformer(nn.Module):
+    """A small SASRec-shaped encoder: learned positions, causal self-attention.
+
+    `norm_first=True` because post-norm transformers of this depth are noticeably harder to
+    train at a fixed budget, and the budget here is fixed by the protocol rather than tuned
+    per architecture. `batch_first=True` keeps the tensor layout identical to the recurrent
+    cores so the caller's gather does not change.
+
+    The causal mask is built per forward from the sequence length rather than held as a
+    buffer: a registered boolean buffer would sit in the state dict, and the federated state
+    spec only admits floating tensors.
+    """
+
+    def __init__(self, hidden: int, layers: int, heads: int = 4, dropout: float = 0.0,
+                 max_length: int = 64) -> None:
+        super().__init__()
+        self.positions = nn.Embedding(max_length, hidden)
+        layer = nn.TransformerEncoderLayer(
+            d_model=hidden, nhead=heads, dim_feedforward=hidden * 2,
+            dropout=dropout, batch_first=True, norm_first=True, activation="gelu")
+        self.stack = nn.TransformerEncoder(layer, num_layers=layers)
+        self.max_length = max_length
+
+    def forward(self, x: Tensor) -> Tensor:
+        length = x.shape[1]
+        if length > self.max_length:
+            raise ValueError(
+                f"history length {length} exceeds the transformer's {self.max_length} "
+                "learned positions; widen max_length rather than truncating silently")
+        index = torch.arange(length, device=x.device)
+        mask = torch.triu(torch.ones(length, length, device=x.device, dtype=torch.bool),
+                          diagonal=1)
+        return self.stack(x + self.positions(index).unsqueeze(0), mask=mask)
+
+
+def build_sequence_core(config: "SessionGRUConfig") -> nn.Module:
+    """The one place a core name becomes a module.
+
+    Capacity is deliberately *not* matched across cores. The protocol fixes the budget -
+    same hidden width, same layer count, same epochs, same learning rate - and lets the
+    parameter count fall where it does, because that count is itself part of what
+    `S2-DS-05` has to report: an architecture that wins by being four times larger has not
+    won the question this project is asking.
+
+    `nn.GRU` and `nn.LSTM` are returned **unwrapped**, and that is not a style choice. A
+    wrapper module renames every parameter from `encoder.weight_ih_l0` to
+    `encoder.module.weight_ih_l0`, which orphans every checkpoint this project has already
+    published - measured: `s2_ds_01_gru_t1_seed13.pt`, both T2 heads and all three joint
+    models stopped loading. The recurrent modules return `(sequence, state)` and the caller
+    unpacks it; the other two return a tensor.
+    """
+    hidden, layers = config.hidden, config.layers
+    if config.core == "gru":
+        return nn.GRU(hidden, hidden, num_layers=layers, batch_first=True)
+    if config.core == "lstm":
+        return nn.LSTM(hidden, hidden, num_layers=layers, batch_first=True)
+    if config.core == "tcn":
+        return _TemporalConvolution(hidden, layers, dropout=config.dropout)
+    return _CausalTransformer(hidden, layers, dropout=config.dropout)
+
 
 @dataclass(frozen=True, slots=True)
 class SessionGRUConfig:
@@ -65,6 +176,11 @@ class SessionGRUConfig:
     hidden: int = 128
     layers: int = 1
     dropout: float = 0.1
+    # Which sequence encoder sits between the input projection and the heads. `S2-DS-05`
+    # compares these under one frozen protocol; everything on either side of the core -
+    # embeddings, projection, gather-at-`lengths-1`, all three heads - stays identical, so
+    # the comparison measures the core and not four differently-built models.
+    core: str = "gru"
     # Width of the T3 cross-feature reranker's hidden layer. Deliberately small: it scores
     # 100 candidates per decision, so its cost is multiplied by the candidate width, and it
     # is asked to add a correction to a strong prior rather than to rank from nothing.
@@ -80,6 +196,8 @@ class SessionGRUConfig:
             raise ValueError("hidden and layers must be positive")
         if self.t3_hidden <= 0:
             raise ValueError("t3_hidden must be positive")
+        if self.core not in SEQUENCE_CORES:
+            raise ValueError(f"core must be one of {sorted(SEQUENCE_CORES)}, got {self.core}")
         if not 0.0 <= self.dropout < 1.0:
             raise ValueError("dropout must be in [0, 1)")
 
@@ -124,7 +242,7 @@ class SessionGRU(nn.Module):
 
         hidden = self.config.hidden
         self.input_projection = nn.Linear(width, hidden)
-        self.encoder = nn.GRU(hidden, hidden, num_layers=self.config.layers, batch_first=True)
+        self.encoder = build_sequence_core(self.config)
         self.dropout = nn.Dropout(self.config.dropout)
 
         # --- heads ---------------------------------------------------------------
@@ -232,9 +350,14 @@ class SessionGRU(nn.Module):
         projected = torch.tanh(self.input_projection(torch.cat(parts, dim=-1)))
 
         # The whole padded sequence, then the state at the decision position. Padding
-        # follows that position and a unidirectional GRU cannot look forward, so this
-        # equals packing - and unlike packing it exports.
-        sequence, _ = self.encoder(projected)
+        # follows that position and every core here is causal, so this equals packing -
+        # and unlike packing it exports.
+        sequence = self.encoder(projected)
+        if isinstance(sequence, tuple):
+            # `nn.GRU` and `nn.LSTM` return `(sequence, state)`. They are used unwrapped so
+            # their parameter names stay `encoder.weight_ih_l0` and every published
+            # checkpoint keeps loading; unpacking here is the price of that.
+            sequence = sequence[0]
         last = torch.clamp(batch.lengths - 1, min=0)
         rows = torch.arange(batch.batch_size, device=batch.lengths.device)
         gathered = sequence[rows, last]
