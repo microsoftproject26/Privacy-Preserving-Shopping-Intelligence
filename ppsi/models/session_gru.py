@@ -65,6 +65,10 @@ class SessionGRUConfig:
     hidden: int = 128
     layers: int = 1
     dropout: float = 0.1
+    # Width of the T3 cross-feature reranker's hidden layer. Deliberately small: it scores
+    # 100 candidates per decision, so its cost is multiplied by the candidate width, and it
+    # is asked to add a correction to a strong prior rather than to rank from nothing.
+    t3_hidden: int = 64
 
     def __post_init__(self) -> None:
         unknown = set(self.channels) - set(HISTORY_CHANNELS)
@@ -74,6 +78,8 @@ class SessionGRUConfig:
             raise ValueError("the encoder needs at least one input channel")
         if self.hidden <= 0 or self.layers <= 0:
             raise ValueError("hidden and layers must be positive")
+        if self.t3_hidden <= 0:
+            raise ValueError("t3_hidden must be positive")
         if not 0.0 <= self.dropout < 1.0:
             raise ValueError("dropout must be in [0, 1)")
 
@@ -179,10 +185,36 @@ class SessionGRU(nn.Module):
         # zero - so this delays learning rather than preventing it. (This is ReZero.)
         # Shape [1], not a scalar: `LocalTrainerCore` hashes every state_dict tensor by
         # viewing it as uint8, and a 0-dimensional tensor cannot be viewed. A scalar here
-        # made the federated trainer step raise, which the contract test caught. Both
-        # broadcast against [B, K] identically, so nothing else changes.
+        # made the federated trainer step raise, which the contract test caught.
         self.t3_rank_weight = nn.Parameter(torch.tensor([-1.0]))
-        self.t3_residual_scale = nn.Parameter(torch.zeros(1))
+
+        # The cross-feature reranker. The previous residual was `session . candidate`, and
+        # the query item never entered it - measured by permuting every query tensor across
+        # a batch and watching the T3 scores move by **exactly 0.0** while T2 moved by 0.81.
+        #
+        # That made the comparison unwinnable rather than merely hard. The frozen retrieval
+        # order is co-occurrence between the *query item* and each candidate, so a model
+        # blind to the query cannot represent what the baseline does, let alone improve on
+        # it. The 0.2505-against-0.2707 result it produced is evidence about a
+        # session-candidate dot product, and about nothing else.
+        #
+        # Inputs per candidate, with h the session vector, q the query vector and c the
+        # candidate vector: the three vectors, two multiplicative interactions that let the
+        # network express "does this candidate match the query", an absolute difference, and
+        # the retrieval rank.
+        #
+        # The final layer is zero-initialised, so `delta` is exactly zero before training and
+        # the score is exactly the frozen ordering. Its *input* is not zero, so gradient
+        # reaches it immediately - unlike gating the whole branch by a zero scalar, which
+        # would leave both the gate and the branch with zero gradient and train neither.
+        cross_width = 6 * hidden + 1
+        self.t3_cross = nn.Sequential(
+            nn.Linear(cross_width, self.config.t3_hidden),
+            nn.ReLU(),
+            nn.Linear(self.config.t3_hidden, 1),
+        )
+        nn.init.zeros_(self.t3_cross[-1].weight)
+        nn.init.zeros_(self.t3_cross[-1].bias)
 
     # -- Phase1Model -------------------------------------------------------------
     def shared_state_spec(self) -> SharedStateSpec:
@@ -236,16 +268,22 @@ class SessionGRU(nn.Module):
         if self.batch_spec.candidate_continuous_dim > 0:
             candidate_parts.append(batch.candidate_continuous_features)
         candidates = torch.tanh(self.candidate_projection(torch.cat(candidate_parts, dim=-1)))
-        # A score per candidate: the session vector against each candidate vector.
-        residual = torch.einsum("bh,bkh->bk", dropped, candidates)
 
         # The retrieval rank is channel 0 of the candidate continuous features, normalised
         # to [0, 1) with 0 the best. Negated, it *is* the frozen ordering.
         if self.batch_spec.candidate_continuous_dim > 0:
             rank = batch.candidate_continuous_features[..., 0]
-            t3_scores = self.t3_rank_weight * rank + self.t3_residual_scale * residual
+            width = candidates.shape[1]
+            history = dropped.unsqueeze(1).expand(-1, width, -1)
+            asked = query.unsqueeze(1).expand(-1, width, -1)
+            cross = torch.cat([history, asked, candidates,
+                               history * candidates, asked * candidates,
+                               (asked - candidates).abs(),
+                               rank.unsqueeze(-1)], dim=-1)
+            t3_scores = (self.t3_rank_weight * rank
+                         + self.t3_cross(cross).squeeze(-1))
         else:
-            t3_scores = residual
+            t3_scores = torch.einsum("bh,bkh->bk", dropped, candidates)
 
         # No sigmoid, no softmax, no sorting. The contract requires raw activations so
         # that loss and metric code owns those choices.
@@ -267,7 +305,7 @@ def build_model(
 
 
 def common_initialization(
-    seed: int, *, batch_spec: Phase1BatchSpec | None = None, config: SessionGRUConfig | None = None
+    seed: int, *, config: SessionGRUConfig, batch_spec: Phase1BatchSpec | None = None
 ) -> tuple[dict, str]:
     """The starting weights every regime must share, plus their digest.
 
@@ -276,8 +314,16 @@ def common_initialization(
     centralized and federated is just a different random initialisation - and the
     project's headline number is the size of that gap.
 
-    Returns the state dict and a sha256 over it, so a later run can prove it started
-    where it claimed to.
+    **`config` is required, and that is the whole point of this signature.** It used to
+    default to `None`, which built the default five-channel encoder rather than the
+    selected two-channel one - a different architecture with a different parameter count
+    and a different digest. `common_initialization(13)` therefore looked like a shared
+    starting point while silently being the wrong model, and a federated lane following the
+    handoff literally would have started somewhere the centralized lane never was. Every
+    caller now has to say which architecture it means.
+
+    Returns the state dict and a sha256 over it, so a later run can prove it started where
+    it claimed to.
     """
     if seed not in ALLOWED_SEEDS:
         raise ValueError(f"seed must be one of {ALLOWED_SEEDS}, got {seed}")

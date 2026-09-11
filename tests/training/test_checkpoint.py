@@ -372,7 +372,13 @@ def test_late_checkpoint_failure_rolls_back_all_runtime_state(tmp_path: Path):
     np.testing.assert_array_equal(before_rng["numpy"][1], after_rng["numpy"][1])
     assert before_rng["numpy"][2:] == after_rng["numpy"][2:]
     torch.testing.assert_close(before_rng["torch_cpu"], after_rng["torch_cpu"], rtol=0, atol=0)
-    assert before_rng["torch_cuda"] == after_rng["torch_cuda"]
+    # A list of CUDA RNG-state tensors, one per device. `==` on tensors is elementwise, so
+    # asserting on it raises "Boolean value of Tensor with more than one value is
+    # ambiguous" - on a CUDA machine. On a CPU-only machine the list is empty and `==`
+    # happens to work, which is why this passed everywhere it was run before.
+    assert len(before_rng["torch_cuda"]) == len(after_rng["torch_cuda"])
+    assert all(torch.equal(before, after) for before, after
+               in zip(before_rng["torch_cuda"], after_rng["torch_cuda"], strict=True))
 
 
 @pytest.mark.parametrize(
@@ -434,4 +440,10 @@ def test_invalid_checkpoint_metadata_fails_before_runtime_mutation(
     np.testing.assert_array_equal(before_rng["numpy"][1], after_rng["numpy"][1])
     assert before_rng["numpy"][2:] == after_rng["numpy"][2:]
     torch.testing.assert_close(before_rng["torch_cpu"], after_rng["torch_cpu"], rtol=0, atol=0)
-    assert before_rng["torch_cuda"] == after_rng["torch_cuda"]
+    # A list of CUDA RNG-state tensors, one per device. `==` on tensors is elementwise, so
+    # asserting on it raises "Boolean value of Tensor with more than one value is
+    # ambiguous" - on a CUDA machine. On a CPU-only machine the list is empty and `==`
+    # happens to work, which is why this passed everywhere it was run before.
+    assert len(before_rng["torch_cuda"]) == len(after_rng["torch_cuda"])
+    assert all(torch.equal(before, after) for before, after
+               in zip(before_rng["torch_cuda"], after_rng["torch_cuda"], strict=True))

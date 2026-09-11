@@ -246,9 +246,10 @@ def test_gathering_at_lengths_minus_one_equals_packing(windows):
 
 def test_common_initialization_is_reproducible_and_seed_specific():
     """S2-PR-06 must start R2a from exactly where the matching R1 started."""
-    first_state, first_digest = common_initialization(13)
-    again_state, again_digest = common_initialization(13)
-    other_state, other_digest = common_initialization(42)
+    config = SessionGRUConfig()
+    first_state, first_digest = common_initialization(13, config=config)
+    again_state, again_digest = common_initialization(13, config=config)
+    other_state, other_digest = common_initialization(42, config=config)
 
     assert first_digest == again_digest
     assert first_digest != other_digest
@@ -259,7 +260,27 @@ def test_common_initialization_is_reproducible_and_seed_specific():
 
 def test_an_unapproved_seed_is_refused():
     with pytest.raises(ValueError, match="seed must be one of"):
-        common_initialization(7)
+        common_initialization(7, config=SessionGRUConfig())
+
+
+def test_common_initialization_refuses_to_guess_the_architecture():
+    """Calling it bare used to build the default five-channel encoder.
+
+    R1 uses a two-channel config; the default has five. So `common_initialization(13)` read
+    as "the shared starting point" while producing a different architecture with a different
+    digest, and a federated lane following the handoff literally would have started
+    somewhere the centralized lane never was. The signature now refuses to guess.
+    """
+    with pytest.raises(TypeError):
+        common_initialization(13)
+
+
+def test_the_selected_and_default_architectures_are_not_interchangeable():
+    """The reason the argument is required, stated as a measurement."""
+    selected = SessionGRUConfig(channels=("category_id", "event_type_id"))
+    _, selected_digest = common_initialization(13, config=selected)
+    _, default_digest = common_initialization(13, config=SessionGRUConfig())
+    assert selected_digest != default_digest
 
 
 def test_building_a_model_does_not_disturb_global_rng():
@@ -318,3 +339,63 @@ def test_a_zero_length_history_encodes_to_exactly_zero():
     )
     with torch.no_grad():
         assert torch.all(model.encode_history(zeroed) == 0)
+
+
+def test_t3_uses_the_query_item(windows) -> None:
+    """T3 must depend on the query product, and the check must survive zero-init.
+
+    The first T3 reranker scored `session . candidate` and the query never entered it. The
+    frozen retrieval order it was competing against is co-occurrence between the *query item*
+    and each candidate, so the model could not represent what the baseline does - let alone
+    improve on it - and the resulting "learning loses" conclusion was about a dot product
+    rather than about T3.
+
+    Permuting the query tensors across a batch must move the T3 scores. It must also leave
+    T1 alone, which is what proves the permutation is reaching the query path specifically
+    and not perturbing the batch at large.
+
+    The cross head's final layer is zero-initialised, so an untrained model emits zero for
+    any input and cannot tell "unused" from "currently zero". The weights are therefore
+    given real values first, which is the state every trained model is in.
+    """
+    import dataclasses
+
+    spec = phase1_batch_spec_v1()
+    batch = windows_to_batch(windows, np.arange(len(windows)), spec)
+    model = build_model(13).eval()
+    torch.nn.init.normal_(model.t3_cross[-1].weight, std=0.1)
+    torch.nn.init.normal_(model.t3_cross[-1].bias, std=0.1)
+
+    with torch.no_grad():
+        before = model(batch)
+        rolled = {k: torch.roll(v, 1, dims=0)
+                  for k, v in batch.query_categorical_ids.items()}
+        after = model(dataclasses.replace(batch, query_categorical_ids=rolled))
+
+    moved = (after.t3_scores - before.t3_scores).abs().max().item()
+    assert moved > 1e-6, (
+        f"permuting the query moved T3 scores by {moved}; T3 is blind to the query item "
+        "and cannot represent the query-candidate relationship the baseline is built on")
+    unmoved = (after.t1_logits - before.t1_logits).abs().max().item()
+    assert unmoved == 0.0, (
+        f"permuting the query moved T1 by {unmoved}; the permutation is not isolated to "
+        "the query path, so the T3 result above proves nothing")
+
+
+def test_t3_starts_exactly_at_the_retrieval_order(windows) -> None:
+    """An untrained model must score precisely the negated retrieval rank.
+
+    This is what makes every later T3 number a measured departure from the frozen ordering
+    rather than a difference between two independent fits. If the cross head emits anything
+    at initialisation, epoch 0 is no longer the baseline and the whole comparison loses its
+    anchor.
+    """
+    spec = phase1_batch_spec_v1()
+    batch = windows_to_batch(windows, np.arange(len(windows)), spec)
+    model = build_model(13).eval()
+    with torch.no_grad():
+        scores = model(batch).t3_scores
+        expected = model.t3_rank_weight * batch.candidate_continuous_features[..., 0]
+    assert torch.equal(scores, expected), (
+        "the untrained T3 head does not reproduce the rank prior exactly; the zero "
+        "initialisation of the cross head's final layer has been lost")
