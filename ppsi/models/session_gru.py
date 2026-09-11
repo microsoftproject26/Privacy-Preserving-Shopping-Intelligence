@@ -359,8 +359,12 @@ class SessionGRU(nn.Module):
             # checkpoint keeps loading; unpacking here is the price of that.
             sequence = sequence[0]
         last = torch.clamp(batch.lengths - 1, min=0)
-        rows = torch.arange(batch.batch_size, device=batch.lengths.device)
-        gathered = sequence[rows, last]
+        # `gather` rather than `sequence[rows, last]`. The indexed form needs
+        # `torch.arange(batch.batch_size)`, and `batch_size` is a Python int, so an ONNX
+        # export bakes the batch size in as a constant and the graph then fails on any
+        # other batch size. This computes the same rows and exports shape-polymorphically.
+        index = last.view(-1, 1, 1).expand(-1, 1, sequence.shape[-1])
+        gathered = sequence.gather(1, index).squeeze(1)
         # A row with no history must contribute exactly zero, not the state of a
         # padding step.
         return torch.where(batch.lengths.unsqueeze(1) > 0, gathered, torch.zeros_like(gathered))

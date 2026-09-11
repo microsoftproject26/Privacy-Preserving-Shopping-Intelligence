@@ -7,6 +7,11 @@ requires-python = "==3.11.14"
 dependencies = [
     "flwr[simulation]==1.33.0",
     "lightgbm==4.7.0",
+    # Added by S2-SE-01. The export path needs the checker to validate the graph and
+    # the runtime to prove the exported model produces the same numbers as PyTorch.
+    # Parity that is not executed in the deployment runtime is not parity.
+    "onnx==1.20.0",
+    "onnxruntime==1.24.1",
     # Added by S2-DS-01. The rest of the package uses polars; the model lane's window
     # builder, evaluator and REES46 loader are pandas, and they reproduce the upstream
     # S1-D1-DS-07 baselines to four decimal places. Rewriting verified numeric code to

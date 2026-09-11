@@ -1,0 +1,108 @@
+{
+  "schema": "OnnxParityReport",
+  "version": 1,
+  "task_id": "S2-SE-01",
+  "opset_version": 17,
+  "tolerance": 0.0001,
+  "max_absolute_difference": {
+    "t1_logits": 1.4156103134155273e-07,
+    "t2_logit": 1.7881393432617188e-07,
+    "t3_scores": 0.0
+  },
+  "max_relative_difference": {
+    "t1_logits": 0.027027027681469917,
+    "t2_logit": 4.6925990318413824e-05,
+    "t3_scores": 0.0
+  },
+  "within_tolerance": true,
+  "graph": {
+    "ir_version": 8,
+    "opset_imports": {
+      "ai.onnx": 17
+    },
+    "producer_name": "pytorch",
+    "graph_inputs": [
+      "category_id",
+      "product_bucket",
+      "event_type_id",
+      "brand_bucket",
+      "price_band",
+      "history_gap",
+      "lengths",
+      "query_category_id",
+      "query_product_bucket",
+      "query_brand_bucket",
+      "query_price_band",
+      "candidate_ids",
+      "candidate_category_id",
+      "candidate_price_band",
+      "candidate_rank"
+    ],
+    "graph_outputs": [
+      "t1_logits",
+      "t2_logit",
+      "t3_scores"
+    ]
+  },
+  "serialized_bytes": 14678873,
+  "shapes_checked": [
+    {
+      "rows": 4,
+      "history": 6,
+      "candidates": 5
+    },
+    {
+      "rows": 1,
+      "history": 6,
+      "candidates": 5
+    },
+    {
+      "rows": 2,
+      "history": 6,
+      "candidates": 5
+    },
+    {
+      "rows": 7,
+      "history": 6,
+      "candidates": 5
+    },
+    {
+      "rows": 16,
+      "history": 6,
+      "candidates": 5
+    },
+    {
+      "rows": 4,
+      "history": 1,
+      "candidates": 5
+    },
+    {
+      "rows": 4,
+      "history": 12,
+      "candidates": 5
+    },
+    {
+      "rows": 4,
+      "history": 6,
+      "candidates": 1
+    },
+    {
+      "rows": 4,
+      "history": 6,
+      "candidates": 20
+    },
+    {
+      "rows": 3,
+      "history": 12,
+      "candidates": 20
+    }
+  ],
+  "runtime": {
+    "onnxruntime": "1.24.1",
+    "torch": "2.13.0+cpu",
+    "provider": "CPUExecutionProvider",
+    "opset_version": 17
+  },
+  "checkpoint": null,
+  "seed": 13
+}

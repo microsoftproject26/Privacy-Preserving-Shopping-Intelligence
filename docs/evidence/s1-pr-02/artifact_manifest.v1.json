@@ -24,7 +24,7 @@
     },
     "environment_lock": {
       "path": "uv.lock",
-      "sha256": "eae55e08de93c7258d0f26173cf4f85245210c625617633f209c1742988979be"
+      "sha256": "55de5bca4a79969c7c7db8a787292f330181f9a67927dc57296cd80a33f019ad"
     }
   },
   "environment_lock_history": [
@@ -35,6 +35,13 @@
       "changed_by": "S2-DS-01",
       "reason": "the model lane declared `pandas==3.0.5` in pyproject.toml and did not regenerate uv.lock, so CI's `uv sync --locked` refused every run on this branch. Regenerating the lock added pandas, python-dateutil, six and tzdata, which changed the file this manifest hashes.",
       "what_this_means_for_the_evidence": "S1-PR-02's synthetic smoke ran under the superseded lock, not this one. The manifest now verifies the CURRENT environment rather than the one that run used. If the exact environment of that run matters, its owner should re-run the smoke under this lock and republish the summary; nothing in the model lane depends on that decision."
+    },
+    {
+      "superseded_sha256": "eae55e08de93c7258d0f26173cf4f85245210c625617633f209c1742988979be",
+      "current_sha256": "55de5bca4a79969c7c7db8a787292f330181f9a67927dc57296cd80a33f019ad",
+      "changed_on": "2026-09-12",
+      "changed_by": "S2-SE-01",
+      "reason": "the deployment lane declared onnx==1.20.0 and onnxruntime==1.24.1 in pyproject.toml, so uv.lock was regenerated. The export needs the checker to validate the graph and the runtime to prove parity; parity that is not executed in the deployment runtime is not parity."
     }
   ]
 }
