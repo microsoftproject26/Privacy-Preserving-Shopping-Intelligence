@@ -2,6 +2,9 @@
 
 from __future__ import annotations
 
+import hashlib
+import json
+from pathlib import Path
 from typing import Any
 
 import pytest
@@ -92,6 +95,61 @@ class TestModelConfig:
         cfg = _make_model_config(extra="bad")
         with pytest.raises(ContractValidationError, match="unknown fields"):
             validate_model_config(cfg)
+
+    def test_frozen_shared_session_encoder(self) -> None:
+        cfg = _make_model_config(
+            architecture_id="shared_session_encoder_v1",
+            architecture_parameters={
+                "core": "gru",
+                "hidden": 128,
+                "layers": 1,
+                "dropout": 0.3,
+                "history_channels": ["category_id", "event_type_id"],
+                "use_gap": True,
+                "history_length": 20,
+                "batch_spec": "phase1_batch_spec_v1",
+                "parameter_count": 2379263,
+                "readout": "gather at the final valid position",
+                "architecture_selected_by": "S2-DS-05 validation comparison",
+            },
+        )
+        assert validate_model_config(cfg) == cfg
+
+    def test_shared_session_encoder_rejects_channel_drift(self) -> None:
+        cfg = _make_model_config(
+            architecture_id="shared_session_encoder_v1",
+            architecture_parameters={
+                "core": "gru",
+                "hidden": 128,
+                "layers": 1,
+                "dropout": 0.3,
+                "history_channels": ["event_type_id", "category_id"],
+                "use_gap": True,
+                "history_length": 20,
+                "batch_spec": "phase1_batch_spec_v1",
+                "parameter_count": 2379263,
+                "readout": "gather at the final valid position",
+                "architecture_selected_by": "S2-DS-05 validation comparison",
+            },
+        )
+        with pytest.raises(ContractValidationError, match="frozen channel order"):
+            validate_model_config(cfg)
+
+    def test_published_s2_ds_08_config_and_initializations_share_one_hash(self) -> None:
+        root = Path(__file__).resolve().parents[2]
+        contract_dir = root / "config" / "experiments" / "s2-ds-08"
+        config_path = contract_dir / "model_config.v1.json"
+        config = json.loads(config_path.read_text(encoding="utf-8"))
+        assert validate_model_config(config) == config
+
+        digest = hashlib.sha256(config_path.read_bytes()).hexdigest()
+        for seed in (13, 42, 2026):
+            initialization = json.loads(
+                (contract_dir / f"common_initialization.seed{seed}.v1.json").read_text(
+                    encoding="utf-8"
+                )
+            )
+            assert initialization["model_config_ref"]["sha256"] == digest
 
 
 # ── ExperimentConfig ─────────────────────────────────────────────────────

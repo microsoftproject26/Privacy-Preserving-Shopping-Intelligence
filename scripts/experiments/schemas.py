@@ -3,7 +3,7 @@
 Implements structural validation for:
 - model_config_v1
 
-Documented as FUTURE: gru_multitask (waiting for CP-ARCH).
+The shared GRU architecture was ratified for the Phase-1 MVP by CP-ARCH.
 """
 
 from __future__ import annotations
@@ -75,9 +75,59 @@ def validate_fixture_linear_v1(params: Any) -> dict[str, Any]:
     return params
 
 
+def validate_shared_session_encoder_v1(params: Any) -> dict[str, Any]:
+    """Validate the ModelConfig frozen by the Phase-1 architecture checkpoint."""
+    if not isinstance(params, dict):
+        raise ContractValidationError("shared_session_encoder_v1 parameters must be dict")
+
+    fields = {
+        "core",
+        "hidden",
+        "layers",
+        "dropout",
+        "history_channels",
+        "use_gap",
+        "history_length",
+        "batch_spec",
+        "parameter_count",
+        "readout",
+        "architecture_selected_by",
+    }
+    reject_unknown_fields(params, fields, "shared_session_encoder_v1_params")
+
+    if params.get("core") != "gru":
+        raise ContractValidationError("shared_session_encoder_v1.core: must be 'gru'")
+    strict_positive_int(params.get("hidden"), "shared_session_encoder_v1.hidden")
+    strict_positive_int(params.get("layers"), "shared_session_encoder_v1.layers")
+    dropout = params.get("dropout")
+    if isinstance(dropout, bool) or not isinstance(dropout, (int, float)):
+        raise ContractValidationError("shared_session_encoder_v1.dropout: must be numeric")
+    if not 0 <= float(dropout) < 1:
+        raise ContractValidationError("shared_session_encoder_v1.dropout: must be in [0, 1)")
+
+    channels = params.get("history_channels")
+    if channels != ["category_id", "event_type_id"]:
+        raise ContractValidationError(
+            "shared_session_encoder_v1.history_channels: must equal the frozen channel order"
+        )
+    strict_bool(params.get("use_gap"), "shared_session_encoder_v1.use_gap")
+    strict_positive_int(params.get("history_length"), "shared_session_encoder_v1.history_length")
+    if params.get("batch_spec") != "phase1_batch_spec_v1":
+        raise ContractValidationError(
+            "shared_session_encoder_v1.batch_spec: must be 'phase1_batch_spec_v1'"
+        )
+    strict_positive_int(params.get("parameter_count"), "shared_session_encoder_v1.parameter_count")
+    strict_nonempty_string(params.get("readout"), "shared_session_encoder_v1.readout")
+    strict_nonempty_string(
+        params.get("architecture_selected_by"),
+        "shared_session_encoder_v1.architecture_selected_by",
+    )
+    return params
+
+
 _ARCHITECTURE_VALIDATORS = {
     "fixture_linear_v1": validate_fixture_linear_v1,
-    # gru_multitask is unsupported until CP-ARCH.
+    "shared_session_encoder_v1": validate_shared_session_encoder_v1,
 }
 
 # ---------------------------------------------------------------------------

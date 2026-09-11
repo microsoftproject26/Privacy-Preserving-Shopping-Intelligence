@@ -1,0 +1,45 @@
+{
+  "schema": "model_config_v1",
+  "version": "1",
+  "model_config_id": "s2_ds_08_shared_gru_t1_t2_v1",
+  "model_family": "session_gru",
+  "architecture_id": "shared_session_encoder_v1",
+  "architecture_version": "1",
+  "parameter_dtype": "float32",
+  "architecture_parameters": {
+    "core": "gru",
+    "hidden": 128,
+    "layers": 1,
+    "dropout": 0.3,
+    "history_channels": [
+      "category_id",
+      "event_type_id"
+    ],
+    "use_gap": true,
+    "history_length": 20,
+    "batch_spec": "phase1_batch_spec_v1",
+    "parameter_count": 2379263,
+    "readout": "gather at clamp(lengths-1, min=0) over the full padded sequence, not pack_padded_sequence, because packing obstructs the ONNX export S2-SE-01 owes. With right-padded history the two are mathematically identical and a test asserts they agree to 1e-5.",
+    "architecture_selected_by": "S2-DS-05: four cores under one frozen protocol. GRU 0.3477, LSTM 0.3471, transformer 0.3440, TCN 0.3398. GRU and LSTM are tied inside the 0.0007 seed spread; the GRU is 27% cheaper."
+  },
+  "task_heads": [
+    {
+      "task": "T1",
+      "head_id": "t1_category_head_v1",
+      "head_version": "1",
+      "output_dim": 588
+    },
+    {
+      "task": "T2",
+      "head_id": "t2_purchase_head_v1",
+      "head_version": "1",
+      "output_dim": 1
+    },
+    {
+      "task": "T3",
+      "head_id": "t3_residual_reranker_v1",
+      "head_version": "1",
+      "output_dim": 1
+    }
+  ]
+}

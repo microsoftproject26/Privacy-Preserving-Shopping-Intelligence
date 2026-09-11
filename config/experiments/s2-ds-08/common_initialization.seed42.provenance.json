@@ -1,0 +1,11 @@
+{
+  "seed": 42,
+  "model_config_ref": "s2_ds_08_shared_gru_t1_t2_v1",
+  "state_dict_digest": "30a1dc7e36a530bf959afe2e24cedf785c4493ee0a36913fd5ae16e6a071dd8c",
+  "artifact": {
+    "path": "S2-DS-01_GRU_T1_Model/output/common_initialization_seed42.pt",
+    "sha256": "5a127e4a133f4edb86055255c78b6204ab85bceef67b937606abc7bbec2fea0c",
+    "distributed_via": "not in this repository - it is public. See docs/evidence/seal/checkpoint_manifest.json"
+  },
+  "note": "`common_initialization` requires an explicit config. It used to default to the five-channel encoder while R1 uses two, which is a different parameter count and a different digest - so a lane calling it bare would have started somewhere R1 never was."
+}

@@ -1,0 +1,49 @@
+{
+  "schema": "deployment_candidate_v1",
+  "version": "1",
+  "deployment_candidate_checkpoint_id": "s2_ds_08_joint_lambda1.0_seed13",
+  "task": "S2-DS-08",
+  "model_config_ref": "s2_ds_08_shared_gru_t1_t2_v1",
+  "selected_by": {
+    "rule": "maximise T2 PR-AUC subject to T1 within the margin",
+    "t1_reference": 0.3479,
+    "t1_margin": 0.003,
+    "fixed_before_the_run": true,
+    "source": "round-2 review"
+  },
+  "artifact": {
+    "path": "S2-DS-08_Joint_Loss/output/joint_lambda1.0.pt",
+    "sha256": "6a322126d05ec1d93a4fa124fa6880e1de7e1af952a8fdcda817e47bd8307b26",
+    "megabytes": 9.53,
+    "distributed_via": "not in this repository - it is public. Bundled in _HANDOFF/s2_model_weights_v1.zip with a per-file manifest."
+  },
+  "trained_from": "s2_ds_01_gru_t1_seed13.pt",
+  "git_sha": "554bda785431e313736fa0b9d52f9c7477a7bd2c",
+  "validation": {
+    "t1_slice_macro": 0.3467,
+    "t1_cost_against_t1_only": -0.0012,
+    "t2_pr_auc": 0.1337,
+    "t2_gain_over_baseline": 0.058,
+    "epoch": 6,
+    "seeds_run": 1
+  },
+  "why_not_the_best_t2_model": {
+    "candidate": "t2_2.pt",
+    "its_t2": 0.1424,
+    "its_t1": 0.1791,
+    "reason": "it is better at T2 and takes T1 below its own model-free baseline of 0.3143. A checkpoint that is excellent at one task and worse than a lookup table at another is not a deployment candidate."
+  },
+  "what_it_does_not_carry": {
+    "T3": "no T3 loss entered the shared encoder. S2-DS-07 has no learned reranker that beats the frozen retrieval order, so a T3 term would spend encoder capacity on a task with no demonstrated gain. The T3 head exists and emits finite scores because RawModelOutput requires all three tensors."
+  },
+  "known_limits": [
+    "one seed; the T1 cost of 0.0012 is within two seed spreads",
+    "lambda 1.0 is the edge of the pre-registered ladder and T2 rose monotonically with it, so the breaking point was not found",
+    "a separate T2 model reaches 0.1430, so sharing costs T2 0.0093 in exchange for 2,379,263 fewer parameters on the device"
+  ],
+  "consumed_by": [
+    "S2-SE-08",
+    "S2-PR-09",
+    "S2-PR-06"
+  ]
+}
