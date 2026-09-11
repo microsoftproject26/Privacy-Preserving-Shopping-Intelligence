@@ -68,6 +68,17 @@ def validate_temporal_example(
         indexed[order] = event
         prior_time = event_time
 
+    # Canonical order is assigned over the whole sorted frame, so a session occupies a
+    # contiguous block and its orders run consecutively. A gap inside the range therefore
+    # means a row was withheld, and a withheld row can make a wrong T1 target look like
+    # the first later different item. Caught here rather than in each task validator.
+    positions = sorted(indexed)
+    if positions and len(positions) != positions[-1] - positions[0] + 1:
+        missing = sorted(set(range(positions[0], positions[-1] + 1)) - set(positions))
+        raise TemporalLeakageError(
+            f"session events are not contiguous in canonical order; missing {missing}"
+        )
+
     decision = indexed.get(decision_order)
     if decision is None:
         raise TemporalLeakageError("decision_order does not identify a source event")
@@ -129,10 +140,13 @@ def _validate_t1(
     )
     if target is None:
         raise TemporalLeakageError("T1 requires a later different-item target in the session")
+    # This, not `label_matures_at`, is what protects T1 from reading across a split. The
+    # target is the event the label comes from, so requiring it inside the window is the
+    # substantive check; see the note on `label_matures_at` below.
     _require_inside_split(_event_time(target), start, end, "T1 target")
     if _required(example, "label_value") != _required(target, "category"):
         raise TemporalLeakageError("T1 label is not the first later different-item category")
-    _require_maturation(example, _event_time(target), "T1 target")
+    _require_maturation(example, _event_time(decision), "T1 decision")
     _require_observed(example, "T1")
 
 
@@ -247,6 +261,21 @@ def _require_censored(example: Mapping[str, Any], reason: str) -> None:
 def _require_maturation(
     example: Mapping[str, Any], expected: datetime, description: str
 ) -> None:
+    """Check `label_matures_at` against what the producer actually writes.
+
+    T2 and T3 write the session's last event time, which is the moment their outcome
+    becomes observable. T1 writes the decision event's own time. That is a weaker thing
+    to carry, because a T1 label comes from the target event and the target has not
+    happened at decision time, so for T1 this field must not be used to decide whether a
+    label has matured. `_validate_t1` requires the target itself to lie inside the split
+    instead, which is the guarantee that actually matters.
+
+    Asserting the producer's convention rather than the stricter one is deliberate. A
+    validator that rejects every real row is a validator nobody can run, and the
+    inconsistency is recorded in `docs/security/threat-model.md` and raised with the lane
+    that owns the builder rather than hidden by a check that never executes.
+    """
+
     actual = _as_utc(_required(example, "label_matures_at"), "label_matures_at")
     if actual != expected:
         raise TemporalLeakageError(f"label_matures_at must equal the {description} time")
