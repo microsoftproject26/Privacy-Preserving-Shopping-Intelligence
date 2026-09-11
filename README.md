@@ -114,3 +114,40 @@ uv run --locked python -X utf8 scripts/experiments/validate_experiment_contracts
 
 The workflow uses synthetic and committed fixtures only. It does not download REES46 or require a
 GPU.
+
+### Adding or changing a dependency
+
+CI installs with `uv sync --locked`, which refuses to resolve anything `uv.lock` does not already
+pin. Editing `pyproject.toml` without regenerating the lock therefore fails the very first CI step,
+before lint or tests run, with:
+
+```text
+The lockfile at `uv.lock` needs to be updated, but `--locked` was provided.
+```
+
+After any change to `pyproject.toml`:
+
+```powershell
+uv lock
+git add pyproject.toml uv.lock
+```
+
+Commit both together. A lock that arrives in a later commit leaves every commit in between
+uninstallable.
+
+### When CI fails
+
+| First failing step | What it means | What to run |
+|---|---|---|
+| Install locked environment | `uv.lock` does not match `pyproject.toml` | `uv lock`, then commit `uv.lock` |
+| Lint | Ruff findings; most are mechanical | `uv run --locked ruff check ppsi scripts tests --fix` |
+| Test | A real test failure | `uv run --locked python -m pytest -q` |
+| Environment smoke | The pinned interpreter or Torch is not usable | `uv python install`, then re-sync |
+| Contract smoke | A frozen schema or identity no longer validates | Read the named contract before changing it |
+
+The steps run in order and stop at the first failure, so a later step being untouched does not mean
+it would pass.
+
+Ruff enforces the pinned Python version, `3.11.14`. Syntax introduced in a later Python parses on a
+newer local interpreter and fails here, so run the checks above before pushing rather than relying
+on whichever Python is on your PATH.

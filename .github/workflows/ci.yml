@@ -35,10 +35,17 @@ jobs:
       - name: Install locked environment
         run: |
           uv python install
-          uv sync --locked --group dev
+          if ! uv sync --locked --group dev; then
+            echo "::error title=Lockfile is out of date::pyproject.toml changed but uv.lock was not regenerated. Run 'uv lock' locally, then commit uv.lock. CI installs with --locked and will not resolve anything the lockfile does not already pin."
+            exit 1
+          fi
 
       - name: Lint
-        run: uv run --locked ruff check ppsi scripts tests
+        run: |
+          if ! uv run --locked ruff check ppsi scripts tests; then
+            echo "::error title=Lint failed::Most findings are mechanical. Run 'uv run --locked ruff check ppsi scripts tests --fix' locally, then review what remains."
+            exit 1
+          fi
 
       - name: Test
         run: uv run --locked python -m pytest -q

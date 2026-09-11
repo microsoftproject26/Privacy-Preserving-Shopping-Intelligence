@@ -525,3 +525,16 @@ INTERNAL_DO_NOT_UPLOAD_*
 **/cache_t2/
 **/cache_t3/
 Dataset/
+
+# --- Project rules. These come after the template above and override it. ---
+
+# docs/artifacts.md declares the experiment results registry at
+# artifacts/experiment-results/*.result.json, but the .NET template above ignores
+# artifacts/ wholesale. The result was that a new run wrote its result file, git status
+# showed nothing, and the run never reached the repository. Re-include exactly that path
+# and nothing else: checkpoints, ONNX exports and scratch output stay ignored.
+!artifacts/
+artifacts/*
+!artifacts/experiment-results/
+artifacts/experiment-results/*
+!artifacts/experiment-results/*.result.json
