@@ -149,7 +149,11 @@ def to_batch(split: Split, rows: np.ndarray) -> Phase1Batch:
             "candidate_category_id": torch.full((size, 1), 589, dtype=torch.int64),
             "candidate_price_band": torch.full((size, 1), 5, dtype=torch.int64),
         },
-        candidate_continuous_features=torch.zeros(size, 1, 0, dtype=torch.float32),
+        # Read from the spec, never written as a literal. `S2-DS-07` widened this channel
+        # to carry the retrieval rank, and a hard-coded 0 here silently built a batch the
+        # model could no longer multiply - discovered mid-run, twice.
+        candidate_continuous_features=torch.zeros(
+            size, 1, SPEC.candidate_continuous_dim, dtype=torch.float32),
         candidate_mask=torch.zeros(size, 1, dtype=torch.bool),
         t1_target=take("target", "int64"),
         t2_target=torch.zeros(size, 1, dtype=torch.float32),
