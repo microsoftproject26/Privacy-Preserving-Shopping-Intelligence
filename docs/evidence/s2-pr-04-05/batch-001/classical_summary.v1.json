@@ -1,0 +1,438 @@
+{
+  "batch": "batch-001",
+  "limitations": [
+    "validation-selected baselines, not held-out TEST performance",
+    "not the final neural R1 denominator",
+    "no claim that probabilities are calibrated",
+    "all four raw-data/task-label sources remain unchanged"
+  ],
+  "schema": "classical_baseline_summary_v1",
+  "selection_uses_validation": true,
+  "source_snapshot_ref": {
+    "artifact_schema": "baseline_source_snapshot_v1",
+    "artifact_version": "1",
+    "logical_id": "baseline_source_snapshot_v1",
+    "schema": "artifact_ref_v1",
+    "sha256": "da1ade147f7a8ce3f5e9d55c300386aff335a4ac20666599e1254eca08fa41d2",
+    "uri": "docs/evidence/s2-pr-04-05/batch-001/source_snapshot.v1.json",
+    "version": "1"
+  },
+  "status": "PASS",
+  "task": "T2",
+  "test_consumed": false,
+  "training_observed_rows": 2291753,
+  "trials": [
+    {
+      "evaluation_source_sha256": "fcb22295c58d70d83369e1a5a7934c3df9fdd991ad4f800680b36d4cd4017378",
+      "id": "lr_c0p1",
+      "metrics_ref": {
+        "artifact_schema": "baseline_metrics_v1",
+        "artifact_version": "1",
+        "logical_id": "baseline_metrics_v1",
+        "schema": "artifact_ref_v1",
+        "sha256": "efd4ef4aae32846389ef34fd0d4dd732f20eb68c0dea41d2c77b6551fc049556",
+        "uri": "docs/evidence/s2-pr-04-05/batch-001/lr_c0p1/metrics.v1.json",
+        "version": "1"
+      },
+      "model": "logistic_regression",
+      "model_ref": {
+        "artifact_schema": "private_fitted_baseline_v1",
+        "artifact_version": "1",
+        "logical_id": "private_fitted_baseline_v1",
+        "schema": "artifact_ref_v1",
+        "sha256": "66f9a85540c5de60617de93aac804d28af1f18ed1407d9e846785bc780aab6ef",
+        "uri": "artifacts/baselines/s2-pr-04-05/batch-001/classical/lr_c0p1.joblib",
+        "version": "1"
+      },
+      "parameters": {
+        "C": 0.1
+      },
+      "result_ref": {
+        "artifact_schema": "experiment_result_v1",
+        "artifact_version": "1",
+        "logical_id": "experiment_result_v1",
+        "schema": "artifact_ref_v1",
+        "sha256": "c9b6145343fec37e051c1f8ef65f8952bfb6cce0446b00562932a6c1420d74e7",
+        "uri": "docs/evidence/s2-pr-04-05/batch-001/lr_c0p1/experiment_result.v1.json",
+        "version": "1"
+      },
+      "selection_value": 0.1584456824653168
+    },
+    {
+      "evaluation_source_sha256": "fcb22295c58d70d83369e1a5a7934c3df9fdd991ad4f800680b36d4cd4017378",
+      "id": "lr_c1p0",
+      "metrics_ref": {
+        "artifact_schema": "baseline_metrics_v1",
+        "artifact_version": "1",
+        "logical_id": "baseline_metrics_v1",
+        "schema": "artifact_ref_v1",
+        "sha256": "8c543859677c8c33b3e445ef018e7bac102ddd62a43f97f73712542c983fd756",
+        "uri": "docs/evidence/s2-pr-04-05/batch-001/lr_c1p0/metrics.v1.json",
+        "version": "1"
+      },
+      "model": "logistic_regression",
+      "model_ref": {
+        "artifact_schema": "private_fitted_baseline_v1",
+        "artifact_version": "1",
+        "logical_id": "private_fitted_baseline_v1",
+        "schema": "artifact_ref_v1",
+        "sha256": "492725f327f85c5272b494cbe188f2c74eef0a0c5c82951de3f1b9a65ecf10a9",
+        "uri": "artifacts/baselines/s2-pr-04-05/batch-001/classical/lr_c1p0.joblib",
+        "version": "1"
+      },
+      "parameters": {
+        "C": 1.0
+      },
+      "result_ref": {
+        "artifact_schema": "experiment_result_v1",
+        "artifact_version": "1",
+        "logical_id": "experiment_result_v1",
+        "schema": "artifact_ref_v1",
+        "sha256": "5cc9f521a8ed9b55ad5f04cd5621341fb982e7c78f90912398ec17725d89b9b2",
+        "uri": "docs/evidence/s2-pr-04-05/batch-001/lr_c1p0/experiment_result.v1.json",
+        "version": "1"
+      },
+      "selection_value": 0.15856215932656084
+    },
+    {
+      "evaluation_source_sha256": "fcb22295c58d70d83369e1a5a7934c3df9fdd991ad4f800680b36d4cd4017378",
+      "id": "lr_c10p0",
+      "metrics_ref": {
+        "artifact_schema": "baseline_metrics_v1",
+        "artifact_version": "1",
+        "logical_id": "baseline_metrics_v1",
+        "schema": "artifact_ref_v1",
+        "sha256": "fcd74247aff9fe4f449a7c950576fef0eb423501ff47b6c347e3a63e2b340cb8",
+        "uri": "docs/evidence/s2-pr-04-05/batch-001/lr_c10p0/metrics.v1.json",
+        "version": "1"
+      },
+      "model": "logistic_regression",
+      "model_ref": {
+        "artifact_schema": "private_fitted_baseline_v1",
+        "artifact_version": "1",
+        "logical_id": "private_fitted_baseline_v1",
+        "schema": "artifact_ref_v1",
+        "sha256": "75db213ddc10f9ce8c79768590c1d3c9d9071d7661ceabce1779d9143ce9a446",
+        "uri": "artifacts/baselines/s2-pr-04-05/batch-001/classical/lr_c10p0.joblib",
+        "version": "1"
+      },
+      "parameters": {
+        "C": 10.0
+      },
+      "result_ref": {
+        "artifact_schema": "experiment_result_v1",
+        "artifact_version": "1",
+        "logical_id": "experiment_result_v1",
+        "schema": "artifact_ref_v1",
+        "sha256": "665a33a304bcac62bc73272bcd31807d0dd6f838c9c4e81b44f42f57fca209da",
+        "uri": "docs/evidence/s2-pr-04-05/batch-001/lr_c10p0/experiment_result.v1.json",
+        "version": "1"
+      },
+      "selection_value": 0.1583274461321985
+    },
+    {
+      "evaluation_source_sha256": "fcb22295c58d70d83369e1a5a7934c3df9fdd991ad4f800680b36d4cd4017378",
+      "id": "lgbm_l15_r10",
+      "metrics_ref": {
+        "artifact_schema": "baseline_metrics_v1",
+        "artifact_version": "1",
+        "logical_id": "baseline_metrics_v1",
+        "schema": "artifact_ref_v1",
+        "sha256": "3c4ed36acdeec7101d72e6a5c67d2016420945a726b98dd473f5cf45350a0e45",
+        "uri": "docs/evidence/s2-pr-04-05/batch-001/lgbm_l15_r10/metrics.v1.json",
+        "version": "1"
+      },
+      "model": "lightgbm",
+      "model_ref": {
+        "artifact_schema": "private_fitted_baseline_v1",
+        "artifact_version": "1",
+        "logical_id": "private_fitted_baseline_v1",
+        "schema": "artifact_ref_v1",
+        "sha256": "60c55d8576564690da70d37f12e458f934af1883586ed3b63a555282fba40260",
+        "uri": "artifacts/baselines/s2-pr-04-05/batch-001/classical/lgbm_l15_r10.joblib",
+        "version": "1"
+      },
+      "parameters": {
+        "num_leaves": 15,
+        "reg_lambda": 10.0
+      },
+      "result_ref": {
+        "artifact_schema": "experiment_result_v1",
+        "artifact_version": "1",
+        "logical_id": "experiment_result_v1",
+        "schema": "artifact_ref_v1",
+        "sha256": "44548fa9bb5f1fb10417188dc62607ffd7e02b6c3db7b4a1897945e520ef0e35",
+        "uri": "docs/evidence/s2-pr-04-05/batch-001/lgbm_l15_r10/experiment_result.v1.json",
+        "version": "1"
+      },
+      "selection_value": 0.17631981878539482
+    },
+    {
+      "evaluation_source_sha256": "fcb22295c58d70d83369e1a5a7934c3df9fdd991ad4f800680b36d4cd4017378",
+      "id": "lgbm_l15_r1",
+      "metrics_ref": {
+        "artifact_schema": "baseline_metrics_v1",
+        "artifact_version": "1",
+        "logical_id": "baseline_metrics_v1",
+        "schema": "artifact_ref_v1",
+        "sha256": "1508c9105aad3dc9fb71d310c1a9b4f12266f112e1bd146b4cc3f35452ed4725",
+        "uri": "docs/evidence/s2-pr-04-05/batch-001/lgbm_l15_r1/metrics.v1.json",
+        "version": "1"
+      },
+      "model": "lightgbm",
+      "model_ref": {
+        "artifact_schema": "private_fitted_baseline_v1",
+        "artifact_version": "1",
+        "logical_id": "private_fitted_baseline_v1",
+        "schema": "artifact_ref_v1",
+        "sha256": "03e71badaca965ab2606490c5055bf9ab42f9307dfce03aa469fa4b27a105fdf",
+        "uri": "artifacts/baselines/s2-pr-04-05/batch-001/classical/lgbm_l15_r1.joblib",
+        "version": "1"
+      },
+      "parameters": {
+        "num_leaves": 15,
+        "reg_lambda": 1.0
+      },
+      "result_ref": {
+        "artifact_schema": "experiment_result_v1",
+        "artifact_version": "1",
+        "logical_id": "experiment_result_v1",
+        "schema": "artifact_ref_v1",
+        "sha256": "d6914e1ece09095010d01b70cee80b732f5ed5ff0ca859eaa3edb7bb733120b5",
+        "uri": "docs/evidence/s2-pr-04-05/batch-001/lgbm_l15_r1/experiment_result.v1.json",
+        "version": "1"
+      },
+      "selection_value": 0.1762846543413775
+    },
+    {
+      "evaluation_source_sha256": "fcb22295c58d70d83369e1a5a7934c3df9fdd991ad4f800680b36d4cd4017378",
+      "id": "lgbm_l31_r10",
+      "metrics_ref": {
+        "artifact_schema": "baseline_metrics_v1",
+        "artifact_version": "1",
+        "logical_id": "baseline_metrics_v1",
+        "schema": "artifact_ref_v1",
+        "sha256": "341fa226494f2288314d821b454c6e2d24d1572bd3d9300c82e068071d9cdda4",
+        "uri": "docs/evidence/s2-pr-04-05/batch-001/lgbm_l31_r10/metrics.v1.json",
+        "version": "1"
+      },
+      "model": "lightgbm",
+      "model_ref": {
+        "artifact_schema": "private_fitted_baseline_v1",
+        "artifact_version": "1",
+        "logical_id": "private_fitted_baseline_v1",
+        "schema": "artifact_ref_v1",
+        "sha256": "e6179d2a1703df71c7d1496346757864d921016c114e62e79a6cf972965aa1d5",
+        "uri": "artifacts/baselines/s2-pr-04-05/batch-001/classical/lgbm_l31_r10.joblib",
+        "version": "1"
+      },
+      "parameters": {
+        "num_leaves": 31,
+        "reg_lambda": 10.0
+      },
+      "result_ref": {
+        "artifact_schema": "experiment_result_v1",
+        "artifact_version": "1",
+        "logical_id": "experiment_result_v1",
+        "schema": "artifact_ref_v1",
+        "sha256": "6dcc6b92d2cd1f2b07b3ac13423021495975fbfb9e3a1c8df372d3dc0f20120a",
+        "uri": "docs/evidence/s2-pr-04-05/batch-001/lgbm_l31_r10/experiment_result.v1.json",
+        "version": "1"
+      },
+      "selection_value": 0.17972398173762097
+    },
+    {
+      "evaluation_source_sha256": "fcb22295c58d70d83369e1a5a7934c3df9fdd991ad4f800680b36d4cd4017378",
+      "id": "lgbm_l31_r1",
+      "metrics_ref": {
+        "artifact_schema": "baseline_metrics_v1",
+        "artifact_version": "1",
+        "logical_id": "baseline_metrics_v1",
+        "schema": "artifact_ref_v1",
+        "sha256": "40b7d5ff91d37034aef604db314bb2270805e917550a27a9c5bfe3f381044a22",
+        "uri": "docs/evidence/s2-pr-04-05/batch-001/lgbm_l31_r1/metrics.v1.json",
+        "version": "1"
+      },
+      "model": "lightgbm",
+      "model_ref": {
+        "artifact_schema": "private_fitted_baseline_v1",
+        "artifact_version": "1",
+        "logical_id": "private_fitted_baseline_v1",
+        "schema": "artifact_ref_v1",
+        "sha256": "5e8ed63af0fac9acd928279817b863b8ed08ae39848abff06df5db844c44d4a9",
+        "uri": "artifacts/baselines/s2-pr-04-05/batch-001/classical/lgbm_l31_r1.joblib",
+        "version": "1"
+      },
+      "parameters": {
+        "num_leaves": 31,
+        "reg_lambda": 1.0
+      },
+      "result_ref": {
+        "artifact_schema": "experiment_result_v1",
+        "artifact_version": "1",
+        "logical_id": "experiment_result_v1",
+        "schema": "artifact_ref_v1",
+        "sha256": "2f3ea2fa4643503c4188be7e43f63ccfec8e3d28edb335203e2805ae92b909f8",
+        "uri": "docs/evidence/s2-pr-04-05/batch-001/lgbm_l31_r1/experiment_result.v1.json",
+        "version": "1"
+      },
+      "selection_value": 0.17886567471741263
+    }
+  ],
+  "validation_observed_rows": 322087,
+  "version": "1",
+  "winners": [
+    {
+      "max_abs_probability_diff": 0.0,
+      "repeat": {
+        "evaluation_source_sha256": "fcb22295c58d70d83369e1a5a7934c3df9fdd991ad4f800680b36d4cd4017378",
+        "id": "lr_c1p0_repeat",
+        "metrics_ref": {
+          "artifact_schema": "baseline_metrics_v1",
+          "artifact_version": "1",
+          "logical_id": "baseline_metrics_v1",
+          "schema": "artifact_ref_v1",
+          "sha256": "8c543859677c8c33b3e445ef018e7bac102ddd62a43f97f73712542c983fd756",
+          "uri": "docs/evidence/s2-pr-04-05/batch-001/lr_c1p0_repeat/metrics.v1.json",
+          "version": "1"
+        },
+        "model": "logistic_regression",
+        "model_ref": {
+          "artifact_schema": "private_fitted_baseline_v1",
+          "artifact_version": "1",
+          "logical_id": "private_fitted_baseline_v1",
+          "schema": "artifact_ref_v1",
+          "sha256": "492725f327f85c5272b494cbe188f2c74eef0a0c5c82951de3f1b9a65ecf10a9",
+          "uri": "artifacts/baselines/s2-pr-04-05/batch-001/classical/lr_c1p0_repeat.joblib",
+          "version": "1"
+        },
+        "parameters": {
+          "C": 1.0
+        },
+        "result_ref": {
+          "artifact_schema": "experiment_result_v1",
+          "artifact_version": "1",
+          "logical_id": "experiment_result_v1",
+          "schema": "artifact_ref_v1",
+          "sha256": "b552635ab98018bbbda516e0c328a77635578362354d9cc2aa5dd0823b485e53",
+          "uri": "docs/evidence/s2-pr-04-05/batch-001/lr_c1p0_repeat/experiment_result.v1.json",
+          "version": "1"
+        },
+        "selection_value": 0.15856215932656084
+      },
+      "selected": {
+        "evaluation_source_sha256": "fcb22295c58d70d83369e1a5a7934c3df9fdd991ad4f800680b36d4cd4017378",
+        "id": "lr_c1p0",
+        "metrics_ref": {
+          "artifact_schema": "baseline_metrics_v1",
+          "artifact_version": "1",
+          "logical_id": "baseline_metrics_v1",
+          "schema": "artifact_ref_v1",
+          "sha256": "8c543859677c8c33b3e445ef018e7bac102ddd62a43f97f73712542c983fd756",
+          "uri": "docs/evidence/s2-pr-04-05/batch-001/lr_c1p0/metrics.v1.json",
+          "version": "1"
+        },
+        "model": "logistic_regression",
+        "model_ref": {
+          "artifact_schema": "private_fitted_baseline_v1",
+          "artifact_version": "1",
+          "logical_id": "private_fitted_baseline_v1",
+          "schema": "artifact_ref_v1",
+          "sha256": "492725f327f85c5272b494cbe188f2c74eef0a0c5c82951de3f1b9a65ecf10a9",
+          "uri": "artifacts/baselines/s2-pr-04-05/batch-001/classical/lr_c1p0.joblib",
+          "version": "1"
+        },
+        "parameters": {
+          "C": 1.0
+        },
+        "result_ref": {
+          "artifact_schema": "experiment_result_v1",
+          "artifact_version": "1",
+          "logical_id": "experiment_result_v1",
+          "schema": "artifact_ref_v1",
+          "sha256": "5cc9f521a8ed9b55ad5f04cd5621341fb982e7c78f90912398ec17725d89b9b2",
+          "uri": "docs/evidence/s2-pr-04-05/batch-001/lr_c1p0/experiment_result.v1.json",
+          "version": "1"
+        },
+        "selection_value": 0.15856215932656084
+      }
+    },
+    {
+      "max_abs_probability_diff": 0.0,
+      "repeat": {
+        "evaluation_source_sha256": "fcb22295c58d70d83369e1a5a7934c3df9fdd991ad4f800680b36d4cd4017378",
+        "id": "lgbm_l31_r10_repeat",
+        "metrics_ref": {
+          "artifact_schema": "baseline_metrics_v1",
+          "artifact_version": "1",
+          "logical_id": "baseline_metrics_v1",
+          "schema": "artifact_ref_v1",
+          "sha256": "341fa226494f2288314d821b454c6e2d24d1572bd3d9300c82e068071d9cdda4",
+          "uri": "docs/evidence/s2-pr-04-05/batch-001/lgbm_l31_r10_repeat/metrics.v1.json",
+          "version": "1"
+        },
+        "model": "lightgbm",
+        "model_ref": {
+          "artifact_schema": "private_fitted_baseline_v1",
+          "artifact_version": "1",
+          "logical_id": "private_fitted_baseline_v1",
+          "schema": "artifact_ref_v1",
+          "sha256": "e6179d2a1703df71c7d1496346757864d921016c114e62e79a6cf972965aa1d5",
+          "uri": "artifacts/baselines/s2-pr-04-05/batch-001/classical/lgbm_l31_r10_repeat.joblib",
+          "version": "1"
+        },
+        "parameters": {
+          "num_leaves": 31,
+          "reg_lambda": 10.0
+        },
+        "result_ref": {
+          "artifact_schema": "experiment_result_v1",
+          "artifact_version": "1",
+          "logical_id": "experiment_result_v1",
+          "schema": "artifact_ref_v1",
+          "sha256": "a9e3da36bad1b4d3cdd47643c7d86ecbd3b397535e8740556a9d889472ee6a76",
+          "uri": "docs/evidence/s2-pr-04-05/batch-001/lgbm_l31_r10_repeat/experiment_result.v1.json",
+          "version": "1"
+        },
+        "selection_value": 0.17972398173762097
+      },
+      "selected": {
+        "evaluation_source_sha256": "fcb22295c58d70d83369e1a5a7934c3df9fdd991ad4f800680b36d4cd4017378",
+        "id": "lgbm_l31_r10",
+        "metrics_ref": {
+          "artifact_schema": "baseline_metrics_v1",
+          "artifact_version": "1",
+          "logical_id": "baseline_metrics_v1",
+          "schema": "artifact_ref_v1",
+          "sha256": "341fa226494f2288314d821b454c6e2d24d1572bd3d9300c82e068071d9cdda4",
+          "uri": "docs/evidence/s2-pr-04-05/batch-001/lgbm_l31_r10/metrics.v1.json",
+          "version": "1"
+        },
+        "model": "lightgbm",
+        "model_ref": {
+          "artifact_schema": "private_fitted_baseline_v1",
+          "artifact_version": "1",
+          "logical_id": "private_fitted_baseline_v1",
+          "schema": "artifact_ref_v1",
+          "sha256": "e6179d2a1703df71c7d1496346757864d921016c114e62e79a6cf972965aa1d5",
+          "uri": "artifacts/baselines/s2-pr-04-05/batch-001/classical/lgbm_l31_r10.joblib",
+          "version": "1"
+        },
+        "parameters": {
+          "num_leaves": 31,
+          "reg_lambda": 10.0
+        },
+        "result_ref": {
+          "artifact_schema": "experiment_result_v1",
+          "artifact_version": "1",
+          "logical_id": "experiment_result_v1",
+          "schema": "artifact_ref_v1",
+          "sha256": "6dcc6b92d2cd1f2b07b3ac13423021495975fbfb9e3a1c8df372d3dc0f20120a",
+          "uri": "docs/evidence/s2-pr-04-05/batch-001/lgbm_l31_r10/experiment_result.v1.json",
+          "version": "1"
+        },
+        "selection_value": 0.17972398173762097
+      }
+    }
+  ]
+}

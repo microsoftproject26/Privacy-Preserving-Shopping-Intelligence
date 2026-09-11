@@ -54,6 +54,7 @@
 | `UnifiedTrainerDocs` | `docs/training-interface.md` | v1 | S1-PR-05 | Developers / downstream lanes |
 | `UnifiedTrainerContractTests` | `tests/training/` | v1 | S1-PR-05 | CI |
 | `ExperimentResultFiles` | `artifacts/experiment-results/*.result.json` | v1 | Experiment runs | S2-SE-06 |
+| `ValidationBaselineResults` | `docs/evidence/s2-pr-04-05/<batch>/<trial>/experiment_result.v1.json` | v1 | S2-PR-04, S2-PR-05 | Developers / Review |
 | `ExperimentResultsTool` | `scripts/experiments/results.py` | v1 | S2-SE-06 | Developers / CI |
 | `ClientPartitioningModule` | `ppsi/federated/clients.py` | v1 | S1-PR-06 | S1-PR-07, S2-PR-06 |
 | `ClientSamplingModule` | `ppsi/federated/sampling.py` | v1 | S1-PR-06 | S1-PR-07, S2-PR-06 |

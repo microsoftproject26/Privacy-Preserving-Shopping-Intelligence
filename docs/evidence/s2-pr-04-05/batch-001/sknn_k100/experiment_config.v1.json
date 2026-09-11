@@ -1,0 +1,155 @@
+{
+  "canonical_data_contract_ref": {
+    "artifact_schema": "data_protocol_v1",
+    "artifact_version": "1",
+    "logical_id": "data_protocol_v1",
+    "schema": "artifact_ref_v1",
+    "sha256": "67397fe66fa7a82084cf1ba19c834e3b501fc41e248893a1d839e4335ff98e32",
+    "uri": "docs/evidence/s1-ds-05-06/data_protocol_v1.proposed.json",
+    "version": "1"
+  },
+  "cohort_manifest_ref": {
+    "artifact_schema": "cohort_manifest_v1",
+    "artifact_version": "1",
+    "logical_id": "cohort_manifest_v1",
+    "schema": "artifact_ref_v1",
+    "sha256": "32d4b8ce4bb84f789b1baa525f50349be79e60920ad67f5e1bdfdcab9fa6e9d2",
+    "uri": "data/protocol/INTERNAL_DO_NOT_UPLOAD_cohort_manifest_v1.proposed.parquet",
+    "version": "1"
+  },
+  "config_id": "batch-001_sknn_k100",
+  "environment_lock_ref": {
+    "artifact_schema": "uv_lock_v1",
+    "artifact_version": "1",
+    "logical_id": "uv_lock_v1",
+    "schema": "artifact_ref_v1",
+    "sha256": "cd86bcdb34077eaedd3ccf84e8ddc52a6424271cfd35f27ba0b7f32d7cbdf0dd",
+    "uri": "uv.lock",
+    "version": "1"
+  },
+  "evaluation_cohorts": [
+    "C1"
+  ],
+  "evaluation_manifest_ref": {
+    "artifact_schema": "task_example_v1",
+    "artifact_version": "1",
+    "logical_id": "task_example_v1",
+    "schema": "artifact_ref_v1",
+    "sha256": "e5e85225103717413306ff056ed477848a39f2bbf72486708a6b724673984aeb",
+    "uri": "data/examples/INTERNAL_DO_NOT_UPLOAD_task_examples_t1_v1.proposed.parquet",
+    "version": "1"
+  },
+  "evaluation_protocol_ref": {
+    "artifact_schema": "baseline_scope_decision_v1",
+    "artifact_version": "1",
+    "logical_id": "baseline_scope_decision_v1",
+    "schema": "artifact_ref_v1",
+    "sha256": "e7f8662bf8e1df17163713f4eba6cbb42449b82261786b409e4bf37bdb25d9d1",
+    "uri": "docs/decisions/s2-pr-04-05-baselines.md",
+    "version": "1"
+  },
+  "evaluator_ref": {
+    "artifact_schema": "python_source_v1",
+    "artifact_version": "1",
+    "logical_id": "python_source_v1",
+    "schema": "artifact_ref_v1",
+    "sha256": "2de36e38dd4c42f2f56a5440118c77ec02dcf568a8b756497ab9d7ef72cac408",
+    "uri": "ppsi/evaluation/t1.py",
+    "version": "1"
+  },
+  "initialization": {
+    "common_initialization_ref": {
+      "artifact_schema": "baseline_unfitted_state_v1",
+      "artifact_version": "1",
+      "logical_id": "baseline_unfitted_state_v1",
+      "schema": "artifact_ref_v1",
+      "sha256": "39c9afef6b31f58bd36eeaa2240416125de2c84df49d81ad5b545ba978b7ec95",
+      "uri": "docs/evidence/s2-pr-04-05/batch-001/sknn_k100/unfitted_state.v1.json",
+      "version": "1"
+    },
+    "kind": "COMMON_INITIALIZATION"
+  },
+  "model_config_ref": {
+    "artifact_schema": "baseline_model_config_v1",
+    "artifact_version": "1",
+    "logical_id": "baseline_model_config_v1",
+    "schema": "artifact_ref_v1",
+    "sha256": "2c3e2fe4eeb554559d321b54c9491ced6d8ba1d2350797f2c80e257a65cbe7cb",
+    "uri": "docs/evidence/s2-pr-04-05/batch-001/sknn_k100/model_config.v1.json",
+    "version": "1"
+  },
+  "objective_config_ref": {
+    "artifact_schema": "classical_session_baseline_plan_v1",
+    "artifact_version": "1",
+    "logical_id": "classical_session_baseline_plan_v1",
+    "schema": "artifact_ref_v1",
+    "sha256": "b9e0b7eb4c53ac3aeec73ce405461b63ce5a26145029f3f46d2848548b7cfbb3",
+    "uri": "config/baselines/s2_pr_04_05.v1.json",
+    "version": "1"
+  },
+  "regime": "R1",
+  "regime_config": {
+    "evaluation_split": "VALIDATION",
+    "final_r1_denominator": false,
+    "fitted_on": "TRAIN_ONLY",
+    "initialization_semantics": "explicit unfitted classical state, not neural weights",
+    "model": "recent_session_cosine_category_knn",
+    "neural_trainer_used": false,
+    "orchestration_type": "CENTRALIZED",
+    "quality_retention_claim": false,
+    "repeat_of": null,
+    "result_role": "VALIDATION_BASELINE_NOT_FINAL_R1"
+  },
+  "representation_ref": {
+    "artifact_schema": "classical_session_baseline_plan_v1",
+    "artifact_version": "1",
+    "logical_id": "classical_session_baseline_plan_v1",
+    "schema": "artifact_ref_v1",
+    "sha256": "b9e0b7eb4c53ac3aeec73ce405461b63ce5a26145029f3f46d2848548b7cfbb3",
+    "uri": "config/baselines/s2_pr_04_05.v1.json",
+    "version": "1"
+  },
+  "schema": "experiment_config_v1",
+  "seed": 13,
+  "shared_trainer_core_ref": {
+    "artifact_schema": "baseline_fit_entrypoint_v1",
+    "artifact_version": "1",
+    "logical_id": "baseline_fit_entrypoint_v1",
+    "schema": "artifact_ref_v1",
+    "sha256": "5960292578f6225c27d63affdb7bc0a3cebe85d6af3973f2f78a10c312ac24a2",
+    "uri": "scripts/baselines/run_baselines.py",
+    "version": "1"
+  },
+  "source_dataset_ref": {
+    "artifact_schema": "baseline_data_views_v1",
+    "artifact_version": "1",
+    "logical_id": "baseline_data_views_v1",
+    "schema": "artifact_ref_v1",
+    "sha256": "7bb6b053a174b2482a1af43ee6fada41e9946ec65bf06c57ac8cf83b12437fb0",
+    "uri": "docs/evidence/s2-pr-04-05/data_views.v1.json",
+    "version": "1"
+  },
+  "split_manifest_ref": {
+    "artifact_schema": "data_protocol_v1",
+    "artifact_version": "1",
+    "logical_id": "data_protocol_v1",
+    "schema": "artifact_ref_v1",
+    "sha256": "67397fe66fa7a82084cf1ba19c834e3b501fc41e248893a1d839e4335ff98e32",
+    "uri": "docs/evidence/s1-ds-05-06/data_protocol_v1.proposed.json",
+    "version": "1"
+  },
+  "task_examples_manifest_ref": {
+    "artifact_schema": "baseline_data_views_v1",
+    "artifact_version": "1",
+    "logical_id": "baseline_data_views_v1",
+    "schema": "artifact_ref_v1",
+    "sha256": "7bb6b053a174b2482a1af43ee6fada41e9946ec65bf06c57ac8cf83b12437fb0",
+    "uri": "docs/evidence/s2-pr-04-05/data_views.v1.json",
+    "version": "1"
+  },
+  "tasks": [
+    "T1"
+  ],
+  "training_cohort": "C1",
+  "version": "1"
+}

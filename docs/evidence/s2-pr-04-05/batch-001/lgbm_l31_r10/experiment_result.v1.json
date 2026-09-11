@@ -1,0 +1,136 @@
+{
+  "artifacts": [
+    {
+      "artifact_schema": "baseline_metrics_v1",
+      "artifact_version": "1",
+      "logical_id": "baseline_metrics_v1",
+      "schema": "artifact_ref_v1",
+      "sha256": "341fa226494f2288314d821b454c6e2d24d1572bd3d9300c82e068071d9cdda4",
+      "uri": "docs/evidence/s2-pr-04-05/batch-001/lgbm_l31_r10/metrics.v1.json",
+      "version": "1"
+    },
+    {
+      "artifact_schema": "private_fitted_baseline_v1",
+      "artifact_version": "1",
+      "logical_id": "private_fitted_baseline_v1",
+      "schema": "artifact_ref_v1",
+      "sha256": "e6179d2a1703df71c7d1496346757864d921016c114e62e79a6cf972965aa1d5",
+      "uri": "artifacts/baselines/s2-pr-04-05/batch-001/classical/lgbm_l31_r10.joblib",
+      "version": "1"
+    },
+    {
+      "artifact_schema": "baseline_source_snapshot_v1",
+      "artifact_version": "1",
+      "logical_id": "baseline_source_snapshot_v1",
+      "schema": "artifact_ref_v1",
+      "sha256": "da1ade147f7a8ce3f5e9d55c300386aff335a4ac20666599e1254eca08fa41d2",
+      "uri": "docs/evidence/s2-pr-04-05/batch-001/source_snapshot.v1.json",
+      "version": "1"
+    }
+  ],
+  "attempt": 1,
+  "compatibility": {
+    "canonical_data_contract_sha256": "67397fe66fa7a82084cf1ba19c834e3b501fc41e248893a1d839e4335ff98e32",
+    "cohort_manifest_sha256": "32d4b8ce4bb84f789b1baa525f50349be79e60920ad67f5e1bdfdcab9fa6e9d2",
+    "common_initialization_sha256": "c4ee937090d8324d42df6c8085b93b8e3b76766a45f1d5bd0a8d89c7c0bc81f5",
+    "environment_lock_sha256": "cd86bcdb34077eaedd3ccf84e8ddc52a6424271cfd35f27ba0b7f32d7cbdf0dd",
+    "evaluation_cohorts": [
+      "C1"
+    ],
+    "evaluation_manifest_sha256": "fcb22295c58d70d83369e1a5a7934c3df9fdd991ad4f800680b36d4cd4017378",
+    "evaluation_protocol_sha256": "e7f8662bf8e1df17163713f4eba6cbb42449b82261786b409e4bf37bdb25d9d1",
+    "evaluator_sha256": "1c6fed086f92b27b44ba2b18f0ccbde08badd521f5f3a64834638c8a450944b2",
+    "git_sha": "ce5892c28e6b90d8f2a712863f23ae5ed3d628f4",
+    "model_config_sha256": "6bbf790fdf61de98e1125d49f8a4f627280ffdb1b7e11b9d7f2e43d58a59ab75",
+    "objective_config_sha256": "b9e0b7eb4c53ac3aeec73ce405461b63ce5a26145029f3f46d2848548b7cfbb3",
+    "representation_sha256": "f9835d59c3dbb5257c7e1383bbd2096b5d04e9f028475905ebffeeb4ea8ea4a0",
+    "schema": "comparison_compatibility_v1",
+    "seed": 13,
+    "shared_trainer_core_sha256": "5960292578f6225c27d63affdb7bc0a3cebe85d6af3973f2f78a10c312ac24a2",
+    "source_dataset_sha256": "7bb6b053a174b2482a1af43ee6fada41e9946ec65bf06c57ac8cf83b12437fb0",
+    "split_manifest_sha256": "67397fe66fa7a82084cf1ba19c834e3b501fc41e248893a1d839e4335ff98e32",
+    "task_examples_manifest_sha256": "7bb6b053a174b2482a1af43ee6fada41e9946ec65bf06c57ac8cf83b12437fb0",
+    "tasks": [
+      "T2"
+    ],
+    "training_cohort": "C1",
+    "version": "1"
+  },
+  "config_ref": {
+    "artifact_schema": "experiment_config_v1",
+    "artifact_version": "1",
+    "logical_id": "experiment_config_v1",
+    "schema": "artifact_ref_v1",
+    "sha256": "70a9256a06ca002f6e882e60b3e7201c7a779bdb3a0f6138118253885fddaa48",
+    "uri": "docs/evidence/s2-pr-04-05/batch-001/lgbm_l31_r10/experiment_config.v1.json",
+    "version": "1"
+  },
+  "ended_at_utc": "2026-09-11T15:14:37Z",
+  "environment_lock_ref": {
+    "artifact_schema": "uv_lock_v1",
+    "artifact_version": "1",
+    "logical_id": "uv_lock_v1",
+    "schema": "artifact_ref_v1",
+    "sha256": "cd86bcdb34077eaedd3ccf84e8ddc52a6424271cfd35f27ba0b7f32d7cbdf0dd",
+    "uri": "uv.lock",
+    "version": "1"
+  },
+  "evaluation_cohorts": [
+    "C1"
+  ],
+  "git_sha": "ce5892c28e6b90d8f2a712863f23ae5ed3d628f4",
+  "initialization": {
+    "common_initialization_ref": {
+      "artifact_schema": "baseline_unfitted_state_v1",
+      "artifact_version": "1",
+      "logical_id": "baseline_unfitted_state_v1",
+      "schema": "artifact_ref_v1",
+      "sha256": "c4ee937090d8324d42df6c8085b93b8e3b76766a45f1d5bd0a8d89c7c0bc81f5",
+      "uri": "docs/evidence/s2-pr-04-05/batch-001/lgbm_l31_r10/unfitted_state.v1.json",
+      "version": "1"
+    },
+    "kind": "COMMON_INITIALIZATION"
+  },
+  "metrics": [
+    {
+      "cohort": "C1",
+      "direction": "MAXIMIZE",
+      "metric_id": "t2.purchase.pr_auc.micro",
+      "schema": "metric_record_v1",
+      "support": 322087,
+      "task": "T2",
+      "unit": "FRACTION",
+      "value": 0.17972398173762097,
+      "version": "1"
+    },
+    {
+      "cohort": "C1",
+      "direction": "MAXIMIZE",
+      "metric_id": "t2.purchase.client_recall_at_3.macro",
+      "schema": "metric_record_v1",
+      "support": 6387,
+      "task": "T2",
+      "unit": "FRACTION",
+      "value": 0.6133062346210033,
+      "version": "1"
+    }
+  ],
+  "regime": "R1",
+  "resume_count": 0,
+  "run_id": "run-v1__r1__t2__c1__s13__cfg70a9256a06ca__a1",
+  "schema": "experiment_result_v1",
+  "seed": 13,
+  "started_at_utc": "2026-09-11T15:14:05Z",
+  "state": "SUCCEEDED",
+  "system_measurements": {
+    "null_reason": "baseline quality task; no communication or federated performance claim",
+    "schema": "system_measurement_reference_set_v1",
+    "status": "NOT_APPLICABLE",
+    "version": "1"
+  },
+  "tasks": [
+    "T2"
+  ],
+  "training_cohort": "C1",
+  "version": "1"
+}
