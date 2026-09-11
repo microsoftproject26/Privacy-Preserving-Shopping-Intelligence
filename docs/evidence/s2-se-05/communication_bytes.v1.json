@@ -1,0 +1,86 @@
+{
+  "schema": "CommunicationRecord",
+  "version": 1,
+  "task_id": "S2-SE-05",
+  "measurement_boundary": "model payload after serialization; excludes transport framing",
+  "context": {
+    "flower_backend": "ray simulation",
+    "clients": 2,
+    "rounds": 2,
+    "seed": 13,
+    "model": "Linear(16, 8)",
+    "serialized_payload_bytes_per_transmission": 800
+  },
+  "client_count": 2,
+  "per_round": {
+    "1": {
+      "download_bytes": 1600,
+      "upload_bytes": 1600,
+      "download_transmissions": 2,
+      "upload_transmissions": 2
+    },
+    "2": {
+      "download_bytes": 1600,
+      "upload_bytes": 1600,
+      "download_transmissions": 2,
+      "upload_transmissions": 2
+    }
+  },
+  "run_totals": {
+    "download_bytes": 3200,
+    "upload_bytes": 3200,
+    "download_transmissions": 4,
+    "upload_transmissions": 4,
+    "total_bytes": 6400
+  },
+  "records": [
+    {
+      "server_round": 1,
+      "client_id": "client-v1-2847f2d4acd108130a20df1bb694c3ef3b3b788852232985a3088f5d485445bc",
+      "direction": "download",
+      "payload_bytes": 800
+    },
+    {
+      "server_round": 1,
+      "client_id": "client-v1-5bfc98a1c6caad355de8350ac180b73f711d4564ba5f877b10896d3a09316c00",
+      "direction": "download",
+      "payload_bytes": 800
+    },
+    {
+      "server_round": 1,
+      "client_id": "client-v1-5bfc98a1c6caad355de8350ac180b73f711d4564ba5f877b10896d3a09316c00",
+      "direction": "upload",
+      "payload_bytes": 800
+    },
+    {
+      "server_round": 1,
+      "client_id": "client-v1-5bfc98a1c6caad355de8350ac180b73f711d4564ba5f877b10896d3a09316c00",
+      "direction": "upload",
+      "payload_bytes": 800
+    },
+    {
+      "server_round": 2,
+      "client_id": "client-v1-2847f2d4acd108130a20df1bb694c3ef3b3b788852232985a3088f5d485445bc",
+      "direction": "download",
+      "payload_bytes": 800
+    },
+    {
+      "server_round": 2,
+      "client_id": "client-v1-5bfc98a1c6caad355de8350ac180b73f711d4564ba5f877b10896d3a09316c00",
+      "direction": "download",
+      "payload_bytes": 800
+    },
+    {
+      "server_round": 2,
+      "client_id": "client-v1-5bfc98a1c6caad355de8350ac180b73f711d4564ba5f877b10896d3a09316c00",
+      "direction": "upload",
+      "payload_bytes": 800
+    },
+    {
+      "server_round": 2,
+      "client_id": "client-v1-5bfc98a1c6caad355de8350ac180b73f711d4564ba5f877b10896d3a09316c00",
+      "direction": "upload",
+      "payload_bytes": 800
+    }
+  ]
+}
