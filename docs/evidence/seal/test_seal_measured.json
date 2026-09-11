@@ -31,5 +31,21 @@
     "rows_decoded": 42448764,
     "note": "every window decoded the whole file, TEST included; test_rows_read:0 was a literal"
   },
-  "conclusion": "TRAIN loading is now sealed by construction: zero TEST rows are decoded. VALIDATION decodes 384,203 TEST rows from one boundary-straddling row group and discards them before any filtering on users; none reach an array, a window, a label or a metric. A single monolithic Parquet cannot do better - a group spanning the boundary must be decoded to be filtered. Physically sealed per-split files would make it zero by construction."
+  "conclusion": "TRAIN loading is now sealed by construction: zero TEST rows are decoded. VALIDATION decodes 384,203 TEST rows from one boundary-straddling row group and discards them before any filtering on users; none reach an array, a window, a label or a metric. A single monolithic Parquet cannot do better - a group spanning the boundary must be decoded to be filtered. Physically sealed per-split files would make it zero by construction. A committed fixture is a second exception: see second_exception_a_committed_fixture.",
+  "second_exception_a_committed_fixture": {
+    "file": "Repo_S2DS01/fixtures/smoke_sample.parquet",
+    "rows": 23109,
+    "distinct_users": 1499,
+    "rows_in_the_test_window": 3321,
+    "users_in_them": 384,
+    "window": ">= 2019-10-27",
+    "used_by": [
+      "docs/s1-ds-03-canonical-event.md",
+      "notebooks/S1_DS_03_Canonical_Event_EN.ipynb",
+      "docs/environment-audit.md"
+    ],
+    "used_by_any_model_path": false,
+    "privacy_status": "already documented in docs/security/threat-model.md as an explicit gitignore exception, with the correct note that namespacing is not anonymization. Not a new finding.",
+    "seal_status": "NEW: 14.4 percent of this fixture is TEST-window rows, and it is used by schema and canonicalisation notebooks. No model reads it, so no published number is affected - but the project-wide claim that TEST was never read has a second exception besides row group 72, and it had not been recorded."
+  }
 }
