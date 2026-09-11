@@ -1,0 +1,134 @@
+{
+  "branch": "s2-pr-mvp-integration",
+  "common_initialization": {
+    "digest_conventions_are_distinct": true,
+    "model_lane_state_digest": "cb91302673194b5f79453529b26723471e77e7787ab24a4b4afecccf8c4beef7",
+    "not_a_trained_checkpoint": true,
+    "private_uri": "artifacts/mvp/mvp-t1-001/common_initialization/common_init_seed13.pt",
+    "raw_file_sha256": "ee0d9a247afc0addff1af02dc9452ef26d7ae17a22e157f3af1ee40a164aa42e",
+    "role": "FRESH_UNTRAINED_ARTIFACT_LOADED_BY_BOTH_REGIMES",
+    "training_state_codec_digest": "92da789f66ac68ad389d63c03346ae3c11324ea4388048fdb3ceba241b9f198f"
+  },
+  "generated_at_utc": "2026-09-11T20:33:05Z",
+  "model": {
+    "batch_spec": {
+      "candidate_categorical": [
+        {
+          "name": "candidate_category_id",
+          "pad_id": 589,
+          "vocab_size": 590
+        },
+        {
+          "name": "candidate_price_band",
+          "pad_id": 5,
+          "vocab_size": 6
+        }
+      ],
+      "candidate_continuous_dim": 1,
+      "candidate_id_pad_id": 0,
+      "candidate_id_vocab_size": 50000,
+      "history_categorical": [
+        {
+          "name": "category_id",
+          "pad_id": 589,
+          "vocab_size": 590
+        },
+        {
+          "name": "product_bucket",
+          "pad_id": 0,
+          "vocab_size": 50000
+        },
+        {
+          "name": "event_type_id",
+          "pad_id": 0,
+          "vocab_size": 4
+        },
+        {
+          "name": "brand_bucket",
+          "pad_id": 0,
+          "vocab_size": 5000
+        },
+        {
+          "name": "price_band",
+          "pad_id": 5,
+          "vocab_size": 6
+        }
+      ],
+      "history_continuous_dim": 1,
+      "query_categorical": [
+        {
+          "name": "query_category_id",
+          "pad_id": 589,
+          "vocab_size": 590
+        },
+        {
+          "name": "query_product_bucket",
+          "pad_id": 0,
+          "vocab_size": 50000
+        },
+        {
+          "name": "query_brand_bucket",
+          "pad_id": 0,
+          "vocab_size": 5000
+        },
+        {
+          "name": "query_price_band",
+          "pad_id": 5,
+          "vocab_size": 6
+        }
+      ],
+      "query_continuous_dim": 0,
+      "schema": "phase1_batch_spec_v1",
+      "t1_absent_fill": 0,
+      "t2_absent_fill": 0.0,
+      "t3_absent_fill": 0.0,
+      "version": "1"
+    },
+    "category_count": 588,
+    "factory": "ppsi.models.session_gru.build_model",
+    "model_config": {
+      "channels": [
+        "category_id",
+        "event_type_id"
+      ],
+      "core": "gru",
+      "dropout": 0.3,
+      "hidden": 128,
+      "layers": 1,
+      "t3_hidden": 64,
+      "use_gap": true,
+      "widths": {
+        "brand_bucket": 16,
+        "category_id": 64,
+        "event_type_id": 4,
+        "price_band": 4,
+        "product_bucket": 24
+      }
+    },
+    "spec_factory": "ppsi.models.batch_spec.phase1_batch_spec_v1"
+  },
+  "parameter_count": 2379263,
+  "prepared": {
+    "data_manifest_sha256": "4d3220b3211d5872308d0cbb66fd32aa8dc9ed14d9cd3dfb36689246df76fb84",
+    "population": 1000,
+    "rounds": 20,
+    "train_rows": 32285,
+    "validation_rows": 438185
+  },
+  "resources": {
+    "available_ram_bytes": 6902403072,
+    "logical_cpus": 20,
+    "total_ram_bytes": 16890978304
+  },
+  "run": "mvp-t1-001",
+  "schema": "mvp_preflight_v1",
+  "scope": "SCOPED_T1_RESEARCH_MVP_NOT_FULL_PHASE1_FREEZE",
+  "source_freeze": {
+    "drift_policy": "A later behaviour-defining change requires a new run id.",
+    "files_frozen": 29,
+    "git_head": "a72d987b21407a941b954f5a7c0a92ade5cfff5d",
+    "status": "FROZEN_BEFORE_SCIENTIFIC_EXECUTION",
+    "uri": "docs/evidence/mvp/mvp-t1-001/source_snapshot.v1.json"
+  },
+  "version": "1"
+}

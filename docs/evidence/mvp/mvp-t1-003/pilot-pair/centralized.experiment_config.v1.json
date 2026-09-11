@@ -1,0 +1,160 @@
+{
+  "canonical_data_contract_ref": {
+    "artifact_schema": "data_protocol_v1",
+    "artifact_version": "1",
+    "logical_id": "data_protocol_v1",
+    "schema": "artifact_ref_v1",
+    "sha256": "67397fe66fa7a82084cf1ba19c834e3b501fc41e248893a1d839e4335ff98e32",
+    "uri": "docs/evidence/s1-ds-05-06/data_protocol_v1.proposed.json",
+    "version": "1"
+  },
+  "cohort_manifest_ref": {
+    "artifact_schema": "cohort_manifest_v1",
+    "artifact_version": "1",
+    "logical_id": "cohort_manifest_v1",
+    "schema": "artifact_ref_v1",
+    "sha256": "32d4b8ce4bb84f789b1baa525f50349be79e60920ad67f5e1bdfdcab9fa6e9d2",
+    "uri": "data/protocol/INTERNAL_DO_NOT_UPLOAD_cohort_manifest_v1.proposed.parquet",
+    "version": "1"
+  },
+  "config_id": "mvp-t1-003_centralized",
+  "environment_lock_ref": {
+    "artifact_schema": "uv_lock_v1",
+    "artifact_version": "1",
+    "logical_id": "uv_lock_v1",
+    "schema": "artifact_ref_v1",
+    "sha256": "eae55e08de93c7258d0f26173cf4f85245210c625617633f209c1742988979be",
+    "uri": "uv.lock",
+    "version": "1"
+  },
+  "evaluation_cohorts": [
+    "C1"
+  ],
+  "evaluation_manifest_ref": {
+    "artifact_schema": "task_example_v1",
+    "artifact_version": "1",
+    "logical_id": "task_example_v1",
+    "schema": "artifact_ref_v1",
+    "sha256": "e5e85225103717413306ff056ed477848a39f2bbf72486708a6b724673984aeb",
+    "uri": "data/examples/INTERNAL_DO_NOT_UPLOAD_task_examples_t1_v1.proposed.parquet",
+    "version": "1"
+  },
+  "evaluation_protocol_ref": {
+    "artifact_schema": "mvp_execution_decision_v1",
+    "artifact_version": "1",
+    "logical_id": "mvp_execution_decision_v1",
+    "schema": "artifact_ref_v1",
+    "sha256": "0b3154252ef7b7baf77f12b2852b416015199f3cf25e0c6940311db26d627d74",
+    "uri": "docs/decisions/mvp-execution.md",
+    "version": "1"
+  },
+  "evaluator_ref": {
+    "artifact_schema": "python_source_v1",
+    "artifact_version": "1",
+    "logical_id": "python_source_v1",
+    "schema": "artifact_ref_v1",
+    "sha256": "2de36e38dd4c42f2f56a5440118c77ec02dcf568a8b756497ab9d7ef72cac408",
+    "uri": "ppsi/evaluation/t1.py",
+    "version": "1"
+  },
+  "initialization": {
+    "common_initialization_ref": {
+      "artifact_schema": "mvp_preflight_v1",
+      "artifact_version": "1",
+      "logical_id": "common_initialization_declaration",
+      "schema": "artifact_ref_v1",
+      "sha256": "5d4f15c62f2652c029e85584196723bb09f0e9a26f1cad124791523fc5109ecf",
+      "uri": "docs/evidence/mvp/mvp-t1-003/preflight.v1.json",
+      "version": "1"
+    },
+    "kind": "COMMON_INITIALIZATION"
+  },
+  "model_config_ref": {
+    "artifact_schema": "mvp_preflight_v1",
+    "artifact_version": "1",
+    "logical_id": "mvp_preflight_v1",
+    "schema": "artifact_ref_v1",
+    "sha256": "5d4f15c62f2652c029e85584196723bb09f0e9a26f1cad124791523fc5109ecf",
+    "uri": "docs/evidence/mvp/mvp-t1-003/preflight.v1.json",
+    "version": "1"
+  },
+  "objective_config_ref": {
+    "artifact_schema": "python_source_v1",
+    "artifact_version": "1",
+    "logical_id": "python_source_v1",
+    "schema": "artifact_ref_v1",
+    "sha256": "e7d5289d8dd9c3f5902f76659cb98395421795c2ebb9e94d6b62a3765b8a9216",
+    "uri": "ppsi/training/t1_mvp_objective.py",
+    "version": "1"
+  },
+  "regime": "R1",
+  "regime_config": {
+    "checkpoint_selection": "LAST_COMPLETED_ROUND_20_NO_TUNING",
+    "clients_per_round": 50,
+    "comparison_label": "MATCHED_EXPOSURE_T1_PILOT_WITH_DECLARED_OPTIMIZER_LIFECYCLES",
+    "evaluation_split": "VALIDATION",
+    "exposure_sha256": "b57e75deb69d600ddc42ad8265d3dc515222971421e7d1c5f2f1845b910af9a2",
+    "final_r1_denominator": false,
+    "final_r2a_reference": false,
+    "neural_trainer_used": true,
+    "optimizer_lifecycle": "PERSISTENT_FOR_RUN",
+    "orchestration_type": "CENTRALIZED",
+    "pilot_population": 1000,
+    "quality_retention_claim": false,
+    "result_role": "MVP_MATCHED_T1_CENTRALIZED_NOT_FINAL_R1",
+    "rounds": 20,
+    "score_convention": "RAW_NO_SUPPRESSION"
+  },
+  "representation_ref": {
+    "artifact_schema": "python_source_v1",
+    "artifact_version": "1",
+    "logical_id": "python_source_v1",
+    "schema": "artifact_ref_v1",
+    "sha256": "904f453a817f6a789fa4be3c13670593a6bd550df62e27c12483dfbd4a765b6a",
+    "uri": "ppsi/models/batch_spec.py",
+    "version": "1"
+  },
+  "schema": "experiment_config_v1",
+  "seed": 13,
+  "shared_trainer_core_ref": {
+    "artifact_schema": "python_source_v1",
+    "artifact_version": "1",
+    "logical_id": "python_source_v1",
+    "schema": "artifact_ref_v1",
+    "sha256": "2dddd8c3d3d97d145da6d2bcd46972af37041635b010bbcee8c7edc492db9096",
+    "uri": "ppsi/training/core.py",
+    "version": "1"
+  },
+  "source_dataset_ref": {
+    "artifact_schema": "mvp_prepare_summary_v1",
+    "artifact_version": "1",
+    "logical_id": "mvp_prepare_summary_v1",
+    "schema": "artifact_ref_v1",
+    "sha256": "b900c520783257df84e55e8914ffdecb6be13dd68e407856aded99a2387ae97d",
+    "uri": "docs/evidence/mvp/mvp-t1-003/prepare_summary.v1.json",
+    "version": "1"
+  },
+  "split_manifest_ref": {
+    "artifact_schema": "data_protocol_v1",
+    "artifact_version": "1",
+    "logical_id": "data_protocol_v1",
+    "schema": "artifact_ref_v1",
+    "sha256": "67397fe66fa7a82084cf1ba19c834e3b501fc41e248893a1d839e4335ff98e32",
+    "uri": "docs/evidence/s1-ds-05-06/data_protocol_v1.proposed.json",
+    "version": "1"
+  },
+  "task_examples_manifest_ref": {
+    "artifact_schema": "mvp_prepare_summary_v1",
+    "artifact_version": "1",
+    "logical_id": "mvp_prepare_summary_v1",
+    "schema": "artifact_ref_v1",
+    "sha256": "b900c520783257df84e55e8914ffdecb6be13dd68e407856aded99a2387ae97d",
+    "uri": "docs/evidence/mvp/mvp-t1-003/prepare_summary.v1.json",
+    "version": "1"
+  },
+  "tasks": [
+    "T1"
+  ],
+  "training_cohort": "C1",
+  "version": "1"
+}

@@ -1,0 +1,149 @@
+{
+  "count_tables_content_sha256": "e2cae8d992d6cdd9154ef932de364602cae4c5a110ecc036e7b78086389fec9f",
+  "diagnostic_note": "overall slice and micro averages are diagnostics; the headline is t1.next_distinct.mrr_at_20.macro",
+  "evaluation": {
+    "client_count": 31576,
+    "decision_count": 438185,
+    "history_buckets": {
+      "100_plus": {
+        "next_distinct": {
+          "accuracy_at_1_macro": 0.009089090178856505,
+          "accuracy_at_1_micro": 0.0091421143847487,
+          "client_count": 3017,
+          "decision_count": 23080,
+          "mrr_at_20_macro": 0.1350689261245444,
+          "mrr_at_20_micro": 0.12761690011239973,
+          "status": "AVAILABLE"
+        },
+        "overall": {
+          "accuracy_at_1_macro": 0.7482682409508702,
+          "accuracy_at_1_micro": 0.7871703149612409,
+          "client_count": 4701,
+          "decision_count": 128873,
+          "mrr_at_20_macro": 0.7805708912839997,
+          "mrr_at_20_micro": 0.8160634041283373,
+          "status": "AVAILABLE"
+        }
+      },
+      "10_19": {
+        "next_distinct": {
+          "accuracy_at_1_macro": 0.007211941345750533,
+          "accuracy_at_1_micro": 0.007211782630777044,
+          "client_count": 2924,
+          "decision_count": 9845,
+          "mrr_at_20_macro": 0.14889264994701096,
+          "mrr_at_20_micro": 0.13824570549205964,
+          "status": "AVAILABLE"
+        },
+        "overall": {
+          "accuracy_at_1_macro": 0.771771614228427,
+          "accuracy_at_1_micro": 0.8046868101788899,
+          "client_count": 6798,
+          "decision_count": 56627,
+          "mrr_at_20_macro": 0.8055634675841453,
+          "mrr_at_20_micro": 0.8335352949369255,
+          "status": "AVAILABLE"
+        }
+      },
+      "20_49": {
+        "next_distinct": {
+          "accuracy_at_1_macro": 0.007540451780742806,
+          "accuracy_at_1_micro": 0.007326732673267326,
+          "client_count": 6209,
+          "decision_count": 25250,
+          "mrr_at_20_macro": 0.13917763320687646,
+          "mrr_at_20_micro": 0.13366858821764907,
+          "status": "AVAILABLE"
+        },
+        "overall": {
+          "accuracy_at_1_macro": 0.7611613313924963,
+          "accuracy_at_1_micro": 0.789070328708735,
+          "client_count": 12744,
+          "decision_count": 141706,
+          "mrr_at_20_macro": 0.7942436977734588,
+          "mrr_at_20_micro": 0.8201779360065484,
+          "status": "AVAILABLE"
+        }
+      },
+      "50_99": {
+        "next_distinct": {
+          "accuracy_at_1_macro": 0.006358021864934651,
+          "accuracy_at_1_micro": 0.006793901047609169,
+          "client_count": 3946,
+          "decision_count": 19282,
+          "mrr_at_20_macro": 0.13544184868467568,
+          "mrr_at_20_micro": 0.13012441854149887,
+          "status": "AVAILABLE"
+        },
+        "overall": {
+          "accuracy_at_1_macro": 0.7589295665178176,
+          "accuracy_at_1_micro": 0.7975021176131346,
+          "client_count": 7332,
+          "decision_count": 110974,
+          "mrr_at_20_macro": 0.7903934592897076,
+          "mrr_at_20_micro": 0.8252981250553281,
+          "status": "AVAILABLE"
+        }
+      },
+      "BELOW_10_RETAINED_C1": {
+        "next_distinct": {
+          "accuracy_at_1_macro": null,
+          "accuracy_at_1_micro": null,
+          "client_count": 0,
+          "decision_count": 0,
+          "mrr_at_20_macro": null,
+          "mrr_at_20_micro": null,
+          "status": "ZERO_SUPPORT"
+        },
+        "overall": {
+          "accuracy_at_1_macro": 1.0,
+          "accuracy_at_1_micro": 1.0,
+          "client_count": 1,
+          "decision_count": 5,
+          "mrr_at_20_macro": 1.0,
+          "mrr_at_20_micro": 1.0,
+          "status": "AVAILABLE"
+        }
+      }
+    },
+    "history_stratification_status": "AVAILABLE",
+    "mrr_cutoff": 20,
+    "slices": {
+      "next_distinct": {
+        "accuracy_at_1_macro": 0.007481170536173521,
+        "accuracy_at_1_micro": 0.007720412616032121,
+        "client_count": 16096,
+        "decision_count": 77457,
+        "mrr_at_20_macro": 0.1392564934178688,
+        "mrr_at_20_micro": 0.13156484134393287,
+        "status": "AVAILABLE"
+      },
+      "overall": {
+        "accuracy_at_1_macro": 0.7610154555108101,
+        "accuracy_at_1_micro": 0.7926674806303273,
+        "client_count": 31576,
+        "decision_count": 438185,
+        "mrr_at_20_macro": 0.7937576241607586,
+        "mrr_at_20_micro": 0.821992790616459,
+        "status": "AVAILABLE"
+      }
+    },
+    "status": "PASS"
+  },
+  "fit_scope": "pilot",
+  "headline": {
+    "accuracy_at_1_macro": 0.007481170536173521,
+    "accuracy_at_1_micro": 0.007720412616032121,
+    "metric_id": "t1.next_distinct.mrr_at_20.macro",
+    "micro": 0.13156484134393287,
+    "support_clients": 16096,
+    "support_decisions": 77457,
+    "value": 0.1392564934178688
+  },
+  "run": "mvp-t1-003",
+  "schema": "mvp_t1_baseline_metrics_v1",
+  "score_convention": "RAW_NO_SUPPRESSION",
+  "train_decisions": 32285,
+  "variant": "markov",
+  "version": "1"
+}

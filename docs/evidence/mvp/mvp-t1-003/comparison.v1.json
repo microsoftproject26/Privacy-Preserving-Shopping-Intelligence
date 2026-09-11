@@ -1,0 +1,173 @@
+{
+  "baseline_context": [
+    {
+      "fit_scope": "full",
+      "value": 0.12882526010550283,
+      "variant": "popularity"
+    },
+    {
+      "fit_scope": "full",
+      "value": 0.18922358677212675,
+      "variant": "markov"
+    },
+    {
+      "fit_scope": "full",
+      "value": 0.002461059658030012,
+      "variant": "last_category"
+    },
+    {
+      "fit_scope": "pilot",
+      "value": 0.12628961325080112,
+      "variant": "popularity"
+    },
+    {
+      "fit_scope": "pilot",
+      "value": 0.1392564934178688,
+      "variant": "markov"
+    },
+    {
+      "fit_scope": "pilot",
+      "value": 0.002461059658030012,
+      "variant": "last_category"
+    }
+  ],
+  "comparison_label": "MATCHED_EXPOSURE_T1_PILOT_WITH_DECLARED_OPTIMIZER_LIFECYCLES",
+  "difference": {
+    "computed_between": "identical metric id, convention, membership and support",
+    "fedavg_minus_centralized": -0.013092726060958015
+  },
+  "generated_at_utc": "2026-09-11T21:24:27Z",
+  "headline_metric": "t1.next_distinct.mrr_at_20.macro",
+  "identity": {
+    "batch_spec_sha256": "904f453a817f6a789fa4be3c13670593a6bd550df62e27c12483dfbd4a765b6a",
+    "common_init_sha256": "ee0d9a247afc0addff1af02dc9452ef26d7ae17a22e157f3af1ee40a164aa42e",
+    "data_manifest_sha256": "c7e0bbc9c15f12298ccd91471467f45c2d010df70e694dd5d0128223b5c500d0",
+    "evaluation_membership_sha256": "03b42cd21086c7bc5c3d909873a84b6163edf1ccda703fb9a7cb6e38b3bf08e6",
+    "evaluator_sha256": "2de36e38dd4c42f2f56a5440118c77ec02dcf568a8b756497ab9d7ef72cac408",
+    "exposure_sha256": "b57e75deb69d600ddc42ad8265d3dc515222971421e7d1c5f2f1845b910af9a2",
+    "metric_id": "t1.next_distinct.mrr_at_20.macro",
+    "model_sha256": "03e90c218c013089b16333f4f599141dad0f11831310334ef2a6201f9dc63192",
+    "score_convention": "RAW_NO_SUPPRESSION",
+    "seed": 13,
+    "validation_decisions": 438185
+  },
+  "limitations": [
+    "This is a scoped T1 pilot on a 1,000-client population, not the final R1/R2A reference and not the original multi-task MVP commitment.",
+    "Exposure is matched; optimization trajectories are not. Centralized keeps one Adam state for the run and FedAvg resets it every server round.",
+    "The centralized side is not an all-data upper bound: it replays exactly the federated schedule.",
+    "Measured bytes are model payload at the Flower message boundary, not total network traffic.",
+    "No differential privacy, secure aggregation or device isolation is claimed.",
+    "TEST was never read, fitted on, or used for selection."
+  ],
+  "regimes": {
+    "centralized": {
+      "config_ref": {
+        "artifact_schema": "experiment_config_v1",
+        "artifact_version": "1",
+        "logical_id": "experiment_config_v1",
+        "schema": "artifact_ref_v1",
+        "sha256": "4045566cb130b8e98a3ee5c3d061e5c0cd98b3fc31b9c53438e165bc00fb07e8",
+        "uri": "docs/evidence/mvp/mvp-t1-003/pilot-pair/centralized.experiment_config.v1.json",
+        "version": "1"
+      },
+      "headline": {
+        "accuracy_at_1_macro": 0.024552198637361886,
+        "accuracy_at_1_micro": 0.026221000038731165,
+        "metric_id": "t1.next_distinct.mrr_at_20.macro",
+        "micro": 0.10829039548329675,
+        "support_clients": 16096,
+        "support_decisions": 77457,
+        "value": 0.11268339009749091
+      },
+      "optimizer_lifecycle": "PERSISTENT_FOR_RUN",
+      "result_ref": {
+        "artifact_schema": "experiment_result_v1",
+        "artifact_version": "1",
+        "logical_id": "experiment_result_v1",
+        "schema": "artifact_ref_v1",
+        "sha256": "4d850002d7f463528c993ae39c31164d642b34ac5304d68768817a266e29dd49",
+        "uri": "docs/evidence/mvp/mvp-t1-003/pilot-pair/centralized.result.json",
+        "version": "1"
+      },
+      "rounds": {
+        "batches": 1194,
+        "optimizer_steps": 1194,
+        "participations": 1000,
+        "rows": 33253,
+        "unique_clients": 636
+      },
+      "run_id": "run-v1__r1__t1__c1__s13__cfg4045566cb130__a1",
+      "wall_seconds": 44.01999999999999
+    },
+    "fedavg": {
+      "communication": {
+        "counted_once_per_transmission": true,
+        "measurement_boundary": "serialized model payload of each ArrayRecord at the real Flower message boundary; framing, config and metric records are excluded",
+        "private_ledger_uri": "artifacts/mvp/mvp-t1-003/federated/communication_ledger.json",
+        "run_totals": {
+          "download_bytes": 9520636000,
+          "download_transmissions": 1000,
+          "total_bytes": 19041272000,
+          "upload_bytes": 9520636000,
+          "upload_transmissions": 1000
+        }
+      },
+      "config_ref": {
+        "artifact_schema": "experiment_config_v1",
+        "artifact_version": "1",
+        "logical_id": "experiment_config_v1",
+        "schema": "artifact_ref_v1",
+        "sha256": "28d83a9412a694726613663e48d8018ce5baaff7b94a9603d466aa3a928ab372",
+        "uri": "docs/evidence/mvp/mvp-t1-003/pilot-pair/fedavg.experiment_config.v1.json",
+        "version": "1"
+      },
+      "headline": {
+        "accuracy_at_1_macro": 0.07907995848226244,
+        "accuracy_at_1_micro": 0.058703538737622164,
+        "metric_id": "t1.next_distinct.mrr_at_20.macro",
+        "micro": 0.07958728851546033,
+        "support_clients": 16096,
+        "support_decisions": 77457,
+        "value": 0.0995906640365329
+      },
+      "optimizer_lifecycle": "RESET_EACH_SERVER_ROUND",
+      "population": {
+        "declared_pilot_population": 1000,
+        "measured_unique_clients_trained": 636,
+        "note": "execution slots are not study clients; the pilot population is 1,000 and each round trains 50 of them",
+        "scheduled_participations": 1000,
+        "supernode_execution_slots": 50
+      },
+      "result_ref": {
+        "artifact_schema": "experiment_result_v1",
+        "artifact_version": "1",
+        "logical_id": "experiment_result_v1",
+        "schema": "artifact_ref_v1",
+        "sha256": "af211efff01306801fad34e6ec67482ff28ed189e70a1aa5834281c2e0896191",
+        "uri": "docs/evidence/mvp/mvp-t1-003/pilot-pair/fedavg.result.json",
+        "version": "1"
+      },
+      "rounds": {
+        "aggregation_oracle_policy": "SCALE_AWARE_FLOAT32_FORWARD_ERROR_V1",
+        "contributing_examples": 33253,
+        "every_round_within_tight_diagnostic_bound": true,
+        "max_oracle_abs_diff": 2.384185791015625e-06,
+        "max_oracle_ratio": 0.05097704980038232,
+        "max_oracle_tight_ratio": 0.20391008283683287,
+        "rows": 33253
+      },
+      "run_id": "run-v1__r2a__t1__c1__s13__cfg28d83a9412a6__a1",
+      "wall_seconds": 264.24
+    }
+  },
+  "round_zero_agreement": {
+    "centralized": 0.00574130967362621,
+    "fedavg_round_zero_evaluated": true
+  },
+  "run": "mvp-t1-003",
+  "schema": "mvp_comparison_v1",
+  "score_convention": "RAW_NO_SUPPRESSION",
+  "support_clients": 16096,
+  "validation_decisions": 438185,
+  "version": "1"
+}

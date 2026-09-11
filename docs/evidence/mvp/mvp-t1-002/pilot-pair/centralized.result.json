@@ -1,0 +1,193 @@
+{
+  "artifacts": [
+    {
+      "artifact_schema": "mvp_run_record_v1",
+      "artifact_version": "1",
+      "logical_id": "mvp_run_record_v1",
+      "schema": "artifact_ref_v1",
+      "sha256": "2a844986257e7d766e3a9070e6712b64c57c1fdaa2a8487737f2f2b9bd434150",
+      "uri": "docs/evidence/mvp/mvp-t1-002/centralized_run.v1.json",
+      "version": "1"
+    },
+    {
+      "artifact_schema": "mvp_source_snapshot_v1",
+      "artifact_version": "1",
+      "logical_id": "mvp_source_snapshot_v1",
+      "schema": "artifact_ref_v1",
+      "sha256": "61e2c20426b54a382d80f25068935540e4f783a383b77c594a321edfcd247f31",
+      "uri": "docs/evidence/mvp/mvp-t1-002/source_snapshot.v1.json",
+      "version": "1"
+    }
+  ],
+  "attempt": 1,
+  "compatibility": {
+    "canonical_data_contract_sha256": "67397fe66fa7a82084cf1ba19c834e3b501fc41e248893a1d839e4335ff98e32",
+    "cohort_manifest_sha256": "32d4b8ce4bb84f789b1baa525f50349be79e60920ad67f5e1bdfdcab9fa6e9d2",
+    "common_initialization_sha256": "9acdf45bcf6925a4633926293314f7fb0c36196e4b251ae5b6f7ecc5e5338237",
+    "environment_lock_sha256": "eae55e08de93c7258d0f26173cf4f85245210c625617633f209c1742988979be",
+    "evaluation_cohorts": [
+      "C1"
+    ],
+    "evaluation_manifest_sha256": "e5e85225103717413306ff056ed477848a39f2bbf72486708a6b724673984aeb",
+    "evaluation_protocol_sha256": "0b3154252ef7b7baf77f12b2852b416015199f3cf25e0c6940311db26d627d74",
+    "evaluator_sha256": "2de36e38dd4c42f2f56a5440118c77ec02dcf568a8b756497ab9d7ef72cac408",
+    "git_sha": "a72d987b21407a941b954f5a7c0a92ade5cfff5d",
+    "model_config_sha256": "9acdf45bcf6925a4633926293314f7fb0c36196e4b251ae5b6f7ecc5e5338237",
+    "objective_config_sha256": "e7d5289d8dd9c3f5902f76659cb98395421795c2ebb9e94d6b62a3765b8a9216",
+    "representation_sha256": "904f453a817f6a789fa4be3c13670593a6bd550df62e27c12483dfbd4a765b6a",
+    "schema": "comparison_compatibility_v1",
+    "seed": 13,
+    "shared_trainer_core_sha256": "2dddd8c3d3d97d145da6d2bcd46972af37041635b010bbcee8c7edc492db9096",
+    "source_dataset_sha256": "433a706ee3bb096c5d8e44af6a9af4d62c83c49806451597ee94798b205243c3",
+    "split_manifest_sha256": "67397fe66fa7a82084cf1ba19c834e3b501fc41e248893a1d839e4335ff98e32",
+    "task_examples_manifest_sha256": "433a706ee3bb096c5d8e44af6a9af4d62c83c49806451597ee94798b205243c3",
+    "tasks": [
+      "T1"
+    ],
+    "training_cohort": "C1",
+    "version": "1"
+  },
+  "config_ref": {
+    "artifact_schema": "experiment_config_v1",
+    "artifact_version": "1",
+    "logical_id": "experiment_config_v1",
+    "schema": "artifact_ref_v1",
+    "sha256": "c77be5ada73b0b100e584a6db199c7c15774bba4f59da43d797a0eba6924de3f",
+    "uri": "docs/evidence/mvp/mvp-t1-002/pilot-pair/centralized.experiment_config.v1.json",
+    "version": "1"
+  },
+  "ended_at_utc": "2026-09-11T21:06:25Z",
+  "environment_lock_ref": {
+    "artifact_schema": "uv_lock_v1",
+    "artifact_version": "1",
+    "logical_id": "uv_lock_v1",
+    "schema": "artifact_ref_v1",
+    "sha256": "eae55e08de93c7258d0f26173cf4f85245210c625617633f209c1742988979be",
+    "uri": "uv.lock",
+    "version": "1"
+  },
+  "evaluation_cohorts": [
+    "C1"
+  ],
+  "git_sha": "a72d987b21407a941b954f5a7c0a92ade5cfff5d",
+  "initialization": {
+    "common_initialization_ref": {
+      "artifact_schema": "mvp_preflight_v1",
+      "artifact_version": "1",
+      "logical_id": "common_initialization_declaration",
+      "schema": "artifact_ref_v1",
+      "sha256": "9acdf45bcf6925a4633926293314f7fb0c36196e4b251ae5b6f7ecc5e5338237",
+      "uri": "docs/evidence/mvp/mvp-t1-002/preflight.v1.json",
+      "version": "1"
+    },
+    "kind": "COMMON_INITIALIZATION"
+  },
+  "metrics": [
+    {
+      "cohort": "C1",
+      "direction": "MAXIMIZE",
+      "metric_id": "t1.next_distinct.mrr_at_20.macro",
+      "schema": "metric_record_v1",
+      "support": 16096,
+      "task": "T1",
+      "unit": "FRACTION",
+      "value": 0.11268339009749091,
+      "version": "1"
+    },
+    {
+      "cohort": "C1",
+      "direction": "MAXIMIZE",
+      "metric_id": "t1.next_distinct.mrr_at_20.micro",
+      "schema": "metric_record_v1",
+      "support": 77457,
+      "task": "T1",
+      "unit": "FRACTION",
+      "value": 0.10829039548329675,
+      "version": "1"
+    },
+    {
+      "cohort": "C1",
+      "direction": "MAXIMIZE",
+      "metric_id": "t1.next_distinct.accuracy_at_1.macro",
+      "schema": "metric_record_v1",
+      "support": 16096,
+      "task": "T1",
+      "unit": "FRACTION",
+      "value": 0.024552198637361886,
+      "version": "1"
+    },
+    {
+      "cohort": "C1",
+      "direction": "MAXIMIZE",
+      "metric_id": "t1.next_distinct.accuracy_at_1.micro",
+      "schema": "metric_record_v1",
+      "support": 77457,
+      "task": "T1",
+      "unit": "FRACTION",
+      "value": 0.026221000038731165,
+      "version": "1"
+    },
+    {
+      "cohort": "C1",
+      "direction": "MAXIMIZE",
+      "metric_id": "t1.overall.mrr_at_20.macro",
+      "schema": "metric_record_v1",
+      "support": 31576,
+      "task": "T1",
+      "unit": "FRACTION",
+      "value": 0.7195842936012197,
+      "version": "1"
+    },
+    {
+      "cohort": "C1",
+      "direction": "MAXIMIZE",
+      "metric_id": "t1.overall.mrr_at_20.micro",
+      "schema": "metric_record_v1",
+      "support": 438185,
+      "task": "T1",
+      "unit": "FRACTION",
+      "value": 0.7368988069788986,
+      "version": "1"
+    },
+    {
+      "cohort": "C1",
+      "direction": "MAXIMIZE",
+      "metric_id": "t1.overall.accuracy_at_1.macro",
+      "schema": "metric_record_v1",
+      "support": 31576,
+      "task": "T1",
+      "unit": "FRACTION",
+      "value": 0.6892914832386893,
+      "version": "1"
+    },
+    {
+      "cohort": "C1",
+      "direction": "MAXIMIZE",
+      "metric_id": "t1.overall.accuracy_at_1.micro",
+      "schema": "metric_record_v1",
+      "support": 438185,
+      "task": "T1",
+      "unit": "FRACTION",
+      "value": 0.7075025388819791,
+      "version": "1"
+    }
+  ],
+  "regime": "R1",
+  "resume_count": 0,
+  "run_id": "run-v1__r1__t1__c1__s13__cfgc77be5ada73b__a1",
+  "schema": "experiment_result_v1",
+  "seed": 13,
+  "started_at_utc": "2026-09-11T21:04:35Z",
+  "state": "SUCCEEDED",
+  "system_measurements": {
+    "null_reason": "centralized replay performs no client-server transmission",
+    "schema": "system_measurement_reference_set_v1",
+    "status": "NOT_APPLICABLE",
+    "version": "1"
+  },
+  "tasks": [
+    "T1"
+  ],
+  "training_cohort": "C1",
+  "version": "1"
+}

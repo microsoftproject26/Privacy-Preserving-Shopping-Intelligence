@@ -1,0 +1,214 @@
+{
+  "artifacts": [
+    {
+      "artifact_schema": "mvp_run_record_v1",
+      "artifact_version": "1",
+      "logical_id": "mvp_run_record_v1",
+      "schema": "artifact_ref_v1",
+      "sha256": "9fb6dac71f5e15e72b355b19f355a28a622bad6c14acc4443448a5b01ee8a051",
+      "uri": "docs/evidence/mvp/mvp-t1-003/federated_run.v1.json",
+      "version": "1"
+    },
+    {
+      "artifact_schema": "mvp_source_snapshot_v1",
+      "artifact_version": "1",
+      "logical_id": "mvp_source_snapshot_v1",
+      "schema": "artifact_ref_v1",
+      "sha256": "bb61d6aeaf20dbbdfb2a044455f43e8699a88f60a4fd9cd8802a3af649e1274e",
+      "uri": "docs/evidence/mvp/mvp-t1-003/source_snapshot.v1.json",
+      "version": "1"
+    }
+  ],
+  "attempt": 1,
+  "compatibility": {
+    "canonical_data_contract_sha256": "67397fe66fa7a82084cf1ba19c834e3b501fc41e248893a1d839e4335ff98e32",
+    "cohort_manifest_sha256": "32d4b8ce4bb84f789b1baa525f50349be79e60920ad67f5e1bdfdcab9fa6e9d2",
+    "common_initialization_sha256": "5d4f15c62f2652c029e85584196723bb09f0e9a26f1cad124791523fc5109ecf",
+    "environment_lock_sha256": "eae55e08de93c7258d0f26173cf4f85245210c625617633f209c1742988979be",
+    "evaluation_cohorts": [
+      "C1"
+    ],
+    "evaluation_manifest_sha256": "e5e85225103717413306ff056ed477848a39f2bbf72486708a6b724673984aeb",
+    "evaluation_protocol_sha256": "0b3154252ef7b7baf77f12b2852b416015199f3cf25e0c6940311db26d627d74",
+    "evaluator_sha256": "2de36e38dd4c42f2f56a5440118c77ec02dcf568a8b756497ab9d7ef72cac408",
+    "git_sha": "a72d987b21407a941b954f5a7c0a92ade5cfff5d",
+    "model_config_sha256": "5d4f15c62f2652c029e85584196723bb09f0e9a26f1cad124791523fc5109ecf",
+    "objective_config_sha256": "e7d5289d8dd9c3f5902f76659cb98395421795c2ebb9e94d6b62a3765b8a9216",
+    "representation_sha256": "904f453a817f6a789fa4be3c13670593a6bd550df62e27c12483dfbd4a765b6a",
+    "schema": "comparison_compatibility_v1",
+    "seed": 13,
+    "shared_trainer_core_sha256": "2dddd8c3d3d97d145da6d2bcd46972af37041635b010bbcee8c7edc492db9096",
+    "source_dataset_sha256": "b900c520783257df84e55e8914ffdecb6be13dd68e407856aded99a2387ae97d",
+    "split_manifest_sha256": "67397fe66fa7a82084cf1ba19c834e3b501fc41e248893a1d839e4335ff98e32",
+    "task_examples_manifest_sha256": "b900c520783257df84e55e8914ffdecb6be13dd68e407856aded99a2387ae97d",
+    "tasks": [
+      "T1"
+    ],
+    "training_cohort": "C1",
+    "version": "1"
+  },
+  "config_ref": {
+    "artifact_schema": "experiment_config_v1",
+    "artifact_version": "1",
+    "logical_id": "experiment_config_v1",
+    "schema": "artifact_ref_v1",
+    "sha256": "28d83a9412a694726613663e48d8018ce5baaff7b94a9603d466aa3a928ab372",
+    "uri": "docs/evidence/mvp/mvp-t1-003/pilot-pair/fedavg.experiment_config.v1.json",
+    "version": "1"
+  },
+  "ended_at_utc": "2026-09-11T21:24:14Z",
+  "environment_lock_ref": {
+    "artifact_schema": "uv_lock_v1",
+    "artifact_version": "1",
+    "logical_id": "uv_lock_v1",
+    "schema": "artifact_ref_v1",
+    "sha256": "eae55e08de93c7258d0f26173cf4f85245210c625617633f209c1742988979be",
+    "uri": "uv.lock",
+    "version": "1"
+  },
+  "evaluation_cohorts": [
+    "C1"
+  ],
+  "federated_metadata": {
+    "aggregation_oracle_policy": "SCALE_AWARE_FLOAT32_FORWARD_ERROR_V1",
+    "clients_per_round": 50,
+    "download_bytes": 9520636000,
+    "max_oracle_abs_diff": 2.384185791015625e-06,
+    "max_oracle_ratio": 0.05097704980038232,
+    "pilot_population": 1000,
+    "rounds_completed": 20,
+    "unique_clients_trained": 636,
+    "upload_bytes": 9520636000
+  },
+  "git_sha": "a72d987b21407a941b954f5a7c0a92ade5cfff5d",
+  "initialization": {
+    "common_initialization_ref": {
+      "artifact_schema": "mvp_preflight_v1",
+      "artifact_version": "1",
+      "logical_id": "common_initialization_declaration",
+      "schema": "artifact_ref_v1",
+      "sha256": "5d4f15c62f2652c029e85584196723bb09f0e9a26f1cad124791523fc5109ecf",
+      "uri": "docs/evidence/mvp/mvp-t1-003/preflight.v1.json",
+      "version": "1"
+    },
+    "kind": "COMMON_INITIALIZATION"
+  },
+  "metrics": [
+    {
+      "cohort": "C1",
+      "direction": "MAXIMIZE",
+      "metric_id": "t1.next_distinct.mrr_at_20.macro",
+      "schema": "metric_record_v1",
+      "support": 16096,
+      "task": "T1",
+      "unit": "FRACTION",
+      "value": 0.0995906640365329,
+      "version": "1"
+    },
+    {
+      "cohort": "C1",
+      "direction": "MAXIMIZE",
+      "metric_id": "t1.next_distinct.mrr_at_20.micro",
+      "schema": "metric_record_v1",
+      "support": 77457,
+      "task": "T1",
+      "unit": "FRACTION",
+      "value": 0.07958728851546033,
+      "version": "1"
+    },
+    {
+      "cohort": "C1",
+      "direction": "MAXIMIZE",
+      "metric_id": "t1.next_distinct.accuracy_at_1.macro",
+      "schema": "metric_record_v1",
+      "support": 16096,
+      "task": "T1",
+      "unit": "FRACTION",
+      "value": 0.07907995848226244,
+      "version": "1"
+    },
+    {
+      "cohort": "C1",
+      "direction": "MAXIMIZE",
+      "metric_id": "t1.next_distinct.accuracy_at_1.micro",
+      "schema": "metric_record_v1",
+      "support": 77457,
+      "task": "T1",
+      "unit": "FRACTION",
+      "value": 0.058703538737622164,
+      "version": "1"
+    },
+    {
+      "cohort": "C1",
+      "direction": "MAXIMIZE",
+      "metric_id": "t1.overall.mrr_at_20.macro",
+      "schema": "metric_record_v1",
+      "support": 31576,
+      "task": "T1",
+      "unit": "FRACTION",
+      "value": 0.341986626547645,
+      "version": "1"
+    },
+    {
+      "cohort": "C1",
+      "direction": "MAXIMIZE",
+      "metric_id": "t1.overall.mrr_at_20.micro",
+      "schema": "metric_record_v1",
+      "support": 438185,
+      "task": "T1",
+      "unit": "FRACTION",
+      "value": 0.30139198934223754,
+      "version": "1"
+    },
+    {
+      "cohort": "C1",
+      "direction": "MAXIMIZE",
+      "metric_id": "t1.overall.accuracy_at_1.macro",
+      "schema": "metric_record_v1",
+      "support": 31576,
+      "task": "T1",
+      "unit": "FRACTION",
+      "value": 0.277366772858229,
+      "version": "1"
+    },
+    {
+      "cohort": "C1",
+      "direction": "MAXIMIZE",
+      "metric_id": "t1.overall.accuracy_at_1.micro",
+      "schema": "metric_record_v1",
+      "support": 438185,
+      "task": "T1",
+      "unit": "FRACTION",
+      "value": 0.24026381551171308,
+      "version": "1"
+    }
+  ],
+  "regime": "R2A",
+  "resume_count": 0,
+  "run_id": "run-v1__r2a__t1__c1__s13__cfg28d83a9412a6__a1",
+  "schema": "experiment_result_v1",
+  "seed": 13,
+  "started_at_utc": "2026-09-11T21:19:48Z",
+  "state": "SUCCEEDED",
+  "system_measurements": {
+    "refs": [
+      {
+        "artifact_schema": "mvp_run_record_v1",
+        "artifact_version": "1",
+        "logical_id": "federated_payload_byte_measurements",
+        "schema": "artifact_ref_v1",
+        "sha256": "9fb6dac71f5e15e72b355b19f355a28a622bad6c14acc4443448a5b01ee8a051",
+        "uri": "docs/evidence/mvp/mvp-t1-003/federated_run.v1.json",
+        "version": "1"
+      }
+    ],
+    "schema": "system_measurement_reference_set_v1",
+    "status": "AVAILABLE",
+    "version": "1"
+  },
+  "tasks": [
+    "T1"
+  ],
+  "training_cohort": "C1",
+  "version": "1"
+}

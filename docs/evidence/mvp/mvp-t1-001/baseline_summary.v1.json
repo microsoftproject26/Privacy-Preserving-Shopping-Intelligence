@@ -1,0 +1,212 @@
+{
+  "generated_at_utc": "2026-09-11T20:33:31Z",
+  "history_count_basis": "TRUE_RAW_TRAIN_EVENT_ROWS_PER_CLIENT",
+  "run": "mvp-t1-001",
+  "schema": "mvp_baseline_summary_v1",
+  "scope_note": "full = fitted on all 3,113,814 frozen T1 TRAIN decisions; pilot = fitted on the 1,000-client pilot TRAIN decisions only. The two are never mixed in one row.",
+  "source_snapshot_ref": {
+    "artifact_schema": "mvp_source_snapshot_v1",
+    "artifact_version": "1",
+    "logical_id": "mvp_source_snapshot_v1",
+    "schema": "artifact_ref_v1",
+    "sha256": "f8eb1ad8aabb6b9b92fcde07d74a41c999f2b4d0a5ff17160d4d28e3973b846c",
+    "uri": "docs/evidence/mvp/mvp-t1-001/source_snapshot.v1.json",
+    "version": "1"
+  },
+  "validation_decisions": 438185,
+  "variants": [
+    {
+      "fit_scope": "full",
+      "headline": {
+        "accuracy_at_1_macro": 0.08664013305059401,
+        "accuracy_at_1_micro": 0.0622280749318977,
+        "metric_id": "t1.next_distinct.mrr_at_20.macro",
+        "micro": 0.09749130853508091,
+        "support_clients": 16096,
+        "support_decisions": 77457,
+        "value": 0.12882526010550283
+      },
+      "metrics_ref": {
+        "artifact_schema": "mvp_t1_baseline_metrics_v1",
+        "artifact_version": "1",
+        "logical_id": "mvp_t1_baseline_metrics_v1",
+        "schema": "artifact_ref_v1",
+        "sha256": "4f936f06bea2e668a61cdfdd586622aadac96f07ad95290084c00055fd1f8dbe",
+        "uri": "docs/evidence/s2-pr-08/mvp-t1-001/full-popularity/t1_metrics.v1.json",
+        "version": "1"
+      },
+      "result_ref": {
+        "artifact_schema": "experiment_result_v1",
+        "artifact_version": "1",
+        "logical_id": "experiment_result_v1",
+        "schema": "artifact_ref_v1",
+        "sha256": "e061369bddcfeaf7586d2daf7ac61b8214be252ee7ef9d50cab134f3ce2e55c7",
+        "uri": "docs/evidence/s2-pr-08/mvp-t1-001/full-popularity/experiment_result.v1.json",
+        "version": "1"
+      },
+      "run_id": "run-v1__r1__t1__c1__s13__cfgc48779b5deb5__a1",
+      "variant": "popularity"
+    },
+    {
+      "fit_scope": "full",
+      "headline": {
+        "accuracy_at_1_macro": 0.002654015080189715,
+        "accuracy_at_1_micro": 0.0025691674090140334,
+        "metric_id": "t1.next_distinct.mrr_at_20.macro",
+        "micro": 0.18637948767954232,
+        "support_clients": 16096,
+        "support_decisions": 77457,
+        "value": 0.18922358677212675
+      },
+      "metrics_ref": {
+        "artifact_schema": "mvp_t1_baseline_metrics_v1",
+        "artifact_version": "1",
+        "logical_id": "mvp_t1_baseline_metrics_v1",
+        "schema": "artifact_ref_v1",
+        "sha256": "11cd248c6ce0fdf268e38315a028604b4d242ec547f1c440cacec0ffa3575b01",
+        "uri": "docs/evidence/s2-pr-08/mvp-t1-001/full-markov/t1_metrics.v1.json",
+        "version": "1"
+      },
+      "result_ref": {
+        "artifact_schema": "experiment_result_v1",
+        "artifact_version": "1",
+        "logical_id": "experiment_result_v1",
+        "schema": "artifact_ref_v1",
+        "sha256": "a5953edb55d4d009d7a58e68f2b73d09771acae1a371f5b10a685880fa0fe411",
+        "uri": "docs/evidence/s2-pr-08/mvp-t1-001/full-markov/experiment_result.v1.json",
+        "version": "1"
+      },
+      "run_id": "run-v1__r1__t1__c1__s13__cfg496207adc10f__a1",
+      "variant": "markov"
+    },
+    {
+      "fit_scope": "full",
+      "headline": {
+        "accuracy_at_1_macro": 0.0,
+        "accuracy_at_1_micro": 0.0,
+        "metric_id": "t1.next_distinct.mrr_at_20.macro",
+        "micro": 0.002650770980785882,
+        "support_clients": 16096,
+        "support_decisions": 77457,
+        "value": 0.002461059658030012
+      },
+      "metrics_ref": {
+        "artifact_schema": "mvp_t1_baseline_metrics_v1",
+        "artifact_version": "1",
+        "logical_id": "mvp_t1_baseline_metrics_v1",
+        "schema": "artifact_ref_v1",
+        "sha256": "f5abcc8463af8b78446895fd79df934b99e09259b1eb4c903bbc58e31b48d578",
+        "uri": "docs/evidence/s2-pr-08/mvp-t1-001/full-last_category/t1_metrics.v1.json",
+        "version": "1"
+      },
+      "result_ref": {
+        "artifact_schema": "experiment_result_v1",
+        "artifact_version": "1",
+        "logical_id": "experiment_result_v1",
+        "schema": "artifact_ref_v1",
+        "sha256": "01d100f173ba794d0b5234a0c328ec470cdb08c27bbe4f59c838fb1c9dbbb14c",
+        "uri": "docs/evidence/s2-pr-08/mvp-t1-001/full-last_category/experiment_result.v1.json",
+        "version": "1"
+      },
+      "run_id": "run-v1__r1__t1__c1__s13__cfg129394b15355__a1",
+      "variant": "last_category"
+    },
+    {
+      "fit_scope": "pilot",
+      "headline": {
+        "accuracy_at_1_macro": 0.08664013305059401,
+        "accuracy_at_1_micro": 0.0622280749318977,
+        "metric_id": "t1.next_distinct.mrr_at_20.macro",
+        "micro": 0.09577725535857079,
+        "support_clients": 16096,
+        "support_decisions": 77457,
+        "value": 0.12628961325080112
+      },
+      "metrics_ref": {
+        "artifact_schema": "mvp_t1_baseline_metrics_v1",
+        "artifact_version": "1",
+        "logical_id": "mvp_t1_baseline_metrics_v1",
+        "schema": "artifact_ref_v1",
+        "sha256": "e27c84553233d9650f5b2283c1fe9e264bf51dab42fc7ac8579816a9e65a84cc",
+        "uri": "docs/evidence/s2-pr-08/mvp-t1-001/pilot-popularity/t1_metrics.v1.json",
+        "version": "1"
+      },
+      "result_ref": {
+        "artifact_schema": "experiment_result_v1",
+        "artifact_version": "1",
+        "logical_id": "experiment_result_v1",
+        "schema": "artifact_ref_v1",
+        "sha256": "0a09dd43b1dffde740ff6031311049cd9c30df7fbc1422cd88a6f7d5ce432b48",
+        "uri": "docs/evidence/s2-pr-08/mvp-t1-001/pilot-popularity/experiment_result.v1.json",
+        "version": "1"
+      },
+      "run_id": "run-v1__r1__t1__c1__s13__cfg97d444980ee5__a1",
+      "variant": "popularity"
+    },
+    {
+      "fit_scope": "pilot",
+      "headline": {
+        "accuracy_at_1_macro": 0.007481170536173521,
+        "accuracy_at_1_micro": 0.007720412616032121,
+        "metric_id": "t1.next_distinct.mrr_at_20.macro",
+        "micro": 0.13156484134393287,
+        "support_clients": 16096,
+        "support_decisions": 77457,
+        "value": 0.1392564934178688
+      },
+      "metrics_ref": {
+        "artifact_schema": "mvp_t1_baseline_metrics_v1",
+        "artifact_version": "1",
+        "logical_id": "mvp_t1_baseline_metrics_v1",
+        "schema": "artifact_ref_v1",
+        "sha256": "e126b6b5b32020fe820f4078d2124912d2155343be4f25f2b8c738b0e5dc2a20",
+        "uri": "docs/evidence/s2-pr-08/mvp-t1-001/pilot-markov/t1_metrics.v1.json",
+        "version": "1"
+      },
+      "result_ref": {
+        "artifact_schema": "experiment_result_v1",
+        "artifact_version": "1",
+        "logical_id": "experiment_result_v1",
+        "schema": "artifact_ref_v1",
+        "sha256": "5b7bad25d5cfc86463cc00fc58508020a343570e5187bb5b70aa010115bbf4ea",
+        "uri": "docs/evidence/s2-pr-08/mvp-t1-001/pilot-markov/experiment_result.v1.json",
+        "version": "1"
+      },
+      "run_id": "run-v1__r1__t1__c1__s13__cfge381c7446d8d__a1",
+      "variant": "markov"
+    },
+    {
+      "fit_scope": "pilot",
+      "headline": {
+        "accuracy_at_1_macro": 0.0,
+        "accuracy_at_1_micro": 0.0,
+        "metric_id": "t1.next_distinct.mrr_at_20.macro",
+        "micro": 0.002650770980785882,
+        "support_clients": 16096,
+        "support_decisions": 77457,
+        "value": 0.002461059658030012
+      },
+      "metrics_ref": {
+        "artifact_schema": "mvp_t1_baseline_metrics_v1",
+        "artifact_version": "1",
+        "logical_id": "mvp_t1_baseline_metrics_v1",
+        "schema": "artifact_ref_v1",
+        "sha256": "b11a8093292a015d73a769f448c472593a4278af5a49428bbfb92bbddb5688ee",
+        "uri": "docs/evidence/s2-pr-08/mvp-t1-001/pilot-last_category/t1_metrics.v1.json",
+        "version": "1"
+      },
+      "result_ref": {
+        "artifact_schema": "experiment_result_v1",
+        "artifact_version": "1",
+        "logical_id": "experiment_result_v1",
+        "schema": "artifact_ref_v1",
+        "sha256": "a4b24234e87563a7a618f58ef2b0d7e08ff56fd2ddb185deb049917907057a16",
+        "uri": "docs/evidence/s2-pr-08/mvp-t1-001/pilot-last_category/experiment_result.v1.json",
+        "version": "1"
+      },
+      "run_id": "run-v1__r1__t1__c1__s13__cfgdf485fa9f17e__a1",
+      "variant": "last_category"
+    }
+  ],
+  "version": "1"
+}
