@@ -1,0 +1,154 @@
+{
+  "schema": "baseline_feature_manifest_v1",
+  "version": "1",
+  "task": "T2",
+  "cohort": "C1",
+  "feature_order": [
+    "category_code",
+    "log_query_price",
+    "log_prior_events",
+    "log_prior_views",
+    "log_prior_carts",
+    "log_prior_purchases",
+    "log_prior_distinct_items",
+    "log_same_item_prior_events",
+    "log_session_elapsed_seconds",
+    "log_previous_gap_seconds",
+    "hour_sin",
+    "hour_cos",
+    "weekend"
+  ],
+  "features": [
+    {
+      "name": "category_code",
+      "source": "anchor category_id mapped using the frozen 588-category vocabulary",
+      "transform": "identity/dense code; upstream unseen=-1",
+      "availability": "at anchor",
+      "missing_policy": "unknown ignored by TRAIN-fitted OneHotEncoder",
+      "dtype": "float64"
+    },
+    {
+      "name": "log_query_price",
+      "source": "anchor raw price",
+      "transform": "log1p(price)",
+      "availability": "at anchor",
+      "missing_policy": "TRAIN median then TRAIN scale; indicator",
+      "dtype": "float64"
+    },
+    {
+      "name": "log_prior_events",
+      "source": "same-session strictly preceding canonical events",
+      "transform": "log1p(count)",
+      "availability": "before anchor",
+      "missing_policy": "zero when empty",
+      "dtype": "float64"
+    },
+    {
+      "name": "log_prior_views",
+      "source": "same-session preceding view events",
+      "transform": "log1p(count)",
+      "availability": "before anchor",
+      "missing_policy": "zero when empty",
+      "dtype": "float64"
+    },
+    {
+      "name": "log_prior_carts",
+      "source": "same-session preceding cart events",
+      "transform": "log1p(count)",
+      "availability": "before anchor",
+      "missing_policy": "zero when empty",
+      "dtype": "float64"
+    },
+    {
+      "name": "log_prior_purchases",
+      "source": "same-session preceding purchase events",
+      "transform": "log1p(count)",
+      "availability": "before anchor",
+      "missing_policy": "zero when empty",
+      "dtype": "float64"
+    },
+    {
+      "name": "log_prior_distinct_items",
+      "source": "distinct items strictly before anchor",
+      "transform": "log1p(count)",
+      "availability": "before anchor",
+      "missing_policy": "zero when empty",
+      "dtype": "float64"
+    },
+    {
+      "name": "log_same_item_prior_events",
+      "source": "events on current query item strictly before anchor",
+      "transform": "log1p(count)",
+      "availability": "before anchor",
+      "missing_policy": "zero when empty",
+      "dtype": "float64"
+    },
+    {
+      "name": "log_session_elapsed_seconds",
+      "source": "anchor time minus first same-session event time",
+      "transform": "log1p(seconds)",
+      "availability": "at anchor",
+      "missing_policy": "zero for first event",
+      "dtype": "float64"
+    },
+    {
+      "name": "log_previous_gap_seconds",
+      "source": "anchor time minus preceding same-session event time",
+      "transform": "log1p(seconds)",
+      "availability": "at anchor",
+      "missing_policy": "zero for first event",
+      "dtype": "float64"
+    },
+    {
+      "name": "hour_sin",
+      "source": "anchor UTC hour + minute/60",
+      "transform": "sin(2*pi*hour/24)",
+      "availability": "at anchor",
+      "missing_policy": "required timestamp",
+      "dtype": "float64"
+    },
+    {
+      "name": "hour_cos",
+      "source": "anchor UTC hour + minute/60",
+      "transform": "cos(2*pi*hour/24)",
+      "availability": "at anchor",
+      "missing_policy": "required timestamp",
+      "dtype": "float64"
+    },
+    {
+      "name": "weekend",
+      "source": "anchor UTC day-of-week",
+      "transform": "1 for Saturday/Sunday else0",
+      "availability": "at anchor",
+      "missing_policy": "required timestamp",
+      "dtype": "float64"
+    }
+  ],
+  "fitted_state": "all imputers, scalers and category encoders fit only on OBSERVED frozen T2 TRAIN rows",
+  "excluded_predictors": [
+    "client",
+    "session",
+    "decision_order",
+    "label_value",
+    "category_changed",
+    "task_mask",
+    "status",
+    "label_matures_at",
+    "split",
+    "train_history_count",
+    "session_end",
+    "next_event",
+    "future_purchase"
+  ],
+  "metadata_only": [
+    "client",
+    "session",
+    "decision_order",
+    "task_mask",
+    "status",
+    "split",
+    "row_ordinal",
+    "train_history_count"
+  ],
+  "purpose": "Classical baseline features; does not alter Eid model features or protocol"
+}

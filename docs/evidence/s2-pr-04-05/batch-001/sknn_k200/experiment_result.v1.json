@@ -1,0 +1,202 @@
+{
+  "artifacts": [
+    {
+      "artifact_schema": "baseline_metrics_v1",
+      "artifact_version": "1",
+      "logical_id": "baseline_metrics_v1",
+      "schema": "artifact_ref_v1",
+      "sha256": "052ae7b9993dd1b2c0e4ca29deacbe77ac7fc8d9013a09914528badaa101a59f",
+      "uri": "docs/evidence/s2-pr-04-05/batch-001/sknn_k200/metrics.v1.json",
+      "version": "1"
+    },
+    {
+      "artifact_schema": "private_fitted_baseline_v1",
+      "artifact_version": "1",
+      "logical_id": "private_fitted_baseline_v1",
+      "schema": "artifact_ref_v1",
+      "sha256": "00da146a7d337b502f0f470798e856c4e16081cf5e97f39407c3568ff44bc868",
+      "uri": "artifacts/baselines/s2-pr-04-05/batch-001/session/train_index.joblib",
+      "version": "1"
+    },
+    {
+      "artifact_schema": "baseline_source_snapshot_v1",
+      "artifact_version": "1",
+      "logical_id": "baseline_source_snapshot_v1",
+      "schema": "artifact_ref_v1",
+      "sha256": "da1ade147f7a8ce3f5e9d55c300386aff335a4ac20666599e1254eca08fa41d2",
+      "uri": "docs/evidence/s2-pr-04-05/batch-001/source_snapshot.v1.json",
+      "version": "1"
+    }
+  ],
+  "attempt": 1,
+  "compatibility": {
+    "canonical_data_contract_sha256": "67397fe66fa7a82084cf1ba19c834e3b501fc41e248893a1d839e4335ff98e32",
+    "cohort_manifest_sha256": "32d4b8ce4bb84f789b1baa525f50349be79e60920ad67f5e1bdfdcab9fa6e9d2",
+    "common_initialization_sha256": "39c9afef6b31f58bd36eeaa2240416125de2c84df49d81ad5b545ba978b7ec95",
+    "environment_lock_sha256": "cd86bcdb34077eaedd3ccf84e8ddc52a6424271cfd35f27ba0b7f32d7cbdf0dd",
+    "evaluation_cohorts": [
+      "C1"
+    ],
+    "evaluation_manifest_sha256": "e5e85225103717413306ff056ed477848a39f2bbf72486708a6b724673984aeb",
+    "evaluation_protocol_sha256": "e7f8662bf8e1df17163713f4eba6cbb42449b82261786b409e4bf37bdb25d9d1",
+    "evaluator_sha256": "2de36e38dd4c42f2f56a5440118c77ec02dcf568a8b756497ab9d7ef72cac408",
+    "git_sha": "ce5892c28e6b90d8f2a712863f23ae5ed3d628f4",
+    "model_config_sha256": "0dba5a6f321602552094ee853fa35f2d4238d01a4442ba73d9f598dab356f826",
+    "objective_config_sha256": "b9e0b7eb4c53ac3aeec73ce405461b63ce5a26145029f3f46d2848548b7cfbb3",
+    "representation_sha256": "b9e0b7eb4c53ac3aeec73ce405461b63ce5a26145029f3f46d2848548b7cfbb3",
+    "schema": "comparison_compatibility_v1",
+    "seed": 13,
+    "shared_trainer_core_sha256": "5960292578f6225c27d63affdb7bc0a3cebe85d6af3973f2f78a10c312ac24a2",
+    "source_dataset_sha256": "7bb6b053a174b2482a1af43ee6fada41e9946ec65bf06c57ac8cf83b12437fb0",
+    "split_manifest_sha256": "67397fe66fa7a82084cf1ba19c834e3b501fc41e248893a1d839e4335ff98e32",
+    "task_examples_manifest_sha256": "7bb6b053a174b2482a1af43ee6fada41e9946ec65bf06c57ac8cf83b12437fb0",
+    "tasks": [
+      "T1"
+    ],
+    "training_cohort": "C1",
+    "version": "1"
+  },
+  "config_ref": {
+    "artifact_schema": "experiment_config_v1",
+    "artifact_version": "1",
+    "logical_id": "experiment_config_v1",
+    "schema": "artifact_ref_v1",
+    "sha256": "c1edcdc9cff5338609f76c6ea8e4b3c42bdeca52b020787b1e167acc405e9aa3",
+    "uri": "docs/evidence/s2-pr-04-05/batch-001/sknn_k200/experiment_config.v1.json",
+    "version": "1"
+  },
+  "ended_at_utc": "2026-09-11T15:21:32Z",
+  "environment_lock_ref": {
+    "artifact_schema": "uv_lock_v1",
+    "artifact_version": "1",
+    "logical_id": "uv_lock_v1",
+    "schema": "artifact_ref_v1",
+    "sha256": "cd86bcdb34077eaedd3ccf84e8ddc52a6424271cfd35f27ba0b7f32d7cbdf0dd",
+    "uri": "uv.lock",
+    "version": "1"
+  },
+  "evaluation_cohorts": [
+    "C1"
+  ],
+  "git_sha": "ce5892c28e6b90d8f2a712863f23ae5ed3d628f4",
+  "initialization": {
+    "common_initialization_ref": {
+      "artifact_schema": "baseline_unfitted_state_v1",
+      "artifact_version": "1",
+      "logical_id": "baseline_unfitted_state_v1",
+      "schema": "artifact_ref_v1",
+      "sha256": "39c9afef6b31f58bd36eeaa2240416125de2c84df49d81ad5b545ba978b7ec95",
+      "uri": "docs/evidence/s2-pr-04-05/batch-001/sknn_k200/unfitted_state.v1.json",
+      "version": "1"
+    },
+    "kind": "COMMON_INITIALIZATION"
+  },
+  "metrics": [
+    {
+      "cohort": "C1",
+      "direction": "MAXIMIZE",
+      "metric_id": "t1.next_distinct.mrr_at_20.macro",
+      "schema": "metric_record_v1",
+      "support": 16096,
+      "task": "T1",
+      "unit": "FRACTION",
+      "value": 0.19084626784925202,
+      "version": "1"
+    },
+    {
+      "cohort": "C1",
+      "direction": "MAXIMIZE",
+      "metric_id": "t1.next_distinct.mrr_at_20.micro",
+      "schema": "metric_record_v1",
+      "support": 77457,
+      "task": "T1",
+      "unit": "FRACTION",
+      "value": 0.2144298025043982,
+      "version": "1"
+    },
+    {
+      "cohort": "C1",
+      "direction": "MAXIMIZE",
+      "metric_id": "t1.next_distinct.accuracy_at_1.macro",
+      "schema": "metric_record_v1",
+      "support": 16096,
+      "task": "T1",
+      "unit": "FRACTION",
+      "value": 0.05937621680540785,
+      "version": "1"
+    },
+    {
+      "cohort": "C1",
+      "direction": "MAXIMIZE",
+      "metric_id": "t1.next_distinct.accuracy_at_1.micro",
+      "schema": "metric_record_v1",
+      "support": 77457,
+      "task": "T1",
+      "unit": "FRACTION",
+      "value": 0.08648669584414578,
+      "version": "1"
+    },
+    {
+      "cohort": "C1",
+      "direction": "MAXIMIZE",
+      "metric_id": "t1.overall.mrr_at_20.macro",
+      "schema": "metric_record_v1",
+      "support": 31576,
+      "task": "T1",
+      "unit": "FRACTION",
+      "value": 0.7871300097407781,
+      "version": "1"
+    },
+    {
+      "cohort": "C1",
+      "direction": "MAXIMIZE",
+      "metric_id": "t1.overall.mrr_at_20.micro",
+      "schema": "metric_record_v1",
+      "support": 438185,
+      "task": "T1",
+      "unit": "FRACTION",
+      "value": 0.7965386796584046,
+      "version": "1"
+    },
+    {
+      "cohort": "C1",
+      "direction": "MAXIMIZE",
+      "metric_id": "t1.overall.accuracy_at_1.macro",
+      "schema": "metric_record_v1",
+      "support": 31576,
+      "task": "T1",
+      "unit": "FRACTION",
+      "value": 0.7371500371582242,
+      "version": "1"
+    },
+    {
+      "cohort": "C1",
+      "direction": "MAXIMIZE",
+      "metric_id": "t1.overall.accuracy_at_1.micro",
+      "schema": "metric_record_v1",
+      "support": 438185,
+      "task": "T1",
+      "unit": "FRACTION",
+      "value": 0.7353834567591314,
+      "version": "1"
+    }
+  ],
+  "regime": "R1",
+  "resume_count": 0,
+  "run_id": "run-v1__r1__t1__c1__s13__cfgc1edcdc9cff5__a1",
+  "schema": "experiment_result_v1",
+  "seed": 13,
+  "started_at_utc": "2026-09-11T15:17:36Z",
+  "state": "SUCCEEDED",
+  "system_measurements": {
+    "null_reason": "baseline quality task; no communication or federated performance claim",
+    "schema": "system_measurement_reference_set_v1",
+    "status": "NOT_APPLICABLE",
+    "version": "1"
+  },
+  "tasks": [
+    "T1"
+  ],
+  "training_cohort": "C1",
+  "version": "1"
+}

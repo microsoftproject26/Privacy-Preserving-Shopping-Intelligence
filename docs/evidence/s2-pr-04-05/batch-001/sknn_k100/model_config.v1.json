@@ -1,0 +1,53 @@
+{
+  "model": "recent_session_cosine_category_knn",
+  "parameters": {
+    "cache_entries": 2048,
+    "candidate_limit": 2000,
+    "candidate_selection": "most recent up to 2000 TRAIN sessions with query item overlap",
+    "candidate_universe": "full 588 dense categories; no current-category suppression",
+    "category_count": 588,
+    "category_score": "sum of neighbor similarity once per category present in that neighbor",
+    "feasibility_queries": 256,
+    "k": 100,
+    "ks": [
+      50,
+      100,
+      200
+    ],
+    "max_projected_evaluation_seconds": 14400,
+    "neighbor_ties": "newest session end, then ascending 20-digit frozen session ID",
+    "no_neighbor_backoff": "frozen T1 TRAIN label-frequency distribution",
+    "position_decay": null,
+    "query_last_events_including_anchor": 20,
+    "rank_batch_rows": 512,
+    "readback_query_count": 1024,
+    "recency_decay": null,
+    "representation": "binary item sets",
+    "selection": "t1.next_distinct.mrr_at_20.macro via existing evaluator",
+    "similarity": "cosine on binary item sets",
+    "task": "T1"
+  },
+  "plan_ref": {
+    "artifact_schema": "classical_session_baseline_plan_v1",
+    "artifact_version": "1",
+    "logical_id": "classical_session_baseline_plan_v1",
+    "schema": "artifact_ref_v1",
+    "sha256": "b9e0b7eb4c53ac3aeec73ce405461b63ce5a26145029f3f46d2848548b7cfbb3",
+    "uri": "config/baselines/s2_pr_04_05.v1.json",
+    "version": "1"
+  },
+  "result_role": "VALIDATION_BASELINE_NOT_FINAL_R1",
+  "schema": "baseline_model_config_v1",
+  "seed": 13,
+  "source_snapshot_ref": {
+    "artifact_schema": "baseline_source_snapshot_v1",
+    "artifact_version": "1",
+    "logical_id": "baseline_source_snapshot_v1",
+    "schema": "artifact_ref_v1",
+    "sha256": "da1ade147f7a8ce3f5e9d55c300386aff335a4ac20666599e1254eca08fa41d2",
+    "uri": "docs/evidence/s2-pr-04-05/batch-001/source_snapshot.v1.json",
+    "version": "1"
+  },
+  "task": "T1",
+  "version": "1"
+}

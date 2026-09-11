@@ -1,0 +1,117 @@
+{
+  "schema": "classical_session_baseline_plan_v1",
+  "version": "1",
+  "authority": "PROJECT_OWNER_DELEGATION; not invented individual approvals",
+  "seed": 13,
+  "threads": 2,
+  "evaluation_split": "VALIDATION",
+  "cohort": "C1",
+  "fit_membership": "all frozen OBSERVED T2 TRAIN examples; no further sampling",
+  "validation_membership": "all applicable frozen T1/T2 VALIDATION examples",
+  "classical_candidates": [
+    {
+      "id": "lr_c0p1",
+      "model": "logistic_regression",
+      "params": {
+        "C": 0.1
+      }
+    },
+    {
+      "id": "lr_c1p0",
+      "model": "logistic_regression",
+      "params": {
+        "C": 1.0
+      }
+    },
+    {
+      "id": "lr_c10p0",
+      "model": "logistic_regression",
+      "params": {
+        "C": 10.0
+      }
+    },
+    {
+      "id": "lgbm_l15_r10",
+      "model": "lightgbm",
+      "params": {
+        "num_leaves": 15,
+        "reg_lambda": 10.0
+      }
+    },
+    {
+      "id": "lgbm_l15_r1",
+      "model": "lightgbm",
+      "params": {
+        "num_leaves": 15,
+        "reg_lambda": 1.0
+      }
+    },
+    {
+      "id": "lgbm_l31_r10",
+      "model": "lightgbm",
+      "params": {
+        "num_leaves": 31,
+        "reg_lambda": 10.0
+      }
+    },
+    {
+      "id": "lgbm_l31_r1",
+      "model": "lightgbm",
+      "params": {
+        "num_leaves": 31,
+        "reg_lambda": 1.0
+      }
+    }
+  ],
+  "classical_selection": "maximum pooled VALIDATION average_precision_score separately per model family",
+  "selection_tie_tolerance": 1e-12,
+  "selection_tie_rule": "first listed candidate within tolerance of maximum",
+  "calibration": "NONE; unweighted binary probabilities, no claim of calibrated probabilities",
+  "class_weight": null,
+  "early_stopping": "NONE; fixed budgets before results",
+  "prediction_chunk_size": 32768,
+  "winner_repeat_prediction_atol": 1e-10,
+  "session_knn": {
+    "task": "T1",
+    "category_count": 588,
+    "query_last_events_including_anchor": 20,
+    "candidate_limit": 2000,
+    "ks": [
+      50,
+      100,
+      200
+    ],
+    "representation": "binary item sets",
+    "similarity": "cosine on binary item sets",
+    "candidate_selection": "most recent up to 2000 TRAIN sessions with query item overlap",
+    "neighbor_ties": "newest session end, then ascending 20-digit frozen session ID",
+    "category_score": "sum of neighbor similarity once per category present in that neighbor",
+    "position_decay": null,
+    "recency_decay": null,
+    "no_neighbor_backoff": "frozen T1 TRAIN label-frequency distribution",
+    "candidate_universe": "full 588 dense categories; no current-category suppression",
+    "selection": "t1.next_distinct.mrr_at_20.macro via existing evaluator",
+    "cache_entries": 2048,
+    "rank_batch_rows": 512,
+    "readback_query_count": 1024,
+    "feasibility_queries": 256,
+    "max_projected_evaluation_seconds": 14400
+  },
+  "resources": {
+    "min_available_ram_gib": 6,
+    "min_free_disk_gib": 5,
+    "max_stage_wall_seconds": 14400,
+    "max_rss_fraction_total": 0.7,
+    "min_available_during_run_gib": 2,
+    "max_concurrent_heavy_jobs": 1
+  },
+  "data_views": "docs/evidence/s2-pr-04-05/data_views.v1.json",
+  "private_root": "artifacts/baselines/s2-pr-04-05",
+  "public_root": "docs/evidence/s2-pr-04-05",
+  "test_allowed": false,
+  "tasks_not_implemented": [
+    "#55",
+    "#54",
+    "#32"
+  ]
+}

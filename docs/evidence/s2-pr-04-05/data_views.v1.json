@@ -1,0 +1,123 @@
+{
+  "base_c1_users": 388789,
+  "binding": {
+    "t1_TRAIN": {
+      "bound_rows": 3113814,
+      "observed": 3113814,
+      "rows": 3113814
+    },
+    "t1_VALIDATION": {
+      "bound_rows": 438185,
+      "observed": 438185,
+      "rows": 438185
+    },
+    "t2_TRAIN": {
+      "bound_rows": 2770471,
+      "observed": 2291753,
+      "rows": 2770471
+    },
+    "t2_VALIDATION": {
+      "bound_rows": 392554,
+      "observed": 322087,
+      "rows": 392554
+    }
+  },
+  "canonical_raw_source": "Drive file 1WOG1Rlb1JFp0vYjdutow5q56xxvZ3bAt",
+  "example_slice_users": 97279,
+  "history_policy": "whole canonical session; features strictly before anchor; query item included for T1 kNN",
+  "inputs": {
+    "data/examples/INTERNAL_DO_NOT_UPLOAD_task_examples_t1_train_v1.proposed.parquet": {
+      "expected_prefix": "42b1617c1d2f1b5a",
+      "hash_convention": "raw_bytes",
+      "sha256": "42b1617c1d2f1b5a2d2f1020d4c896d43891f4bf00639782955a032eb4fa60bb"
+    },
+    "data/examples/INTERNAL_DO_NOT_UPLOAD_task_examples_t1_v1.proposed.parquet": {
+      "expected_prefix": "e5e8522510371741",
+      "hash_convention": "raw_bytes",
+      "sha256": "e5e85225103717413306ff056ed477848a39f2bbf72486708a6b724673984aeb"
+    },
+    "data/examples/INTERNAL_DO_NOT_UPLOAD_task_examples_t2_train_v1.proposed.parquet": {
+      "expected_prefix": "72379556cc03dcd9",
+      "hash_convention": "raw_bytes",
+      "sha256": "72379556cc03dcd9f7077718c692c578181a19cab84a12550bb90db034617eba"
+    },
+    "data/examples/INTERNAL_DO_NOT_UPLOAD_task_examples_t2_v1.proposed.parquet": {
+      "expected_prefix": "fcb22295c58d70d8",
+      "hash_convention": "raw_bytes",
+      "sha256": "fcb22295c58d70d83369e1a5a7934c3df9fdd991ad4f800680b36d4cd4017378"
+    },
+    "data/protocol/INTERNAL_DO_NOT_UPLOAD_cohort_manifest_v1.proposed.parquet": {
+      "expected_prefix": "32d4b8ce4bb84f78",
+      "hash_convention": "raw_bytes",
+      "sha256": "32d4b8ce4bb84f789b1baa525f50349be79e60920ad67f5e1bdfdcab9fa6e9d2"
+    },
+    "data/protocol/INTERNAL_DO_NOT_UPLOAD_excluded_sessions_v1.proposed.parquet": {
+      "expected_prefix": "60404af5c89f8d1b",
+      "hash_convention": "raw_bytes",
+      "sha256": "60404af5c89f8d1bd37ae35e906bf12abf67fac8d98e4b288046323f74cf14b2"
+    },
+    "docs/evidence/s1-d1-ds-07/vocabulary_v1.proposed.json": {
+      "expected_prefix": "07e7c0618f550b53",
+      "hash_convention": "raw_bytes",
+      "sha256": "07e7c0618f550b5316a32a168fcf7f240703d6a362f9ec27449bbdbf98f63bd7"
+    }
+  },
+  "outputs": {
+    "artifacts/baselines/s2-pr-04-05/prepared/t1_popularity.npy": {
+      "hash_convention": "raw_bytes",
+      "sha256": "686a9d04882ffccb700cdb6fad4fa0f218cd0001e5ed85194ffdf6f924a31466"
+    },
+    "artifacts/baselines/s2-pr-04-05/prepared/t1_validation.parquet": {
+      "hash_convention": "raw_bytes",
+      "sha256": "bd7dce1740637a72e67c4958eff6ce94e1fadf7d41c1c8ec1a1de48166d78d9b"
+    },
+    "artifacts/baselines/s2-pr-04-05/prepared/t2_train.parquet": {
+      "hash_convention": "raw_bytes",
+      "sha256": "334e25ae57603718f255ba1e25685708dddf0c2fb6e10156cecf99faebecb085"
+    },
+    "artifacts/baselines/s2-pr-04-05/prepared/t2_validation.parquet": {
+      "hash_convention": "raw_bytes",
+      "sha256": "23dde291adfec4d2831708b9f0fd8c9082a6ad02c85077832d0354317e412f8f"
+    },
+    "artifacts/baselines/s2-pr-04-05/prepared/train_sessions.parquet": {
+      "hash_convention": "raw_bytes",
+      "sha256": "a5ea95393cc299e34cdac90249ea433c360930157740582324c2b3c2cec9d52b"
+    }
+  },
+  "preparation_environment": {
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "psutil": "7.2.2",
+    "pyarrow": "21.0.0",
+    "python": "3.11.14"
+  },
+  "preparation_source_ref": {
+    "hash_convention": "canonical_text",
+    "sha256": "62e3a2d10ebf8eb3df02d502b1aefb61c5e9a7618df8b75f23caddced2c81c8c",
+    "uri": "scripts/baselines/prepare_baseline_views.py"
+  },
+  "raw_identity_status": "LOCAL_FULL_HASH_RECORDED; NO_UPSTREAM_PARQUET_SHA_ASSUMED",
+  "raw_sha256": "8905ce1c6918bf00c2f96dc946b1d3a6a31b3928db2c80ab5bc5c318e9df61c6",
+  "schema": "baseline_data_views_v1",
+  "status": "PASS",
+  "task_scope": {
+    "S2-PR-04": "T2 C1",
+    "S2-PR-05": "T1 C1"
+  },
+  "test_consumed": false,
+  "upstream_config_refs": {
+    "config/s1-ds-05-06.v1.json": {
+      "hash_convention": "canonical_text",
+      "sha256": "7123753d0a45115ee9b5fd474ee497311936e7f489bca2774f8916ad888f5b61"
+    },
+    "docs/evidence/s1-ds-05-06/data_protocol_v1.proposed.json": {
+      "hash_convention": "canonical_text",
+      "sha256": "67397fe66fa7a82084cf1ba19c834e3b501fc41e248893a1d839e4335ff98e32"
+    },
+    "docs/evidence/s1-ds-09/g1_gate_v1.frozen.json": {
+      "hash_convention": "canonical_text",
+      "sha256": "12b4b8c397dfacb9fb04f87dbd50e1efdcf5e76c6428b6164ab875287671446b"
+    }
+  },
+  "version": "1"
+}
