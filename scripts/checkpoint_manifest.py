@@ -47,6 +47,22 @@ POLICY = {
         False,
         "its encoder was fine-tuned for one task and measurably destroys another. Valid as "
         "that task's own result; never valid as a shared starting point."),
+    "MULTITASK": (
+        True,
+        "the selected joint model - the only checkpoint that serves T1 and T2 at once. "
+        "S2-SE-08 exports this; S2-PR-06 and S2-PR-09 federate it."),
+    "MULTITASK_ALTERNATE": (
+        True,
+        "a joint model at a lower T2 weight. Reproducible evidence for the lambda ladder; "
+        "use the selected one unless you are re-running that comparison."),
+    "ARCHITECTURE_REFERENCE": (
+        True,
+        "the selected sequence core from S2-DS-05, kept so inference cost can be "
+        "benchmarked without retraining."),
+    "ARCHITECTURE_ALTERNATE": (
+        True,
+        "a losing core from S2-DS-05. Load it only to reproduce that comparison or to "
+        "benchmark its inference cost - it is not the selected architecture."),
     "COMMON_INITIALIZATION": (
         True,
         "untrained shared weights for a seed. R1 and R2 must both start here or their "
@@ -66,6 +82,21 @@ CLASSIFY = {
         "DIAGNOSTIC_DESTRUCTIVE", "S2-DS-06, pre-correction, kept for the label ablation"),
     "t3_listwise.pt": ("DIAGNOSTIC_UNDERPERFORMING", "S2-DS-07, query-blind reranker"),
     "t3_pointwise.pt": ("DIAGNOSTIC_UNDERPERFORMING", "S2-DS-07, query-blind reranker"),
+    # S2-DS-08. The joint model is what S2-SE-08 exports and what S2-PR-06 and S2-PR-09
+    # federate; it is the only checkpoint that holds T1 and T2 at once.
+    "joint_lambda1.0.pt": ("MULTITASK", "S2-DS-08, the selected joint model"),
+    "joint_lambda0.3.pt": ("MULTITASK_ALTERNATE", "S2-DS-08, a lower T2 weight"),
+    "joint_lambda0.1.pt": ("MULTITASK_ALTERNATE", "S2-DS-08, a lower T2 weight"),
+    # S2-DS-05. Kept so S2-SE-02 can benchmark inference cost without retraining. Only the
+    # GRU is the selected architecture; the other three exist to make the comparison
+    # reproducible.
+    "t1_gru_seed13.pt": ("ARCHITECTURE_REFERENCE", "S2-DS-05, the selected core"),
+    "t1_lstm_seed13.pt": ("ARCHITECTURE_ALTERNATE", "S2-DS-05, tied on quality, 27% slower"),
+    "t1_tcn_seed13.pt": ("ARCHITECTURE_ALTERNATE", "S2-DS-05, -0.0079 against the GRU"),
+    "t1_transformer_seed13.pt": ("ARCHITECTURE_ALTERNATE",
+                                 "S2-DS-05, -0.0037 and undertrained at this budget"),
+    "t2_separate_model.pt": ("DIAGNOSTIC_DESTRUCTIVE",
+                             "S2-DS-ST1, a T2-only model with no shared encoder"),
 }
 SEED_PREFIXES = {
     "t2_finetuned_seed": ("DIAGNOSTIC_DESTRUCTIVE", "S2-DS-06 seed confirmation"),

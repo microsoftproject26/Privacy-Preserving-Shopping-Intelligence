@@ -1,0 +1,56 @@
+{
+  "status": "PROPOSED",
+  "task": "S2-DS-06",
+  "title": "T2 purchase-likelihood head on corrected labels",
+  "scope": {
+    "cohort": "C1",
+    "user_slice": "user_id % 4 == 1",
+    "measured_users": 97279,
+    "data": "frozen v1 artifacts, not rebuilt and not extended",
+    "test_seal": {
+      "test_rows_used": 0,
+      "measured": "_SEAL/test_seal_measured.json"
+    }
+  },
+  "encoder": {
+    "channels": [
+      "category_id",
+      "event_type_id"
+    ],
+    "use_gap": true,
+    "hidden": 128,
+    "layers": 1,
+    "dropout": 0.3,
+    "core": "gru",
+    "note": "read from S2-DS-01's selected_config(); never restated by hand"
+  },
+  "labels": {
+    "correction": "S2-DS-06/labels.py",
+    "reason": "upstream marks a decision censored when it is the last event of its session, but crossing sessions were already excluded, so those sessions are complete and the outcome is observed",
+    "restored_train_rows": 478718,
+    "restored_validation_rows": 70467,
+    "corrected_prevalence": 0.028778
+  },
+  "selected": {
+    "rung": "fine-tuned encoder",
+    "epochs": 12,
+    "batch": 512,
+    "learning_rate": 0.001,
+    "pos_weight": null,
+    "warning": "this rung drives T1 from 0.3479 to 0.1791. Valid as a T2 result; never valid as a shared encoder. See docs/evidence/seal/checkpoint_manifest.json"
+  },
+  "results": {
+    "mean_pr_auc_3_seeds": 0.1418,
+    "seed_spread": 0.0008,
+    "baseline": 0.076,
+    "gain": 0.0661,
+    "paired_client_ci": [
+      0.058234,
+      0.075176
+    ],
+    "clients": 42312
+  },
+  "consumed_by": [
+    "S2-DS-08"
+  ]
+}
