@@ -80,9 +80,7 @@ class CommunicationRecord:
         if not isinstance(self.client_id, str) or not self.client_id:
             raise ValueError("client_id must be a non-empty string")
         if self.client_id.isdigit():
-            raise ValueError(
-                "client_id looks like a raw user identifier; pass an opaque client ID"
-            )
+            raise ValueError("client_id looks like a raw user identifier; pass an opaque client ID")
         if self.direction not in DIRECTIONS:
             raise ValueError(f"direction must be one of {DIRECTIONS}")
         if isinstance(self.payload_bytes, bool) or not isinstance(self.payload_bytes, int):

@@ -1,0 +1,53 @@
+{
+  "artifacts_preserved": {
+    "log": "kept outside the repository in the local run log directory",
+    "round_zero_ranks": "artifacts/mvp/mvp-t1-001/federated/ranks_round_00.npy"
+  },
+  "attempt": 1,
+  "decision_required_from_human": [
+    "Option A: keep the frozen 1e-06 tolerance and accept that the FedAvg half of the matched pair cannot complete at 50 clients per round in float32.",
+    "Option B: authorise a scale-aware aggregation tolerance for a NEW run id (mvp-t1-002), for example a tolerance derived from float32 epsilon, the number of contributing clients and the largest parameter magnitude, and rerun the pair so both halves execute under one declared policy."
+  ],
+  "diagnosis": {
+    "conclusion": "FLOAT32_ACCUMULATION_NOISE_NOT_AN_AGGREGATION_DISAGREEMENT",
+    "evidence": [
+      "The failing tensor is the candidate-head embedding. T1 never reads the candidate axis (candidate_mask is all zeros), so it receives no gradient and all 50 clients return it unchanged. Its exact weighted average is therefore the input tensor itself, and any nonzero difference is arithmetic noise.",
+      "The project oracle weighted_average_state_dicts accumulates in float64 and casts back to float32, so it is an effectively exact reference.",
+      "Flower 1.33 aggregate_arrayrecords accumulates in float32: it computes value.numpy() * (w / total_weight) and adds in place across all 50 replies.",
+      "Replaying that exact algorithm offline on this parameter with the real round-1 weights (50 clients, weights 1..134, total 1530) reproduces a max_abs_diff of 9.54e-07 against the float64 reference, the same order as the observed failure.",
+      "The parameter's largest absolute value is 3.3645, so one float32 rounding is already 4.0e-07, and the loose bound n*eps*|x|max over 50 additions is 2.0e-05."
+    ],
+    "implication": "At 50 clients per round and float32 aggregation, the declared atol of 1e-06 sits below the arithmetic noise floor of the operation it checks. A correct FedAvg implementation cannot be expected to pass it at this scale. The tolerance was calibrated on earlier smaller-scale smokes.",
+    "reproduction_is_offline_arithmetic": true
+  },
+  "error": "SmokeValidationError: Oracle mismatch for candidate_embeddings.candidate_category_id.weight: max_abs_diff=1.430511474609375e-06 > atol=1e-06",
+  "failed_at": {
+    "declared_aggregation_atol": 1e-06,
+    "declared_aggregation_rtol": 0.0,
+    "max_abs_diff": 1.430511474609375e-06,
+    "parameter": "candidate_embeddings.candidate_category_id.weight",
+    "phase": "aggregate_train, inherited FedAvg oracle cross-check",
+    "server_round": 1
+  },
+  "not_claimed": [
+    "No R2A result, no FedAvg metric and no quality-retention number exist for this run.",
+    "This record is a failed attempt, not a result."
+  ],
+  "recorded_at_utc": "2026-09-11T20:40:06Z",
+  "recovery_state": {
+    "completed_round_checkpoints_written": 0,
+    "note": "The failure occurred inside round 1 aggregation, before any completed-round boundary, so the completed-round recovery correctly persisted nothing.",
+    "resume_pointer_written": false
+  },
+  "run": "mvp-t1-001",
+  "schema": "mvp_federated_attempt_v1",
+  "stage": "federated",
+  "state": "FAILED",
+  "version": "1",
+  "what_was_not_done": [
+    "The declared aggregation tolerance was NOT loosened.",
+    "The 50-clients-per-round policy was NOT reduced.",
+    "The model, seed, batch size, optimizer lifecycles, evaluator and evaluation membership were NOT changed.",
+    "No FedAvg metric was fabricated, and no partial round was recorded as completed."
+  ]
+}

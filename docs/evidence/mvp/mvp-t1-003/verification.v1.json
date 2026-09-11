@@ -1,0 +1,195 @@
+{
+  "checks": [
+    {
+      "check": "all_public_stage_outputs_present",
+      "detail": {
+        "missing": []
+      },
+      "passed": true
+    },
+    {
+      "check": "artifact_reference_hashes_match",
+      "detail": {
+        "broken": [],
+        "checked": 56
+      },
+      "passed": true
+    },
+    {
+      "check": "prepared_arrays_unchanged_since_preparation",
+      "detail": {
+        "drifted": []
+      },
+      "passed": true
+    },
+    {
+      "check": "exposure_digest_matches_between_regimes",
+      "detail": null,
+      "passed": true
+    },
+    {
+      "check": "exposure_digest_reproduces_from_prepared_inputs",
+      "detail": {
+        "participations": 1000,
+        "rounds": 20,
+        "rows_per_round": {
+          "1": 1530,
+          "2": 1165,
+          "3": 1847,
+          "4": 1391,
+          "5": 1930,
+          "6": 1445,
+          "7": 1930,
+          "8": 1366,
+          "9": 1678,
+          "10": 2219,
+          "11": 2276,
+          "12": 1603,
+          "13": 1554,
+          "14": 2098,
+          "15": 1260,
+          "16": 1945,
+          "17": 1846,
+          "18": 1560,
+          "19": 1017,
+          "20": 1593
+        },
+        "total_rows": 33253,
+        "unique_clients": 636
+      },
+      "passed": true
+    },
+    {
+      "check": "scheduled_participations_and_unique_clients_reported_separately",
+      "detail": {
+        "participations": 1000,
+        "population": 1000,
+        "unique_clients": 636
+      },
+      "passed": true
+    },
+    {
+      "check": "every_federated_round_passed_the_fedavg_oracle",
+      "detail": {
+        "max_abs_diff": 2.384185791015625e-06
+      },
+      "passed": true
+    },
+    {
+      "check": "every_round_stayed_inside_its_derived_float32_bound",
+      "detail": {
+        "max_ratio_of_allowance_used": 0.05097704980038232,
+        "policy": "SCALE_AWARE_FLOAT32_FORWARD_ERROR_V1"
+      },
+      "passed": true
+    },
+    {
+      "check": "the_derived_bound_did_not_become_a_blanket_loose_tolerance",
+      "detail": {
+        "max_ratio_against_authorised_bound": 0.05097704980038232,
+        "max_ratio_against_tighter_textbook_bound": 0.20391008283683287
+      },
+      "passed": true
+    },
+    {
+      "check": "oracle_diagnostics_carry_no_client_identity",
+      "detail": null,
+      "passed": true
+    },
+    {
+      "check": "every_round_received_the_complete_reply_set",
+      "detail": null,
+      "passed": true
+    },
+    {
+      "check": "measured_bytes_are_positive_in_both_directions",
+      "detail": {
+        "download_bytes": 9520636000,
+        "download_transmissions": 1000,
+        "total_bytes": 19041272000,
+        "upload_bytes": 9520636000,
+        "upload_transmissions": 1000
+      },
+      "passed": true
+    },
+    {
+      "check": "byte_transmissions_match_participations",
+      "detail": null,
+      "passed": true
+    },
+    {
+      "check": "round_zero_predictions_identical_across_regimes",
+      "detail": {
+        "centralized_ranks_sha256": "c2a32081574518d2d15dc91c667da030e28330b3632599b5efdb7c35069a4eec",
+        "federated_ranks_sha256": "c2a32081574518d2d15dc91c667da030e28330b3632599b5efdb7c35069a4eec"
+      },
+      "passed": true
+    },
+    {
+      "check": "centralized_headline_recomputes_from_stored_ranks",
+      "detail": {
+        "published": 0.11268339009749091,
+        "recomputed": 0.11268339009749091
+      },
+      "passed": true
+    },
+    {
+      "check": "centralized_ranks_are_raw_one_based",
+      "detail": {
+        "max": 588,
+        "min": 1
+      },
+      "passed": true
+    },
+    {
+      "check": "fedavg_headline_recomputes_from_stored_ranks",
+      "detail": {
+        "published": 0.0995906640365329,
+        "recomputed": 0.0995906640365329
+      },
+      "passed": true
+    },
+    {
+      "check": "fedavg_ranks_are_raw_one_based",
+      "detail": {
+        "max": 588,
+        "min": 1
+      },
+      "passed": true
+    },
+    {
+      "check": "full_validation_support_is_the_frozen_count",
+      "detail": {
+        "decisions": 438185
+      },
+      "passed": true
+    },
+    {
+      "check": "no_client_identity_in_public_outputs",
+      "detail": {
+        "files": []
+      },
+      "passed": true
+    },
+    {
+      "check": "no_pilot_result_entered_the_global_results_directory",
+      "detail": null,
+      "passed": true
+    },
+    {
+      "check": "test_examples_were_not_read",
+      "detail": {
+        "example_files_read": 0,
+        "files_opened": 0,
+        "physical_no_read_claim": "NOT_CLAIMED_SEE_row_groups_decoded"
+      },
+      "passed": true
+    }
+  ],
+  "failed_checks": [],
+  "generated_at_utc": "2026-09-11T21:41:06Z",
+  "run": "mvp-t1-003",
+  "schema": "mvp_verification_v1",
+  "status": "PASS",
+  "version": "1"
+}

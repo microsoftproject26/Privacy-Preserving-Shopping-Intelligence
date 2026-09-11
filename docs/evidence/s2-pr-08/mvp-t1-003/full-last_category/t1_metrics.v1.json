@@ -1,0 +1,149 @@
+{
+  "count_tables_content_sha256": "a0f4e0e1f371e37c862c84a8276941535782482f4de9814b6aa69cef1ed6d028",
+  "diagnostic_note": "overall slice and micro averages are diagnostics; the headline is t1.next_distinct.mrr_at_20.macro",
+  "evaluation": {
+    "client_count": 31576,
+    "decision_count": 438185,
+    "history_buckets": {
+      "100_plus": {
+        "next_distinct": {
+          "accuracy_at_1_macro": 0.0,
+          "accuracy_at_1_micro": 0.0,
+          "client_count": 3017,
+          "decision_count": 23080,
+          "mrr_at_20_macro": 0.0023430201338066298,
+          "mrr_at_20_micro": 0.002593286013728315,
+          "status": "AVAILABLE"
+        },
+        "overall": {
+          "accuracy_at_1_macro": 0.7796194370443648,
+          "accuracy_at_1_micro": 0.8209089568800292,
+          "client_count": 4701,
+          "decision_count": 128873,
+          "mrr_at_20_macro": 0.7801355532500395,
+          "mrr_at_20_micro": 0.8213733911773362,
+          "status": "AVAILABLE"
+        }
+      },
+      "10_19": {
+        "next_distinct": {
+          "accuracy_at_1_macro": 0.0,
+          "accuracy_at_1_micro": 0.0,
+          "client_count": 2924,
+          "decision_count": 9845,
+          "mrr_at_20_macro": 0.002186693400995924,
+          "mrr_at_20_micro": 0.0026362137998185583,
+          "status": "AVAILABLE"
+        },
+        "overall": {
+          "accuracy_at_1_macro": 0.7939509515713177,
+          "accuracy_at_1_micro": 0.8261430059865436,
+          "client_count": 6798,
+          "decision_count": 56627,
+          "mrr_at_20_macro": 0.7944223193552178,
+          "mrr_at_20_micro": 0.8266013301933568,
+          "status": "AVAILABLE"
+        }
+      },
+      "20_49": {
+        "next_distinct": {
+          "accuracy_at_1_macro": 0.0,
+          "accuracy_at_1_micro": 0.0,
+          "client_count": 6209,
+          "decision_count": 25250,
+          "mrr_at_20_macro": 0.0025052563175392184,
+          "mrr_at_20_micro": 0.0026643040446323505,
+          "status": "AVAILABLE"
+        },
+        "overall": {
+          "accuracy_at_1_macro": 0.7871018594321154,
+          "accuracy_at_1_micro": 0.8218141786515744,
+          "client_count": 12744,
+          "decision_count": 141706,
+          "mrr_at_20_macro": 0.7875921152914114,
+          "mrr_at_20_micro": 0.8222889198560909,
+          "status": "AVAILABLE"
+        }
+      },
+      "50_99": {
+        "next_distinct": {
+          "accuracy_at_1_macro": 0.0,
+          "accuracy_at_1_micro": 0.0,
+          "client_count": 3946,
+          "decision_count": 19282,
+          "mrr_at_20_macro": 0.0026850726132395513,
+          "mrr_at_20_micro": 0.0027092897352817575,
+          "status": "AVAILABLE"
+        },
+        "overall": {
+          "accuracy_at_1_macro": 0.7889890727540019,
+          "accuracy_at_1_micro": 0.8262475895254744,
+          "client_count": 7332,
+          "decision_count": 110974,
+          "mrr_at_20_macro": 0.7894516395322674,
+          "mrr_at_20_micro": 0.8267183351476532,
+          "status": "AVAILABLE"
+        }
+      },
+      "BELOW_10_RETAINED_C1": {
+        "next_distinct": {
+          "accuracy_at_1_macro": null,
+          "accuracy_at_1_micro": null,
+          "client_count": 0,
+          "decision_count": 0,
+          "mrr_at_20_macro": null,
+          "mrr_at_20_micro": null,
+          "status": "ZERO_SUPPORT"
+        },
+        "overall": {
+          "accuracy_at_1_macro": 1.0,
+          "accuracy_at_1_micro": 1.0,
+          "client_count": 1,
+          "decision_count": 5,
+          "mrr_at_20_macro": 1.0,
+          "mrr_at_20_micro": 1.0,
+          "status": "AVAILABLE"
+        }
+      }
+    },
+    "history_stratification_status": "AVAILABLE",
+    "mrr_cutoff": 20,
+    "slices": {
+      "next_distinct": {
+        "accuracy_at_1_macro": 0.0,
+        "accuracy_at_1_micro": 0.0,
+        "client_count": 16096,
+        "decision_count": 77457,
+        "mrr_at_20_macro": 0.002461059658030012,
+        "mrr_at_20_micro": 0.002650770980785882,
+        "status": "AVAILABLE"
+      },
+      "overall": {
+        "accuracy_at_1_macro": 0.7879073828338714,
+        "accuracy_at_1_micro": 0.8232321964467063,
+        "client_count": 31576,
+        "decision_count": 438185,
+        "mrr_at_20_macro": 0.7883909773603132,
+        "mrr_at_20_micro": 0.8237007674107004,
+        "status": "AVAILABLE"
+      }
+    },
+    "status": "PASS"
+  },
+  "fit_scope": "full",
+  "headline": {
+    "accuracy_at_1_macro": 0.0,
+    "accuracy_at_1_micro": 0.0,
+    "metric_id": "t1.next_distinct.mrr_at_20.macro",
+    "micro": 0.002650770980785882,
+    "support_clients": 16096,
+    "support_decisions": 77457,
+    "value": 0.002461059658030012
+  },
+  "run": "mvp-t1-003",
+  "schema": "mvp_t1_baseline_metrics_v1",
+  "score_convention": "RAW_NO_SUPPRESSION",
+  "train_decisions": 3113814,
+  "variant": "last_category",
+  "version": "1"
+}

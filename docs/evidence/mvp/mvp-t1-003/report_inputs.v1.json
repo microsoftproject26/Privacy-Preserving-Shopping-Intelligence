@@ -1,0 +1,294 @@
+{
+  "communication": {
+    "download_bytes": 9520636000,
+    "download_transmissions": 1000,
+    "total_bytes": 19041272000,
+    "upload_bytes": 9520636000,
+    "upload_transmissions": 1000
+  },
+  "communication_boundary": "serialized model payload of each ArrayRecord at the real Flower message boundary; framing, config and metric records are excluded",
+  "data": {
+    "c1_users": 388789,
+    "example_slice_users": 97279,
+    "pilot_population": 1000,
+    "pilot_train_rows": 32285,
+    "train_decisions": 3113814,
+    "validation_decisions": 438185
+  },
+  "generated_at_utc": "2026-09-11T21:24:32Z",
+  "headline_comparison": {
+    "computed_between": "identical metric id, convention, membership and support",
+    "fedavg_minus_centralized": -0.013092726060958015
+  },
+  "limitations": [
+    "This is a scoped T1 pilot on a 1,000-client population, not the final R1/R2A reference and not the original multi-task MVP commitment.",
+    "Exposure is matched; optimization trajectories are not. Centralized keeps one Adam state for the run and FedAvg resets it every server round.",
+    "The centralized side is not an all-data upper bound: it replays exactly the federated schedule.",
+    "Measured bytes are model payload at the Flower message boundary, not total network traffic.",
+    "No differential privacy, secure aggregation or device isolation is claimed.",
+    "TEST was never read, fitted on, or used for selection."
+  ],
+  "population": {
+    "declared_pilot_population": 1000,
+    "measured_unique_clients_trained": 636,
+    "note": "execution slots are not study clients; the pilot population is 1,000 and each round trains 50 of them",
+    "scheduled_participations": 1000,
+    "supernode_execution_slots": 50
+  },
+  "result_table": [
+    {
+      "family": "count baseline",
+      "support_clients": 16096,
+      "system": "popularity (full TRAIN)",
+      "t1_next_distinct_mrr_at_20_macro": 0.12882526010550283
+    },
+    {
+      "family": "count baseline",
+      "support_clients": 16096,
+      "system": "markov (full TRAIN)",
+      "t1_next_distinct_mrr_at_20_macro": 0.18922358677212675
+    },
+    {
+      "family": "count baseline",
+      "support_clients": 16096,
+      "system": "last_category (full TRAIN)",
+      "t1_next_distinct_mrr_at_20_macro": 0.002461059658030012
+    },
+    {
+      "family": "count baseline",
+      "support_clients": 16096,
+      "system": "popularity (pilot TRAIN)",
+      "t1_next_distinct_mrr_at_20_macro": 0.12628961325080112
+    },
+    {
+      "family": "count baseline",
+      "support_clients": 16096,
+      "system": "markov (pilot TRAIN)",
+      "t1_next_distinct_mrr_at_20_macro": 0.1392564934178688
+    },
+    {
+      "family": "count baseline",
+      "support_clients": 16096,
+      "system": "last_category (pilot TRAIN)",
+      "t1_next_distinct_mrr_at_20_macro": 0.002461059658030012
+    },
+    {
+      "family": "neural pilot",
+      "support_clients": 16096,
+      "system": "GRU centralized pilot",
+      "t1_next_distinct_mrr_at_20_macro": 0.11268339009749091
+    },
+    {
+      "family": "neural pilot",
+      "support_clients": 16096,
+      "system": "GRU FedAvg pilot",
+      "t1_next_distinct_mrr_at_20_macro": 0.0995906640365329
+    }
+  ],
+  "run": "mvp-t1-003",
+  "runtime_seconds": {
+    "centralized": 44.01999999999999,
+    "federated": 264.24
+  },
+  "schema": "mvp_report_inputs_v1",
+  "scope_statement": "A scoped T1 next-distinct-category pilot: a real matched centralized/FedAvg pair on a 1,000-client population, evaluated on all 438,185 frozen VALIDATION decisions. It is a preliminary demonstrator, not the original multi-task MVP commitment and not a Phase-1 freeze.",
+  "training_curves": {
+    "centralized": [
+      {
+        "mean_train_loss": 5.005056403509152,
+        "server_round": 1
+      },
+      {
+        "mean_train_loss": 4.034570222312801,
+        "server_round": 2
+      },
+      {
+        "mean_train_loss": 4.37975586723268,
+        "server_round": 3
+      },
+      {
+        "mean_train_loss": 3.9406728930048254,
+        "server_round": 4
+      },
+      {
+        "mean_train_loss": 3.4571425917929934,
+        "server_round": 5
+      },
+      {
+        "mean_train_loss": 3.1253812981685654,
+        "server_round": 6
+      },
+      {
+        "mean_train_loss": 2.7692543163123524,
+        "server_round": 7
+      },
+      {
+        "mean_train_loss": 3.5590251973239737,
+        "server_round": 8
+      },
+      {
+        "mean_train_loss": 2.415568929063478,
+        "server_round": 9
+      },
+      {
+        "mean_train_loss": 2.6155382329014683,
+        "server_round": 10
+      },
+      {
+        "mean_train_loss": 2.548601616900709,
+        "server_round": 11
+      },
+      {
+        "mean_train_loss": 2.5805497825824313,
+        "server_round": 12
+      },
+      {
+        "mean_train_loss": 1.5983068330484314,
+        "server_round": 13
+      },
+      {
+        "mean_train_loss": 2.2670611828082623,
+        "server_round": 14
+      },
+      {
+        "mean_train_loss": 1.9010872626588458,
+        "server_round": 15
+      },
+      {
+        "mean_train_loss": 2.599286731564294,
+        "server_round": 16
+      },
+      {
+        "mean_train_loss": 1.9145285556151381,
+        "server_round": 17
+      },
+      {
+        "mean_train_loss": 1.5956580508882419,
+        "server_round": 18
+      },
+      {
+        "mean_train_loss": 1.7727312649157898,
+        "server_round": 19
+      },
+      {
+        "mean_train_loss": 1.6810627389869934,
+        "server_round": 20
+      }
+    ],
+    "fedavg": [
+      {
+        "mean_train_loss": 6.409367648037829,
+        "server_round": 1
+      },
+      {
+        "mean_train_loss": 6.300804286827653,
+        "server_round": 2
+      },
+      {
+        "mean_train_loss": 6.226959625908656,
+        "server_round": 3
+      },
+      {
+        "mean_train_loss": 6.239086495216538,
+        "server_round": 4
+      },
+      {
+        "mean_train_loss": 6.171074712122087,
+        "server_round": 5
+      },
+      {
+        "mean_train_loss": 6.180696807957087,
+        "server_round": 6
+      },
+      {
+        "mean_train_loss": 6.028158598994549,
+        "server_round": 7
+      },
+      {
+        "mean_train_loss": 6.045738050443448,
+        "server_round": 8
+      },
+      {
+        "mean_train_loss": 5.973999690434751,
+        "server_round": 9
+      },
+      {
+        "mean_train_loss": 5.674689928850642,
+        "server_round": 10
+      },
+      {
+        "mean_train_loss": 5.760870352195869,
+        "server_round": 11
+      },
+      {
+        "mean_train_loss": 5.556327369993912,
+        "server_round": 12
+      },
+      {
+        "mean_train_loss": 5.513410004877187,
+        "server_round": 13
+      },
+      {
+        "mean_train_loss": 5.415134922243176,
+        "server_round": 14
+      },
+      {
+        "mean_train_loss": 5.709841848882288,
+        "server_round": 15
+      },
+      {
+        "mean_train_loss": 5.189063402605168,
+        "server_round": 16
+      },
+      {
+        "mean_train_loss": 4.977757344573324,
+        "server_round": 17
+      },
+      {
+        "mean_train_loss": 4.942930891594617,
+        "server_round": 18
+      },
+      {
+        "mean_train_loss": 4.684111290896644,
+        "server_round": 19
+      },
+      {
+        "mean_train_loss": 4.750384846276845,
+        "server_round": 20
+      }
+    ]
+  },
+  "validation_curve": {
+    "centralized": [
+      {
+        "server_round": 0,
+        "value": 0.00574130967362621
+      },
+      {
+        "server_round": 10,
+        "value": 0.10187931071716247
+      },
+      {
+        "server_round": 20,
+        "value": 0.11268339009749091
+      }
+    ],
+    "fedavg": [
+      {
+        "server_round": 0,
+        "value": 0.00574130967362621
+      },
+      {
+        "server_round": 10,
+        "value": 0.08107685299682854
+      },
+      {
+        "server_round": 20,
+        "value": 0.0995906640365329
+      }
+    ]
+  },
+  "verification_checks": 22,
+  "verification_status": "PASS",
+  "version": "1"
+}

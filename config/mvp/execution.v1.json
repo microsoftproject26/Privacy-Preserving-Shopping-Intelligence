@@ -1,0 +1,155 @@
+{
+  "schema": "mvp_execution_policy_v1",
+  "version": "1",
+  "status": "PREDECLARED_BY_REQUESTER_DELEGATION",
+  "scope": "SCOPED_T1_RESEARCH_MVP_NOT_FULL_PHASE1_FREEZE",
+  "canonical_base_commit": "a72d987b21407a941b954f5a7c0a92ade5cfff5d",
+  "run_family": "mvp-t1-001",
+  "task": "T1",
+  "cohort": "C1",
+  "authority": {
+    "basis": "User delegated MVP engineering/scope decisions on 2026-09-11",
+    "named_team_approvals_inferred": false
+  },
+  "data": {
+    "preserve_all_frozen_task_examples": true,
+    "resample_modulo": false,
+    "measured_slice_recovery": "ALL client values in frozen T2 TRAIN, including censored rows; assert 97279 and subset of C1",
+    "base_c1_users": 388789,
+    "example_slice_users": 97279,
+    "t1_train_rows": 3113814,
+    "t1_validation_rows": 438185,
+    "train_event_rows": 4376137,
+    "validation_event_rows": 622013,
+    "history_length": 20,
+    "decision_in_history": true,
+    "history_scope": "CURRENT_SESSION_ONLY",
+    "t2_label_policy": "ORIGINAL_FROZEN_V1_PRESERVE_MASK_FOR_ANY_REUSE",
+    "sealed_test_files_opened": 0,
+    "test_rows_used_for_training_or_selection": 0,
+    "raw_physical_decode_claim": "MEASURE_IF_AVAILABLE_OTHERWISE_NOT_PROVEN_ZERO"
+  },
+  "model": {
+    "core": "gru",
+    "channels": [
+      "category_id",
+      "event_type_id"
+    ],
+    "use_gap": true,
+    "hidden": 128,
+    "layers": 1,
+    "dropout": 0.3,
+    "category_count": 588,
+    "spec_factory": "ppsi.models.batch_spec.phase1_batch_spec_v1",
+    "config_factory": "ppsi.models.session_gru.SessionGRUConfig",
+    "factory": "ppsi.models.session_gru.build_model",
+    "common_initialization": "ppsi.models.session_gru.common_initialization",
+    "initialization_mode": "FRESH_UNTRAINED_ARTIFACT_LOADED_BY_BOTH_REGIMES",
+    "inactive_heads": [
+      "T2",
+      "T3"
+    ]
+  },
+  "pilot": {
+    "seed": 13,
+    "population_clients": 1000,
+    "eligible": "at least one observed T1 TRAIN example; no VALIDATION-based eligibility",
+    "population_selection": "sample_clients(sorted_eligible_opaque_ids, experiment_seed=13, round_index=0, clients_per_round=1000, sampler_version=\"mvp_population_v1\")",
+    "rounds": 20,
+    "clients_per_round": 50,
+    "local_epochs": 1,
+    "batch_size": 64,
+    "evaluation_batch_size": 256,
+    "local_training_rows": "ALL observed T1 rows of each sampled client; no per-client truncation",
+    "aggregation": "number of actual contributing T1 examples per completed local epoch",
+    "optimizer": {
+      "name": "Adam",
+      "learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "gradient_clip_norm": 1.0
+    },
+    "federated_optimizer_lifecycle": "RESET_EACH_SERVER_ROUND",
+    "centralized_optimizer_lifecycle": "PERSISTENT_FOR_RUN",
+    "centralized_exposure": "replay identical selected-client/row schedule without averaging, one continuing central optimizer",
+    "comparison_label": "MATCHED_EXPOSURE_T1_PILOT_WITH_DECLARED_OPTIMIZER_LIFECYCLES",
+    "checkpoint_selection": "LAST_COMPLETED_ROUND_20_NO_TUNING",
+    "full_validation_at_rounds": [
+      0,
+      10,
+      20
+    ],
+    "same_validation_decisions_for_both": true,
+    "full_validation_rows": 438185,
+    "aggregation_atol": 1e-06,
+    "aggregation_rtol": 0.0,
+    "automatic_client_retries": 0,
+    "partial_round_policy": "ABORT_PRESERVE_RECORDS_NO_PARTIAL_AGGREGATION",
+    "resume_policy": "COMPLETE_ROUND_BOUNDARY_ONLY_NEW_ATTEMPT_PRESERVE_ALL_PRIOR_BYTES"
+  },
+  "metrics": {
+    "headline": "t1.next_distinct.mrr_at_20.macro",
+    "score_convention": "RAW_NO_SUPPRESSION",
+    "category_changed_usage": "EVALUATION_SLICE_ONLY_NOT_INPUT_OR_SAMPLING",
+    "universe": 588,
+    "tie_break": "ASCENDING_DENSE_CATEGORY_CODE",
+    "overall_metrics": "DIAGNOSTIC",
+    "zero_support": "NO_METRIC_NOT_ZERO",
+    "quality_retention": "PILOT_LABEL_ONLY_VIA_EXISTING_REPORTER_ON_ISOLATED_PAIR_IF_COMPATIBLE"
+  },
+  "resources": {
+    "device": "cpu",
+    "torch_threads": 2,
+    "client_torch_threads": 2,
+    "ray_concurrency": 1,
+    "dataloader_workers": 0,
+    "min_available_ram_gib": 6,
+    "min_free_disk_gib": 8,
+    "max_process_tree_rss_gib": 10,
+    "min_available_during_run_gib": 1,
+    "low_memory_grace_seconds": 10,
+    "single_heavy_stage_only": true,
+    "prepare_timeout_seconds": 1800,
+    "centralized_timeout_seconds": 14400,
+    "federated_timeout_seconds": 14400,
+    "verification_timeout_seconds": 1800,
+    "ray_total_cpus": 2,
+    "ray_client_cpus": 2
+  },
+  "baselines": {
+    "models": [
+      "popularity",
+      "markov",
+      "last_category"
+    ],
+    "fit_split": "TRAIN",
+    "search": "NONE_FIXED_UNSMOOTHED_COUNTS",
+    "markov_backoff": "ALL_ZERO_ROW_LOWEST_CODE_TIE_TO_MATCH_EID_RAW_BASELINE",
+    "scope_full": "ALL_3113814_FROZEN_T1_TRAIN_DECISIONS",
+    "scope_pilot": "PILOT_CLIENT_TRAIN_DECISIONS_ONLY_FOR_MATCHED_COMPARISON",
+    "last_category": "ONE_HOT_CURRENT_CODE; OOV_ALL_ZERO_ROW"
+  },
+  "retained_existing_work": {
+    "classical_and_session_baselines": "READ_ONLY_REUSE",
+    "gru_and_centralized_pilot": "READ_ONLY_REUSE_FOR_CONTEXT_AND_INFERENCE",
+    "t2_demo": "VERIFIED_joint_lambda1.0.pt_INFERENCE_ONLY",
+    "t3_demo": "FROZEN_RETRIEVAL_NOT_LEARNED_RERANKER"
+  },
+  "outputs": {
+    "public": "docs/evidence/mvp/mvp-t1-001",
+    "private": "artifacts/mvp/mvp-t1-001",
+    "baseline_results": "docs/evidence/s2-pr-08/mvp-t1-001",
+    "pilot_pair_registry": "docs/evidence/mvp/mvp-t1-001/pilot-pair",
+    "global_results_directory_must_not_change": "artifacts/experiment-results"
+  },
+  "not_claimed": [
+    "final R1 denominator",
+    "full multitask R2a",
+    "three-head joint training success",
+    "differential privacy",
+    "secure aggregation",
+    "physical device isolation",
+    "TEST performance",
+    "persistent cross-session personalization"
+  ],
+  "full_phase1_extension": "Follow stages/07_FULL_PHASE1_NOT_SILENTLY_CLOSED.md; not a prerequisite for this MVP."
+}
