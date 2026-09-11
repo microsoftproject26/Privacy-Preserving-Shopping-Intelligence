@@ -26,16 +26,16 @@ import sys
 from pathlib import Path
 
 import numpy as np
-import torch
 
 T1_TASK = Path(__file__).resolve().parent.parent / "S2-DS-01_GRU_T1_Model"
 sys.path.insert(0, str(T1_TASK))
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from finalize import selected_config  # noqa: E402
-from train import CATEGORIES, DEVICE, SPEC, Split, score  # noqa: E402
-from ppsi.models.checkpoint import load_encoder as shared_load_encoder  # noqa: E402
-from ppsi.models.session_gru import build_model  # noqa: E402
+from finalize import selected_config
+from train import CATEGORIES, DEVICE, SPEC, Split, score
+
+from ppsi.models.checkpoint import load_encoder as shared_load_encoder
+from ppsi.models.session_gru import build_model
 
 # Read from S2-DS-01, never restated. A config written out a second time here would let the
 # two drift, and a T1 model built with different channels would load a T2 checkpoint into

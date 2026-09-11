@@ -45,12 +45,30 @@ from torch import nn
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import ladder_t3 as L
-from train_t3 import (BEST_SIMPLE_MACRO, CEILING_MACRO, DEVICE, LOSSES, OUTPUT, SPEC,
-                      Candidates, Ranking, build_batch, candidate_table, load_encoder,
-                      resolve)
-from prepared import (anchors_per_decision, build_candidate_tables, build_gain_matrix,
-                      build_ideal_gains, clients_of_windows, evaluable_decisions,
-                      per_client_means)
+from prepared import (
+    anchors_per_decision,
+    build_candidate_tables,
+    build_gain_matrix,
+    build_ideal_gains,
+    clients_of_windows,
+    evaluable_decisions,
+    per_client_means,
+)
+from train_t3 import (
+    BEST_SIMPLE_MACRO,
+    CEILING_MACRO,
+    DEVICE,
+    LOSSES,
+    OUTPUT,
+    SPEC,
+    Candidates,
+    Ranking,
+    build_batch,
+    candidate_table,
+    load_encoder,
+    resolve,
+)
+
 from ppsi.models.evaluation import paired_client_bootstrap
 from ppsi.models.session_gru import build_model
 
@@ -207,15 +225,19 @@ def main() -> None:
     all_accept = bool(frame["meets_acceptance"].all())
     print(f"\n  mean gain {gains.mean():+.4f}   spread {gains.max() - gains.min():.4f}")
     print(f"  every seed meets the bar: {all_accept}")
-    print(f"  -> {'the query-aware reranker is the T3 deliverable' if all_accept else
-                  'the frozen retrieval order remains the T3 deliverable'}")
+    # One line, not two: a line break inside an f-string replacement field is Python 3.12+
+    # syntax and this repository pins 3.11. It parses on the machine it was written on and
+    # fails in CI, which is the worst place to find out.
+    outcome = ("the query-aware reranker is the T3 deliverable" if all_accept
+               else "the frozen retrieval order remains the T3 deliverable")
+    print(f"  -> {outcome}")
 
     (OUTPUT / "s2_ds_07_query_aware.json").write_text(json.dumps({
         "task": "S2-DS-07", "experiment": "query-aware cross-feature residual reranker",
         "loss": LOSS, "seeds": list(SEEDS), "epochs": EPOCHS,
         "encoder": "frozen", "rank_prior": "fixed at -1",
         "train_queries_total": int(total_train),
-        "train_queries_used": int(len(trainable_rows)),
+        "train_queries_used": len(trainable_rows),
         "baseline_macro": BEST_SIMPLE_MACRO, "ceiling_macro": CEILING_MACRO,
         "acceptance": {"min_gain": ACCEPT_GAIN, "interval_above_zero": True,
                        "fixed_before_the_run": True, "source": "round-2 review"},

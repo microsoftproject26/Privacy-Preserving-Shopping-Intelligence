@@ -34,9 +34,9 @@ sys.path.insert(0, str(TASK))
 
 from finalize import selected_config
 from train import CATEGORIES, DEVICE, OUTPUT, SPEC, Split, to_batch
+
 from ppsi.models.checkpoint import load_encoder
-from ppsi.models.evaluation import (micro_and_macro, rank_of_truth, reciprocal_rank,
-                                    transition_table)
+from ppsi.models.evaluation import micro_and_macro, rank_of_truth, reciprocal_rank, transition_table
 from ppsi.models.session_gru import build_model
 
 PUBLISHED_BASELINE = 0.3143

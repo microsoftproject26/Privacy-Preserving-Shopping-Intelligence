@@ -34,14 +34,12 @@ The baselines to beat, from `task_headroom_v1`:
 
 from __future__ import annotations
 
-import json
 import sys
 import time
 from dataclasses import dataclass
 from pathlib import Path
 
 import numpy as np
-import pandas as pd
 import torch
 from sklearn.metrics import average_precision_score, roc_auc_score
 from torch import nn
@@ -54,10 +52,10 @@ for _candidate in Path(__file__).resolve().parents:
 else:
     sys.path.insert(0, str(PROJECT / "Repo_S2DS01"))
 
-from ppsi.models.batch_spec import phase1_batch_spec_v1  # noqa: E402
+from ppsi.models.batch_spec import phase1_batch_spec_v1
 from ppsi.models.checkpoint import load_encoder as shared_load_encoder
-from ppsi.models.session_gru import SessionGRU, SessionGRUConfig, build_model  # noqa: E402
-from ppsi.training.batch import Phase1Batch  # noqa: E402
+from ppsi.models.session_gru import SessionGRU, SessionGRUConfig, build_model
+from ppsi.training.batch import Phase1Batch
 
 TASK = Path(__file__).resolve().parent
 OUTPUT = TASK / "output"
@@ -119,7 +117,7 @@ class Split:
     published: np.ndarray
 
     @classmethod
-    def load(cls, split: str, *, corrected: bool = True) -> "Split":
+    def load(cls, split: str, *, corrected: bool = True) -> Split:
         """`corrected` restores the terminal negatives upstream withheld - see `labels.py`.
 
         A censored label is null in the parquet and arrives here as NaN, and it must never
@@ -158,7 +156,7 @@ class Split:
 
 
 def to_batch(split: Split, rows: np.ndarray) -> Phase1Batch:
-    take = lambda key, dtype: torch.from_numpy(  # noqa: E731
+    take = lambda key, dtype: torch.from_numpy(
         np.ascontiguousarray(split.data[key][rows]).astype(dtype))
     lengths = take("lengths", "int64")
     size, width = len(rows), split.data["category"].shape[1]

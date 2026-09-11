@@ -27,8 +27,8 @@ from dataclasses import dataclass
 
 import numpy as np
 import pandas as pd
-
 from train_t3 import MAX_CANDIDATES, Candidates, Ranking, resolve
+
 from ppsi.models.batch_spec import (
     CATEGORY_OOV,
     CATEGORY_PAD,
@@ -177,7 +177,7 @@ def macro_by_client(ndcg: np.ndarray, clients: np.ndarray) -> tuple[float, int]:
     the ones with the harder ones, and micro lets them dominate.
     """
     means = per_client_means(ndcg, clients)
-    return float(means.mean()), int(len(means))
+    return float(means.mean()), len(means)
 
 
 def per_client_means(ndcg: np.ndarray, clients: np.ndarray) -> pd.Series:

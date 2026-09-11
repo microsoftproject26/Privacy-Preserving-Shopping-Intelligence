@@ -19,31 +19,26 @@ from __future__ import annotations
 
 import json
 import time
-from pathlib import Path
 
 import numpy as np
 import pandas as pd
 import torch
-
 from train_t3 import (
     BEST_SIMPLE,
     CEILING,
     DEVICE,
     HALF_WIDTH,
-    LOSSES,
     MAX_CANDIDATES,
     OUTPUT,
-    SPEC,
     Candidates,
     Ranking,
     build_batch,
     candidate_table,
-    load_encoder,
     ndcg_at_k,
     resolve,
 )
-from ppsi.models.session_gru import SessionGRUConfig, build_model
-from ppsi.training.batch import validate_canonical_phase1_batch
+
+from ppsi.models.session_gru import SessionGRUConfig
 
 SEED = 13
 ENCODER = SessionGRUConfig(channels=("category_id", "event_type_id"), use_gap=True,
@@ -109,7 +104,7 @@ def gate(validation: Ranking, candidates: Candidates, examples: pd.DataFrame) ->
 
     print(f"\n  the number to beat: {BEST_SIMPLE}   ceiling {CEILING}   "
           f"noise floor {HALF_WIDTH}")
-    return {"rows": int(len(examples)), "scoring_rows": int(len(scoring)),
+    return {"rows": len(examples), "scoring_rows": len(scoring),
             "evaluable_queries": queries, "candidate_recall": round(recall, 4)}
 
 
@@ -130,7 +125,7 @@ def evaluate(model, split: Ranking, candidates: Candidates, row_lookup: dict,
     gains = np.concatenate(gains_all)
     mask = np.concatenate(mask_all)
     ndcg = ndcg_at_k(scores, gains, mask, k=5)
-    return {"ndcg@5": round(float(ndcg.mean()), 4), "queries": int(len(ndcg)),
+    return {"ndcg@5": round(float(ndcg.mean()), 4), "queries": len(ndcg),
             "ceiling": CEILING}
 
 

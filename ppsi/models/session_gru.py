@@ -134,7 +134,7 @@ class _CausalTransformer(nn.Module):
         return self.stack(x + self.positions(index).unsqueeze(0), mask=mask)
 
 
-def build_sequence_core(config: "SessionGRUConfig") -> nn.Module:
+def build_sequence_core(config: SessionGRUConfig) -> nn.Module:
     """The one place a core name becomes a module.
 
     Capacity is deliberately *not* matched across cores. The protocol fixes the budget -

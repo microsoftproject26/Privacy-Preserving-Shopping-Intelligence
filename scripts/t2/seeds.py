@@ -25,15 +25,15 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
-import torch
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from run_t2 import BATCH, ENCODER, EPOCHS, LEARNING_RATE, find_checkpoint
 from train_t2 import BEST_SIMPLE_CORRECTED, HALF_WIDTH, OUTPUT, SPEC, Split, evaluate, train
+
 from ppsi.models.checkpoint import save as save_checkpoint
 
 SEEDS = (13, 42, 2026)
-RUNG = dict(freeze_encoder=False, pos_weight=None)
+RUNG = {"freeze_encoder": False, "pos_weight": None}
 
 
 def main() -> None:
@@ -46,7 +46,7 @@ def main() -> None:
 
     rows, curves = [], {}
     for seed in SEEDS:
-        model, curve, best_score, provenance = train(
+        model, curve, best_score, _provenance = train(
             train_split, validation, config=ENCODER, seed=seed, checkpoint=checkpoint,
             learning_rate=LEARNING_RATE, epochs=EPOCHS, batch_size=BATCH,
             label=f"fine-tuned | seed {seed}", **RUNG)

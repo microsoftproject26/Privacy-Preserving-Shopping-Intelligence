@@ -34,6 +34,7 @@ decoration.
 
 from __future__ import annotations
 
+import itertools
 import json
 import sys
 import time
@@ -48,6 +49,7 @@ sys.path.insert(0, str(TASK))
 
 from finalize import selected_config
 from train import CATEGORIES, DEVICE, OUTPUT, SPEC, Split, to_batch
+
 from ppsi.models.checkpoint import load_encoder
 from ppsi.models.evaluation import popularity_correlation
 from ppsi.models.session_gru import build_model
@@ -97,10 +99,10 @@ def is_the_model_a_transition_table(top1: np.ndarray, current: np.ndarray,
     busy = per_category[per_category["decisions"] >= 50]
 
     return {
-        "decisions_compared": int(len(real)),
+        "decisions_compared": len(real),
         "share_equal_to_their_category_modal_top1": round(float(agrees.mean()), 4),
         "distinct_top1_per_category_mean": round(float(per_category["distinct_top1"].mean()), 2),
-        "categories_with_50plus_decisions": int(len(busy)),
+        "categories_with_50plus_decisions": len(busy),
         "modal_share_on_those_categories": round(float(busy["modal_share"].mean()), 4),
         "reading": ("1.0 would mean the top-1 is decided by the current category alone and "
                     "the sequence model is decoration; the shortfall below 1.0 is what the "
@@ -142,7 +144,7 @@ def against_the_transition_table(top1: np.ndarray, current: np.ndarray, truth: n
 def reliability(confidence: np.ndarray, correct: np.ndarray) -> dict:
     """When the model says it is sure, is it? Binned, with the count in each bin."""
     bins = []
-    for low, high in zip(BINS[:-1], BINS[1:], strict=True):
+    for low, high in itertools.pairwise(BINS):
         inside = (confidence >= low) & (confidence < high)
         count = int(inside.sum())
         bins.append({"from": low, "to": round(high, 2), "decisions": count,
@@ -190,7 +192,7 @@ def main() -> None:
     print(f"     -> the session changes the answer "
           f"{(1 - lookup['share_equal_to_their_category_modal_top1']) * 100:.1f}% of the time")
 
-    print("")
+    print()
     print("  1b. the decisive version: model top-1 against the actual transition table")
     print(f"     the two agree on {versus['model_top1_equals_table_top1'] * 100:.1f}% "
           "of decisions")
@@ -207,7 +209,7 @@ def main() -> None:
 
     (OUTPUT / "diagnostics_full.json").write_text(json.dumps({
         "task": "S2-DS-01", "checkpoint": checkpoint.name,
-        "decisions": int(len(validation)),
+        "decisions": len(validation),
         "accuracy_at_1": round(float(correct.mean()), 4),
         "session_versus_lookup": lookup,
         "versus_the_transition_table": versus,

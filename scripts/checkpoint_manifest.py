@@ -33,40 +33,40 @@ OUTPUT = PROJECT / "_SEAL"
 POLICY = {
     "SHARED_ENCODER": (
         True,
-        "the T1 encoder. This is the only checkpoint any other task should start from until "
-        "S2-DS-08 demonstrates a joint objective that holds both tasks."),
+        ("the T1 encoder. This is the only checkpoint any other task should start from until "
+          "S2-DS-08 demonstrates a joint objective that holds both tasks.")),
     "TASK_HEAD": (
         True,
-        "a task-specific result. Load it to reproduce that task's number. Do NOT reuse its "
-        "encoder for another task."),
+        ("a task-specific result. Load it to reproduce that task's number. Do NOT reuse its "
+          "encoder for another task.")),
     "DIAGNOSTIC_UNDERPERFORMING": (
         False,
-        "kept as evidence of a losing rung. It scores below the model-free baseline it was "
-        "meant to beat, so loading it downstream would be strictly worse than doing nothing."),
+        ("kept as evidence of a losing rung. It scores below the model-free baseline it was "
+          "meant to beat, so loading it downstream would be strictly worse than doing nothing.")),
     "DIAGNOSTIC_DESTRUCTIVE": (
         False,
-        "its encoder was fine-tuned for one task and measurably destroys another. Valid as "
-        "that task's own result; never valid as a shared starting point."),
+        ("its encoder was fine-tuned for one task and measurably destroys another. Valid as "
+          "that task's own result; never valid as a shared starting point.")),
     "MULTITASK": (
         True,
-        "the selected joint model - the only checkpoint that serves T1 and T2 at once. "
-        "S2-SE-08 exports this; S2-PR-06 and S2-PR-09 federate it."),
+        ("the selected joint model - the only checkpoint that serves T1 and T2 at once. "
+          "S2-SE-08 exports this; S2-PR-06 and S2-PR-09 federate it.")),
     "MULTITASK_ALTERNATE": (
         True,
-        "a joint model at a lower T2 weight. Reproducible evidence for the lambda ladder; "
-        "use the selected one unless you are re-running that comparison."),
+        ("a joint model at a lower T2 weight. Reproducible evidence for the lambda ladder; "
+          "use the selected one unless you are re-running that comparison.")),
     "ARCHITECTURE_REFERENCE": (
         True,
-        "the selected sequence core from S2-DS-05, kept so inference cost can be "
-        "benchmarked without retraining."),
+        ("the selected sequence core from S2-DS-05, kept so inference cost can be "
+          "benchmarked without retraining.")),
     "ARCHITECTURE_ALTERNATE": (
         True,
-        "a losing core from S2-DS-05. Load it only to reproduce that comparison or to "
-        "benchmark its inference cost - it is not the selected architecture."),
+        ("a losing core from S2-DS-05. Load it only to reproduce that comparison or to "
+          "benchmark its inference cost - it is not the selected architecture.")),
     "COMMON_INITIALIZATION": (
         True,
-        "untrained shared weights for a seed. R1 and R2 must both start here or their "
-        "measured gap is partly a different random start."),
+        ("untrained shared weights for a seed. R1 and R2 must both start here or their "
+          "measured gap is partly a different random start.")),
 }
 
 CLASSIFY = {

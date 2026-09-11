@@ -57,11 +57,13 @@ T2_TASK = PROJECT / "S2-DS-06_T2_Purchase_Head"
 sys.path.insert(0, str(T1_TASK))
 sys.path.insert(0, str(T2_TASK))
 
-import train as t1                      # noqa: E402  - S2-DS-01's loader and evaluator
-import train_t2 as t2                   # noqa: E402  - S2-DS-06's loader and evaluator
-from finalize import selected_config    # noqa: E402
-from ppsi.models.checkpoint import load_encoder, save as save_checkpoint  # noqa: E402
-from ppsi.models.session_gru import build_model, parameter_count          # noqa: E402
+import train as t1
+import train_t2 as t2
+from finalize import selected_config
+
+from ppsi.models.checkpoint import load_encoder
+from ppsi.models.checkpoint import save as save_checkpoint
+from ppsi.models.session_gru import build_model, parameter_count
 
 OUTPUT = Path(__file__).resolve().parent / "output"
 OUTPUT.mkdir(exist_ok=True)
@@ -120,7 +122,7 @@ def main() -> None:
 
     print("  the two alternatives joint training has to beat:")
     print(f"    frozen encoder + T2 head : T1 {T1_REFERENCE}  T2 {T2_CONTROL}")
-    print(f"    sequential fine-tuning   : T1 0.1791  T2 0.1424   <- below T1's own baseline")
+    print("    sequential fine-tuning   : T1 0.1791  T2 0.1424   <- below T1's own baseline")
     print(f"  selection: maximise T2 subject to T1 >= {T1_REFERENCE - T1_MARGIN:.4f}\n")
 
     t1_rows = np.arange(len(t1_train))

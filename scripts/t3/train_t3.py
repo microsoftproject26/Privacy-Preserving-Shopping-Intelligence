@@ -33,14 +33,12 @@ from __future__ import annotations
 
 import os
 import sys
-import time
 from dataclasses import dataclass
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
 import torch
-from torch import nn
 
 PROJECT = Path(__file__).resolve().parent.parent
 for _candidate in Path(__file__).resolve().parents:
@@ -50,15 +48,14 @@ for _candidate in Path(__file__).resolve().parents:
 else:
     sys.path.insert(0, str(PROJECT / "Repo_S2DS01"))
 
-from ppsi.models.batch_spec import (  # noqa: E402
-    CATEGORY_OOV,
+from ppsi.models.batch_spec import (
     CATEGORY_PAD,
     PRICE_BAND_PAD,
     phase1_batch_spec_v1,
 )
 from ppsi.models.checkpoint import load_encoder as shared_load_encoder
-from ppsi.models.session_gru import SessionGRU, SessionGRUConfig, build_model  # noqa: E402
-from ppsi.training.batch import Phase1Batch  # noqa: E402
+from ppsi.models.session_gru import SessionGRU
+from ppsi.training.batch import Phase1Batch
 
 TASK = Path(__file__).resolve().parent
 OUTPUT = TASK / "output"
@@ -138,7 +135,7 @@ class Ranking:
     query_id: np.ndarray
 
     @classmethod
-    def load(cls, split: str, examples: pd.DataFrame) -> "Ranking":
+    def load(cls, split: str, examples: pd.DataFrame) -> Ranking:
         cache = resolve("cache_t3")
         prefix = f"t3_{split}"
         data = {key: np.load(cache / f"{prefix}_{key}.npy") for key in ARRAYS}
@@ -216,7 +213,7 @@ def build_batch(split: Ranking, decisions: np.ndarray, gains: np.ndarray,
     that does not depend on the model now lives in `prepared.py` and this is a gather.
     """
     windows = split.data
-    take = lambda key, dtype: torch.from_numpy(  # noqa: E731
+    take = lambda key, dtype: torch.from_numpy(
         np.ascontiguousarray(windows[key][decisions]).astype(dtype))
     lengths = take("lengths", "int64")
     size, width = len(decisions), windows["category"].shape[1]

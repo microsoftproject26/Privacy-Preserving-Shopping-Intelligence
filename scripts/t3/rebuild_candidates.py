@@ -53,7 +53,7 @@ TASK = Path(__file__).resolve().parent
 OUTPUT = TASK / "output"
 sys.path.insert(0, str(PROJECT / "Repo_S2DS01"))
 
-from ppsi.data.rees46 import load_events, read_json          # noqa: E402
+from ppsi.data.rees46 import load_events, read_json
 
 EXAMPLES = PROJECT / "S1-D1-DS-07_T3_Protocol_and_Task_Examples/output"
 PROTOCOL_OUT = PROJECT / "S1-DS-05-06_Cohort_Temporal_Protocol/output"
@@ -223,7 +223,7 @@ def main() -> None:
     assert inside.equals(left), (
         "adding anchors changed an existing anchor's list, which the construction should "
         "make impossible. The baseline would no longer be comparable.")
-    print(f"  ok  the frozen anchors are byte-identical inside the extended artifact")
+    print("  ok  the frozen anchors are byte-identical inside the extended artifact")
 
     covered = extended["query_item"].nunique()
     still_missing = len(set(train_anchors) - set(extended["query_item"].unique()))
@@ -234,11 +234,11 @@ def main() -> None:
         "task": "S2-DS-07", "artifact": path.name,
         "derived_from": "t3_candidate_lists_v1.proposed.parquet, same construction",
         "retrieval": SELECTED, "max_candidates": cap,
-        "anchors_frozen": int(len(frozen_anchors)),
-        "anchors_train": int(len(train_anchors)),
+        "anchors_frozen": len(frozen_anchors),
+        "anchors_train": len(train_anchors),
         "anchors_total": int(covered),
         "train_anchors_still_without_a_list": int(still_missing),
-        "rows": int(len(extended)),
+        "rows": len(extended),
         "frozen_lists_reproduce_exactly": True,
         "validation_baseline_unchanged": True,
         "why": ("each anchor's list depends only on that anchor, so adding anchors cannot "

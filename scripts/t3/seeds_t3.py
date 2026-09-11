@@ -33,12 +33,30 @@ from torch import nn
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import ladder_t3 as L
-from train_t3 import (BEST_SIMPLE_MACRO, CEILING_MACRO, DEVICE, LOSSES, OUTPUT, SPEC,
-                      Candidates, Ranking, build_batch, candidate_table, load_encoder,
-                      resolve)
-from prepared import (anchors_per_decision, build_candidate_tables, build_gain_matrix,
-                      build_ideal_gains, clients_of_windows, evaluable_decisions,
-                      per_client_means)
+from prepared import (
+    anchors_per_decision,
+    build_candidate_tables,
+    build_gain_matrix,
+    build_ideal_gains,
+    clients_of_windows,
+    evaluable_decisions,
+    per_client_means,
+)
+from train_t3 import (
+    BEST_SIMPLE_MACRO,
+    CEILING_MACRO,
+    DEVICE,
+    LOSSES,
+    OUTPUT,
+    SPEC,
+    Candidates,
+    Ranking,
+    build_batch,
+    candidate_table,
+    load_encoder,
+    resolve,
+)
+
 from ppsi.models.evaluation import paired_client_bootstrap
 from ppsi.models.session_gru import build_model
 
@@ -64,7 +82,8 @@ def main() -> None:
     validation_anchor = anchors_per_decision(validation, candidates)
     train_gains = build_gain_matrix(train_split, candidates, train_anchor)
     validation_gains = build_gain_matrix(validation, candidates, validation_anchor)
-    train_ideal = build_ideal_gains(train_split)
+    # Only the evaluator needs a full-oracle denominator; the losses read gains
+    # directly, so TRAIN never builds one.
     validation_ideal = build_ideal_gains(validation)
     owner = clients_of_windows(validation, validation_examples)
     scored = evaluable_decisions(validation)

@@ -67,7 +67,7 @@ def load_encoder(model, checkpoint: Path, *, new_prefixes: tuple = (),
                     "whether its category and item codes mean what this model expects. "
                     "Pass allow_unstamped=True to accept that risk deliberately, and "
                     "record it.")
-        elif stored_spec != expected:  # noqa: PLR5501 - the three branches read better flat
+        elif stored_spec != expected:
             differing = sorted(
                 key for key in set(stored_spec) | set(expected)
                 if stored_spec.get(key) != expected.get(key))
@@ -116,7 +116,7 @@ def spec_fingerprint(spec) -> dict:
     the shapes still validate, and the only symptom is a mid-run size mismatch - or worse,
     no symptom at all. Stamping the spec turns that into a comparison anyone can make.
     """
-    channels = lambda group: {c.name: [c.pad_id, c.vocab_size]  # noqa: E731
+    channels = lambda group: {c.name: [c.pad_id, c.vocab_size]
                               for c in getattr(spec, group, ())}
     return {
         "schema": spec.schema, "version": spec.version,

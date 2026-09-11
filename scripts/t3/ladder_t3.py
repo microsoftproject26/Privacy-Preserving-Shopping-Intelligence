@@ -35,8 +35,6 @@ import time
 import numpy as np
 import pandas as pd
 import torch
-from torch import nn
-
 from prepared import (
     anchors_per_decision,
     build_candidate_tables,
@@ -47,19 +45,18 @@ from prepared import (
     macro_by_client,
     per_client_means,
 )
+from torch import nn
 from train_t3 import (
-    BEST_SIMPLE,
     BEST_SIMPLE_MACRO,
     BEST_SIMPLE_MICRO,
-    CEILING,
     CEILING_MACRO,
     CEILING_MICRO,
-    TOLERANCE,
     DEVICE,
     HALF_WIDTH,
     LOSSES,
     OUTPUT,
     SPEC,
+    TOLERANCE,
     Candidates,
     Ranking,
     build_batch,
@@ -68,8 +65,9 @@ from train_t3 import (
     ndcg_at_k,
     resolve,
 )
-from ppsi.models.evaluation import paired_client_bootstrap
+
 from ppsi.models.checkpoint import save as save_checkpoint
+from ppsi.models.evaluation import paired_client_bootstrap
 from ppsi.models.session_gru import SessionGRUConfig, build_model
 from ppsi.training.batch import validate_canonical_phase1_batch
 
@@ -97,7 +95,7 @@ def evaluate(model, split: Ranking, gains: np.ndarray, ideal: np.ndarray,
     ndcg = np.concatenate(parts)
     macro, clients = macro_by_client(ndcg, owner[decisions])
     return {"macro_ndcg@5": round(macro, 4), "micro_ndcg@5": round(float(ndcg.mean()), 4),
-            "queries": int(len(ndcg)), "clients": clients, "_per_query": ndcg}
+            "queries": len(ndcg), "clients": clients, "_per_query": ndcg}
 
 
 def retrieval_order_ndcg(gains: np.ndarray, ideal: np.ndarray, anchor_of: np.ndarray,
@@ -137,7 +135,8 @@ def main() -> None:
     validation_anchor = anchors_per_decision(validation, candidates)
     train_gains = build_gain_matrix(train_split, candidates, train_anchor)
     validation_gains = build_gain_matrix(validation, candidates, validation_anchor)
-    train_ideal = build_ideal_gains(train_split)
+    # Only the evaluator needs a full-oracle denominator; the losses read gains
+    # directly, so TRAIN never builds one.
     validation_ideal = build_ideal_gains(validation)
     validation_owner = clients_of_windows(validation, validation_examples)
 
@@ -294,7 +293,7 @@ def main() -> None:
         "measured_baseline_micro": round(baseline["micro"], 4),
         "ceiling_macro": CEILING_MACRO, "ceiling_micro": CEILING_MICRO,
         "noise_floor": HALF_WIDTH,
-        "evaluable_queries": int(len(scored)), "clients": baseline["clients"],
+        "evaluable_queries": len(scored), "clients": baseline["clients"],
         "results": results, "curves": curves,
         "test_seal": {
             "test_rows_used": 0,

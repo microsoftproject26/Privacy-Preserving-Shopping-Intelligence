@@ -33,8 +33,8 @@ import torch
 from sklearn.metrics import average_precision_score
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from train_t2 import (BEST_SIMPLE_CORRECTED, CACHE, DEVICE, OUTPUT, SPEC, Split,
-                      to_batch)
+from train_t2 import BEST_SIMPLE_CORRECTED, DEVICE, OUTPUT, SPEC, Split, to_batch
+
 from ppsi.models.checkpoint import load_encoder as shared_load_encoder
 from ppsi.models.session_gru import SessionGRUConfig, build_model
 
@@ -155,7 +155,7 @@ def main() -> None:
         "ci_low": round(float(low), 6), "ci_high": round(float(high), 6),
         "half_width": round(float((high - low) / 2), 6),
         "above_zero": bool(low > 0),
-        "clients": int(len(groups)), "decisions": int(len(labels)),
+        "clients": len(groups), "decisions": len(labels),
         "resamples": RESAMPLES,
         "method": ("paired client-cluster bootstrap; PR-AUC recomputed for both systems "
                    "inside every resample, difference taken within the resample"),

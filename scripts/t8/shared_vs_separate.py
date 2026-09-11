@@ -41,10 +41,11 @@ PROJECT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(PROJECT / "S2-DS-01_GRU_T1_Model"))
 sys.path.insert(0, str(PROJECT / "S2-DS-06_T2_Purchase_Head"))
 
-import train_t2 as t2                                              # noqa: E402
-from finalize import selected_config                               # noqa: E402
-from ppsi.models.checkpoint import save as save_checkpoint         # noqa: E402
-from ppsi.models.session_gru import build_model, parameter_count   # noqa: E402
+import train_t2 as t2
+from finalize import selected_config
+
+from ppsi.models.checkpoint import save as save_checkpoint
+from ppsi.models.session_gru import build_model, parameter_count
 
 OUTPUT = Path(__file__).resolve().parent / "output"
 SEED = 13
@@ -80,7 +81,7 @@ def main() -> None:
     generator = np.random.default_rng(SEED)
     rows = train_split.trainable
 
-    best, best_row, curve = -1.0, None, []
+    best, curve = -1.0, []
     for epoch in range(1, EPOCHS + 1):
         epoch_started = time.time()
         model.train()
@@ -112,7 +113,7 @@ def main() -> None:
         curve.append(row)
         marker = ""
         if measured["pr_auc"] > best:
-            best, best_row = measured["pr_auc"], row
+            best = measured["pr_auc"]
             best_state = {k: v.detach().clone() for k, v in model.state_dict().items()}
             marker = "  <- best"
         print(f"    epoch {epoch:>2}  loss {row['train_loss']:.4f}  "

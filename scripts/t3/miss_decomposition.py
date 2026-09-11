@@ -28,11 +28,17 @@ import numpy as np
 import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from train_t3 import MAX_CANDIDATES, Candidates, Ranking, candidate_table, resolve, OUTPUT
-from prepared import (anchors_per_decision, build_candidate_tables, build_gain_matrix,
-                      build_ideal_gains, clients_of_windows, evaluable_decisions,
-                      per_client_means)
 import ladder_t3 as L
+from prepared import (
+    anchors_per_decision,
+    build_candidate_tables,
+    build_gain_matrix,
+    build_ideal_gains,
+    clients_of_windows,
+    evaluable_decisions,
+    per_client_means,
+)
+from train_t3 import MAX_CANDIDATES, OUTPUT, Candidates, Ranking, candidate_table, resolve
 
 
 def main() -> None:

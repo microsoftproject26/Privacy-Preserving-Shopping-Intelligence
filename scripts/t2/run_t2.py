@@ -25,10 +25,7 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
-import torch
-
 from train_t2 import (
-    BASELINES,
     BASELINES_CORRECTED,
     BASELINES_PUBLISHED_MASK,
     BEST_SIMPLE,
@@ -43,9 +40,10 @@ from train_t2 import (
     to_batch,
     train,
 )
-from ppsi.models.session_gru import SessionGRUConfig, build_model
-from ppsi.training.batch import validate_canonical_phase1_batch
+
 from ppsi.models.checkpoint import save as save_checkpoint
+from ppsi.models.session_gru import SessionGRUConfig
+from ppsi.training.batch import validate_canonical_phase1_batch
 
 SEED = 13
 SEEDS = (13, 42, 2026)
@@ -148,9 +146,9 @@ def gate(train_split: Split, validation: Split) -> dict:
     print("  published was neither the strongest simple rule nor on the right population.")
     return {"train_withheld_upstream": round(float((~train_split.published).mean()), 4),
             "validation_withheld_upstream": round(float((~validation.published).mean()), 4),
-            "restored": int(len(restored)),
-            "corrected_decisions": int(len(rows)),
-            "published_decisions": int(len(published_rows)),
+            "restored": len(restored),
+            "corrected_decisions": len(rows),
+            "published_decisions": len(published_rows),
             "positives": int(labels.sum()),
             "corrected_base_rate": round(float(labels.mean()), 4),
             "published_base_rate": round(float(published_labels.mean()), 4),
@@ -159,8 +157,8 @@ def gate(train_split: Split, validation: Split) -> dict:
 
 
 RUNGS = [
-    ("1. frozen encoder, plain BCE", dict(freeze_encoder=True, pos_weight=None)),
-    ("2. fine-tuned encoder", dict(freeze_encoder=False, pos_weight=None)),
+    ("1. frozen encoder, plain BCE", {"freeze_encoder": True, "pos_weight": None}),
+    ("2. fine-tuned encoder", {"freeze_encoder": False, "pos_weight": None}),
 ]
 
 
@@ -183,7 +181,7 @@ def main() -> None:
 
     results, curves = [], {}
     for label, options in RUNGS:
-        model, curve, best, provenance = train(
+        model, curve, _best, _provenance = train(
             train_split, validation, config=ENCODER, seed=SEED, checkpoint=checkpoint,
             learning_rate=LEARNING_RATE, epochs=EPOCHS, batch_size=BATCH, label=label,
             **options)

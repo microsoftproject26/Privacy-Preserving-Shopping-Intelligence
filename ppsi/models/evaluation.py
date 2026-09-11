@@ -254,7 +254,7 @@ def transition_table(current: np.ndarray, following: np.ndarray, categories: int
     return table
 
 
-def paired_client_bootstrap(per_client_model: "np.ndarray", per_client_baseline: "np.ndarray",
+def paired_client_bootstrap(per_client_model: np.ndarray, per_client_baseline: np.ndarray,
                             *, resamples: int = 2000, seed: int = 13) -> dict:
     """A confidence interval for the **gain**, resampling clients rather than seeds.
 

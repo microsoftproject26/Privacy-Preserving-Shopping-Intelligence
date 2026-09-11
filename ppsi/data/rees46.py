@@ -122,10 +122,11 @@ def load_events(
         # own minimum is at or past `end`, or whose maximum precedes `start`, cannot hold a
         # single row we want - so it is never opened, and its rows are never read.
         stats = parquet.metadata.row_group(group).column(time_column).statistics
-        if stats is not None and stats.has_min_max:
-            if _as_timestamp(stats.min) >= end or _as_timestamp(stats.max) < start:
-                provenance["groups_skipped_by_statistics"] += 1
-                continue
+        if (stats is not None and stats.has_min_max
+                and (_as_timestamp(stats.min) >= end
+                     or _as_timestamp(stats.max) < start)):
+            provenance["groups_skipped_by_statistics"] += 1
+            continue
 
         chunk = parquet.read_row_group(group, columns=RAW_COLUMNS).to_pandas()
         provenance["groups_opened"] += 1

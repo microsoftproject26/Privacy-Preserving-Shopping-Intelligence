@@ -95,10 +95,10 @@ def correct(examples: pd.DataFrame, *, split: str) -> tuple[pd.DataFrame, dict]:
     return frame, {
         "split": split,
         "corrections": int(censored.sum()),
-        "rows": int(len(frame)),
+        "rows": len(frame),
         "positives": positives,
         "prevalence_published": round(positives / int((~censored).sum()), 6),
-        "prevalence_corrected": round(positives / int(len(frame)), 6),
+        "prevalence_corrected": round(positives / len(frame), 6),
     }
 
 

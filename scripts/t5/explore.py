@@ -43,7 +43,6 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
-import torch
 
 PROJECT = Path(__file__).resolve().parent.parent
 TASK = Path(__file__).resolve().parent
@@ -51,11 +50,11 @@ OUTPUT = TASK / "output"
 OUTPUT.mkdir(exist_ok=True)
 sys.path.insert(0, str(PROJECT / "S2-DS-01_GRU_T1_Model"))
 
-from finalize import selected_config                                    # noqa: E402
-from train import CATEGORIES, DEVICE, SPEC, Split, score, train         # noqa: E402
-from ppsi.models.checkpoint import save as save_checkpoint              # noqa: E402
-from ppsi.models.session_gru import (SEQUENCE_CORES, build_model,       # noqa: E402
-                                     parameter_count)
+from finalize import selected_config
+from train import CATEGORIES, SPEC, Split, score, train
+
+from ppsi.models.checkpoint import save as save_checkpoint
+from ppsi.models.session_gru import SEQUENCE_CORES, build_model, parameter_count
 
 SEED = 13
 EPOCHS = 30
