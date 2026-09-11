@@ -22,11 +22,14 @@
 > `0.8782` macro against the frozen order's `0.2707`. **The contest is worth `+0.6075` and
 > our models have taken none of it.** The headroom is enormous and the failure is ours.
 >
-> **Still outstanding before a third attempt:** the candidate lists are built only for query
-> items that had a VALIDATION positive, so 6.14% of TRAIN queries can drive a listwise loss.
-> The review asks for them to be rebuilt from TRAIN anchors first, and that is upstream
-> (`FINDINGS_FOR_S1_LANE.md`). The experiment above ran before that fix, and is caveated by
-> it.
+> **3. The candidate lists have since been rebuilt from TRAIN, and it changed nothing.**
+> `rebuild_candidates.py` extends them from 47,948 anchors to 107,484 — every TRAIN query
+> item — using the same construction, with a gate asserting the frozen anchors come back
+> byte-identical so the `0.2707` baseline and the 18,814 evaluable queries are untouched.
+> Trainable queries went `106,910 → 120,982`. The reranker's peak moved from
+> `0.2582 / 0.2562 / 0.2599` to `0.2587 / 0.2588 / 0.2596`.
+>
+> So the leakage was real and is fixed, and **it was not why T3 fails**.
 >
 > `test_t3_uses_the_query_item` and `test_t3_starts_exactly_at_the_retrieval_order` exist so
 > the first defect cannot recur.
@@ -146,6 +149,35 @@ and two architectures have now failed to take any of it.
 Note also that `0.8782` and not `0.8795` is the number a reranker should be measured against.
 The oracle ceiling includes the 17.05% retrieval never returned, which no ranking of the
 returned list can reach.
+
+### What has been eliminated
+
+A negative result is only worth reporting if the obvious explanations have been ruled out.
+Four have:
+
+| hypothesis | test | verdict |
+|---|---|---|
+| the model cannot see the query item | permute every query tensor | **was true — fixed** |
+| it has to rediscover the retrieval order first | anchor at it, zero-init the delta | ruled out |
+| VALIDATION-derived anchors starve the loss | rebuild from TRAIN anchors | ruled out: +13% data, ±0.001 result |
+| one unlucky seed | three matched seeds | ruled out: spread 0.0009 |
+
+The query-blindness was a genuine defect and correcting it moved the peak from `0.2505` to
+`~0.259`. It did not close a gap of `0.0120`.
+
+### What is left, and none of it has been tested
+
+1. **The representation may not distinguish the candidates.** Every list is 100 items in the
+   same category that co-occur with the query. Telling them apart may need item-level signal
+   the encoder never sees — it reads categories, event types and a time gap.
+2. **The prior may be too strong to move.** `t3_rank_weight · rank` spans exactly `1.0` in
+   score units while the cross head starts at zero, so early training has to overcome a fixed
+   term of that size before it can reorder anything.
+3. **Capacity or schedule.** A 64-unit MLP over 30 epochs, chosen once and never swept.
+
+Each is a separate bounded experiment, and each should be **pre-registered before it runs**.
+Choosing among them after seeing which number improves is the deception this protocol exists
+to prevent.
 
 ### What is known about the difficulty
 

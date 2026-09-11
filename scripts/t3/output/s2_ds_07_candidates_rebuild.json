@@ -1,0 +1,19 @@
+{
+  "task": "S2-DS-07",
+  "artifact": "t3_candidate_lists_train_anchors_v1.parquet",
+  "derived_from": "t3_candidate_lists_v1.proposed.parquet, same construction",
+  "retrieval": "cooccurrence_then_popularity",
+  "max_candidates": 100,
+  "anchors_frozen": 47948,
+  "anchors_train": 102282,
+  "anchors_total": 107484,
+  "train_anchors_still_without_a_list": 0,
+  "rows": 10258299,
+  "frozen_lists_reproduce_exactly": true,
+  "validation_baseline_unchanged": true,
+  "why": "each anchor's list depends only on that anchor, so adding anchors cannot change an existing list. Asserted twice: once against the frozen file and once inside the extended artifact.",
+  "test_seal": {
+    "test_rows_used": 0,
+    "measured": "_SEAL/test_seal_measured.json"
+  }
+}

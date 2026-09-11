@@ -156,7 +156,7 @@ class Ranking:
         return len(self.row_to_window)
 
 
-def candidate_table(protocol: dict) -> tuple:
+def candidate_table(protocol: dict, *, extended: bool = False) -> tuple:
     """The frozen candidate list for the selected retrieval, as dense arrays.
 
     The file holds **both** strategies side by side - 4,554,279 rows each - and the
@@ -165,7 +165,17 @@ def candidate_table(protocol: dict) -> tuple:
     that has cost this project three wrong numbers, and it fired `S1-DS-09`'s fence once.
     """
     selected = protocol["retrieval"]["selected"]
-    frame = pd.read_parquet(resolve("t3_candidate_lists_v1.proposed.parquet"))
+    if extended:
+        # The same construction over every TRAIN query item instead of only the ones with a
+        # VALIDATION positive. `rebuild_candidates.py` asserts the frozen 47,948 anchors come
+        # back byte-identical inside it, so the 0.2707 baseline and the 18,814 evaluable
+        # queries are untouched - what changes is that TRAIN queries can now train.
+        path = OUTPUT / "t3_candidate_lists_train_anchors_v1.parquet"
+        if not path.exists():
+            raise SystemExit(f"{path.name} not found - run rebuild_candidates.py first")
+        frame = pd.read_parquet(path)
+    else:
+        frame = pd.read_parquet(resolve("t3_candidate_lists_v1.proposed.parquet"))
     frame = frame[frame["retrieval"] == selected]
     frame = frame.sort_values(["query_item", "rank"])
 

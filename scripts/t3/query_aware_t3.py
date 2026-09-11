@@ -54,6 +54,12 @@ from prepared import (anchors_per_decision, build_candidate_tables, build_gain_m
 from ppsi.models.evaluation import paired_client_bootstrap
 from ppsi.models.session_gru import build_model
 
+# Every TRAIN query item has a list now (`rebuild_candidates.py`), so the loss can see all
+# 1.74M queries instead of the 6.14% a VALIDATION-derived anchor set left reachable. The
+# frozen anchors inside the extended artifact are byte-identical, so the 0.2707 baseline and
+# the 18,814 evaluable queries are exactly the ones the earlier runs used.
+EXTENDED = True
+
 SEEDS = (13, 42, 2026)
 LOSS = "listwise"
 EPOCHS = 30
@@ -66,7 +72,7 @@ TRAINABLE = ("t3_", "candidate_")
 def main() -> None:
     started = time.time()
     protocol = json.loads(resolve("t3_protocol_v1.proposed.json").read_text(encoding="utf-8"))
-    items, mask, index = candidate_table(protocol)
+    items, mask, index = candidate_table(protocol, extended=EXTENDED)
     candidates = Candidates(items, mask, index)
     tables = build_candidate_tables(candidates)
 
