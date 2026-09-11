@@ -261,59 +261,70 @@ would no longer mean the same thing, and the regime gap — the headline of this
 
 ---
 
-# ⚠ `S2-PR-07`'s harness and ours rank identically — and would report different numbers
+# `S2-PR-07`'s harness and ours: what agrees, what differs, and why neither has to change
 
 Measured 2026-09-11, after `S2-PR-07` landed. **Read this before scoring any model through
 either evaluator.**
 
-## The ranks agree exactly
+## What was checked, and how far the check goes
 
-`ppsi.evaluation.t1.rank_targets_from_scores` and `ppsi.models.evaluation.rank_of_truth`
-produce identical ranks on distinct scores, on heavy ties, and on the fully-degenerate
-all-tied case a no-signal baseline produces. `tests/evaluation/test_evaluators_agree.py`
-asserts it so the two cannot drift.
+| | status |
+|---|---|
+| rank functions agree on distinct scores, heavy ties, and the all-tied case | ✅ asserted |
+| full evaluation paths agree: micro, macro, both slices, decision counts | ✅ asserted |
+| off-diagonal suppression | ❌ **not** in the frozen contract — measured instead |
 
-## The slice metric still differs, by a lot
+`tests/evaluation/test_evaluators_agree.py` covers the first two. The first version of that
+file covered only the rank functions, and a review pointed out that equal ranks are not equal
+metrics — two harnesses can rank identically and still publish different figures through the
+slice mask, the MRR cutoff, or how per-client means are taken. The end-to-end comparison was
+added for that reason.
+
+## The one real difference
 
 The slice number depends on a step that happens **before** ranking, and the frozen harness
 does not perform it: **off-diagonal suppression**, which removes the current category from
 the score row.
 
-Measured on `s2_ds_01_gru_t1_seed13.pt`, over the 438,185 VALIDATION decisions:
+It cannot be tested into agreement, because it is not a disagreement about an
+implementation — it is a difference in what the metric is. So it was measured. Both the
+baseline and the model, scored under both conventions, on `s2_ds_01_gru_t1_seed13.pt` over
+all 438,185 VALIDATION decisions:
 
-| | slice macro MRR@20 |
-|---|---:|
-| with off-diagonal suppression — **what we publish** | **0.3479** |
-| without it — what the frozen harness computes from raw scores | **0.2174** |
-| the difference | **0.1305** |
-| the baseline to beat | 0.3143 |
+| convention | baseline | model | gain | model wins? |
+|---|---:|---:|---:|---|
+| **suppressed** — this lane | 0.3143 | 0.3479 | **+0.0336** | yes |
+| **raw** — the frozen harness | 0.1892 | 0.2174 | **+0.0282** | yes |
 
-**Scoring our model through the frozen harness and comparing it to our published `0.3143`
-gives `0.2174` — below the baseline.** The reader's conclusion would be that a GRU loses to
-a transition table, and it would be wrong.
+**The model beats the baseline under both conventions.** The gain differs in size and not in
+sign or order of magnitude.
 
-## Why suppression exists, and why it is a choice rather than a bug
+### So nothing has to change
+
+Neither lane needs to adopt the other's convention before publishing, and **suppression
+should not be added to the frozen harness** just to make the numbers line up — that would be
+settling a measurement question by editing someone else's contract.
+
+**The one unsafe combination is mixing them.** Our published `0.3143` against the frozen
+harness's `0.2174` gives `−0.0969`, which reads as a GRU losing to a transition table. That
+comparison is meaningless and it is the easiest one to make by accident, because both numbers
+exist in this repository and neither is labelled with its convention.
+
+**Rule: quote the baseline and the model from the same run of the same harness.** If the
+frozen harness becomes authoritative, recompute the baseline through it and publish the pair
+together.
+
+### Why suppression exists, for whoever has to decide later
 
 The slice is defined as *decisions where the category changes*. The transition-table baseline
-is evaluated **off-diagonal** on that slice: it is handed the fact that the answer is not the
-current category. A model scored without the same information is spending rank 1 on an answer
-the slice definition has already excluded, and the comparison measures that handicap rather
-than the model.
+is evaluated **off-diagonal** there — it is handed the fact that the answer is not the current
+category. A model denied the same information spends rank 1 on an answer the slice definition
+has already excluded, so the comparison measures that handicap rather than the model. That is
+the argument; it is not a claim that the raw convention is wrong.
 
-So suppression is not a trick to raise a number. It is what makes the two sides answer the
-same question. But it is a **convention**, and the only thing that matters is that the
-baseline and the model are scored under the same one.
+If suppression is ever adopted, it belongs in the rank step — `rank_targets_from_scores` has
+no such parameter today — and not in each caller. A rule implemented per-caller is the defect
+this project has already paid for three times.
 
-## What to do
-
-* **Do not mix.** Our `0.3143` / `0.3474` pair is internally consistent and both sides are
-  suppressed. The harness's output is internally consistent and neither side is.
-* If the frozen harness becomes authoritative, **recompute the baseline through it too**, and
-  republish both numbers together. The gap will be smaller and the conclusion should survive
-  — but that has not been measured yet and must not be assumed.
-* If suppression is adopted into the harness, it belongs in the rank step
-  (`rank_targets_from_scores` has no such parameter today), not in each caller. A suppression
-  rule implemented per-caller is the same defect this project has already paid for three
-  times.
-
-The measurement is in `S2-DS-01_GRU_T1_Model/output/suppression_gap.json`.
+Measurements: `S2-DS-01_GRU_T1_Model/output/metric_convention.json` and
+`output/suppression_gap.json`.

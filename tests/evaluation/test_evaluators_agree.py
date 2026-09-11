@@ -69,3 +69,58 @@ def test_the_two_evaluators_agree_on_reciprocal_rank() -> None:
     # and asserting it here keeps the comparison honest rather than quietly dividing by zero.
     assert (ours > 0).all()
     assert np.isclose((1.0 / theirs).mean(), (1.0 / ours).mean(), rtol=0, atol=1e-12)
+
+
+def test_the_full_evaluation_paths_agree_not_just_the_rank_functions() -> None:
+    """Equal ranks are not equal metrics, and the earlier tests only covered ranks.
+
+    A review made this point and it was correct: proving `rank_of_truth` and
+    `rank_targets_from_scores` agree says nothing about slice selection, the MRR cutoff, or
+    how per-client means are taken. Two harnesses can rank identically and still publish
+    different numbers.
+
+    This drives both paths end to end on the same synthetic decisions - same scores, same
+    targets, same category-changed mask, same client ids - and compares the four published
+    figures.
+
+    It deliberately does **not** cover off-diagonal suppression, which happens before ranking
+    and which the frozen harness does not perform. That difference is real, and it is
+    measured rather than tested: `scripts/model/output/metric_convention.json` scores the
+    baseline and the model under both conventions. The model wins under each, so the two
+    lanes do not need to agree on one - but a baseline from one and a model from the other
+    is the one combination that lies.
+    """
+    from ppsi.evaluation.t1 import evaluate_t1_ranks
+    from ppsi.models.evaluation import micro_and_macro, reciprocal_rank
+
+    rows = 4096
+    rng = np.random.default_rng(7)
+    scores = rng.standard_normal((rows, CATEGORY_COUNT))
+    targets = _targets(rows, seed=11)
+    changed = rng.random(rows) < 0.6
+    clients = rng.integers(0, 300, rows)
+
+    full_ranks = rank_targets_from_scores(scores, targets,
+                                          category_count=CATEGORY_COUNT).numpy()
+    theirs = evaluate_t1_ranks(full_ranks, changed, clients).to_dict()
+
+    truncated = rank_of_truth(scores, targets, k=20)
+    rr = reciprocal_rank(truncated)
+    our_micro, our_macro = micro_and_macro(rr, clients, changed)
+
+    on_slice = theirs["slices"]["next_distinct"]
+    assert np.isclose(our_micro, on_slice["mrr_at_20_micro"], rtol=0, atol=1e-12), (
+        f"slice micro MRR differs: ours {our_micro}, theirs {on_slice['mrr_at_20_micro']}")
+    assert np.isclose(our_macro, on_slice["mrr_at_20_macro"], rtol=0, atol=1e-12), (
+        f"slice macro MRR differs: ours {our_macro}, theirs {on_slice['mrr_at_20_macro']}")
+
+    # The overall slice too: the slice mask is the most likely place for the two to part
+    # company, so agreeing on the masked figure while disagreeing on the unmasked one would
+    # be a coincidence rather than a match.
+    everywhere = np.ones(rows, dtype=bool)
+    all_micro, all_macro = micro_and_macro(rr, clients, everywhere)
+    overall = theirs["slices"]["overall"]
+    assert np.isclose(all_micro, overall["mrr_at_20_micro"], rtol=0, atol=1e-12)
+    assert np.isclose(all_macro, overall["mrr_at_20_macro"], rtol=0, atol=1e-12)
+    assert on_slice["decision_count"] == int(changed.sum())
+    assert overall["decision_count"] == rows
