@@ -57,7 +57,8 @@ def t1_case():
         "label_value": 200,
         "task_mask": True,
         "status": "OBSERVED",
-        "label_matures_at": events[2]["event_time"],
+        # The producer writes the decision event's own time for T1; see _require_maturation.
+        "label_matures_at": events[1]["event_time"],
         "split": "VALIDATION",
     }
     return example, [events[0]], events
@@ -136,13 +137,13 @@ def test_future_event_in_history_is_rejected(task, fixture_name, request) -> Non
         validate(task, example, history, events)
 
 
-def test_t1_target_and_maturation_are_the_first_later_different_item(t1_case) -> None:
+def test_t1_maturation_follows_the_producer_and_a_wrong_value_is_rejected(t1_case) -> None:
     example, history, events = t1_case
-    leaking = deepcopy(example)
-    leaking["label_matures_at"] = events[1]["event_time"]
+    wrong = deepcopy(example)
+    wrong["label_matures_at"] = events[2]["event_time"]
 
-    with pytest.raises(TemporalLeakageError, match="T1 target time"):
-        validate("T1", leaking, history, events)
+    with pytest.raises(TemporalLeakageError, match="T1 decision time"):
+        validate("T1", wrong, history, events)
 
 
 def test_t2_query_itself_cannot_enter_encoder_history(t2_case) -> None:
@@ -188,7 +189,7 @@ def test_event_on_cutoff_belongs_only_to_the_later_split(t1_case) -> None:
     # session chronological so the split rule is what rejects it.
     for row in events[1:]:
         row["event_time"] = SPLIT_END
-    example["label_matures_at"] = SPLIT_END
+    example["label_matures_at"] = SPLIT_END  # the decision itself moved onto the cutoff
 
     with pytest.raises(TemporalLeakageError, match="crosses the approved temporal split"):
         validate("T1", example, history, events)
@@ -246,3 +247,23 @@ def test_t3_positive_cannot_precede_its_query() -> None:
             events,
             t3_gain_rule=frozen_t3_gain_rule(),
         )
+
+
+def test_a_withheld_session_row_is_rejected_rather_than_changing_the_target(t1_case) -> None:
+    # Canonical order is contiguous within a session. Dropping the real target makes a
+    # later event look like the first different item, so the label would validate against
+    # the wrong category if the gap went unnoticed.
+    example, history, events = t1_case
+    events.append(event(13, 3, item=3, category=300))
+    without_target = [row for row in events if row["order"] != 12]
+
+    with pytest.raises(TemporalLeakageError, match="not contiguous"):
+        validate("T1", example, history, without_target)
+
+
+def test_a_contiguous_session_missing_only_its_tail_is_accepted(t1_case) -> None:
+    # A session that simply ends is contiguous; only an interior gap is evidence of a
+    # withheld row, and refusing a short session would reject most real ones.
+    example, history, events = t1_case
+
+    validate("T1", example, history, events)
