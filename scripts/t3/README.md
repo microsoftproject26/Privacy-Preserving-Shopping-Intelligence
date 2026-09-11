@@ -1,5 +1,29 @@
 # S2-DS-07 — the T3 candidate-ranking head
 
+> ## ⚠ The verdict below is withdrawn — 2026-09-11, second review
+>
+> **The reranker this task measured could not see the query item.** `t3_scores` was
+> `session · candidate`; the query vector was computed and used only by the T2 head.
+> Measured by permuting every query tensor across a batch: T3 scores moved by **exactly
+> `0.0`** while the T2 control moved by `0.81`.
+>
+> That makes the comparison unwinnable rather than merely hard. The frozen retrieval order
+> **is** co-occurrence between the query item and each candidate, so a model blind to the
+> query cannot represent what the baseline does, let alone improve on it.
+>
+> **What the `0.2505` vs `0.2707` result actually shows:** a session-candidate dot-product
+> residual does not beat the retrieval order. **What it does not show:** that T3 has no
+> learnable signal, or that a query-aware reranker would fail. The stronger claim was ours
+> and it was not supported.
+>
+> A query-aware cross-feature reranker is now built and under test, and the tests
+> `test_t3_uses_the_query_item` and `test_t3_starts_exactly_at_the_retrieval_order` exist so
+> this cannot recur. **Everything below is retained for the record; do not quote the verdict
+> until this notice is replaced.**
+
+---
+
+
 **The task:** given a query item, rank its frozen candidate list so the products the user
 actually engages with next come first.
 

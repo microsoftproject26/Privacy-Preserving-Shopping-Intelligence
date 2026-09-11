@@ -250,5 +250,25 @@ metrics now delegate to sklearn.
 | labels | corrected — see `labels.py` |
 | `TEST` | never used; the seal is measured in `_SEAL/test_seal_measured.json` |
 
-**Not yet done:** three-seed confirmation. The gain is far outside any plausible noise, so the
-conclusion is not in doubt, but the reported figure is one seed and says so.
+### Three seeds
+
+The selected rung re-run on the three seeds the repository restricts itself to, and the same
+three `S2-PR-09` uses — `seeds.py`, `output/s2_ds_06_seeds.json`:
+
+| seed | PR-AUC | gain | best epoch |
+|---:|---:|---:|---:|
+| 13 | 0.1422 | +0.0665 | 2 |
+| 42 | 0.1414 | +0.0657 | 3 |
+| 2026 | 0.1417 | +0.0660 | 1 |
+
+**Mean `0.1418`, spread `0.0008`, mean gain `+0.0661`.** The gain is 83× the spread, so none of
+it is a lucky draw.
+
+Only the winner is re-run. Re-running the whole ladder would answer a different question —
+*does the same rung win every time?* — which is worth knowing but is not what the headline
+claims. The headline claims a gain, so the gain is what gets re-measured.
+
+Note the two intervals answer different questions and both are reported: the seed spread
+`0.0008` is run-to-run variation, and the paired client bootstrap `[+0.0582, +0.0752]` is
+whether the gain survives a different sample of shoppers. The second is the wider and the more
+honest one for a headline.

@@ -1,0 +1,512 @@
+{
+  "task": "S2-DS-07",
+  "loss": "listwise",
+  "seeds": [
+    13,
+    42,
+    2026
+  ],
+  "baseline_macro": 0.2707,
+  "ceiling_macro": 0.8795,
+  "runs": [
+    {
+      "seed": 13,
+      "macro_ndcg@5": 0.2707,
+      "best_epoch": 0,
+      "beat_the_baseline": false,
+      "gain": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0,
+      "above_zero": false
+    },
+    {
+      "seed": 42,
+      "macro_ndcg@5": 0.2707,
+      "best_epoch": 0,
+      "beat_the_baseline": false,
+      "gain": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0,
+      "above_zero": false
+    },
+    {
+      "seed": 2026,
+      "macro_ndcg@5": 0.2707,
+      "best_epoch": 0,
+      "beat_the_baseline": false,
+      "gain": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0,
+      "above_zero": false
+    }
+  ],
+  "mean_gain": 0.0,
+  "seed_spread": 0.0,
+  "any_seed_beat_the_baseline": false,
+  "verdict": "the frozen retrieval order beats the learned reranker on every seed",
+  "note": "pointwise is not re-run: it lost by 0.0521 and collapsed to 0.0333 on its first epoch, so confirming it is still broken buys nothing.",
+  "curves": {
+    "13": [
+      {
+        "epoch": 0,
+        "train_loss": null,
+        "macro_ndcg@5": 0.2707,
+        "micro_ndcg@5": 0.2046,
+        "queries": 18814,
+        "clients": 4591
+      },
+      {
+        "epoch": 1,
+        "train_loss": 3.82233,
+        "macro_ndcg@5": 0.2315,
+        "micro_ndcg@5": 0.183,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 40.9
+      },
+      {
+        "epoch": 2,
+        "train_loss": 3.56354,
+        "macro_ndcg@5": 0.2339,
+        "micro_ndcg@5": 0.18,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 39.3
+      },
+      {
+        "epoch": 3,
+        "train_loss": 3.42517,
+        "macro_ndcg@5": 0.2395,
+        "micro_ndcg@5": 0.1842,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 39.7
+      },
+      {
+        "epoch": 4,
+        "train_loss": 3.33144,
+        "macro_ndcg@5": 0.2395,
+        "micro_ndcg@5": 0.1843,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 41.8
+      },
+      {
+        "epoch": 5,
+        "train_loss": 3.26356,
+        "macro_ndcg@5": 0.245,
+        "micro_ndcg@5": 0.1883,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 39.8
+      },
+      {
+        "epoch": 6,
+        "train_loss": 3.21059,
+        "macro_ndcg@5": 0.2471,
+        "micro_ndcg@5": 0.1889,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 39.8
+      },
+      {
+        "epoch": 7,
+        "train_loss": 3.16631,
+        "macro_ndcg@5": 0.2474,
+        "micro_ndcg@5": 0.1878,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 39.4
+      },
+      {
+        "epoch": 8,
+        "train_loss": 3.12972,
+        "macro_ndcg@5": 0.2504,
+        "micro_ndcg@5": 0.1896,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 40.0
+      },
+      {
+        "epoch": 9,
+        "train_loss": 3.10086,
+        "macro_ndcg@5": 0.2497,
+        "micro_ndcg@5": 0.1898,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 39.5
+      },
+      {
+        "epoch": 10,
+        "train_loss": 3.07449,
+        "macro_ndcg@5": 0.2508,
+        "micro_ndcg@5": 0.1892,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 39.6
+      },
+      {
+        "epoch": 11,
+        "train_loss": 3.05139,
+        "macro_ndcg@5": 0.2513,
+        "micro_ndcg@5": 0.1888,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 40.1
+      },
+      {
+        "epoch": 12,
+        "train_loss": 3.03152,
+        "macro_ndcg@5": 0.2523,
+        "micro_ndcg@5": 0.1902,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 40.0
+      },
+      {
+        "epoch": 13,
+        "train_loss": 3.01717,
+        "macro_ndcg@5": 0.2511,
+        "micro_ndcg@5": 0.1893,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 39.7
+      },
+      {
+        "epoch": 14,
+        "train_loss": 3.00719,
+        "macro_ndcg@5": 0.2499,
+        "micro_ndcg@5": 0.1883,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 40.1
+      },
+      {
+        "epoch": 15,
+        "train_loss": 2.99888,
+        "macro_ndcg@5": 0.25,
+        "micro_ndcg@5": 0.1884,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 39.9
+      },
+      {
+        "epoch": 16,
+        "train_loss": 2.99556,
+        "macro_ndcg@5": 0.2504,
+        "micro_ndcg@5": 0.1886,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 40.2
+      }
+    ],
+    "42": [
+      {
+        "epoch": 0,
+        "train_loss": null,
+        "macro_ndcg@5": 0.2707,
+        "micro_ndcg@5": 0.2046,
+        "queries": 18814,
+        "clients": 4591
+      },
+      {
+        "epoch": 1,
+        "train_loss": 3.82532,
+        "macro_ndcg@5": 0.2253,
+        "micro_ndcg@5": 0.1803,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 39.9
+      },
+      {
+        "epoch": 2,
+        "train_loss": 3.57024,
+        "macro_ndcg@5": 0.2328,
+        "micro_ndcg@5": 0.182,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 39.7
+      },
+      {
+        "epoch": 3,
+        "train_loss": 3.42871,
+        "macro_ndcg@5": 0.2394,
+        "micro_ndcg@5": 0.1863,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 40.1
+      },
+      {
+        "epoch": 4,
+        "train_loss": 3.33156,
+        "macro_ndcg@5": 0.2455,
+        "micro_ndcg@5": 0.1884,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 40.1
+      },
+      {
+        "epoch": 5,
+        "train_loss": 3.26362,
+        "macro_ndcg@5": 0.2496,
+        "micro_ndcg@5": 0.1937,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 40.2
+      },
+      {
+        "epoch": 6,
+        "train_loss": 3.20969,
+        "macro_ndcg@5": 0.2483,
+        "micro_ndcg@5": 0.1909,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 39.8
+      },
+      {
+        "epoch": 7,
+        "train_loss": 3.16836,
+        "macro_ndcg@5": 0.2512,
+        "micro_ndcg@5": 0.192,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 40.2
+      },
+      {
+        "epoch": 8,
+        "train_loss": 3.12993,
+        "macro_ndcg@5": 0.2504,
+        "micro_ndcg@5": 0.1916,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 40.1
+      },
+      {
+        "epoch": 9,
+        "train_loss": 3.09615,
+        "macro_ndcg@5": 0.2506,
+        "micro_ndcg@5": 0.1917,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 40.2
+      },
+      {
+        "epoch": 10,
+        "train_loss": 3.06994,
+        "macro_ndcg@5": 0.2512,
+        "micro_ndcg@5": 0.1914,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 40.2
+      },
+      {
+        "epoch": 11,
+        "train_loss": 3.04792,
+        "macro_ndcg@5": 0.2521,
+        "micro_ndcg@5": 0.192,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 40.6
+      },
+      {
+        "epoch": 12,
+        "train_loss": 3.02465,
+        "macro_ndcg@5": 0.2515,
+        "micro_ndcg@5": 0.1917,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 40.4
+      },
+      {
+        "epoch": 13,
+        "train_loss": 3.01033,
+        "macro_ndcg@5": 0.2518,
+        "micro_ndcg@5": 0.1917,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 40.2
+      },
+      {
+        "epoch": 14,
+        "train_loss": 2.99718,
+        "macro_ndcg@5": 0.2501,
+        "micro_ndcg@5": 0.1903,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 40.1
+      },
+      {
+        "epoch": 15,
+        "train_loss": 2.99139,
+        "macro_ndcg@5": 0.2514,
+        "micro_ndcg@5": 0.1906,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 40.1
+      },
+      {
+        "epoch": 16,
+        "train_loss": 2.98729,
+        "macro_ndcg@5": 0.2516,
+        "micro_ndcg@5": 0.1909,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 41.1
+      }
+    ],
+    "2026": [
+      {
+        "epoch": 0,
+        "train_loss": null,
+        "macro_ndcg@5": 0.2707,
+        "micro_ndcg@5": 0.2046,
+        "queries": 18814,
+        "clients": 4591
+      },
+      {
+        "epoch": 1,
+        "train_loss": 3.82295,
+        "macro_ndcg@5": 0.2199,
+        "micro_ndcg@5": 0.1739,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 41.5
+      },
+      {
+        "epoch": 2,
+        "train_loss": 3.56321,
+        "macro_ndcg@5": 0.2338,
+        "micro_ndcg@5": 0.181,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 41.2
+      },
+      {
+        "epoch": 3,
+        "train_loss": 3.42094,
+        "macro_ndcg@5": 0.2405,
+        "micro_ndcg@5": 0.1849,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 40.9
+      },
+      {
+        "epoch": 4,
+        "train_loss": 3.32503,
+        "macro_ndcg@5": 0.2481,
+        "micro_ndcg@5": 0.1896,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 42.0
+      },
+      {
+        "epoch": 5,
+        "train_loss": 3.25446,
+        "macro_ndcg@5": 0.2522,
+        "micro_ndcg@5": 0.1903,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 40.6
+      },
+      {
+        "epoch": 6,
+        "train_loss": 3.20347,
+        "macro_ndcg@5": 0.2522,
+        "micro_ndcg@5": 0.1921,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 41.5
+      },
+      {
+        "epoch": 7,
+        "train_loss": 3.16147,
+        "macro_ndcg@5": 0.253,
+        "micro_ndcg@5": 0.1904,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 42.6
+      },
+      {
+        "epoch": 8,
+        "train_loss": 3.1243,
+        "macro_ndcg@5": 0.2509,
+        "micro_ndcg@5": 0.1903,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 41.8
+      },
+      {
+        "epoch": 9,
+        "train_loss": 3.09374,
+        "macro_ndcg@5": 0.2517,
+        "micro_ndcg@5": 0.189,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 42.2
+      },
+      {
+        "epoch": 10,
+        "train_loss": 3.06729,
+        "macro_ndcg@5": 0.2535,
+        "micro_ndcg@5": 0.1903,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 41.3
+      },
+      {
+        "epoch": 11,
+        "train_loss": 3.0386,
+        "macro_ndcg@5": 0.2508,
+        "micro_ndcg@5": 0.1892,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 41.4
+      },
+      {
+        "epoch": 12,
+        "train_loss": 3.02325,
+        "macro_ndcg@5": 0.2521,
+        "micro_ndcg@5": 0.1894,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 41.7
+      },
+      {
+        "epoch": 13,
+        "train_loss": 3.00829,
+        "macro_ndcg@5": 0.2517,
+        "micro_ndcg@5": 0.1891,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 41.4
+      },
+      {
+        "epoch": 14,
+        "train_loss": 2.99352,
+        "macro_ndcg@5": 0.2527,
+        "micro_ndcg@5": 0.1894,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 41.7
+      },
+      {
+        "epoch": 15,
+        "train_loss": 2.98599,
+        "macro_ndcg@5": 0.2521,
+        "micro_ndcg@5": 0.189,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 41.5
+      },
+      {
+        "epoch": 16,
+        "train_loss": 2.98311,
+        "macro_ndcg@5": 0.252,
+        "micro_ndcg@5": 0.1889,
+        "queries": 18814,
+        "clients": 4591,
+        "seconds": 40.9
+      }
+    ]
+  }
+}

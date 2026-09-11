@@ -1,0 +1,376 @@
+{
+  "task": "S2-DS-06",
+  "configuration": "fine-tuned encoder, the selected rung",
+  "labels": "corrected",
+  "seeds": [
+    13,
+    42,
+    2026
+  ],
+  "baseline": 0.0757,
+  "runs": [
+    {
+      "seed": 13,
+      "pr_auc": 0.1422,
+      "roc_auc": 0.7925,
+      "brier": 0.02633,
+      "best_epoch": 2,
+      "gain": 0.0665
+    },
+    {
+      "seed": 42,
+      "pr_auc": 0.1414,
+      "roc_auc": 0.7943,
+      "brier": 0.02628,
+      "best_epoch": 3,
+      "gain": 0.0657
+    },
+    {
+      "seed": 2026,
+      "pr_auc": 0.1417,
+      "roc_auc": 0.7942,
+      "brier": 0.02634,
+      "best_epoch": 1,
+      "gain": 0.066
+    }
+  ],
+  "mean_pr_auc": 0.1418,
+  "seed_spread": 0.0008,
+  "mean_gain": 0.0661,
+  "min_gain": 0.0657,
+  "gain_survives_seed_change": true,
+  "old_half_width": 0.0029,
+  "note": "the seed spread measures run-to-run variation only. The interval that answers whether the gain would survive different shoppers is the paired client bootstrap in s2_ds_06_interval.json; the two are different questions and both are reported.",
+  "curves": {
+    "13": [
+      {
+        "epoch": 1,
+        "train_loss": 0.11427,
+        "pr_auc": 0.1405,
+        "roc_auc": 0.7925,
+        "brier": 0.02632,
+        "log_loss": 0.11274,
+        "seconds": 57.8
+      },
+      {
+        "epoch": 2,
+        "train_loss": 0.11008,
+        "pr_auc": 0.1422,
+        "roc_auc": 0.7925,
+        "brier": 0.02633,
+        "log_loss": 0.11277,
+        "seconds": 56.1
+      },
+      {
+        "epoch": 3,
+        "train_loss": 0.10847,
+        "pr_auc": 0.141,
+        "roc_auc": 0.7949,
+        "brier": 0.02628,
+        "log_loss": 0.11243,
+        "seconds": 56.6
+      },
+      {
+        "epoch": 4,
+        "train_loss": 0.10727,
+        "pr_auc": 0.1388,
+        "roc_auc": 0.7882,
+        "brier": 0.02632,
+        "log_loss": 0.11334,
+        "seconds": 60.1
+      },
+      {
+        "epoch": 5,
+        "train_loss": 0.10636,
+        "pr_auc": 0.1381,
+        "roc_auc": 0.7856,
+        "brier": 0.02633,
+        "log_loss": 0.114,
+        "seconds": 59.2
+      },
+      {
+        "epoch": 6,
+        "train_loss": 0.10564,
+        "pr_auc": 0.1396,
+        "roc_auc": 0.7867,
+        "brier": 0.02633,
+        "log_loss": 0.11446,
+        "seconds": 59.7
+      },
+      {
+        "epoch": 7,
+        "train_loss": 0.10501,
+        "pr_auc": 0.1384,
+        "roc_auc": 0.7847,
+        "brier": 0.02636,
+        "log_loss": 0.11479,
+        "seconds": 57.3
+      },
+      {
+        "epoch": 8,
+        "train_loss": 0.10448,
+        "pr_auc": 0.139,
+        "roc_auc": 0.7829,
+        "brier": 0.02634,
+        "log_loss": 0.11529,
+        "seconds": 58.1
+      },
+      {
+        "epoch": 9,
+        "train_loss": 0.10403,
+        "pr_auc": 0.1367,
+        "roc_auc": 0.7826,
+        "brier": 0.02639,
+        "log_loss": 0.11583,
+        "seconds": 64.2
+      },
+      {
+        "epoch": 10,
+        "train_loss": 0.10364,
+        "pr_auc": 0.1369,
+        "roc_auc": 0.7824,
+        "brier": 0.02641,
+        "log_loss": 0.11614,
+        "seconds": 61.8
+      },
+      {
+        "epoch": 11,
+        "train_loss": 0.10334,
+        "pr_auc": 0.136,
+        "roc_auc": 0.781,
+        "brier": 0.02643,
+        "log_loss": 0.11644,
+        "seconds": 65.1
+      },
+      {
+        "epoch": 12,
+        "train_loss": 0.10317,
+        "pr_auc": 0.1365,
+        "roc_auc": 0.7812,
+        "brier": 0.02643,
+        "log_loss": 0.11646,
+        "seconds": 81.0
+      }
+    ],
+    "42": [
+      {
+        "epoch": 1,
+        "train_loss": 0.11426,
+        "pr_auc": 0.1403,
+        "roc_auc": 0.791,
+        "brier": 0.0263,
+        "log_loss": 0.11275,
+        "seconds": 75.7
+      },
+      {
+        "epoch": 2,
+        "train_loss": 0.11015,
+        "pr_auc": 0.1404,
+        "roc_auc": 0.7942,
+        "brier": 0.02629,
+        "log_loss": 0.11245,
+        "seconds": 80.4
+      },
+      {
+        "epoch": 3,
+        "train_loss": 0.10843,
+        "pr_auc": 0.1414,
+        "roc_auc": 0.7943,
+        "brier": 0.02628,
+        "log_loss": 0.11246,
+        "seconds": 77.1
+      },
+      {
+        "epoch": 4,
+        "train_loss": 0.10724,
+        "pr_auc": 0.1407,
+        "roc_auc": 0.7906,
+        "brier": 0.0263,
+        "log_loss": 0.11313,
+        "seconds": 58.7
+      },
+      {
+        "epoch": 5,
+        "train_loss": 0.10631,
+        "pr_auc": 0.1365,
+        "roc_auc": 0.785,
+        "brier": 0.02635,
+        "log_loss": 0.11406,
+        "seconds": 72.8
+      },
+      {
+        "epoch": 6,
+        "train_loss": 0.10554,
+        "pr_auc": 0.1396,
+        "roc_auc": 0.7841,
+        "brier": 0.02635,
+        "log_loss": 0.11474,
+        "seconds": 60.9
+      },
+      {
+        "epoch": 7,
+        "train_loss": 0.10502,
+        "pr_auc": 0.1372,
+        "roc_auc": 0.7819,
+        "brier": 0.02636,
+        "log_loss": 0.11518,
+        "seconds": 65.2
+      },
+      {
+        "epoch": 8,
+        "train_loss": 0.10449,
+        "pr_auc": 0.1382,
+        "roc_auc": 0.7832,
+        "brier": 0.02636,
+        "log_loss": 0.1157,
+        "seconds": 69.4
+      },
+      {
+        "epoch": 9,
+        "train_loss": 0.10403,
+        "pr_auc": 0.1384,
+        "roc_auc": 0.7806,
+        "brier": 0.0264,
+        "log_loss": 0.11603,
+        "seconds": 61.0
+      },
+      {
+        "epoch": 10,
+        "train_loss": 0.10366,
+        "pr_auc": 0.1386,
+        "roc_auc": 0.7808,
+        "brier": 0.02638,
+        "log_loss": 0.11648,
+        "seconds": 57.5
+      },
+      {
+        "epoch": 11,
+        "train_loss": 0.10337,
+        "pr_auc": 0.1385,
+        "roc_auc": 0.7803,
+        "brier": 0.02638,
+        "log_loss": 0.11658,
+        "seconds": 57.6
+      },
+      {
+        "epoch": 12,
+        "train_loss": 0.10318,
+        "pr_auc": 0.1379,
+        "roc_auc": 0.7804,
+        "brier": 0.02638,
+        "log_loss": 0.11662,
+        "seconds": 10863.6
+      }
+    ],
+    "2026": [
+      {
+        "epoch": 1,
+        "train_loss": 0.11426,
+        "pr_auc": 0.1417,
+        "roc_auc": 0.7942,
+        "brier": 0.02634,
+        "log_loss": 0.11308,
+        "seconds": 65.4
+      },
+      {
+        "epoch": 2,
+        "train_loss": 0.11016,
+        "pr_auc": 0.1392,
+        "roc_auc": 0.7952,
+        "brier": 0.02639,
+        "log_loss": 0.11335,
+        "seconds": 59.7
+      },
+      {
+        "epoch": 3,
+        "train_loss": 0.10851,
+        "pr_auc": 0.1404,
+        "roc_auc": 0.7939,
+        "brier": 0.02631,
+        "log_loss": 0.11317,
+        "seconds": 55.9
+      },
+      {
+        "epoch": 4,
+        "train_loss": 0.10727,
+        "pr_auc": 0.1403,
+        "roc_auc": 0.7896,
+        "brier": 0.0263,
+        "log_loss": 0.1133,
+        "seconds": 53.1
+      },
+      {
+        "epoch": 5,
+        "train_loss": 0.1064,
+        "pr_auc": 0.1374,
+        "roc_auc": 0.7876,
+        "brier": 0.02634,
+        "log_loss": 0.11413,
+        "seconds": 53.2
+      },
+      {
+        "epoch": 6,
+        "train_loss": 0.10569,
+        "pr_auc": 0.1371,
+        "roc_auc": 0.786,
+        "brier": 0.02636,
+        "log_loss": 0.11462,
+        "seconds": 53.7
+      },
+      {
+        "epoch": 7,
+        "train_loss": 0.10508,
+        "pr_auc": 0.1383,
+        "roc_auc": 0.7846,
+        "brier": 0.02638,
+        "log_loss": 0.11505,
+        "seconds": 54.5
+      },
+      {
+        "epoch": 8,
+        "train_loss": 0.10457,
+        "pr_auc": 0.1365,
+        "roc_auc": 0.7822,
+        "brier": 0.02638,
+        "log_loss": 0.11534,
+        "seconds": 57.6
+      },
+      {
+        "epoch": 9,
+        "train_loss": 0.10412,
+        "pr_auc": 0.1367,
+        "roc_auc": 0.782,
+        "brier": 0.0264,
+        "log_loss": 0.11585,
+        "seconds": 55.6
+      },
+      {
+        "epoch": 10,
+        "train_loss": 0.10376,
+        "pr_auc": 0.1377,
+        "roc_auc": 0.7816,
+        "brier": 0.0264,
+        "log_loss": 0.11595,
+        "seconds": 58.3
+      },
+      {
+        "epoch": 11,
+        "train_loss": 0.10344,
+        "pr_auc": 0.1376,
+        "roc_auc": 0.7812,
+        "brier": 0.02641,
+        "log_loss": 0.1163,
+        "seconds": 55.1
+      },
+      {
+        "epoch": 12,
+        "train_loss": 0.10328,
+        "pr_auc": 0.1368,
+        "roc_auc": 0.7809,
+        "brier": 0.02641,
+        "log_loss": 0.1164,
+        "seconds": 56.6
+      }
+    ]
+  }
+}

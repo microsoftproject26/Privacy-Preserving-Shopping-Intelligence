@@ -1,0 +1,180 @@
+{
+  "purpose": "which checkpoints a downstream task may load, by name and hash",
+  "policy": {
+    "SHARED_ENCODER": {
+      "may_load": true,
+      "reason": "the T1 encoder. This is the only checkpoint any other task should start from until S2-DS-08 demonstrates a joint objective that holds both tasks."
+    },
+    "TASK_HEAD": {
+      "may_load": true,
+      "reason": "a task-specific result. Load it to reproduce that task's number. Do NOT reuse its encoder for another task."
+    },
+    "DIAGNOSTIC_UNDERPERFORMING": {
+      "may_load": false,
+      "reason": "kept as evidence of a losing rung. It scores below the model-free baseline it was meant to beat, so loading it downstream would be strictly worse than doing nothing."
+    },
+    "DIAGNOSTIC_DESTRUCTIVE": {
+      "may_load": false,
+      "reason": "its encoder was fine-tuned for one task and measurably destroys another. Valid as that task's own result; never valid as a shared starting point."
+    },
+    "COMMON_INITIALIZATION": {
+      "may_load": true,
+      "reason": "untrained shared weights for a seed. R1 and R2 must both start here or their measured gap is partly a different random start."
+    }
+  },
+  "checkpoints": [
+    {
+      "file": "_CLOUD_HEADS/data/encoder/s2_ds_01_gru_t1_seed13.pt",
+      "name": "s2_ds_01_gru_t1_seed13.pt",
+      "origin": "S2-DS-01",
+      "status": "SHARED_ENCODER",
+      "downstream_may_load": true,
+      "reason": "the T1 encoder. This is the only checkpoint any other task should start from until S2-DS-08 demonstrates a joint objective that holds both tasks.",
+      "megabytes": 9.33,
+      "sha256": "f9e3606997044ad1f38ed74e95962f921550e0b6a477886e4a6145fd3dc55660"
+    },
+    {
+      "file": "S2-DS-01_GRU_T1_Model/output/common_initialization_seed13.pt",
+      "name": "common_initialization_seed13.pt",
+      "origin": "S2-DS-01",
+      "status": "COMMON_INITIALIZATION",
+      "downstream_may_load": true,
+      "reason": "untrained shared weights for a seed. R1 and R2 must both start here or their measured gap is partly a different random start.",
+      "megabytes": 9.33,
+      "sha256": "f8f0b8bd0d50704d5dec6a246195de827cf366c30a502da9ff9831be94b5b5e7"
+    },
+    {
+      "file": "S2-DS-01_GRU_T1_Model/output/common_initialization_seed2026.pt",
+      "name": "common_initialization_seed2026.pt",
+      "origin": "S2-DS-01",
+      "status": "COMMON_INITIALIZATION",
+      "downstream_may_load": true,
+      "reason": "untrained shared weights for a seed. R1 and R2 must both start here or their measured gap is partly a different random start.",
+      "megabytes": 9.33,
+      "sha256": "f060b4d6ed482756a757b9d20122950bd70baaf7df5321e558f70f69f6d15a40"
+    },
+    {
+      "file": "S2-DS-01_GRU_T1_Model/output/common_initialization_seed42.pt",
+      "name": "common_initialization_seed42.pt",
+      "origin": "S2-DS-01",
+      "status": "COMMON_INITIALIZATION",
+      "downstream_may_load": true,
+      "reason": "untrained shared weights for a seed. R1 and R2 must both start here or their measured gap is partly a different random start.",
+      "megabytes": 9.33,
+      "sha256": "5a127e4a133f4edb86055255c78b6204ab85bceef67b937606abc7bbec2fea0c"
+    },
+    {
+      "file": "S2-DS-01_GRU_T1_Model/output/s2_ds_01_gru_t1_seed13.pt",
+      "name": "s2_ds_01_gru_t1_seed13.pt",
+      "origin": "S2-DS-01",
+      "status": "SHARED_ENCODER",
+      "downstream_may_load": true,
+      "reason": "the T1 encoder. This is the only checkpoint any other task should start from until S2-DS-08 demonstrates a joint objective that holds both tasks.",
+      "megabytes": 9.33,
+      "sha256": "f9e3606997044ad1f38ed74e95962f921550e0b6a477886e4a6145fd3dc55660"
+    },
+    {
+      "file": "S2-DS-01_GRU_T1_Model/output/s2_ds_01_gru_t1_seed2026.pt",
+      "name": "s2_ds_01_gru_t1_seed2026.pt",
+      "origin": "S2-DS-01",
+      "status": "SHARED_ENCODER",
+      "downstream_may_load": true,
+      "reason": "the T1 encoder. This is the only checkpoint any other task should start from until S2-DS-08 demonstrates a joint objective that holds both tasks.",
+      "megabytes": 9.33,
+      "sha256": "26283a6de73146c5be02300ae90de8d57c3c4d357344a51110cab4e09a9691ca"
+    },
+    {
+      "file": "S2-DS-01_GRU_T1_Model/output/s2_ds_01_gru_t1_seed42.pt",
+      "name": "s2_ds_01_gru_t1_seed42.pt",
+      "origin": "S2-DS-01",
+      "status": "SHARED_ENCODER",
+      "downstream_may_load": true,
+      "reason": "the T1 encoder. This is the only checkpoint any other task should start from until S2-DS-08 demonstrates a joint objective that holds both tasks.",
+      "megabytes": 9.33,
+      "sha256": "ba970bb6f6db7d14de90add3b27c974191b41e68562e27b5a0da6c11d0e7c8b6"
+    },
+    {
+      "file": "S2-DS-06_T2_Purchase_Head/output/t2_1.pt",
+      "name": "t2_1.pt",
+      "origin": "S2-DS-06, frozen encoder - safe to reuse",
+      "status": "TASK_HEAD",
+      "downstream_may_load": true,
+      "reason": "a task-specific result. Load it to reproduce that task's number. Do NOT reuse its encoder for another task.",
+      "megabytes": 9.33,
+      "sha256": "92245b171c1bd1039ea004119396baa78e82a114fa54f0427badc6a1ce1ca132"
+    },
+    {
+      "file": "S2-DS-06_T2_Purchase_Head/output/t2_2.pt",
+      "name": "t2_2.pt",
+      "origin": "S2-DS-06, fine-tuned encoder",
+      "status": "DIAGNOSTIC_DESTRUCTIVE",
+      "downstream_may_load": false,
+      "reason": "its encoder was fine-tuned for one task and measurably destroys another. Valid as that task's own result; never valid as a shared starting point.",
+      "megabytes": 9.33,
+      "sha256": "e6e62d91c0ad8a69cf93220f2679b608c72fc59b86dc3e1e64562ebf2e550a31"
+    },
+    {
+      "file": "S2-DS-06_T2_Purchase_Head/output/t2_2_trained_on_published_mask.pt",
+      "name": "t2_2_trained_on_published_mask.pt",
+      "origin": "S2-DS-06, pre-correction, kept for the label ablation",
+      "status": "DIAGNOSTIC_DESTRUCTIVE",
+      "downstream_may_load": false,
+      "reason": "its encoder was fine-tuned for one task and measurably destroys another. Valid as that task's own result; never valid as a shared starting point.",
+      "megabytes": 9.33,
+      "sha256": "6c4648ab3c789758748f7ab3275f4d2c830ed7e4ae03e0b84910573d9bd09ecf"
+    },
+    {
+      "file": "S2-DS-06_T2_Purchase_Head/output/t2_finetuned_seed13.pt",
+      "name": "t2_finetuned_seed13.pt",
+      "origin": "S2-DS-06 seed confirmation",
+      "status": "DIAGNOSTIC_DESTRUCTIVE",
+      "downstream_may_load": false,
+      "reason": "its encoder was fine-tuned for one task and measurably destroys another. Valid as that task's own result; never valid as a shared starting point.",
+      "megabytes": 9.33,
+      "sha256": "9721c714d3a4abdc455ecf042bcd36a085ac23ecc2888b34f9ecc2ec3c978537"
+    },
+    {
+      "file": "S2-DS-06_T2_Purchase_Head/output/t2_finetuned_seed2026.pt",
+      "name": "t2_finetuned_seed2026.pt",
+      "origin": "S2-DS-06 seed confirmation",
+      "status": "DIAGNOSTIC_DESTRUCTIVE",
+      "downstream_may_load": false,
+      "reason": "its encoder was fine-tuned for one task and measurably destroys another. Valid as that task's own result; never valid as a shared starting point.",
+      "megabytes": 9.33,
+      "sha256": "7db522eef53a35b4400e93997fa3e1398f8ea3b84f5ee43ffa917a0966331fc1"
+    },
+    {
+      "file": "S2-DS-06_T2_Purchase_Head/output/t2_finetuned_seed42.pt",
+      "name": "t2_finetuned_seed42.pt",
+      "origin": "S2-DS-06 seed confirmation",
+      "status": "DIAGNOSTIC_DESTRUCTIVE",
+      "downstream_may_load": false,
+      "reason": "its encoder was fine-tuned for one task and measurably destroys another. Valid as that task's own result; never valid as a shared starting point.",
+      "megabytes": 9.33,
+      "sha256": "211d6519b04dd35d9f1fd33671e4d2aab05e006d9565ad6119dce8c5247c11da"
+    },
+    {
+      "file": "S2-DS-07_T3_Ranking_Head/output/t3_listwise.pt",
+      "name": "t3_listwise.pt",
+      "origin": "S2-DS-07, query-blind reranker",
+      "status": "DIAGNOSTIC_UNDERPERFORMING",
+      "downstream_may_load": false,
+      "reason": "kept as evidence of a losing rung. It scores below the model-free baseline it was meant to beat, so loading it downstream would be strictly worse than doing nothing.",
+      "megabytes": 9.33,
+      "sha256": "8083e96f362e011a95af32236b5a1777989fb7aab65f8265c3d6b467e5d33570"
+    },
+    {
+      "file": "S2-DS-07_T3_Ranking_Head/output/t3_pointwise.pt",
+      "name": "t3_pointwise.pt",
+      "origin": "S2-DS-07, query-blind reranker",
+      "status": "DIAGNOSTIC_UNDERPERFORMING",
+      "downstream_may_load": false,
+      "reason": "kept as evidence of a losing rung. It scores below the model-free baseline it was meant to beat, so loading it downstream would be strictly worse than doing nothing.",
+      "megabytes": 9.33,
+      "sha256": "18ffcba2b809149ca64fed65fb5a2a6ab1a4fd62a78cb850e7e7f853dbf7766d"
+    }
+  ],
+  "loadable": 8,
+  "refused": 7,
+  "unclassified": []
+}
