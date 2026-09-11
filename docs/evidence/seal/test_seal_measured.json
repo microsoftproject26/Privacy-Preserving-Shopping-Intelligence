@@ -1,0 +1,35 @@
+{
+  "measurement": "TEST exposure of the model-lane loader, measured not asserted",
+  "file": "Dataset/processed_raw_parquet_v1.parquet",
+  "row_groups": 85,
+  "test_boundary": "2019-10-27T00:00:00Z",
+  "windows": {
+    "TRAIN": {
+      "groups_opened": 59,
+      "groups_skipped_by_statistics": 26,
+      "rows_decoded": 29500000,
+      "test_rows_decoded": 0,
+      "test_rows_used": 0,
+      "straddling_row_groups": []
+    },
+    "VALIDATION": {
+      "groups_opened": 15,
+      "groups_skipped_by_statistics": 70,
+      "rows_decoded": 7500000,
+      "test_rows_decoded": 384203,
+      "test_rows_used": 0,
+      "straddling_row_groups": [
+        {
+          "row_group": 72,
+          "test_rows": 384203
+        }
+      ]
+    }
+  },
+  "before_this_change": {
+    "groups_opened": 85,
+    "rows_decoded": 42448764,
+    "note": "every window decoded the whole file, TEST included; test_rows_read:0 was a literal"
+  },
+  "conclusion": "TRAIN loading is now sealed by construction: zero TEST rows are decoded. VALIDATION decodes 384,203 TEST rows from one boundary-straddling row group and discards them before any filtering on users; none reach an array, a window, a label or a metric. A single monolithic Parquet cannot do better - a group spanning the boundary must be decoded to be filtered. Physically sealed per-split files would make it zero by construction."
+}

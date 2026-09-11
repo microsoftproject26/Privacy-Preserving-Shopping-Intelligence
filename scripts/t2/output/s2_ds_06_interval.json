@@ -1,0 +1,19 @@
+{
+  "task": "S2-DS-06",
+  "metric": "PR-AUC",
+  "labels": "corrected",
+  "checkpoint": "t2_2.pt",
+  "model_pr_auc": 0.142355,
+  "baseline_pr_auc": 0.075971,
+  "baseline": "smoothed item+category, alpha=100",
+  "gain": 0.066384,
+  "ci_low": 0.058234,
+  "ci_high": 0.075176,
+  "half_width": 0.008471,
+  "above_zero": true,
+  "clients": 42312,
+  "decisions": 392554,
+  "resamples": 1000,
+  "method": "paired client-cluster bootstrap; PR-AUC recomputed for both systems inside every resample, difference taken within the resample",
+  "supersedes": "half_width 0.0029, which was the max-minus-min of three seeds on one fixed set of clients and is not a confidence interval"
+}

@@ -1,0 +1,310 @@
+{
+  "task": "S2-DS-06",
+  "encoder": "s2_ds_01_gru_t1_seed13.pt",
+  "gate": {
+    "train_withheld_upstream": 0.1728,
+    "validation_withheld_upstream": 0.1795,
+    "restored": 70467,
+    "corrected_decisions": 392554,
+    "published_decisions": 322087,
+    "positives": 11297,
+    "corrected_base_rate": 0.0288,
+    "published_base_rate": 0.0351,
+    "corrected_prevalence_pr_auc": 0.0288,
+    "published_prevalence_pr_auc": 0.0351
+  },
+  "labels": "corrected - see S2-DS-06/labels.py",
+  "baselines_corrected": {
+    "prevalence (no signal)": 0.0288,
+    "TRAIN item popularity": 0.0657,
+    "smoothed item+category, alpha=100": 0.0757
+  },
+  "baselines_published_mask": {
+    "prevalence (no signal)": 0.0351,
+    "TRAIN category purchase rate": 0.0572,
+    "TRAIN item popularity": 0.0831,
+    "smoothed item+category, alpha=100": 0.0974
+  },
+  "best_simple": 0.0757,
+  "best_simple_published_mask": 0.0974,
+  "noise_floor": 0.0029,
+  "results": [
+    {
+      "rung": "1. frozen encoder, plain BCE",
+      "freeze_encoder": true,
+      "pos_weight": null,
+      "pr_auc": 0.1104,
+      "roc_auc": 0.7488,
+      "brier": 0.02685,
+      "log_loss": 0.11801,
+      "scored": 392554,
+      "positives": 11297,
+      "base_rate": 0.0288,
+      "mean_probability": 0.0298,
+      "on_published_mask": {
+        "pr_auc": 0.1405,
+        "roc_auc": 0.7598,
+        "brier": 0.03217,
+        "log_loss": 0.13588,
+        "scored": 322087,
+        "positives": 11297,
+        "base_rate": 0.0351,
+        "mean_probability": 0.0286
+      },
+      "gain_over_baseline": 0.0347,
+      "beats_noise": true
+    },
+    {
+      "rung": "2. fine-tuned encoder",
+      "freeze_encoder": false,
+      "pos_weight": null,
+      "pr_auc": 0.1424,
+      "roc_auc": 0.7923,
+      "brier": 0.02633,
+      "log_loss": 0.11282,
+      "scored": 392554,
+      "positives": 11297,
+      "base_rate": 0.0288,
+      "mean_probability": 0.0324,
+      "on_published_mask": {
+        "pr_auc": 0.1785,
+        "roc_auc": 0.8078,
+        "brier": 0.03124,
+        "log_loss": 0.12812,
+        "scored": 322087,
+        "positives": 11297,
+        "base_rate": 0.0351,
+        "mean_probability": 0.0306
+      },
+      "gain_over_baseline": 0.0667,
+      "beats_noise": true
+    }
+  ],
+  "curves": {
+    "1. frozen encoder, plain BCE": [
+      {
+        "epoch": 1,
+        "train_loss": 0.12174,
+        "pr_auc": 0.1095,
+        "roc_auc": 0.7496,
+        "brier": 0.02692,
+        "log_loss": 0.11816,
+        "seconds": 45.3
+      },
+      {
+        "epoch": 2,
+        "train_loss": 0.11626,
+        "pr_auc": 0.1104,
+        "roc_auc": 0.7488,
+        "brier": 0.02685,
+        "log_loss": 0.11801,
+        "seconds": 44.7
+      },
+      {
+        "epoch": 3,
+        "train_loss": 0.11466,
+        "pr_auc": 0.1098,
+        "roc_auc": 0.751,
+        "brier": 0.02688,
+        "log_loss": 0.11813,
+        "seconds": 45.2
+      },
+      {
+        "epoch": 4,
+        "train_loss": 0.11341,
+        "pr_auc": 0.1092,
+        "roc_auc": 0.7474,
+        "brier": 0.02689,
+        "log_loss": 0.11893,
+        "seconds": 46.6
+      },
+      {
+        "epoch": 5,
+        "train_loss": 0.1127,
+        "pr_auc": 0.1074,
+        "roc_auc": 0.7468,
+        "brier": 0.02693,
+        "log_loss": 0.11972,
+        "seconds": 45.9
+      },
+      {
+        "epoch": 6,
+        "train_loss": 0.11209,
+        "pr_auc": 0.1083,
+        "roc_auc": 0.7476,
+        "brier": 0.02691,
+        "log_loss": 0.11973,
+        "seconds": 45.1
+      },
+      {
+        "epoch": 7,
+        "train_loss": 0.11156,
+        "pr_auc": 0.1084,
+        "roc_auc": 0.7474,
+        "brier": 0.02689,
+        "log_loss": 0.12001,
+        "seconds": 54.4
+      },
+      {
+        "epoch": 8,
+        "train_loss": 0.11118,
+        "pr_auc": 0.1084,
+        "roc_auc": 0.7458,
+        "brier": 0.0269,
+        "log_loss": 0.12068,
+        "seconds": 45.9
+      },
+      {
+        "epoch": 9,
+        "train_loss": 0.11086,
+        "pr_auc": 0.1032,
+        "roc_auc": 0.7459,
+        "brier": 0.02696,
+        "log_loss": 0.1211,
+        "seconds": 49.1
+      },
+      {
+        "epoch": 10,
+        "train_loss": 0.1106,
+        "pr_auc": 0.1065,
+        "roc_auc": 0.746,
+        "brier": 0.02691,
+        "log_loss": 0.12125,
+        "seconds": 48.0
+      },
+      {
+        "epoch": 11,
+        "train_loss": 0.11044,
+        "pr_auc": 0.1056,
+        "roc_auc": 0.7456,
+        "brier": 0.02692,
+        "log_loss": 0.12134,
+        "seconds": 45.2
+      },
+      {
+        "epoch": 12,
+        "train_loss": 0.11037,
+        "pr_auc": 0.1057,
+        "roc_auc": 0.7456,
+        "brier": 0.02692,
+        "log_loss": 0.12144,
+        "seconds": 46.1
+      }
+    ],
+    "2. fine-tuned encoder": [
+      {
+        "epoch": 1,
+        "train_loss": 0.11428,
+        "pr_auc": 0.1416,
+        "roc_auc": 0.7927,
+        "brier": 0.0263,
+        "log_loss": 0.11265,
+        "seconds": 68.3
+      },
+      {
+        "epoch": 2,
+        "train_loss": 0.11011,
+        "pr_auc": 0.1424,
+        "roc_auc": 0.7923,
+        "brier": 0.02633,
+        "log_loss": 0.11282,
+        "seconds": 76.0
+      },
+      {
+        "epoch": 3,
+        "train_loss": 0.10848,
+        "pr_auc": 0.1402,
+        "roc_auc": 0.7939,
+        "brier": 0.02629,
+        "log_loss": 0.11255,
+        "seconds": 84.8
+      },
+      {
+        "epoch": 4,
+        "train_loss": 0.10728,
+        "pr_auc": 0.1385,
+        "roc_auc": 0.7879,
+        "brier": 0.02632,
+        "log_loss": 0.11337,
+        "seconds": 69.5
+      },
+      {
+        "epoch": 5,
+        "train_loss": 0.10635,
+        "pr_auc": 0.1386,
+        "roc_auc": 0.7857,
+        "brier": 0.02632,
+        "log_loss": 0.11401,
+        "seconds": 66.2
+      },
+      {
+        "epoch": 6,
+        "train_loss": 0.10567,
+        "pr_auc": 0.1398,
+        "roc_auc": 0.7862,
+        "brier": 0.02632,
+        "log_loss": 0.11452,
+        "seconds": 79.0
+      },
+      {
+        "epoch": 7,
+        "train_loss": 0.10502,
+        "pr_auc": 0.1387,
+        "roc_auc": 0.7842,
+        "brier": 0.02636,
+        "log_loss": 0.11486,
+        "seconds": 72.1
+      },
+      {
+        "epoch": 8,
+        "train_loss": 0.10453,
+        "pr_auc": 0.1393,
+        "roc_auc": 0.7827,
+        "brier": 0.02633,
+        "log_loss": 0.11535,
+        "seconds": 65.7
+      },
+      {
+        "epoch": 9,
+        "train_loss": 0.10405,
+        "pr_auc": 0.1368,
+        "roc_auc": 0.7823,
+        "brier": 0.02638,
+        "log_loss": 0.11586,
+        "seconds": 66.9
+      },
+      {
+        "epoch": 10,
+        "train_loss": 0.10367,
+        "pr_auc": 0.1373,
+        "roc_auc": 0.7823,
+        "brier": 0.02639,
+        "log_loss": 0.11614,
+        "seconds": 60.0
+      },
+      {
+        "epoch": 11,
+        "train_loss": 0.1034,
+        "pr_auc": 0.137,
+        "roc_auc": 0.7808,
+        "brier": 0.02641,
+        "log_loss": 0.11642,
+        "seconds": 56.4
+      },
+      {
+        "epoch": 12,
+        "train_loss": 0.10322,
+        "pr_auc": 0.1373,
+        "roc_auc": 0.7809,
+        "brier": 0.0264,
+        "log_loss": 0.11645,
+        "seconds": 55.8
+      }
+    ]
+  },
+  "test_seal": {
+    "test_rows_used": 0,
+    "measured": "_SEAL/test_seal_measured.json",
+    "note": "written by the run before the seal instrumentation landed; replaced with the measurement. TRAIN loading decodes zero TEST rows, VALIDATION decodes 384,203 from row group 72 and discards them. None reach an array, label or metric."
+  }
+}
