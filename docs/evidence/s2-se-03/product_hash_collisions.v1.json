@@ -1,0 +1,66 @@
+{
+  "schema": "ProductHashCollisionReport",
+  "version": 1,
+  "task_id": "S2-SE-03",
+  "input": {
+    "file": "fixtures/reference/item_catalog_v1.proposed.parquet",
+    "sha256": "25a69348c028d432e79965504a732d0d595173eb9e9c95a58dc71707844914d1",
+    "catalog_row_count": 113765,
+    "unique_product_count": 113765
+  },
+  "hashing": {
+    "algorithm": "blake2b-64-v1",
+    "seed": 13,
+    "padding_bucket": 0,
+    "item_namespace": "rees46:item:<catalog item>",
+    "candidate_bucket_counts": [
+      50000,
+      262145,
+      524289,
+      1048577
+    ]
+  },
+  "decision_status": "informational; final bucket count remains open for architecture review",
+  "results": [
+    {
+      "bucket_count": 50000,
+      "usable_buckets": 49999,
+      "unique_product_count": 113765,
+      "occupied_buckets": 44934,
+      "collided_buckets": 33223,
+      "excess_collisions": 68831,
+      "collision_rate": 0.605028,
+      "maximum_bucket_load": 11
+    },
+    {
+      "bucket_count": 262145,
+      "usable_buckets": 262144,
+      "unique_product_count": 113765,
+      "occupied_buckets": 92335,
+      "collided_buckets": 18538,
+      "excess_collisions": 21430,
+      "collision_rate": 0.188371,
+      "maximum_bucket_load": 6
+    },
+    {
+      "bucket_count": 524289,
+      "usable_buckets": 524288,
+      "unique_product_count": 113765,
+      "occupied_buckets": 102202,
+      "collided_buckets": 10765,
+      "excess_collisions": 11563,
+      "collision_rate": 0.101639,
+      "maximum_bucket_load": 5
+    },
+    {
+      "bucket_count": 1048577,
+      "usable_buckets": 1048576,
+      "unique_product_count": 113765,
+      "occupied_buckets": 107683,
+      "collided_buckets": 5880,
+      "excess_collisions": 6082,
+      "collision_rate": 0.053461,
+      "maximum_bucket_load": 4
+    }
+  ]
+}
