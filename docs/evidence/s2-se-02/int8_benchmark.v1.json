@@ -1,0 +1,72 @@
+{
+  "schema": "Int8QuantizationComparison",
+  "version": 1,
+  "task_id": "S2-SE-02",
+  "method": "dynamic, QInt8 weights, no calibration set",
+  "acceptance_rule": {
+    "size_ratio_at_least": 2.0,
+    "max_relative_quality_loss": 0.01,
+    "must_not_be_slower": true,
+    "source": "CP-DEPLOY Decision 1"
+  },
+  "fp32": {
+    "serialized_bytes": 14678873,
+    "latency": {
+      "median_ms": 1.222800012328662,
+      "p95_ms": 2.2754999808967113,
+      "repetitions": 30,
+      "warmups": 5,
+      "threads": 1
+    }
+  },
+  "int8": {
+    "serialized_bytes": 4003834,
+    "latency": {
+      "median_ms": 1.1418500071158633,
+      "p95_ms": 2.901600004406646,
+      "repetitions": 30,
+      "warmups": 5,
+      "threads": 1
+    }
+  },
+  "size_ratio": 3.6662,
+  "latency_ratio_fp32_over_int8": 1.0709,
+  "max_output_disagreement": {
+    "t1_logits": 0.09075649827718735,
+    "t2_logit": 0.07650208473205566,
+    "t3_scores": 0.0
+  },
+  "quality_note": "Output disagreement is not a metric delta. A per-task quality delta needs the frozen evaluation set, which carries user_id and is not in this repository, so CP-DEPLOY should treat this as a bound and not as the 1% headline-metric check its rule names.",
+  "meets_size_rule": true,
+  "meets_speed_rule": true,
+  "seed": 13,
+  "shapes_compared": [
+    {
+      "rows": 4,
+      "history": 6,
+      "candidates": 5
+    },
+    {
+      "rows": 1,
+      "history": 6,
+      "candidates": 5
+    },
+    {
+      "rows": 8,
+      "history": 12,
+      "candidates": 20
+    },
+    {
+      "rows": 4,
+      "history": 1,
+      "candidates": 5
+    }
+  ],
+  "environment": {
+    "onnxruntime": "1.24.1",
+    "torch": "2.13.0+cpu",
+    "provider": "CPUExecutionProvider",
+    "machine": "AMD64",
+    "processor_note": "latency is machine-specific; the ratio is the portable figure"
+  }
+}
