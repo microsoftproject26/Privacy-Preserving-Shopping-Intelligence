@@ -1,0 +1,81 @@
+{
+  "all_metric_records_validated": true,
+  "decision_document_ref": {
+    "sha256": "7723242ba1cd34fdfaaa4750fddf61c60254d86110974aec2ed7d5bfc4e7d439",
+    "uri": "docs/decisions/t1-evaluator-edge-semantics.md"
+  },
+  "fixture_validation": {
+    "all_metrics_matched_expected": true,
+    "next_distinct": {
+      "accuracy_at_1_macro": 0.1111111111111111,
+      "accuracy_at_1_micro": 0.2,
+      "client_count": 3,
+      "decision_count": 5,
+      "mrr_at_20_macro": 0.32222222222222224,
+      "mrr_at_20_micro": 0.36,
+      "status": "AVAILABLE"
+    },
+    "overall": {
+      "accuracy_at_1_macro": 0.20833333333333331,
+      "accuracy_at_1_micro": 0.2857142857142857,
+      "client_count": 4,
+      "decision_count": 7,
+      "mrr_at_20_macro": 0.4083333333333334,
+      "mrr_at_20_micro": 0.44761904761904764,
+      "status": "AVAILABLE"
+    },
+    "tie_cases": [
+      {
+        "actual_rank": 2,
+        "expected_rank": 2,
+        "name": "lower_code_wins_tie",
+        "pass": true,
+        "target_code": 3
+      },
+      {
+        "actual_rank": 1,
+        "expected_rank": 1,
+        "name": "target_is_lower_code_in_tie",
+        "pass": true,
+        "target_code": 2
+      },
+      {
+        "actual_rank": 5,
+        "expected_rank": 5,
+        "name": "all_equal_rank_is_code_plus_one",
+        "pass": true,
+        "target_code": 4
+      }
+    ]
+  },
+  "freeze_status": "ACCEPTED",
+  "privacy_check": {
+    "no_raw_client_ids": true,
+    "real_client_ids_in_public_evidence": 0
+  },
+  "real_validation_preflight": {
+    "all_labels_integral_in_range": true,
+    "all_rows_valid_contract": true,
+    "category_changed_row_count": 77457,
+    "category_count": 588,
+    "file_path": "data/examples/INTERNAL_DO_NOT_UPLOAD_task_examples_t1_v1.proposed.parquet",
+    "file_sha256": "e5e85225103717413306ff056ed477848a39f2bbf72486708a6b724673984aeb",
+    "label_max": 587,
+    "label_min": 0,
+    "row_count": 438185,
+    "unique_client_count": 31576
+  },
+  "schema": "t1_evaluator_validation_v1",
+  "sealed_test_accessed": false,
+  "source_files_sha256": {
+    "config/evaluation/t1_evaluator.v1.json": "0560e7d62114b4b891d7a5b953f431e1d43341f33550004db91e7744f4ad17bc",
+    "data/examples/INTERNAL_DO_NOT_UPLOAD_task_examples_t1_v1.proposed.parquet": "e5e85225103717413306ff056ed477848a39f2bbf72486708a6b724673984aeb",
+    "docs/decisions/ADR-001-evaluation-protocol.md": "822c0243cd2a368c4ec421a644cddbf75c1dfcfa588e100339acdd2976fe3eac",
+    "docs/evidence/s1-d1-ds-07/vocabulary_v1.proposed.json": "07e7c0618f550b5316a32a168fcf7f240703d6a362f9ec27449bbdbf98f63bd7",
+    "docs/evidence/s1-ds-09/g1_gate_v1.frozen.json": "12b4b8c397dfacb9fb04f87dbd50e1efdcf5e76c6428b6164ab875287671446b",
+    "fixtures/evaluation/t1_hand_worked.v1.json": "5fb5123f85259f0571d3d5ceebd8509a8d1bf5bdddb05f0a11f9b39055e89e1e",
+    "ppsi/evaluation/t1.py": "2de36e38dd4c42f2f56a5440118c77ec02dcf568a8b756497ab9d7ef72cac408"
+  },
+  "status": "PASS",
+  "version": "1"
+}

@@ -1,0 +1,138 @@
+{
+  "actual_communication_status": "PENDING_50_INSTRUMENTATION",
+  "artifact_kind": "FIXTURE_PROOF",
+  "boundary_check_count": 6,
+  "boundary_checks": [
+    {
+      "check_id": "inclusive_threshold_counts",
+      "match": true
+    },
+    {
+      "check_id": "below_threshold_breaks_streak",
+      "match": true
+    },
+    {
+      "check_id": "target_needs_single_observation",
+      "match": true
+    },
+    {
+      "check_id": "cadence_gap_breaks_streak",
+      "match": true
+    },
+    {
+      "check_id": "missing_bytes_are_pending_not_zero",
+      "match": true
+    },
+    {
+      "check_id": "absent_boundary_is_pending_crossing",
+      "match": true
+    }
+  ],
+  "byte_oracle": {
+    "actual_measured_flower_traffic": false,
+    "artifact_kind": "FIXTURE_PROOF",
+    "download_bytes": 300,
+    "match": true,
+    "status": "AVAILABLE",
+    "total_bytes": 360,
+    "upload_bytes": 60
+  },
+  "case_count": 8,
+  "cases": [
+    {
+      "case_id": "inclusive_confirmation",
+      "confirmation_round": 3,
+      "first_round": 1,
+      "match": true,
+      "self_status": "REACHED",
+      "target_round": 1,
+      "target_status": "REACHED"
+    },
+    {
+      "case_id": "single_spike",
+      "confirmation_round": null,
+      "first_round": null,
+      "match": true,
+      "self_status": "NOT_REACHED",
+      "target_round": 2,
+      "target_status": "REACHED"
+    },
+    {
+      "case_id": "sustained",
+      "confirmation_round": 5,
+      "first_round": 3,
+      "match": true,
+      "self_status": "REACHED",
+      "target_round": 2,
+      "target_status": "REACHED"
+    },
+    {
+      "case_id": "nan_gap",
+      "confirmation_round": 5,
+      "first_round": 3,
+      "match": true,
+      "self_status": "REACHED",
+      "target_round": 1,
+      "target_status": "REACHED"
+    },
+    {
+      "case_id": "cadence_gap",
+      "confirmation_round": 5,
+      "first_round": 3,
+      "match": true,
+      "self_status": "REACHED",
+      "target_round": 1,
+      "target_status": "REACHED"
+    },
+    {
+      "case_id": "short",
+      "confirmation_round": null,
+      "first_round": null,
+      "match": true,
+      "self_status": "INSUFFICIENT_VALID_OBSERVATIONS",
+      "target_round": 1,
+      "target_status": "REACHED"
+    },
+    {
+      "case_id": "zero",
+      "confirmation_round": null,
+      "first_round": null,
+      "match": true,
+      "self_status": "NO_POSITIVE_REFERENCE",
+      "target_round": null,
+      "target_status": "NOT_REACHED"
+    },
+    {
+      "case_id": "pending_r1",
+      "confirmation_round": 3,
+      "first_round": 1,
+      "match": true,
+      "self_status": "REACHED",
+      "target_round": null,
+      "target_status": "PENDING_R1"
+    }
+  ],
+  "evaluation_split": "VALIDATION",
+  "fixture_ref": {
+    "sha256": "d02a331c77b28fc5b8e927facfff07a82a73101ac66c6867a49e67bb2e3e14cf",
+    "uri": "fixtures/federated/convergence_cases.v1.json"
+  },
+  "limitations": [
+    "Fixture arithmetic only; no model was trained and no curve was measured.",
+    "Byte totals are a hand-worked oracle, not measured Flower wire traffic.",
+    "Self convergence is retrospective and must not drive online early stopping."
+  ],
+  "metric_id": "t1.next_distinct.mrr_at_20.macro",
+  "module_ref": {
+    "sha256": "36874c26280136f8b67c44cd18c60ca87444f3c2a0edf09408a8d01c9825afe0",
+    "uri": "ppsi/federated/convergence.py"
+  },
+  "policy_ref": {
+    "sha256": "2e611be1547eca3bfe72c878fc3e0b854fc5edfc4a8c95a16c571c5bd52eff84",
+    "uri": "config/federated/convergence_policy.v1.json"
+  },
+  "real_r1_status": "PENDING_R1",
+  "schema": "convergence_validation_v1",
+  "status": "PASS",
+  "version": "1"
+}

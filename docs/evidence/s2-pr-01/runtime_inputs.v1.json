@@ -1,0 +1,97 @@
+{
+  "base_client_manifest": {
+    "client_count": 388789,
+    "logical_content_sha256": "a96fb92fc6c43e458f9d8692491c7927e49d17741cb37e72d303420734820764",
+    "note": "Frozen T1 examples are a smaller measurement slice of C1; these 388789 users are not the T1 example population.",
+    "uri": "data/protocol/INTERNAL_DO_NOT_UPLOAD_client_manifest_v1.parquet"
+  },
+  "benchmark_pool": {
+    "eligible_client_count": 29740,
+    "excluded_from_benchmark_only": 66250,
+    "minimum_train_examples": 32,
+    "note": "An explicit benchmark subset for comparable runtime work. Not a new cohort, not a FedAvg eligibility policy, and never TEST-informed.",
+    "order": "ascending_opaque_client_id_nested_prefixes",
+    "pool_sufficient_for_largest_point": true,
+    "population_points": [
+      1000,
+      2500,
+      5000
+    ]
+  },
+  "population_selection_digests": {
+    "1000": {
+      "0": "003448c452e81565da7921b9ec535169f311daf8c8056a63b49753d11cb6218e",
+      "1": "9aa583a0175ba9139b5d227388cda6e2e75421a7bce95a4d29b0b0dcd376685c",
+      "2": "6bb8454af822c26a5d5f3c5dffffbf836330818613c0823be04260b4f5f08596",
+      "3": "76bea7b2773bd3de5f08b864a1f355ded6dbbe1e72d5971cee2bdc4befb97000",
+      "4": "cad46c8738f62dc9ab724411b409063f4a0da58a99a4d7af2a4ffd64fb4ebe93",
+      "5": "d7f4325c71aa32fbfc500996b7c92c2910a8ef81301fa0d6ef0c039863953c25"
+    },
+    "2500": {
+      "0": "75e303f9f7505bb0e8c7c479e0aedc7228ed82f1daa5510b6ccbf9d7a5231340",
+      "1": "c578fb6261166b804f13531a6a148683e04b953bb5421c5f9424bb34ab14a512",
+      "2": "582d488343f77fc767100996e38ba1c4672c4463127dd42ea39ebca0d3cdac50",
+      "3": "2d58868812efaca64facfa7fb1e577f701b6e3cb32ad0b8a239a57fca5900521",
+      "4": "3355072c9982a52ab88d6680c869ca9d82d5865367497eeb05b2c1a6121539ba",
+      "5": "8abdddc68d391ca6ba11676304e1c7f3ada90b06206696e7505891e90d453fe1"
+    },
+    "5000": {
+      "0": "7e81145bc7fecc091351cd34e2c5f33738c5de4fea4d0c556855a668e460fa66",
+      "1": "658cfb6b35ad74ece9676f62bba44510f1dbea63f1cd68b58e48d8282f912cd8",
+      "2": "6e2cfeefa972456a1d7fc1580a81bc782245bb9bf8fbd4b31a9d8f850282c0f3",
+      "3": "bfff406b839bc851dddb19d8d4b0657fa53e36783e192d12815a351e15d18c2d",
+      "4": "e58201ada8654ae58c91d0fedcc3803d759ad1b82ace42bd771d9ab27a46644c",
+      "5": "acba982a01b867c2c5cdf46a10c9751380177589d03634e47d272e88f873eb79"
+    }
+  },
+  "prepared_slices": {
+    "train_rows_per_client": 32,
+    "train_slice": {
+      "sha256": "3f897abf9f2fd915391d78e4d52eec198f2f3ffa995a949433f79c821bf29ba4",
+      "uri": "data/examples/INTERNAL_DO_NOT_UPLOAD_fl_runtime_t1_train_v1.parquet"
+    },
+    "union_client_count": 331,
+    "validation_rows": 256,
+    "validation_slice": {
+      "sha256": "5ebe70f4759ea3ea785c1a5f00f305e51924a5e54cc7324ee24ffa9193a45735",
+      "uri": "data/examples/INTERNAL_DO_NOT_UPLOAD_fl_runtime_t1_validation_v1.parquet"
+    }
+  },
+  "purpose": "NON_SCIENTIFIC_FL_RUNTIME_BENCHMARK",
+  "schema": "fl_runtime_inputs_v1",
+  "scientific": false,
+  "source_inputs": {
+    "cohort_manifest": {
+      "sha256": "32d4b8ce4bb84f789b1baa525f50349be79e60920ad67f5e1bdfdcab9fa6e9d2",
+      "uri": "data/protocol/INTERNAL_DO_NOT_UPLOAD_cohort_manifest_v1.proposed.parquet"
+    },
+    "t1_train": {
+      "sha256": "42b1617c1d2f1b5a2d2f1020d4c896d43891f4bf00639782955a032eb4fa60bb",
+      "uri": "data/examples/INTERNAL_DO_NOT_UPLOAD_task_examples_t1_train_v1.proposed.parquet"
+    },
+    "t1_validation": {
+      "sha256": "e5e85225103717413306ff056ed477848a39f2bbf72486708a6b724673984aeb",
+      "uri": "data/examples/INTERNAL_DO_NOT_UPLOAD_task_examples_t1_v1.proposed.parquet"
+    },
+    "vocabulary": {
+      "sha256": "07e7c0618f550b5316a32a168fcf7f240703d6a362f9ec27449bbdbf98f63bd7",
+      "uri": "docs/evidence/s1-d1-ds-07/vocabulary_v1.proposed.json"
+    }
+  },
+  "taskexample_counts_before_benchmark_filter": {
+    "client_count": 95990,
+    "max": 1216,
+    "mean": 32.438941556412125,
+    "measure": "T1_TRAIN_TASKEXAMPLE_COUNTS_NOT_RAW_EVENT_HISTORY",
+    "min": 1,
+    "p50": 19,
+    "p90": 71,
+    "p95": 104,
+    "p99": 213
+  },
+  "version": "1",
+  "workload_ref": {
+    "sha256": "20d1cddc322ad6ff0b26cf09101c01fb763f2a506b8f0b28f1c8d93f2bb45ddd",
+    "uri": "config/federated/fl_runtime_workload.v1.json"
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "artifacts": [
+    {
+      "artifact_schema": "runtime_process_tree_measurement_v1",
+      "artifact_version": "1",
+      "logical_id": "fl_runtime_measurement_v1",
+      "schema": "artifact_ref_v1",
+      "sha256": "3835fb1fadef8d0ce48397162b061e1ec4b98c81176a754341057bf4dd574687",
+      "uri": "docs/evidence/s2-pr-01/trials/n5000-m20-c2-rep2/runtime_measurement.v1.json",
+      "version": "1"
+    }
+  ],
+  "attempt": 1,
+  "compatibility": {
+    "canonical_data_contract_sha256": "67397fe66fa7a82084cf1ba19c834e3b501fc41e248893a1d839e4335ff98e32",
+    "cohort_manifest_sha256": "32d4b8ce4bb84f789b1baa525f50349be79e60920ad67f5e1bdfdcab9fa6e9d2",
+    "common_initialization_sha256": "dcc834b304db6dcf6de98e7336ec0b40ad2cf165855c6bd39a6c89404843cb34",
+    "environment_lock_sha256": "cd86bcdb34077eaedd3ccf84e8ddc52a6424271cfd35f27ba0b7f32d7cbdf0dd",
+    "evaluation_cohorts": [
+      "C1"
+    ],
+    "evaluation_manifest_sha256": "e5e85225103717413306ff056ed477848a39f2bbf72486708a6b724673984aeb",
+    "evaluation_protocol_sha256": "822c0243cd2a368c4ec421a644cddbf75c1dfcfa588e100339acdd2976fe3eac",
+    "evaluator_sha256": "601aadc2286032f6692b4707ba5e7b1284fac21fd8154b40e434ded4b9e8cf6c",
+    "git_sha": "ac7bd905e58ccdea3f0c8f30e5c94325772ad8b9",
+    "model_config_sha256": "20d1cddc322ad6ff0b26cf09101c01fb763f2a506b8f0b28f1c8d93f2bb45ddd",
+    "objective_config_sha256": "e374e820625b601d855ceca1b91cefb460d16e1e74349d2c8dcb0a155591c169",
+    "representation_sha256": "07e7c0618f550b5316a32a168fcf7f240703d6a362f9ec27449bbdbf98f63bd7",
+    "schema": "comparison_compatibility_v1",
+    "seed": 13,
+    "shared_trainer_core_sha256": "42660ba16750ebb64afa1a13f82e93d1264c2529b053670c1ab73d11747b2e4d",
+    "source_dataset_sha256": "05302e655ea29091075181c5311c92544f751d43ff3e750ea12bb1c5a5005a52",
+    "split_manifest_sha256": "67397fe66fa7a82084cf1ba19c834e3b501fc41e248893a1d839e4335ff98e32",
+    "task_examples_manifest_sha256": "05302e655ea29091075181c5311c92544f751d43ff3e750ea12bb1c5a5005a52",
+    "tasks": [
+      "T1"
+    ],
+    "training_cohort": "C1",
+    "version": "1"
+  },
+  "config_ref": {
+    "artifact_schema": "experiment_config_v1",
+    "artifact_version": "1",
+    "logical_id": "fl_runtime_resolved_config_v1",
+    "schema": "artifact_ref_v1",
+    "sha256": "405938228619140ac166693bb54d45e3dc3748ab9de3c3fe3b8b8fd001a09cf1",
+    "uri": "docs/evidence/s2-pr-01/trials/n5000-m20-c2-rep2/experiment_config.v1.json",
+    "version": "1"
+  },
+  "ended_at_utc": "2026-09-10T22:55:53Z",
+  "environment_lock_ref": {
+    "artifact_schema": "uv_lock_v1",
+    "artifact_version": "1",
+    "logical_id": "uv_lock_v1",
+    "schema": "artifact_ref_v1",
+    "sha256": "cd86bcdb34077eaedd3ccf84e8ddc52a6424271cfd35f27ba0b7f32d7cbdf0dd",
+    "uri": "uv.lock",
+    "version": "1"
+  },
+  "evaluation_cohorts": [
+    "C1"
+  ],
+  "federated_metadata": {
+    "aggregation_weight_policy": "contributing_rows_smoke_weight_v1_NON_SCIENTIFIC",
+    "clients_per_round": 20,
+    "num_rounds": 6,
+    "orchestration_type": "FEDAVG",
+    "sampler_version": "client_sampler_v1"
+  },
+  "git_sha": "ac7bd905e58ccdea3f0c8f30e5c94325772ad8b9",
+  "initialization": {
+    "common_initialization_ref": {
+      "artifact_schema": "fl_runtime_initialization_v1",
+      "artifact_version": "1",
+      "logical_id": "fl_runtime_initialization_v1",
+      "schema": "artifact_ref_v1",
+      "sha256": "dcc834b304db6dcf6de98e7336ec0b40ad2cf165855c6bd39a6c89404843cb34",
+      "uri": "docs/evidence/s2-pr-01/runtime_initialization.v1.json",
+      "version": "1"
+    },
+    "kind": "COMMON_INITIALIZATION"
+  },
+  "metrics": [
+    {
+      "cohort": "C1",
+      "direction": "MINIMIZE",
+      "metric_id": "smoke_t1_validation_cross_entropy_non_scientific",
+      "schema": "metric_record_v1",
+      "support": 256,
+      "task": "T1",
+      "unit": "UNITLESS",
+      "value": 6.3329097628593445,
+      "version": "1"
+    },
+    {
+      "cohort": "C1",
+      "direction": "NEUTRAL",
+      "metric_id": "smoke_t1_validation_accuracy_at_1_non_scientific",
+      "schema": "metric_record_v1",
+      "support": 256,
+      "task": "T1",
+      "unit": "FRACTION",
+      "value": 0.0,
+      "version": "1"
+    }
+  ],
+  "regime": "R2A",
+  "resume_count": 0,
+  "run_id": "run-v1__r2a__t1__c1__s13__cfg405938228619__a1",
+  "schema": "experiment_result_v1",
+  "seed": 13,
+  "started_at_utc": "2026-09-10T22:55:38Z",
+  "state": "SUCCEEDED",
+  "system_measurements": {
+    "refs": [
+      {
+        "artifact_schema": "runtime_process_tree_measurement_v1",
+        "artifact_version": "1",
+        "logical_id": "fl_runtime_measurement_v1",
+        "schema": "artifact_ref_v1",
+        "sha256": "3835fb1fadef8d0ce48397162b061e1ec4b98c81176a754341057bf4dd574687",
+        "uri": "docs/evidence/s2-pr-01/trials/n5000-m20-c2-rep2/runtime_measurement.v1.json",
+        "version": "1"
+      }
+    ],
+    "schema": "system_measurement_reference_set_v1",
+    "status": "AVAILABLE",
+    "version": "1"
+  },
+  "tasks": [
+    "T1"
+  ],
+  "training_cohort": "C1",
+  "version": "1"
+}
