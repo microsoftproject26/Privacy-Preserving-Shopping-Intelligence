@@ -1,0 +1,14 @@
+# Normalize text to LF in the repository regardless of the contributor's platform.
+# Without this, a Windows checkout rewrites every text file to CRLF and git reports
+# files as modified that nobody touched. It also matters for integrity: several
+# artifacts are identified by a SHA-256 over their bytes, and a line ending that
+# changes per platform changes the digest.
+* text=auto eol=lf
+
+# Binary fixtures and evidence must never be line-ended.
+*.parquet binary
+*.bin binary
+*.onnx binary
+*.png binary
+*.pdf binary
+*.ipynb -text
