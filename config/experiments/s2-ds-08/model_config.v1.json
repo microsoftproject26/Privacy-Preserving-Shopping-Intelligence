@@ -41,11 +41,5 @@
       "head_version": "1",
       "output_dim": 1
     }
-  ],
-  "validation_status": {
-    "validated": false,
-    "blocked_by": "S2-ALL-CP-ARCH (#42), open",
-    "reason": "scripts/experiments/schemas.py:_ARCHITECTURE_VALIDATORS refuses any architecture CP-ARCH has not ratified. S2-DS-05 supplies the comparison that checkpoint needs: GRU 0.3477, LSTM 0.3471, transformer 0.3440, TCN 0.3398 under one frozen protocol.",
-    "what_unblocks_it": "CP-ARCH registers shared_session_encoder_v1 and freezes ModelConfig v1; this record then validates with no change."
-  }
+  ]
 }

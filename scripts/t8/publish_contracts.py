@@ -33,10 +33,10 @@ import subprocess
 import sys
 from pathlib import Path
 
-PROJECT = Path(__file__).resolve().parent.parent
+PROJECT = Path(__file__).resolve().parents[2]
 TASK = Path(__file__).resolve().parent
 OUTPUT = TASK / "output"
-REPO = PROJECT / "Repo_S2DS01"
+REPO = PROJECT
 sys.path.insert(0, str(REPO))
 
 MODEL_CONFIG_ID = "s2_ds_08_shared_gru_t1_t2_v1"
@@ -231,31 +231,17 @@ def main() -> None:
     contracts = REPO / "config" / "experiments" / "s2-ds-08"
     contracts.mkdir(parents=True, exist_ok=True)
 
-    from scripts.experiments.schemas import validate_common_initialization
+    from scripts.experiments.schemas import (
+        validate_common_initialization,
+        validate_model_config,
+    )
 
-    # `validate_model_config` is deliberately NOT called. Its architecture registry carries
-    # `# gru_multitask is unsupported until CP-ARCH`, so it refuses this architecture by
-    # design - `S2-ALL-CP-ARCH` (#42) is the checkpoint that ratifies it, and that issue is
-    # open. Adding our architecture to the registry to make validation pass would be walking
-    # through a gate another task owns.
-    #
-    # So the record is emitted with its status stated. When CP-ARCH registers
-    # `shared_session_encoder_v1`, this file validates unchanged.
     mc = model_config()
-    mc["validation_status"] = {
-        "validated": False,
-        "blocked_by": "S2-ALL-CP-ARCH (#42), open",
-        "reason": ("scripts/experiments/schemas.py:_ARCHITECTURE_VALIDATORS refuses any "
-                   "architecture CP-ARCH has not ratified. S2-DS-05 supplies the comparison "
-                   "that checkpoint needs: GRU 0.3477, LSTM 0.3471, transformer 0.3440, "
-                   "TCN 0.3398 under one frozen protocol."),
-        "what_unblocks_it": ("CP-ARCH registers shared_session_encoder_v1 and freezes "
-                             "ModelConfig v1; this record then validates with no change."),
-    }
+    validate_model_config(mc)
     (contracts / "model_config.v1.json").write_text(
         json.dumps(mc, indent=2) + "\n", encoding="utf-8")
     print(f"  ModelConfig v1      -> {mc['model_config_id']}  "
-          f"({mc['architecture_parameters']['parameter_count']:,} parameters)")
+          f"({mc['architecture_parameters']['parameter_count']:,} parameters, validated)")
 
     records, provenance = common_initializations(
         sha, model_config_ref(contracts / "model_config.v1.json"))
