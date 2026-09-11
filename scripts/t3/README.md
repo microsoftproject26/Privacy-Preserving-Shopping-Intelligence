@@ -1,28 +1,37 @@
 # S2-DS-07 — the T3 candidate-ranking head
 
-> ## ⚠ The verdict below is withdrawn — 2026-09-11, second review
+> ## ⚠ Two corrections — 2026-09-11, after a second review
 >
-> **The reranker this task measured could not see the query item.** `t3_scores` was
-> `session · candidate`; the query vector was computed and used only by the T2 head.
-> Measured by permuting every query tensor across a batch: T3 scores moved by **exactly
-> `0.0`** while the T2 control moved by `0.81`.
+> **1. The reranker this task first measured could not see the query item.** `t3_scores`
+> was `session · candidate`; the query vector was computed and used only by the T2 head.
+> Measured by permuting every query tensor across a batch: T3 moved by **exactly `0.0`**
+> while the T2 control moved by `0.81`. The frozen retrieval order *is* co-occurrence
+> between the query item and each candidate, so that model could not represent what the
+> baseline does, let alone beat it. **The `0.2505` result below is evidence about a dot
+> product, not about T3.**
 >
-> That makes the comparison unwinnable rather than merely hard. The frozen retrieval order
-> **is** co-occurrence between the query item and each candidate, so a model blind to the
-> query cannot represent what the baseline does, let alone improve on it.
+> A query-aware cross-feature reranker has since been built and run on three seeds with a
+> frozen encoder and an acceptance bar fixed beforehand. It does better — peak `0.2599`
+> against the query-blind `0.2505` — and **still loses to the frozen order's `0.2707` on
+> every seed.** The deliverable is unchanged; the reason for it is not.
 >
-> **What the `0.2505` vs `0.2707` result actually shows:** a session-candidate dot-product
-> residual does not beat the retrieval order. **What it does not show:** that T3 has no
-> learnable signal, or that a query-aware reranker would fail. The stronger claim was ours
-> and it was not supported.
+> **2. The explanation given for that failure was wrong, and the correction matters more
+> than the failure.** This file used to say the retrieval order leaves little for a reranker
+> to add. Measured: **52.27% of evaluable queries have the engaged product in the candidate
+> list but ranked outside the top 5**, and a perfect reranking of those same lists scores
+> `0.8782` macro against the frozen order's `0.2707`. **The contest is worth `+0.6075` and
+> our models have taken none of it.** The headroom is enormous and the failure is ours.
 >
-> A query-aware cross-feature reranker is now built and under test, and the tests
+> **Still outstanding before a third attempt:** the candidate lists are built only for query
+> items that had a VALIDATION positive, so 6.14% of TRAIN queries can drive a listwise loss.
+> The review asks for them to be rebuilt from TRAIN anchors first, and that is upstream
+> (`FINDINGS_FOR_S1_LANE.md`). The experiment above ran before that fix, and is caveated by
+> it.
+>
 > `test_t3_uses_the_query_item` and `test_t3_starts_exactly_at_the_retrieval_order` exist so
-> this cannot recur. **Everything below is retained for the record; do not quote the verdict
-> until this notice is replaced.**
+> the first defect cannot recur.
 
 ---
-
 
 **The task:** given a query item, rank its frozen candidate list so the products the user
 actually engages with next come first.
@@ -105,27 +114,52 @@ the finding.
 
 ---
 
-## Why learning fails here
+## Why learning fails here — and the first explanation was wrong
 
-Not a mystery, and worth stating precisely because it tells `S2-DS-08` where the difficulty
-actually is.
+The original version of this section said the frozen retrieval order leaves little to add,
+and offered sparse training signal as the reason. **Measuring it refutes that**
+(`miss_decomposition.py`, `output/s2_ds_07_miss_decomposition.json`). Where the 18,814
+evaluable queries actually stand under the frozen ordering:
+
+| | queries | |
+|---|---:|---:|
+| no candidate list at all | 0 | 0.00% |
+| retrieval miss — list exists, engaged item absent | 3,207 | 17.05% |
+| **present, but ranked outside the top 5** | **9,835** | **52.27%** |
+| already inside the top 5 | 5,772 | 30.68% |
+
+Only the third row is a reranking problem, and it is **over half of all evaluable queries**.
+The engaged product is sitting in the candidate list, somewhere between rank 5 and rank 99,
+and the frozen order has buried it.
+
+| | macro NDCG@5 |
+|---|---:|
+| frozen retrieval order | 0.2707 |
+| **a perfect reranking of the same lists** | **0.8782** |
+| best learned attempt so far | 0.2599 |
+
+**The contest is worth `+0.6075` macro and our rerankers have captured none of it.** That is
+a much less comfortable conclusion than "there was nothing to win", and it is the one the
+measurement supports: the headroom is enormous, the task is genuinely learnable in principle,
+and two architectures have now failed to take any of it.
+
+Note also that `0.8782` and not `0.8795` is the number a reranker should be measured against.
+The oracle ceiling includes the 17.05% retrieval never returned, which no ranking of the
+returned list can reach.
+
+### What is known about the difficulty
 
 | | |
 |---|---:|
 | TRAIN queries | 1,740,433 |
-| …with **any** scoring positive | **129,685 — 7.5%** |
-| …with no candidate list at all | 263,112 — 15.1% |
+| …with a retrieved positive, so a listwise loss can use them | **106,910 — 6.14%** |
 | candidates carrying a non-zero gain | 1.9% |
-| VALIDATION clients with a scoring query | 4,591 of 29,330 |
+| candidates per query | 100, all same-category and co-occurring |
 
-So the model is asked to improve on an ordering that **already encodes TRAIN co-occurrence**,
-using a signal present in 7.5% of its training queries, over candidate lists that are missing
-for a further 15.1%. The frozen retrieval order is not a weak baseline dressed up as one — it
-is a strong, directly-fitted statistic, and 100 candidates from it is already a hard set to
-reorder.
-
-This is the opposite situation to T2, where a learned head beat the best simple rule by
-`1.87×`. The difference is not model quality; it is how much headroom the simple rule left.
+So the model must pick one product from a hundred plausible ones, trained on 6% of the
+available queries, and the candidate set is by construction full of near-misses. Whether
+that is the binding constraint has not been established — it is the hypothesis to test next,
+not a conclusion.
 
 ---
 
