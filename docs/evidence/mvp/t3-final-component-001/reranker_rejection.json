@@ -1,0 +1,35 @@
+{
+  "rerankers_tested": [
+    "listwise",
+    "pointwise",
+    "query_aware_residual"
+  ],
+  "listwise": {
+    "macro_ndcg_at_5": 0.2505,
+    "gain": -0.020151,
+    "ci95": [
+      -0.026522,
+      -0.01418
+    ],
+    "beats_baseline": false
+  },
+  "pointwise": {
+    "macro_ndcg_at_5": 0.2186,
+    "gain": -0.052095,
+    "ci95": [
+      -0.058424,
+      -0.045774
+    ],
+    "beats_baseline": false
+  },
+  "query_aware": {
+    "seeds": [
+      13,
+      42,
+      2026
+    ],
+    "best_deliverable": "epoch_0_retrieval_on_all_seeds",
+    "beats_acceptance_bar": false
+  },
+  "conclusion": "Learned rerankers failed to exceed retrieval baseline; retrieval component finalized."
+}
