@@ -105,11 +105,22 @@ Full setup, VS Code, CPU/GPU, and compatibility documentation:
 Pull requests and pushes to `main` run one CI workflow. Run the same checks locally with:
 
 ```powershell
+uv run python scripts/check.py
+```
+
+That runs every CI check in the same order CI runs them, cheapest first, and stops at the
+first failure with the command that fixes it. `--fast` stops before the environment smoke
+and the test suite when you only want the quick gates.
+
+The individual commands, if you would rather run one:
+
+```powershell
+uv lock --check
 uv sync --locked --group dev
 uv run --locked ruff check ppsi scripts tests
-uv run --locked python -m pytest -q
-uv run --locked python scripts/env_smoke.py
 uv run --locked python -X utf8 scripts/experiments/validate_experiment_contracts.py
+uv run --locked python scripts/env_smoke.py
+uv run --locked python -m pytest -q
 ```
 
 The workflow uses synthetic and committed fixtures only. It does not download REES46 or require a
@@ -139,7 +150,8 @@ uninstallable.
 
 | First failing step | What it means | What to run |
 |---|---|---|
-| Install locked environment | `uv.lock` does not match `pyproject.toml` | `uv lock`, then commit `uv.lock` |
+| uv.lock matches pyproject.toml | `uv.lock` does not match `pyproject.toml` | `uv lock`, then commit `uv.lock` |
+| Install locked environment | The pinned interpreter is missing | `uv python install` |
 | Lint | Ruff findings; most are mechanical | `uv run --locked ruff check ppsi scripts tests --fix` |
 | Test | A real test failure | `uv run --locked python -m pytest -q` |
 | Environment smoke | The pinned interpreter or Torch is not usable | `uv python install`, then re-sync |

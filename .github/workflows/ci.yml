@@ -32,13 +32,20 @@ jobs:
           enable-cache: true
           cache-dependency-glob: uv.lock
 
+      # First, and its own step, because the step name is the error message. This is the
+      # one failure a contributor cannot diagnose from a stack trace, and it takes a
+      # quarter of a second to detect.
+      - name: uv.lock matches pyproject.toml
+        run: |
+          if ! uv lock --check; then
+            echo "::error title=Run 'uv lock' and commit uv.lock::pyproject.toml changed but uv.lock was not regenerated. CI installs with --locked and will not resolve anything the lockfile does not already pin. Locally, 'uv run python scripts/check.py' catches this in under a second."
+            exit 1
+          fi
+
       - name: Install locked environment
         run: |
           uv python install
-          if ! uv sync --locked --group dev; then
-            echo "::error title=Lockfile is out of date::pyproject.toml changed but uv.lock was not regenerated. Run 'uv lock' locally, then commit uv.lock. CI installs with --locked and will not resolve anything the lockfile does not already pin."
-            exit 1
-          fi
+          uv sync --locked --group dev
 
       - name: Lint
         run: |
