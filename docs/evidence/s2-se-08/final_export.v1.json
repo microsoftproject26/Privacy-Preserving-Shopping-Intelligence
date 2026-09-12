@@ -1,0 +1,161 @@
+{
+  "schema": "FinalDeploymentExport",
+  "version": 1,
+  "task_id": "S2-SE-08",
+  "candidate": {
+    "deployment_candidate_checkpoint_id": "s2_ds_08_joint_lambda1.0_seed13",
+    "model_config_id": "s2_ds_08_shared_gru_t1_t2_v1",
+    "declared_parameter_count": 2379263,
+    "history_length": 20,
+    "seed": 13,
+    "weights_sha256_required": "6a322126d05ec1d93a4fa124fa6880e1de7e1af952a8fdcda817e47bd8307b26",
+    "weights_loaded": false,
+    "weights_source": "S2-DS-08_Joint_Loss/output/joint_lambda1.0.pt",
+    "status": "architecture only; trained weights were not supplied, so this measures the shipped architecture and not the shipped model"
+  },
+  "parity": {
+    "schema": "OnnxParityReport",
+    "version": 1,
+    "task_id": "S2-SE-01",
+    "opset_version": 17,
+    "tolerance": 0.0001,
+    "max_absolute_difference": {
+      "t1_logits": 1.7881393432617188e-07,
+      "t2_logit": 1.4901161193847656e-07,
+      "t3_scores": 0.0
+    },
+    "max_relative_difference": {
+      "t1_logits": 0.004028648138046265,
+      "t2_logit": 1.7242535932382452e-06,
+      "t3_scores": 0.0
+    },
+    "within_tolerance": true
+  },
+  "parity_shapes": [
+    {
+      "rows": 4,
+      "history": 20,
+      "candidates": 100
+    },
+    {
+      "rows": 1,
+      "history": 20,
+      "candidates": 100
+    },
+    {
+      "rows": 2,
+      "history": 20,
+      "candidates": 100
+    },
+    {
+      "rows": 16,
+      "history": 20,
+      "candidates": 100
+    },
+    {
+      "rows": 4,
+      "history": 1,
+      "candidates": 100
+    },
+    {
+      "rows": 4,
+      "history": 20,
+      "candidates": 1
+    },
+    {
+      "rows": 4,
+      "history": 20,
+      "candidates": 20
+    },
+    {
+      "rows": 3,
+      "history": 7,
+      "candidates": 55
+    }
+  ],
+  "heads_verified": [
+    "t1_logits",
+    "t2_logit",
+    "t3_scores"
+  ],
+  "fp32": {
+    "serialized_bytes": 9535393
+  },
+  "quantization": {
+    "schema": "Int8QuantizationComparison",
+    "version": 1,
+    "task_id": "S2-SE-02",
+    "method": "dynamic, QInt8 weights, no calibration set",
+    "acceptance_rule": {
+      "size_ratio_at_least": 2.0,
+      "max_relative_quality_loss": 0.01,
+      "must_not_be_slower": true,
+      "source": "CP-DEPLOY Decision 1"
+    },
+    "fp32": {
+      "serialized_bytes": 9535393,
+      "latency": {
+        "median_ms": 1.882649987237528,
+        "p95_ms": 3.3675000304356217,
+        "repetitions": 30,
+        "warmups": 5,
+        "threads": 1
+      }
+    },
+    "int8": {
+      "serialized_bytes": 2715815,
+      "latency": {
+        "median_ms": 2.362300001550466,
+        "p95_ms": 3.036899957805872,
+        "repetitions": 30,
+        "warmups": 5,
+        "threads": 1
+      }
+    },
+    "size_ratio": 3.5111,
+    "latency_ratio_fp32_over_int8": 0.797,
+    "max_output_disagreement": {
+      "t1_logits": 0.08615367859601974,
+      "t2_logit": 0.12364859133958817,
+      "t3_scores": 0.0
+    },
+    "quality_note": "Output disagreement is not a metric delta. A per-task quality delta needs the frozen evaluation set, which carries user_id and is not in this repository, so CP-DEPLOY should treat this as a bound and not as the 1% headline-metric check its rule names.",
+    "meets_size_rule": true,
+    "meets_speed_rule": false
+  },
+  "recommended_artifact": "FP32",
+  "recommendation_basis": "Size and speed only. The per-task quality delta CP-DEPLOY's rule asks for needs the frozen evaluation set, which carries user_id and is not in this repository. Keep FP32 if that delta later exceeds 1% on any headline metric.",
+  "environment": {
+    "onnxruntime": "1.24.1",
+    "torch": "2.13.0+cpu",
+    "opset_version": 17,
+    "provider": "CPUExecutionProvider",
+    "machine": "AMD64"
+  },
+  "graph": {
+    "ir_version": 8,
+    "opset_imports": {
+      "ai.onnx": 17
+    },
+    "producer_name": "pytorch",
+    "graph_inputs": [
+      "category_id",
+      "event_type_id",
+      "history_gap",
+      "lengths",
+      "query_category_id",
+      "query_product_bucket",
+      "query_brand_bucket",
+      "query_price_band",
+      "candidate_ids",
+      "candidate_category_id",
+      "candidate_price_band",
+      "candidate_rank"
+    ],
+    "graph_outputs": [
+      "t1_logits",
+      "t2_logit",
+      "t3_scores"
+    ]
+  }
+}

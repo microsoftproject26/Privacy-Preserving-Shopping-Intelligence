@@ -18,7 +18,12 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-from ppsi.deployment.onnx_export import OUTPUT_NAMES, batch_to_onnx_inputs, serialized_size_bytes
+from ppsi.deployment.onnx_export import (
+    OUTPUT_NAMES,
+    batch_to_onnx_inputs,
+    serialized_size_bytes,
+)
+from ppsi.models.batch_spec import HISTORY_CHANNELS
 from ppsi.training.batch import Phase1Batch
 
 DEFAULT_WARMUPS = 5
@@ -71,6 +76,7 @@ def measure_latency_ms(
     *,
     warmups: int = DEFAULT_WARMUPS,
     repetitions: int = DEFAULT_REPETITIONS,
+    channels: Sequence[str] = HISTORY_CHANNELS,
 ) -> dict[str, float]:
     """Median and p95 wall-clock milliseconds for one forward pass.
 
@@ -82,7 +88,7 @@ def measure_latency_ms(
         raise ValueError("at least one repetition is required")
 
     session = _session(onnx_path)
-    inputs = batch_to_onnx_inputs(batch)
+    inputs = batch_to_onnx_inputs(batch, channels)
     outputs = list(OUTPUT_NAMES)
 
     for _ in range(warmups):
@@ -106,7 +112,10 @@ def measure_latency_ms(
 
 
 def output_agreement(
-    reference_path: Path | str, candidate_path: Path | str, batches: Sequence[Phase1Batch]
+    reference_path: Path | str,
+    candidate_path: Path | str,
+    batches: Sequence[Phase1Batch],
+    channels: Sequence[str] = HISTORY_CHANNELS,
 ) -> dict[str, float]:
     """Worst per-head disagreement between two ONNX models on identical inputs.
 
@@ -120,7 +129,7 @@ def output_agreement(
     worst = dict.fromkeys(OUTPUT_NAMES, 0.0)
 
     for batch in batches:
-        inputs = batch_to_onnx_inputs(batch)
+        inputs = batch_to_onnx_inputs(batch, channels)
         for name, want, got in zip(
             OUTPUT_NAMES, reference.run(outputs, inputs), candidate.run(outputs, inputs)
         ):
@@ -189,6 +198,7 @@ def compare_fp32_and_int8(
     *,
     warmups: int = DEFAULT_WARMUPS,
     repetitions: int = DEFAULT_REPETITIONS,
+    channels: Sequence[str] = HISTORY_CHANNELS,
 ) -> QuantizationComparison:
     """Measure both models on the same machine, threads, shapes and repetitions."""
 
@@ -200,10 +210,10 @@ def compare_fp32_and_int8(
         fp32_bytes=serialized_size_bytes(fp32_path),
         int8_bytes=serialized_size_bytes(int8_path),
         fp32_latency=measure_latency_ms(
-            fp32_path, benchmark_batch, warmups=warmups, repetitions=repetitions
+            fp32_path, benchmark_batch, warmups=warmups, repetitions=repetitions, channels=channels
         ),
         int8_latency=measure_latency_ms(
-            int8_path, benchmark_batch, warmups=warmups, repetitions=repetitions
+            int8_path, benchmark_batch, warmups=warmups, repetitions=repetitions, channels=channels
         ),
-        agreement=output_agreement(fp32_path, int8_path, batches),
+        agreement=output_agreement(fp32_path, int8_path, batches, channels),
     )

@@ -1,5 +1,12 @@
 """Export and runtime measurement for the deployment lane."""
 
+from ppsi.deployment.final_export import (
+    DeploymentCandidate,
+    DeploymentContractError,
+    build_deployment_model,
+    candidate_identity,
+    load_deployment_candidate,
+)
 from ppsi.deployment.onnx_export import (
     CANDIDATE_WIDTH_AXIS,
     HISTORY_LENGTH_AXIS,
@@ -13,6 +20,8 @@ from ppsi.deployment.onnx_export import (
     compare_against_onnx,
     deterministic_example_batch,
     export_session_gru,
+    history_channels_of,
+    input_names_for,
     serialized_size_bytes,
 )
 from ppsi.deployment.quantization import (
@@ -29,15 +38,22 @@ __all__ = [
     "INPUT_NAMES",
     "OPSET_VERSION",
     "OUTPUT_NAMES",
+    "DeploymentCandidate",
+    "DeploymentContractError",
     "ParityReport",
     "QuantizationComparison",
     "SessionGRUExportWrapper",
     "batch_to_onnx_inputs",
+    "build_deployment_model",
+    "candidate_identity",
     "check_graph",
     "compare_against_onnx",
     "compare_fp32_and_int8",
     "deterministic_example_batch",
     "export_session_gru",
+    "history_channels_of",
+    "input_names_for",
+    "load_deployment_candidate",
     "measure_latency_ms",
     "output_agreement",
     "quantize_int8",
