@@ -52,12 +52,38 @@ INPUT_NAMES: tuple[str, ...] = (
 
 OUTPUT_NAMES: tuple[str, ...] = ("t1_logits", "t2_logit", "t3_scores")
 
-_HISTORY_COUNT = len(HISTORY_CHANNELS)
 _QUERY_COUNT = len(QUERY_CHANNELS)
 _CANDIDATE_COUNT = len(CANDIDATE_CHANNELS)
 
 
-def _dynamic_axes() -> dict[str, dict[int, str]]:
+def history_channels_of(model: nn.Module) -> tuple[str, ...]:
+    """The history channels this model actually consumes.
+
+    The batch always carries all five; a model chooses a subset, and S2-DS-08 chose two.
+    The exported signature follows the model rather than the batch, because requiring a
+    caller to supply tensors the graph provably ignores is a false contract.
+    """
+
+    config = getattr(model, "config", None)
+    channels = getattr(config, "channels", None)
+    return tuple(channels) if channels else HISTORY_CHANNELS
+
+
+def input_names_for(channels: Sequence[str] = HISTORY_CHANNELS) -> tuple[str, ...]:
+    """The exported input names, in order, for a model consuming `channels`."""
+
+    return (
+        *channels,
+        HISTORY_GAP_INPUT,
+        LENGTHS_INPUT,
+        *QUERY_CHANNELS,
+        CANDIDATE_IDS_INPUT,
+        *CANDIDATE_CHANNELS,
+        CANDIDATE_RANK_INPUT,
+    )
+
+
+def _dynamic_axes(channels: Sequence[str] = HISTORY_CHANNELS) -> dict[str, dict[int, str]]:
     """Only the axes that genuinely vary: batch size, history length, candidate width.
 
     Leaving an axis dynamic that never varies costs shape inference; pinning one that does
@@ -65,7 +91,7 @@ def _dynamic_axes() -> dict[str, dict[int, str]]:
     """
 
     axes: dict[str, dict[int, str]] = {}
-    for name in HISTORY_CHANNELS:
+    for name in channels:
         axes[name] = {0: BATCH_AXIS, 1: HISTORY_LENGTH_AXIS}
     axes[HISTORY_GAP_INPUT] = {0: BATCH_AXIS, 1: HISTORY_LENGTH_AXIS}
     axes[LENGTHS_INPUT] = {0: BATCH_AXIS}
@@ -94,14 +120,17 @@ class SessionGRUExportWrapper(nn.Module):
         super().__init__()
         self.model = model
         self.batch_spec = batch_spec or getattr(model, "batch_spec", None) or phase1_batch_spec_v1()
+        self.history_channels = history_channels_of(model)
 
     def forward(self, *tensors: Tensor) -> tuple[Tensor, Tensor, Tensor]:
-        if len(tensors) != len(INPUT_NAMES):
-            raise ValueError(f"expected {len(INPUT_NAMES)} inputs, got {len(tensors)}")
+        names = input_names_for(self.history_channels)
+        if len(tensors) != len(names):
+            raise ValueError(f"expected {len(names)} inputs, got {len(tensors)}")
 
+        history_count = len(self.history_channels)
         cursor = 0
-        history_ids = dict(zip(HISTORY_CHANNELS, tensors[cursor : cursor + _HISTORY_COUNT]))
-        cursor += _HISTORY_COUNT
+        history_ids = dict(zip(self.history_channels, tensors[cursor : cursor + history_count]))
+        cursor += history_count
         history_gap = tensors[cursor]
         cursor += 1
         lengths = tensors[cursor]
@@ -226,16 +255,21 @@ def deterministic_example_batch(
     )
 
 
-def batch_to_onnx_inputs(batch: Phase1Batch) -> dict[str, Any]:
+def batch_to_onnx_inputs(
+    batch: Phase1Batch, channels: Sequence[str] = HISTORY_CHANNELS
+) -> dict[str, Any]:
     """The exact named arrays ONNX Runtime expects, taken from a real batch."""
 
-    ordered = _ordered_tensors(batch)
-    return {name: tensor.detach().cpu().numpy() for name, tensor in zip(INPUT_NAMES, ordered)}
+    ordered = _ordered_tensors(batch, channels)
+    names = input_names_for(channels)
+    return {name: tensor.detach().cpu().numpy() for name, tensor in zip(names, ordered)}
 
 
-def _ordered_tensors(batch: Phase1Batch) -> tuple[Tensor, ...]:
+def _ordered_tensors(
+    batch: Phase1Batch, channels: Sequence[str] = HISTORY_CHANNELS
+) -> tuple[Tensor, ...]:
     return (
-        *(batch.history_categorical_ids[name] for name in HISTORY_CHANNELS),
+        *(batch.history_categorical_ids[name] for name in channels),
         batch.history_continuous_features,
         batch.lengths,
         *(batch.query_categorical_ids[name] for name in QUERY_CHANNELS),
@@ -263,15 +297,16 @@ def export_session_gru(
 
     wrapper = SessionGRUExportWrapper(model, batch_spec=batch_spec)
     wrapper.eval()
+    channels = wrapper.history_channels
 
     with torch.no_grad():
         torch.onnx.export(
             wrapper,
-            _ordered_tensors(example_batch),
+            _ordered_tensors(example_batch, channels),
             str(destination),
-            input_names=list(INPUT_NAMES),
+            input_names=list(input_names_for(channels)),
             output_names=list(OUTPUT_NAMES),
-            dynamic_axes=_dynamic_axes(),
+            dynamic_axes=_dynamic_axes(channels),
             opset_version=OPSET_VERSION,
             do_constant_folding=True,
             dynamo=False,
@@ -329,10 +364,11 @@ def compare_against_onnx(
         raise ValueError("at least one batch is required to measure parity")
 
     model = model.eval()
+    channels = history_channels_of(model)
     session = onnxruntime.InferenceSession(
         str(onnx_path), providers=["CPUExecutionProvider"]
     )
-    _require_signature(session)
+    _require_signature(session, channels)
 
     absolute = dict.fromkeys(OUTPUT_NAMES, 0.0)
     relative = dict.fromkeys(OUTPUT_NAMES, 0.0)
@@ -345,7 +381,7 @@ def compare_against_onnx(
             "t2_logit": reference.t2_logit,
             "t3_scores": reference.t3_scores,
         }
-        produced = session.run(list(OUTPUT_NAMES), batch_to_onnx_inputs(batch))
+        produced = session.run(list(OUTPUT_NAMES), batch_to_onnx_inputs(batch, channels))
 
         for name, array in zip(OUTPUT_NAMES, produced):
             want = expected[name].detach().cpu()
@@ -367,12 +403,12 @@ def compare_against_onnx(
     )
 
 
-def _require_signature(session: Any) -> None:
+def _require_signature(session: Any, channels: Sequence[str] = HISTORY_CHANNELS) -> None:
     """Fail loudly if the graph's names drifted, rather than on a confusing shape error."""
 
     produced_inputs = tuple(item.name for item in session.get_inputs())
     produced_outputs = tuple(item.name for item in session.get_outputs())
-    if produced_inputs != INPUT_NAMES:
+    if produced_inputs != input_names_for(channels):
         raise ValueError(f"exported input names drifted: {produced_inputs}")
     if produced_outputs != OUTPUT_NAMES:
         raise ValueError(f"exported output names drifted: {produced_outputs}")
