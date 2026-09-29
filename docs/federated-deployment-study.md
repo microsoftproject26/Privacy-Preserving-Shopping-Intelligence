@@ -25,8 +25,9 @@ with a confidence interval.
 - Public REES46 multi-category store events, October to November 2019.
 - Task: predict the next product a user views, ranked against the full catalogue (158,486 products), no sampled negatives.
 - Users with 5 to 100 training examples; each user is one simulated device.
-- Chronological split: training up to 15 November, validation 16–22 November, test 23–29 November. The test week is
-  evaluated once, after every method is locked.
+- Chronological split: training up to 15 November, validation 16–22 November, test 23–29 November. In this study the
+  test week is evaluated once, after every method is locked. The same week was already used to evaluate models in the
+  project's earlier phases, and that earlier exposure is reported with the results.
 - Metric: per-user MRR@20 averaged over users (NDCG@10 and HR@10 reported as well).
 
 ## Models
@@ -34,25 +35,40 @@ with a confidence interval.
 The backbone was chosen by a pre-registered comparison between a GRU and a SASRec (self-attention) sequence model,
 each tuned with the same budget. SASRec was selected. Two sizes are used:
 
-- **Large** (cloud reference): SASRec, hidden size 256, three blocks.
+- **Large** (cloud reference): SASRec, hidden size 256, two blocks, about 84M parameters.
 - **Small** (federated and on-device): SASRec, hidden size 64, two blocks, about 21M parameters, sized so that one
   download plus one upload of the model stays under 170 MB.
 
 Two cloud references are reported: a cloud model trained on the same users as the federated system, and a cloud
-model trained on the full user pool (about ten times more users), which is closer to what a real service would have.
+model trained on a much larger pool of about 1.35 million users (roughly ten times more, and about 93% of all users
+with 5 to 100 training examples), which is closer to what a real service would have.
 
 ## What is compared
 
 | Group | Methods |
 |---|---|
-| Cloud | large model, small model, full-pool model |
+| Cloud | large model, small model, large model on the 1.35M-user pool |
 | Federated | FedAvg, FedProx, FedAvg with a personal on-device component, FedAvg with 8-bit uploads |
 | Federated with differential privacy | DP-FedAvg at ε = 8 and ε = 1 (user-level, Poisson sampling, RDP accounting) |
+| Pretrained, then federated | a small model pretrained on users who agree to share their data (none of them in the federated group), then trained with federated learning on the private users; optionally with the item tables frozen |
 | On-device | local model trained only on the user's history; cloud model fine-tuned on the device; federated model fine-tuned on the device |
 | Simple baselines | popularity, last item, session kNN, kNN on cached item embeddings, category/brand rules |
 
 Device realism is measured separately: model size, payload per visit, and single-thread latency of the exported
-ONNX model (FP32 and INT8), including a run in the browser with ONNX Runtime Web.
+ONNX model (FP32 and INT8). A run inside the browser with ONNX Runtime Web is planned.
+
+Every method is also compared with "last viewed item", a free rule with no training, to show how much a trained model
+adds over something a browser could do for free.
+
+## Privacy scope
+
+- The adversary is an honest-but-curious browser vendor running the server, which sees every update a device sends.
+- Differential privacy is user-level: one user's whole history barely changes the trained model. The noise is added
+  on the server, so the guarantee assumes a trusted aggregator.
+- Without differential privacy, a model update can still reveal which products a user viewed, because the item-table
+  rows for those products are the ones that move. Freezing the item tables reduces this leak but does not remove it
+  (brand and category updates can still point to them).
+- Secure aggregation is not simulated.
 
 ## Making the federated system as strong as a real one
 
@@ -76,4 +92,4 @@ Every stage is written down before its results are read, and the untuned startin
 - All methods share the same data version, features, evaluator and training budget unless a stage says otherwise.
 - Confidence intervals come from a paired bootstrap over users (1,000 resamples).
 - Training and evaluation are deterministic (FP32, fixed seeds). The main methods run with two seeds; a few secondary
-  runs (for example DP at ε = 1 and the full-pool cloud model) use one seed and are reported as such.
+  runs (for example DP at ε = 1 and the pretraining run) use one seed and are reported as such.
