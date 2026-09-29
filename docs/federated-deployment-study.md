@@ -75,4 +75,5 @@ Every stage is written down before its results are read, and the untuned startin
 - The plan, the selection rules and the list of confirmatory comparisons are fixed before the numbers they govern are seen.
 - All methods share the same data version, features, evaluator and training budget unless a stage says otherwise.
 - Confidence intervals come from a paired bootstrap over users (1,000 resamples).
-- Training and evaluation are deterministic (FP32, fixed seeds, two seeds per method).
+- Training and evaluation are deterministic (FP32, fixed seeds). The main methods run with two seeds; a few secondary
+  runs (for example DP at ε = 1 and the full-pool cloud model) use one seed and are reported as such.
