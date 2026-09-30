@@ -35,7 +35,7 @@ with a confidence interval.
 The backbone was chosen by a pre-registered comparison between a GRU and a SASRec (self-attention) sequence model,
 each tuned with the same budget. SASRec was selected. Two sizes are used:
 
-- **Large** (cloud reference): SASRec, hidden size 256, two blocks, about 84M parameters.
+- **Large** (cloud reference): SASRec, hidden size 256, three blocks, about 84M parameters.
 - **Small** (federated and on-device): SASRec, hidden size 64, two blocks, about 21M parameters, sized so that one
   download plus one upload of the model stays under 170 MB.
 
