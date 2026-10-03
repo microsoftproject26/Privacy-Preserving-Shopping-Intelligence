@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Browser latency (ONNX Runtime Web)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--
+  A static page opened locally (docs/on-device-benchmark.md has the steps). No npm, no build: the only external
+  resource this page loads is onnxruntime-web from cdn.jsdelivr.net, pinned to an exact version (1.24.1, the
+  onnxruntime version of the Python bench). The integrity value is the sha384 of that pinned ort.min.js; changing
+  the version requires recomputing it. It covers this script only; ort's .wasm / .mjs siblings are fetched by the
+  script from the same pinned path and cannot carry an integrity attribute.
+-->
+<script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.24.1/dist/ort.min.js"
+        integrity="sha384-PwzXd0cb8GKe5DVyjtSi3V3QgfKd7KBRiuHulunRw8MKV6YCPoqCujbriU1EZwWg"
+        crossorigin="anonymous"></script>
+<style>
+  body { font-family: system-ui, sans-serif; max-width: 900px; margin: 2rem auto; padding: 0 1rem; color: #1a1a1a; }
+  h1 { font-size: 1.3rem; }
+  fieldset { margin-bottom: 1rem; }
+  label { display: block; margin: 0.4rem 0 0.1rem; font-weight: 600; }
+  #log { white-space: pre-wrap; background: #111; color: #ddd; padding: 0.75rem; height: 220px; overflow-y: auto;
+         font-family: ui-monospace, monospace; font-size: 0.8rem; border-radius: 4px; }
+  table { border-collapse: collapse; width: 100%; margin-top: 0.75rem; }
+  th, td { border: 1px solid #ccc; padding: 0.3rem 0.5rem; text-align: right; font-size: 0.85rem; }
+  th:first-child, td:first-child { text-align: left; }
+  button { padding: 0.5rem 1rem; font-size: 0.95rem; cursor: pointer; }
+  .note { font-size: 0.85rem; color: #555; }
+</style>
+</head>
+<body>
+<h1>Browser latency (ONNX Runtime Web)</h1>
+<p class="note">Local only: nothing here uploads anything anywhere. Must be served over http(s) (e.g.
+  <code>python serve_coi.py</code>, or <code>python -m http.server</code> without the multi-thread arm); opening this
+  file directly (<code>file://</code>) fails to load the WASM runtime.</p>
+
+<fieldset>
+  <legend>Inputs</legend>
+  <label for="fp32File">model_fp32.onnx (required)</label>
+  <input type="file" id="fp32File" accept=".onnx">
+  <label for="int8File">model_int8.onnx (optional)</label>
+  <input type="file" id="int8File" accept=".onnx">
+  <label for="queriesFile">queries.json (from ppsi.ondevice.browser_queries; required)</label>
+  <input type="file" id="queriesFile" accept=".json,application/json">
+</fieldset>
+
+<button id="runButton">Run benchmark</button>
+<button id="downloadButton" disabled>Download BROWSER_LATENCY.json</button>
+
+<h2>Log</h2>
+<div id="log"></div>
+
+<h2>Results</h2>
+<div id="results"><p class="note">(run the benchmark to populate this table)</p></div>
+
+<script src="bench.js"></script>
+</body>
+</html>
