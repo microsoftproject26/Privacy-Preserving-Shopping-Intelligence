@@ -6,7 +6,7 @@ import json
 import numpy as np
 import pytest
 import torch
-from conftest import make_release
+from benchrun_testkit import make_release
 
 from ppsi.benchrun import accel, central
 from ppsi.benchrun import data as D
