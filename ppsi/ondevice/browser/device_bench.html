@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Device bench (ONNX Runtime Web)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--
+  Device bench: latency / memory / cold start ONLY (no accuracy). Local only: results are never uploaded;
+  DEVICE_BENCH.json is downloaded to the local disk (and, for ?auto=1 headless runs, printed to the console on one
+  marker line). Serve with serve_coi.py (COOP/COEP) so wasm multi-threading and
+  performance.measureUserAgentSpecificMemory() work. onnxruntime-web is pinned to the same exact version and SRI as
+  index.html. If the CDN is unreachable, the onerror handler loads a same-origin copy vendor/ort.min.js (place the
+  pinned dist/ files under vendor/ next to this page).
+-->
+<script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.24.1/dist/ort.min.js"
+        integrity="sha384-PwzXd0cb8GKe5DVyjtSi3V3QgfKd7KBRiuHulunRw8MKV6YCPoqCujbriU1EZwWg"
+        crossorigin="anonymous"
+        onerror="window.__ortCdnFailed=true;document.write('<script src=&quot;vendor/ort.min.js&quot;><\/script>')"></script>
+<style>
+  body { font-family: system-ui, sans-serif; max-width: 900px; margin: 2rem auto; padding: 0 1rem; color: #1a1a1a; }
+  h1 { font-size: 1.3rem; }
+  fieldset { margin-bottom: 1rem; }
+  label { display: block; margin: 0.4rem 0 0.1rem; font-weight: 600; }
+  input[type=text], select { width: 100%; padding: 0.3rem; box-sizing: border-box; }
+  #log { white-space: pre-wrap; background: #111; color: #ddd; padding: 0.75rem; height: 220px; overflow-y: auto;
+         font-family: ui-monospace, monospace; font-size: 0.8rem; border-radius: 4px; }
+  button { padding: 0.5rem 1rem; font-size: 0.95rem; cursor: pointer; }
+  .note { font-size: 0.85rem; color: #555; }
+</style>
+</head>
+<body>
+<h1>Device bench: latency / memory only (no accuracy)</h1>
+<p class="note">Nothing is uploaded. Open as
+  <code>http://localhost:8765/device_bench.html?fp32=models/fp32.onnx&amp;int8=models/int8.onnx&amp;queries=queries.json&amp;model=fp32&amp;arm=wasm-1t</code>
+  (paths are relative to the served directory). One arm per page load (ort reads numThreads only at the first
+  session): reload with <code>arm=wasm-mt&amp;threads=4</code> for the multi-thread run and <code>model=int8</code> for INT8.</p>
+
+<fieldset>
+  <legend>Device identity (auto-filled, editable)</legend>
+  <label for="devLabel">Label</label>
+  <select id="devLabel"><option value="DEVICE">DEVICE (consumer device, e.g. a laptop or phone)</option>
+    <option value="SERVER_BROWSER">SERVER_BROWSER (headless browser on a server CPU)</option></select>
+  <label for="devId">Device id</label><input type="text" id="devId" value="">
+  <label for="devModel">Model / CPU / RAM / GPU / OS</label>
+  <input type="text" id="devModel" value="">
+  <label for="devUA">userAgent</label><input type="text" id="devUA">
+  <label for="devCores">hardwareConcurrency</label><input type="text" id="devCores">
+  <label for="devMem">deviceMemory (GB, coarse; may be empty)</label><input type="text" id="devMem">
+  <label for="devSession">Session number (1, 2, 3)</label><input type="text" id="devSession" value="1">
+  <label for="devPower">Power state (AC / battery) and conditions (other apps closed, cool-down done)</label>
+  <input type="text" id="devPower" value="">
+</fieldset>
+
+<fieldset>
+  <legend>Run</legend>
+  <label for="arm">Arm</label>
+  <select id="arm"><option value="wasm-1t">wasm-1t</option><option value="wasm-mt">wasm-mt</option></select>
+</fieldset>
+
+<fieldset>
+  <legend>Model (one per page load, so cold start is cold)</legend>
+  <select id="modelSel"><option value="fp32">fp32</option><option value="int8">int8</option></select>
+</fieldset>
+
+<button id="runButton">Run benchmark</button>
+<button id="downloadButton" disabled>Download DEVICE_BENCH.json</button>
+
+<h2>Log</h2>
+<div id="log"></div>
+<h2>Results</h2>
+<pre id="results" class="note">(run the benchmark to populate)</pre>
+
+<script src="device_bench.js"></script>
+</body>
+</html>
