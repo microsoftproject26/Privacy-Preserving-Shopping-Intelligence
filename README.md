@@ -145,6 +145,16 @@ an explicit UNDEFINED value for empty populations, and a paired user bootstrap. 
 uv run python -m pytest tests/evaluation/fullrank -q
 ```
 
+## On-device inference benchmark
+
+`ppsi/ondevice` exports a sequence model to ONNX (deterministic, fixed batch 1), quantises it to INT8, benchmarks
+latency, memory and parity under onnxruntime, and ships two static ONNX Runtime Web pages for measuring the same files
+in a browser. See [`docs/on-device-benchmark.md`](docs/on-device-benchmark.md).
+
+```powershell
+uv run python -m pytest tests/ondevice -q
+```
+
 ## Local CI checks
 
 Pull requests and pushes to `main` run one CI workflow. Run the same checks locally with:
