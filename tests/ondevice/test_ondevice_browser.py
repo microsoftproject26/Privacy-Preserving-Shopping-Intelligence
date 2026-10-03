@@ -141,8 +141,12 @@ def _post(port, path, body, headers=None):
             return r.status
     except urllib.error.HTTPError as e:
         return e.code
-    except (ConnectionAbortedError, ConnectionResetError):
-        return "RESET"      # the server refused without reading an oversize body; some platforms report a reset
+    except (urllib.error.URLError, ConnectionError) as e:
+        # the server refuses an oversize body without reading it; the client may then see a reset or a broken pipe
+        reason = getattr(e, "reason", e)
+        if isinstance(reason, ConnectionError):
+            return "RESET"
+        raise
 
 
 def test_serve_coi_headers_and_read_only():
