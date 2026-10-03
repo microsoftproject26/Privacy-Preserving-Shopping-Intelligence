@@ -100,6 +100,17 @@ Full setup, VS Code, CPU/GPU, and compatibility documentation:
 
 [`docs/training-environment.md`](docs/training-environment.md)
 
+## Sequence models
+
+`ppsi/seqrec` holds the next-item models used by every deployment arm: ContextGRU (tied item-embedding head) and
+SASRecCE (causal Transformer with an untied, recentered head), their size variants (including a small on-device
+SASRec), a deterministic builder and the adapters for the federated simulator. See
+[`docs/sequence-models.md`](docs/sequence-models.md).
+
+```powershell
+uv run python -m pytest tests/seqrec -q
+```
+
 ## Federated simulator
 
 `ppsi/fedsim` simulates cross-device federated training in one process: FedAvg, FedProx, personalised FedAvg,
