@@ -113,6 +113,17 @@ uv run python -m pytest tests/fedsim -q
 
 Design, module map and a runnable example: [`docs/federated-simulator.md`](docs/federated-simulator.md)
 
+## Full-catalogue evaluator
+
+`ppsi/evaluation/fullrank` scores every method (cloud, federated, personalised, on-device) with the same code: exact
+ranks against the full catalogue, end-to-end and rankable-only MRR / HR / NDCG with coverage, float64 aggregation,
+an explicit UNDEFINED value for empty populations, and a paired user bootstrap. See
+[`docs/full-catalogue-evaluator.md`](docs/full-catalogue-evaluator.md).
+
+```powershell
+uv run python -m pytest tests/evaluation/fullrank -q
+```
+
 ## Local CI checks
 
 Pull requests and pushes to `main` run one CI workflow. Run the same checks locally with:
