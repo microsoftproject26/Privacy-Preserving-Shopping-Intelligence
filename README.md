@@ -69,6 +69,16 @@ the item catalogue, the candidate lists, the price transform, and the gate verdi
 [`docs/ar/roadmap.md`](docs/ar/roadmap.md) — the remaining tasks per lane, the models to be tried
 beyond the GRU, and how the final comparison table is meant to read.
 
+## Public benchmark datasets
+
+`ppsi/benchmarks` converts public sequential-recommendation benchmarks (Amazon Reviews 2023 5-core, MBHT Taobao /
+Tmall) into one leave-one-out layout and provides sampled metrics for comparison with published results. See
+[`docs/benchmark-datasets.md`](docs/benchmark-datasets.md).
+
+```powershell
+uv run python -m pytest tests/benchmarks -q
+```
+
 ## Training / Federated Development Environment
 
 The canonical Phase 1 training environment is defined by:
