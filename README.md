@@ -121,6 +121,17 @@ SASRec), a deterministic builder and the adapters for the federated simulator. S
 uv run python -m pytest tests/seqrec -q
 ```
 
+## Benchmark runner
+
+`ppsi/benchrun` runs the deployment-study arms (central, federated, on-device fine-tuning, the DP chain) with the same
+code on public leave-one-out benchmarks, with full-catalogue ranking, a JSON recipe for every hyperparameter, a
+holdout evaluation after model selection, and an opt-in deterministic GPU device class. See
+[`docs/benchmark-runner.md`](docs/benchmark-runner.md).
+
+```powershell
+uv run python -m pytest tests/benchrun -q
+```
+
 ## Federated simulator
 
 `ppsi/fedsim` simulates cross-device federated training in one process: FedAvg, FedProx, personalised FedAvg,
