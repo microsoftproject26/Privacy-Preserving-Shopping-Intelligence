@@ -100,6 +100,19 @@ Full setup, VS Code, CPU/GPU, and compatibility documentation:
 
 [`docs/training-environment.md`](docs/training-environment.md)
 
+## Federated simulator
+
+`ppsi/fedsim` simulates cross-device federated training in one process: FedAvg, FedProx, personalised FedAvg,
+DP-FedAvg with RDP accounting, compressed uploads, frozen item tables, local-only training and on-device
+fine-tuning, with deterministic aggregation, resumable runs and virtual byte accounting. It is model-agnostic and its
+tests use synthetic clients only:
+
+```powershell
+uv run python -m pytest tests/fedsim -q
+```
+
+Design, module map and a runnable example: [`docs/federated-simulator.md`](docs/federated-simulator.md)
+
 ## Local CI checks
 
 Pull requests and pushes to `main` run one CI workflow. Run the same checks locally with:
