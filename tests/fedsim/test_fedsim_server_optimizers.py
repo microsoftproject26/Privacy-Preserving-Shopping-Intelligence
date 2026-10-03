@@ -2,8 +2,9 @@
 
 Proves: FedAdam (Reddi et al. 2021 ICLR Alg. 2: m = b1 m + (1-b1) D, v = b2 v + (1-b2) D^2, theta += eta m / (sqrt v + tau),
 no bias correction; m_0 = 0, v_0 = tau^2 as in Alg. 2 line 1) equals a hand-computed 3-round reference (float64
-arithmetic to 1e-6 relative, and bit for bit against an independent numpy-float32 replica); eta_s = 0 leaves theta
-unchanged (the moments still move); the pseudo-gradient of a DP round is the noisy fixed-denominator mean that FedAvg
+arithmetic to 1e-6 relative, and to within 2 ulp of an independent numpy-float32 replica; exact equality is not
+portable because the vectorised float32 kernels of torch and numpy may round differently on different CPUs);
+eta_s = 0 leaves theta unchanged (the moments still move); the pseudo-gradient of a DP round is the noisy fixed-denominator mean that FedAvg
 would apply; a non-finite step leaves theta and the moments unchanged; RunConfig digest unchanged with server_opt None
 and the checkpoint payload unchanged for FedAvg; FLRun resume restores the moments bitwise (straight == interrupted +
 resumed) and refuses a checkpoint without / with unexpected moments. NCs: bias-corrected Adam, v_0 = 0.
@@ -111,7 +112,7 @@ def test_fedadam_equals_hand_computed_three_round_reference():
     assert srv.server_opt.steps == 3
 
 
-def test_fedadam_bitwise_equals_numpy_float32_replica():
+def test_fedadam_matches_numpy_float32_replica_to_two_ulp():
     srv = raw_server(3)
     srv.attach_server_opt(ServerOptConfig("fedadam", lr=0.01))
     k = srv.manifest.shared_keys[0]
@@ -121,7 +122,7 @@ def test_fedadam_bitwise_equals_numpy_float32_replica():
     for d in ds:
         _step_with(srv, {k: torch.from_numpy(d)})
     rep = ref_fedadam_np32(th0, [lambda th, d=d: (th + d).astype(np.float32) for d in ds], 0.01)
-    assert np.array_equal(srv.broadcast()[k].numpy(), rep)
+    np.testing.assert_array_max_ulp(srv.broadcast()[k].numpy(), rep, maxulp=2)
 
 
 def test_zero_server_lr_leaves_theta_unchanged():
