@@ -137,7 +137,7 @@ def test_test_view_population_candidates_and_context(release):
 
 
 def test_cold_holdout_items_are_kept_as_misses(tmp_path):
-    from conftest import make_release
+    from benchrun_testkit import make_release
     rel = make_release(tmp_path / "p", cold_holdout=3)
     d = _load(rel)
     tv = D.load_holdout_view(d, rel["root"])

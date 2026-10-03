@@ -6,7 +6,7 @@ import json
 
 import numpy as np
 import pytest
-from conftest import make_release
+from benchrun_testkit import make_release
 
 from ppsi.benchrun import central, fl_engine, recipe
 from ppsi.benchrun import data as D
