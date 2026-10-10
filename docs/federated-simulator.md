@@ -39,6 +39,9 @@ round driver (`pool`).
 - **Counted, not measured.** Bytes are theoretical payload sizes (FP32, tied tensors once); network time is not
   simulated.
 
+FedAdam's adaptivity constant is `ServerOptConfig(..., tau=...)` (default `1e-3`). With small per-round updates the
+default turns FedAdam into server SGD with a tiny step; see [`fedadam-tau.md`](fedadam-tau.md) before choosing it.
+
 ## Quick start
 
 ```python

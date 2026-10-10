@@ -24,7 +24,8 @@ aggregate exactly as before (FedAvg, server LR 1). With `attach_server_opt(Serve
     m_r = beta1 m_{r-1} + (1 - beta1) Delta_r
     v_r = beta2 v_{r-1} + (1 - beta2) Delta_r^2
     theta_{r+1} = theta_r + eta_s m_r / (sqrt(v_r) + tau)          (no bias correction)
-with beta1 0.9, beta2 0.99, tau 1e-3, m_0 = 0 and v_0 = tau^2 (Alg. 2 line 1 "v_{-1} >= tau^2"). Buffers keep the
+with beta1 0.9, beta2 0.99, tau 1e-3 by default (ServerOptConfig.tau; updates far below tau reduce the step to
+eta_s Delta / tau, see docs/fedadam-tau.md), m_0 = 0 and v_0 = tau^2 (Alg. 2 line 1 "v_{-1} >= tau^2"). Buffers keep the
 server's value (aggregate.py rules). Every step is one
 elementwise FP32 torch op in a fixed order (no fused kernels), so it is deterministic on a given device; the moments are
 committed only after every key's result is finite. Every path that changes theta goes through Server.apply (run_round,
