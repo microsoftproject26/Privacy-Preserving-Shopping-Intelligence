@@ -52,3 +52,30 @@ Track A and Track B are never mixed in one claim.
 * The main reason the federated arms fall so far behind, found after the test look, is the FedAdam setting
   `tau = 1e-3`, which froze the federated runs (see [`docs/fedadam-tau.md`](../../docs/fedadam-tau.md)). A short
   round budget and the weak warm start add to it. The exploratory re-runs below address all three.
+
+## Comparison with published results
+
+| File | Content |
+|---|---|
+| `published_table1_ndcg10.csv` | Table 1 of Spotify's RecSys 2026 capacity-probe paper (arXiv 2608.19833): full-catalogue NDCG@10 of MC, FMC, FMC+, SASRec+, eSASRec, SeqRules and PCTM on the four eSASRec splits |
+| `published_reference.csv` | our `C_FULL` (Track A and the Track-B best) and our best federated arm against SASRec+, eSASRec and PCTM |
+
+* **Source.** These are the only published numbers on byte-identical splits with the same full-ranking protocol.
+  Our copy of the data and the protocol reproduces the deterministic MC, SeqRules and PCTM cells of that table to
+  four decimals, in 12 of 12 cells. Most federated-recommendation papers report sampled metrics (for example, 100
+  random negatives), which are not comparable with full ranking.
+* **Claim rule.** The published cells are single runs, with a run-to-run spread of about 0.003 for SASRec+ and
+  eSASRec. A difference is therefore stated only if it is larger than 0.005 NDCG@10 and every seed lies on the same
+  side; otherwise the claim is `on par`.
+* **Disclosure.** The published SASRec+ and eSASRec rank a catalogue built after the validation item is removed, so
+  a few test targets (89 / 265 / 232 / 0 on Beauty / Sports / Toys / MovieLens-1M) are unreachable for them. We rank
+  the full training catalogue.
+
+Results:
+
+* With the recipe unchanged (Track A), our central SASRec is below SASRec+ and eSASRec on the three Amazon sets.
+  On MovieLens-1M it is above both (0.1951 against 0.1739 for eSASRec).
+* With the Track-B budget and dropout, it is on par with eSASRec on Beauty and Toys, still below on Sports, and above
+  on MovieLens-1M.
+* PCTM, the strongest published model on these splits, stays ahead on the Amazon sets.
+* Every federated arm of the registered recipe is far below the published central models.
