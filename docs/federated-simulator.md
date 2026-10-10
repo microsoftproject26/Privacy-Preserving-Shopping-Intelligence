@@ -16,6 +16,7 @@ tests use.
 | Federated | FedAvg (`FA`), FedProx (`FP`), FedAvg with a personal on-device query vector (`PF`) | `client`, `aggregate`, `server`, `personal` |
 | Federated, adaptive server | FedAdam and FedAvgM server optimisers | `server` |
 | Federated with differential privacy | DP-FedAvg (flat L2 clipping, Gaussian noise on the sum, fixed denominator), RDP accounting for Poisson and fixed-size sampling | `dp`, `accountant`, `accountant_wor`, `participation` |
+| Secure aggregation (simulated) | Bonawitz et al. pairwise masking with the SecAgg+ k-regular option, real message sizes, bit-exact check ([`federated-secure-aggregation.md`](federated-secure-aggregation.md)) | `secagg`, `secagg_grid` |
 | Cheaper uploads | 8-bit stochastic quantisation (`FA_Q8`), row-sparse item uploads, frozen item tables | `quant`, `sparse_rows`, `runtime.freeze_item_tables` |
 | On-device | local-only training from a shared start (`LO`), full-model fine-tuning of a cloud or federated model | `local_only`, `finetune` |
 
