@@ -1,6 +1,17 @@
 # Privacy-Preserving-Shopping-Intelligence-via-Federated-On-Device-Learning
 _______________________________________________________________________________
 
+## Final results
+
+How much recommendation quality survives the move from the cloud to federated or on-device models: the final
+report is [`docs/results.md`](docs/results.md), the aggregate result tables are in [`results/`](results/), and
+[`notebooks/final_results.ipynb`](notebooks/final_results.ipynb) draws the key figures from them.
+
+On REES46 the deployable warm federated system keeps 88.5 % of the full-data central model, but adds nothing over
+the server-pretrained model it starts from. How much federated training adds depends on how strong that pretrain
+is, and a FedAdam setting (`tau`) had to be fixed before federated training learned at all
+([`docs/fedadam-tau.md`](docs/fedadam-tau.md)).
+
 ## Phase 1 data pipeline
 
 The reproducible REES46 October 2019 CSV-to-Parquet pipeline is documented in
