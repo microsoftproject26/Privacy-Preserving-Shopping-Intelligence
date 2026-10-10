@@ -1,9 +1,9 @@
 # Next steps for the team
 
 This page is the starting point for the team taking over the deployment study. It covers where the project stands,
-which branch holds what and in which order to merge, how to reproduce the main tables, and what is left. The evidence behind every number (run
-records, locks, logs and audit files) is in the project archive handed over separately; this repository holds the
-code, the aggregate result tables and the documentation.
+which branch holds what and in which order to merge, how to reproduce the main tables, and what is left. The
+evidence behind every number (run records, locks, logs and audit files) is in the project archive handed over
+separately; this repository holds the code, the aggregate result tables and the documentation.
 
 ## Where the project stands
 
@@ -49,24 +49,27 @@ The full report is [`results.md`](results.md), and the tables are in `results/`.
 
 ## Branches and merge order
 
-Merge in this order; each branch has been trial-merged in sequence onto `main` without conflicts. Before each merge,
-open a pull request, let CI run and get it reviewed.
+**Already merged into `main`:**
+
+| Branch | Pull request | What it holds |
+|---|---|---|
+| `fix/fedadam-tau` | 103 | recipe validation of `fl.server_tau`, a unit test of the tau regime, `docs/fedadam-tau.md` |
+| `results/rees46-final` | 104 | `results/rees46/`: confirmatory contrasts (K1-K21, Q1-Q11), arm values, exploratory looks, privacy audit, DP cost, secure aggregation, device latency; the `.gitignore` rule that admits `results/**/*.csv` |
+| `results/benchmarks-final` | 105 | `results/benchmarks/`: Track A / B test results, the published comparison, the exploratory fixed-recipe test, the disjoint-band and capacity validation studies |
+| `docs/final-results-report` | 106 | `docs/results.md`, `notebooks/final_results.ipynb`, the README link |
+| `feature/benchmark-runner` | 102 | the benchmark runner; its last commit only merges the published history and changes no file, so the branch can be deleted |
+
+**Still to merge, in this order.** Each branch already contains the current `main`, and the branches were
+trial-merged in this sequence without conflicts. Open a pull request for each, let CI run and get it reviewed.
 
 | Order | Branch | What it holds |
 |---|---|---|
-| 1 | `fix/fedadam-tau` | recipe validation of `fl.server_tau`, a unit test of the tau regime, `docs/fedadam-tau.md` |
-| 2 | `results/rees46-final` | `results/rees46/`: confirmatory contrasts (K1-K21, Q1-Q11), arm values, exploratory looks, privacy audit, DP cost, secure aggregation, device latency; the `.gitignore` rule that admits `results/**/*.csv` |
-| 3 | `results/benchmarks-final` | `results/benchmarks/`: Track A / B test results, the published comparison, the exploratory fixed-recipe test, the disjoint-band and capacity validation studies |
-| 4 | `docs/final-results-report` | `docs/results.md`, `notebooks/final_results.ipynb`, the README link |
-| 5 | `feature/secure-aggregation` | `ppsi.fedsim.secagg` and `secagg_grid`, tests, `docs/federated-secure-aggregation.md` |
-| 6 | `feature/membership-inference-audit` | `ppsi.privacy` (the audit and per-user losses), tests, `docs/membership-inference-audit.md` |
-| 7 | `feature/contrast-inference` | `ppsi.evaluation.contrast_inference` (Holm, equivalence, seed statistics, harm shares), tests, docs |
-| 8 | `feature/fixed-benchmark-recipe` | `pre_start` in the benchmark recipe, the study's recipes in `config/benchrun/`, tests, docs; already contains branch 1 |
-| 9 | `docs/rees46-deployment-protocol` | `docs/rees46-deployment-data.md` (task, splits, populations) and `docs/rees46-deployment-recipes.md` |
-| 10 | `docs/next-steps` | this page |
-
-`feature/benchmark-runner` is already merged (pull request 102). Its last commit only merges the published history
-and changes no file, so the branch can be deleted.
+| 1 | `feature/secure-aggregation` | `ppsi.fedsim.secagg` and `secagg_grid`, tests, `docs/federated-secure-aggregation.md` |
+| 2 | `feature/membership-inference-audit` | `ppsi.privacy` (the audit and per-user losses), tests, `docs/membership-inference-audit.md` |
+| 3 | `feature/contrast-inference` | `ppsi.evaluation.contrast_inference` (Holm, equivalence, seed statistics, harm shares), tests, docs |
+| 4 | `feature/fixed-benchmark-recipe` | `pre_start` in the benchmark recipe, the study's recipes in `config/benchrun/`, tests, docs |
+| 5 | `docs/rees46-deployment-protocol` | `docs/rees46-deployment-data.md` (task, splits, populations) and `docs/rees46-deployment-recipes.md` |
+| 6 | `docs/next-steps` | this page |
 
 Some documents link to files that arrive in a later branch of the list, so the links are complete only after all of
 them are merged.
