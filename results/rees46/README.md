@@ -79,3 +79,37 @@ Arm names in the tables:
 | `PRE_FT_CENTRAL`, `PRE_FT_CENTRAL_FROZEN` | phase 2: central fine-tuning of `PRE` on the federated users' raw events (the headroom), all weights or frozen item tables |
 | `C_FULL_SMALL` | phase 2: the device-size model trained centrally on all 1.35 M users |
 | `LAST`, `POP`, `SKNN`, `RULE`, `KNN_EMB_*` | training-free baselines |
+
+## Exploratory re-runs (after the confirmatory test look)
+
+> **Exploratory, after the confirmatory test look.** These runs were designed after the confirmatory results were
+> known. Each exploratory test look locked its runs before scoring, and none of them replaces or changes a
+> confirmatory number. Read them beside the confirmatory tables, never instead of them.
+
+After the test look we found that FedAdam's adaptivity constant `tau = 1e-3` was larger than almost every per-round
+update value, so the federated models barely moved (see [`docs/fedadam-tau.md`](../../docs/fedadam-tau.md)). The
+re-runs use `tau = 1e-6`.
+
+| File | Content |
+|---|---|
+| `exploratory_test_contrasts.csv` | three exploratory test looks, MRR@20, `practical_best` |
+| `exploratory_warm_tau_grid_calibration.csv` | the warm, tau-fixed server-step grid on the calibration split |
+
+The three looks in `exploratory_test_contrasts.csv`:
+
+* **`tau_fixed_warm_and_cold`** re-runs both lines with `tau = 1e-6`.
+  * Warm line, unfrozen tables (`FA_WARM_TAUFIX`): it is +0.00022 over `PRE`, with a CI from -0.00011 to 0.00057
+    that includes 0, and it keeps 89.05 % of `C_FULL`. The confirmatory answer stands: with a strong pretrain,
+    federated training adds nothing measurable. On the calibration split, larger server steps from the pretrained
+    model made the model worse during training (`exploratory_warm_tau_grid_calibration.csv`).
+  * Cold line (`FA_COLD_TAUFIX`): the re-tuned recipe is 0.0068 below the confirmatory cold model. Tau and the
+    server step changed together, so this is not a pure tau effect.
+* **`pb100_v1`** gives the server a weaker pretrain, `PRE100K`, trained on 100,000 users instead of 1.2 M. It uses the
+  original recipe with `tau = 1e-3`, and one seed. Federated training from that pretrain adds +0.0074 (CI
+  0.0064-0.0084). Retention against `C_FULL` rises from 73.8 to 77.9.
+* **`pb100_v2_tau_fixed`** repeats that setting with `tau = 1e-6` and a tuned recipe, over two seeds. The gain over
+  `PRE100K` grows to +0.0091 (CI 0.0081-0.0101), and retention reaches 79.0. That is still below the 1.2 M-user
+  pretrain alone (-0.0179).
+
+**Reading.** The value of federated training depends on how strong the server-side pretraining is. Over a strong
+pretrain it adds about nothing. Over a weak pretrain, a correctly configured federated run closes part of the gap.
