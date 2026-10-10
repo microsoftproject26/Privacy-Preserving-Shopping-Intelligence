@@ -79,3 +79,31 @@ Results:
   on MovieLens-1M.
 * PCTM, the strongest published model on these splits, stays ahead on the Amazon sets.
 * Every federated arm of the registered recipe is far below the published central models.
+
+## Exploratory fixed-recipe test (after the confirmatory test look)
+
+> **Exploratory, after the confirmatory test look.** This recipe was chosen after the confirmatory results were
+> known, on inner validation only. Its runs were locked before the one exploratory test look. It is reported beside
+> the confirmatory tables and replaces none of them.
+
+The fixed federated recipe changes four things:
+
+* FedAdam `tau = 1e-6`;
+* a 4x larger round budget (24 epochs of exposure);
+* trainable item tables;
+* server step and client learning rate picked on validation.
+
+`C_SMALL` is the central device-size model (d 64) trained on the same users. It separates the cost of the smaller
+model from the cost of federation.
+
+| File | Content |
+|---|---|
+| `exploratory_fixed_fl_test.csv` | test NDCG@10 (mean of 2 seeds) of `C_FULL`, `C_SMALL`, the fixed cold and warm federated arms, `PRE` and the confirmatory `FA` / `FA_WARM`, with percentages of `C_FULL` |
+| `exploratory_fixed_fl_contrasts.csv` | paired differences with 95 % bootstrap intervals and the claim rule (`descriptive` on the two Amazon 2023 sets) |
+
+The fix works on the test split:
+
+* The fixed warm federated arm keeps 75-92 % of `C_FULL`. With the registered recipe the federated arms kept 13-77 %.
+* The smaller model costs little: `C_SMALL` keeps 90-110 % of `C_FULL`.
+* The cost of federation at matched size, `FA_WARM_TAUFIX / C_SMALL`, is 78-86 %.
+* On Toys the fixed warm arm is `on par` with `C_FULL` under the claim rule.
