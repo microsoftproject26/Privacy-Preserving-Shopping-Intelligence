@@ -56,7 +56,8 @@ options, each with a model small enough to run in the browser:
 
 ### REES46 (confirmatory)
 
-Retention against the full-data central model `C_FULL` (MRR@20 0.1801):
+Retention against the full-data central model `C_FULL`. The 100 % reference is seed 2026 (MRR@20 0.1804), as in `K17`,
+`K19` and `K20c`; the two-seed mean is 0.1801. `K20b` and `Q9` average the two seeds, each against its own `C_FULL`, and `FT_PRE` uses the two-seed arm means:
 
 | Deployment option | Arm | Retention | Source |
 |---|---|---|---|
@@ -115,12 +116,12 @@ Taken together, REES46, the 100k-user pretrain and the benchmarks give one pictu
 
 * **Strong pretrain.** On REES46 the pretrain uses 1.2 M server users, and federated training adds about 0
   (`K21`, `Q1`, and the tau-fixed re-run).
-* **Weak pretrain.** On REES46 with a pretrain of only 100,000 users, federated training adds +0.0074 with the
+* **Weak pretrain (exploratory, after the test look).** On REES46 with a pretrain of only 100,000 users, federated training adds +0.0074 with the
   original recipe and +0.0091 with the tau fix. Retention against `C_FULL` rises from 73.8 to 79.0, still below the
   1.2 M-user pretrain alone.
-* **No useful pretrain.** On the benchmarks, the 15 % band pretrain is weak (9-54 % of `C_FULL`). There a correctly
+* **No useful pretrain (the retention figures are exploratory, after the test look).** On the benchmarks, the 15 % band pretrain is weak (9-54 % of `C_FULL`). There a correctly
   configured federated run adds most of the quality, at 75-92 % of `C_FULL`.
-* **A real server-side data advantage.** On validation, with a server band disjoint from the federated clients, a
+* **A real server-side data advantage (exploratory, after the test look).** On validation, with a server band disjoint from the federated clients, a
   warm start beats a cold federated run by 27-55 % on the Amazon sets when the band holds 50 % of the users, and by
   5-8 % at 15 %. It does not help on MovieLens-1M.
 
@@ -128,18 +129,19 @@ The more the server already knows, the less federated training adds.
 
 ## Privacy
 
-* **Membership inference.** The audit compares 10,000 members against 10,000 non-members, using a loss score
+* **Membership inference (descriptive).** The audit compares 10,000 members against 10,000 non-members, using a loss score
   calibrated by `PRE`. It is valid, because `PRE` scores at chance.
-  * The confirmatory federated models do not leak (AUC 0.50), but only because they hardly moved.
-  * The tau-fixed cold federated model, which really learns from its users, leaks clearly: AUC 0.747, with a
+  * The federated models from the confirmatory run do not leak (AUC 0.50), but only because they hardly moved.
+  * The tau-fixed cold federated model (exploratory, after the test look), which really learns from its users, leaks clearly: AUC 0.747, with a
     true-positive rate of 14 % at 1 % false positives.
   * Central fine-tuning of `PRE` on the users' raw events leaks too (AUC 0.626).
 * **Differential privacy.** DP-FedAvg at epsilon 8 brings every audited model back to chance (AUC 0.497-0.504).
   * On the confirmatory test, the noise alone costs 1.5 % on the cold line (`K12`), 5.6 % at epsilon 1 (`K13`) and
     0 % on the warm line (`K12w`, `Q6`).
-  * The whole DP chain (a shorter Poisson schedule with clipping and noise) is cheap from a pretrained start: 95 %
+  * The whole DP chain (a shorter Poisson schedule with clipping and noise; exploratory, validation readings after the
+    test look) is cheap from a pretrained start: 95 %
     of the non-private run on validation. From a cold start it is expensive: 29 %.
-* **Secure aggregation (simulated).**
+* **Secure aggregation (simulated, descriptive).**
   * Every decoded sum is bit-identical to the plain sum.
   * The upload overhead is under 1 % for the encoder update.
   * Of 27 cells per update size, one fails to decode: the sparse k = 16 graph at 30 % dropout.
@@ -147,7 +149,7 @@ The more the server already knows, the less federated training adds.
 Read together: federated learning that learns also leaks membership. DP at epsilon 8 closes the leak, and its cost
 depends on the starting point.
 
-## Device feasibility
+## Device feasibility (descriptive)
 
 * **Bytes.** With frozen item tables a client uploads only the encoder update: 263,822 values, about 1.06 MB per
   round in FP32 (0.26 MB with 8-bit uploads). Training the full model costs about 82.8 MB each way per visit.
