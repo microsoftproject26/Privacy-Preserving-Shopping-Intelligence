@@ -107,3 +107,26 @@ The fix works on the test split:
 * The smaller model costs little: `C_SMALL` keeps 90-110 % of `C_FULL`.
 * The cost of federation at matched size, `FA_WARM_TAUFIX / C_SMALL`, is 78-86 %.
 * On Toys the fixed warm arm is `on par` with `C_FULL` under the claim rule.
+
+## Validation-only follow-ups (exploratory)
+
+> **Exploratory, inner validation only.** These experiments were run after the confirmatory look, and no test value
+> was read for them. They use the fixed federated recipe.
+
+**Disjoint server band (`validation_disjoint_server_band.csv`).** `PRE` is trained on a band of users, 15 % or
+50 %, that is disjoint from the federated clients. The federated arms then run only on the remaining users, and
+every value is NDCG@10 on those users' inner validation. `c_small_on_fl_users` is a central model trained on the
+federated users alone.
+
+* On the three Amazon sets with a 50 % band, the warm start beats the cold federated run by 27-55 %. It also matches
+  or beats the central model trained on the federated users alone.
+* With a 15 % band, the gain is 5-8 %.
+* On MovieLens-1M (6,040 users) the warm start does not beat cold, even at 50 %.
+
+A real server-side data advantage is what makes a warm start pay off.
+
+**Capacity (`validation_capacity.csv`).** The total gap to `C_FULL` splits into the cost of the smaller model
+(`C_SMALL / C_FULL`, 94-111 %) and the cost of federation at matched size (`FA d64 / C_SMALL`, 81-93 %).
+Federated training of the large model (d 256) is no better than at d 64. From random weights it is slightly worse
+on all four datasets. From the pretrained model it is within +-5 % of d 64: a little better on Beauty and Toys, a
+little worse on Sports and MovieLens-1M. Model size is not the bottleneck of the federated arms.
