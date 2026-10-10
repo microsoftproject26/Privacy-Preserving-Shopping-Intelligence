@@ -1,0 +1,63 @@
+{
+  "central": {
+    "C_FULL": {
+      "model_variant": "SASREC_D64_B2",
+      "peak_lr": 0.0007114121116984968,
+      "dropout": [
+        0.1
+      ]
+    },
+    "PRE": {
+      "model_variant": "SASREC_D64_B2",
+      "peak_lr": 0.0007114121116984968,
+      "dropout": [
+        0.1
+      ]
+    }
+  },
+  "fl": {
+    "model_variant": "SASREC_D64_B2",
+    "lr_peak_base": 0.0007114121116984968,
+    "server_opt": "fedadam",
+    "server_lr": 0.01,
+    "server_tau": 0.001,
+    "lr_shape": "fl_const",
+    "client_lr": 0.1,
+    "local_passes": 1,
+    "local_batch": 16
+  },
+  "warm": {
+    "FA_WARM": {
+      "warm_lr_factor": 0.25,
+      "warm_server_lr_factor": 0.1
+    },
+    "FA_WARM_FROZEN": {
+      "warm_lr_factor": 1.0,
+      "warm_server_lr_factor": 0.1
+    }
+  },
+  "ft": {
+    "lr_frac": 0.3,
+    "passes": 4,
+    "batch_size": 16
+  },
+  "dp": {
+    "q_nominal": 0.0078125,
+    "T": 384,
+    "delta": 5e-06,
+    "z": 0.5642,
+    "s_cal_rounds": 20
+  },
+  "knobs": {
+    "group": 64,
+    "dropout_p": 0.1,
+    "poisson_passes": 2,
+    "mu": 0.01,
+    "pf_lam": 0.0001,
+    "pf_clip": 1.0,
+    "clip": 1.0,
+    "n_shards": 2,
+    "max_attempts": 2,
+    "endpoint_efe": 6.0
+  }
+}
