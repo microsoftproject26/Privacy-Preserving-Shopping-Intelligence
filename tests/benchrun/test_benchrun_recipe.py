@@ -94,3 +94,20 @@ def test_central_and_device_recipes():
     assert recipe.central_recipe("PRE", r)["model_variant"] == "SASREC_D64_B2"
     k = recipe.ft_recipe_kwargs(r)
     assert k == {"arm": "FT_C", "peak_lr": r["fl"]["lr_peak_base"], "lr_frac": 0.1, "passes": (1,), "batch_size": 16}
+
+
+def test_pre_start_defaults_keep_the_recipe_hash(tmp_path):
+    base = recipe.load_recipe()
+    assert base["pre_start"] == {"checkpoint": "endpoint", "match_cell": True}
+    p = tmp_path / "r.json"
+    p.write_text(json.dumps({"pre_start": {"checkpoint": "endpoint"}}), encoding="utf-8")
+    assert recipe.load_recipe(p)["recipe_sha256"] == base["recipe_sha256"]
+    p.write_text(json.dumps({"pre_start": {"checkpoint": "best", "match_cell": False}}), encoding="utf-8")
+    r = recipe.load_recipe(p)
+    assert r["pre_start"] == {"checkpoint": "best", "match_cell": False}
+    assert r["recipe_sha256"] != base["recipe_sha256"]
+    for bad in ({"pre_start": {"checkpoint": "last"}}, {"pre_start": {"match_cell": "yes"}},
+                {"pre_start": {"other": 1}}):
+        p.write_text(json.dumps(bad), encoding="utf-8")
+        with pytest.raises(BenchRefused):
+            recipe.load_recipe(p)
