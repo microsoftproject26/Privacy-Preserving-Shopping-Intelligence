@@ -122,6 +122,10 @@ pretrain it adds about nothing. Over a weak pretrain, a correctly configured fed
 | `privacy_dp_cost.csv` | utility cost of DP-FedAvg |
 | `secure_aggregation.csv` | secure-aggregation simulation |
 
+The audit, the secure-aggregation simulation and the device measurements below are descriptive. They report what
+was measured and have no registered hypothesis or acceptance rule beyond the validity and pass checks stated here; the
+rows labelled tau-fixed or 100k-pretrain were run after the test look and are exploratory as well.
+
 **Membership inference.** The audit uses the training-window rows of 10,000 federated users (members) and 10,000
 users the models never saw (non-members). Each user's score is their mean loss under the model minus their mean
 loss under `PRE`. The threshold is set at 1 % false-positive rate on one half of the users and evaluated on the
@@ -129,7 +133,7 @@ other half. The audit is valid only if `PRE` itself scores at chance (AUC CI inc
 
 * A model shows *material leakage* if the AUC CI lower bound is above 0.55 or the TPR at 1 % FPR is above 3 %.
 * A DP model passes if the empirical epsilon lower bound does not exceed its accountant epsilon.
-* The confirmatory federated models (`FA_WARM_FROZEN`, `W_STAR`) show no material leakage, because they barely moved
+* The federated models from the confirmatory run (`FA_WARM_FROZEN`, `W_STAR`) show no material leakage, because they barely moved
   away from `PRE`.
 * The central fine-tune `PRE_FT_CENTRAL` leaks (AUC 0.626).
 * The tau-fixed cold federated model really learns from its users, and it leaks clearly (AUC 0.747, TPR 14 % at 1 %
@@ -137,7 +141,7 @@ other half. The audit is valid only if `PRE` itself scores at chance (AUC CI inc
 * The tau-fixed warm model from the 100k pretrain leaks a little but stays below the threshold (AUC 0.537). Its DP
   version passes.
 
-The rows of `PRE`, `FA_WARM_FROZEN`, `W_STAR` and `PRE_FT_CENTRAL` come from the confirmatory audit; the same rows in
+The rows of `PRE`, `FA_WARM_FROZEN`, `W_STAR` and `PRE_FT_CENTRAL` come from the first audit, of the models from the confirmatory run (a descriptive audit); the same rows in
 the two later audits are identical and are listed once.
 
 **DP utility cost.**
@@ -146,10 +150,11 @@ the two later audits are identical and are listed once.
   clipping but no noise: `K12`, `K13`, `K12w`, `K13w`, `Q6`, `Q11`. Noise alone costs 0-6 %.
 * *Exploratory validation, the whole DP chain.* DP-FedAvg at epsilon 8 runs 384 Poisson rounds of about 1,024
   clients with clipping and noise; the non-private run uses the regular schedule. On the tau-fixed cold line it
-  reaches only 29 % of the non-private run (validation MRR@20 0.038 against 0.131). On the warm line from the 100k
-  pretrain it reaches 95 % (0.146 against 0.153).
-* So DP closes the leak, but its cost is large from a random start and small from a pretrained start. Most of the
-  cold-line cost comes from the shorter, clipped DP schedule rather than from the noise itself.
+  reaches only 29 % of the non-private run (two-seed mean validation MRR@20 0.0384 against 0.1306; the per-seed best
+  values are 0.03804 and 0.03882 for DP8, and 0.13061 and 0.13067 for the non-private cold federated runs). On the
+  warm line from the 100k pretrain it reaches 95 % (0.146 against 0.153). Both are validation readings made after
+  the test look, so they are exploratory.
+* So DP closes the leak, but its measured cost is large from a random start and small from a pretrained start.
 
 **Secure aggregation (simulation).**
 
