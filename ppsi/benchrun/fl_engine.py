@@ -6,7 +6,8 @@ CheckpointManager. This module only supplies
   * the clients  one benchmark user = one federated client holding exactly its own TRAIN decisions
                  (data.client_examples);
   * the spec     recipe.build_fl_spec at the recipe's values;
-  * the init     theta_pre = the PRE run's endpoint_6.0 checkpoint (sha256 verified) for the warm arms;
+  * the init     theta_pre = the PRE run's endpoint checkpoint (sha256 verified) for the warm arms, or its best
+                 inner-validation checkpoint with the recipe's pre_start.checkpoint = "best";
   * evaluation   the inner-validation view every 0.5 EFE (12 marks), logged for ALL / BAND / OTHERS.
 The DP chain: S_CAL runs the Poisson-sampled federation without clipping and records S = the median client update
 norm (ppsi.fedsim.dp.median_clip_norm) in a write-once S record; FA_1024 (clipping at S, no noise) and DP8 (clipping
@@ -35,8 +36,9 @@ from .common import (
 from .evaluate import evaluate_view, flat_row, summarize
 
 
-def load_theta_pre(pre_run_dir: Path, dataset: str, allow_smoke: bool = False) -> tuple:
-    """(state dict, init identity) of the PRE run's endpoint_6.0 weights; refuses an unfinished / foreign PRE run."""
+def load_theta_pre(pre_run_dir: Path, dataset: str, allow_smoke: bool = False, checkpoint: str = "endpoint") -> tuple:
+    """(state dict, init identity) of the PRE run's endpoint weights (checkpoint "endpoint") or of its best
+    inner-validation mark ("best"); refuses an unfinished / foreign PRE run."""
     from ppsi.fedsim.numerics import state_digest
 
     from .central import load_weights
@@ -45,12 +47,15 @@ def load_theta_pre(pre_run_dir: Path, dataset: str, allow_smoke: bool = False) -
     ok = ("DONE_MAIN", "SMOKE_DONE_NOT_EVIDENCE") if allow_smoke else ("DONE_MAIN",)
     if res.get("status") not in ok or res.get("arm") != "PRE":
         raise BenchRefused(f"{pre_run_dir} is not a finished PRE run")
-    cb = res["checkpoints"]["CONTROLLED_BUDGET"]
+    if checkpoint not in recipe.PRE_CHECKPOINTS:
+        raise BenchRefused(f"unknown PRE checkpoint {checkpoint!r}")
+    cb = res["checkpoints"][recipe.PRE_CHECKPOINTS[checkpoint]]
     p = pre_run_dir / cb["file"]
     if sha256_file(p) != cb["sha256"]:
         raise BenchRefused(f"{p}: sha256 differs from RESULT.json")
     theta = load_weights(p)["theta"]
-    ident = {"kind": "PRE", "dataset": dataset, "run_id": res["run_id"], "fl_init_kind": "endpoint_6.0",
+    kind = "endpoint_6.0" if checkpoint == "endpoint" else "practical_best"
+    ident = {"kind": "PRE", "dataset": dataset, "run_id": res["run_id"], "fl_init_kind": kind,
              "checkpoint_sha256": cb["sha256"], "state_digest": state_digest(theta),
              "seed": res["spec"]["seed"]}
     return theta, ident
@@ -100,15 +105,21 @@ def run_fl(*, data, arm: str, seed: int, run_dir: Path, run_id: str, rcp, pre_ru
     if wv is not None:
         if pre_run_dir is None:
             raise BenchRefused(f"{arm}: --pre-run (the PRE run directory = theta_pre) is required")
-        init_theta, init_ident = load_theta_pre(pre_run_dir, data.dataset, allow_smoke=smoke_rounds is not None)
+        start = rcp["pre_start"]
+        init_theta, init_ident = load_theta_pre(pre_run_dir, data.dataset, allow_smoke=smoke_rounds is not None,
+                                                checkpoint=start["checkpoint"])
         pre_spec = read_json(Path(pre_run_dir) / "RESULT.json")["spec"]
         if int(pre_spec["seed"]) != int(seed):               # the warm start uses the PRE of the SAME run seed
             raise BenchRefused(f"theta_pre must be the seed-{seed} PRE (got seed {pre_spec['seed']})")
-        if int(pre_spec.get("budget_efe") or 6) != 6:        # the longer-budget PREs are PRE-alone rows only
-            raise BenchRefused("theta_pre must be a 6-EFE PRE: 24 / 96-EFE PREs are PRE-alone rows")
-        want_cell = (int(max_len) if max_len else 50, list(dropout) if dropout is not None else [0.1])
-        if (int(pre_spec.get("max_len", 50)), list(pre_spec.get("dropout", [0.1]))) != (want_cell[0], want_cell[1]):
-            raise BenchRefused("a warm run uses the PRE trained with the SAME (max_len, dropout)")
+        if start["match_cell"]:
+            if int(pre_spec.get("budget_efe") or 6) != 6:    # the longer-budget PREs are PRE-alone rows only
+                raise BenchRefused("theta_pre must be a 6-EFE PRE: 24 / 96-EFE PREs are PRE-alone rows "
+                                   "(set pre_start.match_cell false to start from one)")
+            want_cell = (int(max_len) if max_len else 50, list(dropout) if dropout is not None else [0.1])
+            if (int(pre_spec.get("max_len", 50)), list(pre_spec.get("dropout", [0.1]))) != want_cell:
+                raise BenchRefused("a warm run uses the PRE trained with the SAME (max_len, dropout)")
+        elif int(pre_spec.get("max_len", 50)) != (int(max_len) if max_len else 50):
+            raise BenchRefused("theta_pre must use the warm run's max_len (the position table is shared)")
         pre_class = accel.device_class_of(read_json(Path(pre_run_dir) / "RESULT.json"))
         if pre_class != dclass:                                  # one device class per dataset
             raise BenchRefused(f"theta_pre is a {pre_class} run, this run is {dclass} (device classes never mix)")

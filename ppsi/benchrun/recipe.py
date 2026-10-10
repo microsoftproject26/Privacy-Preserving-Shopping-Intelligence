@@ -18,6 +18,10 @@ dataset); pass your own with `--recipe recipe.json` (a partial file is merged ov
             adaptivity constant (default 1e-3, kept for reproducibility); keep it below the typical size of the
             per-round update, see docs/fedadam-tau.md
   warm      per warm arm: warm_lr_factor (client LR factor), warm_server_lr_factor (server LR factor)
+  pre_start which PRE checkpoint the warm arms start from: checkpoint ("endpoint" = the exposure endpoint, the
+            default; "best" = PRE's best inner-validation mark on the band users), match_cell (true, the default:
+            the PRE must be a 6-EFE run with the warm run's max_len and dropout; false: any finished PRE run of the
+            same seed, e.g. a longer-budget PRE)
   ft        lr_frac (x lr_peak_base), passes, batch_size
   dp        q_nominal (Poisson inclusion probability), T (rounds), delta, z (noise multiplier; take it from the
             accountant in ppsi.fedsim for your privacy target), s_cal_rounds
@@ -49,7 +53,10 @@ DEFAULT_RECIPE = {
     "dp": {"q_nominal": 2.0 ** -7, "T": 384, "delta": 5e-6, "z": 1.0, "s_cal_rounds": 20},
     "knobs": {"group": 64, "dropout_p": 0.1, "poisson_passes": 2, "mu": 0.01, "pf_lam": 1e-4, "pf_clip": 1.0,
               "clip": 1.0, "n_shards": 2, "max_attempts": 2, "endpoint_efe": 6.0},
+    "pre_start": {"checkpoint": "endpoint", "match_cell": True},
 }
+DEFAULT_PRE_START = {"checkpoint": "endpoint", "match_cell": True}
+PRE_CHECKPOINTS = {"endpoint": "CONTROLLED_BUDGET", "best": "PRACTICAL_BEST"}
 FEDADAM_HYPER = {"beta1": 0.9, "beta2": 0.99, "v_init": "tau_squared"}
 EXPOSURE_POINT = "end"
 Q8_CODEC = {"name": "Q8_SR_PER_TENSOR", "bits": 8, "qmax": 127, "scale": "max|delta| / 127 per tensor (FP32)",
@@ -97,6 +104,9 @@ def check_recipe(r: Mapping) -> dict:
     for arm, w in r["warm"].items():
         if arm not in WARM_ARMS or not (w["warm_lr_factor"] > 0 and w["warm_server_lr_factor"] > 0):
             raise BenchRefused(f"warm.{arm}: unknown warm arm or a non-positive factor")
+    ps = r["pre_start"]
+    if ps["checkpoint"] not in PRE_CHECKPOINTS or not isinstance(ps["match_cell"], bool):
+        raise BenchRefused(f"pre_start.checkpoint must be one of {tuple(PRE_CHECKPOINTS)} and match_cell a boolean")
     if not 0.0 <= float(r["knobs"]["dropout_p"]) < 1.0:
         raise BenchRefused("knobs.dropout_p must be in [0, 1)")
     return dict(r)
@@ -108,7 +118,9 @@ def load_recipe(path=None) -> dict:
     if path is not None:
         r = _merge(r, json.loads(Path(path).read_text(encoding="utf-8")))
     r = check_recipe(r)
-    r["recipe_sha256"] = canon_sha256({k: v for k, v in r.items() if k != "recipe_sha256"})
+    # pre_start joined the recipe later: at its default it is left out of the hash, so earlier recipes keep theirs
+    r["recipe_sha256"] = canon_sha256({k: v for k, v in r.items() if k != "recipe_sha256"
+                                       and not (k == "pre_start" and v == DEFAULT_PRE_START)})
     return r
 
 

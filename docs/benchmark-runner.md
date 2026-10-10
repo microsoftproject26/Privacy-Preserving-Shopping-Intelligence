@@ -47,6 +47,56 @@ the DP noise multiplier `z` from the accountant in `ppsi.fedsim` for your privac
 `1e-3` for reproducibility; with the small updates of these recipes use about `1e-6` (see
 [`fedadam-tau.md`](fedadam-tau.md)).
 
+## The study's recipes
+
+`config/benchrun/` holds the recipes used for the published results tables (`results/benchmarks/`):
+
+| File | What it is |
+|---|---|
+| `registered_recipe.json` | the REES46 recipe transferred unchanged (the confirmatory runs, Track A) |
+| `fixed_recipe_<dataset>.json` | the exploratory fixed recipe, one per dataset |
+| `fixed_recipe_c_small.json` | the device-size central reference `C_SMALL`, run as the `C_FULL` arm with the d 64 model |
+
+**The registered recipe.**
+
+* Central models use the REES46 schedules: `C_FULL` is SASRec d 256 with 3 blocks, and `PRE` is SASRec d 64 with
+  2 blocks.
+* Federated training uses FedAdam (server step 0.01, `tau` 1e-3), client SGD with momentum (learning rate 0.1),
+  one local pass of batch 16 and 6 epochs of exposure.
+* Warm arms scale the client / server rates by 0.25 / 0.1 (`FA_WARM`) and 1 / 0.1 (`FA_WARM_FROZEN`).
+* DP-FedAvg uses q = 2^-7, 384 rounds, delta 5e-6 and z 0.5642 (epsilon 8). On-device fine-tuning uses 0.3 x the
+  small peak rate and 4 passes.
+
+**The fixed recipe** keeps all of that except:
+
+* FedAdam `tau = 1e-6` and a server step of 0.001 (see [`fedadam-tau.md`](fedadam-tau.md));
+* 24 epochs of exposure for the federated arms;
+* the warm start is PRE's best inner-validation checkpoint of a 96-epoch PRE run (`pre_start`);
+* the warm client / server factors were chosen per dataset on inner validation.
+
+Example for Beauty:
+
+```powershell
+$R = "config/benchrun/fixed_recipe_s3_beauty.json"
+uv run python -m ppsi.benchrun.run run --dataset s3_beauty --data-root data/bench --runs-root runs_fixed `
+    --arm PRE --seed 2026 --budget-efe 96 --dropout 0.5 --recipe $R
+uv run python -m ppsi.benchrun.run run --dataset s3_beauty --data-root data/bench --runs-root runs_fixed `
+    --arm FA --seed 2026 --recipe $R
+uv run python -m ppsi.benchrun.run run --dataset s3_beauty --data-root data/bench --runs-root runs_fixed `
+    --arm FA_WARM --seed 2026 --pre-run runs_fixed/s3_beauty/PRE__B96_L50_D0.5_s2026 --recipe $R
+uv run python -m ppsi.benchrun.run run --dataset s3_beauty --data-root data/bench --runs-root runs_csmall `
+    --arm C_FULL --seed 2026 --budget-efe 24 --recipe config/benchrun/fixed_recipe_c_small.json
+```
+
+PRE dropout by dataset:
+
+* 0.5 on Beauty and Sports;
+* 0.2 on Toys, MovieLens-1M, Video Games and Baby Products.
+
+`pre_start` selects the PRE checkpoint a warm arm starts from. It is either `"endpoint"`, the default, or `"best"`.
+With `match_cell` false, the PRE may be a longer-budget run with a different dropout; it must still use the same
+maximum sequence length. At its default, `pre_start` does not enter the recipe hash.
+
 ## Commands
 
 ```powershell
