@@ -538,3 +538,7 @@ artifacts/*
 !artifacts/experiment-results/
 artifacts/experiment-results/*
 !artifacts/experiment-results/*.result.json
+
+# results/ holds the final aggregate result tables (one row per arm, contrast or dataset; no
+# user_id, no per-user or per-decision rows). Re-include their CSV files and nothing else.
+!results/**/*.csv
