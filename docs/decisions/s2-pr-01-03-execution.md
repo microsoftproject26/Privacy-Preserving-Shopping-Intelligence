@@ -3,9 +3,8 @@
 - Date: 2026-09-10
 - Status: ACCEPTED_FOR_EXECUTION_UNDER_PROJECT_OWNER_DELEGATION
 - Decision authority: Ahmed Abdelhamed's request to plan and execute #35/#36/#37 together, with necessary decisions documented in the repository.
-- Planning author: ChatGPT; implementation executor: Claude Code.
 - Scope: the local implementation bundle, technical runtime benchmark and initial T1 convergence-tool policy. Not final scientific FedAvg/R2A or CP-FL approval.
-- Approval provenance: owner instructions in the project conversation. No external approval permalink was supplied. This document does not assert individual new approvals by Eid Abdelrihem or Ahmed Sherif.
+- Approval provenance: owner instructions recorded in the project notes. No external approval permalink was supplied. This document does not assert individual new approvals by Eid Abdelrihem or Ahmed Sherif.
 
 ## Existing authority preserved
 
@@ -13,9 +12,9 @@ Eid's accepted ADR-001 and G1 remain unchanged. T1 regime comparison uses macro 
 
 ## D1 — one bundle, with a real local dependency barrier
 
-Issue #37 originally requires #35 to be Done. For the requested single implementation session, a narrow scheduling exception replaces the inter-PR wait with #35's completed **local** technical gate: real scale trials, repeated chosen point, verified hashes and a PASS local summary. #37 must not run before that gate.
+Issue #37 originally requires #35 to be Done. For the requested single implementation pass, a narrow scheduling exception replaces the inter-PR wait with #35's completed **local** technical gate: real scale trials, repeated chosen point, verified hashes and a PASS local summary. #37 must not run before that gate.
 
-The later human PR must cross-reference this exception in #35/#37. Before merge, local readiness is not GitHub closure. No technical acceptance requirement or real-data evidence is waived. A failed #35 leaves #37 unexecuted; #36 is independent and may finish.
+The follow-up PR must cross-reference this exception in #35/#37. Before merge, local readiness is not GitHub closure. No technical acceptance requirement or real-data evidence is waived. A failed #35 leaves #37 unexecuted; #36 is independent and may finish.
 
 Alternative rejected: implementing/profiling all three concurrently against unfinished code. That makes measurements and failures hard to attribute.
 
