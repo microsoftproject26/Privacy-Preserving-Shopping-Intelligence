@@ -123,7 +123,7 @@ pretrain it adds about nothing. Over a weak pretrain, a correctly configured fed
 | `secure_aggregation.csv` | secure-aggregation simulation |
 
 The audit, the secure-aggregation simulation and the device measurements below are descriptive. They report what
-was measured and have no registered hypothesis or decision rule beyond the validity and pass checks stated here; the
+was measured and have no registered hypothesis or acceptance rule beyond the validity and pass checks stated here; the
 rows labelled tau-fixed or 100k-pretrain were run after the test look and are exploratory as well.
 
 **Membership inference.** The audit uses the training-window rows of 10,000 federated users (members) and 10,000
