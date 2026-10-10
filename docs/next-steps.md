@@ -1,7 +1,7 @@
 # Next steps for the team
 
-This page is the handover of the deployment study. It covers where the project stands, which branch holds what and
-in which order to merge, how to reproduce the main tables, and what is left. The evidence behind every number (run
+This page is the starting point for the team taking over the deployment study. It covers where the project stands,
+which branch holds what and in which order to merge, how to reproduce the main tables, and what is left. The evidence behind every number (run
 records, locks, logs and audit files) is in the project archive handed over separately; this repository holds the
 code, the aggregate result tables and the documentation.
 

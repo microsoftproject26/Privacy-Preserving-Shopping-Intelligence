@@ -230,7 +230,7 @@ Ruff enforces the pinned Python version, `3.11.14`. Syntax introduced in a later
 newer local interpreter and fails here, so run the checks above before pushing rather than relying
 on whichever Python is on your PATH.
 
-## Handover
+## For the team
 
 Where the project stands, the branches still to merge and in which order, how to reproduce the results and
 what remains: [`docs/next-steps.md`](docs/next-steps.md).
