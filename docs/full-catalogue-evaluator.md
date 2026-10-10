@@ -61,10 +61,41 @@ print(result["E2E"]["macro"]["mrr@20"], result["coverage"])
 `batches` are dicts with the model inputs plus `decision_id`, in manifest order, `cfg.eval_batch` rows each (the last
 batch may be shorter); they may cover every manifest row or only the evaluated (non-censored) rows.
 
+## Reading a family of contrasts
+
+`ppsi.evaluation.contrast_inference` turns the bootstrapped contrasts into the decisions of a preregistered
+analysis. It lives outside the `fullrank` package, so the evaluator's code identity is unchanged.
+
+| Function | What it gives |
+|---|---|
+| `seed_mean_resamples` | the per-resample seed mean of a delta or a retention ratio (seed s against seed s, same resample matrix) |
+| `holm_step_down` | Holm over the registered family, on normal intervals from the bootstrap SE; adjusted p, the decision and a band that excludes the reference exactly when the contrast is rejected; Bonferroni band beside it |
+| `equivalence` | two one-sided tests: equivalent iff the 90 % percentile interval lies inside the margin |
+| `seed_stats` | seed spread, a seed-sensitivity flag and a user-plus-seed interval |
+| `harm_shares` | the share of users harmed, helped and tied, with per-user delta quantiles |
+
+How these were used in the deployment study:
+
+* The primary pair was read unadjusted.
+* The 18 secondary contrasts formed one Holm family of registered size: a contrast that could not be computed still
+  counts.
+* The phase-2 primary contrast was read with an equivalence margin of +-0.0005 MRR@20.
+
+```python
+from ppsi.evaluation import contrast_inference as ci
+from ppsi.evaluation.fullrank import bootstrap as B
+
+res = ci.seed_mean_resamples(plan, fl_by_seed, central_by_seed, "macro_e2e", kind="retained")
+point = float(np.mean([B.ratio(plan, fl_by_seed[s], central_by_seed[s], "macro_e2e", "R")["point"]
+                       for s in sorted(fl_by_seed)]))
+holm = ci.holm_step_down([{"id": "R(FA / C)", "point": point, "resamples": res, "reference": 100.0}, ...],
+                         family_size=18)
+```
+
 ## Tests
 
 ```powershell
-uv run python -m pytest tests/evaluation/fullrank -q
+uv run python -m pytest tests/evaluation/fullrank tests/evaluation/test_contrast_inference.py -q
 ```
 
 All fixtures are synthetic. Tests named `test_nc_*` are negative controls (strict expected failures): each runs a
