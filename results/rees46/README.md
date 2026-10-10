@@ -113,3 +113,62 @@ The three looks in `exploratory_test_contrasts.csv`:
 
 **Reading.** The value of federated training depends on how strong the server-side pretraining is. Over a strong
 pretrain it adds about nothing. Over a weak pretrain, a correctly configured federated run closes part of the gap.
+
+## Privacy audit and differential privacy
+
+| File | Content |
+|---|---|
+| `privacy_membership_inference.csv` | user-level membership inference on final models |
+| `privacy_dp_cost.csv` | utility cost of DP-FedAvg |
+| `secure_aggregation.csv` | secure-aggregation simulation |
+
+**Membership inference.** The audit uses the training-window rows of 10,000 federated users (members) and 10,000
+users the models never saw (non-members). Each user's score is their mean loss under the model minus their mean
+loss under `PRE`. The threshold is set at 1 % false-positive rate on one half of the users and evaluated on the
+other half. The audit is valid only if `PRE` itself scores at chance (AUC CI including 0.5), which it does.
+
+* A model shows *material leakage* if the AUC CI lower bound is above 0.55 or the TPR at 1 % FPR is above 3 %.
+* A DP model passes if the empirical epsilon lower bound does not exceed its accountant epsilon.
+* The confirmatory federated models (`FA_WARM_FROZEN`, `W_STAR`) show no material leakage, because they barely moved
+  away from `PRE`.
+* The central fine-tune `PRE_FT_CENTRAL` leaks (AUC 0.626).
+* The tau-fixed cold federated model really learns from its users, and it leaks clearly (AUC 0.747, TPR 14 % at 1 %
+  FPR). Its DP version at epsilon 8 passes (AUC 0.502).
+* The tau-fixed warm model from the 100k pretrain leaks a little but stays below the threshold (AUC 0.537). Its DP
+  version passes.
+
+The rows of `PRE`, `FA_WARM_FROZEN`, `W_STAR` and `PRE_FT_CENTRAL` come from the confirmatory audit; the same rows in
+the two later audits are identical and are listed once.
+
+**DP utility cost.**
+
+* *Confirmatory test, noise only.* Each DP run is compared with the twin that uses the same Poisson schedule and
+  clipping but no noise: `K12`, `K13`, `K12w`, `K13w`, `Q6`, `Q11`. Noise alone costs 0-6 %.
+* *Exploratory validation, the whole DP chain.* DP-FedAvg at epsilon 8 runs 384 Poisson rounds of about 1,024
+  clients with clipping and noise; the non-private run uses the regular schedule. On the tau-fixed cold line it
+  reaches only 29 % of the non-private run (validation MRR@20 0.038 against 0.131). On the warm line from the 100k
+  pretrain it reaches 95 % (0.146 against 0.153).
+* So DP closes the leak, but its cost is large from a random start and small from a pretrained start. Most of the
+  cold-line cost comes from the shorter, clipped DP schedule rather than from the noise itself.
+
+**Secure aggregation (simulation).**
+
+* The protocol is Bonawitz et al. (2017), semi-honest with four rounds, plus the SecAgg+ k-regular graph of Bell
+  et al. (2020). The cryptography is simulated, and the message sizes are counted at their real values.
+* The grid is 64 clients, dropout 0 / 10 / 30 %, a complete graph or k = 16 / 32 neighbours, and three seeds.
+* Every decoded sum is bit-identical to the plain fixed-point sum. The upload overhead is under 1 % for the encoder
+  update and about 0.01 % for the full model.
+* One cell per update size fails to decode: k = 16 at 30 % dropout, seed 2028, where 8 shares are below the
+  neighbourhood threshold of 9.
+
+## Device feasibility
+
+`device_latency.csv` holds in-browser inference of the phase-2 federated model, exported to ONNX and run with
+ONNX Runtime Web: 68 runs on three devices, none failed. It reports latency, cold start and model size only, with
+no accuracy.
+
+* FP32 is 82.9 MB and INT8 is 21.2 MB.
+* After loading, one recommendation takes about 2-5 ms at the median on a laptop and on a phone.
+* Cold start (fetching the model file, creating the session and the first inference) takes 0.7-0.9 s on the laptop.
+  On the phone it takes 2.5 s with INT8 and 4.9-5.2 s with FP32.
+* INT8 costs nothing measurable in quality (`K16`).
