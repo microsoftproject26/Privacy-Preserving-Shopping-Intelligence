@@ -35,7 +35,7 @@ JSON file passed with `--recipe` is merged over it. Example:
 ```json
 {
   "central": {"C_FULL": {"model_variant": "SASREC_D256_B2", "peak_lr": 0.001, "dropout": [0.2]}},
-  "fl": {"server_opt": "fedadam", "server_lr": 0.02, "client_lr": 0.05, "local_passes": 1},
+  "fl": {"server_opt": "fedadam", "server_lr": 0.02, "server_tau": 1e-6, "client_lr": 0.05, "local_passes": 1},
   "warm": {"FA_WARM": {"warm_lr_factor": 0.5, "warm_server_lr_factor": 0.5}},
   "ft": {"lr_frac": 0.1, "passes": 2},
   "dp": {"z": 1.0}
@@ -43,7 +43,9 @@ JSON file passed with `--recipe` is merged over it. Example:
 ```
 
 Federated rounds follow the exposure rule `ceil(endpoint_efe x N_clients / (group x (1 - dropout_p) x passes))`; set
-the DP noise multiplier `z` from the accountant in `ppsi.fedsim` for your privacy target.
+the DP noise multiplier `z` from the accountant in `ppsi.fedsim` for your privacy target. `fl.server_tau` defaults to
+`1e-3` for reproducibility; with the small updates of these recipes use about `1e-6` (see
+[`fedadam-tau.md`](fedadam-tau.md)).
 
 ## The study's recipes
 

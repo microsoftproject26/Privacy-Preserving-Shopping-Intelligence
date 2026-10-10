@@ -14,7 +14,9 @@ dataset); pass your own with `--recipe recipe.json` (a partial file is merged ov
   central   per central arm: model_variant, peak_lr, dropout
   fl        model_variant, lr_peak_base (also the personal-vector and fine-tuning reference LR), server_opt
             ("fedadam" | "fedavgm" | null = FedAvg), server_lr, server_tau / server_momentum, lr_shape ("fl_const" |
-            "central"), client_lr (SGD with momentum), local_passes, local_batch
+            "central"), client_lr (SGD with momentum), local_passes, local_batch. server_tau is FedAdam's
+            adaptivity constant (default 1e-3, kept for reproducibility); keep it below the typical size of the
+            per-round update, see docs/fedadam-tau.md
   warm      per warm arm: warm_lr_factor (client LR factor), warm_server_lr_factor (server LR factor)
   pre_start which PRE checkpoint the warm arms start from: checkpoint ("endpoint" = the exposure endpoint, the
             default; "best" = PRE's best inner-validation mark on the band users), match_cell (true, the default:
@@ -93,6 +95,9 @@ def check_recipe(r: Mapping) -> dict:
                     ("fl.server_lr", fl["server_lr"]), ("dp.z", r["dp"]["z"])):
         if not (isinstance(v, (int, float)) and math.isfinite(v) and v >= 0):
             raise BenchRefused(f"{path} must be a finite number >= 0")
+    tau = fl["server_tau"]
+    if isinstance(tau, bool) or not (isinstance(tau, (int, float)) and math.isfinite(tau) and tau > 0):
+        raise BenchRefused("fl.server_tau (the FedAdam adaptivity constant) must be a finite number > 0")
     for arm, c in r["central"].items():
         if arm not in CENTRAL_ARMS or not (c["peak_lr"] > 0):
             raise BenchRefused(f"central.{arm}: unknown arm or a non-positive peak_lr")

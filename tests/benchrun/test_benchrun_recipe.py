@@ -25,7 +25,9 @@ def test_a_partial_file_is_merged_and_unknown_keys_refused(tmp_path):
     assert r["fl"]["client_lr"] == 0.2 and r["fl"]["local_batch"] == 16 and r["central"]["PRE"]["peak_lr"] == 5e-4
     assert r["recipe_sha256"] != recipe.load_recipe()["recipe_sha256"]
     for bad in ({"fl": {"clientlr": 0.2}}, {"nope": {}}, {"fl": {"server_opt": "sgd"}}, {"fl": {"client_lr": -1}},
-                {"knobs": {"dropout_p": 1.0}}, {"warm": {"FA_WARM": {"warm_lr_factor": 0}}}):
+                {"knobs": {"dropout_p": 1.0}}, {"warm": {"FA_WARM": {"warm_lr_factor": 0}}},
+                {"fl": {"server_tau": 0}}, {"fl": {"server_tau": -1e-6}}, {"fl": {"server_tau": "1e-6"}},
+                {"fl": {"server_tau": True}}, {"fl": {"server_tau": None}}):
         p.write_text(json.dumps(bad), encoding="utf-8")
         with pytest.raises(BenchRefused):
             recipe.load_recipe(p)
@@ -72,6 +74,20 @@ def test_server_optimisers_and_warm_server_factor(tmp_path):
     p.write_text(json.dumps({"fl": {"server_opt": "fedavgm", "server_lr": 1.0}}), encoding="utf-8")
     m = recipe.build_fl_spec("FA", seed=1, n_clients=100, recipe=recipe.load_recipe(p))["cfg"]["server_opt"]
     assert m == {"name": "fedavgm", "lr": 1.0, "beta1": 0.9}
+
+
+def test_fedadam_tau_comes_from_the_recipe(tmp_path):
+    from ppsi.fedsim.server import ServerOptConfig
+    p = tmp_path / "r.json"
+    p.write_text(json.dumps({"fl": {"server_opt": "fedadam", "server_lr": 1e-3, "server_tau": 1e-6}}),
+                 encoding="utf-8")
+    r = recipe.load_recipe(p)
+    assert r["recipe_sha256"] != recipe.load_recipe()["recipe_sha256"]
+    for arm, init in (("FA", None), ("FA_WARM", {"k": 1}), ("FA_WARM_FROZEN", {"k": 1})):
+        opt = recipe.build_fl_spec(arm, seed=1, n_clients=100, recipe=r, init_from=init)["cfg"]["server_opt"]
+        assert opt["tau"] == 1e-6
+        assert ServerOptConfig(**opt).tau == 1e-6
+    assert recipe.load_recipe()["fl"]["server_tau"] == 1e-3         # the default is unchanged
 
 
 def test_dp_specs():
