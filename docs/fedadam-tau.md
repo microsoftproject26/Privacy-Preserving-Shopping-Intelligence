@@ -50,13 +50,14 @@ benchmarks was still at its best at the last checkpoint of its budget.
 ## Effect of the fix
 
 * **Benchmarks.** We set `tau = 1e-6`, used a larger round budget and left the item tables trainable. The best
-  federated arm then reached 76-91 % of the central model's validation NDCG@10 across the six datasets. With the
-  original recipe, the federated arms had reached 13-81 % on the test split. The exploratory test results are in
-  `results/benchmarks/`.
+  federated arm then reached 76-91 % of the central model's validation NDCG@10 across the six datasets, and 75-92 %
+  in the exploratory test look. With the original recipe, the best federated arm had reached 13-77 % on the test
+  split. The test results are in `results/benchmarks/`.
 * **REES46 with a strong server pretrain.** Here a larger server step did not help. Starting from a model
-  pretrained on 1.2 million users, larger steps lowered the calibration-split MRR@20 (0.1705 to 0.1663 at
-  `eta_s = 3e-5`). The conclusion that federated training adds nothing over that pretrain is therefore not caused
-  by the `tau` setting.
+  pretrained on 1.2 million users, the calibration-split MRR@20 fell during training as the server step grew: at
+  `eta_s = 3e-5` it went from 0.1705 after half an epoch of exposure to 0.1663 at the end. The smallest step,
+  `3e-6`, stayed flat at about 0.1712. The conclusion that federated training adds nothing over that pretrain is
+  therefore not caused by the `tau` setting.
 
 ## Recommendation
 
