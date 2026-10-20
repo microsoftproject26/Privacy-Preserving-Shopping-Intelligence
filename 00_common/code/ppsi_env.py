@@ -1,6 +1,6 @@
 """ppsi_env.py (owner: Opus, lead) — import isolation for PPSI V4 (acceptance test T43; lesson of FO-02).
 
-Import FIRST. Puts the byte snapshot `02_centralized/code/snap_v1` (hashes in SNAPSHOT_MANIFEST.json, copied from the
+Import FIRST. Puts the byte snapshot `02_centralized/code/pilot_code_snapshot` (hashes in SNAPSHOT_MANIFEST.json, copied from the
 feature study's reviewed snapshot) at the front of sys.path, pre-imports every reused module from it (eval_full before train, because the
 reused GRU train.py inserts gru_v1/code at sys.path[0] when imported), then scrubs every foreign code tree from sys.path.
 `assert_isolated()` proves all reused modules come from the snapshot and no foreign tree is importable.
@@ -16,7 +16,7 @@ from pathlib import Path
 import ppsi_paths
 
 CODE = Path(__file__).resolve().parent
-SNAP = ppsi_paths.code_dir("snap_v1")  # 02_centralized/code/snap_v1 here; code/snap_v1 in the flat research layout
+SNAP = ppsi_paths.code_dir("snap_v1")  # 02_centralized/code/pilot_code_snapshot here; code/snap_v1 in the flat research layout
 _FOREIGN = ("gru_v1", "sasrec_v1", "feature_opt_v1", "sasrec_vs_systems_v1")
 # The pilot workspaces' code trees under the configured PILOT_ROOT. The byte-locked snapshot still inserts the
 # legacy literal paths (snap_v1/reuse/train.py), so those spellings are scrubbed as well.

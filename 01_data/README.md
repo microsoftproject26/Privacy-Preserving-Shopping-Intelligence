@@ -40,15 +40,15 @@ manifests of every population band. The stage produces one immutable dataset,
 |---|---|---|
 | `code/ppsi/data` | Prototype data pipeline: canonical events, windows, cohorts, example builders | Prototype stage |
 | `code/ppsi/features` | Privacy-motivated feature encoding: blake2b-64 hashing, price bands, capped log time gap | Prototype stage |
-| `code/census_v2` | Census of the TRAIN window (`census02.py`) that fixed the population strata | Main study |
-| `code/featstat_v1` | Feature statistics fitted once on the full TRAIN period (one federated-statistics round) | Main study |
-| `code/v4hist` | History policy `USER_HISTORY_L50`: policy, stream, windows, census | Main study |
-| `code/v4data` (+ `frozen_inputs/`), `v4data06`, `v4data08`, `v4data09`, `v4data10` | Dataset builds, manifests and frozen inputs of the locked data versions | Main study |
-| `code/v4fs_data` | Data builds of the feature-search band | Main study |
-| `code/v4trunc` | Truncated-history panel builders (warm truncation panel) | Main study |
-| `code/g0_export`, `g0_*.py` | Export adapters and gate-0 scripts (server census, forecast, federated cost probe) | Main study |
+| `code/census_v2` -> `code/data_census` (import name `census_v2`) | Census of the TRAIN window (`census02.py`) that fixed the population strata | Main study |
+| `code/featstat_v1` -> `code/feature_statistics` (import name `featstat_v1`) | Feature statistics fitted once on the full TRAIN period (one federated-statistics round) | Main study |
+| `code/v4hist` -> `code/history_policy` (import name `v4hist`) | History policy `USER_HISTORY_L50`: policy, stream, windows, census | Main study |
+| `code/v4data` -> `code/dataset_builder` (import name `v4data`, with `frozen_inputs/`), `dataset_manifests_v2` (`v4data06`), `training_manifest_full` (`v4data08`), `test_manifests` (`v4data09`), `pretraining_manifest` (`v4data10`) | Dataset builds, manifests and frozen inputs of the locked data versions | Main study |
+| `code/v4fs_data` -> `code/feature_search_samples` (import name `v4fs_data`) | Data builds of the feature-search band | Main study |
+| `code/v4trunc` -> `code/truncated_history_features` (import name `v4trunc`) | Truncated-history panel builders (warm truncation panel) | Main study |
+| `code/g0_export` -> `code/export_feasibility_check` (run by path), `g0_*.py` | Export adapters and gate-0 scripts (server census, forecast, federated cost probe) | Main study |
 | `scripts/prototype/data` | Prototype data scripts | Prototype stage |
-| `tests/prototype/features`, `tests/research/tests_data*` | Feature tests (CPU) and research suites of the builds | Prototype / main study |
+| `tests/prototype/features`, `tests/research/tests_dataset_builder` (formerly `tests_data`) and the other renamed `tests_*` suites | Feature tests (CPU) and research suites of the builds | Prototype / main study |
 
 ## How to run
 

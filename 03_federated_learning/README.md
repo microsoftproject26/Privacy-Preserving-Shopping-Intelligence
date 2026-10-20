@@ -58,12 +58,12 @@ exploratory tau-fixed re-runs that diagnosed the FedAdam scaling fault.
 |---|---|---|
 | `code/ppsi/federated` | Federated arms of the public package: client training, finetune, local-only, personalisation | Main study (public port) |
 | `code/ppsi/fedsim` | The federated simulator: FedAdam and its tau, FedAvgM, Poisson sampling, clipping and DP noise, 8-bit stochastic-rounding uploads | Main study (public port) |
-| `code/fl` | Research-tree federated engine: launchers, receipts, communication records, GPU receipts | Main study |
-| `code/x_rees46` | Exploratory tau-fixed re-runs (`launch_fl_x*.py`, `reeval_x*.py`, `x_analysis.py`) and their register entries | Closure phase |
-| `code/experiment_extensions/federated` | Closure-phase federated extensions (fine-tuning on moving models, more local passes, FedProx, personal head) | Closure phase |
+| `code/fl` -> `code/federated_core` (import name `fl`, as used in the recorded runs) | Research-tree federated engine: launchers, receipts, communication records, GPU receipts | Main study |
+| `code/x_rees46` -> `code/tau_fixed_reruns` (run by path) | Exploratory tau-fixed re-runs (`launch_fl_x*.py`, `reeval_x*.py`, `x_analysis.py`) and their register entries | Closure phase |
+| `code/experiment_extensions/federated` -> `code/closure_experiments/federated` (import name `experiment_extensions.federated`) | Closure-phase federated extensions (fine-tuning on moving models, more local passes, FedProx, personal head) | Closure phase |
 | `scripts/prototype/federated`, `scripts/prototype/mvp` | Prototype federated scripts (smoke, scaling, pilots) | Prototype stage |
-| `scripts/tau_fixed_lanes` | Shell launch scripts of the tau-fixed exploratory re-runs | Closure phase |
-| `tests/prototype/{federated,fedsim,mvp}`, `tests/research/tests_fl{,_independent}` | CPU tests (including the FedAdam tau unit test) and research suites | Prototype / main study |
+| `scripts/tau_fixed_lanes` -> `scripts/tau_fixed_reruns` | Shell launch scripts of the tau-fixed exploratory re-runs | Closure phase |
+| `tests/prototype/{federated,fedsim,mvp}`, `tests/research/` (renamed: `tests_federated_core` was `tests_fl`, `tests_federated_core_independent` was `tests_fl_independent`) | CPU tests (including the FedAdam tau unit test) and research suites | Prototype / main study |
 
 ## How to run
 

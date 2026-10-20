@@ -53,12 +53,13 @@ the evidence does not establish.
 | Package | What it does | Origin |
 |---|---|---|
 | `code/ppsi/privacy` | Secure-aggregation simulation and membership-inference audit of the public package | Main study (public port) |
-| `code/e3_audit` | Update-leakage audit: replay of the first 50 rounds, capture of aggregates, analysis, secure-aggregation features | Closure phase |
-| `code/experiment_extensions/privacy` | Closure-phase privacy extensions (amended replay cap, DP8 reruns) | Closure phase |
+| `code/e3_audit` -> `code/update_leakage_audit` (import name `e3_audit`) | Update-leakage audit: replay of the first 50 rounds, capture of aggregates, analysis, secure-aggregation features | Closure phase |
+| `code/experiment_extensions/privacy` -> `code/closure_experiments/privacy` (import name `experiment_extensions.privacy`) | Closure-phase privacy extensions (amended replay cap, DP8 reruns) | Closure phase |
 | `tests/prototype/privacy` | CPU tests of the privacy package | Main study |
 
 The DP mechanism itself (clipping, noise, Poisson sampling, the accountant) lives in the
-federated engine: [`../03_federated_learning/code/fl`](../03_federated_learning/README.md) and
+federated engine: [`../03_federated_learning/code/federated_core`](../03_federated_learning/README.md)
+(import name `fl`) and
 [`../03_federated_learning/code/ppsi/fedsim`](../03_federated_learning/README.md).
 
 ## How to run

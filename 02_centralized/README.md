@@ -48,15 +48,15 @@ rehearsal).
 | `code/ppsi/central` | Central trainer for the references and pretraining | Main study |
 | `code/ppsi/training` | Training loop, recipes, checkpointing | Main study (prototype lineage) |
 | `code/ppsi/baselines` | Session kNN, last-item, popularity baselines | Main study |
-| `code/snap_v1` | Snapshot of the pilot-study SASRec trainer (`SNAPSHOT_MANIFEST.json`, `reuse/`), kept byte-identical | Pilot studies |
-| `code/v4base` | Grid, guards, scoring, strata and the training-free baselines (knn, last, pop, rule, sknn) of the research tree | Main study |
-| `code/v4fs` | Feature-search runner and decision tool (`decide.py`, `importance.py`, `theta0.py`) | Main study |
-| `code/v4models` | Model builders of the research tree (`gru_v2.py`, `sasrec_v2.py`, inventory, monitors) | Main study |
-| `code/v4train` | Training drivers of the contest and references (`p2_driver.py`, `p3_driver.py`), recipes, registries, calibration, bootstrap intervals | Main study |
-| `code/experiment_extensions/pretraining` | Closure-phase pretraining extensions (second seed) | Closure phase |
+| `code/snap_v1` -> `code/pilot_code_snapshot` (byte-locked, put on `sys.path` by `ppsi_env`) | Snapshot of the pilot-study SASRec trainer (`SNAPSHOT_MANIFEST.json`, `reuse/`), kept byte-identical | Pilot studies |
+| `code/v4base` -> `code/baselines` (import name `v4base`) | Grid, guards, scoring, strata and the training-free baselines (knn, last, pop, rule, sknn) of the research tree | Main study |
+| `code/v4fs` -> `code/feature_search` (import name `v4fs`) | Feature-search runner and decision tool (`decide.py`, `importance.py`, `theta0.py`) | Main study |
+| `code/v4models` -> `code/model_variants` (import name `v4models`) | Model builders of the research tree (`gru_v2.py`, `sasrec_v2.py`, inventory, monitors) | Main study |
+| `code/v4train` -> `code/central_trainer` (import name `v4train`, as used in the recorded runs) | Training drivers of the contest and references (`p2_driver.py`, `p3_driver.py`), recipes, registries, calibration, bootstrap intervals | Main study |
+| `code/experiment_extensions/pretraining` -> `code/closure_experiments/pretraining` (import name `experiment_extensions.pretraining`) | Closure-phase pretraining extensions (second seed) | Closure phase |
 | `pilot_studies/` | Record of the pilot-study campaigns (frozen record) | Pilot studies |
 | `scripts/prototype/{model,baselines,t2,t3,t5,t8}` | Prototype model scripts (architecture comparison, tasks) | Prototype stage |
-| `tests/prototype/{baselines,central,models,seqrec,training}`, `tests/research/tests_{base,fs,models,train,train_gpu}` | CPU tests and research suites | Prototype / main study |
+| `tests/prototype/{baselines,central,models,seqrec,training}`, `tests/research/` (renamed: `tests_baselines` was `tests_base`, `tests_feature_search` was `tests_fs`, `tests_model_variants` was `tests_models`, `tests_central_trainer{,_gpu}` was `tests_train{,_gpu}`) | CPU tests and research suites | Prototype / main study |
 
 ## How to run
 

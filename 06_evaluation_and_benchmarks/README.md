@@ -49,13 +49,13 @@ labelled numbers lives here.
 | `code/ppsi/evaluation` | Evaluation harness of the public package: metrics, ranking, paired bootstrap, contrast statistics | Main study (public port) |
 | `code/ppsi/benchmarks` | Definitions of the six benchmark datasets and their splits | Main study (public port) |
 | `code/ppsi/benchrun` | The benchmark runner (matched-recipe and tuned protocols, one lock and one TEST look per dataset) | Main study (public port) |
-| `code/v4eval` | The frozen research evaluator: metrics, ranking, manifests, hashing, bootstrap, device-class pinning | Main study |
-| `code/v4bench` | Benchmark engine of the research tree: central and federated arms, recipes, selection, finals | Main study |
-| `code/v4bench_w2` | Wave-2 (Amazon 2023) dataset conversion and verification | Main study |
-| `code/experiment_extensions/baselines` | Closure-phase training-free baselines (Markov chain, sequential rules, PCTM) | Closure phase |
+| `code/v4eval` -> `code/evaluator` (import name `v4eval`) | The frozen research evaluator: metrics, ranking, manifests, hashing, bootstrap, device-class pinning | Main study |
+| `code/v4bench` -> `code/benchmark_runner` (import name `v4bench`) | Benchmark engine of the research tree: central and federated arms, recipes, selection, finals | Main study |
+| `code/v4bench_w2` -> `code/benchmark_converters` (import name `v4bench_w2`) | Wave-2 (Amazon 2023) dataset conversion and verification | Main study |
+| `code/experiment_extensions/baselines` -> `code/closure_experiments/baselines` (import name `experiment_extensions.baselines`) | Closure-phase training-free baselines (Markov chain, sequential rules, PCTM) | Closure phase |
 | `tools/tests_g2` | Tests of the contest decision tooling | Main study |
 | `frozen_code/`, `archive/` | Records of the frozen scoring trees and archived run outputs (never edited) | Main study / closure phase |
-| `scripts/prototype/{evaluation,experiments}`, `tests/prototype/{benchmarks,benchrun,evaluation,experiments}`, `tests/research/tests_{ana,bench,bench_w2,eval}` | Prototype scripts and tests, research suites | Prototype / main study |
+| `scripts/prototype/{evaluation,experiments}`, `tests/prototype/{benchmarks,benchrun,evaluation,experiments}`, `tests/research/` (renamed: `tests_analysis` was `tests_ana`, `tests_benchmark_runner` was `tests_bench`, `tests_benchmark_converters` was `tests_bench_w2`, `tests_evaluator` was `tests_eval`) | Prototype scripts and tests, research suites | Prototype / main study |
 
 ## How to run
 

@@ -29,6 +29,12 @@ server root. `legacy(path_str)` maps any legacy absolute path string to the conf
 `tools/p2_lock.py`) now lives in this repository. `prototype_path(rel)` does the same for a path of the
 prototype repository layout (`ppsi/training/core.py`, `scripts/mvp/run_mvp.py`, `docs/evidence/...`).
 
+The stage code and research test folders carry descriptive names (`central_trainer`, `tests_fl` ->
+`tests_federated_core`), while the import names they are imported by stay the legacy ones
+(`from v4train import ...` keeps working) because the research code is hash-pinned. `FOLDER_NAMES` is
+the one place that maps the old names to the new folders; `locate()` uses it to resolve old names,
+and `legacy_rel()` uses its inverse so receipts keep recording the names they always used.
+
 This module uses only the standard library and does no filesystem work at import time.
 """
 from __future__ import annotations
@@ -43,7 +49,7 @@ __all__ = [
     "SHARED_DATA_ROOT", "DATA_ROOT", "VENVS_ROOT", "RESULTS_ROOT", "LEGACY_ALIASES", "LEGACY",
     "legacy", "legacy_path", "physical", "locate", "code_dir", "legacy_rel", "results_dir", "describe",
     "PROTOTYPE_LAYOUT", "prototype_rel", "prototype_path", "prototype_name", "prototype_view",
-    "prototype_root",
+    "prototype_root", "FOLDER_NAMES",
 ]
 
 # ----------------------------------------------------------------------------------------- legacy values
@@ -67,6 +73,68 @@ LEGACY = {
 
 STAGES = ("00_common", "01_data", "02_centralized", "03_federated_learning", "04_on_device",
           "05_privacy_and_security", "06_evaluation_and_benchmarks", "07_study_protocol")
+
+# ----------------------------------------------------------------------------------- descriptive folder names
+# The stage folders renamed the code packages and research test suites of the old flat `code/` tree
+# to descriptive names; the KEY of each entry is the name the folder had in that tree and the name
+# the package is still IMPORTED by (`from v4train import ...`), which cannot change because the
+# research code is hash-pinned. `locate()` / `code_dir()` resolve a key to the new folder;
+# `legacy_rel()` maps a new folder back to the key so receipts keep recording the old names.
+FOLDER_NAMES = {
+    # code packages (import name -> folder name)
+    "v4int": "study_launchers",
+    "v4sup": "run_supervisor",
+    "experiment_extensions": "closure_experiments",
+    "census_v2": "data_census",
+    "featstat_v1": "feature_statistics",
+    "g0_export": "export_feasibility_check",
+    "v4data": "dataset_builder",
+    "v4data06": "dataset_manifests_v2",
+    "v4data08": "training_manifest_full",
+    "v4data09": "test_manifests",
+    "v4data10": "pretraining_manifest",
+    "v4fs_data": "feature_search_samples",
+    "v4hist": "history_policy",
+    "v4trunc": "truncated_history_features",
+    "snap_v1": "pilot_code_snapshot",
+    "v4base": "baselines",
+    "v4fs": "feature_search",
+    "v4models": "model_variants",
+    "v4train": "central_trainer",
+    "fl": "federated_core",
+    "x_rees46": "tau_fixed_reruns",
+    "v4dev": "onnx_device_protocol",
+    "e3_audit": "update_leakage_audit",
+    "v4bench": "benchmark_runner",
+    "v4bench_w2": "benchmark_converters",
+    "v4eval": "evaluator",
+    # research test suites
+    "tests_int": "tests_study_launchers",
+    "tests_sup": "tests_run_supervisor",
+    "tests_data": "tests_dataset_builder",
+    "tests_data06": "tests_dataset_manifests_v2",
+    "tests_data08": "tests_training_manifest_full",
+    "tests_data09": "tests_test_manifests",
+    "tests_data10": "tests_pretraining_manifest",
+    "tests_fs_data": "tests_feature_search_samples",
+    "tests_hist": "tests_history_policy",
+    "tests_trunc": "tests_truncated_history_features",
+    "tests_base": "tests_baselines",
+    "tests_fs": "tests_feature_search",
+    "tests_models": "tests_model_variants",
+    "tests_train": "tests_central_trainer",
+    "tests_train_gpu": "tests_central_trainer_gpu",
+    "tests_fl": "tests_federated_core",
+    "tests_fl_independent": "tests_federated_core_independent",
+    "tests_dev": "tests_onnx_device_protocol",
+    "tests_ana": "tests_analysis",
+    "tests_bench": "tests_benchmark_runner",
+    "tests_bench_w2": "tests_benchmark_converters",
+    "tests_eval": "tests_evaluator",
+}
+
+# folder name in the stage layout -> old (recorded / import) name; the inverse of FOLDER_NAMES
+_OLD_NAMES = {new: old for old, new in FOLDER_NAMES.items()}
 
 
 def _env(name: str, default) -> Path:
@@ -151,16 +219,19 @@ def locate(rel) -> Path:
     `rel` is relative to the old workspace root, e.g. `code/tests_fl`, `code/v4int/reeval.py` or
     `tools/p2_noop_check.py`. Code moved into the stage folders, so `code/<x>` is searched in
     `<stage>/code`, `<stage>/tests/research` and `<stage>/tools`, and `tools/<x>` in `<stage>/tools`
-    and the root `tools/`. Anything not found in the repository (contracts, company records, data,
-    runs) still lives in the server workspace and resolves to PROJECT_ROOT / rel.
+    and the root `tools/`. The first component is also tried under its descriptive folder name
+    (FOLDER_NAMES), so the old names resolve to the renamed folders. Anything not found in the
+    repository (contracts, company records, data, runs) still lives in the server workspace and
+    resolves to PROJECT_ROOT / rel.
     """
     parts = PurePosixPath(str(rel).replace("\\", "/")).parts
     candidates = []
     if parts and parts[0] == "code" and len(parts) > 1:
-        rest = Path(*parts[1:])
-        for stage in STAGES:
-            candidates += [REPO_ROOT / stage / "code" / rest, REPO_ROOT / stage / "tests" / "research" / rest,
-                           REPO_ROOT / stage / "tools" / rest]
+        # the renamed folders first, then the literal name (ppsi, tools that never moved)
+        first_names = [FOLDER_NAMES[parts[1]]] if parts[1] in FOLDER_NAMES else []
+        first_names.append(parts[1])
+        for first in first_names:
+            candidates += _stage_candidates(first, parts[2:])
     elif parts and parts[0] == "tools" and len(parts) > 1:
         rest = Path(*parts[1:])
         candidates += [REPO_ROOT / stage / "tools" / rest for stage in STAGES] + [REPO_ROOT / "tools" / rest]
@@ -170,6 +241,13 @@ def locate(rel) -> Path:
     return PROJECT_ROOT.joinpath(*parts)
 
 
+def _stage_candidates(first: str, rest_parts: tuple[str, ...]) -> list[Path]:
+    """Every place the stage layout may hold `first/<rest...>`: code packages, research test
+    suites and per-stage tools, across all stages."""
+    rest = Path(first, *rest_parts)
+    return [REPO_ROOT / stage / root / rest for stage in STAGES for root in ("code", "tests/research", "tools")]
+
+
 def code_dir(name: str) -> Path:
     """New location of the old `ppsi_v4/code/<name>` folder or file (a package or a tests_* folder)."""
     return locate(f"code/{name}")
@@ -177,12 +255,16 @@ def code_dir(name: str) -> Path:
 
 def legacy_rel(path) -> str:
     """The old `ppsi_v4/code`-relative name of a file in this repository, e.g. `v4data/common.py` or
-    `tests_int/intkit.py` (the inverse of `code_dir`). Receipts keep recording the names they always used."""
+    `tests_int/intkit.py` (the inverse of `code_dir`). A renamed folder is mapped back to its old
+    name, so receipts keep recording the names they always used."""
     p = Path(path).resolve()
     for stage in STAGES:
         for root in (REPO_ROOT / stage / "code", REPO_ROOT / stage / "tests" / "research"):
             if p == root or root in p.parents:
-                return p.relative_to(root).as_posix()
+                parts = p.relative_to(root).parts
+                if parts and parts[0] in _OLD_NAMES:
+                    parts = (_OLD_NAMES[parts[0]],) + parts[1:]
+                return PurePosixPath(*parts).as_posix()
     raise ValueError(f"{path} is not under a stage code/ or tests/research/ folder")
 
 

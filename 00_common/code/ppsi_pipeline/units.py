@@ -7,11 +7,11 @@ published checkpoints are extracted into those same folders, so the skip / resum
 decision is made on the results tree (`PPSI_RESULTS_ROOT`), while the launcher command refers to
 the server tree (`PPSI_RUNS_ROOT`).
 
-Every entry records only flags that exist in the launchers (`00_common/code/v4int/launch_*.py`,
-`02_centralized/code/v4fs/run_fs.py`, the `x_rees46` lane wrappers, the extensions-tree
+Every entry records only flags that exist in the launchers (`00_common/code/study_launchers/launch_*.py`,
+`02_centralized/code/feature_search/run_fs.py`, the `tau_fixed_reruns` lane wrappers, the extensions-tree
 wrappers). The complete argv of every historical run is itself a sealed record of the study
 (each run's `LAUNCH_*.json` / `ARM_SPEC.json` / `STATUS.json` on the server, and the lane
-scripts under `03_federated_learning/scripts/tau_fixed_lanes/`), so commands whose arm-specific
+scripts under `03_federated_learning/scripts/tau_fixed_reruns/`), so commands whose arm-specific
 flag values are pinned in those records carry a `<...>` placeholder instead of an invented
 value. The run-directory names below are the curated names of `_build/TREE.txt`.
 
@@ -44,7 +44,7 @@ FL = ("python -B code/v4int/launch_fl.py --arm {arm} --seed {seed} --gpu 0 --run
       "--history-policy USER_HISTORY_L50 <arm flags>")
 DEVICE = ("python -B code/v4int/launch_device.py --arm {arm} --seed {seed} --gpu 0 "
           "--run-dir {run_dir} --history-policy USER_HISTORY_L50 <arm flags>")
-LANE = "bash laneX_{lane}.sh  (supervisor in scripts/tau_fixed_lanes/; per-job argv inside)"
+LANE = "bash laneX_{lane}.sh  (supervisor in scripts/tau_fixed_reruns/; per-job argv inside)"
 EXT_FL = ("python {wrapper} --run-dir <extensions-tree run dir> <arm flags>  "
           "(PPSI_EXTENSIONS_ROOT)")
 EXT_DEVICE = ("python launch_device.py --run-dir <extensions-tree run dir> <arm flags>  "

@@ -44,11 +44,11 @@ because they answer the on-device question.
 |---|---|---|
 | `code/ppsi/ondevice` | ONNX export (opset 17) and INT8 dynamic quantisation of the public package | Prototype stage (unchanged) |
 | `code/ppsi/deployment` | Deployment package of the prototype: byte ledger, export verification, browser demo assets | Prototype stage (unchanged) |
-| `code/v4dev` | Research-tree device tooling: `export.py`, `quantize.py`, `bench.py`, `scoring.py`, checkpoint IO | Main study |
-| `code/v4dev/browser` | The Edge WebAssembly latency bench (`bench.js`, `p2_bench.js`, pages, local server) | Main study |
-| `code/experiment_extensions/on_device` | Closure-phase device extensions (latency pass, cloud-model probe) | Closure phase |
+| `code/v4dev` -> `code/onnx_device_protocol` (import name `v4dev`) | Research-tree device tooling: `export.py`, `quantize.py`, `bench.py`, `scoring.py`, checkpoint IO | Main study |
+| `code/v4dev/browser` -> `code/onnx_device_protocol/browser` (import name `v4dev.browser`) | The Edge WebAssembly latency bench (`bench.js`, `p2_bench.js`, pages, local server) | Main study |
+| `code/experiment_extensions/on_device` -> `code/closure_experiments/on_device` (import name `experiment_extensions.on_device`) | Closure-phase device extensions (latency pass, cloud-model probe) | Closure phase |
 | `scripts/prototype/deployment` | Prototype deployment scripts (export, quantisation benchmarks) | Prototype stage |
-| `tests/prototype/{deployment,ondevice}`, `tests/research/tests_dev` | CPU tests and the research device suite | Prototype / main study |
+| `tests/prototype/{deployment,ondevice}`, `tests/research/tests_onnx_device_protocol` (formerly `tests_dev`) | CPU tests and the research device suite | Prototype / main study |
 
 ## How to run
 
@@ -60,7 +60,8 @@ uv run python 04_on_device/run.py --force          # redo from scratch (old outp
 
 Export and quantisation need a saved checkpoint (from the Release assets or a server run tree
 under `PPSI_RUNS_ROOT`); the ONNX CPU scoring of K16 additionally needs the frozen dataset.
-The browser bench needs a local COI/COOP server (`code/v4dev/browser/`) and a Chromium-based
+The browser bench needs a local COI/COOP server (`code/onnx_device_protocol/browser/`) and a
+Chromium-based
 browser; the latency tables in `results/` were measured on the devices named in the report.
 `--from-results` rebuilds the tables without any of that.
 
