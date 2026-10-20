@@ -1,0 +1,956 @@
+{
+ "authority": "A number-free abstract/headline template and a CLAIM register (allowed / forbidden sentence per contrast) are frozen together with the ANA script.",
+ "contrasts": [
+  {
+   "allowed": {
+    "ABOVE": "C_SMALL exceeds C_BIG on MAIN: R = {point} % [{ci_lo}, {ci_hi}] (PRACTICAL_BEST; seeds 2026, 2027).",
+    "BELOW": "C_SMALL retains {point} % [{ci_lo}, {ci_hi}] of C_BIG on MAIN (PRACTICAL_BEST; seeds 2026, 2027).",
+    "INCLUDES": "C_SMALL vs C_BIG on MAIN: R = {point} % [{ci_lo}, {ci_hi}] includes 100: no detectable difference (PRACTICAL_BEST; seeds 2026, 2027).",
+    "NOT_AVAILABLE": "K1 was not computed ({status}); no sentence about 'size cost' is written.",
+    "UNDEFINED": "K1 is UNDEFINED ({status}); no sentence about 'size cost' is written."
+   },
+   "confirmatory_rule": "PRACTICAL_BEST",
+   "contrast": "R(C_SMALL / C_BIG)",
+   "forbidden": [
+    "'the small model loses nothing' (unless ABOVE or a registered equivalence test)"
+   ],
+   "id": "K1",
+   "kind": "retained",
+   "pairing_note": null,
+   "population": "MAIN",
+   "question": "size cost",
+   "registered_seeds": [
+    2026,
+    2027
+   ],
+   "tier": "secondary"
+  },
+  {
+   "allowed": {
+    "ABOVE": "FA exceeds C_BIG on MAIN: R = {point} % [{ci_lo}, {ci_hi}] (PRACTICAL_BEST; seeds 2026, 2027).",
+    "BELOW": "FA retains {point} % [{ci_lo}, {ci_hi}] of C_BIG on MAIN (PRACTICAL_BEST; seeds 2026, 2027).",
+    "INCLUDES": "FA vs C_BIG on MAIN: R = {point} % [{ci_lo}, {ci_hi}] includes 100: no detectable difference (PRACTICAL_BEST; seeds 2026, 2027).",
+    "NOT_AVAILABLE": "K2 was not computed ({status}); no sentence about 'federated retention (headline)' is written.",
+    "UNDEFINED": "K2 is UNDEFINED ({status}); no sentence about 'federated retention (headline)' is written."
+   },
+   "confirmatory_rule": "PRACTICAL_BEST",
+   "contrast": "R(FA / C_BIG)",
+   "forbidden": [
+    "'federated learning retains X %' without the registered recipe (06I \u00a76(c))",
+    "'a lower bound of what federated learning can reach' (06L-C C6)",
+    "'federated learning is private'",
+    "'the headline' (06P P1: K2 is the SECONDARY random-start ablation)"
+   ],
+   "id": "K2",
+   "kind": "retained",
+   "pairing_note": null,
+   "population": "MAIN",
+   "question": "federated retention (headline)",
+   "registered_seeds": [
+    2026,
+    2027
+   ],
+   "tier": "secondary"
+  },
+  {
+   "allowed": {
+    "ABOVE": "FA exceeds C_SMALL on MAIN: R = {point} % [{ci_lo}, {ci_hi}] (PRACTICAL_BEST; seeds 2026, 2027).",
+    "BELOW": "FA retains {point} % [{ci_lo}, {ci_hi}] of C_SMALL on MAIN (PRACTICAL_BEST; seeds 2026, 2027).",
+    "INCLUDES": "FA vs C_SMALL on MAIN: R = {point} % [{ci_lo}, {ci_hi}] includes 100: no detectable difference (PRACTICAL_BEST; seeds 2026, 2027).",
+    "NOT_AVAILABLE": "K3 was not computed ({status}); no sentence about 'federation cost at matched size' is written.",
+    "UNDEFINED": "K3 is UNDEFINED ({status}); no sentence about 'federation cost at matched size' is written."
+   },
+   "confirmatory_rule": "PRACTICAL_BEST",
+   "contrast": "R(FA / C_SMALL)",
+   "forbidden": [
+    "'the federation cost is independent of K2' (K3 = K2 / K1)"
+   ],
+   "id": "K3",
+   "kind": "retained",
+   "pairing_note": null,
+   "population": "MAIN",
+   "question": "federation cost at matched size",
+   "registered_seeds": [
+    2026,
+    2027
+   ],
+   "tier": "secondary"
+  },
+  {
+   "allowed": {
+    "ABOVE": "FP exceeds C_BIG on MAIN: R = {point} % [{ci_lo}, {ci_hi}] (PRACTICAL_BEST; seeds 2026, 2027).",
+    "BELOW": "FP retains {point} % [{ci_lo}, {ci_hi}] of C_BIG on MAIN (PRACTICAL_BEST; seeds 2026, 2027).",
+    "INCLUDES": "FP vs C_BIG on MAIN: R = {point} % [{ci_lo}, {ci_hi}] includes 100: no detectable difference (PRACTICAL_BEST; seeds 2026, 2027).",
+    "NOT_AVAILABLE": "K4 was not computed ({status}); no sentence about 'FedProx retention' is written.",
+    "UNDEFINED": "K4 is UNDEFINED ({status}); no sentence about 'FedProx retention' is written."
+   },
+   "confirmatory_rule": "PRACTICAL_BEST",
+   "contrast": "R(FP / C_BIG)",
+   "forbidden": [
+    "'FedProx helps / hurts' in general (06L-A A7: FedProx \u03bc 0.01 under the selected client optimiser only)"
+   ],
+   "id": "K4",
+   "kind": "retained",
+   "pairing_note": null,
+   "population": "MAIN",
+   "question": "FedProx retention",
+   "registered_seeds": [
+    2026,
+    2027
+   ],
+   "tier": "tertiary"
+  },
+  {
+   "allowed": {
+    "ABOVE": "PF exceeds C_BIG on MAIN: R = {point} % [{ci_lo}, {ci_hi}] (PRACTICAL_BEST; seeds 2026, 2027).",
+    "BELOW": "PF retains {point} % [{ci_lo}, {ci_hi}] of C_BIG on MAIN (PRACTICAL_BEST; seeds 2026, 2027).",
+    "INCLUDES": "PF vs C_BIG on MAIN: R = {point} % [{ci_lo}, {ci_hi}] includes 100: no detectable difference (PRACTICAL_BEST; seeds 2026, 2027).",
+    "NOT_AVAILABLE": "K5 was not computed ({status}); no sentence about 'personalised-FL retention' is written.",
+    "UNDEFINED": "K5 is UNDEFINED ({status}); no sentence about 'personalised-FL retention' is written."
+   },
+   "confirmatory_rule": "PRACTICAL_BEST",
+   "contrast": "R(PF / C_BIG)",
+   "forbidden": [
+    "'personalisation is useless' from PF \u2212 FA \u2248 0 (06L-A A5: PF \u2248 FA by construction is possible)"
+   ],
+   "id": "K5",
+   "kind": "retained",
+   "pairing_note": null,
+   "population": "MAIN",
+   "question": "personalised-FL retention",
+   "registered_seeds": [
+    2026,
+    2027
+   ],
+   "tier": "tertiary"
+  },
+  {
+   "allowed": {
+    "ABOVE": "FT_FA exceeds C_BIG on MAIN: R = {point} % [{ci_lo}, {ci_hi}] (PRACTICAL_BEST; seeds 2026, 2027).",
+    "BELOW": "FT_FA retains {point} % [{ci_lo}, {ci_hi}] of C_BIG on MAIN (PRACTICAL_BEST; seeds 2026, 2027).",
+    "INCLUDES": "FT_FA vs C_BIG on MAIN: R = {point} % [{ci_lo}, {ci_hi}] includes 100: no detectable difference (PRACTICAL_BEST; seeds 2026, 2027).",
+    "NOT_AVAILABLE": "K6 was not computed ({status}); no sentence about 'deployed on-device system (FL + local fine-tune)' is written.",
+    "UNDEFINED": "K6 is UNDEFINED ({status}); no sentence about 'deployed on-device system (FL + local fine-tune)' is written."
+   },
+   "confirmatory_rule": "PRACTICAL_BEST",
+   "contrast": "R(FT_FA / C_BIG)",
+   "forbidden": [
+    "'the deployed on-device system is private' (FL deltas leak viewed items; no secure aggregation)"
+   ],
+   "id": "K6",
+   "kind": "retained",
+   "pairing_note": null,
+   "population": "MAIN",
+   "question": "deployed on-device system (FL + local fine-tune)",
+   "registered_seeds": [
+    2026,
+    2027
+   ],
+   "tier": "tertiary"
+  },
+  {
+   "allowed": {
+    "ABOVE": "FT_C exceeds C_BIG on MAIN: R = {point} % [{ci_lo}, {ci_hi}] (PRACTICAL_BEST; seeds 2026, 2027).",
+    "BELOW": "FT_C retains {point} % [{ci_lo}, {ci_hi}] of C_BIG on MAIN (PRACTICAL_BEST; seeds 2026, 2027).",
+    "INCLUDES": "FT_C vs C_BIG on MAIN: R = {point} % [{ci_lo}, {ci_hi}] includes 100: no detectable difference (PRACTICAL_BEST; seeds 2026, 2027).",
+    "NOT_AVAILABLE": "K7 was not computed ({status}); no sentence about 'cloud-trained + local fine-tune' is written.",
+    "UNDEFINED": "K7 is UNDEFINED ({status}); no sentence about 'cloud-trained + local fine-tune' is written."
+   },
+   "confirmatory_rule": "PRACTICAL_BEST",
+   "contrast": "R(FT_C / C_BIG)",
+   "forbidden": [
+    "'privacy-preserving fine-tuning' (FT_C on MAIN = L1 base + local fine-tune, 06L-C C1)"
+   ],
+   "id": "K7",
+   "kind": "retained",
+   "pairing_note": null,
+   "population": "MAIN",
+   "question": "cloud-trained + local fine-tune",
+   "registered_seeds": [
+    2026,
+    2027
+   ],
+   "tier": "tertiary"
+  },
+  {
+   "allowed": {
+    "ABOVE": "LO exceeds C_BIG on MAIN: R = {point} % [{ci_lo}, {ci_hi}] (PRACTICAL_BEST; seeds 2026, 2027).",
+    "BELOW": "LO retains {point} % [{ci_lo}, {ci_hi}] of C_BIG on MAIN (PRACTICAL_BEST; seeds 2026, 2027).",
+    "INCLUDES": "LO vs C_BIG on MAIN: R = {point} % [{ci_lo}, {ci_hi}] includes 100: no detectable difference (PRACTICAL_BEST; seeds 2026, 2027).",
+    "NOT_AVAILABLE": "K8 was not computed ({status}); no sentence about 'device-only retention' is written.",
+    "UNDEFINED": "K8 is UNDEFINED ({status}); no sentence about 'device-only retention' is written."
+   },
+   "confirmatory_rule": "PRACTICAL_BEST",
+   "contrast": "R(LO / C_BIG)",
+   "forbidden": [
+    "'the device-only ceiling' (LO is an untuned from-\u03b80 control; the device-only answer is the envelope {LO, LAST, RULE})"
+   ],
+   "id": "K8",
+   "kind": "retained",
+   "pairing_note": null,
+   "population": "MAIN",
+   "question": "device-only retention",
+   "registered_seeds": [
+    2026,
+    2027
+   ],
+   "tier": "secondary"
+  },
+  {
+   "allowed": {
+    "ABOVE": "FT_C exceeds C_SMALL on MAIN by {point} [{ci_lo}, {ci_hi}] macro MRR@20 (PRACTICAL_BEST; seeds 2026, 2027).",
+    "BELOW": "FT_C is below C_SMALL on MAIN by {abs_point} [{ci_lo}, {ci_hi}] macro MRR@20 (PRACTICAL_BEST; seeds 2026, 2027).",
+    "INCLUDES": "FT_C - C_SMALL on MAIN = {point} [{ci_lo}, {ci_hi}] macro MRR@20 includes 0: no detectable difference (PRACTICAL_BEST; seeds 2026, 2027).",
+    "NOT_AVAILABLE": "K9 was not computed ({status}); no sentence about 'local fine-tuning gain (paired \u0394)' is written.",
+    "UNDEFINED": "K9 is UNDEFINED ({status}); no sentence about 'local fine-tuning gain (paired \u0394)' is written."
+   },
+   "confirmatory_rule": "PRACTICAL_BEST",
+   "contrast": "FT_C \u2212 C_SMALL",
+   "forbidden": [
+    "'the L5 fine-tuning gain' on MAIN (the base saw these users; the L5 answers are K9c and K9b)"
+   ],
+   "id": "K9",
+   "kind": "delta",
+   "pairing_note": null,
+   "population": "MAIN",
+   "question": "local fine-tuning gain (paired \u0394)",
+   "registered_seeds": [
+    2026,
+    2027
+   ],
+   "tier": "tertiary"
+  },
+  {
+   "allowed": {
+    "ABOVE": "FT_C exceeds C_SMALL on UNSEEN_HOLDOUT by {point} [{ci_lo}, {ci_hi}] macro MRR@20 (PRACTICAL_BEST; seeds 2026).",
+    "BELOW": "FT_C is below C_SMALL on UNSEEN_HOLDOUT by {abs_point} [{ci_lo}, {ci_hi}] macro MRR@20 (PRACTICAL_BEST; seeds 2026).",
+    "INCLUDES": "FT_C - C_SMALL on UNSEEN_HOLDOUT = {point} [{ci_lo}, {ci_hi}] macro MRR@20 includes 0: no detectable difference (PRACTICAL_BEST; seeds 2026).",
+    "NOT_AVAILABLE": "K9b was not computed ({status}); no sentence about 'local fine-tuning gain (paired \u0394) for base-unseen users (UNSEEN_HOLDOUT)' is written.",
+    "UNDEFINED": "K9b is UNDEFINED ({status}); no sentence about 'local fine-tuning gain (paired \u0394) for base-unseen users (UNSEEN_HOLDOUT)' is written."
+   },
+   "confirmatory_rule": "PRACTICAL_BEST",
+   "contrast": "FT_C \u2212 C_SMALL",
+   "forbidden": [
+    "'fine-tuning helps every base-unseen user' (read the harmed-client share)"
+   ],
+   "id": "K9b",
+   "kind": "delta",
+   "pairing_note": null,
+   "population": "UNSEEN_HOLDOUT",
+   "question": "local fine-tuning gain (paired \u0394) for base-unseen users (UNSEEN_HOLDOUT)",
+   "registered_seeds": [
+    2026
+   ],
+   "tier": "secondary"
+  },
+  {
+   "allowed": {
+    "ABOVE": "FT_PRE exceeds PRE on MAIN by {point} [{ci_lo}, {ci_hi}] macro MRR@20 (PRACTICAL_BEST; seeds 2026, 2027).",
+    "BELOW": "FT_PRE is below PRE on MAIN by {abs_point} [{ci_lo}, {ci_hi}] macro MRR@20 (PRACTICAL_BEST; seeds 2026, 2027).",
+    "INCLUDES": "FT_PRE - PRE on MAIN = {point} [{ci_lo}, {ci_hi}] macro MRR@20 includes 0: no detectable difference (PRACTICAL_BEST; seeds 2026, 2027).",
+    "NOT_AVAILABLE": "K9c was not computed ({status}); no sentence about 'local fine-tuning gain (paired \u0394) over \u03b8_pre on MAIN: the realistic L5 answer (FT_PRE = \u03b8_pre + the registered FT_C procedure with SELECTION_FT_C)' is written.",
+    "UNDEFINED": "K9c is UNDEFINED ({status}); no sentence about 'local fine-tuning gain (paired \u0394) over \u03b8_pre on MAIN: the realistic L5 answer (FT_PRE = \u03b8_pre + the registered FT_C procedure with SELECTION_FT_C)' is written."
+   },
+   "confirmatory_rule": "PRACTICAL_BEST",
+   "contrast": "FT_PRE \u2212 PRE",
+   "forbidden": [
+    "'a formal privacy guarantee' (no DP; L5 = the MAIN users' data never leaves the device)"
+   ],
+   "id": "K9c",
+   "kind": "delta",
+   "pairing_note": "PRE is ONE \u03b8_pre (seed 2026) shared by both FT_PRE seeds (06K / DL 206 (2); 06L-C \u00a7C7)",
+   "population": "MAIN",
+   "question": "local fine-tuning gain (paired \u0394) over \u03b8_pre on MAIN: the realistic L5 answer (FT_PRE = \u03b8_pre + the registered FT_C procedure with SELECTION_FT_C)",
+   "registered_seeds": [
+    2026,
+    2027
+   ],
+   "tier": "secondary"
+  },
+  {
+   "allowed": {
+    "ABOVE": "FT_FA exceeds FA on MAIN by {point} [{ci_lo}, {ci_hi}] macro MRR@20 (PRACTICAL_BEST; seeds 2026, 2027).",
+    "BELOW": "FT_FA is below FA on MAIN by {abs_point} [{ci_lo}, {ci_hi}] macro MRR@20 (PRACTICAL_BEST; seeds 2026, 2027).",
+    "INCLUDES": "FT_FA - FA on MAIN = {point} [{ci_lo}, {ci_hi}] macro MRR@20 includes 0: no detectable difference (PRACTICAL_BEST; seeds 2026, 2027).",
+    "NOT_AVAILABLE": "K10 was not computed ({status}); no sentence about 'local fine-tuning gain after FL (paired \u0394)' is written.",
+    "UNDEFINED": "K10 is UNDEFINED ({status}); no sentence about 'local fine-tuning gain after FL (paired \u0394)' is written."
+   },
+   "confirmatory_rule": "PRACTICAL_BEST",
+   "contrast": "FT_FA \u2212 FA",
+   "forbidden": [
+    "'fine-tuning after FL is free' (report the harmed-client share)"
+   ],
+   "id": "K10",
+   "kind": "delta",
+   "pairing_note": null,
+   "population": "MAIN",
+   "question": "local fine-tuning gain after FL (paired \u0394)",
+   "registered_seeds": [
+    2026,
+    2027
+   ],
+   "tier": "tertiary"
+  },
+  {
+   "allowed": {
+    "ABOVE": "FA exceeds LO on MAIN by {point} [{ci_lo}, {ci_hi}] macro MRR@20 (PRACTICAL_BEST; seeds 2026, 2027).",
+    "BELOW": "FA is below LO on MAIN by {abs_point} [{ci_lo}, {ci_hi}] macro MRR@20 (PRACTICAL_BEST; seeds 2026, 2027).",
+    "INCLUDES": "FA - LO on MAIN = {point} [{ci_lo}, {ci_hi}] macro MRR@20 includes 0: no detectable difference (PRACTICAL_BEST; seeds 2026, 2027).",
+    "NOT_AVAILABLE": "K11 was not computed ({status}); no sentence about 'collaboration value (paired \u0394)' is written.",
+    "UNDEFINED": "K11 is UNDEFINED ({status}); no sentence about 'collaboration value (paired \u0394)' is written."
+   },
+   "confirmatory_rule": "PRACTICAL_BEST",
+   "contrast": "FA \u2212 LO",
+   "forbidden": [
+    "'collaboration beats every device-only method' (LO only; see K11b and the envelope)"
+   ],
+   "id": "K11",
+   "kind": "delta",
+   "pairing_note": null,
+   "population": "MAIN",
+   "question": "collaboration value (paired \u0394)",
+   "registered_seeds": [
+    2026,
+    2027
+   ],
+   "tier": "tertiary"
+  },
+  {
+   "allowed": {
+    "ABOVE": "FA exceeds LAST on MAIN by {point} [{ci_lo}, {ci_hi}] macro MRR@20 (PRACTICAL_BEST; seeds 2026, 2027).",
+    "BELOW": "FA is below LAST on MAIN by {abs_point} [{ci_lo}, {ci_hi}] macro MRR@20 (PRACTICAL_BEST; seeds 2026, 2027).",
+    "INCLUDES": "FA - LAST on MAIN = {point} [{ci_lo}, {ci_hi}] macro MRR@20 includes 0: no detectable difference (PRACTICAL_BEST; seeds 2026, 2027).",
+    "NOT_AVAILABLE": "K11b was not computed ({status}); no sentence about 'collaboration value over the best own-history heuristic (paired \u0394; LAST = the no-training device heuristic)' is written.",
+    "UNDEFINED": "K11b is UNDEFINED ({status}); no sentence about 'collaboration value over the best own-history heuristic (paired \u0394; LAST = the no-training device heuristic)' is written."
+   },
+   "confirmatory_rule": "PRACTICAL_BEST",
+   "contrast": "FA \u2212 LAST",
+   "forbidden": [
+    "'federated learning beats doing nothing clever on the device' unless ABOVE",
+    "'federated learning is worse than the device heuristic' unless BELOW (then with BELOW_DEVICE_HEURISTIC)"
+   ],
+   "id": "K11b",
+   "kind": "delta",
+   "pairing_note": "LAST is seed-free (RULE_FREE, a BASELINE_CPU rank file, 06L-C \u00a7C3) and pairs with each FA seed of the rule",
+   "population": "MAIN",
+   "question": "collaboration value over the best own-history heuristic (paired \u0394; LAST = the no-training device heuristic)",
+   "registered_seeds": [
+    2026,
+    2027
+   ],
+   "tier": "secondary"
+  },
+  {
+   "allowed": {
+    "ABOVE": "DP8 exceeds FA_1024 on MAIN: R = {point} % [{ci_lo}, {ci_hi}] (CONTROLLED_BUDGET; seeds 2026, 2027).",
+    "BELOW": "DP8 retains {point} % [{ci_lo}, {ci_hi}] of FA_1024 on MAIN (CONTROLLED_BUDGET; seeds 2026, 2027).",
+    "INCLUDES": "DP8 vs FA_1024 on MAIN: R = {point} % [{ci_lo}, {ci_hi}] includes 100: no detectable difference (CONTROLLED_BUDGET; seeds 2026, 2027).",
+    "NOT_AVAILABLE": "K12 was not computed ({status}); no sentence about 'privacy cost at \u03b5 = 8' is written.",
+    "UNDEFINED": "K12 is UNDEFINED ({status}); no sentence about 'privacy cost at \u03b5 = 8' is written."
+   },
+   "confirmatory_rule": "CONTROLLED_BUDGET",
+   "contrast": "R(DP8 / FA_1024)",
+   "forbidden": [
+    "'the privacy cost at \u03b5 = 8 is confirmed' from the PRACTICAL_BEST ratio (DESCRIPTIVE, 06D \u00a73)"
+   ],
+   "id": "K12",
+   "kind": "retained",
+   "pairing_note": null,
+   "population": "MAIN",
+   "question": "privacy cost at \u03b5 = 8",
+   "registered_seeds": [
+    2026,
+    2027
+   ],
+   "tier": "secondary"
+  },
+  {
+   "allowed": {
+    "ABOVE": "DP1 exceeds FA_1024 on MAIN: R = {point} % [{ci_lo}, {ci_hi}] (CONTROLLED_BUDGET; seeds 2026).",
+    "BELOW": "DP1 retains {point} % [{ci_lo}, {ci_hi}] of FA_1024 on MAIN (CONTROLLED_BUDGET; seeds 2026).",
+    "INCLUDES": "DP1 vs FA_1024 on MAIN: R = {point} % [{ci_lo}, {ci_hi}] includes 100: no detectable difference (CONTROLLED_BUDGET; seeds 2026).",
+    "NOT_AVAILABLE": "K13 was not computed ({status}); no sentence about 'privacy cost at \u03b5 = 1 (seed 2026)' is written.",
+    "UNDEFINED": "K13 is UNDEFINED ({status}); no sentence about 'privacy cost at \u03b5 = 1 (seed 2026)' is written."
+   },
+   "confirmatory_rule": "CONTROLLED_BUDGET",
+   "contrast": "R(DP1 / FA_1024)",
+   "forbidden": [
+    "'the privacy cost at \u03b5 = 1 is confirmed' from the PRACTICAL_BEST ratio (DESCRIPTIVE, 06D \u00a73; one seed)"
+   ],
+   "id": "K13",
+   "kind": "retained",
+   "pairing_note": null,
+   "population": "MAIN",
+   "question": "privacy cost at \u03b5 = 1 (seed 2026)",
+   "registered_seeds": [
+    2026
+   ],
+   "tier": "tertiary"
+  },
+  {
+   "allowed": {
+    "ABOVE": "FA_Q8 exceeds FA on MAIN: R = {point} % [{ci_lo}, {ci_hi}] (PRACTICAL_BEST; seeds 2026, 2027).",
+    "BELOW": "FA_Q8 retains {point} % [{ci_lo}, {ci_hi}] of FA on MAIN (PRACTICAL_BEST; seeds 2026, 2027).",
+    "INCLUDES": "FA_Q8 vs FA on MAIN: R = {point} % [{ci_lo}, {ci_hi}] includes 100: no detectable difference (PRACTICAL_BEST; seeds 2026, 2027).",
+    "NOT_AVAILABLE": "K14 was not computed ({status}); no sentence about 'compression cost (8-bit uploads)' is written.",
+    "UNDEFINED": "K14 is UNDEFINED ({status}); no sentence about 'compression cost (8-bit uploads)' is written."
+   },
+   "confirmatory_rule": "PRACTICAL_BEST",
+   "contrast": "R(FA_Q8 / FA)",
+   "forbidden": [
+    "'8-bit uploads cost nothing' unless EQUIVALENT under the registered margin (90% CI inside [99, 101], 06L-C C15)"
+   ],
+   "id": "K14",
+   "kind": "retained",
+   "pairing_note": null,
+   "population": "MAIN",
+   "question": "compression cost (8-bit uploads)",
+   "registered_seeds": [
+    2026,
+    2027
+   ],
+   "tier": "tertiary"
+  },
+  {
+   "allowed": {
+    "ABOVE": "C_BIG exceeds C_FULL on MAIN: R = {point} % [{ci_lo}, {ci_hi}] (PRACTICAL_BEST; seeds 2026).",
+    "BELOW": "C_BIG retains {point} % [{ci_lo}, {ci_hi}] of C_FULL on MAIN (PRACTICAL_BEST; seeds 2026).",
+    "INCLUDES": "C_BIG vs C_FULL on MAIN: R = {point} % [{ci_lo}, {ci_hi}] includes 100: no detectable difference (PRACTICAL_BEST; seeds 2026).",
+    "NOT_AVAILABLE": "K15 was not computed ({status}); no sentence about 'cloud data advantage (seed 2026; if C_FULL runs)' is written.",
+    "UNDEFINED": "K15 is UNDEFINED ({status}); no sentence about 'cloud data advantage (seed 2026; if C_FULL runs)' is written."
+   },
+   "confirmatory_rule": "PRACTICAL_BEST",
+   "contrast": "R(C_BIG / C_FULL)",
+   "forbidden": [
+    "'the cloud data advantage explains the federated gap' (K17-K19 are compositions, not a decomposition test)"
+   ],
+   "id": "K15",
+   "kind": "retained",
+   "pairing_note": null,
+   "population": "MAIN",
+   "question": "cloud data advantage (seed 2026; if C_FULL runs)",
+   "registered_seeds": [
+    2026
+   ],
+   "tier": "tertiary"
+  },
+  {
+   "allowed": {
+    "ABOVE": "C_SMALL_INT8 exceeds C_SMALL_FP32 on MAIN: R = {point} % [{ci_lo}, {ci_hi}] (PRACTICAL_BEST; seeds 2026).",
+    "BELOW": "C_SMALL_INT8 retains {point} % [{ci_lo}, {ci_hi}] of C_SMALL_FP32 on MAIN (PRACTICAL_BEST; seeds 2026).",
+    "INCLUDES": "C_SMALL_INT8 vs C_SMALL_FP32 on MAIN: R = {point} % [{ci_lo}, {ci_hi}] includes 100: no detectable difference (PRACTICAL_BEST; seeds 2026).",
+    "NOT_AVAILABLE": "K16 was not computed ({status}); no sentence about 'on-device quantisation cost (seed 2026)' is written.",
+    "UNDEFINED": "K16 is UNDEFINED ({status}); no sentence about 'on-device quantisation cost (seed 2026)' is written."
+   },
+   "confirmatory_rule": "PRACTICAL_BEST",
+   "contrast": "R(INT8 / FP32) for C_SMALL",
+   "forbidden": [
+    "'on-device quantisation cost' from the DEVICE_MIXED fallback (confirmatory only inside ONNX_CPU)"
+   ],
+   "id": "K16",
+   "kind": "retained",
+   "pairing_note": null,
+   "population": "MAIN",
+   "question": "on-device quantisation cost (seed 2026)",
+   "registered_seeds": [
+    2026
+   ],
+   "tier": "tertiary"
+  },
+  {
+   "allowed": {
+    "ABOVE": "FA exceeds C_FULL on MAIN: R = {point} % [{ci_lo}, {ci_hi}] (PRACTICAL_BEST; seeds 2026).",
+    "BELOW": "FA retains {point} % [{ci_lo}, {ci_hi}] of C_FULL on MAIN (PRACTICAL_BEST; seeds 2026).",
+    "INCLUDES": "FA vs C_FULL on MAIN: R = {point} % [{ci_lo}, {ci_hi}] includes 100: no detectable difference (PRACTICAL_BEST; seeds 2026).",
+    "NOT_AVAILABLE": "K17 was not computed ({status}); no sentence about 'federated retention vs the full-data cloud model (seed 2026)' is written.",
+    "UNDEFINED": "K17 is UNDEFINED ({status}); no sentence about 'federated retention vs the full-data cloud model (seed 2026)' is written."
+   },
+   "confirmatory_rule": "PRACTICAL_BEST",
+   "contrast": "R(FA / C_FULL)",
+   "forbidden": [
+    "'K17 replicates K2' or any second-headline wording (06L-C C4: K17 = K2(s2026) x K15 / 100)"
+   ],
+   "id": "K17",
+   "kind": "retained",
+   "pairing_note": null,
+   "population": "MAIN",
+   "question": "federated retention vs the full-data cloud model (seed 2026)",
+   "registered_seeds": [
+    2026
+   ],
+   "tier": "secondary"
+  },
+  {
+   "allowed": {
+    "ABOVE": "FT_C exceeds C_FULL on MAIN: R = {point} % [{ci_lo}, {ci_hi}] (PRACTICAL_BEST; seeds 2026).",
+    "BELOW": "FT_C retains {point} % [{ci_lo}, {ci_hi}] of C_FULL on MAIN (PRACTICAL_BEST; seeds 2026).",
+    "INCLUDES": "FT_C vs C_FULL on MAIN: R = {point} % [{ci_lo}, {ci_hi}] includes 100: no detectable difference (PRACTICAL_BEST; seeds 2026).",
+    "NOT_AVAILABLE": "K18 was not computed ({status}); no sentence about 'cloud-trained + local fine-tune vs the full-data cloud model (seed 2026)' is written.",
+    "UNDEFINED": "K18 is UNDEFINED ({status}); no sentence about 'cloud-trained + local fine-tune vs the full-data cloud model (seed 2026)' is written."
+   },
+   "confirmatory_rule": "PRACTICAL_BEST",
+   "contrast": "R(FT_C / C_FULL)",
+   "forbidden": [
+    "'K18 is independent of K7' (K18 = K7(s2026) x K15 / 100)"
+   ],
+   "id": "K18",
+   "kind": "retained",
+   "pairing_note": null,
+   "population": "MAIN",
+   "question": "cloud-trained + local fine-tune vs the full-data cloud model (seed 2026)",
+   "registered_seeds": [
+    2026
+   ],
+   "tier": "tertiary"
+  },
+  {
+   "allowed": {
+    "ABOVE": "LO exceeds C_FULL on MAIN: R = {point} % [{ci_lo}, {ci_hi}] (PRACTICAL_BEST; seeds 2026).",
+    "BELOW": "LO retains {point} % [{ci_lo}, {ci_hi}] of C_FULL on MAIN (PRACTICAL_BEST; seeds 2026).",
+    "INCLUDES": "LO vs C_FULL on MAIN: R = {point} % [{ci_lo}, {ci_hi}] includes 100: no detectable difference (PRACTICAL_BEST; seeds 2026).",
+    "NOT_AVAILABLE": "K19 was not computed ({status}); no sentence about 'device-only vs the full-data cloud model (seed 2026)' is written.",
+    "UNDEFINED": "K19 is UNDEFINED ({status}); no sentence about 'device-only vs the full-data cloud model (seed 2026)' is written."
+   },
+   "confirmatory_rule": "PRACTICAL_BEST",
+   "contrast": "R(LO / C_FULL)",
+   "forbidden": [
+    "'K19 is independent of K8' (K19 = K8(s2026) x K15 / 100)"
+   ],
+   "id": "K19",
+   "kind": "retained",
+   "pairing_note": null,
+   "population": "MAIN",
+   "question": "device-only vs the full-data cloud model (seed 2026)",
+   "registered_seeds": [
+    2026
+   ],
+   "tier": "tertiary"
+  },
+  {
+   "allowed": {
+    "ABOVE": "FA_WARM_FROZEN exceeds C_BIG on MAIN: R = {point} % [{ci_lo}, {ci_hi}] (PRACTICAL_BEST; seeds 2026, 2027).",
+    "BELOW": "FA_WARM_FROZEN retains {point} % [{ci_lo}, {ci_hi}] of C_BIG on MAIN (PRACTICAL_BEST; seeds 2026, 2027).",
+    "INCLUDES": "FA_WARM_FROZEN vs C_BIG on MAIN: R = {point} % [{ci_lo}, {ci_hi}] includes 100: no detectable difference (PRACTICAL_BEST; seeds 2026, 2027).",
+    "NOT_AVAILABLE": "K20 was not computed ({status}); no sentence about 'deployment-branch federated retention vs the C_BIG cloud model (warm start from theta_pre, S8 frozen item tables = FA_WARM*; seeds 2026, 2027)' is written.",
+    "UNDEFINED": "K20 is UNDEFINED ({status}); no sentence about 'deployment-branch federated retention vs the C_BIG cloud model (warm start from theta_pre, S8 frozen item tables = FA_WARM*; seeds 2026, 2027)' is written."
+   },
+   "confirmatory_rule": "PRACTICAL_BEST",
+   "contrast": "R(FA_WARM_FROZEN / C_BIG)",
+   "forbidden": [
+    "'warm-started FL beats the cloud' from R > 100 (PRE saw 9x the MAIN users; DL 206 (1))"
+   ],
+   "id": "K20",
+   "kind": "retained",
+   "pairing_note": null,
+   "population": "MAIN",
+   "question": "deployment-branch federated retention vs the C_BIG cloud model (warm start from theta_pre, S8 frozen item tables = FA_WARM*; seeds 2026, 2027)",
+   "registered_seeds": [
+    2026,
+    2027
+   ],
+   "tier": "secondary"
+  },
+  {
+   "allowed": {
+    "ABOVE": "FA_WARM_FROZEN exceeds C_FULL on MAIN: R = {point} % [{ci_lo}, {ci_hi}] (PRACTICAL_BEST; seeds 2026, 2027).",
+    "BELOW": "FA_WARM_FROZEN retains {point} % [{ci_lo}, {ci_hi}] of C_FULL on MAIN (PRACTICAL_BEST; seeds 2026, 2027).",
+    "INCLUDES": "FA_WARM_FROZEN vs C_FULL on MAIN: R = {point} % [{ci_lo}, {ci_hi}] includes 100: no detectable difference (PRACTICAL_BEST; seeds 2026, 2027).",
+    "NOT_AVAILABLE": "K20b was not computed ({status}); no sentence about 'deployment-branch federated retention vs its matched cloud reference C_FULL (2 FA_WARM_FROZEN seeds vs C_FULL s2026) \u2014 PRIMARY with K21 (06N N1; 06P P1)' is written.",
+    "UNDEFINED": "K20b is UNDEFINED ({status}); no sentence about 'deployment-branch federated retention vs its matched cloud reference C_FULL (2 FA_WARM_FROZEN seeds vs C_FULL s2026) \u2014 PRIMARY with K21 (06N N1; 06P P1)' is written."
+   },
+   "confirmatory_rule": "PRACTICAL_BEST",
+   "contrast": "R(FA_WARM_FROZEN / C_FULL)",
+   "forbidden": [
+    "'trained on the same data as the cloud' (C_FULL = the TIEBREAK band = PRE users + MAIN users)",
+    "a deployment-branch claim from K20b without K21 (06P P1: the primary is the pair)"
+   ],
+   "id": "K20b",
+   "kind": "retained",
+   "pairing_note": "2 FA_WARM_FROZEN seeds vs C_FULL s2026 (06L-C \u00a7C7; 06P P1): the one registered C_FULL seed is the denominator of both",
+   "population": "MAIN",
+   "question": "deployment-branch federated retention vs its matched cloud reference C_FULL (2 FA_WARM_FROZEN seeds vs C_FULL s2026) \u2014 PRIMARY with K21 (06N N1; 06P P1)",
+   "registered_seeds": [
+    2026,
+    2027
+   ],
+   "tier": "primary"
+  },
+  {
+   "allowed": {
+    "ABOVE": "PRE exceeds C_FULL on MAIN: R = {point} % [{ci_lo}, {ci_hi}] (PRACTICAL_BEST; seeds 2026).",
+    "BELOW": "PRE retains {point} % [{ci_lo}, {ci_hi}] of C_FULL on MAIN (PRACTICAL_BEST; seeds 2026).",
+    "INCLUDES": "PRE vs C_FULL on MAIN: R = {point} % [{ci_lo}, {ci_hi}] includes 100: no detectable difference (PRACTICAL_BEST; seeds 2026).",
+    "NOT_AVAILABLE": "K20c was not computed ({status}); no sentence about 'the pretrained model alone vs its matched cloud reference C_FULL (PRE single seed)' is written.",
+    "UNDEFINED": "K20c is UNDEFINED ({status}); no sentence about 'the pretrained model alone vs its matched cloud reference C_FULL (PRE single seed)' is written."
+   },
+   "confirmatory_rule": "PRACTICAL_BEST",
+   "contrast": "R(PRE / C_FULL)",
+   "forbidden": [
+    "'the pretrained model needs no federated training' (unconditional: K21 including 0 is an absence of evidence, and no equivalence test is registered for K21; REV-DELTA-03 m5)"
+   ],
+   "id": "K20c",
+   "kind": "retained",
+   "pairing_note": "PRE single seed (2026) vs C_FULL s2026 (06L-C \u00a7C7)",
+   "population": "MAIN",
+   "question": "the pretrained model alone vs its matched cloud reference C_FULL (PRE single seed)",
+   "registered_seeds": [
+    2026
+   ],
+   "tier": "secondary"
+  },
+  {
+   "allowed": {
+    "ABOVE": "FA_WARM_FROZEN exceeds PRE on MAIN by {point} [{ci_lo}, {ci_hi}] macro MRR@20 (PRACTICAL_BEST; seeds 2026, 2027).",
+    "BELOW": "FA_WARM_FROZEN is below PRE on MAIN by {abs_point} [{ci_lo}, {ci_hi}] macro MRR@20 (PRACTICAL_BEST; seeds 2026, 2027).",
+    "INCLUDES": "FA_WARM_FROZEN - PRE on MAIN = {point} [{ci_lo}, {ci_hi}] macro MRR@20 includes 0: no detectable difference (PRACTICAL_BEST; seeds 2026, 2027).",
+    "NOT_AVAILABLE": "K21 was not computed ({status}); no sentence about 'value of federated training on the private users over the pretrained model alone (paired \u0394) \u2014 PRIMARY with K20b (06N N1; 06P P1)' is written.",
+    "UNDEFINED": "K21 is UNDEFINED ({status}); no sentence about 'value of federated training on the private users over the pretrained model alone (paired \u0394) \u2014 PRIMARY with K20b (06N N1; 06P P1)' is written."
+   },
+   "confirmatory_rule": "PRACTICAL_BEST",
+   "contrast": "FA_WARM_FROZEN \u2212 PRE",
+   "forbidden": [
+    "'federated training adds value over \u03b8_pre' unless ABOVE",
+    "a deployment-branch claim from K21 without K20b (06P P1: the primary is the pair)"
+   ],
+   "id": "K21",
+   "kind": "delta",
+   "pairing_note": "PRE is ONE \u03b8_pre (seed 2026) shared by both FA_WARM_FROZEN seeds (06K / DL 206 (2); 06P P1)",
+   "population": "MAIN",
+   "question": "value of federated training on the private users over the pretrained model alone (paired \u0394) \u2014 PRIMARY with K20b (06N N1; 06P P1)",
+   "registered_seeds": [
+    2026,
+    2027
+   ],
+   "tier": "primary"
+  },
+  {
+   "allowed": {
+    "ABOVE": "FA_WARM_FROZEN exceeds FA on MAIN by {point} [{ci_lo}, {ci_hi}] macro MRR@20 (PRACTICAL_BEST; seeds 2026, 2027).",
+    "BELOW": "FA_WARM_FROZEN is below FA on MAIN by {abs_point} [{ci_lo}, {ci_hi}] macro MRR@20 (PRACTICAL_BEST; seeds 2026, 2027).",
+    "INCLUDES": "FA_WARM_FROZEN - FA on MAIN = {point} [{ci_lo}, {ci_hi}] macro MRR@20 includes 0: no detectable difference (PRACTICAL_BEST; seeds 2026, 2027).",
+    "NOT_AVAILABLE": "K_INIT was not computed ({status}); no sentence about 'value of the pretrained start (paired \u0394, seeds 2026 / 2027; 06N N1; 06P P3)' is written.",
+    "UNDEFINED": "K_INIT is UNDEFINED ({status}); no sentence about 'value of the pretrained start (paired \u0394, seeds 2026 / 2027; 06N N1; 06P P3)' is written."
+   },
+   "confirmatory_rule": "PRACTICAL_BEST",
+   "contrast": "FA_WARM_FROZEN \u2212 FA",
+   "forbidden": [
+    "'the pretrained start is needed' unless ABOVE",
+    "'a random start is as good' (an interval including 0 is an absence of evidence; no equivalence test is registered)"
+   ],
+   "id": "K_INIT",
+   "kind": "delta",
+   "pairing_note": "FA_WARM_FROZEN seed s vs the cold-start FA seed s (06P P3)",
+   "population": "MAIN",
+   "question": "value of the pretrained start (paired \u0394, seeds 2026 / 2027; 06N N1; 06P P3)",
+   "registered_seeds": [
+    2026,
+    2027
+   ],
+   "tier": "secondary"
+  },
+  {
+   "allowed": {
+    "ABOVE": "FT_FA_WARM_FROZEN exceeds FA_WARM_FROZEN on MAIN by {point} [{ci_lo}, {ci_hi}] macro MRR@20 (PRACTICAL_BEST; seeds 2026, 2027).",
+    "BELOW": "FT_FA_WARM_FROZEN is below FA_WARM_FROZEN on MAIN by {abs_point} [{ci_lo}, {ci_hi}] macro MRR@20 (PRACTICAL_BEST; seeds 2026, 2027).",
+    "INCLUDES": "FT_FA_WARM_FROZEN - FA_WARM_FROZEN on MAIN = {point} [{ci_lo}, {ci_hi}] macro MRR@20 includes 0: no detectable difference (PRACTICAL_BEST; seeds 2026, 2027).",
+    "NOT_AVAILABLE": "P5 was not computed ({status}); no sentence about 'local fine-tuning gain after the pretrained-line FL (paired \u0394, base = the same-seed best.pt, harmed-client share beside; 06P P5)' is written.",
+    "UNDEFINED": "P5 is UNDEFINED ({status}); no sentence about 'local fine-tuning gain after the pretrained-line FL (paired \u0394, base = the same-seed best.pt, harmed-client share beside; 06P P5)' is written."
+   },
+   "confirmatory_rule": "PRACTICAL_BEST",
+   "contrast": "FT_FA_WARM_FROZEN \u2212 FA_WARM_FROZEN",
+   "forbidden": [
+    "'fine-tuning after FL is free' (report the harmed-client share)"
+   ],
+   "id": "P5",
+   "kind": "delta",
+   "pairing_note": "FT_FA_WARM_FROZEN seed s vs FA_WARM_FROZEN seed s; only a device run whose base is that seed's best.pt pairs (06P P5)",
+   "population": "MAIN",
+   "question": "local fine-tuning gain after the pretrained-line FL (paired \u0394, base = the same-seed best.pt, harmed-client share beside; 06P P5)",
+   "registered_seeds": [
+    2026,
+    2027
+   ],
+   "tier": "secondary"
+  },
+  {
+   "allowed": {
+    "ABOVE": "FP_WARM_FROZEN exceeds C_FULL on MAIN: R = {point} % [{ci_lo}, {ci_hi}] (PRACTICAL_BEST; seeds 2026, 2027).",
+    "BELOW": "FP_WARM_FROZEN retains {point} % [{ci_lo}, {ci_hi}] of C_FULL on MAIN (PRACTICAL_BEST; seeds 2026, 2027).",
+    "INCLUDES": "FP_WARM_FROZEN vs C_FULL on MAIN: R = {point} % [{ci_lo}, {ci_hi}] includes 100: no detectable difference (PRACTICAL_BEST; seeds 2026, 2027).",
+    "NOT_AVAILABLE": "K4w was not computed ({status}); no sentence about 'FedProx retention on the pretrained line vs C_FULL (06P P4)' is written.",
+    "UNDEFINED": "K4w is UNDEFINED ({status}); no sentence about 'FedProx retention on the pretrained line vs C_FULL (06P P4)' is written."
+   },
+   "confirmatory_rule": "PRACTICAL_BEST",
+   "contrast": "R(FP_WARM_FROZEN / C_FULL)",
+   "forbidden": [
+    "'FedProx helps / hurts' in general (06L-A A7: FedProx \u03bc 0.01 under the selected client optimiser only)"
+   ],
+   "id": "K4w",
+   "kind": "retained",
+   "pairing_note": "2 FP_WARM_FROZEN seeds vs C_FULL s2026 (the one registered C_FULL seed; 06P P4)",
+   "population": "MAIN",
+   "question": "FedProx retention on the pretrained line vs C_FULL (06P P4)",
+   "registered_seeds": [
+    2026,
+    2027
+   ],
+   "tier": "secondary"
+  },
+  {
+   "allowed": {
+    "ABOVE": "PF_WARM_FROZEN exceeds C_FULL on MAIN: R = {point} % [{ci_lo}, {ci_hi}] (PRACTICAL_BEST; seeds 2026, 2027).",
+    "BELOW": "PF_WARM_FROZEN retains {point} % [{ci_lo}, {ci_hi}] of C_FULL on MAIN (PRACTICAL_BEST; seeds 2026, 2027).",
+    "INCLUDES": "PF_WARM_FROZEN vs C_FULL on MAIN: R = {point} % [{ci_lo}, {ci_hi}] includes 100: no detectable difference (PRACTICAL_BEST; seeds 2026, 2027).",
+    "NOT_AVAILABLE": "K5w was not computed ({status}); no sentence about 'personalised-FL retention on the pretrained line vs C_FULL (06P P4)' is written.",
+    "UNDEFINED": "K5w is UNDEFINED ({status}); no sentence about 'personalised-FL retention on the pretrained line vs C_FULL (06P P4)' is written."
+   },
+   "confirmatory_rule": "PRACTICAL_BEST",
+   "contrast": "R(PF_WARM_FROZEN / C_FULL)",
+   "forbidden": [
+    "'personalisation is useless' from PF \u2212 FA \u2248 0 (06L-A A5: PF \u2248 FA by construction is possible)"
+   ],
+   "id": "K5w",
+   "kind": "retained",
+   "pairing_note": "2 PF_WARM_FROZEN seeds vs C_FULL s2026 (the one registered C_FULL seed; 06P P4)",
+   "population": "MAIN",
+   "question": "personalised-FL retention on the pretrained line vs C_FULL (06P P4)",
+   "registered_seeds": [
+    2026,
+    2027
+   ],
+   "tier": "secondary"
+  },
+  {
+   "allowed": {
+    "ABOVE": "DP8_FROZEN exceeds FA_1024_WARM_FROZEN on MAIN: R = {point} % [{ci_lo}, {ci_hi}] (CONTROLLED_BUDGET; seeds 2026, 2027).",
+    "BELOW": "DP8_FROZEN retains {point} % [{ci_lo}, {ci_hi}] of FA_1024_WARM_FROZEN on MAIN (CONTROLLED_BUDGET; seeds 2026, 2027).",
+    "INCLUDES": "DP8_FROZEN vs FA_1024_WARM_FROZEN on MAIN: R = {point} % [{ci_lo}, {ci_hi}] includes 100: no detectable difference (CONTROLLED_BUDGET; seeds 2026, 2027).",
+    "NOT_AVAILABLE": "K12w was not computed ({status}); no sentence about 'privacy cost at \u03b5 = 8 on the pretrained line (06P P4)' is written.",
+    "UNDEFINED": "K12w is UNDEFINED ({status}); no sentence about 'privacy cost at \u03b5 = 8 on the pretrained line (06P P4)' is written."
+   },
+   "confirmatory_rule": "CONTROLLED_BUDGET",
+   "contrast": "R(DP8_FROZEN / FA_1024_WARM_FROZEN)",
+   "forbidden": [
+    "'the privacy cost at \u03b5 = 8 on the pretrained line is confirmed' from the PRACTICAL_BEST ratio (DESCRIPTIVE, 06D \u00a73)"
+   ],
+   "id": "K12w",
+   "kind": "retained",
+   "pairing_note": null,
+   "population": "MAIN",
+   "question": "privacy cost at \u03b5 = 8 on the pretrained line (06P P4)",
+   "registered_seeds": [
+    2026,
+    2027
+   ],
+   "tier": "secondary"
+  },
+  {
+   "allowed": {
+    "ABOVE": "DP1_WARM_FROZEN exceeds FA_1024_WARM_FROZEN on MAIN: R = {point} % [{ci_lo}, {ci_hi}] (CONTROLLED_BUDGET; seeds 2026).",
+    "BELOW": "DP1_WARM_FROZEN retains {point} % [{ci_lo}, {ci_hi}] of FA_1024_WARM_FROZEN on MAIN (CONTROLLED_BUDGET; seeds 2026).",
+    "INCLUDES": "DP1_WARM_FROZEN vs FA_1024_WARM_FROZEN on MAIN: R = {point} % [{ci_lo}, {ci_hi}] includes 100: no detectable difference (CONTROLLED_BUDGET; seeds 2026).",
+    "NOT_AVAILABLE": "K13w was not computed ({status}); no sentence about 'privacy cost at \u03b5 = 1 on the pretrained line (seed 2026; 06P P4)' is written.",
+    "UNDEFINED": "K13w is UNDEFINED ({status}); no sentence about 'privacy cost at \u03b5 = 1 on the pretrained line (seed 2026; 06P P4)' is written."
+   },
+   "confirmatory_rule": "CONTROLLED_BUDGET",
+   "contrast": "R(DP1_WARM_FROZEN / FA_1024_WARM_FROZEN)",
+   "forbidden": [
+    "'the privacy cost at \u03b5 = 1 on the pretrained line is confirmed' from the PRACTICAL_BEST ratio (DESCRIPTIVE, 06D \u00a73; one seed)"
+   ],
+   "id": "K13w",
+   "kind": "retained",
+   "pairing_note": null,
+   "population": "MAIN",
+   "question": "privacy cost at \u03b5 = 1 on the pretrained line (seed 2026; 06P P4)",
+   "registered_seeds": [
+    2026
+   ],
+   "tier": "secondary"
+  },
+  {
+   "allowed": {
+    "ABOVE": "FA_Q8_WARM_FROZEN exceeds FA_WARM_FROZEN on MAIN: R = {point} % [{ci_lo}, {ci_hi}] (PRACTICAL_BEST; seeds 2026, 2027).",
+    "BELOW": "FA_Q8_WARM_FROZEN retains {point} % [{ci_lo}, {ci_hi}] of FA_WARM_FROZEN on MAIN (PRACTICAL_BEST; seeds 2026, 2027).",
+    "INCLUDES": "FA_Q8_WARM_FROZEN vs FA_WARM_FROZEN on MAIN: R = {point} % [{ci_lo}, {ci_hi}] includes 100: no detectable difference (PRACTICAL_BEST; seeds 2026, 2027).",
+    "NOT_AVAILABLE": "K14w was not computed ({status}); no sentence about 'compression cost (8-bit uploads) on the pretrained line (06P P4)' is written.",
+    "UNDEFINED": "K14w is UNDEFINED ({status}); no sentence about 'compression cost (8-bit uploads) on the pretrained line (06P P4)' is written."
+   },
+   "confirmatory_rule": "PRACTICAL_BEST",
+   "contrast": "R(FA_Q8_WARM_FROZEN / FA_WARM_FROZEN)",
+   "forbidden": [
+    "'8-bit uploads cost nothing' unless EQUIVALENT under the registered margin (90% CI inside [99, 101], 06L-C C15)"
+   ],
+   "id": "K14w",
+   "kind": "retained",
+   "pairing_note": null,
+   "population": "MAIN",
+   "question": "compression cost (8-bit uploads) on the pretrained line (06P P4)",
+   "registered_seeds": [
+    2026,
+    2027
+   ],
+   "tier": "secondary"
+  },
+  {
+   "allowed": {
+    "ABOVE": "DESCRIPTIVE: FA_WARM_FROZEN exceeds FA_WARM on MAIN by {point} [{ci_lo}, {ci_hi}] macro MRR@20 (PRACTICAL_BEST; seeds 2026, 2027).",
+    "BELOW": "DESCRIPTIVE: FA_WARM_FROZEN is below FA_WARM on MAIN by {abs_point} [{ci_lo}, {ci_hi}] macro MRR@20 (PRACTICAL_BEST; seeds 2026, 2027).",
+    "INCLUDES": "DESCRIPTIVE: FA_WARM_FROZEN - FA_WARM on MAIN = {point} [{ci_lo}, {ci_hi}] macro MRR@20 includes 0: no detectable difference (PRACTICAL_BEST; seeds 2026, 2027).",
+    "NOT_AVAILABLE": "DESCRIPTIVE: S8-S7 was not computed ({status}); no sentence about 'cost of not sending the item tables (paired \u0394, reported with the bytes ratio; DESCRIPTIVE)' is written.",
+    "UNDEFINED": "DESCRIPTIVE: S8-S7 is UNDEFINED ({status}); no sentence about 'cost of not sending the item tables (paired \u0394, reported with the bytes ratio; DESCRIPTIVE)' is written."
+   },
+   "confirmatory_rule": "PRACTICAL_BEST",
+   "contrast": "FA_WARM_FROZEN \u2212 FA_WARM",
+   "forbidden": [
+    "'S8 leaks nothing' (brand/category deltas may still leak; off-support rows move \u2248 1e-9; 06L-C C8)",
+    "any confirmatory wording (S8 \u2212 S7 is a registered DESCRIPTIVE contrast)"
+   ],
+   "id": "S8-S7",
+   "kind": "delta",
+   "pairing_note": "FA_WARM_FROZEN seed s vs FA_WARM seed s (same \u03b8_pre; 06L-C \u00a7C8: S8 runs with 2 seeds unconditionally)",
+   "population": "MAIN",
+   "question": "cost of not sending the item tables (paired \u0394, reported with the bytes ratio; DESCRIPTIVE)",
+   "registered_seeds": [
+    2026,
+    2027
+   ],
+   "tier": "descriptive"
+  },
+  {
+   "allowed": {
+    "ABOVE": "DESCRIPTIVE: FA_WARM exceeds C_FULL on MAIN: R = {point} % [{ci_lo}, {ci_hi}] (PRACTICAL_BEST; seeds 2026, 2027).",
+    "BELOW": "DESCRIPTIVE: FA_WARM retains {point} % [{ci_lo}, {ci_hi}] of C_FULL on MAIN (PRACTICAL_BEST; seeds 2026, 2027).",
+    "INCLUDES": "DESCRIPTIVE: FA_WARM vs C_FULL on MAIN: R = {point} % [{ci_lo}, {ci_hi}] includes 100: no detectable difference (PRACTICAL_BEST; seeds 2026, 2027).",
+    "NOT_AVAILABLE": "DESCRIPTIVE: D_S7_C_FULL was not computed ({status}); no sentence about 'the S7 full-model warm start vs C_FULL (DESCRIPTIVE beside the primary; 06P P2)' is written.",
+    "UNDEFINED": "DESCRIPTIVE: D_S7_C_FULL is UNDEFINED ({status}); no sentence about 'the S7 full-model warm start vs C_FULL (DESCRIPTIVE beside the primary; 06P P2)' is written."
+   },
+   "confirmatory_rule": "PRACTICAL_BEST",
+   "contrast": "R(FA_WARM / C_FULL)",
+   "forbidden": [],
+   "id": "D_S7_C_FULL",
+   "kind": "retained",
+   "pairing_note": null,
+   "population": "MAIN",
+   "question": "the S7 full-model warm start vs C_FULL (DESCRIPTIVE beside the primary; 06P P2)",
+   "registered_seeds": [
+    2026,
+    2027
+   ],
+   "tier": "descriptive"
+  },
+  {
+   "allowed": {
+    "ABOVE": "DESCRIPTIVE: FA_WARM exceeds PRE on MAIN by {point} [{ci_lo}, {ci_hi}] macro MRR@20 (PRACTICAL_BEST; seeds 2026, 2027).",
+    "BELOW": "DESCRIPTIVE: FA_WARM is below PRE on MAIN by {abs_point} [{ci_lo}, {ci_hi}] macro MRR@20 (PRACTICAL_BEST; seeds 2026, 2027).",
+    "INCLUDES": "DESCRIPTIVE: FA_WARM - PRE on MAIN = {point} [{ci_lo}, {ci_hi}] macro MRR@20 includes 0: no detectable difference (PRACTICAL_BEST; seeds 2026, 2027).",
+    "NOT_AVAILABLE": "DESCRIPTIVE: D_S7_PRE was not computed ({status}); no sentence about 'the S7 full-model warm start over theta_pre (DESCRIPTIVE beside the primary; 06P P2)' is written.",
+    "UNDEFINED": "DESCRIPTIVE: D_S7_PRE is UNDEFINED ({status}); no sentence about 'the S7 full-model warm start over theta_pre (DESCRIPTIVE beside the primary; 06P P2)' is written."
+   },
+   "confirmatory_rule": "PRACTICAL_BEST",
+   "contrast": "FA_WARM \u2212 PRE",
+   "forbidden": [],
+   "id": "D_S7_PRE",
+   "kind": "delta",
+   "pairing_note": null,
+   "population": "MAIN",
+   "question": "the S7 full-model warm start over theta_pre (DESCRIPTIVE beside the primary; 06P P2)",
+   "registered_seeds": [
+    2026,
+    2027
+   ],
+   "tier": "descriptive"
+  },
+  {
+   "allowed": {
+    "ABOVE": "DESCRIPTIVE: PF_WARM_FROZEN exceeds FA_WARM_FROZEN on MAIN by {point} [{ci_lo}, {ci_hi}] macro MRR@20 (PRACTICAL_BEST; seeds 2026, 2027).",
+    "BELOW": "DESCRIPTIVE: PF_WARM_FROZEN is below FA_WARM_FROZEN on MAIN by {abs_point} [{ci_lo}, {ci_hi}] macro MRR@20 (PRACTICAL_BEST; seeds 2026, 2027).",
+    "INCLUDES": "DESCRIPTIVE: PF_WARM_FROZEN - FA_WARM_FROZEN on MAIN = {point} [{ci_lo}, {ci_hi}] macro MRR@20 includes 0: no detectable difference (PRACTICAL_BEST; seeds 2026, 2027).",
+    "NOT_AVAILABLE": "DESCRIPTIVE: D_PFw_FAw was not computed ({status}); no sentence about 'personalisation on the pretrained line (DESCRIPTIVE, 06L A5 caveat; 06P P4)' is written.",
+    "UNDEFINED": "DESCRIPTIVE: D_PFw_FAw is UNDEFINED ({status}); no sentence about 'personalisation on the pretrained line (DESCRIPTIVE, 06L A5 caveat; 06P P4)' is written."
+   },
+   "confirmatory_rule": "PRACTICAL_BEST",
+   "contrast": "PF_WARM_FROZEN \u2212 FA_WARM_FROZEN",
+   "forbidden": [],
+   "id": "D_PFw_FAw",
+   "kind": "delta",
+   "pairing_note": null,
+   "population": "MAIN",
+   "question": "personalisation on the pretrained line (DESCRIPTIVE, 06L A5 caveat; 06P P4)",
+   "registered_seeds": [
+    2026,
+    2027
+   ],
+   "tier": "descriptive"
+  },
+  {
+   "allowed": {
+    "ABOVE": "DESCRIPTIVE: FA_1024_WARM_FROZEN exceeds FA_WARM_FROZEN on MAIN: R = {point} % [{ci_lo}, {ci_hi}] (PRACTICAL_BEST; seeds 2026, 2027).",
+    "BELOW": "DESCRIPTIVE: FA_1024_WARM_FROZEN retains {point} % [{ci_lo}, {ci_hi}] of FA_WARM_FROZEN on MAIN (PRACTICAL_BEST; seeds 2026, 2027).",
+    "INCLUDES": "DESCRIPTIVE: FA_1024_WARM_FROZEN vs FA_WARM_FROZEN on MAIN: R = {point} % [{ci_lo}, {ci_hi}] includes 100: no detectable difference (PRACTICAL_BEST; seeds 2026, 2027).",
+    "NOT_AVAILABLE": "DESCRIPTIVE: D_FA1024w_FAw was not computed ({status}); no sentence about 'clipping + Poisson-cohort cost on the pretrained line (DESCRIPTIVE; 06P P4)' is written.",
+    "UNDEFINED": "DESCRIPTIVE: D_FA1024w_FAw is UNDEFINED ({status}); no sentence about 'clipping + Poisson-cohort cost on the pretrained line (DESCRIPTIVE; 06P P4)' is written."
+   },
+   "confirmatory_rule": "PRACTICAL_BEST",
+   "contrast": "R(FA_1024_WARM_FROZEN / FA_WARM_FROZEN)",
+   "forbidden": [],
+   "id": "D_FA1024w_FAw",
+   "kind": "retained",
+   "pairing_note": null,
+   "population": "MAIN",
+   "question": "clipping + Poisson-cohort cost on the pretrained line (DESCRIPTIVE; 06P P4)",
+   "registered_seeds": [
+    2026,
+    2027
+   ],
+   "tier": "descriptive"
+  },
+  {
+   "allowed": {
+    "ABOVE": "DESCRIPTIVE: FT_FA_WARM exceeds FA_WARM on MAIN by {point} [{ci_lo}, {ci_hi}] macro MRR@20 (PRACTICAL_BEST; seeds 2026, 2027).",
+    "BELOW": "DESCRIPTIVE: FT_FA_WARM is below FA_WARM on MAIN by {abs_point} [{ci_lo}, {ci_hi}] macro MRR@20 (PRACTICAL_BEST; seeds 2026, 2027).",
+    "INCLUDES": "DESCRIPTIVE: FT_FA_WARM - FA_WARM on MAIN = {point} [{ci_lo}, {ci_hi}] macro MRR@20 includes 0: no detectable difference (PRACTICAL_BEST; seeds 2026, 2027).",
+    "NOT_AVAILABLE": "DESCRIPTIVE: D_FTw_S7 was not computed ({status}); no sentence about 'local fine-tuning gain after the S7 warm FL (DESCRIPTIVE; 06P P5)' is written.",
+    "UNDEFINED": "DESCRIPTIVE: D_FTw_S7 is UNDEFINED ({status}); no sentence about 'local fine-tuning gain after the S7 warm FL (DESCRIPTIVE; 06P P5)' is written."
+   },
+   "confirmatory_rule": "PRACTICAL_BEST",
+   "contrast": "FT_FA_WARM \u2212 FA_WARM",
+   "forbidden": [],
+   "id": "D_FTw_S7",
+   "kind": "delta",
+   "pairing_note": null,
+   "population": "MAIN",
+   "question": "local fine-tuning gain after the S7 warm FL (DESCRIPTIVE; 06P P5)",
+   "registered_seeds": [
+    2026,
+    2027
+   ],
+   "tier": "descriptive"
+  }
+ ],
+ "flags": {
+  "BELOW_DEVICE_HEURISTIC": "06L-C C3",
+  "DEVICE_MIXED": "never confirmatory (06E \u00a73)",
+  "EQUIVALENT": "K14 and K14w only (06L-C C15; 06P P4 / P6: TOST \u00b11 % on the unadjusted 90% CI)",
+  "INCOMPLETE_SEEDS": "A-F4",
+  "POST_VALIDATION_EXPLORATORY": "06L-C C5",
+  "SEED_SENSITIVE": "06L-C C13"
+ },
+ "format": "PPSI_V4_ANA_CLAIM_REGISTER_1",
+ "general_rules": [
+  "A exceeds B only when the paired 95% CI of the contrast lies above its reference (0 for a paired \u0394, 100 for a retention R); an interval that includes the reference reads 'no detectable difference' (the claim vocabulary of EVALUATION_CONTRACT_V4 \u00a77), never 'no difference' or 'equivalent': an absence of evidence is not evidence of absence, and only a registered equivalence test (K14's margin, 06L-C C15) can support 'equivalent'.",
+  "Only the loaded registry's contrasts (report section 1, CONFIRMATORY rows under their registered rule and seeds) carry confirmatory wording; every other number is DESCRIPTIVE and is never phrased as a finding.",
+  "Every retention sentence names the recipe and the reference: 'matched-exposure retention of the registered FL recipe' (06L-C C6), relative to a cloud model trained on 5-100-event users; never 'FL retains X %' without the recipe (06I \u00a76(c)); never 'a lower bound' (06L-C C6).",
+  "VALIDATION values are max-of-marks; the single TEST look is the only unbiased number (06A \u00a79(g)).",
+  "A contrast flagged SEED_SENSITIVE carries the flag in the same sentence; every CI covers user sampling only, conditional on the trained models.",
+  "An arm flagged BELOW_DEVICE_HEURISTIC (CI of \u0394(arm \u2212 LAST) below 0) carries the flag in the same sentence as its retention (06L-C C3).",
+  "Non-DP federated arms are never called private: the uploaded deltas reveal the viewed items and secure aggregation is not simulated (06I \u00a77(a); 06L-C C1); a DP arm states the 06L-C C2 guarantee in full.",
+  "K17-K19 and K20b are compositions with K15 (see algebraic_dependencies); they are never presented as independent evidence or as a second headline (06L-C C4).",
+  "The backbone was selected under rule T1; never 'SASRec beats GRU' (06B \u00a77(c)); GRU_D128 vs C_SMALL is DESCRIPTIVE and never a family choice (06L-C C11).",
+  "Anything added after the first VALIDATION read is POST_VALIDATION_EXPLORATORY and never confirmatory (06L-C C5).",
+  "An 'events to parity' (or events-to-X) sentence is written only from a persistent hit of the 06L-C C10 rule (the parity holds at the next registered h too, with the CI lower bound >= X), naming the rule and the reference (C_BIG FULL history or matched-h C_BIG(h)); a first-hit h alone, NO_CI, NO_NEXT_H or NO_C_REF supports no such sentence; the curves are DESCRIPTIVE."
+ ],
+ "headline_template": "# Headline / abstract template (number-free; 06L-C C12; 06P hierarchy)\n\nPlaceholders `{Kx}`, `{Kx_CI}`, `{Kx_CLAIM}` are filled from the frozen RETENTION_RESULT.json of the single TEST look (`{Kx_CLAIM}` = the claim-register template key stamped on that K); the wording follows CLAIM_REGISTER.json.\n\n1. Task. Next different viewed item within the session (views only), given the user's prior events across sessions (USER_HISTORY_L50); every retention is relative to a cloud model trained on 5-100-event users.\n2. Cloud. The C_BIG cloud model reaches {K15} % [{K15_CI}] of the full-data cloud model C_FULL (K15, one seed).\n3. Federated from a random start (secondary: the random-start ablation, K2). The matched-exposure retention of the registered FL recipe <{FL_RECIPE}> is {K2} % [{K2_CI}] of C_BIG ({K2_CLAIM}); the pretrained start adds {K_INIT} [{K_INIT_CI}] (K_INIT); against the no-training device heuristic LAST, FA \u2212 LAST = {K11b} [{K11b_CI}] ({K11b_CLAIM}); headroom R* = {FA_R_STAR} %.\n4. Federated + DP. At \u03b5 = 8 (central DP, trusted aggregator, client-level, \u03b4 = 5e-6, conditional on the public bootstrap block; tuning not accounted) the model keeps {K12} % [{K12_CI}] of its non-private twin (K12, CONTROLLED_BUDGET).\n5. Cloud model shipped + fine-tuned on device. FT_C on MAIN is an L1 base + local fine-tune: K7 = {K7} % [{K7_CI}]; the L5 answers are K9c = FT_PRE \u2212 PRE = {K9c} [{K9c_CI}] and, for base-unseen users, K9b = {K9b} [{K9b_CI}].\n6. Device-only. The device-only envelope (LO, LAST, RULE) retains {ENVELOPE_R} % of C_BIG; LO alone (an untuned from-\u03b80 control) {K8} % [{K8_CI}].\n7. Deployment branch (PRIMARY, the pair K20b + K21; the Edge answer). Federation from the pretrained model with the item tables frozen (FA_WARM* = S8) retains {K20b} % [{K20b_CI}] of its matched cloud reference C_FULL (K20b, {K20b_CLAIM}), the pretrained model alone {K20c} % [{K20c_CI}] (K20c); federated training on the private users adds {K21} [{K21_CI}] over \u03b8_pre (K21, {K21_CLAIM}); freezing the item tables costs {S8_S7} [{S8_S7_CI}] at {S8_BYTES_RATIO} of the bytes (S8 \u2212 S7, DESCRIPTIVE).\n8. Privacy. The adversary is an honest-but-curious browser vendor; non-DP federated updates reveal the viewed items and secure aggregation is not simulated; only the DP arms carry a formal guarantee (06L-C C1, C2).\n",
+ "registry_content_sha256": "df7884b81fa7cb79589e033b41457eccf560d0c35feb0cdca693107913fe4264",
+ "registry_format": "PPSI_V4_ANA_CONTRASTS_4",
+ "self_sha256": "8640ec657d3afb99e4ec48f74f7dc6e84a92be8bd427c089c5b4f8052b3ddc03"
+}

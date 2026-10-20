@@ -1,0 +1,421 @@
+{
+ "authority": "contracts/PREG2.md (REGISTERED, DL 411) §6.3 S1 / S2 / S4 / S5, §13; company/plans/PHASE2_IMPLEMENTATION_PLAN.md P2-00; company/handoffs/P2-12.md §3 (the layout p2_report / reeval_p2 read)",
+ "binds": "checkpoints only (TEST rows do not exist at lock time, P2-12 §3); read: STATUS / ARM_SPEC / LAUNCH / RUN_START records and checkpoint file bytes - no metric value was opened (PREG2 §6.3 S8)",
+ "bootstrap_seed": 20261004,
+ "code_tree": {
+  "aggregate_sha256": "fac1722a5c2217b417272aea341dd7d93adc0f760e3053d0dfcf74256b6501e6",
+  "n_files": 724,
+  "name": "code_p2r3",
+  "rule": "sha256(compact sort_keys JSON of {posix relpath: file sha256}); __pycache__ / .pytest_cache / *.pyc skipped, symlinks refused",
+  "selection_tool": {
+   "path": "v4int/p2_select.py",
+   "sha256": "7a05afcd91337c2cfc1a7a124844c82f92712c71233142a07eb914e0c26c792f"
+  }
+ },
+ "declared_not_run": [
+  {
+   "arm": "P2_WSTAR_DPFTRL8",
+   "reason": "declared not run: Part B reduced to fit the schedule and budget (owner decision, DL 467); Part B never delays the sitting (PREG2 §2.1, §9.3 E-S4)",
+   "seed": null
+  },
+  {
+   "arm": "P2_WSTAR_SECAGG",
+   "reason": "declared not run: Part B reduced to fit the schedule and budget (owner decision, DL 467); Part B never delays the sitting (PREG2 §2.1, §9.3 E-S4)",
+   "seed": null
+  }
+ ],
+ "document": "P2_METHODS_LOCK",
+ "draft": false,
+ "e1_validity_reading": "PREG2 §7.1 (a) validity gate, registered reading: PRE's RAW mean cross-entropy member / non-member AUC 95 % CI must include 0.5 (theta_pre, trained on neither population, cannot separate them); the calibrated score s(u) of PRE is identically 0, so the literal reading would be vacuous. v4int/audit_e1_mia.py records it as validity.score = raw_mean_ce and writes audit_status VALID / AUDIT_INVALID with eps_lb_reported. Confirmed by the P2_SCRIPT_FREEZE gate ruling (DL 475). Disclosed beside E1 with the DL 469 note: at 5,000 half-B non-members the eps_LB ceiling is about 7.2 < 8, so P2_WSTAR_DP8 cannot FAIL by construction.",
+ "format": "PPSI_V4_P2_METHODS_LOCK_1",
+ "lock_tool_sha256": "715377d069d6203f76ab7b42e6530d11128fed698657aa375dd7a00d0200c608",
+ "p2_contrasts_document": "P2_CONTRASTS_v3",
+ "p2_contrasts_file_sha256": "673b547d930085a851eef5bf2d8ef87412d70c4952dc7084bd06c88bebcdcf42",
+ "p2_contrasts_self_sha256": "e98580564b618f411db7e7e328fbcedb6e1134f4be5b65806b34e12229373799",
+ "part_b_not_run_analyses": [
+  "E2",
+  "E3",
+  "E5_LDP"
+ ],
+ "part_b_not_run_reason": "E2 canary / one-run audit, E3 update leakage and E5 LDP feasibility are not run: Part B reduced to fit the schedule and budget (owner decision, DL 467); Part B never delays the sitting (PREG2 §2.1). E1 and E4 run as DESCRIPTIVE (tertiary) analyses; the DP-FTRL and SECAGG arms are in declared_not_run.",
+ "phase1_lock": {
+  "file_sha256": "04a3cd196149e2acf2ab5bb004f58c997199aa52e32f3c11c9ae647255beed23",
+  "path": "company/gates/ALL_METHODS_LOCK.json",
+  "retention_report_sha256": "9a3b2c2a918ef2baacc5299426941f1eb94c366f5bb6aa7c29b4bfdbca0afe58",
+  "rule": "S5: the reused Phase-1 rows are produced once by the Phase-1 plan; checkpoints bound here, rows by the sitting's Phase-1 RETENTION_RESULT (tools/p2_report.check_phase1_binding)"
+ },
+ "phase1_reused": [
+  {
+   "arm": "PRE",
+   "checkpoint_sha256": "cf08588c11f019cc760f129ba7ba6b23806297660e0170f9938436a5cb88cf78",
+   "rule": "PRACTICAL_BEST",
+   "seed": 2026
+  },
+  {
+   "arm": "PRE",
+   "checkpoint_sha256": "cf08588c11f019cc760f129ba7ba6b23806297660e0170f9938436a5cb88cf78",
+   "rule": "CONTROLLED_BUDGET",
+   "seed": 2026
+  },
+  {
+   "arm": "FA_WARM_FROZEN",
+   "checkpoint_sha256": "6f1c3e929bcee43a8a876e86e70b5783f1be998aa5180b3b26ddd0afe502904c",
+   "rule": "PRACTICAL_BEST",
+   "seed": 2026
+  },
+  {
+   "arm": "FA_WARM_FROZEN",
+   "checkpoint_sha256": "8da6d281e38b5ca55fd6a661056340c6b1d97b12cfafb644b1857053d5f13c8e",
+   "rule": "CONTROLLED_BUDGET",
+   "seed": 2026
+  },
+  {
+   "arm": "FA_WARM_FROZEN",
+   "checkpoint_sha256": "74d35766e00c3d334c433b5dfc106c7827ae9736cf71b203b26817e1ea45af0f",
+   "rule": "PRACTICAL_BEST",
+   "seed": 2027
+  },
+  {
+   "arm": "FA_WARM_FROZEN",
+   "checkpoint_sha256": "a4304e3b42d92ac594130b94c6aa7c571b5591f25a5302a75dccac09f297ab7c",
+   "rule": "CONTROLLED_BUDGET",
+   "seed": 2027
+  },
+  {
+   "arm": "FT_PRE",
+   "checkpoint_sha256": null,
+   "rule": "PRACTICAL_BEST",
+   "seed": 2026
+  },
+  {
+   "arm": "FT_PRE",
+   "checkpoint_sha256": null,
+   "rule": "PRACTICAL_BEST",
+   "seed": 2027
+  },
+  {
+   "arm": "C_FULL",
+   "checkpoint_sha256": "2d46312c6f0a68e14a6b81c1ecf53c6cc05c75c33def13b7a63dbaff460be5e7",
+   "rule": "PRACTICAL_BEST",
+   "seed": 2026
+  },
+  {
+   "arm": "C_FULL",
+   "checkpoint_sha256": "0da17f3b9e560cc547590f0e6cd9a8e4514a7dcaf456cc3378f571e8baca7475",
+   "rule": "CONTROLLED_BUDGET",
+   "seed": 2026
+  }
+ ],
+ "plan_sha256": "dd449e890bc162cd724a8a6724b3693cc9b2446521140f2ca4b354a8ac71ec96",
+ "preg2_sha256": "be0561abe5ceec450d3a75bef49853a3c480d3847f75559dd94e9e0545df18a8",
+ "sealed_arms": [
+  {
+   "arm": "FT_P2_WSTAR",
+   "base_checkpoint": "best.pt",
+   "base_checkpoint_sha256": "0ed3d146b46715c48d857ad0ae2f0d79809b7a71a9f7773b86710004d92cf433",
+   "base_run_id": "P2_WSTAR_SMALL_s2026",
+   "main_run": {
+    "launch_files_sha256": {
+     "LAUNCH_0.json": "7cb3d4d6bbda2f9347dd658233aaed1cdc8d033c21cef1ccc652c0ef08ad5281"
+    },
+    "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_p2/MAIN/FT_P2_WSTAR_s2026",
+    "status": "DONE"
+   },
+   "rule": "PRACTICAL_BEST",
+   "seed": 2026,
+   "source_kind": "DEVICE"
+  },
+  {
+   "arm": "FT_P2_WSTAR",
+   "base_checkpoint": "best.pt",
+   "base_checkpoint_sha256": "6779c404ab375774210be86cded3cb9a2850cffc32a041ffd235f3ab0ee9d568",
+   "base_run_id": "P2_WSTAR_SMALL_s2027",
+   "main_run": {
+    "launch_files_sha256": {
+     "LAUNCH_0.json": "21dd343fe3f34c046b2f272712b17b80fbb71d83ebf24407fa8cf06c98746807"
+    },
+    "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_p2/MAIN/FT_P2_WSTAR_s2027",
+    "status": "DONE"
+   },
+   "rule": "PRACTICAL_BEST",
+   "seed": 2027,
+   "source_kind": "DEVICE"
+  },
+  {
+   "arm": "P2_C1_FT_CENTRAL_FROZEN",
+   "checkpoint": "endpoint_6.0.pt",
+   "checkpoint_sha256": "102933d0120164da3869692b3bfcbe48f381c44b89b421d65f3a84eb04875ac6",
+   "rule": "CONTROLLED_BUDGET",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_p2/C1/P2_C1_FT_CENTRAL_FROZEN_MAIN_s2026",
+   "run_id": "P2_C1_FT_CENTRAL_FROZEN_MAIN_lr3e-6_s2026",
+   "seed": 2026,
+   "source_kind": "C1"
+  },
+  {
+   "arm": "P2_C1_FT_CENTRAL_FROZEN",
+   "checkpoint": "best.pt",
+   "checkpoint_sha256": "5c15406b00bd8e07979110908e35610f8ebbec4d500316cc655a244e6aa14a1e",
+   "rule": "PRACTICAL_BEST",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_p2/C1/P2_C1_FT_CENTRAL_FROZEN_MAIN_s2026",
+   "run_id": "P2_C1_FT_CENTRAL_FROZEN_MAIN_lr3e-6_s2026",
+   "seed": 2026,
+   "source_kind": "C1"
+  },
+  {
+   "arm": "P2_C1_FT_CENTRAL_FROZEN",
+   "checkpoint": "endpoint_6.0.pt",
+   "checkpoint_sha256": "63302c8c702eeaad01d2b7af8afdb3f95929a29733ae6c8fe19ba3cc5c831cac",
+   "rule": "CONTROLLED_BUDGET",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_p2/C1/P2_C1_FT_CENTRAL_FROZEN_MAIN_s2027",
+   "run_id": "P2_C1_FT_CENTRAL_FROZEN_MAIN_lr3e-6_s2027",
+   "seed": 2027,
+   "source_kind": "C1"
+  },
+  {
+   "arm": "P2_C1_FT_CENTRAL_FROZEN",
+   "checkpoint": "best.pt",
+   "checkpoint_sha256": "5178f03493fdc98878eec2b98da84e2239e2e9a2ff41149dfc697930a03c4399",
+   "rule": "PRACTICAL_BEST",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_p2/C1/P2_C1_FT_CENTRAL_FROZEN_MAIN_s2027",
+   "run_id": "P2_C1_FT_CENTRAL_FROZEN_MAIN_lr3e-6_s2027",
+   "seed": 2027,
+   "source_kind": "C1"
+  },
+  {
+   "arm": "P2_C1_FT_CENTRAL_FULL",
+   "checkpoint": "endpoint_6.0.pt",
+   "checkpoint_sha256": "e5a32043232e89567b38b048fe468c7466f75294b05ac5c75df0938d6425348d",
+   "rule": "CONTROLLED_BUDGET",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_p2/C1/P2_C1_FT_CENTRAL_FULL_MAIN_s2026",
+   "run_id": "P2_C1_FT_CENTRAL_FULL_MAIN_lr3e-6_s2026",
+   "seed": 2026,
+   "source_kind": "C1"
+  },
+  {
+   "arm": "P2_C1_FT_CENTRAL_FULL",
+   "checkpoint": "best.pt",
+   "checkpoint_sha256": "7bca121c5b6dd761df449161d07636b24c82e1874debde85dc9c556e791d514f",
+   "rule": "PRACTICAL_BEST",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_p2/C1/P2_C1_FT_CENTRAL_FULL_MAIN_s2026",
+   "run_id": "P2_C1_FT_CENTRAL_FULL_MAIN_lr3e-6_s2026",
+   "seed": 2026,
+   "source_kind": "C1"
+  },
+  {
+   "arm": "P2_C1_FT_CENTRAL_FULL",
+   "checkpoint": "endpoint_6.0.pt",
+   "checkpoint_sha256": "11b469b1336ea948a8df86f3b6eeafaa5b7d65d265d1de64438a158b75aa3004",
+   "rule": "CONTROLLED_BUDGET",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_p2/C1/P2_C1_FT_CENTRAL_FULL_MAIN_s2027",
+   "run_id": "P2_C1_FT_CENTRAL_FULL_MAIN_lr3e-6_s2027",
+   "seed": 2027,
+   "source_kind": "C1"
+  },
+  {
+   "arm": "P2_C1_FT_CENTRAL_FULL",
+   "checkpoint": "best.pt",
+   "checkpoint_sha256": "4f3000a10c2596dbe3dbe18db0ed746b3a4e7e87351ad1cf93f278dfdc4cff7b",
+   "rule": "PRACTICAL_BEST",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_p2/C1/P2_C1_FT_CENTRAL_FULL_MAIN_s2027",
+   "run_id": "P2_C1_FT_CENTRAL_FULL_MAIN_lr3e-6_s2027",
+   "seed": 2027,
+   "source_kind": "C1"
+  },
+  {
+   "arm": "P2_C2_CFULL_SMALL",
+   "checkpoint": "endpoint_6.0.pt",
+   "checkpoint_sha256": "49968d7ca453aebc0a1a9448522494721b7f344e9ceb96812b03dcc33730ad07",
+   "rule": "CONTROLLED_BUDGET",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_p2/C2/P2_C2_CFULL_SMALL_SASREC_D64_B2_s2026",
+   "run_id": "P2_C2_CFULL_SMALL_SASREC_D64_B2_s2026",
+   "seed": 2026,
+   "source_kind": "C2"
+  },
+  {
+   "arm": "P2_C2_CFULL_SMALL",
+   "checkpoint": "best.pt",
+   "checkpoint_sha256": "3a63d39bda6bbefd36887f4ff8d23b67d46c9b02834b850eda6b959c0bc5481d",
+   "rule": "PRACTICAL_BEST",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_p2/C2/P2_C2_CFULL_SMALL_SASREC_D64_B2_s2026",
+   "run_id": "P2_C2_CFULL_SMALL_SASREC_D64_B2_s2026",
+   "seed": 2026,
+   "source_kind": "C2"
+  },
+  {
+   "arm": "P2_WSTAR",
+   "checkpoint": "endpoint_6.0.pt",
+   "checkpoint_sha256": "391022ee17c3c268a7d8ab63518a92e55e6c194cce2e1b45faa89b91fd5941c8",
+   "rule": "CONTROLLED_BUDGET",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_p2/MAIN/P2_WSTAR_SMALL_s2026",
+   "run_id": "P2_WSTAR_SMALL_s2026",
+   "seed": 2026,
+   "source_kind": "FL"
+  },
+  {
+   "arm": "P2_WSTAR",
+   "checkpoint": "best.pt",
+   "checkpoint_sha256": "0ed3d146b46715c48d857ad0ae2f0d79809b7a71a9f7773b86710004d92cf433",
+   "rule": "PRACTICAL_BEST",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_p2/MAIN/P2_WSTAR_SMALL_s2026",
+   "run_id": "P2_WSTAR_SMALL_s2026",
+   "seed": 2026,
+   "source_kind": "FL"
+  },
+  {
+   "arm": "P2_WSTAR",
+   "checkpoint": "endpoint_6.0.pt",
+   "checkpoint_sha256": "11eab0ebfab085ef3abb9aeb1d06e51c489376a491956c0b7dd74450230f2099",
+   "rule": "CONTROLLED_BUDGET",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_p2/MAIN/P2_WSTAR_SMALL_s2027",
+   "run_id": "P2_WSTAR_SMALL_s2027",
+   "seed": 2027,
+   "source_kind": "FL"
+  },
+  {
+   "arm": "P2_WSTAR",
+   "checkpoint": "best.pt",
+   "checkpoint_sha256": "6779c404ab375774210be86cded3cb9a2850cffc32a041ffd235f3ab0ee9d568",
+   "rule": "PRACTICAL_BEST",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_p2/MAIN/P2_WSTAR_SMALL_s2027",
+   "run_id": "P2_WSTAR_SMALL_s2027",
+   "seed": 2027,
+   "source_kind": "FL"
+  },
+  {
+   "arm": "P2_WSTAR_DP1",
+   "checkpoint": "endpoint_6.0.pt",
+   "checkpoint_sha256": "7f5cbdcb558041cb04040d6cc95c8ecd91114306165eee9b421b070a469d6d19",
+   "rule": "CONTROLLED_BUDGET",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_p2/MAIN/P2_WSTAR_DP1_SMALL_s2026",
+   "run_id": "P2_WSTAR_DP1_SMALL_s2026",
+   "seed": 2026,
+   "source_kind": "FL"
+  },
+  {
+   "arm": "P2_WSTAR_DP1",
+   "checkpoint": "best.pt",
+   "checkpoint_sha256": "d91881383e8d6acb2763ef0c5bbb15504caf0e5630a4b74fb22c0a1173ab1611",
+   "rule": "PRACTICAL_BEST",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_p2/MAIN/P2_WSTAR_DP1_SMALL_s2026",
+   "run_id": "P2_WSTAR_DP1_SMALL_s2026",
+   "seed": 2026,
+   "source_kind": "FL"
+  },
+  {
+   "arm": "P2_WSTAR_DP8",
+   "checkpoint": "endpoint_6.0.pt",
+   "checkpoint_sha256": "05602ad4e63b8979b28d2526c02bd5ff7d9a6d2a1a5069db95619990475f8a07",
+   "rule": "CONTROLLED_BUDGET",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_p2/MAIN/P2_WSTAR_DP8_SMALL_s2026",
+   "run_id": "P2_WSTAR_DP8_SMALL_s2026",
+   "seed": 2026,
+   "source_kind": "FL"
+  },
+  {
+   "arm": "P2_WSTAR_DP8",
+   "checkpoint": "best.pt",
+   "checkpoint_sha256": "1a3ec9b439c39b707f795cd4de88b707678d71cb011cbb86630f860670cfa6e3",
+   "rule": "PRACTICAL_BEST",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_p2/MAIN/P2_WSTAR_DP8_SMALL_s2026",
+   "run_id": "P2_WSTAR_DP8_SMALL_s2026",
+   "seed": 2026,
+   "source_kind": "FL"
+  },
+  {
+   "arm": "P2_WSTAR_DP8",
+   "checkpoint": "endpoint_6.0.pt",
+   "checkpoint_sha256": "28013e56967584eb1fbba74cd9b9dc951f18687b5f320c6539d3966e0c9ed553",
+   "rule": "CONTROLLED_BUDGET",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_p2/MAIN/P2_WSTAR_DP8_SMALL_s2027",
+   "run_id": "P2_WSTAR_DP8_SMALL_s2027",
+   "seed": 2027,
+   "source_kind": "FL"
+  },
+  {
+   "arm": "P2_WSTAR_DP8",
+   "checkpoint": "best.pt",
+   "checkpoint_sha256": "35d0d6bc58c6d42c9656457c1168b29e8fff661b0b9d134b97a880efb30b1d42",
+   "rule": "PRACTICAL_BEST",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_p2/MAIN/P2_WSTAR_DP8_SMALL_s2027",
+   "run_id": "P2_WSTAR_DP8_SMALL_s2027",
+   "seed": 2027,
+   "source_kind": "FL"
+  },
+  {
+   "arm": "P2_WSTAR_FA1024",
+   "checkpoint": "endpoint_6.0.pt",
+   "checkpoint_sha256": "3678ef2eacde74d02ebb55fea20bc7cde21fba83bd97cc275b9f21367f109219",
+   "rule": "CONTROLLED_BUDGET",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_p2/MAIN/P2_WSTAR_FA1024_SMALL_s2026",
+   "run_id": "P2_WSTAR_FA1024_SMALL_s2026",
+   "seed": 2026,
+   "source_kind": "FL"
+  },
+  {
+   "arm": "P2_WSTAR_FA1024",
+   "checkpoint": "best.pt",
+   "checkpoint_sha256": "5e757201df344a50e6ef0d6b1511d45900afda8e90b83628f537cbac6777d731",
+   "rule": "PRACTICAL_BEST",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_p2/MAIN/P2_WSTAR_FA1024_SMALL_s2026",
+   "run_id": "P2_WSTAR_FA1024_SMALL_s2026",
+   "seed": 2026,
+   "source_kind": "FL"
+  },
+  {
+   "arm": "P2_WSTAR_FA1024",
+   "checkpoint": "endpoint_6.0.pt",
+   "checkpoint_sha256": "890d411acfb103edfbdac0825525af927ee69c4e9d6b2ac662f2828613c791f8",
+   "rule": "CONTROLLED_BUDGET",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_p2/MAIN/P2_WSTAR_FA1024_SMALL_s2027",
+   "run_id": "P2_WSTAR_FA1024_SMALL_s2027",
+   "seed": 2027,
+   "source_kind": "FL"
+  },
+  {
+   "arm": "P2_WSTAR_FA1024",
+   "checkpoint": "best.pt",
+   "checkpoint_sha256": "7355226eaf89f5a36bcd41ef22c08323911946c467ed2dac8255cbf2870162d4",
+   "rule": "PRACTICAL_BEST",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_p2/MAIN/P2_WSTAR_FA1024_SMALL_s2027",
+   "run_id": "P2_WSTAR_FA1024_SMALL_s2027",
+   "seed": 2027,
+   "source_kind": "FL"
+  }
+ ],
+ "selection_files": {
+  "P2_C1_SELECTION": {
+   "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/contracts/fl/P2_C1_SELECTION.json",
+   "sha256": "20a23295c9c8a7a952bf67cc99b0adbe007cac73174710927483b3b2674c40f4"
+  },
+  "P2_WARM_SELECTION_A": {
+   "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/contracts/fl/P2_WARM_SELECTION_A.json",
+   "sha256": "06a75d6518f66013efa7d1e49d75d9e28d50e6211d94064df410884d3022de00"
+  },
+  "P2_WARM_SELECTION_FINAL": {
+   "format": "PPSI_V4_P2_WARM_SELECTION_FINAL_1",
+   "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/contracts/fl/P2_WARM_SELECTION_FINAL.json",
+   "self_sha256": "7aedaebe59dab183e627837a1099d14059d1d0fe4d0725c0bc471c8183582d58",
+   "sha256": "25aadc2ea8fd3d1a48015d9da748876db80f031cbe14551ab96bc624861252d7",
+   "winner": "fedadam|eta=3e-06|c=0.1"
+  },
+  "S_RECORD_P2": {
+   "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_p2/MAIN/P2_WSTAR_S_CAL_SMALL_s2026/S_RECORD_P2.json",
+   "sha256": "934fb3174e9872b3ddfe234b858ffee21ea200f4e011d89f881cee0db075892f"
+  }
+ },
+ "selection_files_sha256": {
+  "P2_C1_SELECTION": "20a23295c9c8a7a952bf67cc99b0adbe007cac73174710927483b3b2674c40f4",
+  "P2_WARM_SELECTION_A": "06a75d6518f66013efa7d1e49d75d9e28d50e6211d94064df410884d3022de00",
+  "P2_WARM_SELECTION_FINAL": "25aadc2ea8fd3d1a48015d9da748876db80f031cbe14551ab96bc624861252d7",
+  "S_RECORD_P2": "934fb3174e9872b3ddfe234b858ffee21ea200f4e011d89f881cee0db075892f"
+ },
+ "selection_tool": {
+  "path": "v4int/p2_select.py",
+  "sha256": "7a05afcd91337c2cfc1a7a124844c82f92712c71233142a07eb914e0c26c792f"
+ },
+ "self_sha256": "80620303bd48de4f58b2f8e211f33929885f2bb327edb78b6f45fdf8e6142749",
+ "self_sha256_rule": "utf8 compact sort_keys (json.dumps(body, sort_keys=True, separators=(',', ':'), ensure_ascii=False).encode('utf-8'))",
+ "study": "PREG2",
+ "task": "P2-DEVLOCK tools/p2_lock.py (the P2-00 lock tool)",
+ "written_utc": "2026-10-05T20:17:17Z"
+}

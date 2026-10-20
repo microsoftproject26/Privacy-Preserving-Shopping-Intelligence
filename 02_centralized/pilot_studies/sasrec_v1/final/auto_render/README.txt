@@ -1,0 +1,1 @@
+final/auto_render/ = the automatic v2-era render_report.py output (07:24:17Z), preserved unmodified; superseded by the lead files at the workspace root (tools/build_final_results.py + tools/write_final_report.py).

@@ -1,0 +1,215 @@
+{
+ "cuda": {
+  "available": true,
+  "count": 1,
+  "name": "NVIDIA A16"
+ },
+ "device": "cuda:0",
+ "gpu_forward": [
+  {
+   "family": "GRU",
+   "finite": true,
+   "logits_shape": [
+    8,
+    158486
+   ],
+   "moved_state_equals_theta0": true,
+   "schema_id": "L0_CLEAN_V2",
+   "seed": 2026
+  },
+  {
+   "family": "SASREC",
+   "finite": true,
+   "logits_shape": [
+    8,
+    158486
+   ],
+   "moved_state_equals_theta0": true,
+   "schema_id": "L0_CLEAN_V2",
+   "seed": 2026
+  },
+  {
+   "family": "GRU",
+   "finite": true,
+   "logits_shape": [
+    8,
+    158486
+   ],
+   "moved_state_equals_theta0": true,
+   "schema_id": "L3_NEAR_DUPLICATE",
+   "seed": 2026
+  },
+  {
+   "family": "SASREC",
+   "finite": true,
+   "logits_shape": [
+    8,
+    158486
+   ],
+   "moved_state_equals_theta0": true,
+   "schema_id": "L3_NEAR_DUPLICATE",
+   "seed": 2026
+  }
+ ],
+ "host": "jupyter-group-digi2026-g8",
+ "l0_guard": {
+  "GRU/2026": {
+   "equals_plain_clean_v2_build": true,
+   "equals_registered": true,
+   "registered": "f1dd4ec4b91c8f2a108588f96d70f6e81e54867460b675a67c45cc19f12d681d",
+   "registered_raw": "f1dd4ec4b91c8f2a108588f96d70f6e81e54867460b675a67c45cc19f12d681d",
+   "registered_source": "FL-02 GPU receipt init.json (torch 2.13.0+cu130)"
+  },
+  "GRU/2027": {
+   "equals_plain_clean_v2_build": true,
+   "equals_registered": true,
+   "registered": "32a77042ef8b1a17b94976d831bb3a74e8c47e08ca21d398efca73f385dedb9b",
+   "registered_raw": "32a77042ef8b1a17b94976d831bb3a74e8c47e08ca21d398efca73f385dedb9b",
+   "registered_source": "FL-02 GPU receipt init.json (torch 2.13.0+cu130)"
+  },
+  "SASREC/2026": {
+   "equals_plain_clean_v2_build": true,
+   "equals_registered": true,
+   "registered": "e264064a1fc678ab4b0eea7aed0290ae522e58f809c82fef11e042c11a9063d4",
+   "registered_raw": "ce38d24342fdc253edaa1f5030ae1d1b5c68386ac7d0372dde08adc232bde125",
+   "registered_source": "FL-02 GPU receipt init.json (torch 2.13.0+cu130)"
+  },
+  "SASREC/2027": {
+   "equals_plain_clean_v2_build": true,
+   "equals_registered": true,
+   "registered": "e27f857d41bf9ec2591729a2a3c2d1f1370bfdb5e25a307558617d397f8796ed",
+   "registered_raw": "b48a6cd8c6a56c0a2c6cd36839cffd26a183ae49384378d35342051dc8bab1b6",
+   "registered_source": "FL-02 GPU receipt init.json (torch 2.13.0+cu130)"
+  }
+ },
+ "ok": true,
+ "platform": "Linux-6.8.0-117-generic-x86_64-with-glibc2.39",
+ "python": "3.11.14",
+ "records": [
+  {
+   "K": 158486,
+   "build_s": 0.25,
+   "family": "GRU",
+   "host": "jupyter-group-digi2026-g8",
+   "init_sha256": "f1dd4ec4b91c8f2a108588f96d70f6e81e54867460b675a67c45cc19f12d681d",
+   "manifest_digest": "fcfc241e36d98a89b454c22c3c3109aae43eb26266196d844efe40afe1d7dd83",
+   "raw_init_sha256": "f1dd4ec4b91c8f2a108588f96d70f6e81e54867460b675a67c45cc19f12d681d",
+   "schema_id": "L0_CLEAN_V2",
+   "schema_self_sha256": "6f5c5afc9e2d5763633088856acdc3a8e2620d12b2d7ebec9a23cb12ed76abf3",
+   "seed": 2026,
+   "shared_numel": 20963806,
+   "torch": "2.13.0+cu130",
+   "utc": "2026-09-26T22:29:03Z"
+  },
+  {
+   "K": 158486,
+   "build_s": 0.25,
+   "family": "GRU",
+   "host": "jupyter-group-digi2026-g8",
+   "init_sha256": "32a77042ef8b1a17b94976d831bb3a74e8c47e08ca21d398efca73f385dedb9b",
+   "manifest_digest": "fcfc241e36d98a89b454c22c3c3109aae43eb26266196d844efe40afe1d7dd83",
+   "raw_init_sha256": "32a77042ef8b1a17b94976d831bb3a74e8c47e08ca21d398efca73f385dedb9b",
+   "schema_id": "L0_CLEAN_V2",
+   "schema_self_sha256": "6f5c5afc9e2d5763633088856acdc3a8e2620d12b2d7ebec9a23cb12ed76abf3",
+   "seed": 2027,
+   "shared_numel": 20963806,
+   "torch": "2.13.0+cu130",
+   "utc": "2026-09-26T22:29:05Z"
+  },
+  {
+   "K": 158486,
+   "build_s": 1.61,
+   "family": "SASREC",
+   "host": "jupyter-group-digi2026-g8",
+   "init_sha256": "e264064a1fc678ab4b0eea7aed0290ae522e58f809c82fef11e042c11a9063d4",
+   "manifest_digest": "47a904c77fbfa26b221e9a179d6d23264745dd0abed7c30eb970a7b055b41864",
+   "raw_init_sha256": "ce38d24342fdc253edaa1f5030ae1d1b5c68386ac7d0372dde08adc232bde125",
+   "schema_id": "L0_CLEAN_V2",
+   "schema_self_sha256": "6f5c5afc9e2d5763633088856acdc3a8e2620d12b2d7ebec9a23cb12ed76abf3",
+   "seed": 2026,
+   "shared_numel": 83094112,
+   "torch": "2.13.0+cu130",
+   "utc": "2026-09-26T22:29:06Z"
+  },
+  {
+   "K": 158486,
+   "build_s": 1.57,
+   "family": "SASREC",
+   "host": "jupyter-group-digi2026-g8",
+   "init_sha256": "e27f857d41bf9ec2591729a2a3c2d1f1370bfdb5e25a307558617d397f8796ed",
+   "manifest_digest": "47a904c77fbfa26b221e9a179d6d23264745dd0abed7c30eb970a7b055b41864",
+   "raw_init_sha256": "b48a6cd8c6a56c0a2c6cd36839cffd26a183ae49384378d35342051dc8bab1b6",
+   "schema_id": "L0_CLEAN_V2",
+   "schema_self_sha256": "6f5c5afc9e2d5763633088856acdc3a8e2620d12b2d7ebec9a23cb12ed76abf3",
+   "seed": 2027,
+   "shared_numel": 83094112,
+   "torch": "2.13.0+cu130",
+   "utc": "2026-09-26T22:29:09Z"
+  },
+  {
+   "K": 158486,
+   "build_s": 0.25,
+   "family": "GRU",
+   "host": "jupyter-group-digi2026-g8",
+   "init_sha256": "af891360d0a2632100bc2c60b203dba77653f8ef4c548d333c0328438703df1d",
+   "manifest_digest": "5263c9b5d6785ee81854ff8eb45e705cd5d1ac8ada534296800105ba886727c8",
+   "raw_init_sha256": "af891360d0a2632100bc2c60b203dba77653f8ef4c548d333c0328438703df1d",
+   "schema_id": "L3_NEAR_DUPLICATE",
+   "schema_self_sha256": "f69d8c155154eb8fae7d7a78322a5f67820b958532bea4269a031bc3a62f99d8",
+   "seed": 2026,
+   "shared_numel": 20961310,
+   "torch": "2.13.0+cu130",
+   "utc": "2026-09-26T22:29:10Z"
+  },
+  {
+   "K": 158486,
+   "build_s": 0.24,
+   "family": "GRU",
+   "host": "jupyter-group-digi2026-g8",
+   "init_sha256": "60c30c49792f07d960e7cb46e643c48fdeb8c7e8f9c89587b8ab9cc05079e5d3",
+   "manifest_digest": "5263c9b5d6785ee81854ff8eb45e705cd5d1ac8ada534296800105ba886727c8",
+   "raw_init_sha256": "60c30c49792f07d960e7cb46e643c48fdeb8c7e8f9c89587b8ab9cc05079e5d3",
+   "schema_id": "L3_NEAR_DUPLICATE",
+   "schema_self_sha256": "f69d8c155154eb8fae7d7a78322a5f67820b958532bea4269a031bc3a62f99d8",
+   "seed": 2027,
+   "shared_numel": 20961310,
+   "torch": "2.13.0+cu130",
+   "utc": "2026-09-26T22:29:11Z"
+  },
+  {
+   "K": 158486,
+   "build_s": 1.59,
+   "family": "SASREC",
+   "host": "jupyter-group-digi2026-g8",
+   "init_sha256": "3f0158c873499f1c11379bb781de8cc37e5d9ec5b89bb0bba36f2b13dc36d01f",
+   "manifest_digest": "526da701c93e62bf33601c765ae312a18f14afdb51eda1aa923f2a6611e916b0",
+   "raw_init_sha256": "47bb6216dfbf4ea10fb6436cb495045f73611877bbab9c7573515f4d40691b59",
+   "schema_id": "L3_NEAR_DUPLICATE",
+   "schema_self_sha256": "f69d8c155154eb8fae7d7a78322a5f67820b958532bea4269a031bc3a62f99d8",
+   "seed": 2026,
+   "shared_numel": 83090080,
+   "torch": "2.13.0+cu130",
+   "utc": "2026-09-26T22:29:12Z"
+  },
+  {
+   "K": 158486,
+   "build_s": 1.58,
+   "family": "SASREC",
+   "host": "jupyter-group-digi2026-g8",
+   "init_sha256": "a8ccc857efd74503956a38e294324bdd0cbaa923816093cfcf90abd5388f458c",
+   "manifest_digest": "526da701c93e62bf33601c765ae312a18f14afdb51eda1aa923f2a6611e916b0",
+   "raw_init_sha256": "5892e66f04d12caa999200a3e4a38ef8a79e8c679a905114669ad3cb8b05a96f",
+   "schema_id": "L3_NEAR_DUPLICATE",
+   "schema_self_sha256": "f69d8c155154eb8fae7d7a78322a5f67820b958532bea4269a031bc3a62f99d8",
+   "seed": 2027,
+   "shared_numel": 83090080,
+   "torch": "2.13.0+cu130",
+   "utc": "2026-09-26T22:29:15Z"
+  }
+ ],
+ "task": "SCHEMA-01 theta0 registration",
+ "threads": 4,
+ "torch": "2.13.0+cu130",
+ "utc_end": "2026-09-26T22:29:16Z",
+ "utc_start": "2026-09-26T22:28:58Z"
+}

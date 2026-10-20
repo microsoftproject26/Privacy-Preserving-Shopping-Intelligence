@@ -1,0 +1,533 @@
+{
+ "task": "TRAIN-02",
+ "utc_start": "2026-09-29T12:12:29Z",
+ "host": "DESKTOP-KS1B8LQ",
+ "platform": "Windows-11-10.0.26200-SP0",
+ "python": "3.13.11",
+ "cpu_only": true,
+ "pytest_exit_code": 1,
+ "pytest_summary": "2 failed, 208 passed, 53 xfailed, 9 errors in 416.81s (0:06:56)",
+ "pytest_wall_s": 419.5,
+ "counts": {
+  "passed": 208,
+  "xfailed": 53,
+  "failure": 2,
+  "error": 9
+ },
+ "negative_controls": {
+  "test_determinism_mode::test_nc_trainer_ignores_the_mode": "FAILED_AS_INTENDED",
+  "test_determinism_mode::test_nc_rows_without_the_mode": "FAILED_AS_INTENDED",
+  "test_determinism_mode::test_nc_resume_ignores_a_mode_change": "FAILED_AS_INTENDED",
+  "test_full_train_mode::test_nc_tiebreak_keeps_resumable": "FAILED_AS_INTENDED",
+  "test_int06_device_pin::test_nc_a40_accepted_without_pin": "FAILED_AS_INTENDED",
+  "test_int06_device_pin::test_nc_pin_for_another_gpu_accepted": "FAILED_AS_INTENDED",
+  "test_monitors_guards::test_nc_per_step_sync": "FAILED_AS_INTENDED",
+  "test_order_policy::test_nc_naive_order_collides_across_seeds": "FAILED_AS_INTENDED",
+  "test_registry_schema_labels::test_nc_manifest_id_not_in_registry": "FAILED_AS_INTENDED",
+  "test_registry_schema_labels::test_nc_registry_hash_mismatch": "FAILED_AS_INTENDED",
+  "test_registry_schema_labels::test_nc_schema_not_in_registry": "FAILED_AS_INTENDED",
+  "test_registry_schema_labels::test_nc_screen_row_accepted_by_selection": "FAILED_AS_INTENDED",
+  "test_registry_schema_labels::test_nc_resume_with_changed_schema": "FAILED_AS_INTENDED",
+  "test_retention_calibration::test_nc_retention_skips_deletion": "FAILED_AS_INTENDED",
+  "test_retention_calibration::test_nc_calibration_keeps_weights": "FAILED_AS_INTENDED",
+  "test_t17_accumulation::test_nc_t17_mean_of_means": "FAILED_AS_INTENDED",
+  "test_t20_resume::test_nc_t20_no_rng_restore": "FAILED_AS_INTENDED",
+  "test_t20_resume::test_nc_t20_no_optimizer_restore": "FAILED_AS_INTENDED",
+  "test_t21_schedule_stopping::test_nc_t21_constant_schedule": "FAILED_AS_INTENDED",
+  "test_t21_schedule_stopping::test_nc_t21_patience_one": "FAILED_AS_INTENDED",
+  "test_t21_schedule_stopping::test_nc_t21_cap_as_target": "FAILED_AS_INTENDED",
+  "test_t22_selection::test_nc_max_seed_selector": "FAILED_AS_INTENDED",
+  "test_t22_selection::test_nc_trigger_without_t1c": "FAILED_AS_INTENDED",
+  "test_t22_selection::test_nc_stage1_without_ci": "FAILED_AS_INTENDED",
+  "test_t22_selection::test_nc_early_reader": "FAILED_AS_INTENDED",
+  "test_t22_selection::test_nc_c_matched_accepts_tiebreak": "FAILED_AS_INTENDED",
+  "test_t22_selection::test_nc_equivalent_autoselects": "FAILED_AS_INTENDED",
+  "test_train02_p2_driver::test_nc_tie_rule_without_band": "FAILED_AS_INTENDED",
+  "test_train02_tuning::test_nc_snapshots_kept": "FAILED_AS_INTENDED",
+  "test_train02_tuning::test_nc_ckpt_avg_is_the_endpoint": "FAILED_AS_INTENDED",
+  "test_train02_tuning::test_nc_tuning_every_half_efe": "FAILED_AS_INTENDED",
+  "test_train02_tuning::test_nc_selection_accepts_hp_search": "FAILED_AS_INTENDED",
+  "test_train02_variants_hp::test_nc_variant_registry_without_code_check": "FAILED_AS_INTENDED",
+  "test_train02_variants_hp::test_nc_build_ignores_variant": "FAILED_AS_INTENDED",
+  "test_train02_variants_hp::test_nc_theta0_writer_ignores_guard": "FAILED_AS_INTENDED",
+  "test_train02_variants_hp::test_nc_validate_without_hp_rule": "FAILED_AS_INTENDED",
+  "test_train02_variants_hp::test_nc_stale_registry_accepted": "FAILED_AS_INTENDED",
+  "test_train02_variants_hp::test_nc_hp_loader_without_verification": "FAILED_AS_INTENDED",
+  "test_train02_variants_hp::test_nc_s1_mutated_knots": "FAILED_AS_INTENDED",
+  "test_train02r1::test_nc_non_finite_ckpt_avg_raises": "FAILED_AS_INTENDED",
+  "test_train02r1::test_nc_guard_passes_missing_entry": "FAILED_AS_INTENDED",
+  "test_train02r1::test_nc_trusts_recorded_selection": "FAILED_AS_INTENDED",
+  "test_train02r1::test_nc_recipe_lookup_fallback": "FAILED_AS_INTENDED",
+  "test_train02r1::test_nc_no_production_pin": "FAILED_AS_INTENDED",
+  "test_train02r1::test_nc_values_not_bound_to_evidence": "FAILED_AS_INTENDED",
+  "test_train03::test_nc_unsealed_contest_run": "FAILED_AS_INTENDED",
+  "test_train03::test_nc_production_resume_with_changed_gru_recipe": "UNEXPECTED_FAILURE",
+  "test_train03::test_nc_unseal_without_clause1": "FAILED_AS_INTENDED",
+  "test_train03::test_nc_unseal_without_clause2": "FAILED_AS_INTENDED",
+  "test_train03::test_nc_unseal_without_clause3": "FAILED_AS_INTENDED",
+  "test_train03::test_nc_unseal_without_clause4": "FAILED_AS_INTENDED",
+  "test_train05::test_nc_train05_tampered_c2_stage_config": "FAILED_AS_INTENDED",
+  "test_train05::test_nc_train05_parameter_count_seed_mismatch": "FAILED_AS_INTENDED",
+  "test_train05::test_nc_train05_six_runs_without_sasrec_c2": "FAILED_AS_INTENDED",
+  "test_train05::test_nc_train05_repeated_registry_pin": "UNEXPECTED_ERROR",
+  "test_train05::test_nc_train05_missing_run": "UNEXPECTED_ERROR",
+  "test_train05::test_nc_train05_missing_part": "UNEXPECTED_ERROR",
+  "test_train05::test_nc_train05_registry_identity": "UNEXPECTED_ERROR",
+  "test_train05::test_nc_train05_config_hash": "UNEXPECTED_ERROR",
+  "test_train05::test_nc_train05_foreign_primary_rows": "UNEXPECTED_ERROR"
+ },
+ "negative_controls_all_failed_as_intended": false,
+ "nc_runxfail": {
+  "exit_code_expected_nonzero": 1,
+  "counts": {
+   "failure": 60
+  },
+  "all_fail_with_assertion": true,
+  "same_set_as_suite": true,
+  "per_control": {
+   "test_determinism_mode::test_nc_trainer_ignores_the_mode": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: the trainer did not apply determinism_mode STRICT"
+   },
+   "test_determinism_mode::test_nc_rows_without_the_mode": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: RESULT_ROWS.json: a row does not record determinism_mode STRICT"
+   },
+   "test_determinism_mode::test_nc_resume_ignores_a_mode_change": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: refused for another reason: resume refused, identity changed: ['config_sha256']"
+   },
+   "test_full_train_mode::test_nc_tiebreak_keeps_resumable": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: tie-break keeps strictly-best + endpoint only, found ['best.pt', 'endpoint_6.0.pt', 'latest.pt']"
+   },
+   "test_int06_device_pin::test_nc_a40_accepted_without_pin": {
+    "status": "failure",
+    "exception_types": [],
+    "assertion": "assert 'NVIDIA_A40-FP32-DET' in {'A16-FP32-DET'}"
+   },
+   "test_int06_device_pin::test_nc_pin_for_another_gpu_accepted": {
+    "status": "failure",
+    "exception_types": [],
+    "assertion": "assert False"
+   },
+   "test_monitors_guards::test_nc_per_step_sync": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: host syncs outside the periodic flush / checkpoint check: ['_loop', '_validate', 'flush']"
+   },
+   "test_order_policy::test_nc_naive_order_collides_across_seeds": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: two seeds must never share a pass permutation"
+   },
+   "test_registry_schema_labels::test_nc_manifest_id_not_in_registry": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: trainer did not raise TrainerError (\"is not the registry's 'M01_COHORT_TRAIN'\")"
+   },
+   "test_registry_schema_labels::test_nc_registry_hash_mismatch": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: trainer did not raise TrainerError ('self-hash mismatch')"
+   },
+   "test_registry_schema_labels::test_nc_schema_not_in_registry": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: trainer did not raise TrainerError ('is not in the derived-schema registry')"
+   },
+   "test_registry_schema_labels::test_nc_screen_row_accepted_by_selection": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: select_family did not raise SelectionError ('FEATURE_SEARCH_SCREEN row is refused')"
+   },
+   "test_registry_schema_labels::test_nc_resume_with_changed_schema": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: resume did not raise TrainerError ('the schema changed')"
+   },
+   "test_retention_calibration::test_nc_retention_skips_deletion": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: retained ['best.pt', 'endpoint_6.0.pt', 'latest.pt'], expected ['best.pt', 'endpoint_6.0.pt']"
+   },
+   "test_retention_calibration::test_nc_calibration_keeps_weights": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: calibration must keep no weights"
+   },
+   "test_t17_accumulation::test_nc_t17_mean_of_means": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: accumulated gradient != full-batch gradient (relative 1.47)"
+   },
+   "test_t20_resume::test_nc_t20_no_rng_restore": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: resume is not bitwise: digest differs"
+   },
+   "test_t20_resume::test_nc_t20_no_optimizer_restore": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: resume is not bitwise: digest differs"
+   },
+   "test_t21_schedule_stopping::test_nc_t21_constant_schedule": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: the LR must be in the low phase before the 6.0 stop"
+   },
+   "test_t21_schedule_stopping::test_nc_t21_patience_one": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: stop on the 2nd consecutive non-improving evaluation"
+   },
+   "test_t21_schedule_stopping::test_nc_t21_cap_as_target": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: stopped before the cap"
+   },
+   "test_t22_selection::test_nc_max_seed_selector": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: the seed MEAN decides"
+   },
+   "test_t22_selection::test_nc_trigger_without_t1c": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: |delta_bar| < 2 max(g) must trigger"
+   },
+   "test_t22_selection::test_nc_stage1_without_ci": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: |delta| >= 0.0040 but the CI contains 0: not decisive"
+   },
+   "test_t22_selection::test_nc_early_reader": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: <lambda> did not raise <class 'v4train.selection.StageNotComplete'>"
+   },
+   "test_t22_selection::test_nc_c_matched_accepts_tiebreak": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: <lambda> did not raise <class 'v4train.selection.SelectionError'>"
+   },
+   "test_t22_selection::test_nc_equivalent_autoselects": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: without a ratification the EQUIVALENT outcome must HOLD"
+   },
+   "test_train02_p2_driver::test_nc_tie_rule_without_band": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: |delta| = 0.0005 is a tie -> fewer parameters"
+   },
+   "test_train02_tuning::test_nc_snapshots_kept": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: assert {'latest'} == {'ckpt_avg', ...snapshot_6.0'}"
+   },
+   "test_train02_tuning::test_nc_ckpt_avg_is_the_endpoint": {
+    "status": "failure",
+    "exception_types": [],
+    "assertion": "assert (False is True)"
+   },
+   "test_train02_tuning::test_nc_tuning_every_half_efe": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: assert [(0.5, 'MARK'... 'MARK'), ...] == [(2.0, 'MARK'..., 'CKPT_AVG')]"
+   },
+   "test_train02_tuning::test_nc_selection_accepts_hp_search": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: refused for another reason: GRU: evidence needs seeds (2026, 2027) exactly once each, got []"
+   },
+   "test_train02_variants_hp::test_nc_variant_registry_without_code_check": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: lax did not raise VariantError ('differ from the v4models.variants code table')"
+   },
+   "test_train02_variants_hp::test_nc_build_ignores_variant": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: assert (128 == 256)"
+   },
+   "test_train02_variants_hp::test_nc_theta0_writer_ignores_guard": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: <lambda> did not raise Theta0VariantsError ('failed a guard')"
+   },
+   "test_train02_variants_hp::test_nc_validate_without_hp_rule": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: validate did not raise RecipeError (\"'peak_lr'\")"
+   },
+   "test_train02_variants_hp::test_nc_stale_registry_accepted": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: refused for another reason: HP registry F:\\Queens University\\Microsoft Project\\eda\\.local_ai\\ppsi_v4\\contracts\\hp_registry\\HP_REGISTRY_P2.json: the sections ['families', 'lr_grid', 'ce"
+   },
+   "test_train02_variants_hp::test_nc_hp_loader_without_verification": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: lax did not raise HPRegistryError ('differ from the registered design')"
+   },
+   "test_train02_variants_hp::test_nc_s1_mutated_knots": {
+    "status": "failure",
+    "exception_types": [],
+    "assertion": "assert ((0.0, 0.0), ..., (6.0, 0.01)) == ((0.0, 0.0), ..., (6.0, 0.01))"
+   },
+   "test_train02r1::test_nc_non_finite_ckpt_avg_raises": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: a non-finite CKPT_AVG failed the run: CkptAvgError: non-finite CKPT_AVG metric"
+   },
+   "test_train02r1::test_nc_guard_passes_missing_entry": {
+    "status": "failure",
+    "exception_types": [],
+    "assertion": "assert not True"
+   },
+   "test_train02r1::test_nc_trusts_recorded_selection": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: register_02b did not raise TunedRecipeError ('differs from the recomputed')"
+   },
+   "test_train02r1::test_nc_recipe_lookup_fallback": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: validate did not raise RecipeError ('not in the tuned-recipes registry')"
+   },
+   "test_train02r1::test_nc_no_production_pin": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: validate did not raise RecipeError ('must use the production tuned-recipes registry')"
+   },
+   "test_train02r1::test_nc_values_not_bound_to_evidence": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: register_02b did not raise TunedRecipeError ('differ from the ones recomputed')"
+   },
+   "test_train03::test_nc_unsealed_contest_run": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: metric values / keys outside sealed/: [('CHECKPOINTS.json', '\"value\"'), ('CHECKPOINTS.json', '0.331123457'), ('EVENTS.jsonl', '\"value\"'), ('EVENTS.jsonl', '0.100123457'), ('EVENTS.json"
+   },
+   "test_train03::test_nc_production_resume_with_changed_gru_recipe": {
+    "status": "failure",
+    "exception_types": [],
+    "assertion": "v4train.tuned_recipes.TunedRecipeError: F:\\Queens University\\Microsoft Project\\eda\\.local_ai\\_pytest_tmp\\FABLE-DEEP3\\pytest-of-Ahmed\\pytest-2\\test_nc_production_resume_with0\\TUNED_RECIPES_02B.json: re"
+   },
+   "test_train03::test_nc_unseal_without_clause1": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: _gate did not raise UnsealRefused ('exactly the four contest runs')"
+   },
+   "test_train03::test_nc_unseal_without_clause2": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: refused for another reason: the G1b pin lacks part 2: both part self-hashes are needed"
+   },
+   "test_train03::test_nc_unseal_without_clause3": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: refused for another reason: GRU/2026: the run's recorded recipe / registry is not the pinned one"
+   },
+   "test_train03::test_nc_unseal_without_clause4": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: _gate did not raise UnsealRefused ('RunConfig hash does not match')"
+   },
+   "test_train05::test_nc_train05_tampered_c2_stage_config": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: load_tuned_recipes did not raise TunedRecipeError ('configs')"
+   },
+   "test_train05::test_nc_train05_parameter_count_seed_mismatch": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: unseal_gate did not raise UnsealRefused ('shared_numel differs')"
+   },
+   "test_train05::test_nc_train05_six_runs_without_sasrec_c2": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: unseal_gate did not raise UnsealRefused ('SASREC')"
+   },
+   "test_train05::test_nc_train05_repeated_registry_pin": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: unseal_gate did not raise UnsealRefused ('strictly increasing')"
+   },
+   "test_train05::test_nc_train05_missing_run": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: unseal_gate did not raise UnsealRefused ('exactly 8')"
+   },
+   "test_train05::test_nc_train05_missing_part": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: unseal_gate did not raise UnsealRefused ('part 1R')"
+   },
+   "test_train05::test_nc_train05_registry_identity": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: unseal_gate did not raise UnsealRefused ('pin')"
+   },
+   "test_train05::test_nc_train05_config_hash": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: unseal_gate did not raise UnsealRefused ('RunConfig hash')"
+   },
+   "test_train05::test_nc_train05_foreign_primary_rows": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: within_family_candidates did not raise SelectionError ('MAIN_VALIDATION')"
+   }
+  }
+ },
+ "integrity_before": {
+  "verify_snapshot_exit_code": 0,
+  "stderr_tail": "",
+  "pycache_dirs_under_snap_v1": [],
+  "pycache_dirs_in_owned": []
+ },
+ "integrity_after": {
+  "verify_snapshot_exit_code": 0,
+  "stderr_tail": "",
+  "pycache_dirs_under_snap_v1": [],
+  "pycache_dirs_in_owned": []
+ },
+ "imported_changed_files": [
+  "fl/runtime.py",
+  "fl/server.py"
+ ],
+ "imported_packages_unchanged": true,
+ "concurrent_changes_in_live_trees": [
+  "fl/runtime.py",
+  "fl/server.py"
+ ],
+ "imported_packages_n_files": 77,
+ "imported_packages_sha256": "35ed2c12b4450ae281f45d568ac28950845ec6f7c20f3a59977599590907cc8c",
+ "work_dir_left_behind": false,
+ "registry_temp_dirs_left_behind": [],
+ "trainer_code_sha256": "f65e6fe76689395865dc304ba0cdcaf7e6a5d110c85340e5155e81b0f9ed8894",
+ "snapshot_unchanged": true,
+ "torch": "2.9.1+cpu",
+ "utc_end": "2026-09-29T12:21:30Z",
+ "receipt_sha256": {
+  "pytest_output.txt": "22647aadf3bde027d01021a21b6d72718603e6e095936bd0a99177fe35eab309",
+  "junit.xml": "5a1c53fcdf02da701deb5460705ddcf3cf7149721c361a5c829909ce4666bbcd",
+  "nc_runxfail_output.txt": "8a83ce68e619702b62b9f14e3d1dc3799155740e17a315fc3c07ea899b879327",
+  "nc_runxfail_junit.xml": "bf5d1d214adb823d173f66adc7af391e023e0d8bca89fbf9874e30418d299071"
+ }
+}

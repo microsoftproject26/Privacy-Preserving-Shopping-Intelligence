@@ -1,0 +1,39 @@
+{
+  "aggregate_release": "ideal_FP64_consumed_weighted_mean_of_observed_FP32_deltas; distinct_from_server_FP32_full_weight_release",
+  "aggregate_threshold": 0.02,
+  "bootstrap": "1000_holdout_cohort_resamples_conditional_on_fitted_probe",
+  "bootstrap_seed": 20261014,
+  "category_minimum_known_users": {
+    "holdout": 50,
+    "train": 100
+  },
+  "category_target": "dominant_known_main_category_in_repeated_valid_TRAIN_input_windows",
+  "category_tie": "minimum_token_id",
+  "category_unknown": -1,
+  "encoder_projection": "linear_CountSketch_512",
+  "format": "PPSI_E3_ATTACK_PROTOCOL_2",
+  "interpretation": "DESCRIPTIVE_point_rule_and_CI; not_population_privacy_certification",
+  "item_baseline": "train_user_item_presence_popularity_matched_prediction_cardinality",
+  "item_minimum_known_users": {
+    "holdout": 50,
+    "train": 100
+  },
+  "item_primary": "set_F1_exact_nonzero_known_input_rows",
+  "label": "POST_HOC_EXPLORATORY",
+  "numerical_amendment": "fixed_iteration_cap_increased_from_2000_after_TRAIN_nonconvergence_only; objective_and_holdout_protocol_unchanged",
+  "probe": "L2_LogisticRegression_C1_lbfgs_train_only_StandardScaler",
+  "probe_optimizer": {
+    "C": 1.0,
+    "max_iter": 20000,
+    "solver": "lbfgs",
+    "tol": 1e-07
+  },
+  "projection_seed": 20261013,
+  "role": "CALIBRATION",
+  "secagg_fixedpoint_clip": 1.0,
+  "secagg_graph_k": 32,
+  "secagg_identity_control": "4096_pinned_raw_coordinates_plus_512_linear_encoder_sketch",
+  "secagg_seed": 20261015,
+  "self_sha256": "0c7b5cd19b2984df836c4d4dc02d4e036dd631207d151aa19121791ec57869d7",
+  "single_threshold": 0.1
+}

@@ -1,0 +1,244 @@
+{
+ "N": 1980666,
+ "checkpoints": {
+  "best": {
+   "file": "checkpoints/best.pt",
+   "sha256": "d06c5c3d762076bcc9e45313673ca6519ce1988928de781ae85842589bd0a303"
+  },
+  "endpoint_6.0": {
+   "file": "checkpoints/endpoint_6.0.pt",
+   "sha256": "22135cdf132eae1d405dd802acf1a756c9aba122e02c9a01f53876894bd58383"
+  }
+ },
+ "config_sha256": "e562866a858fb220ff1d3d443a1ac4e3f803ae17bf1cebf23a6520cb9f85f3d0",
+ "continuation": null,
+ "controlled_budget": {
+  "efe": 6.0,
+  "mark": 6.0,
+  "value": 0.14714689852711751
+ },
+ "data_version": "CLEAN_V2_POP5100_V2",
+ "determinism": {
+  "cublas_workspace_config": ":4096:8",
+  "mode": "STRICT",
+  "torch_effective": {
+   "deterministic_algorithms": true,
+   "warn_only": false
+  }
+ },
+ "device_pin_sha256": "db744ca3f0da27ac7b65c41b4b32f2c68ec9d0bd66bbc0dc33e874a226834e6b",
+ "efe": 6.0,
+ "eval_every_efe": 0.5,
+ "evals": [
+  {
+   "efe": 0.5000661393692829,
+   "exposures": 990464,
+   "improved": true,
+   "mark": 0.5,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_0.5.rows.json",
+   "secondary": {
+    "hr@10": 0.24056712255748072,
+    "ndcg@10": 0.13094002464796106
+   },
+   "updates": 3869,
+   "value": 0.10393040668898018
+  },
+  {
+   "efe": 1.0,
+   "exposures": 1980666,
+   "improved": true,
+   "mark": 1.0,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_1.0.rows.json",
+   "secondary": {
+    "hr@10": 0.2715131644020214,
+    "ndcg@10": 0.15005276142791027
+   },
+   "updates": 7737,
+   "value": 0.11994044896776247
+  },
+  {
+   "efe": 1.500066139369283,
+   "exposures": 2971130,
+   "improved": true,
+   "mark": 1.5,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_1.5.rows.json",
+   "secondary": {
+    "hr@10": 0.2862163931647896,
+    "ndcg@10": 0.1618695305301409
+   },
+   "updates": 11606,
+   "value": 0.13101989695083385
+  },
+  {
+   "efe": 2.0,
+   "exposures": 3961332,
+   "improved": true,
+   "mark": 2.0,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_2.0.rows.json",
+   "secondary": {
+    "hr@10": 0.29469554691456096,
+    "ndcg@10": 0.1660757351418951
+   },
+   "updates": 15474,
+   "value": 0.13394718126641042
+  },
+  {
+   "efe": 2.5000661393692827,
+   "exposures": 4951796,
+   "improved": true,
+   "mark": 2.5,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_2.5.rows.json",
+   "secondary": {
+    "hr@10": 0.30399643564685497,
+    "ndcg@10": 0.17496598470726019
+   },
+   "updates": 19343,
+   "value": 0.14240308316969047
+  },
+  {
+   "efe": 3.0,
+   "exposures": 5941998,
+   "improved": true,
+   "mark": 3.0,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_3.0.rows.json",
+   "secondary": {
+    "hr@10": 0.316007325712399,
+    "ndcg@10": 0.1830730879174193
+   },
+   "updates": 23211,
+   "value": 0.1493430849048049
+  },
+  {
+   "efe": 3.5000661393692827,
+   "exposures": 6932462,
+   "improved": false,
+   "mark": 3.5,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_3.5.rows.json",
+   "secondary": {
+    "hr@10": 0.31151287310425435,
+    "ndcg@10": 0.18103149094056822
+   },
+   "updates": 27080,
+   "value": 0.14797579890786558
+  },
+  {
+   "efe": 4.0,
+   "exposures": 7922664,
+   "improved": false,
+   "mark": 4.0,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_4.0.rows.json",
+   "secondary": {
+    "hr@10": 0.3114702414595347,
+    "ndcg@10": 0.18164848037372966
+   },
+   "updates": 30948,
+   "value": 0.1487393692149425
+  },
+  {
+   "efe": 4.500066139369283,
+   "exposures": 8913128,
+   "improved": false,
+   "mark": 4.5,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_4.5.rows.json",
+   "secondary": {
+    "hr@10": 0.30950615038827545,
+    "ndcg@10": 0.18051397877291053
+   },
+   "updates": 34817,
+   "value": 0.1477968341275594
+  },
+  {
+   "efe": 5.0,
+   "exposures": 9903330,
+   "improved": false,
+   "mark": 5.0,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_5.0.rows.json",
+   "secondary": {
+    "hr@10": 0.3089518474044932,
+    "ndcg@10": 0.1801600647988091
+   },
+   "updates": 38685,
+   "value": 0.1476099051251726
+  },
+  {
+   "efe": 5.500066139369283,
+   "exposures": 10893794,
+   "improved": false,
+   "mark": 5.5,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_5.5.rows.json",
+   "secondary": {
+    "hr@10": 0.3077183041400739,
+    "ndcg@10": 0.17916189138540373
+   },
+   "updates": 42554,
+   "value": 0.14649267735461255
+  },
+  {
+   "efe": 6.0,
+   "exposures": 11883996,
+   "improved": false,
+   "mark": 6.0,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_6.0.rows.json",
+   "secondary": {
+    "hr@10": 0.30880166232073153,
+    "ndcg@10": 0.17988495611852484
+   },
+   "updates": 46422,
+   "value": 0.14714689852711751
+  }
+ ],
+ "exposures": 11883996,
+ "family": "SASREC",
+ "final_rng_sha256": "3124a372d1babbc0af5a080fdd5acd30280c6d0c203784191d24ac5370e5a09d",
+ "final_state_digest": "3e1c48efe79a1f1a1377719c144af9fe8e8610060ea7cc18b6bff545b61ce4e2",
+ "hp": null,
+ "hp_trial": null,
+ "init_sha256": "e9eb0bb9dd30061790fa5dc747e14c9aa375e2069c06a85785de6251e8705b95",
+ "label": "STOPPED_AT_CONTROLLED_ENDPOINT",
+ "latest_deleted_sha256": "79bab0bb816eda516d1231c2ffb62821d4773341ffa38b4cf65d90f692e583b8",
+ "latest_kept": false,
+ "manifest_registry": {
+  "data_version": "CLEAN_V2_POP5100_V2",
+  "eval_manifest": "UNEW_VAL_VALIDATION_32768",
+  "file_sha256": "26df0e679f35c2f78be86a888966f79c867c962e5f61d5bfb06ce221014a7754",
+  "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_exp_pb100/PRETRAIN_FOR_FL_SMALL_SASREC_D64_B2_PB100K_s2026/REGISTRY_V2_TRAINER_VIEW.json",
+  "role": "MAIN",
+  "self_sha256": "87a7f3af568bd2141e8bb1b7cfdff7ea79d33f20dbbe850744e18edc6ec2b70f",
+  "train_manifest": "PRETRAIN_TRAIN_5_100_NONMAIN"
+ },
+ "manifest_role": "MAIN",
+ "model_variant": "SASREC_D64_B2",
+ "peak_lr": 0.0007114121116984968,
+ "phase": "MAIN",
+ "population": "COHORT",
+ "practical_best": {
+  "efe": 3.0,
+  "mark": 3.0,
+  "value": 0.1493430849048049
+ },
+ "row_status": "PRETRAIN_FOR_FL",
+ "run_id": "PRETRAIN_FOR_FL_SMALL_SASREC_D64_B2_s2026",
+ "run_label": "PRETRAIN_FOR_FL",
+ "run_role": "MAIN",
+ "schema": {
+  "schema_id": "L3S_NEAR_DUPLICATE_SESSION-minus-G11+G12a+G3+G4+G7",
+  "schema_self_sha256": "c53d47fe2555dd537e27e11d45a4e8b23739566e6b98179dcf521852aa918f87"
+ },
+ "seed": 2026,
+ "shared_numel": 20708708,
+ "status": "DONE_MAIN",
+ "still_improving": false,
+ "updates": 46422
+}

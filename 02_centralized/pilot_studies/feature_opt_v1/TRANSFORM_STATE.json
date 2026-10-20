@@ -1,0 +1,70 @@
+{
+ "view_id": "feature_view_v1_lean",
+ "base_normalizers_sha256": "9815062498898987eff20ddeacaf3fee40d36e94c8556a887ddc8698b6144f45",
+ "fit_split": "TRAIN",
+ "fit_population": "TRAIN feature rows with the availability mask = 1 (valid only)",
+ "m1_repair": {
+  "log1p_time_since_prev_session_last_event_s": {
+   "mask": "prev_session_available",
+   "clip_lo": 0.0,
+   "clip_hi": 14.877890586853027,
+   "old_mean": 1.8615436239173029,
+   "old_std": 4.354925521013689,
+   "new_mean": 11.8168906913688,
+   "new_std": 1.6580237946197298,
+   "unavailable_encoding": 0.0,
+   "rule": "z=(clip(x)-new_mean)/new_std if mask==1 else 0.0"
+  },
+  "log1p_time_since_prev_user_event_s": {
+   "mask": "prev_user_event_available",
+   "clip_lo": 0.0,
+   "clip_hi": 14.877890586853027,
+   "old_mean": 4.950253279346413,
+   "old_std": 3.3790111405204004,
+   "new_mean": 5.3788876148270335,
+   "new_std": 3.178172706038617,
+   "unavailable_encoding": 0.0,
+   "rule": "z=(clip(x)-new_mean)/new_std if mask==1 else 0.0"
+  }
+ },
+ "fold_map": {
+  "numeric_affine": {
+   "log1p_prefix_elapsed_s": "log1p_segment_elapsed_s",
+   "prefix_item_count": "prefix_representative_count"
+  },
+  "numeric_rotation": {
+   "local_hour_(sin,cos)": "R(+3h)\u00b7utc_hour_(sin,cos)"
+  },
+  "flag_duplicates": {
+   "price_zero": "price_missing",
+   "main_category_missing": "category_code_missing"
+  },
+  "dead_flags_dropped": [
+   "price_conflict",
+   "brand_conflict",
+   "category_missing",
+   "category_recovered",
+   "category_conflict",
+   "category_code_recovered"
+  ],
+  "mask_duplicates": {
+   "has_history_mask": "has_history",
+   "prev_user_event_available": "has_history"
+  }
+ },
+ "compatibility": "load only with the lean-folded weights (fold_lean_state_dict) of the pinned checkpoint; an old checkpoint with the lean view without folding is REFUSED",
+ "parity": {
+  "status": "PARITY_FAILED",
+  "checks": {
+   "duplicates_full_population_label": true,
+   "all_duplicate_and_dead_counts_zero": true,
+   "rotation_residual_le_1e-6": true,
+   "max_abs_logit_le_1e-3": true,
+   "rank_identical_ge_0.999": false
+  },
+  "nonzero_counts": {},
+  "rotation_residual": 6.544382358253387e-08
+ },
+ "status": "PARITY_FAILED_NOT_ADOPTED",
+ "view_sha256": "86de26135915121331a93d261f7d1053f10e4fb7b7dfb16a88586cf9a47bbcae"
+}

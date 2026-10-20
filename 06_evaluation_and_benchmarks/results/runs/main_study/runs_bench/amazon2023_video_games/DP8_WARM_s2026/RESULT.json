@@ -1,0 +1,413 @@
+{
+ "arm": "DP8_WARM",
+ "bytes": {
+  "ledger": [
+   568622,
+   3873471259904,
+   3873473534392,
+   0
+  ]
+ },
+ "checkpoints": {
+  "CONTROLLED_BUDGET": {
+   "file": "ckpt/BM_amazon2023_video_games_DP8_WARM_s2026/endpoint_6.0.pt",
+   "mark": 6.0,
+   "sha256": "ec90968b6a7a8cc4b8fbe8a4f78b7c3f4b43055368c1f9c61a7adabed06cae90"
+  },
+  "PRACTICAL_BEST": {
+   "file": "ckpt/BM_amazon2023_video_games_DP8_WARM_s2026/best.pt",
+   "mark": 5.0,
+   "sha256": "238e7e9fa2b88252b9d343ac666cbc451aa21683d6d0fc510e654d72f6a8574d"
+  }
+ },
+ "evals": [
+  [
+   1,
+   31,
+   0.019141022720971138,
+   true,
+   "MAIN"
+  ],
+  [
+   2,
+   63,
+   0.01914160574157211,
+   false,
+   "MAIN"
+  ],
+  [
+   3,
+   95,
+   0.01914468237895872,
+   false,
+   "MAIN"
+  ],
+  [
+   4,
+   127,
+   0.01916883951368683,
+   false,
+   "MAIN"
+  ],
+  [
+   5,
+   159,
+   0.01921309998155596,
+   false,
+   "MAIN"
+  ],
+  [
+   6,
+   191,
+   0.01927782729820196,
+   false,
+   "MAIN"
+  ],
+  [
+   7,
+   223,
+   0.019304157505969026,
+   false,
+   "MAIN"
+  ],
+  [
+   8,
+   255,
+   0.019339494920379327,
+   false,
+   "MAIN"
+  ],
+  [
+   9,
+   287,
+   0.019339406226448842,
+   false,
+   "MAIN"
+  ],
+  [
+   10,
+   319,
+   0.019353040409152266,
+   true,
+   "MAIN"
+  ],
+  [
+   11,
+   351,
+   0.019397809329818463,
+   false,
+   "MAIN"
+  ],
+  [
+   12,
+   383,
+   0.01941209035960728,
+   false,
+   "MAIN"
+  ]
+ ],
+ "frozen": null,
+ "init_from": {
+  "checkpoint_sha256": "2f2fec7fa6518490b19b3515682b8a97083f1880be1947d560f4a745b2d80d75",
+  "dataset": "amazon2023_video_games",
+  "fl_init_kind": "endpoint_6.0",
+  "kind": "PRE",
+  "run_id": "BM_amazon2023_video_games_PRE_s2026",
+  "seed": 2026,
+  "state_digest": "859747a7643089ac452396318f3c745716aa5f2cf292226fcf98c99da74c3a17"
+ },
+ "kind": "fl",
+ "run_id": "BM_amazon2023_video_games_DP8_WARM_s2026",
+ "spec": {
+  "arm": "DP8_WARM",
+  "cfg": {
+   "dp": {
+    "clip_norm": 0.06721427429691049,
+    "denominator": 740,
+    "noise_multiplier": 0.5642
+   },
+   "dropout_p": 0.0,
+   "endpoint_efe": 6.0,
+   "endpoint_rounds": 384,
+   "exposure_point": "end",
+   "lr_peak_local": 0.025,
+   "lr_shape": "fl_const",
+   "max_attempts": 2,
+   "method": "FA",
+   "mu": 0.0,
+   "n_shards": 2,
+   "pf": null,
+   "seed": 2026,
+   "server_opt": {
+    "beta1": 0.9,
+    "beta2": 0.99,
+    "lr": 0.001,
+    "name": "fedadam",
+    "tau": 0.001,
+    "v_init": "tau_squared"
+   },
+   "solver": {
+    "batch_size": 16,
+    "clip": 1.0,
+    "fused": null,
+    "lr": 0.025,
+    "optimizer": "sgd_m",
+    "passes": 2,
+    "weight_decay": 0.0
+   }
+  },
+  "client_lr": 0.1,
+  "client_opt": "sgd_m",
+  "data": {
+   "dataset": "amazon2023_video_games",
+   "fingerprint": "2452d9068d7f1be5090b8a6ef3268342ecffb2e1880b4e4df6f3852655a4ff0d",
+   "n_clients": 94762,
+   "n_decisions": 530300
+  },
+  "dp_accounting": {
+   "N": 94762,
+   "T": 384,
+   "authority": "PREG1_AMENDMENT_07 R4 (registered z for identical q, T, delta)",
+   "delta": 5e-06,
+   "inclusion": "independent per client with probability EXACTLY 2^-7 (fl_engine.ExactQPlan); m = round(q N) is the fixed denominator only (B10 Q1)",
+   "m": 740,
+   "q_actual": 0.0078125,
+   "q_nominal": 0.0078125,
+   "z": 0.5642
+  },
+  "dropout": [
+   0.1
+  ],
+  "init_from": {
+   "checkpoint_sha256": "2f2fec7fa6518490b19b3515682b8a97083f1880be1947d560f4a745b2d80d75",
+   "dataset": "amazon2023_video_games",
+   "fl_init_kind": "endpoint_6.0",
+   "kind": "PRE",
+   "run_id": "BM_amazon2023_video_games_PRE_s2026",
+   "seed": 2026,
+   "state_digest": "859747a7643089ac452396318f3c745716aa5f2cf292226fcf98c99da74c3a17"
+  },
+  "knobs": {
+   "batch": 16,
+   "clip": 1.0,
+   "dropout_p": 0.1,
+   "endpoint_efe": 6.0,
+   "group": 64,
+   "m": 1024,
+   "max_attempts": 2,
+   "mu": 0.01,
+   "n_shards": 2,
+   "passes": 2,
+   "pf_clip": 1.0,
+   "pf_lam": 0.0001,
+   "rounds": 6827,
+   "rounds_1024": 384,
+   "s_cal_rounds": 20,
+   "s_cal_seed": 2026,
+   "sampling": "sweep",
+   "weight_decay": 1e-05
+  },
+  "local_passes": 2,
+  "lr_mult": 1.0,
+  "lr_peak_base": 0.0007114121116984968,
+  "lr_shape": "fl_const",
+  "max_len": 50,
+  "max_rounds": 384,
+  "plan": {
+   "group_size": 740,
+   "sampling": "poisson"
+  },
+  "poisson_local_rule": {
+   "authority": "DL 219",
+   "local_batch": 16,
+   "local_passes": 2,
+   "selected_local_passes": 1
+  },
+  "provenance": {
+   "ft_cell": "FT_C_f0.3_P4",
+   "pins": {
+    "device/SELECTION_FT_C.json": "e47965d2f4486fc2c30140a8ee14e79686a842decb091b3dff1de5646716c10c",
+    "fl/FL_TUNING_SELECTION.json": "9bca186e5025f5caa9e762f3c425fb3151923b79e60f01e6ecb063aac9c715ec",
+    "fl/FL_WARM_SELECTION_S7.json": "d67a0a851665495b092abbba4456f26a3423d6ef21665f5a0e2b65e2d78dc000",
+    "fl/FL_WARM_SELECTION_S8.json": "8b79d3052799dfa0ba208dce5db138da88aaa7024ba6511a374c59ce8c55a98a"
+   },
+   "tuning_winner_label": "fedadam|eta=0.01|m=1|shape=fl_const|client=sgd_m|clr=0.1|passes=1",
+   "warm_winners": {
+    "FA_WARM": "f=0.25|sf=0.1",
+    "FA_WARM_FROZEN": "f=1|sf=0.1"
+   }
+  },
+  "role": "MAIN",
+  "s_record": {
+   "S": 0.06721427429691049,
+   "file_sha256": "d515f349f7613fdd15ab83aff38d7ecc07c3bbde389023512b3d593a3c7dceeb",
+   "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/amazon2023_video_games/dp/S_RECORD_FA_WARM_s2026.json",
+   "self_sha256": "0674df683570017cd1cff41a91a3f84a0efd2b57e7ed0c0f4b29375ec3f7ffc7"
+  },
+  "server_lr": 0.01,
+  "server_opt": "fedadam",
+  "upload_codec": null,
+  "variant": "SASREC_D64_B2",
+  "warm_lr_factor": 0.25,
+  "warm_server_lr_factor": 0.1
+ },
+ "spec_sha256": "494d8aa657bca50532124bf5b36b0e52a7ec10e45f35b1027cd8e0493640bd63",
+ "status": "DONE_MAIN",
+ "summary": {
+  "counters": {
+   "coverage_by_sweep": {
+    "0": {
+     "clients": 60473,
+     "fraction": 0.6381566450686984
+    },
+    "1": {
+     "clients": 60504,
+     "fraction": 0.6384837804183111
+    },
+    "2": {
+     "clients": 59675,
+     "fraction": 0.6297355480044744
+    }
+   },
+   "efe": 6.024197623986423,
+   "exposures": 3194632,
+   "max_visits": 12,
+   "min_visits": 0,
+   "noop_visits": 0,
+   "retries": 0,
+   "rounds": 384,
+   "steps": 608622,
+   "steps_hist": {
+    "10": 313,
+    "12": 162,
+    "14": 63,
+    "16": 41,
+    "18": 50,
+    "2": 271297,
+    "20": 36,
+    "24": 12,
+    "26": 2,
+    "28": 5,
+    "32": 7,
+    "38": 2,
+    "4": 9620,
+    "42": 2,
+    "50": 5,
+    "54": 6,
+    "6": 1943,
+    "60": 5,
+    "8": 740
+   },
+   "visits": 284311,
+   "wasted_steps": 0
+  },
+  "lr_table_digest": "99e502599632b36c69b56831bf54aa1e3f1722890f60a81180211167d200e243",
+  "rounds": 384
+ },
+ "timing": {
+  "mean_round_s": 25.094035932115123,
+  "median_round_s": 24.346582610160112,
+  "n_clients": 94762,
+  "n_decisions": 530300,
+  "rounds_full_run": 384,
+  "rounds_this_leg": 384,
+  "wall_s_this_leg": 9636.22
+ },
+ "utc": "2026-10-04T03:49:32Z",
+ "validation": {
+  "CONTROLLED_BUDGET": {
+   "ALL": {
+    "hr@10": 0.03761258404160853,
+    "hr@20": 0.05787771153114297,
+    "mrr@20": 0.015305810012778049,
+    "n_unreachable": 0,
+    "n_users": 94596,
+    "ndcg@10": 0.01941209035960728,
+    "ndcg@20": 0.024506788089642326
+   },
+   "BAND": {
+    "hr@10": 0.039098274040154986,
+    "hr@20": 0.06093694963015146,
+    "mrr@20": 0.015720923483326196,
+    "n_unreachable": 0,
+    "n_users": 14195,
+    "ndcg@10": 0.019981922033663654,
+    "ndcg@20": 0.02547000723120993
+   },
+   "BAND_COVERED_TARGET": {
+    "hr@10": 0.041131045963192454,
+    "hr@20": 0.06329187089614353,
+    "mrr@20": 0.01673758905910423,
+    "n_unreachable": 0,
+    "n_users": 86504,
+    "ndcg@10": 0.021227990609190447,
+    "ndcg@20": 0.02679927085600441
+   },
+   "BAND_UNCOVERED_TARGET": {
+    "hr@10": 0.0,
+    "hr@20": 0.0,
+    "mrr@20": 0.0,
+    "n_unreachable": 0,
+    "n_users": 8092,
+    "ndcg@10": 0.0,
+    "ndcg@20": 0.0
+   },
+   "OTHERS": {
+    "hr@10": 0.03735028171291402,
+    "hr@20": 0.057337595303541,
+    "mrr@20": 0.015232520679132559,
+    "n_unreachable": 0,
+    "n_users": 80401,
+    "ndcg@10": 0.019311485135627103,
+    "ndcg@20": 0.024336729312829198
+   }
+  },
+  "PRACTICAL_BEST": {
+   "ALL": {
+    "hr@10": 0.037559727684045835,
+    "hr@20": 0.057803712630555205,
+    "mrr@20": 0.015241973856937072,
+    "n_unreachable": 0,
+    "n_users": 94596,
+    "ndcg@10": 0.019353040409152266,
+    "ndcg@20": 0.024441185875105728
+   },
+   "BAND": {
+    "hr@10": 0.03881648467770342,
+    "hr@20": 0.061007396970764356,
+    "mrr@20": 0.01584263018167655,
+    "n_unreachable": 0,
+    "n_users": 14195,
+    "ndcg@10": 0.019999750036420193,
+    "ndcg@20": 0.025575761947266722
+   },
+   "BAND_COVERED_TARGET": {
+    "hr@10": 0.04107324516785351,
+    "hr@20": 0.06321094978266902,
+    "mrr@20": 0.016667781362374217,
+    "n_unreachable": 0,
+    "n_users": 86504,
+    "ndcg@10": 0.021163416842506333,
+    "ndcg@20": 0.026727531894958634
+   },
+   "BAND_UNCOVERED_TARGET": {
+    "hr@10": 0.0,
+    "hr@20": 0.0,
+    "mrr@20": 0.0,
+    "n_unreachable": 0,
+    "n_users": 8092,
+    "ndcg@10": 0.0,
+    "ndcg@20": 0.0
+   },
+   "OTHERS": {
+    "hr@10": 0.03733784405666596,
+    "hr@20": 0.057238094053556544,
+    "mrr@20": 0.015135926462878828,
+    "n_unreachable": 0,
+    "n_users": 80401,
+    "ndcg@10": 0.019238862187997453,
+    "ndcg@20": 0.024240873598587714
+   }
+  }
+ }
+}

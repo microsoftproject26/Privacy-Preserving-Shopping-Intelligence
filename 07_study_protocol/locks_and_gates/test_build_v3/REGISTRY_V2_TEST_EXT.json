@@ -1,0 +1,978 @@
+{
+ "registry": "MANIFEST_ROLE_REGISTRY",
+ "registry_version": 2,
+ "task": "DATA-06",
+ "data_version": "CLEAN_V2_POP5100_V2",
+ "roles": {
+  "MAIN": {
+   "train": "MAIN_TRAIN_5_100_131072",
+   "eval": "MAIN_VALIDATION_5_100_131072"
+  },
+  "CALIBRATION": {
+   "train": "CALIB_TRAIN_5_100_32768",
+   "eval": "CALIB_VALIDATION_5_100_32768"
+  },
+  "UNSEEN_VAL": {
+   "train": "UNEW_VAL_SUPPORT_32768",
+   "eval": "UNEW_VAL_VALIDATION_32768"
+  },
+  "UNSEEN_HOLDOUT": {
+   "train": "UNEW_HOLDOUT_SUPPORT_32768",
+   "eval": "UNEW_HOLDOUT_VALIDATION_32768"
+  },
+  "SPARSE_PANEL": {
+   "train": "SPARSE_PANEL_16384_SUPPORT",
+   "eval": "SPARSE_PANEL_16384_VALIDATION"
+  },
+  "HEAVY_PANEL": {
+   "train": "HEAVY_PANEL_16384_SUPPORT",
+   "eval": "HEAVY_PANEL_16384_VALIDATION"
+  },
+  "TRUE_COLD": {
+   "eval": "TRUE_COLD_VALIDATION"
+  },
+  "COLD_H": {
+   "panel": "COLD_H_16384"
+  },
+  "WARM_TRUNCATION": {
+   "panel": "WARM_TRUNCATION_16384"
+  },
+  "MAIN_TEST": {
+   "train": "MAIN_TRAIN_5_100_131072",
+   "eval": "MAIN_RETRO_TEST_5_100_131072"
+  },
+  "UNSEEN_HOLDOUT_TEST": {
+   "train": "UNEW_HOLDOUT_SUPPORT_32768",
+   "eval": "UNEW_HOLDOUT_RETRO_TEST_32768"
+  },
+  "TRUE_COLD_TEST": {
+   "eval": "TRUE_COLD_RETRO_TEST"
+  },
+  "SPARSE_PANEL_TEST": {
+   "train": "SPARSE_PANEL_16384_SUPPORT",
+   "eval": "SPARSE_PANEL_16384_RETRO_TEST"
+  },
+  "HEAVY_PANEL_TEST": {
+   "train": "HEAVY_PANEL_16384_SUPPORT",
+   "eval": "HEAVY_PANEL_16384_RETRO_TEST"
+  }
+ },
+ "manifests": {
+  "MAIN_TRAIN_5_100_131072": {
+   "path": "data_v3/manifests/MAIN_TRAIN_5_100_131072.header.json",
+   "manifest_dir": "data_v3/manifests",
+   "kind": "TRAIN",
+   "definition": "M01_COHORT_TRAIN",
+   "status": "MAIN",
+   "role": "MAIN",
+   "content_sha256": "8363f7149e9b61110a23cf595dbbafe4b13c9c4d11e8c4c5976dbb389bb26eaa",
+   "header_sha256": "706d74830a73f24b1caf5aa3c4564166feb2475d66994f05024e4e33e38997dc",
+   "header_content_sha256": "cccaadf8709383c497b418b4becdcc8e5ddc8d300cd3ff8a25769fbd4111d588",
+   "n_users": 131072,
+   "n_decisions": 2587776,
+   "n_eval_rows": 0,
+   "n_rankable_rows": 0,
+   "population_sha256": "46ba45019b894dee19092333df3b5166ab68cde45c012a9c48354e7a48523ad2",
+   "population_sha256_selection_key_v2": "563e76637a384c2985fff5e272d4290f4f3e52c99f57eebec4c20cde0628b8b3",
+   "ordered_decision_id_sha256": "dbbecf855f25633b8e6dcab7fb50b69b616925457260fc59d05fed4cc57edafc",
+   "eval_ordered_decision_id_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "rankable_ordered_decision_id_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "parent_manifests": [],
+   "tables": {
+    "clients": {
+     "file": "data_v3/manifests/MAIN_TRAIN_5_100_131072.clients.parquet",
+     "file_sha256": "3838c62b3bca0b97a7b927d35e2732f689752189dab2e39445989828752cb951",
+     "table_content_sha256": "55c7e47f987b888072978297cfecb107f1754c3a3f28247aaa44344c710ef472",
+     "row_count": 131072
+    },
+    "decisions": {
+     "file": "data_v3/manifests/MAIN_TRAIN_5_100_131072.decisions.parquet",
+     "file_sha256": "844afb3d10ac2fbaa9990c28d0888bd588f5a41ecefd943c4880f74d85e73727",
+     "table_content_sha256": "e27d820f498e4d660a1b1b42469cb7963e80b2a8f2e450a0408e017fd3cc5aa1",
+     "row_count": 2587776
+    },
+    "central_order": {
+     "file": "data_v3/manifests/MAIN_TRAIN_5_100_131072.central_order.parquet",
+     "file_sha256": "4d756792054490fd307583891efdf891f16aadd78e7ca1256ef0555d6e04f9f6",
+     "table_content_sha256": "3a29b7f60dd4afcd2c9010d6503d0347248f93d3284de271eefff0e2135f5259",
+     "row_count": 2587776
+    }
+   },
+   "marker": "data_v3/manifests/MAIN_TRAIN_5_100_131072.OK"
+  },
+  "MAIN_VALIDATION_5_100_131072": {
+   "path": "data_v3/manifests/MAIN_VALIDATION_5_100_131072.header.json",
+   "manifest_dir": "data_v3/manifests",
+   "kind": "EVAL",
+   "definition": "M02_VALIDATION_WARM",
+   "status": "MAIN",
+   "role": "MAIN",
+   "content_sha256": "62562f25faa4ef0442dc714aa83fdf85e144f25292b0bf4ff04fcc1c0b50bb93",
+   "header_sha256": "2e96bce6f4f37ebad9606f8ea4a87d8f56d323aa3b8ad4339dd185c1c1db82b1",
+   "header_content_sha256": "04fcde532dd7b84573e32e8117c6f8c6f345910aa5183a0a04bf04d6747a9156",
+   "n_users": 51211,
+   "n_decisions": 644694,
+   "n_eval_rows": 519714,
+   "n_rankable_rows": 515636,
+   "population_sha256": "86fc6c4eb9a1e821754143250983f44ad95ebeae29405d297e3b0501a91010bd",
+   "population_sha256_selection_key_v2": "563e76637a384c2985fff5e272d4290f4f3e52c99f57eebec4c20cde0628b8b3",
+   "ordered_decision_id_sha256": "be97c8516f3c2e5ea89e2ffa60e35d8a57b72f9b8873e741b7366e765bb7caaf",
+   "eval_ordered_decision_id_sha256": "4f45656a86dbc9d9bb2a59841ac2b538b23b09b0984840af1957a7953664b0dc",
+   "rankable_ordered_decision_id_sha256": "f2bee71d896ee6e868f866cb08d888c44d46ee7f2889bf74969d729566f619c8",
+   "parent_manifests": [
+    "MAIN_TRAIN_5_100_131072"
+   ],
+   "tables": {
+    "users": {
+     "file": "data_v3/manifests/MAIN_VALIDATION_5_100_131072.users.parquet",
+     "file_sha256": "a18bcb42cbb6ad63740e62c305973330ae34a3f2a3c4ac0d6085fa26ef4c64d9",
+     "table_content_sha256": "fdeeeb38e97e0fdb93eccfb8f86113ee09010969bf0524cf6ac0986086c41d7a",
+     "row_count": 51211
+    },
+    "decisions": {
+     "file": "data_v3/manifests/MAIN_VALIDATION_5_100_131072.decisions.parquet",
+     "file_sha256": "61f10854c300b28a03cb799a0b734a6ab77db90d5325a40b3617c4bcfc841919",
+     "table_content_sha256": "3d9b5b34a3183948d5eec5d6a1ced7d29be5b3992f294cd5f7ff6ef530c91150",
+     "row_count": 644694
+    }
+   },
+   "marker": "data_v3/manifests/MAIN_VALIDATION_5_100_131072.OK"
+  },
+  "CALIB_TRAIN_5_100_32768": {
+   "path": "data_v3/manifests/CALIB_TRAIN_5_100_32768.header.json",
+   "manifest_dir": "data_v3/manifests",
+   "kind": "TRAIN",
+   "definition": "M05_CALIB_TRAIN",
+   "status": "CALIBRATION",
+   "role": "CALIBRATION",
+   "content_sha256": "b250bea272e3b497ace6bf2a2c6e46c29dc4a7ae518ac9e744f820baa325ae41",
+   "header_sha256": "5580e6592f91d338a59854865cb98e372416a053f02192f2a17f9ef0f9dafed4",
+   "header_content_sha256": "b91c79b521f0c0809dd54d39e393aaec3d1167d172436d4429974c2cc1e4423b",
+   "n_users": 32768,
+   "n_decisions": 646067,
+   "n_eval_rows": 0,
+   "n_rankable_rows": 0,
+   "population_sha256": "0401faf4f8b3531a70f8000a86ba3319fdbbd4457504fcf096c882a13a75de07",
+   "population_sha256_selection_key_v2": "9be38de146f5069a88d57c867dfa021cf1c67f2d67ae1e58df63f7c6ac9c1f02",
+   "ordered_decision_id_sha256": "c6aac708e67749d1cbb34620dbb6291000861931ad4e3787f4f01c07eb18394f",
+   "eval_ordered_decision_id_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "rankable_ordered_decision_id_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "parent_manifests": [],
+   "tables": {
+    "clients": {
+     "file": "data_v3/manifests/CALIB_TRAIN_5_100_32768.clients.parquet",
+     "file_sha256": "aab04ddea3592eca662590c4fda8146e3eea35b1d91896441317b1114a7fd798",
+     "table_content_sha256": "f011dbe73e2ec24887f98a09f42c3a5195489d1f9266f46b7a2dcb0e6f119524",
+     "row_count": 32768
+    },
+    "decisions": {
+     "file": "data_v3/manifests/CALIB_TRAIN_5_100_32768.decisions.parquet",
+     "file_sha256": "79d3ae96248fccd0cc55e09e9596ec2df7c6ca54be393faf978072b65d12f9db",
+     "table_content_sha256": "b86426692f5fddf295e89612c301f0ae836604c7c44657c89abdde726f577458",
+     "row_count": 646067
+    },
+    "central_order": {
+     "file": "data_v3/manifests/CALIB_TRAIN_5_100_32768.central_order.parquet",
+     "file_sha256": "721500ac375829b1cc8bd294d0e696f3ff2194a41ed04d1ec092a1f2bc6bbd3d",
+     "table_content_sha256": "891a397df7419f88df6d71cce678279c15b9654a77bc8f7afad43848dc3c9630",
+     "row_count": 646067
+    }
+   },
+   "marker": "data_v3/manifests/CALIB_TRAIN_5_100_32768.OK"
+  },
+  "CALIB_VALIDATION_5_100_32768": {
+   "path": "data_v3/manifests/CALIB_VALIDATION_5_100_32768.header.json",
+   "manifest_dir": "data_v3/manifests",
+   "kind": "EVAL",
+   "definition": "M06_CALIB_VALIDATION_WARM",
+   "status": "CALIBRATION",
+   "role": "CALIBRATION",
+   "content_sha256": "a4b0bdb106901e1ef3f24f538dd0f5030037061877f8562f95dccaf3601d40e9",
+   "header_sha256": "81ad1802ed3596d6e9dfde6e25d235f9b68e955242d6589ce74ac82959bd1f81",
+   "header_content_sha256": "92095dca922850db98729765b553ee2595ee4c681f21cab2c71e685502ef432e",
+   "n_users": 12715,
+   "n_decisions": 158135,
+   "n_eval_rows": 127530,
+   "n_rankable_rows": 126469,
+   "population_sha256": "483c25258209dc8e2c6419a75b1c9c0428f4068a535fc2903b17f0277c571d9d",
+   "population_sha256_selection_key_v2": "9be38de146f5069a88d57c867dfa021cf1c67f2d67ae1e58df63f7c6ac9c1f02",
+   "ordered_decision_id_sha256": "105e413ca395b6753ac869c3abd9bba4d34d3d7e452004a4c7e1b9976a4a7cfb",
+   "eval_ordered_decision_id_sha256": "ea6bef5b3b4bca019d53f7fc3d428cc9fd31c91d6fb5a0c3e57dec1278460fda",
+   "rankable_ordered_decision_id_sha256": "a202848ddb88792f0bea2a6d0ef8079c571cb5c2e033218cc529eb03bfc91e6a",
+   "parent_manifests": [
+    "CALIB_TRAIN_5_100_32768"
+   ],
+   "tables": {
+    "users": {
+     "file": "data_v3/manifests/CALIB_VALIDATION_5_100_32768.users.parquet",
+     "file_sha256": "f9892f646fe65f79173c57b92cdd4a9c0d0e04b2ecebf6163399404d5cacf747",
+     "table_content_sha256": "6fe394587e6d00b1b81ed10d8baec634bf059194b2797f51bfe98aae76eadf91",
+     "row_count": 12715
+    },
+    "decisions": {
+     "file": "data_v3/manifests/CALIB_VALIDATION_5_100_32768.decisions.parquet",
+     "file_sha256": "574e2a616e9c9f2fffd7f7b6cff3c803c367d25f407f4b2a23c98ac6a404e593",
+     "table_content_sha256": "d83e5b488e049dfebb1d8632b5c17c27ed622596be6d142845081ca4c72d8e3f",
+     "row_count": 158135
+    }
+   },
+   "marker": "data_v3/manifests/CALIB_VALIDATION_5_100_32768.OK"
+  },
+  "UNEW_VAL_SUPPORT_32768": {
+   "path": "data_v3/manifests/UNEW_VAL_SUPPORT_32768.header.json",
+   "manifest_dir": "data_v3/manifests",
+   "kind": "TRAIN",
+   "definition": "M01_COHORT_TRAIN",
+   "status": "UNSEEN_VAL",
+   "role": "UNSEEN_VAL",
+   "content_sha256": "41598525e9751a8905add9a02129fcf60260b10adb5db5c62ad4a7334cb85057",
+   "header_sha256": "b54a4de9f27dd3723b2c39d273e05bf152a2dd80aa104694549ca225f7eb290e",
+   "header_content_sha256": "8a2a9afc60fe0cd03099fd8cf9326463252b02dc0aeaa0cf7f80366bb5d6b16a",
+   "n_users": 32768,
+   "n_decisions": 650203,
+   "n_eval_rows": 0,
+   "n_rankable_rows": 0,
+   "population_sha256": "01f1dbe0ade8f80c219fa6cf25df3d69fc806c9ca4dfcbcddce05bef1078a9ea",
+   "population_sha256_selection_key_v2": "9716648c6331c2d6b7caba9a1b86e7b2a3bd16bdf24a488dc588d0645a34b0e7",
+   "ordered_decision_id_sha256": "af3a4660f4114fd4a205c7aeb2de6e3de013a151aeac9e9ec860094d73aaba34",
+   "eval_ordered_decision_id_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "rankable_ordered_decision_id_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "parent_manifests": [],
+   "tables": {
+    "clients": {
+     "file": "data_v3/manifests/UNEW_VAL_SUPPORT_32768.clients.parquet",
+     "file_sha256": "b40037d3ce2bbe144f91b48c83a1c34f95c9cce8b0cc43c5b5d149c940cd2a65",
+     "table_content_sha256": "65ed8f90a1ff39d05fb197ff79966d1bbf5afc17c30f349a7adac6006261feb2",
+     "row_count": 32768
+    },
+    "decisions": {
+     "file": "data_v3/manifests/UNEW_VAL_SUPPORT_32768.decisions.parquet",
+     "file_sha256": "b7080ced0ae4481fe457aed11246927dd0cc1fb933cc2ee1c7c35bc90405124a",
+     "table_content_sha256": "a0f07da4195ca65f2e35f5538df1be3a65c2e11bc9f1532cc33b4420240efcfe",
+     "row_count": 650203
+    },
+    "central_order": {
+     "file": "data_v3/manifests/UNEW_VAL_SUPPORT_32768.central_order.parquet",
+     "file_sha256": "02a735bdbdfbd3f14bb58bf0428dfe2f381be67868853cc3e99e0e5e208f2fa1",
+     "table_content_sha256": "f80662001dbd5a7ca60b93a9922303fd717fda3f11c5b0a830f806551abfd3f5",
+     "row_count": 650203
+    }
+   },
+   "marker": "data_v3/manifests/UNEW_VAL_SUPPORT_32768.OK"
+  },
+  "UNEW_VAL_VALIDATION_32768": {
+   "path": "data_v3/manifests/UNEW_VAL_VALIDATION_32768.header.json",
+   "manifest_dir": "data_v3/manifests",
+   "kind": "EVAL",
+   "definition": "M02_VALIDATION_WARM",
+   "status": "UNSEEN_VAL",
+   "role": "UNSEEN_VAL",
+   "content_sha256": "6802cc6cec658eae71985ea2f27d2aad3c81853263758e0fb4d45c9f719b8455",
+   "header_sha256": "4b9c68e138a94e8d0205d2734213f5baca669b6bbf7b674de7957217e9d6c761",
+   "header_content_sha256": "efd0bdf2dd9dbdf0944106191a0a68d826bd66e5a7838911fca323a6c3ccfc79",
+   "n_users": 12792,
+   "n_decisions": 167797,
+   "n_eval_rows": 136194,
+   "n_rankable_rows": 134981,
+   "population_sha256": "226b2fce30ac7a4fcf39959436157fbba5ed8a7fe53e237acf9eb92a6d44197a",
+   "population_sha256_selection_key_v2": "9716648c6331c2d6b7caba9a1b86e7b2a3bd16bdf24a488dc588d0645a34b0e7",
+   "ordered_decision_id_sha256": "3286f9e63a59571887f74c10e328df922f1a9b5f2b9dadcef93ef72b98d30be8",
+   "eval_ordered_decision_id_sha256": "319e07e33a2900bf32edbea1799cdd55e3244226980c1d1f847e2028e3ac4bf2",
+   "rankable_ordered_decision_id_sha256": "2f4d6938bb4f680d8ad34e8dc9d72870ffeeb91447c6ec4981c90698c2f0106e",
+   "parent_manifests": [
+    "UNEW_VAL_SUPPORT_32768"
+   ],
+   "tables": {
+    "users": {
+     "file": "data_v3/manifests/UNEW_VAL_VALIDATION_32768.users.parquet",
+     "file_sha256": "5ddd1dcd7d8fcf3c92d8702399b1358979450ba161528bd114c682916ccd127b",
+     "table_content_sha256": "edae00a6902223249d277ad356ca9bb05f62e019d93d59f4eb0a36c9cb2c33f8",
+     "row_count": 12792
+    },
+    "decisions": {
+     "file": "data_v3/manifests/UNEW_VAL_VALIDATION_32768.decisions.parquet",
+     "file_sha256": "966cc489ded272324a860b8cb9a4ed2bb5a9482e6f2183ff2319e20c13c2bf9e",
+     "table_content_sha256": "10d97ae842a2fabc6cfdb9e45c2e240b27e00012857e056fc25ea8462e9e5a1d",
+     "row_count": 167797
+    }
+   },
+   "marker": "data_v3/manifests/UNEW_VAL_VALIDATION_32768.OK"
+  },
+  "UNEW_HOLDOUT_SUPPORT_32768": {
+   "path": "data_v3/manifests/UNEW_HOLDOUT_SUPPORT_32768.header.json",
+   "manifest_dir": "data_v3/manifests",
+   "kind": "TRAIN",
+   "definition": "M01_COHORT_TRAIN",
+   "status": "UNSEEN_HOLDOUT",
+   "role": "UNSEEN_HOLDOUT",
+   "content_sha256": "76f05d805f9c54345ad045dd43e02c6be7091fcbb2a2cb69c2cf60646a8be620",
+   "header_sha256": "ce3add71284a2d8977afa584a1c9934768bab2937af39b1ecb937984f5be7d0f",
+   "header_content_sha256": "175708f8f4f8de27264f3cc4e1f9b76abfdef32c7bd2b7940c5f3d224bb8509b",
+   "n_users": 32768,
+   "n_decisions": 649980,
+   "n_eval_rows": 0,
+   "n_rankable_rows": 0,
+   "population_sha256": "bcffafda27fd99cd69dc4d0db1f8f494d56bf1e4b5c4a243246be8aa19e8cd61",
+   "population_sha256_selection_key_v2": "7ff654a217b29cd66e9cadca9b39f3290eb9d89bfdae15d280b9a5b77b517999",
+   "ordered_decision_id_sha256": "3bc9c46f405617446964b585ef9b8aa2bea5ead7fbddf9b97f34eb7d73117d3a",
+   "eval_ordered_decision_id_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "rankable_ordered_decision_id_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "parent_manifests": [],
+   "tables": {
+    "clients": {
+     "file": "data_v3/manifests/UNEW_HOLDOUT_SUPPORT_32768.clients.parquet",
+     "file_sha256": "69faca7b4ea459db5bbe8c90bd2bb437bcc030520b9bfb3383da7f3458753372",
+     "table_content_sha256": "ec14b53d3e70491c1235d04068ddb431f35f0f944f780905bd46f6acf50c9d82",
+     "row_count": 32768
+    },
+    "decisions": {
+     "file": "data_v3/manifests/UNEW_HOLDOUT_SUPPORT_32768.decisions.parquet",
+     "file_sha256": "ee47c89c608492d2c0566fff050ef118a8ac63a5be995c52dce07a1af683f72e",
+     "table_content_sha256": "e50d7d12ff7daf35619864d7928726346a638193f4474d678572f25237f488ab",
+     "row_count": 649980
+    },
+    "central_order": {
+     "file": "data_v3/manifests/UNEW_HOLDOUT_SUPPORT_32768.central_order.parquet",
+     "file_sha256": "fcc21e2db25df2c95b7600b05fc797e2e98af61df7a24c92fc7005fe5b8cab6d",
+     "table_content_sha256": "5b7549175c3473a3f39be323bc3ecac2689626ec1aa716d93a865aa045fc9bad",
+     "row_count": 649980
+    }
+   },
+   "marker": "data_v3/manifests/UNEW_HOLDOUT_SUPPORT_32768.OK"
+  },
+  "UNEW_HOLDOUT_VALIDATION_32768": {
+   "path": "data_v3/manifests/UNEW_HOLDOUT_VALIDATION_32768.header.json",
+   "manifest_dir": "data_v3/manifests",
+   "kind": "EVAL",
+   "definition": "M02_VALIDATION_WARM",
+   "status": "UNSEEN_HOLDOUT",
+   "role": "UNSEEN_HOLDOUT",
+   "content_sha256": "c98117f1644173c6043bf912d2d8139941c2d7b1cec12611ec1065b51c934708",
+   "header_sha256": "3946eb1e404f432b3030fc22a4e492ef71750e284c2d4c82c371718994b88755",
+   "header_content_sha256": "da606cf21b0e0477e963790460680b24826dad49d2b2d667eed3698d89784e37",
+   "n_users": 12862,
+   "n_decisions": 163383,
+   "n_eval_rows": 132225,
+   "n_rankable_rows": 131184,
+   "population_sha256": "2efed5c288e26e1da24bf7093748dfaa0f99fe3280e81151ec24fc276ad24f9a",
+   "population_sha256_selection_key_v2": "7ff654a217b29cd66e9cadca9b39f3290eb9d89bfdae15d280b9a5b77b517999",
+   "ordered_decision_id_sha256": "d695ababa38d81fd43303b0319b8fcfa403afbacf8d03b04c3cd211c35f368f9",
+   "eval_ordered_decision_id_sha256": "499114ba4c115a01197271f1caeb05a955bafbf10182dd782dfcc48a63fd8f64",
+   "rankable_ordered_decision_id_sha256": "4b733ba71a8c43b48f39f9c671ed0d7b590b574ab04a5d4538896f8882a92d0f",
+   "parent_manifests": [
+    "UNEW_HOLDOUT_SUPPORT_32768"
+   ],
+   "tables": {
+    "users": {
+     "file": "data_v3/manifests/UNEW_HOLDOUT_VALIDATION_32768.users.parquet",
+     "file_sha256": "59109fd2595f3bf605cea0687bdba4d5c32857292b848a92efd2c2ff0ba56c67",
+     "table_content_sha256": "782409e935c425b349f189839c4089e8a4a64882b8a150d69aa5b19c6f12a3a9",
+     "row_count": 12862
+    },
+    "decisions": {
+     "file": "data_v3/manifests/UNEW_HOLDOUT_VALIDATION_32768.decisions.parquet",
+     "file_sha256": "30c24cc5e0b0dacc998d94a1cbd396e90fb25c10ce12985153067afbc9acd498",
+     "table_content_sha256": "0dc9a1663a41b51c1189d3fafd757bdfa1e08565ed829244a44c29417c1a8d52",
+     "row_count": 163383
+    }
+   },
+   "marker": "data_v3/manifests/UNEW_HOLDOUT_VALIDATION_32768.OK"
+  },
+  "SPARSE_PANEL_16384_SUPPORT": {
+   "path": "data_v3/manifests/SPARSE_PANEL_16384_SUPPORT.header.json",
+   "manifest_dir": "data_v3/manifests",
+   "kind": "TRAIN",
+   "definition": "M01_COHORT_TRAIN",
+   "status": "SPARSE_PANEL",
+   "role": "SPARSE_PANEL",
+   "content_sha256": "ebb05e58cdda1af6d36a8e08fd18934ddfa6b44989abc56fb140bf1ee0b12d30",
+   "header_sha256": "003eeca0733a98097aa25a3716ebd59d3bf5579bc950d8974cca034420272f4a",
+   "header_content_sha256": "6df2ec7df8b3b061692988bbc746b10964f0626d46d8b11adc14efac56ffc77c",
+   "n_users": 16384,
+   "n_decisions": 37432,
+   "n_eval_rows": 0,
+   "n_rankable_rows": 0,
+   "population_sha256": "fca6dc8b5c6000322838fef602343213b0334904ac237cc48b115d74e5790267",
+   "population_sha256_selection_key_v2": "087cb59ed7eea3dfd66825283ff51a1c876f8ef3f151451d23f887d7ff7ea733",
+   "ordered_decision_id_sha256": "101df28c59484077eaf5dda768952da6ae207cb57084ece356990be2e0ae1bbd",
+   "eval_ordered_decision_id_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "rankable_ordered_decision_id_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "parent_manifests": [],
+   "tables": {
+    "clients": {
+     "file": "data_v3/manifests/SPARSE_PANEL_16384_SUPPORT.clients.parquet",
+     "file_sha256": "cfe9a3c28d79a8ae82ba668ef33bdcf5615a5462b05749e1bce8a598894e083a",
+     "table_content_sha256": "1808580d40f9ac0f04beac1a6470572f97a66add31d7af4634585eea66477910",
+     "row_count": 16384
+    },
+    "decisions": {
+     "file": "data_v3/manifests/SPARSE_PANEL_16384_SUPPORT.decisions.parquet",
+     "file_sha256": "a8b6788a97719a61182a9f9fdedc0a93512595127eb2054033d072501b6aa452",
+     "table_content_sha256": "57bc40f40458786f900f08c9327a9b35ca61697ff343e27f0b0d7f413ebdf7df",
+     "row_count": 37432
+    },
+    "central_order": {
+     "file": "data_v3/manifests/SPARSE_PANEL_16384_SUPPORT.central_order.parquet",
+     "file_sha256": "4f13e68dceb4848923aff282c8fd90017cb46895160d8baa44512db7abbcf060",
+     "table_content_sha256": "b7313eff2d57b88def42739c989fdefcec345572223e306e2101ca72741a7418",
+     "row_count": 37432
+    }
+   },
+   "marker": "data_v3/manifests/SPARSE_PANEL_16384_SUPPORT.OK"
+  },
+  "SPARSE_PANEL_16384_VALIDATION": {
+   "path": "data_v3/manifests/SPARSE_PANEL_16384_VALIDATION.header.json",
+   "manifest_dir": "data_v3/manifests",
+   "kind": "EVAL",
+   "definition": "M02_VALIDATION_WARM",
+   "status": "SPARSE_PANEL",
+   "role": "SPARSE_PANEL",
+   "content_sha256": "7dbc66cd6db89ad5a3b8c0d54067bb4fedd55e34eeb2d3b29b222452f8b924ca",
+   "header_sha256": "5e7cf3d887b60a51ba76cea89edeab76712a11c0f9240c2f151e925caabbd205",
+   "header_content_sha256": "147a4c08d16b401db9184908d1088ce89aa3c08a42f275d61f4db9ac96cefb5a",
+   "n_users": 16384,
+   "n_decisions": 162561,
+   "n_eval_rows": 129696,
+   "n_rankable_rows": 128907,
+   "population_sha256": "fca6dc8b5c6000322838fef602343213b0334904ac237cc48b115d74e5790267",
+   "population_sha256_selection_key_v2": "087cb59ed7eea3dfd66825283ff51a1c876f8ef3f151451d23f887d7ff7ea733",
+   "ordered_decision_id_sha256": "5929ddbfa29c5378fd37f52163cf11883eecc1801d6863a3b9bc20856c97f228",
+   "eval_ordered_decision_id_sha256": "0ad683faa22d78422b1374487fa3aa0826e9032db8965dd2d1f0e49799c32127",
+   "rankable_ordered_decision_id_sha256": "8b4e7e4cc94d3f4b3e244649af9cb97db2354684bfa5e36919370ba7c8b33d9e",
+   "parent_manifests": [
+    "SPARSE_PANEL_16384_SUPPORT"
+   ],
+   "tables": {
+    "users": {
+     "file": "data_v3/manifests/SPARSE_PANEL_16384_VALIDATION.users.parquet",
+     "file_sha256": "b6d78baf2099d69f80291eb37fe61f76a80a816dd0d22eb6f2a05467c3af9556",
+     "table_content_sha256": "1a012cbbb7009e0b1cf5e5a4475b532d5c902bc46ffd4d0148efb91081af6f8b",
+     "row_count": 16384
+    },
+    "decisions": {
+     "file": "data_v3/manifests/SPARSE_PANEL_16384_VALIDATION.decisions.parquet",
+     "file_sha256": "a8479c191bc43a64f58918688cc4d5d077cf9b783cfae49e1cda84df3a4b94b5",
+     "table_content_sha256": "75194dce335800a5f9dfdedc4afb6ec4b933c511813b273f4635abdbb8105f2d",
+     "row_count": 162561
+    }
+   },
+   "marker": "data_v3/manifests/SPARSE_PANEL_16384_VALIDATION.OK"
+  },
+  "HEAVY_PANEL_16384_SUPPORT": {
+   "path": "data_v3/manifests/HEAVY_PANEL_16384_SUPPORT.header.json",
+   "manifest_dir": "data_v3/manifests",
+   "kind": "TRAIN",
+   "definition": "M01_COHORT_TRAIN",
+   "status": "HEAVY_PANEL",
+   "role": "HEAVY_PANEL",
+   "content_sha256": "9b9ab27fabac865602bdfa865df400e38bffeb4d111ad795c4bbd3a8c2ad4cfc",
+   "header_sha256": "fc65be93062590119415ecd9bac5aace93beda1413dff01213dc96d88adabc54",
+   "header_content_sha256": "f6ff3818676024fb81d54db471dafe4623a5312f2d174272cfb628e629d3e513",
+   "n_users": 16384,
+   "n_decisions": 3036857,
+   "n_eval_rows": 0,
+   "n_rankable_rows": 0,
+   "population_sha256": "a6c5fca499b8ed59f6567b080ad0736aa82f13c577947f92b014774de14ccdfe",
+   "population_sha256_selection_key_v2": "7d52e952cf4a4ab9226ae1b2a82a6c5978ada8f375a77302279b176e13241ed3",
+   "ordered_decision_id_sha256": "d8d1290e8b591c9838b7ddc07dd30cb27ba89b30e8db873c6592f19b8945b463",
+   "eval_ordered_decision_id_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "rankable_ordered_decision_id_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "parent_manifests": [],
+   "tables": {
+    "clients": {
+     "file": "data_v3/manifests/HEAVY_PANEL_16384_SUPPORT.clients.parquet",
+     "file_sha256": "e5fef72e18f2cdac66e702c40de7c9216e634d37408a7a16d15e8296aa38acf1",
+     "table_content_sha256": "976d693dd87aa910c56f48f4921301d9da946462423134aacf10e9cbe6380e08",
+     "row_count": 16384
+    },
+    "decisions": {
+     "file": "data_v3/manifests/HEAVY_PANEL_16384_SUPPORT.decisions.parquet",
+     "file_sha256": "6acd3ad9612b19f03ff840cf315759e0ae30b0a0df5dc6619a0ae6a493ebeefd",
+     "table_content_sha256": "23c3bd6b352519da27610eb78982202308c92158a830406f209006d9f4e58724",
+     "row_count": 3036857
+    },
+    "central_order": {
+     "file": "data_v3/manifests/HEAVY_PANEL_16384_SUPPORT.central_order.parquet",
+     "file_sha256": "38d3bdc4784cc9cf44f20b364c0666780c040db0a0b3fb1aaa2efbaa0f176252",
+     "table_content_sha256": "25c81c004e2937501033240ae6f396bdb82c25eea7b58d01b9a9266fd3d7a6a2",
+     "row_count": 3036857
+    }
+   },
+   "marker": "data_v3/manifests/HEAVY_PANEL_16384_SUPPORT.OK"
+  },
+  "HEAVY_PANEL_16384_VALIDATION": {
+   "path": "data_v3/manifests/HEAVY_PANEL_16384_VALIDATION.header.json",
+   "manifest_dir": "data_v3/manifests",
+   "kind": "EVAL",
+   "definition": "M02_VALIDATION_WARM",
+   "status": "HEAVY_PANEL",
+   "role": "HEAVY_PANEL",
+   "content_sha256": "9fea4397eda6c35c3604eecd2e368cc306e50dbd9f89288d2879ad192dae8683",
+   "header_sha256": "0de2911218d7e857e80e8390bedaa0514ba44ce184f666ac066d348152c994a0",
+   "header_content_sha256": "cf5b73375b704d198af4c0d7e521d61b151366132a76c77a214828f8057192ac",
+   "n_users": 16384,
+   "n_decisions": 704615,
+   "n_eval_rows": 617944,
+   "n_rankable_rows": 609790,
+   "population_sha256": "a6c5fca499b8ed59f6567b080ad0736aa82f13c577947f92b014774de14ccdfe",
+   "population_sha256_selection_key_v2": "7d52e952cf4a4ab9226ae1b2a82a6c5978ada8f375a77302279b176e13241ed3",
+   "ordered_decision_id_sha256": "a99d8cfbd3e17026f539abd2f8befa005a4c2a23a86a0673e4529325d9a8bc7b",
+   "eval_ordered_decision_id_sha256": "2ecbde3eafd5b0ce730cc76a96bca2ee85e895b6aa32a3a654883097b349a286",
+   "rankable_ordered_decision_id_sha256": "10f19b2f283c29cd26526ddd27968087fee4461453474606420d1e27423edbb9",
+   "parent_manifests": [
+    "HEAVY_PANEL_16384_SUPPORT"
+   ],
+   "tables": {
+    "users": {
+     "file": "data_v3/manifests/HEAVY_PANEL_16384_VALIDATION.users.parquet",
+     "file_sha256": "e91e08af7f1feb16d6fa77aadf586da0820deff882102f7ac298a4f695dc0e86",
+     "table_content_sha256": "4dc9926da30ebd065a7e44c96834d9486b5ca023f747b4b019b97b4bdf56c1f1",
+     "row_count": 16384
+    },
+    "decisions": {
+     "file": "data_v3/manifests/HEAVY_PANEL_16384_VALIDATION.decisions.parquet",
+     "file_sha256": "c14334760c015895690ec81538cf3c7d44dafb3f76570ad91ffbaa9472d3c702",
+     "table_content_sha256": "1a32ba954c48c9162462b736dfe7dcb81b40f047243c6078f566cbbc5d9fe36e",
+     "row_count": 704615
+    }
+   },
+   "marker": "data_v3/manifests/HEAVY_PANEL_16384_VALIDATION.OK"
+  },
+  "TRUE_COLD_VALIDATION": {
+   "path": "data_v3/manifests/TRUE_COLD_VALIDATION.header.json",
+   "manifest_dir": "data_v3/manifests",
+   "kind": "EVAL",
+   "definition": "M03_COLD_PANEL_VAL",
+   "status": "TRUE_COLD",
+   "role": "TRUE_COLD",
+   "content_sha256": "b20be8e1768dd2677b3632662c225d439ab18705891a298d49262051913cd366",
+   "header_sha256": "ad7aca4acfb232f84915b87adeb1c1a7234057fcd1d6425eeff3623a5cf5f194",
+   "header_content_sha256": "05330364ca34a33e48683dee9fa84558d3e1e8f041d543e76963d1b55c09f6db",
+   "n_users": 381295,
+   "n_decisions": 3522233,
+   "n_eval_rows": 2857665,
+   "n_rankable_rows": 2833344,
+   "population_sha256": "0185aae009617c382e4c440ca3486f63e81fd6bb2342dc9f27d42b18a3384af5",
+   "population_sha256_selection_key_v2": "21878c56b28411d6c307840fdfe33ab04e757147c709c028b8a3a61a45d6c9bc",
+   "ordered_decision_id_sha256": "6a07d21ef6a7d4a60ada5b95ea0e5b350935da14517ca991e44a1f19c8b2280f",
+   "eval_ordered_decision_id_sha256": "ce953aaf4fa414540ea10736c6d8d619b34fddf7e97d7c1f8d2e60ee429fc124",
+   "rankable_ordered_decision_id_sha256": "1a89eafa5eef9cc6bb68f4dd4617d07fba9ccf61806993af8d9c7952d9c07bfc",
+   "parent_manifests": [],
+   "tables": {
+    "users": {
+     "file": "data_v3/manifests/TRUE_COLD_VALIDATION.users.parquet",
+     "file_sha256": "b0112f55dd291cfaf49006b91cc1f9ba6605b74810b243aad67c4d59569c9b70",
+     "table_content_sha256": "0a676252ed2b3fdd535312f6a93e0d4333fc0878efa18d7c82c3e8b7e59253a4",
+     "row_count": 381295
+    },
+    "decisions": {
+     "file": "data_v3/manifests/TRUE_COLD_VALIDATION.decisions.parquet",
+     "file_sha256": "1fb699027f1f20f3dc2c0d223af9512e90b84789ac08a931fbbbef65a5c9536f",
+     "table_content_sha256": "0d43bc8865a203aeab4cd9eb250ad81c7d2700c7ac02a3c6f0a074438730a25b",
+     "row_count": 3522233
+    }
+   },
+   "marker": "data_v3/manifests/TRUE_COLD_VALIDATION.OK"
+  },
+  "COLD_H_16384": {
+   "path": "data_v3/manifests/COLD_H_16384.header.json",
+   "manifest_dir": "data_v3/manifests",
+   "kind": "PANEL",
+   "definition": "M04_COLD_H_PANEL",
+   "status": "COLD_H",
+   "role": "COLD_H",
+   "content_sha256": "21fa06c1e4fd6938e0f5d5443a33ede1eca726dbf858da17abe7ff63f718ff2b",
+   "header_sha256": "556fd2697a50f3f6fe3d992836c77aeb4acfc730a6f041bc66a07302110c3a5a",
+   "header_content_sha256": "f5b408f7272e80ef66f4e54ebaffe4a4e890ca53b8ef6a2dc8ecfd025bf64271",
+   "n_users": 16384,
+   "n_decisions": 50529,
+   "n_eval_rows": 50529,
+   "n_rankable_rows": 50162,
+   "population_sha256": "e03ad55cb4faddfc2e19a5de8a82ebd5f5c34fb5878c28f17cf4c4a5d176c83a",
+   "population_sha256_selection_key_v2": "af58a61d442dd72f3c35387278fa0bf39b584e20510177ba6e69ee9114f3bb7f",
+   "ordered_decision_id_sha256": "09593b2ce53da5f85af20f2efefc7e35efbf6196d274047430f933325d95790b",
+   "eval_ordered_decision_id_sha256": "09593b2ce53da5f85af20f2efefc7e35efbf6196d274047430f933325d95790b",
+   "rankable_ordered_decision_id_sha256": "69864260362126eb46f82abe490f18c8533237f88ec9293654fe83305c32e420",
+   "parent_manifests": [
+    "TRUE_COLD_VALIDATION"
+   ],
+   "tables": {
+    "panel_users": {
+     "file": "data_v3/manifests/COLD_H_16384.panel_users.parquet",
+     "file_sha256": "168b2d7d7c5ca4dea11c79f01a75282bd8cfb7c7f448521aa0f44edb052c962c",
+     "table_content_sha256": "649e091a886dc44adc7600b0fcadb45b18c125fb9b3e71868964f8620020f0af",
+     "row_count": 16384
+    },
+    "panel_queries": {
+     "file": "data_v3/manifests/COLD_H_16384.panel_queries.parquet",
+     "file_sha256": "a4cf82ef1c15abc48d83466887b480aaecfa7c5e25fdf61873272c939015f81e",
+     "table_content_sha256": "9f767345e61b441c19ce58f8a954a435967b4091965385ff754425f453b9299f",
+     "row_count": 50529
+    },
+    "panel_support": {
+     "file": "data_v3/manifests/COLD_H_16384.panel_support.parquet",
+     "file_sha256": "dc20e995b1a7163f53d9161fc23c286bc0f65de1e360ffb1f6e7f4bc7cd73ee9",
+     "table_content_sha256": "52c05ba52e5a22f826ec27dcbcdc397550f6bb83f6799584b0e748de41b760ca",
+     "row_count": 151542
+    }
+   },
+   "marker": "data_v3/manifests/COLD_H_16384.OK"
+  },
+  "WARM_TRUNCATION_16384": {
+   "path": "data_v3/manifests/WARM_TRUNCATION_16384.header.json",
+   "manifest_dir": "data_v3/manifests",
+   "kind": "PANEL",
+   "definition": "M04W_WARM_TRUNCATION_PANEL",
+   "status": "WARM_TRUNCATION",
+   "role": "WARM_TRUNCATION",
+   "content_sha256": "ce660baeaf94e04d9756e46d729b00b72434b7914de1a4049bf2a10908af5d4e",
+   "header_sha256": "fa697d478b605543cb8c42a834e95c6982882798c90516dd1d65b610c712a211",
+   "header_content_sha256": "066997b83edb52011a66ae9e575b95c36f3d2947dd1c118d780f590c85ed135f",
+   "n_users": 16384,
+   "n_decisions": 177709,
+   "n_eval_rows": 177709,
+   "n_rankable_rows": 176867,
+   "population_sha256": "ff4ae64b0f1f5e9a00f12860a04b2b25496ccae443dd4aadbbcae3f568f4cc1a",
+   "population_sha256_selection_key_v2": "f3e9ec417325157ee5aa8964f2f9c48e1b37f8eb665ae8da954a71686c404e80",
+   "ordered_decision_id_sha256": "18ab5c953a278bf0a8c2ec11aa77450d701d6df4822e6d4dcf72a35c70d64621",
+   "eval_ordered_decision_id_sha256": "18ab5c953a278bf0a8c2ec11aa77450d701d6df4822e6d4dcf72a35c70d64621",
+   "rankable_ordered_decision_id_sha256": "39072f97a6aa1d263c9efffadc202acd8f69fbd1c48be07eebef51d92dc43529",
+   "parent_manifests": [
+    "MAIN_VALIDATION_5_100_131072"
+   ],
+   "tables": {
+    "panel_users": {
+     "file": "data_v3/manifests/WARM_TRUNCATION_16384.panel_users.parquet",
+     "file_sha256": "fd0885841afb8d2493ecc1192dfbfbf8bf5f3bfa1e41084ac0a882fe81f5a8c1",
+     "table_content_sha256": "fe40fecf792eb761d7da02607cf976afa381849634c3eda289c4986fc1e4de91",
+     "row_count": 16384
+    },
+    "panel_queries": {
+     "file": "data_v3/manifests/WARM_TRUNCATION_16384.panel_queries.parquet",
+     "file_sha256": "ececd7dab6597c0a83d358b7018288762e91ea250281a8ddeef3d9b15cfdb678",
+     "table_content_sha256": "0e556139ae4aac7e9dc5cc645fca121baaa069e5cc67070605780dd90ff33697",
+     "row_count": 177709
+    },
+    "panel_support": {
+     "file": "data_v3/manifests/WARM_TRUNCATION_16384.panel_support.parquet",
+     "file_sha256": "b6af049e2c84ade43ad7968c476116b77a665b39b0904fd8ae7acb926326fc7a",
+     "table_content_sha256": "06aa3d985db3b5a2e6d977287c65d1ae8d64c3e0992478fb6cd5d8722bbcbdf2",
+     "row_count": 1251955
+    }
+   },
+   "marker": "data_v3/manifests/WARM_TRUNCATION_16384.OK"
+  },
+  "MAIN_RETRO_TEST_5_100_131072": {
+   "path": "data_test/manifests/MAIN_RETRO_TEST_5_100_131072.header.json",
+   "manifest_dir": "data_test/manifests",
+   "kind": "EVAL",
+   "definition": "M07_TEST_WARM",
+   "status": "MAIN_TEST",
+   "role": "MAIN_TEST",
+   "v4_split": "RETRO_TEST",
+   "all_methods_lock_sha256": "04a3cd196149e2acf2ab5bb004f58c997199aa52e32f3c11c9ae647255beed23",
+   "test_exposure_register_entry_id": 5,
+   "content_sha256": "3e7acb9d8de0fcc1ca512c6104a714a5b1c12e45a105faf7bf44a5aadfd3bbf9",
+   "header_sha256": "200875979165cff13a28ae08db1b9d767d4b5d01481b157cdeeee2f38908fa49",
+   "header_content_sha256": "bdbee59cde2240f65de14f56514bda02fb92fb2bd02a52a64ee3ed07f3cbbaf4",
+   "n_users": 36037,
+   "n_decisions": 300133,
+   "n_eval_rows": 229742,
+   "n_rankable_rows": 221719,
+   "population_sha256": "ab29540de09341a86d648f74377ee8923b418dd27d17588555fe6deefa6c1e62",
+   "population_sha256_selection_key_v2": "563e76637a384c2985fff5e272d4290f4f3e52c99f57eebec4c20cde0628b8b3",
+   "ordered_decision_id_sha256": "5e5c2f64d4312dcd9dd251d5eaa802d15046e38d540eb9cc92df80b7422e6f3c",
+   "eval_ordered_decision_id_sha256": "ee9dfb4b7471bbcafc97f129043d39ad17d33141c539df84dbb1afd30921cc25",
+   "rankable_ordered_decision_id_sha256": "be93ed9beb1efe5891b362212ad3245d03542f0ad4431f249088b6e163e1789a",
+   "parent_manifests": [
+    "MAIN_TRAIN_5_100_131072"
+   ],
+   "tables": {
+    "users": {
+     "file": "data_test/manifests/MAIN_RETRO_TEST_5_100_131072.users.parquet",
+     "file_sha256": "155bb874910803418bc4ec1288ca702e1d0fed9ecc1001bb6ec5a2b2896b8c42",
+     "table_content_sha256": "4434874b42e90c7b3a388f0688cf05c74b252bba0dc888fea0634a406b7215f5",
+     "row_count": 36037
+    },
+    "decisions": {
+     "file": "data_test/manifests/MAIN_RETRO_TEST_5_100_131072.decisions.parquet",
+     "file_sha256": "5d0c76d0abcb18b26955b6bee18cb29c68e0ffcaa80ca1c697704014951ef6a9",
+     "table_content_sha256": "aa73c7b2f5aabeb9b7a9713d7a7e6c025b632d27c46082f6df0b38fee4624194",
+     "row_count": 300133
+    }
+   },
+   "marker": "data_test/manifests/MAIN_RETRO_TEST_5_100_131072.OK"
+  },
+  "UNEW_HOLDOUT_RETRO_TEST_32768": {
+   "path": "data_test/manifests/UNEW_HOLDOUT_RETRO_TEST_32768.header.json",
+   "manifest_dir": "data_test/manifests",
+   "kind": "EVAL",
+   "definition": "M07_TEST_WARM",
+   "status": "UNSEEN_HOLDOUT_TEST",
+   "role": "UNSEEN_HOLDOUT_TEST",
+   "v4_split": "RETRO_TEST",
+   "all_methods_lock_sha256": "04a3cd196149e2acf2ab5bb004f58c997199aa52e32f3c11c9ae647255beed23",
+   "test_exposure_register_entry_id": 5,
+   "content_sha256": "389c9b940b2e9947d02332b974e5b603c339df4d04b963051488160f89811ea0",
+   "header_sha256": "72a0fbf1f6bd73853af259bdc6bdd1d9610a1bc2c56183c580b8bb92fe22a399",
+   "header_content_sha256": "00441da407db0add12369d8434c83a8ef30e6f7c1b83dd0f44317fe16d4c8bf7",
+   "n_users": 9033,
+   "n_decisions": 76703,
+   "n_eval_rows": 59094,
+   "n_rankable_rows": 57078,
+   "population_sha256": "ae750903a14d83cd8e4fece4f9f36a3c372cef843f7c03fe447803ac287a6fd9",
+   "population_sha256_selection_key_v2": "7ff654a217b29cd66e9cadca9b39f3290eb9d89bfdae15d280b9a5b77b517999",
+   "ordered_decision_id_sha256": "e4a0c675c7d1c1fd32e2889dd84efca4832e746ba0338888e0d37c9fc0ae62ed",
+   "eval_ordered_decision_id_sha256": "095027862e1f39cf99eb2db73932bc621ce3e18d348030b07f89c42f46098cbd",
+   "rankable_ordered_decision_id_sha256": "36e120ad17d096b868d59195bacbe7c20a2da3aef4d2beaf74e0765eb748008c",
+   "parent_manifests": [
+    "UNEW_HOLDOUT_SUPPORT_32768"
+   ],
+   "tables": {
+    "users": {
+     "file": "data_test/manifests/UNEW_HOLDOUT_RETRO_TEST_32768.users.parquet",
+     "file_sha256": "8959605869c3804bd49d645151811ed1047975efaebf3d5144bd2bd54b625364",
+     "table_content_sha256": "e8210d28ac345ecc9f45fd3d6dbe18eb1110f445081ab59ee0ac9e2be722cf30",
+     "row_count": 9033
+    },
+    "decisions": {
+     "file": "data_test/manifests/UNEW_HOLDOUT_RETRO_TEST_32768.decisions.parquet",
+     "file_sha256": "9747bd9a6a2587b899a880bd7a133f3fcf79b51cc022d81a9f7d33e538f4ae18",
+     "table_content_sha256": "faaa326fc8f2b6199c4d6c6db32c4b15846733b1c93d1f74386077601c0a9487",
+     "row_count": 76703
+    }
+   },
+   "marker": "data_test/manifests/UNEW_HOLDOUT_RETRO_TEST_32768.OK"
+  },
+  "TRUE_COLD_RETRO_TEST": {
+   "path": "data_test/manifests/TRUE_COLD_RETRO_TEST.header.json",
+   "manifest_dir": "data_test/manifests",
+   "kind": "EVAL",
+   "definition": "M08_TEST_COLD_PANEL",
+   "status": "TRUE_COLD_TEST",
+   "role": "TRUE_COLD_TEST",
+   "v4_split": "RETRO_TEST",
+   "all_methods_lock_sha256": "04a3cd196149e2acf2ab5bb004f58c997199aa52e32f3c11c9ae647255beed23",
+   "test_exposure_register_entry_id": 5,
+   "content_sha256": "bec01e65c90b3b472f3444e4f339f302b3f9802d977384bf32eb31950051fa8b",
+   "header_sha256": "9763bb78a632d87de76e36fa9c08c38bf875ed47ce97938c4c0180eaeda3c226",
+   "header_content_sha256": "30d0cc16cadcb6e065c7e207b8c30bb953ae87b4de3e97e019f931387bc4fcb8",
+   "n_users": 325969,
+   "n_decisions": 2590172,
+   "n_eval_rows": 2049324,
+   "n_rankable_rows": 1986883,
+   "population_sha256": "383e5c4179cfb93118fd1b613a0ca5eeaa5bf2299ecd6ba4464253e7b22c30fc",
+   "population_sha256_selection_key_v2": "cd0d1bf536a69d3d36789a458e38638bb992a7dd2ca42bad7989abe24b1c346e",
+   "ordered_decision_id_sha256": "b9fd05871023c67072605abef2b460099bd408f8b84cde02e97e4797e98a69ed",
+   "eval_ordered_decision_id_sha256": "2f2b0119a84cc930f468975c5c6d3b5af616d84fe81453b27d4498c05aa34510",
+   "rankable_ordered_decision_id_sha256": "083247babec6d6d1d9e0853942a7ac695d7935fb05efa335e4f04cac6640f3ed",
+   "parent_manifests": [],
+   "tables": {
+    "users": {
+     "file": "data_test/manifests/TRUE_COLD_RETRO_TEST.users.parquet",
+     "file_sha256": "c1675034d680fe7210ccc6eeff2af89001e1db4434ee5aeb78bd542f9ce6f571",
+     "table_content_sha256": "aad6953049abde167f8a324a32c42cbc155fb6ee19e9a30fa405f23d105edc1b",
+     "row_count": 325969
+    },
+    "decisions": {
+     "file": "data_test/manifests/TRUE_COLD_RETRO_TEST.decisions.parquet",
+     "file_sha256": "7827883b61fe093fdc79582f3f2bbb36bfef970cfbb4dc5b3eef97b1b5168f9b",
+     "table_content_sha256": "96c0ca5224a6948b212d113f83a0957a4ea843ec96f5b672aaf3cf4b1e3edaa5",
+     "row_count": 2590172
+    }
+   },
+   "marker": "data_test/manifests/TRUE_COLD_RETRO_TEST.OK"
+  },
+  "SPARSE_PANEL_16384_RETRO_TEST": {
+   "path": "data_test/manifests/SPARSE_PANEL_16384_RETRO_TEST.header.json",
+   "manifest_dir": "data_test/manifests",
+   "kind": "EVAL",
+   "definition": "M07_TEST_WARM",
+   "status": "SPARSE_PANEL_TEST",
+   "role": "SPARSE_PANEL_TEST",
+   "v4_split": "RETRO_TEST",
+   "all_methods_lock_sha256": "04a3cd196149e2acf2ab5bb004f58c997199aa52e32f3c11c9ae647255beed23",
+   "test_exposure_register_entry_id": 5,
+   "content_sha256": "5072977fe883affc4c8bc0bf80e693ad0969c2491488ce40d9488d42bc4b3785",
+   "header_sha256": "6258f459c266ab79f8d5dd492708a94e5cc003d261efe4d8826855215ccda73f",
+   "header_content_sha256": "e212a49fb13f57e5df3fbb5c291159710c8fede2f9bb10f866a4c0a03bd291d5",
+   "n_users": 5648,
+   "n_decisions": 37502,
+   "n_eval_rows": 26909,
+   "n_rankable_rows": 26163,
+   "population_sha256": "fed40ca2a63b1e8d36886a087501024e42a7edd484214ef3caae7bda6c7611eb",
+   "population_sha256_selection_key_v2": "087cb59ed7eea3dfd66825283ff51a1c876f8ef3f151451d23f887d7ff7ea733",
+   "ordered_decision_id_sha256": "6f9eb2453b95472a5c8b44355907d7f78602ea1a006172d20ff81325512efafd",
+   "eval_ordered_decision_id_sha256": "d4ee6a7f15e6a96976574af683dc3da28550b455b75ce3cd6f05596a2d1c9ccc",
+   "rankable_ordered_decision_id_sha256": "33c7d97d335b793d70bcd120f4de51c1604cae83bb4195a9d1d86a237de96aa9",
+   "parent_manifests": [
+    "SPARSE_PANEL_16384_SUPPORT"
+   ],
+   "tables": {
+    "users": {
+     "file": "data_test/manifests/SPARSE_PANEL_16384_RETRO_TEST.users.parquet",
+     "file_sha256": "2840087b98559756eff8354e1427f36d08bea932c3b64e5380017523e1873ea6",
+     "table_content_sha256": "3ef04002834c38e2284d34ef1b7e4628b419bdd406e02e0c1099ae3351e1c437",
+     "row_count": 5648
+    },
+    "decisions": {
+     "file": "data_test/manifests/SPARSE_PANEL_16384_RETRO_TEST.decisions.parquet",
+     "file_sha256": "f988afbb77463565f2613868a8783c5fa09c14b70cb68c50cf23e666682881d6",
+     "table_content_sha256": "2df2b3cd1704d004ac95405e4e51bf80bb73a6ea9336d55ea3c7ef41c780c873",
+     "row_count": 37502
+    }
+   },
+   "marker": "data_test/manifests/SPARSE_PANEL_16384_RETRO_TEST.OK"
+  },
+  "HEAVY_PANEL_16384_RETRO_TEST": {
+   "path": "data_test/manifests/HEAVY_PANEL_16384_RETRO_TEST.header.json",
+   "manifest_dir": "data_test/manifests",
+   "kind": "EVAL",
+   "definition": "M07_TEST_WARM",
+   "status": "HEAVY_PANEL_TEST",
+   "role": "HEAVY_PANEL_TEST",
+   "v4_split": "RETRO_TEST",
+   "all_methods_lock_sha256": "04a3cd196149e2acf2ab5bb004f58c997199aa52e32f3c11c9ae647255beed23",
+   "test_exposure_register_entry_id": 5,
+   "content_sha256": "eb960c3521914e8c4d72c5c355529cc7bbe89daf4daa1f26321a8cb79f0bff29",
+   "header_sha256": "e8f8d6817d5e12e61cd8e81730e2e54f110739c90637b2ce4b078dcce3039d7b",
+   "header_content_sha256": "6dac5223145999dd0cb9f0189b8407764d1752f7e4a9f7f3d9a6fa660501371a",
+   "n_users": 11869,
+   "n_decisions": 297928,
+   "n_eval_rows": 252913,
+   "n_rankable_rows": 240281,
+   "population_sha256": "6986befdad7f99a7b644d6bef565bd3eb31b8645aff5fa399376dacbd15afb96",
+   "population_sha256_selection_key_v2": "7d52e952cf4a4ab9226ae1b2a82a6c5978ada8f375a77302279b176e13241ed3",
+   "ordered_decision_id_sha256": "c670837019b00bcb410c3fcd67655897217bb28dac3b5f117352b0482953ef2c",
+   "eval_ordered_decision_id_sha256": "1d184851ce235a731fc2eea21732a6eb2de95b0f6554986215b14fd945ea5dac",
+   "rankable_ordered_decision_id_sha256": "0258257119c06cc4e4762f8ac01c3051a081864e8fc5c72ddffa8819d459fb07",
+   "parent_manifests": [
+    "HEAVY_PANEL_16384_SUPPORT"
+   ],
+   "tables": {
+    "users": {
+     "file": "data_test/manifests/HEAVY_PANEL_16384_RETRO_TEST.users.parquet",
+     "file_sha256": "76a9fa1efdc858b5f473443e98ae9ec104edf399843e8192f189372ec83c7bb7",
+     "table_content_sha256": "ffa4fba4734c89ce113626a1b91573a0c75c2a75182170dd81aa5e7f3e05a5ae",
+     "row_count": 11869
+    },
+    "decisions": {
+     "file": "data_test/manifests/HEAVY_PANEL_16384_RETRO_TEST.decisions.parquet",
+     "file_sha256": "50e1349b2fbcd2d69f040cb3cea1d359406fe6673459f05a54196bc57c117b80",
+     "table_content_sha256": "490a16a47da03300c75a289bb929df3859f9e1dcd1c60fa19decc432ccc9c909",
+     "row_count": 297928
+    }
+   },
+   "marker": "data_test/manifests/HEAVY_PANEL_16384_RETRO_TEST.OK"
+  }
+ },
+ "transform_state": {
+  "path": "data_v2/TRANSFORM_STATE_CLEAN_V2.json",
+  "transform_state_sha256": "2ff0ff4ec1d27d254972c2f212e81f5fee6277dc9cced31a6a5baf5b4b002727",
+  "file_sha256": "7dda2f56066c1ca11c32754fd2b701448a7d7920f3e68bf7facc77141f41ae7d",
+  "rule": "shared statistics = full TRAIN as fitted (TRANSFORM_STATE_CLEAN_V2, unchanged), identical for every arm (ADR-005 addendum 2, D5); DATA-06 fits no new statistics"
+ },
+ "path_root": "the ppsi_v4 workspace root (server: /home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4); every path is relative to it",
+ "source_data_protocol_lock": {
+  "lock_self_sha256": "da51d271e97d3a681227a7063fd35b429797e52ee25586ba39843a37b7c839e1",
+  "file_sha256": "ebf4e86f6beb82e98283108a2dad9082727e8559b81301cd46f35f60c79fd7c0"
+ },
+ "builder_code_sha256": "443254e9ed95e41a48076f91643c83fbc77355dc80bb6b111d8432703d3e34a5",
+ "d6_code_sha256": "13e6d9e94a63cfc547ad70bc8ae4893ca0ee4663e03adbfd5023dadb9c045e62",
+ "population_bands": {
+  "pool_5_100": {
+   "n_users": 1446986,
+   "n_examples": 28623386,
+   "population_sha256_selection_key_v2": "e2a082cda5e3b246f1ea85cf1e78368c185e003ce1013572d07bd8ff471fbc70"
+  },
+  "MAIN": {
+   "rank_range": [
+    0,
+    131072
+   ],
+   "population_sha256_selection_key_v2": "563e76637a384c2985fff5e272d4290f4f3e52c99f57eebec4c20cde0628b8b3"
+  },
+  "CALIB": {
+   "rank_range": [
+    0,
+    32768
+   ],
+   "population_sha256_selection_key_v2": "9be38de146f5069a88d57c867dfa021cf1c67f2d67ae1e58df63f7c6ac9c1f02"
+  },
+  "U_NEW_VAL": {
+   "rank_range": [
+    1348682,
+    1381450
+   ]
+  },
+  "U_NEW_TEST": {
+   "rank_range": [
+    1381450,
+    1414218
+   ]
+  }
+ },
+ "build_receipt": {
+  "receipt": "data_v3/receipts/DATA06_BUILD_RECEIPT.json",
+  "receipt_file_sha256": "e97558893df8f14b09b91c58323b15bdabd907d7b21b248b6c3d35993a6ba8f2",
+  "receipt_sha256": "99f6d3fde38662f00c8070d6f97282f4a40dde19c230023703f9d1f5d1f3c6ea"
+ },
+ "naming_decision": "SPARSE_PANEL_16384 and HEAVY_PANEL_16384 (task table: 'support = their own TRAIN examples; VALIDATION = the M02 definition') are built and registered as two physical manifests each, suffixed _SUPPORT / _VALIDATION exactly like UNEW_VAL / UNEW_TEST; TRUE_COLD_VALIDATION is eval-only (M03 shape, no TRAIN counterpart, cold users have zero eligible TRAIN examples); COLD_H_16384 and WARM_TRUNCATION_16384 are single panel manifests (M04 / M04W shape). DEVIATION: the task packet names this band's physical manifests UNEW_TEST_SUPPORT_32768 / UNEW_TEST_VALIDATION_32768, but v4data.manifests.refuse_test_manifest (LOCKED, not edited) refuses any manifest id containing the substring 'TEST' unconditionally, as a blunt defense-in-depth gate against ever building a TEST-split manifest before ALL_METHODS_LOCK - it would refuse these files outright. The physical manifest ids are therefore UNEW_HOLDOUT_SUPPORT_32768 / UNEW_HOLDOUT_VALIDATION_32768. The registry role key was first kept as the task's own 'UNSEEN_TEST', but the Operations Director corrected this (v4train's registry loader refuses any manifest id OR ROLE containing 'TEST' too): the role is 'UNSEEN_HOLDOUT' everywhere on disk (header status/run_label and the registry roles key); no string 'TEST' appears anywhere in DATA-06's output.",
+ "selection_refusal": "DATA_VERSION CLEAN_V2_POP5100_V2 (ADR-005 R2+R4 binding synthesis, DECISION_LOG 42/43): MAIN/CALIB/UNSEEN_VAL/UNSEEN_TEST/panel manifests over selection_key_v2 rank bands and CENSUS-02 strata; every read is v4data.manifests.read_non_test; TEST is never touched and no RETRO_TEST row is built (refused until ALL_METHODS_LOCK).",
+ "rules": {
+  "content_sha256": "sha256 of canonical JSON [{table,row_count,table_content_sha256}] in header order (v4fs_data.fs_common.manifest_content_sha256)",
+  "header_sha256": "sha256 of the header file bytes",
+  "header_content_sha256": "the DATA-04 builder rule (v4int.verify.header_content_sha256)"
+ },
+ "self_sha256_rule": "sha256 of json.dumps(object minus self_sha256, sort_keys=True, ensure_ascii=True, separators=(',',':'), allow_nan=False) - v4data.common.self_hash, field renamed self_sha256 to match v4train.registry (Ops correction, DECISION_LOG 45)",
+ "extends": {
+  "path": "contracts/manifest_registry/REGISTRY_V2.json",
+  "file_sha256": "56dd0840cb50e89250a8b9a54dc1d4f621e9e6f9500ec44441cf07cb472ef740",
+  "self_sha256": "f6a0820791ad39e84aa86ebde2c37c12e76a45be6034d9068621a2c431b21c41",
+  "rule": "every REGISTRY_V2 key / role / manifest is canonical-JSON identical here (v4data09.d9_registry.verify_test_ext_registry); additions only: the five TEST roles, the five RETRO_TEST manifests and the extension_* keys"
+ },
+ "extension_task": "DATA-09",
+ "extension_code": {
+  "d9_code_sha256": "0f90eb2d4e969668c2e54f2982beb50e70bfcef5804d8257d2fa083c693013c1",
+  "v4data_builder_code_sha256": "443254e9ed95e41a48076f91643c83fbc77355dc80bb6b111d8432703d3e34a5",
+  "d9_registry_sha256": "bd404d937b0ec617adf68e9eb9b79741cc690e2815d4ad30f0d9d802f1d5860b",
+  "d9_finalize_sha256": "52a2a4c7c6ee0fd89e29aaaf92b2e3f7bf3ee8d79b31eddaeb09d325ddbaa179"
+ },
+ "extension_build_receipt": {
+  "receipt": "data_test/receipts/DATA09_BUILD_RECEIPT.json",
+  "receipt_file_sha256": "7758d078a7dda87868d14f14ee432cd3f9b090b61719b692b32f7d9d2e8b233d",
+  "receipt_sha256": "c8977171344c9681c81857641932e3423c75f7787c25cc061e8d97a07a420f3f"
+ },
+ "extension_test_gate": {
+  "all_methods_lock_sha256": "04a3cd196149e2acf2ab5bb004f58c997199aa52e32f3c11c9ae647255beed23",
+  "test_exposure_register_entry_id": 5,
+  "test_exposure_register_entry_sha256": "01c0d071b4ab47d3daf36768b895cd25a15ce672106414faf82e7febff98e27c",
+  "rule": "v4data09.d9_gate.check_test_gate: ALL_METHODS_LOCK.json file sha256 == the FIRST TEST_EXPOSURE_REGISTER entry with access_purpose MANIFEST_BUILD and split RETRO_TEST; the register hash chain verifies (tools/test_exposure_register.py verify)"
+ },
+ "extension_note": {
+  "test_look": "PREG1_AMENDMENT_06D \u00a72: the single TEST look's registered manifests; the support manifests are REGISTRY_V2's, unchanged; resolved only through v4int.test_roles under the TEST gate",
+  "roles": {
+   "MAIN_TEST": {
+    "train": "MAIN_TRAIN_5_100_131072",
+    "eval": "MAIN_RETRO_TEST_5_100_131072"
+   },
+   "UNSEEN_HOLDOUT_TEST": {
+    "train": "UNEW_HOLDOUT_SUPPORT_32768",
+    "eval": "UNEW_HOLDOUT_RETRO_TEST_32768"
+   },
+   "TRUE_COLD_TEST": {
+    "eval": "TRUE_COLD_RETRO_TEST"
+   },
+   "SPARSE_PANEL_TEST": {
+    "train": "SPARSE_PANEL_16384_SUPPORT",
+    "eval": "SPARSE_PANEL_16384_RETRO_TEST"
+   },
+   "HEAVY_PANEL_TEST": {
+    "train": "HEAVY_PANEL_16384_SUPPORT",
+    "eval": "HEAVY_PANEL_16384_RETRO_TEST"
+   }
+  },
+  "m09": "M09 (TEST cold-h) is NOT registered (amendment 06D \u00a72)"
+ },
+ "self_sha256": "edae509681e1d449d49d91b24697f64cda98306c4e9011cadd39f81079dc7235"
+}

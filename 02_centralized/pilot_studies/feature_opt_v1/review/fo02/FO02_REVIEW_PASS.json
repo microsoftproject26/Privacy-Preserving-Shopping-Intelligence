@@ -1,0 +1,28 @@
+{
+ "verdict": "APPROVE_RESUME",
+ "reviewer_model_runtime": [
+  "claude-fable-5-1"
+ ],
+ "review": "review/fo02/FABLE_FO02_REVIEW.md",
+ "scope": "correction-only (FO-02 import isolation); supersedes only these two hashes of review/FEATURE_CODE_REVIEW_PASS.json, which is kept unchanged",
+ "utc": "2026-09-26T07:51:24Z",
+ "approved_files_sha256": {
+  "code/fo_env.py": "5cdaa0827561274edbb003855fef2b33f5435e220e4be6c1f53b6b61ac908bfe",
+  "code/tests/test_fo_env.py": "373d20a6d97a5557273612a265c3cd59a57c7f942d15513c40d1815c4bd28da4"
+ },
+ "previous_sha256": {
+  "code/fo_env.py": "49a32aaf9d64ae1481b326f0f43bf6daef8946f1c213165c377cce3a3b105882",
+  "code/tests/test_fo_env.py": "e2345dcce48646f02fa3b2d2bf43bbda5cdd558eaf42220db3d8cba4ba92835b"
+ },
+ "evidence": {
+  "SERVER_ISOLATION_CHECK.json": "55334cb18fa4bead133e7b64b1630d6d0a63b14e33e67a246cf454fd60e4475d",
+  "SERVER_PYTEST.txt": "9b951e8ee229929789bd3c2eae4a4defa78b7456a8cc694024d390f11d488c97",
+  "BYTE_IDENTITY_SNAPSHOT_VS_GRU.txt": "e0b0bdc5fcc7375f16977fe248fd6324cce56c0d94a08e31e93f234da5024a4a",
+  "server_probes.log": "df9685edd4021ebc6f8ab18f1f6087e62bba3dc556b2dfecf0ed760667166270",
+  "FO02_CORRECTION_BRIEF.md": "b1fd9ac071857f0568246ebe322f59e56dadadce9c42fb3892fffe0131ac21c6",
+  "FABLE_FO02_REVIEW.md": "935d750c514dfcb354b1d62b44e9127c5a719a0e18491e8ff53a5cc435c49d36"
+ },
+ "done_stages_valid": true,
+ "optional_not_applied": "assert_isolated() in finalize_fo.main (Fable: optional; approved code left unchanged)",
+ "timestamp_note": "header times corrected at 07:55Z: brief 07:47Z (was a placeholder 07:55Z), review returned ~07:50Z (was a placeholder 08:00Z)"
+}

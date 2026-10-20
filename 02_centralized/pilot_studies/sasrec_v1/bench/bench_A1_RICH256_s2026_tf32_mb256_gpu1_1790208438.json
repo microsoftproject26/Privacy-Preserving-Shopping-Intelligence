@@ -1,0 +1,67 @@
+{
+  "run_id": "A1_RICH256",
+  "seed": 2026,
+  "microbatch": 256,
+  "store_build_seconds": 129.40845274925232,
+  "n_params": 42521440,
+  "physical_gpu": "1",
+  "precision_training": "tf32",
+  "precision_record": {
+    "cuda_matmul_allow_tf32": true,
+    "cudnn_allow_tf32": true,
+    "float32_matmul_precision": "high",
+    "cudnn_deterministic": true,
+    "cudnn_benchmark": false,
+    "deterministic_algorithms": true,
+    "deterministic_warn_only": true,
+    "reduced_precision_fp16_reduction": true,
+    "reduced_precision_bf16_reduction": true
+  },
+  "representative": {
+    "updates": 1000,
+    "median_step_ms": 75.82614943385124,
+    "p90_step_ms": 76.75399128347635,
+    "wall_decisions_per_s": 3369.8734688735535,
+    "data_wait_fraction": 0.0007958071980413609,
+    "peak_alloc_gib": 1.3620080947875977,
+    "peak_reserved_gib": 1.55859375,
+    "rss_gib": 16.919864654541016
+  },
+  "len1": {
+    "updates": 100,
+    "median_step_ms": 49.209246411919594,
+    "p90_step_ms": 50.25938265025616,
+    "wall_decisions_per_s": 5150.064260356161,
+    "data_wait_fraction": 0.0011427379352020827,
+    "peak_alloc_gib": 1.1572093963623047,
+    "peak_reserved_gib": 1.560546875,
+    "rss_gib": 16.986454010009766
+  },
+  "len10": {
+    "updates": 100,
+    "median_step_ms": 60.598104260861874,
+    "p90_step_ms": 61.280797608196735,
+    "wall_decisions_per_s": 4198.717794448267,
+    "data_wait_fraction": 0.001145389232849395,
+    "peak_alloc_gib": 1.2567968368530273,
+    "peak_reserved_gib": 1.560546875,
+    "rss_gib": 16.943923950195312
+  },
+  "len50": {
+    "updates": 100,
+    "median_step_ms": 111.80788930505514,
+    "p90_step_ms": 112.45213244110346,
+    "wall_decisions_per_s": 2283.712968600242,
+    "data_wait_fraction": 0.0005340237753465705,
+    "peak_alloc_gib": 1.7294425964355469,
+    "peak_reserved_gib": 2.017578125,
+    "rss_gib": 16.953125
+  },
+  "eval_rows_per_s_strict_fp32": 5909.045620129447,
+  "projection": {
+    "train_hours_per_epoch": 3.312076878581105,
+    "eval_hours_full_vs": 0.4149235561610898,
+    "hours_6_epochs_4_evals": 21.532155496130986,
+    "hours_5_epochs_3_evals": 17.805155061388795
+  }
+}

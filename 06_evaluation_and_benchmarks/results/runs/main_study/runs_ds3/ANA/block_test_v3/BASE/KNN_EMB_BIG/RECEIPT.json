@@ -1,0 +1,66 @@
+{
+  "baseline": "KNN_EMB",
+  "method": "KNN_EMB_BIG",
+  "config": {
+    "sknn_k": null,
+    "sknn_sample_size": null,
+    "grid": false,
+    "item_table_path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_p3/SASREC/02B_SASREC_s2026/sealed/checkpoints/best.pt",
+    "item_table_sha256": "df35157f8ea93762ffed75048a43217d8ce1406de208b8429fd3f04af226c749",
+    "family": "SASREC",
+    "table_role": "BIG",
+    "fit_chunk": null,
+    "eval_batch": 1024,
+    "eval_config": {
+      "frozen": true,
+      "path": "precomputed_scores",
+      "score_block": 158486,
+      "class_chunk": 32768,
+      "eval_batch": 1024,
+      "cache_bytes": 1073741824,
+      "metric_accumulation": "FP64",
+      "eval_device_class": "A16-FP32-DET",
+      "device_class_frozen": "A16-FP32-DET",
+      "lock_sha256": "0308640a79ef5fccb50bc456ee8f3ff1d506095c757e3b24fbb7b9c2e058238e",
+      "lock_version": "1.0.0",
+      "eval_batch_amendment_id": null,
+      "eval_stream": "EVAL_ROWS_ONLY"
+    }
+  },
+  "v4base_code_sha256": "27c17216541efedbbbb2b6beb37414aad5bbfe6a4841e72e02f179a03d3f4fca",
+  "evaluator_code_sha256": "61b64e61c1a2e4f5a6fecd42f0ad3b98de26562d13a07758573cc9496b8d962e",
+  "wall_s": 1700.382,
+  "n_rows": 48,
+  "grid": null,
+  "resource": {
+    "limit_bytes": 17179869184,
+    "peak_seen_bytes": 3144257536,
+    "n_checks": 317,
+    "rss_measurable_on_this_host": true
+  },
+  "low_priority": {
+    "torch_num_threads": 4,
+    "os_nice_available": true,
+    "os_nice_result": 19,
+    "nice_increment_requested": 10
+  },
+  "phase": "MAIN_TEST",
+  "test_gate": {
+    "all_methods_lock_sha256": "04a3cd196149e2acf2ab5bb004f58c997199aa52e32f3c11c9ae647255beed23",
+    "test_exposure_register_entry_id": 5,
+    "test_exposure_register_entry_sha256": "01c0d071b4ab47d3daf36768b895cd25a15ce672106414faf82e7febff98e27c",
+    "rule": "v4data09.d9_gate.check_test_gate: ALL_METHODS_LOCK.json file sha256 == the FIRST TEST_EXPOSURE_REGISTER entry with access_purpose MANIFEST_BUILD and split RETRO_TEST; the register hash chain verifies (tools/test_exposure_register.py verify)"
+  },
+  "registry_ext": {
+    "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/contracts/manifest_registry/REGISTRY_V2_TEST_EXT.json",
+    "self_sha256": "edae509681e1d449d49d91b24697f64cda98306c4e9011cadd39f81079dc7235"
+  },
+  "ranks": {
+    "ranks_file": "ranks_int32.npy",
+    "ranks_sha256": "58bf8f52c015943f616b111b507506511c6eafbe860bf538b00cabd7d6808e6c",
+    "n_tied_file": "n_tied_int32.npy",
+    "n_tied_sha256": "149fe474ba3e2441061f3f06338e976030c308ff3d488f936f87f1c3565b215b",
+    "rows_sha256": "159b276e1defb85c0b0e55e2a2f449f80b9eaa00678758b4e703c9deea46d381",
+    "self_sha256": "e6887763cd779091a871713075a204dcd22467b2ec3229b378464ad1cfdda95c"
+  }
+}

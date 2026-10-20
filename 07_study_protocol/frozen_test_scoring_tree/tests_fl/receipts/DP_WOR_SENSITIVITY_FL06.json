@@ -1,0 +1,57 @@
+{
+ "task": "FL-06",
+ "authority": "contracts/PREG1_AMENDMENT_06B.md \u00a74 (WOR sensitivity, analysis only)",
+ "source": "Wang, Balle & Kasiviswanathan 2019, 'Subsampled Renyi Differential Privacy and Analytical Moments Accountant', AISTATS 2019, PMLR 89:1226-1235 (arXiv:1808.00087v2), Theorem 9 (upper bound, integer alpha >= 2, sampling without replacement of m of n points, gamma = m/n, replace-one adjacency); Proposition 11 (lower bound)",
+ "theorem_9_gaussian_form": "eps'(alpha) <= 1/(alpha-1) log(1 + gamma^2 C(alpha,2) min{4(e^{eps(2)}-1), 2 e^{eps(2)}} + sum_{j=3}^{alpha} 2 gamma^j C(alpha,j) e^{(j-1) eps(j)}), eps(j) = j/(2 sigma^2); implemented as min(that, alpha/(2 sigma^2))",
+ "parameters": {
+  "m": 1024,
+  "N": 131072,
+  "T": 384,
+  "delta": 5e-06,
+  "gamma": 0.0078125
+ },
+ "orders_wor": [
+  2,
+  256
+ ],
+ "conversion": "standard (Mironov 2017 Prop. 3), identical to fl.accountant.rdp_to_epsilon",
+ "composition": "T * RDP (Mironov 2017 Prop. 1); per-round cohorts independent",
+ "values": [
+  {
+   "z": 0.5642,
+   "eps_registered_poisson_add_remove": 7.998245751758989,
+   "best_order_registered": 2.9,
+   "eps_registered_reference_from_packet": 7.99825,
+   "eps_poisson_on_integer_orders_2_256_info": 7.999847800151169,
+   "eps_wor_replace_one_c1_packet_literal": 9.959133390202531,
+   "best_order_wor_c1": 3,
+   "eps_wor_replace_one_c2_mechanism_faithful": 1388.1448872449914,
+   "best_order_wor_c2": 2,
+   "eps_rdp_floor_prop11_c1_info": 7.999847800151169,
+   "eps_rdp_floor_prop11_c2_info": 1132.4998892194433
+  },
+  {
+   "z": 1.3094,
+   "eps_registered_poisson_add_remove": 0.9998462503769788,
+   "best_order_registered": 16,
+   "eps_registered_reference_from_packet": 0.99985,
+   "eps_poisson_on_integer_orders_2_256_info": 0.9998462503769788,
+   "eps_wor_replace_one_c1_packet_literal": 1.5024015270523532,
+   "best_order_wor_c1": 15,
+   "eps_wor_replace_one_c2_mechanism_faithful": 6.68772582621574,
+   "best_order_wor_c2": 4,
+   "eps_rdp_floor_prop11_c1_info": 0.9998462503769788,
+   "eps_rdp_floor_prop11_c2_info": 5.329469016140623
+  }
+ ],
+ "eps4_z": 0.7244,
+ "eps4_achieved_epsilon": 3.9998550088907026,
+ "eps4_z_bisection": 0.7243903959169984,
+ "eps4_best_order": 4.7,
+ "eps4_note": "z for eps = 4 from the REGISTERED accountant (fl.accountant.z_for_epsilon, rounded UP to 4 dp, achieved eps recomputed at the rounded z; standard conversion; Poisson add/remove)",
+ "adjacency_statement": "The two numbers use DIFFERENT adjacencies. Registered (fl.accountant): Poisson subsampling bound, ADD/REMOVE one client, clipped-sum sensitivity S, sigma = z. WOR (this module): Theorem 9 of Wang-Balle-Kasiviswanathan 2019, REPLACE-one client, datasets of fixed size N. Precise relations: (1) a replace-one pair is two add/remove steps (remove x, add x'), so an add/remove (eps, delta) guarantee implies replace-one (2 eps, (1 + e^eps) delta) by group privacy of size 2 \u2014 the factor 2 runs from add/remove TO replace-one, not the other way; (2) replace-one does NOT imply add/remove in general (datasets of different size are never replace-one neighbours, and fixed-size WOR sampling is not defined at N +/- 1); (3) under the zero-out convention (a client is 'removed' by replacing it with a null record that contributes a zero delta, N fixed \u2014 how fl drop-out is simulated), zero-out pairs ARE replace-one pairs over the domain extended by the null record, so a replace-one eps bounds the zero-out loss with NO factor (group size 1); for the Poisson-subsampled sum, zero-out and add/remove give identical output distributions, so the registered eps is also a zero-out eps. Hence the like-for-like comparison with the registered eps is the mechanism-faithful WOR value (sensitivity_factor 2: replace-one sensitivity of the clipped sum is 2 S); the c = 1 value (packet-literal eps(alpha) = alpha/(2 z^2)) is NOT a valid bound for fl.dp and equals the c = 2 value at noise 2 z. Neither number changes the registered z.",
+ "floor_note": "eps_rdp_floor_prop11_* use the paper's Proposition 11 LOWER bound on the WOR RDP in place of Theorem 9 (same orders/conversion): no RDP-based WOR analysis on this order grid can go below it. It is not a lower bound on the true (eps, delta) (RDP->(eps, delta) conversion is lossy); info only.",
+ "registered_z_unchanged": true,
+ "accountant_py_sha256": "35160bdc72b0b3ff7c401bc24d7c7e484c2572fdd7a2a046645f39bdb338cea1",
+ "receipt_sha256": "e88bc83119ca117523ddd9051633528d57b475ebda1c21000e255d4b5a81a1a9"
+}

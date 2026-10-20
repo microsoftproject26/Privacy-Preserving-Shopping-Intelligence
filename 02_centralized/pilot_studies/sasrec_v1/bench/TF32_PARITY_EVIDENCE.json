@@ -1,0 +1,103 @@
+{
+  "rule_pass": true,
+  "checks": {
+    "loss_within_seed_band": true,
+    "all_finite": true,
+    "grad_norm_within_5pct": true,
+    "cohort_within_seed_band": true
+  },
+  "delta_tf32": 1.600694656467283e-05,
+  "delta_seeds": 0.005924081325531461,
+  "cohort_delta_tf32": 8.840113878250122e-05,
+  "cohort_delta_seeds": 0.0002211257815361023,
+  "param_trajectory_rel_diff_descriptive": {
+    "per_tensor": {
+      "output_bias": 0.00013634101116960276,
+      "item_embed.weight": 0.01483375696003298,
+      "pos_embed.weight": 0.010203949518389236,
+      "blocks.0.ln1.weight": 0.007632432803581681,
+      "blocks.0.ln1.bias": 0.002511727670015928,
+      "blocks.0.qkv.weight": 0.014231150701359342,
+      "blocks.0.qkv.bias": 0.04666984249203338,
+      "blocks.0.out.weight": 0.012422505572117234,
+      "blocks.0.out.bias": 0.006093759723847625,
+      "blocks.0.ln2.weight": 0.014168590565181183,
+      "blocks.0.ln2.bias": 0.005896070982093954,
+      "blocks.0.ff1.weight": 0.01843355049650019,
+      "blocks.0.ff1.bias": 0.011081636985465425,
+      "blocks.0.ff2.weight": 0.01650915498703506,
+      "blocks.0.ff2.bias": 0.011330102421187664,
+      "blocks.1.ln1.weight": 0.009865270302999208,
+      "blocks.1.ln1.bias": 0.013953978918201302,
+      "blocks.1.qkv.weight": 0.025177035504613726,
+      "blocks.1.qkv.bias": 0.049097764113920556,
+      "blocks.1.out.weight": 0.01535750108704277,
+      "blocks.1.out.bias": 0.009083565966098894,
+      "blocks.1.ln2.weight": 0.009250336935325714,
+      "blocks.1.ln2.bias": 0.005471283501625334,
+      "blocks.1.ff1.weight": 0.02011702821790337,
+      "blocks.1.ff1.bias": 0.009348493780857692,
+      "blocks.1.ff2.weight": 0.017318529683919927,
+      "blocks.1.ff2.bias": 0.012513721611825283,
+      "final_norm.weight": 0.0010041359578553165,
+      "final_norm.bias": 0.0012328336423977466
+    },
+    "overall": 0.0027335322151590784
+  },
+  "tolerance": 0.045949933767319186,
+  "grad_median_ratio": 1.0001237276842092,
+  "window": [
+    2001,
+    3000
+  ],
+  "FP32_A": {
+    "n_updates": 3000,
+    "all_finite": true,
+    "mean_loss_window": 8.005170488357544,
+    "median_grad_norm_window": 1.8739708065986633,
+    "first_loss": 12.0238618850708,
+    "last_loss": 7.885892868041992,
+    "cohort": {
+      "n": 112365,
+      "macro_mrr20": 0.0902605950832367,
+      "micro_recall20": 0.26072174310684204,
+      "eval": "strict_fp32"
+    },
+    "param_sample_file": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/bench/parity_FP32_A.losses.params.npz"
+  },
+  "TF32_A": {
+    "n_updates": 3000,
+    "all_finite": true,
+    "mean_loss_window": 8.00515448141098,
+    "median_grad_norm_window": 1.8742026686668396,
+    "first_loss": 12.023868560791016,
+    "last_loss": 7.8859171867370605,
+    "cohort": {
+      "n": 112365,
+      "macro_mrr20": 0.0901721939444542,
+      "micro_recall20": 0.26082855463027954,
+      "eval": "strict_fp32"
+    },
+    "param_sample_file": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/bench/parity_TF32_A.losses.params.npz"
+  },
+  "FP32_B": {
+    "n_updates": 3000,
+    "all_finite": true,
+    "mean_loss_window": 8.011094569683076,
+    "median_grad_norm_window": 1.8772388696670532,
+    "first_loss": 12.006954193115234,
+    "last_loss": 7.933159828186035,
+    "cohort": {
+      "n": 112365,
+      "macro_mrr20": 0.0904817208647728,
+      "micro_recall20": 0.25950250029563904,
+      "eval": "strict_fp32"
+    },
+    "param_sample_file": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/bench/parity_FP32_B.losses.params.npz"
+  },
+  "rule": "over updates 2001-3000:\n  |mean loss TF32_A - mean loss FP32_A| <= |mean loss FP32_A - mean loss FP32_B| + 0.005 * mean loss FP32_A,\n  no NaN/Inf anywhere, and median grad norms of TF32_A and FP32_A within 5%.\nplus (pre-registered, review/TF32_PARITY_PREREG.md) the end-of-gate strict-FP32 cohort metric\nband and a descriptive parameter-trajectory difference.",
+  "utc": "2026-09-24T00:00:12Z",
+  "seconds": 794.8547875881195,
+  "prereg": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/review/TF32_PARITY_PREREG.md",
+  "decision": "pending Fable review; bench/TF32_PARITY.json is written from Fable's ruling"
+}

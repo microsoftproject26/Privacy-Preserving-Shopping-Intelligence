@@ -1,0 +1,605 @@
+{
+  "task": "T-M",
+  "arms": {
+    "F0_item_only": {
+      "run_id": "T-M_F0_item_only",
+      "summary": {
+        "group": "F0_item_only",
+        "update_number": 7814,
+        "pass_index": 1,
+        "offset_in_pass": 1000000,
+        "consumed_decisions": 2000000,
+        "best_metric": 0.10079484432935715,
+        "target_update": 7814
+      },
+      "resource_usage": {
+        "group": "F0_item_only",
+        "run_id": "T-M_F0_item_only",
+        "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/gru_v1/experiments/gru/T-M_F0_item_only",
+        "target_update": 7814,
+        "n_updates_per_pass": 3907,
+        "train_wall_clock_s": 613.8894688077271,
+        "post_arm_analysis_wall_clock_s": 143.9233046080917,
+        "total_wall_clock_s": 757.8127734158188,
+        "throughput_decisions_per_s": 3257.915474400179,
+        "peak_memory_reserved_bytes": 2151677952,
+        "peak_memory_reserved_gib": 2.00390625,
+        "peak_host_rss_mb_before": 668.0,
+        "peak_host_rss_mb_after": 9729.11328125,
+        "n_updates_logged": 7814,
+        "n_nonfinite_losses": 0,
+        "consumed_decisions": 2000000,
+        "expected_exposures": 2000000,
+        "exposures_exact": true,
+        "final_pass_index": 1,
+        "final_update_number": 7814,
+        "best_metric": 0.10079484432935715
+      },
+      "passes": {
+        "pass_1": {
+          "k": 20,
+          "end_to_end": {
+            "n": 112365,
+            "micro": {
+              "recall@20": 0.18461264669895172,
+              "mrr@20": 0.06428257375955582,
+              "ndcg@20": 0.09091443568468094
+            },
+            "macro": {
+              "recall@20": 0.24239130318164825,
+              "mrr@20": 0.08342355489730835,
+              "ndcg@20": 0.11867397278547287,
+              "user_count": 10000
+            }
+          },
+          "closed": {
+            "n": 111866,
+            "micro": {
+              "recall@20": 0.18543614447116852,
+              "mrr@20": 0.06456931680440903,
+              "ndcg@20": 0.0913199707865715
+            },
+            "macro": {
+              "recall@20": 0.24295316636562347,
+              "mrr@20": 0.08364789932966232,
+              "ndcg@20": 0.11897280067205429,
+              "user_count": 9987
+            }
+          },
+          "user_count": 10000,
+          "cohorts": {
+            "warm": {
+              "end_to_end": {
+                "n": 92847,
+                "micro": {
+                  "recall@20": 0.1778625100851059,
+                  "mrr@20": 0.06248975545167923,
+                  "ndcg@20": 0.08802700787782669
+                },
+                "macro": {
+                  "recall@20": 0.23201243579387665,
+                  "mrr@20": 0.08047908544540405,
+                  "ndcg@20": 0.11405472457408905,
+                  "user_count": 7466
+                }
+              },
+              "closed": {
+                "n": 92435,
+                "micro": {
+                  "recall@20": 0.17865526676177979,
+                  "mrr@20": 0.06276828050613403,
+                  "ndcg@20": 0.0884193629026413
+                },
+                "macro": {
+                  "recall@20": 0.23244799673557281,
+                  "mrr@20": 0.08069108426570892,
+                  "ndcg@20": 0.11431647837162018,
+                  "user_count": 7459
+                }
+              }
+            },
+            "unseen": {
+              "end_to_end": {
+                "n": 19518,
+                "micro": {
+                  "recall@20": 0.2167230248451233,
+                  "mrr@20": 0.07281097024679184,
+                  "ndcg@20": 0.10464987903833389
+                },
+                "macro": {
+                  "recall@20": 0.2729708254337311,
+                  "mrr@20": 0.0920989140868187,
+                  "ndcg@20": 0.13228383660316467,
+                  "user_count": 2534
+                }
+              },
+              "closed": {
+                "n": 19431,
+                "micro": {
+                  "recall@20": 0.21769337356090546,
+                  "mrr@20": 0.07313698530197144,
+                  "ndcg@20": 0.10511843860149384
+                },
+                "macro": {
+                  "recall@20": 0.2739492356777191,
+                  "mrr@20": 0.0923721045255661,
+                  "ndcg@20": 0.13271160423755646,
+                  "user_count": 2528
+                }
+              }
+            }
+          }
+        },
+        "pass_2": {
+          "k": 20,
+          "end_to_end": {
+            "n": 112365,
+            "micro": {
+              "recall@20": 0.24237973988056183,
+              "mrr@20": 0.08174743503332138,
+              "ndcg@20": 0.11726987361907959
+            },
+            "macro": {
+              "recall@20": 0.2962068021297455,
+              "mrr@20": 0.10079484432935715,
+              "ndcg@20": 0.14417265355587006,
+              "user_count": 10000
+            }
+          },
+          "closed": {
+            "n": 111866,
+            "micro": {
+              "recall@20": 0.24346092343330383,
+              "mrr@20": 0.08211208879947662,
+              "ndcg@20": 0.11779297888278961
+            },
+            "macro": {
+              "recall@20": 0.2969793379306793,
+              "mrr@20": 0.10107140988111496,
+              "ndcg@20": 0.1445561796426773,
+              "user_count": 9987
+            }
+          },
+          "user_count": 10000,
+          "cohorts": {
+            "warm": {
+              "end_to_end": {
+                "n": 92847,
+                "micro": {
+                  "recall@20": 0.23540879786014557,
+                  "mrr@20": 0.07971605658531189,
+                  "ndcg@20": 0.11414793133735657
+                },
+                "macro": {
+                  "recall@20": 0.28717339038848877,
+                  "mrr@20": 0.09754182398319244,
+                  "ndcg@20": 0.1395912617444992,
+                  "user_count": 7466
+                }
+              },
+              "closed": {
+                "n": 92435,
+                "micro": {
+                  "recall@20": 0.23645804822444916,
+                  "mrr@20": 0.0800713524222374,
+                  "ndcg@20": 0.1146567091345787
+                },
+                "macro": {
+                  "recall@20": 0.28784188628196716,
+                  "mrr@20": 0.09781013429164886,
+                  "ndcg@20": 0.13994599878787994,
+                  "user_count": 7459
+                }
+              }
+            },
+            "unseen": {
+              "end_to_end": {
+                "n": 19518,
+                "micro": {
+                  "recall@20": 0.2755405306816101,
+                  "mrr@20": 0.09141073375940323,
+                  "ndcg@20": 0.13212093710899353
+                },
+                "macro": {
+                  "recall@20": 0.32282230257987976,
+                  "mrr@20": 0.11037930101156235,
+                  "ndcg@20": 0.15767095983028412,
+                  "user_count": 2534
+                }
+              },
+              "closed": {
+                "n": 19431,
+                "micro": {
+                  "recall@20": 0.27677422761917114,
+                  "mrr@20": 0.09182000905275345,
+                  "ndcg@20": 0.1327124834060669
+                },
+                "macro": {
+                  "recall@20": 0.3239400386810303,
+                  "mrr@20": 0.11069399118423462,
+                  "ndcg@20": 0.15815883874893188,
+                  "user_count": 2528
+                }
+              }
+            }
+          }
+        }
+      },
+      "engineering_criteria": {
+        "P1_finish_2_passes_zero_nonfinite_exact_exposures": {
+          "finished_2_passes": true,
+          "pass_index": 1,
+          "update_number": 7814,
+          "target_update": 7814,
+          "consumed_decisions": 2000000,
+          "expected_exposures": 2000000,
+          "exact_exposures": true,
+          "n_updates_logged": 7814,
+          "n_nonfinite_losses": 0,
+          "zero_nonfinite": true,
+          "pass": true
+        },
+        "P3_bit_identical_repeat_eval": {
+          "checkpoint": "best",
+          "checkpoint_pass_index": 1,
+          "checkpoint_update_number": 7814,
+          "eval_a_macro_mrr@20": 0.10079484432935715,
+          "eval_b_macro_mrr@20": 0.10079484432935715,
+          "bit_identical": true,
+          "pass": true
+        },
+        "P5_memory_bounds": {
+          "peak_memory_reserved_gib": 2.00390625,
+          "max_vram_gib": 8.0,
+          "vram_ok": true,
+          "peak_host_rss_mb": 9729.11328125,
+          "max_rss_mb": 24000.0,
+          "rss_ok": true,
+          "pass": true
+        },
+        "learning_signal_floor_ema200": {
+          "n_pass1_updates": 3907,
+          "ema_first200": 12.153889026997467,
+          "ema_end_pass1": 8.877216628320424,
+          "delta": 3.276672398677043,
+          "required_delta_min": 1.0,
+          "pass": true
+        }
+      },
+      "overfitting_check": {
+        "pass1_micro_mrr@20": 0.06428257375955582,
+        "pass2_micro_mrr@20": 0.08174743503332138,
+        "tolerance": 0.002,
+        "required_min": 0.062282573759555815,
+        "pass": true
+      }
+    },
+    "F4_rich_side_information": {
+      "run_id": "T-M_F4_rich_side_information",
+      "summary": {
+        "group": "F4_rich_side_information",
+        "update_number": 7814,
+        "pass_index": 1,
+        "offset_in_pass": 1000000,
+        "consumed_decisions": 2000000,
+        "best_metric": 0.10115985572338104,
+        "target_update": 7814
+      },
+      "resource_usage": {
+        "group": "F4_rich_side_information",
+        "run_id": "T-M_F4_rich_side_information",
+        "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/gru_v1/experiments/gru/T-M_F4_rich_side_information",
+        "target_update": 7814,
+        "n_updates_per_pass": 3907,
+        "train_wall_clock_s": 630.0850439798087,
+        "post_arm_analysis_wall_clock_s": 138.8276698924601,
+        "total_wall_clock_s": 768.9127138722688,
+        "throughput_decisions_per_s": 3174.1746913518086,
+        "peak_memory_reserved_bytes": 2164260864,
+        "peak_memory_reserved_gib": 2.015625,
+        "peak_host_rss_mb_before": 9729.11328125,
+        "peak_host_rss_mb_after": 9729.11328125,
+        "n_updates_logged": 7814,
+        "n_nonfinite_losses": 0,
+        "consumed_decisions": 2000000,
+        "expected_exposures": 2000000,
+        "exposures_exact": true,
+        "final_pass_index": 1,
+        "final_update_number": 7814,
+        "best_metric": 0.10115985572338104
+      },
+      "passes": {
+        "pass_1": {
+          "k": 20,
+          "end_to_end": {
+            "n": 112365,
+            "micro": {
+              "recall@20": 0.20625638961791992,
+              "mrr@20": 0.06482867151498795,
+              "ndcg@20": 0.09592229127883911
+            },
+            "macro": {
+              "recall@20": 0.27058765292167664,
+              "mrr@20": 0.08736728876829147,
+              "ndcg@20": 0.12781481444835663,
+              "user_count": 10000
+            }
+          },
+          "closed": {
+            "n": 111866,
+            "micro": {
+              "recall@20": 0.20717644691467285,
+              "mrr@20": 0.06511785089969635,
+              "ndcg@20": 0.09635017067193985
+            },
+            "macro": {
+              "recall@20": 0.2712480425834656,
+              "mrr@20": 0.08760140836238861,
+              "ndcg@20": 0.12814204394817352,
+              "user_count": 9987
+            }
+          },
+          "user_count": 10000,
+          "cohorts": {
+            "warm": {
+              "end_to_end": {
+                "n": 92847,
+                "micro": {
+                  "recall@20": 0.19876787066459656,
+                  "mrr@20": 0.06264058500528336,
+                  "ndcg@20": 0.09256646782159805
+                },
+                "macro": {
+                  "recall@20": 0.26137030124664307,
+                  "mrr@20": 0.08457625657320023,
+                  "ndcg@20": 0.12356394529342651,
+                  "user_count": 7466
+                }
+              },
+              "closed": {
+                "n": 92435,
+                "micro": {
+                  "recall@20": 0.19965380430221558,
+                  "mrr@20": 0.06291978061199188,
+                  "ndcg@20": 0.0929790586233139
+                },
+                "macro": {
+                  "recall@20": 0.26191431283950806,
+                  "mrr@20": 0.08478932827711105,
+                  "ndcg@20": 0.12384780496358871,
+                  "user_count": 7459
+                }
+              }
+            },
+            "unseen": {
+              "end_to_end": {
+                "n": 19518,
+                "micro": {
+                  "recall@20": 0.24187928438186646,
+                  "mrr@20": 0.07523740082979202,
+                  "ndcg@20": 0.1118859127163887
+                },
+                "macro": {
+                  "recall@20": 0.2977450489997864,
+                  "mrr@20": 0.09559057652950287,
+                  "ndcg@20": 0.1403392106294632,
+                  "user_count": 2534
+                }
+              },
+              "closed": {
+                "n": 19431,
+                "micro": {
+                  "recall@20": 0.24296227097511292,
+                  "mrr@20": 0.07557427138090134,
+                  "ndcg@20": 0.11238685995340347
+                },
+                "macro": {
+                  "recall@20": 0.29878777265548706,
+                  "mrr@20": 0.0958985835313797,
+                  "ndcg@20": 0.14081250131130219,
+                  "user_count": 2528
+                }
+              }
+            }
+          }
+        },
+        "pass_2": {
+          "k": 20,
+          "end_to_end": {
+            "n": 112365,
+            "micro": {
+              "recall@20": 0.261202335357666,
+              "mrr@20": 0.0795910656452179,
+              "ndcg@20": 0.11950802803039551
+            },
+            "macro": {
+              "recall@20": 0.3162176311016083,
+              "mrr@20": 0.10115985572338104,
+              "ndcg@20": 0.14872676134109497,
+              "user_count": 10000
+            }
+          },
+          "closed": {
+            "n": 111866,
+            "micro": {
+              "recall@20": 0.26236748695373535,
+              "mrr@20": 0.07994609326124191,
+              "ndcg@20": 0.12004111707210541
+            },
+            "macro": {
+              "recall@20": 0.3169907331466675,
+              "mrr@20": 0.1013994812965393,
+              "ndcg@20": 0.1490841507911682,
+              "user_count": 9987
+            }
+          },
+          "user_count": 10000,
+          "cohorts": {
+            "warm": {
+              "end_to_end": {
+                "n": 92847,
+                "micro": {
+                  "recall@20": 0.25493553280830383,
+                  "mrr@20": 0.07743341475725174,
+                  "ndcg@20": 0.11642780900001526
+                },
+                "macro": {
+                  "recall@20": 0.3085006773471832,
+                  "mrr@20": 0.09813230484724045,
+                  "ndcg@20": 0.14458930492401123,
+                  "user_count": 7466
+                }
+              },
+              "closed": {
+                "n": 92435,
+                "micro": {
+                  "recall@20": 0.2560718357563019,
+                  "mrr@20": 0.07777855545282364,
+                  "ndcg@20": 0.1169467568397522
+                },
+                "macro": {
+                  "recall@20": 0.3091547191143036,
+                  "mrr@20": 0.09834998100996017,
+                  "ndcg@20": 0.14490365982055664,
+                  "user_count": 7459
+                }
+              }
+            },
+            "unseen": {
+              "end_to_end": {
+                "n": 19518,
+                "micro": {
+                  "recall@20": 0.2910134196281433,
+                  "mrr@20": 0.08985498547554016,
+                  "ndcg@20": 0.13416065275669098
+                },
+                "macro": {
+                  "recall@20": 0.3389543294906616,
+                  "mrr@20": 0.11008001118898392,
+                  "ndcg@20": 0.16091707348823547,
+                  "user_count": 2534
+                }
+              },
+              "closed": {
+                "n": 19431,
+                "micro": {
+                  "recall@20": 0.29231640696525574,
+                  "mrr@20": 0.09025729447603226,
+                  "ndcg@20": 0.13476133346557617
+                },
+                "macro": {
+                  "recall@20": 0.34011122584342957,
+                  "mrr@20": 0.11039721965789795,
+                  "ndcg@20": 0.16141891479492188,
+                  "user_count": 2528
+                }
+              }
+            }
+          }
+        }
+      },
+      "engineering_criteria": {
+        "P1_finish_2_passes_zero_nonfinite_exact_exposures": {
+          "finished_2_passes": true,
+          "pass_index": 1,
+          "update_number": 7814,
+          "target_update": 7814,
+          "consumed_decisions": 2000000,
+          "expected_exposures": 2000000,
+          "exact_exposures": true,
+          "n_updates_logged": 7814,
+          "n_nonfinite_losses": 0,
+          "zero_nonfinite": true,
+          "pass": true
+        },
+        "P3_bit_identical_repeat_eval": {
+          "checkpoint": "best",
+          "checkpoint_pass_index": 1,
+          "checkpoint_update_number": 7814,
+          "eval_a_macro_mrr@20": 0.10115985572338104,
+          "eval_b_macro_mrr@20": 0.10115985572338104,
+          "bit_identical": true,
+          "pass": true
+        },
+        "P5_memory_bounds": {
+          "peak_memory_reserved_gib": 2.015625,
+          "max_vram_gib": 8.0,
+          "vram_ok": true,
+          "peak_host_rss_mb": 9729.11328125,
+          "max_rss_mb": 24000.0,
+          "rss_ok": true,
+          "pass": true
+        },
+        "learning_signal_floor_ema200": {
+          "n_pass1_updates": 3907,
+          "ema_first200": 12.248084564244822,
+          "ema_end_pass1": 8.56134734644761,
+          "delta": 3.686737217797212,
+          "required_delta_min": 1.0,
+          "pass": true
+        }
+      },
+      "overfitting_check": {
+        "pass1_micro_mrr@20": 0.06482867151498795,
+        "pass2_micro_mrr@20": 0.0795910656452179,
+        "tolerance": 0.002,
+        "required_min": 0.06282867151498794,
+        "pass": true
+      }
+    }
+  },
+  "baselines": {
+    "POP": {
+      "micro_recall@20": 0.0489,
+      "micro_mrr@20": 0.01145,
+      "macro_recall@20": 0.0862,
+      "macro_mrr@20": 0.02189
+    },
+    "TRANS_macro_mrr@20": 0.13308
+  },
+  "GO1_sanity_floor": {
+    "checkpoint": "best (F0)",
+    "micro_recall@20": 0.24237973988056183,
+    "threshold_micro_recall_ge": 0.07335,
+    "micro_recall_pass": true,
+    "macro_recall@20": 0.2962068021297455,
+    "threshold_macro_recall_ge": 0.1293,
+    "macro_recall_pass": true,
+    "micro_mrr@20": 0.08174743503332138,
+    "threshold_micro_mrr_gt": 0.01145,
+    "micro_mrr_pass": true,
+    "macro_mrr@20": 0.10079484432935715,
+    "threshold_macro_mrr_gt": 0.02189,
+    "macro_mrr_pass": true,
+    "pass": true
+  },
+  "GO2_vs_trans": {
+    "checkpoint": "best (F0)",
+    "macro_mrr@20": 0.10079484432935715,
+    "trans_baseline_macro_mrr@20": 0.13308,
+    "approved_min": 0.13308,
+    "approved_with_one_change_min": 0.11977,
+    "verdict": "NO_GO"
+  },
+  "bootstrap_F4_vs_F0": {
+    "n_users": 10000,
+    "n_resamples": 1000,
+    "seed": 2026,
+    "metric": "macro_mrr@20_end_to_end, per-user paired difference (F4 - F0), best checkpoints",
+    "point_estimate_mean_diff": 0.00036501704165712,
+    "ci_95_lower": -0.0010053333779916282,
+    "ci_95_upper": 0.0016981395777381839,
+    "note": "never gates the GRU go/no-go decision"
+  },
+  "mechanical_summary": {
+    "P1_pass_both_arms": true,
+    "P3_pass_both_arms": true,
+    "P5_pass_both_arms": true,
+    "learning_signal_floor_pass_F0": true,
+    "learning_signal_floor_pass_F4": true,
+    "GO1_pass": true,
+    "GO2_verdict": "NO_GO",
+    "overfitting_pass_F0": true,
+    "overfitting_pass_F4": true
+  }
+}

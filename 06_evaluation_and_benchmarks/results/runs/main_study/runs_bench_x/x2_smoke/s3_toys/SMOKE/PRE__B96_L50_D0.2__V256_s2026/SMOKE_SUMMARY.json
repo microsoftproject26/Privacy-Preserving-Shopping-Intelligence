@@ -1,0 +1,107 @@
+{
+ "arm": "PRE",
+ "epochs_run": 0.06104685823297961,
+ "label": "SMOKE_NOT_EVIDENCE",
+ "spec": {
+  "N_decisions": 16774,
+  "arm": "PRE",
+  "betas": [
+   0.9,
+   0.999
+  ],
+  "budget_efe": 96,
+  "central_recipe_id": "02B_SASREC",
+  "dropout": [
+   0.2
+  ],
+  "early_stop_marks": null,
+  "effective_batch": 256,
+  "eps": 1e-08,
+  "exploratory": "POST_HOC_X",
+  "exposure_point": "end",
+  "grad_clip": 1.0,
+  "init_sha256": "c5d6b339cd73268b2c0ffbc6f7ca6bbc4e97c2c834f98dfe82629de4352e7656",
+  "lr_table_sha256": "d11e5b269e284a35aec2dd8ff63d81ac3cf45e87a4d5d30c476d48f9d9e726c6",
+  "marks": [
+   8.0,
+   16.0,
+   24.0,
+   32.0,
+   40.0,
+   48.0,
+   56.0,
+   64.0,
+   72.0,
+   80.0,
+   88.0,
+   96.0
+  ],
+  "max_len": 50,
+  "n_updates": 6336,
+  "peak_lr": 0.00040005642964899735,
+  "provenance": null,
+  "schedule": "S0",
+  "seed": 2026,
+  "select_population": "BAND",
+  "study": "A2B_D256",
+  "tag": "POST_HOC_EXPLORATORY",
+  "user_subset": null,
+  "variant": "SASREC_D256_B3",
+  "weight_decay": 1e-05
+ },
+ "summary": {
+  "ALL": {
+   "hr@10": 0.0008285004142502071,
+   "hr@20": 0.0013463131731565865,
+   "mrr@20": 0.0003039394641766224,
+   "n_unreachable": 0,
+   "n_users": 19312,
+   "ndcg@10": 0.0004006497461471644,
+   "ndcg@20": 0.0005266371699451888
+  },
+  "BAND": {
+   "hr@10": 0.0003447087211306446,
+   "hr@20": 0.0003447087211306446,
+   "mrr@20": 8.617718028266115e-05,
+   "n_unreachable": 0,
+   "n_users": 2901,
+   "ndcg@10": 0.0001484579655544271,
+   "ndcg@20": 0.0001484579655544271
+  },
+  "BAND_COVERED_TARGET": {
+   "hr@10": 0.0007462180313411573,
+   "hr@20": 0.0013567600569839224,
+   "mrr@20": 0.0002568581235225289,
+   "n_unreachable": 0,
+   "n_users": 14741,
+   "ndcg@10": 0.0003404453160014371,
+   "ndcg@20": 0.0004895301959295838
+  },
+  "BAND_UNCOVERED_TARGET": {
+   "hr@10": 0.0010938525486764385,
+   "hr@20": 0.0013126230584117262,
+   "mrr@20": 0.00045577189528184936,
+   "n_unreachable": 0,
+   "n_users": 4571,
+   "ndcg@10": 0.0005948027771640459,
+   "ndcg@20": 0.0006463033051374955
+  },
+  "OTHERS": {
+   "hr@10": 0.0009140210834196576,
+   "hr@20": 0.0015233684723660959,
+   "mrr@20": 0.00034243366840405417,
+   "n_unreachable": 0,
+   "n_users": 16411,
+   "ndcg@10": 0.0004452301102626681,
+   "ndcg@20": 0.0005934885423135759
+  }
+ },
+ "timing": {
+  "eval_s": 3.46,
+  "mean_step_s": 0.5461342525668442,
+  "median_step_s": 0.5212724860757589,
+  "n_steps_this_leg": 4,
+  "n_updates_full_run": 6336,
+  "wall_s_this_leg": 2.19
+ }
+}

@@ -1,0 +1,2613 @@
+{
+ "receipt": "INT01_SERVER_RECEIPT",
+ "task": "INT-01",
+ "labels": [
+  "SMOKE_NOT_EVIDENCE",
+  "HISTORICAL_POPULATION"
+ ],
+ "label_notes": "every smoke row / result is SMOKE_NOT_EVIDENCE (never valid for any selection); M01 / M05 / M02 / M06 are HISTORICAL after OWNER_AMENDMENT_POP_5_100 (DECISION_LOG 31): these are data-path and infrastructure measurements (throughput, RSS, bytes per row, bitwise cache = stream, resume, theta0 consistency), never population evidence",
+ "host": "jupyter-group-digi2026-g8",
+ "utc_assembled": "2026-09-26T19:17:14Z",
+ "tags": "PROJECT_MEASURED (server, this run)",
+ "gpu": "physical GPU 0 only",
+ "code_sha256_at_measurement": {
+  "v4int/__init__.py": "6ba080248896a6bff27ef59b34723ed7b42a604ec1cda1b464472036aacb9db1",
+  "v4int/cache.py": "3a9663974f597d311b900e456e84b3cd81065c3c42b63a36563057859b1a05c0",
+  "v4int/launch_central.py": "2cda65340d914cb764a5a7c95b81c0dd44b7a880d0ab3f504fd4d94fb6a8ee27",
+  "v4int/providers.py": "a50e8ccff36006500fe9301f74cd904711d640fe78e90512616ea332215ca941",
+  "v4int/smoke.py": "0ea39fd3198ea811e5524941397cbc1f30f19b95c5c7dc78d5b315c64a3f2edd",
+  "v4int/verify.py": "e4071730992e020e3592680d6ee097c2cf09062843998acdc9043aa3ef63968e",
+  "tests_int/conftest.py": "144d9b2cc7ef544b2ef99252bc014a9c520d0f3fbdfb6f463ff903e0313cc67e",
+  "tests_int/intkit.py": "cd6ea4e9b02c2aa091a9edf53ba8f8d00049628b483e13bb39afc76dbbb3b5cb",
+  "tests_int/run_all.py": "e49d3ef3ea5102430440dddb63a1c23543e327af8791e158f50de29239f18a67",
+  "tests_int/server/int01_measure.py": "164949de2eabc45a12ab4f70b3f7465ba85adc72be5c2c7f50cd186411a3ec74",
+  "tests_int/test_cache_stream.py": "18b920619e52c52b6c40aa1e1933771084a3a515968e21e38aaf7f2224c61140",
+  "tests_int/test_eval_stream.py": "ee73fa6d7e8be010d588edd6549936e66b708d5740ed9d1a3dcff3ebbd27cf49",
+  "tests_int/test_launcher.py": "4dd9bd2390e4bbf8bb3e68482c609ae55b1ddfd2dbe37a5e82a516eff94b461f",
+  "tests_int/test_protocol_order_targets.py": "e4349a106683f0dfc5e8969deb864356042442ee0fa3fdae205069d9dd01a563",
+  "tests_int/test_resume_exact.py": "8df7b355f7cf931689d0c1145767fa5624d045d4d96dc9d9a9952f14ecdc7de1",
+  "tests_int/test_smoke_selection.py": "025838649d7cc57f0b9006ec343c9c63146227fa4711cb803fb8a6ab2c1c6cef",
+  "tests_int/test_verification.py": "d8e46b32d9d829734189976885df9f96b704fdfa0462d760b42fa3192d469ab0"
+ },
+ "code_sha256_at_assembly": {
+  "v4int/__init__.py": "6ba080248896a6bff27ef59b34723ed7b42a604ec1cda1b464472036aacb9db1",
+  "v4int/cache.py": "3a9663974f597d311b900e456e84b3cd81065c3c42b63a36563057859b1a05c0",
+  "v4int/launch_central.py": "d8facf4a9602211846ccebde876a207847085579334bcb5f6340522d66c3954a",
+  "v4int/providers.py": "eaf4404d252acae743f4996ba30d938c98f4b1a73e9ac71706ecdf21be885514",
+  "v4int/smoke.py": "0ea39fd3198ea811e5524941397cbc1f30f19b95c5c7dc78d5b315c64a3f2edd",
+  "v4int/verify.py": "21577bbdd86e8b15d9425baa172e70f47c02b086920aab912985abe35f68f157",
+  "tests_int/conftest.py": "144d9b2cc7ef544b2ef99252bc014a9c520d0f3fbdfb6f463ff903e0313cc67e",
+  "tests_int/intkit.py": "cd6ea4e9b02c2aa091a9edf53ba8f8d00049628b483e13bb39afc76dbbb3b5cb",
+  "tests_int/run_all.py": "e49d3ef3ea5102430440dddb63a1c23543e327af8791e158f50de29239f18a67",
+  "tests_int/server/int01_measure.py": "84e5e604f60dd0a594dc4e630a403811c3275be5231835f04a31f21ff5843c93",
+  "tests_int/test_cache_stream.py": "18b920619e52c52b6c40aa1e1933771084a3a515968e21e38aaf7f2224c61140",
+  "tests_int/test_eval_stream.py": "ee73fa6d7e8be010d588edd6549936e66b708d5740ed9d1a3dcff3ebbd27cf49",
+  "tests_int/test_launcher.py": "ae89039ff1d1251dfa234d4e02b2f3b6e1345578f7a3f4a1b01343ffbb7577e4",
+  "tests_int/test_protocol_order_targets.py": "c7ece104bc7961b1878f4797a1d9c47cf35d1470cb1f451c9965217cc4433a13",
+  "tests_int/test_resume_exact.py": "8df7b355f7cf931689d0c1145767fa5624d045d4d96dc9d9a9952f14ecdc7de1",
+  "tests_int/test_smoke_selection.py": "025838649d7cc57f0b9006ec343c9c63146227fa4711cb803fb8a6ab2c1c6cef",
+  "tests_int/test_verification.py": "e5dd7f33fd6f0dac18e17fea2c02b40eba157a3feed562fe4305122d2c4d57ba"
+ },
+ "steps": [
+  {
+   "step": "provider_M01_COHORT_TRAIN",
+   "utc_start": "2026-09-26T18:25:24Z",
+   "resources_before": {
+    "utc": "2026-09-26T18:25:24Z",
+    "nvidia_smi": "0, 0 MiB, 15356 MiB, 0 %\n1, 2308 MiB, 15356 MiB, 94 %",
+    "nvidia_smi_compute_apps": "00000000:E8:00.0, 300183, 2300 MiB",
+    "free_g": "total        used        free      shared  buff/cache   available\nMem:            1007          68          70          13         891         938\nSwap:              0           0           0",
+    "df_home": "/dev/longhorn/pvc-887ca12c-2b82-4d41-8e47-80ecbb3a9dd4   49G   39G   11G  79% /home/jovyan",
+    "loadavg": [
+     5.6337890625,
+     4.70361328125,
+     4.84326171875
+    ],
+    "cgroup_memory_current_bytes": 31688466432
+   },
+   "argv": [
+    "-B",
+    "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/code/tests_int/server/int01_measure.py",
+    "provider",
+    "--manifest",
+    "M01_COHORT_TRAIN"
+   ],
+   "exit_code": 0,
+   "utc_end": "2026-09-26T18:26:52Z"
+  },
+  {
+   "step": "provider_M05_CALIB_TRAIN",
+   "utc_start": "2026-09-26T18:26:52Z",
+   "resources_before": {
+    "utc": "2026-09-26T18:26:52Z",
+    "nvidia_smi": "0, 0 MiB, 15356 MiB, 0 %\n1, 0 MiB, 15356 MiB, 0 %",
+    "nvidia_smi_compute_apps": "",
+    "free_g": "total        used        free      shared  buff/cache   available\nMem:            1007          68          70          13         891         939\nSwap:              0           0           0",
+    "df_home": "/dev/longhorn/pvc-887ca12c-2b82-4d41-8e47-80ecbb3a9dd4   49G   39G   11G  79% /home/jovyan",
+    "loadavg": [
+     5.29296875,
+     4.98583984375,
+     4.94189453125
+    ],
+    "cgroup_memory_current_bytes": 30889078784
+   },
+   "argv": [
+    "-B",
+    "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/code/tests_int/server/int01_measure.py",
+    "provider",
+    "--manifest",
+    "M05_CALIB_TRAIN"
+   ],
+   "exit_code": 0,
+   "utc_end": "2026-09-26T18:28:19Z"
+  },
+  {
+   "step": "provider_M02_VALIDATION_WARM",
+   "utc_start": "2026-09-26T18:28:19Z",
+   "resources_before": {
+    "utc": "2026-09-26T18:28:19Z",
+    "nvidia_smi": "0, 0 MiB, 15356 MiB, 0 %\n1, 2308 MiB, 15356 MiB, 94 %",
+    "nvidia_smi_compute_apps": "00000000:E8:00.0, 300682, 2300 MiB",
+    "free_g": "total        used        free      shared  buff/cache   available\nMem:            1007          69          70          13         890         938\nSwap:              0           0           0",
+    "df_home": "/dev/longhorn/pvc-887ca12c-2b82-4d41-8e47-80ecbb3a9dd4   49G   38G   12G  77% /home/jovyan",
+    "loadavg": [
+     5.06787109375,
+     4.99951171875,
+     4.9521484375
+    ],
+    "cgroup_memory_current_bytes": 30870093824
+   },
+   "argv": [
+    "-B",
+    "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/code/tests_int/server/int01_measure.py",
+    "provider",
+    "--manifest",
+    "M02_VALIDATION_WARM"
+   ],
+   "exit_code": 0,
+   "utc_end": "2026-09-26T18:29:16Z"
+  },
+  {
+   "step": "provider_M06_CALIB_VALIDATION_WARM",
+   "utc_start": "2026-09-26T18:29:16Z",
+   "resources_before": {
+    "utc": "2026-09-26T18:29:16Z",
+    "nvidia_smi": "0, 0 MiB, 15356 MiB, 0 %\n1, 0 MiB, 15356 MiB, 0 %",
+    "nvidia_smi_compute_apps": "",
+    "free_g": "total        used        free      shared  buff/cache   available\nMem:            1007          68          71          13         890         939\nSwap:              0           0           0",
+    "df_home": "/dev/longhorn/pvc-887ca12c-2b82-4d41-8e47-80ecbb3a9dd4   49G   38G   12G  78% /home/jovyan",
+    "loadavg": [
+     5.5068359375,
+     5.1494140625,
+     5.00732421875
+    ],
+    "cgroup_memory_current_bytes": 30076051456
+   },
+   "argv": [
+    "-B",
+    "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/code/tests_int/server/int01_measure.py",
+    "provider",
+    "--manifest",
+    "M06_CALIB_VALIDATION_WARM"
+   ],
+   "exit_code": 0,
+   "utc_end": "2026-09-26T18:29:59Z"
+  },
+  {
+   "step": "proof_train",
+   "utc_start": "2026-09-26T18:29:59Z",
+   "resources_before": {
+    "utc": "2026-09-26T18:29:59Z",
+    "nvidia_smi": "0, 0 MiB, 15356 MiB, 0 %\n1, 0 MiB, 15356 MiB, 0 %",
+    "nvidia_smi_compute_apps": "",
+    "free_g": "total        used        free      shared  buff/cache   available\nMem:            1007          68          71          13         890         939\nSwap:              0           0           0",
+    "df_home": "/dev/longhorn/pvc-887ca12c-2b82-4d41-8e47-80ecbb3a9dd4   49G   38G   12G  78% /home/jovyan",
+    "loadavg": [
+     5.0546875,
+     5.06884765625,
+     4.98583984375
+    ],
+    "cgroup_memory_current_bytes": 30020382720
+   },
+   "argv": [
+    "-B",
+    "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/code/tests_int/server/int01_measure.py",
+    "proof-train"
+   ],
+   "exit_code": 0,
+   "utc_end": "2026-09-26T18:34:00Z"
+  },
+  {
+   "step": "proof_eval",
+   "exit_code": "NOT_RECORDED_BY_ORCHESTRATOR",
+   "note": "the first orchestrator (pid 300288) was stopped at 18:35:21Z for the Operations disk-rule update; its child completed and wrote parts/proof_eval.json",
+   "utc_start": "2026-09-26T18:34:02Z",
+   "utc_end": "2026-09-26T18:36:15Z",
+   "all_equal": [
+    true,
+    true
+   ]
+  },
+  {
+   "step": "bench_step",
+   "utc_start": "2026-09-26T18:38:37Z",
+   "resources_before": {
+    "utc": "2026-09-26T18:38:37Z",
+    "nvidia_smi": "0, 0 MiB, 15356 MiB, 0 %\n1, 0 MiB, 15356 MiB, 0 %",
+    "nvidia_smi_compute_apps": "",
+    "free_g": "total        used        free      shared  buff/cache   available\nMem:            1007          67          73          13         889         940\nSwap:              0           0           0",
+    "df_home": "/dev/longhorn/pvc-887ca12c-2b82-4d41-8e47-80ecbb3a9dd4   49G   37G   13G  76% /home/jovyan",
+    "loadavg": [
+     2.54150390625,
+     3.94677734375,
+     4.5478515625
+    ],
+    "cgroup_memory_current_bytes": 28939538432
+   },
+   "disk_before": {
+    "utc": "2026-09-26T18:38:37Z",
+    "df_B1": "/dev/longhorn/pvc-887ca12c-2b82-4d41-8e47-80ecbb3a9dd4 52521566208 39512649728 12992139264  76% /home/jovyan",
+    "free_bytes": 12992139264
+   },
+   "argv": [
+    "-B",
+    "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/code/tests_int/server/int01_measure.py",
+    "bench-step"
+   ],
+   "exit_code": 0,
+   "utc_end": "2026-09-26T18:41:38Z",
+   "disk_after": {
+    "utc": "2026-09-26T18:41:38Z",
+    "df_B1": "/dev/longhorn/pvc-887ca12c-2b82-4d41-8e47-80ecbb3a9dd4 52521566208 39512662016 12992126976  76% /home/jovyan",
+    "free_bytes": 12992126976
+   }
+  },
+  {
+   "step": "theta0",
+   "utc_start": "2026-09-26T18:41:38Z",
+   "resources_before": {
+    "utc": "2026-09-26T18:41:38Z",
+    "nvidia_smi": "0, 0 MiB, 15356 MiB, 0 %\n1, 0 MiB, 15356 MiB, 0 %",
+    "nvidia_smi_compute_apps": "",
+    "free_g": "total        used        free      shared  buff/cache   available\nMem:            1007          67          73          13         889         940\nSwap:              0           0           0",
+    "df_home": "/dev/longhorn/pvc-887ca12c-2b82-4d41-8e47-80ecbb3a9dd4   49G   37G   13G  76% /home/jovyan",
+    "loadavg": [
+     3.39501953125,
+     3.85595703125,
+     4.4111328125
+    ],
+    "cgroup_memory_current_bytes": 28937887744
+   },
+   "disk_before": {
+    "utc": "2026-09-26T18:41:38Z",
+    "df_B1": "/dev/longhorn/pvc-887ca12c-2b82-4d41-8e47-80ecbb3a9dd4 52521566208 39512666112 12992122880  76% /home/jovyan",
+    "free_bytes": 12992122880
+   },
+   "argv": [
+    "-B",
+    "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/code/tests_int/server/int01_measure.py",
+    "theta0"
+   ],
+   "exit_code": 0,
+   "utc_end": "2026-09-26T18:54:12Z",
+   "disk_after": {
+    "utc": "2026-09-26T18:54:12Z",
+    "df_B1": "/dev/longhorn/pvc-887ca12c-2b82-4d41-8e47-80ecbb3a9dd4 52521566208 39512686592 12992102400  76% /home/jovyan",
+    "free_bytes": 12992102400
+   }
+  },
+  {
+   "step": "smoke_GRU_A_straight_600",
+   "utc_start": "2026-09-26T18:54:12Z",
+   "resources_before": {
+    "utc": "2026-09-26T18:54:12Z",
+    "nvidia_smi": "0, 0 MiB, 15356 MiB, 0 %\n1, 0 MiB, 15356 MiB, 0 %",
+    "nvidia_smi_compute_apps": "",
+    "free_g": "total        used        free      shared  buff/cache   available\nMem:            1007          67          73          13         889         940\nSwap:              0           0           0",
+    "df_home": "/dev/longhorn/pvc-887ca12c-2b82-4d41-8e47-80ecbb3a9dd4   49G   37G   13G  76% /home/jovyan",
+    "loadavg": [
+     3.4619140625,
+     4.5625,
+     4.8447265625
+    ],
+    "cgroup_memory_current_bytes": 28938182656
+   },
+   "disk_before": {
+    "utc": "2026-09-26T18:54:12Z",
+    "df_B1": "/dev/longhorn/pvc-887ca12c-2b82-4d41-8e47-80ecbb3a9dd4 52521566208 39512686592 12992102400  76% /home/jovyan",
+    "free_bytes": 12992102400
+   },
+   "argv": [
+    "-B",
+    "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/code/v4int/launch_central.py",
+    "--family",
+    "GRU",
+    "--seed",
+    "2026",
+    "--phase",
+    "CALIBRATION",
+    "--peak-lr",
+    "1e-3",
+    "--gpu",
+    "0",
+    "--smoke",
+    "--smoke-updates",
+    "600",
+    "--checkpoint-every",
+    "300",
+    "--run-dir",
+    "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_g1/int01/smoke/GRU/A"
+   ],
+   "exit_code": 0,
+   "utc_end": "2026-09-26T18:57:14Z",
+   "disk_after": {
+    "utc": "2026-09-26T18:57:14Z",
+    "df_B1": "/dev/longhorn/pvc-887ca12c-2b82-4d41-8e47-80ecbb3a9dd4 52521566208 39512928256 12991860736  76% /home/jovyan",
+    "free_bytes": 12991860736
+   }
+  },
+  {
+   "step": "smoke_GRU_B1_interrupt_300",
+   "utc_start": "2026-09-26T18:57:14Z",
+   "resources_before": {
+    "utc": "2026-09-26T18:57:14Z",
+    "nvidia_smi": "0, 0 MiB, 15356 MiB, 0 %\n1, 0 MiB, 15356 MiB, 0 %",
+    "nvidia_smi_compute_apps": "",
+    "free_g": "total        used        free      shared  buff/cache   available\nMem:            1007          67          73          13         889         940\nSwap:              0           0           0",
+    "df_home": "/dev/longhorn/pvc-887ca12c-2b82-4d41-8e47-80ecbb3a9dd4   49G   37G   13G  76% /home/jovyan",
+    "loadavg": [
+     4.15234375,
+     4.373046875,
+     4.71875
+    ],
+    "cgroup_memory_current_bytes": 28939083776
+   },
+   "disk_before": {
+    "utc": "2026-09-26T18:57:14Z",
+    "df_B1": "/dev/longhorn/pvc-887ca12c-2b82-4d41-8e47-80ecbb3a9dd4 52521566208 39512932352 12991856640  76% /home/jovyan",
+    "free_bytes": 12991856640
+   },
+   "argv": [
+    "-B",
+    "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/code/v4int/launch_central.py",
+    "--family",
+    "GRU",
+    "--seed",
+    "2026",
+    "--phase",
+    "CALIBRATION",
+    "--peak-lr",
+    "1e-3",
+    "--gpu",
+    "0",
+    "--smoke",
+    "--smoke-updates",
+    "600",
+    "--checkpoint-every",
+    "300",
+    "--run-dir",
+    "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_g1/int01/smoke/GRU/B",
+    "--smoke-interrupt-at",
+    "300"
+   ],
+   "exit_code": 0,
+   "utc_end": "2026-09-26T18:59:27Z",
+   "disk_after": {
+    "utc": "2026-09-26T18:59:27Z",
+    "df_B1": "/dev/longhorn/pvc-887ca12c-2b82-4d41-8e47-80ecbb3a9dd4 52521566208 39765856256 12738932736  76% /home/jovyan",
+    "free_bytes": 12738932736
+   }
+  },
+  {
+   "step": "smoke_GRU_B2_resume_to_600",
+   "utc_start": "2026-09-26T18:59:27Z",
+   "resources_before": {
+    "utc": "2026-09-26T18:59:27Z",
+    "nvidia_smi": "0, 0 MiB, 15356 MiB, 0 %\n1, 0 MiB, 15356 MiB, 0 %",
+    "nvidia_smi_compute_apps": "",
+    "free_g": "total        used        free      shared  buff/cache   available\nMem:            1007          68          72          13         889         939\nSwap:              0           0           0",
+    "df_home": "/dev/longhorn/pvc-887ca12c-2b82-4d41-8e47-80ecbb3a9dd4   49G   38G   12G  76% /home/jovyan",
+    "loadavg": [
+     6.814453125,
+     5.46142578125,
+     5.0732421875
+    ],
+    "cgroup_memory_current_bytes": 29145133056
+   },
+   "disk_before": {
+    "utc": "2026-09-26T18:59:28Z",
+    "df_B1": "/dev/longhorn/pvc-887ca12c-2b82-4d41-8e47-80ecbb3a9dd4 52521566208 39765856256 12738932736  76% /home/jovyan",
+    "free_bytes": 12738932736
+   },
+   "argv": [
+    "-B",
+    "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/code/v4int/launch_central.py",
+    "--family",
+    "GRU",
+    "--seed",
+    "2026",
+    "--phase",
+    "CALIBRATION",
+    "--peak-lr",
+    "1e-3",
+    "--gpu",
+    "0",
+    "--smoke",
+    "--smoke-updates",
+    "600",
+    "--checkpoint-every",
+    "300",
+    "--run-dir",
+    "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_g1/int01/smoke/GRU/B",
+    "--resume"
+   ],
+   "exit_code": 0,
+   "utc_end": "2026-09-26T19:02:15Z",
+   "disk_after": {
+    "utc": "2026-09-26T19:02:15Z",
+    "df_B1": "/dev/longhorn/pvc-887ca12c-2b82-4d41-8e47-80ecbb3a9dd4 52521566208 39513194496 12991594496  76% /home/jovyan",
+    "free_bytes": 12991594496
+   }
+  },
+  {
+   "step": "smoke_SASREC_A_straight_600",
+   "utc_start": "2026-09-26T19:02:15Z",
+   "resources_before": {
+    "utc": "2026-09-26T19:02:15Z",
+    "nvidia_smi": "0, 0 MiB, 15356 MiB, 76 %\n1, 0 MiB, 15356 MiB, 0 %",
+    "nvidia_smi_compute_apps": "",
+    "free_g": "total        used        free      shared  buff/cache   available\nMem:            1007          67          73          13         889         940\nSwap:              0           0           0",
+    "df_home": "/dev/longhorn/pvc-887ca12c-2b82-4d41-8e47-80ecbb3a9dd4   49G   37G   13G  76% /home/jovyan",
+    "loadavg": [
+     7.81494140625,
+     6.75732421875,
+     5.65283203125
+    ],
+    "cgroup_memory_current_bytes": 28937723904
+   },
+   "disk_before": {
+    "utc": "2026-09-26T19:02:15Z",
+    "df_B1": "/dev/longhorn/pvc-887ca12c-2b82-4d41-8e47-80ecbb3a9dd4 52521566208 39513194496 12991594496  76% /home/jovyan",
+    "free_bytes": 12991594496
+   },
+   "argv": [
+    "-B",
+    "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/code/v4int/launch_central.py",
+    "--family",
+    "SASREC",
+    "--seed",
+    "2026",
+    "--phase",
+    "CALIBRATION",
+    "--peak-lr",
+    "1e-3",
+    "--gpu",
+    "0",
+    "--smoke",
+    "--smoke-updates",
+    "600",
+    "--checkpoint-every",
+    "300",
+    "--run-dir",
+    "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_g1/int01/smoke/SASREC/A"
+   ],
+   "exit_code": 0,
+   "utc_end": "2026-09-26T19:06:17Z",
+   "disk_after": {
+    "utc": "2026-09-26T19:06:17Z",
+    "df_B1": "/dev/longhorn/pvc-887ca12c-2b82-4d41-8e47-80ecbb3a9dd4 52521566208 39513436160 12991352832  76% /home/jovyan",
+    "free_bytes": 12991352832
+   }
+  },
+  {
+   "step": "smoke_SASREC_B1_interrupt_300",
+   "utc_start": "2026-09-26T19:06:17Z",
+   "resources_before": {
+    "utc": "2026-09-26T19:06:17Z",
+    "nvidia_smi": "0, 0 MiB, 15356 MiB, 92 %\n1, 0 MiB, 15356 MiB, 0 %",
+    "nvidia_smi_compute_apps": "",
+    "free_g": "total        used        free      shared  buff/cache   available\nMem:            1007          67          73          13         889         940\nSwap:              0           0           0",
+    "df_home": "/dev/longhorn/pvc-887ca12c-2b82-4d41-8e47-80ecbb3a9dd4   49G   37G   13G  76% /home/jovyan",
+    "loadavg": [
+     7.76513671875,
+     7.5791015625,
+     6.26416015625
+    ],
+    "cgroup_memory_current_bytes": 28940169216
+   },
+   "disk_before": {
+    "utc": "2026-09-26T19:06:17Z",
+    "df_B1": "/dev/longhorn/pvc-887ca12c-2b82-4d41-8e47-80ecbb3a9dd4 52521566208 39513440256 12991348736  76% /home/jovyan",
+    "free_bytes": 12991348736
+   },
+   "argv": [
+    "-B",
+    "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/code/v4int/launch_central.py",
+    "--family",
+    "SASREC",
+    "--seed",
+    "2026",
+    "--phase",
+    "CALIBRATION",
+    "--peak-lr",
+    "1e-3",
+    "--gpu",
+    "0",
+    "--smoke",
+    "--smoke-updates",
+    "600",
+    "--checkpoint-every",
+    "300",
+    "--run-dir",
+    "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_g1/int01/smoke/SASREC/B",
+    "--smoke-interrupt-at",
+    "300"
+   ],
+   "exit_code": 0,
+   "utc_end": "2026-09-26T19:08:54Z",
+   "disk_after": {
+    "utc": "2026-09-26T19:08:54Z",
+    "df_B1": "/dev/longhorn/pvc-887ca12c-2b82-4d41-8e47-80ecbb3a9dd4 52521566208 40510701568 11994087424  78% /home/jovyan",
+    "free_bytes": 11994087424
+   }
+  },
+  {
+   "step": "smoke_SASREC_B2_resume_to_600",
+   "utc_start": "2026-09-26T19:08:55Z",
+   "resources_before": {
+    "utc": "2026-09-26T19:08:55Z",
+    "nvidia_smi": "0, 0 MiB, 15356 MiB, 0 %\n1, 0 MiB, 15356 MiB, 0 %",
+    "nvidia_smi_compute_apps": "",
+    "free_g": "total        used        free      shared  buff/cache   available\nMem:            1007          67          71          13         890         939\nSwap:              0           0           0",
+    "df_home": "/dev/longhorn/pvc-887ca12c-2b82-4d41-8e47-80ecbb3a9dd4   49G   38G   12G  78% /home/jovyan",
+    "loadavg": [
+     11.07275390625,
+     8.21826171875,
+     6.66455078125
+    ],
+    "cgroup_memory_current_bytes": 29967310848
+   },
+   "disk_before": {
+    "utc": "2026-09-26T19:08:55Z",
+    "df_B1": "/dev/longhorn/pvc-887ca12c-2b82-4d41-8e47-80ecbb3a9dd4 52521566208 40510701568 11994087424  78% /home/jovyan",
+    "free_bytes": 11994087424
+   },
+   "argv": [
+    "-B",
+    "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/code/v4int/launch_central.py",
+    "--family",
+    "SASREC",
+    "--seed",
+    "2026",
+    "--phase",
+    "CALIBRATION",
+    "--peak-lr",
+    "1e-3",
+    "--gpu",
+    "0",
+    "--smoke",
+    "--smoke-updates",
+    "600",
+    "--checkpoint-every",
+    "300",
+    "--run-dir",
+    "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_g1/int01/smoke/SASREC/B",
+    "--resume"
+   ],
+   "exit_code": 0,
+   "utc_end": "2026-09-26T19:12:22Z",
+   "disk_after": {
+    "utc": "2026-09-26T19:12:22Z",
+    "df_B1": "/dev/longhorn/pvc-887ca12c-2b82-4d41-8e47-80ecbb3a9dd4 52521566208 39513698304 12991090688  76% /home/jovyan",
+    "free_bytes": 12991090688
+   }
+  },
+  {
+   "step": "smoke_weight_guard",
+   "utc": "2026-09-26T19:12:22Z",
+   "leftover_deleted": [],
+   "disk_after": {
+    "utc": "2026-09-26T19:12:22Z",
+    "df_B1": "/dev/longhorn/pvc-887ca12c-2b82-4d41-8e47-80ecbb3a9dd4 52521566208 39513702400 12991086592  76% /home/jovyan",
+    "free_bytes": 12991086592
+   }
+  },
+  {
+   "step": "smoke_compare",
+   "utc_start": "2026-09-26T19:12:22Z",
+   "resources_before": {
+    "utc": "2026-09-26T19:12:22Z",
+    "nvidia_smi": "0, 0 MiB, 15356 MiB, 29 %\n1, 0 MiB, 15356 MiB, 0 %",
+    "nvidia_smi_compute_apps": "",
+    "free_g": "total        used        free      shared  buff/cache   available\nMem:            1007          67          73          13         889         940\nSwap:              0           0           0",
+    "df_home": "/dev/longhorn/pvc-887ca12c-2b82-4d41-8e47-80ecbb3a9dd4   49G   37G   13G  76% /home/jovyan",
+    "loadavg": [
+     8.60498046875,
+     8.09228515625,
+     6.91748046875
+    ],
+    "cgroup_memory_current_bytes": 28884291584
+   },
+   "disk_before": {
+    "utc": "2026-09-26T19:12:22Z",
+    "df_B1": "/dev/longhorn/pvc-887ca12c-2b82-4d41-8e47-80ecbb3a9dd4 52521566208 39513702400 12991086592  76% /home/jovyan",
+    "free_bytes": 12991086592
+   },
+   "argv": [
+    "-B",
+    "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/code/tests_int/server/int01_measure.py",
+    "smoke-compare"
+   ],
+   "exit_code": 0,
+   "utc_end": "2026-09-26T19:12:22Z",
+   "disk_after": {
+    "utc": "2026-09-26T19:12:22Z",
+    "df_B1": "/dev/longhorn/pvc-887ca12c-2b82-4d41-8e47-80ecbb3a9dd4 52521566208 39513714688 12991074304  76% /home/jovyan",
+    "free_bytes": 12991074304
+   }
+  },
+  {
+   "step": "assemble",
+   "utc_start": "2026-09-26T19:12:22Z",
+   "resources_before": {
+    "utc": "2026-09-26T19:12:22Z",
+    "nvidia_smi": "0, 0 MiB, 15356 MiB, 0 %\n1, 0 MiB, 15356 MiB, 0 %",
+    "nvidia_smi_compute_apps": "",
+    "free_g": "total        used        free      shared  buff/cache   available\nMem:            1007          67          73          13         889         940\nSwap:              0           0           0",
+    "df_home": "/dev/longhorn/pvc-887ca12c-2b82-4d41-8e47-80ecbb3a9dd4   49G   37G   13G  76% /home/jovyan",
+    "loadavg": [
+     8.60498046875,
+     8.09228515625,
+     6.91748046875
+    ],
+    "cgroup_memory_current_bytes": 28884946944
+   },
+   "disk_before": {
+    "utc": "2026-09-26T19:12:22Z",
+    "df_B1": "/dev/longhorn/pvc-887ca12c-2b82-4d41-8e47-80ecbb3a9dd4 52521566208 39513714688 12991074304  76% /home/jovyan",
+    "free_bytes": 12991074304
+   },
+   "argv": [
+    "-B",
+    "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/code/tests_int/server/int01_measure.py",
+    "assemble"
+   ],
+   "exit_code": 0,
+   "utc_end": "2026-09-26T19:12:22Z",
+   "disk_after": {
+    "utc": "2026-09-26T19:12:22Z",
+    "df_B1": "/dev/longhorn/pvc-887ca12c-2b82-4d41-8e47-80ecbb3a9dd4 52521566208 39513800704 12990988288  76% /home/jovyan",
+    "free_bytes": 12990988288
+   }
+  }
+ ],
+ "parts": {
+  "bench_step": {
+   "step": "bench_step",
+   "label": "BENCH_NOT_EVIDENCE (no weights saved, no row written)",
+   "utc_start": "2026-09-26T18:38:39Z",
+   "resources_before": {
+    "utc": "2026-09-26T18:38:39Z",
+    "nvidia_smi": "0, 0 MiB, 15356 MiB, 0 %\n1, 0 MiB, 15356 MiB, 0 %",
+    "nvidia_smi_compute_apps": "",
+    "free_g": "total        used        free      shared  buff/cache   available\nMem:            1007          67          73          13         889         940\nSwap:              0           0           0",
+    "df_home": "/dev/longhorn/pvc-887ca12c-2b82-4d41-8e47-80ecbb3a9dd4   49G   37G   13G  76% /home/jovyan",
+    "loadavg": [
+     2.54150390625,
+     3.94677734375,
+     4.5478515625
+    ],
+    "cgroup_memory_current_bytes": 29271875584
+   },
+   "process": {
+    "CUDA_VISIBLE_DEVICES": "0",
+    "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+    "device": "NVIDIA A16",
+    "uuid": "550d3bca-7537-d582-3a60-d78cdd0a5319"
+   },
+   "families": {
+    "GRU": {
+     "determinism": {
+      "determinism_mode_in_effect": "WARN_ONLY",
+      "deterministic_algorithms": true,
+      "warn_only": true,
+      "CUBLAS_WORKSPACE_CONFIG": ":4096:8"
+     },
+     "pure_gpu_preloaded": {
+      "steps_timed": 200,
+      "wall_s": 9.427,
+      "updates_per_s": 21.215,
+      "decisions_per_s": 5431.2,
+      "gpu_peak_allocated_bytes": 961669632,
+      "gpu_peak_reserved_bytes": 1306525696
+     },
+     "cpu_batches_h2d": {
+      "steps_timed": 200,
+      "wall_s": 9.512,
+      "updates_per_s": 21.026,
+      "decisions_per_s": 5382.7,
+      "gpu_peak_allocated_bytes": 963384832,
+      "gpu_peak_reserved_bytes": 1308622848
+     },
+     "provider_in_loop": {
+      "steps_timed": 200,
+      "wall_s": 9.559,
+      "updates_per_s": 20.924,
+      "decisions_per_s": 5356.5,
+      "gpu_peak_allocated_bytes": 963476992,
+      "gpu_peak_reserved_bytes": 1308622848
+     },
+     "provider_vs_pure_gpu_ratio": 0.9863,
+     "data_bound": false
+    },
+    "SASREC": {
+     "determinism": {
+      "determinism_mode_in_effect": "WARN_ONLY",
+      "deterministic_algorithms": true,
+      "warn_only": true,
+      "CUBLAS_WORKSPACE_CONFIG": ":4096:8"
+     },
+     "pure_gpu_preloaded": {
+      "steps_timed": 200,
+      "wall_s": 19.827,
+      "updates_per_s": 10.087,
+      "decisions_per_s": 2582.4,
+      "gpu_peak_allocated_bytes": 1889654272,
+      "gpu_peak_reserved_bytes": 1988100096
+     },
+     "cpu_batches_h2d": {
+      "steps_timed": 200,
+      "wall_s": 19.906,
+      "updates_per_s": 10.047,
+      "decisions_per_s": 2572.1,
+      "gpu_peak_allocated_bytes": 1891369472,
+      "gpu_peak_reserved_bytes": 1988100096
+     },
+     "provider_in_loop": {
+      "steps_timed": 200,
+      "wall_s": 19.951,
+      "updates_per_s": 10.024,
+      "decisions_per_s": 2566.3,
+      "gpu_peak_allocated_bytes": 1892265984,
+      "gpu_peak_reserved_bytes": 2151677952
+     },
+     "provider_vs_pure_gpu_ratio": 0.9938,
+     "data_bound": false
+    }
+   },
+   "host_rss_bytes": 2781462528,
+   "host_peak_rss_bytes": 6429081600,
+   "utc_end": "2026-09-26T18:41:36Z"
+  },
+  "code_at_measurement": {
+   "part": "code_at_measurement",
+   "note": "v4int / tests_int sha256 recorded by the assemble step at the end of the measurement run (19:12:22Z), before the population-agnostic update; orchestrator 1 (CPU steps) used the same verify/cache/providers files and an earlier launch_central.py / int01_measure.py (disk-rule update 18:35Z)",
+   "assembled_utc": "2026-09-26T19:12:22Z",
+   "code_sha256": {
+    "v4int/__init__.py": "6ba080248896a6bff27ef59b34723ed7b42a604ec1cda1b464472036aacb9db1",
+    "v4int/cache.py": "3a9663974f597d311b900e456e84b3cd81065c3c42b63a36563057859b1a05c0",
+    "v4int/launch_central.py": "2cda65340d914cb764a5a7c95b81c0dd44b7a880d0ab3f504fd4d94fb6a8ee27",
+    "v4int/providers.py": "a50e8ccff36006500fe9301f74cd904711d640fe78e90512616ea332215ca941",
+    "v4int/smoke.py": "0ea39fd3198ea811e5524941397cbc1f30f19b95c5c7dc78d5b315c64a3f2edd",
+    "v4int/verify.py": "e4071730992e020e3592680d6ee097c2cf09062843998acdc9043aa3ef63968e",
+    "tests_int/conftest.py": "144d9b2cc7ef544b2ef99252bc014a9c520d0f3fbdfb6f463ff903e0313cc67e",
+    "tests_int/intkit.py": "cd6ea4e9b02c2aa091a9edf53ba8f8d00049628b483e13bb39afc76dbbb3b5cb",
+    "tests_int/run_all.py": "e49d3ef3ea5102430440dddb63a1c23543e327af8791e158f50de29239f18a67",
+    "tests_int/server/int01_measure.py": "164949de2eabc45a12ab4f70b3f7465ba85adc72be5c2c7f50cd186411a3ec74",
+    "tests_int/test_cache_stream.py": "18b920619e52c52b6c40aa1e1933771084a3a515968e21e38aaf7f2224c61140",
+    "tests_int/test_eval_stream.py": "ee73fa6d7e8be010d588edd6549936e66b708d5740ed9d1a3dcff3ebbd27cf49",
+    "tests_int/test_launcher.py": "4dd9bd2390e4bbf8bb3e68482c609ae55b1ddfd2dbe37a5e82a516eff94b461f",
+    "tests_int/test_protocol_order_targets.py": "e4349a106683f0dfc5e8969deb864356042442ee0fa3fdae205069d9dd01a563",
+    "tests_int/test_resume_exact.py": "8df7b355f7cf931689d0c1145767fa5624d045d4d96dc9d9a9952f14ecdc7de1",
+    "tests_int/test_smoke_selection.py": "025838649d7cc57f0b9006ec343c9c63146227fa4711cb803fb8a6ab2c1c6cef",
+    "tests_int/test_verification.py": "d8e46b32d9d829734189976885df9f96b704fdfa0462d760b42fa3192d469ab0"
+   },
+   "receipt_file_sha256_at_measurement": "a56486f3f628de1a84b3f84a4bf086aac5507a7daa3a755dd40a21d774545571"
+  },
+  "postupdate_check": {
+   "step": "postupdate_check",
+   "labels": [
+    "HISTORICAL_POPULATION"
+   ],
+   "utc_start": "2026-09-26T19:15:13Z",
+   "resources_before": {
+    "utc": "2026-09-26T19:15:13Z",
+    "nvidia_smi": "0, 0 MiB, 15356 MiB, 0 %\n1, 0 MiB, 15356 MiB, 0 %",
+    "nvidia_smi_compute_apps": "",
+    "free_g": "total        used        free      shared  buff/cache   available\nMem:            1007          67          73          13         889         940\nSwap:              0           0           0",
+    "df_home": "/dev/longhorn/pvc-887ca12c-2b82-4d41-8e47-80ecbb3a9dd4   49G   37G   13G  76% /home/jovyan",
+    "loadavg": [
+     5.814453125,
+     7.15185546875,
+     6.751953125
+    ],
+    "cgroup_memory_current_bytes": 29259550720
+   },
+   "disk_before": {
+    "utc": "2026-09-26T19:15:13Z",
+    "df_B1": "/dev/longhorn/pvc-887ca12c-2b82-4d41-8e47-80ecbb3a9dd4 52521566208 39513825280 12990963712  76% /home/jovyan",
+    "free_bytes": 12990963712
+   },
+   "verify": {
+    "M01_COHORT_TRAIN": {
+     "kind": "TRAIN",
+     "checks_passed": 50,
+     "all_true": true,
+     "n_decisions": 3906929
+    },
+    "M05_CALIB_TRAIN": {
+     "kind": "TRAIN",
+     "checks_passed": 49,
+     "all_true": true,
+     "n_decisions": 990362
+    },
+    "M02_VALIDATION_WARM": {
+     "kind": "EVAL",
+     "checks_passed": 41,
+     "all_true": true,
+     "n_decisions": 1000189
+    },
+    "M06_CALIB_VALIDATION_WARM": {
+     "kind": "EVAL",
+     "checks_passed": 41,
+     "all_true": true,
+     "n_decisions": 248836
+    }
+   },
+   "fingerprints": {
+    "M05_CALIB_TRAIN": {
+     "new_code": "8342866ddf2d6b08fab1006f1ae598d3d6e9492139c97be31a03d324b5641b8f",
+     "measured": "8342866ddf2d6b08fab1006f1ae598d3d6e9492139c97be31a03d324b5641b8f",
+     "equal": true
+    },
+    "M06_CALIB_VALIDATION_WARM": {
+     "new_code": "6de4128bcdb7b8481528b24ed583dff41d26a4d1ab9ebface0796e36580f0c9a",
+     "measured": "6de4128bcdb7b8481528b24ed583dff41d26a4d1ab9ebface0796e36580f0c9a",
+     "equal": true
+    }
+   },
+   "launcher_non_smoke_without_g1": {
+    "exit_code": 2,
+    "stderr_tail": "LAUNCH REFUSED: non-smoke run refused: /home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/company/gates/G1_APPROVED.json does not exist (G1 not approved)",
+    "run_dir_created": false
+   },
+   "all_ok": true,
+   "utc_end": "2026-09-26T19:17:13Z",
+   "disk_after": {
+    "utc": "2026-09-26T19:17:13Z",
+    "df_B1": "/dev/longhorn/pvc-887ca12c-2b82-4d41-8e47-80ecbb3a9dd4 52521566208 39513829376 12990959616  76% /home/jovyan",
+    "free_bytes": 12990959616
+   }
+  },
+  "proof_eval": {
+   "step": "proof_eval",
+   "utc_start": "2026-09-26T18:34:02Z",
+   "resources_before": {
+    "utc": "2026-09-26T18:34:02Z",
+    "nvidia_smi": "0, 0 MiB, 15356 MiB, 0 %\n1, 0 MiB, 15356 MiB, 0 %",
+    "nvidia_smi_compute_apps": "",
+    "free_g": "total        used        free      shared  buff/cache   available\nMem:            1007          68          72          13         889         939\nSwap:              0           0           0",
+    "df_home": "/dev/longhorn/pvc-887ca12c-2b82-4d41-8e47-80ecbb3a9dd4   49G   37G   13G  76% /home/jovyan",
+    "loadavg": [
+     4.2744140625,
+     4.654296875,
+     4.8447265625
+    ],
+    "cgroup_memory_current_bytes": 29266120704
+   },
+   "stream_store": {
+    "build_s": 26.44,
+    "n_event_rows": 14357645,
+    "n_eval_decisions": 11288056,
+    "rss_bytes_after_build": 6893801472,
+    "peak_rss_bytes_after_build": 7494377472
+   },
+   "M02_VALIDATION_WARM": {
+    "bitwise_proof": {
+     "all_equal": true,
+     "batches_compared": 790,
+     "rows_compared": 808610,
+     "first_mismatch": null,
+     "stream_batch_digests_sha256": "6a2461d23bf4b055fd472c6ee3e0c40fd3b0495ba8e3d5d48f6a24905abbbff9"
+    },
+    "stream_B1024": {
+     "n": 790,
+     "total_s": 10.463,
+     "median_ms": 13.239,
+     "p90_ms": 14.245,
+     "max_ms": 23.523,
+     "rows_per_s": 77282.8
+    },
+    "cache_B1024": {
+     "n": 790,
+     "total_s": 10.978,
+     "median_ms": 13.888,
+     "p90_ms": 14.748,
+     "max_ms": 16.482,
+     "rows_per_s": 73657.3
+    }
+   },
+   "M06_CALIB_VALIDATION_WARM": {
+    "bitwise_proof": {
+     "all_equal": true,
+     "batches_compared": 197,
+     "rows_compared": 200985,
+     "first_mismatch": null,
+     "stream_batch_digests_sha256": "22a714bdc9febde5adede282d476d61afd97e5c34a57865ed75f0be67193af58"
+    },
+    "stream_B1024": {
+     "n": 197,
+     "total_s": 2.55,
+     "median_ms": 12.968,
+     "p90_ms": 13.977,
+     "max_ms": 15.708,
+     "rows_per_s": 78817.6
+    },
+    "cache_B1024": {
+     "n": 197,
+     "total_s": 2.665,
+     "median_ms": 13.547,
+     "p90_ms": 14.381,
+     "max_ms": 15.828,
+     "rows_per_s": 75416.5
+    }
+   },
+   "rss_bytes_end": 6940139520,
+   "peak_rss_bytes_end": 7494377472,
+   "utc_end": "2026-09-26T18:36:15Z"
+  },
+  "proof_train": {
+   "step": "proof_train",
+   "utc_start": "2026-09-26T18:30:01Z",
+   "resources_before": {
+    "utc": "2026-09-26T18:30:01Z",
+    "nvidia_smi": "0, 0 MiB, 15356 MiB, 0 %\n1, 0 MiB, 15356 MiB, 0 %",
+    "nvidia_smi_compute_apps": "",
+    "free_g": "total        used        free      shared  buff/cache   available\nMem:            1007          68          70          13         890         938\nSwap:              0           0           0",
+    "df_home": "/dev/longhorn/pvc-887ca12c-2b82-4d41-8e47-80ecbb3a9dd4   49G   38G   12G  78% /home/jovyan",
+    "loadavg": [
+     4.97021484375,
+     5.05078125,
+     4.98046875
+    ],
+    "cgroup_memory_current_bytes": 30407393280
+   },
+   "rss_bytes_after_caches": 2837110784,
+   "peak_rss_bytes_after_caches": 7293317120,
+   "stream_store": {
+    "build_s": 60.44,
+    "n_event_rows": 52760314,
+    "event_array_nbytes": 8230608984,
+    "rss_bytes_after_build": 15301177344,
+    "peak_rss_bytes_after_build": 16890253312,
+    "resources_after_build": {
+     "utc": "2026-09-26T18:33:41Z",
+     "nvidia_smi": "0, 0 MiB, 15356 MiB, 0 %\n1, 0 MiB, 15356 MiB, 0 %",
+     "nvidia_smi_compute_apps": "",
+     "free_g": "total        used        free      shared  buff/cache   available\nMem:            1007          82          58          13         889         925\nSwap:              0           0           0",
+     "df_home": "/dev/longhorn/pvc-887ca12c-2b82-4d41-8e47-80ecbb3a9dd4   49G   37G   13G  76% /home/jovyan",
+     "loadavg": [
+      4.41845703125,
+      4.701171875,
+      4.86376953125
+     ],
+     "cgroup_memory_current_bytes": 44137570304
+    },
+    "n_loss_decisions": 40180608
+   },
+   "M01_COHORT_TRAIN": {
+    "stream_B256": {
+     "n": 580,
+     "total_s": 1.713,
+     "median_ms": 2.891,
+     "p90_ms": 3.036,
+     "max_ms": 6.998,
+     "rows_per_s": 86678.3
+    },
+    "cache_B256": {
+     "n": 580,
+     "total_s": 1.683,
+     "median_ms": 2.891,
+     "p90_ms": 2.991,
+     "max_ms": 4.408,
+     "rows_per_s": 88223.4
+    },
+    "bitwise_proof": {
+     "all_equal": true,
+     "rows_compared": 21361,
+     "random_rows": 20480,
+     "whole_trainer_batches": [
+      "0",
+      "256",
+      "512",
+      "tail@3906816"
+     ],
+     "first_mismatch": null,
+     "stream_batch_digests_sha256": "ae5d4a8b562fbfb8eb692b0db4f4a54a9ed3f55da03e5a3ed922133816b7e63e",
+     "note": "every tensor (dtype, shape, torch.equal) and every non-tensor field compared"
+    }
+   },
+   "M05_CALIB_TRAIN": {
+    "stream_B256": {
+     "n": 580,
+     "total_s": 1.662,
+     "median_ms": 2.858,
+     "p90_ms": 2.939,
+     "max_ms": 4.072,
+     "rows_per_s": 89338.1
+    },
+    "cache_B256": {
+     "n": 580,
+     "total_s": 1.687,
+     "median_ms": 2.898,
+     "p90_ms": 2.993,
+     "max_ms": 3.892,
+     "rows_per_s": 88014.2
+    },
+    "bitwise_proof": {
+     "all_equal": true,
+     "rows_compared": 21402,
+     "random_rows": 20480,
+     "whole_trainer_batches": [
+      "0",
+      "256",
+      "512",
+      "tail@990208"
+     ],
+     "first_mismatch": null,
+     "stream_batch_digests_sha256": "b9e364a301aad1c017088b136d26c1d61e2199b67dd507b69eaa843bc046a84c",
+     "note": "every tensor (dtype, shape, torch.equal) and every non-tensor field compared"
+    }
+   },
+   "rss_bytes_end": 17106907136,
+   "peak_rss_bytes_end": 17999290368,
+   "utc_end": "2026-09-26T18:33:59Z"
+  },
+  "provider_M01_COHORT_TRAIN": {
+   "step": "provider_M01_COHORT_TRAIN",
+   "utc_start": "2026-09-26T18:25:26Z",
+   "resources_before": {
+    "utc": "2026-09-26T18:25:26Z",
+    "nvidia_smi": "0, 0 MiB, 15356 MiB, 0 %\n1, 2314 MiB, 15356 MiB, 0 %",
+    "nvidia_smi_compute_apps": "00000000:E8:00.0, 300183, 2306 MiB",
+    "free_g": "total        used        free      shared  buff/cache   available\nMem:            1007          69          69          13         891         937\nSwap:              0           0           0",
+    "df_home": "/dev/longhorn/pvc-887ca12c-2b82-4d41-8e47-80ecbb3a9dd4   49G   39G   11G  79% /home/jovyan",
+    "loadavg": [
+     5.90380859375,
+     4.775390625,
+     4.86572265625
+    ],
+    "cgroup_memory_current_bytes": 32519479296
+   },
+   "rss_bytes_start": 605351936,
+   "build_s": 79.54,
+   "rss_bytes_after_build": 2782330880,
+   "peak_rss_bytes_after_build": 7433465856,
+   "train_B256_trainer_order": {
+    "n": 2000,
+    "total_s": 5.639,
+    "median_ms": 2.8,
+    "p90_ms": 2.886,
+    "max_ms": 6.762,
+    "rows": 512000,
+    "rows_per_s": 90796.2,
+    "access": "seed-2026 pass-0 permutation slices (random positions)"
+   },
+   "describe": {
+    "provider": "v4int.StoreTrainProvider/1",
+    "manifest_id": "M01_COHORT_TRAIN",
+    "split": "TRAIN",
+    "n_decisions": 3906929,
+    "fingerprint": "e6d8d9b7468b53f8b17fc770b4439fefe0fc3601e40cc06da254c834c18c3248",
+    "verified": {
+     "manifest_id": "M01_COHORT_TRAIN",
+     "kind": "TRAIN",
+     "n_decisions": 3906929,
+     "header_file_sha256": "f951b0f3dc5131544550fd735dd5e25c6c9b174a04d5da7673a352b3efbfdf32",
+     "header_content_sha256": "8ee69c30495fc65459eb22feccd3cd28e417cd060411429224df3e97550411e4",
+     "tables": {
+      "clients": {
+       "file": "M01_COHORT_TRAIN.clients.parquet",
+       "file_sha256": "a120d6901c7578862ffef22f8b47eea075df0c33fd602f518261375b1ecb7df5",
+       "row_count": 262144,
+       "table_content_sha256": "fb6d258d2481bf8530eebf9d565f65343039c77b53f8cb7519d04eb61b58e176"
+      },
+      "decisions": {
+       "file": "M01_COHORT_TRAIN.decisions.parquet",
+       "file_sha256": "5217915610b36e561f6f08f7a0b07c5f4853cfcc1e69c4576986bea5d8ff6923",
+       "row_count": 3906929,
+       "table_content_sha256": "021db05901faec106bb23b1cd9503a219917602cdfe4acdbd9fcccc3121e394f"
+      },
+      "central_order": {
+       "file": "M01_COHORT_TRAIN.central_order.parquet",
+       "file_sha256": "41b70c51a4761f795ef6fdb5dd171765177ca8305a4addbf3e101ee2dfca511e",
+       "row_count": 3906929,
+       "table_content_sha256": "87535d536f059515c03cac43c3aa21f7fe5b1529a0f44e0d4d1ecc884fd4dd67"
+      }
+     },
+     "ordered_decision_id_sha256": "648cde528662e73b8f359bd9998aaee06170ea0bdbd687d8b43c05d8c94703f8",
+     "canonical_ordered_decision_id_sha256": "35a2d9adce01ed9d91d2e13e9945c72afbf7d20c03c640fde18e05ce5c97446f",
+     "lock_self_sha256": "da51d271e97d3a681227a7063fd35b429797e52ee25586ba39843a37b7c839e1",
+     "lock_file_sha256": "ebf4e86f6beb82e98283108a2dad9082727e8559b81301cd46f35f60c79fd7c0",
+     "transform_state_self_sha256": "2ff0ff4ec1d27d254972c2f212e81f5fee6277dc9cced31a6a5baf5b4b002727",
+     "transform_state_file_sha256": "7dda2f56066c1ca11c32754fd2b701448a7d7920f3e68bf7facc77141f41ae7d",
+     "checks_passed": 50,
+     "checks": {
+      "lock_self_sha256_recomputed": true,
+      "manifest_hashes_file_sha256_eq_lock": true,
+      "manifest_hashes_entry_eq_lock": true,
+      "transform_state_verified": true,
+      "clients.file_sha256_eq_lock": true,
+      "clients.file_sha256_listed_r1": true,
+      "decisions.file_sha256_eq_lock": true,
+      "decisions.file_sha256_listed_r1": true,
+      "central_order.file_sha256_eq_lock": true,
+      "central_order.file_sha256_listed_r1": true,
+      "header.file_sha256_listed_r1": true,
+      "header.manifest_id": true,
+      "header.status": true,
+      "header.no_all_methods_lock": true,
+      "header.no_test_exposure_entry": true,
+      "header.data_protocol_lock_sha256_eq_lock_self": true,
+      "header.data_protocol_lock_file_sha256_eq_lock_file": true,
+      "header.content_self_hash": true,
+      "header.reissue_previous_file_eq_lock": true,
+      "header.reissue_previous_content_eq_lock": true,
+      "header.tables_eq_lock": true,
+      "header.builder_code_sha256_eq_lock": true,
+      "header.schema_self_sha256_eq_lock": true,
+      "header.dataset_version_eq_lock": true,
+      "header.candidate_order_eq_lock": true,
+      "header.catalogue_K_eq_lock": true,
+      "header.ordered_decision_id_sha256_eq_lock": true,
+      "header.eval_ordered_decision_id_sha256_eq_lock": true,
+      "header.rankable_ordered_decision_id_sha256_eq_lock": true,
+      "header.population_sha256_eq_lock": true,
+      "header.n_users_eq_lock": true,
+      "header.n_decisions_eq_lock": true,
+      "header.n_eval_rows_eq_lock": true,
+      "header.n_rankable_rows_eq_lock": true,
+      "ok_marker_matches_disk": true,
+      "clients.row_count_eq_lock": true,
+      "clients.table_content_sha256_eq_lock": true,
+      "decisions.row_count_eq_lock": true,
+      "decisions.table_content_sha256_eq_lock": true,
+      "central_order.row_count_eq_lock": true,
+      "central_order.table_content_sha256_eq_lock": true,
+      "decisions.order_hash_eq_header": true,
+      "central_order.is_permutation": true,
+      "central_order.strictly_ascending": true,
+      "central_order.hash_eq_header_derived": true,
+      "decisions.target_class_in_range": true,
+      "decisions.target_status_observed": true,
+      "decisions.old_split_train": true,
+      "n_decisions_eq_header": true,
+      "n_decisions_eq_int01_packet": true
+     },
+     "timings_s": {
+      "lock_and_state": 0.02,
+      "files_and_header": 0.22,
+      "tables": 2.95,
+      "total": 3.19
+     }
+    },
+    "cache": {
+     "splits": [
+      "TRAIN"
+     ],
+     "kind": "loss",
+     "n_decisions": 3906929,
+     "n_event_rows": 3911610,
+     "buckets": [
+      0,
+      63
+     ],
+     "bucket_groups": 8,
+     "masks_dtype": "uint8",
+     "build_s": 75.94,
+     "group_log": [
+      {
+       "buckets": [
+        0,
+        7
+       ],
+       "group_store_rows": 6585061,
+       "kept_decisions": 489880,
+       "kept_rows": 490453,
+       "masks_dtype": "uint8",
+       "s": 9.37,
+       "rss_bytes": 6075404288
+      },
+      {
+       "buckets": [
+        8,
+        15
+       ],
+       "group_store_rows": 6585880,
+       "kept_decisions": 478750,
+       "kept_rows": 479203,
+       "masks_dtype": "uint8",
+       "s": 9.03,
+       "rss_bytes": 5956370432
+      },
+      {
+       "buckets": [
+        16,
+        23
+       ],
+       "group_store_rows": 6584508,
+       "kept_decisions": 488262,
+       "kept_rows": 488813,
+       "masks_dtype": "uint8",
+       "s": 8.91,
+       "rss_bytes": 6142754816
+      },
+      {
+       "buckets": [
+        24,
+        31
+       ],
+       "group_store_rows": 6564307,
+       "kept_decisions": 477007,
+       "kept_rows": 477468,
+       "masks_dtype": "uint8",
+       "s": 9.25,
+       "rss_bytes": 6125867008
+      },
+      {
+       "buckets": [
+        32,
+        39
+       ],
+       "group_store_rows": 6638935,
+       "kept_decisions": 493588,
+       "kept_rows": 494091,
+       "masks_dtype": "uint8",
+       "s": 9.22,
+       "rss_bytes": 6182309888
+      },
+      {
+       "buckets": [
+        40,
+        47
+       ],
+       "group_store_rows": 6597166,
+       "kept_decisions": 500587,
+       "kept_rows": 501621,
+       "masks_dtype": "uint8",
+       "s": 9.37,
+       "rss_bytes": 6502567936
+      },
+      {
+       "buckets": [
+        48,
+        55
+       ],
+       "group_store_rows": 6612909,
+       "kept_decisions": 489746,
+       "kept_rows": 490288,
+       "masks_dtype": "uint8",
+       "s": 9.42,
+       "rss_bytes": 6535675904
+      },
+      {
+       "buckets": [
+        56,
+        63
+       ],
+       "group_store_rows": 6591548,
+       "kept_decisions": 489109,
+       "kept_rows": 489673,
+       "masks_dtype": "uint8",
+       "s": 9.24,
+       "rss_bytes": 6708797440
+      }
+     ],
+     "cache_nbytes": 789929894,
+     "peak_rss_bytes_after": 7433465856
+    },
+    "build": {
+     "verify_s": 3.22,
+     "cache_build_s": 75.94,
+     "total_s": 79.54,
+     "rss_bytes_before": 605351936,
+     "rss_bytes_after": 2782326784,
+     "peak_rss_bytes_after": 7433465856,
+     "cache_nbytes": 789929894,
+     "cache_event_rows": 3911610
+    }
+   },
+   "rss_bytes_end": 2819944448,
+   "peak_rss_bytes_end": 7433465856,
+   "utc_end": "2026-09-26T18:26:52Z"
+  },
+  "provider_M02_VALIDATION_WARM": {
+   "step": "provider_M02_VALIDATION_WARM",
+   "utc_start": "2026-09-26T18:28:21Z",
+   "resources_before": {
+    "utc": "2026-09-26T18:28:21Z",
+    "nvidia_smi": "0, 0 MiB, 15356 MiB, 0 %\n1, 2308 MiB, 15356 MiB, 92 %",
+    "nvidia_smi_compute_apps": "00000000:E8:00.0, 300682, 2300 MiB",
+    "free_g": "total        used        free      shared  buff/cache   available\nMem:            1007          69          70          13         890         937\nSwap:              0           0           0",
+    "df_home": "/dev/longhorn/pvc-887ca12c-2b82-4d41-8e47-80ecbb3a9dd4   49G   38G   12G  77% /home/jovyan",
+    "loadavg": [
+     4.98193359375,
+     4.98291015625,
+     4.94677734375
+    ],
+    "cgroup_memory_current_bytes": 31202250752
+   },
+   "rss_bytes_start": 605519872,
+   "build_s": 36.39,
+   "rss_bytes_after_build": 2441752576,
+   "peak_rss_bytes_after_build": 4555137024,
+   "eval_B1024_in_order_prefetch0": {
+    "n": 790,
+    "total_s": 8.905,
+    "median_ms": 11.252,
+    "p90_ms": 11.448,
+    "max_ms": 19.32,
+    "rows": 808610,
+    "wall_s": 8.905,
+    "rows_per_s": 90808.2
+   },
+   "eval_B1024_in_order_prefetch2": {
+    "n": 790,
+    "total_s": 8.998,
+    "median_ms": 11.317,
+    "p90_ms": 11.594,
+    "max_ms": 32.514,
+    "rows": 808610,
+    "wall_s": 8.998,
+    "rows_per_s": 89868.5
+   },
+   "describe": {
+    "provider": "v4int.StoreEvalProvider/1",
+    "manifest_id": "M02_VALIDATION_WARM",
+    "fingerprint": "400f66712be55e4b4e9a37669610c244765ff68654a7fdadfa98fa0a83a93e77",
+    "n_manifest_rows": 1000189,
+    "n_stream_rows": 808610,
+    "eval_batch": 1024,
+    "eval_stream": "E2E_ROWS",
+    "eval_stream_source": {
+     "source": "contracts/PREG1_AMENDMENT_01.md item 5 (PROPOSED; Fable to confirm at G1); v4eval.frozen_config.load() carries no eval_stream",
+     "value": "EVAL_ROWS_ONLY",
+     "file_sha256": "ef8786d2bf5e2fa7050e68f8ca18bc7ab522b7675462c8f13610ceada1c638b6"
+    },
+    "prefetch_depth": 2,
+    "manifest_hashes": {
+     "ordered_decision_id_sha256": "b46cf30b0972d0c1557a9f8c283bde43923a0c1ea0f9066a5ee5e8a5bcda4ba1",
+     "eval_ordered_decision_id_sha256": "7ad25341abfb82a84775ad85572b7d1b880fb4d9ec9d640205b15dcf0f36e25c",
+     "rankable_ordered_decision_id_sha256": "a9947b53f456eeed18c6b8c4788f5f2e45c3fa3460643b4051a30dbcfb948eaa"
+    },
+    "verified": {
+     "manifest_id": "M02_VALIDATION_WARM",
+     "kind": "EVAL",
+     "n_decisions": 1000189,
+     "header_file_sha256": "fce6052a9ba97b1e1d924682fc0248fba160ce08e40c1b1962031f65ac13203d",
+     "header_content_sha256": "922dc124961c5a0ab8041d01527378d23c2e5ac1e113a5e90a2b26ea9fba8373",
+     "tables": {
+      "users": {
+       "file": "M02_VALIDATION_WARM.users.parquet",
+       "file_sha256": "2b7d54d5f657c1fa4a1f1fd1f99122f0c1744ecb29e4922fe9d82ff4c712916c",
+       "row_count": 81086,
+       "table_content_sha256": "08dd447f7ac1cb65288230d5e0da903f987335d979c75010a9a70325b85b8ae5"
+      },
+      "decisions": {
+       "file": "M02_VALIDATION_WARM.decisions.parquet",
+       "file_sha256": "a1bc7ccc1dbe87eba8fc20164f8dd70ebca272ebc44e4c46118034108a5f51c0",
+       "row_count": 1000189,
+       "table_content_sha256": "d4503d2250a4aafbfae7309ce69a63f46eda28ec39666488b5994fc2bee38ccf"
+      }
+     },
+     "ordered_decision_id_sha256": "b46cf30b0972d0c1557a9f8c283bde43923a0c1ea0f9066a5ee5e8a5bcda4ba1",
+     "canonical_ordered_decision_id_sha256": "b46cf30b0972d0c1557a9f8c283bde43923a0c1ea0f9066a5ee5e8a5bcda4ba1",
+     "lock_self_sha256": "da51d271e97d3a681227a7063fd35b429797e52ee25586ba39843a37b7c839e1",
+     "lock_file_sha256": "ebf4e86f6beb82e98283108a2dad9082727e8559b81301cd46f35f60c79fd7c0",
+     "transform_state_self_sha256": "2ff0ff4ec1d27d254972c2f212e81f5fee6277dc9cced31a6a5baf5b4b002727",
+     "transform_state_file_sha256": "7dda2f56066c1ca11c32754fd2b701448a7d7920f3e68bf7facc77141f41ae7d",
+     "checks_passed": 41,
+     "checks": {
+      "lock_self_sha256_recomputed": true,
+      "manifest_hashes_file_sha256_eq_lock": true,
+      "manifest_hashes_entry_eq_lock": true,
+      "transform_state_verified": true,
+      "users.file_sha256_eq_lock": true,
+      "users.file_sha256_listed_r1": true,
+      "decisions.file_sha256_eq_lock": true,
+      "decisions.file_sha256_listed_r1": true,
+      "header.file_sha256_listed_r1": true,
+      "header.manifest_id": true,
+      "header.status": true,
+      "header.no_all_methods_lock": true,
+      "header.no_test_exposure_entry": true,
+      "header.data_protocol_lock_sha256_eq_lock_self": true,
+      "header.data_protocol_lock_file_sha256_eq_lock_file": true,
+      "header.content_self_hash": true,
+      "header.reissue_previous_file_eq_lock": true,
+      "header.reissue_previous_content_eq_lock": true,
+      "header.tables_eq_lock": true,
+      "header.builder_code_sha256_eq_lock": true,
+      "header.schema_self_sha256_eq_lock": true,
+      "header.dataset_version_eq_lock": true,
+      "header.candidate_order_eq_lock": true,
+      "header.catalogue_K_eq_lock": true,
+      "header.ordered_decision_id_sha256_eq_lock": true,
+      "header.eval_ordered_decision_id_sha256_eq_lock": true,
+      "header.rankable_ordered_decision_id_sha256_eq_lock": true,
+      "header.population_sha256_eq_lock": true,
+      "header.n_users_eq_lock": true,
+      "header.n_decisions_eq_lock": true,
+      "header.n_eval_rows_eq_lock": true,
+      "header.n_rankable_rows_eq_lock": true,
+      "ok_marker_matches_disk": true,
+      "users.row_count_eq_lock": true,
+      "users.table_content_sha256_eq_lock": true,
+      "decisions.row_count_eq_lock": true,
+      "decisions.table_content_sha256_eq_lock": true,
+      "decisions.order_hash_eq_header": true,
+      "decisions.strictly_ascending": true,
+      "n_decisions_eq_header": true,
+      "n_decisions_eq_int01_packet": true
+     },
+     "timings_s": {
+      "lock_and_state": 0.01,
+      "files_and_header": 0.08,
+      "tables": 2.49,
+      "total": 2.58
+     }
+    },
+    "cache": {
+     "splits": [
+      "VALIDATION_SELECT",
+      "VALIDATION_CONFIRM"
+     ],
+     "kind": "eval",
+     "n_decisions": 808610,
+     "n_event_rows": 808610,
+     "buckets": [
+      0,
+      63
+     ],
+     "bucket_groups": 8,
+     "masks_dtype": "uint8",
+     "build_s": 33.11,
+     "group_log": [
+      {
+       "buckets": [
+        0,
+        7
+       ],
+       "group_store_rows": 1802861,
+       "kept_decisions": 99954,
+       "kept_rows": 99954,
+       "masks_dtype": "uint8",
+       "s": 3.9,
+       "rss_bytes": 4120485888
+      },
+      {
+       "buckets": [
+        8,
+        15
+       ],
+       "group_store_rows": 1796518,
+       "kept_decisions": 101919,
+       "kept_rows": 101919,
+       "masks_dtype": "uint8",
+       "s": 3.94,
+       "rss_bytes": 4111757312
+      },
+      {
+       "buckets": [
+        16,
+        23
+       ],
+       "group_store_rows": 1787855,
+       "kept_decisions": 103389,
+       "kept_rows": 103389,
+       "masks_dtype": "uint8",
+       "s": 4.0,
+       "rss_bytes": 4454731776
+      },
+      {
+       "buckets": [
+        24,
+        31
+       ],
+       "group_store_rows": 1782430,
+       "kept_decisions": 101037,
+       "kept_rows": 101037,
+       "masks_dtype": "uint8",
+       "s": 4.05,
+       "rss_bytes": 4431548416
+      },
+      {
+       "buckets": [
+        32,
+        39
+       ],
+       "group_store_rows": 1807924,
+       "kept_decisions": 100206,
+       "kept_rows": 100206,
+       "masks_dtype": "uint8",
+       "s": 3.71,
+       "rss_bytes": 4127588352
+      },
+      {
+       "buckets": [
+        40,
+        47
+       ],
+       "group_store_rows": 1781348,
+       "kept_decisions": 103249,
+       "kept_rows": 103249,
+       "masks_dtype": "uint8",
+       "s": 3.9,
+       "rss_bytes": 4099162112
+      },
+      {
+       "buckets": [
+        48,
+        55
+       ],
+       "group_store_rows": 1803789,
+       "kept_decisions": 99207,
+       "kept_rows": 99207,
+       "masks_dtype": "uint8",
+       "s": 4.09,
+       "rss_bytes": 4058099712
+      },
+      {
+       "buckets": [
+        56,
+        63
+       ],
+       "group_store_rows": 1794920,
+       "kept_decisions": 99649,
+       "kept_rows": 99649,
+       "masks_dtype": "uint8",
+       "s": 4.12,
+       "rss_bytes": 4274364416
+      }
+     ],
+     "cache_nbytes": 163339220,
+     "peak_rss_bytes_after": 4555137024
+    },
+    "build": {
+     "verify_s": 3.1,
+     "cache_build_s": 33.11,
+     "total_s": 36.37,
+     "rss_bytes_before": 605519872,
+     "rss_bytes_after": 2541322240,
+     "peak_rss_bytes_after": 4555137024,
+     "cache_nbytes": 163339220,
+     "cache_event_rows": 808610
+    }
+   },
+   "rss_bytes_end": 2507288576,
+   "peak_rss_bytes_end": 4555137024,
+   "utc_end": "2026-09-26T18:29:16Z"
+  },
+  "provider_M05_CALIB_TRAIN": {
+   "step": "provider_M05_CALIB_TRAIN",
+   "utc_start": "2026-09-26T18:26:54Z",
+   "resources_before": {
+    "utc": "2026-09-26T18:26:54Z",
+    "nvidia_smi": "0, 0 MiB, 15356 MiB, 0 %\n1, 0 MiB, 15356 MiB, 0 %",
+    "nvidia_smi_compute_apps": "",
+    "free_g": "total        used        free      shared  buff/cache   available\nMem:            1007          68          70          13         891         939\nSwap:              0           0           0",
+    "df_home": "/dev/longhorn/pvc-887ca12c-2b82-4d41-8e47-80ecbb3a9dd4   49G   39G   11G  79% /home/jovyan",
+    "loadavg": [
+     5.29296875,
+     4.98583984375,
+     4.94189453125
+    ],
+    "cgroup_memory_current_bytes": 31221772288
+   },
+   "rss_bytes_start": 605605888,
+   "build_s": 77.68,
+   "rss_bytes_after_build": 1775280128,
+   "peak_rss_bytes_after_build": 6291640320,
+   "train_B256_trainer_order": {
+    "n": 2000,
+    "total_s": 5.613,
+    "median_ms": 2.796,
+    "p90_ms": 2.857,
+    "max_ms": 6.857,
+    "rows": 512000,
+    "rows_per_s": 91216.8,
+    "access": "seed-2026 pass-0 permutation slices (random positions)"
+   },
+   "describe": {
+    "provider": "v4int.StoreTrainProvider/1",
+    "manifest_id": "M05_CALIB_TRAIN",
+    "split": "TRAIN",
+    "n_decisions": 990362,
+    "fingerprint": "8342866ddf2d6b08fab1006f1ae598d3d6e9492139c97be31a03d324b5641b8f",
+    "verified": {
+     "manifest_id": "M05_CALIB_TRAIN",
+     "kind": "TRAIN",
+     "n_decisions": 990362,
+     "header_file_sha256": "ddf39c02115d770a3d54266d021d435af2dc3c580331e202b94281eaecef3060",
+     "header_content_sha256": "6d1ec98ec5247b11ccf34d6f78b277bd5b44345cd988447bb162e757337ef836",
+     "tables": {
+      "clients": {
+       "file": "M05_CALIB_TRAIN.clients.parquet",
+       "file_sha256": "ad6d48881e59e0bb297522121c2531093471cce819f21140a72f7792940ae573",
+       "row_count": 65536,
+       "table_content_sha256": "ddd60f4b472e3d89e1dbb0f98c170398ca644defda64bf039e25db6f32957d5a"
+      },
+      "decisions": {
+       "file": "M05_CALIB_TRAIN.decisions.parquet",
+       "file_sha256": "d246f970495326c98bba537c03a725ada49231c04d93fd9de483ef02a01d4340",
+       "row_count": 990362,
+       "table_content_sha256": "0f7c05f50a52fc82e440fa0f33d5efbf3ecfe9343d2de58f0ec3270a9dfbfeda"
+      },
+      "central_order": {
+       "file": "M05_CALIB_TRAIN.central_order.parquet",
+       "file_sha256": "8efe931f04a722fbdcbef99b2e9505f08b40ef667cfac6c76a9c91e1c4a88955",
+       "row_count": 990362,
+       "table_content_sha256": "4402aa4c201da0cadf89edd60308698c794c1c2ef2fcb406e9233b61227bedbc"
+      }
+     },
+     "ordered_decision_id_sha256": "e528503ba8b35fef8859bce920e7be16b7a296170e3920dc7a5b4c500bc7cd5d",
+     "canonical_ordered_decision_id_sha256": "aaaca2d71fb164cc57da7e3827ad3dd3889bb0ae172200cc15d6af162be4a592",
+     "lock_self_sha256": "da51d271e97d3a681227a7063fd35b429797e52ee25586ba39843a37b7c839e1",
+     "lock_file_sha256": "ebf4e86f6beb82e98283108a2dad9082727e8559b81301cd46f35f60c79fd7c0",
+     "transform_state_self_sha256": "2ff0ff4ec1d27d254972c2f212e81f5fee6277dc9cced31a6a5baf5b4b002727",
+     "transform_state_file_sha256": "7dda2f56066c1ca11c32754fd2b701448a7d7920f3e68bf7facc77141f41ae7d",
+     "checks_passed": 49,
+     "checks": {
+      "lock_self_sha256_recomputed": true,
+      "manifest_hashes_file_sha256_eq_lock": true,
+      "manifest_hashes_entry_eq_lock": true,
+      "transform_state_verified": true,
+      "clients.file_sha256_eq_lock": true,
+      "clients.file_sha256_listed_r1": true,
+      "decisions.file_sha256_eq_lock": true,
+      "decisions.file_sha256_listed_r1": true,
+      "central_order.file_sha256_eq_lock": true,
+      "central_order.file_sha256_listed_r1": true,
+      "header.file_sha256_listed_r1": true,
+      "header.manifest_id": true,
+      "header.status": true,
+      "header.no_all_methods_lock": true,
+      "header.no_test_exposure_entry": true,
+      "header.data_protocol_lock_sha256_eq_lock_self": true,
+      "header.data_protocol_lock_file_sha256_eq_lock_file": true,
+      "header.content_self_hash": true,
+      "header.reissue_previous_file_eq_lock": true,
+      "header.reissue_previous_content_eq_lock": true,
+      "header.tables_eq_lock": true,
+      "header.builder_code_sha256_eq_lock": true,
+      "header.schema_self_sha256_eq_lock": true,
+      "header.dataset_version_eq_lock": true,
+      "header.candidate_order_eq_lock": true,
+      "header.catalogue_K_eq_lock": true,
+      "header.ordered_decision_id_sha256_eq_lock": true,
+      "header.eval_ordered_decision_id_sha256_eq_lock": true,
+      "header.rankable_ordered_decision_id_sha256_eq_lock": true,
+      "header.population_sha256_eq_lock": true,
+      "header.n_users_eq_lock": true,
+      "header.n_decisions_eq_lock": true,
+      "header.n_eval_rows_eq_lock": true,
+      "header.n_rankable_rows_eq_lock": true,
+      "ok_marker_matches_disk": true,
+      "clients.row_count_eq_lock": true,
+      "clients.table_content_sha256_eq_lock": true,
+      "decisions.row_count_eq_lock": true,
+      "decisions.table_content_sha256_eq_lock": true,
+      "central_order.row_count_eq_lock": true,
+      "central_order.table_content_sha256_eq_lock": true,
+      "decisions.order_hash_eq_header": true,
+      "central_order.is_permutation": true,
+      "central_order.strictly_ascending": true,
+      "decisions.target_class_in_range": true,
+      "decisions.target_status_observed": true,
+      "decisions.old_split_train": true,
+      "n_decisions_eq_header": true,
+      "n_decisions_eq_int01_packet": true
+     },
+     "timings_s": {
+      "lock_and_state": 0.01,
+      "files_and_header": 0.08,
+      "tables": 0.75,
+      "total": 0.84
+     }
+    },
+    "cache": {
+     "splits": [
+      "TRAIN"
+     ],
+     "kind": "loss",
+     "n_decisions": 990362,
+     "n_event_rows": 991488,
+     "buckets": [
+      0,
+      63
+     ],
+     "bucket_groups": 8,
+     "masks_dtype": "uint8",
+     "build_s": 76.73,
+     "group_log": [
+      {
+       "buckets": [
+        0,
+        7
+       ],
+       "group_store_rows": 6585061,
+       "kept_decisions": 120882,
+       "kept_rows": 121020,
+       "masks_dtype": "uint8",
+       "s": 9.14,
+       "rss_bytes": 5448699904
+      },
+      {
+       "buckets": [
+        8,
+        15
+       ],
+       "group_store_rows": 6585880,
+       "kept_decisions": 122033,
+       "kept_rows": 122141,
+       "masks_dtype": "uint8",
+       "s": 9.31,
+       "rss_bytes": 5496680448
+      },
+      {
+       "buckets": [
+        16,
+        23
+       ],
+       "group_store_rows": 6584508,
+       "kept_decisions": 133192,
+       "kept_rows": 133361,
+       "masks_dtype": "uint8",
+       "s": 9.34,
+       "rss_bytes": 5455302656
+      },
+      {
+       "buckets": [
+        24,
+        31
+       ],
+       "group_store_rows": 6564307,
+       "kept_decisions": 122020,
+       "kept_rows": 122142,
+       "masks_dtype": "uint8",
+       "s": 9.32,
+       "rss_bytes": 5410099200
+      },
+      {
+       "buckets": [
+        32,
+        39
+       ],
+       "group_store_rows": 6638935,
+       "kept_decisions": 120022,
+       "kept_rows": 120132,
+       "masks_dtype": "uint8",
+       "s": 9.42,
+       "rss_bytes": 5441626112
+      },
+      {
+       "buckets": [
+        40,
+        47
+       ],
+       "group_store_rows": 6597166,
+       "kept_decisions": 127040,
+       "kept_rows": 127182,
+       "masks_dtype": "uint8",
+       "s": 9.26,
+       "rss_bytes": 5052723200
+      },
+      {
+       "buckets": [
+        48,
+        55
+       ],
+       "group_store_rows": 6612909,
+       "kept_decisions": 123473,
+       "kept_rows": 123640,
+       "masks_dtype": "uint8",
+       "s": 9.45,
+       "rss_bytes": 5684858880
+      },
+      {
+       "buckets": [
+        56,
+        63
+       ],
+       "group_store_rows": 6591548,
+       "kept_decisions": 121700,
+       "kept_rows": 121870,
+       "masks_dtype": "uint8",
+       "s": 9.22,
+       "rss_bytes": 5284200448
+      }
+     ],
+     "cache_nbytes": 200228780,
+     "peak_rss_bytes_after": 6291640320
+    },
+    "build": {
+     "verify_s": 0.85,
+     "cache_build_s": 76.73,
+     "total_s": 77.68,
+     "rss_bytes_before": 605605888,
+     "rss_bytes_after": 1775280128,
+     "peak_rss_bytes_after": 6291640320,
+     "cache_nbytes": 200228780,
+     "cache_event_rows": 991488
+    }
+   },
+   "rss_bytes_end": 1789530112,
+   "peak_rss_bytes_end": 6291640320,
+   "utc_end": "2026-09-26T18:28:18Z"
+  },
+  "provider_M06_CALIB_VALIDATION_WARM": {
+   "step": "provider_M06_CALIB_VALIDATION_WARM",
+   "utc_start": "2026-09-26T18:29:18Z",
+   "resources_before": {
+    "utc": "2026-09-26T18:29:18Z",
+    "nvidia_smi": "0, 0 MiB, 15356 MiB, 0 %\n1, 0 MiB, 15356 MiB, 0 %",
+    "nvidia_smi_compute_apps": "",
+    "free_g": "total        used        free      shared  buff/cache   available\nMem:            1007          68          71          13         890         939\nSwap:              0           0           0",
+    "df_home": "/dev/longhorn/pvc-887ca12c-2b82-4d41-8e47-80ecbb3a9dd4   49G   38G   12G  78% /home/jovyan",
+    "loadavg": [
+     5.5068359375,
+     5.1494140625,
+     5.00732421875
+    ],
+    "cgroup_memory_current_bytes": 30353129472
+   },
+   "rss_bytes_start": 605757440,
+   "build_s": 35.24,
+   "rss_bytes_after_build": 1737125888,
+   "peak_rss_bytes_after_build": 3543801856,
+   "eval_B1024_in_order_prefetch0": {
+    "n": 197,
+    "total_s": 2.363,
+    "median_ms": 11.734,
+    "p90_ms": 12.04,
+    "max_ms": 24.407,
+    "rows": 200985,
+    "wall_s": 2.363,
+    "rows_per_s": 85037.4
+   },
+   "eval_B1024_in_order_prefetch2": {
+    "n": 197,
+    "total_s": 2.286,
+    "median_ms": 11.398,
+    "p90_ms": 11.753,
+    "max_ms": 36.895,
+    "rows": 200985,
+    "wall_s": 2.286,
+    "rows_per_s": 87912.0
+   },
+   "describe": {
+    "provider": "v4int.StoreEvalProvider/1",
+    "manifest_id": "M06_CALIB_VALIDATION_WARM",
+    "fingerprint": "6de4128bcdb7b8481528b24ed583dff41d26a4d1ab9ebface0796e36580f0c9a",
+    "n_manifest_rows": 248836,
+    "n_stream_rows": 200985,
+    "eval_batch": 1024,
+    "eval_stream": "E2E_ROWS",
+    "eval_stream_source": {
+     "source": "contracts/PREG1_AMENDMENT_01.md item 5 (PROPOSED; Fable to confirm at G1); v4eval.frozen_config.load() carries no eval_stream",
+     "value": "EVAL_ROWS_ONLY",
+     "file_sha256": "ef8786d2bf5e2fa7050e68f8ca18bc7ab522b7675462c8f13610ceada1c638b6"
+    },
+    "prefetch_depth": 2,
+    "manifest_hashes": {
+     "ordered_decision_id_sha256": "ee6f1ae8a944e6d88e784a06ef3b7f3c1181e763ecf61b021da42c781f4f1145",
+     "eval_ordered_decision_id_sha256": "eeb412cddc6cfe1f1b02e5206b1123314c6d169474dd878794a0e5e5273373ae",
+     "rankable_ordered_decision_id_sha256": "367832fe91956c92f230983a047d9eecd7b498a9a7d4e109c01b6bfd6d5b19a4"
+    },
+    "verified": {
+     "manifest_id": "M06_CALIB_VALIDATION_WARM",
+     "kind": "EVAL",
+     "n_decisions": 248836,
+     "header_file_sha256": "b1ecc95c3333a7650ade7d9ca4e6b7f93c8074e955280ea31cb0d2d9fa7585fc",
+     "header_content_sha256": "c78f39b754e7c5e0aefc7264bf09b8755b65c77fa94ca3964115f81f4ac7e7ee",
+     "tables": {
+      "users": {
+       "file": "M06_CALIB_VALIDATION_WARM.users.parquet",
+       "file_sha256": "1029ab2ea3b376373c3cc05479a3ccbff7e89af6dcf64556f674077a5c62b75f",
+       "row_count": 20226,
+       "table_content_sha256": "4ba2514f5cde39250a74796e1a6990aa00008ebe5590400feefe005dd48fc58e"
+      },
+      "decisions": {
+       "file": "M06_CALIB_VALIDATION_WARM.decisions.parquet",
+       "file_sha256": "b0cd169c6ccee3104c7196a059ad3e438f07f7116ccabe06bd44c09698effebe",
+       "row_count": 248836,
+       "table_content_sha256": "dc2ba593c84dfc854378bf836e436c7e45a7de24bb19096737d57cf9307c151e"
+      }
+     },
+     "ordered_decision_id_sha256": "ee6f1ae8a944e6d88e784a06ef3b7f3c1181e763ecf61b021da42c781f4f1145",
+     "canonical_ordered_decision_id_sha256": "ee6f1ae8a944e6d88e784a06ef3b7f3c1181e763ecf61b021da42c781f4f1145",
+     "lock_self_sha256": "da51d271e97d3a681227a7063fd35b429797e52ee25586ba39843a37b7c839e1",
+     "lock_file_sha256": "ebf4e86f6beb82e98283108a2dad9082727e8559b81301cd46f35f60c79fd7c0",
+     "transform_state_self_sha256": "2ff0ff4ec1d27d254972c2f212e81f5fee6277dc9cced31a6a5baf5b4b002727",
+     "transform_state_file_sha256": "7dda2f56066c1ca11c32754fd2b701448a7d7920f3e68bf7facc77141f41ae7d",
+     "checks_passed": 41,
+     "checks": {
+      "lock_self_sha256_recomputed": true,
+      "manifest_hashes_file_sha256_eq_lock": true,
+      "manifest_hashes_entry_eq_lock": true,
+      "transform_state_verified": true,
+      "users.file_sha256_eq_lock": true,
+      "users.file_sha256_listed_r1": true,
+      "decisions.file_sha256_eq_lock": true,
+      "decisions.file_sha256_listed_r1": true,
+      "header.file_sha256_listed_r1": true,
+      "header.manifest_id": true,
+      "header.status": true,
+      "header.no_all_methods_lock": true,
+      "header.no_test_exposure_entry": true,
+      "header.data_protocol_lock_sha256_eq_lock_self": true,
+      "header.data_protocol_lock_file_sha256_eq_lock_file": true,
+      "header.content_self_hash": true,
+      "header.reissue_previous_file_eq_lock": true,
+      "header.reissue_previous_content_eq_lock": true,
+      "header.tables_eq_lock": true,
+      "header.builder_code_sha256_eq_lock": true,
+      "header.schema_self_sha256_eq_lock": true,
+      "header.dataset_version_eq_lock": true,
+      "header.candidate_order_eq_lock": true,
+      "header.catalogue_K_eq_lock": true,
+      "header.ordered_decision_id_sha256_eq_lock": true,
+      "header.eval_ordered_decision_id_sha256_eq_lock": true,
+      "header.rankable_ordered_decision_id_sha256_eq_lock": true,
+      "header.population_sha256_eq_lock": true,
+      "header.n_users_eq_lock": true,
+      "header.n_decisions_eq_lock": true,
+      "header.n_eval_rows_eq_lock": true,
+      "header.n_rankable_rows_eq_lock": true,
+      "ok_marker_matches_disk": true,
+      "users.row_count_eq_lock": true,
+      "users.table_content_sha256_eq_lock": true,
+      "decisions.row_count_eq_lock": true,
+      "decisions.table_content_sha256_eq_lock": true,
+      "decisions.order_hash_eq_header": true,
+      "decisions.strictly_ascending": true,
+      "n_decisions_eq_header": true,
+      "n_decisions_eq_int01_packet": true
+     },
+     "timings_s": {
+      "lock_and_state": 0.01,
+      "files_and_header": 0.02,
+      "tables": 0.55,
+      "total": 0.59
+     }
+    },
+    "cache": {
+     "splits": [
+      "VALIDATION_SELECT",
+      "VALIDATION_CONFIRM"
+     ],
+     "kind": "eval",
+     "n_decisions": 200985,
+     "n_event_rows": 200985,
+     "buckets": [
+      0,
+      63
+     ],
+     "bucket_groups": 8,
+     "masks_dtype": "uint8",
+     "build_s": 34.3,
+     "group_log": [
+      {
+       "buckets": [
+        0,
+        7
+       ],
+       "group_store_rows": 1802861,
+       "kept_decisions": 23611,
+       "kept_rows": 23611,
+       "masks_dtype": "uint8",
+       "s": 3.62,
+       "rss_bytes": 3365638144
+      },
+      {
+       "buckets": [
+        8,
+        15
+       ],
+       "group_store_rows": 1796518,
+       "kept_decisions": 24885,
+       "kept_rows": 24885,
+       "masks_dtype": "uint8",
+       "s": 3.95,
+       "rss_bytes": 2835959808
+      },
+      {
+       "buckets": [
+        16,
+        23
+       ],
+       "group_store_rows": 1787855,
+       "kept_decisions": 26643,
+       "kept_rows": 26643,
+       "masks_dtype": "uint8",
+       "s": 4.16,
+       "rss_bytes": 3119800320
+      },
+      {
+       "buckets": [
+        24,
+        31
+       ],
+       "group_store_rows": 1782430,
+       "kept_decisions": 24969,
+       "kept_rows": 24969,
+       "masks_dtype": "uint8",
+       "s": 4.05,
+       "rss_bytes": 2995863552
+      },
+      {
+       "buckets": [
+        32,
+        39
+       ],
+       "group_store_rows": 1807924,
+       "kept_decisions": 23807,
+       "kept_rows": 23807,
+       "masks_dtype": "uint8",
+       "s": 4.25,
+       "rss_bytes": 3145900032
+      },
+      {
+       "buckets": [
+        40,
+        47
+       ],
+       "group_store_rows": 1781348,
+       "kept_decisions": 27033,
+       "kept_rows": 27033,
+       "masks_dtype": "uint8",
+       "s": 4.12,
+       "rss_bytes": 3086512128
+      },
+      {
+       "buckets": [
+        48,
+        55
+       ],
+       "group_store_rows": 1803789,
+       "kept_decisions": 24912,
+       "kept_rows": 24912,
+       "masks_dtype": "uint8",
+       "s": 4.35,
+       "rss_bytes": 3247669248
+      },
+      {
+       "buckets": [
+        56,
+        63
+       ],
+       "group_store_rows": 1794920,
+       "kept_decisions": 25125,
+       "kept_rows": 25125,
+       "masks_dtype": "uint8",
+       "s": 4.28,
+       "rss_bytes": 3322208256
+      }
+     ],
+     "cache_nbytes": 40598970,
+     "peak_rss_bytes_after": 3543801856
+    },
+    "build": {
+     "verify_s": 0.72,
+     "cache_build_s": 34.3,
+     "total_s": 35.21,
+     "rss_bytes_before": 605757440,
+     "rss_bytes_after": 1758638080,
+     "peak_rss_bytes_after": 3543801856,
+     "cache_nbytes": 40598970,
+     "cache_event_rows": 200985
+    }
+   },
+   "rss_bytes_end": 1809457152,
+   "peak_rss_bytes_end": 3543801856,
+   "utc_end": "2026-09-26T18:29:58Z"
+  },
+  "smoke_compare": {
+   "step": "smoke_compare",
+   "utc": "2026-09-26T19:12:22Z",
+   "families": {
+    "GRU": {
+     "digests_equal": {
+      "model_state_dict": true,
+      "optimizer_state_dict": true,
+      "rng_torch_cpu": true,
+      "rng_cuda": true,
+      "train_state": true,
+      "stop_state": true,
+      "updates": true,
+      "exposures": true
+     },
+     "resume_bitwise": true,
+     "updates": [
+      600,
+      300,
+      600
+     ],
+     "eval_ranks_equal": true,
+     "trainer_code_sha256": [
+      "7b46309510ac7f71c6176d8fb8e985cdf26eb1f31f22ea2dad65f04c2134533a"
+     ],
+     "A": {
+      "updates_per_s": 20.648689860825744,
+      "data_wait_s": 1.95,
+      "gpu_memory_train": {
+       "peak_allocated_bytes": 854926336,
+       "peak_reserved_bytes": 1199570944
+      },
+      "eval": {
+       "E2E_n_decisions": 200985,
+       "E2E_n_users": 15487,
+       "SMOKE_value_E2E_macro_mrr@20": 0.046909302952930505,
+       "eval_config": {
+        "cache_bytes": 1073741824,
+        "class_chunk": 32768,
+        "device_class_frozen": "A16-FP32-DET",
+        "eval_batch": 1024,
+        "eval_batch_amendment_id": null,
+        "eval_device_class": "A16-FP32-DET",
+        "eval_stream": "E2E_ROWS",
+        "frozen": true,
+        "lock_sha256": "0308640a79ef5fccb50bc456ee8f3ff1d506095c757e3b24fbb7b9c2e058238e",
+        "lock_version": "1.0.0",
+        "metric_accumulation": "FP64",
+        "path": "adapter_stream",
+        "score_block": 158486
+       },
+       "eval_stream": "E2E_ROWS",
+       "eval_wall_s": 33.12,
+       "gpu_peak_allocated_bytes": 2199555584,
+       "gpu_peak_reserved_bytes": 3806330880,
+       "manifest_id": "M06_CALIB_VALIDATION_WARM",
+       "ranks_sha256": "cc76f0f91a5395325e6929d08345800f9ba7cb1b9f54808b17b9b4060a481138",
+       "secondary": {
+        "hr@10": 0.10560849472295403,
+        "ndcg@10": 0.058896347051345437
+       }
+      },
+      "host_peak_rss_bytes": 6500151296,
+      "weights_deleted": {
+       "deleted_sha256": {
+        "latest": "871bd9f0c11b48c526c3109be2662e4e0f985e26ca48c30c305d84d6448e12e3"
+       },
+       "disk_after_delete": {
+        "floor_bytes": 8589934592,
+        "free_bytes": 12992036864,
+        "headroom_bytes": 12992036864,
+        "planned_peak_bytes": 0,
+        "utc": "2026-09-26T18:56:39Z"
+       },
+       "utc": "2026-09-26T18:56:39Z",
+       "weight_files_left": []
+      },
+      "determinism": {
+       "at_trainer_init": {
+        "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+        "determinism_mode_in_effect": "STRICT",
+        "deterministic_algorithms": true,
+        "warn_only": false
+       },
+       "constant": "STRICT",
+       "in_training_loop": {
+        "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+        "at_update": 1,
+        "determinism_mode_in_effect": "STRICT",
+        "deterministic_algorithms": true,
+        "warn_only": false
+       },
+       "passed_to_runconfig": true
+      },
+      "disk": {
+       "disk_at_start": {
+        "floor_bytes": 8589934592,
+        "free_bytes": 12992086016,
+        "headroom_bytes": 12488954672,
+        "planned_peak_bytes": 503131344,
+        "utc": "2026-09-26T18:56:04Z"
+       },
+       "disk_at_stop": {
+        "floor_bytes": 8589934592,
+        "free_bytes": 12739174400,
+        "headroom_bytes": 12739174400,
+        "planned_peak_bytes": 0,
+        "utc": "2026-09-26T18:56:39Z"
+       },
+       "disk_at_end": {
+        "floor_bytes": 8589934592,
+        "free_bytes": 12991873024,
+        "headroom_bytes": 12991873024,
+        "planned_peak_bytes": 0,
+        "utc": "2026-09-26T18:57:12Z"
+       }
+      }
+     },
+     "B1": {
+      "disk": {
+       "disk_at_start": {
+        "floor_bytes": 8589934592,
+        "free_bytes": 12991852544,
+        "headroom_bytes": 12488721200,
+        "planned_peak_bytes": 503131344,
+        "utc": "2026-09-26T18:59:08Z"
+       },
+       "disk_at_stop": {
+        "floor_bytes": 8589934592,
+        "free_bytes": 12738940928,
+        "headroom_bytes": 12738940928,
+        "planned_peak_bytes": 0,
+        "utc": "2026-09-26T18:59:26Z"
+       },
+       "disk_at_end": {
+        "floor_bytes": 8589934592,
+        "free_bytes": 12738940928,
+        "headroom_bytes": 12738940928,
+        "planned_peak_bytes": 0,
+        "utc": "2026-09-26T18:59:26Z"
+       }
+      },
+      "weights_retained_for_the_resume_leg": {
+       "deleted_by": "the resume leg (B2) of the same smoke job, right after its digests are recorded",
+       "files": [
+        "latest.pt"
+       ],
+       "kinds": [
+        "latest"
+       ]
+      }
+     },
+     "B2": {
+      "updates_per_s": 20.816129067748147,
+      "host_peak_rss_bytes": 6461308928,
+      "weights_deleted": {
+       "deleted_sha256": {
+        "latest": "3d7ac81e40b216621a093b55ed613e858b7b9d91a014fee95f0588b56222c39e"
+       },
+       "disk_after_delete": {
+        "floor_bytes": 8589934592,
+        "free_bytes": 12991770624,
+        "headroom_bytes": 12991770624,
+        "planned_peak_bytes": 0,
+        "utc": "2026-09-26T19:01:40Z"
+       },
+       "utc": "2026-09-26T19:01:40Z",
+       "weight_files_left": []
+      },
+      "eval_wall_s": 33.27,
+      "disk": {
+       "disk_at_start": {
+        "floor_bytes": 8589934592,
+        "free_bytes": 12738924544,
+        "headroom_bytes": 12235793200,
+        "planned_peak_bytes": 503131344,
+        "utc": "2026-09-26T19:01:21Z"
+       },
+       "disk_at_stop": {
+        "floor_bytes": 8589934592,
+        "free_bytes": 12738908160,
+        "headroom_bytes": 12738908160,
+        "planned_peak_bytes": 0,
+        "utc": "2026-09-26T19:01:40Z"
+       },
+       "disk_at_end": {
+        "floor_bytes": 8589934592,
+        "free_bytes": 12991606784,
+        "headroom_bytes": 12991606784,
+        "planned_peak_bytes": 0,
+        "utc": "2026-09-26T19:02:13Z"
+       }
+      }
+     },
+     "weight_files_left": []
+    },
+    "SASREC": {
+     "digests_equal": {
+      "model_state_dict": true,
+      "optimizer_state_dict": true,
+      "rng_torch_cpu": true,
+      "rng_cuda": true,
+      "train_state": true,
+      "stop_state": true,
+      "updates": true,
+      "exposures": true
+     },
+     "resume_bitwise": true,
+     "updates": [
+      600,
+      300,
+      600
+     ],
+     "eval_ranks_equal": true,
+     "trainer_code_sha256": [
+      "7b46309510ac7f71c6176d8fb8e985cdf26eb1f31f22ea2dad65f04c2134533a"
+     ],
+     "A": {
+      "updates_per_s": 10.000857830194501,
+      "data_wait_s": 1.981,
+      "gpu_memory_train": {
+       "peak_allocated_bytes": 1788134400,
+       "peak_reserved_bytes": 2325741568
+      },
+      "eval": {
+       "E2E_n_decisions": 200985,
+       "E2E_n_users": 15487,
+       "SMOKE_value_E2E_macro_mrr@20": 0.0575481098992346,
+       "eval_config": {
+        "cache_bytes": 1073741824,
+        "class_chunk": 32768,
+        "device_class_frozen": "A16-FP32-DET",
+        "eval_batch": 1024,
+        "eval_batch_amendment_id": null,
+        "eval_device_class": "A16-FP32-DET",
+        "eval_stream": "E2E_ROWS",
+        "frozen": true,
+        "lock_sha256": "0308640a79ef5fccb50bc456ee8f3ff1d506095c757e3b24fbb7b9c2e058238e",
+        "lock_version": "1.0.0",
+        "metric_accumulation": "FP64",
+        "path": "adapter_stream",
+        "score_block": 158486
+       },
+       "eval_stream": "E2E_ROWS",
+       "eval_wall_s": 45.85,
+       "gpu_peak_allocated_bytes": 3194202112,
+       "gpu_peak_reserved_bytes": 4930404352,
+       "manifest_id": "M06_CALIB_VALIDATION_WARM",
+       "ranks_sha256": "df417f81c8659c040ce51778d9db2b470816c9944ed33577620c5322e9eaaadc",
+       "secondary": {
+        "hr@10": 0.13404254461880877,
+        "ndcg@10": 0.07234222663988038
+       }
+      },
+      "host_peak_rss_bytes": 6497406976,
+      "weights_deleted": {
+       "deleted_sha256": {
+        "latest": "df21d307727f2c1c6a1c8ba169490cefc8ca717811749ae8ba09435da76ec29b"
+       },
+       "disk_after_delete": {
+        "floor_bytes": 8589934592,
+        "free_bytes": 12991533056,
+        "headroom_bytes": 12991533056,
+        "planned_peak_bytes": 0,
+        "utc": "2026-09-26T19:05:29Z"
+       },
+       "utc": "2026-09-26T19:05:29Z",
+       "weight_files_left": []
+      },
+      "determinism": {
+       "at_trainer_init": {
+        "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+        "determinism_mode_in_effect": "STRICT",
+        "deterministic_algorithms": true,
+        "warn_only": false
+       },
+       "constant": "STRICT",
+       "in_training_loop": {
+        "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+        "at_update": 1,
+        "determinism_mode_in_effect": "STRICT",
+        "deterministic_algorithms": true,
+        "warn_only": false
+       },
+       "passed_to_runconfig": true
+      },
+      "disk": {
+       "disk_at_start": {
+        "floor_bytes": 8589934592,
+        "free_bytes": 12991586304,
+        "headroom_bytes": 10997327616,
+        "planned_peak_bytes": 1994258688,
+        "utc": "2026-09-26T19:04:10Z"
+       },
+       "disk_at_stop": {
+        "floor_bytes": 8589934592,
+        "free_bytes": 11994333184,
+        "headroom_bytes": 11994333184,
+        "planned_peak_bytes": 0,
+        "utc": "2026-09-26T19:05:28Z"
+       },
+       "disk_at_end": {
+        "floor_bytes": 8589934592,
+        "free_bytes": 12991365120,
+        "headroom_bytes": 12991365120,
+        "planned_peak_bytes": 0,
+        "utc": "2026-09-26T19:06:15Z"
+       }
+      }
+     },
+     "B1": {
+      "disk": {
+       "disk_at_start": {
+        "floor_bytes": 8589934592,
+        "free_bytes": 12991340544,
+        "headroom_bytes": 10997081856,
+        "planned_peak_bytes": 1994258688,
+        "utc": "2026-09-26T19:08:13Z"
+       },
+       "disk_at_stop": {
+        "floor_bytes": 8589934592,
+        "free_bytes": 11994095616,
+        "headroom_bytes": 11994095616,
+        "planned_peak_bytes": 0,
+        "utc": "2026-09-26T19:08:53Z"
+       },
+       "disk_at_end": {
+        "floor_bytes": 8589934592,
+        "free_bytes": 11994095616,
+        "headroom_bytes": 11994095616,
+        "planned_peak_bytes": 0,
+        "utc": "2026-09-26T19:08:53Z"
+       }
+      },
+      "weights_retained_for_the_resume_leg": {
+       "deleted_by": "the resume leg (B2) of the same smoke job, right after its digests are recorded",
+       "files": [
+        "latest.pt"
+       ],
+       "kinds": [
+        "latest"
+       ]
+      }
+     },
+     "B2": {
+      "updates_per_s": 9.981648054527794,
+      "host_peak_rss_bytes": 6464692224,
+      "weights_deleted": {
+       "deleted_sha256": {
+        "latest": "265826b13f8b1ae468ec66c88c07b8a0e8269bf785749f63cae51f33da93aa1c"
+       },
+       "disk_after_delete": {
+        "floor_bytes": 8589934592,
+        "free_bytes": 12991270912,
+        "headroom_bytes": 12991270912,
+        "planned_peak_bytes": 0,
+        "utc": "2026-09-26T19:11:34Z"
+       },
+       "utc": "2026-09-26T19:11:34Z",
+       "weight_files_left": []
+      },
+      "eval_wall_s": 45.94,
+      "disk": {
+       "disk_at_start": {
+        "floor_bytes": 8589934592,
+        "free_bytes": 11994091520,
+        "headroom_bytes": 9999832832,
+        "planned_peak_bytes": 1994258688,
+        "utc": "2026-09-26T19:10:50Z"
+       },
+       "disk_at_stop": {
+        "floor_bytes": 8589934592,
+        "free_bytes": 11994071040,
+        "headroom_bytes": 11994071040,
+        "planned_peak_bytes": 0,
+        "utc": "2026-09-26T19:11:33Z"
+       },
+       "disk_at_end": {
+        "floor_bytes": 8589934592,
+        "free_bytes": 12991102976,
+        "headroom_bytes": 12991102976,
+        "planned_peak_bytes": 0,
+        "utc": "2026-09-26T19:12:20Z"
+       }
+      }
+     },
+     "weight_files_left": []
+    }
+   }
+  },
+  "theta0": {
+   "step": "theta0",
+   "label": "SANITY_RANDOM_INIT_NOT_A_RESULT",
+   "utc_start": "2026-09-26T18:41:40Z",
+   "resources_before": {
+    "utc": "2026-09-26T18:41:40Z",
+    "nvidia_smi": "0, 0 MiB, 15356 MiB, 0 %\n1, 0 MiB, 15356 MiB, 0 %",
+    "nvidia_smi_compute_apps": "",
+    "free_g": "total        used        free      shared  buff/cache   available\nMem:            1007          67          73          13         889         940\nSwap:              0           0           0",
+    "df_home": "/dev/longhorn/pvc-887ca12c-2b82-4d41-8e47-80ecbb3a9dd4   49G   37G   13G  76% /home/jovyan",
+    "loadavg": [
+     3.39501953125,
+     3.85595703125,
+     4.4111328125
+    ],
+    "cgroup_memory_current_bytes": 29273550848
+   },
+   "process": {
+    "CUDA_VISIBLE_DEVICES": "0",
+    "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+    "device": "NVIDIA A16",
+    "uuid": "550d3bca-7537-d582-3a60-d78cdd0a5319"
+   },
+   "t3_receipt": {
+    "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_g1/eval_receipt/out/T3_GPU_RECEIPT.json",
+    "sha256": "d90f8e4603883015721072aa73279c7f20b7ee491e33d0fc2940a945ea1d5869",
+    "evaluator_code_sha256": "9f0030ecdb242b918d1f079490125a7b989b9394c3467ffcd67ed474943eb81f",
+    "torch": "2.13.0+cu130"
+   },
+   "providers": {
+    "rss_bytes_after": 3572342784,
+    "peak_rss_bytes_after": 7625936896,
+    "train_fingerprint": "e6d8d9b7468b53f8b17fc770b4439fefe0fc3601e40cc06da254c834c18c3248",
+    "eval_fingerprint": "400f66712be55e4b4e9a37669610c244765ff68654a7fdadfa98fa0a83a93e77",
+    "eval_stream": "E2E_ROWS",
+    "eval_stream_source": {
+     "source": "contracts/PREG1_AMENDMENT_01.md item 5 (PROPOSED; Fable to confirm at G1); v4eval.frozen_config.load() carries no eval_stream",
+     "value": "EVAL_ROWS_ONLY",
+     "file_sha256": "ef8786d2bf5e2fa7050e68f8ca18bc7ab522b7675462c8f13610ceada1c638b6"
+    },
+    "manifest_hashes": {
+     "ordered_decision_id_sha256": "b46cf30b0972d0c1557a9f8c283bde43923a0c1ea0f9066a5ee5e8a5bcda4ba1",
+     "eval_ordered_decision_id_sha256": "7ad25341abfb82a84775ad85572b7d1b880fb4d9ec9d640205b15dcf0f36e25c",
+     "rankable_ordered_decision_id_sha256": "a9947b53f456eeed18c6b8c4788f5f2e45c3fa3460643b4051a30dbcfb948eaa"
+    }
+   },
+   "families": {
+    "GRU": {
+     "init_sha256": "f1dd4ec4b91c8f2a108588f96d70f6e81e54867460b675a67c45cc19f12d681d",
+     "t3_init_sha256": "f1dd4ec4b91c8f2a108588f96d70f6e81e54867460b675a67c45cc19f12d681d",
+     "direct": {
+      "wall_s": 132.18,
+      "ranks_sha256": "9c0f29dbbba72a731011d4efe0f8c5f2593d47c35c8c65fec6f49d0231044caa",
+      "n_tied_sha256": "434d5ee0dadf3509c5fcf8f155bb4b7a169a7012ea0f3255619a28a4786253a0",
+      "eq_before_sha256": "0db64f56cfab2ed3a529c80aa4ec96256689323a68d4464d7a0eef23ed2a850f",
+      "E2E_macro_mrr@20": 2.358082012172914e-05,
+      "E2E_macro_ndcg@10": 2.9791302871795907e-05,
+      "E2E_macro_hr@10": 6.28523303066268e-05,
+      "E2E_n_decisions": 808610,
+      "E2E_n_users": 62368,
+      "coverage": 0.9915311460407366,
+      "n_target_tied": 1773,
+      "max_n_tied": 2,
+      "eval_stream": "E2E_ROWS",
+      "eval_device_class": "A16-FP32-DET",
+      "gpu_peak_allocated_bytes": 1914386432,
+      "gpu_peak_reserved_bytes": 4789895168
+     },
+     "trainer_evaluate": {
+      "wall_s": 131.97,
+      "ranks_sha256": "9c0f29dbbba72a731011d4efe0f8c5f2593d47c35c8c65fec6f49d0231044caa",
+      "value_E2E_macro_mrr@20": 2.358082012172914e-05,
+      "eval_stream": "E2E_ROWS"
+     },
+     "equal_to_t3": {
+      "init_sha256": true,
+      "ranks_sha256": true,
+      "n_tied_sha256": true,
+      "eq_before_sha256": true,
+      "trainer_ranks_sha256": true,
+      "E2E_macro_mrr@20": true,
+      "E2E_macro_ndcg@10": true,
+      "E2E_macro_hr@10": true,
+      "E2E_n_decisions": true,
+      "E2E_n_users": true,
+      "coverage": true,
+      "n_target_tied": true,
+      "max_n_tied": true,
+      "eval_stream": true,
+      "trainer_value": true
+     },
+     "all_equal": true
+    },
+    "SASREC": {
+     "init_sha256": "e264064a1fc678ab4b0eea7aed0290ae522e58f809c82fef11e042c11a9063d4",
+     "t3_init_sha256": "e264064a1fc678ab4b0eea7aed0290ae522e58f809c82fef11e042c11a9063d4",
+     "direct": {
+      "wall_s": 181.81,
+      "ranks_sha256": "b96e325a7af0cd8b750c3e5a3283a9a4883d9c261a5878b4508b142bd84debe9",
+      "n_tied_sha256": "1839af5c13da4ec57de2d0e16c2d3655f5074003d39335eaa5013313ed745c77",
+      "eq_before_sha256": "e81541f5b5b2e984095cf1d768115d00ab786974ed7c049540eaa7b58503b117",
+      "E2E_macro_mrr@20": 1.3523726509015297e-05,
+      "E2E_macro_ndcg@10": 1.7254208338319152e-05,
+      "E2E_macro_hr@10": 3.959372022725015e-05,
+      "E2E_n_decisions": 808610,
+      "E2E_n_users": 62368,
+      "coverage": 0.9915311460407366,
+      "n_target_tied": 1710,
+      "max_n_tied": 2,
+      "eval_stream": "E2E_ROWS",
+      "eval_device_class": "A16-FP32-DET",
+      "gpu_peak_allocated_bytes": 2163334144,
+      "gpu_peak_reserved_bytes": 5276434432
+     },
+     "trainer_evaluate": {
+      "wall_s": 182.35,
+      "ranks_sha256": "b96e325a7af0cd8b750c3e5a3283a9a4883d9c261a5878b4508b142bd84debe9",
+      "value_E2E_macro_mrr@20": 1.3523726509015297e-05,
+      "eval_stream": "E2E_ROWS"
+     },
+     "equal_to_t3": {
+      "init_sha256": true,
+      "ranks_sha256": true,
+      "n_tied_sha256": true,
+      "eq_before_sha256": true,
+      "trainer_ranks_sha256": true,
+      "E2E_macro_mrr@20": true,
+      "E2E_macro_ndcg@10": true,
+      "E2E_macro_hr@10": true,
+      "E2E_n_decisions": true,
+      "E2E_n_users": true,
+      "coverage": true,
+      "n_target_tied": true,
+      "max_n_tied": true,
+      "eval_stream": true,
+      "trainer_value": true
+     },
+     "all_equal": true
+    }
+   },
+   "theta0_tmp_removed": true,
+   "host_rss_bytes": 4229558272,
+   "host_peak_rss_bytes": 7625936896,
+   "all_equal": true,
+   "utc_end": "2026-09-26T18:54:10Z"
+  }
+ },
+ "pt_files_left_under_int01": []
+}

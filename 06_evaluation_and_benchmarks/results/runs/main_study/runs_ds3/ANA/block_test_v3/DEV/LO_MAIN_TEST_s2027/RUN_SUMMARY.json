@@ -1,0 +1,68 @@
+{
+ "arm": "LO",
+ "bytes": {
+  "down_after_bootstrap": 0,
+  "up": 0
+ },
+ "device": "cuda:0",
+ "device_pin_sha256": "db744ca3f0da27ac7b65c41b4b32f2c68ec9d0bd66bbc0dc33e874a226834e6b",
+ "n_clients": 26091,
+ "n_no_support": 0,
+ "n_shards": 64,
+ "role": "MAIN_TEST",
+ "selected_cell": "LO_P4",
+ "shard_set_sha256": "298c5fb5fe7e1d7c3b3bdc8930e28fcc0511d21c2da1d3994cba49b75d789e2c",
+ "shards_this_leg": 64,
+ "spec": {
+  "arm": "LO",
+  "cells": [
+   {
+    "cell": "LO_P1",
+    "lr_frac": null,
+    "passes": 1
+   },
+   {
+    "cell": "LO_P2",
+    "lr_frac": null,
+    "passes": 2
+   },
+   {
+    "cell": "LO_P4",
+    "lr_frac": null,
+    "passes": 4
+   }
+  ],
+  "fused": true,
+  "knobs": {
+   "batch": 16,
+   "clip": 1.0,
+   "exposure_point": "end",
+   "ft_lr_fracs": [
+    0.1,
+    0.3
+   ],
+   "ft_passes": [
+    1,
+    2,
+    4
+   ],
+   "lo_lr_shape": "s_efe",
+   "lo_passes": [
+    1,
+    2,
+    4
+   ],
+   "weight_decay": 1e-05
+  },
+  "peak_lr": 0.0007114121116984968,
+  "role": "MAIN_TEST",
+  "seed": 2027,
+  "select": false,
+  "selected_cell": "LO_P4",
+  "selection_substitute": "PREG1_AMENDMENT_06A \u00a71: M04S FIXED_20 = the UNSEEN_VAL role of REGISTRY_V2 (support UNEW_VAL_SUPPORT_32768 -> eval UNEW_VAL_VALIDATION_32768), disjoint from MAIN, UNSEEN_HOLDOUT and every report panel; supersedes INT-04's CALIBRATION substitute (CALIB_VALIDATION is the rank-0-32,768 prefix of MAIN and would let report users take part in the selection); defined in v4int.launch_device, registered by Ops in amendment 06A",
+  "start_digest": "a5d1e6839c4d446bb2b4f09fd2a6ef340cf596e60b8a035c2ef683d58f5e34c0"
+ },
+ "spec_sha256": "e56b85f0fbefe968f4d3297a90052883444ec41bd241e84696bd3c93aac3ef3b",
+ "status": "DONE",
+ "wall_s_this_leg": 34114.28
+}

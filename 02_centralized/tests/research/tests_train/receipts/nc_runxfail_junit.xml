@@ -1,0 +1,1758 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="60" skipped="0" tests="60" time="111.855" timestamp="2026-09-29T15:19:33.318224+03:00" hostname="DESKTOP-KS1B8LQ"><testcase classname="test_determinism_mode" name="test_nc_trainer_ignores_the_mode" time="1.156"><failure message="AssertionError: the trainer did not apply determinism_mode STRICT&#10;assert 'WARN_ONLY' == 'STRICT'&#10;  &#10;  - STRICT&#10;  + WARN_ONLY">work = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/code/tests_train/_work/test_nc_trainer_ignores_the_mode')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000015CF7F99CD0&gt;
+
+    @nc("a trainer that ignores determinism_mode (the pre-R1 hard-coded warn-only call)")
+    def test_nc_trainer_ignores_the_mode(work, monkeypatch):
+        monkeypatch.setattr(T.CentralTrainer, "_apply_determinism", lambda self: T.enforce_strict_fp32(deterministic=True))
+&gt;       _check_applied(work, "STRICT")
+
+tests_train\test_determinism_mode.py:279: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+work = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/code/tests_train/_work/test_nc_trainer_ignores_the_mode')
+mode = 'STRICT'
+
+    def _check_applied(work, mode: str):
+        """Build a trainer in `mode` from the OTHER torch state: the trainer must switch the process to its mode."""
+        _other_mode_state(mode)
+        tr = trainer(work / f"applied_{mode}", cfg(f"applied_{mode}", "GRU", determinism_mode=mode))
+&gt;       assert _torch_mode() == mode, f"the trainer did not apply determinism_mode {mode}"
+E       AssertionError: the trainer did not apply determinism_mode STRICT
+E       assert 'WARN_ONLY' == 'STRICT'
+E         
+E         - STRICT
+E         + WARN_ONLY
+
+tests_train\test_determinism_mode.py:134: AssertionError</failure></testcase><testcase classname="test_determinism_mode" name="test_nc_rows_without_the_mode" time="2.033"><failure message="AssertionError: RESULT_ROWS.json: a row does not record determinism_mode STRICT&#10;assert None == 'STRICT'&#10; +  where None = &lt;built-in method get of dict object at 0x0000015CFC5BB340&gt;('determinism_mode')&#10; +    where &lt;built-in method get of dict object at 0x0000015CFC5BB340&gt; = {'aggregation': 'macro', 'bootstrap_W_sha256': None, 'c_matched_eligible': False, 'candidate_order_hash': 'SYNTHETIC-CANDIDATES', ...}.get">work = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/code/tests_train/_work/test_nc_rows_without_the_mode')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000015CFC4BC640&gt;
+
+    @nc("result rows that do not record the determinism mode")
+    def test_nc_rows_without_the_mode(work, monkeypatch):
+        orig = T.CentralTrainer._row_labels
+    
+        def labels(self):
+            lab = orig(self)
+            lab.pop("determinism_mode")                          # MUTANT: the key is not recorded in the rows
+            return lab
+        monkeypatch.setattr(T.CentralTrainer, "_row_labels", labels)
+        trainer(work / "r", cfg("nc_rows", "GRU"), eval_override=scripted(VALS)).run()
+&gt;       _check_rows(work / "r", "STRICT", os.environ[ENV])
+
+tests_train\test_determinism_mode.py:292: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+run_dir = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/code/tests_train/_work/test_nc_rows_without_the_mode/r')
+mode = 'STRICT', cublas = ':4096:8'
+
+    def _check_rows(run_dir, mode: str, cublas: str) -&gt; None:
+        files = [art(run_dir) / "RESULT_ROWS.json"] + sorted((art(run_dir) / "evals").glob("*.rows.json"))
+        n = 0
+        for f in files:
+            for r in read(f)["rows"]:
+                n += 1
+&gt;               assert r.get("determinism_mode") == mode, f"{f.name}: a row does not record determinism_mode {mode}"
+E               AssertionError: RESULT_ROWS.json: a row does not record determinism_mode STRICT
+E               assert None == 'STRICT'
+E                +  where None = &lt;built-in method get of dict object at 0x0000015CFC5BB340&gt;('determinism_mode')
+E                +    where &lt;built-in method get of dict object at 0x0000015CFC5BB340&gt; = {'aggregation': 'macro', 'bootstrap_W_sha256': None, 'c_matched_eligible': False, 'candidate_order_hash': 'SYNTHETIC-CANDIDATES', ...}.get
+
+tests_train\test_determinism_mode.py:166: AssertionError</failure></testcase><testcase classname="test_determinism_mode" name="test_nc_resume_ignores_a_mode_change" time="0.588"><failure message="AssertionError: refused for another reason: resume refused, identity changed: ['config_sha256']&#10;assert 'determinism mode / CUBLAS_WORKSPACE_CONFIG' in &quot;resume refused, identity changed: ['config_sha256']&quot;&#10; +  where &quot;resume refused, identity changed: ['config_sha256']&quot; = str(TrainerError(&quot;resume refused, identity changed: ['config_sha256']&quot;))">work = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/code/tests_train/_work/test_nc_resume_ignores_a_mode_change')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000015CFC4229F0&gt;
+
+    @nc("a resume that ignores a determinism-mode change")
+    def test_nc_resume_ignores_a_mode_change(work, monkeypatch):
+        monkeypatch.setattr(T.CentralTrainer, "_check_resume_determinism", lambda self, recorded, where: None)
+&gt;       _check_resume_refuses_mode_changes(work, monkeypatch)
+
+tests_train\test_determinism_mode.py:298: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests_train\test_determinism_mode.py:216: in _check_resume_refuses_mode_changes
+    _raises_with(TrainerError, RESUME_REFUSAL, trainer(work / "B", dataclasses.replace(c, determinism_mode="WARN_ONLY"),
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+exc = &lt;class 'v4train.trainer.TrainerError'&gt;
+text = 'determinism mode / CUBLAS_WORKSPACE_CONFIG'
+fn = &lt;bound method CentralTrainer.resume of &lt;v4train.trainer.CentralTrainer object at 0x0000015CFB3BBD90&gt;&gt;
+a = (), kw = {}
+
+    def _raises_with(exc, text, fn, *a, **kw):
+        """fn must raise `exc` and its message must name the intended cause (not merely any refusal)."""
+        try:
+            fn(*a, **kw)
+        except exc as e:
+            err = e
+        else:
+            raise AssertionError(f"{getattr(fn, '__name__', fn)} did not raise {exc.__name__} ({text!r})")
+&gt;       assert text in str(err), f"refused for another reason: {err}"
+E       AssertionError: refused for another reason: resume refused, identity changed: ['config_sha256']
+E       assert 'determinism mode / CUBLAS_WORKSPACE_CONFIG' in "resume refused, identity changed: ['config_sha256']"
+E        +  where "resume refused, identity changed: ['config_sha256']" = str(TrainerError("resume refused, identity changed: ['config_sha256']"))
+
+tests_train\test_determinism_mode.py:55: AssertionError</failure></testcase><testcase classname="test_full_train_mode" name="test_nc_tiebreak_keeps_resumable" time="2.332"><failure message="AssertionError: tie-break keeps strictly-best + endpoint only, found ['best.pt', 'endpoint_6.0.pt', 'latest.pt']&#10;assert ['best.pt', '..., 'latest.pt'] == ['best.pt', 'endpoint_6.0.pt']&#10;  &#10;  Left contains one more item: 'latest.pt'&#10;  Use -v to get more diff">work = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/code/tests_train/_work/test_nc_tiebreak_keeps_resumable')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000015CFC4C5D00&gt;
+
+    @nc("a tie-break run that keeps its 6.0 resumable like a STILL_IMPROVING contest run")
+    def test_nc_tiebreak_keeps_resumable(work, monkeypatch):
+        import v4train.trainer as T
+        orig = T.CentralTrainer._finish_main
+    
+        def as_contest(self):
+            self.tiebreak = False                                     # MUTANT: the retention ignores the tie-break rule
+            orig(self)
+        monkeypatch.setattr(T.CentralTrainer, "_finish_main", as_contest)
+        _full(work)
+&gt;       _check_tiebreak_retention(work / "F")
+
+tests_train\test_full_train_mode.py:107: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+run_dir = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/code/tests_train/_work/test_nc_tiebreak_keeps_resumable/F')
+
+    def _check_tiebreak_retention(run_dir):
+        files = sorted(p.name for p in (art(run_dir) / "checkpoints").glob("*.pt"))
+&gt;       assert files == ["best.pt", "endpoint_6.0.pt"], f"tie-break keeps strictly-best + endpoint only, found {files}"
+E       AssertionError: tie-break keeps strictly-best + endpoint only, found ['best.pt', 'endpoint_6.0.pt', 'latest.pt']
+E       assert ['best.pt', '..., 'latest.pt'] == ['best.pt', 'endpoint_6.0.pt']
+E         
+E         Left contains one more item: 'latest.pt'
+E         Use -v to get more diff
+
+tests_train\test_full_train_mode.py:41: AssertionError</failure></testcase><testcase classname="test_int06_device_pin" name="test_nc_a40_accepted_without_pin" time="0.002"><failure message="assert 'NVIDIA_A40-FP32-DET' in {'A16-FP32-DET'}&#10; +  where {'A16-FP32-DET'} = &lt;function accepted_classes at 0x0000015CF7DEB9C0&gt;('A16-FP32-DET', None)&#10; +    where &lt;function accepted_classes at 0x0000015CF7DEB9C0&gt; = dp.accepted_classes&#10; +    and   'A16-FP32-DET' = FrozenEvalConfig(score_block=158486, class_chunk=32768, eval_batch=1024, cache_bytes=1073741824, metric_accumulation='...ined gate): v4eval's E2E_ROWS mapping stays internal; ALL_ROWS is refused&quot;, 'all_rows_refused': True}), amendment=None).device_class&#10; +      where FrozenEvalConfig(score_block=158486, class_chunk=32768, eval_batch=1024, cache_bytes=1073741824, metric_accumulation='...ined gate): v4eval's E2E_ROWS mapping stays internal; ALL_ROWS is refused&quot;, 'all_rows_refused': True}), amendment=None) = frozen()">@nc("without a pin the A40 class is an accepted evaluation class")
+    def test_nc_a40_accepted_without_pin():
+&gt;       assert A40 in dp.accepted_classes(frozen().device_class, None)
+E       assert 'NVIDIA_A40-FP32-DET' in {'A16-FP32-DET'}
+E        +  where {'A16-FP32-DET'} = &lt;function accepted_classes at 0x0000015CF7DEB9C0&gt;('A16-FP32-DET', None)
+E        +    where &lt;function accepted_classes at 0x0000015CF7DEB9C0&gt; = dp.accepted_classes
+E        +    and   'A16-FP32-DET' = FrozenEvalConfig(score_block=158486, class_chunk=32768, eval_batch=1024, cache_bytes=1073741824, metric_accumulation='...ined gate): v4eval's E2E_ROWS mapping stays internal; ALL_ROWS is refused", 'all_rows_refused': True}), amendment=None).device_class
+E        +      where FrozenEvalConfig(score_block=158486, class_chunk=32768, eval_batch=1024, cache_bytes=1073741824, metric_accumulation='...ined gate): v4eval's E2E_ROWS mapping stays internal; ALL_ROWS is refused", 'all_rows_refused': True}), amendment=None) = frozen()
+
+tests_train\test_int06_device_pin.py:111: AssertionError</failure></testcase><testcase classname="test_int06_device_pin" name="test_nc_pin_for_another_gpu_accepted" time="0.004"><failure message="assert False">tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-2/test_nc_pin_for_another_gpu_ac0')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000015CFC4C6CF0&gt;
+
+    @nc("a pin registered for another GPU name is accepted for the live GPU")
+    def test_nc_pin_for_another_gpu_accepted(tmp_path, monkeypatch):
+        p = tmp_path / "pin.json"
+        p.write_text(json.dumps(_pin(name="NVIDIA A40-OTHER")), encoding="utf-8")
+        monkeypatch.setattr(dp.torch.cuda, "get_device_name", lambda _d: "NVIDIA A40")
+        try:
+            dp.pin_for_device("cuda:0", p)
+            accepted = True
+        except dp.DevicePinError:
+            accepted = False
+&gt;       assert accepted
+E       assert False
+
+tests_train\test_int06_device_pin.py:124: AssertionError</failure></testcase><testcase classname="test_monitors_guards" name="test_nc_per_step_sync" time="2.075"><failure message="AssertionError: host syncs outside the periodic flush / checkpoint check: ['_loop', '_validate', 'flush']&#10;assert {'_loop', '_v...ate', 'flush'} &lt;= {'_validate', 'flush'}&#10;  &#10;  Extra items in the left set:&#10;  '_loop'">work = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/code/tests_train/_work/test_nc_per_step_sync')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000015CFC4EB350&gt;
+
+    @nc("a monitor that reads the loss on every update (a per-step host sync)")
+    def test_nc_per_step_sync(work, monkeypatch):
+        orig = T.Monitor.add
+    
+        def add(self, loss_sum, *a, **k):
+            float(loss_sum)                                  # MUTANT: loss.item() per step
+            return orig(self, loss_sum, *a, **k)
+        monkeypatch.setattr(T.Monitor, "add", add)
+&gt;       _check_no_per_step_sync(work)
+
+tests_train\test_monitors_guards.py:203: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+work = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/code/tests_train/_work/test_nc_per_step_sync')
+family = 'GRU'
+
+    def _check_no_per_step_sync(work, family="GRU"):
+        tr = trainer(work / "r", cfg("sync", family, log_every=5), eval_override=scripted(VALS))
+        with SyncCounter() as sc:
+            s = tr.run()
+        flushes = [ln for ln in (art(work / "r") / "metrics.jsonl").read_text(encoding="utf-8").splitlines()
+                   if '"kind": "monitor"' in ln]
+        where = {c[0] for c in sc.calls}
+        # allowed: the periodic monitor flush, and the finiteness validation of a checkpoint file being written
+&gt;       assert where &lt;= {"flush", "_validate"}, f"host syncs outside the periodic flush / checkpoint check: {sorted(where)}"
+E       AssertionError: host syncs outside the periodic flush / checkpoint check: ['_loop', '_validate', 'flush']
+E       assert {'_loop', '_v...ate', 'flush'} &lt;= {'_validate', 'flush'}
+E         
+E         Extra items in the left set:
+E         '_loop'
+
+tests_train\test_monitors_guards.py:78: AssertionError</failure></testcase><testcase classname="test_order_policy" name="test_nc_naive_order_collides_across_seeds" time="0.004"><failure message="AssertionError: two seeds must never share a pass permutation&#10;assert not True&#10; +  where True = &lt;function array_equal at 0x0000015CEC9596F0&gt;(array([706, 630, 663, 648, 875, 497, 929, 280, 839, 597, 904, 677, 135,\n       462, 489, 159, 899, 701, 370, 127, 823,..., 688, 969, 824, 795, 884, 963, 846, 297, 453, 265,\n       944, 281, 619, 707, 627, 976, 561, 849, 744, 815, 342, 156]), array([706, 630, 663, 648, 875, 497, 929, 280, 839, 597, 904, 677, 135,\n       462, 489, 159, 899, 701, 370, 127, 823,..., 688, 969, 824, 795, 884, 963, 846, 297, 453, 265,\n       944, 281, 619, 707, 627, 976, 561, 849, 744, 815, 342, 156]))&#10; +    where &lt;function array_equal at 0x0000015CEC9596F0&gt; = np.array_equal">@nc("the GRU1 order rule default_rng(seed + pass) collides across seeds 2026 / 2027")
+    def test_nc_naive_order_collides_across_seeds():
+&gt;       _check_seeds_independent(naive_gru1_permutation)
+
+tests_train\test_order_policy.py:66: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+perm_fn = &lt;function naive_gru1_permutation at 0x0000015CF7DF34C0&gt;
+
+    def _check_seeds_independent(perm_fn):
+        a = perm_fn(2026, 1, 1000)
+        b = perm_fn(2027, 0, 1000)
+&gt;       assert not np.array_equal(a, b), "two seeds must never share a pass permutation"
+E       AssertionError: two seeds must never share a pass permutation
+E       assert not True
+E        +  where True = &lt;function array_equal at 0x0000015CEC9596F0&gt;(array([706, 630, 663, 648, 875, 497, 929, 280, 839, 597, 904, 677, 135,\n       462, 489, 159, 899, 701, 370, 127, 823,..., 688, 969, 824, 795, 884, 963, 846, 297, 453, 265,\n       944, 281, 619, 707, 627, 976, 561, 849, 744, 815, 342, 156]), array([706, 630, 663, 648, 875, 497, 929, 280, 839, 597, 904, 677, 135,\n       462, 489, 159, 899, 701, 370, 127, 823,..., 688, 969, 824, 795, 884, 963, 846, 297, 453, 265,\n       944, 281, 619, 707, 627, 976, 561, 849, 744, 815, 342, 156]))
+E        +    where &lt;function array_equal at 0x0000015CEC9596F0&gt; = np.array_equal
+
+tests_train\test_order_policy.py:25: AssertionError</failure></testcase><testcase classname="test_registry_schema_labels" name="test_nc_manifest_id_not_in_registry" time="0.019"><failure message="AssertionError: trainer did not raise TrainerError (&quot;is not the registry's 'M01_COHORT_TRAIN'&quot;)">work = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/code/tests_train/_work/test_nc_manifest_id_not_in_registry')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000015CFC4EA850&gt;
+
+    @nc("a trainer that accepts a manifest id that is not the registry's for the role (the pre-R2 open door)")
+    def test_nc_manifest_id_not_in_registry(work, monkeypatch):
+        def lax(reg, role, kind, p):                          # MUTANT: no registry lookup of the provider's id / binding
+            mid = p.manifest_id if kind == "train" else p.manifest.manifest_id
+            return {"manifest_id": mid, "content_sha256": None, "header_sha256": None, "n_decisions": 0,
+                    "fingerprint": p.fingerprint, "bound_by": []}
+        monkeypatch.setattr(T, "check_provider", lax)
+&gt;       _check_unregistered_manifest_refused(work)
+
+tests_train\test_registry_schema_labels.py:585: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests_train\test_registry_schema_labels.py:196: in _check_unregistered_manifest_refused
+    raises_with(TrainerError, "is not the registry's 'M01_COHORT_TRAIN'", trainer, work / "u", cfg("u", "GRU"), tp, ep0)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+exc = &lt;class 'v4train.trainer.TrainerError'&gt;
+text = "is not the registry's 'M01_COHORT_TRAIN'"
+fn = &lt;function trainer at 0x0000015CF7DE5F80&gt;
+a = (WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/code/tests_train/_work/test_nc_manifest_id_...eticTrainProvider object at 0x0000015CFC5DB3F0&gt;, &lt;v4train.provider.SyntheticEvalProvider object at 0x0000015CFC5435C0&gt;)
+kw = {}
+
+    def raises_with(exc, text, fn, *a, **kw):
+        """fn must raise `exc` and its message must name the intended cause (not merely any refusal)."""
+        try:
+            fn(*a, **kw)
+        except exc as e:
+            err = e
+        else:
+&gt;           raise AssertionError(f"{getattr(fn, '__name__', fn)} did not raise {exc.__name__} ({text!r})")
+E           AssertionError: trainer did not raise TrainerError ("is not the registry's 'M01_COHORT_TRAIN'")
+
+tests_train\trainkit.py:244: AssertionError</failure></testcase><testcase classname="test_registry_schema_labels" name="test_nc_registry_hash_mismatch" time="0.028"><failure message="AssertionError: trainer did not raise TrainerError ('self-hash mismatch')">work = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/code/tests_train/_work/test_nc_registry_hash_mismatch')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000015CFC5417C0&gt;
+
+    @nc("a registry loader that does not verify the registry's self-hash")
+    def test_nc_registry_hash_mismatch(work, monkeypatch):
+        monkeypatch.setattr(R, "_verify_self_hash", lambda obj, what: obj.get("self_sha256"))    # MUTANT
+&gt;       _check_registry_hash_mismatch_refused(work)
+
+tests_train\test_registry_schema_labels.py:591: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests_train\test_registry_schema_labels.py:172: in _check_registry_hash_mismatch_refused
+    raises_with(TrainerError, "self-hash mismatch", trainer, work / "h", cfg("h", "GRU", manifest_registry=p))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+exc = &lt;class 'v4train.trainer.TrainerError'&gt;, text = 'self-hash mismatch'
+fn = &lt;function trainer at 0x0000015CF7DE5F80&gt;
+a = (WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/code/tests_train/_work/test_nc_registry_has..., theta0_init_sha256=None, hp_id=None, hp_registry=None, recipe_id=None, recipe_registry=None, auto_continuation=None))
+kw = {}
+
+    def raises_with(exc, text, fn, *a, **kw):
+        """fn must raise `exc` and its message must name the intended cause (not merely any refusal)."""
+        try:
+            fn(*a, **kw)
+        except exc as e:
+            err = e
+        else:
+&gt;           raise AssertionError(f"{getattr(fn, '__name__', fn)} did not raise {exc.__name__} ({text!r})")
+E           AssertionError: trainer did not raise TrainerError ('self-hash mismatch')
+
+tests_train\trainkit.py:244: AssertionError</failure></testcase><testcase classname="test_registry_schema_labels" name="test_nc_schema_not_in_registry" time="0.014"><failure message="AssertionError: trainer did not raise TrainerError ('is not in the derived-schema registry')">work = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/code/tests_train/_work/test_nc_schema_not_in_registry')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000015CFC543E30&gt;
+
+    @nc("a schema check that trusts the schema object instead of the derived-schema registry")
+    def test_nc_schema_not_in_registry(work, monkeypatch):
+        def trusting(schema, registry_path=None):             # MUTANT: the object's own claims, no registry lookup
+            return {"kind": "DERIVED", "schema_id": schema.schema_id, "schema_self_sha256": schema.self_sha256,
+                    "file": str(schema.path), "file_sha256": None, "registry": None}
+        monkeypatch.setattr(T, "verify_schema", trusting)
+&gt;       _check_unregistered_schema_refused(work)
+
+tests_train\test_registry_schema_labels.py:600: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests_train\test_registry_schema_labels.py:346: in _check_unregistered_schema_refused
+    raises_with(TrainerError, "is not in the derived-schema registry", trainer, work / "s",
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+exc = &lt;class 'v4train.trainer.TrainerError'&gt;
+text = 'is not in the derived-schema registry'
+fn = &lt;function trainer at 0x0000015CF7DE5F80&gt;
+a = (WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/code/tests_train/_work/test_nc_schema_not_i..., theta0_init_sha256=None, hp_id=None, hp_registry=None, recipe_id=None, recipe_registry=None, auto_continuation=None))
+kw = {'schema': CleanV2Schema(path='F:\\Queens University\\Microsoft Project\\eda\\.local_ai\\_pytest_tmp\\FABLE-DEEP3\\v4t...', 'category_tokens', 'brand_tokens', 'main_category_tokens', 'daypart_tokens', 'weekday_tokens')), channels_total=53)}
+
+    def raises_with(exc, text, fn, *a, **kw):
+        """fn must raise `exc` and its message must name the intended cause (not merely any refusal)."""
+        try:
+            fn(*a, **kw)
+        except exc as e:
+            err = e
+        else:
+&gt;           raise AssertionError(f"{getattr(fn, '__name__', fn)} did not raise {exc.__name__} ({text!r})")
+E           AssertionError: trainer did not raise TrainerError ('is not in the derived-schema registry')
+
+tests_train\trainkit.py:244: AssertionError</failure></testcase><testcase classname="test_registry_schema_labels" name="test_nc_screen_row_accepted_by_selection" time="0.001"><failure message="AssertionError: select_family did not raise SelectionError ('FEATURE_SEARCH_SCREEN row is refused')">monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000015CFD038750&gt;
+
+    @nc("a cohort selection that accepts FEATURE_SEARCH_SCREEN rows as evidence")
+    def test_nc_screen_row_accepted_by_selection(monkeypatch):
+        monkeypatch.setitem(SEL.EVIDENCE_LABELS, "COHORT", ("PRODUCTION", "FEATURE_SEARCH_SCREEN"))       # MUTANT
+&gt;       _check_screen_rows_refused()
+
+tests_train\test_registry_schema_labels.py:606: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests_train\test_registry_schema_labels.py:542: in _check_screen_rows_refused
+    raises_with(SelectionError, "FEATURE_SEARCH_SCREEN row is refused", select_family, rows, delta_bar_ci=WIDE)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+exc = &lt;class 'v4train.selection.SelectionError'&gt;
+text = 'FEATURE_SEARCH_SCREEN row is refused'
+fn = &lt;function select_family at 0x0000015CF7DB0680&gt;
+a = ([{'status': 'MEASURED', 'family': 'GRU', 'method': 'C', 'seed': 2026, ...}, {'status': 'MEASURED', 'family': 'GRU', '...', 'method': 'C', 'seed': 2027, ...}, {'status': 'MEASURED', 'family': 'GRU', 'method': 'C', 'seed': 2027, ...}, ...],)
+kw = {'delta_bar_ci': (0.01, 0.02)}
+
+    def raises_with(exc, text, fn, *a, **kw):
+        """fn must raise `exc` and its message must name the intended cause (not merely any refusal)."""
+        try:
+            fn(*a, **kw)
+        except exc as e:
+            err = e
+        else:
+&gt;           raise AssertionError(f"{getattr(fn, '__name__', fn)} did not raise {exc.__name__} ({text!r})")
+E           AssertionError: select_family did not raise SelectionError ('FEATURE_SEARCH_SCREEN row is refused')
+
+tests_train\trainkit.py:244: AssertionError</failure></testcase><testcase classname="test_registry_schema_labels" name="test_nc_resume_with_changed_schema" time="2.632"><failure message="AssertionError: resume did not raise TrainerError ('the schema changed')">work = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/code/tests_train/_work/test_nc_resume_with_changed_schema')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000015CFC5DBBD0&gt;
+
+    @nc("a resume that ignores a schema change")
+    def test_nc_resume_with_changed_schema(work, monkeypatch):
+        monkeypatch.setattr(T.CentralTrainer, "_check_resume_schema", lambda self, recorded, where: None)  # MUTANT
+&gt;       _check_resume_refuses_changed_schema(work)
+
+tests_train\test_registry_schema_labels.py:612: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests_train\test_registry_schema_labels.py:308: in _check_resume_refuses_changed_schema
+    raises_with(TrainerError, "the schema changed", trainer(work / "B", c, schema=derived_schema("L0_SYNTH_TEST"),
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+exc = &lt;class 'v4train.trainer.TrainerError'&gt;, text = 'the schema changed'
+fn = &lt;bound method CentralTrainer.resume of &lt;v4train.trainer.CentralTrainer object at 0x0000015CF7D28910&gt;&gt;
+a = (), kw = {}
+
+    def raises_with(exc, text, fn, *a, **kw):
+        """fn must raise `exc` and its message must name the intended cause (not merely any refusal)."""
+        try:
+            fn(*a, **kw)
+        except exc as e:
+            err = e
+        else:
+&gt;           raise AssertionError(f"{getattr(fn, '__name__', fn)} did not raise {exc.__name__} ({text!r})")
+E           AssertionError: resume did not raise TrainerError ('the schema changed')
+
+tests_train\trainkit.py:244: AssertionError</failure></testcase><testcase classname="test_retention_calibration" name="test_nc_retention_skips_deletion" time="2.192"><failure message="AssertionError: retained ['best.pt', 'endpoint_6.0.pt', 'latest.pt'], expected ['best.pt', 'endpoint_6.0.pt']&#10;assert ['best.pt', '..., 'latest.pt'] == ['best.pt', 'endpoint_6.0.pt']&#10;  &#10;  Left contains one more item: 'latest.pt'&#10;  Use -v to get more diff">work = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/code/tests_train/_work/test_nc_retention_skips_deletion')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000015CFC65F380&gt;
+
+    @nc("a retention step that never deletes the 6.0 resumable of a finished run")
+    def test_nc_retention_skips_deletion(work, monkeypatch):
+        monkeypatch.setattr(CheckpointStore, "delete", lambda self, kind, reason: None)
+        trainer(work / "r", cfg("ret_nc", "GRU"), eval_override=scripted(ramp(MAIN_MARKS, 3.0))).run()
+&gt;       _check_retention(work / "r", expect_latest=False)
+
+tests_train\test_retention_calibration.py:112: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+run_dir = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/code/tests_train/_work/test_nc_retention_skips_deletion/r')
+expect_latest = False
+
+    def _check_retention(run_dir, expect_latest: bool):
+        files = sorted(p.name for p in (art(run_dir) / "checkpoints").glob("*.pt"))
+        want = ["best.pt", "endpoint_6.0.pt"] + (["latest.pt"] if expect_latest else [])
+&gt;       assert files == sorted(want), f"retained {files}, expected {sorted(want)}"
+E       AssertionError: retained ['best.pt', 'endpoint_6.0.pt', 'latest.pt'], expected ['best.pt', 'endpoint_6.0.pt']
+E       assert ['best.pt', '..., 'latest.pt'] == ['best.pt', 'endpoint_6.0.pt']
+E         
+E         Left contains one more item: 'latest.pt'
+E         Use -v to get more diff
+
+tests_train\test_retention_calibration.py:30: AssertionError</failure></testcase><testcase classname="test_retention_calibration" name="test_nc_calibration_keeps_weights" time="0.641"><failure message="AssertionError: calibration must keep no weights&#10;assert not [WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/code/tests_train/_work/test_nc_calibration_keeps_weights/cal/checkpoints/latest.pt')]&#10; +  where [WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/code/tests_train/_work/test_nc_calibration_keeps_weights/cal/checkpoints/latest.pt')] = list(&lt;map object at 0x0000015CFA3D04F0&gt;)&#10; +    where &lt;map object at 0x0000015CFA3D04F0&gt; = rglob('*.pt')&#10; +      where rglob = (WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/code/tests_train/_work/test_nc_calibration_keeps_weights') / 'cal').rglob">work = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/code/tests_train/_work/test_nc_calibration_keeps_weights')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000015CFC4119D0&gt;
+
+    @nc("a calibration that keeps its resumable weights")
+    def test_nc_calibration_keeps_weights(work, monkeypatch):
+        monkeypatch.setattr(CheckpointStore, "delete", lambda self, kind, reason: None)
+        monkeypatch.setattr(CheckpointStore, "weight_files", lambda self: [])
+        tp, ep = providers("CALIBRATION")
+        trainer(work / "cal", cfg("cal_nc", "GRU", phase="CALIBRATION"), tp, ep,
+                eval_override=scripted({m: 0.1 for m in eval_marks("CALIBRATION")})).run()
+&gt;       assert not list((work / "cal").rglob("*.pt")), "calibration must keep no weights"
+E       AssertionError: calibration must keep no weights
+E       assert not [WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/code/tests_train/_work/test_nc_calibration_keeps_weights/cal/checkpoints/latest.pt')]
+E        +  where [WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/code/tests_train/_work/test_nc_calibration_keeps_weights/cal/checkpoints/latest.pt')] = list(&lt;map object at 0x0000015CFA3D04F0&gt;)
+E        +    where &lt;map object at 0x0000015CFA3D04F0&gt; = rglob('*.pt')
+E        +      where rglob = (WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/code/tests_train/_work/test_nc_calibration_keeps_weights') / 'cal').rglob
+
+tests_train\test_retention_calibration.py:122: AssertionError</failure></testcase><testcase classname="test_t17_accumulation" name="test_nc_t17_mean_of_means" time="0.041"><failure message="AssertionError: accumulated gradient != full-batch gradient (relative 1.47)&#10;assert 1.466667273846829 &lt; 0.0001">@nc("mean of microbatch means (each microbatch divided by its own count)")
+    def test_nc_t17_mean_of_means():
+&gt;       _accum_check("GRU", 16, divide_once=False)
+
+tests_train\test_t17_accumulation.py:124: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+family = 'GRU', micro = 16, divide_once = False
+
+    def _accum_check(family, micro, divide_once=True):
+        bm = build(family, WIDTHS, 7, K=K)
+        a = bm.adapter
+        a.module.eval()                                    # dropout off: microbatch splits cannot change any draw
+        b = _batch(37, seed=2)
+        n = host_contributing(b)
+        a.module.zero_grad(set_to_none=True)
+        full = accumulate_step(a.scores, b, n, 0, torch.device("cpu"))
+        g_full = _grads(a.module)
+        a.module.zero_grad(set_to_none=True)
+        if divide_once:
+            part = accumulate_step(a.scores, b, n, micro, torch.device("cpu"))
+        else:                                              # MUTANT: mean of microbatch means
+            part = None
+            for s in range(0, 37, micro):
+                mb = {k: (v[s:s + micro] if torch.is_tensor(v) else v) for k, v in b.items()}
+                ls, c = ce_sum_count(a.scores(mb), mb["target_class"], mb["loss_mask"])
+                (ls / c / -(-37 // micro)).backward()
+                part = ls.detach() if part is None else part + ls.detach()
+        g_part = _grads(a.module)
+        assert torch.allclose(full, part, rtol=1e-6), "the loss sum must be preserved"
+        worst = max(float((g_full[k] - g_part[k]).abs().max()) / (float(g_full[k].abs().max()) + 1e-12) for k in g_full)
+&gt;       assert worst &lt; 1e-4, f"accumulated gradient != full-batch gradient (relative {worst:.3g})"
+E       AssertionError: accumulated gradient != full-batch gradient (relative 1.47)
+E       assert 1.466667273846829 &lt; 0.0001
+
+tests_train\test_t17_accumulation.py:77: AssertionError</failure></testcase><testcase classname="test_t20_resume" name="test_nc_t20_no_rng_restore" time="6.361"><failure message="AssertionError: resume is not bitwise: digest differs&#10;assert '2b165ce2197b...5407fe439fd31' == 'e63ddaf8719b...1fc0a0b8abe7b'&#10;  &#10;  - e63ddaf8719bbc104247830fecbd050036e3530b8ccbf85cfe81fc0a0b8abe7b&#10;  + 2b165ce2197bd4b051583051b4cc6e7ed08cc38dd89b47f02745407fe439fd31">work = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/code/tests_train/_work/test_nc_t20_no_rng_restore')
+
+    @nc("resume without restoring the RNG state (dropout stream) is not bitwise")
+    def test_nc_t20_no_rng_restore(work):
+        c, a = _reference(work, "GRU")
+    
+        def patch(tr):
+            tr._restore_rng = lambda rng: None
+&gt;       _assert_bitwise(a, _interrupted(work, "GRU", c, patch_resume=patch))
+
+tests_train\test_t20_resume.py:114: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+a = {'digest': '2b165ce2197bd4b051583051b4cc6e7ed08cc38dd89b47f02745407fe439fd31', 'rng': '58482245af34610826f061a40b2a3ac...ootstrap_W_sha256': None, 'c_matched_eligible': False, 'candidate_order_hash': 'SYNTHETIC-CANDIDATES', ...}, ...], ...}
+b = {'digest': 'e63ddaf8719bbc104247830fecbd050036e3530b8ccbf85cfe81fc0a0b8abe7b', 'rng': '41a4e689c0aaeead1ca7827fac923b2...ootstrap_W_sha256': None, 'c_matched_eligible': False, 'candidate_order_hash': 'SYNTHETIC-CANDIDATES', ...}, ...], ...}
+
+    def _assert_bitwise(a, b):
+        for k in ("digest", "rng", "evals", "rows", "best", "endpoint", "updates", "exposures", "metrics"):
+&gt;           assert a[k] == b[k], f"resume is not bitwise: {k} differs"
+E           AssertionError: resume is not bitwise: digest differs
+E           assert '2b165ce2197b...5407fe439fd31' == 'e63ddaf8719b...1fc0a0b8abe7b'
+E             
+E             - e63ddaf8719bbc104247830fecbd050036e3530b8ccbf85cfe81fc0a0b8abe7b
+E             + 2b165ce2197bd4b051583051b4cc6e7ed08cc38dd89b47f02745407fe439fd31
+
+tests_train\test_t20_resume.py:58: AssertionError</failure></testcase><testcase classname="test_t20_resume" name="test_nc_t20_no_optimizer_restore" time="6.149"><failure message="AssertionError: resume is not bitwise: digest differs&#10;assert '2b165ce2197b...5407fe439fd31' == 'a6f5dc3fac79...c652b31e9bc5d'&#10;  &#10;  - a6f5dc3fac79b01fe61473ff7ac7e48d83e6ded00e404de79ebc652b31e9bc5d&#10;  + 2b165ce2197bd4b051583051b4cc6e7ed08cc38dd89b47f02745407fe439fd31">work = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/code/tests_train/_work/test_nc_t20_no_optimizer_restore')
+
+    @nc("resume that drops the AdamW moments is not bitwise")
+    def test_nc_t20_no_optimizer_restore(work):
+        c, a = _reference(work, "GRU")
+    
+        def patch(tr):
+            tr.opt.load_state_dict = lambda sd: None
+&gt;       _assert_bitwise(a, _interrupted(work, "GRU", c, patch_resume=patch))
+
+tests_train\test_t20_resume.py:123: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+a = {'digest': '2b165ce2197bd4b051583051b4cc6e7ed08cc38dd89b47f02745407fe439fd31', 'rng': '58482245af34610826f061a40b2a3ac...ootstrap_W_sha256': None, 'c_matched_eligible': False, 'candidate_order_hash': 'SYNTHETIC-CANDIDATES', ...}, ...], ...}
+b = {'digest': 'a6f5dc3fac79b01fe61473ff7ac7e48d83e6ded00e404de79ebc652b31e9bc5d', 'rng': '58482245af34610826f061a40b2a3ac...ootstrap_W_sha256': None, 'c_matched_eligible': False, 'candidate_order_hash': 'SYNTHETIC-CANDIDATES', ...}, ...], ...}
+
+    def _assert_bitwise(a, b):
+        for k in ("digest", "rng", "evals", "rows", "best", "endpoint", "updates", "exposures", "metrics"):
+&gt;           assert a[k] == b[k], f"resume is not bitwise: {k} differs"
+E           AssertionError: resume is not bitwise: digest differs
+E           assert '2b165ce2197b...5407fe439fd31' == 'a6f5dc3fac79...c652b31e9bc5d'
+E             
+E             - a6f5dc3fac79b01fe61473ff7ac7e48d83e6ded00e404de79ebc652b31e9bc5d
+E             + 2b165ce2197bd4b051583051b4cc6e7ed08cc38dd89b47f02745407fe439fd31
+
+tests_train\test_t20_resume.py:58: AssertionError</failure></testcase><testcase classname="test_t21_schedule_stopping" name="test_nc_t21_constant_schedule" time="0.001"><failure message="AssertionError: the LR must be in the low phase before the 6.0 stop&#10;assert False&#10; +  where False = all(&lt;generator object _check_low_lr_before_stop.&lt;locals&gt;.&lt;genexpr&gt; at 0x0000015CFD039B60&gt;)">@nc("a constant-LR schedule never enters a low-LR phase before the stop")
+    def test_nc_t21_constant_schedule():
+&gt;       _check_low_lr_before_stop(lambda e: 1.0)
+
+tests_train\test_t21_schedule_stopping.py:174: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+s_fn = &lt;function test_nc_t21_constant_schedule.&lt;locals&gt;.&lt;lambda&gt; at 0x0000015CFDA56200&gt;
+
+    def _check_low_lr_before_stop(s_fn):
+        grid = [3.0 + i * 0.01 for i in range(301)]
+&gt;       assert all(s_fn(e) &lt;= S.LOW + 1e-12 for e in grid), "the LR must be in the low phase before the 6.0 stop"
+E       AssertionError: the LR must be in the low phase before the 6.0 stop
+E       assert False
+E        +  where False = all(&lt;generator object _check_low_lr_before_stop.&lt;locals&gt;.&lt;genexpr&gt; at 0x0000015CFD039B60&gt;)
+
+tests_train\test_t21_schedule_stopping.py:51: AssertionError</failure></testcase><testcase classname="test_t21_schedule_stopping" name="test_nc_t21_patience_one" time="0.001"><failure message="AssertionError: stop on the 2nd consecutive non-improving evaluation&#10;assert 6.5 == 7.0&#10; +  where 6.5 = _stop_mark([False, False], &lt;function test_nc_t21_patience_one.&lt;locals&gt;.patience1 at 0x0000015CFD02AE80&gt;)">@nc("a patience-1 continuation stop rule is off by one")
+    def test_nc_t21_patience_one():
+        def patience1(t):
+            cont = [h for h in t.history if h["phase"] == "CONTINUATION"]
+            return bool(cont) and (not cont[-1]["improved"] or cont[-1]["mark"] &gt;= 8.0)
+&gt;       _check_patience(patience1)
+
+tests_train\test_t21_schedule_stopping.py:182: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+should_stop = &lt;function test_nc_t21_patience_one.&lt;locals&gt;.patience1 at 0x0000015CFD02AE80&gt;
+
+    def _check_patience(should_stop=None):
+&gt;       assert _stop_mark([False, False], should_stop) == 7.0, "stop on the 2nd consecutive non-improving evaluation"
+E       AssertionError: stop on the 2nd consecutive non-improving evaluation
+E       assert 6.5 == 7.0
+E        +  where 6.5 = _stop_mark([False, False], &lt;function test_nc_t21_patience_one.&lt;locals&gt;.patience1 at 0x0000015CFD02AE80&gt;)
+
+tests_train\test_t21_schedule_stopping.py:94: AssertionError</failure></testcase><testcase classname="test_t21_schedule_stopping" name="test_nc_t21_cap_as_target" time="3.351"><failure message="AssertionError: stopped before the cap&#10;assert 8.0 == 7.5">work = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/code/tests_train/_work/test_nc_t21_cap_as_target')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000015CFC4134D0&gt;
+
+    @nc("a continuation that ignores patience runs to the cap")
+    def test_nc_t21_cap_as_target(work, monkeypatch):
+        monkeypatch.setattr(StopTracker, "continuation_should_stop",
+                            lambda self: bool(self.history) and self.history[-1]["mark"] &gt;= 8.0)
+        s = _continued(work, [True, False, False, True])
+&gt;       assert s["continuation_stop_mark"] == 7.5, "stopped before the cap"
+E       AssertionError: stopped before the cap
+E       assert 8.0 == 7.5
+
+tests_train\test_t21_schedule_stopping.py:190: AssertionError</failure></testcase><testcase classname="test_t22_selection" name="test_nc_max_seed_selector" time="0.001"><failure message="AssertionError: the seed MEAN decides&#10;assert ('SASREC' == 'GRU'&#10;  &#10;  - GRU&#10;  + SASREC or 'X' == 'TIEBREAK_REQUIRED'&#10;  &#10;  - TIEBREAK_REQUIRED&#10;  + X)">@nc("selecting by the best seed instead of the seed mean")
+    def test_nc_max_seed_selector():
+&gt;       _check_mean_rule(_max_seed)
+
+tests_train\test_t22_selection.py:360: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+select = &lt;function _max_seed at 0x0000015CF7F163E0&gt;
+
+    def _check_mean_rule(select):
+        d = select(cohort_rows(g=(0.300, 0.330), s=(0.335, 0.285)), delta_bar_ci=WIDE)
+&gt;       assert d["winner_family"] == "GRU" or d.get("status") == "TIEBREAK_REQUIRED", "the seed MEAN decides"
+E       AssertionError: the seed MEAN decides
+E       assert ('SASREC' == 'GRU'
+E         
+E         - GRU
+E         + SASREC or 'X' == 'TIEBREAK_REQUIRED'
+E         
+E         - TIEBREAK_REQUIRED
+E         + X)
+
+tests_train\test_t22_selection.py:130: AssertionError</failure></testcase><testcase classname="test_t22_selection" name="test_nc_trigger_without_t1c" time="0.001"><failure message="AssertionError: |delta_bar| &lt; 2 max(g) must trigger&#10;assert 'DECISIVE_STABLE' == 'TIEBREAK_REQUIRED'&#10;  &#10;  - TIEBREAK_REQUIRED&#10;  + DECISIVE_STABLE">monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000015CFCFF0100&gt;
+
+    @nc("a trigger that omits T1c misses a seed-noise-dominated gap")
+    def test_nc_trigger_without_t1c(monkeypatch):
+        monkeypatch.setattr(SEL, "T1C_SEED_GAP_MULTIPLE", 0.0)
+        d = select_family(cohort_rows(g=(0.300, 0.330), s=(0.296, 0.320)), delta_bar_ci=WIDE)
+&gt;       assert d["status"] == "TIEBREAK_REQUIRED", "|delta_bar| &lt; 2 max(g) must trigger"
+E       AssertionError: |delta_bar| &lt; 2 max(g) must trigger
+E       assert 'DECISIVE_STABLE' == 'TIEBREAK_REQUIRED'
+E         
+E         - TIEBREAK_REQUIRED
+E         + DECISIVE_STABLE
+
+tests_train\test_t22_selection.py:367: AssertionError</failure></testcase><testcase classname="test_t22_selection" name="test_nc_stage1_without_ci" time="0.001"><failure message="AssertionError: |delta| &gt;= 0.0040 but the CI contains 0: not decisive&#10;assert 'FULL_TRAIN_TIEBREAK_STAGE1' == 'STAGE2_REQUIRED'&#10;  &#10;  - STAGE2_REQUIRED&#10;  + FULL_TRAIN_TIEBREAK_STAGE1">monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000015CFCFF03C0&gt;
+
+    @nc("stage 1 decided on |delta| alone, without the CI condition")
+    def test_nc_stage1_without_ci(monkeypatch):
+        monkeypatch.setattr(SEL, "_ci_contains_zero", lambda ci: False)
+&gt;       _check_stage1(tiebreak_stage1)
+
+tests_train\test_t22_selection.py:373: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+stage1 = &lt;function tiebreak_stage1 at 0x0000015CF7DB0A40&gt;
+
+    def _check_stage1(stage1):
+        c = tb_cohort()
+&gt;       assert stage1(c, full_rows((0.305,), (0.300,), seeds=(2026,)), summaries(), delta_ci=HAS0)["status"] == \
+            "STAGE2_REQUIRED", "|delta| &gt;= 0.0040 but the CI contains 0: not decisive"
+E       AssertionError: |delta| &gt;= 0.0040 but the CI contains 0: not decisive
+E       assert 'FULL_TRAIN_TIEBREAK_STAGE1' == 'STAGE2_REQUIRED'
+E         
+E         - STAGE2_REQUIRED
+E         + FULL_TRAIN_TIEBREAK_STAGE1
+
+tests_train\test_t22_selection.py:192: AssertionError</failure></testcase><testcase classname="test_t22_selection" name="test_nc_early_reader" time="0.002"><failure message="AssertionError: &lt;lambda&gt; did not raise &lt;class 'v4train.selection.StageNotComplete'&gt;">monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000015CFD029950&gt;
+
+    @nc("a reader that reads the tie-break as soon as one run has finished")
+    def test_nc_early_reader(monkeypatch):
+        monkeypatch.setattr(SEL, "check_stage_complete", lambda s, seeds: None)
+&gt;       _check_read_rule(lambda c, rows, sm: SEL.tiebreak_stage1(c, rows, sm, delta_ci=WIDE))
+
+tests_train\test_t22_selection.py:379: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests_train\test_t22_selection.py:182: in _check_read_rule
+    assert_raises(StageNotComplete, reader, c, full_rows((0.31,), (0.30,), seeds=(2026,)), partial)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+exc = &lt;class 'v4train.selection.StageNotComplete'&gt;
+fn = &lt;function test_nc_early_reader.&lt;locals&gt;.&lt;lambda&gt; at 0x0000015CFD029120&gt;
+a = ({'status': 'TIEBREAK_REQUIRED', 'winner_family': None, 'losing_family': None, 'selection_basis': 'PENDING_FULL_TRAIN_...': 'C', 'seed': 2026, ...}], [{'family': 'GRU', 'seed': 2026, 'status': 'DONE_MAIN', 'population': 'FULL_TRAIN', ...}])
+kw = {}
+
+    def assert_raises(exc, fn, *a, **kw):
+        try:
+            fn(*a, **kw)
+        except exc:
+            return
+&gt;       raise AssertionError(f"{getattr(fn, '__name__', fn)} did not raise {exc}")
+E       AssertionError: &lt;lambda&gt; did not raise &lt;class 'v4train.selection.StageNotComplete'&gt;
+
+tests_train\trainkit.py:127: AssertionError</failure></testcase><testcase classname="test_t22_selection" name="test_nc_c_matched_accepts_tiebreak" time="0.001"><failure message="AssertionError: &lt;lambda&gt; did not raise &lt;class 'v4train.selection.SelectionError'&gt;">monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000015CFDA545F0&gt;
+
+    @nc("a C_MATCHED guard that accepts ARCHITECTURE_TIEBREAK rows")
+    def test_nc_c_matched_accepts_tiebreak(monkeypatch):
+        monkeypatch.setattr(SEL, "assert_c_matched_eligible", lambda r: None)
+        for r in full_rows((0.31,), (0.30,), seeds=(2026,)):
+&gt;           assert_raises(SelectionError, SEL.assert_c_matched_eligible, r)
+
+tests_train\test_t22_selection.py:386: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+exc = &lt;class 'v4train.selection.SelectionError'&gt;
+fn = &lt;function test_nc_c_matched_accepts_tiebreak.&lt;locals&gt;.&lt;lambda&gt; at 0x0000015CFDA54220&gt;
+a = ({'status': 'MEASURED', 'family': 'GRU', 'method': 'C', 'seed': 2026, ...},)
+kw = {}
+
+    def assert_raises(exc, fn, *a, **kw):
+        try:
+            fn(*a, **kw)
+        except exc:
+            return
+&gt;       raise AssertionError(f"{getattr(fn, '__name__', fn)} did not raise {exc}")
+E       AssertionError: &lt;lambda&gt; did not raise &lt;class 'v4train.selection.SelectionError'&gt;
+
+tests_train\trainkit.py:127: AssertionError</failure></testcase><testcase classname="test_t22_selection" name="test_nc_equivalent_autoselects" time="0.002"><failure message="AssertionError: without a ratification the EQUIVALENT outcome must HOLD&#10;assert 'OWNER_RATIFIED_EQUIVALENT' == 'HOLD'&#10;  &#10;  - HOLD&#10;  + OWNER_RATIFIED_EQUIVALENT">work = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/code/tests_train/_work/test_nc_equivalent_autoselects')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000015CFCFC04D0&gt;
+
+    @nc("an EQUIVALENT outcome that silently selects GRU and drafts the lock")
+    def test_nc_equivalent_autoselects(work, monkeypatch):
+        def auto(base, **kw):
+            return SEL._decision("OWNER_RATIFIED_EQUIVALENT", "GRU", "AUTO", **dict(base))
+        monkeypatch.setattr(SEL, "resolve_equivalent", auto)
+        h = tiebreak_stage2(_stage1_pending(), full_rows((0.3010, 0.2990), (0.300, 0.300)), summaries((2026, 2027)))
+&gt;       assert h["status"] == "HOLD", "without a ratification the EQUIVALENT outcome must HOLD"
+E       AssertionError: without a ratification the EQUIVALENT outcome must HOLD
+E       assert 'OWNER_RATIFIED_EQUIVALENT' == 'HOLD'
+E         
+E         - HOLD
+E         + OWNER_RATIFIED_EQUIVALENT
+
+tests_train\test_t22_selection.py:395: AssertionError</failure></testcase><testcase classname="test_train02_p2_driver" name="test_nc_tie_rule_without_band" time="0.001"><failure message="AssertionError: |delta| = 0.0005 is a tie -&gt; fewer parameters&#10;assert ('B' == 'A'&#10;  &#10;  - A&#10;  + B)">monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000015CF86005D0&gt;
+
+    @nc("a tie rule that ignores the 0.0005 band (always the higher mean)")
+    def test_nc_tie_rule_without_band(monkeypatch):
+        monkeypatch.setattr(D, "TIE_ABS", 0.0)                                                      # MUTANT
+        monkeypatch.setattr(D, "EPS", 0.0)
+&gt;       _check_tie_rule()
+
+tests_train\test_train02_p2_driver.py:122: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def _check_tie_rule():
+        ch = D.choose_with_tie(_cands())
+&gt;       assert ch["tuned"] == "A" and ch["tie_set"] == ["A", "B"] and ch["tie_rule_applied"], \
+            "|delta| = 0.0005 is a tie -&gt; fewer parameters"
+E       AssertionError: |delta| = 0.0005 is a tie -&gt; fewer parameters
+E       assert ('B' == 'A'
+E         
+E         - A
+E         + B)
+
+tests_train\test_train02_p2_driver.py:103: AssertionError</failure></testcase><testcase classname="test_train02_tuning" name="test_nc_snapshots_kept" time="1.655"><failure message="AssertionError: assert {'latest'} == {'ckpt_avg', ...snapshot_6.0'}&#10;  &#10;  Extra items in the right set:&#10;  'ckpt_avg'&#10;  'snapshot_5.5'&#10;  'snapshot_5.0'&#10;  'snapshot_6.0'&#10;  Use -v to get more diff">work = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/code/tests_train/_work/test_nc_snapshots_kept')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000015CFD055D50&gt;
+
+    @nc("a CKPT_AVG step that keeps the snapshots and the average")
+    def test_nc_snapshots_kept(work, monkeypatch):
+        def keep(tr, rec, kinds):
+            from v4train.checkpoint import write_json_atomic
+            rec = dict(rec, status="COMPLETE", deleted_sha256={}, weight_files_left=tr.ckpt.weight_files())
+            write_json_atomic(Path(tr.run_dir) / CA.RECORD, rec)
+            return rec
+        monkeypatch.setattr(CA, "_finish", keep)                                                     # MUTANT
+&gt;       _check_tuning_run(work, "P2_GRU_D256_S1_s4")
+
+tests_train\test_train02_tuning.py:151: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+work = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/code/tests_train/_work/test_nc_snapshots_kept')
+hp_id = 'P2_GRU_D256_S1_s4'
+
+    def _check_tuning_run(work, hp_id):
+        tr, s, rec = _run_tuning(work, "t", hp_id)
+        rd = work / "t"
+        assert [c for c in rec.calls] == [(2.0, "MARK"), (4.0, "MARK"), (6.0, "MARK"), (6.0, "CKPT_AVG")]
+        assert rec.avg_ok is True and rec.differs_from_endpoint is True
+        assert s["status"] == "DONE_TUNING" and s["values_at_marks"] == {"2.0": 0.21, "4.0": 0.24, "6.0": 0.25}
+        assert s["endpoint"]["value"] == 0.25 and s["run_role"] == "TUNING" and s["model_variant"] == TRIALS[hp_id][
+            "model_variant"]
+        rows = read(rd / "RESULT_ROWS.json")["rows"]
+        assert rows and all(r["selection_rule"] == "CONTROLLED_BUDGET" and r["checkpoint_variant"] == "ENDPOINT"
+                            and abs(r["efe"] - 6.0) &lt; 1e-12 and r["row_status"] == "HP_SEARCH" for r in rows)
+        ca = read(rd / "CKPT_AVG.json")
+        assert ca["status"] == "COMPLETE" and [x["mark"] for x in ca["snapshots"]] == [5.0, 5.5, 6.0]
+        log = _log(rd)
+        deleted = {Path(e["deleted"]).stem: e["sha256"] for e in log}
+&gt;       assert set(deleted) == {"latest", "snapshot_5.0", "snapshot_5.5", "snapshot_6.0", "ckpt_avg"}
+E       AssertionError: assert {'latest'} == {'ckpt_avg', ...snapshot_6.0'}
+E         
+E         Extra items in the right set:
+E         'ckpt_avg'
+E         'snapshot_5.5'
+E         'snapshot_5.0'
+E         'snapshot_6.0'
+E         Use -v to get more diff
+
+tests_train\test_train02_tuning.py:113: AssertionError</failure></testcase><testcase classname="test_train02_tuning" name="test_nc_ckpt_avg_is_the_endpoint" time="1.598"><failure message="assert (False is True)&#10; +  where False = &lt;test_train02_tuning.Recorder object at 0x0000015CF82551D0&gt;.avg_ok">work = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/code/tests_train/_work/test_nc_ckpt_avg_is_the_endpoint')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000015CFCFF67B0&gt;
+
+    @nc("a CKPT_AVG that evaluates the 6.0 weights instead of the uniform average")
+    def test_nc_ckpt_avg_is_the_endpoint(work, monkeypatch):
+        monkeypatch.setattr(CA, "uniform_average", lambda states: OrderedDict((k, v.clone()) for k, v in states[-1].items()))
+&gt;       _check_tuning_run(work, "P2_GRU_D256_S1_s4")
+
+tests_train\test_train02_tuning.py:157: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+work = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/code/tests_train/_work/test_nc_ckpt_avg_is_the_endpoint')
+hp_id = 'P2_GRU_D256_S1_s4'
+
+    def _check_tuning_run(work, hp_id):
+        tr, s, rec = _run_tuning(work, "t", hp_id)
+        rd = work / "t"
+        assert [c for c in rec.calls] == [(2.0, "MARK"), (4.0, "MARK"), (6.0, "MARK"), (6.0, "CKPT_AVG")]
+&gt;       assert rec.avg_ok is True and rec.differs_from_endpoint is True
+E       assert (False is True)
+E        +  where False = &lt;test_train02_tuning.Recorder object at 0x0000015CF82551D0&gt;.avg_ok
+
+tests_train\test_train02_tuning.py:102: AssertionError</failure></testcase><testcase classname="test_train02_tuning" name="test_nc_tuning_every_half_efe" time="2.440"><failure message="AssertionError: assert [(0.5, 'MARK'... 'MARK'), ...] == [(2.0, 'MARK'..., 'CKPT_AVG')]&#10;  &#10;  At index 0 diff: (0.5, 'MARK') != (2.0, 'MARK')&#10;  Left contains 9 more items, first extra item: (2.5, 'MARK')&#10;  Use -v to get more diff">work = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/code/tests_train/_work/test_nc_tuning_every_half_efe')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000015CFCF8F7E0&gt;
+
+    @nc("a TUNING run evaluated at every 0.5 EFE (the MAIN marks)")
+    def test_nc_tuning_every_half_efe(work, monkeypatch):
+        real = T.eval_marks
+        monkeypatch.setattr(T, "eval_marks", lambda phase: real("MAIN") if phase == "TUNING" else real(phase))
+&gt;       _check_tuning_run(work, "P2_GRU_D256_S1_s4")
+
+tests_train\test_train02_tuning.py:164: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+work = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/code/tests_train/_work/test_nc_tuning_every_half_efe')
+hp_id = 'P2_GRU_D256_S1_s4'
+
+    def _check_tuning_run(work, hp_id):
+        tr, s, rec = _run_tuning(work, "t", hp_id)
+        rd = work / "t"
+&gt;       assert [c for c in rec.calls] == [(2.0, "MARK"), (4.0, "MARK"), (6.0, "MARK"), (6.0, "CKPT_AVG")]
+E       AssertionError: assert [(0.5, 'MARK'... 'MARK'), ...] == [(2.0, 'MARK'..., 'CKPT_AVG')]
+E         
+E         At index 0 diff: (0.5, 'MARK') != (2.0, 'MARK')
+E         Left contains 9 more items, first extra item: (2.5, 'MARK')
+E         Use -v to get more diff
+
+tests_train\test_train02_tuning.py:101: AssertionError</failure></testcase><testcase classname="test_train02_tuning" name="test_nc_selection_accepts_hp_search" time="2.756"><failure message="AssertionError: refused for another reason: GRU: evidence needs seeds (2026, 2027) exactly once each, got []">work = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/code/tests_train/_work/test_nc_selection_accepts_hp_search')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000015CFC62EBA0&gt;
+
+    @nc("a selection that accepts HP_SEARCH rows as evidence")
+    def test_nc_selection_accepts_hp_search(work, monkeypatch):
+        _frozen_device_class(monkeypatch)
+        for stage in ("COHORT", "CALIBRATION", "C_MATCHED"):
+            monkeypatch.setitem(SEL.EVIDENCE_LABELS, stage, ("PRODUCTION", "HP_SEARCH"))           # MUTANT
+        tr = _non_test(work, "nc", "P2_GRU_D256_S0_s0")
+        tr.run()
+&gt;       _check_hp_rows_refused(read(work / "nc" / "RESULT_ROWS.json")["rows"],
+                               read(work / "nc" / "CKPT_AVG_ROWS.json")["rows"])
+
+tests_train\test_train02_tuning.py:239: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests_train\test_train02_tuning.py:209: in _check_hp_rows_refused
+    raises_with(SelectionError, "HP_SEARCH row is refused", select_family, bad, delta_bar_ci=WIDE)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+exc = &lt;class 'v4train.selection.SelectionError'&gt;
+text = 'HP_SEARCH row is refused'
+fn = &lt;function select_family at 0x0000015CF7DB0680&gt;
+a = ([{'aggregation': 'macro', 'bootstrap_W_sha256': None, 'c_matched_eligible': False, 'candidate_order_hash': 'SYNTHETIC...acro', 'bootstrap_W_sha256': None, 'c_matched_eligible': False, 'candidate_order_hash': 'SYNTHETIC-CANDIDATES', ...}],)
+kw = {'delta_bar_ci': (0.01, 0.02)}
+
+    def raises_with(exc, text, fn, *a, **kw):
+        """fn must raise `exc` and its message must name the intended cause (not merely any refusal)."""
+        try:
+            fn(*a, **kw)
+        except exc as e:
+            err = e
+        else:
+            raise AssertionError(f"{getattr(fn, '__name__', fn)} did not raise {exc.__name__} ({text!r})")
+&gt;       assert text in str(err), f"refused for another reason: {err}"
+               ^^^^^^^^^^^^^^^^
+E       AssertionError: refused for another reason: GRU: evidence needs seeds (2026, 2027) exactly once each, got []
+
+tests_train\trainkit.py:245: AssertionError</failure></testcase><testcase classname="test_train02_variants_hp" name="test_nc_variant_registry_without_code_check" time="0.015"><failure message="AssertionError: lax did not raise VariantError ('differ from the v4models.variants code table')">tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-2/test_nc_variant_registry_witho0')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000015CFD017310&gt;
+
+    @nc("a variant-registry loader that checks only the self-hash (not the code table)")
+    def test_nc_variant_registry_without_code_check(tmp_path, monkeypatch):
+        real = V.load_variant_registry
+    
+        def lax(path=V.REGISTRY_PATH):
+            obj = json.loads(Path(path).read_text(encoding="utf-8"))
+            if obj.get("self_sha256") != V.self_sha256(obj):
+                raise V.VariantError("self-hash mismatch")
+            return {"path": str(path), "file_sha256": _sha(path), "self_sha256": obj["self_sha256"],
+                    "variants": obj["variants"]}
+        monkeypatch.setattr(V, "load_variant_registry", lax)                              # MUTANT
+        assert real is not lax
+&gt;       _check_variant_registry_refusals(tmp_path)
+
+tests_train\test_train02_variants_hp.py:135: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests_train\test_train02_variants_hp.py:115: in _check_variant_registry_refusals
+    raises_with(V.VariantError, "differ from the v4models.variants code table", V.load_variant_registry,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+exc = &lt;class 'v4models.variants.VariantError'&gt;
+text = 'differ from the v4models.variants code table'
+fn = &lt;function test_nc_variant_registry_without_code_check.&lt;locals&gt;.lax at 0x0000015CFDA66FC0&gt;
+a = (WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-2/test_nc_variant_registry_witho0/drift.json'),)
+kw = {}
+
+    def raises_with(exc, text, fn, *a, **kw):
+        """fn must raise `exc` and its message must name the intended cause (not merely any refusal)."""
+        try:
+            fn(*a, **kw)
+        except exc as e:
+            err = e
+        else:
+&gt;           raise AssertionError(f"{getattr(fn, '__name__', fn)} did not raise {exc.__name__} ({text!r})")
+E           AssertionError: lax did not raise VariantError ('differ from the v4models.variants code table')
+
+tests_train\trainkit.py:244: AssertionError</failure></testcase><testcase classname="test_train02_variants_hp" name="test_nc_build_ignores_variant" time="0.016"><failure message="AssertionError: assert (128 == 256)&#10; +  where 128 = &lt;v4models.build.GRUV2Adapter object at 0x0000015CFD9B22B0&gt;.query_dim&#10; +    where &lt;v4models.build.GRUV2Adapter object at 0x0000015CFD9B22B0&gt; = BuiltModel(family='GRU', seed=2026, device='cpu', widths=InputWidths(numeric_dim=15, flags_dim=15, user_context_dim=12...arameter_names': 21}, schema_id=None, schema_self_sha256=None, projection=None, variant='GRU_D256', dropout=(0.2, 0.1)).adapter">monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000015CFDA97EE0&gt;
+
+    @nc("a build that ignores the variant argument (always the current module)")
+    def test_nc_build_ignores_variant(monkeypatch):
+        import sys
+        B = sys.modules["v4models.build"]
+        real = B.construct_module
+        monkeypatch.setattr(B, "construct_module", lambda fam, w, seed, **kw: real(fam, w, seed, **dict(kw, variant=None)))
+&gt;       _check_variant_is_built()
+
+tests_train\test_train02_variants_hp.py:271: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def _check_variant_is_built():
+        bm = build("GRU", SCHEMA, 2026, K=K_SMALL, variant="GRU_D256")
+&gt;       assert bm.adapter.query_dim == 256 and bm.variant == "GRU_D256"
+E       AssertionError: assert (128 == 256)
+E        +  where 128 = &lt;v4models.build.GRUV2Adapter object at 0x0000015CFD9B22B0&gt;.query_dim
+E        +    where &lt;v4models.build.GRUV2Adapter object at 0x0000015CFD9B22B0&gt; = BuiltModel(family='GRU', seed=2026, device='cpu', widths=InputWidths(numeric_dim=15, flags_dim=15, user_context_dim=12...arameter_names': 21}, schema_id=None, schema_self_sha256=None, projection=None, variant='GRU_D256', dropout=(0.2, 0.1)).adapter
+
+tests_train\test_train02_variants_hp.py:258: AssertionError</failure></testcase><testcase classname="test_train02_variants_hp" name="test_nc_theta0_writer_ignores_guard" time="0.570"><failure message="AssertionError: &lt;lambda&gt; did not raise Theta0VariantsError ('failed a guard')">tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-2/test_nc_theta0_writer_ignores_0')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000015CFDA95BE0&gt;
+
+    @nc("a theta0 writer that ignores the current-build guard")
+    def test_nc_theta0_writer_ignores_guard(tmp_path, monkeypatch):
+        real = T0.write
+        monkeypatch.setattr(T0, "write", lambda res, path=T0.OUT_PATH: real(dict(res, ok=True), path))   # MUTANT
+&gt;       _check_guard_blocks_write(tmp_path, monkeypatch)
+
+tests_train\test_train02_variants_hp.py:337: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests_train\test_train02_variants_hp.py:325: in _check_guard_blocks_write
+    raises_with(T0.Theta0VariantsError, "failed a guard", T0.write, res, tmp_path / "t.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+exc = &lt;class 'v4train.theta0_variants.Theta0VariantsError'&gt;
+text = 'failed a guard'
+fn = &lt;function test_nc_theta0_writer_ignores_guard.&lt;locals&gt;.&lt;lambda&gt; at 0x0000015CFD9B1BC0&gt;
+a = ({'task': 'TRAIN-02 item 0b theta0 per variant', 'torch': '2.9.1+cpu', 'python': '3.13.11', 'host': 'DESKTOP-KS1B8LQ',...rosoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-2/test_nc_theta0_writer_ignores_0/t.json'))
+kw = {}
+
+    def raises_with(exc, text, fn, *a, **kw):
+        """fn must raise `exc` and its message must name the intended cause (not merely any refusal)."""
+        try:
+            fn(*a, **kw)
+        except exc as e:
+            err = e
+        else:
+&gt;           raise AssertionError(f"{getattr(fn, '__name__', fn)} did not raise {exc.__name__} ({text!r})")
+E           AssertionError: &lt;lambda&gt; did not raise Theta0VariantsError ('failed a guard')
+
+tests_train\trainkit.py:244: AssertionError</failure></testcase><testcase classname="test_train02_variants_hp" name="test_nc_validate_without_hp_rule" time="0.005"><failure message="AssertionError: validate did not raise RecipeError (&quot;'peak_lr'&quot;)">monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000015CF8233BD0&gt;
+
+    @nc("a validate() that accepts off-recipe values without the HP-registry rule")
+    def test_nc_validate_without_hp_rule(monkeypatch):
+        monkeypatch.setattr(RunConfig, "_validate_train02", lambda self, fam: None)          # MUTANT
+&gt;       _check_hp_rule()
+
+tests_train\test_train02_variants_hp.py:408: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests_train\test_train02_variants_hp.py:392: in _check_hp_rule
+    raises_with(RecipeError, f"'{field}'", dataclasses.replace(t, **over).validate)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+exc = &lt;class 'v4train.recipe.RecipeError'&gt;, text = "'peak_lr'"
+fn = &lt;bound method RunConfig.validate of RunConfig(run_id='r', family='GRU', seed=2026, exposure_point='end', cuda_visible_...aaaaaaaaa', hp_id='P2_GRU_D256_S1_s4', hp_registry=None, recipe_id=None, recipe_registry=None, auto_continuation=None)&gt;
+a = (), kw = {}
+
+    def raises_with(exc, text, fn, *a, **kw):
+        """fn must raise `exc` and its message must name the intended cause (not merely any refusal)."""
+        try:
+            fn(*a, **kw)
+        except exc as e:
+            err = e
+        else:
+&gt;           raise AssertionError(f"{getattr(fn, '__name__', fn)} did not raise {exc.__name__} ({text!r})")
+E           AssertionError: validate did not raise RecipeError ("'peak_lr'")
+
+tests_train\trainkit.py:244: AssertionError</failure></testcase><testcase classname="test_train02_variants_hp" name="test_nc_stale_registry_accepted" time="0.004"><failure message="AssertionError: refused for another reason: HP registry F:\Queens University\Microsoft Project\eda\.local_ai\ppsi_v4\contracts\hp_registry\HP_REGISTRY_P2.json: the sections ['families', 'lr_grid', 'cells'] differ from the registered design (code)">tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-2/test_nc_stale_registry_accepte0')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000015CFD015470&gt;
+
+    @nc("a loader that accepts the superseded 02R1 registry (format check removed)")
+    def test_nc_stale_registry_accepted(tmp_path, monkeypatch):
+        monkeypatch.setattr(H, "STALE_REGISTRIES", {})                                          # MUTANT
+        monkeypatch.setattr(H, "FORMAT", "PPSI_V4_HP_REGISTRY_P2_1")
+&gt;       _check_stale_registry_refused(tmp_path)
+
+tests_train\test_train02_variants_hp.py:501: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests_train\test_train02_variants_hp.py:483: in _check_stale_registry_refused
+    raises_with(H.HPRegistryError, "superseded registry", H.load_hp_registry, STALE_P2)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+exc = &lt;class 'v4train.hp_registry.HPRegistryError'&gt;
+text = 'superseded registry'
+fn = &lt;function load_hp_registry at 0x0000015CF7E634C0&gt;
+a = (WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/contracts/hp_registry/HP_REGISTRY_P2.json'),)
+kw = {}
+
+    def raises_with(exc, text, fn, *a, **kw):
+        """fn must raise `exc` and its message must name the intended cause (not merely any refusal)."""
+        try:
+            fn(*a, **kw)
+        except exc as e:
+            err = e
+        else:
+            raise AssertionError(f"{getattr(fn, '__name__', fn)} did not raise {exc.__name__} ({text!r})")
+&gt;       assert text in str(err), f"refused for another reason: {err}"
+               ^^^^^^^^^^^^^^^^
+E       AssertionError: refused for another reason: HP registry F:\Queens University\Microsoft Project\eda\.local_ai\ppsi_v4\contracts\hp_registry\HP_REGISTRY_P2.json: the sections ['families', 'lr_grid', 'cells'] differ from the registered design (code)
+
+tests_train\trainkit.py:245: AssertionError</failure></testcase><testcase classname="test_train02_variants_hp" name="test_nc_hp_loader_without_verification" time="0.019"><failure message="AssertionError: lax did not raise HPRegistryError ('differ from the registered design')">tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-2/test_nc_hp_loader_without_veri0')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000015CFCF8EF20&gt;
+
+    @nc("an HP registry loader that does not verify the file")
+    def test_nc_hp_loader_without_verification(tmp_path, monkeypatch):
+        def lax(path=H.REGISTRY_PATH):
+            obj = json.loads(Path(path).read_text(encoding="utf-8"))
+            return {"path": str(path), "file_sha256": _sha(path), "self_sha256": obj["self_sha256"],
+                    "families": obj["families"], "lr_grid_sha256": None, "raw": obj}
+        monkeypatch.setattr(H, "load_hp_registry", lax)                                  # MUTANT
+&gt;       _check_hp_tampering(tmp_path)
+
+tests_train\test_train02_variants_hp.py:538: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests_train\test_train02_variants_hp.py:521: in _check_hp_tampering
+    raises_with(H.HPRegistryError, "differ from the registered design", H.load_hp_registry, p)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+exc = &lt;class 'v4train.hp_registry.HPRegistryError'&gt;
+text = 'differ from the registered design'
+fn = &lt;function test_nc_hp_loader_without_verification.&lt;locals&gt;.lax at 0x0000015CFDA64180&gt;
+a = (WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-2/test_nc_hp_loader_without_veri0/tampered.json'),)
+kw = {}
+
+    def raises_with(exc, text, fn, *a, **kw):
+        """fn must raise `exc` and its message must name the intended cause (not merely any refusal)."""
+        try:
+            fn(*a, **kw)
+        except exc as e:
+            err = e
+        else:
+&gt;           raise AssertionError(f"{getattr(fn, '__name__', fn)} did not raise {exc.__name__} ({text!r})")
+E           AssertionError: lax did not raise HPRegistryError ('differ from the registered design')
+
+tests_train\trainkit.py:244: AssertionError</failure></testcase><testcase classname="test_train02_variants_hp" name="test_nc_s1_mutated_knots" time="0.002"><failure message="assert ((0.0, 0.0), ..., (6.0, 0.01)) == ((0.0, 0.0), ..., (6.0, 0.01))&#10;  &#10;  At index 2 diff: (4.0, 1.0) != (4.2, 1.0)&#10;  Use -v to get more diff">monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000015CFCF8D390&gt;
+
+    @nc("an S1 whose knots are not the registered ones (decay starts at 4.0)")
+    def test_nc_s1_mutated_knots(monkeypatch):
+        monkeypatch.setitem(SCH.SCHEDULES, "S1", ((0.0, 0.0), (0.02, 1.0), (4.0, 1.0), (6.0, 0.01)))     # MUTANT
+&gt;       _check_s1_is_registered()
+
+tests_train\test_train02_variants_hp.py:623: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def _check_s1_is_registered():
+&gt;       assert SCH.SCHEDULES["S1"] == _registered_s1_knots() == ((0.0, 0.0), (0.02, 1.0), (4.2, 1.0), (6.0, 0.01))
+E       assert ((0.0, 0.0), ..., (6.0, 0.01)) == ((0.0, 0.0), ..., (6.0, 0.01))
+E         
+E         At index 2 diff: (4.0, 1.0) != (4.2, 1.0)
+E         Use -v to get more diff
+
+tests_train\test_train02_variants_hp.py:610: AssertionError</failure></testcase><testcase classname="test_train02r1" name="test_nc_non_finite_ckpt_avg_raises" time="1.515"><failure message="AssertionError: a non-finite CKPT_AVG failed the run: CkptAvgError: non-finite CKPT_AVG metric">work = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/code/tests_train/_work/test_nc_non_finite_ckpt_avg_raises')
+mode = 'nan'
+
+    def _check_non_finite_ckpt_avg(work, mode):
+        tr = trainer(work / mode, tcfg(mode, "P2_GRU_D256_S1_s4"), eval_override=AvgEvaluator(mode))
+        try:
+&gt;           s = tr.run()
+                ^^^^^^^^
+
+tests_train\test_train02r1.py:59: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+v4train\trainer.py:652: in run
+    return self._loop()
+           ^^^^^^^^^^^^
+v4train\trainer.py:913: in _loop
+    self._on_mark(marks.pop(0))
+v4train\trainer.py:1052: in _on_mark
+    self._finish_phase()
+v4train\trainer.py:866: in _finish_phase
+    {"MAIN": self._finish_main, "CALIBRATION": self._finish_calibration,
+v4train\trainer.py:1174: in _finish_tuning
+    self._complete_tuning(summary)
+v4train\trainer.py:1178: in _complete_tuning
+    rec = run_ckpt_avg(self)
+          ^^^^^^^^^^^^^^^^^^
+v4train\ckpt_avg.py:113: in run_ckpt_avg
+    if not _finite(out.value):
+           ^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+v = nan
+
+    def old(v):
+        if not (isinstance(v, (int, float)) and math.isfinite(float(v))):
+&gt;           raise CA.CkptAvgError("non-finite CKPT_AVG metric")                              # MUTANT
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           v4train.ckpt_avg.CkptAvgError: non-finite CKPT_AVG metric
+
+tests_train\test_train02r1.py:88: CkptAvgError
+
+During handling of the above exception, another exception occurred:
+
+work = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/code/tests_train/_work/test_nc_non_finite_ckpt_avg_raises')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000015CFCF8D8D0&gt;
+
+    @nc("the pre-F1 CKPT_AVG step that raises on a non-finite metric (the run stays PENDING_CKPT_AVG)")
+    def test_nc_non_finite_ckpt_avg_raises(work, monkeypatch):
+        def old(v):
+            if not (isinstance(v, (int, float)) and math.isfinite(float(v))):
+                raise CA.CkptAvgError("non-finite CKPT_AVG metric")                              # MUTANT
+            return True
+        monkeypatch.setattr(CA, "_finite", old)
+&gt;       _check_non_finite_ckpt_avg(work, "nan")
+
+tests_train\test_train02r1.py:91: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+work = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/code/tests_train/_work/test_nc_non_finite_ckpt_avg_raises')
+mode = 'nan'
+
+    def _check_non_finite_ckpt_avg(work, mode):
+        tr = trainer(work / mode, tcfg(mode, "P2_GRU_D256_S1_s4"), eval_override=AvgEvaluator(mode))
+        try:
+            s = tr.run()
+        except Exception as e:                                                        # the pre-F1 behaviour
+&gt;           raise AssertionError(f"a non-finite CKPT_AVG failed the run: {type(e).__name__}: {e}")
+E           AssertionError: a non-finite CKPT_AVG failed the run: CkptAvgError: non-finite CKPT_AVG metric
+
+tests_train\test_train02r1.py:61: AssertionError</failure></testcase><testcase classname="test_train02r1" name="test_nc_guard_passes_missing_entry" time="0.001"><failure message="assert not True">monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000015CFD016660&gt;
+
+    @nc("a production guard that passes a missing THETA0_REGISTRY entry (the pre-F3 rule)")
+    def test_nc_guard_passes_missing_entry(monkeypatch):
+        real = T0.guard_verdict
+        monkeypatch.setattr(T0, "guard_verdict", lambda g, **kw: real(g, production=False, require_coverage=False))
+&gt;       _check_guard_verdict()
+
+tests_train\test_train02r1.py:115: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def _check_guard_verdict():
+        eq = {f"{v}/{s}": {"status": "EQUAL"} for v in ("GRU_D128", "SASREC_D256_B2") for s in (2026, 2027)}
+        assert T0.guard_verdict(eq, production=True, require_coverage=True)["ok"]
+        missing = dict(eq, **{"GRU_D128/2027": {"status": "NO_THETA0_REGISTRY_ENTRY_FOR_THIS_TORCH_BUILD"}})
+&gt;       assert not T0.guard_verdict(missing, production=True, require_coverage=True)["ok"]
+E       assert not True
+
+tests_train\test_train02r1.py:99: AssertionError</failure></testcase><testcase classname="test_train02r1" name="test_nc_trusts_recorded_selection" time="0.197"><failure message="AssertionError: register_02b did not raise TunedRecipeError ('differs from the recomputed')">tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-2/test_nc_trusts_recorded_select0')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000015CFD015470&gt;
+
+    @nc("a registration that trusts the stage-2 file's recorded selection (the pre-R2 behaviour)")
+    def test_nc_trusts_recorded_selection(tmp_path, monkeypatch):
+        def lax(fam, s1, s2, hp):
+            tuned = s2["selection"]["tuned"]
+            return {"tuned": tuned, "trial": H.trial(hp, tuned["hp_id"]),
+                    "carry": bool(s2["selection"].get("ckpt_avg_carried_to_p4"))}
+        monkeypatch.setattr(TR, "verify_stages", lax)                                               # MUTANT
+&gt;       _check_forged_stage2_refused(tmp_path)
+
+tests_train\test_train02r1.py:231: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests_train\test_train02r1.py:193: in _check_forged_stage2_refused
+    raises_with(TR.TunedRecipeError, "differs from the recomputed", D.register_02b, p2, tmp_path / "o1.json",
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+exc = &lt;class 'v4train.tuned_recipes.TunedRecipeError'&gt;
+text = 'differs from the recomputed'
+fn = &lt;function register_02b at 0x0000015CF7E70C20&gt;
+a = (WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/code/tests_train/_p2work/ffe822c1f26ccbdd')...osoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-2/test_nc_trusts_recorded_select0/o1.json'))
+kw = {'families': ('GRU',)}
+
+    def raises_with(exc, text, fn, *a, **kw):
+        """fn must raise `exc` and its message must name the intended cause (not merely any refusal)."""
+        try:
+            fn(*a, **kw)
+        except exc as e:
+            err = e
+        else:
+&gt;           raise AssertionError(f"{getattr(fn, '__name__', fn)} did not raise {exc.__name__} ({text!r})")
+E           AssertionError: register_02b did not raise TunedRecipeError ('differs from the recomputed')
+
+tests_train\trainkit.py:244: AssertionError</failure></testcase><testcase classname="test_train02r1" name="test_nc_recipe_lookup_fallback" time="0.425"><failure message="AssertionError: validate did not raise RecipeError ('not in the tuned-recipes registry')">tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-2/test_nc_recipe_lookup_fallback0')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000015CFCF8DE80&gt;
+
+    @nc("a recipe lookup that falls back to another registered recipe")
+    def test_nc_recipe_lookup_fallback(tmp_path, monkeypatch):
+        real = TR.recipe
+        monkeypatch.setattr(TR, "recipe", lambda reg, rid: dict(real(reg, "02B_GRU"), recipe_id=rid))     # MUTANT
+&gt;       _check_recipe_rule(tmp_path)
+
+tests_train\test_train02r1.py:298: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests_train\test_train02r1.py:270: in _check_recipe_rule
+    raises_with(RecipeError, "not in the tuned-recipes registry", _main_cfg(reg, rid="P2_GRU_D256_S1_s4").validate)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+exc = &lt;class 'v4train.recipe.RecipeError'&gt;
+text = 'not in the tuned-recipes registry'
+fn = &lt;bound method RunConfig.validate of RunConfig(run_id='m', family='GRU', seed=2026, exposure_point='end', cuda_visible_...LE-DEEP3\\pytest-of-Ahmed\\pytest-2\\test_nc_recipe_lookup_fallback0\\TUNED_RECIPES_02B.json', auto_continuation=None)&gt;
+a = (), kw = {}
+
+    def raises_with(exc, text, fn, *a, **kw):
+        """fn must raise `exc` and its message must name the intended cause (not merely any refusal)."""
+        try:
+            fn(*a, **kw)
+        except exc as e:
+            err = e
+        else:
+&gt;           raise AssertionError(f"{getattr(fn, '__name__', fn)} did not raise {exc.__name__} ({text!r})")
+E           AssertionError: validate did not raise RecipeError ('not in the tuned-recipes registry')
+
+tests_train\trainkit.py:244: AssertionError</failure></testcase><testcase classname="test_train02r1" name="test_nc_no_production_pin" time="0.247"><failure message="AssertionError: validate did not raise RecipeError ('must use the production tuned-recipes registry')">tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-2/test_nc_no_production_pin0')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000015CFC651710&gt;
+
+    @nc("a non-test recipe run that accepts any self-consistent tuned-recipes file (no G1b pin)")
+    def test_nc_no_production_pin(tmp_path, monkeypatch):
+        monkeypatch.setattr(TR, "check_production_registry", lambda path, reg, gate_path=None: None)   # MUTANT
+&gt;       _check_production_pin(tmp_path, monkeypatch)
+
+tests_train\test_train02r1.py:352: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests_train\test_train02r1.py:331: in _check_production_pin
+    raises_with(RecipeError, "must use the production tuned-recipes registry", c.validate)       # any other path
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+exc = &lt;class 'v4train.recipe.RecipeError'&gt;
+text = 'must use the production tuned-recipes registry'
+fn = &lt;bound method RunConfig.validate of RunConfig(run_id='m', family='GRU', seed=2026, exposure_point='end', cuda_visible_...\\FABLE-DEEP3\\pytest-of-Ahmed\\pytest-2\\test_nc_no_production_pin0\\TUNED_RECIPES_02B.json', auto_continuation=None)&gt;
+a = (), kw = {}
+
+    def raises_with(exc, text, fn, *a, **kw):
+        """fn must raise `exc` and its message must name the intended cause (not merely any refusal)."""
+        try:
+            fn(*a, **kw)
+        except exc as e:
+            err = e
+        else:
+&gt;           raise AssertionError(f"{getattr(fn, '__name__', fn)} did not raise {exc.__name__} ({text!r})")
+E           AssertionError: validate did not raise RecipeError ('must use the production tuned-recipes registry')
+
+tests_train\trainkit.py:244: AssertionError</failure></testcase><testcase classname="test_train02r1" name="test_nc_values_not_bound_to_evidence" time="0.064"><failure message="AssertionError: register_02b did not raise TunedRecipeError ('differ from the ones recomputed')">tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-2/test_nc_values_not_bound_to_ev0')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000015CFC651160&gt;
+
+    @nc("a registration that does not re-read the run dirs (values trusted from the stage files)")
+    def test_nc_values_not_bound_to_evidence(tmp_path, monkeypatch):
+        monkeypatch.setattr(TR, "run_evidence", lambda stage, stored=None: {})                        # MUTANT
+&gt;       _check_evidence_bound(tmp_path)
+
+tests_train\test_train02r1.py:405: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests_train\test_train02r1.py:393: in _check_evidence_bound
+    raises_with(TR.TunedRecipeError, "differ from the ones recomputed", D.register_02b, p2, tmp_path / "o.json",
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+exc = &lt;class 'v4train.tuned_recipes.TunedRecipeError'&gt;
+text = 'differ from the ones recomputed'
+fn = &lt;function register_02b at 0x0000015CF7E70C20&gt;
+a = (WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/code/tests_train/_p2work/620e8c2b9bdd4c3e')...rosoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-2/test_nc_values_not_bound_to_ev0/o.json'))
+kw = {'families': ('GRU',)}
+
+    def raises_with(exc, text, fn, *a, **kw):
+        """fn must raise `exc` and its message must name the intended cause (not merely any refusal)."""
+        try:
+            fn(*a, **kw)
+        except exc as e:
+            err = e
+        else:
+&gt;           raise AssertionError(f"{getattr(fn, '__name__', fn)} did not raise {exc.__name__} ({text!r})")
+E           AssertionError: register_02b did not raise TunedRecipeError ('differ from the ones recomputed')
+
+tests_train\trainkit.py:244: AssertionError</failure></testcase><testcase classname="test_train03" name="test_nc_unsealed_contest_run" time="28.987"><failure message="AssertionError: metric values / keys outside sealed/: [('CHECKPOINTS.json', '&quot;value&quot;'), ('CHECKPOINTS.json', '0.331123457'), ('EVENTS.jsonl', '&quot;value&quot;'), ('EVENTS.jsonl', '0.100123457'), ('EVENTS.jsonl', '0.121123457'), ('EVENTS.jsonl', '0.142123457'), ('EVENTS.jsonl', '0.163123457'), ('EVENTS.jsonl', '0.184123457'), ('EVENTS.jsonl', '0.205123457'), ('EVENTS.jsonl', '0.226123457')]&#10;assert not [('CHECKPOINTS.json', '0.331123457'), ('CHECKPOINTS.json', '&quot;value&quot;'), ('EVENTS.jsonl', '0.163123457'), ('EVENTS.jsonl', '0.205123457'), ('EVENTS.jsonl', '0.268123457'), ('EVENTS.jsonl', '0.121123457'), ...]">work = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/code/tests_train/_work/test_nc_unsealed_contest_run')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000015CFC5BFD20&gt;
+
+    @nc("a contest run that writes its values outside sealed/ (the pre-TRAIN-03 layout)")
+    def test_nc_unsealed_contest_run(work, monkeypatch):
+        monkeypatch.setattr(RunConfig, "sealed_outputs", property(lambda self: False))                 # MUTANT
+        monkeypatch.setattr(RunConfig, "effective_auto_continuation", property(lambda self: False))
+        tr = trainer(work / "c", cfg("c", "GRU"), eval_override=scripted(DISTINCT))
+        tr.run()
+&gt;       _check_seal(work / "c")
+
+tests_train\test_train03.py:117: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+run_dir = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/code/tests_train/_work/test_nc_unsealed_contest_run/c')
+
+    def _check_seal(run_dir: Path) -&gt; None:
+        vals = _values_in_sealed(run_dir)
+        assert len(vals) &gt; 10, "the run recorded values"
+        leaks = []
+        for p in _unsealed_files(run_dir):
+            text = p.read_bytes().decode("latin-1")
+            for v in vals:
+                for form in {repr(v), json.dumps(v), f"{v:.6f}"}:
+                    if re.search(r"(?&lt;![\d.])" + re.escape(form) + r"(?!\d)", text):
+                        leaks.append((p.name, form))
+            if p.suffix in (".json", ".jsonl"):
+                leaks += [(p.name, k) for k in FORBIDDEN_KEYS if k in text]
+&gt;       assert not leaks, f"metric values / keys outside sealed/: {sorted(set(leaks))[:10]}"
+E       AssertionError: metric values / keys outside sealed/: [('CHECKPOINTS.json', '"value"'), ('CHECKPOINTS.json', '0.331123457'), ('EVENTS.jsonl', '"value"'), ('EVENTS.jsonl', '0.100123457'), ('EVENTS.jsonl', '0.121123457'), ('EVENTS.jsonl', '0.142123457'), ('EVENTS.jsonl', '0.163123457'), ('EVENTS.jsonl', '0.184123457'), ('EVENTS.jsonl', '0.205123457'), ('EVENTS.jsonl', '0.226123457')]
+E       assert not [('CHECKPOINTS.json', '0.331123457'), ('CHECKPOINTS.json', '"value"'), ('EVENTS.jsonl', '0.163123457'), ('EVENTS.jsonl', '0.205123457'), ('EVENTS.jsonl', '0.268123457'), ('EVENTS.jsonl', '0.121123457'), ...]
+
+tests_train\test_train03.py:88: AssertionError</failure></testcase><testcase classname="test_train03" name="test_nc_production_resume_with_changed_gru_recipe" time="0.594"><failure message="v4train.tuned_recipes.TunedRecipeError: F:\Queens University\Microsoft Project\eda\.local_ai\_pytest_tmp\FABLE-DEEP3\pytest-of-Ahmed\pytest-2\test_nc_production_resume_with0\TUNED_RECIPES_02B.json: recipe 02B_GRU: stage1_file code/tests_train/_p2work/55b1f5d77a138080/P2_GRU_STAGE1.json is missing or changed">tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-2/test_nc_production_resume_with0')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000015CFCFF5BE0&gt;
+
+    @nc("a GRU recipe changed by part 2 must not resume under the old run identity")
+    def test_nc_production_resume_with_changed_gru_recipe(tmp_path, monkeypatch):
+&gt;       d, c, tp, ep, _, r1, _ = _interrupted_gru_across_part2(tmp_path, monkeypatch)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests_train\test_train03.py:277: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests_train\test_train03.py:254: in _interrupted_gru_across_part2
+    else register_02b(p2, out, families=("SASREC",)))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+v4train\p2_driver.py:311: in register_02b
+    return write_registry(Path(p2_dir), families, Path(out) if out else REGISTRY_PATH,
+v4train\tuned_recipes.py:251: in write_registry
+    prev = load_tuned_recipes(path, hp_path) if path.exists() else None
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-2/test_nc_production_resume_with0/TUNED_RECIPES_02B.json')
+hp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/contracts/hp_registry/HP_REGISTRY_P2R2.json')
+reverify_stages = True
+
+    def load_tuned_recipes(path=REGISTRY_PATH, hp_path=HP_REGISTRY_PATH, *, reverify_stages: bool = True) -&gt; dict:
+        p = Path(path)
+        if not p.is_file():
+            raise TunedRecipeError(f"tuned-recipes registry {p} does not exist (written after P2 by register-02b)")
+        data = p.read_bytes()
+        try:
+            obj = json.loads(data.decode("utf-8"),
+                             parse_constant=lambda c: (_ for _ in ()).throw(ValueError(f"non-strict constant {c}")))
+        except ValueError as e:
+            raise TunedRecipeError(f"{p} is not strict JSON ({e})") from None
+        if not isinstance(obj, dict) or obj.get("format") != FORMAT:
+            raise TunedRecipeError(f"{p} is not a {FORMAT} object")
+        if obj.get("self_sha256") != canonical_sha256(obj):
+            raise TunedRecipeError(f"{p}: self-hash mismatch")
+        try:
+            hp = load_hp_registry(hp_path)
+        except HPRegistryError as e:
+            raise TunedRecipeError(f"HP registry refused: {e}") from None
+        if (obj.get("hp_registry") or {}).get("self_sha256") != hp["self_sha256"]:
+            raise TunedRecipeError(f"{p} was registered under another HP registry")
+        for rid, r in (obj.get("recipes") or {}).items():
+            if r.get("sha256") != canonical_sha256(r, exclude=("sha256",)) or r.get("recipe_id") != rid:
+                raise TunedRecipeError(f"{p}: recipe {rid} sha256 / id mismatch")
+            if r.get("family") not in FAMILIES or rid not in (recipe_id_of(r["family"]), c2_id_of(r["family"])):
+                raise TunedRecipeError(f"{p}: invalid recipe id / family {rid}")
+            try:
+                t = trial(hp, r["source_hp_id"])
+            except HPRegistryError as e:
+                raise TunedRecipeError(f"{p}: recipe {rid}: {e}") from None
+            if t["sha256"] != r["source_hp_sha256"] or any(t[k] != r[k] for k in RECIPE_FIELDS):
+                raise TunedRecipeError(f"{p}: recipe {rid} differs from its source HP trial {r['source_hp_id']}")
+            if reverify_stages:                                                    # F1 / R3: stage files and run evidence
+                stages = {}
+                for k in ("stage1_file", "stage2_file"):
+                    sf = r.get(k) or {}
+                    ap = v4_abs(sf["path"]) if sf.get("path") else None
+                    if ap is None or not ap.is_file() or _sha_file(ap) != sf.get("file_sha256"):
+&gt;                       raise TunedRecipeError(f"{p}: recipe {rid}: {k} {sf.get('path')} is missing or changed")
+E                       v4train.tuned_recipes.TunedRecipeError: F:\Queens University\Microsoft Project\eda\.local_ai\_pytest_tmp\FABLE-DEEP3\pytest-of-Ahmed\pytest-2\test_nc_production_resume_with0\TUNED_RECIPES_02B.json: recipe 02B_GRU: stage1_file code/tests_train/_p2work/55b1f5d77a138080/P2_GRU_STAGE1.json is missing or changed
+
+v4train\tuned_recipes.py:335: TunedRecipeError</failure></testcase><testcase classname="test_train03" name="test_nc_unseal_without_clause1" time="36.076"><failure message="AssertionError: _gate did not raise UnsealRefused ('exactly the four contest runs')">contest = {'base': WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pyt...icrosoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-2/contest0/TUNED_RECIPES_02B.json'), ...}
+tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-2/test_nc_unseal_without_clause10')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000015CFDA97000&gt;
+
+    @nc("an unseal gate without the completeness clause")
+    def test_nc_unseal_without_clause1(contest, tmp_path, monkeypatch):
+        monkeypatch.setattr(U, "clause_runs_complete", lambda run_dirs: {})                              # MUTANT
+&gt;       _check_clause1(contest, tmp_path)
+
+tests_train\test_train03.py:392: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests_train\test_train03.py:376: in _check_clause1
+    raises_with(U.UnsealRefused, "exactly the four contest runs", _gate, contest, three)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+exc = &lt;class 'v4train.unseal.UnsealRefused'&gt;
+text = 'exactly the four contest runs'
+fn = &lt;function _gate at 0x0000015CF7FCC540&gt;
+a = ({'base': WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/py...iversity/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-2/contest0/runs/SASREC_2026')})
+kw = {}
+
+    def raises_with(exc, text, fn, *a, **kw):
+        """fn must raise `exc` and its message must name the intended cause (not merely any refusal)."""
+        try:
+            fn(*a, **kw)
+        except exc as e:
+            err = e
+        else:
+&gt;           raise AssertionError(f"{getattr(fn, '__name__', fn)} did not raise {exc.__name__} ({text!r})")
+E           AssertionError: _gate did not raise UnsealRefused ('exactly the four contest runs')
+
+tests_train\trainkit.py:244: AssertionError</failure></testcase><testcase classname="test_train03" name="test_nc_unseal_without_clause2" time="0.045"><failure message="AssertionError: refused for another reason: the G1b pin lacks part 2: both part self-hashes are needed">contest = {'base': WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pyt...icrosoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-2/contest0/TUNED_RECIPES_02B.json'), ...}
+tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-2/test_nc_unseal_without_clause20')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000015CFDAC4670&gt;
+
+    @nc("an unseal gate that accepts a G1b file with one part")
+    def test_nc_unseal_without_clause2(contest, tmp_path, monkeypatch):
+        monkeypatch.setattr(U, "clause_g1b_parts", lambda gp: TR.load_g1b(gp))                          # MUTANT
+&gt;       _check_clause2(contest, tmp_path)
+
+tests_train\test_train03.py:410: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests_train\test_train03.py:399: in _check_clause2
+    raises_with(U.UnsealRefused, "part 1 (GRU) AND part 2", _gate, contest, None, g)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+exc = &lt;class 'v4train.unseal.UnsealRefused'&gt;, text = 'part 1 (GRU) AND part 2'
+fn = &lt;function _gate at 0x0000015CF7FCC540&gt;
+a = ({'base': WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/py...t/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-2/test_nc_unseal_without_clause20/G1B_part1_only.json'))
+kw = {}
+
+    def raises_with(exc, text, fn, *a, **kw):
+        """fn must raise `exc` and its message must name the intended cause (not merely any refusal)."""
+        try:
+            fn(*a, **kw)
+        except exc as e:
+            err = e
+        else:
+            raise AssertionError(f"{getattr(fn, '__name__', fn)} did not raise {exc.__name__} ({text!r})")
+&gt;       assert text in str(err), f"refused for another reason: {err}"
+               ^^^^^^^^^^^^^^^^
+E       AssertionError: refused for another reason: the G1b pin lacks part 2: both part self-hashes are needed
+
+tests_train\trainkit.py:245: AssertionError</failure></testcase><testcase classname="test_train03" name="test_nc_unseal_without_clause3" time="0.184"><failure message="AssertionError: refused for another reason: GRU/2026: the run's recorded recipe / registry is not the pinned one">contest = {'base': WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pyt...icrosoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-2/contest0/TUNED_RECIPES_02B.json'), ...}
+tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-2/test_nc_unseal_without_clause30')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000015CFDAC4910&gt;
+
+    @nc("an unseal gate without the GRU byte-identity clause")
+    def test_nc_unseal_without_clause3(contest, tmp_path, monkeypatch):
+        monkeypatch.setattr(U, "clause_gru_identical",                                                   # MUTANT
+                            lambda gate, tuned_path, hp_path: TR.load_tuned_recipes(tuned_path, hp_path))
+&gt;       _check_clause3(contest, tmp_path)
+
+tests_train\test_train03.py:439: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests_train\test_train03.py:428: in _check_clause3
+    raises_with(U.UnsealRefused, "not byte-identical", _gate, contest, None, g, cur)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+exc = &lt;class 'v4train.unseal.UnsealRefused'&gt;, text = 'not byte-identical'
+fn = &lt;function _gate at 0x0000015CF7FCC540&gt;
+a = ({'base': WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/py...local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-2/test_nc_unseal_without_clause30/reg/TUNED_RECIPES_02B.json'))
+kw = {}
+
+    def raises_with(exc, text, fn, *a, **kw):
+        """fn must raise `exc` and its message must name the intended cause (not merely any refusal)."""
+        try:
+            fn(*a, **kw)
+        except exc as e:
+            err = e
+        else:
+            raise AssertionError(f"{getattr(fn, '__name__', fn)} did not raise {exc.__name__} ({text!r})")
+&gt;       assert text in str(err), f"refused for another reason: {err}"
+               ^^^^^^^^^^^^^^^^
+E       AssertionError: refused for another reason: GRU/2026: the run's recorded recipe / registry is not the pinned one
+
+tests_train\trainkit.py:245: AssertionError</failure></testcase><testcase classname="test_train03" name="test_nc_unseal_without_clause4" time="0.144"><failure message="AssertionError: _gate did not raise UnsealRefused ('RunConfig hash does not match')">contest = {'base': WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pyt...icrosoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-2/contest0/TUNED_RECIPES_02B.json'), ...}
+tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-2/test_nc_unseal_without_clause40')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000015CFDAC43D0&gt;
+
+    @nc("an unseal gate without the RunConfig-hash clause")
+    def test_nc_unseal_without_clause4(contest, tmp_path, monkeypatch):
+        monkeypatch.setattr(U, "clause_config_hashes", lambda run_dirs, reg, gate: {})                   # MUTANT
+&gt;       _check_clause4(contest, tmp_path)
+
+tests_train\test_train03.py:467: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests_train\test_train03.py:448: in _check_clause4
+    raises_with(U.UnsealRefused, "RunConfig hash does not match", _gate, contest, dirs)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+exc = &lt;class 'v4train.unseal.UnsealRefused'&gt;
+text = 'RunConfig hash does not match'
+fn = &lt;function _gate at 0x0000015CF7FCC540&gt;
+a = ({'base': WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/py...t/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-2/test_nc_unseal_without_clause40/a/runs/SASREC_2027')})
+kw = {}
+
+    def raises_with(exc, text, fn, *a, **kw):
+        """fn must raise `exc` and its message must name the intended cause (not merely any refusal)."""
+        try:
+            fn(*a, **kw)
+        except exc as e:
+            err = e
+        else:
+&gt;           raise AssertionError(f"{getattr(fn, '__name__', fn)} did not raise {exc.__name__} ({text!r})")
+E           AssertionError: _gate did not raise UnsealRefused ('RunConfig hash does not match')
+
+tests_train\trainkit.py:244: AssertionError</failure></testcase><testcase classname="test_train05" name="test_nc_train05_tampered_c2_stage_config" time="0.459"><failure message="AssertionError: load_tuned_recipes did not raise TunedRecipeError ('configs')">registered = (WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-2/tr..._tmp\\FABLE-DEEP3\\pytest-of-Ahmed\\pytest-2\\train050\\TUNED_RECIPES_02B.json', 'peak_lr': 0.001687023975571048, ...})
+tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-2/test_nc_train05_tampered_c2_st0')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000015CFDB7B310&gt;
+
+    @nc("a self-hashed stage-2 C2 config that differs from the recomputed selection")
+    def test_nc_train05_tampered_c2_stage_config(registered, tmp_path, monkeypatch):
+        _, p2, out, _, _, _ = registered
+        stage = p2 / "P2_GRU_STAGE2.json"
+        original_bytes = stage.read_bytes()                        # Ops fix: restore exact bytes (Windows CRLF)
+        original = original_bytes.decode("utf-8")
+        obj = json.loads(original)
+        c2 = next(c for c in obj["selection"]["configs"].values()
+                  if c["hp_id"] != obj["selection"]["tuned"]["hp_id"] and c["valid"])
+        c2["mean"] += 0.01
+        try:
+            p2kit.rehash_stage(stage, obj)
+            with pytest.raises(TR.TunedRecipeError, match="configs"):
+                D.register_02b(p2, tmp_path / "bad.json", families=("GRU",), with_c2=True)
+            with pytest.raises(TR.TunedRecipeError, match="changed"):
+                TR.load_tuned_recipes(out)
+            forged = json.loads(out.read_text())
+            for rid in ("02B_GRU", "02B_GRU_C2"):
+                rec = forged["recipes"][rid]
+                rec["stage2_file"]["file_sha256"] = TR._sha_file(stage)
+                rec["stage2_file"]["self_sha256"] = json.loads(stage.read_text())["self_sha256"]
+                rec["sha256"] = TR.canonical_sha256(rec, exclude=("sha256",))
+            forged["self_sha256"] = TR.canonical_sha256(forged)
+            fake = tmp_path / "forged_registry.json"
+            fake.write_text(json.dumps(forged))
+            with pytest.raises(TR.TunedRecipeError, match="configs"):
+                TR.load_tuned_recipes(fake)
+            monkeypatch.setattr(TR, "_canon", lambda obj: "ignored")  # MUTANT: no canonical config comparison
+&gt;           raises_with(TR.TunedRecipeError, "configs", TR.load_tuned_recipes, fake)
+
+tests_train\test_train05.py:134: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+exc = &lt;class 'v4train.tuned_recipes.TunedRecipeError'&gt;, text = 'configs'
+fn = &lt;function load_tuned_recipes at 0x0000015CF7F14040&gt;
+a = (WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-2/test_nc_train05_tampered_c2_st0/forged_registry.json'),)
+kw = {}
+
+    def raises_with(exc, text, fn, *a, **kw):
+        """fn must raise `exc` and its message must name the intended cause (not merely any refusal)."""
+        try:
+            fn(*a, **kw)
+        except exc as e:
+            err = e
+        else:
+&gt;           raise AssertionError(f"{getattr(fn, '__name__', fn)} did not raise {exc.__name__} ({text!r})")
+E           AssertionError: load_tuned_recipes did not raise TunedRecipeError ('configs')
+
+tests_train\trainkit.py:244: AssertionError</failure></testcase><testcase classname="test_train05" name="test_nc_train05_parameter_count_seed_mismatch" time="0.585"><failure message="AssertionError: unseal_gate did not raise UnsealRefused ('shared_numel differs')">contest05 = ({('GRU', '02B_GRU', 2026): WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/...ity/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-2/train050/TUNED_RECIPES_02B.json'))
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000015CFDAE2C10&gt;
+
+    @nc("a gate that accepts candidate seeds with disagreeing RUN_START shared_numel")
+    def test_nc_train05_parameter_count_seed_mismatch(contest05, monkeypatch):
+        runs, gate, out = contest05
+        rd = runs[("GRU", "02B_GRU_C2", 2027)]
+        p = rd / "RUN_START.json"
+        obj = json.loads(p.read_text())
+        obj["shared_numel"] += 1
+        p.write_text(json.dumps(obj))
+        with pytest.raises(U.UnsealRefused, match="shared_numel differs"):
+            U.unseal_gate(runs, gate_path=gate, tuned_path=out)
+        monkeypatch.setattr(U, "_agree_parameter_counts", lambda cs: {rid: next(iter(s.values()))
+                                                              for rid, s in cs.items()})  # MUTANT
+&gt;       raises_with(U.UnsealRefused, "shared_numel differs", U.unseal_gate, runs,
+                    gate_path=gate, tuned_path=out)
+
+tests_train\test_train05.py:245: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+exc = &lt;class 'v4train.unseal.UnsealRefused'&gt;, text = 'shared_numel differs'
+fn = &lt;function unseal_gate at 0x0000015CF7F14E00&gt;
+a = ({('GRU', '02B_GRU', 2026): WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/...da/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-2/test_nc_train05_parameter_coun0/02B_GRU_C2_2027'), ...},)
+kw = {'gate_path': WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahme...ity/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-2/train050/TUNED_RECIPES_02B.json')}
+
+    def raises_with(exc, text, fn, *a, **kw):
+        """fn must raise `exc` and its message must name the intended cause (not merely any refusal)."""
+        try:
+            fn(*a, **kw)
+        except exc as e:
+            err = e
+        else:
+&gt;           raise AssertionError(f"{getattr(fn, '__name__', fn)} did not raise {exc.__name__} ({text!r})")
+E           AssertionError: unseal_gate did not raise UnsealRefused ('shared_numel differs')
+
+tests_train\trainkit.py:244: AssertionError</failure></testcase><testcase classname="test_train05" name="test_nc_train05_six_runs_without_sasrec_c2" time="0.465"><failure message="AssertionError: unseal_gate did not raise UnsealRefused ('SASREC')">registered = (WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-2/tr..._tmp\\FABLE-DEEP3\\pytest-of-Ahmed\\pytest-2\\train050\\TUNED_RECIPES_02B.json', 'peak_lr': 0.001687023975571048, ...})
+tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-2/test_nc_train05_six_runs_witho0')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000015CFDAE3770&gt;
+
+    @nc("a six-run registry with SASREC C2 silently omitted")
+    def test_nc_train05_six_runs_without_sasrec_c2(registered, tmp_path, monkeypatch):
+        _, p2, _, _, _, _ = registered
+        out = tmp_path / "TUNED_RECIPES_02B.json"
+        w1 = D.register_02b(p2, out, families=("GRU",))
+        w2 = D.register_02b(p2, out, families=("GRU",), c2_only=True)
+        w3 = D.register_02b(p2, out, families=("SASREC",))
+        gate = tmp_path / "G1B.json"
+        gate.write_text(json.dumps(TR.g1b_obj([
+            {"part": part, "family": fam, "self_sha256": w["self_sha256"]}
+            for part, fam, w in ((1, "GRU", w1), ("1R", "GRU", w2), (2, "SASREC", w3))])))
+        reg = TR.load_tuned_recipes(out)
+        runs = _fake_runs(tmp_path / "runs", reg, [w1["self_sha256"], w2["self_sha256"], w3["self_sha256"]])
+        assert len(runs) == 6
+        with pytest.raises(U.UnsealRefused, match="SASREC"):
+            U.unseal_gate(runs, gate_path=gate, tuned_path=out)
+        monkeypatch.setattr(U, "_require_candidate_completeness", lambda current: None)  # MUTANT
+&gt;       raises_with(U.UnsealRefused, "SASREC", U.unseal_gate, runs, gate_path=gate, tuned_path=out)
+
+tests_train\test_train05.py:298: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+exc = &lt;class 'v4train.unseal.UnsealRefused'&gt;, text = 'SASREC'
+fn = &lt;function unseal_gate at 0x0000015CF7F14E00&gt;
+a = ({('GRU', '02B_GRU', 2026): WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/...ocal_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-2/test_nc_train05_six_runs_witho0/runs/02B_GRU_C2_2027'), ...},)
+kw = {'gate_path': WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahme...da/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-2/test_nc_train05_six_runs_witho0/TUNED_RECIPES_02B.json')}
+
+    def raises_with(exc, text, fn, *a, **kw):
+        """fn must raise `exc` and its message must name the intended cause (not merely any refusal)."""
+        try:
+            fn(*a, **kw)
+        except exc as e:
+            err = e
+        else:
+&gt;           raise AssertionError(f"{getattr(fn, '__name__', fn)} did not raise {exc.__name__} ({text!r})")
+E           AssertionError: unseal_gate did not raise UnsealRefused ('SASREC')
+
+tests_train\trainkit.py:244: AssertionError</failure></testcase><testcase classname="test_train05" name="test_nc_train05_repeated_registry_pin" time="0.410"><failure message="AssertionError: unseal_gate did not raise UnsealRefused ('strictly increasing')">contest05 = ({('GRU', '02B_GRU', 2026): WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/...ity/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-2/train050/TUNED_RECIPES_02B.json'))
+tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-2/test_nc_train05_repeated_regis0')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000015CFDABC4B0&gt;
+
+    @nc("a repeated G1B registry version pin")
+    def test_nc_train05_repeated_registry_pin(contest05, tmp_path, monkeypatch):
+        runs, gate, out = contest05
+        g = TR.load_g1b(gate)
+        parts = [dict(p) for p in g["tuned_recipes_parts"]]
+        parts[1]["self_sha256"] = parts[2]["self_sha256"]
+        for seed in (2026, 2027):
+            p = runs[("GRU", "02B_GRU_C2", seed)] / "RUN_START.json"
+            start = json.loads(p.read_text())
+            start["tuned_recipe"]["tuned_recipes_self_sha256"] = parts[2]["self_sha256"]
+            p.write_text(json.dumps(start))
+        bad = tmp_path / "repeated.json"
+        bad.write_text(json.dumps(TR.g1b_obj(parts)))
+        with pytest.raises(U.UnsealRefused, match="strictly increasing"):
+            U.unseal_gate(runs, gate_path=bad, tuned_path=out)
+        monkeypatch.setattr(U, "_require_strict_pins", lambda *a: None)  # MUTANT
+&gt;       raises_with(U.UnsealRefused, "strictly increasing", U.unseal_gate, runs, gate_path=bad, tuned_path=out)
+
+tests_train\test_train05.py:317: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+exc = &lt;class 'v4train.unseal.UnsealRefused'&gt;, text = 'strictly increasing'
+fn = &lt;function unseal_gate at 0x0000015CF7F14E00&gt;
+a = ({('GRU', '02B_GRU', 2026): WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/...da/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-2/test_nc_train05_repeated_regis0/02B_GRU_C2_2027'), ...},)
+kw = {'gate_path': WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahme...ity/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-2/train050/TUNED_RECIPES_02B.json')}
+
+    def raises_with(exc, text, fn, *a, **kw):
+        """fn must raise `exc` and its message must name the intended cause (not merely any refusal)."""
+        try:
+            fn(*a, **kw)
+        except exc as e:
+            err = e
+        else:
+&gt;           raise AssertionError(f"{getattr(fn, '__name__', fn)} did not raise {exc.__name__} ({text!r})")
+E           AssertionError: unseal_gate did not raise UnsealRefused ('strictly increasing')
+
+tests_train\trainkit.py:244: AssertionError</failure></testcase><testcase classname="test_train05" name="test_nc_train05_missing_run" time="0.246"><failure message="AssertionError: unseal_gate did not raise UnsealRefused ('exactly 8')">contest05 = ({('GRU', '02B_GRU', 2026): WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/...ity/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-2/train050/TUNED_RECIPES_02B.json'))
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000015CFDABF9A0&gt;
+
+    @nc("a gate that accepts an incomplete eight-run set")
+    def test_nc_train05_missing_run(contest05, monkeypatch):
+        monkeypatch.setattr(U, "_candidate_runs", lambda *a: ({}, {}, {}))
+        short = dict(contest05[0]); short.pop(next(iter(short)))
+&gt;       raises_with(U.UnsealRefused, "exactly 8", U.unseal_gate, short, gate_path=contest05[1],
+                    tuned_path=contest05[2])
+
+tests_train\test_train05.py:324: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+exc = &lt;class 'v4train.unseal.UnsealRefused'&gt;, text = 'exactly 8'
+fn = &lt;function unseal_gate at 0x0000015CF7F14E00&gt;
+a = ({('GRU', '02B_GRU', 2027): WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/...t/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-2/test_nc_train05_missing_run0/02B_SASREC_2026'), ...},)
+kw = {'gate_path': WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahme...ity/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-2/train050/TUNED_RECIPES_02B.json')}
+
+    def raises_with(exc, text, fn, *a, **kw):
+        """fn must raise `exc` and its message must name the intended cause (not merely any refusal)."""
+        try:
+            fn(*a, **kw)
+        except exc as e:
+            err = e
+        else:
+&gt;           raise AssertionError(f"{getattr(fn, '__name__', fn)} did not raise {exc.__name__} ({text!r})")
+E           AssertionError: unseal_gate did not raise UnsealRefused ('exactly 8')
+
+tests_train\trainkit.py:244: AssertionError</failure></testcase><testcase classname="test_train05" name="test_nc_train05_missing_part" time="0.222"><failure message="AssertionError: unseal_gate did not raise UnsealRefused ('part 1R')">contest05 = ({('GRU', '02B_GRU', 2026): WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/...ity/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-2/train050/TUNED_RECIPES_02B.json'))
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000015CFC652970&gt;
+tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-2/test_nc_train05_missing_part0')
+
+    @nc("a gate that accepts a missing G1B part")
+    def test_nc_train05_missing_part(contest05, monkeypatch, tmp_path):
+        runs, gate, out = contest05
+        valid = TR.load_g1b(gate)
+        bad = tmp_path / "G1B.json"
+        bad.write_text(json.dumps(TR.g1b_obj(valid["tuned_recipes_parts"][:2])))
+        original = U._candidate_registries
+        monkeypatch.setattr(U, "_candidate_registries", lambda gate_arg, tuned_path, hp_path:
+                            original(valid, tuned_path, hp_path))
+&gt;       raises_with(U.UnsealRefused, "part 1R", U.unseal_gate, runs, gate_path=bad, tuned_path=out)
+
+tests_train\test_train05.py:337: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+exc = &lt;class 'v4train.unseal.UnsealRefused'&gt;, text = 'part 1R'
+fn = &lt;function unseal_gate at 0x0000015CF7F14E00&gt;
+a = ({('GRU', '02B_GRU', 2026): WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/.../eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-2/test_nc_train05_missing_part0/02B_GRU_C2_2027'), ...},)
+kw = {'gate_path': WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahme...ity/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-2/train050/TUNED_RECIPES_02B.json')}
+
+    def raises_with(exc, text, fn, *a, **kw):
+        """fn must raise `exc` and its message must name the intended cause (not merely any refusal)."""
+        try:
+            fn(*a, **kw)
+        except exc as e:
+            err = e
+        else:
+&gt;           raise AssertionError(f"{getattr(fn, '__name__', fn)} did not raise {exc.__name__} ({text!r})")
+E           AssertionError: unseal_gate did not raise UnsealRefused ('part 1R')
+
+tests_train\trainkit.py:244: AssertionError</failure></testcase><testcase classname="test_train05" name="test_nc_train05_registry_identity" time="0.216"><failure message="AssertionError: unseal_gate did not raise UnsealRefused ('pin')">contest05 = ({('GRU', '02B_GRU', 2026): WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/...ity/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-2/train050/TUNED_RECIPES_02B.json'))
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000015CFDAE07C0&gt;
+tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-2/test_nc_train05_registry_ident0')
+
+    @nc("a gate that skips registry-version identity")
+    def test_nc_train05_registry_identity(contest05, monkeypatch, tmp_path):
+        runs, gate, out = contest05
+        valid = TR.load_g1b(gate)
+        bad = tmp_path / "G1B.json"
+        obj = TR.g1b_obj(valid["tuned_recipes_parts"])
+        obj["tuned_recipes_parts"][1]["self_sha256"] = "f" * 64
+        bad.write_text(json.dumps(obj))
+        original = U._candidate_registries
+        monkeypatch.setattr(U, "_candidate_registries", lambda gate_arg, tuned_path, hp_path:
+                            original(valid, tuned_path, hp_path))
+&gt;       raises_with(U.UnsealRefused, "pin", U.unseal_gate, runs, gate_path=bad, tuned_path=out)
+
+tests_train\test_train05.py:351: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+exc = &lt;class 'v4train.unseal.UnsealRefused'&gt;, text = 'pin'
+fn = &lt;function unseal_gate at 0x0000015CF7F14E00&gt;
+a = ({('GRU', '02B_GRU', 2026): WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/...da/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-2/test_nc_train05_registry_ident0/02B_GRU_C2_2027'), ...},)
+kw = {'gate_path': WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahme...ity/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-2/train050/TUNED_RECIPES_02B.json')}
+
+    def raises_with(exc, text, fn, *a, **kw):
+        """fn must raise `exc` and its message must name the intended cause (not merely any refusal)."""
+        try:
+            fn(*a, **kw)
+        except exc as e:
+            err = e
+        else:
+&gt;           raise AssertionError(f"{getattr(fn, '__name__', fn)} did not raise {exc.__name__} ({text!r})")
+E           AssertionError: unseal_gate did not raise UnsealRefused ('pin')
+
+tests_train\trainkit.py:244: AssertionError</failure></testcase><testcase classname="test_train05" name="test_nc_train05_config_hash" time="0.223"><failure message="AssertionError: unseal_gate did not raise UnsealRefused ('RunConfig hash')">contest05 = ({('GRU', '02B_GRU', 2026): WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/...ity/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-2/train050/TUNED_RECIPES_02B.json'))
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000015CFD9A0980&gt;
+
+    @nc("a gate that skips candidate RunConfig checks")
+    def test_nc_train05_config_hash(contest05, monkeypatch):
+        runs, gate, out = contest05
+        rd = next(iter(runs.values()))
+        start = json.loads((rd / "RUN_START.json").read_text())
+        start["config"]["peak_lr"] = 123.0
+        (rd / "RUN_START.json").write_text(json.dumps(start))
+        monkeypatch.setattr(U, "_candidate_runs", lambda *a: ({}, {}, {}))
+&gt;       raises_with(U.UnsealRefused, "RunConfig hash", U.unseal_gate, runs, gate_path=gate, tuned_path=out)
+
+tests_train\test_train05.py:362: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+exc = &lt;class 'v4train.unseal.UnsealRefused'&gt;, text = 'RunConfig hash'
+fn = &lt;function unseal_gate at 0x0000015CF7F14E00&gt;
+a = ({('GRU', '02B_GRU', 2026): WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/...t/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-2/test_nc_train05_config_hash0/02B_GRU_C2_2027'), ...},)
+kw = {'gate_path': WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahme...ity/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-2/train050/TUNED_RECIPES_02B.json')}
+
+    def raises_with(exc, text, fn, *a, **kw):
+        """fn must raise `exc` and its message must name the intended cause (not merely any refusal)."""
+        try:
+            fn(*a, **kw)
+        except exc as e:
+            err = e
+        else:
+&gt;           raise AssertionError(f"{getattr(fn, '__name__', fn)} did not raise {exc.__name__} ({text!r})")
+E           AssertionError: unseal_gate did not raise UnsealRefused ('RunConfig hash')
+
+tests_train\trainkit.py:244: AssertionError</failure></testcase><testcase classname="test_train05" name="test_nc_train05_foreign_primary_rows" time="0.284"><failure message="AssertionError: within_family_candidates did not raise SelectionError ('MAIN_VALIDATION')">contest05 = ({('GRU', '02B_GRU', 2026): WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/...ity/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-2/train050/TUNED_RECIPES_02B.json'))
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000015CFDB21A20&gt;
+
+    @nc("foreign eval-manifest rows passed as MAIN primary evidence")
+    def test_nc_train05_foreign_primary_rows(contest05, monkeypatch):
+        token = _unseal(contest05)
+        recipes = {rid: {"family": r["family"], "peak_lr": r["peak_lr"]}
+                   for rid, r in TR.load_tuned_recipes(contest05[2])["recipes"].items()}
+        rows = _rows({rid: (0.6, 0.61) for rid in recipes})
+        rows[0]["eval_manifest_id"] = "DIAGNOSTIC"
+        with pytest.raises(S.SelectionError, match="MAIN_VALIDATION"):
+            S.within_family_candidates(rows, recipes, unseal_token=token)
+        monkeypatch.setattr(S, "_require_primary_manifest", lambda rows: None)  # MUTANT
+&gt;       raises_with(S.SelectionError, "MAIN_VALIDATION", S.within_family_candidates,
+                    rows, recipes, unseal_token=token)
+
+tests_train\test_train05.py:418: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+exc = &lt;class 'v4train.selection.SelectionError'&gt;, text = 'MAIN_VALIDATION'
+fn = &lt;function within_family_candidates at 0x0000015CF7DB0720&gt;
+a = ([{'family': 'GRU', 'recipe_id': '02B_GRU', 'seed': 2026, 'method': 'C', ...}, {'family': 'GRU', 'recipe_id': '02B_GRU... 'SASREC', 'peak_lr': 0.0012650895102857473}, '02B_SASREC_C2': {'family': 'SASREC', 'peak_lr': 0.0012650895102857473}})
+kw = {'unseal_token': UnsealToken(run_dirs=frozenset({'F:\\Queens University\\Microsoft Project\\eda\\.local_ai\\_pytest_tm...247cacf535f71a3d83e0f', 'parameter_counts': {'02B_GRU': 20, '02B_GRU_C2': 10, '02B_SASREC': 30, '02B_SASREC_C2': 40}})}
+
+    def raises_with(exc, text, fn, *a, **kw):
+        """fn must raise `exc` and its message must name the intended cause (not merely any refusal)."""
+        try:
+            fn(*a, **kw)
+        except exc as e:
+            err = e
+        else:
+&gt;           raise AssertionError(f"{getattr(fn, '__name__', fn)} did not raise {exc.__name__} ({text!r})")
+E           AssertionError: within_family_candidates did not raise SelectionError ('MAIN_VALIDATION')
+
+tests_train\trainkit.py:244: AssertionError</failure></testcase></testsuite></testsuites>

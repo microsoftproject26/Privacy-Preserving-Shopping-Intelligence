@@ -1,0 +1,122 @@
+FFFFF                                                                    [100%]
+================================== FAILURES ===================================
+____________________ test_nc_rule_without_the_upper_bound _____________________
+
+    @nc("a rule that ignores the upper bound accepts a drop whose CI reaches 2.5 %")
+    def test_nc_rule_without_the_upper_bound():
+        def naive(d):
+            return d["point"] <= D.POINT_MAX_PERCENT
+>       assert not naive({"point": 0.9, "ub": 2.5}), "the naive rule accepted a drop with UB 2.5 %"
+E       AssertionError: the naive rule accepted a drop with UB 2.5 %
+E       assert not True
+E        +  where True = <function test_nc_rule_without_the_upper_bound.<locals>.naive at 0x0000023571798FE0>({'point': 0.9, 'ub': 2.5})
+
+tests_fs\test_decide.py:176: AssertionError
+_______________ test_nc_cellwise_permutation_breaks_the_window ________________
+
+    @nc("a cell-wise permutation (every position drawn independently) is not a whole-column swap")
+    def test_nc_cellwise_permutation_breaks_the_window():
+        ep = eval_provider()
+        b = _stream(ep)[0]
+        locs = I.locate(L3, I.FS_GROUPS["G5"])
+        donor = I.donor_map(b["lengths"].numpy(), 0, "G5")
+        bad = dict(b)
+        t = b["event_numeric_features"].clone()
+        g = torch.Generator().manual_seed(0)
+        for pos in range(t.shape[1]):                                          # a different donor per position
+            t[:, pos, 0] = b["event_numeric_features"][torch.randperm(t.shape[0], generator=g), pos, 0]
+        bad["event_numeric_features"] = t
+>       I.window_consistency(b, bad, locs, donor, b)
+
+tests_fs\test_importance.py:199: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+orig = {'item_tokens': tensor([[57, 53, 25,  ...,  0,  0,  0],
+        [63, 45, 28,  ..., 22, 54,  0],
+        [ 3, 44, 41,  ... [11,  5, 15,  ...,  0,  0,  0],
+        [14,  9,  4,  ...,  0,  0,  0],
+        [12, 11,  6,  ..., 13, 11,  0]]), ...}
+perm = {'item_tokens': tensor([[57, 53, 25,  ...,  0,  0,  0],
+        [63, 45, 28,  ..., 22, 54,  0],
+        [ 3, 44, 41,  ... [11,  5, 15,  ...,  0,  0,  0],
+        [14,  9,  4,  ...,  0,  0,  0],
+        [12, 11,  6,  ..., 13, 11,  0]]), ...}
+locs = [Loc(name='log1p_price', key='event_numeric_features', col=0), Loc(name='price_missing', key='event_quality_flags', col=0)]
+donor_rows = array([ 10,  83, 118,  85, 103,  46,  96, 105,  42, 144,  56, 141,   6,
+        13, 112,  15,  62,   4, 116, 125,  86,... 99,
+        25,  72,  32,  95,  93,  11, 102,  79,  57,   3, 149,  97, 140,
+        63,  67, 138,  68, 135, 106, 114])
+donor_batch = {'item_tokens': tensor([[57, 53, 25,  ...,  0,  0,  0],
+        [63, 45, 28,  ..., 22, 54,  0],
+        [ 3, 44, 41,  ... [11,  5, 15,  ...,  0,  0,  0],
+        [14,  9,  4,  ...,  0,  0,  0],
+        [12, 11,  6,  ..., 13, 11,  0]]), ...}
+
+    def window_consistency(orig: Mapping, perm: Mapping, locs: Iterable[Loc], donor_rows: np.ndarray,
+                           donor_batch: Mapping) -> None:
+        """Assert (AssertionError) the whole-column swap: for every recipient row, EVERY channel of the group equals its
+        ONE donor's channel at every position [0, L) (per-event) or as a vector (decision-level); every other channel and
+        the structural keys are unchanged."""
+        locs = list(locs)
+        idx = torch.as_tensor(np.asarray(donor_rows, dtype=np.int64))
+        for l in locs:
+            t = perm[l.key] if l.col is None else perm[l.key][..., l.col]
+            src = donor_batch[l.key] if l.col is None else donor_batch[l.key][..., l.col]
+>           assert torch.equal(t, src.index_select(0, idx)), f"{l.name}: a recipient row is not its donor's whole column"
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AssertionError: log1p_price: a recipient row is not its donor's whole column
+
+v4fs\importance.py:288: AssertionError
+__________________________ test_nc_unlabelled_writer __________________________
+
+tmp_path = WindowsPath('C:/Users/Ahmed/AppData/Local/Temp/pytest-of-Ahmed/pytest-619/test_nc_unlabelled_writer0')
+
+    @nc("a writer without the label check lets an unlabelled row through")
+    def test_nc_unlabelled_writer(tmp_path):
+        def naive_write(path, payload):
+            Path(path).write_text(json.dumps(payload), encoding="utf-8")
+            return True
+        payload = {"run_label": R.RUN_LABEL, "rows": [{"metric": "mrr"}]}
+        wrote = True
+        try:
+            naive_write(tmp_path / "x.json", payload)
+        except R.FSRefused:
+            wrote = False
+>       assert not wrote, "an unlabelled row was written"
+E       AssertionError: an unlabelled row was written
+E       assert not True
+
+tests_fs\test_run_fs.py:210: AssertionError
+_____________________ test_nc_dropping_a_required_channel _____________________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000023571719810>
+
+    @nc("a derive without the REQUIRED-channel guard drops category_tokens")
+    def test_nc_dropping_a_required_channel(monkeypatch):
+        monkeypatch.setattr(S, "REQUIRED_CHANNELS", ("item_tokens",))
+        d = S.derive("L3S_NEAR_DUPLICATE_SESSION", ["G1"])
+>       assert "category_tokens" in d.channel_names, "a REQUIRED channel was dropped"
+E       AssertionError: a REQUIRED channel was dropped
+E       assert 'category_tokens' in ('item_tokens', 'brand_tokens', 'weekday_tokens', 'session_offset_tokens', 'session_mode_main_category_tokens', 'log1p_price', ...)
+E        +  where ('item_tokens', 'brand_tokens', 'weekday_tokens', 'session_offset_tokens', 'session_mode_main_category_tokens', 'log1p_price', ...) = DerivedSchema(schema_id='L3S_NEAR_DUPLICATE_SESSION-minus-G1', base=CleanV2Schema(path='F:\\Queens University\\Microso...able',)}), self_sha256='d47dc19570b57b71f9ff1cd81f1d6043a258d883474db28c88caa1f2fdd09b29', path=None, file_sha256=None).channel_names
+
+tests_fs\test_schemas.py:154: AssertionError
+__________________ test_nc_merge_theta0_ignores_a_stale_lock __________________
+
+    @nc("a stale lock file must not be silently ignored: merge_theta0 must time out, not overwrite past it")
+    def test_nc_merge_theta0_ignores_a_stale_lock():
+        naive_would_proceed = True                                              # the naive (unsafe) behaviour
+>       assert not naive_would_proceed, "a naive merge would proceed even with another writer's lock held"
+E       AssertionError: a naive merge would proceed even with another writer's lock held
+E       assert not True
+
+tests_fs\test_stage_b.py:311: AssertionError
+=========================== short test summary info ===========================
+FAILED tests_fs\test_decide.py::test_nc_rule_without_the_upper_bound - Assert...
+FAILED tests_fs\test_importance.py::test_nc_cellwise_permutation_breaks_the_window
+FAILED tests_fs\test_run_fs.py::test_nc_unlabelled_writer - AssertionError: a...
+FAILED tests_fs\test_schemas.py::test_nc_dropping_a_required_channel - Assert...
+FAILED tests_fs\test_stage_b.py::test_nc_merge_theta0_ignores_a_stale_lock - ...
+5 failed, 59 deselected in 0.31s
+
+--- stderr ---

@@ -1,0 +1,263 @@
+{
+ "N": 646067,
+ "checkpoints": {
+  "best": {
+   "file": "checkpoints/best.pt",
+   "sha256": "7503f2c990b7c1d16b1351a0745fbfa5a862e701dd24a3666a77578ad14b0489"
+  },
+  "endpoint_6.0": {
+   "file": "checkpoints/endpoint_6.0.pt",
+   "sha256": "b7f209841316afec4c3bbb945ce8960e7a45e78afb2757fc4a03ff9be6c05134"
+  }
+ },
+ "config_sha256": "c3fd5a63ee03569e098b4db5e80f5c5f3c3ffcf479badbc2bb2b01d6fe18c4eb",
+ "continuation": null,
+ "controlled_budget": {
+  "efe": 6.0,
+  "mark": 6.0,
+  "value": 0.17101290288365656
+ },
+ "data_version": "CLEAN_V2_POP5100_V2",
+ "determinism": {
+  "cublas_workspace_config": ":4096:8",
+  "mode": "STRICT",
+  "torch_effective": {
+   "deterministic_algorithms": true,
+   "warn_only": false
+  }
+ },
+ "device_pin_sha256": "db744ca3f0da27ac7b65c41b4b32f2c68ec9d0bd66bbc0dc33e874a226834e6b",
+ "efe": 6.0,
+ "eval_every_efe": 0.5,
+ "evals": [
+  {
+   "efe": 0.5000595913426935,
+   "exposures": 323072,
+   "improved": true,
+   "mark": 0.5,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_0.5.rows.json",
+   "secondary": {
+    "hr@10": 0.3564035202915231,
+    "ndcg@10": 0.20879754045504365
+   },
+   "updates": 1262,
+   "value": 0.17115359293792717
+  },
+  {
+   "efe": 1.0,
+   "exposures": 646067,
+   "improved": false,
+   "mark": 1.0,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_1.0.rows.json",
+   "secondary": {
+    "hr@10": 0.35636354748161253,
+    "ndcg@10": 0.20881196346922015
+   },
+   "updates": 2524,
+   "value": 0.17117987726804473
+  },
+  {
+   "efe": 1.5000595913426935,
+   "exposures": 969139,
+   "improved": false,
+   "mark": 1.5,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_1.5.rows.json",
+   "secondary": {
+    "hr@10": 0.35628020113694236,
+    "ndcg@10": 0.20872050704081768
+   },
+   "updates": 3786,
+   "value": 0.1710913650163258
+  },
+  {
+   "efe": 2.0,
+   "exposures": 1292134,
+   "improved": false,
+   "mark": 2.0,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_2.0.rows.json",
+   "secondary": {
+    "hr@10": 0.3561506311709715,
+    "ndcg@10": 0.2086404795304231
+   },
+   "updates": 5048,
+   "value": 0.1710232631764127
+  },
+  {
+   "efe": 2.5000595913426937,
+   "exposures": 1615206,
+   "improved": false,
+   "mark": 2.5,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_2.5.rows.json",
+   "secondary": {
+    "hr@10": 0.3562053753700419,
+    "ndcg@10": 0.20864940720053612
+   },
+   "updates": 6310,
+   "value": 0.171015370390939
+  },
+  {
+   "efe": 3.0,
+   "exposures": 1938201,
+   "improved": false,
+   "mark": 3.0,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_3.0.rows.json",
+   "secondary": {
+    "hr@10": 0.3561275862385971,
+    "ndcg@10": 0.2086298668490254
+   },
+   "updates": 7572,
+   "value": 0.17101757359820222
+  },
+  {
+   "efe": 3.5000595913426937,
+   "exposures": 2261273,
+   "improved": false,
+   "mark": 3.5,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_3.5.rows.json",
+   "secondary": {
+    "hr@10": 0.3561200247896547,
+    "ndcg@10": 0.20861896849463799
+   },
+   "updates": 8834,
+   "value": 0.17100763928981927
+  },
+  {
+   "efe": 4.0,
+   "exposures": 2584268,
+   "improved": false,
+   "mark": 4.0,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_4.0.rows.json",
+   "secondary": {
+    "hr@10": 0.356143653000531,
+    "ndcg@10": 0.20862183516315544
+   },
+   "updates": 10096,
+   "value": 0.1709960591278676
+  },
+  {
+   "efe": 4.500059591342693,
+   "exposures": 2907340,
+   "improved": false,
+   "mark": 4.5,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_4.5.rows.json",
+   "secondary": {
+    "hr@10": 0.3561712989425372,
+    "ndcg@10": 0.20862596771297123
+   },
+   "updates": 11358,
+   "value": 0.17099639150243706
+  },
+  {
+   "efe": 5.0,
+   "exposures": 3230335,
+   "improved": false,
+   "mark": 5.0,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_5.0.rows.json",
+   "secondary": {
+    "hr@10": 0.3561787250704085,
+    "ndcg@10": 0.20862586338378908
+   },
+   "updates": 12620,
+   "value": 0.17099230268329477
+  },
+  {
+   "efe": 5.500059591342693,
+   "exposures": 3553407,
+   "improved": false,
+   "mark": 5.5,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_5.5.rows.json",
+   "secondary": {
+    "hr@10": 0.35620887597273543,
+    "ndcg@10": 0.20863928964002224
+   },
+   "updates": 13882,
+   "value": 0.171001438769298
+  },
+  {
+   "efe": 6.0,
+   "exposures": 3876402,
+   "improved": false,
+   "mark": 6.0,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_6.0.rows.json",
+   "secondary": {
+    "hr@10": 0.3562156596846279,
+    "ndcg@10": 0.20865008867381948
+   },
+   "updates": 15144,
+   "value": 0.17101290288365656
+  }
+ ],
+ "exposures": 3876402,
+ "family": "SASREC",
+ "final_rng_sha256": "3124a372d1babbc0af5a080fdd5acd30280c6d0c203784191d24ac5370e5a09d",
+ "final_state_digest": "060cad75d7c7e7ed897c4776527054b88af08b8754b310bb44bf5ded2bba0fcf",
+ "hp": null,
+ "hp_trial": null,
+ "init_sha256": "e9eb0bb9dd30061790fa5dc747e14c9aa375e2069c06a85785de6251e8705b95",
+ "label": "STOPPED_AT_CONTROLLED_ENDPOINT",
+ "latest_deleted_sha256": "516823c2c3ed77df0b48fa2d38f249b947593e251c763ad63f88164389873b7a",
+ "latest_kept": false,
+ "manifest_registry": {
+  "data_version": "CLEAN_V2_POP5100_V2",
+  "eval_manifest": "CALIB_VALIDATION_5_100_32768",
+  "file_sha256": "3c826a148046fd661ec703e228e43eb2bcf730cfc3aa6bf42859c0f3acf5dcce",
+  "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_p2/C1/P2_C1_FT_CENTRAL_FROZEN_CALIB_lr3e-6_s2026/REGISTRY_V2_TRAINER_VIEW.json",
+  "role": "MAIN",
+  "self_sha256": "36df72352ec1f169c142b3c9017219f7252fe8d9ae959b69cb3f6ee71bfc654f",
+  "train_manifest": "CALIB_TRAIN_5_100_32768"
+ },
+ "manifest_role": "MAIN",
+ "model_variant": "SASREC_D64_B2",
+ "p2_c1": {
+  "arm": "P2_C1_FT_CENTRAL_FROZEN",
+  "continuation": "DISABLED_FIXED_6.0_EFE",
+  "frozen_item_tables": [
+   "item_embed.weight",
+   "output_embed",
+   "output_bias"
+  ],
+  "init_checkpoint_bytes": 82853197,
+  "init_checkpoint_sha256": "cf08588c11f019cc760f129ba7ba6b23806297660e0170f9938436a5cb88cf78",
+  "init_record_sha256": "5ed989f6a23317aaf0fb6cf3e1288f7f925b77f423af866c361359583818a8b5",
+  "init_run_id": "PRETRAIN_FOR_FL_SMALL_SASREC_D64_B2_s2026",
+  "init_state_digest": "ee33345be4f20b61a53cd80fa11e1af702031bfcd1425af490825cd0019dc54a",
+  "peak_lr": 3e-06,
+  "role": "CALIBRATION",
+  "trained_numel": 263822,
+  "variant": "FROZEN"
+ },
+ "p2_trainable_numel": 263822,
+ "peak_lr": 3e-06,
+ "phase": "MAIN",
+ "population": "COHORT",
+ "practical_best": {
+  "efe": 0.5000595913426935,
+  "mark": 0.5,
+  "value": 0.17115359293792717
+ },
+ "row_status": "P2_CONTROL",
+ "run_id": "P2_C1_FT_CENTRAL_FROZEN_CALIB_lr3e-6_s2026",
+ "run_label": "P2_C1_FT_CENTRAL_FROZEN",
+ "run_role": "MAIN",
+ "schema": {
+  "schema_id": "L3S_NEAR_DUPLICATE_SESSION-minus-G11+G12a+G3+G4+G7",
+  "schema_self_sha256": "c53d47fe2555dd537e27e11d45a4e8b23739566e6b98179dcf521852aa918f87"
+ },
+ "seed": 2026,
+ "shared_numel": 263822,
+ "status": "DONE_MAIN",
+ "still_improving": false,
+ "updates": 15144
+}

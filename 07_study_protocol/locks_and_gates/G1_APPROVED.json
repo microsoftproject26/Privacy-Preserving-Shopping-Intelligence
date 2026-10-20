@@ -1,0 +1,217 @@
+{
+ "gate": "G1",
+ "document": "G1_APPROVED",
+ "written_utc": "2026-09-27T16:09:18Z",
+ "written_by": "Operations Director (Claude), per Fable's G1 ruling §C (no second Fable call)",
+ "ruling": {
+  "path": "company/reviews/G1_COMBINED_GATE_FABLE_POSITION.md",
+  "sha256": "5590a637792c50c4196d508b4d1cc451a2faee6095cd5b5f891b20a1239cb4f9",
+  "verdict": "APPROVE_WITH_CONDITIONS"
+ },
+ "conditions": {
+  "B1": {
+   "status": "MET",
+   "evidence": [
+    "company/handoffs/INT-02.md (INT-02R1 F1/F3)",
+    "DECISION_LOG 65, 73 (independent Opus review + combined delta review ACCEPT_WITH_FIXES: fixed)"
+   ]
+  },
+  "B2": {
+   "status": "MET",
+   "evidence": [
+    "company/handoffs/INT-02.md",
+    "DECISION_LOG 73"
+   ]
+  },
+  "R2_eval_stream": {
+   "status": "MET",
+   "value": "EVAL_ROWS_ONLY",
+   "evidence": [
+    "code/v4eval/frozen_config.py",
+    "T3 re-run PASS bitwise (R5 step 4)"
+   ]
+  },
+  "R4_comparison_key": {
+   "status": "MET",
+   "evidence": [
+    "code/v4int/providers.py R4_COMPARISON_KEY_FIELDS",
+    "R5b step 6 smokes: full key in SMOKE_SUMMARY"
+   ]
+  },
+  "INT02_items_1_7": {
+   "status": "MET",
+   "evidence": [
+    "company/handoffs/INT-02.md",
+    "DECISION_LOG 63, 65, 67, 73"
+   ]
+  }
+ },
+ "scope_disclosure": "Code beyond INT-02 items 1-7 (TRAIN-02, TRAIN-02R1-R3: model variants, HP registry, TUNING role, CKPT_AVG, P2 driver, 02b path) was authorised by Fable's BEST_BACKBONE rulings (Opus gate review + full server suite, no Fable call) and passed independent Opus reviews (DECISION_LOG 69, 73, 76) and this R5/R5b. Ops test-only fixes: tests_fs/test_schemas.py (S* registered), tests_fs_data/test_fs_real.py (REGISTRY_FS v2 key); test-bench fixes in tests_train_gpu/sys04c_variant_bench.py (DECISION_LOG 63, 77, 79).",
+ "r5_receipt": {
+  "R5_RECEIPT": {
+   "path": "runs_g1/r5/R5_RECEIPT.json",
+   "sha256": "83985e8ac64a4ab96540524d7785f44b207f006d5d425266b5d788da59a5ce5f",
+   "covers": "sync, pycache, hp_registry --verify, θ0 builder, SYS-04c (corrected), T3"
+  },
+  "R5B_RECEIPT": {
+   "path": "runs_g1/r5b/R5B_RECEIPT.json",
+   "sha256": "490c175015a43ce22e41fd4c9396d14c8cf32c9270397233b55382d78420b9e7",
+   "covers": "final-code sync, all suites, smokes, disk",
+   "utc_window": {
+    "start": "2026-09-27T15:16:29Z",
+    "stopped": "2026-09-27T16:03Z"
+   },
+   "status": "DONE"
+  },
+  "R5_SUITES": {
+   "path": "runs_g1/r5b/R5_SUITES.json",
+   "sha256": "283d765fd375acd1450e87d6b4c4d3b411639f2d68b4ab9240f5f8275adfbd41",
+   "per_suite": {
+    "tests_data": {
+     "exit_code": 0,
+     "nc_ok": true
+    },
+    "tests_data06": {
+     "exit_code": 0,
+     "nc_ok": true
+    },
+    "tests_eval": {
+     "exit_code": 0,
+     "nc_ok": true
+    },
+    "tests_fl": {
+     "exit_code": 0,
+     "nc_ok": true
+    },
+    "tests_fs": {
+     "exit_code": 0,
+     "nc_ok": true
+    },
+    "tests_fs_data": {
+     "exit_code": 0,
+     "nc_ok": true
+    },
+    "tests_hist": {
+     "exit_code": 0,
+     "nc_ok": true
+    },
+    "tests_int": {
+     "exit_code": 0,
+     "nc_ok": true
+    },
+    "tests_models": {
+     "exit_code": 0,
+     "nc_ok": true
+    },
+    "tests_train": {
+     "exit_code": 0,
+     "nc_ok": true
+    },
+    "tests_base": {
+     "exit_code": 0,
+     "nc_ok": true
+    }
+   }
+  },
+  "exit_code_all": 0
+ },
+ "code_tree_sha256": {
+  "census_v2": "fae2ef538c600d13a470f06ee49c089ec7329242aa9d3b9ebec08c1270188d8c",
+  "featstat_v1": "9fe2183f4bc4d92f5e65aa8f9defe62c7a0071a227081968cac9c983d06808ce",
+  "fl": "cb5bb8c1c3e83d16ca17b69bc6607532853052281e2bae5694d593fcd66d0830",
+  "g0_export": "fee8945416a6cdb89b797f1e40d62092398482e24d5d75bf157d5d53202d9e90",
+  "snap_v1": "ff3f9938d9eda5b32f9ed33673f5c6c0c5bc9ecab4ddea9f702a0a28fab1bf41",
+  "tests_base": "2b0cd98824fa110955c5539b29f83a1b4fe803d987069ceee9ae3278b38fd76e",
+  "tests_data": "4fa4cefba87a6254aeb10ff76ec10b7018b9f03d81852a3c089ad2dd0b3744ed",
+  "tests_data06": "6b059678f1173dc46c22264a38263838611675372bca8cdcd468ae0d323d9bcf",
+  "tests_eval": "dd86bc817e263e34e49264a155f7c2c55cae83747a2c0c53d02cd9d99952fc94",
+  "tests_fl": "a4e6d33bc2a4532a17dce2af92a1e89faaa453910cdb627910a373af23eafdc6",
+  "tests_fl_independent": "d049df663f4b4d5c1c268882c397c328de1f9ed9874774e6291454d39070fe6f",
+  "tests_fs": "5c15c8dc137804e8f87bb32ea7856a7d5923a8aa5cb442545abdf8f4c24be745",
+  "tests_fs_data": "82833fdf74feaf2d72657987438bb44f7ef7fc0b6ef2fd6d3eee71fea5a9e988",
+  "tests_hist": "cd6dd84f4d681806617c450de069bb468e65370f8f5a299822767ac9e41c53d9",
+  "tests_int": "ede0577e129834e5aac10f8e8bd12f27c02d6019103d3aa0a929ecbf46586341",
+  "tests_models": "c51a5d0942aad52859526c58224b0c0dafaffea637a2a690c17bd7794a84a452",
+  "tests_sup": "616c7bf2b8fc16cddc44a23c8b05a6d743d34673c02c2786799d3ead15fa5d26",
+  "tests_train": "cb3830bcceb46d7820abc5438e26ef0dbb78f009a4e71c05c9ec12c682576b8f",
+  "tests_train_gpu": "13aa39f4183872ce7cc13ba68c6019b4491b43481e595b60d65296cd1f92a650",
+  "v4base": "a596deebbd2101dd7dda055773f3ad027c4c079899636e11fb5ff15b57be4781",
+  "v4data": "bf58fc468d0cf1335cf4e6bd54bfb0ae6317c2f325fa2f684a57a8710c83ef7f",
+  "v4data06": "55e1215c60da2bc4612ca554c2af2a7a27e4d700707c34fa8b26e8a392452867",
+  "v4eval": "0119313176432ac834cd624a6fe97138c6912e26991c212d71d0ec3a05ac1015",
+  "v4fs": "86b5e8a87d363f1c292a3b37181c48f3d3eacdd63ec01134eaf5a0c19396f5dc",
+  "v4fs_data": "b30c8045a11cd7b57469c2a75a786f5dbe854708f5111b0ee26a687c33282e22",
+  "v4hist": "9bfa76e16679131e4165f568ee909f1b0d5f5da275bf8f7cec9214498077d0ee",
+  "v4int": "cec538e886a59955d780c9ef6d6ac5ebb0ec42aba3a6ad052d046a2172c66d62",
+  "v4models": "9584fb2a1cc193e536ef34d995d9b82f28dac3bb8378a979ba339f3e9ce9be98",
+  "v4sup": "f7e962af4ce5205790f958db0e13804f14e848f829d72944d6d52f102429eade",
+  "v4train": "b9686193510de0ab1b30ac1a601289ebabe18f0acf2bc1d079c9296b2eff1950"
+ },
+ "code_pack_tar_sha256": "1f848ab231b77bf829523dcd5c2a255b7a1e86e830ad83f93f25ba0f608e9e8c",
+ "lock_v2_self": "bc699a97dd2fab054e5a5c00f9661dd32b0677941d3f23f2e4b81751b3b7b330",
+ "lock_v2_file_sha256": "905ee4f9b39a7bb249a45f9bfa061a9ce2712b20b9aedecb362a6720bfa91b7d",
+ "registry_v2_self": "f6a0820791ad39e84aa86ebde2c37c12e76a45be6034d9068621a2c431b21c41",
+ "schema_self": "c53d47fe2555dd537e27e11d45a4e8b23739566e6b98179dcf521852aa918f87",
+ "fs_final_sha256": "799590a456b06384302879a99e301669f4abfc7b05bc6ab7625c1752bc33bf4c",
+ "preg1_lock_values_sha256": "0308640a79ef5fccb50bc456ee8f3ff1d506095c757e3b24fbb7b9c2e058238e",
+ "preg1_amendment_01_sha256": "ef8786d2bf5e2fa7050e68f8ca18bc7ab522b7675462c8f13610ceada1c638b6",
+ "preg1_amendment_01_item5": "CONFIRMED (EVAL_ROWS_ONLY)",
+ "preg1_amendment_02_sha256": "0afab4a09e494b87d86bfbc76a01f458b31d0351368c51ce79a7ac9a3fe7f7e1",
+ "preg1_amendment_02r1_sha256": "77f51ca6f0e80f24db47b4adb39ee4c3c251eeb9323ae86da099626964389efa",
+ "preg1_amendment_02r2_sha256": "603527206d0ad4b6d62e2d8e4c2c73b8413603b2af4cba49b2c7da3f7f6d1984",
+ "p2_bindings": {
+  "hp_registry_p2r2_self": "a3b48f20357e67606f6ec642e1ed68260cbe5070105bd001a85dd09b3bc5ca7b",
+  "hp_registry_p2r2_file_sha256": "5da8fbaf3daab560387d7d7fd564e34a3330f52a922898afe67d0c788a03d465",
+  "model_variant_registry_sha256": "24623179ede5c82704dfaea47227433b7304b631ee9d0e19135f9310348a9530",
+  "theta0_variants_sha256": "db18174586302dbc8e21007f5f178e3b49378afdf3956a5ff54f2c0b456e25a5"
+ },
+ "eval_fingerprint": {
+  "t3_sha256": "e994fd5f67e971fd40783d620025edd2a3c617f7198b1b7414ec0d54d22847c2",
+  "eval_stream": "EVAL_ROWS_ONLY",
+  "lock_sha256": "0308640a79ef5fccb50bc456ee8f3ff1d506095c757e3b24fbb7b9c2e058238e",
+  "lock_version": "1.0.0"
+ },
+ "t3": {
+  "mode": "rerun",
+  "result": "PASS_BITWISE",
+  "evaluator_code_sha256": "6cbc3e6f2a6a237650e04f328b9991427d79867046279c3ae7d9e6a27edaea0d",
+  "GRU_ranks_sha256": "9c0f29dbbba72a731011d4efe0f8c5f2593d47c35c8c65fec6f49d0231044caa",
+  "SASREC_ranks_sha256": "b96e325a7af0cd8b750c3e5a3283a9a4883d9c261a5878b4508b142bd84debe9",
+  "bundle": "runs_g1/r5_t3_receipt/ (server)"
+ },
+ "comparison_key_template": [
+  "data_protocol_hash",
+  "data_version",
+  "manifest_registry_self_sha256",
+  "feature_schema_self_sha256",
+  "feature_contract_hash",
+  "history_policy",
+  "transform_state_sha256",
+  "split",
+  "label_policy_hash",
+  "population_hash",
+  "candidate_order_hash",
+  "train_manifest_id",
+  "eval_manifest_id",
+  "determinism_mode",
+  "eval_stream",
+  "exposure_point",
+  "eval_score_block",
+  "eval_batch",
+  "eval_device_class",
+  "model_variant",
+  "theta0_init_sha256"
+ ],
+ "determinism_mode": "STRICT",
+ "eval_stream": "EVAL_ROWS_ONLY",
+ "proxy_pending_owner": [
+  "fast-search rule",
+  "D5 full-TRAIN statistics (Opus preferred cohort refit)",
+  "unseen-user protocol and sizes",
+  "EQUIVALENT -> GRU on cost"
+ ],
+ "fable_second_call": false,
+ "reissue_note": "First write (file adca5feaa20df26f…) had eval_fingerprint null; removed by Ops before any use or upload and re-written (DECISION_LOG 80).",
+ "self_sha256": "06bc26d2559c545d95ee45dc67b0933a2580e2e8893ef33bbd911188583742c8",
+ "self_sha256_rule": "sha256 of json.dumps(object without self_sha256 and self_sha256_rule, sort_keys=True, ensure_ascii=True, separators=(',',':'))"
+}

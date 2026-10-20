@@ -1,0 +1,481 @@
+{
+ "family": "SASREC",
+ "arch": "SASRec-CE-Rich A1_RICH256 (d256/2 blocks/4 heads, untied head)",
+ "utc": "2026-09-26T13:53:04Z",
+ "isolation_modules_checked": 12,
+ "K": 158486,
+ "n_params": 83094368,
+ "torch_version": "2.13.0+cu130",
+ "precision": "FP32",
+ "device": "cpu",
+ "seed": 2026,
+ "note_weights": "random init (SASRecCE(..., seed=2026)); no checkpoint",
+ "note_T_bake": "SASRecCE._layout computes T = int(lengths.max().item()); this is a Python-level data-dependent conversion, so whatever T the export CALIBRATION batch happens to have gets baked into the traced graph as a constant. We calibrate with a batch guaranteed to contain a length==50 row, so T bakes to the full L=50 window; the graph then relies on `lengths`/`attention_mask`/`position_ids` (real runtime tensor inputs, not `.item()`'d) to mask out padding per row for any actual lengths in [1,50]. This is the 'fixed L=50 with padding' outcome, not a truly dynamic seq axis.",
+ "export_full": {
+  "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/g0/export_smoke/sasrec_full.onnx",
+  "opset_version": 18,
+  "input_names": [
+   "item_tokens",
+   "lengths",
+   "attention_mask",
+   "position_ids",
+   "category_tokens",
+   "brand_tokens",
+   "main_category_tokens",
+   "daypart_tokens",
+   "weekday_tokens",
+   "event_numeric_features",
+   "event_quality_flags",
+   "user_context",
+   "user_context_masks"
+  ],
+  "output_names": [
+   "logits"
+  ],
+  "dynamic_axes": {
+   "item_tokens": {
+    "0": "batch",
+    "1": "seq"
+   },
+   "lengths": {
+    "0": "batch"
+   },
+   "attention_mask": {
+    "0": "batch",
+    "1": "seq"
+   },
+   "position_ids": {
+    "0": "batch",
+    "1": "seq"
+   },
+   "category_tokens": {
+    "0": "batch",
+    "1": "seq"
+   },
+   "brand_tokens": {
+    "0": "batch",
+    "1": "seq"
+   },
+   "main_category_tokens": {
+    "0": "batch",
+    "1": "seq"
+   },
+   "daypart_tokens": {
+    "0": "batch",
+    "1": "seq"
+   },
+   "weekday_tokens": {
+    "0": "batch",
+    "1": "seq"
+   },
+   "event_numeric_features": {
+    "0": "batch",
+    "1": "seq"
+   },
+   "event_quality_flags": {
+    "0": "batch",
+    "1": "seq"
+   },
+   "user_context": {
+    "0": "batch"
+   },
+   "user_context_masks": {
+    "0": "batch"
+   },
+   "logits": {
+    "0": "batch"
+   }
+  },
+  "attempts": [
+   {
+    "exporter": "dynamo (torch.export-based, default)",
+    "status": "failed",
+    "error_type": "ModuleNotFoundError",
+    "error_text": "ModuleNotFoundError: No module named 'onnxscript'\n",
+    "error_traceback_tail": "Traceback (most recent call last):\n  File \"/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/code/g0_export/common.py\", line 261, in try_export\n    torch.onnx.export(wrapper, example_args, path, dynamo=dynamo,\n  File \"/home/jovyan/venvs/ppsi-gpu/lib/python3.11/site-packages/torch/onnx/__init__.py\", line 286, in export\n    from torch.onnx._internal.exporter import _compat\n  File \"/home/jovyan/venvs/ppsi-gpu/lib/python3.11/site-packages/torch/onnx/_internal/exporter/_compat.py\", line 16, in <module>\n    from torch.onnx._internal.exporter import (\n  File \"/home/jovyan/venvs/ppsi-gpu/lib/python3.11/site-packages/torch/onnx/_internal/exporter/_core.py\", line 19, in <module>\n    import onnxscript\nModuleNotFoundError: No module named 'onnxscript'\n"
+   },
+   {
+    "exporter": "legacy (TorchScript-trace-based, dynamo=False)",
+    "status": "ok",
+    "warnings": [
+     "You are using the legacy TorchScript-based ONNX export. Starting in PyTorch 2.9, the new torch.export-based ONNX exporter has become the default. Learn more about the new export logic: https://docs.pytorch.org/docs/stable/onnx_export.html. For exporting control flow: https://pytorch.org/tutorials/beginner/onnx/export_control_flow_model_to_onnx_tutorial.html",
+     "The feature will be removed. Please remove usage of this function",
+     "Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!",
+     "Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!",
+     "Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!",
+     "Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!",
+     "Converting a tensor to a Python number might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!",
+     "Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!",
+     "Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!",
+     "Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!",
+     "Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!",
+     "Converting a tensor to a Python number might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!",
+     "Iterating over a tensor might cause the trace to be incorrect. Passing a tensor of different shape won't change the number of iterations executed (and might lead to errors or silently give incorrect results).",
+     "Iterating over a tensor might cause the trace to be incorrect. Passing a tensor of different shape won't change the number of iterations executed (and might lead to errors or silently give incorrect results)."
+    ],
+    "onnx_file_size_mb": 316.9979295730591
+   }
+  ],
+  "status": "ok",
+  "exporter_used": "legacy (TorchScript-trace-based, dynamo=False)",
+  "onnx_file_size_mb": 316.9979295730591,
+  "first_load_s": 0.901640547439456,
+  "declared_input_names": [
+   "item_tokens",
+   "lengths",
+   "category_tokens",
+   "brand_tokens",
+   "main_category_tokens",
+   "daypart_tokens",
+   "weekday_tokens",
+   "event_numeric_features",
+   "event_quality_flags",
+   "user_context",
+   "user_context_masks"
+  ],
+  "dropped_input_names": [
+   "attention_mask",
+   "position_ids"
+  ]
+ },
+ "export_query": {
+  "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/g0/export_smoke/sasrec_query.onnx",
+  "opset_version": 18,
+  "input_names": [
+   "item_tokens",
+   "lengths",
+   "attention_mask",
+   "position_ids",
+   "category_tokens",
+   "brand_tokens",
+   "main_category_tokens",
+   "daypart_tokens",
+   "weekday_tokens",
+   "event_numeric_features",
+   "event_quality_flags",
+   "user_context",
+   "user_context_masks"
+  ],
+  "output_names": [
+   "q"
+  ],
+  "dynamic_axes": {
+   "item_tokens": {
+    "0": "batch",
+    "1": "seq"
+   },
+   "lengths": {
+    "0": "batch"
+   },
+   "attention_mask": {
+    "0": "batch",
+    "1": "seq"
+   },
+   "position_ids": {
+    "0": "batch",
+    "1": "seq"
+   },
+   "category_tokens": {
+    "0": "batch",
+    "1": "seq"
+   },
+   "brand_tokens": {
+    "0": "batch",
+    "1": "seq"
+   },
+   "main_category_tokens": {
+    "0": "batch",
+    "1": "seq"
+   },
+   "daypart_tokens": {
+    "0": "batch",
+    "1": "seq"
+   },
+   "weekday_tokens": {
+    "0": "batch",
+    "1": "seq"
+   },
+   "event_numeric_features": {
+    "0": "batch",
+    "1": "seq"
+   },
+   "event_quality_flags": {
+    "0": "batch",
+    "1": "seq"
+   },
+   "user_context": {
+    "0": "batch"
+   },
+   "user_context_masks": {
+    "0": "batch"
+   },
+   "q": {
+    "0": "batch"
+   }
+  },
+  "attempts": [
+   {
+    "exporter": "dynamo (torch.export-based, default)",
+    "status": "failed",
+    "error_type": "ModuleNotFoundError",
+    "error_text": "ModuleNotFoundError: No module named 'onnxscript'\n",
+    "error_traceback_tail": "Traceback (most recent call last):\n  File \"/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/code/g0_export/common.py\", line 261, in try_export\n    torch.onnx.export(wrapper, example_args, path, dynamo=dynamo,\n  File \"/home/jovyan/venvs/ppsi-gpu/lib/python3.11/site-packages/torch/onnx/__init__.py\", line 286, in export\n    from torch.onnx._internal.exporter import _compat\n  File \"/home/jovyan/venvs/ppsi-gpu/lib/python3.11/site-packages/torch/onnx/_internal/exporter/_compat.py\", line 16, in <module>\n    from torch.onnx._internal.exporter import (\n  File \"/home/jovyan/venvs/ppsi-gpu/lib/python3.11/site-packages/torch/onnx/_internal/exporter/_core.py\", line 19, in <module>\n    import onnxscript\nModuleNotFoundError: No module named 'onnxscript'\n"
+   },
+   {
+    "exporter": "legacy (TorchScript-trace-based, dynamo=False)",
+    "status": "ok",
+    "warnings": [
+     "You are using the legacy TorchScript-based ONNX export. Starting in PyTorch 2.9, the new torch.export-based ONNX exporter has become the default. Learn more about the new export logic: https://docs.pytorch.org/docs/stable/onnx_export.html. For exporting control flow: https://pytorch.org/tutorials/beginner/onnx/export_control_flow_model_to_onnx_tutorial.html",
+     "The feature will be removed. Please remove usage of this function",
+     "Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!",
+     "Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!",
+     "Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!",
+     "Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!",
+     "Converting a tensor to a Python number might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!",
+     "Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!",
+     "Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!",
+     "Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!",
+     "Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!",
+     "Converting a tensor to a Python number might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!",
+     "Iterating over a tensor might cause the trace to be incorrect. Passing a tensor of different shape won't change the number of iterations executed (and might lead to errors or silently give incorrect results).",
+     "Iterating over a tensor might cause the trace to be incorrect. Passing a tensor of different shape won't change the number of iterations executed (and might lead to errors or silently give incorrect results)."
+    ],
+    "onnx_file_size_mb": 161.61535549163818
+   }
+  ],
+  "status": "ok",
+  "exporter_used": "legacy (TorchScript-trace-based, dynamo=False)",
+  "onnx_file_size_mb": 161.61535549163818,
+  "first_load_s": 0.38026451878249645,
+  "declared_input_names": [
+   "item_tokens",
+   "lengths",
+   "category_tokens",
+   "brand_tokens",
+   "main_category_tokens",
+   "daypart_tokens",
+   "weekday_tokens",
+   "event_numeric_features",
+   "event_quality_flags",
+   "user_context",
+   "user_context_masks"
+  ],
+  "dropped_input_names": [
+   "attention_mask",
+   "position_ids"
+  ]
+ },
+ "parity_full": {
+  "len1_b1": {
+   "max_abs_logit_diff": 1.1324882507324219e-06,
+   "mean_top20_overlap_frac": 1.0,
+   "min_top20_overlap_frac": 1.0,
+   "all_rows_top20_identical": true,
+   "target_rank_identical_frac": 1.0,
+   "all_target_ranks_identical": true
+  },
+  "len1_b16": {
+   "max_abs_logit_diff": 1.430511474609375e-06,
+   "mean_top20_overlap_frac": 1.0,
+   "min_top20_overlap_frac": 1.0,
+   "all_rows_top20_identical": true,
+   "target_rank_identical_frac": 1.0,
+   "all_target_ranks_identical": true
+  },
+  "len8_b1": {
+   "max_abs_logit_diff": 1.3113021850585938e-06,
+   "mean_top20_overlap_frac": 1.0,
+   "min_top20_overlap_frac": 1.0,
+   "all_rows_top20_identical": true,
+   "target_rank_identical_frac": 1.0,
+   "all_target_ranks_identical": true
+  },
+  "len8_b16": {
+   "max_abs_logit_diff": 1.430511474609375e-06,
+   "mean_top20_overlap_frac": 1.0,
+   "min_top20_overlap_frac": 1.0,
+   "all_rows_top20_identical": true,
+   "target_rank_identical_frac": 1.0,
+   "all_target_ranks_identical": true
+  },
+  "len50_b1": {
+   "max_abs_logit_diff": 1.1920928955078125e-06,
+   "mean_top20_overlap_frac": 1.0,
+   "min_top20_overlap_frac": 1.0,
+   "all_rows_top20_identical": true,
+   "target_rank_identical_frac": 1.0,
+   "all_target_ranks_identical": true
+  },
+  "len50_b16": {
+   "max_abs_logit_diff": 1.3113021850585938e-06,
+   "mean_top20_overlap_frac": 1.0,
+   "min_top20_overlap_frac": 1.0,
+   "all_rows_top20_identical": true,
+   "target_rank_identical_frac": 1.0,
+   "all_target_ranks_identical": true
+  },
+  "missing_b4_len8": {
+   "max_abs_logit_diff": 1.3113021850585938e-06,
+   "mean_top20_overlap_frac": 1.0,
+   "min_top20_overlap_frac": 1.0,
+   "all_rows_top20_identical": true,
+   "target_rank_identical_frac": 1.0,
+   "all_target_ranks_identical": true
+  },
+  "mixed_pad_b16": {
+   "max_abs_logit_diff": 1.430511474609375e-06,
+   "mean_top20_overlap_frac": 1.0,
+   "min_top20_overlap_frac": 1.0,
+   "all_rows_top20_identical": true,
+   "target_rank_identical_frac": 1.0,
+   "all_target_ranks_identical": true
+  }
+ },
+ "parity_query_plus_reconstructed_head": {
+  "len1_b1": {
+   "max_abs_diff": 1.9371509552001953e-06,
+   "mean_abs_diff": 4.301364242564887e-07,
+   "reconstructed_logits_vs_pytorch_full": {
+    "max_abs_logit_diff": 8.940696716308594e-07,
+    "mean_top20_overlap_frac": 1.0,
+    "min_top20_overlap_frac": 1.0,
+    "all_rows_top20_identical": true,
+    "target_rank_identical_frac": 1.0,
+    "all_target_ranks_identical": true
+   }
+  },
+  "len1_b16": {
+   "max_abs_diff": 2.384185791015625e-06,
+   "mean_abs_diff": 4.313413057843718e-07,
+   "reconstructed_logits_vs_pytorch_full": {
+    "max_abs_logit_diff": 1.1324882507324219e-06,
+    "mean_top20_overlap_frac": 1.0,
+    "min_top20_overlap_frac": 1.0,
+    "all_rows_top20_identical": true,
+    "target_rank_identical_frac": 1.0,
+    "all_target_ranks_identical": true
+   }
+  },
+  "len8_b1": {
+   "max_abs_diff": 2.3245811462402344e-06,
+   "mean_abs_diff": 4.908624759991653e-07,
+   "reconstructed_logits_vs_pytorch_full": {
+    "max_abs_logit_diff": 9.5367431640625e-07,
+    "mean_top20_overlap_frac": 1.0,
+    "min_top20_overlap_frac": 1.0,
+    "all_rows_top20_identical": true,
+    "target_rank_identical_frac": 1.0,
+    "all_target_ranks_identical": true
+   }
+  },
+  "len8_b16": {
+   "max_abs_diff": 2.130866050720215e-06,
+   "mean_abs_diff": 3.9195722933982324e-07,
+   "reconstructed_logits_vs_pytorch_full": {
+    "max_abs_logit_diff": 1.0132789611816406e-06,
+    "mean_top20_overlap_frac": 1.0,
+    "min_top20_overlap_frac": 1.0,
+    "all_rows_top20_identical": true,
+    "target_rank_identical_frac": 1.0,
+    "all_target_ranks_identical": true
+   }
+  },
+  "len50_b1": {
+   "max_abs_diff": 1.9073486328125e-06,
+   "mean_abs_diff": 3.7955214793328196e-07,
+   "reconstructed_logits_vs_pytorch_full": {
+    "max_abs_logit_diff": 7.674098014831543e-07,
+    "mean_top20_overlap_frac": 1.0,
+    "min_top20_overlap_frac": 1.0,
+    "all_rows_top20_identical": true,
+    "target_rank_identical_frac": 1.0,
+    "all_target_ranks_identical": true
+   }
+  },
+  "len50_b16": {
+   "max_abs_diff": 1.7881393432617188e-06,
+   "mean_abs_diff": 3.527512433265656e-07,
+   "reconstructed_logits_vs_pytorch_full": {
+    "max_abs_logit_diff": 9.5367431640625e-07,
+    "mean_top20_overlap_frac": 1.0,
+    "min_top20_overlap_frac": 1.0,
+    "all_rows_top20_identical": true,
+    "target_rank_identical_frac": 1.0,
+    "all_target_ranks_identical": true
+   }
+  },
+  "missing_b4_len8": {
+   "max_abs_diff": 1.430511474609375e-06,
+   "mean_abs_diff": 3.5183592217435944e-07,
+   "reconstructed_logits_vs_pytorch_full": {
+    "max_abs_logit_diff": 9.5367431640625e-07,
+    "mean_top20_overlap_frac": 1.0,
+    "min_top20_overlap_frac": 1.0,
+    "all_rows_top20_identical": true,
+    "target_rank_identical_frac": 1.0,
+    "all_target_ranks_identical": true
+   }
+  },
+  "mixed_pad_b16": {
+   "max_abs_diff": 2.0265579223632812e-06,
+   "mean_abs_diff": 3.476818051240116e-07,
+   "reconstructed_logits_vs_pytorch_full": {
+    "max_abs_logit_diff": 9.5367431640625e-07,
+    "mean_top20_overlap_frac": 1.0,
+    "min_top20_overlap_frac": 1.0,
+    "all_rows_top20_identical": true,
+    "target_rank_identical_frac": 1.0,
+    "all_target_ranks_identical": true
+   }
+  }
+ },
+ "latency_full_cpu_proxy": {
+  "len1_b1": {
+   "p50_ms": 5.7363491505384445,
+   "p95_ms": 5.789132788777351,
+   "n": 50,
+   "min_ms": 5.703099071979523,
+   "max_ms": 5.8534592390060425
+  },
+  "len1_b16": {
+   "p50_ms": 12.894507497549057,
+   "p95_ms": 13.627562671899796,
+   "n": 50,
+   "min_ms": 12.5550776720047,
+   "max_ms": 14.907784759998322
+  },
+  "len8_b1": {
+   "p50_ms": 5.681570619344711,
+   "p95_ms": 5.71427121758461,
+   "n": 50,
+   "min_ms": 5.624372512102127,
+   "max_ms": 6.181212142109871
+  },
+  "len8_b16": {
+   "p50_ms": 16.33855141699314,
+   "p95_ms": 16.824552789330482,
+   "n": 50,
+   "min_ms": 16.17518998682499,
+   "max_ms": 17.397385090589523
+  },
+  "len50_b1": {
+   "p50_ms": 6.964094936847687,
+   "p95_ms": 7.061388343572617,
+   "n": 50,
+   "min_ms": 6.915055215358734,
+   "max_ms": 8.146550506353378
+  },
+  "len50_b16": {
+   "p50_ms": 36.61748766899109,
+   "p95_ms": 37.91314363479614,
+   "n": 50,
+   "min_ms": 36.09902784228325,
+   "max_ms": 38.49799372255802
+  }
+ },
+ "latency_label": "SERVER-CPU PROXY (AMD EPYC), NOT a phone/browser measurement",
+ "onnx_full_size_mb": 316.9979295730591,
+ "onnx_query_size_mb": 161.61535549163818,
+ "process_peak_rss_mb": 1913.51953125,
+ "wall_time_s": 15.792405024170876
+}

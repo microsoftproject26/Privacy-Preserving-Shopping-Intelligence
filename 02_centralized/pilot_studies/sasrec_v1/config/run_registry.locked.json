@@ -1,0 +1,298 @@
+{
+  "campaign": "sasrec_performance_v1",
+  "status": "LOCKED_V3_AFTER_V2_FAILURE_PENDING_GATE_C_DELTA",
+  "dataset_version": "rees46_nextitem_v1",
+  "dataset_hash": "860e5a1c3a81b8e4bbfeff4f245fa37638a43e4f260df179585964d2d4da8dbd",
+  "training": {
+    "n_train_decisions": 40180608,
+    "selection_split": "VALIDATION_SELECT",
+    "selection_decisions": 8826488,
+    "context_max": 50,
+    "extra_min_events_per_user": null,
+    "use_frozen_loss_mask": true,
+    "effective_batch": 256,
+    "updates_per_epoch": 156956,
+    "final_microbatch_size": 128,
+    "seed": 2026,
+    "optimizer": "AdamW",
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "eps": 1e-08,
+    "weight_decay_matrix": 1e-05,
+    "grad_clip_norm": 1.0,
+    "objective": "full_catalogue_cross_entropy_one_decision",
+    "tie_item_embeddings": true,
+    "precision": "tf32_training_strict_fp32_eval (owner-approved, parity-gated)",
+    "automatic_amp_promotion": false
+  },
+  "schedule": {
+    "name": "S_prime",
+    "warmup_updates": 2000,
+    "peak_epochs": 1,
+    "cosine_epochs": 1,
+    "floor_multiplier": 0.1,
+    "floor_start_epoch": 3,
+    "planned_epochs": 4,
+    "min_epochs_under_cut": 4,
+    "eval_epochs": "floor epochs only: 3..4",
+    "early_stopping": null,
+    "best_checkpoint_rule": "maximum raw full-VS macro MRR@20 over evaluated epochs; exact tie keeps the earlier epoch",
+    "lr_definition": "u<=2000: 1e-3*u/2000; u<=U: 1e-3; U<u<=2U: cosine 1e-3->1e-4; u>2U: 1e-4"
+  },
+  "models": [
+    {
+      "id": "A0_ID256",
+      "group": "item_only",
+      "d_model": 256,
+      "blocks": 2,
+      "heads": 4,
+      "ff_multiplier": 4,
+      "dropout": 0.2,
+      "peak_lr": 0.001,
+      "label_smoothing": 0.0,
+      "pair": "A0_A1",
+      "role": "mandatory_anchor"
+    },
+    {
+      "id": "A1_RICH256",
+      "group": "rich_frozen_channels",
+      "d_model": 256,
+      "blocks": 2,
+      "heads": 4,
+      "ff_multiplier": 4,
+      "dropout": 0.2,
+      "peak_lr": 0.001,
+      "label_smoothing": 0.0,
+      "pair": "A0_A1",
+      "role": "mandatory_anchor"
+    }
+  ],
+  "pair_stopping": "same_epoch_only_when_both_post_floor_patience_ge2_and_epoch_ge5_or_max8",
+  "replication": {
+    "after_config_selection": false,
+    "additional_seeds": [],
+    "primary_seed": 2026,
+    "select_luckiest_seed": false,
+    "note": "no replicas under the deadline; training-seed variance unmeasured"
+  },
+  "max_distinct_configurations": 2,
+  "max_scored_runs_including_replicas": 2,
+  "evaluation": {
+    "k": [
+      1,
+      2,
+      5,
+      10,
+      20
+    ],
+    "primary": "end_to_end_user_macro_mrr@20",
+    "candidate_policy": "all_fixed_catalogue",
+    "remove_seen_items": false,
+    "remove_current_item": false,
+    "oov_target_credit": 0.0,
+    "macro_grouping": "unique_eval_user_not_client_idx",
+    "test_exposure": "previously_seen_in_gru_project",
+    "vc_exposure": "previously_seen_in_gru_project",
+    "final_new_confirmation_claim": false,
+    "bootstrap_users": true,
+    "bootstrap_replicates": 1000,
+    "bootstrap_seed": 2026
+  },
+  "budgets": {
+    "max_parallel_gpu_jobs": 2,
+    "max_parallel_sonnet_workers": 3,
+    "fable_mandatory_calls": 2,
+    "fable_corrective_calls_max": 1,
+    "new_data_downloads": false,
+    "no_fixed_wall_hours": true,
+    "reserve_disk_gib_target": 10,
+    "reserve_disk_gib_stop": 8,
+    "ram_headroom_gib": 12,
+    "expected_cpu_quota": 8,
+    "threads_per_gpu_process_initial": 3
+  },
+  "safety": {
+    "git_commit": false,
+    "git_push": false,
+    "modify_frozen_data": false,
+    "modify_gru_workspace": false,
+    "modify_shared_environment": false,
+    "llm_polling": false
+  },
+  "locked_on": "2026-09-24",
+  "source_registry_sha256": "47af575a3bba8c013ee77d5b9756fca4c01333791f197950d29d058a826fa989",
+  "gate_p": {
+    "verdict": "APPROVE_WITH_FIXES",
+    "reviewer_model": "claude-fable-5-1",
+    "response": "review/FABLE_GATE_P_RESPONSE.md",
+    "decisions": "review/GATE_P_DECISIONS.md"
+  },
+  "implementation": {
+    "position_convention": "window_start_0_to_len_minus_1_from_validity_mask; PAD contributes nothing; asserted against store position_ids-1",
+    "layout": "right_padded_contiguous_prefix; unpadded token-wise LN/QKV/FFN; causal product in padded [B,T] layout",
+    "attention_impl": "explicit_fp32_causal_math (lower-triangular incl. diagonal); no SDPA unless equivalence tests pass",
+    "tf32": false,
+    "float32_matmul_precision": "highest",
+    "deterministic_algorithms": "True(warn_only)",
+    "qkv_init": "one fused Linear(d,3d); Xavier-uniform applied separately to each [d,d] slice (Wq,Wk,Wv)",
+    "rich_rng_offset": 1000003,
+    "microbatch": "256 unless the post-Gate-C benchmark shows 128x2 faster (systems choice, frozen before training)",
+    "accumulation": 1,
+    "tail_last_update_decisions": 128,
+    "checkpoint_every_updates": 10000,
+    "diag_cohort_every_updates": 40000,
+    "diag_cohort": "archived fixed 112,365-decision VALIDATION_SELECT cohort (monitoring only)",
+    "rank_vectors": "int32 per epoch-end, compressed npz",
+    "tying": "UNTIED: separate output table W_out [K,d] (N(0,0.02) from the common generator) + output bias; class j <-> item token j+3",
+    "input": "z = LayerNorm_in(E[item] + P[pos] (+ rich side residual)), then input dropout; no sqrt(d) scale",
+    "recentering": "after every optimizer step: W_out -= mean_row(W_out); b -= mean(b)  (loss-neutral)",
+    "monitoring": "update_agg every 100 updates logs E/W_out common-mode and median row norms (8192-row sample) and bias mean/std"
+  },
+  "pair": {
+    "members": [
+      "A0_ID256",
+      "A1_RICH256"
+    ],
+    "barrier": null,
+    "rule": "no early stopping; equal fixed epochs; supervisor/lock assert equal epochs and equal per-epoch permutation digests before any comparison; an arm that cannot finish -> pair reported incomplete, never compared at unequal epochs"
+  },
+  "queue_plan": {
+    "phase": {
+      "gpu0": [
+        "A0_ID256"
+      ],
+      "gpu1": [
+        "A1_RICH256"
+      ]
+    },
+    "then": [
+      "SELECT (A0 vs A1)",
+      "LOCK",
+      "RETROSPECTIVE_EVAL",
+      "REPORT"
+    ]
+  },
+  "d8_ruling": "superseded by owner deadline: C0/C1/R0 dropped (Gate P2)",
+  "disk_policy": {
+    "target_free_gib": 10,
+    "stop_free_gib": 8,
+    "reclaim_allowlist": "latest.pt/previous.pt of COMPLETED sasrec_v1 runs only"
+  },
+  "version": 3,
+  "previous_locked_sha256": "8d07c29c0eea9af0d7ff6d3a987f5bcc9603354a8e07902dc6767bf58efc77df",
+  "owner_deadline": {
+    "requested_utc": "2026-09-23T22:20:00Z",
+    "hours": 38,
+    "deadline_utc": "2026-09-25T12:20:00Z",
+    "owner_choice": "TF32 + 6 epochs (A0/A1 only), chosen 2026-09-23T22:40Z via AskUserQuestion after Fable Gate P2",
+    "fable_gate_p2": "review/FABLE_GATE_P2_RESPONSE.md"
+  },
+  "dropped_models": [
+    {
+      "id": "C0_WIDE384",
+      "group": "item_only",
+      "d_model": 384,
+      "blocks": 2,
+      "heads": 6,
+      "ff_multiplier": 4,
+      "dropout": 0.2,
+      "peak_lr": 0.0005,
+      "label_smoothing": 0.0,
+      "pair": null,
+      "role": "capacity_challenger",
+      "dropped_reason": "owner 38 h deadline (Gate P2)"
+    },
+    {
+      "id": "C1_REG256",
+      "group": "item_only",
+      "d_model": 256,
+      "blocks": 2,
+      "heads": 4,
+      "ff_multiplier": 4,
+      "dropout": 0.1,
+      "peak_lr": 0.0003,
+      "label_smoothing": 0.05,
+      "pair": null,
+      "role": "regularization_lr_configuration_not_single_factor_ablation",
+      "dropped_reason": "owner 38 h deadline (Gate P2)"
+    },
+    {
+      "id": "R0_ID128",
+      "group": "item_only",
+      "d_model": 128,
+      "blocks": 2,
+      "heads": 4,
+      "ff_multiplier": 4,
+      "dropout": 0.2,
+      "peak_lr": 0.0005,
+      "label_smoothing": 0.0,
+      "pair": null,
+      "role": "near_budget_gru_architecture_reference",
+      "dropped_reason": "owner 38 h deadline (Gate P2)"
+    }
+  ],
+  "cut_rule": {
+    "when": "once, by the queue runner, after BOTH anchors have completed epoch 2 (systems timing only, no scores)",
+    "rule": "planned 4 = minimum 4: no cut (2 genuine low-LR epochs kept); a launch after 19:45Z would have required a separately declared 3-epoch plan",
+    "applies_to": "both anchors identically (equal epochs by construction)",
+    "file": "state/epoch_cap.json (immutable once written)"
+  },
+  "precision": {
+    "training": "tf32_matmul: cuda.matmul.allow_tf32=True, cudnn.allow_tf32=True, float32_matmul_precision='high'",
+    "eval": "strict_fp32: allow_tf32=False (both), float32_matmul_precision='highest' for every full-VS, cohort and retrospective evaluation",
+    "parity_gate": "3 real-data benchmark states x 3000 updates (FP32 seed 2026, FP32 seed 2027, TF32 seed 2026; same batches); pass iff |mean loss TF32_A - FP32_A| over updates 2001-3000 <= |FP32_A - FP32_B| + 0.5% relative, no NaN/Inf, grad-norm medians within 5%",
+    "fallback_if_gate_fails": "strict FP32 training, planned_epochs 5, eval epochs 3-5 (Fable P2 ALTERNATIVE)",
+    "owner_approved": true
+  },
+  "previous_locked_sha256_v2": "74414b384dea6a615c5aecb479d004f313c1776460a087684ecdcf658ca1b136",
+  "v2_failure": {
+    "what": "v2 A0/A1 (tied, sqrt(d) input scale, betas 0.9/0.98, peak 5e-4) degenerated: train loss min 7.55 at 12k then rising to ~9.0; grad norm 1.8->6.6; full-VS macro MRR@20 A0 0.0913/0.0901, A1 0.1179/0.1168 at epochs 3/4",
+    "root_cause": "common-mode drift of the tied item table under dense-CE AdamW (row norms ~162 uniform across frequency buckets vs GRU 11-13), amplified 16x into a Pre-LN stream without input LN",
+    "evidence": [
+      "review/deep/diag_item_embeddings.json",
+      "review/deep/trajectories.json",
+      "review/deep/FABLE_DEEP_REVIEW_RESPONSE.md"
+    ],
+    "decision": "stopped at epoch 5 by Fable (owner delegate; owner online and requested the deep review); artifacts archived under runs_v2/",
+    "stopped_utc": "2026-09-24T17:05Z"
+  },
+  "optimizer": {
+    "name": "AdamW (fused)",
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "eps": 1e-08,
+    "weight_decay_matrices": 1e-05,
+    "grad_clip": 1.0
+  },
+  "go_no_go_20k": {
+    "source": "Fable deep review VERIFICATION_PLAN (pre-registered before any v3 update)",
+    "at_20k_updates_both_arms": {
+      "mean_loss_20k_le_mean_loss_10k_minus": 0.02,
+      "mean_grad_norm_20k_le_x_value_at_6k": 1.25,
+      "E_mean_row_norm_le": 0.5,
+      "median_row_norms_E_and_W_le_x_init": 3.0,
+      "all_finite": true
+    },
+    "on_fail": "NO-GO: stop both, report v2+v3 honestly (no third attempt fits the deadline)",
+    "descriptive": {
+      "40k_cohort_A0_ge": 0.113,
+      "40k_cohort_A1_ge": 0.123,
+      "80k_A0_cohort_on_track_ge": 0.14,
+      "epoch1_A0_cohort_ge_GRU_epoch1": 0.156,
+      "epoch1_A0_cohort_lt_unlikely_to_beat_GRU": 0.145
+    }
+  },
+  "deviations_from_03": [
+    "untied head",
+    "no sqrt(d) input scale",
+    "input LayerNorm",
+    "betas (0.9,0.999)",
+    "peak lr 1e-3",
+    "4 fixed epochs",
+    "per-step output recentering"
+  ]
+}

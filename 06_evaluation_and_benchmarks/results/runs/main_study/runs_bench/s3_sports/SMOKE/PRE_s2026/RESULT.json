@@ -1,0 +1,56 @@
+{
+ "arm": "PRE",
+ "checkpoints": {
+  "CONTROLLED_BUDGET": {
+   "bytes": 9891075,
+   "file": "ckpt/endpoint_6.0.pt",
+   "mark": 0.3043675910060496,
+   "sha256": "aa1b88d461ba24ba4faa248a58ada891d73f4e645a7b606315543edbc3c10cc7"
+  }
+ },
+ "kind": "central",
+ "label": "SMOKE_NOT_EVIDENCE",
+ "run_id": "BM_s3_sports_PRE_s2026_SMOKE",
+ "spec": {
+  "N_decisions": 28597,
+  "arm": "PRE",
+  "betas": [
+   0.9,
+   0.999
+  ],
+  "budget_efe": 6,
+  "dropout": [
+   0.1
+  ],
+  "early_stop_marks": null,
+  "effective_batch": 256,
+  "eps": 1e-08,
+  "exposure_point": "end",
+  "grad_clip": 1.0,
+  "init_sha256": "2172a07dfcc0cc18626201ee20a220d846aaf4a7f4bb8c0863e1015e93a0998b",
+  "lr_table_sha256": "29ecdf65cde3ab22258ddfa2dfb8a08234804e17fcf9dbf0f9e6c73c942a0658",
+  "marks": [
+   0.5,
+   1.0,
+   1.5,
+   2.0,
+   2.5,
+   3.0,
+   3.5,
+   4.0,
+   4.5,
+   5.0,
+   5.5,
+   6.0
+  ],
+  "max_len": 50,
+  "n_updates": 672,
+  "peak_lr": 0.0007114121116984968,
+  "schedule": "S0",
+  "seed": 2026,
+  "select_population": "BAND",
+  "variant": "SASREC_D64_B2",
+  "weight_decay": 1e-05
+ },
+ "status": "SMOKE_DONE_NOT_EVIDENCE"
+}

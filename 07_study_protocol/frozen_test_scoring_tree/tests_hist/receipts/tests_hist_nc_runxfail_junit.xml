@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="13" skipped="0" tests="13" time="25.736" timestamp="2026-09-29T15:34:15.157968+03:00" hostname="DESKTOP-KS1B8LQ"><testcase classname="test_determinism" name="test_nc_cache_with_session_lengths_is_not_the_user_stream" time="7.934"><failure message="AssertionError: key sets differ: ['current_matches_session_mode', 'current_matches_session_mode_available', 'session_mode_main_category_tokens', 'session_mode_share', 'session_offset_tokens']&#10;assert False">providers_session = (&lt;v4int.providers.StoreTrainProvider object at 0x000001E504DAB4D0&gt;, &lt;v4int.providers.StoreEvalProvider object at 0x000001E504DAB8C0&gt;)
+hist_train = &lt;v4hist.stream.HistoryStore object at 0x000001E504DABE00&gt;
+
+    @nc("a cache that kept the SESSION lengths (the forgotten policy step) is not the USER_HISTORY stream")
+    def test_nc_cache_with_session_lengths_is_not_the_user_stream(providers_session, hist_train):
+        tp, _ = providers_session                                  # its cached windows are the session windows
+        ref = _tagged(hist_train, tp)
+        bad = copy.copy(tp)
+        pos = np.random.default_rng(1).choice(tp.n_decisions, B, replace=False)
+        ok, why = batches_equal(bad.batch(pos), _stream_train(ref, tp, pos))
+&gt;       assert ok, why
+E       AssertionError: key sets differ: ['current_matches_session_mode', 'current_matches_session_mode_available', 'session_mode_main_category_tokens', 'session_mode_share', 'session_offset_tokens']
+E       assert False
+
+tests_hist\test_determinism.py:151: AssertionError</failure></testcase><testcase classname="test_leakage" name="test_nc_window_includes_the_next_event" time="3.030"><failure message="v4hist.windows.HistoryLeakError: a window row comes after the decision in the user's stream (the window includes a future event)">hist_val = &lt;v4hist.stream.HistoryStore object at 0x000001E544FC5D10&gt;
+
+    @nc("a window that includes the next event (the resolver shifted by one row) must fail the causality check")
+    def test_nc_window_includes_the_next_event(hist_val):
+        du = hist_val.decision_set("eval")
+        ix = hist_val.index
+        nxt = np.minimum(du.end_row + 1, ix.n_rows - 1)
+        keep = ((du.end_row + 1 &lt; ix.n_rows) &amp; (ix.user_ord[nxt] == ix.user_ord[du.end_row])
+                &amp; (ix.split_code[nxt] == ix.split_code[du.end_row]))         # the next event of the same user / partition
+        rows = du.end_row[keep]
+        idx, valid = window_rows(rows + 1, du.length[keep])               # the deliberately wrong resolver
+&gt;       check_windows(ix, rows, idx, valid, policy=USER_HISTORY_L50)
+
+tests_hist\test_leakage.py:101: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+v4hist\windows.py:410: in check_windows
+    _need(bool(np.all(index.user_rank[iv] &lt;= index.user_rank[rv])),
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+cond = False
+msg = "a window row comes after the decision in the user's stream (the window includes a future event)"
+exc = &lt;class 'v4hist.windows.HistoryLeakError'&gt;
+
+    def _need(cond, msg: str, exc=HistoryLeakError) -&gt; None:
+        if not bool(cond):
+&gt;           raise exc(msg)
+E           v4hist.windows.HistoryLeakError: a window row comes after the decision in the user's stream (the window includes a future event)
+
+v4hist\windows.py:117: HistoryLeakError</failure></testcase><testcase classname="test_leakage" name="test_nc_window_crosses_into_another_user" time="0.857"><failure message="v4hist.windows.HistoryLeakError: a window row belongs to another user">hist_train = &lt;v4hist.stream.HistoryStore object at 0x000001E504DABE00&gt;
+
+    @nc("a window without the user_start clamp (lo = r - 49) must fail the same-user check")
+    def test_nc_window_crosses_into_another_user(hist_train):
+        du = hist_train.decision_set("loss")
+        ix = hist_train.index
+        ln = np.minimum(L, du.end_row + 1).astype(np.int16)                # no max(user_start, .) clamp
+        idx, valid = window_rows(du.end_row, ln)
+&gt;       check_windows(ix, du.end_row, idx, valid, policy=USER_HISTORY_L50)
+
+tests_hist\test_leakage.py:110: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+v4hist\windows.py:409: in check_windows
+    _need(bool(np.all(index.user_ord[iv] == index.user_ord[rv])), "a window row belongs to another user")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+cond = False, msg = 'a window row belongs to another user'
+exc = &lt;class 'v4hist.windows.HistoryLeakError'&gt;
+
+    def _need(cond, msg: str, exc=HistoryLeakError) -&gt; None:
+        if not bool(cond):
+&gt;           raise exc(msg)
+E           v4hist.windows.HistoryLeakError: a window row belongs to another user
+
+v4hist\windows.py:117: HistoryLeakError</failure></testcase><testcase classname="test_leakage" name="test_nc_validation_window_reads_a_test_row" time="0.086"><failure message="v4hist.windows.HistoryLeakError: a TEST-partition row appears in the window of a non-TEST decision">syn = RowIndex(splits=(), buckets=(), bucket_rows=(), decision_id=array([    11,     18,     25, ..., 318217, 318224, 318231...s_inside_segment': 0, 'session_decreasing': 0, 'fence_rows': 800, 'fence_rows_same_session': 0, 'session_gaps_gt1': 0})
+
+    @nc("a VALIDATION decision's window that reads a TEST-partition row (synthetic fixture) must fail")
+    def test_nc_validation_window_reads_a_test_row(syn):
+        """The deliberately wrong resolver takes the user's LATEST L events, whatever the decision time."""
+        r, end = _val_decisions_of_users_with_test_rows(syn)
+        ln = np.minimum(L, syn.user_rank[end].astype(np.int64) + 1)
+        idx, valid = window_rows(end, ln)
+&gt;       check_windows(syn, r, idx, valid, policy=USER_HISTORY_L50)
+
+tests_hist\test_leakage.py:135: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+v4hist\windows.py:403: in check_windows
+    _need(not bool(np.any((scv == TEST_CODE) &amp; (scr &lt; TEST_CODE))),
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+cond = False
+msg = 'a TEST-partition row appears in the window of a non-TEST decision'
+exc = &lt;class 'v4hist.windows.HistoryLeakError'&gt;
+
+    def _need(cond, msg: str, exc=HistoryLeakError) -&gt; None:
+        if not bool(cond):
+&gt;           raise exc(msg)
+E           v4hist.windows.HistoryLeakError: a TEST-partition row appears in the window of a non-TEST decision
+
+v4hist\windows.py:117: HistoryLeakError</failure></testcase><testcase classname="test_manifest_binding" name="test_nc_tampered_header_hash_is_caught" time="5.668"><failure message="AssertionError: registry binding refused: M05_CALIB_TRAIN: the provider's ['header_sha256'] differ from the registry entry (fingerprint mismatch)">tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_hist/data05_pytest_tests_hist_nc/test_nc_tampered_header_hash_i0')
+real_env = {'root': WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_hist/data05_py...], shape=(1550,)), 'target_class': array([ 88172,     -1,  87999, ...,   4235, 146670,   4998], shape=(1550,)), ...}}}}
+providers_user = (&lt;v4int.providers.StoreTrainProvider object at 0x000001E544FC6E90&gt;, &lt;v4int.providers.StoreEvalProvider object at 0x000001E544FC6710&gt;)
+
+    @nc("a provider whose binding carries a tampered header hash must be refused by the registry check")
+    def test_nc_tampered_header_hash_is_caught(tmp_path, real_env, providers_user):
+        tp, ep = providers_user
+        reg, _ = _fixture_registry(tmp_path, real_env, tp, ep)
+        bad = copy.copy(tp)
+        bad.manifest_binding = dict(tp.manifest_binding, header_sha256="f" * 64)     # the deliberately wrong provider
+&gt;       binding_accepted(reg, bad, ep)
+
+tests_hist\test_manifest_binding.py:111: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+reg = ManifestRegistry(path='F:\\Queens University\\Microsoft Project\\eda\\.local_ai\\_pytest_tmp\\INT-07\\tmp_tests_hist\\...d6c098704ab4c72548452383e97177', 'header_sha256': '7cf4e1e62f2708c958b006b70a7b2e449690d7164f9a272cec4fd7470e51a457'}})
+tp = &lt;v4int.providers.StoreTrainProvider object at 0x000001E544FC9940&gt;
+ep = &lt;v4int.providers.StoreEvalProvider object at 0x000001E544FC6710&gt;
+
+    def binding_accepted(reg, tp, ep) -&gt; None:
+        """The key property: TRAIN-01R2's checker accepts both providers' bindings (RegistryError -&gt; AssertionError)."""
+        from v4train.registry import RegistryError, check_provider
+        try:
+            check_provider(reg, "CALIBRATION", "train", tp)
+            check_provider(reg, "CALIBRATION", "eval", ep)
+        except RegistryError as e:
+&gt;           raise AssertionError(f"registry binding refused: {e}") from None
+E           AssertionError: registry binding refused: M05_CALIB_TRAIN: the provider's ['header_sha256'] differ from the registry entry (fingerprint mismatch)
+
+tests_hist\test_manifest_binding.py:55: AssertionError</failure></testcase><testcase classname="test_policy" name="test_nc_provider_without_history_policy" time="0.001"><failure message="AssertionError: a provider without a registered history_policy&#10;assert None in ('USER_HISTORY_L50', 'SESSION_L50')">@nc("a provider without history_policy must fail the policy-binding check")
+    def test_nc_provider_without_history_policy():
+&gt;       policy_bound(_LegacyProvider())
+
+tests_hist\test_policy.py:168: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+p = &lt;test_policy._LegacyProvider object at 0x000001E55111CC20&gt;
+
+    def policy_bound(p) -&gt; None:
+        """The key property: a provider carries a registered history_policy, bound into its fingerprint record."""
+        pol = getattr(p, "history_policy", None)
+&gt;       assert pol in HISTORY_POLICIES, "a provider without a registered history_policy"
+E       AssertionError: a provider without a registered history_policy
+E       assert None in ('USER_HISTORY_L50', 'SESSION_L50')
+
+tests_hist\test_policy.py:26: AssertionError</failure></testcase><testcase classname="test_registry_verify" name="test_nc_tampered_content_hash_is_refused" time="0.317"><failure message="AssertionError: registry verification refused: FSX_TRAIN_FIXTURE: verification failed: ['registry.content_sha256']">fsx = {'root': WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_hist/data05_py...   -1, 142373, 144041,  66580,  66616,  66519,
+        76239,   5106,  12265,     -1,  41919,  41875, 112272]), ...}}}}
+
+    @nc("a registry whose entry carries a tampered content_sha256 must be refused")
+    def test_nc_tampered_content_hash_is_refused(fsx):
+        p = _variant(fsx, "NC_CONTENT.json", lambda r: r["manifests"][TR].update(content_sha256="1" * 64))
+&gt;       registry_accepts(TR, p, fsx["root"], "TRAIN")
+
+tests_hist\test_registry_verify.py:176: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+mid = 'FSX_TRAIN_FIXTURE'
+reg_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_hist/data05_pytest_tests_hist_nc/fsx_root0/NC_CONTENT.json')
+root = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_hist/data05_pytest_tests_hist_nc/fsx_root0')
+kind = 'TRAIN'
+
+    def registry_accepts(mid, reg_path, root, kind) -&gt; None:
+        """The key property: the registry path verifies the manifest (refusals -&gt; AssertionError)."""
+        try:
+            verify_manifest_by_registry(mid, reg_path, _paths(), root=root, expect_kind=kind)
+        except (ManifestVerificationError, TestManifestRefused) as e:
+&gt;           raise AssertionError(f"registry verification refused: {e}") from None
+E           AssertionError: registry verification refused: FSX_TRAIN_FIXTURE: verification failed: ['registry.content_sha256']
+
+tests_hist\test_registry_verify.py:98: AssertionError</failure></testcase><testcase classname="test_registry_verify" name="test_nc_wrong_lock_hash_is_refused" time="0.020"><failure message="AssertionError: registry verification refused: manifest registry F:\Queens University\Microsoft Project\eda\.local_ai\_pytest_tmp\INT-07\tmp_tests_hist\data05_pytest_tests_hist_nc\fsx_root0\NC_LOCK.json was built on another DATA_PROTOCOL_LOCK ({'lock_self_sha256': '2222222222222222222222222222222222222222222222222222222222222222', 'file_sha256': 'ebf4e86f6beb82e98283108a2dad9082727e8559b81301cd46f35f60c79fd7c0'}; current self da51d271e97d3a681227a7063fd35b429797e52ee25586ba39843a37b7c839e1, file ebf4e86f6beb82e98283108a2dad9082727e8559b81301cd46f35f60c79fd7c0); the B1 superseded-lock exception (registry.source == lock.supersedes AND registry.self_sha256 == lock.population_and_manifests.manifest_registry.self_sha256) does not apply">fsx = {'root': WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_hist/data05_py...   -1, 142373, 144041,  66580,  66616,  66519,
+        76239,   5106,  12265,     -1,  41919,  41875, 112272]), ...}}}}
+
+    @nc("a registry built on another DATA_PROTOCOL_LOCK (wrong lock hash) must be refused")
+    def test_nc_wrong_lock_hash_is_refused(fsx):
+        p = _variant(fsx, "NC_LOCK.json", lambda r: r["source_data_protocol_lock"].update(lock_self_sha256="2" * 64))
+&gt;       registry_accepts(EV, p, fsx["root"], "EVAL")
+
+tests_hist\test_registry_verify.py:182: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+mid = 'FSX_VALIDATION_FIXTURE'
+reg_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_hist/data05_pytest_tests_hist_nc/fsx_root0/NC_LOCK.json')
+root = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_hist/data05_pytest_tests_hist_nc/fsx_root0')
+kind = 'EVAL'
+
+    def registry_accepts(mid, reg_path, root, kind) -&gt; None:
+        """The key property: the registry path verifies the manifest (refusals -&gt; AssertionError)."""
+        try:
+            verify_manifest_by_registry(mid, reg_path, _paths(), root=root, expect_kind=kind)
+        except (ManifestVerificationError, TestManifestRefused) as e:
+&gt;           raise AssertionError(f"registry verification refused: {e}") from None
+E           AssertionError: registry verification refused: manifest registry F:\Queens University\Microsoft Project\eda\.local_ai\_pytest_tmp\INT-07\tmp_tests_hist\data05_pytest_tests_hist_nc\fsx_root0\NC_LOCK.json was built on another DATA_PROTOCOL_LOCK ({'lock_self_sha256': '2222222222222222222222222222222222222222222222222222222222222222', 'file_sha256': 'ebf4e86f6beb82e98283108a2dad9082727e8559b81301cd46f35f60c79fd7c0'}; current self da51d271e97d3a681227a7063fd35b429797e52ee25586ba39843a37b7c839e1, file ebf4e86f6beb82e98283108a2dad9082727e8559b81301cd46f35f60c79fd7c0); the B1 superseded-lock exception (registry.source == lock.supersedes AND registry.self_sha256 == lock.population_and_manifests.manifest_registry.self_sha256) does not apply
+
+tests_hist\test_registry_verify.py:98: AssertionError</failure></testcase><testcase classname="test_registry_verify" name="test_nc_test_id_is_refused" time="0.006"><failure message="AssertionError: registry verification refused: FSX_TEST_FIXTURE: TEST manifests are refused before ALL_METHODS_LOCK (E10.1; INT-01)">fsx = {'root': WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_hist/data05_py...   -1, 142373, 144041,  66580,  66616,  66519,
+        76239,   5106,  12265,     -1,  41919,  41875, 112272]), ...}}}}
+
+    @nc("a TEST manifest id is refused by the registry path before any file is opened")
+    def test_nc_test_id_is_refused(fsx):
+        def add_test(r):
+            r["manifests"]["FSX_TEST_FIXTURE"] = copy.deepcopy(r["manifests"][EV])
+        p = _variant(fsx, "NC_TEST.json", add_test)
+&gt;       registry_accepts("FSX_TEST_FIXTURE", p, fsx["root"], "EVAL")
+
+tests_hist\test_registry_verify.py:190: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+mid = 'FSX_TEST_FIXTURE'
+reg_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_hist/data05_pytest_tests_hist_nc/fsx_root0/NC_TEST.json')
+root = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_hist/data05_pytest_tests_hist_nc/fsx_root0')
+kind = 'EVAL'
+
+    def registry_accepts(mid, reg_path, root, kind) -&gt; None:
+        """The key property: the registry path verifies the manifest (refusals -&gt; AssertionError)."""
+        try:
+            verify_manifest_by_registry(mid, reg_path, _paths(), root=root, expect_kind=kind)
+        except (ManifestVerificationError, TestManifestRefused) as e:
+&gt;           raise AssertionError(f"registry verification refused: {e}") from None
+E           AssertionError: registry verification refused: FSX_TEST_FIXTURE: TEST manifests are refused before ALL_METHODS_LOCK (E10.1; INT-01)
+
+tests_hist\test_registry_verify.py:98: AssertionError</failure></testcase><testcase classname="test_session_modes" name="test_nc_future_event_inside_the_current_session_is_caught" time="0.002"><failure message="AssertionError: 0&#10;assert [7, 7, 7, 0] == [5, 7, 7, 0]&#10;  &#10;  At index 0 diff: 7 != 5&#10;  Use -v to get more diff">@nc("a session mode that lets a later event of the current session change an earlier position is caught")
+    def test_nc_future_event_inside_the_current_session_is_caught():
+        m = np.array([[5, 7, 7, 0]])
+        v = m &gt; 0
+        sp = np.array([[1, 1, 1, 0]])
+&gt;       check_against_naive(m, v, sp, _noncausal(m, v, sp))           # position 0 would read 7 (from the future)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests_hist\test_session_modes.py:171: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+m = array([[5, 7, 7, 0]]), v = array([[ True,  True,  True, False]])
+sp = array([[1, 1, 1, 0]])
+feats = {'session_mode_main_category_tokens': array([[7, 7, 7, 0]]), 'current_matches_session_mode': array([1.], dtype=float32...t_matches_session_mode_available': array([1.], dtype=float32), 'session_mode_share': array([0.6666667], dtype=float32)}
+max_rows = None
+
+    def check_against_naive(m, v, sp, feats, max_rows=None):
+        n = m.shape[0] if max_rows is None else min(max_rows, m.shape[0])
+        for b in range(n):
+            out, match, avail, share = naive(m[b], v[b], sp[b])
+&gt;           assert feats[SESSION_MODE_KEY][b].tolist() == out, b
+E           AssertionError: 0
+E           assert [7, 7, 7, 0] == [5, 7, 7, 0]
+E             
+E             At index 0 diff: 7 != 5
+E             Use -v to get more diff
+
+tests_hist\test_session_modes.py:63: AssertionError</failure></testcase><testcase classname="test_session_offsets" name="test_nc_offsets_from_model_segments_are_caught" time="0.001"><failure message="v4hist.windows.HistoryLeakError: session tokens differ from the behavioural-session offsets">@nc("session offsets computed from model segments (fence-cut) must fail the behavioural-session proof")
+    def test_nc_offsets_from_model_segments_are_caught():
+        ix = _straddle_fixture()
+        rows = np.array([3, 4], dtype=np.int64)
+        ln = np.minimum(50, ix.user_rank[rows] + 1)
+        idx, valid = window_rows(rows, ln)
+&gt;       check_session_offsets(ix, rows, idx, valid, _segment_tokens(ix, rows, ln))
+
+tests_hist\test_session_offsets.py:151: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+v4hist\windows.py:466: in check_session_offsets
+    _need(bool(np.array_equal(tok, want)), "session tokens differ from the behavioural-session offsets")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+cond = False, msg = 'session tokens differ from the behavioural-session offsets'
+exc = &lt;class 'v4hist.windows.HistoryLeakError'&gt;
+
+    def _need(cond, msg: str, exc=HistoryLeakError) -&gt; None:
+        if not bool(cond):
+&gt;           raise exc(msg)
+E           v4hist.windows.HistoryLeakError: session tokens differ from the behavioural-session offsets
+
+v4hist\windows.py:117: HistoryLeakError</failure></testcase><testcase classname="test_session_offsets" name="test_nc_future_event_leak_is_caught" time="0.598"><failure message="v4hist.windows.HistoryLeakError: session tokens differ from the behavioural-session offsets">hist_val = &lt;v4hist.stream.HistoryStore object at 0x000001E544FC5D10&gt;
+
+    @nc("session offsets anchored at a later (future) session must fail the proof")
+    def test_nc_future_event_leak_is_caught(hist_val):
+        ix = hist_val.index
+        ds = hist_val.decision_set("eval")
+        uo = ix.user_ord.astype(np.int64)
+        last = np.searchsorted(uo, uo, side="right") - 1
+        r = ds.end_row
+        ln = ds.length
+        idx, valid = window_rows(r, ln)
+        ic = np.where(valid, idx, 0)
+        sid = ix.session_id.astype(np.int64)
+        leak = np.where(valid, np.minimum(sid[last[r]][:, None] - sid[ic], SESSION_OFFSET_CAP) + 1, 0).astype(np.int64)
+&gt;       check_session_offsets(ix, ix.rows_of(ds.decision_id), idx, valid, leak)
+
+tests_hist\test_session_offsets.py:166: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+v4hist\windows.py:466: in check_session_offsets
+    _need(bool(np.array_equal(tok, want)), "session tokens differ from the behavioural-session offsets")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+cond = False, msg = 'session tokens differ from the behavioural-session offsets'
+exc = &lt;class 'v4hist.windows.HistoryLeakError'&gt;
+
+    def _need(cond, msg: str, exc=HistoryLeakError) -&gt; None:
+        if not bool(cond):
+&gt;           raise exc(msg)
+E           v4hist.windows.HistoryLeakError: session tokens differ from the behavioural-session offsets
+
+v4hist\windows.py:117: HistoryLeakError</failure></testcase><testcase classname="test_transform_state" name="test_nc_ignoring_the_state_is_caught" time="6.439"><failure message="AssertionError: served values differ from the state's direct formula by 2.5256190299987793&#10;assert 2.5256190299987793 &lt;= 1e-05">prov_syn = (&lt;v4int.providers.StoreTrainProvider object at 0x000001E54FF58180&gt;, &lt;v4int.providers.StoreEvalProvider object at 0x000001E544FC7750&gt;)
+states = {'clean': WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/data_v2/server/TRANSFORM_STATE_CLE...ens University/Microsoft Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_hist/data05_pytest_tests_hist_nc/states0')}
+hist_train = &lt;v4hist.stream.HistoryStore object at 0x000001E504DABE00&gt;
+raw_train = {'current_known_category_run_length': array([1., 1., 2., ..., 3., 4., 0.], shape=(817291,), dtype=float32), 'current_m...y([15.141283, 15.079095, 15.115807, ..., 15.192509, 15.19223 ,
+       10.624469], shape=(817291,), dtype=float32), ...}
+
+    @nc("a provider that ignores its transform state (serves the Clean V2 normalization) fails the direct formula")
+    def test_nc_ignoring_the_state_is_caught(prov_syn, states, hist_train, raw_train):
+        ts, _ = prov_syn
+        bad = copy.copy(ts)
+        bad.renorm = None                                                      # the deliberately wrong provider
+        norm = load_transform_state(states["syn"], build_spec())["norm"]
+&gt;       _check_train(bad, hist_train, raw_train, norm, _positions(ts.n_decisions, 2))
+
+tests_hist\test_transform_state.py:294: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+tp = &lt;v4int.providers.StoreTrainProvider object at 0x000001E544FEFAD0&gt;
+hs = &lt;v4hist.stream.HistoryStore object at 0x000001E504DABE00&gt;
+raw = {'current_known_category_run_length': array([1., 1., 2., ..., 3., 4., 0.], shape=(817291,), dtype=float32), 'current_m...y([15.141283, 15.079095, 15.115807, ..., 15.192509, 15.19223 ,
+       10.624469], shape=(817291,), dtype=float32), ...}
+norm = {'log1p_price': (1.8261055827140809, 7.179900538921356, 5.3466745268996725, 1.5710652981732496), 'log1p_prev_raw_view_...12), 'log1p_item_observed_age_s': (8.745926570892333, 14.475271511077882, 14.478450537554385, 1.3224775845182022), ...}
+positions = [array([ 7936, 18677,  8057, 13238, 16577, 14831,  4748, 13061, 18432,
+        2280, 11760,  4532,   790,  9783,    95...3601, 18588,
+        1090, 17583, 19195,  1199, 15664, 17918,  9514, 13290, 18264,
+        6141,  3768,  5224, 10036])]
+
+    def _check_train(tp, hs, raw, norm, positions):
+        spec = build_spec()
+        ds = hs.decision_set("loss")
+        worst = 0.0
+        for pos in positions:
+            b = tp.batch(pos)
+            p = hs.positions_for(ds, tp.decision_ids()[pos])
+            idx, valid = window_rows(ds.end_row[p], ds.length[p])
+            num, uc = direct_formula(raw, idx, valid, ds.end_row[p], norm, spec)
+            m, zeros_ok = _max_diff(b, num, uc)
+            assert zeros_ok, "the re-zeroed / padded positions differ from the formula"
+&gt;           assert m &lt;= TOL, f"served values differ from the state's direct formula by {m}"
+E           AssertionError: served values differ from the state's direct formula by 2.5256190299987793
+E           assert 2.5256190299987793 &lt;= 1e-05
+
+tests_hist\test_transform_state.py:147: AssertionError</failure></testcase></testsuite></testsuites>

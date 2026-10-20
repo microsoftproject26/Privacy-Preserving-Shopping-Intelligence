@@ -1,0 +1,205 @@
+{
+ "receipt": "FS-01 test run",
+ "utc": "2026-09-27T14:50:41Z",
+ "exit_code": 1,
+ "wall_s": 8.4,
+ "python": "3.11.14",
+ "platform": "Linux-6.8.0-117-generic-x86_64-with-glibc2.39",
+ "synthetic_only": false,
+ "counts": {
+  "passed": 20,
+  "xfailed": 16,
+  "failure": 1
+ },
+ "negative_controls": {
+  "n": 16,
+  "n_run": 16,
+  "n_skipped": 0,
+  "all_failed_as_intended": true
+ },
+ "summary_line": "\u001b[31m\u001b[31m\u001b[1m1 failed\u001b[0m, \u001b[32m20 passed\u001b[0m, \u001b[33m16 xfailed\u001b[0m\u001b[31m in 5.74s\u001b[0m\u001b[0m",
+ "cases": [
+  {
+   "test": "test_fs_real::test_real_equivalence_M05_M06_exact",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_fs_real::test_nc_real_equivalence_detects_tampered_reference",
+   "outcome": "xfailed"
+  },
+  {
+   "test": "test_fs_real::test_real_fs_users_are_the_top_keys_of_the_census_pool",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_fs_real::test_real_fs_disjoint_from_every_band",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_fs_real::test_nc_real_disjointness_check_detects_overlap",
+   "outcome": "xfailed"
+  },
+  {
+   "test": "test_fs_real::test_real_m01_m02_assertions_and_hashes",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_fs_real::test_nc_real_tampered_table_changes_content_hash",
+   "outcome": "xfailed"
+  },
+  {
+   "test": "test_fs_real::test_real_registry",
+   "outcome": "failure"
+  },
+  {
+   "test": "test_fs_real::test_nc_real_registry_tamper",
+   "outcome": "xfailed"
+  },
+  {
+   "test": "test_fs_real::test_real_build_receipt",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_fs_synthetic::test_equivalence_reproduces_locked_M05_M06",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_fs_synthetic::test_equivalence_receipt_self_hash",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_fs_synthetic::test_compare_detects_nothing_on_identical_population",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_fs_synthetic::test_nc_equivalence_detects_population_change",
+   "outcome": "xfailed"
+  },
+  {
+   "test": "test_fs_synthetic::test_nc_equivalence_detects_calib_flag",
+   "outcome": "xfailed"
+  },
+  {
+   "test": "test_fs_synthetic::test_fs_is_top_keys_of_pool_and_disjoint",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_fs_synthetic::test_nc_smallest_keys_are_not_fs",
+   "outcome": "xfailed"
+  },
+  {
+   "test": "test_fs_synthetic::test_nc_overlapping_band_is_detected",
+   "outcome": "xfailed"
+  },
+  {
+   "test": "test_fs_synthetic::test_select_fs_pool_bounds_and_oversize_refusal",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_fs_synthetic::test_fs_manifests_verify_on_disk",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_fs_synthetic::test_m01_m02_assertions_hold_on_reread_tables",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_fs_synthetic::test_nc_m01_assertions_detect_tamper",
+   "outcome": "xfailed"
+  },
+  {
+   "test": "test_fs_synthetic::test_nc_m02_assertions_detect_tamper",
+   "outcome": "xfailed"
+  },
+  {
+   "test": "test_fs_synthetic::test_test_gate_refuses_every_test_path",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_fs_synthetic::test_no_test_row_reaches_fs_manifests",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_fs_synthetic::test_nc_unfiltered_scan_sees_test",
+   "outcome": "xfailed"
+  },
+  {
+   "test": "test_fs_synthetic::test_self_hash_and_header_rule",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_fs_synthetic::test_nc_tampered_self_hash",
+   "outcome": "xfailed"
+  },
+  {
+   "test": "test_fs_transform::test_fit_kernels_match_numpy",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_fs_transform::test_nc_unclipped_moments_differ",
+   "outcome": "xfailed"
+  },
+  {
+   "test": "test_fs_transform::test_masks_follow_the_schema_fit_population",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_fs_transform::test_bucket_reader_is_train_only_and_splits_fs_rows",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_fs_transform::test_nc_unfiltered_features_contain_test",
+   "outcome": "xfailed"
+  },
+  {
+   "test": "test_fs_transform::test_reproduction_criterion",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_fs_transform::test_nc_reproduction_criterion_rejects_small_drift",
+   "outcome": "xfailed"
+  },
+  {
+   "test": "test_fs_transform::test_real_transform_state_fs_method_and_values",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_fs_transform::test_nc_real_fs_values_equal_clean_v2",
+   "outcome": "xfailed"
+  }
+ ],
+ "stdout_tail": [
+  "\u001b[32m.\u001b[0m\u001b[33mx\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[33mx\u001b[0m\u001b[32m.\u001b[0m\u001b[33mx\u001b[0m\u001b[31mF\u001b[0m\u001b[33mx\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[33mx\u001b[0m\u001b[33mx\u001b[0m\u001b[32m.\u001b[0m\u001b[33mx\u001b[0m\u001b[33mx\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[33mx\u001b[0m\u001b[33mx\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[33mx\u001b[0m\u001b[32m.\u001b[0m\u001b[33mx\u001b[0m\u001b[32m.\u001b[0m\u001b[33mx\u001b[0m\u001b[32m.\u001b[0m\u001b[32m.\u001b[0m\u001b[33mx\u001b[0m\u001b[32m.\u001b[0m\u001b[33mx\u001b[0m\u001b[32m.\u001b[0m\u001b[33mx\u001b[0m\u001b[31m                                    [100%]\u001b[0m",
+  "=================================== FAILURES ===================================",
+  "\u001b[31m\u001b[1m______________________________ test_real_registry ______________________________\u001b[0m",
+  "",
+  "    \u001b[0m\u001b[37m@real_only\u001b[39;49;00m\u001b[90m\u001b[39;49;00m",
+  "    \u001b[94mdef\u001b[39;49;00m\u001b[90m \u001b[39;49;00m\u001b[92mtest_real_registry\u001b[39;49;00m():\u001b[90m\u001b[39;49;00m",
+  "        reg = load_json(REG)\u001b[90m\u001b[39;49;00m",
+  ">       \u001b[94massert\u001b[39;49;00m FC.verify_self_hash(reg, \u001b[33m\"\u001b[39;49;00m\u001b[33mregistry_self_sha256\u001b[39;49;00m\u001b[33m\"\u001b[39;49;00m)\u001b[90m\u001b[39;49;00m",
+  "\u001b[1m\u001b[31mE       AssertionError: assert False\u001b[0m",
+  "\u001b[1m\u001b[31mE        +  where False = <function verify_self_hash at 0x74594228fec0>({'registry': 'MANIFEST_ROLE_REGISTRY', 'registry_version': 2, 'task': 'FS-01', 'data_version': 'FS_SCREEN_5_100_v1', ...}, 'registry_self_sha256')\u001b[0m",
+  "\u001b[1m\u001b[31mE        +    where <function verify_self_hash at 0x74594228fec0> = FC.verify_self_hash\u001b[0m",
+  "",
+  "\u001b[1m\u001b[31mtest_fs_real.py\u001b[0m:172: AssertionError",
+  "\u001b[36m\u001b[1m=========================== short test summary info ============================\u001b[0m",
+  "\u001b[33mXFAIL\u001b[0m test_fs_real.py::\u001b[1mtest_nc_real_equivalence_detects_tampered_reference\u001b[0m - NEGATIVE CONTROL: a single changed MANIFEST_HASHES table hash must be detected by the re-check",
+  "\u001b[33mXFAIL\u001b[0m test_fs_real.py::\u001b[1mtest_nc_real_disjointness_check_detects_overlap\u001b[0m - NEGATIVE CONTROL: the CALIB prefix is inside MAIN, so a disjointness check between them must fail",
+  "\u001b[33mXFAIL\u001b[0m test_fs_real.py::\u001b[1mtest_nc_real_tampered_table_changes_content_hash\u001b[0m - NEGATIVE CONTROL: a changed target_class in the FS decisions must change the table content hash",
+  "\u001b[33mXFAIL\u001b[0m test_fs_real.py::\u001b[1mtest_nc_real_registry_tamper\u001b[0m - NEGATIVE CONTROL: a tampered registry entry must fail the registry self-hash",
+  "\u001b[33mXFAIL\u001b[0m test_fs_synthetic.py::\u001b[1mtest_nc_equivalence_detects_population_change\u001b[0m - NEGATIVE CONTROL: dropping one user of the old M05 population must break the equivalence",
+  "\u001b[33mXFAIL\u001b[0m test_fs_synthetic.py::\u001b[1mtest_nc_equivalence_detects_calib_flag\u001b[0m - NEGATIVE CONTROL: without the calibration flag the M05 clients table differs (in_calib_prefix)",
+  "\u001b[33mXFAIL\u001b[0m test_fs_synthetic.py::\u001b[1mtest_nc_smallest_keys_are_not_fs\u001b[0m - NEGATIVE CONTROL: the SMALLEST keys are not the FS sample",
+  "\u001b[33mXFAIL\u001b[0m test_fs_synthetic.py::\u001b[1mtest_nc_overlapping_band_is_detected\u001b[0m - NEGATIVE CONTROL: a band that overlaps FS must be reported as not disjoint",
+  "\u001b[33mXFAIL\u001b[0m test_fs_synthetic.py::\u001b[1mtest_nc_m01_assertions_detect_tamper\u001b[0m - NEGATIVE CONTROL: a tampered target_ts at TRAIN_END must violate the independent M01 assertions",
+  "\u001b[33mXFAIL\u001b[0m test_fs_synthetic.py::\u001b[1mtest_nc_m02_assertions_detect_tamper\u001b[0m - NEGATIVE CONTROL: an eval row flipped to censored must violate the independent M02 assertions",
+  "\u001b[33mXFAIL\u001b[0m test_fs_synthetic.py::\u001b[1mtest_nc_unfiltered_scan_sees_test\u001b[0m - NEGATIVE CONTROL: an unfiltered scan of the synthetic ledger does see TEST rows (read_non_test is what removes them)",
+  "\u001b[33mXFAIL\u001b[0m test_fs_synthetic.py::\u001b[1mtest_nc_tampered_self_hash\u001b[0m - NEGATIVE CONTROL: a tampered registry must fail its self-hash",
+  "\u001b[33mXFAIL\u001b[0m test_fs_transform.py::\u001b[1mtest_nc_unclipped_moments_differ\u001b[0m - NEGATIVE CONTROL: fitting without the clip must not reproduce the clipped moments",
+  "\u001b[33mXFAIL\u001b[0m test_fs_transform.py::\u001b[1mtest_nc_unfiltered_features_contain_test\u001b[0m - NEGATIVE CONTROL: an unfiltered read of the synthetic features does contain the planted TEST rows",
+  "\u001b[33mXFAIL\u001b[0m test_fs_transform.py::\u001b[1mtest_nc_reproduction_criterion_rejects_small_drift\u001b[0m - NEGATIVE CONTROL: a recorded mean off by 1e-9 relative is not a reproduction",
+  "\u001b[33mXFAIL\u001b[0m test_fs_transform.py::\u001b[1mtest_nc_real_fs_values_equal_clean_v2\u001b[0m - NEGATIVE CONTROL: the FS-fitted normalizers are not the full-TRAIN ones (the refit changes at least one value)",
+  "\u001b[31mFAILED\u001b[0m test_fs_real.py::\u001b[1mtest_real_registry\u001b[0m - AssertionError: assert False",
+  "\u001b[31m\u001b[31m\u001b[1m1 failed\u001b[0m, \u001b[32m20 passed\u001b[0m, \u001b[33m16 xfailed\u001b[0m\u001b[31m in 5.74s\u001b[0m\u001b[0m"
+ ]
+}

@@ -1,0 +1,154 @@
+{
+  "run_id": "A1_RICH256",
+  "seed": 2027,
+  "registry_entry": {
+    "id": "A1_RICH256",
+    "group": "rich_frozen_channels",
+    "d_model": 256,
+    "blocks": 2,
+    "heads": 4,
+    "ff_multiplier": 4,
+    "dropout": 0.2,
+    "peak_lr": 0.001,
+    "label_smoothing": 0.0,
+    "pair": "A0_A1",
+    "role": "mandatory_anchor"
+  },
+  "implementation": {
+    "position_convention": "window_start_0_to_len_minus_1_from_validity_mask; PAD contributes nothing; asserted against store position_ids-1",
+    "layout": "right_padded_contiguous_prefix; unpadded token-wise LN/QKV/FFN; causal product in padded [B,T] layout",
+    "attention_impl": "explicit_fp32_causal_math (lower-triangular incl. diagonal); no SDPA unless equivalence tests pass",
+    "tf32": false,
+    "float32_matmul_precision": "highest",
+    "deterministic_algorithms": "True(warn_only)",
+    "qkv_init": "one fused Linear(d,3d); Xavier-uniform applied separately to each [d,d] slice (Wq,Wk,Wv)",
+    "rich_rng_offset": 1000003,
+    "microbatch": "256 unless the post-Gate-C benchmark shows 128x2 faster (systems choice, frozen before training)",
+    "accumulation": 1,
+    "tail_last_update_decisions": 128,
+    "checkpoint_every_updates": 10000,
+    "diag_cohort_every_updates": 40000,
+    "diag_cohort": "archived fixed 112,365-decision VALIDATION_SELECT cohort (monitoring only)",
+    "rank_vectors": "int32 per epoch-end, compressed npz",
+    "tying": "UNTIED: separate output table W_out [K,d] (N(0,0.02) from the common generator) + output bias; class j <-> item token j+3",
+    "input": "z = LayerNorm_in(E[item] + P[pos] (+ rich side residual)), then input dropout; no sqrt(d) scale",
+    "recentering": "after every optimizer step: W_out -= mean_row(W_out); b -= mean(b)  (loss-neutral)",
+    "monitoring": "update_agg every 100 updates logs E/W_out common-mode and median row norms (8192-row sample) and bias mean/std"
+  },
+  "schedule": {
+    "name": "S_prime",
+    "warmup": 2000,
+    "U": 156956,
+    "peak_lr": 0.001,
+    "floor_mult": 0.1,
+    "peak_epochs": 1,
+    "cosine_epochs": 1,
+    "floor_start_epoch": 3,
+    "planned_epochs": 4,
+    "min_epochs_under_cut": 4,
+    "eval_epochs_planned": [
+      3,
+      4
+    ]
+  },
+  "precision_plan": {
+    "tf32_training": true,
+    "planned_epochs": 4,
+    "source": "registry+parity_gate",
+    "parity_pass": true,
+    "parity_file_sha256": "d36a1e9ec96a19e621501e7b58972466cc6e3f93c19c138f488ee14f6ba36832",
+    "fallback_applied": false
+  },
+  "precision_training": "tf32",
+  "precision_eval": "strict_fp32",
+  "precision_training_record": {
+    "cuda_matmul_allow_tf32": true,
+    "cudnn_allow_tf32": true,
+    "float32_matmul_precision": "high",
+    "cudnn_deterministic": true,
+    "cudnn_benchmark": false,
+    "deterministic_algorithms": true,
+    "deterministic_warn_only": true,
+    "reduced_precision_fp16_reduction": true,
+    "reduced_precision_bf16_reduction": true
+  },
+  "label_smoothing": 0.0,
+  "effective_batch": 256,
+  "microbatch": 256,
+  "betas": [
+    0.9,
+    0.999
+  ],
+  "eps": 1e-08,
+  "weight_decay": 1e-05,
+  "grad_clip": 1.0,
+  "optimizer": "AdamW fused",
+  "n_train": 40180608,
+  "n_vs": 8826488,
+  "n_cohort": 112365,
+  "channels": "F4",
+  "epoch_cap_file": null,
+  "threads": {
+    "torch_intra_op": 3,
+    "torch_inter_op": 1,
+    "env": {
+      "OMP_NUM_THREADS": "3",
+      "MKL_NUM_THREADS": "3",
+      "OPENBLAS_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    }
+  },
+  "n_params": 83094368,
+  "param_inventory": {
+    "item_embed": 40573184,
+    "pos_embed": 12800,
+    "blocks": 1579520,
+    "final_norm": 512,
+    "input_norm": 512,
+    "side_embeds": 148008,
+    "numflag_proj": 1120,
+    "side_proj": 28928,
+    "side_norm": 512,
+    "user_mlp": 1216,
+    "user_proj": 16640,
+    "user_norm": 512,
+    "output_embed": 40572416,
+    "output_bias": 158486,
+    "side_gate": 1,
+    "user_gate": 1,
+    "total": 83094368
+  },
+  "canary": {
+    "strict": {
+      "n": 1024,
+      "relative_error": 5.743312361709345e-07,
+      "threshold": 2e-05,
+      "looks_strict_fp32": true
+    },
+    "training_phase": {
+      "n": 1024,
+      "relative_error": 0.00029388600140803773,
+      "threshold": 2e-05,
+      "looks_strict_fp32": false
+    },
+    "eval_phase": {
+      "n": 1024,
+      "relative_error": 5.743312361709345e-07,
+      "threshold": 2e-05,
+      "looks_strict_fp32": true
+    }
+  },
+  "gate_c": {
+    "gate_c_file": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/review/GATE_C_PASS.json",
+    "gate_c_sha256": "ebdb66844f23d8b80c94518c20da1e9eadfd2590830fb9950bd279427d087fe7"
+  },
+  "registry_sha256": "a303bc3f4addcd8f66396232a85820d64ea31cabfc315936cb303139216af257",
+  "test_tiny": false,
+  "physical_gpu": "0",
+  "dataset_version_hash": "860e5a1c3a81b8e4bbfeff4f245fa37638a43e4f260df179585964d2d4da8dbd",
+  "library_versions": {
+    "torch": "2.13.0+cu130",
+    "numpy": "2.4.6",
+    "python": "3.11.14"
+  }
+}

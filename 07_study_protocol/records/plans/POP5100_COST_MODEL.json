@@ -1,0 +1,145 @@
+{
+ "document": "POP5100_COST_MODEL",
+ "utc": "2026-09-26T19:45:34Z",
+ "tag": "INFERENCE",
+ "basis": "G0 visit model (code/g0_forecast.py) with the measured G0 step/visit benches; the pool's exact n frequency table (5..100) scaled by N/pool (uniform hash sample); central from INT-01 real-provider rates; eval from the T3 receipt per-row cost x 13 marks; E=6, passes 2, 3 visits/client (FA/FP/PF), LO 6 passes",
+ "unmodelled": [
+  "calibration trials (LR x2; FP mu; PF lambda)",
+  "feature-search runs",
+  "tie-break",
+  "supervisor/checkpoint I/O",
+  "PF personal-state overhead beyond the visit model"
+ ],
+ "rows": [
+  {
+   "N": "32768",
+   "users": 32768,
+   "examples": 646067,
+   "val_eval_rows": 127530,
+   "GRU": {
+    "central_train_h": 0.2,
+    "eval_13marks_h": 0.07,
+    "central_run_h": 0.28,
+    "FA_B16_h_per_method_seed": 2.0,
+    "LO_B16_h_per_seed": 2.0,
+    "downstream_core_gpu_h_per_seed": 9.0,
+    "downstream_core_gpu_h_2seeds": 17.9,
+    "contest_gpu_h_2seeds": 0.6
+   },
+   "SASREC": {
+    "central_train_h": 0.42,
+    "eval_13marks_h": 0.1,
+    "central_run_h": 0.52,
+    "FA_B16_h_per_method_seed": 6.0,
+    "LO_B16_h_per_seed": 5.8,
+    "downstream_core_gpu_h_per_seed": 25.2,
+    "downstream_core_gpu_h_2seeds": 50.4,
+    "contest_gpu_h_2seeds": 1.0
+   }
+  },
+  {
+   "N": "65536",
+   "users": 65536,
+   "examples": 1293364,
+   "val_eval_rows": 255012,
+   "GRU": {
+    "central_train_h": 0.4,
+    "eval_13marks_h": 0.15,
+    "central_run_h": 0.55,
+    "FA_B16_h_per_method_seed": 4.1,
+    "LO_B16_h_per_seed": 4.0,
+    "downstream_core_gpu_h_per_seed": 17.9,
+    "downstream_core_gpu_h_2seeds": 35.9,
+    "contest_gpu_h_2seeds": 1.1
+   },
+   "SASREC": {
+    "central_train_h": 0.84,
+    "eval_13marks_h": 0.2,
+    "central_run_h": 1.05,
+    "FA_B16_h_per_method_seed": 12.0,
+    "LO_B16_h_per_seed": 11.5,
+    "downstream_core_gpu_h_per_seed": 50.4,
+    "downstream_core_gpu_h_2seeds": 100.9,
+    "contest_gpu_h_2seeds": 2.1
+   }
+  },
+  {
+   "N": "131072",
+   "users": 131072,
+   "examples": 2587776,
+   "val_eval_rows": 519714,
+   "GRU": {
+    "central_train_h": 0.81,
+    "eval_13marks_h": 0.3,
+    "central_run_h": 1.11,
+    "FA_B16_h_per_method_seed": 8.2,
+    "LO_B16_h_per_seed": 7.9,
+    "downstream_core_gpu_h_per_seed": 35.9,
+    "downstream_core_gpu_h_2seeds": 71.8,
+    "contest_gpu_h_2seeds": 2.2
+   },
+   "SASREC": {
+    "central_train_h": 1.68,
+    "eval_13marks_h": 0.42,
+    "central_run_h": 2.1,
+    "FA_B16_h_per_method_seed": 24.0,
+    "LO_B16_h_per_seed": 23.0,
+    "downstream_core_gpu_h_per_seed": 100.9,
+    "downstream_core_gpu_h_2seeds": 201.8,
+    "contest_gpu_h_2seeds": 4.2
+   }
+  },
+  {
+   "N": "262144",
+   "users": 262144,
+   "examples": 5179643,
+   "val_eval_rows": 1042084,
+   "GRU": {
+    "central_train_h": 1.61,
+    "eval_13marks_h": 0.61,
+    "central_run_h": 2.22,
+    "FA_B16_h_per_method_seed": 16.4,
+    "LO_B16_h_per_seed": 15.8,
+    "downstream_core_gpu_h_per_seed": 71.9,
+    "downstream_core_gpu_h_2seeds": 143.7,
+    "contest_gpu_h_2seeds": 4.4
+   },
+   "SASREC": {
+    "central_train_h": 3.37,
+    "eval_13marks_h": 0.84,
+    "central_run_h": 4.21,
+    "FA_B16_h_per_method_seed": 48.0,
+    "LO_B16_h_per_seed": 46.0,
+    "downstream_core_gpu_h_per_seed": 201.9,
+    "downstream_core_gpu_h_2seeds": 403.7,
+    "contest_gpu_h_2seeds": 8.4
+   }
+  },
+  {
+   "N": "ALL_C",
+   "users": 1446986,
+   "examples": 28623386,
+   "val_eval_rows": 5823491,
+   "GRU": {
+    "central_train_h": 8.92,
+    "eval_13marks_h": 3.41,
+    "central_run_h": 12.32,
+    "FA_B16_h_per_method_seed": 90.4,
+    "LO_B16_h_per_seed": 87.5,
+    "downstream_core_gpu_h_per_seed": 396.9,
+    "downstream_core_gpu_h_2seeds": 793.8,
+    "contest_gpu_h_2seeds": 24.6
+   },
+   "SASREC": {
+    "central_train_h": 18.64,
+    "eval_13marks_h": 4.68,
+    "central_run_h": 23.32,
+    "FA_B16_h_per_method_seed": 265.0,
+    "LO_B16_h_per_seed": 254.2,
+    "downstream_core_gpu_h_per_seed": 1114.6,
+    "downstream_core_gpu_h_2seeds": 2229.3,
+    "contest_gpu_h_2seeds": 46.6
+   }
+  }
+ ]
+}

@@ -1,0 +1,281 @@
+{
+ "arm": "FA",
+ "arm_spec": {
+  "arm": "FA",
+  "cfg": {
+   "dp": null,
+   "dropout_p": 0.1,
+   "endpoint_efe": 6.0,
+   "endpoint_rounds": 1707,
+   "exposure_point": "end",
+   "lr_peak_local": 0.005691296893587975,
+   "max_attempts": 2,
+   "method": "FA",
+   "mu": 0.0,
+   "n_shards": 2,
+   "pf": null,
+   "seed": 2026,
+   "server_opt": {
+    "beta1": 0.9,
+    "lr": 1.0,
+    "name": "fedavgm"
+   },
+   "solver": {
+    "batch_size": 16,
+    "clip": 1.0,
+    "fused": true,
+    "lr": 0.005691296893587975,
+    "passes": 2,
+    "weight_decay": 1e-05
+   }
+  },
+  "knobs": {
+   "batch": 16,
+   "clip": 1.0,
+   "dropout_p": 0.1,
+   "endpoint_efe": 6.0,
+   "group": 64,
+   "m": 1024,
+   "max_attempts": 2,
+   "mu": 0.01,
+   "n_shards": 2,
+   "passes": 2,
+   "pf_clip": 1.0,
+   "pf_lam": 0.0001,
+   "rounds": 6827,
+   "rounds_1024": 384,
+   "s_cal_rounds": 20,
+   "s_cal_seed": 2026,
+   "sampling": "sweep",
+   "weight_decay": 1e-05
+  },
+  "lr_mult": 8.0,
+  "lr_peak_base": 0.0007114121116984968,
+  "max_rounds": 1707,
+  "plan": {
+   "group_size": 64,
+   "sampling": "sweep"
+  },
+  "role": "CALIBRATION",
+  "server_lr": 1.0,
+  "server_opt": "fedavgm",
+  "upload_codec": null
+ },
+ "arm_spec_sha256": "cc6d4a675eaf74a4fded66a0bad49038799f210c6223ae96fd00663c63e4da41",
+ "best_half_efe": 9,
+ "best_metric": 0.00848910744506617,
+ "bytes": {
+  "disclosure": "dropped clients (10% drop-out) are not charged a download (the ledger counts survivors)",
+  "fleet": {
+   "bytes_down": 8149290772160,
+   "bytes_up": 8149291559200,
+   "messages": 196760,
+   "retry_bytes_down": 0,
+   "total": 16298582331360
+  },
+  "per_client": {
+   "max": 662678688,
+   "mean": 497393259.62402344,
+   "median": 497009016.0,
+   "min": 0,
+   "rule": "visits x (down + up) of that client"
+  },
+  "per_visit": {
+   "alias_bytes_not_sent": 0,
+   "bootstrap_bytes_once": 0,
+   "download_bytes": 82834832,
+   "private_bytes_sent": 0,
+   "private_resident_bytes": 0,
+   "send_plus_receive_bytes": 165669672,
+   "shared_numel": 20708708,
+   "upload_bytes": 82834840
+  }
+ },
+ "checkpoints": [
+  "best.pt",
+  "endpoint_6.0.pt"
+ ],
+ "counters": {
+  "coverage_by_sweep": {
+   "0": {
+    "clients": 29579,
+    "fraction": 0.902679443359375
+   },
+   "1": {
+    "clients": 29425,
+    "fraction": 0.897979736328125
+   },
+   "2": {
+    "clients": 29527,
+    "fraction": 0.901092529296875
+   },
+   "3": {
+    "clients": 9849,
+    "fraction": 0.300567626953125
+   }
+  },
+  "efe": 6.000473635087382,
+  "exposures": 3876708,
+  "max_visits": 4,
+  "min_visits": 0,
+  "noop_visits": 0,
+  "retries": 0,
+  "rounds": 1707,
+  "steps": 336874,
+  "steps_hist": {
+   "10": 2329,
+   "12": 1490,
+   "14": 284,
+   "2": 59762,
+   "4": 21824,
+   "6": 8310,
+   "8": 4381
+  },
+  "visits": 98380,
+  "wasted_steps": 0
+ },
+ "done": true,
+ "evals": [
+  [
+   1,
+   142,
+   0.006433384274951558,
+   true,
+   "MAIN"
+  ],
+  [
+   2,
+   283,
+   0.004906140045285347,
+   false,
+   "MAIN"
+  ],
+  [
+   3,
+   424,
+   0.003593046150382442,
+   false,
+   "MAIN"
+  ],
+  [
+   4,
+   567,
+   0.0034314536731187163,
+   false,
+   "MAIN"
+  ],
+  [
+   5,
+   710,
+   0.004395310391222689,
+   false,
+   "MAIN"
+  ],
+  [
+   6,
+   852,
+   0.006608582790104272,
+   false,
+   "MAIN"
+  ],
+  [
+   7,
+   997,
+   0.006381234699905157,
+   false,
+   "MAIN"
+  ],
+  [
+   8,
+   1138,
+   0.0052546518169604185,
+   false,
+   "MAIN"
+  ],
+  [
+   9,
+   1279,
+   0.00848910744506617,
+   true,
+   "MAIN"
+  ],
+  [
+   10,
+   1421,
+   0.006187972525345588,
+   false,
+   "MAIN"
+  ],
+  [
+   11,
+   1565,
+   0.008121312723864616,
+   false,
+   "MAIN"
+  ],
+  [
+   12,
+   1706,
+   0.007668470965562785,
+   false,
+   "MAIN"
+  ]
+ ],
+ "ledger": [
+  196760,
+  8149290772160,
+  8149291559200,
+  0
+ ],
+ "lr_table": {
+  "E_total": 3876708,
+  "digest": "003dacc4693fb49e0d9ee25e3f27efaf45958835184429e91cedf77a7d264a7d",
+  "final_lr": 5.691296893587972e-05,
+  "min_lr": 5.691296893587972e-05,
+  "n_rounds": 1707,
+  "planned_efe": 6.000473635087382
+ },
+ "lr_table_digest": "003dacc4693fb49e0d9ee25e3f27efaf45958835184429e91cedf77a7d264a7d",
+ "method": "FA",
+ "participation": {
+  "dropout_p": 0.1,
+  "dropped": 10868,
+  "endpoint_rounds": 1707,
+  "noop_rounds": 0,
+  "planned_efe": 6.000473635087382,
+  "rounds": 1707,
+  "sampled": 109248,
+  "survived": 98380
+ },
+ "phase": "MAIN",
+ "plan": {
+  "group_size": 64,
+  "keys_digest": "6780c81a3e7b0a59b0a01fe976a9436463fdd93cfb3df92ffe842ca8d64f3f91",
+  "manifest_hash": "94ade68c5df4dcf8c2f3b29529b63dcb0193ab2e34ec529b467f628018c49f2e",
+  "n_clients": 32768,
+  "partial_group_note": "none: N is a multiple of the group size",
+  "partial_group_policy": "SMALLER_FINAL_GROUP",
+  "partial_group_size": 0,
+  "rounds_per_sweep": 512,
+  "sampling": "seeded permutation sweeps without replacement (PCG64), fixed consecutive groups",
+  "seed": 2026
+ },
+ "rounds": 1707,
+ "run_id": "FL_FA_LRSCREEN_FEDAVGM_x8_CALIB_s2026",
+ "server_digest": "9b14edf7eaab40221ec51f601ccb636038e11190e2d6e05f852918b40e303332",
+ "server_opt": {
+  "cfg": {
+   "beta1": 0.9,
+   "beta2": null,
+   "lr": 1.0,
+   "name": "fedavgm",
+   "tau": null,
+   "v_init": null
+  },
+  "moments_digest": "3e5f4580b6863e45755b1bb61a43a891dd6b827ff57e3357ce798a611717250c",
+  "steps": 1707
+ },
+ "status": "DONE_MAIN",
+ "store_digest": null,
+ "wall_s_this_leg": 22221.51
+}

@@ -1,0 +1,607 @@
+{
+ "receipt": "DATA-09 test run",
+ "utc": "2026-09-29T12:37:02Z",
+ "exit_code": 0,
+ "pytest_exit_code": 0,
+ "wall_s": 30.9,
+ "python": "3.13.11",
+ "platform": "Windows-11-10.0.26200-SP0",
+ "basetemp": "F:\\Queens University\\Microsoft Project\\eda\\.local_ai\\_pytest_tmp\\FABLE-DEEP3\\d9",
+ "synthetic_only": false,
+ "counts": {
+  "passed": 73,
+  "xfailed": 28,
+  "skipped": 5
+ },
+ "negative_controls": {
+  "n": 29,
+  "n_run": 28,
+  "n_skipped": 1,
+  "all_failed_as_intended": true
+ },
+ "nc_runxfail": {
+  "exit_code_expected_nonzero": 1,
+  "n": 28,
+  "all_fail_with_assertion_error": true,
+  "per_control": {
+   "test_d9_build::test_nc_true_cold_restricted_to_validation_cold_users": {
+    "outcome": "failure",
+    "exception_types": [
+     "AssertionError"
+    ]
+   },
+   "test_d9_build::test_nc_g0_integrity_detects_a_mismatch": {
+    "outcome": "failure",
+    "exception_types": []
+   },
+   "test_d9_build::test_nc_validation_row_breaks_m07": {
+    "outcome": "failure",
+    "exception_types": [
+     "AssertionError"
+    ]
+   },
+   "test_d9_build::test_nc_grace_target_after_label_grace": {
+    "outcome": "failure",
+    "exception_types": [
+     "AssertionError"
+    ]
+   },
+   "test_d9_build::test_nc_censored_row_marked_eval": {
+    "outcome": "failure",
+    "exception_types": [
+     "AssertionError"
+    ]
+   },
+   "test_d9_build::test_nc_eval_user_key_not_dense": {
+    "outcome": "failure",
+    "exception_types": [
+     "AssertionError"
+    ]
+   },
+   "test_d9_build::test_nc_main_rows_with_a_foreign_user": {
+    "outcome": "failure",
+    "exception_types": []
+   },
+   "test_d9_gate::test_nc_gate_no_lock": {
+    "outcome": "failure",
+    "exception_types": [
+     "AssertionError"
+    ]
+   },
+   "test_d9_gate::test_nc_gate_lock_sha_mismatch": {
+    "outcome": "failure",
+    "exception_types": [
+     "AssertionError"
+    ]
+   },
+   "test_d9_gate::test_nc_gate_register_entry_missing": {
+    "outcome": "failure",
+    "exception_types": [
+     "AssertionError"
+    ]
+   },
+   "test_d9_gate::test_nc_gate_wrong_purpose": {
+    "outcome": "failure",
+    "exception_types": [
+     "AssertionError"
+    ]
+   },
+   "test_d9_gate::test_nc_gate_wrong_split": {
+    "outcome": "failure",
+    "exception_types": [
+     "AssertionError"
+    ]
+   },
+   "test_d9_gate::test_nc_gate_broken_chain": {
+    "outcome": "failure",
+    "exception_types": [
+     "AssertionError"
+    ]
+   },
+   "test_d9_gate::test_nc_gate_relinked_chain": {
+    "outcome": "failure",
+    "exception_types": [
+     "AssertionError"
+    ]
+   },
+   "test_d9_gate::test_nc_read_with_test_without_gate": {
+    "outcome": "failure",
+    "exception_types": []
+   },
+   "test_d9_int07_gate::test_nc_forged_gate_opens_the_store_path": {
+    "outcome": "failure",
+    "exception_types": []
+   },
+   "test_d9_int07_gate::test_nc_history_splits_accepts_test_after_import": {
+    "outcome": "failure",
+    "exception_types": []
+   },
+   "test_d9_int07_gate::test_nc_reeval_accepts_a_test_role_with_the_gate_closed": {
+    "outcome": "failure",
+    "exception_types": [
+     "AssertionError"
+    ]
+   },
+   "test_d9_int07_gate::test_nc_gated_cache_serves_validation_decisions": {
+    "outcome": "failure",
+    "exception_types": []
+   },
+   "test_d9_no_side_effect::test_nc_side_effect_detector": {
+    "outcome": "failure",
+    "exception_types": [
+     "AssertionError"
+    ]
+   },
+   "test_d9_registry_shim::test_nc_tampered_base_entry": {
+    "outcome": "failure",
+    "exception_types": []
+   },
+   "test_d9_registry_shim::test_nc_main_test_points_at_validation": {
+    "outcome": "failure",
+    "exception_types": []
+   },
+   "test_d9_registry_shim::test_nc_extra_top_key": {
+    "outcome": "failure",
+    "exception_types": []
+   },
+   "test_d9_registry_shim::test_nc_entry_gate_differs": {
+    "outcome": "failure",
+    "exception_types": []
+   },
+   "test_d9_registry_shim::test_nc_wrong_base_file_sha": {
+    "outcome": "failure",
+    "exception_types": []
+   },
+   "test_d9_registry_shim::test_nc_resolve_without_gate": {
+    "outcome": "failure",
+    "exception_types": []
+   },
+   "test_d9_registry_shim::test_nc_tampered_table_fails_verification": {
+    "outcome": "failure",
+    "exception_types": []
+   },
+   "test_d9_registry_shim::test_nc_foreign_gate_manifest_not_served": {
+    "outcome": "failure",
+    "exception_types": []
+   }
+  }
+ },
+ "locked_inputs": {
+  "n_files": 62,
+  "changed": [],
+  "sha256": "3c8c1a210e3c2c8081a8d8becc501a3954224c4da15d14cac719fb80f1ab8c8c"
+ },
+ "all_methods_lock_present_before_after": [
+  false,
+  false
+ ],
+ "pycache_in_owned": [],
+ "summary_line": "73 passed, 5 skipped, 28 xfailed in 14.31s",
+ "cases": [
+  {
+   "test": "test_d9_build::test_rows_are_every_retro_test_decision_of_the_population[MAIN_RETRO_TEST_5_100_131072]",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_build::test_rows_are_every_retro_test_decision_of_the_population[UNEW_HOLDOUT_RETRO_TEST_32768]",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_build::test_rows_are_every_retro_test_decision_of_the_population[TRUE_COLD_RETRO_TEST]",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_build::test_rows_are_every_retro_test_decision_of_the_population[SPARSE_PANEL_16384_RETRO_TEST]",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_build::test_rows_are_every_retro_test_decision_of_the_population[HEAVY_PANEL_16384_RETRO_TEST]",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_build::test_panel_users_without_a_retro_test_row_are_absent_and_counted",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_build::test_true_cold_is_the_literal_m08_rule",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_build::test_nc_true_cold_restricted_to_validation_cold_users",
+   "outcome": "xfailed"
+  },
+  {
+   "test": "test_d9_build::test_independent_m07_assertions_hold[MAIN_RETRO_TEST_5_100_131072]",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_build::test_independent_m07_assertions_hold[UNEW_HOLDOUT_RETRO_TEST_32768]",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_build::test_independent_m07_assertions_hold[TRUE_COLD_RETRO_TEST]",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_build::test_independent_m07_assertions_hold[SPARSE_PANEL_16384_RETRO_TEST]",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_build::test_independent_m07_assertions_hold[HEAVY_PANEL_16384_RETRO_TEST]",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_build::test_grace_matured_rows",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_build::test_censor_classes_on_retro_test_rows",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_build::test_in_partition_oov_target_and_metadata_join",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_build::test_eval_user_key_is_the_d6_densification_rule",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_build::test_class_positives_counted_over_the_support_population[MAIN_RETRO_TEST_5_100_131072]",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_build::test_class_positives_counted_over_the_support_population[UNEW_HOLDOUT_RETRO_TEST_32768]",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_build::test_class_positives_counted_over_the_support_population[TRUE_COLD_RETRO_TEST]",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_build::test_class_positives_counted_over_the_support_population[SPARSE_PANEL_16384_RETRO_TEST]",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_build::test_class_positives_counted_over_the_support_population[HEAVY_PANEL_16384_RETRO_TEST]",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_build::test_schema_is_m02_m03_plus_grace_matured",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_build::test_header_gate_fields_and_integrity[MAIN_RETRO_TEST_5_100_131072]",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_build::test_header_gate_fields_and_integrity[UNEW_HOLDOUT_RETRO_TEST_32768]",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_build::test_header_gate_fields_and_integrity[TRUE_COLD_RETRO_TEST]",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_build::test_header_gate_fields_and_integrity[SPARSE_PANEL_16384_RETRO_TEST]",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_build::test_header_gate_fields_and_integrity[HEAVY_PANEL_16384_RETRO_TEST]",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_build::test_build_receipt",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_build::test_full_population_counters_match_an_independent_count",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_build::test_g0_integrity_matches_a_synthetic_census",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_build::test_nc_g0_integrity_detects_a_mismatch",
+   "outcome": "xfailed"
+  },
+  {
+   "test": "test_d9_build::test_censor_rule_stops_on_an_unmatched_retro_test_row",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_build::test_gated_emitter_refuses_foreign_ids_and_foreign_gates",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_build::test_the_locked_field_dictionary_is_untouched",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_build::test_synthetic_bands_are_restored_after_use",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_build::test_nc_validation_row_breaks_m07",
+   "outcome": "xfailed"
+  },
+  {
+   "test": "test_d9_build::test_nc_grace_target_after_label_grace",
+   "outcome": "xfailed"
+  },
+  {
+   "test": "test_d9_build::test_nc_censored_row_marked_eval",
+   "outcome": "xfailed"
+  },
+  {
+   "test": "test_d9_build::test_nc_eval_user_key_not_dense",
+   "outcome": "xfailed"
+  },
+  {
+   "test": "test_d9_build::test_nc_main_rows_with_a_foreign_user",
+   "outcome": "xfailed"
+  },
+  {
+   "test": "test_d9_gate::test_gate_opens_with_lock_and_manifest_build_entry",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_gate::test_first_manifest_build_entry_binds",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_gate::test_read_with_test_requires_a_valid_gate",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_gate::test_gate_refuses_after_the_lock_changes",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_gate::test_real_gate_is_closed_on_this_host",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_gate::test_every_entry_point_refuses_while_the_real_gate_is_closed",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_gate::test_nc_gate_no_lock",
+   "outcome": "xfailed"
+  },
+  {
+   "test": "test_d9_gate::test_nc_gate_lock_sha_mismatch",
+   "outcome": "xfailed"
+  },
+  {
+   "test": "test_d9_gate::test_nc_gate_register_entry_missing",
+   "outcome": "xfailed"
+  },
+  {
+   "test": "test_d9_gate::test_nc_gate_wrong_purpose",
+   "outcome": "xfailed"
+  },
+  {
+   "test": "test_d9_gate::test_nc_gate_wrong_split",
+   "outcome": "xfailed"
+  },
+  {
+   "test": "test_d9_gate::test_nc_gate_broken_chain",
+   "outcome": "xfailed"
+  },
+  {
+   "test": "test_d9_gate::test_nc_gate_relinked_chain",
+   "outcome": "xfailed"
+  },
+  {
+   "test": "test_d9_gate::test_nc_read_with_test_without_gate",
+   "outcome": "xfailed"
+  },
+  {
+   "test": "test_d9_int07_gate::test_require_gate_refusals",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_int07_gate::test_gated_history_rule",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_int07_gate::test_every_store_entry_point_refuses_before_opening_a_file",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_int07_gate::test_gated_cache_branch_serves_the_test_decision_rule_only",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_int07_gate::test_default_paths_still_refuse_test_after_importing_the_test_path",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_int07_gate::test_retro_test_provider_refused_without_the_shim_and_key_split_rules",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_int07_gate::test_retro_role_key_rule",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_int07_gate::test_every_consumer_refuses_a_test_role_with_the_real_gate_closed",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_int07_gate::test_consumers_pass_the_gate_check_under_the_synthetic_gate",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_int07_gate::test_reeval_test_role_needs_a_registered_role_even_under_the_gate",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_int07_gate::test_nc_forged_gate_opens_the_store_path",
+   "outcome": "xfailed"
+  },
+  {
+   "test": "test_d9_int07_gate::test_nc_history_splits_accepts_test_after_import",
+   "outcome": "xfailed"
+  },
+  {
+   "test": "test_d9_int07_gate::test_nc_reeval_accepts_a_test_role_with_the_gate_closed",
+   "outcome": "xfailed"
+  },
+  {
+   "test": "test_d9_int07_gate::test_nc_gated_cache_serves_validation_decisions",
+   "outcome": "xfailed"
+  },
+  {
+   "test": "test_d9_no_side_effect::test_locked_and_d6_manifests_identical_with_or_without_v4data09",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_no_side_effect::test_no_manifest_id_of_the_locked_builds_contains_test",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_no_side_effect::test_nc_side_effect_detector",
+   "outcome": "xfailed"
+  },
+  {
+   "test": "test_d9_real::test_real_build_receipt_full_pass_under_the_open_gate",
+   "outcome": "skipped"
+  },
+  {
+   "test": "test_d9_real::test_real_manifests_verify_on_disk",
+   "outcome": "skipped"
+  },
+  {
+   "test": "test_d9_real::test_real_extension_rule",
+   "outcome": "skipped"
+  },
+  {
+   "test": "test_d9_real::test_nc_real_extension_tampered",
+   "outcome": "skipped"
+  },
+  {
+   "test": "test_d9_real::test_real_loader_and_g0_receipts",
+   "outcome": "skipped"
+  },
+  {
+   "test": "test_d9_registry_shim::test_extension_keeps_every_registry_v2_entry_byte_identical",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_registry_shim::test_real_registry_v2_is_the_lock_v2_pinned_registry",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_registry_shim::test_write_extension_is_o_excl_and_never_overwrites",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_registry_shim::test_build_extension_refuses_under_another_gate",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_registry_shim::test_partial_entry_cannot_enter_the_extension",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_registry_shim::test_nc_tampered_base_entry",
+   "outcome": "xfailed"
+  },
+  {
+   "test": "test_d9_registry_shim::test_nc_main_test_points_at_validation",
+   "outcome": "xfailed"
+  },
+  {
+   "test": "test_d9_registry_shim::test_nc_extra_top_key",
+   "outcome": "xfailed"
+  },
+  {
+   "test": "test_d9_registry_shim::test_nc_entry_gate_differs",
+   "outcome": "xfailed"
+  },
+  {
+   "test": "test_d9_registry_shim::test_nc_wrong_base_file_sha",
+   "outcome": "xfailed"
+  },
+  {
+   "test": "test_d9_registry_shim::test_resolve_role_only_under_the_gate",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_registry_shim::test_resolution_refuses_before_opening_the_extension_when_the_gate_is_closed",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_registry_shim::test_test_gate_ok_hook",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_registry_shim::test_nc_resolve_without_gate",
+   "outcome": "xfailed"
+  },
+  {
+   "test": "test_d9_registry_shim::test_install_rewires_launch_central_under_the_gate",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_registry_shim::test_wrappers_refuse_when_the_gate_closes",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_registry_shim::test_eval_only_role_gets_no_trainer_view",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_registry_shim::test_provider_names_route_only_registered_test_ids",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_registry_shim::test_verify_test_manifest_and_eval_manifest[MAIN_RETRO_TEST_5_100_131072]",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_registry_shim::test_verify_test_manifest_and_eval_manifest[UNEW_HOLDOUT_RETRO_TEST_32768]",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_registry_shim::test_verify_test_manifest_and_eval_manifest[TRUE_COLD_RETRO_TEST]",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_registry_shim::test_verify_test_manifest_and_eval_manifest[SPARSE_PANEL_16384_RETRO_TEST]",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_registry_shim::test_verify_test_manifest_and_eval_manifest[HEAVY_PANEL_16384_RETRO_TEST]",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_registry_shim::test_verify_test_manifest_refuses_without_the_gate_and_for_foreign_ids",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_registry_shim::test_v4eval_refuses_a_retro_test_header_without_the_lock_path",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_registry_shim::test_build_eval_manifest_wrapper_hands_v4eval_the_lock",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d9_registry_shim::test_nc_tampered_table_fails_verification",
+   "outcome": "xfailed"
+  },
+  {
+   "test": "test_d9_registry_shim::test_nc_foreign_gate_manifest_not_served",
+   "outcome": "xfailed"
+  },
+  {
+   "test": "test_d9_registry_shim::test_reeval_hook_contract",
+   "outcome": "passed"
+  }
+ ],
+ "stdout_tail": []
+}

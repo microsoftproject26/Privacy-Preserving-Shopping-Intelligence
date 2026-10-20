@@ -1,0 +1,190 @@
+{
+ "what": "FL-01 per-visit CPU micro-benchmark (synthetic)",
+ "utc": "2026-09-29T12:29:50Z",
+ "numerics": {
+  "torch": "2.9.1+cpu",
+  "cuda_matmul_allow_tf32": false,
+  "cudnn_allow_tf32": false,
+  "float32_matmul_precision": "highest",
+  "deterministic_algorithms": true,
+  "deterministic_warn_only": true,
+  "cudnn_deterministic": true,
+  "intra_op_threads": 1
+ },
+ "python": "3.13.11",
+ "reps": 50,
+ "passes": 2,
+ "local_batch": 16,
+ "tiny_tied": {
+  "shared_numel": 312,
+  "shared_bytes": 1248,
+  "t_load_theta_ms": 0.03130000004603062,
+  "t_fresh_adamw_ms": 0.0198499992620782,
+  "t_accumulate_ms": 0.024699999812582973,
+  "by_client_size": {
+   "6": {
+    "steps": 2,
+    "t_visit_fa_ms": 3.4725000004982576,
+    "t_visit_fp_ms": 4.829299999073555,
+    "t_visit_pf_ms": 5.648500000461354,
+    "t_one_step_visit_ms": 2.6625999989846605
+   },
+   "16": {
+    "steps": 2,
+    "t_visit_fa_ms": 3.8071999997555395,
+    "t_visit_fp_ms": 3.851349999422382,
+    "t_visit_pf_ms": 5.3000999987489195,
+    "t_one_step_visit_ms": 2.5204499997926177
+   },
+   "35": {
+    "steps": 6,
+    "t_visit_fa_ms": 11.920850000024075,
+    "t_visit_fp_ms": 12.06124999862368,
+    "t_visit_pf_ms": 14.811149999331974,
+    "t_one_step_visit_ms": 2.075900000818365
+   },
+   "100": {
+    "steps": 14,
+    "t_visit_fa_ms": 25.10065000024042,
+    "t_visit_fp_ms": 24.174049999601266,
+    "t_visit_pf_ms": 16.269950000605604,
+    "t_one_step_visit_ms": 0.9574999994583777
+   }
+  },
+  "fit_fa": {
+   "per_step_ms": 1.7884000000094606,
+   "fixed_per_visit_ms": 0.3449000000728109,
+   "state_bytes_copied_per_visit": 1248,
+   "note": "one theta_r copy into the worker per visit; the upload is by reference and is streamed into the FP32 shard accumulator (one read) before the worker is reused"
+  }
+ },
+ "tiny_untied_recenter": {
+  "shared_numel": 504,
+  "shared_bytes": 2016,
+  "t_load_theta_ms": 0.010599999768601265,
+  "t_fresh_adamw_ms": 0.010399999155197293,
+  "t_accumulate_ms": 0.008099999831756577,
+  "by_client_size": {
+   "6": {
+    "steps": 2,
+    "t_visit_fa_ms": 1.9577000002755085,
+    "t_visit_fp_ms": 2.5294999986726907,
+    "t_visit_pf_ms": 2.518950000194309,
+    "t_one_step_visit_ms": 1.107850000153121
+   },
+   "16": {
+    "steps": 2,
+    "t_visit_fa_ms": 1.678650000030757,
+    "t_visit_fp_ms": 1.9694000002346002,
+    "t_visit_pf_ms": 2.2564500004591537,
+    "t_one_step_visit_ms": 1.010649999443558
+   },
+   "35": {
+    "steps": 6,
+    "t_visit_fa_ms": 4.886050000095565,
+    "t_visit_fp_ms": 4.905849999886414,
+    "t_visit_pf_ms": 6.791300001168565,
+    "t_one_step_visit_ms": 1.303600000028382
+   },
+   "100": {
+    "steps": 14,
+    "t_visit_fa_ms": 11.803550000877294,
+    "t_visit_fp_ms": 17.650750000029802,
+    "t_visit_pf_ms": 15.784549999807496,
+    "t_one_step_visit_ms": 1.2112499998693238
+   }
+  },
+  "fit_fa": {
+   "per_step_ms": 0.8321145833936804,
+   "fixed_per_visit_ms": 0.08879999995770042,
+   "state_bytes_copied_per_visit": 2016,
+   "note": "one theta_r copy into the worker per visit; the upload is by reference and is streamed into the FP32 shard accumulator (one read) before the worker is reused"
+  }
+ },
+ "GRU_V2_K64": {
+  "shared_numel": 527368,
+  "shared_bytes": 2109472,
+  "t_load_theta_ms": 0.11609999910433544,
+  "t_fresh_adamw_ms": 0.018400000044493936,
+  "t_accumulate_ms": 0.1320000001214794,
+  "by_client_size": {
+   "6": {
+    "steps": 2,
+    "t_visit_fa_ms": 64.52584999988176,
+    "t_visit_fp_ms": 75.67199999903096,
+    "t_visit_pf_ms": 62.330899999324174,
+    "t_one_step_visit_ms": 42.36180000043532
+   },
+   "16": {
+    "steps": 2,
+    "t_visit_fa_ms": 80.92875000056665,
+    "t_visit_fp_ms": 83.49590000034368,
+    "t_visit_pf_ms": 89.82304999972257,
+    "t_one_step_visit_ms": 55.68465000033029
+   },
+   "35": {
+    "steps": 6,
+    "t_visit_fa_ms": 200.06105000084062,
+    "t_visit_fp_ms": 180.62705000011192,
+    "t_visit_pf_ms": 210.83809999890946,
+    "t_one_step_visit_ms": 41.578800000024785
+   },
+   "100": {
+    "steps": 14,
+    "t_visit_fa_ms": 649.6984000004886,
+    "t_visit_fp_ms": 552.3797999994713,
+    "t_visit_pf_ms": 537.7518999994209,
+    "t_one_step_visit_ms": 44.022600000062084
+   }
+  },
+  "fit_fa": {
+   "per_step_ms": 48.080925000022035,
+   "fixed_per_visit_ms": -39.68203749968773,
+   "state_bytes_copied_per_visit": 2109472,
+   "note": "one theta_r copy into the worker per visit; the upload is by reference and is streamed into the FP32 shard accumulator (one read) before the worker is reused"
+  }
+ },
+ "SASREC_V2_K64": {
+  "shared_numel": 1823626,
+  "shared_bytes": 7294504,
+  "t_load_theta_ms": 0.4558500004350208,
+  "t_fresh_adamw_ms": 0.03259999994043028,
+  "t_accumulate_ms": 0.5381000000852509,
+  "by_client_size": {
+   "6": {
+    "steps": 2,
+    "t_visit_fa_ms": 93.79189999981463,
+    "t_visit_fp_ms": 94.48974999941129,
+    "t_visit_pf_ms": 94.47649999947316,
+    "t_one_step_visit_ms": 90.87340000041877
+   },
+   "16": {
+    "steps": 2,
+    "t_visit_fa_ms": 213.10300000004645,
+    "t_visit_fp_ms": 255.0497500005804,
+    "t_visit_pf_ms": 236.24775000007503,
+    "t_one_step_visit_ms": 114.83010000029026
+   },
+   "35": {
+    "steps": 6,
+    "t_visit_fa_ms": 539.3428499992297,
+    "t_visit_fp_ms": 640.4630000006364,
+    "t_visit_pf_ms": 433.4773000000496,
+    "t_one_step_visit_ms": 90.61109999947803
+   },
+   "100": {
+    "steps": 14,
+    "t_visit_fa_ms": 1472.2891999999774,
+    "t_visit_fp_ms": 1364.6040999992692,
+    "t_visit_pf_ms": 1158.602499999688,
+    "t_one_step_visit_ms": 88.28545000051236
+   }
+  },
+  "fit_fa": {
+   "per_step_ms": 109.9034791666706,
+   "fixed_per_visit_ms": -79.78913750025656,
+   "state_bytes_copied_per_visit": 7294504,
+   "note": "one theta_r copy into the worker per visit; the upload is by reference and is streamed into the FP32 shard accumulator (one read) before the worker is reused"
+  }
+ }
+}

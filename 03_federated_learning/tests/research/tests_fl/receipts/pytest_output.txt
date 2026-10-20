@@ -1,0 +1,332 @@
+..............xxx.x........................Fxx............xx............ [ 23%]
+.......xx.............xxx..........xxx..................xxxx............ [ 47%]
+..xxxx.........xx....x.x.x.xxx..x.x.x.x....x.......xxxx.......xxxx...... [ 71%]
+...........xxx..........xxx.xx......xxxxx..........xxx...xx......xx..x.. [ 95%]
+..x........xxx                                                           [100%]
+================================== FAILURES ===================================
+_______________ test_defaults_bit_identical_digests_and_payload _______________
+
+    def test_defaults_bit_identical_digests_and_payload():
+        c = RunConfig(run_id="x", method="FA", seed=1, lr_peak_local=0.1, solver=solver(), exposure_point="end")
+>       assert c.digest() == _old_digest(c)
+E       AssertionError: assert '69cab77f0006...8706389a3a954' == 'f9359bda1101...892161878fc89'
+E         
+E         - f9359bda1101b199f92a7f03a241f786be58f01fd2a6a80eaee892161878fc89
+E         + 69cab77f0006d80a8bf1dd7461059de47120a4840841960c9708706389a3a954
+
+tests_fl\test_fl03_dropout.py:209: AssertionError
+=================================== PASSES ====================================
+__________ test_full_catalogue_v2_bytes_init_hash_and_one_visit[GRU] __________
+---------------------------- Captured stdout call -----------------------------
+[catalogue] using F:\Queens University\Microsoft Project\eda\rees46_nextitem_v1\mappings\catalogue.parquet (candidates: ['F:\\Queens University\\Microsoft Project\\eda\\rees46_nextitem_v1\\mappings\\catalogue.parquet', '\\home\\jovyan\\shared_data\\rees46_nextitem_v1\\mappings\\catalogue.parquet']); torch 2.9.1+cpu
+[theta0] GRU seed 2026: cf93ccf024a15500c597f7d1b670ce89f07318bacb30eedf71501ceaf4ccfee1 vs MODEL-01 inventory (torch 2.9.1+cpu)
+________ test_full_catalogue_v2_bytes_init_hash_and_one_visit[SASREC] _________
+---------------------------- Captured stdout call -----------------------------
+[catalogue] using F:\Queens University\Microsoft Project\eda\rees46_nextitem_v1\mappings\catalogue.parquet (candidates: ['F:\\Queens University\\Microsoft Project\\eda\\rees46_nextitem_v1\\mappings\\catalogue.parquet', '\\home\\jovyan\\shared_data\\rees46_nextitem_v1\\mappings\\catalogue.parquet']); torch 2.9.1+cpu
+[theta0] SASREC seed 2026: e45e6e9db7b05306697f7969d71dc550e6435ac6c0e43c7f84828f331028a925 vs MODEL-01 inventory (torch 2.9.1+cpu)
+=========================== short test summary info ===========================
+PASSED tests_fl\test_checkpoint_resume.py::test_t20_resume_bitwise[FA]
+PASSED tests_fl\test_checkpoint_resume.py::test_t20_resume_bitwise[FP]
+PASSED tests_fl\test_checkpoint_resume.py::test_t20_resume_bitwise[PF]
+PASSED tests_fl\test_checkpoint_resume.py::test_t20_resume_at_sweep_boundary_and_first_round
+PASSED tests_fl\test_checkpoint_resume.py::test_t20_rng_states_restored
+PASSED tests_fl\test_checkpoint_resume.py::test_t46_crash_inside_checkpoint_write[after_tmp_write]
+PASSED tests_fl\test_checkpoint_resume.py::test_t46_crash_inside_checkpoint_write[after_fsync]
+PASSED tests_fl\test_checkpoint_resume.py::test_t46_crash_inside_checkpoint_write[after_validate]
+PASSED tests_fl\test_checkpoint_resume.py::test_t46_crash_inside_checkpoint_write[after_replace]
+PASSED tests_fl\test_checkpoint_resume.py::test_t46_corrupted_or_truncated_checkpoint_refused
+PASSED tests_fl\test_checkpoint_resume.py::test_resume_refuses_foreign_config_plan_or_init
+PASSED tests_fl\test_checkpoint_resume.py::test_retention_latest_best_endpoint
+PASSED tests_fl\test_checkpoint_resume.py::test_retention_calibration_keeps_no_weights
+PASSED tests_fl\test_checkpoint_resume.py::test_disk_guard
+PASSED tests_fl\test_checkpoint_resume.py::test_atomic_save_crash_leaves_valid_state
+PASSED tests_fl\test_families_smoke.py::test_catalogue_candidates_and_build_specific_theta0_lookup
+PASSED tests_fl\test_families_smoke.py::test_isolation_and_snapshot_hashes
+PASSED tests_fl\test_families_smoke.py::test_adapter_equals_module_forward_and_head[GRU]
+PASSED tests_fl\test_families_smoke.py::test_adapter_equals_module_forward_and_head[SASREC]
+PASSED tests_fl\test_families_smoke.py::test_family_manifests
+PASSED tests_fl\test_families_smoke.py::test_family_rounds_and_lo_small_k[GRU]
+PASSED tests_fl\test_families_smoke.py::test_family_rounds_and_lo_small_k[SASREC]
+PASSED tests_fl\test_families_smoke.py::test_registered_theta0_is_kept_bitwise[GRU]
+PASSED tests_fl\test_families_smoke.py::test_registered_theta0_is_kept_bitwise[SASREC]
+PASSED tests_fl\test_families_smoke.py::test_registered_theta0_refused_by_run_driver_when_raw
+PASSED tests_fl\test_families_smoke.py::test_raw_path_on_registered_sasrec_changes_the_hash
+PASSED tests_fl\test_families_smoke.py::test_full_catalogue_v2_bytes_init_hash_and_one_visit[GRU]
+PASSED tests_fl\test_families_smoke.py::test_full_catalogue_v2_bytes_init_hash_and_one_visit[SASREC]
+PASSED tests_fl\test_families_smoke.py::test_v1_parity_snapshot_path_counts[GRU]
+PASSED tests_fl\test_families_smoke.py::test_v1_parity_snapshot_path_counts[SASREC]
+PASSED tests_fl\test_fl03_dropout.py::test_dropout_seeded_by_seed_and_round_only
+PASSED tests_fl\test_fl03_dropout.py::test_dropout_rate_and_independence
+PASSED tests_fl\test_fl03_dropout.py::test_dropout_identical_across_methods
+PASSED tests_fl\test_fl03_dropout.py::test_survivors_aggregated_exactly_as_fedavg
+PASSED tests_fl\test_fl03_dropout.py::test_zero_survivor_round_is_recorded_noop
+PASSED tests_fl\test_fl03_dropout.py::test_round_count_table_normalized_endpoint
+PASSED tests_fl\test_fl03_dropout.py::test_resume_bitwise_with_dropout
+PASSED tests_fl\test_fl03_dropout.py::test_uniform_sampling_without_replacement_and_seeded
+PASSED tests_fl\test_fl03_dropout.py::test_uniform_sampling_requires_round_endpoint
+PASSED tests_fl\test_fl03_finetune.py::test_nested_budgets_equal_separate_runs
+PASSED tests_fl\test_fl03_finetune.py::test_deterministic_and_paired_across_arms
+PASSED tests_fl\test_fl03_finetune.py::test_each_client_starts_from_base_and_base_untouched
+PASSED tests_fl\test_fl03_finetune.py::test_all_shared_tensors_fine_tuned
+PASSED tests_fl\test_fl03_finetune.py::test_records_bytes_updates_and_ledger
+PASSED tests_fl\test_fl03_finetune.py::test_eval_base_and_no_support_client
+PASSED tests_fl\test_fl03_finetune.py::test_provenance_refused
+PASSED tests_fl\test_fl03_finetune.py::test_causal_support_enforced
+PASSED tests_fl\test_fl03_finetune.py::test_support_cutoff_required
+PASSED tests_fl\test_fl03_finetune.py::test_multi_query_cutoff_is_earliest_decision_ts
+PASSED tests_fl\test_fl03_finetune.py::test_server_and_live_worker_adapters_refused
+PASSED tests_fl\test_fl03_finetune.py::test_grid_registered_and_cells
+PASSED tests_fl\test_fl04_accountant.py::test_frac_rdp_matches_numerical_integration[0.0078125-0.5642-2.9]
+PASSED tests_fl\test_fl04_accountant.py::test_frac_rdp_matches_numerical_integration[0.0078125-1.3094-15.5]
+PASSED tests_fl\test_fl04_accountant.py::test_frac_rdp_matches_numerical_integration[0.0078125-1.3094-16.0]
+PASSED tests_fl\test_fl04_accountant.py::test_frac_rdp_matches_numerical_integration[0.01-1.0-1.5]
+PASSED tests_fl\test_fl04_accountant.py::test_frac_rdp_matches_numerical_integration[0.01-4.0-20.7]
+PASSED tests_fl\test_fl04_accountant.py::test_frac_rdp_matches_numerical_integration[0.05-0.8-3.7]
+PASSED tests_fl\test_fl04_accountant.py::test_frac_rdp_matches_numerical_integration[0.2-2.0-5.25]
+PASSED tests_fl\test_fl04_accountant.py::test_frac_rdp_matches_numerical_integration[0.001-0.7-1.1]
+PASSED tests_fl\test_fl04_accountant.py::test_frac_rdp_matches_numerical_integration[0.0078125-0.9-7.3]
+PASSED tests_fl\test_fl04_accountant.py::test_frac_series_equals_integer_expansion[0.0078125-0.5642]
+PASSED tests_fl\test_fl04_accountant.py::test_frac_series_equals_integer_expansion[0.0078125-1.3094]
+PASSED tests_fl\test_fl04_accountant.py::test_frac_series_equals_integer_expansion[0.01-1.0]
+PASSED tests_fl\test_fl04_accountant.py::test_frac_series_equals_integer_expansion[0.1-2.0]
+PASSED tests_fl\test_fl04_accountant.py::test_plain_gaussian_and_edges
+PASSED tests_fl\test_fl04_accountant.py::test_monotonicity
+PASSED tests_fl\test_fl04_accountant.py::test_improved_conversion_never_looser
+PASSED tests_fl\test_fl04_accountant.py::test_z_for_epsilon_bisection_safe_side
+PASSED tests_fl\test_fl04_accountant.py::test_reference_abadi_2016
+PASSED tests_fl\test_fl04_accountant.py::test_registration_record_receipt
+PASSED tests_fl\test_fl04_dp.py::test_clip_sum_fixed_denominator_matches_reference
+PASSED tests_fl\test_fl04_dp.py::test_no_side_outputs_in_private_rounds
+PASSED tests_fl\test_fl04_dp.py::test_single_shard_bitwise_vs_reference
+PASSED tests_fl\test_fl04_dp.py::test_recorded_norms_are_flat_l2
+PASSED tests_fl\test_fl04_dp.py::test_dropped_contribute_zero_denominator_fixed
+PASSED tests_fl\test_fl04_dp.py::test_noise_reproducible_and_seeded_by_round
+PASSED tests_fl\test_fl04_dp.py::test_noise_is_on_the_sum_with_std_zS
+PASSED tests_fl\test_fl04_dp.py::test_fa1024_control_is_z0_with_clipping
+PASSED tests_fl\test_fl04_dp.py::test_pool_matches_in_process_bits
+PASSED tests_fl\test_fl04_dp.py::test_median_clip_norm_rule
+PASSED tests_fl\test_fl04_dp.py::test_config_refusals
+PASSED tests_fl\test_fl04_dp.py::test_flrun_dp_rounds_and_log
+PASSED tests_fl\test_fl04_dp.py::test_flrun_dp_resume_bitwise
+PASSED tests_fl\test_fl05_quant.py::test_q8_same_seed_bitwise_and_seed_parts_matter
+PASSED tests_fl\test_fl05_quant.py::test_q8_scale_and_per_element_error_le_scale
+PASSED tests_fl\test_fl05_quant.py::test_q8_all_zero_and_empty_tensors
+PASSED tests_fl\test_fl05_quant.py::test_q8_stochastic_rounding_is_unbiased
+PASSED tests_fl\test_fl05_quant.py::test_q8_bytes_formula_aliases_excluded
+PASSED tests_fl\test_fl05_quant.py::test_q8_round_equals_fedavg_of_dequantised_uploads_bitwise
+PASSED tests_fl\test_fl05_quant.py::test_q8_check_round_detects_a_skipped_decode_and_pool_refused
+PASSED tests_fl\test_fl05_quant.py::test_flrun_q8_ledger_bytes_and_differs_from_fa
+PASSED tests_fl\test_fl05_quant.py::test_flrun_q8_resume_is_exact
+PASSED tests_fl\test_fl05_quant.py::test_install_q8_refuses_non_fa_configs
+PASSED tests_fl\test_fl06_wor.py::test_monotone_in_z[1.0]
+PASSED tests_fl\test_fl06_wor.py::test_monotone_in_z[2.0]
+PASSED tests_fl\test_fl06_wor.py::test_monotone_in_T[1.0]
+PASSED tests_fl\test_fl06_wor.py::test_monotone_in_T[2.0]
+PASSED tests_fl\test_fl06_wor.py::test_rdp_monotone_in_gamma_and_below_unsubsampled
+PASSED tests_fl\test_fl06_wor.py::test_gamma_one_equals_unsubsampled_gaussian_composition[0.5642]
+PASSED tests_fl\test_fl06_wor.py::test_gamma_one_equals_unsubsampled_gaussian_composition[1.3094]
+PASSED tests_fl\test_fl06_wor.py::test_gamma_one_equals_unsubsampled_gaussian_composition[3.0]
+PASSED tests_fl\test_fl06_wor.py::test_bruteforce_tiny_case_between_prop11_and_thm9[4-2-0.5]
+PASSED tests_fl\test_fl06_wor.py::test_bruteforce_tiny_case_between_prop11_and_thm9[4-2-1.0]
+PASSED tests_fl\test_fl06_wor.py::test_bruteforce_tiny_case_between_prop11_and_thm9[4-2-2.0]
+PASSED tests_fl\test_fl06_wor.py::test_bruteforce_tiny_case_between_prop11_and_thm9[5-1-1.0]
+PASSED tests_fl\test_fl06_wor.py::test_bruteforce_tiny_case_between_prop11_and_thm9[6-2-0.7]
+PASSED tests_fl\test_fl06_wor.py::test_bruteforce_tiny_case_between_prop11_and_thm9[6-2-1.5]
+PASSED tests_fl\test_fl06_wor.py::test_prop11_equals_accountant_integer_poisson_and_thm9_slack
+PASSED tests_fl\test_fl06_wor.py::test_invalid_inputs
+PASSED tests_fl\test_fl06_wor.py::test_accountant_py_unchanged
+PASSED tests_fl\test_fl06_wor.py::test_receipt_values_and_write
+PASSED tests_fl\test_fl07_poisson.py::test_poisson_plan_deterministic_seeded_and_stateless
+PASSED tests_fl\test_fl07_poisson.py::test_poisson_stream_is_the_registered_one
+PASSED tests_fl\test_fl07_poisson.py::test_empirical_inclusion_rate_matches_q
+PASSED tests_fl\test_fl07_poisson.py::test_registered_setting_q_exact_and_rate
+PASSED tests_fl\test_fl07_poisson.py::test_group_size_at_least_n_includes_everyone
+PASSED tests_fl\test_fl07_poisson.py::test_fixed_denominator_when_cohort_differs_from_m[above]
+PASSED tests_fl\test_fl07_poisson.py::test_fixed_denominator_when_cohort_differs_from_m[below]
+PASSED tests_fl\test_fl07_poisson.py::test_dp_requires_poisson_with_group_equal_to_m
+PASSED tests_fl\test_fl07_poisson.py::test_lr_schedule_is_expected_exposure_and_round_indexed
+PASSED tests_fl\test_fl07_poisson.py::test_registered_expected_exposure_is_six_efe
+PASSED tests_fl\test_fl07_poisson.py::test_lr_does_not_depend_on_the_clients_data
+PASSED tests_fl\test_fl07_poisson.py::test_flrun_poisson_dp_resume_bitwise
+PASSED tests_fl\test_fl07_poisson.py::test_empty_round_noise_only_for_z_and_noop_for_z0
+PASSED tests_fl\test_fl07_poisson.py::test_empty_round_resume_bitwise
+PASSED tests_fl\test_fl10_fedadam.py::test_config_defaults_and_validation
+PASSED tests_fl\test_fl10_fedadam.py::test_fedadam_equals_hand_computed_three_round_reference
+PASSED tests_fl\test_fl10_fedadam.py::test_fedadam_bitwise_equals_numpy_float32_replica
+PASSED tests_fl\test_fl10_fedadam.py::test_zero_server_lr_leaves_theta_unchanged
+PASSED tests_fl\test_fl10_fedadam.py::test_non_finite_step_refused_state_unchanged
+PASSED tests_fl\test_fl10_fedadam.py::test_dp_fedadam_pseudo_gradient_is_the_noisy_mean
+PASSED tests_fl\test_fl10_fedadam.py::test_runconfig_digest_and_payload_unchanged_when_off
+PASSED tests_fl\test_fl10_fedadam.py::test_runtime_resume_restores_moments_bitwise
+PASSED tests_fl\test_fl10_fedadam.py::test_flrun_refuses_server_with_foreign_optimizer
+PASSED tests_fl\test_gpu_receipt_plumbing.py::test_receipt_dry_run_end_to_end
+PASSED tests_fl\test_gpu_receipt_plumbing.py::test_strict_failure_recorded_verbatim_then_warn_only
+PASSED tests_fl\test_gpu_receipt_plumbing.py::test_invisible_cuda_device_refused_with_cause
+PASSED tests_fl\test_gpu_receipt_plumbing.py::test_fingerprint_bit_and_position_sensitive
+PASSED tests_fl\test_lock_t2.py::test_p1_missing_exposure_point_refused
+PASSED tests_fl\test_lock_t2.py::test_p2_planned_lr_table_hashed_before_training
+PASSED tests_fl\test_lock_t2.py::test_p3_schedule_bitwise_equal_to_central
+PASSED tests_fl\test_lock_t2.py::test_p4_fl_round_lrs_equal_central_updates
+PASSED tests_fl\test_lock_t2.py::test_p4_regression_start_matches_central_start
+PASSED tests_fl\test_lock_t2.py::test_p5_lo_every_step_effective
+PASSED tests_fl\test_lock_t2.py::test_p6_t26_t27_rerun_under_end
+PASSED tests_fl\test_lock_t2.py::test_p7_continuation_only_after_still_improving_receipt
+PASSED tests_fl\test_numerics.py::test_strict_fp32_flags_enforced
+PASSED tests_fl\test_numerics.py::test_tf32_matmul_refused
+PASSED tests_fl\test_numerics.py::test_tf32_cudnn_refused
+PASSED tests_fl\test_numerics.py::test_derive_seed_stable_and_separating
+PASSED tests_fl\test_participation.py::test_plan_sweeps_without_replacement_fixed_groups
+PASSED tests_fl\test_participation.py::test_plan_partial_last_group_disclosed
+PASSED tests_fl\test_participation.py::test_plan_deterministic_from_seed_and_manifest_hash
+PASSED tests_fl\test_participation.py::test_plan_deterministic_across_processes
+PASSED tests_fl\test_participation.py::test_plan_refusals
+PASSED tests_fl\test_participation.py::test_counters_from_actual_n_consumed
+PASSED tests_fl\test_participation.py::test_counters_state_roundtrip
+PASSED tests_fl\test_recenter.py::test_recenter_server_gauge_tiny
+PASSED tests_fl\test_recenter.py::test_recenter_server_gauge_sasrec
+PASSED tests_fl\test_recenter.py::test_recenter_anchor_is_broadcast_theta_r_tiny
+PASSED tests_fl\test_recenter.py::test_recenter_anchor_is_broadcast_theta_r_sasrec
+PASSED tests_fl\test_recenter.py::test_recenter_scores_invariant_at_fixed_query[tiny]
+PASSED tests_fl\test_recenter.py::test_recenter_scores_invariant_at_fixed_query[sasrec]
+PASSED tests_fl\test_recenter.py::test_recenter_leaves_optimizer_moments_alone
+PASSED tests_fl\test_schedule.py::test_shape_at_knots[0.0-0.0]
+PASSED tests_fl\test_schedule.py::test_shape_at_knots[0.01-0.5]
+PASSED tests_fl\test_schedule.py::test_shape_at_knots[0.02-1.0]
+PASSED tests_fl\test_schedule.py::test_shape_at_knots[1.0-1.0]
+PASSED tests_fl\test_schedule.py::test_shape_at_knots[2.0-1.0]
+PASSED tests_fl\test_schedule.py::test_shape_at_knots[2.5-0.55]
+PASSED tests_fl\test_schedule.py::test_shape_at_knots[3.0-0.1]
+PASSED tests_fl\test_schedule.py::test_shape_at_knots[4.0-0.1]
+PASSED tests_fl\test_schedule.py::test_shape_at_knots[5.5-0.1]
+PASSED tests_fl\test_schedule.py::test_shape_at_knots[5.75-0.055]
+PASSED tests_fl\test_schedule.py::test_shape_at_knots[6.0-0.01]
+PASSED tests_fl\test_schedule.py::test_continuation_and_refusals
+PASSED tests_fl\test_schedule.py::test_exposure_point_has_no_default
+PASSED tests_fl\test_schedule.py::test_fa_fp_pf_share_the_round_hook[start]
+PASSED tests_fl\test_schedule.py::test_fa_fp_pf_share_the_round_hook[end]
+PASSED tests_fl\test_schedule.py::test_lo_uses_the_same_shape_over_its_passes[start]
+PASSED tests_fl\test_schedule.py::test_lo_uses_the_same_shape_over_its_passes[end]
+PASSED tests_fl\test_t24_aggregation.py::test_t24_exact_weighted_values[1]
+PASSED tests_fl\test_t24_aggregation.py::test_t24_exact_weighted_values[2]
+PASSED tests_fl\test_t24_aggregation.py::test_t24_exact_weighted_values[3]
+PASSED tests_fl\test_t24_aggregation.py::test_t24_exact_weighted_values[5]
+PASSED tests_fl\test_t24_aggregation.py::test_t24_buffers_follow_rules
+PASSED tests_fl\test_t24_aggregation.py::test_t24_rejects_empty_and_zero_weight
+PASSED tests_fl\test_t24_aggregation.py::test_t24_round_driver_rejects_empty_and_zero_weight
+PASSED tests_fl\test_t24_aggregation.py::test_t24_malformed_uploads_refused
+PASSED tests_fl\test_t24_aggregation.py::test_t24_manifest_roles_and_refusals
+PASSED tests_fl\test_t24_aggregation.py::test_t24_plan_shards_contiguous
+PASSED tests_fl\test_t25_sgd_pooled.py::test_t25_fa_one_step_equals_pooled_step
+PASSED tests_fl\test_t26_fedprox.py::test_t26_mu0_equals_fa_exactly
+PASSED tests_fl\test_t26_fedprox.py::test_t26_mu0_prox_path_is_bitwise_noop
+PASSED tests_fl\test_t26_fedprox.py::test_t26_first_step_inert_then_active
+PASSED tests_fl\test_t26_fedprox.py::test_t26_prox_gradient_sign_value_anchor
+PASSED tests_fl\test_t26_fedprox.py::test_t26_prox_pulls_toward_round_anchor
+PASSED tests_fl\test_t26_fedprox.py::test_t26_anchor_aliasing_refused
+PASSED tests_fl\test_t27_t29_personal.py::test_t27_p0_equals_no_personal_forward_tiny[True]
+PASSED tests_fl\test_t27_t29_personal.py::test_t27_p0_equals_no_personal_forward_tiny[False]
+PASSED tests_fl\test_t27_t29_personal.py::test_t27_p0_equals_no_personal_forward_families[GRU]
+PASSED tests_fl\test_t27_t29_personal.py::test_t27_p0_equals_no_personal_forward_families[SASREC]
+PASSED tests_fl\test_t27_t29_personal.py::test_t27_pf_zero_lr_zero_lambda_equals_fa
+PASSED tests_fl\test_t27_t29_personal.py::test_t27_cpf_same_forward_and_regularizer
+PASSED tests_fl\test_t27_t29_personal.py::test_t29_p_persists_across_rounds
+PASSED tests_fl\test_t27_t29_personal.py::test_t29_new_user_starts_at_zero_with_unique_identity
+PASSED tests_fl\test_t27_t29_personal.py::test_t29_empty_history_client_stays_zero
+PASSED tests_fl\test_t27_t29_personal.py::test_t29_store_returns_clones
+PASSED tests_fl\test_t28_payload_worker.py::test_t28_no_private_state_in_payload
+PASSED tests_fl\test_t28_payload_worker.py::test_t28_extra_private_key_refused_by_channel_and_aggregator
+PASSED tests_fl\test_t28_payload_worker.py::test_t28_two_clients_one_worker_no_swap
+PASSED tests_fl\test_t30_t31_local_only.py::test_t30_lo_sends_no_messages
+PASSED tests_fl\test_t30_t31_local_only.py::test_t30_lo_theta0_provenance_checked
+PASSED tests_fl\test_t30_t31_local_only.py::test_t30_lo_persistent_optimizer_and_budgets
+PASSED tests_fl\test_t30_t31_local_only.py::test_t30_lo_no_label_client_uses_theta0
+PASSED tests_fl\test_t30_t31_local_only.py::test_t31_lo_replay_checksum_repeatable
+PASSED tests_fl\test_t30_t31_local_only.py::test_t31_lo_determinism_receipt_1024_fresh_interpreter
+PASSED tests_fl\test_t32_dense_fullk.py::test_t32_every_head_row_gets_gradient_full_k[GRU]
+PASSED tests_fl\test_t32_dense_fullk.py::test_t32_every_head_row_gets_gradient_full_k[SASREC]
+PASSED tests_fl\test_t33_bytes.py::test_t33_hand_computed_visit_bytes
+PASSED tests_fl\test_t33_bytes.py::test_t33_round_ledger_send_receive_and_retry
+PASSED tests_fl\test_t33_bytes.py::test_t33_pf_adds_no_wire_bytes
+PASSED tests_fl\test_t33_bytes.py::test_t33_untied_and_families_small_k
+PASSED tests_fl\test_t34_pool.py::test_t34_two_concurrent_workers_equal_inprocess[FA]
+PASSED tests_fl\test_t34_pool.py::test_t34_two_concurrent_workers_equal_inprocess[FP]
+PASSED tests_fl\test_t34_pool.py::test_t34_two_concurrent_workers_equal_inprocess[PF]
+PASSED tests_fl\test_t34_pool.py::test_t34_combine_is_arrival_order_invariant
+PASSED tests_fl\test_t34_pool.py::test_t34_retry_identical_inprocess
+PASSED tests_fl\test_t34_pool.py::test_t34_retry_identical_pool
+PASSED tests_fl\test_t34_pool.py::test_t34_exhausted_retries_abort_round[inprocess]
+PASSED tests_fl\test_t34_pool.py::test_t34_exhausted_retries_abort_round[pool]
+XFAIL tests_fl\test_checkpoint_resume.py::test_nc_resume_without_pf_moments - NEGATIVE CONTROL: resume drops the PF optimizer moments
+XFAIL tests_fl\test_checkpoint_resume.py::test_nc_resume_without_counters - NEGATIVE CONTROL: resume drops the exposure counters (the LR schedule restarts)
+XFAIL tests_fl\test_checkpoint_resume.py::test_nc_resume_replays_a_round - NEGATIVE CONTROL: resume replays the last round (cursor off by one)
+XFAIL tests_fl\test_checkpoint_resume.py::test_nc_non_atomic_write - NEGATIVE CONTROL: non-atomic in-place checkpoint write
+XFAIL tests_fl\test_fl03_dropout.py::test_nc_nondeterministic_dropout - NEGATIVE CONTROL: drop-out drawn from an unseeded RNG is not reproducible
+XFAIL tests_fl\test_fl03_dropout.py::test_nc_dropped_clients_aggregated - NEGATIVE CONTROL: aggregating the dropped clients too differs from the survivors-only reference
+XFAIL tests_fl\test_fl03_finetune.py::test_nc_latest_decision_cutoff - NEGATIVE CONTROL: a multi-query client fine-tuned with the LATEST decision_ts accepts support after its earlier queries
+XFAIL tests_fl\test_fl03_finetune.py::test_nc_no_base_reload - NEGATIVE CONTROL: a runner that does not reload the base carries client A's fine-tuning into client B
+XFAIL tests_fl\test_fl04_accountant.py::test_nc_composition_not_multiplied - NEGATIVE CONTROL: composition over rounds ignored (one round's RDP used as the total)
+XFAIL tests_fl\test_fl04_accountant.py::test_nc_subsampling_ignored - NEGATIVE CONTROL: subsampling ignored (q = 1): no amplification
+XFAIL tests_fl\test_fl04_dp.py::test_nc_denominator_survivors - NEGATIVE CONTROL: dividing by the survivor count instead of the fixed m
+XFAIL tests_fl\test_fl04_dp.py::test_nc_noise_on_mean - NEGATIVE CONTROL: noise added to the mean (std zS) instead of the sum (std zS / m after division)
+XFAIL tests_fl\test_fl04_dp.py::test_nc_unclipped_deltas - NEGATIVE CONTROL: unclipped deltas
+XFAIL tests_fl\test_fl05_quant.py::test_nc_q8_deterministic_rounding_is_biased - NEGATIVE CONTROL: deterministic (round-to-nearest) rounding is biased: the mean of many roundings does not approach delta
+XFAIL tests_fl\test_fl05_quant.py::test_nc_q8_seed_without_client_key - NEGATIVE CONTROL: a rounding seed without the client key gives two clients the same rounding noise
+XFAIL tests_fl\test_fl05_quant.py::test_nc_q8_equals_fa - NEGATIVE CONTROL: the Q8 run is not FA: quantised uploads change the trajectory
+XFAIL tests_fl\test_fl06_wor.py::test_nc_gamma_squared_breaks_bruteforce - NEGATIVE CONTROL: sampling ratio applied twice (gamma^2 in place of gamma): the bound undercuts the brute-force divergence
+XFAIL tests_fl\test_fl06_wor.py::test_nc_thm9_without_min_gamma_one - NEGATIVE CONTROL: Theorem 9 used without the min with the unsubsampled RDP: gamma = 1 no longer equals the plain Gaussian
+XFAIL tests_fl\test_fl06_wor.py::test_nc_sensitivity_factor_ignored - NEGATIVE CONTROL: replace-one sensitivity factor ignored (2 S treated as S)
+XFAIL tests_fl\test_fl06_wor.py::test_nc_tampered_receipt - NEGATIVE CONTROL: a tampered receipt value still passes the self-sha256 check
+XFAIL tests_fl\test_fl07_poisson.py::test_nc_variable_denominator - NEGATIVE CONTROL: dividing by the realised cohort size |C_r| instead of the fixed m
+XFAIL tests_fl\test_fl07_poisson.py::test_nc_uniform_plan_fails_binomial_cohort_test - NEGATIVE CONTROL: fixed-size (uniform WOR) sampling has a constant cohort: it fails the binomial cohort-size test
+XFAIL tests_fl\test_fl07_poisson.py::test_nc_dp_run_accepts_uniform_plan - NEGATIVE CONTROL: a DP-configured run with a uniform (WOR) plan is accepted
+XFAIL tests_fl\test_fl07_poisson.py::test_nc_realised_exposure_schedule_is_data_dependent - NEGATIVE CONTROL: an LR schedule read from the REALISED exposures depends on the clients' row counts
+XFAIL tests_fl\test_fl10_fedadam.py::test_nc_bias_corrected_adam_matches_reference - NEGATIVE CONTROL: Adam WITH bias correction matches the registered FedAdam reference (it must not: 06G §1 has none)
+XFAIL tests_fl\test_fl10_fedadam.py::test_nc_v0_zero_matches_registered - NEGATIVE CONTROL: v_0 = 0 (the superseded amendment text) gives the same server step as v_0 = tau^2
+XFAIL tests_fl\test_gpu_receipt_plumbing.py::test_nc_fingerprint_sum_only - NEGATIVE CONTROL: an order-insensitive float-sum fingerprint
+XFAIL tests_fl\test_lock_t2.py::test_nc_p1_defaulting_launcher - NEGATIVE CONTROL: a launcher that fills in a default exposure point
+XFAIL tests_fl\test_lock_t2.py::test_nc_p2_unchecked_endpoint - NEGATIVE CONTROL: a table builder that does not check the 6N endpoint
+XFAIL tests_fl\test_lock_t2.py::test_nc_p3_no_endpoint_tolerance - NEGATIVE CONTROL: no endpoint tolerance: 6.0 + 1e-13 refused instead of clamped (the pre-FL-02R1 behaviour)
+XFAIL tests_fl\test_lock_t2.py::test_nc_p3_tolerance_without_clamp - NEGATIVE CONTROL: a tolerance without the clamp (extrapolating the cooldown past 6.0)
+XFAIL tests_fl\test_lock_t2.py::test_nc_p3_float32_schedule - NEGATIVE CONTROL: a float32 re-implementation of the schedule
+XFAIL tests_fl\test_lock_t2.py::test_nc_p4_start_vs_central_end - NEGATIVE CONTROL: FL at the round start compared with the central END convention
+XFAIL tests_fl\test_lock_t2.py::test_nc_p5_lo_start - NEGATIVE CONTROL: LO at the start convention (first step at LR 0)
+XFAIL tests_fl\test_lock_t2.py::test_nc_p6_fp_own_rng - NEGATIVE CONTROL: FP(mu=0) run with its own RNG stream under 'end'
+XFAIL tests_fl\test_lock_t2.py::test_nc_p7_unchecked_continuation - NEGATIVE CONTROL: continuation opened without checking the receipt
+XFAIL tests_fl\test_numerics.py::test_nc_strict_guard_live - NEGATIVE CONTROL: the strict-FP32 guard is not triggered when nothing is switched on (the check itself is live)
+XFAIL tests_fl\test_participation.py::test_nc_plan_with_replacement - NEGATIVE CONTROL: sampling with replacement inside a sweep
+XFAIL tests_fl\test_participation.py::test_nc_plan_ignores_manifest_hash - NEGATIVE CONTROL: the plan ignores the manifest hash
+XFAIL tests_fl\test_participation.py::test_nc_plan_caller_order - NEGATIVE CONTROL: the plan keeps the caller's key order
+XFAIL tests_fl\test_participation.py::test_nc_counters_planned_rows - NEGATIVE CONTROL: EFE counted from planned rows instead of actual n_consumed
+XFAIL tests_fl\test_recenter.py::test_nc_recenter_no_init_recenter - NEGATIVE CONTROL: server does not recenter a raw theta0 before the first broadcast
+XFAIL tests_fl\test_recenter.py::test_nc_recenter_skip_after_aggregation - NEGATIVE CONTROL: server skips recentering after aggregation
+XFAIL tests_fl\test_recenter.py::test_nc_recenter_raw_theta0_anchor - NEGATIVE CONTROL: proximal anchor = raw (un-recentered) theta0
+XFAIL tests_fl\test_recenter.py::test_nc_recenter_wrong_axis - NEGATIVE CONTROL: recentering removes the per-row mean over d instead of the common mode
+XFAIL tests_fl\test_schedule.py::test_nc_round_lr_shifted - NEGATIVE CONTROL: round LR from a shifted EFE (neither the round start nor its end)
+XFAIL tests_fl\test_schedule.py::test_nc_end_point_uses_start - NEGATIVE CONTROL: end-point LR computed from the start EFE
+XFAIL tests_fl\test_schedule.py::test_nc_lo_constant_lr - NEGATIVE CONTROL: LO trained at a constant LR instead of the shape
+XFAIL tests_fl\test_t24_aggregation.py::test_nc_t24_unweighted_mean - NEGATIVE CONTROL: unweighted mean instead of n_consumed weights
+XFAIL tests_fl\test_t24_aggregation.py::test_nc_t24_int_maps_averaged - NEGATIVE CONTROL: averaging every state entry (integer maps included)
+XFAIL tests_fl\test_t24_aggregation.py::test_nc_t24_silent_empty_round - NEGATIVE CONTROL: empty / zero-weight round silently accepted
+XFAIL tests_fl\test_t25_sgd_pooled.py::test_nc_t25_uniform_weights - NEGATIVE CONTROL: uniform client weights instead of n_consumed
+XFAIL tests_fl\test_t25_sgd_pooled.py::test_nc_t25_sum_ce - NEGATIVE CONTROL: summed (not mean) per-batch CE, i.e. n_u^2 effective weighting
+XFAIL tests_fl\test_t26_fedprox.py::test_nc_t26_mu0_different_rng - NEGATIVE CONTROL: FP draws its own RNG stream (seed differs from FA)
+XFAIL tests_fl\test_t26_fedprox.py::test_nc_t26_moving_anchor - NEGATIVE CONTROL: anchor re-set to the moving iterate every step (prox never acts)
+XFAIL tests_fl\test_t26_fedprox.py::test_nc_t26_theta0_anchor - NEGATIVE CONTROL: anchor = theta0 instead of this round's theta_r
+XFAIL tests_fl\test_t26_fedprox.py::test_nc_t26_wrong_sign_unit - NEGATIVE CONTROL: proximal gradient with the wrong sign (unit check)
+XFAIL tests_fl\test_t26_fedprox.py::test_nc_t26_wrong_sign_end_to_end - NEGATIVE CONTROL: proximal gradient with the wrong sign (end to end)
+XFAIL tests_fl\test_t27_t29_personal.py::test_nc_t27_nonzero_init - NEGATIVE CONTROL: p initialized non-zero
+XFAIL tests_fl\test_t27_t29_personal.py::test_nc_t29_forgetful_store - NEGATIVE CONTROL: private state forgotten between rounds
+XFAIL tests_fl\test_t27_t29_personal.py::test_nc_t29_bucket_key - NEGATIVE CONTROL: private state keyed by a shared bucket (OOV-like) instead of the user
+XFAIL tests_fl\test_t28_payload_worker.py::test_nc_t28_leaky_payload - NEGATIVE CONTROL: p_u hidden in a shared tensor of the upload
+XFAIL tests_fl\test_t28_payload_worker.py::test_nc_t28_worker_state_swap - NEGATIVE CONTROL: worker caches the last client's private state
+XFAIL tests_fl\test_t30_t31_local_only.py::test_nc_t30_lo_refresh - NEGATIVE CONTROL: LO with a server refresh at each evaluation budget
+XFAIL tests_fl\test_t30_t31_local_only.py::test_nc_t31_unseeded_replay - NEGATIVE CONTROL: LO replay with an unseeded (entropy) RNG
+XFAIL tests_fl\test_t32_dense_fullk.py::test_nc_t32_sparse_rows - NEGATIVE CONTROL: drop the non-interacted rows' gradient (sparse-update assumption)
+XFAIL tests_fl\test_t33_bytes.py::test_nc_t33_naive_count - NEGATIVE CONTROL: naive state_dict byte count (tied alias twice, buffers per visit)
+XFAIL tests_fl\test_t34_pool.py::test_nc_t34_arrival_order_sum - NEGATIVE CONTROL: shard sums added in arrival order
+XFAIL tests_fl\test_t34_pool.py::test_nc_t34_retry_new_rng - NEGATIVE CONTROL: retry re-seeded with the attempt number
+XFAIL tests_fl\test_t34_pool.py::test_nc_t34_retry_no_reload - NEGATIVE CONTROL: retry continues from the failed attempt's worker state instead of theta_r
+FAILED tests_fl\test_fl03_dropout.py::test_defaults_bit_identical_digests_and_payload
+1 failed, 231 passed, 70 xfailed in 204.26s (0:03:24)
+
+--- stderr ---

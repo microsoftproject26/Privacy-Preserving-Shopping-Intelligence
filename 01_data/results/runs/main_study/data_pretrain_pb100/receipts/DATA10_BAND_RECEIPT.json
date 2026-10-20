@@ -1,0 +1,344 @@
+{
+ "receipt": "DATA10_BAND_RECEIPT",
+ "task": "DATA-10",
+ "full_build": true,
+ "buckets": 64,
+ "python_utc_end": "2026-10-04T18:55:32Z",
+ "population": {
+  "band": "PRETRAIN_NONMAIN",
+  "rank_range": [
+   131072,
+   231072
+  ],
+  "pool_size": 1446986,
+  "n_users": 100000,
+  "population_sha256_selection_key_v2": "045e0836ed3843705c8e0ec500b1450c3f5ef4485a484ab0e8de24472e670362",
+  "definition": "BANDS['TIEBREAK'] minus BANDS['MAIN'] (v4fs_data.fs_common.BANDS, code/v4fs_data/fs_common.py:48); owner decision 2026-09-29 (DECISION_LOG 195)",
+  "excluded_bands": {
+   "MAIN": [
+    0,
+    131072
+   ],
+   "CALIB": [
+    0,
+    32768
+   ],
+   "U_NEW_VAL": [
+    1348682,
+    1381450
+   ],
+   "U_NEW_TEST": [
+    1381450,
+    1414218
+   ],
+   "FS": [
+    1414218,
+    1446986
+   ],
+   "REST_PB100": [
+    231072,
+    1348682
+   ]
+  },
+  "excluded_panels": [
+   "SPARSE",
+   "HEAVY",
+   "TRUE_COLD",
+   "COLD_H",
+   "WARM_TRUNCATION"
+  ]
+ },
+ "n_eligible_examples": 1980666,
+ "expected": {
+  "n_users": 100000,
+  "n_decisions": 0
+ },
+ "checks": [
+  {
+   "name": "pool.n_users",
+   "observed": 1446986,
+   "expected": 1446986,
+   "source": "CENSUS-02 / FS-01 / DATA-06",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "pool.population_sha256_selection_key_v2",
+   "observed": "e2a082cda5e3b246f1ea85cf1e78368c185e003ce1013572d07bd8ff471fbc70",
+   "expected": "e2a082cda5e3b246f1ea85cf1e78368c185e003ce1013572d07bd8ff471fbc70",
+   "source": "CENSUS-02 / FS-01 / DATA-06",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "pool.prefix32768.population_sha256_selection_key_v2",
+   "observed": "9be38de146f5069a88d57c867dfa021cf1c67f2d67ae1e58df63f7c6ac9c1f02",
+   "expected": "9be38de146f5069a88d57c867dfa021cf1c67f2d67ae1e58df63f7c6ac9c1f02",
+   "source": "CENSUS-02 candidate-N table",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "pool.prefix65536.population_sha256_selection_key_v2",
+   "observed": "565157638fa27126f2780e5f4312f777243dbb4c40e3b97e65170e13b6b8571e",
+   "expected": "565157638fa27126f2780e5f4312f777243dbb4c40e3b97e65170e13b6b8571e",
+   "source": "CENSUS-02 candidate-N table",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "pool.prefix131072.population_sha256_selection_key_v2",
+   "observed": "563e76637a384c2985fff5e272d4290f4f3e52c99f57eebec4c20cde0628b8b3",
+   "expected": "563e76637a384c2985fff5e272d4290f4f3e52c99f57eebec4c20cde0628b8b3",
+   "source": "CENSUS-02 candidate-N table",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "pool.prefix262144.population_sha256_selection_key_v2",
+   "observed": "e4cf6887d77ae2c5a12062bcb0438814598a598398b1badcfaf5cecb9e4eb70d",
+   "expected": "e4cf6887d77ae2c5a12062bcb0438814598a598398b1badcfaf5cecb9e4eb70d",
+   "source": "CENSUS-02 candidate-N table",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "TIEBREAK.population_sha256_selection_key_v2",
+   "observed": "e6bd9b39cdf33d14cb08e5474f1772662ba6c30d976465697b16c703a92d679e",
+   "expected": "df5d0c7e82bc0842f5c8435fafaa67f947d4fe951d5f9e6aed9ca58d10a46cdf",
+   "source": "FS-01 handoff \u00a71 band table (measured) | PB100: sub-range, constant not registered",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "MAIN.population_sha256_selection_key_v2",
+   "observed": "563e76637a384c2985fff5e272d4290f4f3e52c99f57eebec4c20cde0628b8b3",
+   "expected": "563e76637a384c2985fff5e272d4290f4f3e52c99f57eebec4c20cde0628b8b3",
+   "source": "CENSUS-02 / DATA-06",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "PRETRAIN.n_users",
+   "observed": 100000,
+   "expected": 100000,
+   "source": "BANDS['TIEBREAK'] - BANDS['MAIN']",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "PRETRAIN.n_eligible_examples",
+   "observed": 1980666,
+   "expected": 0,
+   "source": "FULL_TRAIN_5_100_TIEBREAK 26,677,600 (DATA-08, its full build hard-checked it) - MAIN_TRAIN_5_100_131072 2,587,776 (DATA-06 / REGISTRY_V2); DERIVED, exact because MAIN is the rank prefix of TIEBREAK and every pool user's M01 row_count == n_eligible (locked assertion) | PB100: sub-range, constant not registered",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "disjoint.PRETRAIN_NONMAIN_vs_MAIN",
+   "observed": 0,
+   "expected": 0,
+   "source": "rank-band construction over the shared pool",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "rank_ranges_disjoint.PRETRAIN_NONMAIN_vs_MAIN",
+   "observed": true,
+   "expected": true,
+   "source": "rank-band construction over the shared pool",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "disjoint.PRETRAIN_NONMAIN_vs_CALIB",
+   "observed": 0,
+   "expected": 0,
+   "source": "rank-band construction over the shared pool",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "rank_ranges_disjoint.PRETRAIN_NONMAIN_vs_CALIB",
+   "observed": true,
+   "expected": true,
+   "source": "rank-band construction over the shared pool",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "disjoint.PRETRAIN_NONMAIN_vs_U_NEW_VAL",
+   "observed": 0,
+   "expected": 0,
+   "source": "rank-band construction over the shared pool",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "rank_ranges_disjoint.PRETRAIN_NONMAIN_vs_U_NEW_VAL",
+   "observed": true,
+   "expected": true,
+   "source": "rank-band construction over the shared pool",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "disjoint.PRETRAIN_NONMAIN_vs_U_NEW_TEST",
+   "observed": 0,
+   "expected": 0,
+   "source": "rank-band construction over the shared pool",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "rank_ranges_disjoint.PRETRAIN_NONMAIN_vs_U_NEW_TEST",
+   "observed": true,
+   "expected": true,
+   "source": "rank-band construction over the shared pool",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "disjoint.PRETRAIN_NONMAIN_vs_FS",
+   "observed": 0,
+   "expected": 0,
+   "source": "rank-band construction over the shared pool",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "rank_ranges_disjoint.PRETRAIN_NONMAIN_vs_FS",
+   "observed": true,
+   "expected": true,
+   "source": "rank-band construction over the shared pool",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "disjoint.PRETRAIN_NONMAIN_vs_REST_PB100",
+   "observed": 0,
+   "expected": 0,
+   "source": "rank-band construction over the shared pool",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "rank_ranges_disjoint.PRETRAIN_NONMAIN_vs_REST_PB100",
+   "observed": true,
+   "expected": true,
+   "source": "rank-band construction over the shared pool",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "pool_covered_exactly_once_by_PRETRAIN_MAIN_UNEW_FS",
+   "observed": true,
+   "expected": true,
+   "source": "rank-band construction over the shared pool",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "PRETRAIN_NONMAIN_union_MAIN_eq_TIEBREAK",
+   "observed": true,
+   "expected": true,
+   "source": "rank-band construction over the shared pool",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "CALIB.subset_of_MAIN",
+   "observed": true,
+   "expected": true,
+   "source": "rank-band construction over the shared pool",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "disjoint.PRETRAIN_NONMAIN_vs_SPARSE",
+   "observed": 0,
+   "expected": 0,
+   "source": "DATA-06 panels: other strata (B / D / A0-A1) or inside MAIN",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "disjoint.PRETRAIN_NONMAIN_vs_HEAVY",
+   "observed": 0,
+   "expected": 0,
+   "source": "DATA-06 panels: other strata (B / D / A0-A1) or inside MAIN",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "disjoint.PRETRAIN_NONMAIN_vs_TRUE_COLD",
+   "observed": 0,
+   "expected": 0,
+   "source": "DATA-06 panels: other strata (B / D / A0-A1) or inside MAIN",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "disjoint.PRETRAIN_NONMAIN_vs_COLD_H",
+   "observed": 0,
+   "expected": 0,
+   "source": "DATA-06 panels: other strata (B / D / A0-A1) or inside MAIN",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "disjoint.PRETRAIN_NONMAIN_vs_WARM_TRUNCATION",
+   "observed": 0,
+   "expected": 0,
+   "source": "DATA-06 panels: other strata (B / D / A0-A1) or inside MAIN",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "PRETRAIN_NONMAIN.all_in_pool_stratum_C",
+   "observed": true,
+   "expected": true,
+   "source": "DATA-06 panels: other strata (B / D / A0-A1) or inside MAIN",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "PRETRAIN.every_user_has_ge1_eligible_example",
+   "observed": true,
+   "expected": true,
+   "source": "pool definition (5 <= n_eligible <= 100)",
+   "pass": true,
+   "hard": true
+  }
+ ],
+ "n_checks": 32,
+ "n_failed": 0,
+ "timings_s": {
+  "total": 111.9,
+  "pass0_support_s": 26.5,
+  "passA_aggregate_s": 59.1
+ },
+ "test_split_read": false,
+ "no_raw_ids_written": true,
+ "code": {
+  "d10_code_sha256": "f92248df21fe28f0610e09da309e9914434f380dc6a31f65c5b9b0ca6ea0273f",
+  "d10_code_sha256_rule": "v4data.common.code_tree_sha256 over code/v4data10/{__init__,d10_common,d10_build}.py",
+  "d10_code_files_sha256": {
+   "__init__.py": "4a9dbefb7099166af5a7840960ab0b840dd5d36d01db864745d5768de4d0cc78",
+   "d10_common.py": "614d8fa2f082b995edb3f6b88663ad08c6dbe799e4f6751187b75faf060e0083",
+   "d10_build.py": "53afe3c669d727d178bbfb4ce47be1cf9f02cec6eb4469c1f7c4842da01b55a0"
+  },
+  "v4data08_files_sha256": {
+   "d8_common.py": "60c9a1c522dc26c9a218a1f0d3107426a93e69a7b2bea0b31c6f48f5eac7a435",
+   "d8_build.py": "f1756380dd1bd1ba0ce0c8c25ac812425b40930ab707c096a1f26c8cb3550063"
+  },
+  "v4data06_files_sha256": {
+   "d6_common.py": "03cdd46249147293eb59b2ffc14cd910e8864694cf1b4695425680243308d946",
+   "d6_build.py": "277a2fdc08a4d8a2479ae07f9b6b2061ead60deb67e1db3c42ff699848f4d394"
+  },
+  "census_v2_core_sha256": "aca2fe3a69afaa6a38c75492acc3148a8ec5ccb7b79678af815acd8eef4d169a",
+  "v4fs_data_fs_common_sha256": "a152cbc23c3a344ce4ca0d78e83b252c87842fb9fb6843b04f2f9483517b28b1",
+  "v4data_builder_code_sha256": "443254e9ed95e41a48076f91643c83fbc77355dc80bb6b111d8432703d3e34a5"
+ },
+ "receipt_sha256": "17a5b2d8166ba184b1e0805e556eec294cf14d059d8d75640ecfd1b13480efac"
+}

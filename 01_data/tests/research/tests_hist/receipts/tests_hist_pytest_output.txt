@@ -1,0 +1,142 @@
+.......x...............xx.x...x..............x..sxxx......x.......xx.... [ 94%]
+...x                                                                     [100%]
+=================================== PASSES ====================================
+______________________ test_launcher_requires_the_policy ______________________
+---------------------------- Captured stderr call -----------------------------
+usage: __main__.py [-h] --family {GRU,SASREC} --seed SEED
+                   --phase {CALIBRATION,MAIN}
+                   [--population {COHORT,FULL_TRAIN}] [--peak-lr PEAK_LR]
+                   [--role {TUNING}] [--hp-id HP_ID]
+                   [--hp-registry HP_REGISTRY]
+                   [--theta0-variants THETA0_VARIANTS] [--recipe-id RECIPE_ID]
+                   [--tuned-recipes TUNED_RECIPES] --gpu GPU --run-dir RUN_DIR
+                   [--run-id RUN_ID] [--smoke] [--smoke-updates SMOKE_UPDATES]
+                   [--smoke-interrupt-at SMOKE_INTERRUPT_AT]
+                   [--checkpoint-every CHECKPOINT_EVERY] [--resume]
+                   [--continue-run] [--calibration-record CALIBRATION_RECORD]
+                   [--continuation-budget CONTINUATION_BUDGET]
+                   [--expected-init-sha256 EXPECTED_INIT_SHA256]
+                   [--log-every LOG_EVERY] [--n-threads N_THREADS]
+                   [--eval-prefetch EVAL_PREFETCH]
+                   [--train-manifest TRAIN_MANIFEST]
+                   [--eval-manifest EVAL_MANIFEST]
+                   [--manifest-dir MANIFEST_DIR] [--lock-path LOCK_PATH]
+                   [--manifest-hashes MANIFEST_HASHES]
+                   [--header-list HEADER_LIST]
+                   [--transform-state TRANSFORM_STATE]
+                   [--population-label POPULATION_LABEL] [--allow-shared-gpu]
+                   --history-policy {USER_HISTORY_L50,SESSION_L50}
+__main__.py: error: the following arguments are required: --history-policy
+usage: __main__.py [-h] --family {GRU,SASREC} --seed SEED
+                   --phase {CALIBRATION,MAIN}
+                   [--population {COHORT,FULL_TRAIN}] [--peak-lr PEAK_LR]
+                   [--role {TUNING}] [--hp-id HP_ID]
+                   [--hp-registry HP_REGISTRY]
+                   [--theta0-variants THETA0_VARIANTS] [--recipe-id RECIPE_ID]
+                   [--tuned-recipes TUNED_RECIPES] --gpu GPU --run-dir RUN_DIR
+                   [--run-id RUN_ID] [--smoke] [--smoke-updates SMOKE_UPDATES]
+                   [--smoke-interrupt-at SMOKE_INTERRUPT_AT]
+                   [--checkpoint-every CHECKPOINT_EVERY] [--resume]
+                   [--continue-run] [--calibration-record CALIBRATION_RECORD]
+                   [--continuation-budget CONTINUATION_BUDGET]
+                   [--expected-init-sha256 EXPECTED_INIT_SHA256]
+                   [--log-every LOG_EVERY] [--n-threads N_THREADS]
+                   [--eval-prefetch EVAL_PREFETCH]
+                   [--train-manifest TRAIN_MANIFEST]
+                   [--eval-manifest EVAL_MANIFEST]
+                   [--manifest-dir MANIFEST_DIR] [--lock-path LOCK_PATH]
+                   [--manifest-hashes MANIFEST_HASHES]
+                   [--header-list HEADER_LIST]
+                   [--transform-state TRANSFORM_STATE]
+                   [--population-label POPULATION_LABEL] [--allow-shared-gpu]
+                   --history-policy {USER_HISTORY_L50,SESSION_L50}
+__main__.py: error: argument --history-policy: invalid choice: 'USER_HISTORY' (choose from USER_HISTORY_L50, SESSION_L50)
+____________________ test_distribution_on_real_validation _____________________
+---------------------------- Captured stdout call -----------------------------
+DATA05_BUCKET0_VAL_MODE: n=173921 available=0.6528 match_rate=0.9420 share_median=1.000 unknown_positions=0.2002
+________ test_default_served_values_equal_the_clean_v2_formula_on_raw _________
+---------------------------- Captured stdout call -----------------------------
+DATA05_DEFAULT_VS_RAW_FORMULA_MAX_ABS_DIFF_Z=3.576e-07
+_______________ test_synthetic_state_matches_the_direct_formula _______________
+---------------------------- Captured stdout call -----------------------------
+DATA05_SYNTHETIC_STATE_MAX_ABS_DIFF_Z=4.768e-07
+=========================== short test summary info ===========================
+PASSED tests_hist\test_determinism.py::test_train_cache_equals_user_stream_on_20k_random_rows
+PASSED tests_hist\test_determinism.py::test_train_cache_equals_user_stream_on_whole_trainer_batches
+PASSED tests_hist\test_determinism.py::test_eval_cache_equals_user_stream_on_every_batch
+PASSED tests_hist\test_determinism.py::test_eval_cache_holds_train_period_rows
+PASSED tests_hist\test_determinism.py::test_rebuilt_provider_serves_identical_bytes_and_batch_is_pure
+PASSED tests_hist\test_determinism.py::test_session_provider_still_equals_the_int01_stream
+PASSED tests_hist\test_determinism.py::test_identical_builder_for_train_and_eval
+PASSED tests_hist\test_equivalence.py::test_monotonicity_exhaustive_real_and_synthetic
+PASSED tests_hist\test_equivalence.py::test_no_earlier_segment_user_equals_session_bitwise
+PASSED tests_hist\test_equivalence.py::test_session_equals_the_snapshot_streaming_store_bitwise
+PASSED tests_hist\test_equivalence.py::test_session_equals_the_vendored_loader_collate
+PASSED tests_hist\test_equivalence.py::test_user_windows_do_not_depend_on_later_partitions
+PASSED tests_hist\test_equivalence.py::test_only_the_input_window_changes
+PASSED tests_hist\test_equivalence.py::test_take_rows_helper
+PASSED tests_hist\test_equivalence.py::test_lengths_within_bounds[USER_HISTORY_L50]
+PASSED tests_hist\test_equivalence.py::test_lengths_within_bounds[SESSION_L50]
+PASSED tests_hist\test_leakage.py::test_synthetic_fixture_is_rich
+PASSED tests_hist\test_leakage.py::test_synthetic_exhaustive_every_row_both_policies[USER_HISTORY_L50]
+PASSED tests_hist\test_leakage.py::test_synthetic_exhaustive_every_row_both_policies[SESSION_L50]
+PASSED tests_hist\test_leakage.py::test_real_bucket0_exhaustive_every_decision_both_policies
+PASSED tests_hist\test_leakage.py::test_served_batches_equal_the_checked_rows
+PASSED tests_hist\test_leakage.py::test_validation_windows_never_hold_a_later_partition_row
+PASSED tests_hist\test_leakage.py::test_synthetic_has_validation_decisions_of_users_with_test_rows
+PASSED tests_hist\test_manifest_binding.py::test_binding_equals_the_registry_entry_for_a_fixture
+PASSED tests_hist\test_manifest_binding.py::test_a_tampered_registry_header_hash_is_refused
+PASSED tests_hist\test_manifest_binding.py::test_the_rule_reproduces_registry_fs_from_fs01_headers
+PASSED tests_hist\test_order_alignment.py::test_real_rows_are_contiguous_and_chronological_per_user
+PASSED tests_hist\test_order_alignment.py::test_index_timestamps_and_rows_equal_the_decision_index
+PASSED tests_hist\test_order_alignment.py::test_index_is_row_for_row_the_compact_store
+PASSED tests_hist\test_order_alignment.py::test_alignment_refuses_a_shifted_or_foreign_index
+PASSED tests_hist\test_order_alignment.py::test_order_checks_refuse_non_chronological_rows
+PASSED tests_hist\test_policy.py::test_enum_is_required_and_closed
+PASSED tests_hist\test_policy.py::test_store_partitions_per_policy_and_test_refused
+PASSED tests_hist\test_policy.py::test_cache_builder_requires_the_policy
+PASSED tests_hist\test_policy.py::test_providers_require_the_policy_before_any_file_is_opened
+PASSED tests_hist\test_policy.py::test_policy_bound_into_fingerprint_describe_and_build
+PASSED tests_hist\test_policy.py::test_comparison_key_binds_the_policy_and_refuses_a_mixed_pair
+PASSED tests_hist\test_policy.py::test_launcher_requires_the_policy
+PASSED tests_hist\test_policy.py::test_launcher_cli_refuses_without_the_policy
+PASSED tests_hist\test_policy.py::test_comparison_key_refuses_a_provider_without_policy
+PASSED tests_hist\test_registry_verify.py::test_registry_verified_fixture_passes_and_serves
+PASSED tests_hist\test_registry_verify.py::test_registry_refusals
+PASSED tests_hist\test_session_modes.py::test_keys_and_dtypes
+PASSED tests_hist\test_session_modes.py::test_tie_rule_and_prefix_causality
+PASSED tests_hist\test_session_modes.py::test_random_synthetic_windows_equal_the_naive_reference
+PASSED tests_hist\test_session_modes.py::test_real_windows_equal_the_naive_reference
+PASSED tests_hist\test_session_modes.py::test_served_batches_carry_the_keys
+PASSED tests_hist\test_session_modes.py::test_distribution_on_real_validation
+PASSED tests_hist\test_session_offsets.py::test_constants
+PASSED tests_hist\test_session_offsets.py::test_real_session_ids_are_the_v1_behavioural_sessions
+PASSED tests_hist\test_session_offsets.py::test_tokens_exhaustive_on_real_decisions
+PASSED tests_hist\test_session_offsets.py::test_no_earlier_session_means_every_token_is_one
+PASSED tests_hist\test_session_offsets.py::test_served_batches_carry_the_key_under_user_history_only
+PASSED tests_hist\test_session_offsets.py::test_a_fence_straddling_session_gets_one_offset
+PASSED tests_hist\test_session_offsets.py::test_synthetic_exhaustive
+PASSED tests_hist\test_transform_state.py::test_default_equals_explicit_clean_v2_state_bitwise
+PASSED tests_hist\test_transform_state.py::test_default_served_values_equal_the_clean_v2_formula_on_raw
+PASSED tests_hist\test_transform_state.py::test_synthetic_state_matches_the_direct_formula
+PASSED tests_hist\test_transform_state.py::test_only_the_17_channels_change
+PASSED tests_hist\test_transform_state.py::test_state_recorded_and_bound
+PASSED tests_hist\test_transform_state.py::test_bad_states_are_refused
+PASSED tests_hist\test_transform_state.py::test_a_widened_clip_range_is_disclosed
+SKIPPED [1] tests_hist\test_registry_verify.py:164: FS-01's manifest tables are not on this host
+XFAIL tests_hist\test_determinism.py::test_nc_cache_with_session_lengths_is_not_the_user_stream - NEGATIVE CONTROL: a cache that kept the SESSION lengths (the forgotten policy step) is not the USER_HISTORY stream
+XFAIL tests_hist\test_leakage.py::test_nc_window_includes_the_next_event - NEGATIVE CONTROL: a window that includes the next event (the resolver shifted by one row) must fail the causality check
+XFAIL tests_hist\test_leakage.py::test_nc_window_crosses_into_another_user - NEGATIVE CONTROL: a window without the user_start clamp (lo = r - 49) must fail the same-user check
+XFAIL tests_hist\test_leakage.py::test_nc_validation_window_reads_a_test_row - NEGATIVE CONTROL: a VALIDATION decision's window that reads a TEST-partition row (synthetic fixture) must fail
+XFAIL tests_hist\test_manifest_binding.py::test_nc_tampered_header_hash_is_caught - NEGATIVE CONTROL: a provider whose binding carries a tampered header hash must be refused by the registry check
+XFAIL tests_hist\test_policy.py::test_nc_provider_without_history_policy - NEGATIVE CONTROL: a provider without history_policy must fail the policy-binding check
+XFAIL tests_hist\test_registry_verify.py::test_nc_tampered_content_hash_is_refused - NEGATIVE CONTROL: a registry whose entry carries a tampered content_sha256 must be refused
+XFAIL tests_hist\test_registry_verify.py::test_nc_wrong_lock_hash_is_refused - NEGATIVE CONTROL: a registry built on another DATA_PROTOCOL_LOCK (wrong lock hash) must be refused
+XFAIL tests_hist\test_registry_verify.py::test_nc_test_id_is_refused - NEGATIVE CONTROL: a TEST manifest id is refused by the registry path before any file is opened
+XFAIL tests_hist\test_session_modes.py::test_nc_future_event_inside_the_current_session_is_caught - NEGATIVE CONTROL: a session mode that lets a later event of the current session change an earlier position is caught
+XFAIL tests_hist\test_session_offsets.py::test_nc_offsets_from_model_segments_are_caught - NEGATIVE CONTROL: session offsets computed from model segments (fence-cut) must fail the behavioural-session proof
+XFAIL tests_hist\test_session_offsets.py::test_nc_future_event_leak_is_caught - NEGATIVE CONTROL: session offsets anchored at a later (future) session must fail the proof
+XFAIL tests_hist\test_transform_state.py::test_nc_ignoring_the_state_is_caught - NEGATIVE CONTROL: a provider that ignores its transform state (serves the Clean V2 normalization) fails the direct formula
+62 passed, 1 skipped, 13 xfailed in 139.22s (0:02:19)
+
+--- stderr ---

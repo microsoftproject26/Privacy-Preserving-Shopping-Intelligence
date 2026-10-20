@@ -1,0 +1,438 @@
+{
+ "arm": "P2_W",
+ "arm_spec": {
+  "arm": "P2_W",
+  "cfg": {
+   "dp": null,
+   "dropout_p": 0.1,
+   "endpoint_efe": 6.0,
+   "endpoint_rounds": 13654,
+   "exposure_point": "end",
+   "lr_peak_local": 0.1,
+   "lr_shape": "fl_const",
+   "max_attempts": 2,
+   "method": "FA",
+   "mu": 0.0,
+   "n_shards": 2,
+   "pf": null,
+   "seed": 2026,
+   "server_opt": {
+    "beta1": 0.9,
+    "beta2": 0.99,
+    "lr": 3e-06,
+    "name": "fedadam",
+    "tau": 1e-06,
+    "v_init": "tau_squared"
+   },
+   "solver": {
+    "batch_size": 16,
+    "clip": 1.0,
+    "fused": null,
+    "item_lr_mult": 0.1,
+    "lr": 0.1,
+    "optimizer": "sgd_m",
+    "passes": 1,
+    "weight_decay": 0.0
+   }
+  },
+  "exposure_budget": {
+   "authority": "PREG1_AMENDMENT_06J \u00a73",
+   "dropout_p": 0.1,
+   "endpoint_efe": 6.0,
+   "formula": "rounds = ceil(6.0 x N_dec / (64 x 0.9 x P x N_dec / N_clients)) = ceil(60 N_clients / (576 P))",
+   "group": 64,
+   "n_clients": 131072,
+   "passes": 1,
+   "rounds": 13654
+  },
+  "init_from": {
+   "checkpoint_bytes": 82853197,
+   "checkpoint_sha256": "cf08588c11f019cc760f129ba7ba6b23806297660e0170f9938436a5cb88cf78",
+   "family": "SASREC",
+   "fl_init_kind": "endpoint_6.0",
+   "kind": "PRETRAIN_FOR_FL",
+   "model_variant": "SASREC_D64_B2",
+   "run_id": "PRETRAIN_FOR_FL_SMALL_SASREC_D64_B2_s2026",
+   "run_label": "PRETRAIN_FOR_FL",
+   "seed": 2026,
+   "state_digest": "ee33345be4f20b61a53cd80fa11e1af702031bfcd1425af490825cd0019dc54a",
+   "train_manifest": "PRETRAIN_TRAIN_5_100_NONMAIN"
+  },
+  "lr_mult": 1.0,
+  "lr_peak_base": 0.0007114121116984968,
+  "max_rounds": 13654,
+  "p2_fixed": {
+   "authority": "PREG2 \u00a75.1",
+   "client_momentum": 0.9,
+   "client_opt": "sgd_m",
+   "clip": 1.0,
+   "dropout_p": 0.1,
+   "endpoint_efe": 6.0,
+   "group": 64,
+   "local_batch": 16,
+   "local_passes": 1,
+   "lr_shape": "fl_const",
+   "sampling": "sweep",
+   "weight_decay": 0.0
+  },
+  "p2_label": "fedadam|eta=3e-06|c=0.1|items=unfrozen|ilr=0.1",
+  "p2_recipe": {
+   "client_lr": 0.1,
+   "item_lr_mult": 0.1,
+   "items": "unfrozen",
+   "lora_lr_factor": null,
+   "lora_rank": null,
+   "personal_head": false,
+   "server_lr": 3e-06,
+   "server_opt": "fedadam",
+   "upload": "dense"
+  },
+  "plan": {
+   "group_size": 64,
+   "sampling": "sweep"
+  },
+  "role": "MAIN",
+  "study": "PREG2",
+  "upload_codec": null
+ },
+ "arm_spec_sha256": "d00a00d99829a4346271f67baf3463b8000b504c5a6260571f65b00344eca0b1",
+ "best_half_efe": 3,
+ "best_metric": 0.17319544096698625,
+ "bytes": {
+  "disclosure": "dropped clients (10% drop-out) are not charged a download (the ledger counts survivors)",
+  "fleet": {
+   "bytes_down": 65179664412016,
+   "bytes_up": 65179670706920,
+   "messages": 1573726,
+   "retry_bytes_down": 0,
+   "total": 130359335118936
+  },
+  "per_client": {
+   "max": 1159687704,
+   "mean": 994562798.4537964,
+   "median": 994018032.0,
+   "min": 165669672,
+   "rule": "visits x (down + up) of that client"
+  },
+  "per_visit": {
+   "alias_bytes_not_sent": 0,
+   "bootstrap_bytes_once": 0,
+   "download_bytes": 82834832,
+   "private_bytes_sent": 0,
+   "private_resident_bytes": 0,
+   "send_plus_receive_bytes": 165669672,
+   "shared_numel": 20708708,
+   "upload_bytes": 82834840
+  }
+ },
+ "checkpoints": [
+  "best.pt",
+  "endpoint_6.0.pt"
+ ],
+ "counters": {
+  "coverage_by_sweep": {
+   "0": {
+    "clients": 117965,
+    "fraction": 0.9000015258789062
+   },
+   "1": {
+    "clients": 117978,
+    "fraction": 0.9001007080078125
+   },
+   "2": {
+    "clients": 118168,
+    "fraction": 0.90155029296875
+   },
+   "3": {
+    "clients": 118055,
+    "fraction": 0.9006881713867188
+   },
+   "4": {
+    "clients": 117957,
+    "fraction": 0.8999404907226562
+   },
+   "5": {
+    "clients": 118008,
+    "fraction": 0.90032958984375
+   },
+   "6": {
+    "clients": 78732,
+    "fraction": 0.600677490234375
+   }
+  },
+  "efe": 6.005918209304051,
+  "exposures": 15541971,
+  "max_visits": 7,
+  "min_visits": 1,
+  "noop_visits": 0,
+  "retries": 0,
+  "rounds": 13654,
+  "steps": 1348802,
+  "steps_hist": {
+   "1": 477189,
+   "2": 174517,
+   "3": 67952,
+   "4": 33818,
+   "5": 19127,
+   "6": 12004,
+   "7": 2256
+  },
+  "visits": 786863,
+  "wasted_steps": 0
+ },
+ "done": true,
+ "evals": [
+  [
+   1,
+   1137,
+   0.17296862814581537,
+   true,
+   "MAIN"
+  ],
+  [
+   2,
+   2276,
+   0.1730559828224251,
+   false,
+   "MAIN"
+  ],
+  [
+   3,
+   3414,
+   0.17319544096698625,
+   true,
+   "MAIN"
+  ],
+  [
+   4,
+   4551,
+   0.17322995070617034,
+   false,
+   "MAIN"
+  ],
+  [
+   5,
+   5685,
+   0.17310888856736908,
+   false,
+   "MAIN"
+  ],
+  [
+   6,
+   6830,
+   0.1731709704654424,
+   false,
+   "MAIN"
+  ],
+  [
+   7,
+   7966,
+   0.17309361309185206,
+   false,
+   "MAIN"
+  ],
+  [
+   8,
+   9104,
+   0.17305844714796237,
+   false,
+   "MAIN"
+  ],
+  [
+   9,
+   10241,
+   0.1730319015423915,
+   false,
+   "MAIN"
+  ],
+  [
+   10,
+   11379,
+   0.17304988108017028,
+   false,
+   "MAIN"
+  ],
+  [
+   11,
+   12517,
+   0.1730110914387756,
+   false,
+   "MAIN"
+  ],
+  [
+   12,
+   13653,
+   0.1730314984120281,
+   false,
+   "MAIN"
+  ]
+ ],
+ "ledger": [
+  1573726,
+  65179664412016,
+  65179670706920,
+  0
+ ],
+ "lr_table": {
+  "E_total": 15541971,
+  "digest": "4d750f6c9087ded52227c1923fc28108a3511549f95f17c8ddf828de7f4f52ad",
+  "final_lr": 0.010000000000000002,
+  "min_lr": 0.0007323861139592793,
+  "n_rounds": 13654,
+  "planned_efe": 6.005918209304051
+ },
+ "lr_table_digest": "4d750f6c9087ded52227c1923fc28108a3511549f95f17c8ddf828de7f4f52ad",
+ "method": "FA",
+ "p2": {
+  "authority": "PREG2 \u00a75 (contracts/PREG2_FOLLOWUP_DRAFT \u00a75 as edited by FABLE_GATE_ENDGAME_SCRIPTS_20261003 \u00a79); PHASE2_IMPLEMENTATION_PLAN P2-02",
+  "label": "fedadam|eta=3e-06|c=0.1|items=unfrozen|ilr=0.1",
+  "post_run": null,
+  "pre_server": null,
+  "recipe": {
+   "client_lr": 0.1,
+   "item_lr_mult": 0.1,
+   "items": "unfrozen",
+   "lora_lr_factor": null,
+   "lora_rank": null,
+   "personal_head": false,
+   "server_lr": 3e-06,
+   "server_opt": "fedadam",
+   "upload": "dense"
+  }
+ },
+ "participation": {
+  "dropout_p": 0.1,
+  "dropped": 86993,
+  "endpoint_rounds": 13654,
+  "noop_rounds": 0,
+  "planned_efe": 6.005918209304051,
+  "rounds": 13654,
+  "sampled": 873856,
+  "survived": 786863
+ },
+ "phase": "MAIN",
+ "plan": {
+  "group_size": 64,
+  "keys_digest": "8356cab11d62e5fc3c99cf0594dbfade304f27947cbdd7cd39f4a25294bf44eb",
+  "manifest_hash": "5d5cd03679232d2214b9977189e9719acc3dc06842a7e03d08b3bc268f64f039",
+  "n_clients": 131072,
+  "partial_group_note": "none: N is a multiple of the group size",
+  "partial_group_policy": "SMALLER_FINAL_GROUP",
+  "partial_group_size": 0,
+  "rounds_per_sweep": 2048,
+  "sampling": "seeded permutation sweeps without replacement (PCG64), fixed consecutive groups",
+  "seed": 2026
+ },
+ "rounds": 13654,
+ "run_id": "P2_W_FEDADAM_eta3e-06_c0.1_UNFROZEN_ilr0.1_XTAU1e-06_SMALL_s2026",
+ "server_digest": "79cd55383d737bda855057d9d207be7a3e5a664848acdb2d90e2b1027919e646",
+ "server_opt": {
+  "cfg": {
+   "beta1": 0.9,
+   "beta2": 0.99,
+   "lr": 3e-06,
+   "name": "fedadam",
+   "tau": 1e-06,
+   "v_init": "tau_squared"
+  },
+  "moments_digest": "f97cf9bf00dfa50a7dc3e5d038829a4cc1f83437cc791168587b36bbae8af308",
+  "steps": 13654
+ },
+ "status": "DONE_MAIN",
+ "store_digest": null,
+ "train_loss_log": {
+  "authority": "FL-15 R5 (REAL_WORLD_FL_PRACTICE_AUDIT_20260930 R5): per-round client training loss from fl VisitRecord.loss_sum (sum of the batch-mean CE over a visit's steps); descriptive monitoring only, numerics unchanged; z > 0 (DP) runs record nothing (an un-noised data-dependent release, the 06L_E E1 reading)",
+  "complete": true,
+  "fields": [
+   "client_mean_loss",
+   "finite",
+   "loss_sum",
+   "mean_step_loss",
+   "n_clients",
+   "n_steps",
+   "round"
+  ],
+  "file": "TRAIN_LOSS.jsonl",
+  "missing_rounds": [],
+  "rounds_expected": 13654,
+  "rounds_logged": 13654,
+  "sha256": "12458c0d3d8e4bf1d2e1554b241c51b7de94083a3e43c4623dd4ad21011c36a9"
+ },
+ "update_norm_log": {
+  "authority": "PREG2 \u00a73.3 D1-ext: per round, per tensor group of the trained subset: ||Delta_agg||, the server step, ||theta - theta_pre||, cos(Delta_r, Delta_r-1), clients aggregated (omitted for z > 0); DESCRIPTIVE, never selects; post-noise server-side quantities only under DP (06L_E E1)",
+  "complete": true,
+  "cos_prev_unavailable_rounds": [
+   0
+  ],
+  "file": "UPDATE_NORM_LOG.jsonl",
+  "last_total_T": {
+   "agg_delta_l2": 0.001333005132514991,
+   "numel": 20708708,
+   "pre_dist_l2": 1.2362340274175014,
+   "pre_l2": 1475.9858831325175,
+   "rel_pre_dist": 0.0008375649398446918,
+   "step_l2": 0.0002330509489680747
+  },
+  "missing_rounds": [],
+  "rounds_expected": 13654,
+  "rounds_logged": 13654,
+  "server_steps": 13654,
+  "sha256": "815b580da4e54c0378cf8186a7bb2fa73991528a2b3c8b439025a6ddc507e023",
+  "strictly_increasing": true,
+  "trained_keys": [
+   "output_embed",
+   "output_bias",
+   "side_gate",
+   "user_gate",
+   "item_embed.weight",
+   "pos_embed.weight",
+   "blocks.0.ln1.weight",
+   "blocks.0.ln1.bias",
+   "blocks.0.qkv.weight",
+   "blocks.0.qkv.bias",
+   "blocks.0.out.weight",
+   "blocks.0.out.bias",
+   "blocks.0.ln2.weight",
+   "blocks.0.ln2.bias",
+   "blocks.0.ff1.weight",
+   "blocks.0.ff1.bias",
+   "blocks.0.ff2.weight",
+   "blocks.0.ff2.bias",
+   "blocks.1.ln1.weight",
+   "blocks.1.ln1.bias",
+   "blocks.1.qkv.weight",
+   "blocks.1.qkv.bias",
+   "blocks.1.out.weight",
+   "blocks.1.out.bias",
+   "blocks.1.ln2.weight",
+   "blocks.1.ln2.bias",
+   "blocks.1.ff1.weight",
+   "blocks.1.ff1.bias",
+   "blocks.1.ff2.weight",
+   "blocks.1.ff2.bias",
+   "final_norm.weight",
+   "final_norm.bias",
+   "input_norm.weight",
+   "input_norm.bias",
+   "side_embeds.category_tokens.weight",
+   "side_embeds.brand_tokens.weight",
+   "side_embeds.session_offset_tokens.weight",
+   "side_embeds.session_mode_main_category_tokens.weight",
+   "numflag_proj.weight",
+   "numflag_proj.bias",
+   "side_proj.weight",
+   "side_proj.bias",
+   "side_norm.weight",
+   "side_norm.bias",
+   "user_mlp.weight",
+   "user_mlp.bias",
+   "user_proj.weight",
+   "user_proj.bias",
+   "user_norm.weight",
+   "user_norm.bias"
+  ],
+  "trained_numel": 20708708,
+  "unparsable_lines": 0
+ },
+ "wall_s_this_leg": 62651.96
+}

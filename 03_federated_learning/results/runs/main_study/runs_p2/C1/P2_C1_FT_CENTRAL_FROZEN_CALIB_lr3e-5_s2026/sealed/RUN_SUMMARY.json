@@ -1,0 +1,263 @@
+{
+ "N": 646067,
+ "checkpoints": {
+  "best": {
+   "file": "checkpoints/best.pt",
+   "sha256": "f204109b2955b9b882f7645b4850fbe348de79a9d8b866a0de5bb74cd9cbf0f6"
+  },
+  "endpoint_6.0": {
+   "file": "checkpoints/endpoint_6.0.pt",
+   "sha256": "d16eabfde12967881f8cefa982113699c976813ccff33fd31dbd4067eeca1f08"
+  }
+ },
+ "config_sha256": "23fdf45ea2b2b0ecb5fa82c540adc2e375f4fffe3eb9e25d94c1d0a92edd73d5",
+ "continuation": null,
+ "controlled_budget": {
+  "efe": 6.0,
+  "mark": 6.0,
+  "value": 0.17080985731426743
+ },
+ "data_version": "CLEAN_V2_POP5100_V2",
+ "determinism": {
+  "cublas_workspace_config": ":4096:8",
+  "mode": "STRICT",
+  "torch_effective": {
+   "deterministic_algorithms": true,
+   "warn_only": false
+  }
+ },
+ "device_pin_sha256": "db744ca3f0da27ac7b65c41b4b32f2c68ec9d0bd66bbc0dc33e874a226834e6b",
+ "efe": 6.0,
+ "eval_every_efe": 0.5,
+ "evals": [
+  {
+   "efe": 0.5000595913426935,
+   "exposures": 323072,
+   "improved": true,
+   "mark": 0.5,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_0.5.rows.json",
+   "secondary": {
+    "hr@10": 0.3561454820179259,
+    "ndcg@10": 0.20853625333388429
+   },
+   "updates": 1262,
+   "value": 0.1709006456330587
+  },
+  {
+   "efe": 1.0,
+   "exposures": 646067,
+   "improved": false,
+   "mark": 1.0,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_1.0.rows.json",
+   "secondary": {
+    "hr@10": 0.3560282413427313,
+    "ndcg@10": 0.20852012242061943
+   },
+   "updates": 2524,
+   "value": 0.1709218320148695
+  },
+  {
+   "efe": 1.5000595913426935,
+   "exposures": 969139,
+   "improved": false,
+   "mark": 1.5,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_1.5.rows.json",
+   "secondary": {
+    "hr@10": 0.3563138309598754,
+    "ndcg@10": 0.20852118724620042
+   },
+   "updates": 3786,
+   "value": 0.1708292195116824
+  },
+  {
+   "efe": 2.0,
+   "exposures": 1292134,
+   "improved": false,
+   "mark": 2.0,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_2.0.rows.json",
+   "secondary": {
+    "hr@10": 0.35630244144299733,
+    "ndcg@10": 0.20847288444541065
+   },
+   "updates": 5048,
+   "value": 0.17076983917308136
+  },
+  {
+   "efe": 2.5000595913426937,
+   "exposures": 1615206,
+   "improved": false,
+   "mark": 2.5,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_2.5.rows.json",
+   "secondary": {
+    "hr@10": 0.3564134729406207,
+    "ndcg@10": 0.2085438528531623
+   },
+   "updates": 6310,
+   "value": 0.17079821083039617
+  },
+  {
+   "efe": 3.0,
+   "exposures": 1938201,
+   "improved": false,
+   "mark": 3.0,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_3.0.rows.json",
+   "secondary": {
+    "hr@10": 0.3564205488438875,
+    "ndcg@10": 0.20853979006470438
+   },
+   "updates": 7572,
+   "value": 0.1708114806804562
+  },
+  {
+   "efe": 3.5000595913426937,
+   "exposures": 2261273,
+   "improved": false,
+   "mark": 3.5,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_3.5.rows.json",
+   "secondary": {
+    "hr@10": 0.3564368148898324,
+    "ndcg@10": 0.2085097779215449
+   },
+   "updates": 8834,
+   "value": 0.1707696188272448
+  },
+  {
+   "efe": 4.0,
+   "exposures": 2584268,
+   "improved": false,
+   "mark": 4.0,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_4.0.rows.json",
+   "secondary": {
+    "hr@10": 0.35638103687296757,
+    "ndcg@10": 0.20849402464484076
+   },
+   "updates": 10096,
+   "value": 0.17077426460520712
+  },
+  {
+   "efe": 4.500059591342693,
+   "exposures": 2907340,
+   "improved": false,
+   "mark": 4.5,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_4.5.rows.json",
+   "secondary": {
+    "hr@10": 0.35642004660854476,
+    "ndcg@10": 0.2085515428858404
+   },
+   "updates": 11358,
+   "value": 0.17083371756777882
+  },
+  {
+   "efe": 5.0,
+   "exposures": 3230335,
+   "improved": false,
+   "mark": 5.0,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_5.0.rows.json",
+   "secondary": {
+    "hr@10": 0.3563229698179522,
+    "ndcg@10": 0.20851168271125592
+   },
+   "updates": 12620,
+   "value": 0.17081890846945516
+  },
+  {
+   "efe": 5.500059591342693,
+   "exposures": 3553407,
+   "improved": false,
+   "mark": 5.5,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_5.5.rows.json",
+   "secondary": {
+    "hr@10": 0.35624702374781303,
+    "ndcg@10": 0.20841215663798984
+   },
+   "updates": 13882,
+   "value": 0.17070890783749904
+  },
+  {
+   "efe": 6.0,
+   "exposures": 3876402,
+   "improved": false,
+   "mark": 6.0,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_6.0.rows.json",
+   "secondary": {
+    "hr@10": 0.3563398416264493,
+    "ndcg@10": 0.2085077459991101
+   },
+   "updates": 15144,
+   "value": 0.17080985731426743
+  }
+ ],
+ "exposures": 3876402,
+ "family": "SASREC",
+ "final_rng_sha256": "3124a372d1babbc0af5a080fdd5acd30280c6d0c203784191d24ac5370e5a09d",
+ "final_state_digest": "21c30120377c71d512238f1ceb0a080d4a98722969db9976443740893200515c",
+ "hp": null,
+ "hp_trial": null,
+ "init_sha256": "e9eb0bb9dd30061790fa5dc747e14c9aa375e2069c06a85785de6251e8705b95",
+ "label": "STOPPED_AT_CONTROLLED_ENDPOINT",
+ "latest_deleted_sha256": "a474baf1472e56a48af870272b389f59cb76976f95c0cd42f107a189cddb4af0",
+ "latest_kept": false,
+ "manifest_registry": {
+  "data_version": "CLEAN_V2_POP5100_V2",
+  "eval_manifest": "CALIB_VALIDATION_5_100_32768",
+  "file_sha256": "3c826a148046fd661ec703e228e43eb2bcf730cfc3aa6bf42859c0f3acf5dcce",
+  "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_p2/C1/P2_C1_FT_CENTRAL_FROZEN_CALIB_lr3e-5_s2026/REGISTRY_V2_TRAINER_VIEW.json",
+  "role": "MAIN",
+  "self_sha256": "36df72352ec1f169c142b3c9017219f7252fe8d9ae959b69cb3f6ee71bfc654f",
+  "train_manifest": "CALIB_TRAIN_5_100_32768"
+ },
+ "manifest_role": "MAIN",
+ "model_variant": "SASREC_D64_B2",
+ "p2_c1": {
+  "arm": "P2_C1_FT_CENTRAL_FROZEN",
+  "continuation": "DISABLED_FIXED_6.0_EFE",
+  "frozen_item_tables": [
+   "item_embed.weight",
+   "output_embed",
+   "output_bias"
+  ],
+  "init_checkpoint_bytes": 82853197,
+  "init_checkpoint_sha256": "cf08588c11f019cc760f129ba7ba6b23806297660e0170f9938436a5cb88cf78",
+  "init_record_sha256": "5ed989f6a23317aaf0fb6cf3e1288f7f925b77f423af866c361359583818a8b5",
+  "init_run_id": "PRETRAIN_FOR_FL_SMALL_SASREC_D64_B2_s2026",
+  "init_state_digest": "ee33345be4f20b61a53cd80fa11e1af702031bfcd1425af490825cd0019dc54a",
+  "peak_lr": 3e-05,
+  "role": "CALIBRATION",
+  "trained_numel": 263822,
+  "variant": "FROZEN"
+ },
+ "p2_trainable_numel": 263822,
+ "peak_lr": 3e-05,
+ "phase": "MAIN",
+ "population": "COHORT",
+ "practical_best": {
+  "efe": 0.5000595913426935,
+  "mark": 0.5,
+  "value": 0.1709006456330587
+ },
+ "row_status": "P2_CONTROL",
+ "run_id": "P2_C1_FT_CENTRAL_FROZEN_CALIB_lr3e-5_s2026",
+ "run_label": "P2_C1_FT_CENTRAL_FROZEN",
+ "run_role": "MAIN",
+ "schema": {
+  "schema_id": "L3S_NEAR_DUPLICATE_SESSION-minus-G11+G12a+G3+G4+G7",
+  "schema_self_sha256": "c53d47fe2555dd537e27e11d45a4e8b23739566e6b98179dcf521852aa918f87"
+ },
+ "seed": 2026,
+ "shared_numel": 263822,
+ "status": "DONE_MAIN",
+ "still_improving": false,
+ "updates": 15144
+}

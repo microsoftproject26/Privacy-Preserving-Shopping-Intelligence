@@ -1,0 +1,166 @@
+{
+ "arm": "FT_FA_WARM",
+ "base_arm": "FA_WARM",
+ "base_run": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_gpu/ml_1m/FA_WARM_s2027",
+ "checkpoints": {
+  "CONTROLLED_BUDGET": {
+   "file": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_gpu/ml_1m/FA_WARM_s2027/ckpt/BM_ml_1m_FA_WARM_s2027/endpoint_6.0.pt",
+   "mark": 6.0,
+   "sha256": "3a4fc96fac84a7b3103f4eafef947bb0a00531f770e7514ddb2753151ed1bf3d"
+  },
+  "PRACTICAL_BEST": {
+   "file": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_gpu/ml_1m/FA_WARM_s2027/ckpt/BM_ml_1m_FA_WARM_s2027/best.pt",
+   "mark": 6.0,
+   "sha256": "3a4fc96fac84a7b3103f4eafef947bb0a00531f770e7514ddb2753151ed1bf3d"
+  }
+ },
+ "device": {
+  "cublas_workspace_config": ":4096:8",
+  "cuda": "13.0",
+  "cudnn": 92000,
+  "device_class": "NVIDIA_A40-FP32-DET",
+  "gpu_name": "NVIDIA A40",
+  "numerics": {
+   "cuda_matmul_allow_tf32": false,
+   "cudnn_allow_tf32": false,
+   "cudnn_deterministic": true,
+   "deterministic_algorithms": true,
+   "deterministic_warn_only": false,
+   "float32_matmul_precision": "highest",
+   "intra_op_threads": 16,
+   "torch": "2.13.0+cu130"
+  },
+  "physical_gpu": "0",
+  "torch": "2.13.0+cu130"
+ },
+ "device_class": "NVIDIA_A40-FP32-DET",
+ "ft_cell": {
+  "cell": "FT_C_f0.3_P4",
+  "lr_frac": 0.3,
+  "passes": 4
+ },
+ "kind": "ft",
+ "run_id": "BM_ml_1m_FT_FA_WARM_s2027",
+ "spec": {
+  "cfg": {
+   "seed": 2027
+  },
+  "seed": 2027
+ },
+ "status": "DONE_MAIN",
+ "timing": {
+  "CONTROLLED_BUDGET": {
+   "mean_support_events": 162.591255382577,
+   "n_users": 6038,
+   "s_per_user": 0.48374143959667487,
+   "threads": 16,
+   "wall_s": 2920.83,
+   "workers": 2
+  },
+  "PRACTICAL_BEST": {
+   "mean_support_events": 162.591255382577,
+   "n_users": 6038,
+   "s_per_user": 0.48210318484067494,
+   "threads": 16,
+   "wall_s": 2910.94,
+   "workers": 2
+  }
+ },
+ "utc": "2026-10-05T17:05:38Z",
+ "validation": {
+  "CONTROLLED_BUDGET": {
+   "ALL": {
+    "hr@10": 0.22474329248095395,
+    "hr@20": 0.32759191785359393,
+    "mrr@20": 0.09354203764600075,
+    "n_unreachable": 0,
+    "n_users": 6038,
+    "ndcg@10": 0.11850465196813446,
+    "ndcg@20": 0.14447534641137852
+   },
+   "BAND": {
+    "hr@10": 0.2240618101545254,
+    "hr@20": 0.32891832229580575,
+    "mrr@20": 0.09173219466017224,
+    "n_unreachable": 0,
+    "n_users": 906,
+    "ndcg@10": 0.11672267877037784,
+    "ndcg@20": 0.14321081304736086
+   },
+   "BAND_COVERED_TARGET": {
+    "hr@10": 0.22511612475116125,
+    "hr@20": 0.3281353682813537,
+    "mrr@20": 0.09369721687235441,
+    "n_unreachable": 0,
+    "n_users": 6028,
+    "ndcg@10": 0.1187012422998666,
+    "ndcg@20": 0.14471502017782076
+   },
+   "BAND_UNCOVERED_TARGET": {
+    "hr@10": 0.0,
+    "hr@20": 0.0,
+    "mrr@20": 0.0,
+    "n_unreachable": 0,
+    "n_users": 10,
+    "ndcg@10": 0.0,
+    "ndcg@20": 0.0
+   },
+   "OTHERS": {
+    "hr@10": 0.22486360093530788,
+    "hr@20": 0.3273577552611068,
+    "mrr@20": 0.0938615461699993,
+    "n_unreachable": 0,
+    "n_users": 5132,
+    "ndcg@10": 0.11881924037755913,
+    "ndcg@20": 0.1446985863232647
+   }
+  },
+  "PRACTICAL_BEST": {
+   "ALL": {
+    "hr@10": 0.22474329248095395,
+    "hr@20": 0.32759191785359393,
+    "mrr@20": 0.09354203764600075,
+    "n_unreachable": 0,
+    "n_users": 6038,
+    "ndcg@10": 0.11850465196813446,
+    "ndcg@20": 0.14447534641137852
+   },
+   "BAND": {
+    "hr@10": 0.2240618101545254,
+    "hr@20": 0.32891832229580575,
+    "mrr@20": 0.09173219466017224,
+    "n_unreachable": 0,
+    "n_users": 906,
+    "ndcg@10": 0.11672267877037784,
+    "ndcg@20": 0.14321081304736086
+   },
+   "BAND_COVERED_TARGET": {
+    "hr@10": 0.22511612475116125,
+    "hr@20": 0.3281353682813537,
+    "mrr@20": 0.09369721687235441,
+    "n_unreachable": 0,
+    "n_users": 6028,
+    "ndcg@10": 0.1187012422998666,
+    "ndcg@20": 0.14471502017782076
+   },
+   "BAND_UNCOVERED_TARGET": {
+    "hr@10": 0.0,
+    "hr@20": 0.0,
+    "mrr@20": 0.0,
+    "n_unreachable": 0,
+    "n_users": 10,
+    "ndcg@10": 0.0,
+    "ndcg@20": 0.0
+   },
+   "OTHERS": {
+    "hr@10": 0.22486360093530788,
+    "hr@20": 0.3273577552611068,
+    "mrr@20": 0.0938615461699993,
+    "n_unreachable": 0,
+    "n_users": 5132,
+    "ndcg@10": 0.11881924037755913,
+    "ndcg@20": 0.1446985863232647
+   }
+  }
+ }
+}

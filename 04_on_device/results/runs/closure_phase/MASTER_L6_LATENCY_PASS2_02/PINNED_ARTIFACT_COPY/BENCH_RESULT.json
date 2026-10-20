@@ -1,0 +1,311 @@
+{
+ "K": 158486,
+ "checkpoint": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds/C_SMALL_s2026/sealed/checkpoints/best.pt",
+ "checkpoint_meta": {
+  "config_sha256": "7381b5ce6792cdb7b801a642b6d9d31694e9494052a6a57897660ec61da6aeec",
+  "determinism": {
+   "cublas_workspace_config": ":4096:8",
+   "mode": "STRICT",
+   "torch_effective": {
+    "deterministic_algorithms": true,
+    "warn_only": false
+   }
+  },
+  "efe": 3.0,
+  "exposures": 7763328,
+  "family": "SASREC",
+  "init_sha256": "e9eb0bb9dd30061790fa5dc747e14c9aa375e2069c06a85785de6251e8705b95",
+  "manifest_registry": {
+   "data_version": "CLEAN_V2_POP5100_V2",
+   "eval_manifest": "MAIN_VALIDATION_5_100_131072",
+   "file_sha256": "1dafcef45a10b345b88fbd4ff77c3919fa0c21cbbc5f470505c17a3803efb022",
+   "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds/C_SMALL_s2026/REGISTRY_V2_TRAINER_VIEW.json",
+   "role": "MAIN",
+   "self_sha256": "93cb0f8994c5f2105127d027e16ae1927d2c7cb0031230edc28b546314f3cc1d",
+   "train_manifest": "MAIN_TRAIN_5_100_131072"
+  },
+  "mark": 3.0,
+  "model_variant": "SASREC_D64_B2",
+  "run_id": "SMALL_SASREC_D64_B2_MAIN_s2026",
+  "run_label": "PRODUCTION",
+  "run_role": "MAIN",
+  "schema": {
+   "schema_id": "L3S_NEAR_DUPLICATE_SESSION-minus-G11+G12a+G3+G4+G7",
+   "schema_self_sha256": "c53d47fe2555dd537e27e11d45a4e8b23739566e6b98179dcf521852aa918f87"
+  },
+  "seed": 2026,
+  "state_digest": "e50d26c85dbf91d7c3b3cd0ecd3b07de9d83bb3a7a112042eb7b892b5e3d2ea5",
+  "updates": 30327,
+  "value": 0.1542494692514192
+ },
+ "checkpoint_sha256": "e2db4376797756ba06e9b42ea3ef26a4b9b77a01366938a0cda18f37cd1b710d",
+ "export": {
+  "K": 158486,
+  "bytes": 82863741,
+  "declared_input_keys": [
+   "item_tokens",
+   "lengths",
+   "attention_mask",
+   "position_ids",
+   "category_tokens",
+   "brand_tokens",
+   "event_numeric_features",
+   "event_quality_flags",
+   "user_context",
+   "user_context_masks",
+   "session_offset_tokens",
+   "session_mode_main_category_tokens",
+   "current_matches_session_mode",
+   "session_mode_share",
+   "current_matches_session_mode_available"
+  ],
+  "deterministic_reexport_sha256": "873f4f9117500de62b7931bddfa8d809499f4464057a7a0425c717536e7e3b0c",
+  "input_names": [
+   "item_tokens",
+   "lengths",
+   "category_tokens",
+   "brand_tokens",
+   "event_numeric_features",
+   "event_quality_flags",
+   "user_context",
+   "user_context_masks",
+   "session_offset_tokens",
+   "session_mode_main_category_tokens",
+   "current_matches_session_mode",
+   "session_mode_share",
+   "current_matches_session_mode_available"
+  ],
+  "opset": 17,
+  "output_names": [
+   "scores"
+  ],
+  "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/ONNX_R7_U16384/model_fp32.onnx",
+  "sha256": "873f4f9117500de62b7931bddfa8d809499f4464057a7a0425c717536e7e3b0c"
+ },
+ "family": "SASREC",
+ "feature_view": {
+  "build_seed": 2026,
+  "eval_manifest_id": "MAIN_VALIDATION_5_100_131072",
+  "file": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/contracts/derived_schemas/L3S_NEAR_DUPLICATE_SESSION-minus-G11+G12a+G3+G4+G7.json",
+  "file_sha256": "626ca93e7f51606fe4269f4551a65c0246f85f9f199d2af92881dca971e8b759",
+  "format": "v4dev.feature_view.v1",
+  "history_policy": "USER_HISTORY_L50",
+  "identity": {
+   "config_sha256": "7381b5ce6792cdb7b801a642b6d9d31694e9494052a6a57897660ec61da6aeec",
+   "family": "SASREC",
+   "init_sha256": "e9eb0bb9dd30061790fa5dc747e14c9aa375e2069c06a85785de6251e8705b95",
+   "model_variant": "SASREC_D64_B2",
+   "seed": 2026
+  },
+  "init_sha256": "e9eb0bb9dd30061790fa5dc747e14c9aa375e2069c06a85785de6251e8705b95",
+  "input_keys": [
+   "item_tokens",
+   "lengths",
+   "attention_mask",
+   "position_ids",
+   "category_tokens",
+   "brand_tokens",
+   "event_numeric_features",
+   "event_quality_flags",
+   "user_context",
+   "user_context_masks",
+   "session_offset_tokens",
+   "session_mode_main_category_tokens",
+   "current_matches_session_mode",
+   "session_mode_share",
+   "current_matches_session_mode_available"
+  ],
+  "kind": "DERIVED",
+  "registry": {
+   "file_sha256": "c23454cb7d34886e0374349b73a4d153907ebc56b17061926e193e221e4a0bc6",
+   "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/contracts/derived_schemas/REGISTRY.json"
+  },
+  "required_row_keys": [
+   "item_tokens",
+   "lengths",
+   "attention_mask",
+   "category_tokens",
+   "brand_tokens",
+   "session_offset_tokens",
+   "session_mode_main_category_tokens",
+   "event_numeric_features",
+   "event_quality_flags",
+   "user_context",
+   "user_context_masks",
+   "current_matches_session_mode",
+   "session_mode_share",
+   "current_matches_session_mode_available"
+  ],
+  "run_start": {
+   "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds/C_SMALL_s2026/RUN_START.json",
+   "sha256": "4c3d012255fc5d04004a7721f5814cb0804dd4e33b4ad8e80ea4ac7674651e8b"
+  },
+  "schema_id": "L3S_NEAR_DUPLICATE_SESSION-minus-G11+G12a+G3+G4+G7",
+  "schema_self_sha256": "c53d47fe2555dd537e27e11d45a4e8b23739566e6b98179dcf521852aa918f87",
+  "sources": [
+   "RUN_START",
+   "checkpoint_meta"
+  ],
+  "variant": "SASREC_D64_B2"
+ },
+ "input_keys": [
+  "item_tokens",
+  "lengths",
+  "attention_mask",
+  "position_ids",
+  "category_tokens",
+  "brand_tokens",
+  "event_numeric_features",
+  "event_quality_flags",
+  "user_context",
+  "user_context_masks",
+  "session_offset_tokens",
+  "session_mode_main_category_tokens",
+  "current_matches_session_mode",
+  "session_mode_share",
+  "current_matches_session_mode_available"
+ ],
+ "intra_op_num_threads": 1,
+ "latency_fp32_ms": {
+  "median_ms": 4.2001670226454735,
+  "n_queries": 1000,
+  "p95_ms": 5.605262797325849,
+  "peak_rss_bytes": 6542913536,
+  "warmup": 50
+ },
+ "latency_int8_ms": {
+  "median_ms": 1.5080850571393967,
+  "n_queries": 1000,
+  "p95_ms": 2.0747252739965916,
+  "peak_rss_bytes": 6449061888,
+  "warmup": 50
+ },
+ "model_sha256": {
+  "fp32": "873f4f9117500de62b7931bddfa8d809499f4464057a7a0425c717536e7e3b0c",
+  "int8": "3fb6eb4a01068c0ea3a526e7aee07df4025902446ade48de7a11e2c3932051ca"
+ },
+ "onnx_input_names": [
+  "item_tokens",
+  "lengths",
+  "category_tokens",
+  "brand_tokens",
+  "event_numeric_features",
+  "event_quality_flags",
+  "user_context",
+  "user_context_masks",
+  "session_offset_tokens",
+  "session_mode_main_category_tokens",
+  "current_matches_session_mode",
+  "session_mode_share",
+  "current_matches_session_mode_available"
+ ],
+ "onnxruntime": {
+  "execution_mode": "ORT_SEQUENTIAL",
+  "graph_optimization_level": "ORT_ENABLE_ALL",
+  "inter_op_num_threads": 1,
+  "intra_op_num_threads": 1,
+  "onnxruntime_version": "1.24.1",
+  "providers": [
+   "CPUExecutionProvider"
+  ]
+ },
+ "opset": 17,
+ "parity_note": "parity_synthetic_* are on --n-queries synthetic decisions (always computed); parity_real_* are on the --rows real decisions (only when --rows is given) -- the two are never averaged together",
+ "parity_real_fp32_vs_production": {
+  "max_abs_delta": 8.58306884765625e-06,
+  "n_rows": 1000,
+  "top_k": 20,
+  "top_k_identity_rate": 1.0
+ },
+ "parity_real_int8_vs_production": {
+  "max_abs_delta": 0.4336376190185547,
+  "n_rows": 1000,
+  "top_k": 20,
+  "top_k_identity_rate": 0.56
+ },
+ "parity_synthetic_fp32_vs_export_wrapper": {
+  "max_abs_delta": 1.33514404296875e-05,
+  "n_rows": 1000,
+  "top_k": 20,
+  "top_k_identity_rate": 1.0
+ },
+ "parity_synthetic_fp32_vs_production": {
+  "max_abs_delta": 1.33514404296875e-05,
+  "n_rows": 1000,
+  "top_k": 20,
+  "top_k_identity_rate": 1.0
+ },
+ "quantize": {
+  "fp32": {
+   "bytes": 82863741,
+   "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/ONNX_R7_U16384/model_fp32.onnx",
+   "sha256": "873f4f9117500de62b7931bddfa8d809499f4464057a7a0425c717536e7e3b0c"
+  },
+  "int8": {
+   "bytes": 21243629,
+   "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/ONNX_R7_U16384/model_int8.onnx",
+   "sha256": "3fb6eb4a01068c0ea3a526e7aee07df4025902446ade48de7a11e2c3932051ca"
+  }
+ },
+ "retention": {
+  "onnx_fp32": {
+   "graph_optimization_level": "ORT_ENABLE_ALL",
+   "intra_op_num_threads": 1,
+   "manifest_n": 644694,
+   "model": "fp32",
+   "model_sha256": "873f4f9117500de62b7931bddfa8d809499f4464057a7a0425c717536e7e3b0c",
+   "n_oov_skipped": 1615,
+   "n_rows_in_npz": 206445,
+   "n_rows_scored": 204830,
+   "onnxruntime_version": "1.24.1",
+   "ranks_path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/ONNX_R7_U16384/evals/onnx_fp32.ranks_int32.npy",
+   "ranks_sha256": "ed6efe314a89e3d2b7b804f260b5f31b6c242135469ff21cf56cda9e323c3088",
+   "rows_meta_sha256": "2bc1f33dc04088b836c5a73e9af5034d0b5e6db1cc182167e903430c40863b51",
+   "rows_npz_sha256": "a7004bbfabcdb2372b28ca675cf626eebcae9132787b0318b1906f0b6c73dad8",
+   "tag": "onnx_fp32"
+  },
+  "onnx_int8": {
+   "graph_optimization_level": "ORT_ENABLE_ALL",
+   "intra_op_num_threads": 1,
+   "manifest_n": 644694,
+   "model": "int8",
+   "model_sha256": "3fb6eb4a01068c0ea3a526e7aee07df4025902446ade48de7a11e2c3932051ca",
+   "n_oov_skipped": 1615,
+   "n_rows_in_npz": 206445,
+   "n_rows_scored": 204830,
+   "onnxruntime_version": "1.24.1",
+   "ranks_path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/ONNX_R7_U16384/evals/onnx_int8.ranks_int32.npy",
+   "ranks_sha256": "d92ff3fcc24bd0e4aad73f84e734e6b7e162295d897e3e47f0d45e40596d4189",
+   "rows_meta_sha256": "2bc1f33dc04088b836c5a73e9af5034d0b5e6db1cc182167e903430c40863b51",
+   "rows_npz_sha256": "a7004bbfabcdb2372b28ca675cf626eebcae9132787b0318b1906f0b6c73dad8",
+   "tag": "onnx_int8"
+  }
+ },
+ "retention_note": null,
+ "rows_first_users": 16384,
+ "rows_view_check": {
+  "batch_view_checked": true,
+  "n_rows": 206445,
+  "required_row_keys": [
+   "item_tokens",
+   "lengths",
+   "attention_mask",
+   "category_tokens",
+   "brand_tokens",
+   "session_offset_tokens",
+   "session_mode_main_category_tokens",
+   "event_numeric_features",
+   "event_quality_flags",
+   "user_context",
+   "user_context_masks",
+   "current_matches_session_mode",
+   "session_mode_share",
+   "current_matches_session_mode_available"
+  ],
+  "schema_id": "L3S_NEAR_DUPLICATE_SESSION-minus-G11+G12a+G3+G4+G7",
+  "schema_self_sha256": "c53d47fe2555dd537e27e11d45a4e8b23739566e6b98179dcf521852aa918f87"
+ },
+ "seed": 2026,
+ "variant": "SASREC_D64_B2",
+ "wall_seconds": 3762.6041695848107
+}

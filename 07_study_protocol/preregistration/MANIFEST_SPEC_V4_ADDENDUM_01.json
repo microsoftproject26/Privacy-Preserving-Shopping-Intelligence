@@ -1,0 +1,197 @@
+{
+  "addendum_id": "MANIFEST_SPEC_V4_ADDENDUM_01",
+  "task": "EVAL-04",
+  "author_role": "EVALUATION_SPEC_ENGINEER (Sonnet)",
+  "written_date_utc": "2026-09-26",
+  "status": "PROPOSED",
+  "status_note": "Fable confirms at G1 (company/tasks/EVAL-04.md L21). Spec only: nothing is built, nothing is written on the server, MANIFEST_SPEC_V4.json is not edited.",
+  "tag": "PLAN",
+  "contains_test_numbers": false,
+  "contains_model_outcomes": false,
+  "why": "PREG1 T1 may trigger a full-TRAIN GRU-vs-SASRec tie-break (contracts/PREG1_LOCK_VALUES.json T1_architecture_selection.tiebreak; contracts/PREG1_AMENDMENT_01.md item 2 L12-18). Its two manifests, M_FULL_TRAIN and M_FULL_VALIDATION_WARM, had no field definitions. This addendum supplies them without touching MANIFEST_SPEC_V4.json, whose sha256 is inside DATA_PROTOCOL_LOCK.json.",
+  "base_spec": {
+    "spec_id": "MANIFEST_SPEC_V4",
+    "spec_version": "1.2.0",
+    "file_sha256": "a3f4eb8dca26ee5fd0aae7b835ab9c483f2afeb0c5735b95c4ea41c914a8ae1a",
+    "file_sha256_note": "measured locally (sha256sum contracts/MANIFEST_SPEC_V4.json), before and after this task; unchanged (EVAL-04 self-check, see company/handoffs/EVAL-04.md)."
+  },
+  "data_protocol_lock_file_sha256": "ebf4e86f6beb82e98283108a2dad9082727e8559b81301cd46f35f60c79fd7c0",
+  "data_protocol_lock_file_sha256_source": "company/tasks/EVAL-04.md L22 (given value); cross-checked locally as sha256sum of contracts/DATA_PROTOCOL_LOCK.json (EVAL-04, 2026-09-26) -- byte-identical match.",
+  "manifests": [
+    {
+      "manifest_id": "M_FULL_TRAIN",
+      "status": "PROPOSED",
+      "build_condition": "built ONLY if the PREG1 T1 trigger fires (see build_rule below); never a headline or cohort-selection manifest.",
+      "purpose": "Full-TRAIN comparison-union TRAIN examples for the PREG1 T1 GRU-vs-SASRec tie-break only (contracts/PREG1_LOCK_VALUES.json T1_architecture_selection.tiebreak.recipe L19; contracts/PREG1_AMENDMENT_01.md item 2 L13-18): identical recipe to the cohort contest (cohort-calibrated peak LR, common schedule, exposure_point=end, 6.0 EFE, stopping rule C3, no continuation, no new calibration). Never used for cohort family selection, checkpoint selection, or any headline VALIDATION comparison; those remain owned by M01_COHORT_TRAIN.",
+      "population": "ALL of U: every user with >= 1 TRAIN-eligible example at support >= 5 (the full universe), not the 262,144-key cohort of M01_COHORT_TRAIN.",
+      "population_source": "g0/data_census/CLIENT_CENSUS.json L7 (users_with_ge1_example 2,694,998); g0/data_census/COHORT_PROJECTIONS.json L7192 (actual_users, cohort key 'ALL'), L8 (universe_size); contracts/PREG1_LOCK_VALUES.json T1_architecture_selection.tiebreak.population L18",
+      "row_filter": "old_split = TRAIN AND loss_mask = true AND target_class >= 0 AND target_ts < 2019-11-16T00:00:00Z",
+      "row_filter_source": "identical rule to M01_COHORT_TRAIN (contracts/MANIFEST_SPEC_V4.json manifests[0] 'M01_COHORT_TRAIN'.row_filter); g0/data_census/CLIENT_CENSUS.json L3 (train_eligible_example definition); PKG/03_DATA_PROTOCOL.md section 3 L18",
+      "tables": [
+        {
+          "table": "clients",
+          "grain": "one row per U client",
+          "order": "client_ord ascending",
+          "fields": ["client_ord", "client_key_hex", "selection_key", "n_eligible_train_examples", "row_start", "row_count", "in_cohort", "in_calib_prefix"],
+          "field_notes": {
+            "row_start": "int64 offset of the client's first row in the decisions table (as M01_COHORT_TRAIN)",
+            "row_count": "int64 number of the client's rows; equals n_eligible_train_examples (as M01_COHORT_TRAIN)",
+            "in_cohort": "bool, NEW FIELD (task EVAL-04): true iff this client_key_hex is one of the 262,144 M01_COHORT_TRAIN clients (the smallest 262,144 selection keys of U). Kept alongside selection_key per the task instruction.",
+            "in_calib_prefix": "bool: user is among the 65,536 smallest selection keys (unchanged definition from M01/M05; contracts/MANIFEST_SPEC_V4.json field_dictionary.in_calib_prefix), now evaluated over this manifest's full client_ord instead of M01's cohort-scoped client_ord."
+          }
+        },
+        {
+          "table": "decisions",
+          "grain": "one row per supervised TRAIN example",
+          "order": "(client_ord, decision_id) ascending",
+          "fields": ["decision_id", "client_ord", "decision_ts_us", "target_ts_us", "target_class", "target_status", "old_split"]
+        }
+      ],
+      "expected_counts": [
+        {"field": "n_users", "expected": 2694998, "source": "g0/COST_FORECAST.json L17; g0/data_census/COHORT_PROJECTIONS.json L7192; g0/data_census/CLIENT_CENSUS.json L7"},
+        {"field": "n_decisions", "expected": 40180608, "source": "g0/COST_FORECAST.json L18; g0/data_census/COHORT_PROJECTIONS.json L7193; g0/data_census/CLIENT_CENSUS.json L8"},
+        {"field": "population_sha256", "expected": "derived_at_build", "source": "derived_at_build: no selected_keys_sha256_hex is registered for the 'ALL' cohort key in g0/data_census/COHORT_PROJECTIONS.json (only 16384 L1584, 65536 L3880, 262144 L7188, and the M04S 16384:32768 slice L13040 are hashed there). Reason: the universe is not a 'selected N smallest keys' cohort, so no such hash was pre-computed. Must be computed at build time per contracts/MANIFEST_SPEC_V4.json global_rules.hashing.population_sha256, over all 2,694,998 selection keys ascending."},
+        {"field": "per_client_examples_min", "expected": 1, "source": "g0/data_census/COHORT_PROJECTIONS.json L7195 (ALL cohort examples_quantiles.min)"},
+        {"field": "per_client_examples_p50", "expected": 6, "source": "g0/data_census/COHORT_PROJECTIONS.json L7198 (ALL cohort examples_quantiles.p50)"},
+        {"field": "per_client_examples_max", "expected": 11628, "source": "g0/data_census/COHORT_PROJECTIONS.json L7204 (ALL cohort examples_quantiles.max)"},
+        {"field": "n_in_cohort", "expected": 262144, "source": "g0/data_census/COHORT_PROJECTIONS.json L3884; equals contracts/MANIFEST_SPEC_V4.json manifests[0].expected_counts n_users for M01_COHORT_TRAIN"},
+        {"field": "n_in_calib_prefix", "expected": 65536, "source": "g0/data_census/COHORT_PROJECTIONS.json L3880 (prefix hash), L1588 (actual_users); equals contracts/MANIFEST_SPEC_V4.json manifests[0].expected_counts n_in_calib_prefix for M01_COHORT_TRAIN"}
+      ],
+      "assertions": [
+        "every target_ts_us < TRAIN_END and != -1 (as M01_COHORT_TRAIN; PKG/12_ACCEPTANCE_TESTS.md T04 L9)",
+        "every target_class in [0, 158485]; every target_status = OBSERVED_IN_PARTITION (as M01_COHORT_TRAIN)",
+        "every client has row_count >= 1 (holds by the population definition of U itself: >= 1 TRAIN-eligible example at support >= 5; CLIENT_CONTRACT_V1 C4.2)",
+        "client row ranges are contiguous, disjoint and cover every decisions row (as M01_COHORT_TRAIN; PKG/12_ACCEPTANCE_TESTS.md T23 L32)",
+        "client_key_hex unique; no two users share a selection_key (as M01_COHORT_TRAIN)",
+        "the calibration prefix (in_calib_prefix = true) is exactly the first 65,536 clients in this manifest's client_ord order, the same nested prefix as M01/M05 (g0/data_census/COHORT_PROJECTIONS.json L13043-L13046)",
+        "in_cohort = true iff client_ord < 262,144 in this manifest's ascending-selection_key client_ord (nested-prefix property: by construction M01's cohort is the 262,144 globally smallest selection keys, a superset of the 65,536 in_calib_prefix and a subset of this manifest's full 2,694,998; INFERENCE from global_rules.identity, non-blocking cross-check)",
+        "TASK-REQUIRED: the rows of the M01 clients are exactly M01's rows: for every client with in_cohort = true, the set of (decision_id, target_class) pairs in this manifest's decisions table equals the set in M01_COHORT_TRAIN.decisions, joined on client_key_hex (company/tasks/EVAL-04.md L28-29)",
+        "TASK-REQUIRED: the canonical order is ascending decision_id, i.e. central_canonical_order, as M01_COHORT_TRAIN (company/tasks/EVAL-04.md L29)"
+      ],
+      "derived": ["central_canonical_order permutation (ascending decision_id) with its own sha256, as M01_COHORT_TRAIN"]
+    },
+    {
+      "manifest_id": "M_FULL_VALIDATION_WARM",
+      "status": "PROPOSED",
+      "build_condition": "built ONLY if the PREG1 T1 trigger fires (see build_rule below); never a headline or cohort-selection manifest.",
+      "purpose": "Full warm VALIDATION evaluation manifest for the PREG1 T1 full-TRAIN tie-break only (contracts/PREG1_LOCK_VALUES.json T1_architecture_selection.tiebreak.evaluation L20; contracts/PREG1_AMENDMENT_01.md item 2 L13-14). M02_VALIDATION_WARM is reported as a subset, descriptive; the frozen evaluator T3 numerics apply unchanged.",
+      "population": "every VALIDATION decision (old VALIDATION_SELECT or VALIDATION_CONFIRM) of ALL warm users (every user of U, i.e. every user with >= 1 TRAIN-eligible example at support >= 5 -- the M_FULL_TRAIN population), including censored rows so that the counts by cause are reproducible (same pattern as M02_VALIDATION_WARM, generalized from the 262,144 cohort to all of U).",
+      "population_source": "contracts/PREG1_AMENDMENT_01.md item 2 L13-15 (642,228 warm users, 8,430,391 rows); contracts/PREG1_LOCK_VALUES.json T1_architecture_selection.tiebreak.population L18-20; g0/COST_FORECAST.json L19-20; g0/data_census/COHORT_PROJECTIONS.json L11112-11113; REV/G0_PLAN_FABLE_POSITION.md L49 (population-definition pattern, as M02_VALIDATION_WARM)",
+      "eval_stream": "EVAL_ROWS_ONLY (contracts/PREG1_AMENDMENT_01.md item 5 L29-34: the frozen evaluation stream proposed for every method and every evaluation; covers rows with eval_mask = has_observed_target, including OOV targets scored 0 end-to-end, and excludes censored rows, which contribute nothing to any metric by definition).",
+      "tables": [
+        {
+          "table": "users",
+          "grain": "one row per warm client (any user of U) with >= 1 VALIDATION decision",
+          "order": "eval_user_key ascending",
+          "fields": ["eval_user_key", "client_key_hex", "n_validation_decisions", "n_eval_rows", "n_rankable_rows"]
+        },
+        {
+          "table": "decisions",
+          "grain": "one row per VALIDATION decision",
+          "order": "decision_id ascending",
+          "fields": ["decision_id", "eval_user_key", "decision_ts_us", "target_ts_us", "old_split", "v4_split", "subperiod", "target_status", "next_split", "next_block_type", "eval_mask", "target_class", "target_oov", "target_train_support", "oov_cause", "rankable", "target_class_cohort_train_positives", "censor_class", "target_category_state", "target_brand_state", "target_main_category_state"]
+        }
+      ],
+      "field_notes": {
+        "target_class_cohort_train_positives": "counted over M01_COHORT_TRAIN, as the M02_VALIDATION_WARM field-dictionary entry specifies (contracts/MANIFEST_SPEC_V4.json field_dictionary.target_class_cohort_train_positives); NOT recounted over M_FULL_TRAIN. Diagnostic only; definition unchanged."
+      },
+      "expected_counts": [
+        {"field": "n_eval_rows", "expected": 8430391, "source": "g0/COST_FORECAST.json L20; g0/data_census/COHORT_PROJECTIONS.json L11112; contracts/PREG1_AMENDMENT_01.md item 2 L14"},
+        {"field": "n_users_with_ge1_eval_row", "expected": 642228, "source": "g0/COST_FORECAST.json L19; g0/data_census/COHORT_PROJECTIONS.json L11113; contracts/PREG1_AMENDMENT_01.md item 2 L14"},
+        {"field": "n_decisions", "expected": "derived_at_build", "source": "derived_at_build: no census file states the full-population (all-of-U) warm VALIDATION decision total including censored rows. g0/data_census/SPLIT_COUNTS.json L73 gives only the ALL-population (warm+cold) union total (14,357,645), and company/handoffs/DATA-04.md L128 gives only the M03_COLD_PANEL_VAL cold total (381,295 users / 3,522,233 decisions) -- but M03's population additionally requires >= 1 eval row, so it is NOT the exact complement of 'all warm' within 14,357,645 (a cold user with zero eval rows, i.e. 100% censored, would be in neither M03 nor removable by simple subtraction). No reliable pre-build arithmetic value is asserted; the builder counts n_decisions directly. See company/handoffs/EVAL-04.md for a sizing-only approximation used solely for the resource estimate, not as an expected_count."},
+        {"field": "n_rankable_rows", "expected": "PENDING_RECEIPT", "source": "builder (as M02_VALIDATION_WARM.expected_counts counts_by_cause; no QA-01 receipt exists for the non-cohort full population)"},
+        {"field": "n_oov_rows", "expected": "PENDING_RECEIPT", "source": "builder (as above)"},
+        {"field": "counts_by_cause", "expected": "PENDING_RECEIPT", "source": "builder (as M02_VALIDATION_WARM)"}
+      ],
+      "assertions": [
+        "decision_ts_us in [2019-11-16T00:00Z, 2019-11-23T00:00Z) (as M02_VALIDATION_WARM; PKG/12_ACCEPTANCE_TESTS.md T03 L8)",
+        "eval_mask == (target_status = OBSERVED_IN_PARTITION) (as M02_VALIDATION_WARM)",
+        "censor_class = NONE iff eval_mask; exactly one censor_class otherwise, with the same precedence and the same censored/OOV row treatment as M02_VALIDATION_WARM (CEN_LEGACY_BARRIER > CEN_RIGHT_EDGE > CEN_AMBIGUOUS_NEXT_BARRIER > CEN_NO_NEXT; contracts/MANIFEST_SPEC_V4.json enums.censor_class_rules)",
+        "rankable == eval_mask AND target_class >= 0; target_oov implies eval_mask AND target_class = -1 (as M02_VALIDATION_WARM)",
+        "no eval row has target_ts_us >= VALIDATION_END (as M02_VALIDATION_WARM; g0/data_census/LABEL_TIME_AUDIT.json L20-L23)",
+        "subperiod VAL_A iff old_split = VALIDATION_SELECT; VAL_B iff old_split = VALIDATION_CONFIRM (as M02_VALIDATION_WARM)",
+        "every client_key_hex is present in M_FULL_TRAIN.clients (parent relationship, replacing M02_VALIDATION_WARM's 'every client_key_hex is present in M01.clients')",
+        "TASK-REQUIRED: M02_VALIDATION_WARM's rows are a subset of this manifest's rows, byte-equal on the decision fields (join on decision_id) (company/tasks/EVAL-04.md L34)",
+        "TASK-REQUIRED: the E2E user count is 642,228 (n_users_with_ge1_eval_row) (company/tasks/EVAL-04.md L35)",
+        "TASK-REQUIRED: the eval rows are 8,430,391 (n_eval_rows) (company/tasks/EVAL-04.md L35-36)"
+      ],
+      "bootstrap": {
+        "id_pattern": "BOOT_M_FULL_VALIDATION_WARM",
+        "population": "this manifest's E2E users (eval_mask = true rows), expected n_users 642,228",
+        "rule": "same B (1000 resamples), same seed rule (seed 20260926) and same W hashing as M02_VALIDATION_WARM (contracts/MANIFEST_SPEC_V4.json bootstrap.n_resamples, bootstrap.seed, bootstrap.algorithm, bootstrap.W_sha256)",
+        "source": "company/tasks/EVAL-04.md L37; contracts/MANIFEST_SPEC_V4.json bootstrap.required_sets"
+      }
+    }
+  ],
+  "build_rule": {
+    "trigger": "built ONLY if the PREG1 T1 trigger fires (T1a OR T1b OR T1c OR T1d, evaluated on M02_VALIDATION_WARM; contracts/PREG1_LOCK_VALUES.json T1_architecture_selection.trigger_any_of L10-15). If not triggered (DECISIVE_STABLE), neither manifest is ever built.",
+    "builder": "a separate addendum builder module that imports the locked v4data code UNCHANGED. The v4data builder hash must stay equal to the lock's value: builder_code_sha256 443254e9ed95e41a48076f91643c83fbc77355dc80bb6b111d8432703d3e34a5 (company/handoffs/DATA-04.md L24, 'in every header and in TRANSFORM_STATE'). The addendum builder module itself is new code (not part of v4data) and carries its own code hash; only the underlying v4data transform/store/manifest code must be byte-identical to the locked version.",
+    "registration": "hashed and registered in an addendum receipt BEFORE any tie-break launch; never a TEST manifest -- no RETRO_TEST decision, label or feature is read (contracts/MANIFEST_SPEC_V4.json global_rules.test_gate).",
+    "header": "each built manifest's header carries data_protocol_lock_file_sha256 (ebf4e86f6beb82e98283108a2dad9082727e8559b81301cd46f35f60c79fd7c0) and this document's addendum_self_sha256, in addition to the common_header_fields of contracts/MANIFEST_SPEC_V4.json."
+  },
+  "resource_estimate": {
+    "method": "Per-row on-disk byte cost measured from the M01_COHORT_TRAIN and M02_VALIDATION_WARM parquet files already on the server (du -b), scaled linearly by the target manifests' sourced row counts. Peak RSS is scaled from company/handoffs/DATA-04.md's single measured BUILD_ALL peak (5,423 MiB). All scaling below is INFERENCE / derived_at_build (assumes near-linear behavior); no direct measurement of the addendum builder exists, because nothing is built by this task.",
+    "measured_server_file_sizes_bytes": {
+      "measured_utc": "2026-09-26 (EVAL-04, read-only)",
+      "command": "lobot.py cmd \"du -b <server_ws>/data_v2/manifests/M01_COHORT_TRAIN.*.parquet <server_ws>/data_v2/manifests/M02_VALIDATION_WARM.*.parquet\" (MSYS_NO_PATHCONV=1)",
+      "server_workspace": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4",
+      "M01_COHORT_TRAIN.central_order.parquet": 12584567,
+      "M01_COHORT_TRAIN.clients.parquet": 12898740,
+      "M01_COHORT_TRAIN.decisions.parquet": 58496891,
+      "M02_VALIDATION_WARM.decisions.parquet": 14459283,
+      "M02_VALIDATION_WARM.users.parquet": 3292095
+    },
+    "per_row_bytes_derived_at_build": {
+      "M01_decisions_per_row": {"value": 14.9726, "calc": "58496891 / 3906929 (n_decisions, g0/data_census/COHORT_PROJECTIONS.json L3885 == contracts/MANIFEST_SPEC_V4.json M01 expected_counts.n_decisions)"},
+      "M01_central_order_per_row": {"value": 3.2211, "calc": "12584567 / 3906929"},
+      "M01_clients_per_row": {"value": 49.2048, "calc": "12898740 / 262144 (n_users, g0/data_census/COHORT_PROJECTIONS.json L3884)"},
+      "M02_decisions_per_row_all_incl_censored": {"value": 14.4566, "calc": "14459283 / 1000189 (built decisions row count, company/handoffs/DATA-04.md L126)"},
+      "M02_users_per_row_all_incl_non_eval": {"value": 40.6000, "calc": "3292095 / 81086 (built users row count, company/handoffs/DATA-04.md L126)"}
+    },
+    "M_FULL_TRAIN_disk_estimate": {
+      "scale_factor_decisions": "40180608 / 3906929 = 10.2844x (g0/COST_FORECAST.json L18 vs g0/data_census/COHORT_PROJECTIONS.json L3885)",
+      "scale_factor_clients": "2694998 / 262144 = 10.2806x (g0/COST_FORECAST.json L17 vs g0/data_census/COHORT_PROJECTIONS.json L3884)",
+      "decisions_bytes": 601608232,
+      "central_order_bytes": 129425324,
+      "clients_bytes": 132606806,
+      "total_bytes": 863640362,
+      "total_GiB": 0.804,
+      "flag": "derived_at_build (INFERENCE: linear per-row scaling from measured M01 sizes)"
+    },
+    "M_FULL_VALIDATION_WARM_disk_estimate": {
+      "row_count_estimation_note": "The exact full decisions/users row counts (incl. censored) are not in any source (see manifests[1].expected_counts.n_decisions above). For SIZING ONLY (not a manifest expected_count) they are approximated by applying M02's censored/non-E2E density ratios to the sourced E2E figures: decisions ~= (1000189/808610) * 8430391 ~= 10,427,752 rows; users ~= (81086/62368) * 642228 ~= 834,975 rows. This approximation is INFERENCE, kept separate from the manifest's own expected_counts.",
+      "decisions_bytes": 150749322,
+      "users_bytes": 33900006,
+      "total_bytes": 184649328,
+      "total_GiB": 0.172,
+      "flag": "derived_at_build (INFERENCE: density-ratio approximation, sizing only)"
+    },
+    "total_new_disk_estimate_GiB": 0.976,
+    "cross_check": {
+      "method": "DATA-04's 8 pre-lock manifests totalled 211.8 MB on disk (company/handoffs/DATA-04.md L86-88) for 9,927,869 total decision/query rows (sum of the 8 manifests' decisions/queries counts, company/handoffs/DATA-04.md L124-131). The new two manifests add an estimated ~50,608,360 such rows (40,180,608 + ~10,427,752), a 5.098x row-count ratio. 211.8 MB * 5.098 = 1.006 GiB, consistent with the 0.976 GiB bottom-up estimate.",
+      "agreement": "within about 3%"
+    },
+    "disk_guard": {
+      "rule": "refuse when free - peak < 8 GiB (company/tasks/EVAL-04.md L50)",
+      "free_now_GB": 13.04,
+      "free_now_source": "company/handoffs/DATA-04.md L200 (REPORTED, measured 2026-09-26T16:2xZ after the DATA-04 build; no fresher disk-free figure was queried by this read-only spec task, per the task's read-only-du/ls/cat restriction)",
+      "estimated_peak_disk_GiB": "roughly 1.0-2.0 (the ~0.98-1.0 GiB manifest total, doubled in a worst case by the atomic write-then-rename rule (contracts/MANIFEST_SPEC_V4.json global_rules.file_format.atomicity) if a temp copy of the largest table is briefly staged alongside a final file)",
+      "verdict": "FEASIBLE: free (13.04 GB) - peak (<= 2 GiB) = >= 11 GB, which is >= the 8 GiB guard threshold."
+    },
+    "rss_estimate": {
+      "baseline": {"peak_MiB": 5423, "source": "company/handoffs/DATA-04.md L43, L199 (BUILD_ALL of all 8 pre-lock manifests, RSS-guarded run, guard threshold 8192 MiB)"},
+      "central_scale_factor": "5.098x (aggregate output-row-count ratio, same method as the disk cross-check above)",
+      "central_estimate_MiB": 27647,
+      "central_estimate_GiB": 27.0,
+      "worst_case_scale_factor": "10.2844x (M_FULL_TRAIN's own decisions-row scale factor alone, i.e. assuming the single largest manifest's build dominates peak RSS as if its whole decisions table were materialized in memory at once)",
+      "worst_case_estimate_MiB": 55780,
+      "worst_case_estimate_GiB": 54.5,
+      "cgroup_ceiling_GiB": 64,
+      "cgroup_ceiling_source": "company/tasks/EVAL-04.md L50",
+      "verdict": "CENTRAL ESTIMATE FEASIBLE (about 37 GiB of margin under the 64 GiB cgroup). WORST-CASE ESTIMATE MARGINAL (about 9-10 GiB of margin). Both figures are INFERENCE / derived_at_build scaling from a single prior measurement (DATA-04's one BUILD_ALL run covering 8 much smaller manifests); the addendum builder's actual memory behavior under a roughly 10x population increase is unmeasured.",
+      "recommendation": "OPEN POINT FOR FABLE: run the addendum builder once under an RSS guard (as company/handoffs/DATA-04.md's run_bounded.py) with a hard cap well below 64 GiB (e.g. 24-32 GiB) before the real tie-break launch, and build the two manifests in separate passes rather than concurrently if the guard is approached, to keep peak RSS closer to the central estimate than the worst case."
+    }
+  },
+  "addendum_self_sha256_canonicalization": "sha256 over UTF-8 bytes of json.dumps(obj, sort_keys=True, ensure_ascii=True, separators=(',', ':'), allow_nan=False), where obj is this document parsed as JSON with the single top-level key 'addendum_self_sha256' removed; every other key, including this description, is hashed (same rule as contracts/FEATURE_SCHEMA_CLEAN_V2.json L5's schema_self_sha256_canonicalization, applied to this document's own key name).",
+  "addendum_self_sha256": "4591ac3ba22452d4f99fad3e55f4ff729f2eb791700e789352bc6cace9e1ba66"
+}

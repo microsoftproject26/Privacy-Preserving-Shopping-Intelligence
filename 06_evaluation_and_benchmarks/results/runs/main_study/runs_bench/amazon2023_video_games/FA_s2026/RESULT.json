@@ -1,0 +1,392 @@
+{
+ "arm": "FA",
+ "bytes": {
+  "ledger": [
+   1137714,
+   7750144174848,
+   7750148725704,
+   0
+  ]
+ },
+ "checkpoints": {
+  "CONTROLLED_BUDGET": {
+   "file": "ckpt/BM_amazon2023_video_games_FA_s2026/endpoint_6.0.pt",
+   "mark": 6.0,
+   "sha256": "fedac24c3c815591358d736d574d8149af51090d785f7f13708cb6d6cd877ab3"
+  },
+  "PRACTICAL_BEST": {
+   "file": "ckpt/BM_amazon2023_video_games_FA_s2026/best.pt",
+   "mark": 6.0,
+   "sha256": "fedac24c3c815591358d736d574d8149af51090d785f7f13708cb6d6cd877ab3"
+  }
+ },
+ "evals": [
+  [
+   1,
+   823,
+   0.008918914217902724,
+   true,
+   "MAIN"
+  ],
+  [
+   2,
+   1643,
+   0.01078244763702506,
+   true,
+   "MAIN"
+  ],
+  [
+   3,
+   2469,
+   0.011243469643517733,
+   true,
+   "MAIN"
+  ],
+  [
+   4,
+   3297,
+   0.0101383572035397,
+   false,
+   "MAIN"
+  ],
+  [
+   5,
+   4115,
+   0.015923926883677775,
+   true,
+   "MAIN"
+  ],
+  [
+   6,
+   4940,
+   0.018615326720076736,
+   true,
+   "MAIN"
+  ],
+  [
+   7,
+   5759,
+   0.017560115168538577,
+   false,
+   "MAIN"
+  ],
+  [
+   8,
+   6580,
+   0.018775727841277096,
+   false,
+   "MAIN"
+  ],
+  [
+   9,
+   7407,
+   0.018603488008321484,
+   false,
+   "MAIN"
+  ],
+  [
+   10,
+   8228,
+   0.021625409546379697,
+   true,
+   "MAIN"
+  ],
+  [
+   11,
+   9051,
+   0.022557256007484837,
+   true,
+   "MAIN"
+  ],
+  [
+   12,
+   9871,
+   0.025631924652849976,
+   true,
+   "MAIN"
+  ]
+ ],
+ "frozen": null,
+ "init_from": null,
+ "kind": "fl",
+ "run_id": "BM_amazon2023_video_games_FA_s2026",
+ "spec": {
+  "arm": "FA",
+  "cfg": {
+   "dp": null,
+   "dropout_p": 0.1,
+   "endpoint_efe": 6.0,
+   "endpoint_rounds": 9872,
+   "exposure_point": "end",
+   "lr_peak_local": 0.1,
+   "lr_shape": "fl_const",
+   "max_attempts": 2,
+   "method": "FA",
+   "mu": 0.0,
+   "n_shards": 2,
+   "pf": null,
+   "seed": 2026,
+   "server_opt": {
+    "beta1": 0.9,
+    "beta2": 0.99,
+    "lr": 0.01,
+    "name": "fedadam",
+    "tau": 0.001,
+    "v_init": "tau_squared"
+   },
+   "solver": {
+    "batch_size": 16,
+    "clip": 1.0,
+    "fused": null,
+    "lr": 0.1,
+    "optimizer": "sgd_m",
+    "passes": 1,
+    "weight_decay": 0.0
+   }
+  },
+  "client_lr": 0.1,
+  "client_opt": "sgd_m",
+  "data": {
+   "dataset": "amazon2023_video_games",
+   "fingerprint": "2452d9068d7f1be5090b8a6ef3268342ecffb2e1880b4e4df6f3852655a4ff0d",
+   "n_clients": 94762,
+   "n_decisions": 530300
+  },
+  "dropout": [
+   0.1
+  ],
+  "exposure_budget": {
+   "dropout_p": 0.1,
+   "endpoint_efe": 6.0,
+   "formula": "rounds = ceil(60 N_clients / (576 P)) (launch_fl.fa_rounds, 06J \u00a73)",
+   "group": 64,
+   "n_clients": 94762,
+   "passes": 1,
+   "rounds": 9872
+  },
+  "knobs": {
+   "batch": 16,
+   "clip": 1.0,
+   "dropout_p": 0.1,
+   "endpoint_efe": 6.0,
+   "group": 64,
+   "m": 1024,
+   "max_attempts": 2,
+   "mu": 0.01,
+   "n_shards": 2,
+   "passes": 2,
+   "pf_clip": 1.0,
+   "pf_lam": 0.0001,
+   "rounds": 6827,
+   "rounds_1024": 384,
+   "s_cal_rounds": 20,
+   "s_cal_seed": 2026,
+   "sampling": "sweep",
+   "weight_decay": 1e-05
+  },
+  "local_passes": 1,
+  "lr_mult": 1.0,
+  "lr_peak_base": 0.0007114121116984968,
+  "lr_shape": "fl_const",
+  "max_len": 50,
+  "max_rounds": 9872,
+  "plan": {
+   "group_size": 64,
+   "sampling": "sweep"
+  },
+  "provenance": {
+   "ft_cell": "FT_C_f0.3_P4",
+   "pins": {
+    "device/SELECTION_FT_C.json": "e47965d2f4486fc2c30140a8ee14e79686a842decb091b3dff1de5646716c10c",
+    "fl/FL_TUNING_SELECTION.json": "9bca186e5025f5caa9e762f3c425fb3151923b79e60f01e6ecb063aac9c715ec",
+    "fl/FL_WARM_SELECTION_S7.json": "d67a0a851665495b092abbba4456f26a3423d6ef21665f5a0e2b65e2d78dc000",
+    "fl/FL_WARM_SELECTION_S8.json": "8b79d3052799dfa0ba208dce5db138da88aaa7024ba6511a374c59ce8c55a98a"
+   },
+   "tuning_winner_label": "fedadam|eta=0.01|m=1|shape=fl_const|client=sgd_m|clr=0.1|passes=1",
+   "warm_winners": {
+    "FA_WARM": "f=0.25|sf=0.1",
+    "FA_WARM_FROZEN": "f=1|sf=0.1"
+   }
+  },
+  "role": "MAIN",
+  "server_lr": 0.01,
+  "server_opt": "fedadam",
+  "upload_codec": null,
+  "variant": "SASREC_D64_B2"
+ },
+ "spec_sha256": "cca4b3f164785daba328ac6ae9e16951468e10cb045321b7dac0e67f6de22243",
+ "status": "DONE_MAIN",
+ "summary": {
+  "counters": {
+   "coverage_by_sweep": {
+    "0": {
+     "clients": 85354,
+     "fraction": 0.900719697769148
+    },
+    "1": {
+     "clients": 85179,
+     "fraction": 0.8988729659568181
+    },
+    "2": {
+     "clients": 85454,
+     "fraction": 0.9017749730904793
+    },
+    "3": {
+     "clients": 85392,
+     "fraction": 0.9011207023912539
+    },
+    "4": {
+     "clients": 85340,
+     "fraction": 0.9005719592241616
+    },
+    "5": {
+     "clients": 85357,
+     "fraction": 0.9007513560287879
+    },
+    "6": {
+     "clients": 56781,
+     "fraction": 0.5991958802051455
+    }
+   },
+   "efe": 6.005385630775033,
+   "exposures": 3184656,
+   "max_visits": 7,
+   "min_visits": 1,
+   "noop_visits": 0,
+   "retries": 0,
+   "rounds": 9872,
+   "steps": 608212,
+   "steps_hist": {
+    "1": 542752,
+    "10": 62,
+    "12": 25,
+    "13": 11,
+    "14": 17,
+    "16": 6,
+    "19": 5,
+    "2": 19420,
+    "21": 5,
+    "25": 6,
+    "27": 7,
+    "3": 3949,
+    "30": 6,
+    "4": 1400,
+    "5": 603,
+    "6": 283,
+    "7": 135,
+    "8": 86,
+    "9": 79
+   },
+   "visits": 568857,
+   "wasted_steps": 0
+  },
+  "lr_table_digest": "2b704f1666900b3a6e205cfece0a2ab88e90c9605364963a3cde3bc8213cf891",
+  "rounds": 9872
+ },
+ "timing": {
+  "mean_round_s": 0.9468020592458437,
+  "median_round_s": 0.8763192845508456,
+  "n_clients": 94762,
+  "n_decisions": 530300,
+  "rounds_full_run": 9872,
+  "rounds_this_leg": 9872,
+  "wall_s_this_leg": 9349.2
+ },
+ "utc": "2026-10-03T14:01:56Z",
+ "validation": {
+  "CONTROLLED_BUDGET": {
+   "ALL": {
+    "hr@10": 0.04874413294431054,
+    "hr@20": 0.07737113620026216,
+    "mrr@20": 0.020593877664472616,
+    "n_unreachable": 0,
+    "n_users": 94596,
+    "ndcg@10": 0.025631924652849976,
+    "ndcg@20": 0.03281768977606437
+   },
+   "BAND": {
+    "hr@10": 0.049594927791475875,
+    "hr@20": 0.0769989432898908,
+    "mrr@20": 0.021454880143005624,
+    "n_unreachable": 0,
+    "n_users": 14195,
+    "ndcg@10": 0.02650254876346869,
+    "ndcg@20": 0.03338350658611269
+   },
+   "BAND_COVERED_TARGET": {
+    "hr@10": 0.053303893461574034,
+    "hr@20": 0.08460880421714603,
+    "mrr@20": 0.0225203279796131,
+    "n_unreachable": 0,
+    "n_users": 86504,
+    "ndcg@10": 0.0280296581020646,
+    "ndcg@20": 0.03588761423814604
+   },
+   "BAND_UNCOVERED_TARGET": {
+    "hr@10": 0.0,
+    "hr@20": 0.0,
+    "mrr@20": 0.0,
+    "n_unreachable": 0,
+    "n_users": 8092,
+    "ndcg@10": 0.0,
+    "ndcg@20": 0.0
+   },
+   "OTHERS": {
+    "hr@10": 0.0485939229611572,
+    "hr@20": 0.0774368478004005,
+    "mrr@20": 0.020441865498171497,
+    "n_unreachable": 0,
+    "n_users": 80401,
+    "ndcg@10": 0.025478213763057152,
+    "ndcg@20": 0.032717793386484194
+   }
+  },
+  "PRACTICAL_BEST": {
+   "ALL": {
+    "hr@10": 0.04874413294431054,
+    "hr@20": 0.07737113620026216,
+    "mrr@20": 0.020593877664472616,
+    "n_unreachable": 0,
+    "n_users": 94596,
+    "ndcg@10": 0.025631924652849976,
+    "ndcg@20": 0.03281768977606437
+   },
+   "BAND": {
+    "hr@10": 0.049594927791475875,
+    "hr@20": 0.0769989432898908,
+    "mrr@20": 0.021454880143005624,
+    "n_unreachable": 0,
+    "n_users": 14195,
+    "ndcg@10": 0.02650254876346869,
+    "ndcg@20": 0.03338350658611269
+   },
+   "BAND_COVERED_TARGET": {
+    "hr@10": 0.053303893461574034,
+    "hr@20": 0.08460880421714603,
+    "mrr@20": 0.0225203279796131,
+    "n_unreachable": 0,
+    "n_users": 86504,
+    "ndcg@10": 0.0280296581020646,
+    "ndcg@20": 0.03588761423814604
+   },
+   "BAND_UNCOVERED_TARGET": {
+    "hr@10": 0.0,
+    "hr@20": 0.0,
+    "mrr@20": 0.0,
+    "n_unreachable": 0,
+    "n_users": 8092,
+    "ndcg@10": 0.0,
+    "ndcg@20": 0.0
+   },
+   "OTHERS": {
+    "hr@10": 0.0485939229611572,
+    "hr@20": 0.0774368478004005,
+    "mrr@20": 0.020441865498171497,
+    "n_unreachable": 0,
+    "n_users": 80401,
+    "ndcg@10": 0.025478213763057152,
+    "ndcg@20": 0.032717793386484194
+   }
+  }
+ }
+}

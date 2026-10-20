@@ -1,0 +1,31 @@
+arm: F0_item_only_h256
+group: F0_item_only
+channels: F0
+adamw_impl: fused
+seed: 2026
+microbatch: 256
+lr_initial: 0.001
+lr_decayed: 0.0001
+betas:
+- 0.9
+- 0.999
+eps: 1.0e-08
+weight_decay: 1.0e-05
+warmup_updates: 100
+grad_clip_norm: 1.0
+max_epochs: 6
+delta_threshold: 0.001
+patience_limit: 2
+min_epochs: 2
+n_train: 40180608
+n_vs: 8826488
+n_cohort: 112365
+test_tiny: false
+dataset_version_hash: 860e5a1c3a81b8e4bbfeff4f245fa37638a43e4f260df179585964d2d4da8dbd
+ckpt_every_updates: 10000
+diag_every_updates: 20000
+library_versions:
+  torch: 2.13.0+cu130
+  numpy: 2.4.6
+  pyarrow: 21.0.0
+  python: 3.11.14

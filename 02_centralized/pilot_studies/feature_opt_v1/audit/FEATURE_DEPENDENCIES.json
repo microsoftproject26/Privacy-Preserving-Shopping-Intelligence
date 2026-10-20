@@ -1,0 +1,550 @@
+{
+  "direct_owner": {
+    "item_tokens": "PRODUCT",
+    "category_tokens": "CATEGORY",
+    "brand_tokens": "BRAND",
+    "main_category_tokens": "CATEGORY",
+    "daypart_tokens": "CALENDAR",
+    "weekday_tokens": "CALENDAR",
+    "category_code_idx (stored-only, NOT in A1 batch)": "CATEGORY",
+    "log1p_price": "PRICE",
+    "utc_hour_sin": "CALENDAR",
+    "utc_hour_cos": "CALENDAR",
+    "utc_weekday_sin": "CALENDAR",
+    "utc_weekday_cos": "CALENDAR",
+    "local_hour_sin": "CALENDAR",
+    "local_hour_cos": "CALENDAR",
+    "local_weekday_sin": "CALENDAR",
+    "local_weekday_cos": "CALENDAR",
+    "is_weekend": "CALENDAR",
+    "log1p_prev_raw_view_gap_s": "ELAPSED_TIME",
+    "log1p_segment_elapsed_s": "ELAPSED_TIME",
+    "log1p_item_observed_age_s": "PRODUCT",
+    "prefix_representative_count": "SESSION_INTENT",
+    "prefix_item_count": "SESSION_INTENT",
+    "prefix_known_category_count": "SESSION_INTENT",
+    "prefix_category_switch_count": "SESSION_INTENT",
+    "current_known_category_run_length": "SESSION_INTENT",
+    "log1p_prefix_elapsed_s": "SESSION_INTENT",
+    "price_missing": "QUALITY_PROVENANCE",
+    "price_zero": "QUALITY_PROVENANCE",
+    "price_conflict": "QUALITY_PROVENANCE",
+    "brand_missing": "QUALITY_PROVENANCE",
+    "brand_recovered": "QUALITY_PROVENANCE",
+    "brand_conflict": "QUALITY_PROVENANCE",
+    "category_missing": "QUALITY_PROVENANCE",
+    "category_recovered": "QUALITY_PROVENANCE",
+    "category_conflict": "QUALITY_PROVENANCE",
+    "category_code_missing": "QUALITY_PROVENANCE",
+    "category_code_recovered": "QUALITY_PROVENANCE",
+    "main_category_missing": "QUALITY_PROVENANCE",
+    "prev_gap_unavailable": "QUALITY_PROVENANCE",
+    "item_age_unavailable": "QUALITY_PROVENANCE",
+    "simultaneous_block": "QUALITY_PROVENANCE",
+    "log1p_prev_view_count": "USER_HISTORY",
+    "log1p_prev_session_count": "USER_HISTORY",
+    "recent_history_length": "USER_HISTORY",
+    "has_history": "USER_HISTORY",
+    "recent_distinct_items": "USER_HISTORY",
+    "recent_distinct_known_main_categories": "USER_HISTORY",
+    "recent_category_match_share": "USER_HISTORY",
+    "recent_brand_match_share": "USER_HISTORY",
+    "recent_mean_log_price": "PRICE",
+    "current_minus_recent_mean_log_price": "PRICE",
+    "log1p_time_since_prev_user_event_s": "ELAPSED_TIME",
+    "log1p_time_since_prev_session_last_event_s": "ELAPSED_TIME",
+    "has_history_mask": "STRUCTURAL",
+    "recent_category_match_supported": "STRUCTURAL",
+    "recent_brand_match_supported": "STRUCTURAL",
+    "recent_price_supported": "STRUCTURAL",
+    "prev_user_event_available": "STRUCTURAL",
+    "prev_session_available": "STRUCTURAL",
+    "attention_mask": "STRUCTURAL",
+    "position_ids": "STRUCTURAL",
+    "lengths": "STRUCTURAL",
+    "last_valid_index": "STRUCTURAL",
+    "loss_mask": "LABEL",
+    "eval_mask": "LABEL",
+    "target_class": "LABEL",
+    "decision_id": "IDENTIFIER",
+    "client_id": "IDENTIFIER",
+    "model_segment_id": "IDENTIFIER",
+    "local_hour (NOT_FOUND in batch)": "CALENDAR",
+    "local_daypart (NOT_FOUND in batch)": "CALENDAR"
+  },
+  "dependency_edges": {
+    "item_tokens": [],
+    "category_tokens": [
+      "category_missing",
+      "category_recovered",
+      "category_conflict"
+    ],
+    "brand_tokens": [
+      "brand_missing",
+      "brand_recovered",
+      "brand_conflict"
+    ],
+    "main_category_tokens": [
+      "category_code_missing(pipeline root)",
+      "main_category_missing"
+    ],
+    "daypart_tokens": [
+      "block_ts"
+    ],
+    "weekday_tokens": [
+      "block_ts"
+    ],
+    "category_code_idx (stored-only, NOT in A1 batch)": [
+      "category_code_missing",
+      "category_code_recovered"
+    ],
+    "log1p_price": [
+      "price_missing",
+      "price_zero",
+      "price_conflict"
+    ],
+    "utc_hour_sin": [],
+    "utc_hour_cos": [],
+    "utc_weekday_sin": [],
+    "utc_weekday_cos": [],
+    "local_hour_sin": [
+      "utc_hour_sin",
+      "utc_hour_cos"
+    ],
+    "local_hour_cos": [
+      "utc_hour_sin",
+      "utc_hour_cos"
+    ],
+    "local_weekday_sin": [
+      "utc_weekday_sin",
+      "utc_weekday_cos"
+    ],
+    "local_weekday_cos": [
+      "utc_weekday_sin",
+      "utc_weekday_cos"
+    ],
+    "is_weekend": [
+      "local_weekday_sin",
+      "local_weekday_cos",
+      "weekday_tokens"
+    ],
+    "log1p_prev_raw_view_gap_s": [
+      "prev_gap_unavailable"
+    ],
+    "log1p_segment_elapsed_s": [],
+    "log1p_item_observed_age_s": [
+      "item_age_unavailable",
+      "item_tokens"
+    ],
+    "prefix_representative_count": [],
+    "prefix_item_count": [
+      "prefix_representative_count"
+    ],
+    "prefix_known_category_count": [
+      "main_category_tokens"
+    ],
+    "prefix_category_switch_count": [
+      "main_category_tokens"
+    ],
+    "current_known_category_run_length": [
+      "main_category_tokens"
+    ],
+    "log1p_prefix_elapsed_s": [
+      "log1p_segment_elapsed_s"
+    ],
+    "price_missing": [
+      "log1p_price"
+    ],
+    "price_zero": [
+      "log1p_price",
+      "price_missing"
+    ],
+    "price_conflict": [
+      "log1p_price"
+    ],
+    "brand_missing": [
+      "brand_tokens"
+    ],
+    "brand_recovered": [
+      "brand_tokens"
+    ],
+    "brand_conflict": [
+      "brand_tokens"
+    ],
+    "category_missing": [
+      "category_tokens"
+    ],
+    "category_recovered": [
+      "category_tokens"
+    ],
+    "category_conflict": [
+      "category_tokens"
+    ],
+    "category_code_missing": [
+      "category_code_idx (stored-only)"
+    ],
+    "category_code_recovered": [
+      "category_code_idx (stored-only)"
+    ],
+    "main_category_missing": [
+      "main_category_tokens"
+    ],
+    "prev_gap_unavailable": [
+      "log1p_prev_raw_view_gap_s"
+    ],
+    "item_age_unavailable": [
+      "log1p_item_observed_age_s"
+    ],
+    "simultaneous_block": [],
+    "log1p_prev_view_count": [
+      "has_history_mask"
+    ],
+    "log1p_prev_session_count": [
+      "has_history_mask"
+    ],
+    "recent_history_length": [
+      "has_history_mask"
+    ],
+    "has_history": [
+      "has_history_mask"
+    ],
+    "recent_distinct_items": [
+      "has_history_mask",
+      "item_tokens"
+    ],
+    "recent_distinct_known_main_categories": [
+      "has_history_mask",
+      "main_category_tokens"
+    ],
+    "recent_category_match_share": [
+      "recent_category_match_supported",
+      "main_category_tokens"
+    ],
+    "recent_brand_match_share": [
+      "recent_brand_match_supported",
+      "brand_tokens"
+    ],
+    "recent_mean_log_price": [
+      "recent_price_supported",
+      "log1p_price"
+    ],
+    "current_minus_recent_mean_log_price": [
+      "recent_price_supported",
+      "recent_mean_log_price",
+      "log1p_price"
+    ],
+    "log1p_time_since_prev_user_event_s": [
+      "prev_user_event_available"
+    ],
+    "log1p_time_since_prev_session_last_event_s": [
+      "prev_session_available"
+    ],
+    "has_history_mask": [],
+    "recent_category_match_supported": [],
+    "recent_brand_match_supported": [],
+    "recent_price_supported": [],
+    "prev_user_event_available": [],
+    "prev_session_available": [],
+    "attention_mask": [
+      "lengths"
+    ],
+    "position_ids": [
+      "lengths",
+      "attention_mask"
+    ],
+    "lengths": [],
+    "last_valid_index": [
+      "lengths"
+    ],
+    "loss_mask": [
+      "target_class"
+    ],
+    "eval_mask": [
+      "target_class"
+    ],
+    "target_class": [],
+    "decision_id": [],
+    "client_id": [],
+    "model_segment_id": [],
+    "local_hour (NOT_FOUND in batch)": [],
+    "local_daypart (NOT_FOUND in batch)": []
+  },
+  "group_closures": {
+    "CATEGORY": {
+      "direct_channels_only": [
+        "category_code_idx (stored-only, NOT in A1 batch)",
+        "category_tokens",
+        "main_category_tokens"
+      ],
+      "total_closure": [
+        "category_code_idx (stored-only, NOT in A1 batch)",
+        "category_code_missing",
+        "category_code_recovered",
+        "category_conflict",
+        "category_missing",
+        "category_recovered",
+        "category_tokens",
+        "current_known_category_run_length",
+        "main_category_missing",
+        "main_category_tokens",
+        "prefix_category_switch_count",
+        "prefix_known_category_count",
+        "recent_category_match_share",
+        "recent_category_match_supported",
+        "recent_distinct_known_main_categories"
+      ]
+    },
+    "BRAND": {
+      "direct_channels_only": [
+        "brand_tokens"
+      ],
+      "total_closure": [
+        "brand_conflict",
+        "brand_missing",
+        "brand_recovered",
+        "brand_tokens",
+        "recent_brand_match_share",
+        "recent_brand_match_supported"
+      ]
+    },
+    "CALENDAR": {
+      "direct_channels_only": [
+        "daypart_tokens",
+        "is_weekend",
+        "local_daypart (NOT_FOUND in batch)",
+        "local_hour (NOT_FOUND in batch)",
+        "local_hour_cos",
+        "local_hour_sin",
+        "local_weekday_cos",
+        "local_weekday_sin",
+        "utc_hour_cos",
+        "utc_hour_sin",
+        "utc_weekday_cos",
+        "utc_weekday_sin",
+        "weekday_tokens"
+      ],
+      "total_closure": [
+        "daypart_tokens",
+        "is_weekend",
+        "local_daypart (NOT_FOUND in batch)",
+        "local_hour (NOT_FOUND in batch)",
+        "local_hour_cos",
+        "local_hour_sin",
+        "local_weekday_cos",
+        "local_weekday_sin",
+        "utc_hour_cos",
+        "utc_hour_sin",
+        "utc_weekday_cos",
+        "utc_weekday_sin",
+        "weekday_tokens"
+      ]
+    },
+    "ELAPSED_TIME": {
+      "direct_channels_only": [
+        "log1p_prev_raw_view_gap_s",
+        "log1p_segment_elapsed_s",
+        "log1p_time_since_prev_session_last_event_s",
+        "log1p_time_since_prev_user_event_s"
+      ],
+      "total_closure": [
+        "log1p_prev_raw_view_gap_s",
+        "log1p_segment_elapsed_s",
+        "log1p_time_since_prev_session_last_event_s",
+        "log1p_time_since_prev_user_event_s",
+        "prev_gap_unavailable",
+        "prev_session_available",
+        "prev_user_event_available"
+      ]
+    },
+    "PRICE": {
+      "direct_channels_only": [
+        "current_minus_recent_mean_log_price",
+        "log1p_price",
+        "recent_mean_log_price"
+      ],
+      "total_closure": [
+        "current_minus_recent_mean_log_price",
+        "log1p_price",
+        "price_conflict",
+        "price_missing",
+        "price_zero",
+        "recent_mean_log_price",
+        "recent_price_supported"
+      ]
+    },
+    "SESSION_INTENT": {
+      "direct_channels_only": [
+        "current_known_category_run_length",
+        "log1p_prefix_elapsed_s",
+        "prefix_category_switch_count",
+        "prefix_item_count",
+        "prefix_known_category_count",
+        "prefix_representative_count"
+      ],
+      "total_closure": [
+        "current_known_category_run_length",
+        "log1p_prefix_elapsed_s",
+        "log1p_segment_elapsed_s",
+        "main_category_missing",
+        "main_category_tokens",
+        "prefix_category_switch_count",
+        "prefix_item_count",
+        "prefix_known_category_count",
+        "prefix_representative_count"
+      ]
+    },
+    "USER_HISTORY": {
+      "direct_channels_only": [
+        "has_history",
+        "log1p_prev_session_count",
+        "log1p_prev_view_count",
+        "recent_brand_match_share",
+        "recent_category_match_share",
+        "recent_distinct_items",
+        "recent_distinct_known_main_categories",
+        "recent_history_length"
+      ],
+      "total_closure": [
+        "brand_conflict",
+        "brand_missing",
+        "brand_recovered",
+        "brand_tokens",
+        "has_history",
+        "has_history_mask",
+        "item_tokens",
+        "log1p_prev_session_count",
+        "log1p_prev_view_count",
+        "main_category_missing",
+        "main_category_tokens",
+        "recent_brand_match_share",
+        "recent_brand_match_supported",
+        "recent_category_match_share",
+        "recent_category_match_supported",
+        "recent_distinct_items",
+        "recent_distinct_known_main_categories",
+        "recent_history_length"
+      ]
+    },
+    "QUALITY_PROVENANCE": {
+      "direct_channels_only": [
+        "brand_conflict",
+        "brand_missing",
+        "brand_recovered",
+        "category_code_missing",
+        "category_code_recovered",
+        "category_conflict",
+        "category_missing",
+        "category_recovered",
+        "item_age_unavailable",
+        "main_category_missing",
+        "prev_gap_unavailable",
+        "price_conflict",
+        "price_missing",
+        "price_zero",
+        "simultaneous_block"
+      ],
+      "total_closure": [
+        "brand_conflict",
+        "brand_missing",
+        "brand_recovered",
+        "brand_tokens",
+        "category_code_missing",
+        "category_code_recovered",
+        "category_conflict",
+        "category_missing",
+        "category_recovered",
+        "category_tokens",
+        "item_age_unavailable",
+        "item_tokens",
+        "log1p_item_observed_age_s",
+        "log1p_prev_raw_view_gap_s",
+        "log1p_price",
+        "main_category_missing",
+        "main_category_tokens",
+        "prev_gap_unavailable",
+        "price_conflict",
+        "price_missing",
+        "price_zero",
+        "simultaneous_block"
+      ]
+    },
+    "PRODUCT": {
+      "direct_channels_only": [
+        "item_tokens",
+        "log1p_item_observed_age_s"
+      ],
+      "total_closure": [
+        "item_age_unavailable",
+        "item_tokens",
+        "log1p_item_observed_age_s",
+        "recent_distinct_items"
+      ]
+    },
+    "STRUCTURAL": {
+      "direct_channels_only": [
+        "attention_mask",
+        "has_history_mask",
+        "last_valid_index",
+        "lengths",
+        "position_ids",
+        "prev_session_available",
+        "prev_user_event_available",
+        "recent_brand_match_supported",
+        "recent_category_match_supported",
+        "recent_price_supported"
+      ],
+      "total_closure": [
+        "attention_mask",
+        "has_history_mask",
+        "last_valid_index",
+        "lengths",
+        "position_ids",
+        "prev_session_available",
+        "prev_user_event_available",
+        "recent_brand_match_supported",
+        "recent_category_match_supported",
+        "recent_price_supported"
+      ]
+    },
+    "IDENTIFIER": {
+      "direct_channels_only": [
+        "client_id",
+        "decision_id",
+        "model_segment_id"
+      ],
+      "total_closure": [
+        "client_id",
+        "decision_id",
+        "model_segment_id"
+      ]
+    },
+    "LABEL": {
+      "direct_channels_only": [
+        "eval_mask",
+        "loss_mask",
+        "target_class"
+      ],
+      "total_closure": [
+        "eval_mask",
+        "loss_mask",
+        "target_class"
+      ]
+    }
+  },
+  "shared_masks_across_groups": {
+    "has_history_mask": "gates 6 USER_HISTORY features (log1p_prev_view_count, log1p_prev_session_count, recent_history_length, has_history, recent_distinct_items, recent_distinct_known_main_categories); must survive removal of every other USER_HISTORY column.",
+    "recent_category_match_supported": "gates recent_category_match_share only; shared between USER_HISTORY and CATEGORY closures.",
+    "recent_brand_match_supported": "gates recent_brand_match_share only; shared between USER_HISTORY and BRAND closures.",
+    "recent_price_supported": "gates recent_mean_log_price AND current_minus_recent_mean_log_price; shared between USER_HISTORY and PRICE closures.",
+    "prev_user_event_available": "gates log1p_time_since_prev_user_event_s; shared between USER_HISTORY and ELAPSED_TIME closures.",
+    "prev_session_available": "gates log1p_time_since_prev_session_last_event_s; shared between USER_HISTORY and ELAPSED_TIME closures.",
+    "price_missing / price_zero / price_conflict": "gate log1p_price; price_zero is a proven (data-measured) exact duplicate of price_missing in this dataset (PROTOCOL_DEVIATIONS.md:69-76), so removing price_missing without removing price_zero would silently keep the same information.",
+    "prev_gap_unavailable": "gates log1p_prev_raw_view_gap_s only; ELAPSED_TIME-local.",
+    "item_age_unavailable": "gates log1p_item_observed_age_s; shared between PRODUCT and ELAPSED_TIME-flavoured closures."
+  },
+  "notes": [
+    "direct_owner assigns each feature to exactly ONE semantic group per the task packet's enum; features that are formally computed from another group's tokens (e.g. daypart/weekday from block_ts, prefix_known_category_count from main_category_tokens) are still counted under their own thematic group (CALENDAR / SESSION_INTENT) but list the true upstream dependency in dependency_edges.",
+    "total_closure additions beyond the formal dependency graph are DOCUMENTED duplications already proven or derived in REDUNDANCY_FINDINGS.md (e.g. is_weekend/daypart/weekday all disclose the same local-time signal as local_hour_sin/cos+local_weekday_sin/cos); they are listed so a group's total information content is not undercounted just because no single column literally reads another as an input.",
+    "source_refs for every edge are in audit/FEATURE_INVENTORY.csv (depends_on / duplicates_or_derivations columns) and audit/TRANSFORM_LINEAGE.json; this file is the graph view, not a new source of claims."
+  ]
+}

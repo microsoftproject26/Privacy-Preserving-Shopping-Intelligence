@@ -1,0 +1,140 @@
+{
+ "authority": "contracts/PREG1_AMENDMENT_03.md \u00a71/\u00a73; contracts/PREG1_AMENDMENT_06.md \u00a71; INT-03 item 3",
+ "families": {
+  "SASREC": [
+   {
+    "cell": {
+     "dropout_p": 0.1,
+     "lr_stratum": 0,
+     "model_variant": "SASREC_D64_B2",
+     "schedule": "S0"
+    },
+    "dropout": [
+     0.1
+    ],
+    "dropout_p": 0.1,
+    "dropout_sites": [
+     "all"
+    ],
+    "family": "SASREC",
+    "hp_id": "P2S_SASREC_D64_B2_S0_s0",
+    "index": 1,
+    "log10_peak_lr": -3.3978787452803374,
+    "lr_stratum": 0,
+    "model_variant": "SASREC_D64_B2",
+    "peak_lr": 0.00040005642964899735,
+    "schedule": "S0",
+    "sha256": "bf2b55ebb5ed9d35209880d759893f9841a70dc69952054c6d77227f2d770b3d"
+   },
+   {
+    "cell": {
+     "dropout_p": 0.1,
+     "lr_stratum": 1,
+     "model_variant": "SASREC_D64_B2",
+     "schedule": "S0"
+    },
+    "dropout": [
+     0.1
+    ],
+    "dropout_p": 0.1,
+    "dropout_sites": [
+     "all"
+    ],
+    "family": "SASREC",
+    "hp_id": "P2S_SASREC_D64_B2_S0_s1",
+    "index": 2,
+    "log10_peak_lr": -3.1478787452803374,
+    "lr_stratum": 1,
+    "model_variant": "SASREC_D64_B2",
+    "peak_lr": 0.0007114121116984968,
+    "schedule": "S0",
+    "sha256": "01c05c1b768d75cde03e0e1982fc7a7371cb85d102189414b45eafea6e58261b"
+   },
+   {
+    "cell": {
+     "dropout_p": 0.1,
+     "lr_stratum": 2,
+     "model_variant": "SASREC_D64_B2",
+     "schedule": "S0"
+    },
+    "dropout": [
+     0.1
+    ],
+    "dropout_p": 0.1,
+    "dropout_sites": [
+     "all"
+    ],
+    "family": "SASREC",
+    "hp_id": "P2S_SASREC_D64_B2_S0_s2",
+    "index": 3,
+    "log10_peak_lr": -2.8978787452803374,
+    "lr_stratum": 2,
+    "model_variant": "SASREC_D64_B2",
+    "peak_lr": 0.0012650895102857473,
+    "schedule": "S0",
+    "sha256": "59dc9601875d0d1a6553452fc98ba939ace74b075a5b28e7511596b2afe7020c"
+   },
+   {
+    "cell": {
+     "dropout_p": 0.1,
+     "lr_stratum": 3,
+     "model_variant": "SASREC_D64_B2",
+     "schedule": "S0"
+    },
+    "dropout": [
+     0.1
+    ],
+    "dropout_p": 0.1,
+    "dropout_sites": [
+     "all"
+    ],
+    "family": "SASREC",
+    "hp_id": "P2S_SASREC_D64_B2_S0_s3",
+    "index": 4,
+    "log10_peak_lr": -2.6478787452803374,
+    "lr_stratum": 3,
+    "model_variant": "SASREC_D64_B2",
+    "peak_lr": 0.0022496826279973683,
+    "schedule": "S0",
+    "sha256": "312351bcf9a5bf09fc02a42b87f14d43b986c9a3bdd2ba8996b4ab8b286e9095"
+   }
+  ]
+ },
+ "fixed": {
+  "determinism_mode": "STRICT",
+  "efe": 6.0,
+  "effective_batch": 256,
+  "eval_manifest_role": "CALIBRATION (MAIN never read)",
+  "eval_marks": [
+   2.0,
+   4.0,
+   6.0
+  ],
+  "run_label": "HP_SEARCH",
+  "run_role": "TUNING",
+  "train_manifest_role": "CALIBRATION"
+ },
+ "format": "PPSI_V4_HP_REGISTRY_SMALL_LADDER_1",
+ "inherited": {
+  "dropout": [
+   0.1
+  ],
+  "recipe_id": "02B_SASREC",
+  "schedule": "S0"
+ },
+ "seeds": {
+  "stage1": 2026,
+  "stage2": 2027
+ },
+ "selection": "02R1 \u00a73 via v4train.p2_driver.stage1_plan / stage2_select (one size level); recipe = tuned",
+ "self_sha256": "ccfb901a07229ec853753d865ea0e2a0cf27fcdef1e478dee318fdee0189a82b",
+ "source_hp_registry": {
+  "lr_grid_sha256": "ca8686f5aef0732f92d8dddf6c113aadb09e484b0c4873695454c79f0d75815c",
+  "path": "contracts/hp_registry/HP_REGISTRY_P2R2.json",
+  "self_sha256": "a3b48f20357e67606f6ec642e1ed68260cbe5070105bd001a85dd09b3bc5ca7b"
+ },
+ "task": "INT-03 item 3 (SMALL mini-ladder)",
+ "variant_levels": [
+  "SASREC_D64_B2"
+ ]
+}

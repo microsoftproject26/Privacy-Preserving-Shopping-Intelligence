@@ -1,0 +1,345 @@
+{
+ "arm": "FA_Q8",
+ "arm_spec": {
+  "arm": "FA_Q8",
+  "cfg": {
+   "dp": null,
+   "dropout_p": 0.1,
+   "endpoint_efe": 6.0,
+   "endpoint_rounds": 13654,
+   "exposure_point": "end",
+   "lr_peak_local": 0.1,
+   "lr_shape": "fl_const",
+   "max_attempts": 2,
+   "method": "FA",
+   "mu": 0.0,
+   "n_shards": 2,
+   "pf": null,
+   "seed": 2026,
+   "server_opt": {
+    "beta1": 0.9,
+    "beta2": 0.99,
+    "lr": 0.01,
+    "name": "fedadam",
+    "tau": 0.001,
+    "v_init": "tau_squared"
+   },
+   "solver": {
+    "batch_size": 16,
+    "clip": 1.0,
+    "fused": null,
+    "lr": 0.1,
+    "optimizer": "sgd_m",
+    "passes": 1,
+    "weight_decay": 0.0
+   }
+  },
+  "client_lr": 0.1,
+  "client_opt": "sgd_m",
+  "exposure_budget": {
+   "authority": "PREG1_AMENDMENT_06J \u00a73",
+   "dropout_p": 0.1,
+   "endpoint_efe": 6.0,
+   "formula": "rounds = ceil(6.0 x N_dec / (64 x 0.9 x P x N_dec / N_clients)) = ceil(60 N_clients / (576 P))",
+   "group": 64,
+   "n_clients": 131072,
+   "passes": 1,
+   "rounds": 13654
+  },
+  "knobs": {
+   "batch": 16,
+   "clip": 1.0,
+   "dropout_p": 0.1,
+   "endpoint_efe": 6.0,
+   "group": 64,
+   "m": 1024,
+   "max_attempts": 2,
+   "mu": 0.01,
+   "n_shards": 2,
+   "passes": 2,
+   "pf_clip": 1.0,
+   "pf_lam": 0.0001,
+   "rounds": 6827,
+   "rounds_1024": 384,
+   "s_cal_rounds": 20,
+   "s_cal_seed": 2026,
+   "sampling": "sweep",
+   "weight_decay": 1e-05
+  },
+  "local_passes": 1,
+  "lr_mult": 1.0,
+  "lr_peak_base": 0.0007114121116984968,
+  "lr_shape": "fl_const",
+  "max_rounds": 13654,
+  "plan": {
+   "group_size": 64,
+   "sampling": "sweep"
+  },
+  "role": "MAIN",
+  "server_lr": 0.01,
+  "server_opt": "fedadam",
+  "upload_codec": {
+   "authority": "amendment 06B \u00a75",
+   "bits": 8,
+   "download": "dense FP32",
+   "name": "Q8_SR_PER_TENSOR",
+   "qmax": 127,
+   "rounding": "stochastic, torch.Generator seeded derive_seed(seed, 'q8', round, client_key)",
+   "scale": "max|delta| / 127 per tensor (FP32)",
+   "upload_bytes": "sum(numel) + 4 x n_tensors"
+  }
+ },
+ "arm_spec_sha256": "d47a82c79ddc353304399bfc528a1b976029d01101e84108361ba87da3d0949e",
+ "best_half_efe": 12,
+ "best_metric": 0.13864604544876763,
+ "bytes": {
+  "disclosure": "dropped clients (10% drop-out) are not charged a download (the ledger counts survivors)",
+  "fleet": {
+   "bytes_down": 65179664412016,
+   "bytes_up": 16295079770508,
+   "messages": 1573726,
+   "retry_bytes_down": 0,
+   "total": 81474744182524
+  },
+  "per_client": {
+   "max": 724806236,
+   "mean": 621602967.7011414,
+   "median": 621262488.0,
+   "min": 103543748,
+   "rule": "visits x (down + up) of that client"
+  },
+  "per_visit": {
+   "alias_bytes_not_sent": 0,
+   "bootstrap_bytes_once": 0,
+   "codec_payload_bytes": 20708908,
+   "download_bytes": 82834832,
+   "fp32_upload_bytes_fa": 82834840,
+   "header_bytes": 8,
+   "n_tensors": 50,
+   "private_bytes_sent": 0,
+   "private_resident_bytes": 0,
+   "rule": "up = sum(numel) int8 + 4 x n_tensors FP32 scales (amendment 06B \u00a75) + the 8-byte n_consumed header (as FA; FL-07 5b); down = dense FP32",
+   "send_plus_receive_bytes": 103543748,
+   "shared_numel": 20708708,
+   "upload_bytes": 20708916,
+   "upload_codec": "Q8_SR_PER_TENSOR"
+  }
+ },
+ "checkpoints": [
+  "best.pt",
+  "endpoint_6.0.pt"
+ ],
+ "counters": {
+  "coverage_by_sweep": {
+   "0": {
+    "clients": 117965,
+    "fraction": 0.9000015258789062
+   },
+   "1": {
+    "clients": 117978,
+    "fraction": 0.9001007080078125
+   },
+   "2": {
+    "clients": 118168,
+    "fraction": 0.90155029296875
+   },
+   "3": {
+    "clients": 118055,
+    "fraction": 0.9006881713867188
+   },
+   "4": {
+    "clients": 117957,
+    "fraction": 0.8999404907226562
+   },
+   "5": {
+    "clients": 118008,
+    "fraction": 0.90032958984375
+   },
+   "6": {
+    "clients": 78732,
+    "fraction": 0.600677490234375
+   }
+  },
+  "efe": 6.005918209304051,
+  "exposures": 15541971,
+  "max_visits": 7,
+  "min_visits": 1,
+  "noop_visits": 0,
+  "retries": 0,
+  "rounds": 13654,
+  "steps": 1348802,
+  "steps_hist": {
+   "1": 477189,
+   "2": 174517,
+   "3": 67952,
+   "4": 33818,
+   "5": 19127,
+   "6": 12004,
+   "7": 2256
+  },
+  "visits": 786863,
+  "wasted_steps": 0
+ },
+ "done": true,
+ "evals": [
+  [
+   1,
+   1137,
+   0.07038095241762173,
+   true,
+   "MAIN"
+  ],
+  [
+   2,
+   2276,
+   0.08969036691547509,
+   true,
+   "MAIN"
+  ],
+  [
+   3,
+   3414,
+   0.09843777093399035,
+   true,
+   "MAIN"
+  ],
+  [
+   4,
+   4551,
+   0.10660634369782657,
+   true,
+   "MAIN"
+  ],
+  [
+   5,
+   5685,
+   0.10772386141999692,
+   true,
+   "MAIN"
+  ],
+  [
+   6,
+   6830,
+   0.11384253336846464,
+   true,
+   "MAIN"
+  ],
+  [
+   7,
+   7966,
+   0.115146707449633,
+   true,
+   "MAIN"
+  ],
+  [
+   8,
+   9104,
+   0.11883659019979848,
+   true,
+   "MAIN"
+  ],
+  [
+   9,
+   10241,
+   0.11937136841785463,
+   true,
+   "MAIN"
+  ],
+  [
+   10,
+   11379,
+   0.12373368438805986,
+   true,
+   "MAIN"
+  ],
+  [
+   11,
+   12517,
+   0.12561561419864564,
+   true,
+   "MAIN"
+  ],
+  [
+   12,
+   13653,
+   0.13864604544876763,
+   true,
+   "MAIN"
+  ]
+ ],
+ "ledger": [
+  1573726,
+  65179664412016,
+  16295079770508,
+  0
+ ],
+ "lr_table": {
+  "E_total": 15541971,
+  "digest": "4d750f6c9087ded52227c1923fc28108a3511549f95f17c8ddf828de7f4f52ad",
+  "final_lr": 0.010000000000000002,
+  "min_lr": 0.0007323861139592793,
+  "n_rounds": 13654,
+  "planned_efe": 6.005918209304051
+ },
+ "lr_table_digest": "4d750f6c9087ded52227c1923fc28108a3511549f95f17c8ddf828de7f4f52ad",
+ "method": "FA",
+ "participation": {
+  "dropout_p": 0.1,
+  "dropped": 86993,
+  "endpoint_rounds": 13654,
+  "noop_rounds": 0,
+  "planned_efe": 6.005918209304051,
+  "rounds": 13654,
+  "sampled": 873856,
+  "survived": 786863
+ },
+ "phase": "MAIN",
+ "plan": {
+  "group_size": 64,
+  "keys_digest": "8356cab11d62e5fc3c99cf0594dbfade304f27947cbdd7cd39f4a25294bf44eb",
+  "manifest_hash": "5d5cd03679232d2214b9977189e9719acc3dc06842a7e03d08b3bc268f64f039",
+  "n_clients": 131072,
+  "partial_group_note": "none: N is a multiple of the group size",
+  "partial_group_policy": "SMALLER_FINAL_GROUP",
+  "partial_group_size": 0,
+  "rounds_per_sweep": 2048,
+  "sampling": "seeded permutation sweeps without replacement (PCG64), fixed consecutive groups",
+  "seed": 2026
+ },
+ "rounds": 13654,
+ "run_id": "FL_FA_Q8_SMALL_s2026",
+ "server_digest": "14d1fcde50d5498ba03559ed4275e28508affc2c9d0402d064762b4d3d4d83cf",
+ "server_opt": {
+  "cfg": {
+   "beta1": 0.9,
+   "beta2": 0.99,
+   "lr": 0.01,
+   "name": "fedadam",
+   "tau": 0.001,
+   "v_init": "tau_squared"
+  },
+  "moments_digest": "9fc34439d7549d54ed69e4ce4135cb50e3d5d137b75da6e5b5b625328d2c3e61",
+  "steps": 13654
+ },
+ "status": "DONE_MAIN",
+ "store_digest": null,
+ "train_loss_log": {
+  "authority": "FL-15 R5 (REAL_WORLD_FL_PRACTICE_AUDIT_20260930 R5): per-round client training loss from fl VisitRecord.loss_sum (sum of the batch-mean CE over a visit's steps); descriptive monitoring only, numerics unchanged; z > 0 (DP) runs record nothing (an un-noised data-dependent release, the 06L_E E1 reading)",
+  "complete": true,
+  "fields": [
+   "client_mean_loss",
+   "finite",
+   "loss_sum",
+   "mean_step_loss",
+   "n_clients",
+   "n_steps",
+   "round"
+  ],
+  "file": "TRAIN_LOSS.jsonl",
+  "missing_rounds": [],
+  "rounds_expected": 13654,
+  "rounds_logged": 13654,
+  "sha256": "18ab49074df353ae64425c6a27e1f00059642bc37391fee4978c68837445df9b"
+ },
+ "wall_s_this_leg": 126295.31
+}

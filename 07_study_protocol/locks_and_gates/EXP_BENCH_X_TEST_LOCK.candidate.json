@@ -1,0 +1,1560 @@
+{
+ "analysis": {
+  "bootstrap": {
+   "n": 1000,
+   "seed": 20260926,
+   "unit": "paired user bootstrap per seed, then the seed mean (same resampled users for every seed)"
+  },
+  "claim_rule": "R8: |seed-mean delta| > 0.005 and every seed on the same side, else on par",
+  "contrasts": [
+   {
+    "id": "R_FA_X/C_FULL",
+    "kind": "ratio",
+    "x": "FA_X",
+    "y": "C_FULL"
+   },
+   {
+    "id": "R_FA_WARM_X/C_FULL",
+    "kind": "ratio",
+    "x": "FA_WARM_X",
+    "y": "C_FULL"
+   },
+   {
+    "id": "R_C_SMALL_X/C_FULL",
+    "kind": "ratio",
+    "x": "C_SMALL_X",
+    "y": "C_FULL"
+   },
+   {
+    "id": "R_FA_X/C_SMALL_X",
+    "kind": "ratio",
+    "x": "FA_X",
+    "y": "C_SMALL_X"
+   },
+   {
+    "id": "R_FA_WARM_X/C_SMALL_X",
+    "kind": "ratio",
+    "x": "FA_WARM_X",
+    "y": "C_SMALL_X"
+   },
+   {
+    "id": "D_FA_X-FA",
+    "kind": "delta",
+    "x": "FA_X",
+    "y": "FA"
+   },
+   {
+    "id": "D_FA_WARM_X-FA_WARM",
+    "kind": "delta",
+    "x": "FA_WARM_X",
+    "y": "FA_WARM"
+   },
+   {
+    "id": "D_FA_X-PRE",
+    "kind": "delta",
+    "x": "FA_X",
+    "y": "PRE"
+   },
+   {
+    "id": "D_FA_WARM_X-PRE",
+    "kind": "delta",
+    "x": "FA_WARM_X",
+    "y": "PRE"
+   },
+   {
+    "id": "D_FA_WARM_X-FA_X",
+    "kind": "delta",
+    "x": "FA_WARM_X",
+    "y": "FA_X"
+   },
+   {
+    "id": "D_FA_X-C_SMALL_X",
+    "kind": "delta",
+    "x": "FA_X",
+    "y": "C_SMALL_X"
+   },
+   {
+    "id": "D_C_SMALL_X-C_FULL",
+    "kind": "delta",
+    "x": "C_SMALL_X",
+    "y": "C_FULL"
+   },
+   {
+    "id": "D_FA_X-C_FULL",
+    "kind": "delta",
+    "x": "FA_X",
+    "y": "C_FULL"
+   },
+   {
+    "id": "D_FA_WARM_X-C_FULL",
+    "kind": "delta",
+    "x": "FA_WARM_X",
+    "y": "C_FULL"
+   }
+  ],
+  "group": "ALL",
+  "metric": "ndcg@10",
+  "primary_rule": "PRACTICAL_BEST",
+  "retention": "100 x seed-mean X / seed-mean C_FULL (Track A C_FULL_s*, all its seeds)",
+  "script": "code_bench_x2/tools_x2/final_x.py analyze",
+  "secondary_rule": "CONTROLLED_BUDGET (where both sides have it)"
+ },
+ "authority": "owner backlog C1 (DL 553); Fable gate, then a BIND register entry, then scoring, then a LOOK entry; results beside the confirmatory benchmark TEST, never instead of it",
+ "binds": "checkpoints and RESULT files by sha256, the scoring tree by X_SHA256SUMS + code digest, final_x by sha256, the confirmatory TEST rank files by sha256; no TEST value was opened to build it (validation values of these runs were seen, DL 551-557)",
+ "code": {
+  "bench_code_sha256": "729114f86b8ffeb125f76d40336f71bdefc31d9c330fe0910d8de95fb2180db8",
+  "final_py_sha256": "9a3f66e8cd2b3d85c751b31bdbd844f18316178d0ab224b32492b44bb1205ae6",
+  "final_x_sha256": "2dff02c704551dd417ab8e7fb2c45348fe55faf6b4979c3ddd4e32b262244661",
+  "tree": "code_bench_x",
+  "x_sha256sums_sha256": "dec2c3c895ffd095c808a953decb8a337b35133ee17bcde992b73deccbba65c9"
+ },
+ "datasets": {
+  "amazon2023_baby_products": {
+   "confirmatory": {
+    "data_fingerprint": "95c0a5508c62aa53b0be5a9ff823e7867904fdb19ce897de23b75ce74ef99a90",
+    "device_class": "CPU-FP32",
+    "lock_sha256": "47c4007704cfc61fe179a163277499d642d52d791ba53614ec7b168a5f1f5f5e",
+    "n_cold_holdout_items_as_misses": 59,
+    "n_holdout_rows_unknown_user": 0,
+    "n_test_users": 150777,
+    "ranks": {
+     "C_FULL_s2026|CONTROLLED_BUDGET": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/amazon2023_baby_products/C_FULL_s2026/test/test_CONTROLLED_BUDGET.ranks_int32.npy",
+      "sha256": "cb11e585a9b088df2e4fccb483016ace41bffed646cd2113a283f6943f8504a2"
+     },
+     "C_FULL_s2026|PRACTICAL_BEST": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/amazon2023_baby_products/C_FULL_s2026/test/test_PRACTICAL_BEST.ranks_int32.npy",
+      "sha256": "1a93be397c8c114f48a5f91a6084c6f596ac994625ef0b54666313f1b35c6d7c"
+     },
+     "C_FULL_s2027|CONTROLLED_BUDGET": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/amazon2023_baby_products/C_FULL_s2027/test/test_CONTROLLED_BUDGET.ranks_int32.npy",
+      "sha256": "c913ba5e3a81d102307009bcb514c0219194469878d24b9105dec888676f2880"
+     },
+     "C_FULL_s2027|PRACTICAL_BEST": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/amazon2023_baby_products/C_FULL_s2027/test/test_PRACTICAL_BEST.ranks_int32.npy",
+      "sha256": "7a53a1885e1f07a8ff0e25bfd761bef7fe6886e916cab05b873f4e94433c9302"
+     },
+     "FA_WARM_s2026|CONTROLLED_BUDGET": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/amazon2023_baby_products/FA_WARM_s2026/test/test_CONTROLLED_BUDGET.ranks_int32.npy",
+      "sha256": "2bf5436ca58e15ea7f9418113d333b6062616185fb42d6b7901fb89e4d3a174e"
+     },
+     "FA_WARM_s2026|PRACTICAL_BEST": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/amazon2023_baby_products/FA_WARM_s2026/test/test_PRACTICAL_BEST.ranks_int32.npy",
+      "sha256": "85282e626e304b2eee54a8f19b8f1f1e337fd331c08c7dd35fd7ba093ee9e567"
+     },
+     "FA_WARM_s2027|CONTROLLED_BUDGET": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/amazon2023_baby_products/FA_WARM_s2027/test/test_CONTROLLED_BUDGET.ranks_int32.npy",
+      "sha256": "4195069d5b06a52b60e63afe1ed1e1049a21a1041a644d484208139a34f9f3f8"
+     },
+     "FA_WARM_s2027|PRACTICAL_BEST": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/amazon2023_baby_products/FA_WARM_s2027/test/test_PRACTICAL_BEST.ranks_int32.npy",
+      "sha256": "49a88acf7f77ebfa4bcbcc5466f5051f067beb9f91da01131d8d8160bd2103a2"
+     },
+     "FA_s2026|CONTROLLED_BUDGET": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/amazon2023_baby_products/FA_s2026/test/test_CONTROLLED_BUDGET.ranks_int32.npy",
+      "sha256": "8313806a7f50e6f17de47c8070f987cdb4fc0d2ac2856fda98691743083f3732"
+     },
+     "FA_s2026|PRACTICAL_BEST": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/amazon2023_baby_products/FA_s2026/test/test_PRACTICAL_BEST.ranks_int32.npy",
+      "sha256": "65ff516d8e2fb30bb05b97653de86a61e6b114bc4a4f825adc0761c62bec9dd7"
+     },
+     "FA_s2027|CONTROLLED_BUDGET": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/amazon2023_baby_products/FA_s2027/test/test_CONTROLLED_BUDGET.ranks_int32.npy",
+      "sha256": "3befcf6c92ec1688158c3f331cfbeac2a12c8ff6ee7528c9729ecfb2fa0ff37c"
+     },
+     "FA_s2027|PRACTICAL_BEST": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/amazon2023_baby_products/FA_s2027/test/test_PRACTICAL_BEST.ranks_int32.npy",
+      "sha256": "3befcf6c92ec1688158c3f331cfbeac2a12c8ff6ee7528c9729ecfb2fa0ff37c"
+     },
+     "PRE_s2026|CONTROLLED_BUDGET": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/amazon2023_baby_products/PRE_s2026/test/test_CONTROLLED_BUDGET.ranks_int32.npy",
+      "sha256": "05c3e79b4dc59ab59a07ef26d902fae730f05b6151f679685b86a1fd07e2c5ff"
+     },
+     "PRE_s2026|PRACTICAL_BEST": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/amazon2023_baby_products/PRE_s2026/test/test_PRACTICAL_BEST.ranks_int32.npy",
+      "sha256": "12a2e57bf771f1aa17add19e85c7a0917feb5f3b7e2fa79a0f4c3cb551d3516e"
+     },
+     "PRE_s2027|CONTROLLED_BUDGET": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/amazon2023_baby_products/PRE_s2027/test/test_CONTROLLED_BUDGET.ranks_int32.npy",
+      "sha256": "e76f0adc5d9dea54b1eea2d09aa02cf8cc1b7066e155e4b399eb87188cbb4cf8"
+     },
+     "PRE_s2027|PRACTICAL_BEST": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/amazon2023_baby_products/PRE_s2027/test/test_PRACTICAL_BEST.ranks_int32.npy",
+      "sha256": "0630190543789e8340e3e352b8f23b91c84d327caeb075fd67d251e70497cb9e"
+     }
+    },
+    "root": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/amazon2023_baby_products",
+    "test_look_sha256": "1ca66cc022e143ba8552f6b8a246806a7be46f2aa685c582a22dcfd7b17a24cc",
+    "test_results_sha256": "fa5e15d03b42ed78f224337c11b68a70994a1dc0338928d791d94c756332e642",
+    "view_identity": {
+     "conf_code_sha256": "c465b1221ac4f54dab1a23e61fe1819ec6e44d7530cb1bb2b49f774c333fb45a",
+     "conf_tree": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/code_bench4",
+     "data_py_sha256": "9b15752bf9dd50a5cc158be9d736c2611f3dfaffbfac249d47a879c80095a7fb",
+     "user_id_rule": "confirmatory TEST view users = this TEST view's users (same data.py, same fingerprint, same counts); paired by external user id"
+    }
+   },
+   "device_note": "CPU-FP32 both sides",
+   "runs": {
+    "C_SMALL_X_s2026": {
+     "arm": "C_SMALL",
+     "checkpoints": {
+      "PRACTICAL_BEST": {
+       "file": "ckpt/best.pt",
+       "mark": 4.0,
+       "sha256": "127af5def34a3afe251e212bc462f28408635e69a298294bdcbb92ce29203f6d"
+      }
+     },
+     "device_class": "CPU-FP32",
+     "key": "C_SMALL_X",
+     "kind": "central",
+     "label": "C_SMALL__B24_L50_D0.1",
+     "result_sha256": "292e3b2cf45724d48d724fca2f3ee4f019ab4d0571c48d3bdd961a20456f50dc",
+     "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_x/amazon2023_baby_products/C_SMALL__B24_L50_D0.1_s2026",
+     "seed": 2026,
+     "status": "DONE_MAIN"
+    },
+    "C_SMALL_X_s2027": {
+     "arm": "C_SMALL",
+     "checkpoints": {
+      "PRACTICAL_BEST": {
+       "file": "ckpt/best.pt",
+       "mark": 4.0,
+       "sha256": "7cf4e7fba2eab55e727a6b85508245ec3da48496a9cd38047277262b714bce92"
+      }
+     },
+     "device_class": "CPU-FP32",
+     "key": "C_SMALL_X",
+     "kind": "central",
+     "label": "C_SMALL__B24_L50_D0.1",
+     "result_sha256": "5948e560a17059064df70caf9c4880e0141313e93b0418429e7df467292d3740",
+     "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_x/amazon2023_baby_products/C_SMALL__B24_L50_D0.1_s2027",
+     "seed": 2027,
+     "status": "DONE_MAIN"
+    },
+    "FA_WARM_X_s2026": {
+     "arm": "FA_WARM",
+     "checkpoints": {
+      "CONTROLLED_BUDGET": {
+       "file": "ckpt/BM_amazon2023_baby_products_FA_WARM__B24_L50_D0.1__s0.0003_c0.025_p1_t1e-06__prexB96_L50_D0.2-best_s2026/endpoint_24.0.pt",
+       "mark": 24.0,
+       "sha256": "63dd18300cb7ffa8bc3f9d2fbd631a0a1a3d5c46d2b30671b263742810d252fa"
+      },
+      "PRACTICAL_BEST": {
+       "file": "ckpt/BM_amazon2023_baby_products_FA_WARM__B24_L50_D0.1__s0.0003_c0.025_p1_t1e-06__prexB96_L50_D0.2-best_s2026/best.pt",
+       "mark": 16.0,
+       "sha256": "0e2d787c22bfb2b50b84112b94bc49755e2a89b6138a8e857cf60e15efb67858"
+      }
+     },
+     "device_class": "CPU-FP32",
+     "key": "FA_WARM_X",
+     "kind": "fl",
+     "label": "FA_WARM__B24_L50_D0.1__s0.0003_c0.025_p1_t1e-06__prexB96_L50_D0.2-best",
+     "pre_provenance": {
+      "checkpoint_sha256": "5374ae52f71f0f0bb7f63ed639dd31546d96f08ddfd462bd68535bdccdcba808",
+      "pre_budget_efe": 96,
+      "pre_ckpt_rule": "PRACTICAL_BEST",
+      "pre_device_class": "CPU-FP32",
+      "pre_mark": 8.0,
+      "pre_result_sha256": "82794a18a489b742acfa010407daaa2199d87102df2e80242d011cd6f30366da",
+      "pre_run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_x/amazon2023_baby_products/PRE__B96_L50_D0.2_s2026",
+      "pre_seed": 2026,
+      "state_digest": "f091d9bbc224f7087c49761e36fc4047ada3be9ac7ebe4f72344c85082e87648"
+     },
+     "result_sha256": "0e0b7039061e40b2ba9abdf4a0c9536fbd5a3d07a38a444ae5e23c3a96d9cb0f",
+     "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_x/amazon2023_baby_products/FA_WARM__B24_L50_D0.1__s0.0003_c0.025_p1_t1e-06__prexB96_L50_D0.2-best_s2026",
+     "seed": 2026,
+     "status": "DONE_MAIN"
+    },
+    "FA_WARM_X_s2027": {
+     "arm": "FA_WARM",
+     "checkpoints": {
+      "CONTROLLED_BUDGET": {
+       "file": "ckpt/BM_amazon2023_baby_products_FA_WARM__B24_L50_D0.1__s0.0003_c0.025_p1_t1e-06__prexB96_L50_D0.2-best_s2027/endpoint_24.0.pt",
+       "mark": 24.0,
+       "sha256": "07a10a8d574f82baf17fe77b7c93155651408e3b136d436934c2f960a89f773f"
+      },
+      "PRACTICAL_BEST": {
+       "file": "ckpt/BM_amazon2023_baby_products_FA_WARM__B24_L50_D0.1__s0.0003_c0.025_p1_t1e-06__prexB96_L50_D0.2-best_s2027/best.pt",
+       "mark": 16.0,
+       "sha256": "42a31b0dac56b69407e6091b0a85863fab0c0337f1564c0927a7c9d025b9c44c"
+      }
+     },
+     "device_class": "CPU-FP32",
+     "key": "FA_WARM_X",
+     "kind": "fl",
+     "label": "FA_WARM__B24_L50_D0.1__s0.0003_c0.025_p1_t1e-06__prexB96_L50_D0.2-best",
+     "pre_provenance": {
+      "checkpoint_sha256": "3f15f18c8099237988f69ceb00fd55d938e52db6eb8bb2fc9b8ddbbeca3ea408",
+      "pre_budget_efe": 96,
+      "pre_ckpt_rule": "PRACTICAL_BEST",
+      "pre_device_class": "CPU-FP32",
+      "pre_mark": 8.0,
+      "pre_result_sha256": "5af16d414ca440a155d2399eaddc26a753c8d55a5562f4247d41a7fab46f883a",
+      "pre_run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_x/amazon2023_baby_products/PRE__B96_L50_D0.2_s2027",
+      "pre_seed": 2027,
+      "state_digest": "61dd1aeb21403a3f33d9bda96809731764b9ff37f8077a93e28de4f4368e0331"
+     },
+     "result_sha256": "c6cea4b00c72e59e2e8c6310f09529713364bb17ab6935b0b2e500f7895091ef",
+     "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_x/amazon2023_baby_products/FA_WARM__B24_L50_D0.1__s0.0003_c0.025_p1_t1e-06__prexB96_L50_D0.2-best_s2027",
+     "seed": 2027,
+     "status": "DONE_MAIN"
+    },
+    "FA_X_s2026": {
+     "arm": "FA",
+     "checkpoints": {
+      "CONTROLLED_BUDGET": {
+       "file": "ckpt/BM_amazon2023_baby_products_FA__B24_L50_D0.1__s0.001_c0.1_p1_t1e-06_s2026/endpoint_24.0.pt",
+       "mark": 24.0,
+       "sha256": "e93bb76163726c700813a0dace006633b1de81cc1c2cb6f7ef0dacce628769b0"
+      },
+      "PRACTICAL_BEST": {
+       "file": "ckpt/BM_amazon2023_baby_products_FA__B24_L50_D0.1__s0.001_c0.1_p1_t1e-06_s2026/best.pt",
+       "mark": 8.0,
+       "sha256": "58461f9dfb6eaaadde09ee5bec2c2c10322aecb596c36c51255571fe0118d146"
+      }
+     },
+     "device_class": "CPU-FP32",
+     "key": "FA_X",
+     "kind": "fl",
+     "label": "FA__B24_L50_D0.1__s0.001_c0.1_p1_t1e-06",
+     "result_sha256": "b45a5fa900f425a612fdec73b46837ef5379fa950d34b99c11f77ed71d9a6652",
+     "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_x/amazon2023_baby_products/FA__B24_L50_D0.1__s0.001_c0.1_p1_t1e-06_s2026",
+     "seed": 2026,
+     "status": "DONE_MAIN"
+    },
+    "FA_X_s2027": {
+     "arm": "FA",
+     "checkpoints": {
+      "CONTROLLED_BUDGET": {
+       "file": "ckpt/BM_amazon2023_baby_products_FA__B24_L50_D0.1__s0.001_c0.1_p1_t1e-06_s2027/endpoint_24.0.pt",
+       "mark": 24.0,
+       "sha256": "981173c9d714b4b979b54849011f90ea760e70aeab14a294a7e927b310b7a661"
+      },
+      "PRACTICAL_BEST": {
+       "file": "ckpt/BM_amazon2023_baby_products_FA__B24_L50_D0.1__s0.001_c0.1_p1_t1e-06_s2027/best.pt",
+       "mark": 4.0,
+       "sha256": "a2c04293ec862cdbbf85531c58ccb03cc8b21a95eddfe8008b30aea7ea49a531"
+      }
+     },
+     "device_class": "CPU-FP32",
+     "key": "FA_X",
+     "kind": "fl",
+     "label": "FA__B24_L50_D0.1__s0.001_c0.1_p1_t1e-06",
+     "result_sha256": "16c48b7c80c3d34aa7b46fe660a1e9b3ce448509efbe768e2436ad313ef3ec26",
+     "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_x/amazon2023_baby_products/FA__B24_L50_D0.1__s0.001_c0.1_p1_t1e-06_s2027",
+     "seed": 2027,
+     "status": "DONE_MAIN"
+    }
+   },
+   "runs_root": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_x",
+   "select_file": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_x/lean/SELECT_amazon2023_baby_products.json",
+   "select_sha256": "dd7d07b3114f4f2c4c7c0521ad5cd94f80bad17abf0cd5a256b3f61f61db8fa7",
+   "wave2_ours_vs_ours": true
+  },
+  "amazon2023_video_games": {
+   "confirmatory": {
+    "data_fingerprint": "2452d9068d7f1be5090b8a6ef3268342ecffb2e1880b4e4df6f3852655a4ff0d",
+    "device_class": "CPU-FP32",
+    "lock_sha256": "861f5ae610e7a4d3e2bef5e1c4c45bc84110c01e62557942032632a18fd974de",
+    "n_cold_holdout_items_as_misses": 69,
+    "n_holdout_rows_unknown_user": 0,
+    "n_test_users": 94762,
+    "ranks": {
+     "C_FULL_s2026|CONTROLLED_BUDGET": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/amazon2023_video_games/C_FULL_s2026/test/test_CONTROLLED_BUDGET.ranks_int32.npy",
+      "sha256": "13dae0f3865a2f204685c7ab43c4436626cab10b05b189f1c4e92f83416e3476"
+     },
+     "C_FULL_s2026|PRACTICAL_BEST": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/amazon2023_video_games/C_FULL_s2026/test/test_PRACTICAL_BEST.ranks_int32.npy",
+      "sha256": "f5ba4dc5b2429c0ab6220c597a3b9523830735207c34ed554233b574c8c32ef4"
+     },
+     "C_FULL_s2027|CONTROLLED_BUDGET": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/amazon2023_video_games/C_FULL_s2027/test/test_CONTROLLED_BUDGET.ranks_int32.npy",
+      "sha256": "e259c135de8133f22eb79efce92d06f34155b40671655da5a6d49a783d16140c"
+     },
+     "C_FULL_s2027|PRACTICAL_BEST": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/amazon2023_video_games/C_FULL_s2027/test/test_PRACTICAL_BEST.ranks_int32.npy",
+      "sha256": "4d0b67f60cdcf81ee6de556a4fff895fec3843c76b8d48b2e3191790bc158d99"
+     },
+     "FA_WARM_s2026|CONTROLLED_BUDGET": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/amazon2023_video_games/FA_WARM_s2026/test/test_CONTROLLED_BUDGET.ranks_int32.npy",
+      "sha256": "d949563dee5b3f424ba17fc4d2b4d662de9d2b534a5a8afb64d6291bf9fc8968"
+     },
+     "FA_WARM_s2026|PRACTICAL_BEST": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/amazon2023_video_games/FA_WARM_s2026/test/test_PRACTICAL_BEST.ranks_int32.npy",
+      "sha256": "d949563dee5b3f424ba17fc4d2b4d662de9d2b534a5a8afb64d6291bf9fc8968"
+     },
+     "FA_WARM_s2027|CONTROLLED_BUDGET": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/amazon2023_video_games/FA_WARM_s2027/test/test_CONTROLLED_BUDGET.ranks_int32.npy",
+      "sha256": "a8b22ccdfa92e7fa81e29e5c42c69c07ad97874f559c28fe848acdf8fbed68c4"
+     },
+     "FA_WARM_s2027|PRACTICAL_BEST": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/amazon2023_video_games/FA_WARM_s2027/test/test_PRACTICAL_BEST.ranks_int32.npy",
+      "sha256": "4c77143e913222580f11bd1530f20f1ccbd8c5b27101a85c8c805f37da576047"
+     },
+     "FA_s2026|CONTROLLED_BUDGET": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/amazon2023_video_games/FA_s2026/test/test_CONTROLLED_BUDGET.ranks_int32.npy",
+      "sha256": "f55b29187e96a700eaa68afb26e409f86108241982fe675e629808ff51b5dc87"
+     },
+     "FA_s2026|PRACTICAL_BEST": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/amazon2023_video_games/FA_s2026/test/test_PRACTICAL_BEST.ranks_int32.npy",
+      "sha256": "f55b29187e96a700eaa68afb26e409f86108241982fe675e629808ff51b5dc87"
+     },
+     "FA_s2027|CONTROLLED_BUDGET": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/amazon2023_video_games/FA_s2027/test/test_CONTROLLED_BUDGET.ranks_int32.npy",
+      "sha256": "bae67da7de83a85883b3044f051a30519306b7072efbc3a1860cd748090bffc6"
+     },
+     "FA_s2027|PRACTICAL_BEST": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/amazon2023_video_games/FA_s2027/test/test_PRACTICAL_BEST.ranks_int32.npy",
+      "sha256": "bae67da7de83a85883b3044f051a30519306b7072efbc3a1860cd748090bffc6"
+     },
+     "PRE_s2026|CONTROLLED_BUDGET": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/amazon2023_video_games/PRE_s2026/test/test_CONTROLLED_BUDGET.ranks_int32.npy",
+      "sha256": "14cc2b27f90247954a13d9573aa10e1562a8cbfa399dcb3683eb5b0296bc6a64"
+     },
+     "PRE_s2026|PRACTICAL_BEST": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/amazon2023_video_games/PRE_s2026/test/test_PRACTICAL_BEST.ranks_int32.npy",
+      "sha256": "e6b403dc69dd9209cf4c14cf97e076a41da7698b93d10d4cf21db0f026d930a5"
+     },
+     "PRE_s2027|CONTROLLED_BUDGET": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/amazon2023_video_games/PRE_s2027/test/test_CONTROLLED_BUDGET.ranks_int32.npy",
+      "sha256": "a458618b815ac1c0be2ee8fb101578fd0873ad4779007afd0bd03c213c5d05bd"
+     },
+     "PRE_s2027|PRACTICAL_BEST": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/amazon2023_video_games/PRE_s2027/test/test_PRACTICAL_BEST.ranks_int32.npy",
+      "sha256": "eb6a3db6e912e68402cb6039b30ec3b6533122c8e7bdf3d923fed66982443142"
+     }
+    },
+    "root": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/amazon2023_video_games",
+    "test_look_sha256": "1593072f281e440d83307377ce03783ee3bab2e5a512020f27a41e73542d3120",
+    "test_results_sha256": "a210da2ed58d4826820084b87a1acc589e32144ee05f68ad25a5cfe47a17eaf2",
+    "view_identity": {
+     "conf_code_sha256": "c465b1221ac4f54dab1a23e61fe1819ec6e44d7530cb1bb2b49f774c333fb45a",
+     "conf_tree": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/code_bench4",
+     "data_py_sha256": "9b15752bf9dd50a5cc158be9d736c2611f3dfaffbfac249d47a879c80095a7fb",
+     "user_id_rule": "confirmatory TEST view users = this TEST view's users (same data.py, same fingerprint, same counts); paired by external user id"
+    }
+   },
+   "device_note": "CPU-FP32 both sides",
+   "runs": {
+    "C_SMALL_X_s2026": {
+     "arm": "C_SMALL",
+     "checkpoints": {
+      "PRACTICAL_BEST": {
+       "file": "ckpt/best.pt",
+       "mark": 4.0,
+       "sha256": "8ed63eb572a8f5b4d8f15970aea0dbbc53e967c89a97746ace65e4cff5bf9b4c"
+      }
+     },
+     "device_class": "CPU-FP32",
+     "key": "C_SMALL_X",
+     "kind": "central",
+     "label": "C_SMALL__B24_L50_D0.1",
+     "result_sha256": "7841da4881f036753e35333d56dc8df8f29e45e1a917f34ff030f6e118876b9a",
+     "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_x/amazon2023_video_games/C_SMALL__B24_L50_D0.1_s2026",
+     "seed": 2026,
+     "status": "DONE_MAIN"
+    },
+    "C_SMALL_X_s2027": {
+     "arm": "C_SMALL",
+     "checkpoints": {
+      "PRACTICAL_BEST": {
+       "file": "ckpt/best.pt",
+       "mark": 4.0,
+       "sha256": "73ad1b5b883a6ddf6fffdd160735c5441d2a65738f45b7af69299b82398b9c05"
+      }
+     },
+     "device_class": "CPU-FP32",
+     "key": "C_SMALL_X",
+     "kind": "central",
+     "label": "C_SMALL__B24_L50_D0.1",
+     "result_sha256": "2ed6c75be5604a5e470c0130c4e425ba0217d83b51250e9fe5e0d05e16e40a2d",
+     "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_x/amazon2023_video_games/C_SMALL__B24_L50_D0.1_s2027",
+     "seed": 2027,
+     "status": "DONE_MAIN"
+    },
+    "FA_WARM_X_s2026": {
+     "arm": "FA_WARM",
+     "checkpoints": {
+      "CONTROLLED_BUDGET": {
+       "file": "ckpt/BM_amazon2023_video_games_FA_WARM__B24_L50_D0.1__s0.0003_c0.025_p1_t1e-06__prexB96_L50_D0.2-best_s2026/endpoint_24.0.pt",
+       "mark": 24.0,
+       "sha256": "6b857b6c62d2138220b55b2b097340fed6a4eeaee870617cd8651eecaa0d917e"
+      },
+      "PRACTICAL_BEST": {
+       "file": "ckpt/BM_amazon2023_video_games_FA_WARM__B24_L50_D0.1__s0.0003_c0.025_p1_t1e-06__prexB96_L50_D0.2-best_s2026/best.pt",
+       "mark": 16.0,
+       "sha256": "311a4e339082a0e042a897a3b06989c7df796bbbbcd41a5149a58a742302483f"
+      }
+     },
+     "device_class": "CPU-FP32",
+     "key": "FA_WARM_X",
+     "kind": "fl",
+     "label": "FA_WARM__B24_L50_D0.1__s0.0003_c0.025_p1_t1e-06__prexB96_L50_D0.2-best",
+     "pre_provenance": {
+      "checkpoint_sha256": "e4d58ca29f1189aece9ccc2f8543eca186503384fafd35ed5e82443415bb3417",
+      "pre_budget_efe": 96,
+      "pre_ckpt_rule": "PRACTICAL_BEST",
+      "pre_device_class": "CPU-FP32",
+      "pre_mark": 8.0,
+      "pre_result_sha256": "5db0a9a4829708d56c293b55db29ad367d4b76fe583f6a3baf2858dd7951908e",
+      "pre_run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_x/amazon2023_video_games/PRE__B96_L50_D0.2_s2026",
+      "pre_seed": 2026,
+      "state_digest": "492de540ed6940e6a818a9269909f9a484c0e7c790ec68b92d2ea30283d84ded"
+     },
+     "result_sha256": "990f1e401fc88d01871e9e1c0ceea7e1d771ac869d8e3f9fcc1c10f27803c53c",
+     "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_x/amazon2023_video_games/FA_WARM__B24_L50_D0.1__s0.0003_c0.025_p1_t1e-06__prexB96_L50_D0.2-best_s2026",
+     "seed": 2026,
+     "status": "DONE_MAIN"
+    },
+    "FA_WARM_X_s2027": {
+     "arm": "FA_WARM",
+     "checkpoints": {
+      "CONTROLLED_BUDGET": {
+       "file": "ckpt/BM_amazon2023_video_games_FA_WARM__B24_L50_D0.1__s0.0003_c0.025_p1_t1e-06__prexB96_L50_D0.2-best_s2027/endpoint_24.0.pt",
+       "mark": 24.0,
+       "sha256": "742c17acc0aee92cc4a472db4d36ef522df42f6d1be78964913fc79bc720b635"
+      },
+      "PRACTICAL_BEST": {
+       "file": "ckpt/BM_amazon2023_video_games_FA_WARM__B24_L50_D0.1__s0.0003_c0.025_p1_t1e-06__prexB96_L50_D0.2-best_s2027/best.pt",
+       "mark": 16.0,
+       "sha256": "b15c30bc03ab54863719f7f9abfa4a567c341cf6f5522a4c2aee3eedc6632ff4"
+      }
+     },
+     "device_class": "CPU-FP32",
+     "key": "FA_WARM_X",
+     "kind": "fl",
+     "label": "FA_WARM__B24_L50_D0.1__s0.0003_c0.025_p1_t1e-06__prexB96_L50_D0.2-best",
+     "pre_provenance": {
+      "checkpoint_sha256": "fc8af13a65fce73fafd55f6054133da0bd666035c1fad2ce215dce7bd0c68a77",
+      "pre_budget_efe": 96,
+      "pre_ckpt_rule": "PRACTICAL_BEST",
+      "pre_device_class": "CPU-FP32",
+      "pre_mark": 8.0,
+      "pre_result_sha256": "ab29e5622d4490490ef50f652fba02411789a9865612440c02acbecbd7c325c4",
+      "pre_run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_x/amazon2023_video_games/PRE__B96_L50_D0.2_s2027",
+      "pre_seed": 2027,
+      "state_digest": "b46438c9ea3f23da7da0bfb6cfd0643124949870252d03976c428b7bbdcf15b5"
+     },
+     "result_sha256": "79399f3398aa4bd2ac6e8106b98852aaa51d30ec8356ab5aa59d6fc14fa608d6",
+     "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_x/amazon2023_video_games/FA_WARM__B24_L50_D0.1__s0.0003_c0.025_p1_t1e-06__prexB96_L50_D0.2-best_s2027",
+     "seed": 2027,
+     "status": "DONE_MAIN"
+    },
+    "FA_X_s2026": {
+     "arm": "FA",
+     "checkpoints": {
+      "CONTROLLED_BUDGET": {
+       "file": "ckpt/BM_amazon2023_video_games_FA__B24_L50_D0.1__s0.001_c0.1_p1_t1e-06_s2026/endpoint_24.0.pt",
+       "mark": 24.0,
+       "sha256": "62e09db5c9407fe082e53c64daeb806dbe3706d8d8e9771ed14be92289397fa3"
+      },
+      "PRACTICAL_BEST": {
+       "file": "ckpt/BM_amazon2023_video_games_FA__B24_L50_D0.1__s0.001_c0.1_p1_t1e-06_s2026/best.pt",
+       "mark": 8.0,
+       "sha256": "989863f7630319b7ad0f36373603096268f41b33d07701dbc8a11c2afdf4d037"
+      }
+     },
+     "device_class": "CPU-FP32",
+     "key": "FA_X",
+     "kind": "fl",
+     "label": "FA__B24_L50_D0.1__s0.001_c0.1_p1_t1e-06",
+     "result_sha256": "6557dd09bd507c012af8715280aa76de137b652195be95dd73388ce755b3101a",
+     "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_x/amazon2023_video_games/FA__B24_L50_D0.1__s0.001_c0.1_p1_t1e-06_s2026",
+     "seed": 2026,
+     "status": "DONE_MAIN"
+    },
+    "FA_X_s2027": {
+     "arm": "FA",
+     "checkpoints": {
+      "CONTROLLED_BUDGET": {
+       "file": "ckpt/BM_amazon2023_video_games_FA__B24_L50_D0.1__s0.001_c0.1_p1_t1e-06_s2027/endpoint_24.0.pt",
+       "mark": 24.0,
+       "sha256": "91f10d72f864a832d892ca43b744d4a3c69e87abd16316aa521b559ec48a9aed"
+      },
+      "PRACTICAL_BEST": {
+       "file": "ckpt/BM_amazon2023_video_games_FA__B24_L50_D0.1__s0.001_c0.1_p1_t1e-06_s2027/best.pt",
+       "mark": 6.0,
+       "sha256": "6b29f659ee611d3ff23b591c490c61ac81bfa269a9522658d1df78ea5e00cb8a"
+      }
+     },
+     "device_class": "CPU-FP32",
+     "key": "FA_X",
+     "kind": "fl",
+     "label": "FA__B24_L50_D0.1__s0.001_c0.1_p1_t1e-06",
+     "result_sha256": "d779e49fca4ee913374eea333a1988c558c4b627210d32f0b42102d8515a39a1",
+     "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_x/amazon2023_video_games/FA__B24_L50_D0.1__s0.001_c0.1_p1_t1e-06_s2027",
+     "seed": 2027,
+     "status": "DONE_MAIN"
+    }
+   },
+   "runs_root": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_x",
+   "select_file": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_x/lean/SELECT_amazon2023_video_games.json",
+   "select_sha256": "56ae5bce049472259f32825de825b6eb68fb1edd391152342952b4903b68398d",
+   "wave2_ours_vs_ours": true
+  },
+  "ml_1m": {
+   "confirmatory": {
+    "data_fingerprint": "f4fd6f5b5095a0b25dd3b53cd20c8cd496d91c2eb6a3e0c16cba2e72a066aebd",
+    "device_class": "NVIDIA_A40-FP32-DET",
+    "lock_sha256": "ca7478e55c0c94f9ec3d032264a874398a509fced72d5068669cd638201a5153",
+    "n_cold_holdout_items_as_misses": 0,
+    "n_holdout_rows_unknown_user": 0,
+    "n_test_users": 6038,
+    "ranks": {
+     "C_FULL_s2026|CONTROLLED_BUDGET": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_gpu/ml_1m/C_FULL_s2026/test/test_CONTROLLED_BUDGET.ranks_int32.npy",
+      "sha256": "2094ae39846a5e2c59720882182614115b5d76d6d4e51e8bde2274211615ca0b"
+     },
+     "C_FULL_s2026|PRACTICAL_BEST": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_gpu/ml_1m/C_FULL_s2026/test/test_PRACTICAL_BEST.ranks_int32.npy",
+      "sha256": "cba800f1f7e6eaa6b2ca22e99e92563191f9832f462e1946169d3efe5b217eec"
+     },
+     "C_FULL_s2027|CONTROLLED_BUDGET": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_gpu/ml_1m/C_FULL_s2027/test/test_CONTROLLED_BUDGET.ranks_int32.npy",
+      "sha256": "aed092781e36b5eba6a2ea781c2132447b360664d92ed7c2b41e12fdbfa623ae"
+     },
+     "C_FULL_s2027|PRACTICAL_BEST": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_gpu/ml_1m/C_FULL_s2027/test/test_PRACTICAL_BEST.ranks_int32.npy",
+      "sha256": "b922ec877aa658d1df85f6fc31f0385ee2c115259acba49f8e9e16519789ce05"
+     },
+     "C_FULL_s2028|CONTROLLED_BUDGET": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_gpu/ml_1m/C_FULL_s2028/test/test_CONTROLLED_BUDGET.ranks_int32.npy",
+      "sha256": "16b5d3adb5fa617a8fb4ce556544f62d183626bc42da800208cad22be3e73e78"
+     },
+     "C_FULL_s2028|PRACTICAL_BEST": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_gpu/ml_1m/C_FULL_s2028/test/test_PRACTICAL_BEST.ranks_int32.npy",
+      "sha256": "82bdade0d632190f71e06e5b7f6900e06a75a1b0c6a69dd1e3a41c2706324c01"
+     },
+     "FA_WARM_s2026|CONTROLLED_BUDGET": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_gpu/ml_1m/FA_WARM_s2026/test/test_CONTROLLED_BUDGET.ranks_int32.npy",
+      "sha256": "a00bafa090ddec594578cd6280d68d1249076f52e20ce1f577cd9594234ffac3"
+     },
+     "FA_WARM_s2026|PRACTICAL_BEST": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_gpu/ml_1m/FA_WARM_s2026/test/test_PRACTICAL_BEST.ranks_int32.npy",
+      "sha256": "a00bafa090ddec594578cd6280d68d1249076f52e20ce1f577cd9594234ffac3"
+     },
+     "FA_WARM_s2027|CONTROLLED_BUDGET": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_gpu/ml_1m/FA_WARM_s2027/test/test_CONTROLLED_BUDGET.ranks_int32.npy",
+      "sha256": "4cd4bc436adffbecd8b231768336f3974ec7a75e94b4b1c12f7c9088c38f1627"
+     },
+     "FA_WARM_s2027|PRACTICAL_BEST": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_gpu/ml_1m/FA_WARM_s2027/test/test_PRACTICAL_BEST.ranks_int32.npy",
+      "sha256": "4cd4bc436adffbecd8b231768336f3974ec7a75e94b4b1c12f7c9088c38f1627"
+     },
+     "FA_s2026|CONTROLLED_BUDGET": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_gpu/ml_1m/FA_s2026/test/test_CONTROLLED_BUDGET.ranks_int32.npy",
+      "sha256": "2576db9a521347be01adc69a1c592bf86560fc75f3c3275f74bd8ac66d395192"
+     },
+     "FA_s2026|PRACTICAL_BEST": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_gpu/ml_1m/FA_s2026/test/test_PRACTICAL_BEST.ranks_int32.npy",
+      "sha256": "926f655d5b3b7141b13f14796f6752c9230c280b98c6e1c0d3c357363fda3a83"
+     },
+     "FA_s2027|CONTROLLED_BUDGET": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_gpu/ml_1m/FA_s2027/test/test_CONTROLLED_BUDGET.ranks_int32.npy",
+      "sha256": "136226cd900b6ba24e6f2ededc85e02e5c512c17e5a6c4091f9b7cae3f3cd8b5"
+     },
+     "FA_s2027|PRACTICAL_BEST": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_gpu/ml_1m/FA_s2027/test/test_PRACTICAL_BEST.ranks_int32.npy",
+      "sha256": "b21a9b0e6e4327cff6326ce6d8e5fc7f9ef2234297d0b7fd0d4ba4e00ebcf73b"
+     },
+     "PRE_s2026|CONTROLLED_BUDGET": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_gpu/ml_1m/PRE_s2026/test/test_CONTROLLED_BUDGET.ranks_int32.npy",
+      "sha256": "118e319f21485d8b0b58bdcc11c193011f661b3ec855e7e0d40995ab9d14aeb0"
+     },
+     "PRE_s2026|PRACTICAL_BEST": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_gpu/ml_1m/PRE_s2026/test/test_PRACTICAL_BEST.ranks_int32.npy",
+      "sha256": "f8fe288e5b3d3ed9c85305c375cd864adb39fbd676a5bac84864c86f63365700"
+     },
+     "PRE_s2027|CONTROLLED_BUDGET": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_gpu/ml_1m/PRE_s2027/test/test_CONTROLLED_BUDGET.ranks_int32.npy",
+      "sha256": "b5bcff93d6ea554c888f0d96b75114c921743cbc93abbb57fc042bbf880771aa"
+     },
+     "PRE_s2027|PRACTICAL_BEST": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_gpu/ml_1m/PRE_s2027/test/test_PRACTICAL_BEST.ranks_int32.npy",
+      "sha256": "db7ca15fd776e4433717f1bf5a68df6b27d3178316e21530e304670f84f8e269"
+     }
+    },
+    "root": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_gpu/ml_1m",
+    "test_look_sha256": "aaa26da6773606e2707bb5193eac35697b4808a4acfb525c934efabc2bbf266f",
+    "test_results_sha256": "76286a8df0e847fe0f93ba442304d64c891c6df730e02469b1cdb7fad98c02b8",
+    "view_identity": {
+     "conf_code_sha256": "2d8e2f225815a844bb31f277d002e7bf5210f9ece3e23c6db8e5c2260e0c27ab",
+     "conf_tree": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/code_bench5b",
+     "data_py_sha256": "9b15752bf9dd50a5cc158be9d736c2611f3dfaffbfac249d47a879c80095a7fb",
+     "user_id_rule": "confirmatory TEST view users = this TEST view's users (same data.py, same fingerprint, same counts); paired by external user id"
+    }
+   },
+   "device_note": "confirmatory side NVIDIA_A40-FP32-DET (B16), exploratory side CPU-FP32",
+   "runs": {
+    "C_SMALL_X_s2026": {
+     "key": "C_SMALL_X",
+     "label": "C_SMALL__B24_L50_D0.1",
+     "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_x/ml1m/ml_1m/C_SMALL__B24_L50_D0.1_s2026",
+     "status": "PENDING"
+    },
+    "C_SMALL_X_s2027": {
+     "key": "C_SMALL_X",
+     "label": "C_SMALL__B24_L50_D0.1",
+     "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_x/ml1m/ml_1m/C_SMALL__B24_L50_D0.1_s2027",
+     "status": "PENDING"
+    },
+    "FA_WARM_X_s2026": {
+     "arm": "FA_WARM",
+     "checkpoints": {
+      "CONTROLLED_BUDGET": {
+       "file": "ckpt/BM_ml_1m_FA_WARM__B24_L50_D0.1__s0.003_c0.1_p1_t1e-06__preB96_L50_D0.2-best_s2026/endpoint_24.0.pt",
+       "mark": 24.0,
+       "sha256": "b307ca9f23e90065e5e0487bcb35cfa5921543739684ef3d4acbcea2d9b6f729"
+      },
+      "PRACTICAL_BEST": {
+       "file": "ckpt/BM_ml_1m_FA_WARM__B24_L50_D0.1__s0.003_c0.1_p1_t1e-06__preB96_L50_D0.2-best_s2026/best.pt",
+       "mark": 22.0,
+       "sha256": "28a5a5f94ac4087ee28db2229a5ee3f74bd46f8da1e30f2d26aceb28e4157db9"
+      }
+     },
+     "device_class": "CPU-FP32",
+     "key": "FA_WARM_X",
+     "kind": "fl",
+     "label": "FA_WARM__B24_L50_D0.1__s0.003_c0.1_p1_t1e-06__preB96_L50_D0.2-best",
+     "pre_provenance": {
+      "checkpoint_sha256": "6d5581a7a19c8445e807b5050f96303a6d884d4b934efd62142059c5054f5d8a",
+      "pre_budget_efe": 96,
+      "pre_ckpt_rule": "PRACTICAL_BEST",
+      "pre_device_class": "NVIDIA_A40-FP32-DET",
+      "pre_mark": 16.0,
+      "pre_result_sha256": "b2d2b7483c78dabb458063edc46ec60f0999f3da89263cdfba138e6383c50877",
+      "pre_run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_gpu/ml_1m/PRE__B96_L50_D0.2_s2026",
+      "pre_seed": 2026,
+      "state_digest": "996dc42a3688db99d2d91c4e4a35f60487b5f47d14327c052bd1c35e4e6432a6"
+     },
+     "result_sha256": "219c238f11fa83a1ddbb225615da64f33530a9058a0d1fc0cfb6e9cb3fe434e0",
+     "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_x/ml1m/ml_1m/FA_WARM__B24_L50_D0.1__s0.003_c0.1_p1_t1e-06__preB96_L50_D0.2-best_s2026",
+     "seed": 2026,
+     "status": "DONE_MAIN"
+    },
+    "FA_WARM_X_s2027": {
+     "arm": "FA_WARM",
+     "checkpoints": {
+      "CONTROLLED_BUDGET": {
+       "file": "ckpt/BM_ml_1m_FA_WARM__B24_L50_D0.1__s0.003_c0.1_p1_t1e-06__prexB96_L50_D0.2-best_s2027/endpoint_24.0.pt",
+       "mark": 24.0,
+       "sha256": "7d92469bf8d85a75c0f5c2cb455baf23b536615c4960a11079ff61743227d24b"
+      },
+      "PRACTICAL_BEST": {
+       "file": "ckpt/BM_ml_1m_FA_WARM__B24_L50_D0.1__s0.003_c0.1_p1_t1e-06__prexB96_L50_D0.2-best_s2027/best.pt",
+       "mark": 10.0,
+       "sha256": "c9666ecc0f6738ef255324e3108ea8724164d897763dc2cc92befdbfd8e853f5"
+      }
+     },
+     "device_class": "CPU-FP32",
+     "key": "FA_WARM_X",
+     "kind": "fl",
+     "label": "FA_WARM__B24_L50_D0.1__s0.003_c0.1_p1_t1e-06__prexB96_L50_D0.2-best",
+     "pre_provenance": {
+      "checkpoint_sha256": "197cdc9de93da8d166efd3eb72259b58752003438e197c0fd654a2f23b78d701",
+      "pre_budget_efe": 96,
+      "pre_ckpt_rule": "PRACTICAL_BEST",
+      "pre_device_class": "CPU-FP32",
+      "pre_mark": 56.0,
+      "pre_result_sha256": "b8b2cd5a908a96b6adb8b870e5686ad43e0661c29b12f087bb875d1528fe07d5",
+      "pre_run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_x/ml1m/ml_1m/PRE__B96_L50_D0.2_s2027",
+      "pre_seed": 2027,
+      "state_digest": "9fbc3ec3ebd225ef6680a696937a2faa068a706ad55ff989d0ffc3769c8df65a"
+     },
+     "result_sha256": "4cfd5acb09e711aa302456d9fa637960128115f9d68068f8634d8c01505334f4",
+     "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_x/ml1m/ml_1m/FA_WARM__B24_L50_D0.1__s0.003_c0.1_p1_t1e-06__prexB96_L50_D0.2-best_s2027",
+     "seed": 2027,
+     "status": "DONE_MAIN"
+    },
+    "FA_X_s2026": {
+     "arm": "FA",
+     "checkpoints": {
+      "CONTROLLED_BUDGET": {
+       "file": "ckpt/BM_ml_1m_FA__B24_L50_D0.1__s0.001_c0.1_p1_t1e-06_s2026/endpoint_24.0.pt",
+       "mark": 24.0,
+       "sha256": "b7ae8058ba13f90ca4ed238acbc92e3f78fc2d72dc19588146d4a609484edcd9"
+      },
+      "PRACTICAL_BEST": {
+       "file": "ckpt/BM_ml_1m_FA__B24_L50_D0.1__s0.001_c0.1_p1_t1e-06_s2026/best.pt",
+       "mark": 10.0,
+       "sha256": "7b59d09ce69af54bd4e6715f79d8d56522bd05ac31a44277d560c554315611a9"
+      }
+     },
+     "device_class": "CPU-FP32",
+     "key": "FA_X",
+     "kind": "fl",
+     "label": "FA__B24_L50_D0.1__s0.001_c0.1_p1_t1e-06",
+     "result_sha256": "067baaed68fd7ae963b602a845e806499b3937ec9af74a3b0b44ab53b94b6bff",
+     "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_x/ml1m/ml_1m/FA__B24_L50_D0.1__s0.001_c0.1_p1_t1e-06_s2026",
+     "seed": 2026,
+     "status": "DONE_MAIN"
+    },
+    "FA_X_s2027": {
+     "arm": "FA",
+     "checkpoints": {
+      "CONTROLLED_BUDGET": {
+       "file": "ckpt/BM_ml_1m_FA__B24_L50_D0.1__s0.001_c0.1_p1_t1e-06_s2027/endpoint_24.0.pt",
+       "mark": 24.0,
+       "sha256": "78c5e787c0e0e20f7a05cec99318a32dae745251ac465e78929c40796a634e55"
+      },
+      "PRACTICAL_BEST": {
+       "file": "ckpt/BM_ml_1m_FA__B24_L50_D0.1__s0.001_c0.1_p1_t1e-06_s2027/best.pt",
+       "mark": 10.0,
+       "sha256": "791772ba5b4154edb53b3b9e1302a5a311d38446b62e003144ef7a798f92e0b8"
+      }
+     },
+     "device_class": "CPU-FP32",
+     "key": "FA_X",
+     "kind": "fl",
+     "label": "FA__B24_L50_D0.1__s0.001_c0.1_p1_t1e-06",
+     "result_sha256": "879f6ee830fd3923b7db617aec41933f2024c1ef70dd9436f868541eab685687",
+     "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_x/ml1m/ml_1m/FA__B24_L50_D0.1__s0.001_c0.1_p1_t1e-06_s2027",
+     "seed": 2027,
+     "status": "DONE_MAIN"
+    }
+   },
+   "runs_root": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_x/ml1m",
+   "select_file": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_x/lean/SELECT_ml_1m.json",
+   "select_sha256": "db0ca5d5f15a003431a0e73c5b5c0d58c4e45f55caaf7c70c3c15f86177f31e1",
+   "wave2_ours_vs_ours": false
+  },
+  "s3_beauty": {
+   "confirmatory": {
+    "data_fingerprint": "d2a960990989730beab6e935e5201ef09ee4c16edc2f5528ca20c7bf48698420",
+    "device_class": "CPU-FP32",
+    "lock_sha256": "7d1f67f00547fd9f0a0e4419ece65c7a8ba90f87eda6bc1f4a122d3423301943",
+    "n_cold_holdout_items_as_misses": 0,
+    "n_holdout_rows_unknown_user": 0,
+    "n_test_users": 22311,
+    "ranks": {
+     "C_FULL_s2026|CONTROLLED_BUDGET": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_beauty/C_FULL_s2026/test/test_CONTROLLED_BUDGET.ranks_int32.npy",
+      "sha256": "27506402c8aa4e164ce19959dfa1e93c4bb66e0b587d4382f026e4cb162cc38c"
+     },
+     "C_FULL_s2026|PRACTICAL_BEST": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_beauty/C_FULL_s2026/test/test_PRACTICAL_BEST.ranks_int32.npy",
+      "sha256": "27506402c8aa4e164ce19959dfa1e93c4bb66e0b587d4382f026e4cb162cc38c"
+     },
+     "C_FULL_s2027|CONTROLLED_BUDGET": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_beauty/C_FULL_s2027/test/test_CONTROLLED_BUDGET.ranks_int32.npy",
+      "sha256": "dbd95fd5bf34921e4102446f15699bf55751555e125ff051ae8907bdc05f0a16"
+     },
+     "C_FULL_s2027|PRACTICAL_BEST": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_beauty/C_FULL_s2027/test/test_PRACTICAL_BEST.ranks_int32.npy",
+      "sha256": "dbd95fd5bf34921e4102446f15699bf55751555e125ff051ae8907bdc05f0a16"
+     },
+     "FA_WARM_s2026|CONTROLLED_BUDGET": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_beauty/FA_WARM_s2026/test/test_CONTROLLED_BUDGET.ranks_int32.npy",
+      "sha256": "d7325822683246f9f004ff1104757e084b2dfc16fdc823f285c911358ca883c5"
+     },
+     "FA_WARM_s2026|PRACTICAL_BEST": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_beauty/FA_WARM_s2026/test/test_PRACTICAL_BEST.ranks_int32.npy",
+      "sha256": "d7325822683246f9f004ff1104757e084b2dfc16fdc823f285c911358ca883c5"
+     },
+     "FA_WARM_s2027|CONTROLLED_BUDGET": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_beauty/FA_WARM_s2027/test/test_CONTROLLED_BUDGET.ranks_int32.npy",
+      "sha256": "fda4e587c9da62aeff8d0f0ac481e2f54ec3518ad8a31758eac38c0f514051c6"
+     },
+     "FA_WARM_s2027|PRACTICAL_BEST": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_beauty/FA_WARM_s2027/test/test_PRACTICAL_BEST.ranks_int32.npy",
+      "sha256": "fda4e587c9da62aeff8d0f0ac481e2f54ec3518ad8a31758eac38c0f514051c6"
+     },
+     "FA_s2026|CONTROLLED_BUDGET": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_beauty/FA_s2026/test/test_CONTROLLED_BUDGET.ranks_int32.npy",
+      "sha256": "c73b3546ec56a68aa95f90802364c03ea456ef5857993109ad1c06b1b3b1415b"
+     },
+     "FA_s2026|PRACTICAL_BEST": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_beauty/FA_s2026/test/test_PRACTICAL_BEST.ranks_int32.npy",
+      "sha256": "c73b3546ec56a68aa95f90802364c03ea456ef5857993109ad1c06b1b3b1415b"
+     },
+     "FA_s2027|CONTROLLED_BUDGET": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_beauty/FA_s2027/test/test_CONTROLLED_BUDGET.ranks_int32.npy",
+      "sha256": "e105b31b8acb12778801f492f342141410129588bfc304bae4b3108272d7037e"
+     },
+     "FA_s2027|PRACTICAL_BEST": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_beauty/FA_s2027/test/test_PRACTICAL_BEST.ranks_int32.npy",
+      "sha256": "e105b31b8acb12778801f492f342141410129588bfc304bae4b3108272d7037e"
+     },
+     "PRE_s2026|CONTROLLED_BUDGET": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_beauty/PRE_s2026/test/test_CONTROLLED_BUDGET.ranks_int32.npy",
+      "sha256": "5da5cbe5df910b954012041112b90beb2c183c4b4886075698ed3a290b172194"
+     },
+     "PRE_s2026|PRACTICAL_BEST": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_beauty/PRE_s2026/test/test_PRACTICAL_BEST.ranks_int32.npy",
+      "sha256": "1072eedf2a0b9676d1a6d0471542f908051e4fb8ce1426043b03bce60cf53221"
+     },
+     "PRE_s2027|CONTROLLED_BUDGET": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_beauty/PRE_s2027/test/test_CONTROLLED_BUDGET.ranks_int32.npy",
+      "sha256": "481a65e022ecbabff958c97c06d987904ed4d5dfdad2637250ce43784fcc8cde"
+     },
+     "PRE_s2027|PRACTICAL_BEST": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_beauty/PRE_s2027/test/test_PRACTICAL_BEST.ranks_int32.npy",
+      "sha256": "5f6b339f51e0218d53983d24c0f8f79f532dc84c2a14bb6f587e8ad374dac391"
+     }
+    },
+    "root": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_beauty",
+    "test_look_sha256": "16990bd1636b69204ef3adf454ccda546a64c39902da4347de34de8ba7091645",
+    "test_results_sha256": "93603eb96a6880d9624aed7fd1051f3a068b7229162c07aae894fe04efa765e9",
+    "view_identity": {
+     "conf_code_sha256": "c465b1221ac4f54dab1a23e61fe1819ec6e44d7530cb1bb2b49f774c333fb45a",
+     "conf_tree": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/code_bench4",
+     "data_py_sha256": "9b15752bf9dd50a5cc158be9d736c2611f3dfaffbfac249d47a879c80095a7fb",
+     "user_id_rule": "confirmatory TEST view users = this TEST view's users (same data.py, same fingerprint, same counts); paired by external user id"
+    }
+   },
+   "device_note": "CPU-FP32 both sides",
+   "runs": {
+    "C_SMALL_X_s2026": {
+     "arm": "C_SMALL",
+     "checkpoints": {
+      "PRACTICAL_BEST": {
+       "file": "ckpt/best.pt",
+       "mark": 6.0,
+       "sha256": "7bf7b0a891ae1de1c073a5f92bfd8f03cb27417bd2d76217ae9021d4dc3d799a"
+      }
+     },
+     "device_class": "CPU-FP32",
+     "key": "C_SMALL_X",
+     "kind": "central",
+     "label": "C_SMALL__B24_L50_D0.1",
+     "result_sha256": "09404a0448e063fde59397ca7f765e9f0ebfce4c0a7a0ef7c04968f0731f1f4e",
+     "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_x/s3_beauty/C_SMALL__B24_L50_D0.1_s2026",
+     "seed": 2026,
+     "status": "DONE_MAIN"
+    },
+    "C_SMALL_X_s2027": {
+     "arm": "C_SMALL",
+     "checkpoints": {
+      "PRACTICAL_BEST": {
+       "file": "ckpt/best.pt",
+       "mark": 6.0,
+       "sha256": "36b4106028d5722151740f01be55b4f1e0c6b516530d28e638c7513266487aa5"
+      }
+     },
+     "device_class": "CPU-FP32",
+     "key": "C_SMALL_X",
+     "kind": "central",
+     "label": "C_SMALL__B24_L50_D0.1",
+     "result_sha256": "8c2e7b3037a4c07f12b005ec4dc0b23dc5e3b7f2f94e6e1f05dcf700018cda2b",
+     "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_x/s3_beauty/C_SMALL__B24_L50_D0.1_s2027",
+     "seed": 2027,
+     "status": "DONE_MAIN"
+    },
+    "FA_WARM_X_s2026": {
+     "arm": "FA_WARM",
+     "checkpoints": {
+      "CONTROLLED_BUDGET": {
+       "file": "ckpt/BM_s3_beauty_FA_WARM__B24_L50_D0.1__s0.001_c0.3_p1_t1e-06__preB96_L50_D0.5-best_s2026/endpoint_24.0.pt",
+       "mark": 24.0,
+       "sha256": "285a6f7277b7f801388268bc6afd75141d1c21f6f0d75a51aac47d2260225765"
+      },
+      "PRACTICAL_BEST": {
+       "file": "ckpt/BM_s3_beauty_FA_WARM__B24_L50_D0.1__s0.001_c0.3_p1_t1e-06__preB96_L50_D0.5-best_s2026/best.pt",
+       "mark": 4.0,
+       "sha256": "42fbb15315c10c3f7bd1dc66cf932db6ff3a8d170b8e3ae7d8267c5d3ac4229e"
+      }
+     },
+     "device_class": "CPU-FP32",
+     "key": "FA_WARM_X",
+     "kind": "fl",
+     "label": "FA_WARM__B24_L50_D0.1__s0.001_c0.3_p1_t1e-06__preB96_L50_D0.5-best",
+     "pre_provenance": {
+      "checkpoint_sha256": "14ce46fd81883c43199ce40c5c58346f384f566a271defb080fc4ea35570dbae",
+      "pre_budget_efe": 96,
+      "pre_ckpt_rule": "PRACTICAL_BEST",
+      "pre_device_class": "CPU-FP32",
+      "pre_mark": 24.0,
+      "pre_result_sha256": "b91ffdc7bb9c386c8bbb25490778bb13d79643f395efce2c184b0efc1dbe3ac5",
+      "pre_run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_beauty/PRE__B96_L50_D0.5_s2026",
+      "pre_seed": 2026,
+      "state_digest": "86fe419748b5ef610ffdd4e9ecf2d6e5ae671bb592c923e80c654d012ed3b4df"
+     },
+     "result_sha256": "22808ab3521228ba2618dbcf7d9fa3ce3f19b9607ddd2c13bf826d49f9a5937a",
+     "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_x/s3_beauty/FA_WARM__B24_L50_D0.1__s0.001_c0.3_p1_t1e-06__preB96_L50_D0.5-best_s2026",
+     "seed": 2026,
+     "status": "DONE_MAIN"
+    },
+    "FA_WARM_X_s2027": {
+     "arm": "FA_WARM",
+     "checkpoints": {
+      "CONTROLLED_BUDGET": {
+       "file": "ckpt/BM_s3_beauty_FA_WARM__B24_L50_D0.1__s0.001_c0.3_p1_t1e-06__preB96_L50_D0.5-best_s2027/endpoint_24.0.pt",
+       "mark": 24.0,
+       "sha256": "485375947708134fab69a195e7b113d6a1f7c78824410acfcd0786cb7240f0e5"
+      },
+      "PRACTICAL_BEST": {
+       "file": "ckpt/BM_s3_beauty_FA_WARM__B24_L50_D0.1__s0.001_c0.3_p1_t1e-06__preB96_L50_D0.5-best_s2027/best.pt",
+       "mark": 10.0,
+       "sha256": "b7145c60a106e1512c94149a5c69148e26db47ebff45a24d6d9f906d8c399e5e"
+      }
+     },
+     "device_class": "CPU-FP32",
+     "key": "FA_WARM_X",
+     "kind": "fl",
+     "label": "FA_WARM__B24_L50_D0.1__s0.001_c0.3_p1_t1e-06__preB96_L50_D0.5-best",
+     "pre_provenance": {
+      "checkpoint_sha256": "6c8b00165028006c9cd56f57af22998b9080f8f179f69a0ca5eac8c502db3d69",
+      "pre_budget_efe": 96,
+      "pre_ckpt_rule": "PRACTICAL_BEST",
+      "pre_device_class": "CPU-FP32",
+      "pre_mark": 24.0,
+      "pre_result_sha256": "7de1b63d6334aeabf6879315cf6f28d3e1a984f53ccf285c9dd72d9209bc7ec0",
+      "pre_run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_beauty/PRE__B96_L50_D0.5_s2027",
+      "pre_seed": 2027,
+      "state_digest": "32683353b01fb1c6e62c9d43caedbbc17f1d0a862616684b968eff50798a6f31"
+     },
+     "result_sha256": "7ed9ffdac585a8eba1c061bb96f0843799fec0555c785d34f768aa63c49e31c6",
+     "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_x/s3_beauty/FA_WARM__B24_L50_D0.1__s0.001_c0.3_p1_t1e-06__preB96_L50_D0.5-best_s2027",
+     "seed": 2027,
+     "status": "DONE_MAIN"
+    },
+    "FA_X_s2026": {
+     "arm": "FA",
+     "checkpoints": {
+      "CONTROLLED_BUDGET": {
+       "file": "ckpt/BM_s3_beauty_FA__B24_L50_D0.1__s0.001_c0.1_p1_t1e-06_s2026/endpoint_24.0.pt",
+       "mark": 24.0,
+       "sha256": "2ee770fbdc996e0c520bc48c61e8518ea4f042fdd6c612d91aeaea3c5d87caca"
+      },
+      "PRACTICAL_BEST": {
+       "file": "ckpt/BM_s3_beauty_FA__B24_L50_D0.1__s0.001_c0.1_p1_t1e-06_s2026/best.pt",
+       "mark": 8.0,
+       "sha256": "224afa9d775958d4eb960d4a838a484fcf5982f910f7d8c3d6ee8d3f1c584743"
+      }
+     },
+     "device_class": "CPU-FP32",
+     "key": "FA_X",
+     "kind": "fl",
+     "label": "FA__B24_L50_D0.1__s0.001_c0.1_p1_t1e-06",
+     "result_sha256": "f69568d017bd8161a150ec197034c37d6d554459b64d6fd9d155926a40c1c88f",
+     "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_x/s3_beauty/FA__B24_L50_D0.1__s0.001_c0.1_p1_t1e-06_s2026",
+     "seed": 2026,
+     "status": "DONE_MAIN"
+    },
+    "FA_X_s2027": {
+     "arm": "FA",
+     "checkpoints": {
+      "CONTROLLED_BUDGET": {
+       "file": "ckpt/BM_s3_beauty_FA__B24_L50_D0.1__s0.001_c0.1_p1_t1e-06_s2027/endpoint_24.0.pt",
+       "mark": 24.0,
+       "sha256": "f92a0c99e58b4c32c190deca9cac6c300f52ef1dd8a450d1fdd140264779873e"
+      },
+      "PRACTICAL_BEST": {
+       "file": "ckpt/BM_s3_beauty_FA__B24_L50_D0.1__s0.001_c0.1_p1_t1e-06_s2027/best.pt",
+       "mark": 10.0,
+       "sha256": "1f926d809e80a1abb1d524cfd713c31ccd472b70a2e5561dcf9398c7d1e13734"
+      }
+     },
+     "device_class": "CPU-FP32",
+     "key": "FA_X",
+     "kind": "fl",
+     "label": "FA__B24_L50_D0.1__s0.001_c0.1_p1_t1e-06",
+     "result_sha256": "5960a0f31d9163fc0fb5a12781f6324b3f9c494bce80133aaa3c9adce71684b9",
+     "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_x/s3_beauty/FA__B24_L50_D0.1__s0.001_c0.1_p1_t1e-06_s2027",
+     "seed": 2027,
+     "status": "DONE_MAIN"
+    }
+   },
+   "runs_root": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_x",
+   "select_file": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_x/lean/SELECT_s3_beauty.json",
+   "select_sha256": "221ced2e5b6a57ba3f2ccef5396e096594d031bfa63ebf1bd4b8dd0f3ecc7fd5",
+   "wave2_ours_vs_ours": false
+  },
+  "s3_sports": {
+   "confirmatory": {
+    "data_fingerprint": "6f58ceac640129d39db827ae006b3686a7a1dcee9cd90fbd10a0b4a4ead5f61a",
+    "device_class": "CPU-FP32",
+    "lock_sha256": "f3924d7beb917f50d61a24b7ddf85cdc9a9523b6144cdc5c6835fec6681b1788",
+    "n_cold_holdout_items_as_misses": 0,
+    "n_holdout_rows_unknown_user": 0,
+    "n_test_users": 35539,
+    "ranks": {
+     "C_FULL_s2026|CONTROLLED_BUDGET": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_sports/C_FULL_s2026/test/test_CONTROLLED_BUDGET.ranks_int32.npy",
+      "sha256": "5b4bf3a4ece048e815790973a7d8c4ba52441e51381410af8dba54b523c7407d"
+     },
+     "C_FULL_s2026|PRACTICAL_BEST": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_sports/C_FULL_s2026/test/test_PRACTICAL_BEST.ranks_int32.npy",
+      "sha256": "5b4bf3a4ece048e815790973a7d8c4ba52441e51381410af8dba54b523c7407d"
+     },
+     "C_FULL_s2027|CONTROLLED_BUDGET": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_sports/C_FULL_s2027/test/test_CONTROLLED_BUDGET.ranks_int32.npy",
+      "sha256": "d251702c7162afc71939a2d47381ee92b005226d94a48ac647bc84d50fd798fa"
+     },
+     "C_FULL_s2027|PRACTICAL_BEST": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_sports/C_FULL_s2027/test/test_PRACTICAL_BEST.ranks_int32.npy",
+      "sha256": "05a3f80f36b8feca77795a51d0560c3817c9ed5503597743e9a33be6ad049f39"
+     },
+     "FA_WARM_s2026|CONTROLLED_BUDGET": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_sports/FA_WARM_s2026/test/test_CONTROLLED_BUDGET.ranks_int32.npy",
+      "sha256": "47ce8351749f6ba3562b8df98768db919af69cb7feadaa52fa4a03fe657f8622"
+     },
+     "FA_WARM_s2026|PRACTICAL_BEST": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_sports/FA_WARM_s2026/test/test_PRACTICAL_BEST.ranks_int32.npy",
+      "sha256": "43474f2834774377f278ebf141e2c2122b2deafb2434706d38ae573f7740cb31"
+     },
+     "FA_WARM_s2027|CONTROLLED_BUDGET": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_sports/FA_WARM_s2027/test/test_CONTROLLED_BUDGET.ranks_int32.npy",
+      "sha256": "13cf0a256ddbc68c84ee996e0335ca32b042dad8b15144c17ff77406e6ffe285"
+     },
+     "FA_WARM_s2027|PRACTICAL_BEST": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_sports/FA_WARM_s2027/test/test_PRACTICAL_BEST.ranks_int32.npy",
+      "sha256": "5bfd09d812cf987df486b956db2069d909395d4f464b40e981296e7e1001aa6b"
+     },
+     "FA_s2026|CONTROLLED_BUDGET": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_sports/FA_s2026/test/test_CONTROLLED_BUDGET.ranks_int32.npy",
+      "sha256": "7bc0da268e9d0a0388672166c1cff349bb3f7196764b914f83c9a497519c12db"
+     },
+     "FA_s2026|PRACTICAL_BEST": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_sports/FA_s2026/test/test_PRACTICAL_BEST.ranks_int32.npy",
+      "sha256": "7bc0da268e9d0a0388672166c1cff349bb3f7196764b914f83c9a497519c12db"
+     },
+     "FA_s2027|CONTROLLED_BUDGET": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_sports/FA_s2027/test/test_CONTROLLED_BUDGET.ranks_int32.npy",
+      "sha256": "21963c828bb2a1595c071ab2bff5f0ea284d9b0db2a3325d529b83d6d2fc5774"
+     },
+     "FA_s2027|PRACTICAL_BEST": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_sports/FA_s2027/test/test_PRACTICAL_BEST.ranks_int32.npy",
+      "sha256": "21963c828bb2a1595c071ab2bff5f0ea284d9b0db2a3325d529b83d6d2fc5774"
+     },
+     "PRE_s2026|CONTROLLED_BUDGET": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_sports/PRE_s2026/test/test_CONTROLLED_BUDGET.ranks_int32.npy",
+      "sha256": "39f5c41336e792c2fb5ba1ab3d2e6677dad53b9032bc41cb9db58094dbf5292e"
+     },
+     "PRE_s2026|PRACTICAL_BEST": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_sports/PRE_s2026/test/test_PRACTICAL_BEST.ranks_int32.npy",
+      "sha256": "ea9dafba14c157ca8b5138ab49427b051c2c41fada4e6a88022f68382d66c475"
+     },
+     "PRE_s2027|CONTROLLED_BUDGET": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_sports/PRE_s2027/test/test_CONTROLLED_BUDGET.ranks_int32.npy",
+      "sha256": "d9b39db5cf0f8a5dfdea5992a548b6ef147a1f18807455912c2e8eb3ccfa3d31"
+     },
+     "PRE_s2027|PRACTICAL_BEST": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_sports/PRE_s2027/test/test_PRACTICAL_BEST.ranks_int32.npy",
+      "sha256": "c1ee11bbb506a698807826dbfb0595b96c5c3fb1c7aebf6d2c244980fdfa3f91"
+     }
+    },
+    "root": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_sports",
+    "test_look_sha256": "aa6a9d809d9394d524c5e1d56f11cf084f8ba6ee2f72d1f395015ef93caf3b04",
+    "test_results_sha256": "df7f330b344688465525fd004e57496b63a345945a541a6dcb70e44faa930147",
+    "view_identity": {
+     "conf_code_sha256": "c465b1221ac4f54dab1a23e61fe1819ec6e44d7530cb1bb2b49f774c333fb45a",
+     "conf_tree": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/code_bench4",
+     "data_py_sha256": "9b15752bf9dd50a5cc158be9d736c2611f3dfaffbfac249d47a879c80095a7fb",
+     "user_id_rule": "confirmatory TEST view users = this TEST view's users (same data.py, same fingerprint, same counts); paired by external user id"
+    }
+   },
+   "device_note": "CPU-FP32 both sides",
+   "runs": {
+    "C_SMALL_X_s2026": {
+     "arm": "C_SMALL",
+     "checkpoints": {
+      "PRACTICAL_BEST": {
+       "file": "ckpt/best.pt",
+       "mark": 4.0,
+       "sha256": "d955a3bfa88f856f56827acdbfbb863a230b6e7b0e679a62bd7cfed9b11509d7"
+      }
+     },
+     "device_class": "CPU-FP32",
+     "key": "C_SMALL_X",
+     "kind": "central",
+     "label": "C_SMALL__B24_L50_D0.1",
+     "result_sha256": "b22ebd4d09304b6306c45bc1fe90849a9428d336f428241a8b375d2c6a27849c",
+     "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_x/s3_sports/C_SMALL__B24_L50_D0.1_s2026",
+     "seed": 2026,
+     "status": "DONE_MAIN"
+    },
+    "C_SMALL_X_s2027": {
+     "arm": "C_SMALL",
+     "checkpoints": {
+      "PRACTICAL_BEST": {
+       "file": "ckpt/best.pt",
+       "mark": 4.0,
+       "sha256": "62a5e01a72aa39fd5c959c9a891671fe4fdec9daa7c5ac8439116665cab07c0e"
+      }
+     },
+     "device_class": "CPU-FP32",
+     "key": "C_SMALL_X",
+     "kind": "central",
+     "label": "C_SMALL__B24_L50_D0.1",
+     "result_sha256": "c8d1adedfef08b0810ba210ad3a90850917349d334f5bce86f34171b5816c8df",
+     "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_x/s3_sports/C_SMALL__B24_L50_D0.1_s2027",
+     "seed": 2027,
+     "status": "DONE_MAIN"
+    },
+    "FA_WARM_X_s2026": {
+     "arm": "FA_WARM",
+     "checkpoints": {
+      "CONTROLLED_BUDGET": {
+       "file": "ckpt/BM_s3_sports_FA_WARM__B24_L50_D0.1__s0.0003_c0.025_p1_t1e-06__preB96_L50_D0.5-best_s2026/endpoint_24.0.pt",
+       "mark": 24.0,
+       "sha256": "a9759e0283b336099d42315412a6b0f89a7ad6b48160c87892b3435a66dfe63d"
+      },
+      "PRACTICAL_BEST": {
+       "file": "ckpt/BM_s3_sports_FA_WARM__B24_L50_D0.1__s0.0003_c0.025_p1_t1e-06__preB96_L50_D0.5-best_s2026/best.pt",
+       "mark": 18.0,
+       "sha256": "4c8a5c0fc3fcd588e6fe4870f652515b8512c657a8353fbeb219e44c4817a897"
+      }
+     },
+     "device_class": "CPU-FP32",
+     "key": "FA_WARM_X",
+     "kind": "fl",
+     "label": "FA_WARM__B24_L50_D0.1__s0.0003_c0.025_p1_t1e-06__preB96_L50_D0.5-best",
+     "pre_provenance": {
+      "checkpoint_sha256": "cb5e27830cd9ba7a8ce4b81ea3caf75df6d98a4cd48d6b4e5e87142573e4ef1d",
+      "pre_budget_efe": 96,
+      "pre_ckpt_rule": "PRACTICAL_BEST",
+      "pre_device_class": "CPU-FP32",
+      "pre_mark": 16.0,
+      "pre_result_sha256": "5f39b1043e4d42aa50a31386c166011ad0f252194c2b0f8e5fdd59183a311ff2",
+      "pre_run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_sports/PRE__B96_L50_D0.5_s2026",
+      "pre_seed": 2026,
+      "state_digest": "e70fa4335ae647dffb164eb30f34ebc14f38aaf2102674727e7395a262f1140e"
+     },
+     "result_sha256": "cc3e5ba8582383b5702382f4d8041e0e9a8c39e2a722373e3b619824ac1e16fe",
+     "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_x/s3_sports/FA_WARM__B24_L50_D0.1__s0.0003_c0.025_p1_t1e-06__preB96_L50_D0.5-best_s2026",
+     "seed": 2026,
+     "status": "DONE_MAIN"
+    },
+    "FA_WARM_X_s2027": {
+     "arm": "FA_WARM",
+     "checkpoints": {
+      "CONTROLLED_BUDGET": {
+       "file": "ckpt/BM_s3_sports_FA_WARM__B24_L50_D0.1__s0.0003_c0.025_p1_t1e-06__preB96_L50_D0.5-best_s2027/endpoint_24.0.pt",
+       "mark": 24.0,
+       "sha256": "322d90137b0d26fc53455a10874da71782c1110b4bb7ef02f7aaba7da1ee5c48"
+      },
+      "PRACTICAL_BEST": {
+       "file": "ckpt/BM_s3_sports_FA_WARM__B24_L50_D0.1__s0.0003_c0.025_p1_t1e-06__preB96_L50_D0.5-best_s2027/best.pt",
+       "mark": 18.0,
+       "sha256": "cbb7565ecaa81db4cd638bf749673c3c69e180962420ee5a80d4bce67c6ac230"
+      }
+     },
+     "device_class": "CPU-FP32",
+     "key": "FA_WARM_X",
+     "kind": "fl",
+     "label": "FA_WARM__B24_L50_D0.1__s0.0003_c0.025_p1_t1e-06__preB96_L50_D0.5-best",
+     "pre_provenance": {
+      "checkpoint_sha256": "0ebaf3284499d501cb6e83df0db43a9514bc829c5972dd6a1995cbb4b01f21f2",
+      "pre_budget_efe": 96,
+      "pre_ckpt_rule": "PRACTICAL_BEST",
+      "pre_device_class": "CPU-FP32",
+      "pre_mark": 16.0,
+      "pre_result_sha256": "323e95f515db240f3bdc136f0131ef9efab7fbfea8e92ca900d558b855d062cb",
+      "pre_run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_sports/PRE__B96_L50_D0.5_s2027",
+      "pre_seed": 2027,
+      "state_digest": "84519d2e9893d80315ba89c8a4529a5c10c07c11ce51ba2625d310a2602e6744"
+     },
+     "result_sha256": "3d49c8afb165088333fa50e96f685dda03ab0e2cf8f96129b1ba10a73ed05afa",
+     "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_x/s3_sports/FA_WARM__B24_L50_D0.1__s0.0003_c0.025_p1_t1e-06__preB96_L50_D0.5-best_s2027",
+     "seed": 2027,
+     "status": "DONE_MAIN"
+    },
+    "FA_X_s2026": {
+     "arm": "FA",
+     "checkpoints": {
+      "CONTROLLED_BUDGET": {
+       "file": "ckpt/BM_s3_sports_FA__B24_L50_D0.1__s0.001_c0.1_p1_t1e-06_s2026/endpoint_24.0.pt",
+       "mark": 24.0,
+       "sha256": "9b3cc772e8d624d339c3d66f1e9c0df07db628898d2a7820c2a6519c62300297"
+      },
+      "PRACTICAL_BEST": {
+       "file": "ckpt/BM_s3_sports_FA__B24_L50_D0.1__s0.001_c0.1_p1_t1e-06_s2026/best.pt",
+       "mark": 8.0,
+       "sha256": "0de18cc6b05551f7e83544bb0d0adc2b21b4a7bb9dbaebc93c4f07f94825a1c0"
+      }
+     },
+     "device_class": "CPU-FP32",
+     "key": "FA_X",
+     "kind": "fl",
+     "label": "FA__B24_L50_D0.1__s0.001_c0.1_p1_t1e-06",
+     "result_sha256": "b75895bc74a3bed4047e9243599017df1f20cba90f54d32fb474f887cc3a0ab1",
+     "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_x/s3_sports/FA__B24_L50_D0.1__s0.001_c0.1_p1_t1e-06_s2026",
+     "seed": 2026,
+     "status": "DONE_MAIN"
+    },
+    "FA_X_s2027": {
+     "arm": "FA",
+     "checkpoints": {
+      "CONTROLLED_BUDGET": {
+       "file": "ckpt/BM_s3_sports_FA__B24_L50_D0.1__s0.001_c0.1_p1_t1e-06_s2027/endpoint_24.0.pt",
+       "mark": 24.0,
+       "sha256": "659a6402aab6d381cee15c8e23369e6821881bc03370e582d017bc5fee649a02"
+      },
+      "PRACTICAL_BEST": {
+       "file": "ckpt/BM_s3_sports_FA__B24_L50_D0.1__s0.001_c0.1_p1_t1e-06_s2027/best.pt",
+       "mark": 8.0,
+       "sha256": "9137f0cada34d244a730381933f7d6ddfe17c0635922e35572f2be1dcd3941a2"
+      }
+     },
+     "device_class": "CPU-FP32",
+     "key": "FA_X",
+     "kind": "fl",
+     "label": "FA__B24_L50_D0.1__s0.001_c0.1_p1_t1e-06",
+     "result_sha256": "b0525a0d048652cae2cc452cb668dabc6afd26d63ce2137a5ca1932ce22ec8cd",
+     "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_x/s3_sports/FA__B24_L50_D0.1__s0.001_c0.1_p1_t1e-06_s2027",
+     "seed": 2027,
+     "status": "DONE_MAIN"
+    }
+   },
+   "runs_root": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_x",
+   "select_file": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_x/lean/SELECT_s3_sports.json",
+   "select_sha256": "057eb9666d74538d2ffd480c7512381f7b41caf7a8a327ae209f41b7195d891b",
+   "wave2_ours_vs_ours": false
+  },
+  "s3_toys": {
+   "confirmatory": {
+    "data_fingerprint": "b83ff25694004525faeb3c9b262fc9bbfd6fa2a8223f5548539a19d8b3198ea1",
+    "device_class": "CPU-FP32",
+    "lock_sha256": "4b188ff3ccd55c9210dd742853a602516fa7955e1e9f1be6f57029d3f37b7760",
+    "n_cold_holdout_items_as_misses": 0,
+    "n_holdout_rows_unknown_user": 0,
+    "n_test_users": 19365,
+    "ranks": {
+     "C_FULL_s2026|CONTROLLED_BUDGET": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_toys/C_FULL_s2026/test/test_CONTROLLED_BUDGET.ranks_int32.npy",
+      "sha256": "d750cd2c2c9aafee068de2ca23c3f4a6177175f47522909912e8b77c85cc6279"
+     },
+     "C_FULL_s2026|PRACTICAL_BEST": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_toys/C_FULL_s2026/test/test_PRACTICAL_BEST.ranks_int32.npy",
+      "sha256": "d750cd2c2c9aafee068de2ca23c3f4a6177175f47522909912e8b77c85cc6279"
+     },
+     "C_FULL_s2027|CONTROLLED_BUDGET": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_toys/C_FULL_s2027/test/test_CONTROLLED_BUDGET.ranks_int32.npy",
+      "sha256": "046be0424fd7825f675ef7a1074ded6fbb52d88d9df30ccddab726eaca26a875"
+     },
+     "C_FULL_s2027|PRACTICAL_BEST": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_toys/C_FULL_s2027/test/test_PRACTICAL_BEST.ranks_int32.npy",
+      "sha256": "3bb9d3176f1c96cfb2e307de4215c542c6edfaec19224821dbba402379b3f2a8"
+     },
+     "FA_WARM_s2026|CONTROLLED_BUDGET": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_toys/FA_WARM_s2026/test/test_CONTROLLED_BUDGET.ranks_int32.npy",
+      "sha256": "4f89cfbd189996259397bf842eeef9fd29be1e47b6f9f15e3038a7c38dbb9747"
+     },
+     "FA_WARM_s2026|PRACTICAL_BEST": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_toys/FA_WARM_s2026/test/test_PRACTICAL_BEST.ranks_int32.npy",
+      "sha256": "ef2423ee7dde70f0e3307d4239b52606aa4c8a7078d25693d8085b0b4fcdc820"
+     },
+     "FA_WARM_s2027|CONTROLLED_BUDGET": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_toys/FA_WARM_s2027/test/test_CONTROLLED_BUDGET.ranks_int32.npy",
+      "sha256": "e72cd66214b74133079c4158ebf28667fbd5ade452f932c3e2fd2da3742b7493"
+     },
+     "FA_WARM_s2027|PRACTICAL_BEST": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_toys/FA_WARM_s2027/test/test_PRACTICAL_BEST.ranks_int32.npy",
+      "sha256": "09c4f07be8fd196de73060cb02c430672874f0f98e39d9fb7a22a4ec32881723"
+     },
+     "FA_s2026|CONTROLLED_BUDGET": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_toys/FA_s2026/test/test_CONTROLLED_BUDGET.ranks_int32.npy",
+      "sha256": "241917715c0853088be81d89ce8860e9e16fdd2b3d2f8ddcef6dde8057b15b21"
+     },
+     "FA_s2026|PRACTICAL_BEST": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_toys/FA_s2026/test/test_PRACTICAL_BEST.ranks_int32.npy",
+      "sha256": "241917715c0853088be81d89ce8860e9e16fdd2b3d2f8ddcef6dde8057b15b21"
+     },
+     "FA_s2027|CONTROLLED_BUDGET": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_toys/FA_s2027/test/test_CONTROLLED_BUDGET.ranks_int32.npy",
+      "sha256": "bc8a81b7265be4b5a3c99918cc94660f06831d539e243d329a573f2d9139fa06"
+     },
+     "FA_s2027|PRACTICAL_BEST": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_toys/FA_s2027/test/test_PRACTICAL_BEST.ranks_int32.npy",
+      "sha256": "bc8a81b7265be4b5a3c99918cc94660f06831d539e243d329a573f2d9139fa06"
+     },
+     "PRE_s2026|CONTROLLED_BUDGET": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_toys/PRE_s2026/test/test_CONTROLLED_BUDGET.ranks_int32.npy",
+      "sha256": "8dc8498982ced6fd95809196b4b1cf70611563d569f497c2318423d722c1340f"
+     },
+     "PRE_s2026|PRACTICAL_BEST": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_toys/PRE_s2026/test/test_PRACTICAL_BEST.ranks_int32.npy",
+      "sha256": "15c38fa144fb5a6490f60c07516158337155bef15538f0ce194b22a903941d7f"
+     },
+     "PRE_s2027|CONTROLLED_BUDGET": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_toys/PRE_s2027/test/test_CONTROLLED_BUDGET.ranks_int32.npy",
+      "sha256": "5c87bbc5911799a7367686dbf0d93d888ea7a6fa7857b0d286ab56b47a60448a"
+     },
+     "PRE_s2027|PRACTICAL_BEST": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_toys/PRE_s2027/test/test_PRACTICAL_BEST.ranks_int32.npy",
+      "sha256": "5c87bbc5911799a7367686dbf0d93d888ea7a6fa7857b0d286ab56b47a60448a"
+     }
+    },
+    "root": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_toys",
+    "test_look_sha256": "bbc58726998c2a67f06fb1bd32c9fb54a89966d3a750e55bc2b697fb8b420f82",
+    "test_results_sha256": "6c4cbe7b100d1352d4f4abf2ab7da26c113372ccad30f92fc29d917a9ff7d7f5",
+    "view_identity": {
+     "conf_code_sha256": "c465b1221ac4f54dab1a23e61fe1819ec6e44d7530cb1bb2b49f774c333fb45a",
+     "conf_tree": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/code_bench4",
+     "data_py_sha256": "9b15752bf9dd50a5cc158be9d736c2611f3dfaffbfac249d47a879c80095a7fb",
+     "user_id_rule": "confirmatory TEST view users = this TEST view's users (same data.py, same fingerprint, same counts); paired by external user id"
+    }
+   },
+   "device_note": "CPU-FP32 both sides",
+   "runs": {
+    "C_SMALL_X_s2026": {
+     "arm": "C_SMALL",
+     "checkpoints": {
+      "PRACTICAL_BEST": {
+       "file": "ckpt/best.pt",
+       "mark": 6.0,
+       "sha256": "b5d95501806193bdc67dab2c2c30dbdfee81684c76eaf138554d82d4bae1139c"
+      }
+     },
+     "device_class": "CPU-FP32",
+     "key": "C_SMALL_X",
+     "kind": "central",
+     "label": "C_SMALL__B24_L50_D0.1",
+     "result_sha256": "5e94c02869c2130f438ae49095cb45a20d01579a72a77deddd7d653823d50214",
+     "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_x/s3_toys/C_SMALL__B24_L50_D0.1_s2026",
+     "seed": 2026,
+     "status": "DONE_MAIN"
+    },
+    "C_SMALL_X_s2027": {
+     "arm": "C_SMALL",
+     "checkpoints": {
+      "PRACTICAL_BEST": {
+       "file": "ckpt/best.pt",
+       "mark": 6.0,
+       "sha256": "ec78c860d06e5b12e30d22bc8c926ab50591c3b033066c035895c215622995a3"
+      }
+     },
+     "device_class": "CPU-FP32",
+     "key": "C_SMALL_X",
+     "kind": "central",
+     "label": "C_SMALL__B24_L50_D0.1",
+     "result_sha256": "e0812133b0b1cf8678f67645e5a0ff161b319b5a6661fb7fc03f3303ff888dd7",
+     "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_x/s3_toys/C_SMALL__B24_L50_D0.1_s2027",
+     "seed": 2027,
+     "status": "DONE_MAIN"
+    },
+    "FA_WARM_X_s2026": {
+     "arm": "FA_WARM",
+     "checkpoints": {
+      "CONTROLLED_BUDGET": {
+       "file": "ckpt/BM_s3_toys_FA_WARM__B24_L50_D0.1__s0.001_c0.3_p1_t1e-06__preB96_L50_D0.2-best_s2026/endpoint_24.0.pt",
+       "mark": 24.0,
+       "sha256": "c4985e42f184196ab154671e33f708caf3d3eff53fb08049f2251af10c3fbdbd"
+      },
+      "PRACTICAL_BEST": {
+       "file": "ckpt/BM_s3_toys_FA_WARM__B24_L50_D0.1__s0.001_c0.3_p1_t1e-06__preB96_L50_D0.2-best_s2026/best.pt",
+       "mark": 10.0,
+       "sha256": "a308d36c79f4aca542ab7652dd2346c21e4e398706d013171d46b024cb5b7d34"
+      }
+     },
+     "device_class": "CPU-FP32",
+     "key": "FA_WARM_X",
+     "kind": "fl",
+     "label": "FA_WARM__B24_L50_D0.1__s0.001_c0.3_p1_t1e-06__preB96_L50_D0.2-best",
+     "pre_provenance": {
+      "checkpoint_sha256": "2acd62327bf99802baabe7260aea98d063ebe1d43d0ffe74cb4f8eeb3539840b",
+      "pre_budget_efe": 96,
+      "pre_ckpt_rule": "PRACTICAL_BEST",
+      "pre_device_class": "CPU-FP32",
+      "pre_mark": 16.0,
+      "pre_result_sha256": "4724b1dc437b0547dbf6308e309c1cbc684475bbb0a735cd9efb2a2db6f1fadb",
+      "pre_run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_toys/PRE__B96_L50_D0.2_s2026",
+      "pre_seed": 2026,
+      "state_digest": "d7932dd3a25de65924c34e4dfa602f11cc580813797b3618336c510dacf714d8"
+     },
+     "result_sha256": "664ff62a3aaa5e85a66e8c3e10b2adc45cefbae50994f75e4e12e3bceee4ee41",
+     "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_x/s3_toys/FA_WARM__B24_L50_D0.1__s0.001_c0.3_p1_t1e-06__preB96_L50_D0.2-best_s2026",
+     "seed": 2026,
+     "status": "DONE_MAIN"
+    },
+    "FA_WARM_X_s2027": {
+     "arm": "FA_WARM",
+     "checkpoints": {
+      "CONTROLLED_BUDGET": {
+       "file": "ckpt/BM_s3_toys_FA_WARM__B24_L50_D0.1__s0.001_c0.3_p1_t1e-06__preB96_L50_D0.2-best_s2027/endpoint_24.0.pt",
+       "mark": 24.0,
+       "sha256": "96096d99430705b9b17ca393a0697f30139aaa3f685456bc9f968e60f0cd9a4d"
+      },
+      "PRACTICAL_BEST": {
+       "file": "ckpt/BM_s3_toys_FA_WARM__B24_L50_D0.1__s0.001_c0.3_p1_t1e-06__preB96_L50_D0.2-best_s2027/best.pt",
+       "mark": 8.0,
+       "sha256": "b42b7c0912675ea964c41172f29eb5f2d6472b12defec0b6eb6ba7d7fcc6f697"
+      }
+     },
+     "device_class": "CPU-FP32",
+     "key": "FA_WARM_X",
+     "kind": "fl",
+     "label": "FA_WARM__B24_L50_D0.1__s0.001_c0.3_p1_t1e-06__preB96_L50_D0.2-best",
+     "pre_provenance": {
+      "checkpoint_sha256": "89f58621402aafb9ffbc2ac2f89f013de73f0e293d18ea9b7e4d7427c7b4b55a",
+      "pre_budget_efe": 96,
+      "pre_ckpt_rule": "PRACTICAL_BEST",
+      "pre_device_class": "CPU-FP32",
+      "pre_mark": 16.0,
+      "pre_result_sha256": "f7e16067061608fa8c7129a62a1309183fc81ea4940dc59f8353222579853294",
+      "pre_run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_toys/PRE__B96_L50_D0.2_s2027",
+      "pre_seed": 2027,
+      "state_digest": "653829b45be9c849132a3e6b3b24f8a4fb053bbc8cb8652ee3fdf6bd3f3c11fb"
+     },
+     "result_sha256": "2029e9c5bb3a8011ca8c4a2e748e0804caddb5a549e65dc81f1cb5edbdda0406",
+     "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_x/s3_toys/FA_WARM__B24_L50_D0.1__s0.001_c0.3_p1_t1e-06__preB96_L50_D0.2-best_s2027",
+     "seed": 2027,
+     "status": "DONE_MAIN"
+    },
+    "FA_X_s2026": {
+     "arm": "FA",
+     "checkpoints": {
+      "CONTROLLED_BUDGET": {
+       "file": "ckpt/BM_s3_toys_FA__B24_L50_D0.1__s0.001_c0.1_p1_t1e-06_s2026/endpoint_24.0.pt",
+       "mark": 24.0,
+       "sha256": "b12a6384e22261cd8ea6c8048b5f09116dbc012615eec8d11fe96d4ebee34605"
+      },
+      "PRACTICAL_BEST": {
+       "file": "ckpt/BM_s3_toys_FA__B24_L50_D0.1__s0.001_c0.1_p1_t1e-06_s2026/best.pt",
+       "mark": 18.0,
+       "sha256": "bfa31e90e225041b7e38282e69f174336d49123e219ab9f3a7592ca42ecea3ed"
+      }
+     },
+     "device_class": "CPU-FP32",
+     "key": "FA_X",
+     "kind": "fl",
+     "label": "FA__B24_L50_D0.1__s0.001_c0.1_p1_t1e-06",
+     "result_sha256": "f04e05ae30ad8a3b526c906a007b849ac8e43c853a110feb2769683108c849ee",
+     "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_x/s3_toys/FA__B24_L50_D0.1__s0.001_c0.1_p1_t1e-06_s2026",
+     "seed": 2026,
+     "status": "DONE_MAIN"
+    },
+    "FA_X_s2027": {
+     "arm": "FA",
+     "checkpoints": {
+      "CONTROLLED_BUDGET": {
+       "file": "ckpt/BM_s3_toys_FA__B24_L50_D0.1__s0.001_c0.1_p1_t1e-06_s2027/endpoint_24.0.pt",
+       "mark": 24.0,
+       "sha256": "134953de7e82380876efc0875d54905c691532ddebb3bb40bddbdd5aaee1387e"
+      },
+      "PRACTICAL_BEST": {
+       "file": "ckpt/BM_s3_toys_FA__B24_L50_D0.1__s0.001_c0.1_p1_t1e-06_s2027/best.pt",
+       "mark": 18.0,
+       "sha256": "cb3cf834f2be0ab5d2d3b86b3af211341e3c6ac6474425b2a10404d0b84e5445"
+      }
+     },
+     "device_class": "CPU-FP32",
+     "key": "FA_X",
+     "kind": "fl",
+     "label": "FA__B24_L50_D0.1__s0.001_c0.1_p1_t1e-06",
+     "result_sha256": "3215f8f547d83bb6213b63b4c06a536d798f68c585c43cad8c2a9319747d49a9",
+     "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_x/s3_toys/FA__B24_L50_D0.1__s0.001_c0.1_p1_t1e-06_s2027",
+     "seed": 2027,
+     "status": "DONE_MAIN"
+    }
+   },
+   "runs_root": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_x",
+   "select_file": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_x/lean/SELECT_s3_toys.json",
+   "select_sha256": "cbe7775f5cd496a092dc6b8910ae6cb2f2f9ff45dff14a00768d6650752dc0b4",
+   "wave2_ours_vs_ours": false
+  }
+ },
+ "document": "EXP_BENCH_X_TEST_LOCK",
+ "draft": true,
+ "format": "PPSI_V4_X_BENCH_TEST_LOCK_1",
+ "label": "POST_HOC_EXPLORATORY",
+ "pending": [
+  "ml_1m/C_SMALL_X_s2026",
+  "ml_1m/C_SMALL_X_s2027"
+ ],
+ "self_sha256": "b492560fa9684ef33c3ab5400ebd7ceab159b1a96a7f056c6f161c747104efd1",
+ "study": "PPSI V4 benchmarks POST_HOC_X fixed recipe (tau 1e-6, B24, unfrozen) + C_SMALL",
+ "written_utc": "2026-10-09T00:19:24Z"
+}

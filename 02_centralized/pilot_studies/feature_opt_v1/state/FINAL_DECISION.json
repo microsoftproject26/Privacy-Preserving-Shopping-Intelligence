@@ -1,0 +1,80 @@
+{
+ "utc": "2026-09-26T08:27:59Z",
+ "decision": "KEEP_CURRENT",
+ "finalist": null,
+ "gate_2b_threshold": 0.002,
+ "sigma_hat": {
+  "sigma_hat": 0.0008691251277923584,
+  "basis": "max |A1 s2026 - A1 s2027| full-VS macro MRR@20 over matched epochs",
+  "per_epoch_abs_diff": {
+   "3": 8.305907249450684e-05,
+   "4": 0.0008691251277923584,
+   "5": 0.00021551549434661865
+  },
+  "fallback_used": false,
+  "written_utc": "2026-09-26T07:34:30Z",
+  "rule": "Fable scope decision item 2; written before any candidate training"
+ },
+ "screen": {
+  "C1_D3": {
+   "delta_macro_mrr@20_vs_control": 0.00026169419288635254,
+   "delta_micro_recall@20_vs_control": 0.0003292858600616455,
+   "bootstrap": {
+    "diff": 0.00026168981414601,
+    "ci95": [
+     3.968540012619718e-05,
+     0.0004751444828818306
+    ],
+    "n_users": 10000,
+    "n_resamples": 1000,
+    "seed": 20260926
+   },
+   "threshold": 0.002,
+   "gate_2b": {
+    "delta_ge_threshold": false,
+    "ci_lower_gt_0": true,
+    "recall_guard": true
+   },
+   "passes": false
+  }
+ },
+ "probes_gate_2a": {
+  "rule": "Fable decision 2(a)",
+  "passing": [],
+  "C2": null
+ },
+ "baseline_cohort": {
+  "macro_mrr@1": 0.10273721069097519,
+  "micro_mrr@1": 0.09080229699611664,
+  "macro_recall@1": 0.10273721069097519,
+  "micro_recall@1": 0.09080229699611664,
+  "macro_mrr@5": 0.16641893982887268,
+  "micro_mrr@5": 0.15025554597377777,
+  "macro_recall@5": 0.28312230110168457,
+  "micro_recall@5": 0.26089975237846375,
+  "macro_mrr@20": 0.187116801738739,
+  "micro_mrr@20": 0.1713506579399109,
+  "macro_recall@20": 0.4893168807029724,
+  "micro_recall@20": 0.47147244215011597,
+  "users": 10000,
+  "n": 112365
+ },
+ "lean_parity": {
+  "max_abs_logit_diff_first_1024": 2.09808349609375e-05,
+  "ranks_identical_fraction": 0.9986828638811017,
+  "delta_macro_mrr@20": -7.450580596923828e-08,
+  "gate": {
+   "status": "PARITY_FAILED",
+   "checks": {
+    "duplicates_full_population_label": true,
+    "all_duplicate_and_dead_counts_zero": true,
+    "rotation_residual_le_1e-6": true,
+    "max_abs_logit_le_1e-3": true,
+    "rank_identical_ge_0.999": false
+   },
+   "nonzero_counts": {},
+   "rotation_residual": 6.544382358253387e-08
+  }
+ },
+ "claim_scope": "adaptive development on VALIDATION_SELECT (previously used); no VC/TEST; not a fresh holdout"
+}

@@ -1,0 +1,101 @@
+{
+ "arm": "C_FULL",
+ "epochs_run": 0.09129397134261757,
+ "label": "SMOKE_NOT_EVIDENCE",
+ "spec": {
+  "N_decisions": 109361,
+  "arm": "C_FULL",
+  "betas": [
+   0.9,
+   0.999
+  ],
+  "budget_efe": 6,
+  "dropout": [
+   0.1
+  ],
+  "early_stop_marks": null,
+  "effective_batch": 256,
+  "eps": 1e-08,
+  "exposure_point": "end",
+  "grad_clip": 1.0,
+  "init_sha256": "c5d6b339cd73268b2c0ffbc6f7ca6bbc4e97c2c834f98dfe82629de4352e7656",
+  "lr_table_sha256": "68f5ae76b89dff91d822e5ec6d713cbf392b5f948c1ed5d10dabdda2c134eede",
+  "marks": [
+   0.5,
+   1.0,
+   1.5,
+   2.0,
+   2.5,
+   3.0,
+   3.5,
+   4.0,
+   4.5,
+   5.0,
+   5.5,
+   6.0
+  ],
+  "max_len": 50,
+  "n_updates": 2568,
+  "peak_lr": 0.00040005642964899735,
+  "schedule": "S0",
+  "seed": 2026,
+  "select_population": "ALL",
+  "variant": "SASREC_D256_B3",
+  "weight_decay": 1e-05
+ },
+ "summary": {
+  "ALL": {
+   "hr@10": 0.005254481763857408,
+   "hr@20": 0.009324129404492067,
+   "mrr@20": 0.002615569453565117,
+   "n_unreachable": 0,
+   "n_users": 19412,
+   "ndcg@10": 0.0030152181344427808,
+   "ndcg@20": 0.004031038708414425
+  },
+  "BAND": {
+   "hr@10": 0.007211538461538462,
+   "hr@20": 0.01098901098901099,
+   "mrr@20": 0.0029430591157926325,
+   "n_unreachable": 0,
+   "n_users": 2912,
+   "ndcg@10": 0.0037246137568035537,
+   "ndcg@20": 0.004710529358870021
+  },
+  "BAND_COVERED_TARGET": {
+   "hr@10": 0.006919476290618004,
+   "hr@20": 0.012278678515704498,
+   "mrr@20": 0.0034443683761350014,
+   "n_unreachable": 0,
+   "n_users": 14741,
+   "ndcg@10": 0.003970654258585121,
+   "ndcg@20": 0.005308359229885409
+  },
+  "BAND_UNCOVERED_TARGET": {
+   "hr@10": 0.0,
+   "hr@20": 0.0,
+   "mrr@20": 0.0,
+   "n_unreachable": 0,
+   "n_users": 4671,
+   "ndcg@10": 0.0,
+   "ndcg@20": 0.0
+  },
+  "OTHERS": {
+   "hr@10": 0.004909090909090909,
+   "hr@20": 0.00903030303030303,
+   "mrr@20": 0.00255777249014654,
+   "n_unreachable": 0,
+   "n_users": 16500,
+   "ndcg@10": 0.002890020555514625,
+   "ndcg@20": 0.003911118903921897
+  }
+ },
+ "timing": {
+  "eval_s": 1.44,
+  "mean_step_s": 0.2836514634008591,
+  "median_step_s": 0.2815525494515896,
+  "n_steps_this_leg": 39,
+  "n_updates_full_run": 2568,
+  "wall_s_this_leg": 11.08
+ }
+}

@@ -1,0 +1,191 @@
+{
+ "decision": "KEEP_CURRENT",
+ "model_in_use": "pinned incumbent (unchanged)",
+ "baseline_pin": {
+  "seed": 2027,
+  "epoch": 5,
+  "sha256": "6063592a818c4b410f988af646b83d9f2f3733ed7f2319b541e3ffb7acac8b83",
+  "macro_mrr20": 0.18651340901851654
+ },
+ "lean_schema": {
+  "numeric": [
+   "log1p_price",
+   "utc_hour_sin",
+   "utc_hour_cos",
+   "utc_weekday_sin",
+   "utc_weekday_cos",
+   "local_hour_sin",
+   "local_hour_cos",
+   "local_weekday_sin",
+   "local_weekday_cos",
+   "is_weekend",
+   "log1p_prev_raw_view_gap_s",
+   "log1p_segment_elapsed_s",
+   "log1p_item_observed_age_s",
+   "prefix_representative_count",
+   "prefix_item_count",
+   "prefix_known_category_count",
+   "prefix_category_switch_count",
+   "current_known_category_run_length",
+   "log1p_prefix_elapsed_s"
+  ],
+  "flags": [
+   "price_missing",
+   "price_zero",
+   "price_conflict",
+   "brand_missing",
+   "brand_recovered",
+   "brand_conflict",
+   "category_missing",
+   "category_recovered",
+   "category_conflict",
+   "category_code_missing",
+   "category_code_recovered",
+   "main_category_missing",
+   "prev_gap_unavailable",
+   "item_age_unavailable",
+   "simultaneous_block"
+  ],
+  "user_context": [
+   "log1p_prev_view_count",
+   "log1p_prev_session_count",
+   "recent_history_length",
+   "has_history",
+   "recent_distinct_items",
+   "recent_distinct_known_main_categories",
+   "recent_category_match_share",
+   "recent_brand_match_share",
+   "recent_mean_log_price",
+   "current_minus_recent_mean_log_price",
+   "log1p_time_since_prev_user_event_s",
+   "log1p_time_since_prev_session_last_event_s"
+  ],
+  "user_masks": [
+   "has_history_mask",
+   "recent_category_match_supported",
+   "recent_brand_match_supported",
+   "recent_price_supported",
+   "prev_user_event_available",
+   "prev_session_available"
+  ],
+  "side_channels": [
+   "category_tokens",
+   "brand_tokens",
+   "main_category_tokens",
+   "daypart_tokens",
+   "weekday_tokens"
+  ],
+  "lean_numeric": [
+   "log1p_price",
+   "utc_hour_sin",
+   "utc_hour_cos",
+   "utc_weekday_sin",
+   "utc_weekday_cos",
+   "local_weekday_sin",
+   "local_weekday_cos",
+   "is_weekend",
+   "log1p_prev_raw_view_gap_s",
+   "log1p_segment_elapsed_s",
+   "log1p_item_observed_age_s",
+   "prefix_representative_count",
+   "prefix_known_category_count",
+   "prefix_category_switch_count",
+   "current_known_category_run_length"
+  ],
+  "lean_flags": [
+   "price_missing",
+   "brand_missing",
+   "brand_recovered",
+   "category_code_missing",
+   "prev_gap_unavailable",
+   "item_age_unavailable",
+   "simultaneous_block"
+  ],
+  "lean_user_masks": [
+   "recent_category_match_supported",
+   "recent_brand_match_supported",
+   "recent_price_supported",
+   "prev_session_available"
+  ],
+  "d3": [
+   "d3_log_prior_count",
+   "d3_log_steps_since_prev",
+   "d3_has_prev",
+   "d3_known_distinct_ratio",
+   "d3_current_item_known"
+  ],
+  "probes": [
+   "P1_ALL_SIDE_OFF",
+   "P2_MAIN_CATEGORY_UNAVAILABLE",
+   "P3_BRAND_UNAVAILABLE",
+   "P4_CURRENT_PRICE_UNAVAILABLE",
+   "P5_PREV_GAP_UNAVAILABLE",
+   "P6_ITEM_AGE_UNAVAILABLE",
+   "P7_COLD_USER",
+   "P8_CALENDAR_FROZEN"
+  ]
+ },
+ "transform_state_sha256": "86de26135915121331a93d261f7d1053f10e4fb7b7dfb16a88586cf9a47bbcae",
+ "per_column": {
+  "kept_numeric": [
+   "log1p_price",
+   "utc_hour_sin",
+   "utc_hour_cos",
+   "utc_weekday_sin",
+   "utc_weekday_cos",
+   "local_weekday_sin",
+   "local_weekday_cos",
+   "is_weekend",
+   "log1p_prev_raw_view_gap_s",
+   "log1p_segment_elapsed_s",
+   "log1p_item_observed_age_s",
+   "prefix_representative_count",
+   "prefix_known_category_count",
+   "prefix_category_switch_count",
+   "current_known_category_run_length"
+  ],
+  "kept_flags": [
+   "price_missing",
+   "brand_missing",
+   "brand_recovered",
+   "category_code_missing",
+   "prev_gap_unavailable",
+   "item_age_unavailable",
+   "simultaneous_block"
+  ],
+  "kept_user_masks": [
+   "recent_category_match_supported",
+   "recent_brand_match_supported",
+   "recent_price_supported",
+   "prev_session_available"
+  ],
+  "removed_as_exact_duplicate": [
+   "log1p_prefix_elapsed_s",
+   "prefix_item_count",
+   "local_hour_sin",
+   "local_hour_cos",
+   "price_zero",
+   "main_category_missing",
+   "has_history_mask",
+   "prev_user_event_available"
+  ],
+  "removed_as_dead_constant_zero": [
+   "price_conflict",
+   "brand_conflict",
+   "category_missing",
+   "category_recovered",
+   "category_conflict",
+   "category_code_recovered"
+  ],
+  "re_encoded_M1": [
+   "log1p_time_since_prev_session_last_event_s",
+   "log1p_time_since_prev_user_event_s"
+  ],
+  "not_used_by_model_stored_only": [
+   "category_code_token"
+  ]
+ },
+ "lean_view_status": "PARITY_FAILED",
+ "equivalence": null,
+ "selected_schema": "current full F4 schema (lean parity failed; no equivalence claim)"
+}

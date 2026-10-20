@@ -1,0 +1,146 @@
+{
+ "arm": "FT_FA_WARM",
+ "base_arm": "FA_WARM",
+ "base_run": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/ml_1m/SMOKE/FA_WARM_s2026",
+ "checkpoints": {
+  "CONTROLLED_BUDGET": {
+   "file": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/ml_1m/SMOKE/FA_WARM_s2026/ckpt/smoke_theta.pt",
+   "mark": 0.19835880454826396,
+   "sha256": "e7980d917703950fd177371f528a45be3fbd490e86bb86554ae68efbbd1980e1"
+  },
+  "PRACTICAL_BEST": {
+   "file": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/ml_1m/SMOKE/FA_WARM_s2026/ckpt/smoke_theta.pt",
+   "mark": 0.19835880454826396,
+   "sha256": "e7980d917703950fd177371f528a45be3fbd490e86bb86554ae68efbbd1980e1"
+  }
+ },
+ "ft_cell": {
+  "cell": "FT_C_f0.3_P4",
+  "lr_frac": 0.3,
+  "passes": 4
+ },
+ "kind": "ft",
+ "run_id": "BM_ml_1m_FT_FA_WARM_s2026_SMOKE",
+ "spec": {
+  "cfg": {
+   "seed": 2026
+  },
+  "seed": 2026
+ },
+ "status": "PARTIAL_LIMIT",
+ "timing": {
+  "CONTROLLED_BUDGET": {
+   "mean_support_events": 126.76,
+   "n_users": 100,
+   "s_per_user": 0.6655377663113177,
+   "threads": 16,
+   "wall_s": 66.55,
+   "workers": 1
+  },
+  "PRACTICAL_BEST": {
+   "mean_support_events": 126.76,
+   "n_users": 100,
+   "s_per_user": 0.6748975016735494,
+   "threads": 16,
+   "wall_s": 67.49,
+   "workers": 1
+  }
+ },
+ "utc": "2026-10-01T21:47:28Z",
+ "validation": {
+  "CONTROLLED_BUDGET": {
+   "ALL": {
+    "hr@10": 0.05,
+    "hr@20": 0.07,
+    "mrr@20": 0.028748538011695905,
+    "n_unreachable": 0,
+    "n_users": 100,
+    "ndcg@10": 0.03276201766997367,
+    "ndcg@20": 0.03742988893523765
+   },
+   "BAND": {
+    "hr@10": 0.0,
+    "hr@20": 0.0,
+    "mrr@20": 0.0,
+    "n_unreachable": 0,
+    "n_users": 18,
+    "ndcg@10": 0.0,
+    "ndcg@20": 0.0
+   },
+   "BAND_COVERED_TARGET": {
+    "hr@10": 0.05,
+    "hr@20": 0.07,
+    "mrr@20": 0.028748538011695905,
+    "n_unreachable": 0,
+    "n_users": 100,
+    "ndcg@10": 0.03276201766997367,
+    "ndcg@20": 0.03742988893523765
+   },
+   "BAND_UNCOVERED_TARGET": {
+    "hr@10": null,
+    "hr@20": null,
+    "mrr@20": null,
+    "n_unreachable": 0,
+    "n_users": 0,
+    "ndcg@10": null,
+    "ndcg@20": null
+   },
+   "OTHERS": {
+    "hr@10": 0.06097560975609756,
+    "hr@20": 0.08536585365853659,
+    "mrr@20": 0.03505919269719013,
+    "n_unreachable": 0,
+    "n_users": 82,
+    "ndcg@10": 0.03995368008533375,
+    "ndcg@20": 0.045646206018582505
+   }
+  },
+  "PRACTICAL_BEST": {
+   "ALL": {
+    "hr@10": 0.05,
+    "hr@20": 0.07,
+    "mrr@20": 0.028748538011695905,
+    "n_unreachable": 0,
+    "n_users": 100,
+    "ndcg@10": 0.03276201766997367,
+    "ndcg@20": 0.03742988893523765
+   },
+   "BAND": {
+    "hr@10": 0.0,
+    "hr@20": 0.0,
+    "mrr@20": 0.0,
+    "n_unreachable": 0,
+    "n_users": 18,
+    "ndcg@10": 0.0,
+    "ndcg@20": 0.0
+   },
+   "BAND_COVERED_TARGET": {
+    "hr@10": 0.05,
+    "hr@20": 0.07,
+    "mrr@20": 0.028748538011695905,
+    "n_unreachable": 0,
+    "n_users": 100,
+    "ndcg@10": 0.03276201766997367,
+    "ndcg@20": 0.03742988893523765
+   },
+   "BAND_UNCOVERED_TARGET": {
+    "hr@10": null,
+    "hr@20": null,
+    "mrr@20": null,
+    "n_unreachable": 0,
+    "n_users": 0,
+    "ndcg@10": null,
+    "ndcg@20": null
+   },
+   "OTHERS": {
+    "hr@10": 0.06097560975609756,
+    "hr@20": 0.08536585365853659,
+    "mrr@20": 0.03505919269719013,
+    "n_unreachable": 0,
+    "n_users": 82,
+    "ndcg@10": 0.03995368008533375,
+    "ndcg@20": 0.045646206018582505
+   }
+  }
+ }
+}

@@ -1,0 +1,741 @@
+{
+ "task": "MODEL-01",
+ "evidence": "PROJECT_MEASURED: local CPU build (strict FP32), no dataset rows read",
+ "family": "SASREC",
+ "topology": {
+  "module": "v4models/sasrec_v2.py",
+  "class": "SASRecCE",
+  "registry_entry": {
+   "id": "A1_RICH256",
+   "group": "rich_frozen_channels",
+   "d_model": 256,
+   "blocks": 2,
+   "heads": 4,
+   "ff_multiplier": 4,
+   "dropout": 0.2
+  },
+  "input_layernorm": true,
+  "sqrt_d_input_scale": false,
+  "head": "untied output_embed [K, d] + output_bias; recenter_output_() after every optimizer step",
+  "query_dim": 256
+ },
+ "schema": {
+  "schema_id": "FEATURE_SCHEMA_CLEAN_V2",
+  "schema_version": "2.1.0",
+  "self_sha256": "55a244e1608bcdcdf6f1728595f534871b52154faebf2977e11ac1fb487052f9",
+  "file_sha256": "ecf5e405f86da90e63c6e923f783fb92c4cf2fe931d1f28617a76ad092ca86a7"
+ },
+ "widths": {
+  "view_id": "clean_v2_rich",
+  "numeric_dim": 15,
+  "flags_dim": 15,
+  "user_context_dim": 12,
+  "user_mask_dim": 4,
+  "categorical": [
+   "item_tokens",
+   "category_tokens",
+   "brand_tokens",
+   "main_category_tokens",
+   "daypart_tokens",
+   "weekday_tokens"
+  ],
+  "numeric_names": [
+   "log1p_price",
+   "utc_hour_sin",
+   "utc_hour_cos",
+   "utc_weekday_sin",
+   "utc_weekday_cos",
+   "local_weekday_sin",
+   "local_weekday_cos",
+   "is_weekend",
+   "log1p_prev_raw_view_gap_s",
+   "log1p_segment_elapsed_s",
+   "log1p_item_observed_age_s",
+   "prefix_representative_count",
+   "prefix_known_category_count",
+   "prefix_category_switch_count",
+   "current_known_category_run_length"
+  ],
+  "flag_names": [
+   "price_missing",
+   "price_zero",
+   "price_conflict",
+   "brand_missing",
+   "brand_recovered",
+   "brand_conflict",
+   "category_missing",
+   "category_recovered",
+   "category_conflict",
+   "category_code_missing",
+   "category_code_recovered",
+   "main_category_missing",
+   "prev_gap_unavailable",
+   "item_age_unavailable",
+   "simultaneous_block"
+  ],
+  "user_context_names": [
+   "log1p_prev_view_count",
+   "log1p_prev_session_count",
+   "recent_history_length",
+   "has_history",
+   "recent_distinct_items",
+   "recent_distinct_known_main_categories",
+   "recent_category_match_share",
+   "recent_brand_match_share",
+   "recent_mean_log_price",
+   "current_minus_recent_mean_log_price",
+   "log1p_time_since_prev_user_event_s",
+   "log1p_time_since_prev_session_last_event_s"
+  ],
+  "user_mask_names": [
+   "recent_category_match_supported",
+   "recent_brand_match_supported",
+   "recent_price_supported",
+   "prev_session_available"
+  ]
+ },
+ "K": 158486,
+ "vocab_sizes": {
+  "item_tokens": 158489,
+  "category_tokens": 663,
+  "brand_tokens": 3956,
+  "main_category_tokens": 16,
+  "daypart_tokens": 8,
+  "weekday_tokens": 10
+ },
+ "class_map": "product_idx_of_class = arange(3, 3 + K) from V1 mappings/catalogue.parquet (FILES.json sha256 verified)",
+ "parameter_inventory": {
+  "item_embed": 40573184,
+  "pos_embed": 12800,
+  "blocks": 1579520,
+  "final_norm": 512,
+  "input_norm": 512,
+  "side_embeds": 148008,
+  "numflag_proj": 992,
+  "side_proj": 28928,
+  "side_norm": 512,
+  "user_mlp": 1088,
+  "user_proj": 16640,
+  "user_norm": 512,
+  "output_embed": 40572416,
+  "output_bias": 158486,
+  "side_gate": 1,
+  "user_gate": 1,
+  "total": 83094112,
+  "unique_parameter_tensors": 51,
+  "registered_parameter_names": 51
+ },
+ "shared_numel": 83094112,
+ "shared_bytes": 332376448,
+ "visit_bytes": {
+  "download_bytes": 332376448,
+  "upload_bytes": 332376456,
+  "send_plus_receive_bytes": 664752904,
+  "private_bytes_sent": 0,
+  "private_resident_bytes": 0,
+  "bootstrap_bytes_once": 0,
+  "alias_bytes_not_sent": 0,
+  "shared_numel": 83094112
+ },
+ "manifest_digest": "47a904c77fbfa26b221e9a179d6d23264745dd0abed7c30eb970a7b055b41864",
+ "manifest": {
+  "entries": {
+   "output_embed": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     158486,
+     256
+    ],
+    "numel": 40572416,
+    "alias_of": null,
+    "rule": null
+   },
+   "output_bias": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     158486
+    ],
+    "numel": 158486,
+    "alias_of": null,
+    "rule": null
+   },
+   "side_gate": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [],
+    "numel": 1,
+    "alias_of": null,
+    "rule": null
+   },
+   "user_gate": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [],
+    "numel": 1,
+    "alias_of": null,
+    "rule": null
+   },
+   "item_embed.weight": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     158489,
+     256
+    ],
+    "numel": 40573184,
+    "alias_of": null,
+    "rule": null
+   },
+   "pos_embed.weight": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     50,
+     256
+    ],
+    "numel": 12800,
+    "alias_of": null,
+    "rule": null
+   },
+   "blocks.0.ln1.weight": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     256
+    ],
+    "numel": 256,
+    "alias_of": null,
+    "rule": null
+   },
+   "blocks.0.ln1.bias": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     256
+    ],
+    "numel": 256,
+    "alias_of": null,
+    "rule": null
+   },
+   "blocks.0.qkv.weight": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     768,
+     256
+    ],
+    "numel": 196608,
+    "alias_of": null,
+    "rule": null
+   },
+   "blocks.0.qkv.bias": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     768
+    ],
+    "numel": 768,
+    "alias_of": null,
+    "rule": null
+   },
+   "blocks.0.out.weight": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     256,
+     256
+    ],
+    "numel": 65536,
+    "alias_of": null,
+    "rule": null
+   },
+   "blocks.0.out.bias": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     256
+    ],
+    "numel": 256,
+    "alias_of": null,
+    "rule": null
+   },
+   "blocks.0.ln2.weight": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     256
+    ],
+    "numel": 256,
+    "alias_of": null,
+    "rule": null
+   },
+   "blocks.0.ln2.bias": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     256
+    ],
+    "numel": 256,
+    "alias_of": null,
+    "rule": null
+   },
+   "blocks.0.ff1.weight": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     1024,
+     256
+    ],
+    "numel": 262144,
+    "alias_of": null,
+    "rule": null
+   },
+   "blocks.0.ff1.bias": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     1024
+    ],
+    "numel": 1024,
+    "alias_of": null,
+    "rule": null
+   },
+   "blocks.0.ff2.weight": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     256,
+     1024
+    ],
+    "numel": 262144,
+    "alias_of": null,
+    "rule": null
+   },
+   "blocks.0.ff2.bias": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     256
+    ],
+    "numel": 256,
+    "alias_of": null,
+    "rule": null
+   },
+   "blocks.1.ln1.weight": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     256
+    ],
+    "numel": 256,
+    "alias_of": null,
+    "rule": null
+   },
+   "blocks.1.ln1.bias": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     256
+    ],
+    "numel": 256,
+    "alias_of": null,
+    "rule": null
+   },
+   "blocks.1.qkv.weight": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     768,
+     256
+    ],
+    "numel": 196608,
+    "alias_of": null,
+    "rule": null
+   },
+   "blocks.1.qkv.bias": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     768
+    ],
+    "numel": 768,
+    "alias_of": null,
+    "rule": null
+   },
+   "blocks.1.out.weight": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     256,
+     256
+    ],
+    "numel": 65536,
+    "alias_of": null,
+    "rule": null
+   },
+   "blocks.1.out.bias": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     256
+    ],
+    "numel": 256,
+    "alias_of": null,
+    "rule": null
+   },
+   "blocks.1.ln2.weight": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     256
+    ],
+    "numel": 256,
+    "alias_of": null,
+    "rule": null
+   },
+   "blocks.1.ln2.bias": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     256
+    ],
+    "numel": 256,
+    "alias_of": null,
+    "rule": null
+   },
+   "blocks.1.ff1.weight": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     1024,
+     256
+    ],
+    "numel": 262144,
+    "alias_of": null,
+    "rule": null
+   },
+   "blocks.1.ff1.bias": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     1024
+    ],
+    "numel": 1024,
+    "alias_of": null,
+    "rule": null
+   },
+   "blocks.1.ff2.weight": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     256,
+     1024
+    ],
+    "numel": 262144,
+    "alias_of": null,
+    "rule": null
+   },
+   "blocks.1.ff2.bias": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     256
+    ],
+    "numel": 256,
+    "alias_of": null,
+    "rule": null
+   },
+   "final_norm.weight": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     256
+    ],
+    "numel": 256,
+    "alias_of": null,
+    "rule": null
+   },
+   "final_norm.bias": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     256
+    ],
+    "numel": 256,
+    "alias_of": null,
+    "rule": null
+   },
+   "input_norm.weight": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     256
+    ],
+    "numel": 256,
+    "alias_of": null,
+    "rule": null
+   },
+   "input_norm.bias": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     256
+    ],
+    "numel": 256,
+    "alias_of": null,
+    "rule": null
+   },
+   "side_embeds.category_tokens.weight": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     663,
+     32
+    ],
+    "numel": 21216,
+    "alias_of": null,
+    "rule": null
+   },
+   "side_embeds.brand_tokens.weight": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     3956,
+     32
+    ],
+    "numel": 126592,
+    "alias_of": null,
+    "rule": null
+   },
+   "side_embeds.main_category_tokens.weight": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     16,
+     8
+    ],
+    "numel": 128,
+    "alias_of": null,
+    "rule": null
+   },
+   "side_embeds.daypart_tokens.weight": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     8,
+     4
+    ],
+    "numel": 32,
+    "alias_of": null,
+    "rule": null
+   },
+   "side_embeds.weekday_tokens.weight": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     10,
+     4
+    ],
+    "numel": 40,
+    "alias_of": null,
+    "rule": null
+   },
+   "numflag_proj.weight": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     32,
+     30
+    ],
+    "numel": 960,
+    "alias_of": null,
+    "rule": null
+   },
+   "numflag_proj.bias": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     32
+    ],
+    "numel": 32,
+    "alias_of": null,
+    "rule": null
+   },
+   "side_proj.weight": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     256,
+     112
+    ],
+    "numel": 28672,
+    "alias_of": null,
+    "rule": null
+   },
+   "side_proj.bias": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     256
+    ],
+    "numel": 256,
+    "alias_of": null,
+    "rule": null
+   },
+   "side_norm.weight": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     256
+    ],
+    "numel": 256,
+    "alias_of": null,
+    "rule": null
+   },
+   "side_norm.bias": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     256
+    ],
+    "numel": 256,
+    "alias_of": null,
+    "rule": null
+   },
+   "user_mlp.weight": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     64,
+     16
+    ],
+    "numel": 1024,
+    "alias_of": null,
+    "rule": null
+   },
+   "user_mlp.bias": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     64
+    ],
+    "numel": 64,
+    "alias_of": null,
+    "rule": null
+   },
+   "user_proj.weight": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     256,
+     64
+    ],
+    "numel": 16384,
+    "alias_of": null,
+    "rule": null
+   },
+   "user_proj.bias": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     256
+    ],
+    "numel": 256,
+    "alias_of": null,
+    "rule": null
+   },
+   "user_norm.weight": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     256
+    ],
+    "numel": 256,
+    "alias_of": null,
+    "rule": null
+   },
+   "user_norm.bias": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     256
+    ],
+    "numel": 256,
+    "alias_of": null,
+    "rule": null
+   }
+  },
+  "private_extra": {},
+  "nonpersistent_buffers": [
+   "product_idx_of_class",
+   "causal"
+  ],
+  "shared_numel": 83094112,
+  "shared_bytes": 332376448
+ },
+ "init_state": {
+  "2026": {
+   "init_sha256": "e45e6e9db7b05306697f7969d71dc550e6435ac6c0e43c7f84828f331028a925",
+   "raw_init_sha256": "6c0667dbc71ad059e01b044d783e794a5f087ada5294ec22b617880b1d739a8a",
+   "recentered_theta0": true
+  },
+  "2027": {
+   "init_sha256": "e68706d6c8887baae3daf9f331d12fdace5b9ba6aef360ba8b14506f6543461c",
+   "raw_init_sha256": "ea1b7688706abfd8729c65d59a23f1428a2a8820a70cba8587a5d25c3059af7b",
+   "recentered_theta0": true
+  }
+ },
+ "init_hash_definition": "fl.numerics.state_digest over adapter.broadcast_state() (shared canonical keys + persistent buffers); SASRec: after the one C7 recentering on CPU",
+ "recentering_idempotence": {
+  "max_abs_change_after_second_recentering": 4.656612873077393e-10,
+  "state_sha256_after_second_recentering": "e7f8a880c432da9662e962c03b1cf3ba77ddb61e92ea8f6521eea99a0952e10c",
+  "bitwise_equal": false
+ },
+ "v1_reference": {
+  "shared_numel_at_v1_widths": 83094368,
+  "sys01_measured_v1": 83094368,
+  "equals_sys01": true,
+  "delta_v2_minus_v1": -256,
+  "changed_shapes": {
+   "numflag_proj.weight": {
+    "v1": [
+     32,
+     34
+    ],
+    "v2": [
+     32,
+     30
+    ]
+   },
+   "user_mlp.weight": {
+    "v1": [
+     64,
+     18
+    ],
+    "v2": [
+     64,
+     16
+    ]
+   }
+  },
+  "only_width_matrices_changed": true,
+  "same_key_set": true
+ },
+ "code_sha256": {
+  "v4models/sasrec_v2.py": "2b1f3638ad17de8cd529e8ced36774ce9d928a56f1de557794416f7ed5a82d91",
+  "snap_v1/sasrec_model.py": "ec8763112e8f81c3d43538e48cb947c7106e75f0be7350347d3eaf639ad8fb71",
+  "v4models/build.py": "1d9a4a2842ef84f018030411a0e8d19aad2ff0e9b46997a010a5b2c3dd46acfc",
+  "v4models/schema.py": "a2d61cb107ff5b696a5f8d37b06f649b4900088136e849be3a96f950f60c267b"
+ },
+ "environment": {
+  "torch": "2.9.1+cpu",
+  "python": "3.13.11",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "threads": 4,
+  "device": "cpu",
+  "note": "GRU init uses PyTorch default init from the seeded global CPU RNG; the hashes are tied to this torch build and must be re-measured on the execution host"
+ },
+ "utc": "2026-09-26T15:45:52Z"
+}

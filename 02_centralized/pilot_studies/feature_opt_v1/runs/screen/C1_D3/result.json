@@ -1,0 +1,128 @@
+{
+ "arm": "C1_D3",
+ "label": "EXPLORATORY warm-start adaptation (not a from-scratch ablation)",
+ "baseline_pin": {
+  "seed": 2027,
+  "epoch": 5,
+  "sha256": "6063592a818c4b410f988af646b83d9f2f3733ed7f2319b541e3ffb7acac8b83"
+ },
+ "manifest_sha256": "15cbb263282ec4568e3396d3c629a78dc82e01d3072ba9208eab30047b147a5d",
+ "n_decisions": 5000000,
+ "train": {
+  "updates": 19532,
+  "exposures": 5000000,
+  "loss_first": 5.570411205291748,
+  "loss_last": 5.463177680969238,
+  "lr_first": 5e-07,
+  "lr_last": 1e-05,
+  "coverage_ok": true,
+  "train_seconds": 1613.8
+ },
+ "cohort_metrics": {
+  "macro_mrr@1": 0.10255038738250732,
+  "micro_mrr@1": 0.08952965587377548,
+  "macro_recall@1": 0.10255038738250732,
+  "micro_recall@1": 0.08952965587377548,
+  "macro_mrr@5": 0.16536252200603485,
+  "micro_mrr@5": 0.14830760657787323,
+  "macro_recall@5": 0.28108325600624084,
+  "micro_recall@5": 0.2571975290775299,
+  "macro_mrr@20": 0.18571563065052032,
+  "micro_mrr@20": 0.16906404495239258,
+  "macro_recall@20": 0.4837754964828491,
+  "micro_recall@20": 0.46460196375846863,
+  "users": 10000,
+  "n": 112365
+ },
+ "eval_seconds": 19.66650789231062,
+ "cohort_ranks_sha256": "38000de0fb37b46ef35f6379b832e3ba79410736d67977030445857233f36b8f",
+ "final_weights_sha256": "50ae144caa403ab02e216f37f3c1c56f23f750486e61df3fbb84edb44e80ec40",
+ "precision": {
+  "training": "tf32",
+  "eval": "strict_fp32"
+ },
+ "schedule": {
+  "warmup": 200,
+  "peak": 0.0001,
+  "end": 1e-05,
+  "updates": 19532
+ },
+ "parameter_mapping": {
+  "inherited": [
+   "blocks.0.ff1.bias",
+   "blocks.0.ff1.weight",
+   "blocks.0.ff2.bias",
+   "blocks.0.ff2.weight",
+   "blocks.0.ln1.bias",
+   "blocks.0.ln1.weight",
+   "blocks.0.ln2.bias",
+   "blocks.0.ln2.weight",
+   "blocks.0.out.bias",
+   "blocks.0.out.weight",
+   "blocks.0.qkv.bias",
+   "blocks.0.qkv.weight",
+   "blocks.1.ff1.bias",
+   "blocks.1.ff1.weight",
+   "blocks.1.ff2.bias",
+   "blocks.1.ff2.weight",
+   "blocks.1.ln1.bias",
+   "blocks.1.ln1.weight",
+   "blocks.1.ln2.bias",
+   "blocks.1.ln2.weight",
+   "blocks.1.out.bias",
+   "blocks.1.out.weight",
+   "blocks.1.qkv.bias",
+   "blocks.1.qkv.weight",
+   "final_norm.bias",
+   "final_norm.weight",
+   "input_norm.bias",
+   "input_norm.weight",
+   "item_embed.weight",
+   "numflag_proj.bias",
+   "output_bias",
+   "output_embed",
+   "pos_embed.weight",
+   "side_embeds.brand_tokens.weight",
+   "side_embeds.category_tokens.weight",
+   "side_embeds.daypart_tokens.weight",
+   "side_embeds.main_category_tokens.weight",
+   "side_embeds.weekday_tokens.weight",
+   "side_gate",
+   "side_norm.bias",
+   "side_norm.weight",
+   "side_proj.bias",
+   "side_proj.weight",
+   "user_gate",
+   "user_mlp.bias",
+   "user_mlp.weight",
+   "user_norm.bias",
+   "user_norm.weight",
+   "user_proj.bias",
+   "user_proj.weight"
+  ],
+  "remapped": [
+   "numflag_proj.weight"
+  ],
+  "new": [],
+  "new_columns": {
+   "numflag_proj.weight": {
+    "columns": [
+     19,
+     20,
+     21,
+     22,
+     23
+    ],
+    "names": [
+     "d3_log_prior_count",
+     "d3_log_steps_since_prev",
+     "d3_has_prev",
+     "d3_known_distinct_ratio",
+     "d3_current_item_known"
+    ],
+    "init": "zeros"
+   }
+  }
+ },
+ "c2_probe": null
+}

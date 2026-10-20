@@ -1,0 +1,63 @@
+{
+ "arm": "FT_P2_WSTAR",
+ "bytes": {
+  "down_after_bootstrap": "base shared bytes once",
+  "up": 0
+ },
+ "device": "cuda:0",
+ "device_pin_sha256": "db744ca3f0da27ac7b65c41b4b32f2c68ec9d0bd66bbc0dc33e874a226834e6b",
+ "n_clients": 26091,
+ "n_no_support": 0,
+ "n_shards": 64,
+ "role": "MAIN_TEST",
+ "selected_cell": "FT_P2_WSTAR_f0.3_P4",
+ "shard_set_sha256": "28318c584d9a9668ac37aa6d634d0d038109d3c5ad22f3a2b1ae4c40c8269510",
+ "shards_this_leg": 64,
+ "spec": {
+  "arm": "FT_P2_WSTAR",
+  "base_arm": "P2_WSTAR",
+  "cells": [
+   {
+    "cell": "FT_P2_WSTAR_f0.3_P4",
+    "lr_frac": 0.3,
+    "passes": 4
+   }
+  ],
+  "ft_procedure": "FT_C",
+  "fused": true,
+  "knobs": {
+   "batch": 16,
+   "clip": 1.0,
+   "exposure_point": "end",
+   "ft_lr_fracs": [
+    0.1,
+    0.3
+   ],
+   "ft_passes": [
+    1,
+    2,
+    4
+   ],
+   "lo_lr_shape": "s_efe",
+   "lo_passes": [
+    1,
+    2,
+    4
+   ],
+   "weight_decay": 1e-05
+  },
+  "peak_lr": 0.0007114121116984968,
+  "procedure_selection_arm": "FT_C",
+  "procedure_selection_cell": "FT_C_f0.3_P4",
+  "procedure_selection_self_sha256": "43e4fbee19246913ef8e93281b14fd30c08bcf7025a42edd193cacad4cf36e0c",
+  "role": "MAIN_TEST",
+  "seed": 2026,
+  "select": false,
+  "selected_cell": "FT_P2_WSTAR_f0.3_P4",
+  "selection_substitute": "PREG1_AMENDMENT_06A \u00a71: M04S FIXED_20 = the UNSEEN_VAL role of REGISTRY_V2 (support UNEW_VAL_SUPPORT_32768 -> eval UNEW_VAL_VALIDATION_32768), disjoint from MAIN, UNSEEN_HOLDOUT and every report panel; supersedes INT-04's CALIBRATION substitute (CALIB_VALIDATION is the rank-0-32,768 prefix of MAIN and would let report users take part in the selection); defined in v4int.launch_device, registered by Ops in amendment 06A",
+  "start_digest": "3f67ab3e1b1ea3ce7d3f8bab6884e3c936b4f92fd85d9d5a34ebf1bef729b916"
+ },
+ "spec_sha256": "68a6461e4576d780e9738099073148fb251ae779b4a154dc4ad2d760d7236155",
+ "status": "DONE",
+ "wall_s_this_leg": 11047.56
+}

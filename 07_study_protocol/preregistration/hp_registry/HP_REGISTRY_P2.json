@@ -1,0 +1,894 @@
+{
+ "authority": "contracts/PREG1_AMENDMENT_02R1.md \u00a72 (registered 2026-09-27, supersedes 02 \u00a71); company/reviews/BEST_BACKBONE_FABLE_FOLLOWUP_SIZE.md (a)-(d); TRAIN-02 item 1",
+ "dropout_rotation": {
+  "rule": "SASRec single p = (0.1, 0.2, 0.3)[i % 3] over the canonical index i (variant, schedule, replicate): each level 4 times, every (variant, p) pair at least once",
+  "sha256": "749d541ecf84011e8c970acc95c76ac94f9d0e721147dd6baa615a7233aad7fd",
+  "table": [
+   {
+    "dropout_p": 0.1,
+    "hp_index": 1,
+    "model_variant": "SASREC_D256_B2",
+    "replicate": 1,
+    "schedule": "S0"
+   },
+   {
+    "dropout_p": 0.2,
+    "hp_index": 2,
+    "model_variant": "SASREC_D256_B2",
+    "replicate": 2,
+    "schedule": "S0"
+   },
+   {
+    "dropout_p": 0.3,
+    "hp_index": 3,
+    "model_variant": "SASREC_D256_B2",
+    "replicate": 1,
+    "schedule": "S1"
+   },
+   {
+    "dropout_p": 0.1,
+    "hp_index": 4,
+    "model_variant": "SASREC_D256_B2",
+    "replicate": 2,
+    "schedule": "S1"
+   },
+   {
+    "dropout_p": 0.2,
+    "hp_index": 5,
+    "model_variant": "SASREC_D256_B3",
+    "replicate": 1,
+    "schedule": "S0"
+   },
+   {
+    "dropout_p": 0.3,
+    "hp_index": 6,
+    "model_variant": "SASREC_D256_B3",
+    "replicate": 2,
+    "schedule": "S0"
+   },
+   {
+    "dropout_p": 0.1,
+    "hp_index": 7,
+    "model_variant": "SASREC_D256_B3",
+    "replicate": 1,
+    "schedule": "S1"
+   },
+   {
+    "dropout_p": 0.2,
+    "hp_index": 8,
+    "model_variant": "SASREC_D256_B3",
+    "replicate": 2,
+    "schedule": "S1"
+   },
+   {
+    "dropout_p": 0.3,
+    "hp_index": 9,
+    "model_variant": "SASREC_D384_B2",
+    "replicate": 1,
+    "schedule": "S0"
+   },
+   {
+    "dropout_p": 0.1,
+    "hp_index": 10,
+    "model_variant": "SASREC_D384_B2",
+    "replicate": 2,
+    "schedule": "S0"
+   },
+   {
+    "dropout_p": 0.2,
+    "hp_index": 11,
+    "model_variant": "SASREC_D384_B2",
+    "replicate": 1,
+    "schedule": "S1"
+   },
+   {
+    "dropout_p": 0.3,
+    "hp_index": 12,
+    "model_variant": "SASREC_D384_B2",
+    "replicate": 2,
+    "schedule": "S1"
+   }
+  ]
+ },
+ "families": {
+  "GRU": [
+   {
+    "cell": {
+     "dropout_p": 0.1,
+     "model_variant": "GRU_D128",
+     "replicate": 1,
+     "schedule": "S0"
+    },
+    "dropout": [
+     0.1,
+     0.05
+    ],
+    "dropout_p": 0.1,
+    "dropout_sites": [
+     "input",
+     "readout"
+    ],
+    "family": "GRU",
+    "hp_id": "P2_GRU_T01",
+    "index": 1,
+    "log10_peak_lr": -3.481212078613671,
+    "lr_stratum": 0,
+    "model_variant": "GRU_D128",
+    "peak_lr": 0.0003302082513756629,
+    "schedule": "S0",
+    "sha256": "9c710ba9a24af25551b9541e34228734ef3419e700dc5fe6653c03e7a3188fd4"
+   },
+   {
+    "cell": {
+     "dropout_p": 0.2,
+     "model_variant": "GRU_D128",
+     "replicate": 1,
+     "schedule": "S0"
+    },
+    "dropout": [
+     0.2,
+     0.1
+    ],
+    "dropout_p": 0.2,
+    "dropout_sites": [
+     "input",
+     "readout"
+    ],
+    "family": "GRU",
+    "hp_id": "P2_GRU_T02",
+    "index": 2,
+    "log10_peak_lr": -3.1478787452803374,
+    "lr_stratum": 4,
+    "model_variant": "GRU_D128",
+    "peak_lr": 0.0007114121116984968,
+    "schedule": "S0",
+    "sha256": "167a6577640acd183ad40abee9d21904943450b04fe6381c74d6f17524a44911"
+   },
+   {
+    "cell": {
+     "dropout_p": 0.3,
+     "model_variant": "GRU_D128",
+     "replicate": 1,
+     "schedule": "S0"
+    },
+    "dropout": [
+     0.3,
+     0.15
+    ],
+    "dropout_p": 0.3,
+    "dropout_sites": [
+     "input",
+     "readout"
+    ],
+    "family": "GRU",
+    "hp_id": "P2_GRU_T03",
+    "index": 3,
+    "log10_peak_lr": -2.981212078613671,
+    "lr_stratum": 6,
+    "model_variant": "GRU_D128",
+    "peak_lr": 0.0010442101765285232,
+    "schedule": "S0",
+    "sha256": "67825158491936f41279b5a46e889410bb08f1444e7be822df14e708760b6680"
+   },
+   {
+    "cell": {
+     "dropout_p": 0.1,
+     "model_variant": "GRU_D128",
+     "replicate": 1,
+     "schedule": "S1"
+    },
+    "dropout": [
+     0.1,
+     0.05
+    ],
+    "dropout_p": 0.1,
+    "dropout_sites": [
+     "input",
+     "readout"
+    ],
+    "family": "GRU",
+    "hp_id": "P2_GRU_T04",
+    "index": 4,
+    "log10_peak_lr": -3.064545411947004,
+    "lr_stratum": 5,
+    "model_variant": "GRU_D128",
+    "peak_lr": 0.0008618954500061,
+    "schedule": "S1",
+    "sha256": "f8833525b3d4e2c0e7d80b2ee0cbec80f82b25f5badb019ebb543cd84e9d6bb4"
+   },
+   {
+    "cell": {
+     "dropout_p": 0.2,
+     "model_variant": "GRU_D128",
+     "replicate": 1,
+     "schedule": "S1"
+    },
+    "dropout": [
+     0.2,
+     0.1
+    ],
+    "dropout_p": 0.2,
+    "dropout_sites": [
+     "input",
+     "readout"
+    ],
+    "family": "GRU",
+    "hp_id": "P2_GRU_T05",
+    "index": 5,
+    "log10_peak_lr": -2.8978787452803374,
+    "lr_stratum": 7,
+    "model_variant": "GRU_D128",
+    "peak_lr": 0.0012650895102857473,
+    "schedule": "S1",
+    "sha256": "3839e413dceb3a8fdde4b89d7a26d92656d06af8a48dd538654f2d0afbf7da2a"
+   },
+   {
+    "cell": {
+     "dropout_p": 0.3,
+     "model_variant": "GRU_D128",
+     "replicate": 1,
+     "schedule": "S1"
+    },
+    "dropout": [
+     0.3,
+     0.15
+    ],
+    "dropout_p": 0.3,
+    "dropout_sites": [
+     "input",
+     "readout"
+    ],
+    "family": "GRU",
+    "hp_id": "P2_GRU_T06",
+    "index": 6,
+    "log10_peak_lr": -2.8145454119470044,
+    "lr_stratum": 8,
+    "model_variant": "GRU_D128",
+    "peak_lr": 0.0015326909323520779,
+    "schedule": "S1",
+    "sha256": "fb394aeebae7685965ec62f3eafaf4b8013b5a364c72faa0001790b673941450"
+   },
+   {
+    "cell": {
+     "dropout_p": 0.1,
+     "model_variant": "GRU_D256",
+     "replicate": 1,
+     "schedule": "S0"
+    },
+    "dropout": [
+     0.1,
+     0.05
+    ],
+    "dropout_p": 0.1,
+    "dropout_sites": [
+     "input",
+     "readout"
+    ],
+    "family": "GRU",
+    "hp_id": "P2_GRU_T07",
+    "index": 7,
+    "log10_peak_lr": -3.3978787452803374,
+    "lr_stratum": 1,
+    "model_variant": "GRU_D256",
+    "peak_lr": 0.00040005642964899735,
+    "schedule": "S0",
+    "sha256": "2e945b28f29a896592f284a49f9afdd01006ea858aa16ac766d64867abae41f6"
+   },
+   {
+    "cell": {
+     "dropout_p": 0.2,
+     "model_variant": "GRU_D256",
+     "replicate": 1,
+     "schedule": "S0"
+    },
+    "dropout": [
+     0.2,
+     0.1
+    ],
+    "dropout_p": 0.2,
+    "dropout_sites": [
+     "input",
+     "readout"
+    ],
+    "family": "GRU",
+    "hp_id": "P2_GRU_T08",
+    "index": 8,
+    "log10_peak_lr": -2.731212078613671,
+    "lr_stratum": 9,
+    "model_variant": "GRU_D256",
+    "peak_lr": 0.0018568974566737818,
+    "schedule": "S0",
+    "sha256": "9433b573dd90be987c40bc3e6c74c015c1db402c6ebbfe45c1dc2b9057887225"
+   },
+   {
+    "cell": {
+     "dropout_p": 0.3,
+     "model_variant": "GRU_D256",
+     "replicate": 1,
+     "schedule": "S0"
+    },
+    "dropout": [
+     0.3,
+     0.15
+    ],
+    "dropout_p": 0.3,
+    "dropout_sites": [
+     "input",
+     "readout"
+    ],
+    "family": "GRU",
+    "hp_id": "P2_GRU_T09",
+    "index": 9,
+    "log10_peak_lr": -3.231212078613671,
+    "lr_stratum": 3,
+    "model_variant": "GRU_D256",
+    "peak_lr": 0.0005872025344462981,
+    "schedule": "S0",
+    "sha256": "7f7808ae8195f7a272d8ad7d80bc5021b98295fb364a985150dcbdbe83190179"
+   },
+   {
+    "cell": {
+     "dropout_p": 0.1,
+     "model_variant": "GRU_D256",
+     "replicate": 1,
+     "schedule": "S1"
+    },
+    "dropout": [
+     0.1,
+     0.05
+    ],
+    "dropout_p": 0.1,
+    "dropout_sites": [
+     "input",
+     "readout"
+    ],
+    "family": "GRU",
+    "hp_id": "P2_GRU_T10",
+    "index": 10,
+    "log10_peak_lr": -2.6478787452803374,
+    "lr_stratum": 10,
+    "model_variant": "GRU_D256",
+    "peak_lr": 0.0022496826279973683,
+    "schedule": "S1",
+    "sha256": "2439a5867d3941f6b52b5b1d7d85bc9b732777b3288183d006d0a28a95518929"
+   },
+   {
+    "cell": {
+     "dropout_p": 0.2,
+     "model_variant": "GRU_D256",
+     "replicate": 1,
+     "schedule": "S1"
+    },
+    "dropout": [
+     0.2,
+     0.1
+    ],
+    "dropout_p": 0.2,
+    "dropout_sites": [
+     "input",
+     "readout"
+    ],
+    "family": "GRU",
+    "hp_id": "P2_GRU_T11",
+    "index": 11,
+    "log10_peak_lr": -2.5645454119470044,
+    "lr_stratum": 11,
+    "model_variant": "GRU_D256",
+    "peak_lr": 0.0027255527269550595,
+    "schedule": "S1",
+    "sha256": "e6b01bbc57c049fefb3479ca20bcd986f4515d1a5f81a65e50aeffcc18608cf4"
+   },
+   {
+    "cell": {
+     "dropout_p": 0.3,
+     "model_variant": "GRU_D256",
+     "replicate": 1,
+     "schedule": "S1"
+    },
+    "dropout": [
+     0.3,
+     0.15
+    ],
+    "dropout_p": 0.3,
+    "dropout_sites": [
+     "input",
+     "readout"
+    ],
+    "family": "GRU",
+    "hp_id": "P2_GRU_T12",
+    "index": 12,
+    "log10_peak_lr": -3.314545411947004,
+    "lr_stratum": 2,
+    "model_variant": "GRU_D256",
+    "peak_lr": 0.00048467942953196253,
+    "schedule": "S1",
+    "sha256": "0ed6a050fa910b1e24e397259b19c052a3db0b8917b99669d290c2069d2799ee"
+   }
+  ],
+  "SASREC": [
+   {
+    "cell": {
+     "dropout_p": 0.1,
+     "model_variant": "SASREC_D256_B2",
+     "replicate": 1,
+     "schedule": "S0"
+    },
+    "dropout": [
+     0.1
+    ],
+    "dropout_p": 0.1,
+    "dropout_sites": [
+     "all"
+    ],
+    "family": "SASREC",
+    "hp_id": "P2_SASREC_T01",
+    "index": 1,
+    "log10_peak_lr": -3.481212078613671,
+    "lr_stratum": 0,
+    "model_variant": "SASREC_D256_B2",
+    "peak_lr": 0.0003302082513756629,
+    "schedule": "S0",
+    "sha256": "8f50d5231268b8880f29b5fc768134ba88590aa305de17e4b51c56b1665d7c92"
+   },
+   {
+    "cell": {
+     "dropout_p": 0.2,
+     "model_variant": "SASREC_D256_B2",
+     "replicate": 2,
+     "schedule": "S0"
+    },
+    "dropout": [
+     0.2
+    ],
+    "dropout_p": 0.2,
+    "dropout_sites": [
+     "all"
+    ],
+    "family": "SASREC",
+    "hp_id": "P2_SASREC_T02",
+    "index": 2,
+    "log10_peak_lr": -3.1478787452803374,
+    "lr_stratum": 4,
+    "model_variant": "SASREC_D256_B2",
+    "peak_lr": 0.0007114121116984968,
+    "schedule": "S0",
+    "sha256": "cfc7c1cc133ad1d1ef2531a0de9690115faf873eb5c603e50568f3cead09a6a6"
+   },
+   {
+    "cell": {
+     "dropout_p": 0.3,
+     "model_variant": "SASREC_D256_B2",
+     "replicate": 1,
+     "schedule": "S1"
+    },
+    "dropout": [
+     0.3
+    ],
+    "dropout_p": 0.3,
+    "dropout_sites": [
+     "all"
+    ],
+    "family": "SASREC",
+    "hp_id": "P2_SASREC_T03",
+    "index": 3,
+    "log10_peak_lr": -2.981212078613671,
+    "lr_stratum": 6,
+    "model_variant": "SASREC_D256_B2",
+    "peak_lr": 0.0010442101765285232,
+    "schedule": "S1",
+    "sha256": "6e1a2ffa9cada7a2e46f383d59c175e254f5f1a7e0e3b500e0e1226736c6cf28"
+   },
+   {
+    "cell": {
+     "dropout_p": 0.1,
+     "model_variant": "SASREC_D256_B2",
+     "replicate": 2,
+     "schedule": "S1"
+    },
+    "dropout": [
+     0.1
+    ],
+    "dropout_p": 0.1,
+    "dropout_sites": [
+     "all"
+    ],
+    "family": "SASREC",
+    "hp_id": "P2_SASREC_T04",
+    "index": 4,
+    "log10_peak_lr": -3.064545411947004,
+    "lr_stratum": 5,
+    "model_variant": "SASREC_D256_B2",
+    "peak_lr": 0.0008618954500061,
+    "schedule": "S1",
+    "sha256": "cf07d5a75b9d3a07d801ed2fb4977a997d1e6e2bd24d1c018aece87257e5176b"
+   },
+   {
+    "cell": {
+     "dropout_p": 0.2,
+     "model_variant": "SASREC_D256_B3",
+     "replicate": 1,
+     "schedule": "S0"
+    },
+    "dropout": [
+     0.2
+    ],
+    "dropout_p": 0.2,
+    "dropout_sites": [
+     "all"
+    ],
+    "family": "SASREC",
+    "hp_id": "P2_SASREC_T05",
+    "index": 5,
+    "log10_peak_lr": -2.8978787452803374,
+    "lr_stratum": 7,
+    "model_variant": "SASREC_D256_B3",
+    "peak_lr": 0.0012650895102857473,
+    "schedule": "S0",
+    "sha256": "6ece62942f176b3b1171444dcb9222b251865e187069bb060cefcf571081a9c1"
+   },
+   {
+    "cell": {
+     "dropout_p": 0.3,
+     "model_variant": "SASREC_D256_B3",
+     "replicate": 2,
+     "schedule": "S0"
+    },
+    "dropout": [
+     0.3
+    ],
+    "dropout_p": 0.3,
+    "dropout_sites": [
+     "all"
+    ],
+    "family": "SASREC",
+    "hp_id": "P2_SASREC_T06",
+    "index": 6,
+    "log10_peak_lr": -2.8145454119470044,
+    "lr_stratum": 8,
+    "model_variant": "SASREC_D256_B3",
+    "peak_lr": 0.0015326909323520779,
+    "schedule": "S0",
+    "sha256": "b2dd87b2acc7061200b6403b05b4ddadeb1e91123bad07e571782d4bea068c97"
+   },
+   {
+    "cell": {
+     "dropout_p": 0.1,
+     "model_variant": "SASREC_D256_B3",
+     "replicate": 1,
+     "schedule": "S1"
+    },
+    "dropout": [
+     0.1
+    ],
+    "dropout_p": 0.1,
+    "dropout_sites": [
+     "all"
+    ],
+    "family": "SASREC",
+    "hp_id": "P2_SASREC_T07",
+    "index": 7,
+    "log10_peak_lr": -3.3978787452803374,
+    "lr_stratum": 1,
+    "model_variant": "SASREC_D256_B3",
+    "peak_lr": 0.00040005642964899735,
+    "schedule": "S1",
+    "sha256": "20293a634729a8c6a7af7203e67cc32b4a1198584054f1d9a81771f8e83ee336"
+   },
+   {
+    "cell": {
+     "dropout_p": 0.2,
+     "model_variant": "SASREC_D256_B3",
+     "replicate": 2,
+     "schedule": "S1"
+    },
+    "dropout": [
+     0.2
+    ],
+    "dropout_p": 0.2,
+    "dropout_sites": [
+     "all"
+    ],
+    "family": "SASREC",
+    "hp_id": "P2_SASREC_T08",
+    "index": 8,
+    "log10_peak_lr": -2.731212078613671,
+    "lr_stratum": 9,
+    "model_variant": "SASREC_D256_B3",
+    "peak_lr": 0.0018568974566737818,
+    "schedule": "S1",
+    "sha256": "c91d58403e3ac1df3ad9dcbfcefac3ce7f38ef1af3dcee19f892211cad292f87"
+   },
+   {
+    "cell": {
+     "dropout_p": 0.3,
+     "model_variant": "SASREC_D384_B2",
+     "replicate": 1,
+     "schedule": "S0"
+    },
+    "dropout": [
+     0.3
+    ],
+    "dropout_p": 0.3,
+    "dropout_sites": [
+     "all"
+    ],
+    "family": "SASREC",
+    "hp_id": "P2_SASREC_T09",
+    "index": 9,
+    "log10_peak_lr": -3.231212078613671,
+    "lr_stratum": 3,
+    "model_variant": "SASREC_D384_B2",
+    "peak_lr": 0.0005872025344462981,
+    "schedule": "S0",
+    "sha256": "6bae7938fecf08d5d39203b39780dae95c092c18d23f277d65809f770bc65be6"
+   },
+   {
+    "cell": {
+     "dropout_p": 0.1,
+     "model_variant": "SASREC_D384_B2",
+     "replicate": 2,
+     "schedule": "S0"
+    },
+    "dropout": [
+     0.1
+    ],
+    "dropout_p": 0.1,
+    "dropout_sites": [
+     "all"
+    ],
+    "family": "SASREC",
+    "hp_id": "P2_SASREC_T10",
+    "index": 10,
+    "log10_peak_lr": -2.6478787452803374,
+    "lr_stratum": 10,
+    "model_variant": "SASREC_D384_B2",
+    "peak_lr": 0.0022496826279973683,
+    "schedule": "S0",
+    "sha256": "3f65f4448cf562cdd67e3071b32979c66567d1f66c2aaf3601449eb401cf209d"
+   },
+   {
+    "cell": {
+     "dropout_p": 0.2,
+     "model_variant": "SASREC_D384_B2",
+     "replicate": 1,
+     "schedule": "S1"
+    },
+    "dropout": [
+     0.2
+    ],
+    "dropout_p": 0.2,
+    "dropout_sites": [
+     "all"
+    ],
+    "family": "SASREC",
+    "hp_id": "P2_SASREC_T11",
+    "index": 11,
+    "log10_peak_lr": -2.5645454119470044,
+    "lr_stratum": 11,
+    "model_variant": "SASREC_D384_B2",
+    "peak_lr": 0.0027255527269550595,
+    "schedule": "S1",
+    "sha256": "857dbb764a9a1aae86f2e6026245b691d5d9b375195b749dcebff0a098978b90"
+   },
+   {
+    "cell": {
+     "dropout_p": 0.3,
+     "model_variant": "SASREC_D384_B2",
+     "replicate": 2,
+     "schedule": "S1"
+    },
+    "dropout": [
+     0.3
+    ],
+    "dropout_p": 0.3,
+    "dropout_sites": [
+     "all"
+    ],
+    "family": "SASREC",
+    "hp_id": "P2_SASREC_T12",
+    "index": 12,
+    "log10_peak_lr": -3.314545411947004,
+    "lr_stratum": 2,
+    "model_variant": "SASREC_D384_B2",
+    "peak_lr": 0.00048467942953196253,
+    "schedule": "S1",
+    "sha256": "760518256eb410663da4697cc054ceb8d416019893722759ff56a8f59a0ab635"
+   }
+  ]
+ },
+ "fixed": {
+  "betas": [
+   0.9,
+   0.999
+  ],
+  "determinism_mode": "STRICT",
+  "efe": 6.0,
+  "effective_batch": 256,
+  "endpoint": 6.0,
+  "eps": 1e-08,
+  "eval_manifest_role": "CALIBRATION (CALIB_VALIDATION_5_100_32768); MAIN_VALIDATION never read",
+  "eval_marks": [
+   2.0,
+   4.0,
+   6.0
+  ],
+  "grad_clip": 1.0,
+  "label_smoothing": 0.0,
+  "optimizer": "AdamW (fused)",
+  "run_label": "HP_SEARCH",
+  "run_role": "TUNING",
+  "snapshot_marks": [
+   5.0,
+   5.5,
+   6.0
+  ],
+  "train_manifest_role": "CALIBRATION (CALIB_TRAIN_5_100_32768)",
+  "weight_decay": 1e-05,
+  "weight_decay_scope": "ndim>=2"
+ },
+ "format": "PPSI_V4_HP_REGISTRY_P2_1",
+ "lr_lhs": {
+  "bounds": [
+   0.0003,
+   0.003
+  ],
+  "n_strata": 12,
+  "permutation": [
+   0,
+   4,
+   6,
+   5,
+   7,
+   8,
+   1,
+   9,
+   3,
+   10,
+   11,
+   2
+  ],
+  "procedure": "12 equal-width strata of log10(peak LR) over [log10 3e-4, log10 3e-3]; one value per stratum at its midpoint; canonical trial i (0-based) of each family gets stratum perm[i], perm = numpy.random.default_rng(20260927).permutation(12) drawn afresh per family (same seed)",
+  "rng": "numpy 2.4.1 default_rng (PCG64)",
+  "seed": 20260927,
+  "sha256": "7839ca502888705cda3e1a6f748c42c89739618bc9d5c9adc33255fdbbf9295b",
+  "strata": [
+   {
+    "log10_hi": -3.439545411947004,
+    "log10_lo": -3.5228787452803374,
+    "log10_mid": -3.481212078613671,
+    "peak_lr": 0.0003302082513756629,
+    "stratum": 0
+   },
+   {
+    "log10_hi": -3.356212078613671,
+    "log10_lo": -3.439545411947004,
+    "log10_mid": -3.3978787452803374,
+    "peak_lr": 0.00040005642964899735,
+    "stratum": 1
+   },
+   {
+    "log10_hi": -3.2728787452803374,
+    "log10_lo": -3.356212078613671,
+    "log10_mid": -3.314545411947004,
+    "peak_lr": 0.00048467942953196253,
+    "stratum": 2
+   },
+   {
+    "log10_hi": -3.189545411947004,
+    "log10_lo": -3.2728787452803374,
+    "log10_mid": -3.231212078613671,
+    "peak_lr": 0.0005872025344462981,
+    "stratum": 3
+   },
+   {
+    "log10_hi": -3.106212078613671,
+    "log10_lo": -3.189545411947004,
+    "log10_mid": -3.1478787452803374,
+    "peak_lr": 0.0007114121116984968,
+    "stratum": 4
+   },
+   {
+    "log10_hi": -3.0228787452803374,
+    "log10_lo": -3.106212078613671,
+    "log10_mid": -3.064545411947004,
+    "peak_lr": 0.0008618954500061,
+    "stratum": 5
+   },
+   {
+    "log10_hi": -2.9395454119470044,
+    "log10_lo": -3.0228787452803374,
+    "log10_mid": -2.981212078613671,
+    "peak_lr": 0.0010442101765285232,
+    "stratum": 6
+   },
+   {
+    "log10_hi": -2.856212078613671,
+    "log10_lo": -2.9395454119470044,
+    "log10_mid": -2.8978787452803374,
+    "peak_lr": 0.0012650895102857473,
+    "stratum": 7
+   },
+   {
+    "log10_hi": -2.7728787452803374,
+    "log10_lo": -2.856212078613671,
+    "log10_mid": -2.8145454119470044,
+    "peak_lr": 0.0015326909323520779,
+    "stratum": 8
+   },
+   {
+    "log10_hi": -2.6895454119470044,
+    "log10_lo": -2.7728787452803374,
+    "log10_mid": -2.731212078613671,
+    "peak_lr": 0.0018568974566737818,
+    "stratum": 9
+   },
+   {
+    "log10_hi": -2.606212078613671,
+    "log10_lo": -2.6895454119470044,
+    "log10_mid": -2.6478787452803374,
+    "peak_lr": 0.0022496826279973683,
+    "stratum": 10
+   },
+   {
+    "log10_hi": -2.5228787452803374,
+    "log10_lo": -2.606212078613671,
+    "log10_mid": -2.5645454119470044,
+    "peak_lr": 0.0027255527269550595,
+    "stratum": 11
+   }
+  ]
+ },
+ "schedules": {
+  "S0": [
+   [
+    0.0,
+    0.0
+   ],
+   [
+    0.02,
+    1.0
+   ],
+   [
+    2.0,
+    1.0
+   ],
+   [
+    3.0,
+    0.1
+   ],
+   [
+    5.5,
+    0.1
+   ],
+   [
+    6.0,
+    0.01
+   ]
+  ],
+  "S1": [
+   [
+    0.0,
+    0.0
+   ],
+   [
+    0.02,
+    1.0
+   ],
+   [
+    4.2,
+    1.0
+   ],
+   [
+    6.0,
+    0.01
+   ]
+  ]
+ },
+ "seeds": {
+  "stage1": 2026,
+  "stage2": 2027
+ },
+ "selection": "02R1 \u00a73 (v4train.p2_driver): stage 2 = the best 6.0 value of each model-variant level at seed 2027; tuned = the higher 2-seed mean at 6.0; tie |delta| <= 0.0005 -> fewer parameters, then the lower LR; exclusions: non-finite, or a 6.0 value < 0.5 x the family best; a variant level without a valid 6.0 run is a Fable trigger; CKPT_AVG carried iff > +0.0005 on the 2-seed mean",
+ "self_sha256": "4b8a8cd4db22334314c5c4df62b0aa6ab15377c78bc33c5628b83ea4d3a7e7c2",
+ "task": "TRAIN-02 item 1"
+}

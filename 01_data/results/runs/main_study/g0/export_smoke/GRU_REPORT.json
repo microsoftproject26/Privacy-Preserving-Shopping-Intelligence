@@ -1,0 +1,197 @@
+{
+ "family": "GRU",
+ "arch": "ContextGRU (F4_rich_side_information)",
+ "utc": "2026-09-26T13:53:49Z",
+ "isolation_modules_checked": 12,
+ "K": 158486,
+ "n_params": 20964062,
+ "torch_version": "2.13.0+cu130",
+ "precision": "FP32",
+ "device": "cpu",
+ "seed": 2026,
+ "note_weights": "random init (torch.manual_seed(2026) before construction); no checkpoint",
+ "export_full": {
+  "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/g0/export_smoke/gru_full.onnx",
+  "opset_version": 18,
+  "input_names": [
+   "item_tokens",
+   "lengths",
+   "attention_mask",
+   "category_tokens",
+   "brand_tokens",
+   "main_category_tokens",
+   "daypart_tokens",
+   "weekday_tokens",
+   "event_numeric_features",
+   "event_quality_flags",
+   "user_context",
+   "user_context_masks"
+  ],
+  "output_names": [
+   "logits"
+  ],
+  "dynamic_axes": {
+   "item_tokens": {
+    "0": "batch",
+    "1": "seq"
+   },
+   "lengths": {
+    "0": "batch"
+   },
+   "attention_mask": {
+    "0": "batch",
+    "1": "seq"
+   },
+   "category_tokens": {
+    "0": "batch",
+    "1": "seq"
+   },
+   "brand_tokens": {
+    "0": "batch",
+    "1": "seq"
+   },
+   "main_category_tokens": {
+    "0": "batch",
+    "1": "seq"
+   },
+   "daypart_tokens": {
+    "0": "batch",
+    "1": "seq"
+   },
+   "weekday_tokens": {
+    "0": "batch",
+    "1": "seq"
+   },
+   "event_numeric_features": {
+    "0": "batch",
+    "1": "seq"
+   },
+   "event_quality_flags": {
+    "0": "batch",
+    "1": "seq"
+   },
+   "user_context": {
+    "0": "batch"
+   },
+   "user_context_masks": {
+    "0": "batch"
+   },
+   "logits": {
+    "0": "batch"
+   }
+  },
+  "attempts": [
+   {
+    "exporter": "dynamo (torch.export-based, default)",
+    "status": "failed",
+    "error_type": "ModuleNotFoundError",
+    "error_text": "ModuleNotFoundError: No module named 'onnxscript'\n",
+    "error_traceback_tail": "Traceback (most recent call last):\n  File \"/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/code/g0_export/common.py\", line 261, in try_export\n    torch.onnx.export(wrapper, example_args, path, dynamo=dynamo,\n  File \"/home/jovyan/venvs/ppsi-gpu/lib/python3.11/site-packages/torch/onnx/__init__.py\", line 286, in export\n    from torch.onnx._internal.exporter import _compat\n  File \"/home/jovyan/venvs/ppsi-gpu/lib/python3.11/site-packages/torch/onnx/_internal/exporter/_compat.py\", line 16, in <module>\n    from torch.onnx._internal.exporter import (\n  File \"/home/jovyan/venvs/ppsi-gpu/lib/python3.11/site-packages/torch/onnx/_internal/exporter/_core.py\", line 19, in <module>\n    import onnxscript\nModuleNotFoundError: No module named 'onnxscript'\n"
+   },
+   {
+    "exporter": "legacy (TorchScript-trace-based, dynamo=False)",
+    "status": "failed",
+    "error_type": "RuntimeError",
+    "error_text": "RuntimeError: vector::_M_range_check: __n (which is 0) >= this->size() (which is 0)\n",
+    "error_traceback_tail": "Traceback (most recent call last):\n  File \"/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/code/g0_export/common.py\", line 261, in try_export\n    torch.onnx.export(wrapper, example_args, path, dynamo=dynamo,\n  File \"/home/jovyan/venvs/ppsi-gpu/lib/python3.11/site-packages/torch/onnx/__init__.py\", line 334, in export\n    export(\n  File \"/home/jovyan/venvs/ppsi-gpu/lib/python3.11/site-packages/torch/onnx/_internal/torchscript_exporter/utils.py\", line 547, in export\n    _export(\n  File \"/home/jovyan/venvs/ppsi-gpu/lib/python3.11/site-packages/torch/onnx/_internal/torchscript_exporter/utils.py\", line 1510, in _export\n    graph, params_dict, torch_out = _model_to_graph(\n                                    ^^^^^^^^^^^^^^^^\n  File \"/home/jovyan/venvs/ppsi-gpu/lib/python3.11/site-packages/torch/onnx/_internal/torchscript_exporter/utils.py\", line 1112, in _model_to_graph\n    graph = _optimize_graph(\n            ^^^^^^^^^^^^^^^^\n  File \"/home/jovyan/venvs/ppsi-gpu/lib/python3.11/site-packages/torch/onnx/_internal/torchscript_exporter/utils.py\", line 693, in _optimize_graph\n    _C._jit_pass_onnx_peephole(\nRuntimeError: vector::_M_range_check: __n (which is 0) >= this->size() (which is 0)\n"
+   }
+  ],
+  "status": "failed",
+  "exporter_used": null
+ },
+ "export_query": {
+  "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/g0/export_smoke/gru_query.onnx",
+  "opset_version": 18,
+  "input_names": [
+   "item_tokens",
+   "lengths",
+   "attention_mask",
+   "category_tokens",
+   "brand_tokens",
+   "main_category_tokens",
+   "daypart_tokens",
+   "weekday_tokens",
+   "event_numeric_features",
+   "event_quality_flags",
+   "user_context",
+   "user_context_masks"
+  ],
+  "output_names": [
+   "q"
+  ],
+  "dynamic_axes": {
+   "item_tokens": {
+    "0": "batch",
+    "1": "seq"
+   },
+   "lengths": {
+    "0": "batch"
+   },
+   "attention_mask": {
+    "0": "batch",
+    "1": "seq"
+   },
+   "category_tokens": {
+    "0": "batch",
+    "1": "seq"
+   },
+   "brand_tokens": {
+    "0": "batch",
+    "1": "seq"
+   },
+   "main_category_tokens": {
+    "0": "batch",
+    "1": "seq"
+   },
+   "daypart_tokens": {
+    "0": "batch",
+    "1": "seq"
+   },
+   "weekday_tokens": {
+    "0": "batch",
+    "1": "seq"
+   },
+   "event_numeric_features": {
+    "0": "batch",
+    "1": "seq"
+   },
+   "event_quality_flags": {
+    "0": "batch",
+    "1": "seq"
+   },
+   "user_context": {
+    "0": "batch"
+   },
+   "user_context_masks": {
+    "0": "batch"
+   },
+   "q": {
+    "0": "batch"
+   }
+  },
+  "attempts": [
+   {
+    "exporter": "dynamo (torch.export-based, default)",
+    "status": "failed",
+    "error_type": "ModuleNotFoundError",
+    "error_text": "ModuleNotFoundError: No module named 'onnxscript'\n",
+    "error_traceback_tail": "Traceback (most recent call last):\n  File \"/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/code/g0_export/common.py\", line 261, in try_export\n    torch.onnx.export(wrapper, example_args, path, dynamo=dynamo,\n  File \"/home/jovyan/venvs/ppsi-gpu/lib/python3.11/site-packages/torch/onnx/__init__.py\", line 286, in export\n    from torch.onnx._internal.exporter import _compat\n  File \"/home/jovyan/venvs/ppsi-gpu/lib/python3.11/site-packages/torch/onnx/_internal/exporter/_compat.py\", line 16, in <module>\n    from torch.onnx._internal.exporter import (\n  File \"/home/jovyan/venvs/ppsi-gpu/lib/python3.11/site-packages/torch/onnx/_internal/exporter/_core.py\", line 19, in <module>\n    import onnxscript\nModuleNotFoundError: No module named 'onnxscript'\n"
+   },
+   {
+    "exporter": "legacy (TorchScript-trace-based, dynamo=False)",
+    "status": "failed",
+    "error_type": "RuntimeError",
+    "error_text": "RuntimeError: vector::_M_range_check: __n (which is 0) >= this->size() (which is 0)\n",
+    "error_traceback_tail": "Traceback (most recent call last):\n  File \"/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/code/g0_export/common.py\", line 261, in try_export\n    torch.onnx.export(wrapper, example_args, path, dynamo=dynamo,\n  File \"/home/jovyan/venvs/ppsi-gpu/lib/python3.11/site-packages/torch/onnx/__init__.py\", line 334, in export\n    export(\n  File \"/home/jovyan/venvs/ppsi-gpu/lib/python3.11/site-packages/torch/onnx/_internal/torchscript_exporter/utils.py\", line 547, in export\n    _export(\n  File \"/home/jovyan/venvs/ppsi-gpu/lib/python3.11/site-packages/torch/onnx/_internal/torchscript_exporter/utils.py\", line 1510, in _export\n    graph, params_dict, torch_out = _model_to_graph(\n                                    ^^^^^^^^^^^^^^^^\n  File \"/home/jovyan/venvs/ppsi-gpu/lib/python3.11/site-packages/torch/onnx/_internal/torchscript_exporter/utils.py\", line 1112, in _model_to_graph\n    graph = _optimize_graph(\n            ^^^^^^^^^^^^^^^^\n  File \"/home/jovyan/venvs/ppsi-gpu/lib/python3.11/site-packages/torch/onnx/_internal/torchscript_exporter/utils.py\", line 693, in _optimize_graph\n    _C._jit_pass_onnx_peephole(\nRuntimeError: vector::_M_range_check: __n (which is 0) >= this->size() (which is 0)\n"
+   }
+  ],
+  "status": "failed",
+  "exporter_used": null
+ },
+ "parity_full": {},
+ "parity_query_plus_reconstructed_head": {},
+ "latency_full_cpu_proxy": {},
+ "latency_label": "SERVER-CPU PROXY (AMD EPYC), NOT a phone/browser measurement",
+ "process_peak_rss_mb": 736.91015625,
+ "wall_time_s": 0.7499042712152004
+}

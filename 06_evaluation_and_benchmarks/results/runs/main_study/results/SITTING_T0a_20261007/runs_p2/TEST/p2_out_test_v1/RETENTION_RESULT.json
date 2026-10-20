@@ -1,0 +1,4896 @@
+{
+ "bootstrap": {
+  "evaluator_rows_bootstrap_W_checked_E7_2": {},
+  "main_view": {
+   "W_sha256": "0654b73fd097d99d71591aeaa609b367d41305ba92431d3e199792fe7386413d",
+   "n_decisions": 229742,
+   "n_users": 26254,
+   "population": "MAIN/ALL"
+  },
+  "n_resamples": 1000,
+  "plan": "v4eval.bootstrap.make_plan(seed=20261004)",
+  "ratios": "bootstrapped directly per resample",
+  "seed": 20261004,
+  "seed_mean": "mean over seeds of the per-seed statistic, per resample on the same W",
+  "statistic": "macro_e2e (MRR@20)",
+  "unit": "user (eval_user_key)"
+ },
+ "checks": {
+  "comparison_key": {
+   "baseline_block": null,
+   "device_pin_sha256": "db744ca3f0da27ac7b65c41b4b32f2c68ec9d0bd66bbc0dc33e874a226834e6b",
+   "fields": [
+    "eval_device_class",
+    "split",
+    "evaluator_code_sha256",
+    "candidate_order_hash",
+    "label_policy_hash",
+    "data_protocol_hash",
+    "feature_contract_hash",
+    "precision_id",
+    "objective_id",
+    "eval_score_block",
+    "eval_stream",
+    "eval_manifest_id",
+    "query_order_hash"
+   ],
+   "historical_reference": [],
+   "intended_differences": {
+    "C_FULL|2026|CONTROLLED_BUDGET|MAIN": {
+     "eval_batch": [
+      "1024"
+     ],
+     "initialization_block": [
+      "I_META_RANDOM|SASREC|seed=2026|theta0_sha256=fe075eddc6715e92d7c20066c89291ee4147d9aed9a28c939d4dcae626ded616"
+     ],
+     "population_hash": [
+      "df5d0c7e82bc0842f5c8435fafaa67f947d4fe951d5f9e6aed9ca58d10a46cdf"
+     ],
+     "topology_hash": [
+      "5d6ba76fbc762e31f5fb6f428482f682b4af7724d0b06a808909bc4c9f52e198"
+     ]
+    },
+    "C_FULL|2026|PRACTICAL_BEST|MAIN": {
+     "eval_batch": [
+      "1024"
+     ],
+     "initialization_block": [
+      "I_META_RANDOM|SASREC|seed=2026|theta0_sha256=fe075eddc6715e92d7c20066c89291ee4147d9aed9a28c939d4dcae626ded616"
+     ],
+     "population_hash": [
+      "df5d0c7e82bc0842f5c8435fafaa67f947d4fe951d5f9e6aed9ca58d10a46cdf"
+     ],
+     "topology_hash": [
+      "5d6ba76fbc762e31f5fb6f428482f682b4af7724d0b06a808909bc4c9f52e198"
+     ]
+    },
+    "FA_WARM_FROZEN|2026|CONTROLLED_BUDGET|MAIN": {
+     "eval_batch": [
+      "1024"
+     ],
+     "initialization_block": [
+      "I_META_RANDOM|SASREC|seed=2026|theta0_sha256=e9eb0bb9dd30061790fa5dc747e14c9aa375e2069c06a85785de6251e8705b95"
+     ],
+     "population_hash": [
+      "563e76637a384c2985fff5e272d4290f4f3e52c99f57eebec4c20cde0628b8b3"
+     ],
+     "topology_hash": [
+      "004d6eb00d130a8d082ef52452f1df455cb4e17533ef6422a09ad5b75034cd96"
+     ]
+    },
+    "FA_WARM_FROZEN|2026|PRACTICAL_BEST|MAIN": {
+     "eval_batch": [
+      "1024"
+     ],
+     "initialization_block": [
+      "I_META_RANDOM|SASREC|seed=2026|theta0_sha256=e9eb0bb9dd30061790fa5dc747e14c9aa375e2069c06a85785de6251e8705b95"
+     ],
+     "population_hash": [
+      "563e76637a384c2985fff5e272d4290f4f3e52c99f57eebec4c20cde0628b8b3"
+     ],
+     "topology_hash": [
+      "004d6eb00d130a8d082ef52452f1df455cb4e17533ef6422a09ad5b75034cd96"
+     ]
+    },
+    "FA_WARM_FROZEN|2027|CONTROLLED_BUDGET|MAIN": {
+     "eval_batch": [
+      "1024"
+     ],
+     "initialization_block": [
+      "I_META_RANDOM|SASREC|seed=2027|theta0_sha256=a5d1e6839c4d446bb2b4f09fd2a6ef340cf596e60b8a035c2ef683d58f5e34c0"
+     ],
+     "population_hash": [
+      "563e76637a384c2985fff5e272d4290f4f3e52c99f57eebec4c20cde0628b8b3"
+     ],
+     "topology_hash": [
+      "004d6eb00d130a8d082ef52452f1df455cb4e17533ef6422a09ad5b75034cd96"
+     ]
+    },
+    "FA_WARM_FROZEN|2027|PRACTICAL_BEST|MAIN": {
+     "eval_batch": [
+      "1024"
+     ],
+     "initialization_block": [
+      "I_META_RANDOM|SASREC|seed=2027|theta0_sha256=a5d1e6839c4d446bb2b4f09fd2a6ef340cf596e60b8a035c2ef683d58f5e34c0"
+     ],
+     "population_hash": [
+      "563e76637a384c2985fff5e272d4290f4f3e52c99f57eebec4c20cde0628b8b3"
+     ],
+     "topology_hash": [
+      "004d6eb00d130a8d082ef52452f1df455cb4e17533ef6422a09ad5b75034cd96"
+     ]
+    },
+    "FT_P2_WSTAR|2026|PRACTICAL_BEST|MAIN": {
+     "eval_batch": [
+      "1024"
+     ],
+     "initialization_block": [
+      "I_META_RANDOM|SASREC|seed=2026|theta0_sha256=e9eb0bb9dd30061790fa5dc747e14c9aa375e2069c06a85785de6251e8705b95"
+     ],
+     "population_hash": [
+      "563e76637a384c2985fff5e272d4290f4f3e52c99f57eebec4c20cde0628b8b3"
+     ],
+     "topology_hash": [
+      "004d6eb00d130a8d082ef52452f1df455cb4e17533ef6422a09ad5b75034cd96"
+     ]
+    },
+    "FT_P2_WSTAR|2027|PRACTICAL_BEST|MAIN": {
+     "eval_batch": [
+      "1024"
+     ],
+     "initialization_block": [
+      "I_META_RANDOM|SASREC|seed=2027|theta0_sha256=a5d1e6839c4d446bb2b4f09fd2a6ef340cf596e60b8a035c2ef683d58f5e34c0"
+     ],
+     "population_hash": [
+      "563e76637a384c2985fff5e272d4290f4f3e52c99f57eebec4c20cde0628b8b3"
+     ],
+     "topology_hash": [
+      "004d6eb00d130a8d082ef52452f1df455cb4e17533ef6422a09ad5b75034cd96"
+     ]
+    },
+    "FT_PRE|2026|PRACTICAL_BEST|MAIN": {
+     "eval_batch": [
+      "1024"
+     ],
+     "initialization_block": [
+      "I_META_RANDOM|SASREC|seed=2026|theta0_sha256=e9eb0bb9dd30061790fa5dc747e14c9aa375e2069c06a85785de6251e8705b95"
+     ],
+     "population_hash": [
+      "563e76637a384c2985fff5e272d4290f4f3e52c99f57eebec4c20cde0628b8b3"
+     ],
+     "topology_hash": [
+      "004d6eb00d130a8d082ef52452f1df455cb4e17533ef6422a09ad5b75034cd96"
+     ]
+    },
+    "FT_PRE|2027|PRACTICAL_BEST|MAIN": {
+     "eval_batch": [
+      "1024"
+     ],
+     "initialization_block": [
+      "I_META_RANDOM|SASREC|seed=2027|theta0_sha256=a5d1e6839c4d446bb2b4f09fd2a6ef340cf596e60b8a035c2ef683d58f5e34c0"
+     ],
+     "population_hash": [
+      "563e76637a384c2985fff5e272d4290f4f3e52c99f57eebec4c20cde0628b8b3"
+     ],
+     "topology_hash": [
+      "004d6eb00d130a8d082ef52452f1df455cb4e17533ef6422a09ad5b75034cd96"
+     ]
+    },
+    "P2_C1_FT_CENTRAL_FROZEN|2026|CONTROLLED_BUDGET|MAIN": {
+     "eval_batch": [
+      "1024"
+     ],
+     "initialization_block": [
+      "P2_THETA_PRE|SASREC|checkpoint_sha256=cf08588c11f019cc760f129ba7ba6b23806297660e0170f9938436a5cb88cf78|state_digest=ee33345be4f20b61a53cd80fa11e1af702031bfcd1425af490825cd0019dc54a"
+     ],
+     "population_hash": [
+      "563e76637a384c2985fff5e272d4290f4f3e52c99f57eebec4c20cde0628b8b3"
+     ],
+     "topology_hash": [
+      "004d6eb00d130a8d082ef52452f1df455cb4e17533ef6422a09ad5b75034cd96"
+     ]
+    },
+    "P2_C1_FT_CENTRAL_FROZEN|2026|PRACTICAL_BEST|MAIN": {
+     "eval_batch": [
+      "1024"
+     ],
+     "initialization_block": [
+      "P2_THETA_PRE|SASREC|checkpoint_sha256=cf08588c11f019cc760f129ba7ba6b23806297660e0170f9938436a5cb88cf78|state_digest=ee33345be4f20b61a53cd80fa11e1af702031bfcd1425af490825cd0019dc54a"
+     ],
+     "population_hash": [
+      "563e76637a384c2985fff5e272d4290f4f3e52c99f57eebec4c20cde0628b8b3"
+     ],
+     "topology_hash": [
+      "004d6eb00d130a8d082ef52452f1df455cb4e17533ef6422a09ad5b75034cd96"
+     ]
+    },
+    "P2_C1_FT_CENTRAL_FROZEN|2027|CONTROLLED_BUDGET|MAIN": {
+     "eval_batch": [
+      "1024"
+     ],
+     "initialization_block": [
+      "P2_THETA_PRE|SASREC|checkpoint_sha256=cf08588c11f019cc760f129ba7ba6b23806297660e0170f9938436a5cb88cf78|state_digest=ee33345be4f20b61a53cd80fa11e1af702031bfcd1425af490825cd0019dc54a"
+     ],
+     "population_hash": [
+      "563e76637a384c2985fff5e272d4290f4f3e52c99f57eebec4c20cde0628b8b3"
+     ],
+     "topology_hash": [
+      "004d6eb00d130a8d082ef52452f1df455cb4e17533ef6422a09ad5b75034cd96"
+     ]
+    },
+    "P2_C1_FT_CENTRAL_FROZEN|2027|PRACTICAL_BEST|MAIN": {
+     "eval_batch": [
+      "1024"
+     ],
+     "initialization_block": [
+      "P2_THETA_PRE|SASREC|checkpoint_sha256=cf08588c11f019cc760f129ba7ba6b23806297660e0170f9938436a5cb88cf78|state_digest=ee33345be4f20b61a53cd80fa11e1af702031bfcd1425af490825cd0019dc54a"
+     ],
+     "population_hash": [
+      "563e76637a384c2985fff5e272d4290f4f3e52c99f57eebec4c20cde0628b8b3"
+     ],
+     "topology_hash": [
+      "004d6eb00d130a8d082ef52452f1df455cb4e17533ef6422a09ad5b75034cd96"
+     ]
+    },
+    "P2_C1_FT_CENTRAL_FULL|2026|CONTROLLED_BUDGET|MAIN": {
+     "eval_batch": [
+      "1024"
+     ],
+     "initialization_block": [
+      "P2_THETA_PRE|SASREC|checkpoint_sha256=cf08588c11f019cc760f129ba7ba6b23806297660e0170f9938436a5cb88cf78|state_digest=ee33345be4f20b61a53cd80fa11e1af702031bfcd1425af490825cd0019dc54a"
+     ],
+     "population_hash": [
+      "563e76637a384c2985fff5e272d4290f4f3e52c99f57eebec4c20cde0628b8b3"
+     ],
+     "topology_hash": [
+      "004d6eb00d130a8d082ef52452f1df455cb4e17533ef6422a09ad5b75034cd96"
+     ]
+    },
+    "P2_C1_FT_CENTRAL_FULL|2026|PRACTICAL_BEST|MAIN": {
+     "eval_batch": [
+      "1024"
+     ],
+     "initialization_block": [
+      "P2_THETA_PRE|SASREC|checkpoint_sha256=cf08588c11f019cc760f129ba7ba6b23806297660e0170f9938436a5cb88cf78|state_digest=ee33345be4f20b61a53cd80fa11e1af702031bfcd1425af490825cd0019dc54a"
+     ],
+     "population_hash": [
+      "563e76637a384c2985fff5e272d4290f4f3e52c99f57eebec4c20cde0628b8b3"
+     ],
+     "topology_hash": [
+      "004d6eb00d130a8d082ef52452f1df455cb4e17533ef6422a09ad5b75034cd96"
+     ]
+    },
+    "P2_C1_FT_CENTRAL_FULL|2027|CONTROLLED_BUDGET|MAIN": {
+     "eval_batch": [
+      "1024"
+     ],
+     "initialization_block": [
+      "P2_THETA_PRE|SASREC|checkpoint_sha256=cf08588c11f019cc760f129ba7ba6b23806297660e0170f9938436a5cb88cf78|state_digest=ee33345be4f20b61a53cd80fa11e1af702031bfcd1425af490825cd0019dc54a"
+     ],
+     "population_hash": [
+      "563e76637a384c2985fff5e272d4290f4f3e52c99f57eebec4c20cde0628b8b3"
+     ],
+     "topology_hash": [
+      "004d6eb00d130a8d082ef52452f1df455cb4e17533ef6422a09ad5b75034cd96"
+     ]
+    },
+    "P2_C1_FT_CENTRAL_FULL|2027|PRACTICAL_BEST|MAIN": {
+     "eval_batch": [
+      "1024"
+     ],
+     "initialization_block": [
+      "P2_THETA_PRE|SASREC|checkpoint_sha256=cf08588c11f019cc760f129ba7ba6b23806297660e0170f9938436a5cb88cf78|state_digest=ee33345be4f20b61a53cd80fa11e1af702031bfcd1425af490825cd0019dc54a"
+     ],
+     "population_hash": [
+      "563e76637a384c2985fff5e272d4290f4f3e52c99f57eebec4c20cde0628b8b3"
+     ],
+     "topology_hash": [
+      "004d6eb00d130a8d082ef52452f1df455cb4e17533ef6422a09ad5b75034cd96"
+     ]
+    },
+    "P2_C2_CFULL_SMALL|2026|CONTROLLED_BUDGET|MAIN": {
+     "eval_batch": [
+      "1024"
+     ],
+     "initialization_block": [
+      "I_META_RANDOM|SASREC|seed=2026|theta0_sha256=e9eb0bb9dd30061790fa5dc747e14c9aa375e2069c06a85785de6251e8705b95"
+     ],
+     "population_hash": [
+      "df5d0c7e82bc0842f5c8435fafaa67f947d4fe951d5f9e6aed9ca58d10a46cdf"
+     ],
+     "topology_hash": [
+      "004d6eb00d130a8d082ef52452f1df455cb4e17533ef6422a09ad5b75034cd96"
+     ]
+    },
+    "P2_C2_CFULL_SMALL|2026|PRACTICAL_BEST|MAIN": {
+     "eval_batch": [
+      "1024"
+     ],
+     "initialization_block": [
+      "I_META_RANDOM|SASREC|seed=2026|theta0_sha256=e9eb0bb9dd30061790fa5dc747e14c9aa375e2069c06a85785de6251e8705b95"
+     ],
+     "population_hash": [
+      "df5d0c7e82bc0842f5c8435fafaa67f947d4fe951d5f9e6aed9ca58d10a46cdf"
+     ],
+     "topology_hash": [
+      "004d6eb00d130a8d082ef52452f1df455cb4e17533ef6422a09ad5b75034cd96"
+     ]
+    },
+    "P2_WSTAR_DP1|2026|CONTROLLED_BUDGET|MAIN": {
+     "eval_batch": [
+      "1024"
+     ],
+     "initialization_block": [
+      "I_META_RANDOM|SASREC|seed=2026|theta0_sha256=e9eb0bb9dd30061790fa5dc747e14c9aa375e2069c06a85785de6251e8705b95"
+     ],
+     "population_hash": [
+      "563e76637a384c2985fff5e272d4290f4f3e52c99f57eebec4c20cde0628b8b3"
+     ],
+     "topology_hash": [
+      "004d6eb00d130a8d082ef52452f1df455cb4e17533ef6422a09ad5b75034cd96"
+     ]
+    },
+    "P2_WSTAR_DP1|2026|PRACTICAL_BEST|MAIN": {
+     "eval_batch": [
+      "1024"
+     ],
+     "initialization_block": [
+      "I_META_RANDOM|SASREC|seed=2026|theta0_sha256=e9eb0bb9dd30061790fa5dc747e14c9aa375e2069c06a85785de6251e8705b95"
+     ],
+     "population_hash": [
+      "563e76637a384c2985fff5e272d4290f4f3e52c99f57eebec4c20cde0628b8b3"
+     ],
+     "topology_hash": [
+      "004d6eb00d130a8d082ef52452f1df455cb4e17533ef6422a09ad5b75034cd96"
+     ]
+    },
+    "P2_WSTAR_DP8|2026|CONTROLLED_BUDGET|MAIN": {
+     "eval_batch": [
+      "1024"
+     ],
+     "initialization_block": [
+      "I_META_RANDOM|SASREC|seed=2026|theta0_sha256=e9eb0bb9dd30061790fa5dc747e14c9aa375e2069c06a85785de6251e8705b95"
+     ],
+     "population_hash": [
+      "563e76637a384c2985fff5e272d4290f4f3e52c99f57eebec4c20cde0628b8b3"
+     ],
+     "topology_hash": [
+      "004d6eb00d130a8d082ef52452f1df455cb4e17533ef6422a09ad5b75034cd96"
+     ]
+    },
+    "P2_WSTAR_DP8|2026|PRACTICAL_BEST|MAIN": {
+     "eval_batch": [
+      "1024"
+     ],
+     "initialization_block": [
+      "I_META_RANDOM|SASREC|seed=2026|theta0_sha256=e9eb0bb9dd30061790fa5dc747e14c9aa375e2069c06a85785de6251e8705b95"
+     ],
+     "population_hash": [
+      "563e76637a384c2985fff5e272d4290f4f3e52c99f57eebec4c20cde0628b8b3"
+     ],
+     "topology_hash": [
+      "004d6eb00d130a8d082ef52452f1df455cb4e17533ef6422a09ad5b75034cd96"
+     ]
+    },
+    "P2_WSTAR_DP8|2027|CONTROLLED_BUDGET|MAIN": {
+     "eval_batch": [
+      "1024"
+     ],
+     "initialization_block": [
+      "I_META_RANDOM|SASREC|seed=2027|theta0_sha256=a5d1e6839c4d446bb2b4f09fd2a6ef340cf596e60b8a035c2ef683d58f5e34c0"
+     ],
+     "population_hash": [
+      "563e76637a384c2985fff5e272d4290f4f3e52c99f57eebec4c20cde0628b8b3"
+     ],
+     "topology_hash": [
+      "004d6eb00d130a8d082ef52452f1df455cb4e17533ef6422a09ad5b75034cd96"
+     ]
+    },
+    "P2_WSTAR_DP8|2027|PRACTICAL_BEST|MAIN": {
+     "eval_batch": [
+      "1024"
+     ],
+     "initialization_block": [
+      "I_META_RANDOM|SASREC|seed=2027|theta0_sha256=a5d1e6839c4d446bb2b4f09fd2a6ef340cf596e60b8a035c2ef683d58f5e34c0"
+     ],
+     "population_hash": [
+      "563e76637a384c2985fff5e272d4290f4f3e52c99f57eebec4c20cde0628b8b3"
+     ],
+     "topology_hash": [
+      "004d6eb00d130a8d082ef52452f1df455cb4e17533ef6422a09ad5b75034cd96"
+     ]
+    },
+    "P2_WSTAR_FA1024|2026|CONTROLLED_BUDGET|MAIN": {
+     "eval_batch": [
+      "1024"
+     ],
+     "initialization_block": [
+      "I_META_RANDOM|SASREC|seed=2026|theta0_sha256=e9eb0bb9dd30061790fa5dc747e14c9aa375e2069c06a85785de6251e8705b95"
+     ],
+     "population_hash": [
+      "563e76637a384c2985fff5e272d4290f4f3e52c99f57eebec4c20cde0628b8b3"
+     ],
+     "topology_hash": [
+      "004d6eb00d130a8d082ef52452f1df455cb4e17533ef6422a09ad5b75034cd96"
+     ]
+    },
+    "P2_WSTAR_FA1024|2026|PRACTICAL_BEST|MAIN": {
+     "eval_batch": [
+      "1024"
+     ],
+     "initialization_block": [
+      "I_META_RANDOM|SASREC|seed=2026|theta0_sha256=e9eb0bb9dd30061790fa5dc747e14c9aa375e2069c06a85785de6251e8705b95"
+     ],
+     "population_hash": [
+      "563e76637a384c2985fff5e272d4290f4f3e52c99f57eebec4c20cde0628b8b3"
+     ],
+     "topology_hash": [
+      "004d6eb00d130a8d082ef52452f1df455cb4e17533ef6422a09ad5b75034cd96"
+     ]
+    },
+    "P2_WSTAR_FA1024|2027|CONTROLLED_BUDGET|MAIN": {
+     "eval_batch": [
+      "1024"
+     ],
+     "initialization_block": [
+      "I_META_RANDOM|SASREC|seed=2027|theta0_sha256=a5d1e6839c4d446bb2b4f09fd2a6ef340cf596e60b8a035c2ef683d58f5e34c0"
+     ],
+     "population_hash": [
+      "563e76637a384c2985fff5e272d4290f4f3e52c99f57eebec4c20cde0628b8b3"
+     ],
+     "topology_hash": [
+      "004d6eb00d130a8d082ef52452f1df455cb4e17533ef6422a09ad5b75034cd96"
+     ]
+    },
+    "P2_WSTAR_FA1024|2027|PRACTICAL_BEST|MAIN": {
+     "eval_batch": [
+      "1024"
+     ],
+     "initialization_block": [
+      "I_META_RANDOM|SASREC|seed=2027|theta0_sha256=a5d1e6839c4d446bb2b4f09fd2a6ef340cf596e60b8a035c2ef683d58f5e34c0"
+     ],
+     "population_hash": [
+      "563e76637a384c2985fff5e272d4290f4f3e52c99f57eebec4c20cde0628b8b3"
+     ],
+     "topology_hash": [
+      "004d6eb00d130a8d082ef52452f1df455cb4e17533ef6422a09ad5b75034cd96"
+     ]
+    },
+    "P2_WSTAR|2026|CONTROLLED_BUDGET|MAIN": {
+     "eval_batch": [
+      "1024"
+     ],
+     "initialization_block": [
+      "I_META_RANDOM|SASREC|seed=2026|theta0_sha256=e9eb0bb9dd30061790fa5dc747e14c9aa375e2069c06a85785de6251e8705b95"
+     ],
+     "population_hash": [
+      "563e76637a384c2985fff5e272d4290f4f3e52c99f57eebec4c20cde0628b8b3"
+     ],
+     "topology_hash": [
+      "004d6eb00d130a8d082ef52452f1df455cb4e17533ef6422a09ad5b75034cd96"
+     ]
+    },
+    "P2_WSTAR|2026|PRACTICAL_BEST|MAIN": {
+     "eval_batch": [
+      "1024"
+     ],
+     "initialization_block": [
+      "I_META_RANDOM|SASREC|seed=2026|theta0_sha256=e9eb0bb9dd30061790fa5dc747e14c9aa375e2069c06a85785de6251e8705b95"
+     ],
+     "population_hash": [
+      "563e76637a384c2985fff5e272d4290f4f3e52c99f57eebec4c20cde0628b8b3"
+     ],
+     "topology_hash": [
+      "004d6eb00d130a8d082ef52452f1df455cb4e17533ef6422a09ad5b75034cd96"
+     ]
+    },
+    "P2_WSTAR|2027|CONTROLLED_BUDGET|MAIN": {
+     "eval_batch": [
+      "1024"
+     ],
+     "initialization_block": [
+      "I_META_RANDOM|SASREC|seed=2027|theta0_sha256=a5d1e6839c4d446bb2b4f09fd2a6ef340cf596e60b8a035c2ef683d58f5e34c0"
+     ],
+     "population_hash": [
+      "563e76637a384c2985fff5e272d4290f4f3e52c99f57eebec4c20cde0628b8b3"
+     ],
+     "topology_hash": [
+      "004d6eb00d130a8d082ef52452f1df455cb4e17533ef6422a09ad5b75034cd96"
+     ]
+    },
+    "P2_WSTAR|2027|PRACTICAL_BEST|MAIN": {
+     "eval_batch": [
+      "1024"
+     ],
+     "initialization_block": [
+      "I_META_RANDOM|SASREC|seed=2027|theta0_sha256=a5d1e6839c4d446bb2b4f09fd2a6ef340cf596e60b8a035c2ef683d58f5e34c0"
+     ],
+     "population_hash": [
+      "563e76637a384c2985fff5e272d4290f4f3e52c99f57eebec4c20cde0628b8b3"
+     ],
+     "topology_hash": [
+      "004d6eb00d130a8d082ef52452f1df455cb4e17533ef6422a09ad5b75034cd96"
+     ]
+    },
+    "PRE|2026|CONTROLLED_BUDGET|MAIN": {
+     "eval_batch": [
+      "1024"
+     ],
+     "initialization_block": [
+      "I_META_RANDOM|SASREC|seed=2026|theta0_sha256=e9eb0bb9dd30061790fa5dc747e14c9aa375e2069c06a85785de6251e8705b95"
+     ],
+     "population_hash": [
+      "563e76637a384c2985fff5e272d4290f4f3e52c99f57eebec4c20cde0628b8b3"
+     ],
+     "topology_hash": [
+      "004d6eb00d130a8d082ef52452f1df455cb4e17533ef6422a09ad5b75034cd96"
+     ]
+    },
+    "PRE|2026|PRACTICAL_BEST|MAIN": {
+     "eval_batch": [
+      "1024"
+     ],
+     "initialization_block": [
+      "I_META_RANDOM|SASREC|seed=2026|theta0_sha256=e9eb0bb9dd30061790fa5dc747e14c9aa375e2069c06a85785de6251e8705b95"
+     ],
+     "population_hash": [
+      "563e76637a384c2985fff5e272d4290f4f3e52c99f57eebec4c20cde0628b8b3"
+     ],
+     "topology_hash": [
+      "004d6eb00d130a8d082ef52452f1df455cb4e17533ef6422a09ad5b75034cd96"
+     ]
+    }
+   },
+   "intended_differences_fields": [
+    "population_hash",
+    "topology_hash",
+    "initialization_block",
+    "eval_batch"
+   ],
+   "onnx_block": null,
+   "row_status_values": [
+    "MEASURED_PINNED_DEVICE"
+   ],
+   "values": {
+    "candidate_order_hash": "ab606d5e3728c993d31048f6d613838658d3a5ce8a0d0bd023611ce0ff027476",
+    "data_protocol_hash": "bc699a97dd2fab054e5a5c00f9661dd32b0677941d3f23f2e4b81751b3b7b330",
+    "eval_device_class": "NVIDIA_A40-FP32-DET",
+    "eval_score_block": "158486",
+    "eval_stream": "E2E_ROWS",
+    "evaluator_code_sha256": "61b64e61c1a2e4f5a6fecd42f0ad3b98de26562d13a07758573cc9496b8d962e",
+    "feature_contract_hash": "e97600f508497398da47f48b029d49a6fffee316e6a0c1ea20e046fe81fda5aa",
+    "label_policy_hash": "75acea25716829cba74a7703f17208f405b455c72af2ec19f413585636f7e59a",
+    "objective_id": "EXACT_FULL_K_CE_SUM_OVER_LOSS_ELIGIBLE_DIVIDE_ONCE_LS0",
+    "precision_id": "FP32_STRICT:matmul_tf32=off,cudnn_tf32=off,float32_matmul_precision=highest,deterministic_algorithms=STRICT",
+    "split": "RETRO_TEST"
+   }
+  },
+  "entries": [
+   {
+    "entry": "C_FULL|2026|CONTROLLED_BUDGET|MAIN",
+    "n_marks": 0,
+    "notes": [],
+    "phase1_reused": true,
+    "ranked": true,
+    "rule_source": "ROWS"
+   },
+   {
+    "entry": "C_FULL|2026|PRACTICAL_BEST|MAIN",
+    "n_marks": 0,
+    "notes": [],
+    "phase1_reused": true,
+    "ranked": true,
+    "rule_source": "ROWS"
+   },
+   {
+    "entry": "FA_WARM_FROZEN|2026|CONTROLLED_BUDGET|MAIN",
+    "n_marks": 0,
+    "notes": [],
+    "phase1_reused": true,
+    "ranked": true,
+    "rule_source": "ROWS"
+   },
+   {
+    "entry": "FA_WARM_FROZEN|2026|PRACTICAL_BEST|MAIN",
+    "n_marks": 0,
+    "notes": [],
+    "phase1_reused": true,
+    "ranked": true,
+    "rule_source": "ROWS"
+   },
+   {
+    "entry": "FA_WARM_FROZEN|2027|CONTROLLED_BUDGET|MAIN",
+    "n_marks": 0,
+    "notes": [],
+    "phase1_reused": true,
+    "ranked": true,
+    "rule_source": "ROWS"
+   },
+   {
+    "entry": "FA_WARM_FROZEN|2027|PRACTICAL_BEST|MAIN",
+    "n_marks": 0,
+    "notes": [],
+    "phase1_reused": true,
+    "ranked": true,
+    "rule_source": "ROWS"
+   },
+   {
+    "entry": "PRE|2026|CONTROLLED_BUDGET|MAIN",
+    "n_marks": 0,
+    "notes": [],
+    "phase1_reused": true,
+    "ranked": true,
+    "rule_source": "ROWS"
+   },
+   {
+    "entry": "PRE|2026|PRACTICAL_BEST|MAIN",
+    "n_marks": 0,
+    "notes": [],
+    "phase1_reused": true,
+    "ranked": true,
+    "rule_source": "ROWS"
+   },
+   {
+    "entry": "FT_PRE|2026|PRACTICAL_BEST|MAIN",
+    "n_marks": 0,
+    "notes": [],
+    "phase1_reused": true,
+    "ranked": true,
+    "rule_source": "INDEX"
+   },
+   {
+    "entry": "FT_PRE|2027|PRACTICAL_BEST|MAIN",
+    "n_marks": 0,
+    "notes": [],
+    "phase1_reused": true,
+    "ranked": true,
+    "rule_source": "INDEX"
+   },
+   {
+    "entry": "P2_WSTAR|2026|CONTROLLED_BUDGET|MAIN",
+    "n_marks": 0,
+    "notes": [],
+    "phase1_reused": false,
+    "ranked": true,
+    "rule_source": "ROWS"
+   },
+   {
+    "entry": "P2_WSTAR|2026|PRACTICAL_BEST|MAIN",
+    "n_marks": 0,
+    "notes": [],
+    "phase1_reused": false,
+    "ranked": true,
+    "rule_source": "ROWS"
+   },
+   {
+    "entry": "P2_WSTAR|2027|CONTROLLED_BUDGET|MAIN",
+    "n_marks": 0,
+    "notes": [],
+    "phase1_reused": false,
+    "ranked": true,
+    "rule_source": "ROWS"
+   },
+   {
+    "entry": "P2_WSTAR|2027|PRACTICAL_BEST|MAIN",
+    "n_marks": 0,
+    "notes": [],
+    "phase1_reused": false,
+    "ranked": true,
+    "rule_source": "ROWS"
+   },
+   {
+    "entry": "P2_WSTAR_FA1024|2026|CONTROLLED_BUDGET|MAIN",
+    "n_marks": 0,
+    "notes": [],
+    "phase1_reused": false,
+    "ranked": true,
+    "rule_source": "ROWS"
+   },
+   {
+    "entry": "P2_WSTAR_FA1024|2026|PRACTICAL_BEST|MAIN",
+    "n_marks": 0,
+    "notes": [],
+    "phase1_reused": false,
+    "ranked": true,
+    "rule_source": "ROWS"
+   },
+   {
+    "entry": "P2_WSTAR_FA1024|2027|CONTROLLED_BUDGET|MAIN",
+    "n_marks": 0,
+    "notes": [],
+    "phase1_reused": false,
+    "ranked": true,
+    "rule_source": "ROWS"
+   },
+   {
+    "entry": "P2_WSTAR_FA1024|2027|PRACTICAL_BEST|MAIN",
+    "n_marks": 0,
+    "notes": [],
+    "phase1_reused": false,
+    "ranked": true,
+    "rule_source": "ROWS"
+   },
+   {
+    "entry": "P2_WSTAR_DP8|2026|CONTROLLED_BUDGET|MAIN",
+    "n_marks": 0,
+    "notes": [],
+    "phase1_reused": false,
+    "ranked": true,
+    "rule_source": "ROWS"
+   },
+   {
+    "entry": "P2_WSTAR_DP8|2026|PRACTICAL_BEST|MAIN",
+    "n_marks": 0,
+    "notes": [],
+    "phase1_reused": false,
+    "ranked": true,
+    "rule_source": "ROWS"
+   },
+   {
+    "entry": "P2_WSTAR_DP8|2027|CONTROLLED_BUDGET|MAIN",
+    "n_marks": 0,
+    "notes": [],
+    "phase1_reused": false,
+    "ranked": true,
+    "rule_source": "ROWS"
+   },
+   {
+    "entry": "P2_WSTAR_DP8|2027|PRACTICAL_BEST|MAIN",
+    "n_marks": 0,
+    "notes": [],
+    "phase1_reused": false,
+    "ranked": true,
+    "rule_source": "ROWS"
+   },
+   {
+    "entry": "P2_WSTAR_DP1|2026|CONTROLLED_BUDGET|MAIN",
+    "n_marks": 0,
+    "notes": [],
+    "phase1_reused": false,
+    "ranked": true,
+    "rule_source": "ROWS"
+   },
+   {
+    "entry": "P2_WSTAR_DP1|2026|PRACTICAL_BEST|MAIN",
+    "n_marks": 0,
+    "notes": [],
+    "phase1_reused": false,
+    "ranked": true,
+    "rule_source": "ROWS"
+   },
+   {
+    "entry": "P2_C1_FT_CENTRAL_FULL|2026|CONTROLLED_BUDGET|MAIN",
+    "n_marks": 0,
+    "notes": [],
+    "phase1_reused": false,
+    "ranked": true,
+    "rule_source": "ROWS"
+   },
+   {
+    "entry": "P2_C1_FT_CENTRAL_FULL|2026|PRACTICAL_BEST|MAIN",
+    "n_marks": 0,
+    "notes": [],
+    "phase1_reused": false,
+    "ranked": true,
+    "rule_source": "ROWS"
+   },
+   {
+    "entry": "P2_C1_FT_CENTRAL_FULL|2027|CONTROLLED_BUDGET|MAIN",
+    "n_marks": 0,
+    "notes": [],
+    "phase1_reused": false,
+    "ranked": true,
+    "rule_source": "ROWS"
+   },
+   {
+    "entry": "P2_C1_FT_CENTRAL_FULL|2027|PRACTICAL_BEST|MAIN",
+    "n_marks": 0,
+    "notes": [],
+    "phase1_reused": false,
+    "ranked": true,
+    "rule_source": "ROWS"
+   },
+   {
+    "entry": "P2_C1_FT_CENTRAL_FROZEN|2026|CONTROLLED_BUDGET|MAIN",
+    "n_marks": 0,
+    "notes": [],
+    "phase1_reused": false,
+    "ranked": true,
+    "rule_source": "ROWS"
+   },
+   {
+    "entry": "P2_C1_FT_CENTRAL_FROZEN|2026|PRACTICAL_BEST|MAIN",
+    "n_marks": 0,
+    "notes": [],
+    "phase1_reused": false,
+    "ranked": true,
+    "rule_source": "ROWS"
+   },
+   {
+    "entry": "P2_C1_FT_CENTRAL_FROZEN|2027|CONTROLLED_BUDGET|MAIN",
+    "n_marks": 0,
+    "notes": [],
+    "phase1_reused": false,
+    "ranked": true,
+    "rule_source": "ROWS"
+   },
+   {
+    "entry": "P2_C1_FT_CENTRAL_FROZEN|2027|PRACTICAL_BEST|MAIN",
+    "n_marks": 0,
+    "notes": [],
+    "phase1_reused": false,
+    "ranked": true,
+    "rule_source": "ROWS"
+   },
+   {
+    "entry": "P2_C2_CFULL_SMALL|2026|CONTROLLED_BUDGET|MAIN",
+    "n_marks": 0,
+    "notes": [],
+    "phase1_reused": false,
+    "ranked": true,
+    "rule_source": "ROWS"
+   },
+   {
+    "entry": "P2_C2_CFULL_SMALL|2026|PRACTICAL_BEST|MAIN",
+    "n_marks": 0,
+    "notes": [],
+    "phase1_reused": false,
+    "ranked": true,
+    "rule_source": "ROWS"
+   },
+   {
+    "entry": "FT_P2_WSTAR|2026|PRACTICAL_BEST|MAIN",
+    "n_marks": 0,
+    "notes": [],
+    "phase1_reused": false,
+    "ranked": true,
+    "rule_source": "INDEX"
+   },
+   {
+    "entry": "FT_P2_WSTAR|2027|PRACTICAL_BEST|MAIN",
+    "n_marks": 0,
+    "notes": [],
+    "phase1_reused": false,
+    "ranked": true,
+    "rule_source": "INDEX"
+   }
+  ],
+  "phase1_binding_S5": {
+   "C_FULL|2026|CONTROLLED_BUDGET|MAIN": {
+    "ranks": {
+     "path": "REEVAL/C_FULL_s2026_CB/evals/MAIN_TEST.ranks_int32.npy",
+     "sha256": "f1ae1a421808686ea6bc4ef224853f390449abb0b3f177627f64b46ba6e5ece5"
+    },
+    "rows": {
+     "path": "REEVAL/C_FULL_s2026_CB/RESULT_ROWS.json",
+     "sha256": "a9c4febe9fc778dc43c8a7fb26fee14d6bc17c84fba92fe54ef2873d6a3e435e"
+    }
+   },
+   "C_FULL|2026|PRACTICAL_BEST|MAIN": {
+    "ranks": {
+     "path": "REEVAL/C_FULL_s2026_PB/evals/MAIN_TEST.ranks_int32.npy",
+     "sha256": "f1ae1a421808686ea6bc4ef224853f390449abb0b3f177627f64b46ba6e5ece5"
+    },
+    "rows": {
+     "path": "REEVAL/C_FULL_s2026_PB/RESULT_ROWS.json",
+     "sha256": "c7c795c909413d90f3d827d06dbceb1265455a742009cba33127401df640f5a9"
+    }
+   },
+   "FA_WARM_FROZEN|2026|CONTROLLED_BUDGET|MAIN": {
+    "ranks": {
+     "path": "REEVAL/FA_WARM_FROZEN_s2026_CB/evals/MAIN_TEST.ranks_int32.npy",
+     "sha256": "9778deb246bb8fc799b185b8d50b5149b47d7876a1ead76c16d7fc2bb1fcbd9d"
+    },
+    "rows": {
+     "path": "REEVAL/FA_WARM_FROZEN_s2026_CB/RESULT_ROWS.json",
+     "sha256": "2c5ad0b47a914487f0dcd971655b5d18cb86c957c7acf43d4e1d6ef2f4bb6ed1"
+    }
+   },
+   "FA_WARM_FROZEN|2026|PRACTICAL_BEST|MAIN": {
+    "ranks": {
+     "path": "REEVAL/FA_WARM_FROZEN_s2026_PB/evals/MAIN_TEST.ranks_int32.npy",
+     "sha256": "4ad035eb55bb3c5dbb21cfd8cb4ad6f8e71abe99e24ecf2cf4480f1e34e6fd4e"
+    },
+    "rows": {
+     "path": "REEVAL/FA_WARM_FROZEN_s2026_PB/RESULT_ROWS.json",
+     "sha256": "390301689aec82e0e71abf66e7c162efafc105f50663b74d4b44b2ac77df5052"
+    }
+   },
+   "FA_WARM_FROZEN|2027|CONTROLLED_BUDGET|MAIN": {
+    "ranks": {
+     "path": "REEVAL/FA_WARM_FROZEN_s2027_CB/evals/MAIN_TEST.ranks_int32.npy",
+     "sha256": "31bf6ebd9930aad27b103c92558e56623dcd043ef30da31f3821dd6a8a33ca4c"
+    },
+    "rows": {
+     "path": "REEVAL/FA_WARM_FROZEN_s2027_CB/RESULT_ROWS.json",
+     "sha256": "8b0eb159fea64e7a049ce91f3e572cc2dd4b8388a242c059ff3b1dfaad5a2e2e"
+    }
+   },
+   "FA_WARM_FROZEN|2027|PRACTICAL_BEST|MAIN": {
+    "ranks": {
+     "path": "REEVAL/FA_WARM_FROZEN_s2027_PB/evals/MAIN_TEST.ranks_int32.npy",
+     "sha256": "dc3b7c4753cece5bb637d814d92230bf352b3289ebef9ab2391b6629a4325656"
+    },
+    "rows": {
+     "path": "REEVAL/FA_WARM_FROZEN_s2027_PB/RESULT_ROWS.json",
+     "sha256": "01163a6700c54c05d7e8e0bc5fffcc27c9b6e6edd8d3c26d04eb5db3d082376c"
+    }
+   },
+   "FT_PRE|2026|PRACTICAL_BEST|MAIN": {
+    "ranks": {
+     "path": "DEV/FT_PRE_MAIN_TEST_s2026/cells/FT_PRE_f0.3_P4.ranks_int32.npy",
+     "sha256": "caa226dffad79f8c5ddb28a17c904a10869e106c1a96900c6edee972ec53b0ae"
+    },
+    "rows": {
+     "path": "DEV/FT_PRE_MAIN_TEST_s2026/RESULT_ROWS.json",
+     "sha256": "a6dcd40ebb1dd3b117a14100b5f8e068cf0a2975ea0a6488f8f74badf3d0e930"
+    }
+   },
+   "FT_PRE|2027|PRACTICAL_BEST|MAIN": {
+    "ranks": {
+     "path": "DEV/FT_PRE_MAIN_TEST_s2027/cells/FT_PRE_f0.3_P4.ranks_int32.npy",
+     "sha256": "b418e94111b4dc8b8ec1a8c90f412bacf7dcb25c75451b5a7bb7ff0b19644cdb"
+    },
+    "rows": {
+     "path": "DEV/FT_PRE_MAIN_TEST_s2027/RESULT_ROWS.json",
+     "sha256": "da13d7bd1572a0b4b7be9979608a1c1e06125a05b668dd5d3db53897eb70777a"
+    }
+   },
+   "PRE|2026|CONTROLLED_BUDGET|MAIN": {
+    "ranks": {
+     "path": "REEVAL/PRE_s2026_CB/evals/MAIN_TEST.ranks_int32.npy",
+     "sha256": "6971cb46a4d0394f6e68755fe3f65752b39b56f8d1fc591e94f65d06aca00f67"
+    },
+    "rows": {
+     "path": "REEVAL/PRE_s2026_CB/RESULT_ROWS.json",
+     "sha256": "7da2af5899446997174137814e49a93d38fd925d58d8973d3abc3b02d6e1b5ef"
+    }
+   },
+   "PRE|2026|PRACTICAL_BEST|MAIN": {
+    "ranks": {
+     "path": "REEVAL/PRE_s2026_PB/evals/MAIN_TEST.ranks_int32.npy",
+     "sha256": "6971cb46a4d0394f6e68755fe3f65752b39b56f8d1fc591e94f65d06aca00f67"
+    },
+    "rows": {
+     "path": "REEVAL/PRE_s2026_PB/RESULT_ROWS.json",
+     "sha256": "7fee4df2edf6e5a0605e10914c98cb07578959b0cf37345a3ff0fa08e4cfddc6"
+    }
+   }
+  },
+  "rank_row_max_abs_diff": 0.0,
+  "rank_row_tolerance": 1e-09,
+  "sealed": {
+   "n_sealed_entries_checked": 26
+  },
+  "wstar_runs_checked": 0
+ },
+ "contrasts": [
+  {
+   "beside": {
+    "CALIB_GAIN": 1.347943584574e-05,
+    "D-j": "Futility uses CALIB headroom (32,768 users); MAIN has 131,072 users, so FUTILITY_SKIP_WB_WC may under-read the headroom available on MAIN.",
+    "EDGE_UNRESOLVED": true,
+    "FUTILITY_SKIP_WB_WC": true,
+    "NO_MEASURABLE_CALIB_GAIN": true,
+    "W_STAR": "fedadam|eta=3e-06|c=0.1",
+    "flags": [
+     "EDGE_UNRESOLVED",
+     "NO_MEASURABLE_CALIB_GAIN",
+     "FUTILITY_SKIP_WB_WC"
+    ],
+    "label": "SELECTION (CALIB values; PREG2 \u00a75.6-\u00a75.8)",
+    "rule": "CALIB_GAIN = W*_CALIB - PRE_CALIB, NO_MEASURABLE_CALIB_GAIN iff < 0.001 (W* is carried to MAIN regardless); EDGE_UNRESOLVED disclosed beside every Q (\u00a75.7)"
+   },
+   "by_rule": {
+    "CONTROLLED_BUDGET": {
+     "W_sha256": "0654b73fd097d99d71591aeaa609b367d41305ba92431d3e199792fe7386413d",
+     "ci95": [
+      -0.0006380872496855875,
+      -0.00014791401025740058
+     ],
+     "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+     "harmed_share": 0.20434981336177344,
+     "harmed_share_seed_null": {
+      "denominator": {
+       "reason": "needs both seeds (2026, 2027) of the arm with rank files",
+       "status": "NOT_AVAILABLE"
+      },
+      "numerator": {
+       "arm": "P2_WSTAR",
+       "harmed_share": 0.02555801020796831,
+       "improved_share": 0.0255199207739773,
+       "label": "DESCRIPTIVE",
+       "rule": "CONTROLLED_BUDGET",
+       "rule_text": "per-user macro (s2027 - s2026) of the same arm on the same users < 0 (a noise floor)",
+       "seeds": [
+        2027,
+        2026
+       ],
+       "tied_share": 0.9489220690180544
+      }
+     },
+     "improved_share": 0.1873619258017826,
+     "kind": "delta",
+     "label": "DESCRIPTIVE",
+     "metric": "mrr@20",
+     "n_decisions": 229742,
+     "n_seeds": 2,
+     "n_users": 26254,
+     "per_seed": [
+      {
+       "a": "P2_WSTAR|2026|CONTROLLED_BUDGET|MAIN",
+       "b": "PRE|2026|CONTROLLED_BUDGET|MAIN",
+       "ci95": [
+        -0.0005971251241679188,
+        -0.00010603335991800637
+       ],
+       "harmed_share": 0.1999314390188162,
+       "improved_share": 0.1842385922145197,
+       "point": -0.00034736326044873533,
+       "seed": 2026,
+       "tied_share": 0.6158299687666642,
+       "value_a": 0.15978163646393903,
+       "value_b": 0.16012899972438777
+      },
+      {
+       "a": "P2_WSTAR|2027|CONTROLLED_BUDGET|MAIN",
+       "b": "PRE|2026|CONTROLLED_BUDGET|MAIN",
+       "ci95": [
+        -0.0006781935968795366,
+        -0.00017776761939592434
+       ],
+       "harmed_share": 0.20233107336024986,
+       "improved_share": 0.18435286051649272,
+       "point": -0.00042204974309445475,
+       "seed": 2027,
+       "tied_share": 0.6133160661232574,
+       "value_a": 0.1597069499812933,
+       "value_b": 0.16012899972438777
+      }
+     ],
+     "per_user_delta_quantiles": {
+      "P10": -0.002551020408163273,
+      "P25": 0.0,
+      "P50": 0.0,
+      "P75": 0.0,
+      "P90": 0.0019879813169286966
+     },
+     "point": -0.00038470650177159504,
+     "population": "MAIN/ALL",
+     "seed_stats": {
+      "label": "DESCRIPTIVE",
+      "per_seed_points": {
+       "2026": -0.00034736326044873533,
+       "2027": -0.00042204974309445475
+      },
+      "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+      "seed_sensitive": false,
+      "seed_spread": 7.468648264571942e-05,
+      "seed_variance": 2.789035344994674e-09,
+      "status": "COMPUTED",
+      "user_ci_half_width": 0.00024508661971409345,
+      "user_seed_interval": [
+       -0.0006436640034309491,
+       -0.00012574900011224103
+      ]
+     },
+     "seeds": [
+      2026,
+      2027
+     ],
+     "seeds_status": "COMPLETE",
+     "statistic": "macro_e2e",
+     "tied_share": 0.6082882608364439,
+     "worst_decile_mean_delta": -0.02084056940355032
+    },
+    "PRACTICAL_BEST": {
+     "W_sha256": "0654b73fd097d99d71591aeaa609b367d41305ba92431d3e199792fe7386413d",
+     "ci95": [
+      -0.00017901250074555086,
+      2.3711813125615546e-05
+     ],
+     "equivalence": {
+      "ci90": [
+       -0.00016415888325735928,
+       6.8789020553759715e-06
+      ],
+      "ci95_inside_margin": true,
+      "equivalent": true,
+      "margin": [
+       -0.0005,
+       0.0005
+      ],
+      "registered": "PREG2 \u00a79.4 / P2_CONTRASTS_v3 reading_rules.Q1",
+      "rule": "TOST at alpha 0.05: Q1 is EQUIVALENT iff its 90% paired user-bootstrap percentile CI lies inside [-0.0005, 0.0005] (absolute MRR@20; PREG2 \u00a79.4, D-h)",
+      "status": "COMPUTED"
+     },
+     "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+     "harmed_share": 0.07153195703511846,
+     "harmed_share_seed_null": {
+      "denominator": {
+       "reason": "needs both seeds (2026, 2027) of the arm with rank files",
+       "status": "NOT_AVAILABLE"
+      },
+      "numerator": {
+       "arm": "P2_WSTAR",
+       "harmed_share": 0.021291993600975088,
+       "improved_share": 0.021520530204921156,
+       "label": "DESCRIPTIVE",
+       "rule": "PRACTICAL_BEST",
+       "rule_text": "per-user macro (s2027 - s2026) of the same arm on the same users < 0 (a noise floor)",
+       "seeds": [
+        2027,
+        2026
+       ],
+       "tied_share": 0.9571874761941037
+      }
+     },
+     "holm": {
+      "rule": "PREG2 \u00a79.3: Q1 alone is primary, read unadjusted at alpha 0.05, outside Holm",
+      "status": "NOT_IN_HOLM_FAMILY",
+      "tier": "primary"
+     },
+     "improved_share": 0.06844671288184657,
+     "kind": "delta",
+     "label": "CONFIRMATORY_P2 (PREREGISTERED_FOLLOWUP)",
+     "metric": "mrr@20",
+     "n_decisions": 229742,
+     "n_seeds": 2,
+     "n_users": 26254,
+     "per_seed": [
+      {
+       "a": "P2_WSTAR|2026|PRACTICAL_BEST|MAIN",
+       "b": "PRE|2026|PRACTICAL_BEST|MAIN",
+       "ci95": [
+        -0.00017976175991175417,
+        4.419647603553577e-05
+       ],
+       "harmed_share": 0.06471394835072751,
+       "improved_share": 0.0608288260836444,
+       "point": -7.509241015846158e-05,
+       "seed": 2026,
+       "tied_share": 0.8744572255656281,
+       "value_a": 0.1600539073142293,
+       "value_b": 0.16012899972438777
+      },
+      {
+       "a": "P2_WSTAR|2027|PRACTICAL_BEST|MAIN",
+       "b": "PRE|2026|PRACTICAL_BEST|MAIN",
+       "ci95": [
+        -0.0001860778971332376,
+        1.5171357566678278e-05
+       ],
+       "harmed_share": 0.06471394835072751,
+       "improved_share": 0.06136207815951855,
+       "point": -8.658585555840204e-05,
+       "seed": 2027,
+       "tied_share": 0.8739239734897539,
+       "value_a": 0.16004241386882936,
+       "value_b": 0.16012899972438777
+      }
+     ],
+     "per_user_delta_quantiles": {
+      "P10": 0.0,
+      "P25": 0.0,
+      "P50": 0.0,
+      "P75": 0.0,
+      "P90": 0.0
+     },
+     "point": -8.08391328584318e-05,
+     "population": "MAIN/ALL",
+     "seed_stats": {
+      "label": "DESCRIPTIVE",
+      "per_seed_points": {
+       "2026": -7.509241015846158e-05,
+       "2027": -8.658585555840204e-05
+      },
+      "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+      "seed_sensitive": false,
+      "seed_spread": 1.149344539994046e-05,
+      "seed_variance": 6.604964358070627e-11,
+      "status": "COMPUTED",
+      "user_ci_half_width": 0.0001013621569355832,
+      "user_seed_interval": [
+       -0.0001838175307679534,
+       2.2139265051089786e-05
+      ]
+     },
+     "seeds": [
+      2026,
+      2027
+     ],
+     "seeds_status": "COMPLETE",
+     "statistic": "macro_e2e",
+     "tied_share": 0.8600213300830349,
+     "worst_decile_mean_delta": -0.003978788762793156
+    }
+   },
+   "confirmatory_rule": "PRACTICAL_BEST",
+   "contrast": "P2_WSTAR \u2212 PRE",
+   "decision": {
+    "label": "CONFIRMATORY_P2 (PREREGISTERED_FOLLOWUP)",
+    "reference": 0.0,
+    "unadjusted_ci95_side": "includes"
+   },
+   "den": "PRE",
+   "disclosure_D_a": "Phase-2 hypotheses were generated after the Phase-1 VALIDATION read; arms were selected on CALIB; everything was locked before any TEST value existed.",
+   "id": "Q1",
+   "kind": "delta",
+   "label": "CONFIRMATORY_P2 (PREREGISTERED_FOLLOWUP)",
+   "num": "P2_WSTAR",
+   "pairing_note": "PRE is ONE \u03b8_pre (seed 2026) shared by both P2_WSTAR seeds; PRE's RETRO_TEST rows come once from the Phase-1 plan and are hash-bound into the P2 block (PREG2 S5)",
+   "population": "MAIN",
+   "question": "value of federated training (fine-tuning recipe W*) on the private users over the shipped pretrained model (paired \u0394) \u2014 PRIMARY",
+   "registered_seeds": [
+    2026,
+    2027
+   ],
+   "tier": "primary"
+  },
+  {
+   "beside": {
+    "CALIB_GAIN": 1.347943584574e-05,
+    "D-j": "Futility uses CALIB headroom (32,768 users); MAIN has 131,072 users, so FUTILITY_SKIP_WB_WC may under-read the headroom available on MAIN.",
+    "EDGE_UNRESOLVED": true,
+    "FUTILITY_SKIP_WB_WC": true,
+    "NO_MEASURABLE_CALIB_GAIN": true,
+    "W_STAR": "fedadam|eta=3e-06|c=0.1",
+    "flags": [
+     "EDGE_UNRESOLVED",
+     "NO_MEASURABLE_CALIB_GAIN",
+     "FUTILITY_SKIP_WB_WC"
+    ],
+    "label": "SELECTION (CALIB values; PREG2 \u00a75.6-\u00a75.8)",
+    "rule": "CALIB_GAIN = W*_CALIB - PRE_CALIB, NO_MEASURABLE_CALIB_GAIN iff < 0.001 (W* is carried to MAIN regardless); EDGE_UNRESOLVED disclosed beside every Q (\u00a75.7)"
+   },
+   "by_rule": {
+    "CONTROLLED_BUDGET": {
+     "W_sha256": "0654b73fd097d99d71591aeaa609b367d41305ba92431d3e199792fe7386413d",
+     "ci95": [
+      -0.0009247026967508676,
+      0.00018177394284171088
+     ],
+     "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+     "harmed_share": 0.3058962443818085,
+     "harmed_share_seed_null": {
+      "denominator": {
+       "reason": "needs both seeds (2026, 2027) of the arm with rank files",
+       "status": "NOT_AVAILABLE"
+      },
+      "numerator": {
+       "arm": "P2_C1_FT_CENTRAL_FULL",
+       "harmed_share": 0.17715395749219168,
+       "improved_share": 0.18138188466519387,
+       "label": "DESCRIPTIVE",
+       "rule": "CONTROLLED_BUDGET",
+       "rule_text": "per-user macro (s2027 - s2026) of the same arm on the same users < 0 (a noise floor)",
+       "seeds": [
+        2027,
+        2026
+       ],
+       "tied_share": 0.6414641578426145
+      }
+     },
+     "improved_share": 0.3183514892968691,
+     "kind": "delta",
+     "label": "DESCRIPTIVE",
+     "metric": "mrr@20",
+     "n_decisions": 229742,
+     "n_seeds": 2,
+     "n_users": 26254,
+     "per_seed": [
+      {
+       "a": "P2_C1_FT_CENTRAL_FULL|2026|CONTROLLED_BUDGET|MAIN",
+       "b": "PRE|2026|CONTROLLED_BUDGET|MAIN",
+       "ci95": [
+        -0.0008266756050769708,
+        0.0002872300118511901
+       ],
+       "harmed_share": 0.29907823569741754,
+       "improved_share": 0.3071912851375029,
+       "point": -0.00031368347349181036,
+       "seed": 2026,
+       "tied_share": 0.3937304791650796,
+       "value_a": 0.15981531625089596,
+       "value_b": 0.16012899972438777
+      },
+      {
+       "a": "P2_C1_FT_CENTRAL_FULL|2027|CONTROLLED_BUDGET|MAIN",
+       "b": "PRE|2026|CONTROLLED_BUDGET|MAIN",
+       "ci95": [
+        -0.0010186744245797657,
+        8.92946752227979e-05
+       ],
+       "harmed_share": 0.2983545364515883,
+       "improved_share": 0.307648358345395,
+       "point": -0.0004571250205836208,
+       "seed": 2027,
+       "tied_share": 0.3939971052030167,
+       "value_a": 0.15967187470380415,
+       "value_b": 0.16012899972438777
+      }
+     ],
+     "per_user_delta_quantiles": {
+      "P10": -0.019444444444444445,
+      "P25": -0.0023807248585725888,
+      "P50": 0.0,
+      "P75": 0.0027472527472527514,
+      "P90": 0.017374160930883627
+     },
+     "point": -0.0003854042470377156,
+     "population": "MAIN/ALL",
+     "seed_stats": {
+      "label": "DESCRIPTIVE",
+      "per_seed_points": {
+       "2026": -0.00031368347349181036,
+       "2027": -0.0004571250205836208
+      },
+      "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+      "seed_sensitive": false,
+      "seed_spread": 0.00014344154709181045,
+      "seed_variance": 1.0287738716046037e-08,
+      "status": "COMPUTED",
+      "user_ci_half_width": 0.0005532383197962892,
+      "user_seed_interval": [
+       -0.0009562036115751788,
+       0.00018539511749974765
+      ]
+     },
+     "seeds": [
+      2026,
+      2027
+     ],
+     "seeds_status": "COMPLETE",
+     "statistic": "macro_e2e",
+     "tied_share": 0.37575226632132247,
+     "worst_decile_mean_delta": -0.06804517625982204
+    },
+    "PRACTICAL_BEST": {
+     "W_sha256": "0654b73fd097d99d71591aeaa609b367d41305ba92431d3e199792fe7386413d",
+     "ci95": [
+      -0.0006284676167192402,
+      0.00020751854656339303
+     ],
+     "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+     "harmed_share": 0.28757522663213225,
+     "harmed_share_seed_null": {
+      "denominator": {
+       "reason": "needs both seeds (2026, 2027) of the arm with rank files",
+       "status": "NOT_AVAILABLE"
+      },
+      "numerator": {
+       "arm": "P2_C1_FT_CENTRAL_FULL",
+       "harmed_share": 0.2066732688352251,
+       "improved_share": 0.19886493486706788,
+       "label": "DESCRIPTIVE",
+       "rule": "PRACTICAL_BEST",
+       "rule_text": "per-user macro (s2027 - s2026) of the same arm on the same users < 0 (a noise floor)",
+       "seeds": [
+        2027,
+        2026
+       ],
+       "tied_share": 0.594461796297707
+      }
+     },
+     "holm": {
+      "bonferroni_band": [
+       -0.0007805155535957459,
+       0.0003566815504406468
+      ],
+      "family": "SECONDARY_HOLM_Q2_Q8",
+      "holm_band": [
+       -0.0007805155535957459,
+       0.0003566815504406468
+      ],
+      "holm_band_level": 0.0071428571428571435,
+      "holm_level": 0.025,
+      "holm_rank": 6,
+      "holm_reject": false,
+      "label": "CONFIRMATORY_P2 multiplicity decision (Holm step-down over Q2-Q8, PREG2 \u00a79.3)",
+      "p_holm": 1.0,
+      "p_normal_two_sided": 0.31605131800479125,
+      "reference": 0.0,
+      "se_bootstrap": 0.00021136632032180356,
+      "status": "COMPUTED",
+      "z": -1.0026053405997115
+     },
+     "improved_share": 0.3009827073969681,
+     "kind": "delta",
+     "label": "CONFIRMATORY_P2 (PREREGISTERED_FOLLOWUP)",
+     "metric": "mrr@20",
+     "n_decisions": 229742,
+     "n_seeds": 2,
+     "n_users": 26254,
+     "per_seed": [
+      {
+       "a": "P2_C1_FT_CENTRAL_FULL|2026|PRACTICAL_BEST|MAIN",
+       "b": "PRE|2026|PRACTICAL_BEST|MAIN",
+       "ci95": [
+        -0.0006478237469594597,
+        0.00019739343367371402
+       ],
+       "harmed_share": 0.27005408699626726,
+       "improved_share": 0.2807953073817323,
+       "point": -0.00022996969651353782,
+       "seed": 2026,
+       "tied_share": 0.44915060562200043,
+       "value_a": 0.15989903002787423,
+       "value_b": 0.16012899972438777
+      },
+      {
+       "a": "P2_C1_FT_CENTRAL_FULL|2027|PRACTICAL_BEST|MAIN",
+       "b": "PRE|2026|PRACTICAL_BEST|MAIN",
+       "ci95": [
+        -0.0006374876945931293,
+        0.00026197837889407595
+       ],
+       "harmed_share": 0.27089205454406945,
+       "improved_share": 0.28243315304334576,
+       "point": -0.0001938643066415613,
+       "seed": 2027,
+       "tied_share": 0.44667479241258473,
+       "value_a": 0.1599351354177462,
+       "value_b": 0.16012899972438777
+      }
+     ],
+     "per_user_delta_quantiles": {
+      "P10": -0.011774503407278526,
+      "P25": -0.0010375709294882223,
+      "P50": 0.0,
+      "P75": 0.0013199953775369574,
+      "P90": 0.011218558130322848
+     },
+     "point": -0.00021191700157754956,
+     "population": "MAIN/ALL",
+     "seed_stats": {
+      "label": "DESCRIPTIVE",
+      "per_seed_points": {
+       "2026": -0.00022996969651353782,
+       "2027": -0.0001938643066415613
+      },
+      "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+      "seed_sensitive": false,
+      "seed_spread": 3.6105389871976534e-05,
+      "seed_variance": 6.517995889037128e-10,
+      "status": "COMPUTED",
+      "user_ci_half_width": 0.0004179930816413166,
+      "user_seed_interval": [
+       -0.0006277032782287263,
+       0.00020386927507362715
+      ]
+     },
+     "seeds": [
+      2026,
+      2027
+     ],
+     "seeds_status": "COMPLETE",
+     "statistic": "macro_e2e",
+     "tied_share": 0.41144206597089966,
+     "worst_decile_mean_delta": -0.04863928940548764
+    }
+   },
+   "confirmatory_rule": "PRACTICAL_BEST",
+   "contrast": "P2_C1_FT_CENTRAL_FULL \u2212 PRE",
+   "decision": {
+    "holm_reject": false,
+    "label": "CONFIRMATORY_P2 (PREREGISTERED_FOLLOWUP)",
+    "reference": 0.0,
+    "unadjusted_ci95_side": "includes"
+   },
+   "den": "PRE",
+   "disclosure_D_a": "Phase-2 hypotheses were generated after the Phase-1 VALIDATION read; arms were selected on CALIB; everything was locked before any TEST value existed.",
+   "id": "Q2",
+   "kind": "delta",
+   "label": "CONFIRMATORY_P2 (PREREGISTERED_FOLLOWUP)",
+   "num": "P2_C1_FT_CENTRAL_FULL",
+   "pairing_note": "PRE (seed 2026) shared by both C1_FULL seeds",
+   "population": "MAIN",
+   "question": "headroom: central fine-tune of \u03b8_pre on MAIN, every parameter trainable (paired \u0394)",
+   "registered_seeds": [
+    2026,
+    2027
+   ],
+   "tier": "secondary"
+  },
+  {
+   "beside": {
+    "CALIB_GAIN": 1.347943584574e-05,
+    "D-j": "Futility uses CALIB headroom (32,768 users); MAIN has 131,072 users, so FUTILITY_SKIP_WB_WC may under-read the headroom available on MAIN.",
+    "EDGE_UNRESOLVED": true,
+    "FUTILITY_SKIP_WB_WC": true,
+    "NO_MEASURABLE_CALIB_GAIN": true,
+    "W_STAR": "fedadam|eta=3e-06|c=0.1",
+    "flags": [
+     "EDGE_UNRESOLVED",
+     "NO_MEASURABLE_CALIB_GAIN",
+     "FUTILITY_SKIP_WB_WC"
+    ],
+    "label": "SELECTION (CALIB values; PREG2 \u00a75.6-\u00a75.8)",
+    "rule": "CALIB_GAIN = W*_CALIB - PRE_CALIB, NO_MEASURABLE_CALIB_GAIN iff < 0.001 (W* is carried to MAIN regardless); EDGE_UNRESOLVED disclosed beside every Q (\u00a75.7)"
+   },
+   "by_rule": {
+    "CONTROLLED_BUDGET": {
+     "W_sha256": "0654b73fd097d99d71591aeaa609b367d41305ba92431d3e199792fe7386413d",
+     "ci95": [
+      -0.00019546385820284513,
+      0.00023565930493746334
+     ],
+     "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+     "harmed_share": 0.18275310428887026,
+     "harmed_share_seed_null": {
+      "denominator": {
+       "arm": "P2_C1_FT_CENTRAL_FROZEN",
+       "harmed_share": 0.04353622305172545,
+       "improved_share": 0.04330768644777939,
+       "label": "DESCRIPTIVE",
+       "rule": "CONTROLLED_BUDGET",
+       "rule_text": "per-user macro (s2027 - s2026) of the same arm on the same users < 0 (a noise floor)",
+       "seeds": [
+        2027,
+        2026
+       ],
+       "tied_share": 0.9131560905004952
+      },
+      "numerator": {
+       "arm": "P2_WSTAR",
+       "harmed_share": 0.02555801020796831,
+       "improved_share": 0.0255199207739773,
+       "label": "DESCRIPTIVE",
+       "rule": "CONTROLLED_BUDGET",
+       "rule_text": "per-user macro (s2027 - s2026) of the same arm on the same users < 0 (a noise floor)",
+       "seeds": [
+        2027,
+        2026
+       ],
+       "tied_share": 0.9489220690180544
+      }
+     },
+     "improved_share": 0.17646834768035347,
+     "kind": "delta",
+     "label": "DESCRIPTIVE",
+     "metric": "mrr@20",
+     "n_decisions": 229742,
+     "n_seeds": 2,
+     "n_users": 26254,
+     "per_seed": [
+      {
+       "a": "P2_WSTAR|2026|CONTROLLED_BUDGET|MAIN",
+       "b": "P2_C1_FT_CENTRAL_FROZEN|2026|CONTROLLED_BUDGET|MAIN",
+       "ci95": [
+        -0.00017120257215048548,
+        0.0002652829280736651
+       ],
+       "harmed_share": 0.1723927782433153,
+       "improved_share": 0.16766968842842994,
+       "point": 4.553831737913461e-05,
+       "seed": 2026,
+       "tied_share": 0.6599375333282548,
+       "value_a": 0.15978163646393903,
+       "value_b": 0.1597360981465599
+      },
+      {
+       "a": "P2_WSTAR|2027|CONTROLLED_BUDGET|MAIN",
+       "b": "P2_C1_FT_CENTRAL_FROZEN|2027|CONTROLLED_BUDGET|MAIN",
+       "ci95": [
+        -0.00023018833225416576,
+        0.00022499456151198183
+       ],
+       "harmed_share": 0.1734592823950636,
+       "improved_share": 0.1674792412584749,
+       "point": 5.503252960975535e-06,
+       "seed": 2027,
+       "tied_share": 0.6590614763464615,
+       "value_a": 0.1597069499812933,
+       "value_b": 0.15970144672833234
+      }
+     ],
+     "per_user_delta_quantiles": {
+      "P10": -0.0016339869281045763,
+      "P25": 0.0,
+      "P50": 0.0,
+      "P75": 0.0,
+      "P90": 0.0014619883040935672
+     },
+     "point": 2.552078517005507e-05,
+     "population": "MAIN/ALL",
+     "seed_stats": {
+      "label": "DESCRIPTIVE",
+      "per_seed_points": {
+       "2026": 4.553831737913461e-05,
+       "2027": 5.503252960975535e-06
+      },
+      "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+      "seed_sensitive": false,
+      "seed_spread": 4.003506441815907e-05,
+      "seed_variance": 8.014031914830733e-10,
+      "status": "COMPUTED",
+      "user_ci_half_width": 0.00021556158157015425,
+      "user_seed_interval": [
+       -0.0001933028063803978,
+       0.00024434437672050794
+      ]
+     },
+     "seeds": [
+      2026,
+      2027
+     ],
+     "seeds_status": "COMPLETE",
+     "statistic": "macro_e2e",
+     "tied_share": 0.6407785480307763,
+     "worst_decile_mean_delta": -0.015414362453105424
+    },
+    "PRACTICAL_BEST": {
+     "W_sha256": "0654b73fd097d99d71591aeaa609b367d41305ba92431d3e199792fe7386413d",
+     "ci95": [
+      2.688067013032064e-05,
+      0.0003001295229857523
+     ],
+     "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+     "harmed_share": 0.12455244915060562,
+     "harmed_share_seed_null": {
+      "denominator": {
+       "arm": "P2_C1_FT_CENTRAL_FROZEN",
+       "harmed_share": 0.06357126533099718,
+       "improved_share": 0.06040984230974328,
+       "label": "DESCRIPTIVE",
+       "rule": "PRACTICAL_BEST",
+       "rule_text": "per-user macro (s2027 - s2026) of the same arm on the same users < 0 (a noise floor)",
+       "seeds": [
+        2027,
+        2026
+       ],
+       "tied_share": 0.8760188923592596
+      },
+      "numerator": {
+       "arm": "P2_WSTAR",
+       "harmed_share": 0.021291993600975088,
+       "improved_share": 0.021520530204921156,
+       "label": "DESCRIPTIVE",
+       "rule": "PRACTICAL_BEST",
+       "rule_text": "per-user macro (s2027 - s2026) of the same arm on the same users < 0 (a noise floor)",
+       "seeds": [
+        2027,
+        2026
+       ],
+       "tied_share": 0.9571874761941037
+      }
+     },
+     "holm": {
+      "bonferroni_band": [
+       -2.058138596598114e-05,
+       0.000352717393876997
+      ],
+      "family": "SECONDARY_HOLM_Q2_Q8",
+      "holm_band": [
+       -2.058138596598114e-05,
+       0.000352717393876997
+      ],
+      "holm_band_level": 0.0071428571428571435,
+      "holm_level": 0.0071428571428571435,
+      "holm_rank": 1,
+      "holm_reject": false,
+      "label": "CONFIRMATORY_P2 multiplicity decision (Holm step-down over Q2-Q8, PREG2 \u00a79.3)",
+      "p_holm": 0.11682652696807594,
+      "p_normal_two_sided": 0.016689503852582277,
+      "reference": 0.0,
+      "se_bootstrap": 6.938356525528425e-05,
+      "status": "COMPUTED",
+      "z": 2.3934775237405397
+     },
+     "improved_share": 0.13556029557400778,
+     "kind": "delta",
+     "label": "CONFIRMATORY_P2 (PREREGISTERED_FOLLOWUP)",
+     "metric": "mrr@20",
+     "n_decisions": 229742,
+     "n_seeds": 2,
+     "n_users": 26254,
+     "per_seed": [
+      {
+       "a": "P2_WSTAR|2026|PRACTICAL_BEST|MAIN",
+       "b": "P2_C1_FT_CENTRAL_FROZEN|2026|PRACTICAL_BEST|MAIN",
+       "ci95": [
+        3.125112684885384e-05,
+        0.0003037290719306203
+       ],
+       "harmed_share": 0.10223204083187323,
+       "improved_share": 0.11247809857545517,
+       "point": 0.0001663722396460232,
+       "seed": 2026,
+       "tied_share": 0.7852898605926716,
+       "value_a": 0.1600539073142293,
+       "value_b": 0.15988753507458328
+      },
+      {
+       "a": "P2_WSTAR|2027|PRACTICAL_BEST|MAIN",
+       "b": "P2_C1_FT_CENTRAL_FROZEN|2027|PRACTICAL_BEST|MAIN",
+       "ci95": [
+        1.177113763004695e-05,
+        0.0003158935150692578
+       ],
+       "harmed_share": 0.1108021634798507,
+       "improved_share": 0.12135293669536071,
+       "point": 0.00016576376826499262,
+       "seed": 2027,
+       "tied_share": 0.7678448998247887,
+       "value_a": 0.16004241386882936,
+       "value_b": 0.15987665010056437
+      }
+     ],
+     "per_user_delta_quantiles": {
+      "P10": -0.0002660372822911524,
+      "P25": 0.0,
+      "P50": 0.0,
+      "P75": 0.0,
+      "P90": 0.00041666666666666707
+     },
+     "point": 0.00016606800395550791,
+     "population": "MAIN/ALL",
+     "seed_stats": {
+      "label": "DESCRIPTIVE",
+      "per_seed_points": {
+       "2026": 0.0001663722396460232,
+       "2027": 0.00016576376826499262
+      },
+      "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+      "seed_sensitive": false,
+      "seed_spread": 6.084713810305953e-07,
+      "seed_variance": 1.8511871076663993e-13,
+      "status": "COMPUTED",
+      "user_ci_half_width": 0.00013662442642771582,
+      "user_seed_interval": [
+       3.0074908717715195e-05,
+       0.00030206109919330066
+      ]
+     },
+     "seeds": [
+      2026,
+      2027
+     ],
+     "seeds_status": "COMPLETE",
+     "statistic": "macro_e2e",
+     "tied_share": 0.7398872552753866,
+     "worst_decile_mean_delta": -0.006497974276912669
+    }
+   },
+   "confirmatory_rule": "PRACTICAL_BEST",
+   "contrast": "P2_WSTAR \u2212 P2_C1_FT_CENTRAL_FROZEN",
+   "decision": {
+    "holm_reject": false,
+    "label": "CONFIRMATORY_P2 (PREREGISTERED_FOLLOWUP)",
+    "reference": 0.0,
+    "unadjusted_ci95_side": "above"
+   },
+   "den": "P2_C1_FT_CENTRAL_FROZEN",
+   "dependency": [
+    "Q1"
+   ],
+   "disclosure_D_a": "Phase-2 hypotheses were generated after the Phase-1 VALIDATION read; arms were selected on CALIB; everything was locked before any TEST value existed.",
+   "id": "Q3",
+   "kind": "delta",
+   "label": "CONFIRMATORY_P2 (PREREGISTERED_FOLLOWUP)",
+   "num": "P2_WSTAR",
+   "pairing_note": "same-seed pairs P2_WSTAR s vs P2_C1_FT_CENTRAL_FROZEN s",
+   "population": "MAIN",
+   "question": "FL vs central fine-tune at the same trained subset (paired \u0394)",
+   "registered_seeds": [
+    2026,
+    2027
+   ],
+   "tier": "secondary"
+  },
+  {
+   "beside": {
+    "CALIB_GAIN": 1.347943584574e-05,
+    "D-j": "Futility uses CALIB headroom (32,768 users); MAIN has 131,072 users, so FUTILITY_SKIP_WB_WC may under-read the headroom available on MAIN.",
+    "EDGE_UNRESOLVED": true,
+    "FUTILITY_SKIP_WB_WC": true,
+    "NO_MEASURABLE_CALIB_GAIN": true,
+    "W_STAR": "fedadam|eta=3e-06|c=0.1",
+    "flags": [
+     "EDGE_UNRESOLVED",
+     "NO_MEASURABLE_CALIB_GAIN",
+     "FUTILITY_SKIP_WB_WC"
+    ],
+    "label": "SELECTION (CALIB values; PREG2 \u00a75.6-\u00a75.8)",
+    "rule": "CALIB_GAIN = W*_CALIB - PRE_CALIB, NO_MEASURABLE_CALIB_GAIN iff < 0.001 (W* is carried to MAIN regardless); EDGE_UNRESOLVED disclosed beside every Q (\u00a75.7)"
+   },
+   "by_rule": {
+    "CONTROLLED_BUDGET": {
+     "W_sha256": "0654b73fd097d99d71591aeaa609b367d41305ba92431d3e199792fe7386413d",
+     "ci95": [
+      -1.5510321908629092e-05,
+      0.0008987894083762069
+     ],
+     "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+     "harmed_share": 0.3185038470328331,
+     "harmed_share_seed_null": {
+      "denominator": {
+       "arm": "FA_WARM_FROZEN",
+       "harmed_share": 0.24761941037556182,
+       "improved_share": 0.248266930753409,
+       "label": "DESCRIPTIVE",
+       "rule": "CONTROLLED_BUDGET",
+       "rule_text": "per-user macro (s2027 - s2026) of the same arm on the same users < 0 (a noise floor)",
+       "seeds": [
+        2027,
+        2026
+       ],
+       "tied_share": 0.5041136588710292
+      },
+      "numerator": {
+       "arm": "P2_WSTAR",
+       "harmed_share": 0.02555801020796831,
+       "improved_share": 0.0255199207739773,
+       "label": "DESCRIPTIVE",
+       "rule": "CONTROLLED_BUDGET",
+       "rule_text": "per-user macro (s2027 - s2026) of the same arm on the same users < 0 (a noise floor)",
+       "seeds": [
+        2027,
+        2026
+       ],
+       "tied_share": 0.9489220690180544
+      }
+     },
+     "improved_share": 0.32044640816637465,
+     "kind": "delta",
+     "label": "DESCRIPTIVE",
+     "metric": "mrr@20",
+     "n_decisions": 229742,
+     "n_seeds": 2,
+     "n_users": 26254,
+     "per_seed": [
+      {
+       "a": "P2_WSTAR|2026|CONTROLLED_BUDGET|MAIN",
+       "b": "FA_WARM_FROZEN|2026|CONTROLLED_BUDGET|MAIN",
+       "ci95": [
+        2.6275951687546736e-05,
+        0.0009903322837943082
+       ],
+       "harmed_share": 0.29671669078997487,
+       "improved_share": 0.30147787003885124,
+       "point": 0.0005100164851558342,
+       "seed": 2026,
+       "tied_share": 0.4018054391711739,
+       "value_a": 0.15978163646393903,
+       "value_b": 0.1592716199787832
+      },
+      {
+       "a": "P2_WSTAR|2027|CONTROLLED_BUDGET|MAIN",
+       "b": "FA_WARM_FROZEN|2027|CONTROLLED_BUDGET|MAIN",
+       "ci95": [
+        -0.00011441589720438821,
+        0.0008623228600772761
+       ],
+       "harmed_share": 0.29561209720423554,
+       "improved_share": 0.3002590081511389,
+       "point": 0.00037418205073461164,
+       "seed": 2027,
+       "tied_share": 0.4041288946446256,
+       "value_a": 0.1597069499812933,
+       "value_b": 0.1593327679305587
+      }
+     ],
+     "per_user_delta_quantiles": {
+      "P10": -0.014224569198308676,
+      "P25": -0.0022610686902966334,
+      "P50": 0.0,
+      "P75": 0.0024150449653545627,
+      "P90": 0.015583422528623799
+     },
+     "point": 0.0004420992679452229,
+     "population": "MAIN/ALL",
+     "seed_stats": {
+      "label": "DESCRIPTIVE",
+      "per_seed_points": {
+       "2026": 0.0005100164851558342,
+       "2027": 0.00037418205073461164
+      },
+      "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+      "seed_sensitive": false,
+      "seed_spread": 0.00013583443442122256,
+      "seed_variance": 9.225496787266707e-09,
+      "status": "COMPUTED",
+      "user_ci_half_width": 0.000457149865142418,
+      "user_seed_interval": [
+       -4.0651649719043704e-05,
+       0.0009248501856094895
+      ]
+     },
+     "seeds": [
+      2026,
+      2027
+     ],
+     "seeds_status": "COMPLETE",
+     "statistic": "macro_e2e",
+     "tied_share": 0.36104974480079227,
+     "worst_decile_mean_delta": -0.05257115820786685
+    },
+    "PRACTICAL_BEST": {
+     "W_sha256": "0654b73fd097d99d71591aeaa609b367d41305ba92431d3e199792fe7386413d",
+     "ci95": [
+      6.586448042362331e-06,
+      0.0008925385916406781
+     ],
+     "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+     "harmed_share": 0.3274929534547117,
+     "harmed_share_seed_null": {
+      "denominator": {
+       "arm": "FA_WARM_FROZEN",
+       "harmed_share": 0.28209034813742667,
+       "improved_share": 0.2753866077550088,
+       "label": "DESCRIPTIVE",
+       "rule": "PRACTICAL_BEST",
+       "rule_text": "per-user macro (s2027 - s2026) of the same arm on the same users < 0 (a noise floor)",
+       "seeds": [
+        2027,
+        2026
+       ],
+       "tied_share": 0.44252304410756454
+      },
+      "numerator": {
+       "arm": "P2_WSTAR",
+       "harmed_share": 0.021291993600975088,
+       "improved_share": 0.021520530204921156,
+       "label": "DESCRIPTIVE",
+       "rule": "PRACTICAL_BEST",
+       "rule_text": "per-user macro (s2027 - s2026) of the same arm on the same users < 0 (a noise floor)",
+       "seeds": [
+        2027,
+        2026
+       ],
+       "tied_share": 0.9571874761941037
+      }
+     },
+     "holm": {
+      "bonferroni_band": [
+       -0.00016819504741720503,
+       0.0010227688092022819
+      ],
+      "family": "SECONDARY_HOLM_Q2_Q8",
+      "holm_band": [
+       -0.00016819504741720503,
+       0.0010227688092022819
+      ],
+      "holm_band_level": 0.0071428571428571435,
+      "holm_level": 0.008333333333333333,
+      "holm_rank": 2,
+      "holm_reject": false,
+      "label": "CONFIRMATORY_P2 multiplicity decision (Holm step-down over Q2-Q8, PREG2 \u00a79.3)",
+      "p_holm": 0.321430860621299,
+      "p_normal_two_sided": 0.05357181010354983,
+      "reference": 0.0,
+      "se_bootstrap": 0.00022135973360856283,
+      "status": "COMPUTED",
+      "z": 1.9302827751325489
+     },
+     "improved_share": 0.3232269368477184,
+     "kind": "delta",
+     "label": "CONFIRMATORY_P2 (PREREGISTERED_FOLLOWUP)",
+     "metric": "mrr@20",
+     "n_decisions": 229742,
+     "n_seeds": 2,
+     "n_users": 26254,
+     "per_seed": [
+      {
+       "a": "P2_WSTAR|2026|PRACTICAL_BEST|MAIN",
+       "b": "FA_WARM_FROZEN|2026|PRACTICAL_BEST|MAIN",
+       "ci95": [
+        -0.00023582581953359715,
+        0.0007586139369214186
+       ],
+       "harmed_share": 0.2975546583377771,
+       "improved_share": 0.2986211624895254,
+       "point": 0.0002565720117551351,
+       "seed": 2026,
+       "tied_share": 0.4038241791726975,
+       "value_a": 0.1600539073142293,
+       "value_b": 0.15979733530247417
+      },
+      {
+       "a": "P2_WSTAR|2027|PRACTICAL_BEST|MAIN",
+       "b": "FA_WARM_FROZEN|2027|PRACTICAL_BEST|MAIN",
+       "ci95": [
+        9.809750706053292e-05,
+        0.0011008763029602402
+       ],
+       "harmed_share": 0.29412660927858614,
+       "improved_share": 0.300716081359031,
+       "point": 0.0005980017500299417,
+       "seed": 2027,
+       "tied_share": 0.40515730936238287,
+       "value_a": 0.16004241386882936,
+       "value_b": 0.15944441211879942
+      }
+     ],
+     "per_user_delta_quantiles": {
+      "P10": -0.01428571428571429,
+      "P25": -0.0022914859263543624,
+      "P50": 0.0,
+      "P75": 0.0023809523809523825,
+      "P90": 0.015656565656565646
+     },
+     "point": 0.0004272868808925384,
+     "population": "MAIN/ALL",
+     "seed_stats": {
+      "label": "DESCRIPTIVE",
+      "per_seed_points": {
+       "2026": 0.0002565720117551351,
+       "2027": 0.0005980017500299417
+      },
+      "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+      "seed_sensitive": false,
+      "seed_spread": 0.0003414297382748066,
+      "seed_variance": 5.828713308920147e-08,
+      "status": "COMPUTED",
+      "user_ci_half_width": 0.00044297607179915786,
+      "user_seed_interval": [
+       -0.00012061532847998672,
+       0.0009751890902650635
+      ]
+     },
+     "seeds": [
+      2026,
+      2027
+     ],
+     "seeds_status": "COMPLETE",
+     "statistic": "macro_e2e",
+     "tied_share": 0.3492801096975699,
+     "worst_decile_mean_delta": -0.050820896906415766
+    }
+   },
+   "confirmatory_rule": "PRACTICAL_BEST",
+   "contrast": "P2_WSTAR \u2212 FA_WARM_FROZEN",
+   "decision": {
+    "holm_reject": false,
+    "label": "CONFIRMATORY_P2 (PREREGISTERED_FOLLOWUP)",
+    "reference": 0.0,
+    "unadjusted_ci95_side": "above"
+   },
+   "den": "FA_WARM_FROZEN",
+   "disclosure_D_a": "Phase-2 hypotheses were generated after the Phase-1 VALIDATION read; arms were selected on CALIB; everything was locked before any TEST value existed.",
+   "id": "Q4",
+   "kind": "delta",
+   "label": "CONFIRMATORY_P2 (PREREGISTERED_FOLLOWUP)",
+   "num": "P2_WSTAR",
+   "pairing_note": "same-seed pairs; FA_WARM_FROZEN rows come once from the Phase-1 plan and are hash-bound into the P2 block (PREG2 S5)",
+   "population": "MAIN",
+   "question": "effect of the recipe fix over the Phase-1 S8 recipe (paired \u0394, same-seed pairs)",
+   "registered_seeds": [
+    2026,
+    2027
+   ],
+   "tier": "secondary"
+  },
+  {
+   "beside": {
+    "CALIB_GAIN": 1.347943584574e-05,
+    "D-j": "Futility uses CALIB headroom (32,768 users); MAIN has 131,072 users, so FUTILITY_SKIP_WB_WC may under-read the headroom available on MAIN.",
+    "EDGE_UNRESOLVED": true,
+    "FUTILITY_SKIP_WB_WC": true,
+    "NO_MEASURABLE_CALIB_GAIN": true,
+    "W_STAR": "fedadam|eta=3e-06|c=0.1",
+    "flags": [
+     "EDGE_UNRESOLVED",
+     "NO_MEASURABLE_CALIB_GAIN",
+     "FUTILITY_SKIP_WB_WC"
+    ],
+    "label": "SELECTION (CALIB values; PREG2 \u00a75.6-\u00a75.8)",
+    "rule": "CALIB_GAIN = W*_CALIB - PRE_CALIB, NO_MEASURABLE_CALIB_GAIN iff < 0.001 (W* is carried to MAIN regardless); EDGE_UNRESOLVED disclosed beside every Q (\u00a75.7)"
+   },
+   "by_rule": {
+    "CONTROLLED_BUDGET": {
+     "label": "DESCRIPTIVE",
+     "seeds_status": "NOT_AVAILABLE",
+     "status": "NOT_AVAILABLE"
+    },
+    "PRACTICAL_BEST": {
+     "W_sha256": "0654b73fd097d99d71591aeaa609b367d41305ba92431d3e199792fe7386413d",
+     "ci95": [
+      -9.341555132132105e-05,
+      7.500741824900435e-05
+     ],
+     "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+     "harmed_share": 0.0975089510169879,
+     "harmed_share_seed_null": {
+      "denominator": {
+       "arm": "FT_PRE",
+       "harmed_share": 0.18378151900662756,
+       "improved_share": 0.1870952997638455,
+       "label": "DESCRIPTIVE",
+       "rule": "PRACTICAL_BEST",
+       "rule_text": "per-user macro (s2027 - s2026) of the same arm on the same users < 0 (a noise floor)",
+       "seeds": [
+        2027,
+        2026
+       ],
+       "tied_share": 0.6291231812295269
+      },
+      "numerator": {
+       "arm": "FT_P2_WSTAR",
+       "harmed_share": 0.18435286051649272,
+       "improved_share": 0.18800944617962978,
+       "label": "DESCRIPTIVE",
+       "rule": "PRACTICAL_BEST",
+       "rule_text": "per-user macro (s2027 - s2026) of the same arm on the same users < 0 (a noise floor)",
+       "seeds": [
+        2027,
+        2026
+       ],
+       "tied_share": 0.6276376933038775
+      }
+     },
+     "holm": {
+      "bonferroni_band": [
+       -0.00011400616596845502,
+       0.00010174225068556541
+      ],
+      "family": "SECONDARY_HOLM_Q2_Q8",
+      "holm_band": [
+       -0.00011400616596845502,
+       0.00010174225068556541
+      ],
+      "holm_band_level": 0.0071428571428571435,
+      "holm_level": 0.05,
+      "holm_rank": 7,
+      "holm_reject": false,
+      "label": "CONFIRMATORY_P2 multiplicity decision (Holm step-down over Q2-Q8, PREG2 \u00a79.3)",
+      "p_holm": 1.0,
+      "p_normal_two_sided": 0.8784649185173588,
+      "reference": 0.0,
+      "se_bootstrap": 4.0100303440410676e-05,
+      "status": "COMPUTED",
+      "z": -0.15291549228690846
+     },
+     "improved_share": 0.094385617429725,
+     "kind": "delta",
+     "label": "CONFIRMATORY_P2 (PREREGISTERED_FOLLOWUP)",
+     "metric": "mrr@20",
+     "n_decisions": 229742,
+     "n_seeds": 2,
+     "n_users": 26254,
+     "per_seed": [
+      {
+       "a": "FT_P2_WSTAR|2026|PRACTICAL_BEST|MAIN",
+       "b": "FT_PRE|2026|PRACTICAL_BEST|MAIN",
+       "ci95": [
+        -0.00015968563986962434,
+        6.034332672267342e-05
+       ],
+       "harmed_share": 0.06319037099108707,
+       "improved_share": 0.05762931362839948,
+       "point": -5.0762688240640896e-05,
+       "seed": 2026,
+       "tied_share": 0.8791803153805134,
+       "value_a": 0.16244506366851824,
+       "value_b": 0.16249582635675888
+      },
+      {
+       "a": "FT_P2_WSTAR|2027|PRACTICAL_BEST|MAIN",
+       "b": "FT_PRE|2027|PRACTICAL_BEST|MAIN",
+       "ci95": [
+        -5.9654861671497306e-05,
+        0.00013528381556687918
+       ],
+       "harmed_share": 0.05938142759198598,
+       "improved_share": 0.05877199664812981,
+       "point": 3.849877295775128e-05,
+       "seed": 2027,
+       "tied_share": 0.8818465757598842,
+       "value_a": 0.16236631099021898,
+       "value_b": 0.16232781221726122
+      }
+     ],
+     "per_user_delta_quantiles": {
+      "P10": 0.0,
+      "P25": 0.0,
+      "P50": 0.0,
+      "P75": 0.0,
+      "P90": 0.0
+     },
+     "point": -6.131957641444807e-06,
+     "population": "MAIN/ALL",
+     "seed_stats": {
+      "label": "DESCRIPTIVE",
+      "per_seed_points": {
+       "2026": -5.0762688240640896e-05,
+       "2027": 3.849877295775128e-05
+      },
+      "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+      "seed_sensitive": true,
+      "seed_spread": 8.926146119839218e-05,
+      "seed_variance": 3.983804227636036e-09,
+      "status": "COMPUTED",
+      "user_ci_half_width": 8.42114847851627e-05,
+      "user_seed_interval": [
+       -0.00012373091965077075,
+       0.00011146700436788113
+      ]
+     },
+     "seeds": [
+      2026,
+      2027
+     ],
+     "seeds_status": "COMPLETE",
+     "statistic": "macro_e2e",
+     "tied_share": 0.8081054315532871,
+     "worst_decile_mean_delta": -0.0032810676103719135
+    }
+   },
+   "confirmatory_rule": "PRACTICAL_BEST",
+   "contrast": "FT_P2_WSTAR \u2212 FT_PRE",
+   "decision": {
+    "holm_reject": false,
+    "label": "CONFIRMATORY_P2 (PREREGISTERED_FOLLOWUP)",
+    "reference": 0.0,
+    "unadjusted_ci95_side": "includes"
+   },
+   "den": "FT_PRE",
+   "disclosure_D_a": "Phase-2 hypotheses were generated after the Phase-1 VALIDATION read; arms were selected on CALIB; everything was locked before any TEST value existed.",
+   "id": "Q5",
+   "kind": "delta",
+   "label": "CONFIRMATORY_P2 (PREREGISTERED_FOLLOWUP)",
+   "num": "FT_P2_WSTAR",
+   "pairing_note": "same-seed pairs FT_P2_WSTAR s (base = P2_WSTAR s best.pt) vs FT_PRE s (Phase-1 rows, hash-bound)",
+   "population": "MAIN",
+   "question": "value of W* after the registered local fine-tune (deployed stack; paired \u0394)",
+   "registered_seeds": [
+    2026,
+    2027
+   ],
+   "tier": "secondary"
+  },
+  {
+   "beside": {
+    "CALIB_GAIN": 1.347943584574e-05,
+    "D-j": "Futility uses CALIB headroom (32,768 users); MAIN has 131,072 users, so FUTILITY_SKIP_WB_WC may under-read the headroom available on MAIN.",
+    "EDGE_UNRESOLVED": true,
+    "FUTILITY_SKIP_WB_WC": true,
+    "NO_MEASURABLE_CALIB_GAIN": true,
+    "W_STAR": "fedadam|eta=3e-06|c=0.1",
+    "flags": [
+     "EDGE_UNRESOLVED",
+     "NO_MEASURABLE_CALIB_GAIN",
+     "FUTILITY_SKIP_WB_WC"
+    ],
+    "label": "SELECTION (CALIB values; PREG2 \u00a75.6-\u00a75.8)",
+    "rule": "CALIB_GAIN = W*_CALIB - PRE_CALIB, NO_MEASURABLE_CALIB_GAIN iff < 0.001 (W* is carried to MAIN regardless); EDGE_UNRESOLVED disclosed beside every Q (\u00a75.7)"
+   },
+   "by_rule": {
+    "CONTROLLED_BUDGET": {
+     "W_sha256": "0654b73fd097d99d71591aeaa609b367d41305ba92431d3e199792fe7386413d",
+     "ci95": [
+      99.9995187028777,
+      100.00281993857686
+     ],
+     "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+     "harmed_share": 0.0011045935857393158,
+     "harmed_share_seed_null": {
+      "denominator": {
+       "arm": "P2_WSTAR_FA1024",
+       "harmed_share": 0.0022853660394606535,
+       "improved_share": 0.0022472766054696426,
+       "label": "DESCRIPTIVE",
+       "rule": "CONTROLLED_BUDGET",
+       "rule_text": "per-user macro (s2027 - s2026) of the same arm on the same users < 0 (a noise floor)",
+       "seeds": [
+        2027,
+        2026
+       ],
+       "tied_share": 0.9954673573550697
+      },
+      "numerator": {
+       "arm": "P2_WSTAR_DP8",
+       "harmed_share": 0.0023234554734516645,
+       "improved_share": 0.0022853660394606535,
+       "label": "DESCRIPTIVE",
+       "rule": "CONTROLLED_BUDGET",
+       "rule_text": "per-user macro (s2027 - s2026) of the same arm on the same users < 0 (a noise floor)",
+       "seeds": [
+        2027,
+        2026
+       ],
+       "tied_share": 0.9953911784870877
+      }
+     },
+     "holm": {
+      "bonferroni_band": [
+       99.9986846314108,
+       100.00325556512301
+      ],
+      "family": "SECONDARY_HOLM_Q2_Q8",
+      "holm_band": [
+       99.9986846314108,
+       100.00325556512301
+      ],
+      "holm_band_level": 0.0071428571428571435,
+      "holm_level": 0.0125,
+      "holm_rank": 4,
+      "holm_reject": false,
+      "label": "CONFIRMATORY_P2 multiplicity decision (Holm step-down over Q2-Q8, PREG2 \u00a79.3)",
+      "p_holm": 1.0,
+      "p_normal_two_sided": 0.253514508497513,
+      "reference": 100.0,
+      "se_bootstrap": 0.0008495813397302363,
+      "status": "COMPUTED",
+      "z": 1.1418544894271803
+     },
+     "improved_share": 0.0011045935857393158,
+     "kind": "retained",
+     "label": "CONFIRMATORY_P2 (PREREGISTERED_FOLLOWUP)",
+     "metric": "mrr@20",
+     "n_decisions": 229742,
+     "n_seeds": 2,
+     "n_users": 26254,
+     "per_seed": [
+      {
+       "ci95": [
+        99.99874088211126,
+        100.00420484524717
+       ],
+       "den": "P2_WSTAR_FA1024|2026|CONTROLLED_BUDGET|MAIN",
+       "harmed_share": 0.0006475203778471852,
+       "improved_share": 0.0006856098118381961,
+       "n_resamples_zero_denominator": 0,
+       "num": "P2_WSTAR_DP8|2026|CONTROLLED_BUDGET|MAIN",
+       "point": 100.00106394555742,
+       "seed": 2026,
+       "tied_share": 0.9986668698103146,
+       "value_den": 0.1600932189926751,
+       "value_num": 0.1600949222973663
+      },
+      {
+       "ci95": [
+        99.99905211581408,
+        100.00352455531602
+       ],
+       "den": "P2_WSTAR_FA1024|2027|CONTROLLED_BUDGET|MAIN",
+       "harmed_share": 0.0005713415098651634,
+       "improved_share": 0.0006094309438561743,
+       "n_resamples_zero_denominator": 0,
+       "num": "P2_WSTAR_DP8|2027|CONTROLLED_BUDGET|MAIN",
+       "point": 100.00087625097639,
+       "seed": 2027,
+       "tied_share": 0.9988192275462786,
+       "value_den": 0.16008738262507588,
+       "value_num": 0.1600887853923292
+      }
+     ],
+     "per_user_delta_quantiles": {
+      "P10": 0.0,
+      "P25": 0.0,
+      "P50": 0.0,
+      "P75": 0.0,
+      "P90": 0.0
+     },
+     "point": 100.0009700982669,
+     "population": "MAIN/ALL",
+     "seed_stats": {
+      "label": "DESCRIPTIVE",
+      "per_seed_points": {
+       "2026": 100.00106394555742,
+       "2027": 100.00087625097639
+      },
+      "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+      "seed_sensitive": false,
+      "seed_spread": 0.0001876945810295183,
+      "seed_variance": 1.7614627873923205e-08,
+      "status": "COMPUTED",
+      "user_ci_half_width": 0.0016506178495845347,
+      "user_seed_interval": [
+       99.99929479032579,
+       100.00264540620802
+      ]
+     },
+     "seeds": [
+      2026,
+      2027
+     ],
+     "seeds_status": "COMPLETE",
+     "statistic": "macro_e2e",
+     "tied_share": 0.9977908128285213,
+     "worst_decile_mean_delta": -1.3564963975701133e-05
+    },
+    "PRACTICAL_BEST": {
+     "W_sha256": "0654b73fd097d99d71591aeaa609b367d41305ba92431d3e199792fe7386413d",
+     "ci95": [
+      99.99910591058979,
+      100.0000924308772
+     ],
+     "disclosure": "Q6/Q7/Q11/Q12a/Q12b PRACTICAL_BEST ratios are DESCRIPTIVE: best-of-12 checkpoint selection on the users' own validation data is not covered by the DP accountant (as Phase-1 06D \u00a73). DP arms keep T = 384 and the registered z (PREG2 \u00a75.5, D-i).",
+     "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+     "harmed_share": 0.00030471547192808716,
+     "harmed_share_seed_null": {
+      "denominator": {
+       "arm": "P2_WSTAR_FA1024",
+       "harmed_share": 0.00030471547192808716,
+       "improved_share": 0.00034280490591909803,
+       "label": "DESCRIPTIVE",
+       "rule": "PRACTICAL_BEST",
+       "rule_text": "per-user macro (s2027 - s2026) of the same arm on the same users < 0 (a noise floor)",
+       "seeds": [
+        2027,
+        2026
+       ],
+       "tied_share": 0.9993524796221528
+      },
+      "numerator": {
+       "arm": "P2_WSTAR_DP8",
+       "harmed_share": 0.00038089433991010896,
+       "improved_share": 0.0004951626418831416,
+       "label": "DESCRIPTIVE",
+       "rule": "PRACTICAL_BEST",
+       "rule_text": "per-user macro (s2027 - s2026) of the same arm on the same users < 0 (a noise floor)",
+       "seeds": [
+        2027,
+        2026
+       ],
+       "tied_share": 0.9991239430182067
+      }
+     },
+     "improved_share": 0.00026662603793707623,
+     "kind": "retained",
+     "label": "DESCRIPTIVE",
+     "metric": "mrr@20",
+     "n_decisions": 229742,
+     "n_seeds": 2,
+     "n_users": 26254,
+     "per_seed": [
+      {
+       "ci95": [
+        99.99807865937609,
+        100.00000591581167
+       ],
+       "den": "P2_WSTAR_FA1024|2026|PRACTICAL_BEST|MAIN",
+       "harmed_share": 0.00019044716995505448,
+       "improved_share": 0.00011426830197303268,
+       "n_resamples_zero_denominator": 0,
+       "num": "P2_WSTAR_DP8|2026|PRACTICAL_BEST|MAIN",
+       "point": 99.99934076193357,
+       "seed": 2026,
+       "tied_share": 0.9996952845280719,
+       "value_den": 0.16013094280271842,
+       "value_num": 0.16012988715858734
+      },
+      {
+       "ci95": [
+        99.99999173671767,
+        100.00031717743178
+       ],
+       "den": "P2_WSTAR_FA1024|2027|PRACTICAL_BEST|MAIN",
+       "harmed_share": 0.00015235773596404358,
+       "improved_share": 0.00015235773596404358,
+       "n_resamples_zero_denominator": 0,
+       "num": "P2_WSTAR_DP8|2027|PRACTICAL_BEST|MAIN",
+       "point": 100.0001232287096,
+       "seed": 2027,
+       "tied_share": 0.9996952845280719,
+       "value_den": 0.16013078723752217,
+       "value_num": 0.16013098456462493
+      }
+     ],
+     "per_user_delta_quantiles": {
+      "P10": 0.0,
+      "P25": 0.0,
+      "P50": 0.0,
+      "P75": 0.0,
+      "P90": 0.0
+     },
+     "point": 99.99973199532158,
+     "population": "MAIN/ALL",
+     "seed_stats": {
+      "label": "DESCRIPTIVE",
+      "per_seed_points": {
+       "2026": 99.99934076193357,
+       "2027": 100.0001232287096
+      },
+      "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+      "seed_sensitive": true,
+      "seed_spread": 0.0007824667760303328,
+      "seed_variance": 3.0612712779565146e-07,
+      "status": "COMPUTED",
+      "user_ci_half_width": 0.000493260143706209,
+      "user_seed_interval": [
+       99.99878479345139,
+       100.00067919719177
+      ]
+     },
+     "seeds": [
+      2026,
+      2027
+     ],
+     "seeds_status": "COMPLETE",
+     "statistic": "macro_e2e",
+     "tied_share": 0.9994286584901348,
+     "worst_decile_mean_delta": -5.540418032867066e-06
+    }
+   },
+   "confirmatory_rule": "CONTROLLED_BUDGET",
+   "contrast": "R(P2_WSTAR_DP8 / P2_WSTAR_FA1024)",
+   "decision": {
+    "holm_reject": false,
+    "label": "CONFIRMATORY_P2 (PREREGISTERED_FOLLOWUP)",
+    "reference": 100.0,
+    "unadjusted_ci95_side": "includes"
+   },
+   "den": "P2_WSTAR_FA1024",
+   "disclosure_D_a": "Phase-2 hypotheses were generated after the Phase-1 VALIDATION read; arms were selected on CALIB; everything was locked before any TEST value existed.",
+   "disclosure_D_i": "The DP arms keep T = 384 and the registered z. A small-step recipe over 384 rounds may move \u03b8 little; that is the registered mechanism's answer, not a defect to tune away.",
+   "id": "Q6",
+   "kind": "retained",
+   "label": "CONFIRMATORY_P2 (PREREGISTERED_FOLLOWUP)",
+   "num": "P2_WSTAR_DP8",
+   "pairing_note": "same-seed pairs; FA1024 and DP8 both run passes 2 / batch 16, T 384 (matched pair)",
+   "population": "MAIN",
+   "question": "privacy cost at \u03b5 = 8 of the W* recipe (T 384, registered z, passes 2 / batch 16)",
+   "registered_seeds": [
+    2026,
+    2027
+   ],
+   "tier": "secondary"
+  },
+  {
+   "beside": {
+    "CALIB_GAIN": 1.347943584574e-05,
+    "D-j": "Futility uses CALIB headroom (32,768 users); MAIN has 131,072 users, so FUTILITY_SKIP_WB_WC may under-read the headroom available on MAIN.",
+    "EDGE_UNRESOLVED": true,
+    "FUTILITY_SKIP_WB_WC": true,
+    "NO_MEASURABLE_CALIB_GAIN": true,
+    "W_STAR": "fedadam|eta=3e-06|c=0.1",
+    "flags": [
+     "EDGE_UNRESOLVED",
+     "NO_MEASURABLE_CALIB_GAIN",
+     "FUTILITY_SKIP_WB_WC"
+    ],
+    "label": "SELECTION (CALIB values; PREG2 \u00a75.6-\u00a75.8)",
+    "rule": "CALIB_GAIN = W*_CALIB - PRE_CALIB, NO_MEASURABLE_CALIB_GAIN iff < 0.001 (W* is carried to MAIN regardless); EDGE_UNRESOLVED disclosed beside every Q (\u00a75.7)"
+   },
+   "by_rule": {
+    "CONTROLLED_BUDGET": {
+     "W_sha256": "0654b73fd097d99d71591aeaa609b367d41305ba92431d3e199792fe7386413d",
+     "ci95": [
+      -9.703585550941869e-05,
+      1.97843877342823e-05
+     ],
+     "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+     "harmed_share": 0.02887179096518626,
+     "harmed_share_seed_null": {
+      "denominator": {
+       "reason": "needs both seeds (2026, 2027) of the arm with rank files",
+       "status": "NOT_AVAILABLE"
+      },
+      "numerator": {
+       "arm": "P2_WSTAR_DP8",
+       "harmed_share": 0.0023234554734516645,
+       "improved_share": 0.0022853660394606535,
+       "label": "DESCRIPTIVE",
+       "rule": "CONTROLLED_BUDGET",
+       "rule_text": "per-user macro (s2027 - s2026) of the same arm on the same users < 0 (a noise floor)",
+       "seeds": [
+        2027,
+        2026
+       ],
+       "tied_share": 0.9953911784870877
+      }
+     },
+     "holm": {
+      "bonferroni_band": [
+       -0.00011465760853484596,
+       4.03658494548208e-05
+      ],
+      "family": "SECONDARY_HOLM_Q2_Q8",
+      "holm_band": [
+       -0.00011465760853484596,
+       4.03658494548208e-05
+      ],
+      "holm_band_level": 0.0071428571428571435,
+      "holm_level": 0.01,
+      "holm_rank": 3,
+      "holm_reject": false,
+      "label": "CONFIRMATORY_P2 multiplicity decision (Holm step-down over Q2-Q8, PREG2 \u00a79.3)",
+      "p_holm": 0.9866795177402654,
+      "p_normal_two_sided": 0.19733590354805308,
+      "reference": 0.0,
+      "se_bootstrap": 2.8813595956703173e-05,
+      "status": "COMPUTED",
+      "z": -1.289178886100504
+     },
+     "improved_share": 0.027538660775500875,
+     "kind": "delta",
+     "label": "CONFIRMATORY_P2 (PREREGISTERED_FOLLOWUP)",
+     "metric": "mrr@20",
+     "n_decisions": 229742,
+     "n_seeds": 2,
+     "n_users": 26254,
+     "per_seed": [
+      {
+       "a": "P2_WSTAR_DP8|2026|CONTROLLED_BUDGET|MAIN",
+       "b": "PRE|2026|CONTROLLED_BUDGET|MAIN",
+       "ci95": [
+        -9.372245956655312e-05,
+        2.2411709418427417e-05
+       ],
+       "harmed_share": 0.027843376247428962,
+       "improved_share": 0.026510246057743582,
+       "point": -3.407742702146721e-05,
+       "seed": 2026,
+       "tied_share": 0.9456463776948274,
+       "value_a": 0.1600949222973663,
+       "value_b": 0.16012899972438777
+      },
+      {
+       "a": "P2_WSTAR_DP8|2027|CONTROLLED_BUDGET|MAIN",
+       "b": "PRE|2026|CONTROLLED_BUDGET|MAIN",
+       "ci95": [
+        -0.00010140814821171379,
+        1.4671546493205666e-05
+       ],
+       "harmed_share": 0.02803382341738402,
+       "improved_share": 0.026662603793707624,
+       "point": -4.0214332058557956e-05,
+       "seed": 2027,
+       "tied_share": 0.9453035727889083,
+       "value_a": 0.1600887853923292,
+       "value_b": 0.16012899972438777
+      }
+     ],
+     "per_user_delta_quantiles": {
+      "P10": 0.0,
+      "P25": 0.0,
+      "P50": 0.0,
+      "P75": 0.0,
+      "P90": 0.0
+     },
+     "point": -3.714587954001258e-05,
+     "population": "MAIN/ALL",
+     "seed_stats": {
+      "label": "DESCRIPTIVE",
+      "per_seed_points": {
+       "2026": -3.407742702146721e-05,
+       "2027": -4.0214332058557956e-05
+      },
+      "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+      "seed_sensitive": false,
+      "seed_spread": 6.136905037090745e-06,
+      "seed_variance": 1.883080171713488e-11,
+      "status": "COMPUTED",
+      "user_ci_half_width": 5.8410121621850494e-05,
+      "user_seed_interval": [
+       -9.393985879088904e-05,
+       1.9648099710863873e-05
+      ]
+     },
+     "seeds": [
+      2026,
+      2027
+     ],
+     "seeds_status": "COMPLETE",
+     "statistic": "macro_e2e",
+     "tied_share": 0.9435895482593128,
+     "worst_decile_mean_delta": -0.0016285228664738762
+    },
+    "PRACTICAL_BEST": {
+     "W_sha256": "0654b73fd097d99d71591aeaa609b367d41305ba92431d3e199792fe7386413d",
+     "ci95": [
+      -5.657692240353119e-06,
+      9.61340000292278e-06
+     ],
+     "disclosure": "Q6/Q7/Q11/Q12a/Q12b PRACTICAL_BEST ratios are DESCRIPTIVE: best-of-12 checkpoint selection on the users' own validation data is not covered by the DP accountant (as Phase-1 06D \u00a73). DP arms keep T = 384 and the registered z (PREG2 \u00a75.5, D-i).",
+     "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+     "harmed_share": 0.0015235773596404358,
+     "harmed_share_seed_null": {
+      "denominator": {
+       "reason": "needs both seeds (2026, 2027) of the arm with rank files",
+       "status": "NOT_AVAILABLE"
+      },
+      "numerator": {
+       "arm": "P2_WSTAR_DP8",
+       "harmed_share": 0.00038089433991010896,
+       "improved_share": 0.0004951626418831416,
+       "label": "DESCRIPTIVE",
+       "rule": "PRACTICAL_BEST",
+       "rule_text": "per-user macro (s2027 - s2026) of the same arm on the same users < 0 (a noise floor)",
+       "seeds": [
+        2027,
+        2026
+       ],
+       "tied_share": 0.9991239430182067
+      }
+     },
+     "improved_share": 0.001447398491658414,
+     "kind": "delta",
+     "label": "DESCRIPTIVE",
+     "metric": "mrr@20",
+     "n_decisions": 229742,
+     "n_seeds": 2,
+     "n_users": 26254,
+     "per_seed": [
+      {
+       "a": "P2_WSTAR_DP8|2026|PRACTICAL_BEST|MAIN",
+       "b": "PRE|2026|PRACTICAL_BEST|MAIN",
+       "ci95": [
+        -6.406884425229353e-06,
+        9.221481736555737e-06
+       ],
+       "harmed_share": 0.0012950407556943705,
+       "improved_share": 0.0011426830197303268,
+       "point": 8.874341995701585e-07,
+       "seed": 2026,
+       "tied_share": 0.9975622762245753,
+       "value_a": 0.16012988715858734,
+       "value_b": 0.16012899972438777
+      },
+      {
+       "a": "P2_WSTAR_DP8|2027|PRACTICAL_BEST|MAIN",
+       "b": "PRE|2026|PRACTICAL_BEST|MAIN",
+       "ci95": [
+        -5.228436208482012e-06,
+        9.936656721344634e-06
+       ],
+       "harmed_share": 0.0013331301896853812,
+       "improved_share": 0.0013331301896853812,
+       "point": 1.9848402371680507e-06,
+       "seed": 2027,
+       "tied_share": 0.9973337396206292,
+       "value_a": 0.16013098456462493,
+       "value_b": 0.16012899972438777
+      }
+     ],
+     "per_user_delta_quantiles": {
+      "P10": 0.0,
+      "P25": 0.0,
+      "P50": 0.0,
+      "P75": 0.0,
+      "P90": 0.0
+     },
+     "point": 1.4361372183691046e-06,
+     "population": "MAIN/ALL",
+     "seed_stats": {
+      "label": "DESCRIPTIVE",
+      "per_seed_points": {
+       "2026": 8.874341995701585e-07,
+       "2027": 1.9848402371680507e-06
+      },
+      "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+      "seed_sensitive": false,
+      "seed_spread": 1.0974060375978922e-06,
+      "seed_variance": 6.021500056781533e-13,
+      "status": "COMPUTED",
+      "user_ci_half_width": 7.63554612163795e-06,
+      "user_seed_interval": [
+       -6.3796085794188194e-06,
+       9.251883016157029e-06
+      ]
+     },
+     "seeds": [
+      2026,
+      2027
+     ],
+     "seeds_status": "COMPLETE",
+     "statistic": "macro_e2e",
+     "tied_share": 0.9970290241487012,
+     "worst_decile_mean_delta": -3.919971081670146e-05
+    }
+   },
+   "confirmatory_rule": "CONTROLLED_BUDGET",
+   "contrast": "P2_WSTAR_DP8 \u2212 PRE",
+   "decision": {
+    "holm_reject": false,
+    "label": "CONFIRMATORY_P2 (PREREGISTERED_FOLLOWUP)",
+    "reference": 0.0,
+    "unadjusted_ci95_side": "includes"
+   },
+   "den": "PRE",
+   "dependency": [
+    "Q1"
+   ],
+   "disclosure_D_a": "Phase-2 hypotheses were generated after the Phase-1 VALIDATION read; arms were selected on CALIB; everything was locked before any TEST value existed.",
+   "disclosure_D_i": "The DP arms keep T = 384 and the registered z. A small-step recipe over 384 rounds may move \u03b8 little; that is the registered mechanism's answer, not a defect to tune away.",
+   "id": "Q7",
+   "kind": "delta",
+   "label": "CONFIRMATORY_P2 (PREREGISTERED_FOLLOWUP)",
+   "num": "P2_WSTAR_DP8",
+   "pairing_note": "PRE (seed 2026) shared by both DP8 seeds",
+   "population": "MAIN",
+   "question": "private (\u03b5 = 8) federated training over the pretrained model (paired \u0394)",
+   "registered_seeds": [
+    2026,
+    2027
+   ],
+   "tier": "secondary"
+  },
+  {
+   "beside": {
+    "CALIB_GAIN": 1.347943584574e-05,
+    "D-j": "Futility uses CALIB headroom (32,768 users); MAIN has 131,072 users, so FUTILITY_SKIP_WB_WC may under-read the headroom available on MAIN.",
+    "EDGE_UNRESOLVED": true,
+    "FUTILITY_SKIP_WB_WC": true,
+    "NO_MEASURABLE_CALIB_GAIN": true,
+    "W_STAR": "fedadam|eta=3e-06|c=0.1",
+    "flags": [
+     "EDGE_UNRESOLVED",
+     "NO_MEASURABLE_CALIB_GAIN",
+     "FUTILITY_SKIP_WB_WC"
+    ],
+    "label": "SELECTION (CALIB values; PREG2 \u00a75.6-\u00a75.8)",
+    "rule": "CALIB_GAIN = W*_CALIB - PRE_CALIB, NO_MEASURABLE_CALIB_GAIN iff < 0.001 (W* is carried to MAIN regardless); EDGE_UNRESOLVED disclosed beside every Q (\u00a75.7)"
+   },
+   "by_rule": {
+    "CONTROLLED_BUDGET": {
+     "W_sha256": "0654b73fd097d99d71591aeaa609b367d41305ba92431d3e199792fe7386413d",
+     "ci95": [
+      -0.0004571081762886599,
+      0.0015913158344187564
+     ],
+     "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+     "harmed_share": 0.3593738097051878,
+     "harmed_share_seed_null": {
+      "denominator": {
+       "reason": "needs both seeds (2026, 2027) of the arm with rank files",
+       "status": "NOT_AVAILABLE"
+      },
+      "numerator": {
+       "reason": "needs both seeds (2026, 2027) of the arm with rank files",
+       "status": "NOT_AVAILABLE"
+      }
+     },
+     "improved_share": 0.36386836291612706,
+     "kind": "delta",
+     "label": "DESCRIPTIVE",
+     "metric": "mrr@20",
+     "n_decisions": 229742,
+     "n_seeds": 1,
+     "n_users": 26254,
+     "per_seed": [
+      {
+       "a": "P2_C2_CFULL_SMALL|2026|CONTROLLED_BUDGET|MAIN",
+       "b": "PRE|2026|CONTROLLED_BUDGET|MAIN",
+       "ci95": [
+        -0.0004571081762886599,
+        0.0015913158344187564
+       ],
+       "harmed_share": 0.3593738097051878,
+       "improved_share": 0.36386836291612706,
+       "point": 0.0005414170465423973,
+       "seed": 2026,
+       "tied_share": 0.27675782737868515,
+       "value_a": 0.16067041677093016,
+       "value_b": 0.16012899972438777
+      }
+     ],
+     "per_user_delta_quantiles": {
+      "P10": -0.055555555555555525,
+      "P25": -0.013333333333333332,
+      "P50": 0.0,
+      "P75": 0.013888888888888895,
+      "P90": 0.05555555555555558
+     },
+     "point": 0.0005414170465423973,
+     "population": "MAIN/ALL",
+     "seed_stats": {
+      "label": "DESCRIPTIVE",
+      "per_seed_points": {
+       "2026": 0.0005414170465423973
+      },
+      "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+      "seed_sensitive": null,
+      "status": "SINGLE_SEED"
+     },
+     "seeds": [
+      2026
+     ],
+     "seeds_status": "COMPLETE",
+     "statistic": "macro_e2e",
+     "tied_share": 0.27675782737868515,
+     "worst_decile_mean_delta": -0.14222469839365887
+    },
+    "PRACTICAL_BEST": {
+     "W_sha256": "0654b73fd097d99d71591aeaa609b367d41305ba92431d3e199792fe7386413d",
+     "ci95": [
+      -0.0004571081762886599,
+      0.0015913158344187564
+     ],
+     "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+     "harmed_share": 0.3593738097051878,
+     "harmed_share_seed_null": {
+      "denominator": {
+       "reason": "needs both seeds (2026, 2027) of the arm with rank files",
+       "status": "NOT_AVAILABLE"
+      },
+      "numerator": {
+       "reason": "needs both seeds (2026, 2027) of the arm with rank files",
+       "status": "NOT_AVAILABLE"
+      }
+     },
+     "holm": {
+      "bonferroni_band": [
+       -0.000893560544313065,
+       0.0019763946373978596
+      ],
+      "family": "SECONDARY_HOLM_Q2_Q8",
+      "holm_band": [
+       -0.000893560544313065,
+       0.0019763946373978596
+      ],
+      "holm_band_level": 0.0071428571428571435,
+      "holm_level": 0.016666666666666666,
+      "holm_rank": 5,
+      "holm_reject": false,
+      "label": "CONFIRMATORY_P2 multiplicity decision (Holm step-down over Q2-Q8, PREG2 \u00a79.3)",
+      "p_holm": 1.0,
+      "p_normal_two_sided": 0.31011615856008934,
+      "reference": 0.0,
+      "se_bootstrap": 0.0005334271992899116,
+      "status": "COMPUTED",
+      "z": 1.014978327432725
+     },
+     "improved_share": 0.36386836291612706,
+     "kind": "delta",
+     "label": "CONFIRMATORY_P2 (PREREGISTERED_FOLLOWUP)",
+     "metric": "mrr@20",
+     "n_decisions": 229742,
+     "n_seeds": 1,
+     "n_users": 26254,
+     "per_seed": [
+      {
+       "a": "P2_C2_CFULL_SMALL|2026|PRACTICAL_BEST|MAIN",
+       "b": "PRE|2026|PRACTICAL_BEST|MAIN",
+       "ci95": [
+        -0.0004571081762886599,
+        0.0015913158344187564
+       ],
+       "harmed_share": 0.3593738097051878,
+       "improved_share": 0.36386836291612706,
+       "point": 0.0005414170465423973,
+       "seed": 2026,
+       "tied_share": 0.27675782737868515,
+       "value_a": 0.16067041677093016,
+       "value_b": 0.16012899972438777
+      }
+     ],
+     "per_user_delta_quantiles": {
+      "P10": -0.055555555555555525,
+      "P25": -0.013333333333333332,
+      "P50": 0.0,
+      "P75": 0.013888888888888895,
+      "P90": 0.05555555555555558
+     },
+     "point": 0.0005414170465423973,
+     "population": "MAIN/ALL",
+     "seed_stats": {
+      "label": "DESCRIPTIVE",
+      "per_seed_points": {
+       "2026": 0.0005414170465423973
+      },
+      "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+      "seed_sensitive": null,
+      "status": "SINGLE_SEED"
+     },
+     "seeds": [
+      2026
+     ],
+     "seeds_status": "COMPLETE",
+     "statistic": "macro_e2e",
+     "tied_share": 0.27675782737868515,
+     "worst_decile_mean_delta": -0.14222469839365887
+    }
+   },
+   "confirmatory_rule": "PRACTICAL_BEST",
+   "contrast": "P2_C2_CFULL_SMALL \u2212 PRE",
+   "decision": {
+    "holm_reject": false,
+    "label": "CONFIRMATORY_P2 (PREREGISTERED_FOLLOWUP)",
+    "reference": 0.0,
+    "unadjusted_ci95_side": "includes"
+   },
+   "den": "PRE",
+   "disclosure_D_a": "Phase-2 hypotheses were generated after the Phase-1 VALIDATION read; arms were selected on CALIB; everything was locked before any TEST value existed.",
+   "id": "Q8",
+   "kind": "delta",
+   "label": "CONFIRMATORY_P2 (PREREGISTERED_FOLLOWUP)",
+   "num": "P2_C2_CFULL_SMALL",
+   "pairing_note": "C2 seed 2026 vs PRE seed 2026; conditional on owner O3",
+   "population": "MAIN",
+   "question": "value of the MAIN users' data at matched size and recipe (central D64 on PRE + MAIN users; only if owner O3 = yes)",
+   "registered_seeds": [
+    2026
+   ],
+   "tier": "secondary"
+  },
+  {
+   "beside": {
+    "CALIB_GAIN": 1.347943584574e-05,
+    "D-j": "Futility uses CALIB headroom (32,768 users); MAIN has 131,072 users, so FUTILITY_SKIP_WB_WC may under-read the headroom available on MAIN.",
+    "EDGE_UNRESOLVED": true,
+    "FUTILITY_SKIP_WB_WC": true,
+    "NO_MEASURABLE_CALIB_GAIN": true,
+    "W_STAR": "fedadam|eta=3e-06|c=0.1",
+    "flags": [
+     "EDGE_UNRESOLVED",
+     "NO_MEASURABLE_CALIB_GAIN",
+     "FUTILITY_SKIP_WB_WC"
+    ],
+    "label": "SELECTION (CALIB values; PREG2 \u00a75.6-\u00a75.8)",
+    "rule": "CALIB_GAIN = W*_CALIB - PRE_CALIB, NO_MEASURABLE_CALIB_GAIN iff < 0.001 (W* is carried to MAIN regardless); EDGE_UNRESOLVED disclosed beside every Q (\u00a75.7)"
+   },
+   "by_rule": {
+    "CONTROLLED_BUDGET": {
+     "W_sha256": "0654b73fd097d99d71591aeaa609b367d41305ba92431d3e199792fe7386413d",
+     "ci95": [
+      87.77933413677994,
+      89.30307834665366
+     ],
+     "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+     "harmed_share": 0.46876666412737106,
+     "harmed_share_seed_null": {
+      "denominator": {
+       "reason": "needs both seeds (2026, 2027) of the arm with rank files",
+       "status": "NOT_AVAILABLE"
+      },
+      "numerator": {
+       "arm": "P2_WSTAR",
+       "harmed_share": 0.02555801020796831,
+       "improved_share": 0.0255199207739773,
+       "label": "DESCRIPTIVE",
+       "rule": "CONTROLLED_BUDGET",
+       "rule_text": "per-user macro (s2027 - s2026) of the same arm on the same users < 0 (a noise floor)",
+       "seeds": [
+        2027,
+        2026
+       ],
+       "tied_share": 0.9489220690180544
+      }
+     },
+     "improved_share": 0.29332673116477487,
+     "kind": "retained",
+     "label": "DESCRIPTIVE",
+     "metric": "mrr@20",
+     "n_decisions": 229742,
+     "n_seeds": 2,
+     "n_users": 26254,
+     "per_seed": [
+      {
+       "ci95": [
+        87.80246108740383,
+        89.31722847576916
+       ],
+       "den": "C_FULL|2026|CONTROLLED_BUDGET|MAIN",
+       "harmed_share": 0.46830959091947894,
+       "improved_share": 0.2933648205987659,
+       "n_resamples_zero_denominator": 0,
+       "num": "P2_WSTAR|2026|CONTROLLED_BUDGET|MAIN",
+       "point": 88.5764543389353,
+       "seed": 2026,
+       "tied_share": 0.23832558848175517,
+       "value_den": 0.18038838611956526,
+       "value_num": 0.15978163646393903
+      },
+      {
+       "ci95": [
+        87.76322968006795,
+        89.26562257559036
+       ],
+       "den": "C_FULL|2026|CONTROLLED_BUDGET|MAIN",
+       "harmed_share": 0.4689952007313171,
+       "improved_share": 0.29279347908890074,
+       "n_resamples_zero_denominator": 0,
+       "num": "P2_WSTAR|2027|CONTROLLED_BUDGET|MAIN",
+       "point": 88.53505118419108,
+       "seed": 2027,
+       "tied_share": 0.23821132017978214,
+       "value_den": 0.18038838611956526,
+       "value_num": 0.1597069499812933
+      }
+     ],
+     "per_user_delta_quantiles": {
+      "P10": -0.11944444444444449,
+      "P25": -0.041666666666666664,
+      "P50": 0.0,
+      "P75": 0.00816147223352151,
+      "P90": 0.057519076211026754
+     },
+     "point": 88.55575276156318,
+     "population": "MAIN/ALL",
+     "seed_stats": {
+      "label": "DESCRIPTIVE",
+      "per_seed_points": {
+       "2026": 88.5764543389353,
+       "2027": 88.53505118419108
+      },
+      "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+      "seed_sensitive": false,
+      "seed_spread": 0.04140315474423062,
+      "seed_variance": 0.0008571106113873532,
+      "status": "COMPUTED",
+      "user_ci_half_width": 0.7618721049368631,
+      "user_seed_interval": [
+       87.80634268488038,
+       89.30516283824599
+      ]
+     },
+     "seeds": [
+      2026,
+      2027
+     ],
+     "seeds_status": "COMPLETE",
+     "statistic": "macro_e2e",
+     "tied_share": 0.23790660470785405,
+     "worst_decile_mean_delta": -0.25720965612755653
+    },
+    "PRACTICAL_BEST": {
+     "W_sha256": "0654b73fd097d99d71591aeaa609b367d41305ba92431d3e199792fe7386413d",
+     "ci95": [
+      87.94617157323188,
+      89.42909444868503
+     ],
+     "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+     "harmed_share": 0.4682715014854879,
+     "harmed_share_seed_null": {
+      "denominator": {
+       "reason": "needs both seeds (2026, 2027) of the arm with rank files",
+       "status": "NOT_AVAILABLE"
+      },
+      "numerator": {
+       "arm": "P2_WSTAR",
+       "harmed_share": 0.021291993600975088,
+       "improved_share": 0.021520530204921156,
+       "label": "DESCRIPTIVE",
+       "rule": "PRACTICAL_BEST",
+       "rule_text": "per-user macro (s2027 - s2026) of the same arm on the same users < 0 (a noise floor)",
+       "seeds": [
+        2027,
+        2026
+       ],
+       "tied_share": 0.9571874761941037
+      }
+     },
+     "holm": {
+      "bonferroni_band": [
+       87.7504669694389,
+       89.69794202674338
+      ],
+      "decision": "none (TERTIARY_P2: unadjusted, DESCRIPTIVE Holm band; PREG2 \u00a79.3)",
+      "family": "TERTIARY_BAND",
+      "holm_band": [
+       87.7504669694389,
+       89.69794202674338
+      ],
+      "holm_band_level": 0.01,
+      "holm_level": 0.01,
+      "holm_rank": 1,
+      "holm_reject": null,
+      "label": "DESCRIPTIVE",
+      "p_holm": 0.0,
+      "p_normal_two_sided": 0.0,
+      "reference": 100.0,
+      "se_bootstrap": 0.3780287487647752,
+      "status": "COMPUTED",
+      "z": -29.827878273155136
+     },
+     "improved_share": 0.29317437342881086,
+     "kind": "retained",
+     "label": "TERTIARY_P2 (unadjusted; DESCRIPTIVE Holm band)",
+     "metric": "mrr@20",
+     "n_decisions": 229742,
+     "n_seeds": 2,
+     "n_users": 26254,
+     "per_seed": [
+      {
+       "ci95": [
+        87.94542487793245,
+        89.42739575508064
+       ],
+       "den": "C_FULL|2026|PRACTICAL_BEST|MAIN",
+       "harmed_share": 0.4681191437495239,
+       "improved_share": 0.29317437342881086,
+       "n_resamples_zero_denominator": 0,
+       "num": "P2_WSTAR|2026|PRACTICAL_BEST|MAIN",
+       "point": 88.72739024791883,
+       "seed": 2026,
+       "tied_share": 0.23870648282166526,
+       "value_den": 0.18038838611956526,
+       "value_num": 0.1600539073142293
+      },
+      {
+       "ci95": [
+        87.94104927491131,
+        89.42204441027272
+       ],
+       "den": "C_FULL|2026|PRACTICAL_BEST|MAIN",
+       "harmed_share": 0.46834768035346996,
+       "improved_share": 0.29283156852289177,
+       "n_resamples_zero_denominator": 0,
+       "num": "P2_WSTAR|2027|PRACTICAL_BEST|MAIN",
+       "point": 88.72101874826345,
+       "seed": 2027,
+       "tied_share": 0.2388207511236383,
+       "value_den": 0.18038838611956526,
+       "value_num": 0.16004241386882936
+      }
+     ],
+     "per_user_delta_quantiles": {
+      "P10": -0.11848153881435614,
+      "P25": -0.04166666666666666,
+      "P50": 0.0,
+      "P75": 0.007957943103372486,
+      "P90": 0.05714285714285716
+     },
+     "point": 88.72420449809114,
+     "population": "MAIN/ALL",
+     "seed_stats": {
+      "label": "DESCRIPTIVE",
+      "per_seed_points": {
+       "2026": 88.72739024791883,
+       "2027": 88.72101874826345
+      },
+      "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+      "seed_sensitive": false,
+      "seed_spread": 0.00637149965538697,
+      "seed_variance": 2.0298003929298135e-05,
+      "status": "COMPUTED",
+      "user_ci_half_width": 0.7414614377265778,
+      "user_seed_interval": [
+       87.983241840753,
+       89.46516715542928
+      ]
+     },
+     "seeds": [
+      2026,
+      2027
+     ],
+     "seeds_status": "COMPLETE",
+     "statistic": "macro_e2e",
+     "tied_share": 0.23855412508570123,
+     "worst_decile_mean_delta": -0.255012857606529
+    }
+   },
+   "confirmatory_rule": "PRACTICAL_BEST",
+   "contrast": "R(P2_WSTAR / C_FULL)",
+   "decision": {
+    "label": "TERTIARY_P2 (unadjusted; DESCRIPTIVE Holm band)",
+    "reference": 100.0,
+    "unadjusted_ci95_side": "below"
+   },
+   "den": "C_FULL",
+   "id": "Q9",
+   "kind": "retained",
+   "label": "TERTIARY_P2 (unadjusted; DESCRIPTIVE Holm band)",
+   "num": "P2_WSTAR",
+   "pairing_note": "2 P2_WSTAR seeds vs C_FULL s2026 (Phase-1 rows, hash-bound)",
+   "population": "MAIN",
+   "question": "federated retention of W* vs the full-data cloud model C_FULL (beside Phase-1 K20b)",
+   "registered_seeds": [
+    2026,
+    2027
+   ],
+   "tier": "tertiary"
+  },
+  {
+   "beside": {
+    "CALIB_GAIN": 1.347943584574e-05,
+    "D-j": "Futility uses CALIB headroom (32,768 users); MAIN has 131,072 users, so FUTILITY_SKIP_WB_WC may under-read the headroom available on MAIN.",
+    "EDGE_UNRESOLVED": true,
+    "FUTILITY_SKIP_WB_WC": true,
+    "NO_MEASURABLE_CALIB_GAIN": true,
+    "W_STAR": "fedadam|eta=3e-06|c=0.1",
+    "flags": [
+     "EDGE_UNRESOLVED",
+     "NO_MEASURABLE_CALIB_GAIN",
+     "FUTILITY_SKIP_WB_WC"
+    ],
+    "label": "SELECTION (CALIB values; PREG2 \u00a75.6-\u00a75.8)",
+    "rule": "CALIB_GAIN = W*_CALIB - PRE_CALIB, NO_MEASURABLE_CALIB_GAIN iff < 0.001 (W* is carried to MAIN regardless); EDGE_UNRESOLVED disclosed beside every Q (\u00a75.7)"
+   },
+   "by_rule": {
+    "CONTROLLED_BUDGET": {
+     "W_sha256": "0654b73fd097d99d71591aeaa609b367d41305ba92431d3e199792fe7386413d",
+     "ci95": [
+      99.98252142160494,
+      100.00206494680201
+     ],
+     "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+     "harmed_share": 0.0021710977374876208,
+     "harmed_share_seed_null": {
+      "denominator": {
+       "arm": "P2_WSTAR_FA1024",
+       "harmed_share": 0.0022853660394606535,
+       "improved_share": 0.0022472766054696426,
+       "label": "DESCRIPTIVE",
+       "rule": "CONTROLLED_BUDGET",
+       "rule_text": "per-user macro (s2027 - s2026) of the same arm on the same users < 0 (a noise floor)",
+       "seeds": [
+        2027,
+        2026
+       ],
+       "tied_share": 0.9954673573550697
+      },
+      "numerator": {
+       "reason": "needs both seeds (2026, 2027) of the arm with rank files",
+       "status": "NOT_AVAILABLE"
+      }
+     },
+     "holm": {
+      "bonferroni_band": [
+       99.98131031792842,
+       100.00727854770797
+      ],
+      "decision": "none (TERTIARY_P2: unadjusted, DESCRIPTIVE Holm band; PREG2 \u00a79.3)",
+      "family": "TERTIARY_BAND",
+      "holm_band": [
+       99.98170412072108,
+       100.00688474491531
+      ],
+      "holm_band_level": 0.0125,
+      "holm_level": 0.0125,
+      "holm_rank": 2,
+      "holm_reject": null,
+      "label": "DESCRIPTIVE",
+      "p_holm": 1.0,
+      "p_normal_two_sided": 0.2576814172757258,
+      "reference": 100.0,
+      "se_bootstrap": 0.005040751291974445,
+      "status": "COMPUTED",
+      "z": -1.131888254612024
+     },
+     "improved_share": 0.0020568294355145884,
+     "kind": "retained",
+     "label": "TERTIARY_P2 (unadjusted; DESCRIPTIVE Holm band)",
+     "metric": "mrr@20",
+     "n_decisions": 229742,
+     "n_seeds": 1,
+     "n_users": 26254,
+     "per_seed": [
+      {
+       "ci95": [
+        99.98252142160494,
+        100.00206494680201
+       ],
+       "den": "P2_WSTAR_FA1024|2026|CONTROLLED_BUDGET|MAIN",
+       "harmed_share": 0.0021710977374876208,
+       "improved_share": 0.0020568294355145884,
+       "n_resamples_zero_denominator": 0,
+       "num": "P2_WSTAR_DP1|2026|CONTROLLED_BUDGET|MAIN",
+       "point": 99.9942944328182,
+       "seed": 2026,
+       "tied_share": 0.9957720728269978,
+       "value_den": 0.1600932189926751,
+       "value_num": 0.16008408476651195
+      }
+     ],
+     "per_user_delta_quantiles": {
+      "P10": 0.0,
+      "P25": 0.0,
+      "P50": 0.0,
+      "P75": 0.0,
+      "P90": 0.0
+     },
+     "point": 99.9942944328182,
+     "population": "MAIN/ALL",
+     "seed_stats": {
+      "label": "DESCRIPTIVE",
+      "per_seed_points": {
+       "2026": 99.9942944328182
+      },
+      "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+      "seed_sensitive": null,
+      "status": "SINGLE_SEED"
+     },
+     "seeds": [
+      2026
+     ],
+     "seeds_status": "COMPLETE",
+     "statistic": "macro_e2e",
+     "tied_share": 0.9957720728269978,
+     "worst_decile_mean_delta": -0.00015808447507198242
+    },
+    "PRACTICAL_BEST": {
+     "W_sha256": "0654b73fd097d99d71591aeaa609b367d41305ba92431d3e199792fe7386413d",
+     "ci95": [
+      99.99804454808246,
+      99.99999347330208
+     ],
+     "disclosure": "Q6/Q7/Q11/Q12a/Q12b PRACTICAL_BEST ratios are DESCRIPTIVE: best-of-12 checkpoint selection on the users' own validation data is not covered by the DP accountant (as Phase-1 06D \u00a73). DP arms keep T = 384 and the registered z (PREG2 \u00a75.5, D-i).",
+     "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+     "harmed_share": 0.00026662603793707623,
+     "harmed_share_seed_null": {
+      "denominator": {
+       "arm": "P2_WSTAR_FA1024",
+       "harmed_share": 0.00030471547192808716,
+       "improved_share": 0.00034280490591909803,
+       "label": "DESCRIPTIVE",
+       "rule": "PRACTICAL_BEST",
+       "rule_text": "per-user macro (s2027 - s2026) of the same arm on the same users < 0 (a noise floor)",
+       "seeds": [
+        2027,
+        2026
+       ],
+       "tied_share": 0.9993524796221528
+      },
+      "numerator": {
+       "reason": "needs both seeds (2026, 2027) of the arm with rank files",
+       "status": "NOT_AVAILABLE"
+      }
+     },
+     "improved_share": 0.00015235773596404358,
+     "kind": "retained",
+     "label": "DESCRIPTIVE",
+     "metric": "mrr@20",
+     "n_decisions": 229742,
+     "n_seeds": 1,
+     "n_users": 26254,
+     "per_seed": [
+      {
+       "ci95": [
+        99.99804454808246,
+        99.99999347330208
+       ],
+       "den": "P2_WSTAR_FA1024|2026|PRACTICAL_BEST|MAIN",
+       "harmed_share": 0.00026662603793707623,
+       "improved_share": 0.00015235773596404358,
+       "n_resamples_zero_denominator": 0,
+       "num": "P2_WSTAR_DP1|2026|PRACTICAL_BEST|MAIN",
+       "point": 99.99931325625829,
+       "seed": 2026,
+       "tied_share": 0.9995810162260989,
+       "value_den": 0.16013094280271842,
+       "value_num": 0.16012984311349018
+      }
+     ],
+     "per_user_delta_quantiles": {
+      "P10": 0.0,
+      "P25": 0.0,
+      "P50": 0.0,
+      "P75": 0.0,
+      "P90": 0.0
+     },
+     "point": 99.99931325625829,
+     "population": "MAIN/ALL",
+     "seed_stats": {
+      "label": "DESCRIPTIVE",
+      "per_seed_points": {
+       "2026": 99.99931325625829
+      },
+      "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+      "seed_sensitive": null,
+      "status": "SINGLE_SEED"
+     },
+     "seeds": [
+      2026
+     ],
+     "seeds_status": "COMPLETE",
+     "statistic": "macro_e2e",
+     "tied_share": 0.9995810162260989,
+     "worst_decile_mean_delta": -1.1447020245483906e-05
+    }
+   },
+   "confirmatory_rule": "CONTROLLED_BUDGET",
+   "contrast": "R(P2_WSTAR_DP1 / P2_WSTAR_FA1024)",
+   "decision": {
+    "label": "TERTIARY_P2 (unadjusted; DESCRIPTIVE Holm band)",
+    "reference": 100.0,
+    "unadjusted_ci95_side": "includes"
+   },
+   "den": "P2_WSTAR_FA1024",
+   "disclosure_D_i": "The DP arms keep T = 384 and the registered z. A small-step recipe over 384 rounds may move \u03b8 little; that is the registered mechanism's answer, not a defect to tune away.",
+   "id": "Q11",
+   "kind": "retained",
+   "label": "TERTIARY_P2 (unadjusted; DESCRIPTIVE Holm band)",
+   "num": "P2_WSTAR_DP1",
+   "pairing_note": "DP1 seed 2026 vs FA1024 seed 2026",
+   "population": "MAIN",
+   "question": "privacy cost at \u03b5 = 1 of the W* recipe (seed 2026)",
+   "registered_seeds": [
+    2026
+   ],
+   "tier": "tertiary"
+  },
+  {
+   "beside": {
+    "CALIB_GAIN": 1.347943584574e-05,
+    "D-j": "Futility uses CALIB headroom (32,768 users); MAIN has 131,072 users, so FUTILITY_SKIP_WB_WC may under-read the headroom available on MAIN.",
+    "EDGE_UNRESOLVED": true,
+    "FUTILITY_SKIP_WB_WC": true,
+    "NO_MEASURABLE_CALIB_GAIN": true,
+    "W_STAR": "fedadam|eta=3e-06|c=0.1",
+    "flags": [
+     "EDGE_UNRESOLVED",
+     "NO_MEASURABLE_CALIB_GAIN",
+     "FUTILITY_SKIP_WB_WC"
+    ],
+    "label": "SELECTION (CALIB values; PREG2 \u00a75.6-\u00a75.8)",
+    "rule": "CALIB_GAIN = W*_CALIB - PRE_CALIB, NO_MEASURABLE_CALIB_GAIN iff < 0.001 (W* is carried to MAIN regardless); EDGE_UNRESOLVED disclosed beside every Q (\u00a75.7)"
+   },
+   "by_rule": {
+    "CONTROLLED_BUDGET": {
+     "holm": {
+      "reason": "no bootstrap distribution under the confirmatory rule",
+      "status": "NOT_COMPUTED"
+     },
+     "label": "TERTIARY_P2 (unadjusted; DESCRIPTIVE Holm band)",
+     "missing_registered_seeds": [
+      2026
+     ],
+     "reason": "P2_WSTAR_DPFTRL8: declared not run: Part B reduced to fit the schedule and budget (owner decision, DL 467); Part B never delays the sitting (PREG2 \u00a72.1, \u00a79.3 E-S4)",
+     "seeds_status": "NOT_RUN",
+     "status": "DECLARED_NOT_RUN"
+    },
+    "PRACTICAL_BEST": {
+     "disclosure": "Q6/Q7/Q11/Q12a/Q12b PRACTICAL_BEST ratios are DESCRIPTIVE: best-of-12 checkpoint selection on the users' own validation data is not covered by the DP accountant (as Phase-1 06D \u00a73). DP arms keep T = 384 and the registered z (PREG2 \u00a75.5, D-i).",
+     "label": "DESCRIPTIVE",
+     "reason": "P2_WSTAR_DPFTRL8: declared not run: Part B reduced to fit the schedule and budget (owner decision, DL 467); Part B never delays the sitting (PREG2 \u00a72.1, \u00a79.3 E-S4)",
+     "seeds_status": "NOT_AVAILABLE",
+     "status": "DECLARED_NOT_RUN"
+    }
+   },
+   "confirmatory_rule": "CONTROLLED_BUDGET",
+   "contrast": "R(P2_WSTAR_DPFTRL8 / P2_WSTAR)",
+   "decision": {
+    "label": "TERTIARY_P2 (unadjusted; DESCRIPTIVE Holm band)",
+    "reference": 100.0,
+    "unadjusted_ci95_side": "DECLARED_NOT_RUN"
+   },
+   "declared_not_run": [
+    {
+     "arm": "P2_WSTAR_DPFTRL8",
+     "reason": "declared not run: Part B reduced to fit the schedule and budget (owner decision, DL 467); Part B never delays the sitting (PREG2 \u00a72.1, \u00a79.3 E-S4)",
+     "seed": null
+    }
+   ],
+   "den": "P2_WSTAR",
+   "id": "Q12a",
+   "kind": "retained",
+   "label": "TERTIARY_P2 (unadjusted; DESCRIPTIVE Holm band)",
+   "num": "P2_WSTAR_DPFTRL8",
+   "pairing_note": "DPFTRL8 seed 2026 vs P2_WSTAR seed 2026",
+   "population": "MAIN",
+   "question": "cost of trusted-aggregator-free DP (DP-FTRL, \u03b5 = 8; seed 2026; Part B)",
+   "registered_seeds": [
+    2026
+   ],
+   "tier": "tertiary"
+  },
+  {
+   "beside": {
+    "CALIB_GAIN": 1.347943584574e-05,
+    "D-j": "Futility uses CALIB headroom (32,768 users); MAIN has 131,072 users, so FUTILITY_SKIP_WB_WC may under-read the headroom available on MAIN.",
+    "EDGE_UNRESOLVED": true,
+    "FUTILITY_SKIP_WB_WC": true,
+    "NO_MEASURABLE_CALIB_GAIN": true,
+    "W_STAR": "fedadam|eta=3e-06|c=0.1",
+    "flags": [
+     "EDGE_UNRESOLVED",
+     "NO_MEASURABLE_CALIB_GAIN",
+     "FUTILITY_SKIP_WB_WC"
+    ],
+    "label": "SELECTION (CALIB values; PREG2 \u00a75.6-\u00a75.8)",
+    "rule": "CALIB_GAIN = W*_CALIB - PRE_CALIB, NO_MEASURABLE_CALIB_GAIN iff < 0.001 (W* is carried to MAIN regardless); EDGE_UNRESOLVED disclosed beside every Q (\u00a75.7)"
+   },
+   "by_rule": {
+    "CONTROLLED_BUDGET": {
+     "holm": {
+      "reason": "no bootstrap distribution under the confirmatory rule",
+      "status": "NOT_COMPUTED"
+     },
+     "label": "TERTIARY_P2 (unadjusted; DESCRIPTIVE Holm band)",
+     "missing_registered_seeds": [
+      2026
+     ],
+     "reason": "P2_WSTAR_DPFTRL8: declared not run: Part B reduced to fit the schedule and budget (owner decision, DL 467); Part B never delays the sitting (PREG2 \u00a72.1, \u00a79.3 E-S4)",
+     "seeds_status": "NOT_RUN",
+     "status": "DECLARED_NOT_RUN"
+    },
+    "PRACTICAL_BEST": {
+     "disclosure": "Q6/Q7/Q11/Q12a/Q12b PRACTICAL_BEST ratios are DESCRIPTIVE: best-of-12 checkpoint selection on the users' own validation data is not covered by the DP accountant (as Phase-1 06D \u00a73). DP arms keep T = 384 and the registered z (PREG2 \u00a75.5, D-i).",
+     "label": "DESCRIPTIVE",
+     "reason": "P2_WSTAR_DPFTRL8: declared not run: Part B reduced to fit the schedule and budget (owner decision, DL 467); Part B never delays the sitting (PREG2 \u00a72.1, \u00a79.3 E-S4)",
+     "seeds_status": "NOT_AVAILABLE",
+     "status": "DECLARED_NOT_RUN"
+    }
+   },
+   "confirmatory_rule": "CONTROLLED_BUDGET",
+   "contrast": "P2_WSTAR_DPFTRL8 \u2212 PRE",
+   "decision": {
+    "label": "TERTIARY_P2 (unadjusted; DESCRIPTIVE Holm band)",
+    "reference": 0.0,
+    "unadjusted_ci95_side": "DECLARED_NOT_RUN"
+   },
+   "declared_not_run": [
+    {
+     "arm": "P2_WSTAR_DPFTRL8",
+     "reason": "declared not run: Part B reduced to fit the schedule and budget (owner decision, DL 467); Part B never delays the sitting (PREG2 \u00a72.1, \u00a79.3 E-S4)",
+     "seed": null
+    }
+   ],
+   "den": "PRE",
+   "id": "Q12b",
+   "kind": "delta",
+   "label": "TERTIARY_P2 (unadjusted; DESCRIPTIVE Holm band)",
+   "num": "P2_WSTAR_DPFTRL8",
+   "pairing_note": "DPFTRL8 seed 2026 vs PRE seed 2026",
+   "population": "MAIN",
+   "question": "DP-FTRL (\u03b5 = 8) federated training over the pretrained model (paired \u0394; seed 2026; Part B)",
+   "registered_seeds": [
+    2026
+   ],
+   "tier": "tertiary"
+  },
+  {
+   "beside": {
+    "CALIB_GAIN": 1.347943584574e-05,
+    "D-j": "Futility uses CALIB headroom (32,768 users); MAIN has 131,072 users, so FUTILITY_SKIP_WB_WC may under-read the headroom available on MAIN.",
+    "EDGE_UNRESOLVED": true,
+    "FUTILITY_SKIP_WB_WC": true,
+    "NO_MEASURABLE_CALIB_GAIN": true,
+    "W_STAR": "fedadam|eta=3e-06|c=0.1",
+    "flags": [
+     "EDGE_UNRESOLVED",
+     "NO_MEASURABLE_CALIB_GAIN",
+     "FUTILITY_SKIP_WB_WC"
+    ],
+    "label": "SELECTION (CALIB values; PREG2 \u00a75.6-\u00a75.8)",
+    "rule": "CALIB_GAIN = W*_CALIB - PRE_CALIB, NO_MEASURABLE_CALIB_GAIN iff < 0.001 (W* is carried to MAIN regardless); EDGE_UNRESOLVED disclosed beside every Q (\u00a75.7)"
+   },
+   "by_rule": {
+    "CONTROLLED_BUDGET": {
+     "label": "DESCRIPTIVE",
+     "reason": "P2_WSTAR_SECAGG: declared not run: Part B reduced to fit the schedule and budget (owner decision, DL 467); Part B never delays the sitting (PREG2 \u00a72.1, \u00a79.3 E-S4)",
+     "seeds_status": "NOT_AVAILABLE",
+     "status": "DECLARED_NOT_RUN"
+    },
+    "PRACTICAL_BEST": {
+     "holm": {
+      "reason": "no bootstrap distribution under the confirmatory rule",
+      "status": "NOT_COMPUTED"
+     },
+     "label": "TERTIARY_P2 (unadjusted; DESCRIPTIVE Holm band)",
+     "missing_registered_seeds": [
+      2026
+     ],
+     "reason": "P2_WSTAR_SECAGG: declared not run: Part B reduced to fit the schedule and budget (owner decision, DL 467); Part B never delays the sitting (PREG2 \u00a72.1, \u00a79.3 E-S4)",
+     "seeds_status": "NOT_RUN",
+     "status": "DECLARED_NOT_RUN"
+    }
+   },
+   "confirmatory_rule": "PRACTICAL_BEST",
+   "contrast": "R(P2_WSTAR_SECAGG / P2_WSTAR)",
+   "decision": {
+    "label": "TERTIARY_P2 (unadjusted; DESCRIPTIVE Holm band)",
+    "reference": 100.0,
+    "unadjusted_ci95_side": "DECLARED_NOT_RUN"
+   },
+   "declared_not_run": [
+    {
+     "arm": "P2_WSTAR_SECAGG",
+     "reason": "declared not run: Part B reduced to fit the schedule and budget (owner decision, DL 467); Part B never delays the sitting (PREG2 \u00a72.1, \u00a79.3 E-S4)",
+     "seed": null
+    }
+   ],
+   "den": "P2_WSTAR",
+   "id": "Q13",
+   "kind": "retained",
+   "label": "TERTIARY_P2 (unadjusted; DESCRIPTIVE Holm band)",
+   "num": "P2_WSTAR_SECAGG",
+   "pairing_note": "SECAGG seed 2026 vs P2_WSTAR seed 2026",
+   "population": "MAIN",
+   "question": "secure-aggregation (fixed-point) equivalence (seed 2026; Part B; TOST)",
+   "registered_seeds": [
+    2026
+   ],
+   "tier": "tertiary"
+  },
+  {
+   "by_rule": {},
+   "confirmatory_rule": "PRACTICAL_BEST",
+   "contrast": "P2_WSTAR \u2212 PRE",
+   "den": "PRE",
+   "family": "TEST2 replication (separate family; never in the RETRO_TEST band)",
+   "id": "Q14",
+   "kind": "delta",
+   "label": "TEST2_NOT_AVAILABLE",
+   "num": "P2_WSTAR",
+   "population": "TEST2_UNEW_HOLDOUT",
+   "question": "value of W* for non-participating new users on the TEST2 UNEW_HOLDOUT panel (only if TEST2 exists)",
+   "reason": "owner decision O2 = NO (P2_CONTRASTS_v3 Q14 'only if TEST2 exists'; PREG2 \u00a76.2 / \u00a712): no December-2019 data version and no TEST2 register exist, so the Q1 replication family and Q14 are not scored",
+   "registered_seeds": [
+    2026,
+    2027
+   ],
+   "status": "TEST2_NOT_AVAILABLE",
+   "tier": "tertiary"
+  }
+ ],
+ "declared_not_run": [
+  {
+   "arm": "P2_WSTAR_DPFTRL8",
+   "reason": "declared not run: Part B reduced to fit the schedule and budget (owner decision, DL 467); Part B never delays the sitting (PREG2 \u00a72.1, \u00a79.3 E-S4)",
+   "seed": null
+  },
+  {
+   "arm": "P2_WSTAR_SECAGG",
+   "reason": "declared not run: Part B reduced to fit the schedule and budget (owner decision, DL 467); Part B never delays the sitting (PREG2 \u00a72.1, \u00a79.3 E-S4)",
+   "seed": null
+  }
+ ],
+ "deployment_grade": {
+  "Q1_SUCCESS": false,
+  "Q5_holm_positive": false,
+  "Q7_holm_positive": false,
+  "deployment_grade": false,
+  "rule": "PREG2 \u00a79.4: DEPLOYMENT-GRADE = SUCCESS + Q5 > 0 (Holm-rejected) + Q7 > 0 (Holm-rejected); not a test"
+ },
+ "descriptive_sections": {
+  "D1_EXT": {
+   "label": "DESCRIPTIVE (tertiary)",
+   "status": "NOT_RUN",
+   "what": "D1-ext update-norm summaries of the P2 FL runs (\u00a73.3)"
+  },
+  "DEVICES": {
+   "label": "DESCRIPTIVE (tertiary)",
+   "path": "records/DEVICES.json",
+   "scalars": {
+    "format": "PPSI_V4_P2_DEVICES_RECORD_1",
+    "label": "DESCRIPTIVE (PREG2 \u00a78; latency, cold start and bytes only; no accuracy)",
+    "n_devices": 3,
+    "n_failed_total": 0,
+    "n_runs_total": 68
+   },
+   "self_sha256_status": "VERIFIED",
+   "sha256": "f05c70dafccc376eb915e945480143a0e2ec7f86429e39146990a5ced940893e",
+   "status": "REPORTED",
+   "what": "real-device measurements, thresholds DESCRIPTIVE design targets (\u00a78)"
+  },
+  "E1_MIA": {
+   "eps_rule": "PREG2 \u00a77.1 (a) / design gate E-S3: an \u03b5_LB is printed only when the record states audit_status = VALID and eps_lb_reported = true (or pre_null_valid = true): PRE's RAW-loss AUC CI includes 0.5; otherwise every key containing 'eps' is withheld",
+   "label": "DESCRIPTIVE (tertiary)",
+   "path": "records/E1_MIA.json",
+   "scalars": {
+    "audit_status": "VALID",
+    "authority": "contracts/PREG2.md (REGISTERED, DL 411, sha256 be0561abe5ceec450d3a75bef49853a3c480d3847f75559dd94e9e0545df18a8) \u00a77 + \u00a77.1 (E1), \u00a76.4 (DESCRIPTIVE), \u00a76.3 S8; company/plans/PHASE2_IMPLEMENTATION_PLAN.md RUN-4 (E1 MIA); task packet P2-14a",
+    "eps_lb_reported": true,
+    "format": "PPSI_V4_P2_E1_AUDIT_1",
+    "label": "DESCRIPTIVE (tertiary)",
+    "task": "P2-14a v4int.audit_e1_mia"
+   },
+   "self_sha256_status": "VERIFIED",
+   "sha256": "b318e9a56c5226abf831c0cbf054c9344068db7f917bdbde169dffea76981e56",
+   "status": "REPORTED",
+   "what": "E1 user-level membership inference on final models (PREG2 \u00a77.1)"
+  },
+  "E2_CANARY": {
+   "label": "DESCRIPTIVE (tertiary)",
+   "status": "NOT_RUN",
+   "what": "E2 canary exposure and one-run audit on FL training (\u00a77.2)"
+  },
+  "E3_UPDATE_LEAKAGE": {
+   "label": "DESCRIPTIVE (tertiary)",
+   "status": "NOT_RUN",
+   "what": "E3 leakage from individual FL updates (\u00a77.3)"
+  },
+  "E4_SECAGG": {
+   "label": "DESCRIPTIVE (tertiary)",
+   "path": "records/E4_SECAGG.json",
+   "scalars": {
+    "experiment": "E4_SECAGG",
+    "n_bit_identity_violations": 0,
+    "n_cells": 27,
+    "protocol": "BONAWITZ2017_SEMIHONEST_4R+SECAGG_PLUS_KREGULAR",
+    "spec_text": "PREG2 7.4 E4 (Q13): Bonawitz et al. 2017 with the SecAgg+ k-regular option (Bell et al. 2020); cryptography simulated, sizes counted at real values; fixed-point mod 2^32 with a common scale from the clip bound; dropout p in {0, 0.1, 0.3}, n = 64, threshold ceil(2n/3); metrics: bytes per client per round (overhead ratio), communication rounds, unmasking CPU time, success under dropout; criterion: the decoded sum is bit-identical to the plain fixed-point sum. Quality TOST on CALIB and optional MAIN s2026 (Q13): NOT RUN."
+   },
+   "self_sha256_status": "MISMATCH",
+   "sha256": "707876b4e590efc6d0301573d0b116b32aa6a9bd9de3f13edab5f9fe9abce183",
+   "status": "REPORTED",
+   "what": "E4 secure-aggregation simulation: bytes, rounds, unmasking time, dropout success (\u00a77.4)"
+  },
+  "E5_DPFTRL_LDP": {
+   "label": "DESCRIPTIVE (tertiary)",
+   "status": "NOT_RUN",
+   "what": "E5 DP-FTRL accountant / LDP feasibility (\u00a77.5)"
+  }
+ },
+ "disclosures": {
+  "D-a": "Phase-2 hypotheses were generated after the Phase-1 VALIDATION read; arms were selected on CALIB; everything was locked before any TEST value existed.",
+  "D-b": "CALIB selection data are a subset of the MAIN users and of the VALIDATION window that was read.",
+  "D-c": "\u03b8_pre is one seed (no second seed was run). The PRE recipe was not re-tuned at its scale (Phase-1 note 3).",
+  "D-d": "C_FULL differs from PRE in size and recipe. C2 (if run) is the matched reference.",
+  "D-e": "Central DP trusts the aggregator. SecAgg is simulated (costs counted, cryptography not executed). DP-FTRL / LDP are the untrusted-server variants.",
+  "D-f": "Device numbers come from the listed devices only. On-device training cost is a PC proxy unless stated otherwise.",
+  "D-g": "RETRO_TEST was inspected at period level by earlier v1 campaigns (Phase-1 E12(d)).",
+  "D-h": "Phase 2 can confirm a gain \u2265 \u2248 0.0005 MRR@20 or equivalence within \u00b10.0005; a true gain between them is likely to read INCONCLUSIVE.",
+  "D-i": "The DP arms keep T = 384 and the registered z. A small-step recipe over 384 rounds may move \u03b8 little; that is the registered mechanism's answer, not a defect to tune away.",
+  "D-j": "Futility uses CALIB headroom (32,768 users); MAIN has 131,072 users, so FUTILITY_SKIP_WB_WC may under-read the headroom available on MAIN.",
+  "D-k": "The Phase-1 TEST result was held for the Phase-2 runs (owner decision, DL 406). No Phase-1 arm, contrast or rule changed."
+ },
+ "gates": {
+  "all_methods_lock_sha256": "04a3cd196149e2acf2ab5bb004f58c997199aa52e32f3c11c9ae647255beed23",
+  "library": {
+   "tools/ana_block_index.py": "6e7043bbe42967b0de313206496de38fb0cf20cc85aaa34945dfdd19863cb662",
+   "tools/retention_report.py": "9a3b2c2a918ef2baacc5299426941f1eb94c366f5bb6aa7c29b4bfdbca0afe58"
+  },
+  "locked_evaluations": {
+   "p2_entry_id": 9,
+   "p2_entry_sha256": "9e5b1c972cdfb8073595048b64ea9c926be63af85e3e455f36c15230bbc2a38f",
+   "phase1_entry_id": 7,
+   "phase1_entry_sha256": "79c840e80df2db0281fa431d9b0eedaee6661ce2e42a84c9d2d268500e8c065b"
+  },
+  "p2_freeze": {
+   "file_sha256": "3077963f6221f3471a424a60adbad983085c8e69d7044a92227918e5a3850896",
+   "files_sha256": {
+    "tools/ana_block_index.py": "6e7043bbe42967b0de313206496de38fb0cf20cc85aaa34945dfdd19863cb662",
+    "tools/p2_block_index.py": "dfe4cfcba0b47dc350dbfd537eea1baddd556aefd2102c50d45b02d262216b4a",
+    "tools/p2_report.py": "934cc8a0e93f3edd44e5c950f89996149a1f2b26dd7737f9c78b383b7dff215e",
+    "tools/retention_report.py": "9a3b2c2a918ef2baacc5299426941f1eb94c366f5bb6aa7c29b4bfdbca0afe58"
+   },
+   "self_sha256": "799c996a5c9f45df0c044e2531271ba19392dd8af1dc96e0624120e8249c30ca"
+  },
+  "p2_lock": {
+   "declared_not_run": [
+    {
+     "arm": "P2_WSTAR_DPFTRL8",
+     "reason": "declared not run: Part B reduced to fit the schedule and budget (owner decision, DL 467); Part B never delays the sitting (PREG2 \u00a72.1, \u00a79.3 E-S4)",
+     "seed": null
+    },
+    {
+     "arm": "P2_WSTAR_SECAGG",
+     "reason": "declared not run: Part B reduced to fit the schedule and budget (owner decision, DL 467); Part B never delays the sitting (PREG2 \u00a72.1, \u00a79.3 E-S4)",
+     "seed": null
+    }
+   ],
+   "file_sha256": "b3a2f62a7d98d48e504e1bd9231de317d65c65d9224aa45cfd4e8e706e6162ca",
+   "n_phase1_reused": 10,
+   "n_sealed": 26,
+   "selection_files_sha256": {
+    "P2_C1_SELECTION": "20a23295c9c8a7a952bf67cc99b0adbe007cac73174710927483b3b2674c40f4",
+    "P2_WARM_SELECTION_A": "06a75d6518f66013efa7d1e49d75d9e28d50e6211d94064df410884d3022de00",
+    "P2_WARM_SELECTION_FINAL": "25aadc2ea8fd3d1a48015d9da748876db80f031cbe14551ab96bc624861252d7",
+    "S_RECORD_P2": "934fb3174e9872b3ddfe234b858ffee21ea200f4e011d89f881cee0db075892f"
+   },
+   "self_sha256": "4d1e3d676495793d446904b926a54652de74edde0cb940521ddfc29f18eca750"
+  },
+  "phase1_result": {
+   "all_methods_lock_sha256": "04a3cd196149e2acf2ab5bb004f58c997199aa52e32f3c11c9ae647255beed23",
+   "file_sha256": "28b7649231eed2b1f1ae6fdeccb9d9f523fd643fe165d8f023d5fcdaa2258ca4",
+   "self_sha256": "516a1e8e5462ef258916c6b88089771705568eb51d70d85c4fc18441f91808d1"
+  },
+  "phase1_test_gate": {
+   "all_methods_lock_sha256": "04a3cd196149e2acf2ab5bb004f58c997199aa52e32f3c11c9ae647255beed23",
+   "extension_rule_checks": [
+    "base.self_sha256",
+    "ext.self_sha256",
+    "extends.file_sha256_eq_base",
+    "extends.self_sha256_eq_base",
+    "manifests.additions_are_RETRO_TEST",
+    "manifests.base_entries_identical",
+    "population_bands.base_entries_identical",
+    "population_bands.no_additions",
+    "roles.additions_are_TEST_roles",
+    "roles.base_entries_identical",
+    "top.build_receipt.identical",
+    "top.builder_code_sha256.identical",
+    "top.d6_code_sha256.identical",
+    "top.data_version.identical",
+    "top.naming_decision.identical",
+    "top.path_root.identical",
+    "top.registry.identical",
+    "top.registry_version.identical",
+    "top.rules.identical",
+    "top.selection_refusal.identical",
+    "top.self_sha256_rule.identical",
+    "top.source_data_protocol_lock.identical",
+    "top.task.identical",
+    "top.transform_state.identical"
+   ],
+   "n_register_entries": 9,
+   "register_file_sha256": "d5a9e1a682dbf1237eb69b878403c80c6608eb926079eb96868bdcd8cb527962",
+   "register_tool_sha256": "7d59e828f0d8514541ac9cd68393053e064f9c70df3e3655e9c4f0a34eae2622",
+   "registry_ext_file_sha256": "bfaa2118f366c154ae8180796703e222a3989101c3dc38919fc89a8116b4c2ba",
+   "registry_ext_self_sha256": "edae509681e1d449d49d91b24697f64cda98306c4e9011cadd39f81079dc7235",
+   "roles": {
+    "MAIN": {
+     "eval": "MAIN_RETRO_TEST_5_100_131072",
+     "train": "MAIN_TRAIN_5_100_131072"
+    }
+   },
+   "test_exposure_register_entry_id": 5,
+   "test_exposure_register_entry_sha256": "01c0d071b4ab47d3daf36768b895cd25a15ce672106414faf82e7febff98e27c"
+  }
+ },
+ "holm": {
+  "alpha": 0.05,
+  "family": [
+   "Q2",
+   "Q3",
+   "Q4",
+   "Q5",
+   "Q6",
+   "Q7",
+   "Q8"
+  ],
+  "family_size": 7,
+  "label": "DESCRIPTIVE",
+  "method": "Holm step-down on normal intervals from the bootstrap SE (06L-C C13); after the first non-rejection every non-rejected K's band is at alpha / (m - r), r = the number of rejections (REV-DELTA-03 M3: band and decision agree); Bonferroni band beside it (reused unchanged from retention_report.holm_band; PREG2 \u00a79.3)",
+  "n_computed": 7,
+  "n_rejected": 0,
+  "primary": [
+   "Q1"
+  ],
+  "secondary_family": [
+   "Q2",
+   "Q3",
+   "Q4",
+   "Q5",
+   "Q6",
+   "Q7",
+   "Q8"
+  ],
+  "tertiary_band": {
+   "family": [
+    "Q9",
+    "Q11",
+    "Q12a",
+    "Q12b",
+    "Q13"
+   ],
+   "family_size": 5,
+   "n_computed": 2
+  },
+  "tertiary_band_family": [
+   "Q9",
+   "Q11",
+   "Q12a",
+   "Q12b",
+   "Q13"
+  ],
+  "test2_family": [
+   "Q14"
+  ]
+ },
+ "inputs": {
+  "contrasts": {
+   "document": "P2_CONTRASTS_v3",
+   "file_sha256": "673b547d930085a851eef5bf2d8ef87412d70c4952dc7084bd06c88bebcdcf42",
+   "format": "PPSI_V4_P2_CONTRASTS_1",
+   "n_contrasts": 14,
+   "self_sha256": "e98580564b618f411db7e7e328fbcedb6e1134f4be5b65806b34e12229373799"
+  },
+  "files_sha256": {
+   "BLOCK_INDEX.json": "46770a78b05fc56a0c3646fbf37f51fb2aeec8d07442a52e48f6489d636a873a",
+   "DEV/FT_PRE_MAIN_TEST_s2026/RESULT_ROWS.json": "a6dcd40ebb1dd3b117a14100b5f8e068cf0a2975ea0a6488f8f74badf3d0e930",
+   "DEV/FT_PRE_MAIN_TEST_s2026/cells/FT_PRE_f0.3_P4.ranks_int32.npy": "caa226dffad79f8c5ddb28a17c904a10869e106c1a96900c6edee972ec53b0ae",
+   "DEV/FT_PRE_MAIN_TEST_s2027/RESULT_ROWS.json": "da13d7bd1572a0b4b7be9979608a1c1e06125a05b668dd5d3db53897eb70777a",
+   "DEV/FT_PRE_MAIN_TEST_s2027/cells/FT_PRE_f0.3_P4.ranks_int32.npy": "b418e94111b4dc8b8ec1a8c90f412bacf7dcb25c75451b5a7bb7ff0b19644cdb",
+   "P2DEV/FT_P2_WSTAR_MAIN_TEST_s2026/RESULT_ROWS.json": "efac8098ee25edd220938b3c7ced5f7308db6ecdae3b4837d78052c7eedbbe3c",
+   "P2DEV/FT_P2_WSTAR_MAIN_TEST_s2026/cells/FT_P2_WSTAR_f0.3_P4.ranks_int32.npy": "c6c4b7a71162fc16abe354445eaf9f1ac21cd7172043c97343086ad5355571c3",
+   "P2DEV/FT_P2_WSTAR_MAIN_TEST_s2027/RESULT_ROWS.json": "6c788ffcf1bb23bf0b3a576892b4b790c5caf5f35ffe690cc766b1adeaae6d76",
+   "P2DEV/FT_P2_WSTAR_MAIN_TEST_s2027/cells/FT_P2_WSTAR_f0.3_P4.ranks_int32.npy": "5c41cba9b92fa37ec7bc0ebf60be380175b84a7f3b5e36c76492621ffd3c2004",
+   "REEVAL/C_FULL_s2026_CB/RESULT_ROWS.json": "a9c4febe9fc778dc43c8a7fb26fee14d6bc17c84fba92fe54ef2873d6a3e435e",
+   "REEVAL/C_FULL_s2026_CB/evals/MAIN_TEST.ranks_int32.npy": "f1ae1a421808686ea6bc4ef224853f390449abb0b3f177627f64b46ba6e5ece5",
+   "REEVAL/C_FULL_s2026_PB/RESULT_ROWS.json": "c7c795c909413d90f3d827d06dbceb1265455a742009cba33127401df640f5a9",
+   "REEVAL/C_FULL_s2026_PB/evals/MAIN_TEST.ranks_int32.npy": "f1ae1a421808686ea6bc4ef224853f390449abb0b3f177627f64b46ba6e5ece5",
+   "REEVAL/FA_WARM_FROZEN_s2026_CB/RESULT_ROWS.json": "2c5ad0b47a914487f0dcd971655b5d18cb86c957c7acf43d4e1d6ef2f4bb6ed1",
+   "REEVAL/FA_WARM_FROZEN_s2026_CB/evals/MAIN_TEST.ranks_int32.npy": "9778deb246bb8fc799b185b8d50b5149b47d7876a1ead76c16d7fc2bb1fcbd9d",
+   "REEVAL/FA_WARM_FROZEN_s2026_PB/RESULT_ROWS.json": "390301689aec82e0e71abf66e7c162efafc105f50663b74d4b44b2ac77df5052",
+   "REEVAL/FA_WARM_FROZEN_s2026_PB/evals/MAIN_TEST.ranks_int32.npy": "4ad035eb55bb3c5dbb21cfd8cb4ad6f8e71abe99e24ecf2cf4480f1e34e6fd4e",
+   "REEVAL/FA_WARM_FROZEN_s2027_CB/RESULT_ROWS.json": "8b0eb159fea64e7a049ce91f3e572cc2dd4b8388a242c059ff3b1dfaad5a2e2e",
+   "REEVAL/FA_WARM_FROZEN_s2027_CB/evals/MAIN_TEST.ranks_int32.npy": "31bf6ebd9930aad27b103c92558e56623dcd043ef30da31f3821dd6a8a33ca4c",
+   "REEVAL/FA_WARM_FROZEN_s2027_PB/RESULT_ROWS.json": "01163a6700c54c05d7e8e0bc5fffcc27c9b6e6edd8d3c26d04eb5db3d082376c",
+   "REEVAL/FA_WARM_FROZEN_s2027_PB/evals/MAIN_TEST.ranks_int32.npy": "dc3b7c4753cece5bb637d814d92230bf352b3289ebef9ab2391b6629a4325656",
+   "REEVAL/P2_C1_FT_CENTRAL_FROZEN_s2026_CB/RESULT_ROWS.json": "8d2b6a250550bf99e29cfa2f7fc97621a246e30b7427181820553c0aa8020d1e",
+   "REEVAL/P2_C1_FT_CENTRAL_FROZEN_s2026_CB/evals/MAIN_TEST.ranks_int32.npy": "06e588e1cefdd0ee75853ee2ec56603cfec6e23dd0eae5ff0b72985b3ff9286b",
+   "REEVAL/P2_C1_FT_CENTRAL_FROZEN_s2026_PB/RESULT_ROWS.json": "7e8745350927f80fbb8e0326909da1a95d023733516bdf46c0aec7a9f693ddd4",
+   "REEVAL/P2_C1_FT_CENTRAL_FROZEN_s2026_PB/evals/MAIN_TEST.ranks_int32.npy": "c82b2197de2aebc42138aa4a17e5e5d0db4db4cfc4f5ce63ab3713222c55187e",
+   "REEVAL/P2_C1_FT_CENTRAL_FROZEN_s2027_CB/RESULT_ROWS.json": "3e3bfc3e21be248bbd279789f0a028cdbe74308f0e6d23dea7394df47dd05894",
+   "REEVAL/P2_C1_FT_CENTRAL_FROZEN_s2027_CB/evals/MAIN_TEST.ranks_int32.npy": "f40a8d0efb2efb3632fc8a3d28f313a35d33c744fa2e5214d2f62ac3b5ba1c20",
+   "REEVAL/P2_C1_FT_CENTRAL_FROZEN_s2027_PB/RESULT_ROWS.json": "8eff70300ed2bde5ac6ec877183e04dfbfc59d25d811fd2ea92f804bca344dd1",
+   "REEVAL/P2_C1_FT_CENTRAL_FROZEN_s2027_PB/evals/MAIN_TEST.ranks_int32.npy": "b9f033540ca6345cfc268495fdf9d2eb51777584a3d52f125488b79ed6db971e",
+   "REEVAL/P2_C1_FT_CENTRAL_FULL_s2026_CB/RESULT_ROWS.json": "6b174d30ec4664f11db92ad0aecf16810735cfe6e414a610c581d637a8b3c1e4",
+   "REEVAL/P2_C1_FT_CENTRAL_FULL_s2026_CB/evals/MAIN_TEST.ranks_int32.npy": "8293ff8be71fbe6049d178061acad3f720cde46e0ae84758dbb94e6a7f5d90fe",
+   "REEVAL/P2_C1_FT_CENTRAL_FULL_s2026_PB/RESULT_ROWS.json": "436d668f77ce48ba2a9f51776bd30b1ab7de24face482238b68b24c86c35bdd1",
+   "REEVAL/P2_C1_FT_CENTRAL_FULL_s2026_PB/evals/MAIN_TEST.ranks_int32.npy": "7ace19b6575b08f2403aeb8d4c81d8de05a5d25a304d1dbb2634a7ddc966b7c4",
+   "REEVAL/P2_C1_FT_CENTRAL_FULL_s2027_CB/RESULT_ROWS.json": "ed3b34d8d35b7ca8a32b9fa4e45d16f423bc0b49d63af02b8ce8f311e507fcd3",
+   "REEVAL/P2_C1_FT_CENTRAL_FULL_s2027_CB/evals/MAIN_TEST.ranks_int32.npy": "299030df502370e59cbec8451eeaeb13d284495113f12ff7cf0aeed49aee42a2",
+   "REEVAL/P2_C1_FT_CENTRAL_FULL_s2027_PB/RESULT_ROWS.json": "4494facad2959653df47758948683a5127d902464d9782c9be936abc836d97e5",
+   "REEVAL/P2_C1_FT_CENTRAL_FULL_s2027_PB/evals/MAIN_TEST.ranks_int32.npy": "e3018aa8b385c34233061525df9fe3c72e14b5aaba604c4e65783cc8841eaeed",
+   "REEVAL/P2_C2_CFULL_SMALL_s2026_CB/RESULT_ROWS.json": "15afded1794bb54e456d48c452c48a8f032c0bb6dd1e6e062dc8d393f6c51233",
+   "REEVAL/P2_C2_CFULL_SMALL_s2026_CB/evals/MAIN_TEST.ranks_int32.npy": "87d516ee9d7981048b5b1b7a5d5e9992948cc35fb36b6a4e88654c005d95e255",
+   "REEVAL/P2_C2_CFULL_SMALL_s2026_PB/RESULT_ROWS.json": "77297698b04940d7193aa98aed0749dca60354ad9c3cd944e164c83560bdad77",
+   "REEVAL/P2_C2_CFULL_SMALL_s2026_PB/evals/MAIN_TEST.ranks_int32.npy": "87d516ee9d7981048b5b1b7a5d5e9992948cc35fb36b6a4e88654c005d95e255",
+   "REEVAL/P2_WSTAR_DP1_s2026_CB/RESULT_ROWS.json": "898625d5452ad921ddf58aa865a3bd14da734478f857cabef292af14b7b9bb20",
+   "REEVAL/P2_WSTAR_DP1_s2026_CB/evals/MAIN_TEST.ranks_int32.npy": "60bf8df7f3457fa737c6dc724feb1e5f4e544bccc65f44b1555ff2dd858c829b",
+   "REEVAL/P2_WSTAR_DP1_s2026_PB/RESULT_ROWS.json": "0a4c25b1c803bcae19f9a59c52b36b39d5c905ffb606b193638497dbd6a9d876",
+   "REEVAL/P2_WSTAR_DP1_s2026_PB/evals/MAIN_TEST.ranks_int32.npy": "5b46dc3836df8e83bd90519e1fd236e65666cc43ac9f6a6eacfcb5e2c25dcb81",
+   "REEVAL/P2_WSTAR_DP8_s2026_CB/RESULT_ROWS.json": "1d411ba6ef14a7866d5df10aa8b5c6db109373b96a19c06fc292809c7056a4b0",
+   "REEVAL/P2_WSTAR_DP8_s2026_CB/evals/MAIN_TEST.ranks_int32.npy": "f7561a73a721bcf2790d4f5d06c9859bfb6cf0e734f5678a1bd7c86903225bc1",
+   "REEVAL/P2_WSTAR_DP8_s2026_PB/RESULT_ROWS.json": "d88f95112ee840e0704fac2eca14a17cadf0f885be7668d44b691717140f0a02",
+   "REEVAL/P2_WSTAR_DP8_s2026_PB/evals/MAIN_TEST.ranks_int32.npy": "73c17cfac8964c17374e138a28bb5b1322af084618aedb661d9d340f6c14b949",
+   "REEVAL/P2_WSTAR_DP8_s2027_CB/RESULT_ROWS.json": "e68e6ba856b0fdf4b6defc733ac67f0dc264515ef97305c4101c499b390af783",
+   "REEVAL/P2_WSTAR_DP8_s2027_CB/evals/MAIN_TEST.ranks_int32.npy": "7dd8d4c88a4ef7ec20df584e818d23fbc9a0d6937cef939c8ba49611a2eef9e5",
+   "REEVAL/P2_WSTAR_DP8_s2027_PB/RESULT_ROWS.json": "33085468b2277223415129164b6e7f333f348b9fe2163f29ba856abaf60e08bf",
+   "REEVAL/P2_WSTAR_DP8_s2027_PB/evals/MAIN_TEST.ranks_int32.npy": "2c1b8f9f7d76f068ca70c1e4cf7ff6cfceee1ccf5c179d1cab716f354e4cc0cf",
+   "REEVAL/P2_WSTAR_FA1024_s2026_CB/RESULT_ROWS.json": "853aa49258f20b4c050afec5433ea88c8491f0c81ff18a0cee6a6b2ee316b4d1",
+   "REEVAL/P2_WSTAR_FA1024_s2026_CB/evals/MAIN_TEST.ranks_int32.npy": "f8e3013bc613a3d9d4a89eae15d2820c597f225235533416882da898663103e7",
+   "REEVAL/P2_WSTAR_FA1024_s2026_PB/RESULT_ROWS.json": "4a5c095fb4c52e84bedb4a0a03768b93e08c340ffb40fc28909dfb5643fecaad",
+   "REEVAL/P2_WSTAR_FA1024_s2026_PB/evals/MAIN_TEST.ranks_int32.npy": "7ef6ea78460cb1231635ef5d02ffe74100761974a5f9a16d2a21c52f8a51d5ee",
+   "REEVAL/P2_WSTAR_FA1024_s2027_CB/RESULT_ROWS.json": "21887af44e2fc27338314f4fdd688e603d926ee62f3f223975f5c9eebe1741b2",
+   "REEVAL/P2_WSTAR_FA1024_s2027_CB/evals/MAIN_TEST.ranks_int32.npy": "ac9de50eb04b1b2a300b9073b26d87d557f40726a276478e3a99f8e1cdef386b",
+   "REEVAL/P2_WSTAR_FA1024_s2027_PB/RESULT_ROWS.json": "a9e5776d782afb1b51f80f514850300193ca5b4554c1d119b949fae54afac818",
+   "REEVAL/P2_WSTAR_FA1024_s2027_PB/evals/MAIN_TEST.ranks_int32.npy": "eaa4aebfa88cf79919d0c94cbdd69047c65cae8af29db266269ae8c030c793d8",
+   "REEVAL/P2_WSTAR_s2026_CB/RESULT_ROWS.json": "741e0c23d03582ecf808b612a7aa7f9480810d01def7cf9b16a0c5612a48257a",
+   "REEVAL/P2_WSTAR_s2026_CB/evals/MAIN_TEST.ranks_int32.npy": "aeda8f8111eab89bdc772cb91e73b8f84886b922d486aea701a2fefb22c79406",
+   "REEVAL/P2_WSTAR_s2026_PB/RESULT_ROWS.json": "f357a606e8ef9dfb34b4e89b2d2d6e4eb016976a17435c50513513495f0685c5",
+   "REEVAL/P2_WSTAR_s2026_PB/evals/MAIN_TEST.ranks_int32.npy": "9b68caf0f50c144665657c4fd1bf2f54ee373527a01601b36752d928c40bd932",
+   "REEVAL/P2_WSTAR_s2027_CB/RESULT_ROWS.json": "144373e072d5b25c11912dbdd94c767ed6ec28a6b477b7cd9ff37f8d0fe9e178",
+   "REEVAL/P2_WSTAR_s2027_CB/evals/MAIN_TEST.ranks_int32.npy": "cf20b82bdc60dc5f1a9de92f1b9ad35c54348433e94c2047ee6c3cf46a2ec4e8",
+   "REEVAL/P2_WSTAR_s2027_PB/RESULT_ROWS.json": "ec60b330fcbbc4916feac45d7ed3a33e69fa94b709659e9ae502d01de2e9c8f0",
+   "REEVAL/P2_WSTAR_s2027_PB/evals/MAIN_TEST.ranks_int32.npy": "484db8c0658ad4f55bb1b19ee540956804fa9b420e01bbc4ccc9ea91f0e0234f",
+   "REEVAL/PRE_s2026_CB/RESULT_ROWS.json": "7da2af5899446997174137814e49a93d38fd925d58d8973d3abc3b02d6e1b5ef",
+   "REEVAL/PRE_s2026_CB/evals/MAIN_TEST.ranks_int32.npy": "6971cb46a4d0394f6e68755fe3f65752b39b56f8d1fc591e94f65d06aca00f67",
+   "REEVAL/PRE_s2026_PB/RESULT_ROWS.json": "7fee4df2edf6e5a0605e10914c98cb07578959b0cf37345a3ff0fa08e4cfddc6",
+   "REEVAL/PRE_s2026_PB/evals/MAIN_TEST.ranks_int32.npy": "6971cb46a4d0394f6e68755fe3f65752b39b56f8d1fc591e94f65d06aca00f67"
+  },
+  "frozen_fl_arms": [],
+  "roles": {
+   "MAIN": {
+    "base_registry_file_sha256": "56dd0840cb50e89250a8b9a54dc1d4f621e9e6f9500ec44441cf07cb472ef740",
+    "eval_manifest_id": "MAIN_RETRO_TEST_5_100_131072",
+    "eval_ordered_decision_id_sha256": "ee9dfb4b7471bbcafc97f129043d39ad17d33141c539df84dbb1afd30921cc25",
+    "loader": "v4int.test_roles (DATA-09)",
+    "loader_file_sha256": "b02391e29bf5212a23b83a13509d05026f0b9c07fac2402a30694beb48b7291b",
+    "manifest_id": "MAIN_RETRO_TEST_5_100_131072",
+    "n_rows": 300133,
+    "registry": "REGISTRY_V2_TEST_EXT",
+    "registry_entry": {
+     "content_sha256": "3e7acb9d8de0fcc1ca512c6104a714a5b1c12e45a105faf7bf44a5aadfd3bbf9",
+     "header_sha256": "200875979165cff13a28ae08db1b9d767d4b5d01481b157cdeeee2f38908fa49",
+     "n_decisions": 300133,
+     "n_users": 36037
+    },
+    "registry_ext_file_sha256": "bfaa2118f366c154ae8180796703e222a3989101c3dc38919fc89a8116b4c2ba",
+    "train_manifest_id": "MAIN_TRAIN_5_100_131072"
+   }
+  }
+ },
+ "interpretation_grid": {
+  "cell": "NO_REGISTERED_CELL",
+  "definitions": {
+   "NO_REGISTERED_CELL": "none of the four registered rows holds (e.g. Q1 INCONCLUSIVE): no grid reading is claimed",
+   "Q1_EQUIVALENT": "EQUIVALENT holds for Q1 (90% CI inside \u00b10.0005)",
+   "Q1_NONPOSITIVE_OR_EQUIVALENT": "the \u00a79.4 reading of Q1 is FAILURE or EQUIVALENT",
+   "Q1_POSITIVE": "the \u00a79.4 reading of Q1 is SUCCESS",
+   "Q2_EQUIVALENT": "Q2's 90% paired user-bootstrap CI lies inside \u00b10.0005 (the Q1 margin applied to the grid's 'EQUIVALENT to 0'; DESCRIPTIVE TOST)",
+   "Q2_POSITIVE": "Q2 (secondary) is Holm-rejected with a positive point (PRACTICAL_BEST)"
+  },
+  "grid": [
+   {
+    "Q1": "Q1_POSITIVE",
+    "Q2": "Q2_POSITIVE",
+    "reading": "FL captures part of the available headroom (Q10 = how much)"
+   },
+   {
+    "Q1": "Q1_NONPOSITIVE_OR_EQUIVALENT",
+    "Q2": "Q2_POSITIVE",
+    "reading": "the FL recipe fails to capture available headroom (an FL problem)"
+   },
+   {
+    "Q1": "Q1_EQUIVALENT",
+    "Q2": "Q2_EQUIVALENT",
+    "reading": "MAIN data adds no measurable information over \u03b8_pre at D64; FL cannot help here (a data / capacity limit)"
+   },
+   {
+    "Q1": "Q1_POSITIVE",
+    "Q2": "Q2_EQUIVALENT",
+    "reading": "flagged for review (check for a central-recipe problem)"
+   }
+  ],
+  "label": "DESCRIPTIVE (registered reading grid)",
+  "q2_equivalence": {
+   "ci90": [
+    -0.0005555410769836524,
+    0.0001310867264682963
+   ],
+   "equivalent": false,
+   "margin": [
+    -0.0005,
+    0.0005
+   ],
+   "status": "COMPUTED"
+  },
+  "reading": "none of the four registered rows holds (e.g. Q1 INCONCLUSIVE): no grid reading is claimed",
+  "states": {
+   "Q1_EQUIVALENT": true,
+   "Q1_NONPOSITIVE_OR_EQUIVALENT": true,
+   "Q1_POSITIVE": false,
+   "Q2_EQUIVALENT": false,
+   "Q2_POSITIVE": false
+  }
+ },
+ "labels": {
+  "algebraic_dependencies": [
+   {
+    "id": "Q10",
+    "of": [
+     "Q1",
+     "Q2"
+    ],
+    "relation": "Q10_s = Q1_s / Q2_s (headroom capture ratio; per seed and per resample, same W); DERIVED, DESCRIPTIVE, not a registered contrast item"
+   },
+   {
+    "id": "Q3",
+    "of": [
+     "Q1"
+    ],
+    "relation": "Q3 = Q1 \u2212 (P2_C1_FT_CENTRAL_FROZEN \u2212 PRE) (per seed, same W): not independent of Q1"
+   },
+   {
+    "id": "Q7",
+    "of": [
+     "Q1"
+    ],
+    "relation": "Q7 and Q1 share PRE as the one-seed denominator: not independent evidence"
+   }
+  ],
+  "by_contrast": {
+   "Q1": "CONFIRMATORY_P2 (PREREGISTERED_FOLLOWUP)",
+   "Q11": "TERTIARY_P2 (unadjusted; DESCRIPTIVE Holm band)",
+   "Q12a": "TERTIARY_P2 (unadjusted; DESCRIPTIVE Holm band)",
+   "Q12b": "TERTIARY_P2 (unadjusted; DESCRIPTIVE Holm band)",
+   "Q13": "TERTIARY_P2 (unadjusted; DESCRIPTIVE Holm band)",
+   "Q14": "TEST2_NOT_AVAILABLE",
+   "Q2": "CONFIRMATORY_P2 (PREREGISTERED_FOLLOWUP)",
+   "Q3": "CONFIRMATORY_P2 (PREREGISTERED_FOLLOWUP)",
+   "Q4": "CONFIRMATORY_P2 (PREREGISTERED_FOLLOWUP)",
+   "Q5": "CONFIRMATORY_P2 (PREREGISTERED_FOLLOWUP)",
+   "Q6": "CONFIRMATORY_P2 (PREREGISTERED_FOLLOWUP)",
+   "Q7": "CONFIRMATORY_P2 (PREREGISTERED_FOLLOWUP)",
+   "Q8": "CONFIRMATORY_P2 (PREREGISTERED_FOLLOWUP)",
+   "Q9": "TERTIARY_P2 (unadjusted; DESCRIPTIVE Holm band)"
+  },
+  "default_rule": "PRACTICAL_BEST",
+  "dp_disclosure": "Q6/Q7/Q11/Q12a/Q12b PRACTICAL_BEST ratios are DESCRIPTIVE: best-of-12 checkpoint selection on the users' own validation data is not covered by the DP accountant (as Phase-1 06D \u00a73). DP arms keep T = 384 and the registered z (PREG2 \u00a75.5, D-i).",
+  "hierarchy": {
+   "primary": [
+    "Q1"
+   ],
+   "secondary": [
+    "Q2",
+    "Q3",
+    "Q4",
+    "Q5",
+    "Q6",
+    "Q7",
+    "Q8"
+   ],
+   "tertiary": [
+    "Q9",
+    "Q11",
+    "Q12a",
+    "Q12b",
+    "Q13",
+    "Q14"
+   ]
+  },
+  "multiplicity_statement": "14 pre-registered Phase-2 contrast items (Q1-Q9, Q11, Q12a, Q12b, Q13, Q14) plus the derived Q10; primary = Q1 alone, read unadjusted at alpha 0.05, outside Holm; Holm step-down at alpha 0.05 over the secondary family Q2-Q7 (+Q8 only if owner O3 = yes; else Q8 is removed before the lock and the family is Q2-Q7); tertiary unadjusted with a DESCRIPTIVE Holm band; unadjusted 95% paired user-bootstrap percentile CIs (1,000 resamples, seed 20261004) for every contrast; Q1 equivalence and Q13 by TOST on the 90% CI; TEST2 replication is a separate family; never pooled with the Phase-1 family (ALL_METHODS_LOCK 04a3cd19); algebraic dependencies are not independent evidence; every other number is DESCRIPTIVE.",
+  "post_validation_rule": "Phase-2 arms on MAIN VALIDATION are POST_VALIDATION_EXPLORATORY; Phase-2 selection uses CALIB only; Q1-Q8 on RETRO_TEST are CONFIRMATORY_P2 (PREREGISTERED_FOLLOWUP) with disclosure D-a; Q9-Q14 are TERTIARY_P2; the Phase-1 post_validation_rule of ALL_METHODS_LOCK is unchanged and Phase-2 items never enter the Phase-1 registry.",
+  "registered_seeds": {
+   "Q1": [
+    2026,
+    2027
+   ],
+   "Q11": [
+    2026
+   ],
+   "Q12a": [
+    2026
+   ],
+   "Q12b": [
+    2026
+   ],
+   "Q13": [
+    2026
+   ],
+   "Q14": [
+    2026,
+    2027
+   ],
+   "Q2": [
+    2026,
+    2027
+   ],
+   "Q3": [
+    2026,
+    2027
+   ],
+   "Q4": [
+    2026,
+    2027
+   ],
+   "Q5": [
+    2026,
+    2027
+   ],
+   "Q6": [
+    2026,
+    2027
+   ],
+   "Q7": [
+    2026,
+    2027
+   ],
+   "Q8": [
+    2026
+   ],
+   "Q9": [
+    2026,
+    2027
+   ]
+  },
+  "rule_map": {
+   "Q11": "CONTROLLED_BUDGET",
+   "Q12a": "CONTROLLED_BUDGET",
+   "Q12b": "CONTROLLED_BUDGET",
+   "Q6": "CONTROLLED_BUDGET",
+   "Q7": "CONTROLLED_BUDGET"
+  },
+  "table_6_4": [
+   {
+    "claim": "Phase-1 K1\u2026K21 (all registered K)",
+    "label": "CONFIRMATORY (PREG1), unchanged"
+   },
+   {
+    "claim": "Phase-2 Q1\u2026Q8 on RETRO_TEST (the sitting)",
+    "label": "CONFIRMATORY_P2 (PREREGISTERED_FOLLOWUP), always printed with disclosure D-a verbatim"
+   },
+   {
+    "claim": "Phase-2 Q9\u2026Q14 on RETRO_TEST",
+    "label": "TERTIARY_P2 (unadjusted; DESCRIPTIVE Holm band)"
+   },
+   {
+    "claim": "Phase-2 arms on MAIN VALIDATION",
+    "label": "POST_VALIDATION_EXPLORATORY"
+   },
+   {
+    "claim": "Q1 on TEST2",
+    "label": "REPLICATED_FRESH (same sign, 95 % CI excludes 0) / NOT_REPLICATED / TEST2_NOT_AVAILABLE"
+   },
+   {
+    "claim": "Phase-1 locked arms on TEST2",
+    "label": "FRESH_PERIOD_AUDIT (DESCRIPTIVE)"
+   },
+   {
+    "claim": "Fallback FB (\u00a76.5)",
+    "label": "HOLDOUT_USERS_SAME_PERIOD, never a Q1 confirmation"
+   },
+   {
+    "claim": "audits E1\u2013E5, devices \u00a78, D1-ext",
+    "label": "DESCRIPTIVE (tertiary)"
+   }
+  ]
+ },
+ "library": {
+  "library_files_sha256": {
+   "tools/g2_run.py": "3893a49a71be49f5baf338b93195e2e885eecb9326705902913bd4d5e1abb44d",
+   "v4base/identity.py": "f7d645f3dc4571cd4951c0f55f83e0a18b8883d547a029c57144d427cd543ed1",
+   "v4base/strata.py": "78025da935bb0c1fd2fba9af77727855a2e909b48410507351e90e250981a5f2",
+   "v4eval/bootstrap.py": "693d921ee019fa1e2c667ac355789e885f1b17ad8228f0ece1a3e374997595d4",
+   "v4eval/metrics.py": "79aeb5617279d64f18a5bd00b8524581207d3a605f4a98d1ceb383a274a33ff5",
+   "v4eval/quality.py": "b117c9804bfbc827e936453e79f4ae4d567545cfde1790b46152e02084229276",
+   "v4eval/values.py": "a55fcf0f32b749d1d606a65103cbea8121f128b6ecb367c8af3e317b88ed7c95",
+   "v4train/bootstrap_ci.py": "47bae8c9eb72fa3757d9090afa6e87877b29fbd7dd1538351909bc4bbc4bf567"
+  },
+  "reused": [
+   "bind",
+   "load_index",
+   "load_block",
+   "check_test_gate",
+   "verify_test_ext_registry",
+   "check_ext_roles",
+   "test_context_loader",
+   "Engine",
+   "Book",
+   "ratio",
+   "delta",
+   "_seed_stats",
+   "seed_null",
+   "holm_band",
+   "k14_equivalence",
+   "check_pairs",
+   "require_nonzero_denominator",
+   "with_self_sha",
+   "_write_new"
+  ],
+  "tools/ana_block_index.py": "6e7043bbe42967b0de313206496de38fb0cf20cc85aaa34945dfdd19863cb662",
+  "tools/retention_report.py": "9a3b2c2a918ef2baacc5299426941f1eb94c366f5bb6aa7c29b4bfdbca0afe58"
+ },
+ "q10_headroom_capture": {
+  "ci95": {
+   "reason": "Q2_POINT_NOT_POSITIVE",
+   "status": "UNDEFINED",
+   "value": null
+  },
+  "id": "Q10",
+  "label": "DESCRIPTIVE (derived; not a registered contrast item)",
+  "n_resamples_q2_not_positive": 843,
+  "per_seed": [
+   {
+    "Q1_point": -7.509241015846158e-05,
+    "Q2_point": -0.00022996969651353782,
+    "point": {
+     "reason": "Q2_POINT_NOT_POSITIVE",
+     "status": "UNDEFINED",
+     "value": null
+    },
+    "seed": 2026
+   },
+   {
+    "Q1_point": -8.658585555840204e-05,
+    "Q2_point": -0.0001938643066415613,
+    "point": {
+     "reason": "Q2_POINT_NOT_POSITIVE",
+     "status": "UNDEFINED",
+     "value": null
+    },
+    "seed": 2027
+   }
+  ],
+  "point": {
+   "reason": "Q2_POINT_NOT_POSITIVE",
+   "status": "UNDEFINED",
+   "value": null
+  },
+  "relation": "Q10_s = Q1_s / Q2_s (per seed and per resample, same W)",
+  "rule": "PRACTICAL_BEST",
+  "seeds": [
+   2026,
+   2027
+  ],
+  "status": "UNDEFINED"
+ },
+ "q1_reading": {
+  "D-h": "Phase 2 can confirm a gain \u2265 \u2248 0.0005 MRR@20 or equivalence within \u00b10.0005; a true gain between them is likely to read INCONCLUSIVE.",
+  "both_seeds_positive": false,
+  "ci90": [
+   -0.00016415888325735928,
+   6.8789020553759715e-06
+  ],
+  "ci95": [
+   -0.00017901250074555086,
+   2.3711813125615546e-05
+  ],
+  "conditions_true": [
+   "EQUIVALENT"
+  ],
+  "overlap": false,
+  "per_seed_points": [
+   -7.509241015846158e-05,
+   -8.658585555840204e-05
+  ],
+  "reading": "EQUIVALENT",
+  "rule": "PREG2 \u00a79.4 (registered): SUCCESS iff the Q1 95% CI lower bound > 0 and both per-seed points > 0; EQUIVALENT iff the Q1 90% paired user-bootstrap percentile CI lies inside \u00b10.0005 MRR@20 (TOST, alpha 0.05; the practical-relevance margin, distinct from the CALIB tie band 0.001); FAILURE iff the 95% CI upper bound < 0; INCONCLUSIVE otherwise. Precedence when several hold: the listed order (SUCCESS, EQUIVALENT, FAILURE); every condition that holds is recorded in conditions_true."
+ },
+ "schema": "PPSI_V4_P2_RETENTION_1",
+ "script": {
+  "file": "tools/p2_report.py",
+  "sha256": "934cc8a0e93f3edd44e5c950f89996149a1f2b26dd7737f9c78b383b7dff215e"
+ },
+ "selection": {
+  "beside": {
+   "CALIB_GAIN": 1.347943584574e-05,
+   "D-j": "Futility uses CALIB headroom (32,768 users); MAIN has 131,072 users, so FUTILITY_SKIP_WB_WC may under-read the headroom available on MAIN.",
+   "EDGE_UNRESOLVED": true,
+   "FUTILITY_SKIP_WB_WC": true,
+   "NO_MEASURABLE_CALIB_GAIN": true,
+   "W_STAR": "fedadam|eta=3e-06|c=0.1",
+   "flags": [
+    "EDGE_UNRESOLVED",
+    "NO_MEASURABLE_CALIB_GAIN",
+    "FUTILITY_SKIP_WB_WC"
+   ],
+   "label": "SELECTION (CALIB values; PREG2 \u00a75.6-\u00a75.8)",
+   "rule": "CALIB_GAIN = W*_CALIB - PRE_CALIB, NO_MEASURABLE_CALIB_GAIN iff < 0.001 (W* is carried to MAIN regardless); EDGE_UNRESOLVED disclosed beside every Q (\u00a75.7)"
+  },
+  "files": {
+   "P2_C1_SELECTION": {
+    "bound_by_lock": true,
+    "path": "records/P2_C1_SELECTION.json",
+    "sha256": "20a23295c9c8a7a952bf67cc99b0adbe007cac73174710927483b3b2674c40f4"
+   },
+   "P2_WARM_SELECTION_A": {
+    "bound_by_lock": true,
+    "path": "records/P2_WARM_SELECTION_A.json",
+    "sha256": "06a75d6518f66013efa7d1e49d75d9e28d50e6211d94064df410884d3022de00"
+   },
+   "P2_WARM_SELECTION_FINAL": {
+    "bound_by_lock": true,
+    "path": "records/P2_WARM_SELECTION_FINAL.json",
+    "sha256": "25aadc2ea8fd3d1a48015d9da748876db80f031cbe14551ab96bc624861252d7"
+   },
+   "S_RECORD_P2": {
+    "bound_by_lock": true,
+    "path": "records/S_RECORD_P2.json",
+    "sha256": "934fb3174e9872b3ddfe234b858ffee21ea200f4e011d89f881cee0db075892f"
+   }
+  }
+ },
+ "self_sha256": "b3e24d044d2c8ba35e16a03c142bab483016a95b5a0b832cd36e95948c2d0c67",
+ "split": "TEST",
+ "study": "PREG2",
+ "task": "P2-12 tools/p2_report.py (PREG2 \u00a76.3, \u00a76.4, \u00a79, \u00a711)",
+ "test2": {
+  "Q14": "TEST2_NOT_AVAILABLE",
+  "Q1_replication": "TEST2_NOT_AVAILABLE",
+  "labels_if_available": [
+   "REPLICATED_FRESH",
+   "NOT_REPLICATED"
+  ],
+  "reason": "owner decision O2 = NO (P2_CONTRASTS_v3 Q14 'only if TEST2 exists'; PREG2 \u00a76.2 / \u00a712): no December-2019 data version and no TEST2 register exist, so the Q1 replication family and Q14 are not scored",
+  "status": "TEST2_NOT_AVAILABLE"
+ },
+ "values": [
+  {
+   "arm": "PRE",
+   "entry": "PRE|2026|PRACTICAL_BEST|MAIN",
+   "label": "DESCRIPTIVE",
+   "phase1_reused": true,
+   "rule": "PRACTICAL_BEST",
+   "seed": 2026,
+   "values": {
+    "hr@10": 0.3341196686315842,
+    "mrr@20": 0.16012899972438777,
+    "ndcg@10": 0.1952945737925599
+   }
+  },
+  {
+   "arm": "PRE",
+   "entry": "PRE|2026|CONTROLLED_BUDGET|MAIN",
+   "label": "DESCRIPTIVE",
+   "phase1_reused": true,
+   "rule": "CONTROLLED_BUDGET",
+   "seed": 2026,
+   "values": {
+    "hr@10": 0.3341196686315842,
+    "mrr@20": 0.16012899972438777,
+    "ndcg@10": 0.1952945737925599
+   }
+  },
+  {
+   "arm": "FA_WARM_FROZEN",
+   "entry": "FA_WARM_FROZEN|2026|PRACTICAL_BEST|MAIN",
+   "label": "DESCRIPTIVE",
+   "phase1_reused": true,
+   "rule": "PRACTICAL_BEST",
+   "seed": 2026,
+   "values": {
+    "hr@10": 0.33379292141379974,
+    "mrr@20": 0.15979733530247417,
+    "ndcg@10": 0.19492460494500144
+   }
+  },
+  {
+   "arm": "FA_WARM_FROZEN",
+   "entry": "FA_WARM_FROZEN|2027|PRACTICAL_BEST|MAIN",
+   "label": "DESCRIPTIVE",
+   "phase1_reused": true,
+   "rule": "PRACTICAL_BEST",
+   "seed": 2027,
+   "values": {
+    "hr@10": 0.3345967576349629,
+    "mrr@20": 0.15944441211879942,
+    "ndcg@10": 0.19489575380512364
+   }
+  },
+  {
+   "arm": "FA_WARM_FROZEN",
+   "entry": "FA_WARM_FROZEN|2026|CONTROLLED_BUDGET|MAIN",
+   "label": "DESCRIPTIVE",
+   "phase1_reused": true,
+   "rule": "CONTROLLED_BUDGET",
+   "seed": 2026,
+   "values": {
+    "hr@10": 0.33410613841079617,
+    "mrr@20": 0.1592716199787832,
+    "ndcg@10": 0.1945952915749121
+   }
+  },
+  {
+   "arm": "FA_WARM_FROZEN",
+   "entry": "FA_WARM_FROZEN|2027|CONTROLLED_BUDGET|MAIN",
+   "label": "DESCRIPTIVE",
+   "phase1_reused": true,
+   "rule": "CONTROLLED_BUDGET",
+   "seed": 2027,
+   "values": {
+    "hr@10": 0.33379852687292116,
+    "mrr@20": 0.1593327679305587,
+    "ndcg@10": 0.19455812329676508
+   }
+  },
+  {
+   "arm": "FT_PRE",
+   "entry": "FT_PRE|2026|PRACTICAL_BEST|MAIN",
+   "label": "DESCRIPTIVE",
+   "phase1_reused": true,
+   "rule": "PRACTICAL_BEST",
+   "seed": 2026,
+   "values": {
+    "hr@10": 0.33805041671584857,
+    "mrr@20": 0.16249582635675888,
+    "ndcg@10": 0.19807075393170626
+   }
+  },
+  {
+   "arm": "FT_PRE",
+   "entry": "FT_PRE|2027|PRACTICAL_BEST|MAIN",
+   "label": "DESCRIPTIVE",
+   "phase1_reused": true,
+   "rule": "PRACTICAL_BEST",
+   "seed": 2027,
+   "values": {
+    "hr@10": 0.33844580049272444,
+    "mrr@20": 0.16232781221726122,
+    "ndcg@10": 0.19804912526801324
+   }
+  },
+  {
+   "arm": "C_FULL",
+   "entry": "C_FULL|2026|PRACTICAL_BEST|MAIN",
+   "label": "DESCRIPTIVE",
+   "phase1_reused": true,
+   "rule": "PRACTICAL_BEST",
+   "seed": 2026,
+   "values": {
+    "hr@10": 0.35939604480836357,
+    "mrr@20": 0.18038838611956526,
+    "ndcg@10": 0.21719824423269732
+   }
+  },
+  {
+   "arm": "C_FULL",
+   "entry": "C_FULL|2026|CONTROLLED_BUDGET|MAIN",
+   "label": "DESCRIPTIVE",
+   "phase1_reused": true,
+   "rule": "CONTROLLED_BUDGET",
+   "seed": 2026,
+   "values": {
+    "hr@10": 0.35939604480836357,
+    "mrr@20": 0.18038838611956526,
+    "ndcg@10": 0.21719824423269732
+   }
+  },
+  {
+   "arm": "P2_WSTAR",
+   "entry": "P2_WSTAR|2026|PRACTICAL_BEST|MAIN",
+   "label": "DESCRIPTIVE",
+   "phase1_reused": false,
+   "rule": "PRACTICAL_BEST",
+   "seed": 2026,
+   "values": {
+    "hr@10": 0.3340840990663088,
+    "mrr@20": 0.1600539073142293,
+    "ndcg@10": 0.19523148667440723
+   }
+  },
+  {
+   "arm": "P2_WSTAR",
+   "entry": "P2_WSTAR|2027|PRACTICAL_BEST|MAIN",
+   "label": "DESCRIPTIVE",
+   "phase1_reused": false,
+   "rule": "PRACTICAL_BEST",
+   "seed": 2027,
+   "values": {
+    "hr@10": 0.3341514238589486,
+    "mrr@20": 0.16004241386882936,
+    "ndcg@10": 0.1952453434846759
+   }
+  },
+  {
+   "arm": "P2_WSTAR",
+   "entry": "P2_WSTAR|2026|CONTROLLED_BUDGET|MAIN",
+   "label": "DESCRIPTIVE",
+   "phase1_reused": false,
+   "rule": "CONTROLLED_BUDGET",
+   "seed": 2026,
+   "values": {
+    "hr@10": 0.33363565917284194,
+    "mrr@20": 0.15978163646393903,
+    "ndcg@10": 0.19491139845481018
+   }
+  },
+  {
+   "arm": "P2_WSTAR",
+   "entry": "P2_WSTAR|2027|CONTROLLED_BUDGET|MAIN",
+   "label": "DESCRIPTIVE",
+   "phase1_reused": false,
+   "rule": "CONTROLLED_BUDGET",
+   "seed": 2027,
+   "values": {
+    "hr@10": 0.33362483431575063,
+    "mrr@20": 0.1597069499812933,
+    "ndcg@10": 0.19485550255842576
+   }
+  },
+  {
+   "arm": "P2_WSTAR_FA1024",
+   "entry": "P2_WSTAR_FA1024|2026|PRACTICAL_BEST|MAIN",
+   "label": "DESCRIPTIVE",
+   "phase1_reused": false,
+   "rule": "PRACTICAL_BEST",
+   "seed": 2026,
+   "values": {
+    "hr@10": 0.3341105655260784,
+    "mrr@20": 0.16013094280271842,
+    "ndcg@10": 0.19529328878089414
+   }
+  },
+  {
+   "arm": "P2_WSTAR_FA1024",
+   "entry": "P2_WSTAR_FA1024|2027|PRACTICAL_BEST|MAIN",
+   "label": "DESCRIPTIVE",
+   "phase1_reused": false,
+   "rule": "PRACTICAL_BEST",
+   "seed": 2027,
+   "values": {
+    "hr@10": 0.33411237930864934,
+    "mrr@20": 0.16013078723752217,
+    "ndcg@10": 0.19529364519437198
+   }
+  },
+  {
+   "arm": "P2_WSTAR_FA1024",
+   "entry": "P2_WSTAR_FA1024|2026|CONTROLLED_BUDGET|MAIN",
+   "label": "DESCRIPTIVE",
+   "phase1_reused": false,
+   "rule": "CONTROLLED_BUDGET",
+   "seed": 2026,
+   "values": {
+    "hr@10": 0.33409725183068756,
+    "mrr@20": 0.1600932189926751,
+    "ndcg@10": 0.19526612423622078
+   }
+  },
+  {
+   "arm": "P2_WSTAR_FA1024",
+   "entry": "P2_WSTAR_FA1024|2027|CONTROLLED_BUDGET|MAIN",
+   "label": "DESCRIPTIVE",
+   "phase1_reused": false,
+   "rule": "CONTROLLED_BUDGET",
+   "seed": 2027,
+   "values": {
+    "hr@10": 0.3340903756096346,
+    "mrr@20": 0.16008738262507588,
+    "ndcg@10": 0.19526018471582887
+   }
+  },
+  {
+   "arm": "P2_WSTAR_DP8",
+   "entry": "P2_WSTAR_DP8|2026|PRACTICAL_BEST|MAIN",
+   "label": "DESCRIPTIVE",
+   "phase1_reused": false,
+   "rule": "PRACTICAL_BEST",
+   "seed": 2026,
+   "values": {
+    "hr@10": 0.33411115151737053,
+    "mrr@20": 0.16012988715858734,
+    "ndcg@10": 0.1952924411036579
+   }
+  },
+  {
+   "arm": "P2_WSTAR_DP8",
+   "entry": "P2_WSTAR_DP8|2027|PRACTICAL_BEST|MAIN",
+   "label": "DESCRIPTIVE",
+   "phase1_reused": false,
+   "rule": "PRACTICAL_BEST",
+   "seed": 2027,
+   "values": {
+    "hr@10": 0.33411145029806416,
+    "mrr@20": 0.16013098456462493,
+    "ndcg@10": 0.1952935161948098
+   }
+  },
+  {
+   "arm": "P2_WSTAR_DP8",
+   "entry": "P2_WSTAR_DP8|2026|CONTROLLED_BUDGET|MAIN",
+   "label": "DESCRIPTIVE",
+   "phase1_reused": false,
+   "rule": "CONTROLLED_BUDGET",
+   "seed": 2026,
+   "values": {
+    "hr@10": 0.3340992565377397,
+    "mrr@20": 0.1600949222973663,
+    "ndcg@10": 0.19526832129188093
+   }
+  },
+  {
+   "arm": "P2_WSTAR_DP8",
+   "entry": "P2_WSTAR_DP8|2027|CONTROLLED_BUDGET|MAIN",
+   "label": "DESCRIPTIVE",
+   "phase1_reused": false,
+   "rule": "CONTROLLED_BUDGET",
+   "seed": 2027,
+   "values": {
+    "hr@10": 0.33409736424116365,
+    "mrr@20": 0.1600887853923292,
+    "ndcg@10": 0.19526263145421474
+   }
+  },
+  {
+   "arm": "P2_WSTAR_DP1",
+   "entry": "P2_WSTAR_DP1|2026|PRACTICAL_BEST|MAIN",
+   "label": "DESCRIPTIVE",
+   "phase1_reused": false,
+   "rule": "PRACTICAL_BEST",
+   "seed": 2026,
+   "values": {
+    "hr@10": 0.33411115151737053,
+    "mrr@20": 0.16012984311349018,
+    "ndcg@10": 0.1952923898535318
+   }
+  },
+  {
+   "arm": "P2_WSTAR_DP1",
+   "entry": "P2_WSTAR_DP1|2026|CONTROLLED_BUDGET|MAIN",
+   "label": "DESCRIPTIVE",
+   "phase1_reused": false,
+   "rule": "CONTROLLED_BUDGET",
+   "seed": 2026,
+   "values": {
+    "hr@10": 0.3341053887294436,
+    "mrr@20": 0.16008408476651195,
+    "ndcg@10": 0.19526122066889023
+   }
+  },
+  {
+   "arm": "P2_C1_FT_CENTRAL_FULL",
+   "entry": "P2_C1_FT_CENTRAL_FULL|2026|PRACTICAL_BEST|MAIN",
+   "label": "DESCRIPTIVE",
+   "phase1_reused": false,
+   "rule": "PRACTICAL_BEST",
+   "seed": 2026,
+   "values": {
+    "hr@10": 0.3337357299330281,
+    "mrr@20": 0.15989903002787423,
+    "ndcg@10": 0.19512686626215348
+   }
+  },
+  {
+   "arm": "P2_C1_FT_CENTRAL_FULL",
+   "entry": "P2_C1_FT_CENTRAL_FULL|2027|PRACTICAL_BEST|MAIN",
+   "label": "DESCRIPTIVE",
+   "phase1_reused": false,
+   "rule": "PRACTICAL_BEST",
+   "seed": 2027,
+   "values": {
+    "hr@10": 0.33379617471743195,
+    "mrr@20": 0.1599351354177462,
+    "ndcg@10": 0.19517480918051963
+   }
+  },
+  {
+   "arm": "P2_C1_FT_CENTRAL_FULL",
+   "entry": "P2_C1_FT_CENTRAL_FULL|2026|CONTROLLED_BUDGET|MAIN",
+   "label": "DESCRIPTIVE",
+   "phase1_reused": false,
+   "rule": "CONTROLLED_BUDGET",
+   "seed": 2026,
+   "values": {
+    "hr@10": 0.3337912988400657,
+    "mrr@20": 0.15981531625089596,
+    "ndcg@10": 0.19507945538441296
+   }
+  },
+  {
+   "arm": "P2_C1_FT_CENTRAL_FULL",
+   "entry": "P2_C1_FT_CENTRAL_FULL|2027|CONTROLLED_BUDGET|MAIN",
+   "label": "DESCRIPTIVE",
+   "phase1_reused": false,
+   "rule": "CONTROLLED_BUDGET",
+   "seed": 2027,
+   "values": {
+    "hr@10": 0.3338579475796134,
+    "mrr@20": 0.15967187470380415,
+    "ndcg@10": 0.1949729779934326
+   }
+  },
+  {
+   "arm": "P2_C1_FT_CENTRAL_FROZEN",
+   "entry": "P2_C1_FT_CENTRAL_FROZEN|2026|PRACTICAL_BEST|MAIN",
+   "label": "DESCRIPTIVE",
+   "phase1_reused": false,
+   "rule": "PRACTICAL_BEST",
+   "seed": 2026,
+   "values": {
+    "hr@10": 0.33395974634308073,
+    "mrr@20": 0.15988753507458328,
+    "ndcg@10": 0.19508517585380067
+   }
+  },
+  {
+   "arm": "P2_C1_FT_CENTRAL_FROZEN",
+   "entry": "P2_C1_FT_CENTRAL_FROZEN|2027|PRACTICAL_BEST|MAIN",
+   "label": "DESCRIPTIVE",
+   "phase1_reused": false,
+   "rule": "PRACTICAL_BEST",
+   "seed": 2027,
+   "values": {
+    "hr@10": 0.3339593996121895,
+    "mrr@20": 0.15987665010056437,
+    "ndcg@10": 0.19506655680360963
+   }
+  },
+  {
+   "arm": "P2_C1_FT_CENTRAL_FROZEN",
+   "entry": "P2_C1_FT_CENTRAL_FROZEN|2026|CONTROLLED_BUDGET|MAIN",
+   "label": "DESCRIPTIVE",
+   "phase1_reused": false,
+   "rule": "CONTROLLED_BUDGET",
+   "seed": 2026,
+   "values": {
+    "hr@10": 0.33360451579499845,
+    "mrr@20": 0.1597360981465599,
+    "ndcg@10": 0.19485750581612718
+   }
+  },
+  {
+   "arm": "P2_C1_FT_CENTRAL_FROZEN",
+   "entry": "P2_C1_FT_CENTRAL_FROZEN|2027|CONTROLLED_BUDGET|MAIN",
+   "label": "DESCRIPTIVE",
+   "phase1_reused": false,
+   "rule": "CONTROLLED_BUDGET",
+   "seed": 2027,
+   "values": {
+    "hr@10": 0.33373991864492236,
+    "mrr@20": 0.15970144672833234,
+    "ndcg@10": 0.19487947858660018
+   }
+  },
+  {
+   "arm": "P2_C2_CFULL_SMALL",
+   "entry": "P2_C2_CFULL_SMALL|2026|PRACTICAL_BEST|MAIN",
+   "label": "DESCRIPTIVE",
+   "phase1_reused": false,
+   "rule": "PRACTICAL_BEST",
+   "seed": 2026,
+   "values": {
+    "hr@10": 0.3343103830657616,
+    "mrr@20": 0.16067041677093016,
+    "ndcg@10": 0.1958027354370187
+   }
+  },
+  {
+   "arm": "P2_C2_CFULL_SMALL",
+   "entry": "P2_C2_CFULL_SMALL|2026|CONTROLLED_BUDGET|MAIN",
+   "label": "DESCRIPTIVE",
+   "phase1_reused": false,
+   "rule": "CONTROLLED_BUDGET",
+   "seed": 2026,
+   "values": {
+    "hr@10": 0.3343103830657616,
+    "mrr@20": 0.16067041677093016,
+    "ndcg@10": 0.1958027354370187
+   }
+  },
+  {
+   "arm": "FT_P2_WSTAR",
+   "entry": "FT_P2_WSTAR|2026|PRACTICAL_BEST|MAIN",
+   "label": "DESCRIPTIVE",
+   "phase1_reused": false,
+   "rule": "PRACTICAL_BEST",
+   "seed": 2026,
+   "values": {
+    "hr@10": 0.3380060717902932,
+    "mrr@20": 0.16244506366851824,
+    "ndcg@10": 0.19802240198462806
+   }
+  },
+  {
+   "arm": "FT_P2_WSTAR",
+   "entry": "FT_P2_WSTAR|2027|PRACTICAL_BEST|MAIN",
+   "label": "DESCRIPTIVE",
+   "phase1_reused": false,
+   "rule": "PRACTICAL_BEST",
+   "seed": 2027,
+   "values": {
+    "hr@10": 0.3384951501474332,
+    "mrr@20": 0.16236631099021898,
+    "ndcg@10": 0.19809799034255957
+   }
+  }
+ ]
+}

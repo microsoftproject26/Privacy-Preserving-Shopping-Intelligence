@@ -1,0 +1,14 @@
+Rebuilt from `privacy_membership_inference.csv` by `run_pipeline.py --from-results` (numbers copied, never recomputed).
+
+| audit | model | role | auc | auc_ci95_low | auc_ci95_high | tpr_at_1pct_fpr | tpr_ci95_low | epsilon_lower_bound | accountant_epsilon | verdict |
+|---|---|---|---|---|---|---|---|---|---|---|
+| models from the confirmatory run (descriptive) | FA_WARM_FROZEN | non-dp | 0.5036 | 0.4957 | 0.5112 | 0.0088 | 0.0064 | 0 | None | no material leakage |
+| models from the confirmatory run (descriptive) | PRE_FT_CENTRAL | non-dp | 0.6255 | 0.6176 | 0.6332 | 0.029 | 0.0245 | 0.974 | None | material leakage |
+| models from the confirmatory run (descriptive) | W_STAR | non-dp | 0.4971 | 0.4893 | 0.5053 | 0.0118 | 0.009 | 0 | None | no material leakage |
+| models from the confirmatory run (descriptive) | W_STAR_DP1 | dp | 0.4973 | 0.4893 | 0.5053 | 0.0074 | 0.0052 | 0 | 1 | pass |
+| models from the confirmatory run (descriptive) | W_STAR_DP8 | dp | 0.4972 | 0.4893 | 0.5053 | 0.0068 | 0.0047 | 0 | 8 | pass |
+| models from the confirmatory run (descriptive) | PRE | null-control | 0.5 | 0.5 | 0.5 | 0 | 0 | 0 | None | valid null |
+| tau-fixed cold federated model | FA_COLD_TAUFIX | non-dp | 0.7466 | 0.74 | 0.7533 | 0.1426 | 0.133 | 2.112 | None | material leakage |
+| tau-fixed cold federated model | FA_COLD_TAUFIX_DP8 | dp | 0.5019 | 0.4937 | 0.5096 | 0.0098 | 0.0073 | 0 | 8 | pass |
+| tau-fixed warm model from the 100k pretrain | FA_WARM_PB100K_TAUFIX | non-dp | 0.537 | 0.5295 | 0.5453 | 0.0198 | 0.0161 | 0 | None | no material leakage |
+| tau-fixed warm model from the 100k pretrain | FA_WARM_PB100K_TAUFIX_DP8 | dp | 0.5042 | 0.4965 | 0.5121 | 0.0172 | 0.0138 | 0 | 8 | pass |

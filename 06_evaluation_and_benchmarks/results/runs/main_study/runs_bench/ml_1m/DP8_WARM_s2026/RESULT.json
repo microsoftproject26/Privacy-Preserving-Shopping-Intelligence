@@ -1,0 +1,477 @@
+{
+ "arm": "DP8_WARM",
+ "bytes": {
+  "ledger": [
+   35906,
+   41753794784,
+   41753938408,
+   0
+  ]
+ },
+ "checkpoints": {
+  "CONTROLLED_BUDGET": {
+   "file": "ckpt/BM_ml_1m_DP8_WARM_s2026/endpoint_6.0.pt",
+   "mark": 6.0,
+   "sha256": "cd282dc6044546e5faf0369c052fe43eadb8e74937c7871ab511fa783d86258b"
+  },
+  "PRACTICAL_BEST": {
+   "file": "ckpt/BM_ml_1m_DP8_WARM_s2026/best.pt",
+   "mark": 0.5,
+   "sha256": "f39c9820a0f29fd176d973cd4c30576f4a5f2d32551aed69ff6d0016ae41a260"
+  }
+ },
+ "evals": [
+  [
+   1,
+   31,
+   0.08796482779874272,
+   true,
+   "MAIN"
+  ],
+  [
+   2,
+   63,
+   0.08716187345463179,
+   false,
+   "MAIN"
+  ],
+  [
+   3,
+   95,
+   0.08766254193365944,
+   false,
+   "MAIN"
+  ],
+  [
+   4,
+   127,
+   0.08613886350186377,
+   false,
+   "MAIN"
+  ],
+  [
+   5,
+   159,
+   0.08493932439432621,
+   false,
+   "MAIN"
+  ],
+  [
+   6,
+   191,
+   0.08362095452726111,
+   false,
+   "MAIN"
+  ],
+  [
+   7,
+   223,
+   0.08403905381091568,
+   false,
+   "MAIN"
+  ],
+  [
+   8,
+   255,
+   0.08439042002507864,
+   false,
+   "MAIN"
+  ],
+  [
+   9,
+   287,
+   0.08466511260720706,
+   false,
+   "MAIN"
+  ],
+  [
+   10,
+   319,
+   0.08435821470633433,
+   false,
+   "MAIN"
+  ],
+  [
+   11,
+   351,
+   0.08485417514290518,
+   false,
+   "MAIN"
+  ],
+  [
+   12,
+   383,
+   0.08319131039236606,
+   false,
+   "MAIN"
+  ]
+ ],
+ "frozen": null,
+ "init_from": {
+  "checkpoint_sha256": "c5ed8245f79f28099e37314077a2ee6bf0b5e07bfd9feba7c96f3f37fc4f1c6e",
+  "dataset": "ml_1m",
+  "fl_init_kind": "endpoint_6.0",
+  "kind": "PRE",
+  "run_id": "BM_ml_1m_PRE_s2026",
+  "seed": 2026,
+  "state_digest": "5cce249e5687ba0eecc070befeb16bcfde5bab5da0cebb9d4c8b27f4d2c1cd40"
+ },
+ "kind": "fl",
+ "run_id": "BM_ml_1m_DP8_WARM_s2026",
+ "spec": {
+  "arm": "DP8_WARM",
+  "cfg": {
+   "dp": {
+    "clip_norm": 0.5154718947799042,
+    "denominator": 47,
+    "noise_multiplier": 0.5642
+   },
+   "dropout_p": 0.0,
+   "endpoint_efe": 6.0,
+   "endpoint_rounds": 384,
+   "exposure_point": "end",
+   "lr_peak_local": 0.025,
+   "lr_shape": "fl_const",
+   "max_attempts": 2,
+   "method": "FA",
+   "mu": 0.0,
+   "n_shards": 2,
+   "pf": null,
+   "seed": 2026,
+   "server_opt": {
+    "beta1": 0.9,
+    "beta2": 0.99,
+    "lr": 0.001,
+    "name": "fedadam",
+    "tau": 0.001,
+    "v_init": "tau_squared"
+   },
+   "solver": {
+    "batch_size": 16,
+    "clip": 1.0,
+    "fused": null,
+    "lr": 0.025,
+    "optimizer": "sgd_m",
+    "passes": 2,
+    "weight_decay": 0.0
+   }
+  },
+  "client_lr": 0.1,
+  "client_opt": "sgd_m",
+  "data": {
+   "dataset": "ml_1m",
+   "fingerprint": "f4fd6f5b5095a0b25dd3b53cd20c8cd496d91c2eb6a3e0c16cba2e72a066aebd",
+   "n_clients": 6040,
+   "n_decisions": 982089
+  },
+  "dp_accounting": {
+   "N": 6040,
+   "T": 384,
+   "authority": "PREG1_AMENDMENT_07 R4 (registered z for identical q, T, delta)",
+   "delta": 5e-06,
+   "inclusion": "independent per client with probability EXACTLY 2^-7 (fl_engine.ExactQPlan); m = round(q N) is the fixed denominator only (B10 Q1)",
+   "m": 47,
+   "q_actual": 0.0078125,
+   "q_nominal": 0.0078125,
+   "z": 0.5642
+  },
+  "dropout": [
+   0.1
+  ],
+  "init_from": {
+   "checkpoint_sha256": "c5ed8245f79f28099e37314077a2ee6bf0b5e07bfd9feba7c96f3f37fc4f1c6e",
+   "dataset": "ml_1m",
+   "fl_init_kind": "endpoint_6.0",
+   "kind": "PRE",
+   "run_id": "BM_ml_1m_PRE_s2026",
+   "seed": 2026,
+   "state_digest": "5cce249e5687ba0eecc070befeb16bcfde5bab5da0cebb9d4c8b27f4d2c1cd40"
+  },
+  "knobs": {
+   "batch": 16,
+   "clip": 1.0,
+   "dropout_p": 0.1,
+   "endpoint_efe": 6.0,
+   "group": 64,
+   "m": 1024,
+   "max_attempts": 2,
+   "mu": 0.01,
+   "n_shards": 2,
+   "passes": 2,
+   "pf_clip": 1.0,
+   "pf_lam": 0.0001,
+   "rounds": 6827,
+   "rounds_1024": 384,
+   "s_cal_rounds": 20,
+   "s_cal_seed": 2026,
+   "sampling": "sweep",
+   "weight_decay": 1e-05
+  },
+  "local_passes": 2,
+  "lr_mult": 1.0,
+  "lr_peak_base": 0.0007114121116984968,
+  "lr_shape": "fl_const",
+  "max_len": 50,
+  "max_rounds": 384,
+  "plan": {
+   "group_size": 47,
+   "sampling": "poisson"
+  },
+  "poisson_local_rule": {
+   "authority": "DL 219",
+   "local_batch": 16,
+   "local_passes": 2,
+   "selected_local_passes": 1
+  },
+  "provenance": {
+   "ft_cell": "FT_C_f0.3_P4",
+   "pins": {
+    "device/SELECTION_FT_C.json": "e47965d2f4486fc2c30140a8ee14e79686a842decb091b3dff1de5646716c10c",
+    "fl/FL_TUNING_SELECTION.json": "9bca186e5025f5caa9e762f3c425fb3151923b79e60f01e6ecb063aac9c715ec",
+    "fl/FL_WARM_SELECTION_S7.json": "d67a0a851665495b092abbba4456f26a3423d6ef21665f5a0e2b65e2d78dc000",
+    "fl/FL_WARM_SELECTION_S8.json": "8b79d3052799dfa0ba208dce5db138da88aaa7024ba6511a374c59ce8c55a98a"
+   },
+   "tuning_winner_label": "fedadam|eta=0.01|m=1|shape=fl_const|client=sgd_m|clr=0.1|passes=1",
+   "warm_winners": {
+    "FA_WARM": "f=0.25|sf=0.1",
+    "FA_WARM_FROZEN": "f=1|sf=0.1"
+   }
+  },
+  "role": "MAIN",
+  "s_record": {
+   "S": 0.5154718947799042,
+   "file_sha256": "d6ccdcae04470c99f7d2fa87bdea0b5778f1b3470d9ab302a992a371cc016e8f",
+   "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/ml_1m/dp/S_RECORD_FA_WARM.json",
+   "self_sha256": "a149eb08c8b801a670444d4cc1b726a2802d75945bf45d84b0ebd6dfc84888bf"
+  },
+  "server_lr": 0.01,
+  "server_opt": "fedadam",
+  "upload_codec": null,
+  "variant": "SASREC_D64_B2",
+  "warm_lr_factor": 0.25,
+  "warm_server_lr_factor": 0.1
+ },
+ "spec_sha256": "e0bf72873e74a1f843bdf54b46b2bcadb655ca5cd5841f7a66733b4893e0f69d",
+ "status": "DONE_MAIN",
+ "summary": {
+  "counters": {
+   "coverage_by_sweep": {
+    "0": {
+     "clients": 3831,
+     "fraction": 0.634271523178808
+    },
+    "1": {
+     "clients": 3812,
+     "fraction": 0.6311258278145695
+    },
+    "2": {
+     "clients": 3832,
+     "fraction": 0.6344370860927152
+    }
+   },
+   "efe": 5.931150842744395,
+   "exposures": 5824918,
+   "max_visits": 11,
+   "min_visits": 0,
+   "noop_visits": 0,
+   "retries": 0,
+   "rounds": 384,
+   "steps": 381936,
+   "steps_hist": {
+    "10": 1215,
+    "100": 34,
+    "102": 13,
+    "104": 36,
+    "106": 25,
+    "108": 26,
+    "110": 25,
+    "112": 8,
+    "114": 15,
+    "116": 6,
+    "118": 12,
+    "12": 954,
+    "120": 8,
+    "122": 8,
+    "124": 5,
+    "126": 22,
+    "128": 11,
+    "130": 2,
+    "132": 4,
+    "136": 3,
+    "14": 1024,
+    "140": 4,
+    "144": 2,
+    "146": 5,
+    "148": 2,
+    "152": 8,
+    "154": 8,
+    "156": 7,
+    "158": 6,
+    "16": 829,
+    "160": 3,
+    "162": 3,
+    "164": 2,
+    "166": 5,
+    "168": 1,
+    "18": 596,
+    "190": 6,
+    "20": 635,
+    "200": 4,
+    "218": 1,
+    "22": 502,
+    "24": 383,
+    "26": 445,
+    "28": 347,
+    "290": 3,
+    "30": 292,
+    "32": 302,
+    "34": 220,
+    "36": 226,
+    "38": 288,
+    "4": 3153,
+    "40": 221,
+    "42": 187,
+    "44": 146,
+    "46": 135,
+    "48": 134,
+    "50": 157,
+    "52": 105,
+    "54": 122,
+    "56": 100,
+    "58": 80,
+    "6": 2274,
+    "60": 66,
+    "62": 90,
+    "64": 90,
+    "66": 84,
+    "68": 73,
+    "70": 88,
+    "72": 25,
+    "74": 52,
+    "76": 39,
+    "78": 52,
+    "8": 1540,
+    "80": 66,
+    "82": 24,
+    "84": 31,
+    "86": 36,
+    "88": 41,
+    "90": 31,
+    "92": 41,
+    "94": 28,
+    "96": 32,
+    "98": 19
+   },
+   "visits": 17953,
+   "wasted_steps": 0
+  },
+  "lr_table_digest": "c1d7419da9735ba7118d3a7bd0fc920570f8011e60df4a7fa39dc2086b09fa7b",
+  "rounds": 384
+ },
+ "timing": {
+  "mean_round_s": 24.403405591185827,
+  "median_round_s": 24.00616343691945,
+  "n_clients": 6040,
+  "n_decisions": 982089,
+  "rounds_full_run": 384,
+  "rounds_this_leg": 384,
+  "wall_s_this_leg": 9371.0
+ },
+ "utc": "2026-10-03T04:01:41Z",
+ "validation": {
+  "CONTROLLED_BUDGET": {
+   "ALL": {
+    "hr@10": 0.16528651871480624,
+    "hr@20": 0.2538920172242464,
+    "mrr@20": 0.06460592096113053,
+    "n_unreachable": 0,
+    "n_users": 6038,
+    "ndcg@10": 0.08319131039236606,
+    "ndcg@20": 0.10560579215360555
+   },
+   "BAND": {
+    "hr@10": 0.17880794701986755,
+    "hr@20": 0.26269315673289184,
+    "mrr@20": 0.07197991867750236,
+    "n_unreachable": 0,
+    "n_users": 906,
+    "ndcg@10": 0.09233187412200294,
+    "ndcg@20": 0.11349928452067332
+   },
+   "BAND_COVERED_TARGET": {
+    "hr@10": 0.16556071665560718,
+    "hr@20": 0.25431320504313204,
+    "mrr@20": 0.06471309733963274,
+    "n_unreachable": 0,
+    "n_users": 6028,
+    "ndcg@10": 0.0833293185383388,
+    "ndcg@20": 0.1057809842441059
+   },
+   "BAND_UNCOVERED_TARGET": {
+    "hr@10": 0.0,
+    "hr@20": 0.0,
+    "mrr@20": 0.0,
+    "n_unreachable": 0,
+    "n_users": 10,
+    "ndcg@10": 0.0,
+    "ndcg@20": 0.0
+   },
+   "OTHERS": {
+    "hr@10": 0.16289945440374123,
+    "hr@20": 0.2523382696804365,
+    "mrr@20": 0.06330412011720363,
+    "n_unreachable": 0,
+    "n_users": 5132,
+    "ndcg@10": 0.08157764111351745,
+    "ndcg@20": 0.10421228005606789
+   }
+  },
+  "PRACTICAL_BEST": {
+   "ALL": {
+    "hr@10": 0.17439549519708514,
+    "hr@20": 0.26134481616429284,
+    "mrr@20": 0.06799226212179212,
+    "n_unreachable": 0,
+    "n_users": 6038,
+    "ndcg@10": 0.08796482779874272,
+    "ndcg@20": 0.10983293120859977
+   },
+   "BAND": {
+    "hr@10": 0.18101545253863136,
+    "hr@20": 0.2671081677704194,
+    "mrr@20": 0.07089573527869306,
+    "n_unreachable": 0,
+    "n_users": 906,
+    "ndcg@10": 0.09180492391517149,
+    "ndcg@20": 0.11340671014368828
+   },
+   "BAND_COVERED_TARGET": {
+    "hr@10": 0.17468480424684804,
+    "hr@20": 0.26177836761778367,
+    "mrr@20": 0.06810505618636045,
+    "n_unreachable": 0,
+    "n_users": 6028,
+    "ndcg@10": 0.08811075485215801,
+    "ndcg@20": 0.11001513580582704
+   },
+   "BAND_UNCOVERED_TARGET": {
+    "hr@10": 0.0,
+    "hr@20": 0.0,
+    "mrr@20": 0.0,
+    "n_unreachable": 0,
+    "n_users": 10,
+    "ndcg@10": 0.0,
+    "ndcg@20": 0.0
+   },
+   "OTHERS": {
+    "hr@10": 0.17322681215900235,
+    "hr@20": 0.2603273577552611,
+    "mrr@20": 0.06747968482636106,
+    "n_unreachable": 0,
+    "n_users": 5132,
+    "ndcg@10": 0.08728689968465765,
+    "ndcg@20": 0.10920201855949803
+   }
+  }
+ }
+}

@@ -1,0 +1,427 @@
+{
+ "arm": "PF_WARM",
+ "bytes": {
+  "ledger": [
+   1808832,
+   17176679524992,
+   17176686760320,
+   0
+  ]
+ },
+ "checkpoints": {
+  "CONTROLLED_BUDGET": {
+   "file": "ckpt/BM_amazon2023_baby_products_PF_WARM_s2027/endpoint_6.0.pt",
+   "mark": 6.0,
+   "pf_store": {
+    "file": "ckpt/BM_amazon2023_baby_products_PF_WARM_s2027/pf_store_endpoint.pt",
+    "sha256": "2c62e94a4dd2f469edde60caf9ab207c54af1a6fdb6cf9b3b472f2e5143ef0f9"
+   },
+   "sha256": "c61a8096c633ab38894581575bf25f2b51a849cc3d30460e9f24efe42f520a8f"
+  },
+  "PRACTICAL_BEST": {
+   "file": "ckpt/BM_amazon2023_baby_products_PF_WARM_s2027/best.pt",
+   "mark": 4.0,
+   "pf_store": {
+    "file": "ckpt/BM_amazon2023_baby_products_PF_WARM_s2027/pf_store_best.pt",
+    "sha256": "9057643fc30ce41f1a08e741ca007ad9341c96abe4e21cc00898fef5defa0a34"
+   },
+   "sha256": "63acf68141cc0de2273e9ca4e5e03a8dbed1e1eb9fbb354777e5947f223c5051"
+  }
+ },
+ "evals": [
+  [
+   1,
+   1309,
+   0.00902348608666004,
+   true,
+   "MAIN"
+  ],
+  [
+   2,
+   2617,
+   0.009937634900176833,
+   true,
+   "MAIN"
+  ],
+  [
+   3,
+   3912,
+   0.010252018828712147,
+   true,
+   "MAIN"
+  ],
+  [
+   4,
+   5224,
+   0.010620731019881407,
+   true,
+   "MAIN"
+  ],
+  [
+   5,
+   6539,
+   0.010643405882236846,
+   false,
+   "MAIN"
+  ],
+  [
+   6,
+   7846,
+   0.010707167317464555,
+   false,
+   "MAIN"
+  ],
+  [
+   7,
+   9155,
+   0.010760323928422619,
+   false,
+   "MAIN"
+  ],
+  [
+   8,
+   10474,
+   0.010908533046573769,
+   true,
+   "MAIN"
+  ],
+  [
+   9,
+   11773,
+   0.010843550247001302,
+   false,
+   "MAIN"
+  ],
+  [
+   10,
+   13079,
+   0.010814890873865514,
+   false,
+   "MAIN"
+  ],
+  [
+   11,
+   14394,
+   0.010940198221384747,
+   false,
+   "MAIN"
+  ],
+  [
+   12,
+   15705,
+   0.010902706478563156,
+   false,
+   "MAIN"
+  ]
+ ],
+ "frozen": null,
+ "init_from": {
+  "checkpoint_sha256": "421a03c029bf1f5491de723fbcb836ce535b0fa9d5e84a064d0af2ba6581fba0",
+  "dataset": "amazon2023_baby_products",
+  "fl_init_kind": "endpoint_6.0",
+  "kind": "PRE",
+  "run_id": "BM_amazon2023_baby_products_PRE_s2027",
+  "seed": 2027,
+  "state_digest": "d71420054bb5ffbb5fb50252d1c7f3475803dcfa58661a25b684cf001fd947fa"
+ },
+ "kind": "fl",
+ "run_id": "BM_amazon2023_baby_products_PF_WARM_s2027",
+ "spec": {
+  "arm": "PF_WARM",
+  "cfg": {
+   "dp": null,
+   "dropout_p": 0.1,
+   "endpoint_efe": 6.0,
+   "endpoint_rounds": 15706,
+   "exposure_point": "end",
+   "lr_peak_local": 0.025,
+   "lr_shape": "fl_const",
+   "max_attempts": 2,
+   "method": "PF",
+   "mu": 0.0,
+   "n_shards": 2,
+   "pf": {
+    "clip": 1.0,
+    "lam": 0.0001,
+    "lr": 0.0007114121116984968
+   },
+   "seed": 2027,
+   "server_opt": {
+    "beta1": 0.9,
+    "beta2": 0.99,
+    "lr": 0.001,
+    "name": "fedadam",
+    "tau": 0.001,
+    "v_init": "tau_squared"
+   },
+   "solver": {
+    "batch_size": 16,
+    "clip": 1.0,
+    "fused": null,
+    "lr": 0.025,
+    "optimizer": "sgd_m",
+    "passes": 1,
+    "weight_decay": 0.0
+   }
+  },
+  "client_lr": 0.1,
+  "client_opt": "sgd_m",
+  "data": {
+   "dataset": "amazon2023_baby_products",
+   "fingerprint": "95c0a5508c62aa53b0be5a9ff823e7867904fdb19ce897de23b75ce74ef99a90",
+   "n_clients": 150777,
+   "n_decisions": 788752
+  },
+  "dropout": [
+   0.1
+  ],
+  "exposure_budget": {
+   "dropout_p": 0.1,
+   "endpoint_efe": 6.0,
+   "formula": "rounds = ceil(60 N_clients / (576 P)) (launch_fl.fa_rounds, 06J \u00a73)",
+   "group": 64,
+   "n_clients": 150777,
+   "passes": 1,
+   "rounds": 15706
+  },
+  "init_from": {
+   "checkpoint_sha256": "421a03c029bf1f5491de723fbcb836ce535b0fa9d5e84a064d0af2ba6581fba0",
+   "dataset": "amazon2023_baby_products",
+   "fl_init_kind": "endpoint_6.0",
+   "kind": "PRE",
+   "run_id": "BM_amazon2023_baby_products_PRE_s2027",
+   "seed": 2027,
+   "state_digest": "d71420054bb5ffbb5fb50252d1c7f3475803dcfa58661a25b684cf001fd947fa"
+  },
+  "knobs": {
+   "batch": 16,
+   "clip": 1.0,
+   "dropout_p": 0.1,
+   "endpoint_efe": 6.0,
+   "group": 64,
+   "m": 1024,
+   "max_attempts": 2,
+   "mu": 0.01,
+   "n_shards": 2,
+   "passes": 2,
+   "pf_clip": 1.0,
+   "pf_lam": 0.0001,
+   "rounds": 6827,
+   "rounds_1024": 384,
+   "s_cal_rounds": 20,
+   "s_cal_seed": 2026,
+   "sampling": "sweep",
+   "weight_decay": 1e-05
+  },
+  "local_passes": 1,
+  "lr_mult": 1.0,
+  "lr_peak_base": 0.0007114121116984968,
+  "lr_shape": "fl_const",
+  "max_len": 50,
+  "max_rounds": 15706,
+  "plan": {
+   "group_size": 64,
+   "sampling": "sweep"
+  },
+  "provenance": {
+   "ft_cell": "FT_C_f0.3_P4",
+   "pins": {
+    "device/SELECTION_FT_C.json": "e47965d2f4486fc2c30140a8ee14e79686a842decb091b3dff1de5646716c10c",
+    "fl/FL_TUNING_SELECTION.json": "9bca186e5025f5caa9e762f3c425fb3151923b79e60f01e6ecb063aac9c715ec",
+    "fl/FL_WARM_SELECTION_S7.json": "d67a0a851665495b092abbba4456f26a3423d6ef21665f5a0e2b65e2d78dc000",
+    "fl/FL_WARM_SELECTION_S8.json": "8b79d3052799dfa0ba208dce5db138da88aaa7024ba6511a374c59ce8c55a98a"
+   },
+   "tuning_winner_label": "fedadam|eta=0.01|m=1|shape=fl_const|client=sgd_m|clr=0.1|passes=1",
+   "warm_winners": {
+    "FA_WARM": "f=0.25|sf=0.1",
+    "FA_WARM_FROZEN": "f=1|sf=0.1"
+   }
+  },
+  "role": "MAIN",
+  "server_lr": 0.01,
+  "server_opt": "fedadam",
+  "upload_codec": null,
+  "variant": "SASREC_D64_B2",
+  "warm_lr_factor": 0.25,
+  "warm_server_lr_factor": 0.1
+ },
+ "spec_sha256": "9dd54469ef2a273eaeaf7e9065302a54015a86f8aecbdd8a90f0374443c52bf3",
+ "status": "DONE_MAIN",
+ "summary": {
+  "counters": {
+   "coverage_by_sweep": {
+    "0": {
+     "clients": 135661,
+     "fraction": 0.8997459824774335
+    },
+    "1": {
+     "clients": 135872,
+     "fraction": 0.9011454001605019
+    },
+    "2": {
+     "clients": 135603,
+     "fraction": 0.8993613084223722
+    },
+    "3": {
+     "clients": 135541,
+     "fraction": 0.898950105122134
+    },
+    "4": {
+     "clients": 135755,
+     "fraction": 0.9003694197390849
+    },
+    "5": {
+     "clients": 135615,
+     "fraction": 0.899440896157902
+    },
+    "6": {
+     "clients": 90369,
+     "fraction": 0.5993553393422074
+    }
+   },
+   "efe": 5.992740430452157,
+   "exposures": 4726786,
+   "max_visits": 7,
+   "min_visits": 1,
+   "noop_visits": 0,
+   "retries": 0,
+   "rounds": 15706,
+   "steps": 949633,
+   "steps_hist": {
+    "1": 874143,
+    "10": 54,
+    "11": 34,
+    "12": 39,
+    "13": 51,
+    "14": 6,
+    "16": 12,
+    "17": 12,
+    "18": 5,
+    "19": 5,
+    "2": 23481,
+    "20": 5,
+    "21": 7,
+    "22": 5,
+    "26": 5,
+    "28": 5,
+    "3": 3871,
+    "4": 1361,
+    "5": 574,
+    "6": 262,
+    "7": 229,
+    "8": 161,
+    "9": 89
+   },
+   "visits": 904416,
+   "wasted_steps": 0
+  },
+  "lr_table_digest": "db691bde55bef6944facbc4b22d92b555b86b847263aa3aad904d5c1e893662d",
+  "rounds": 15706
+ },
+ "timing": {
+  "mean_round_s": 1.249319915519547,
+  "median_round_s": 1.0798132391646504,
+  "n_clients": 150777,
+  "n_decisions": 788752,
+  "rounds_full_run": 15706,
+  "rounds_this_leg": 15706,
+  "wall_s_this_leg": 19625.42
+ },
+ "utc": "2026-10-04T20:50:54Z",
+ "validation": {
+  "CONTROLLED_BUDGET": {
+   "ALL": {
+    "hr@10": 0.021820138293844528,
+    "hr@20": 0.03659273724833775,
+    "mrr@20": 0.008636425643086065,
+    "n_unreachable": 0,
+    "n_users": 150549,
+    "ndcg@10": 0.010902706478563156,
+    "ndcg@20": 0.014607486061935826
+   },
+   "BAND": {
+    "hr@10": 0.02244952178533475,
+    "hr@20": 0.03799149840595112,
+    "mrr@20": 0.009116482371233262,
+    "n_unreachable": 0,
+    "n_users": 22584,
+    "ndcg@10": 0.01136307528615776,
+    "ndcg@20": 0.015266391127186961
+   },
+   "BAND_COVERED_TARGET": {
+    "hr@10": 0.023483072172023334,
+    "hr@20": 0.03938150520416333,
+    "mrr@20": 0.009294616008099079,
+    "n_unreachable": 0,
+    "n_users": 139888,
+    "ndcg@10": 0.011733612301564141,
+    "ndcg@20": 0.015720736726083557
+   },
+   "BAND_UNCOVERED_TARGET": {
+    "hr@10": 0.0,
+    "hr@20": 0.0,
+    "mrr@20": 0.0,
+    "n_unreachable": 0,
+    "n_users": 10661,
+    "ndcg@10": 0.0,
+    "ndcg@20": 0.0
+   },
+   "OTHERS": {
+    "hr@10": 0.021709061071386707,
+    "hr@20": 0.036345875825421016,
+    "mrr@20": 0.008551702467620303,
+    "n_unreachable": 0,
+    "n_users": 127965,
+    "ndcg@10": 0.010821457940676104,
+    "ndcg@20": 0.01449119870216064
+   }
+  },
+  "PRACTICAL_BEST": {
+   "ALL": {
+    "hr@10": 0.0218998465615846,
+    "hr@20": 0.036997920942683116,
+    "mrr@20": 0.008634491043054493,
+    "n_unreachable": 0,
+    "n_users": 150549,
+    "ndcg@10": 0.010908533046573769,
+    "ndcg@20": 0.014692296895769208
+   },
+   "BAND": {
+    "hr@10": 0.022139567835635848,
+    "hr@20": 0.038124335812964934,
+    "mrr@20": 0.009053834505661615,
+    "n_unreachable": 0,
+    "n_users": 22584,
+    "ndcg@10": 0.011240217128305318,
+    "ndcg@20": 0.01524838129084584
+   },
+   "BAND_COVERED_TARGET": {
+    "hr@10": 0.023568855084067253,
+    "hr@20": 0.03981756834038659,
+    "mrr@20": 0.009292533970324911,
+    "n_unreachable": 0,
+    "n_users": 139888,
+    "ndcg@10": 0.011739882917967476,
+    "ndcg@20": 0.015812011075725996
+   },
+   "BAND_UNCOVERED_TARGET": {
+    "hr@10": 0.0,
+    "hr@20": 0.0,
+    "mrr@20": 0.0,
+    "n_unreachable": 0,
+    "n_users": 10661,
+    "ndcg@10": 0.0,
+    "ndcg@20": 0.0
+   },
+   "OTHERS": {
+    "hr@10": 0.021857539170867035,
+    "hr@20": 0.036799124760676746,
+    "mrr@20": 0.008560482894267564,
+    "n_unreachable": 0,
+    "n_users": 127965,
+    "ndcg@10": 0.010849995530051084,
+    "ndcg@20": 0.014594155919889782
+   }
+  }
+ }
+}

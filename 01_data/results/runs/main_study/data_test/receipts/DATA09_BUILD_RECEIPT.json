@@ -1,0 +1,771 @@
+{
+ "receipt": "DATA09_BUILD_RECEIPT",
+ "task": "DATA-09",
+ "status": "PASS",
+ "full_build": true,
+ "buckets": 64,
+ "python_utc_end": "2026-10-03T15:34:49Z",
+ "isolation_modules_checked": 11,
+ "lock": {
+  "path": "contracts/DATA_PROTOCOL_LOCK.json",
+  "file_sha256": "ebf4e86f6beb82e98283108a2dad9082727e8559b81301cd46f35f60c79fd7c0",
+  "lock_self_sha256": "da51d271e97d3a681227a7063fd35b429797e52ee25586ba39843a37b7c839e1",
+  "verified": true
+ },
+ "code": {
+  "d9_code_sha256": "0f90eb2d4e969668c2e54f2982beb50e70bfcef5804d8257d2fa083c693013c1",
+  "d9_code_sha256_rule": "v4data.common.code_tree_sha256 over code/v4data09/{__init__,d9_common,d9_gate,d9_read,d9_build}.py",
+  "d9_code_files_sha256": {
+   "__init__.py": "ecc1d2e54ff5e1b7f96e364297e3a497a886de1ef06b0bfae3243753ef9945ea",
+   "d9_common.py": "7a99911d5c90bfe9911b4c6779b8f0d4750fb59f98c14fafd4d52a6589e62ad0",
+   "d9_gate.py": "6a2e018d0f149fff58775d7b4f34241f43f5a08ee53d672c4ab70dfdcb3119bd",
+   "d9_read.py": "5fb176a8e55327b481c1226168ac94e364fd94203d541fb777282aca07c39755",
+   "d9_build.py": "de25f0b22fc9a8abe67742ab71dc85cd7f80de56f22fdaf37a44aa604a09e0d1"
+  },
+  "v4data06_files_sha256": {
+   "d6_common.py": "03cdd46249147293eb59b2ffc14cd910e8864694cf1b4695425680243308d946",
+   "d6_build.py": "277a2fdc08a4d8a2479ae07f9b6b2061ead60deb67e1db3c42ff699848f4d394"
+  },
+  "census_v2_core_sha256": "aca2fe3a69afaa6a38c75492acc3148a8ec5ccb7b79678af815acd8eef4d169a",
+  "v4fs_data_fs_common_sha256": "a152cbc23c3a344ce4ca0d78e83b252c87842fb9fb6843b04f2f9483517b28b1",
+  "test_exposure_register_tool_sha256": "7d59e828f0d8514541ac9cd68393053e064f9c70df3e3655e9c4f0a34eae2622",
+  "v4data_builder_code_sha256": "443254e9ed95e41a48076f91643c83fbc77355dc80bb6b111d8432703d3e34a5"
+ },
+ "test_gate": {
+  "all_methods_lock_sha256": "04a3cd196149e2acf2ab5bb004f58c997199aa52e32f3c11c9ae647255beed23",
+  "test_exposure_register_entry_id": 5,
+  "test_exposure_register_entry_sha256": "01c0d071b4ab47d3daf36768b895cd25a15ce672106414faf82e7febff98e27c",
+  "rule": "v4data09.d9_gate.check_test_gate: ALL_METHODS_LOCK.json file sha256 == the FIRST TEST_EXPOSURE_REGISTER entry with access_purpose MANIFEST_BUILD and split RETRO_TEST; the register hash chain verifies (tools/test_exposure_register.py verify)",
+  "register_file_sha256_at_build": "425db52d5e3dd700f297d647fac8b1621a63103a383799230f8010c441b4a1f2",
+  "lock_path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/company/gates/ALL_METHODS_LOCK.json",
+  "register_path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/company/registers/TEST_EXPOSURE_REGISTER.json"
+ },
+ "checks": [
+  {
+   "name": "code.v4data_builder_code_sha256_is_DATA04",
+   "observed": "443254e9ed95e41a48076f91643c83fbc77355dc80bb6b111d8432703d3e34a5",
+   "expected": "443254e9ed95e41a48076f91643c83fbc77355dc80bb6b111d8432703d3e34a5",
+   "source": "DATA-04 handoff",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "DATA04.universe_size",
+   "observed": 2694998,
+   "expected": 2694998,
+   "source": "g0/data_census/COHORT_PROJECTIONS.json universe_size; g0/receipts_qa01/COHORT_RECEIPTS.json",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "DATA04.s5_total_examples",
+   "observed": 40180608,
+   "expected": 40180608,
+   "source": "CLIENT_CENSUS.json s5.total_examples",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "DATA04.cohortALL.population_sha256",
+   "observed": "db46b81d6ceb7d0c766e76ca2d0f5dede905cedf4b91881e168be4476b9bee14",
+   "expected": "db46b81d6ceb7d0c766e76ca2d0f5dede905cedf4b91881e168be4476b9bee14",
+   "source": "COHORT_PROJECTIONS.json cohorts.ALL",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "pool.n_users",
+   "observed": 1446986,
+   "expected": 1446986,
+   "source": "CENSUS-02 / FS-01",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "pool.population_sha256_selection_key_v2",
+   "observed": "e2a082cda5e3b246f1ea85cf1e78368c185e003ce1013572d07bd8ff471fbc70",
+   "expected": "e2a082cda5e3b246f1ea85cf1e78368c185e003ce1013572d07bd8ff471fbc70",
+   "source": "CENSUS-02 / FS-01 pool_population_sha256",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "pool.prefix32768.population_sha256_selection_key_v2",
+   "observed": "9be38de146f5069a88d57c867dfa021cf1c67f2d67ae1e58df63f7c6ac9c1f02",
+   "expected": "9be38de146f5069a88d57c867dfa021cf1c67f2d67ae1e58df63f7c6ac9c1f02",
+   "source": "CENSUS-02 candidate-N table",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "pool.prefix65536.population_sha256_selection_key_v2",
+   "observed": "565157638fa27126f2780e5f4312f777243dbb4c40e3b97e65170e13b6b8571e",
+   "expected": "565157638fa27126f2780e5f4312f777243dbb4c40e3b97e65170e13b6b8571e",
+   "source": "CENSUS-02 candidate-N table",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "pool.prefix131072.population_sha256_selection_key_v2",
+   "observed": "563e76637a384c2985fff5e272d4290f4f3e52c99f57eebec4c20cde0628b8b3",
+   "expected": "563e76637a384c2985fff5e272d4290f4f3e52c99f57eebec4c20cde0628b8b3",
+   "source": "CENSUS-02 candidate-N table",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "pool.prefix262144.population_sha256_selection_key_v2",
+   "observed": "e4cf6887d77ae2c5a12062bcb0438814598a598398b1badcfaf5cecb9e4eb70d",
+   "expected": "e4cf6887d77ae2c5a12062bcb0438814598a598398b1badcfaf5cecb9e4eb70d",
+   "source": "CENSUS-02 candidate-N table",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "MAIN.population_sha256_selection_key_v2",
+   "observed": "563e76637a384c2985fff5e272d4290f4f3e52c99f57eebec4c20cde0628b8b3",
+   "expected": "563e76637a384c2985fff5e272d4290f4f3e52c99f57eebec4c20cde0628b8b3",
+   "source": "DATA-06.md / CENSUS-02",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "CALIB.population_sha256_selection_key_v2",
+   "observed": "9be38de146f5069a88d57c867dfa021cf1c67f2d67ae1e58df63f7c6ac9c1f02",
+   "expected": "9be38de146f5069a88d57c867dfa021cf1c67f2d67ae1e58df63f7c6ac9c1f02",
+   "source": "DATA-06.md / CENSUS-02",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "CALIB.subset_of_MAIN",
+   "observed": true,
+   "expected": true,
+   "source": "band construction (nested prefix)",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "WARM_TRUNCATION.subset_of_MAIN",
+   "observed": true,
+   "expected": true,
+   "source": "band construction",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "COLD_H.subset_of_TRUE_COLD",
+   "observed": true,
+   "expected": true,
+   "source": "band construction",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "disjoint.MAIN_vs_U_NEW_VAL",
+   "observed": 0,
+   "expected": 0,
+   "source": "rank-band construction over the shared pool",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "disjoint.MAIN_vs_U_NEW_TEST",
+   "observed": 0,
+   "expected": 0,
+   "source": "rank-band construction over the shared pool",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "disjoint.U_NEW_VAL_vs_U_NEW_TEST",
+   "observed": 0,
+   "expected": 0,
+   "source": "rank-band construction over the shared pool",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "disjoint.MAIN_vs_SPARSE",
+   "observed": 0,
+   "expected": 0,
+   "source": "mutually exclusive strata (C vs B/D/A0-A1)",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "disjoint.MAIN_vs_HEAVY",
+   "observed": 0,
+   "expected": 0,
+   "source": "mutually exclusive strata (C vs B/D/A0-A1)",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "disjoint.MAIN_vs_TRUE_COLD",
+   "observed": 0,
+   "expected": 0,
+   "source": "mutually exclusive strata (C vs B/D/A0-A1)",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "disjoint.MAIN_vs_COLD_H",
+   "observed": 0,
+   "expected": 0,
+   "source": "mutually exclusive strata (C vs B/D/A0-A1)",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "disjoint.U_NEW_VAL_vs_SPARSE",
+   "observed": 0,
+   "expected": 0,
+   "source": "mutually exclusive strata (C vs B/D/A0-A1)",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "disjoint.U_NEW_VAL_vs_HEAVY",
+   "observed": 0,
+   "expected": 0,
+   "source": "mutually exclusive strata (C vs B/D/A0-A1)",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "disjoint.U_NEW_VAL_vs_TRUE_COLD",
+   "observed": 0,
+   "expected": 0,
+   "source": "mutually exclusive strata (C vs B/D/A0-A1)",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "disjoint.U_NEW_VAL_vs_COLD_H",
+   "observed": 0,
+   "expected": 0,
+   "source": "mutually exclusive strata (C vs B/D/A0-A1)",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "disjoint.U_NEW_TEST_vs_SPARSE",
+   "observed": 0,
+   "expected": 0,
+   "source": "mutually exclusive strata (C vs B/D/A0-A1)",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "disjoint.U_NEW_TEST_vs_HEAVY",
+   "observed": 0,
+   "expected": 0,
+   "source": "mutually exclusive strata (C vs B/D/A0-A1)",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "disjoint.U_NEW_TEST_vs_TRUE_COLD",
+   "observed": 0,
+   "expected": 0,
+   "source": "mutually exclusive strata (C vs B/D/A0-A1)",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "disjoint.U_NEW_TEST_vs_COLD_H",
+   "observed": 0,
+   "expected": 0,
+   "source": "mutually exclusive strata (C vs B/D/A0-A1)",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "disjoint.SPARSE_vs_HEAVY",
+   "observed": 0,
+   "expected": 0,
+   "source": "mutually exclusive strata (B vs D)",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "MAIN.population_sha256_selection_key_v2_eq_registry_MAIN_TRAIN_5_100_131072",
+   "observed": "563e76637a384c2985fff5e272d4290f4f3e52c99f57eebec4c20cde0628b8b3",
+   "expected": "563e76637a384c2985fff5e272d4290f4f3e52c99f57eebec4c20cde0628b8b3",
+   "source": "REGISTRY_V2 manifests.MAIN_TRAIN_5_100_131072",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "U_NEW_TEST.population_sha256_selection_key_v2_eq_registry_UNEW_HOLDOUT_SUPPORT_32768",
+   "observed": "7ff654a217b29cd66e9cadca9b39f3290eb9d89bfdae15d280b9a5b77b517999",
+   "expected": "7ff654a217b29cd66e9cadca9b39f3290eb9d89bfdae15d280b9a5b77b517999",
+   "source": "REGISTRY_V2 manifests.UNEW_HOLDOUT_SUPPORT_32768",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "SPARSE.population_sha256_selection_key_v2_eq_registry_SPARSE_PANEL_16384_SUPPORT",
+   "observed": "087cb59ed7eea3dfd66825283ff51a1c876f8ef3f151451d23f887d7ff7ea733",
+   "expected": "087cb59ed7eea3dfd66825283ff51a1c876f8ef3f151451d23f887d7ff7ea733",
+   "source": "REGISTRY_V2 manifests.SPARSE_PANEL_16384_SUPPORT",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "HEAVY.population_sha256_selection_key_v2_eq_registry_HEAVY_PANEL_16384_SUPPORT",
+   "observed": "7d52e952cf4a4ab9226ae1b2a82a6c5978ada8f375a77302279b176e13241ed3",
+   "expected": "7d52e952cf4a4ab9226ae1b2a82a6c5978ada8f375a77302279b176e13241ed3",
+   "source": "REGISTRY_V2 manifests.HEAVY_PANEL_16384_SUPPORT",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "MAIN_RETRO_TEST_5_100_131072.assertions_all_true",
+   "observed": [],
+   "expected": [],
+   "source": "MANIFEST_SPEC M07 / M08 + DATA-09 RETRO_TEST rules",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "MAIN_RETRO_TEST_5_100_131072.users_subset_of_population",
+   "observed": true,
+   "expected": true,
+   "source": "population definition",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "UNEW_HOLDOUT_RETRO_TEST_32768.assertions_all_true",
+   "observed": [],
+   "expected": [],
+   "source": "MANIFEST_SPEC M07 / M08 + DATA-09 RETRO_TEST rules",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "UNEW_HOLDOUT_RETRO_TEST_32768.users_subset_of_population",
+   "observed": true,
+   "expected": true,
+   "source": "population definition",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "SPARSE_PANEL_16384_RETRO_TEST.assertions_all_true",
+   "observed": [],
+   "expected": [],
+   "source": "MANIFEST_SPEC M07 / M08 + DATA-09 RETRO_TEST rules",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "SPARSE_PANEL_16384_RETRO_TEST.users_subset_of_population",
+   "observed": true,
+   "expected": true,
+   "source": "population definition",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "HEAVY_PANEL_16384_RETRO_TEST.assertions_all_true",
+   "observed": [],
+   "expected": [],
+   "source": "MANIFEST_SPEC M07 / M08 + DATA-09 RETRO_TEST rules",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "HEAVY_PANEL_16384_RETRO_TEST.users_subset_of_population",
+   "observed": true,
+   "expected": true,
+   "source": "population definition",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "TRUE_COLD_RETRO_TEST.assertions_all_true",
+   "observed": [],
+   "expected": [],
+   "source": "MANIFEST_SPEC M07 / M08 + DATA-09 RETRO_TEST rules",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "TRUE_COLD_RETRO_TEST.users_subset_of_population",
+   "observed": true,
+   "expected": true,
+   "source": "population definition",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "TRUE_COLD_RETRO_TEST.every_user_zero_eligible",
+   "observed": true,
+   "expected": true,
+   "source": "M08 population",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "TRUE_COLD_RETRO_TEST.every_user_has_ge1_eval_row",
+   "observed": true,
+   "expected": true,
+   "source": "M08 population",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "TRUE_COLD_RETRO_TEST.n_users_eq_full_population_cold_test_users",
+   "observed": 325969,
+   "expected": 325969,
+   "source": "structural: M08 = every zero-eligible user with >= 1 RETRO_TEST eval row",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "TRUE_COLD_RETRO_TEST.disjoint_from_MAIN",
+   "observed": 0,
+   "expected": 0,
+   "source": "warm bands vs zero-eligible users",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "TRUE_COLD_RETRO_TEST.disjoint_from_U_NEW_TEST",
+   "observed": 0,
+   "expected": 0,
+   "source": "warm bands vs zero-eligible users",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "TRUE_COLD_RETRO_TEST.disjoint_from_SPARSE",
+   "observed": 0,
+   "expected": 0,
+   "source": "warm bands vs zero-eligible users",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "TRUE_COLD_RETRO_TEST.disjoint_from_HEAVY",
+   "observed": 0,
+   "expected": 0,
+   "source": "warm bands vs zero-eligible users",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "MAIN_RETRO_TEST_5_100_131072.n_classes_with_ge1_cohort_train_positive_eq_MAIN_VALIDATION_5_100_131072",
+   "observed": 116211,
+   "expected": 116211,
+   "source": "MAIN_VALIDATION_5_100_131072 header counts_by_cause",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "MAIN_RETRO_TEST_5_100_131072.n_classes_with_ge5_cohort_train_positive_eq_MAIN_VALIDATION_5_100_131072",
+   "observed": 53672,
+   "expected": 53672,
+   "source": "MAIN_VALIDATION_5_100_131072 header counts_by_cause",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "UNEW_HOLDOUT_RETRO_TEST_32768.n_classes_with_ge1_cohort_train_positive_eq_UNEW_HOLDOUT_VALIDATION_32768",
+   "observed": 73574,
+   "expected": 73574,
+   "source": "UNEW_HOLDOUT_VALIDATION_32768 header counts_by_cause",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "UNEW_HOLDOUT_RETRO_TEST_32768.n_classes_with_ge5_cohort_train_positive_eq_UNEW_HOLDOUT_VALIDATION_32768",
+   "observed": 21738,
+   "expected": 21738,
+   "source": "UNEW_HOLDOUT_VALIDATION_32768 header counts_by_cause",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "SPARSE_PANEL_16384_RETRO_TEST.n_classes_with_ge1_cohort_train_positive_eq_SPARSE_PANEL_16384_VALIDATION",
+   "observed": 13206,
+   "expected": 13206,
+   "source": "SPARSE_PANEL_16384_VALIDATION header counts_by_cause",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "SPARSE_PANEL_16384_RETRO_TEST.n_classes_with_ge5_cohort_train_positive_eq_SPARSE_PANEL_16384_VALIDATION",
+   "observed": 1323,
+   "expected": 1323,
+   "source": "SPARSE_PANEL_16384_VALIDATION header counts_by_cause",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "HEAVY_PANEL_16384_RETRO_TEST.n_classes_with_ge1_cohort_train_positive_eq_HEAVY_PANEL_16384_VALIDATION",
+   "observed": 133544,
+   "expected": 133544,
+   "source": "HEAVY_PANEL_16384_VALIDATION header counts_by_cause",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "HEAVY_PANEL_16384_RETRO_TEST.n_classes_with_ge5_cohort_train_positive_eq_HEAVY_PANEL_16384_VALIDATION",
+   "observed": 77279,
+   "expected": 77279,
+   "source": "HEAVY_PANEL_16384_VALIDATION header counts_by_cause",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "TRUE_COLD_RETRO_TEST.n_classes_with_ge1_cohort_train_positive_eq_TRUE_COLD_VALIDATION",
+   "observed": 116211,
+   "expected": 116211,
+   "source": "TRUE_COLD_VALIDATION header counts_by_cause",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "TRUE_COLD_RETRO_TEST.n_classes_with_ge5_cohort_train_positive_eq_TRUE_COLD_VALIDATION",
+   "observed": 53672,
+   "expected": 53672,
+   "source": "TRUE_COLD_VALIDATION header counts_by_cause",
+   "pass": true,
+   "hard": true
+  }
+ ],
+ "n_checks": 62,
+ "n_failed": 0,
+ "manifests": {
+  "MAIN_RETRO_TEST_5_100_131072": {
+   "tables": {
+    "users": {
+     "row_count": 36037,
+     "table_content_sha256": "4434874b42e90c7b3a388f0688cf05c74b252bba0dc888fea0634a406b7215f5",
+     "file_sha256": "155bb874910803418bc4ec1288ca702e1d0fed9ecc1001bb6ec5a2b2896b8c42"
+    },
+    "decisions": {
+     "row_count": 300133,
+     "table_content_sha256": "aa73c7b2f5aabeb9b7a9713d7a7e6c025b632d27c46082f6df0b38fee4624194",
+     "file_sha256": "5d0c76d0abcb18b26955b6bee18cb29c68e0ffcaa80ca1c697704014951ef6a9"
+    }
+   },
+   "header_file_sha256": "200875979165cff13a28ae08db1b9d767d4b5d01481b157cdeeee2f38908fa49",
+   "header_content_sha256": "bdbee59cde2240f65de14f56514bda02fb92fb2bd02a52a64ee3ed07f3cbbaf4",
+   "ordered_decision_id_sha256": "5e5c2f64d4312dcd9dd251d5eaa802d15046e38d540eb9cc92df80b7422e6f3c",
+   "eval_ordered_decision_id_sha256": "ee9dfb4b7471bbcafc97f129043d39ad17d33141c539df84dbb1afd30921cc25",
+   "rankable_ordered_decision_id_sha256": "be93ed9beb1efe5891b362212ad3245d03542f0ad4431f249088b6e163e1789a",
+   "population_sha256": "ab29540de09341a86d648f74377ee8923b418dd27d17588555fe6deefa6c1e62",
+   "n_users": 36037,
+   "n_decisions": 300133,
+   "n_eval_rows": 229742,
+   "n_rankable_rows": 221719
+  },
+  "UNEW_HOLDOUT_RETRO_TEST_32768": {
+   "tables": {
+    "users": {
+     "row_count": 9033,
+     "table_content_sha256": "e8210d28ac345ecc9f45fd3d6dbe18eb1110f445081ab59ee0ac9e2be722cf30",
+     "file_sha256": "8959605869c3804bd49d645151811ed1047975efaebf3d5144bd2bd54b625364"
+    },
+    "decisions": {
+     "row_count": 76703,
+     "table_content_sha256": "faaa326fc8f2b6199c4d6c6db32c4b15846733b1c93d1f74386077601c0a9487",
+     "file_sha256": "9747bd9a6a2587b899a880bd7a133f3fcf79b51cc022d81a9f7d33e538f4ae18"
+    }
+   },
+   "header_file_sha256": "72a0fbf1f6bd73853af259bdc6bdd1d9610a1bc2c56183c580b8bb92fe22a399",
+   "header_content_sha256": "00441da407db0add12369d8434c83a8ef30e6f7c1b83dd0f44317fe16d4c8bf7",
+   "ordered_decision_id_sha256": "e4a0c675c7d1c1fd32e2889dd84efca4832e746ba0338888e0d37c9fc0ae62ed",
+   "eval_ordered_decision_id_sha256": "095027862e1f39cf99eb2db73932bc621ce3e18d348030b07f89c42f46098cbd",
+   "rankable_ordered_decision_id_sha256": "36e120ad17d096b868d59195bacbe7c20a2da3aef4d2beaf74e0765eb748008c",
+   "population_sha256": "ae750903a14d83cd8e4fece4f9f36a3c372cef843f7c03fe447803ac287a6fd9",
+   "n_users": 9033,
+   "n_decisions": 76703,
+   "n_eval_rows": 59094,
+   "n_rankable_rows": 57078
+  },
+  "SPARSE_PANEL_16384_RETRO_TEST": {
+   "tables": {
+    "users": {
+     "row_count": 5648,
+     "table_content_sha256": "3ef04002834c38e2284d34ef1b7e4628b419bdd406e02e0c1099ae3351e1c437",
+     "file_sha256": "2840087b98559756eff8354e1427f36d08bea932c3b64e5380017523e1873ea6"
+    },
+    "decisions": {
+     "row_count": 37502,
+     "table_content_sha256": "2df2b3cd1704d004ac95405e4e51bf80bb73a6ea9336d55ea3c7ef41c780c873",
+     "file_sha256": "f988afbb77463565f2613868a8783c5fa09c14b70cb68c50cf23e666682881d6"
+    }
+   },
+   "header_file_sha256": "6258f459c266ab79f8d5dd492708a94e5cc003d261efe4d8826855215ccda73f",
+   "header_content_sha256": "e212a49fb13f57e5df3fbb5c291159710c8fede2f9bb10f866a4c0a03bd291d5",
+   "ordered_decision_id_sha256": "6f9eb2453b95472a5c8b44355907d7f78602ea1a006172d20ff81325512efafd",
+   "eval_ordered_decision_id_sha256": "d4ee6a7f15e6a96976574af683dc3da28550b455b75ce3cd6f05596a2d1c9ccc",
+   "rankable_ordered_decision_id_sha256": "33c7d97d335b793d70bcd120f4de51c1604cae83bb4195a9d1d86a237de96aa9",
+   "population_sha256": "fed40ca2a63b1e8d36886a087501024e42a7edd484214ef3caae7bda6c7611eb",
+   "n_users": 5648,
+   "n_decisions": 37502,
+   "n_eval_rows": 26909,
+   "n_rankable_rows": 26163
+  },
+  "HEAVY_PANEL_16384_RETRO_TEST": {
+   "tables": {
+    "users": {
+     "row_count": 11869,
+     "table_content_sha256": "ffa4fba4734c89ce113626a1b91573a0c75c2a75182170dd81aa5e7f3e05a5ae",
+     "file_sha256": "76a9fa1efdc858b5f473443e98ae9ec104edf399843e8192f189372ec83c7bb7"
+    },
+    "decisions": {
+     "row_count": 297928,
+     "table_content_sha256": "490a16a47da03300c75a289bb929df3859f9e1dcd1c60fa19decc432ccc9c909",
+     "file_sha256": "50e1349b2fbcd2d69f040cb3cea1d359406fe6673459f05a54196bc57c117b80"
+    }
+   },
+   "header_file_sha256": "e8f8d6817d5e12e61cd8e81730e2e54f110739c90637b2ce4b078dcce3039d7b",
+   "header_content_sha256": "6dac5223145999dd0cb9f0189b8407764d1752f7e4a9f7f3d9a6fa660501371a",
+   "ordered_decision_id_sha256": "c670837019b00bcb410c3fcd67655897217bb28dac3b5f117352b0482953ef2c",
+   "eval_ordered_decision_id_sha256": "1d184851ce235a731fc2eea21732a6eb2de95b0f6554986215b14fd945ea5dac",
+   "rankable_ordered_decision_id_sha256": "0258257119c06cc4e4762f8ac01c3051a081864e8fc5c72ddffa8819d459fb07",
+   "population_sha256": "6986befdad7f99a7b644d6bef565bd3eb31b8645aff5fa399376dacbd15afb96",
+   "n_users": 11869,
+   "n_decisions": 297928,
+   "n_eval_rows": 252913,
+   "n_rankable_rows": 240281
+  },
+  "TRUE_COLD_RETRO_TEST": {
+   "tables": {
+    "users": {
+     "row_count": 325969,
+     "table_content_sha256": "aad6953049abde167f8a324a32c42cbc155fb6ee19e9a30fa405f23d105edc1b",
+     "file_sha256": "c1675034d680fe7210ccc6eeff2af89001e1db4434ee5aeb78bd542f9ce6f571"
+    },
+    "decisions": {
+     "row_count": 2590172,
+     "table_content_sha256": "96c0ca5224a6948b212d113f83a0957a4ea843ec96f5b672aaf3cf4b1e3edaa5",
+     "file_sha256": "7827883b61fe093fdc79582f3f2bbb36bfef970cfbb4dc5b3eef97b1b5168f9b"
+    }
+   },
+   "header_file_sha256": "9763bb78a632d87de76e36fa9c08c38bf875ed47ce97938c4c0180eaeda3c226",
+   "header_content_sha256": "30d0cc16cadcb6e065c7e207b8c30bb953ae87b4de3e97e019f931387bc4fcb8",
+   "ordered_decision_id_sha256": "b9fd05871023c67072605abef2b460099bd408f8b84cde02e97e4797e98a69ed",
+   "eval_ordered_decision_id_sha256": "2f2b0119a84cc930f468975c5c6d3b5af616d84fe81453b27d4498c05aa34510",
+   "rankable_ordered_decision_id_sha256": "083247babec6d6d1d9e0853942a7ac695d7935fb05efa335e4f04cac6640f3ed",
+   "population_sha256": "383e5c4179cfb93118fd1b613a0ca5eeaa5bf2299ecd6ba4464253e7b22c30fc",
+   "n_users": 325969,
+   "n_decisions": 2590172,
+   "n_eval_rows": 2049324,
+   "n_rankable_rows": 1986883
+  }
+ },
+ "roles": {
+  "MAIN_TEST": {
+   "train": "MAIN_TRAIN_5_100_131072",
+   "eval": "MAIN_RETRO_TEST_5_100_131072"
+  },
+  "UNSEEN_HOLDOUT_TEST": {
+   "train": "UNEW_HOLDOUT_SUPPORT_32768",
+   "eval": "UNEW_HOLDOUT_RETRO_TEST_32768"
+  },
+  "TRUE_COLD_TEST": {
+   "eval": "TRUE_COLD_RETRO_TEST"
+  },
+  "SPARSE_PANEL_TEST": {
+   "train": "SPARSE_PANEL_16384_SUPPORT",
+   "eval": "SPARSE_PANEL_16384_RETRO_TEST"
+  },
+  "HEAVY_PANEL_TEST": {
+   "train": "HEAVY_PANEL_16384_SUPPORT",
+   "eval": "HEAVY_PANEL_16384_RETRO_TEST"
+  }
+ },
+ "population_extra": {
+  "MAIN_RETRO_TEST_5_100_131072": {
+   "n_population_users": 131072,
+   "n_population_users_without_retro_test_row": 95035,
+   "n_users_with_ge1_eval_row": 26254
+  },
+  "UNEW_HOLDOUT_RETRO_TEST_32768": {
+   "n_population_users": 32768,
+   "n_population_users_without_retro_test_row": 23735,
+   "n_users_with_ge1_eval_row": 6650
+  },
+  "SPARSE_PANEL_16384_RETRO_TEST": {
+   "n_population_users": 16384,
+   "n_population_users_without_retro_test_row": 10736,
+   "n_users_with_ge1_eval_row": 3866
+  },
+  "HEAVY_PANEL_16384_RETRO_TEST": {
+   "n_population_users": 16384,
+   "n_population_users_without_retro_test_row": 4515,
+   "n_users_with_ge1_eval_row": 10439
+  },
+  "TRUE_COLD_RETRO_TEST": {
+   "n_users_with_ge1_eval_row": 325969,
+   "n_test_only_users": 203433,
+   "selection_rule": "every user with >= 1 RETRO_TEST eval row and zero TRAIN-eligible examples (MANIFEST_SPEC M08 literally; NOT restricted to TRUE_COLD_VALIDATION users, TEST-only users included)"
+  }
+ },
+ "full_population_retro_test_counters": {
+  "per_old_split_TEST": {
+   "decisions": 7965332,
+   "has_observed_target": 5862968,
+   "loss_mask_true": 0,
+   "eval_mask_true": 5862968,
+   "target_oov_true": 198319,
+   "target_class_ge0": 5664649,
+   "distinct_users": 1272188,
+   "target_status_counts": {
+    "OBSERVED_IN_PARTITION": 5862835,
+    "NO_OBSERVED_NEXT": 2097950,
+    "AMBIGUOUS_BOUNDARY": 4404,
+    "OBSERVED_MATURED_IN_GRACE": 133,
+    "BOUNDARY_UNRESOLVED": 10
+   }
+  },
+  "v4_retro_test": {
+   "decisions": 7965332,
+   "has_observed_target": 5862968,
+   "loss_mask_true": 0,
+   "eval_mask_true": 5862968,
+   "target_oov_true": 198319,
+   "target_class_ge0": 5664649,
+   "distinct_users": 1272188,
+   "target_status_counts": {
+    "OBSERVED_IN_PARTITION": 5862835,
+    "NO_OBSERVED_NEXT": 2097950,
+    "AMBIGUOUS_BOUNDARY": 4404,
+    "OBSERVED_MATURED_IN_GRACE": 133,
+    "BOUNDARY_UNRESOLVED": 10
+   }
+  },
+  "test_users": {
+   "total_with_ge1_eval_row": 746662,
+   "warm_ge1_eligible_train_example": 420693,
+   "cold_zero_eligible_train_examples": 325969
+  }
+ },
+ "full_population_counters_note": "counts only; compared with the G0 census (SPLIT_COUNTS per_old_split.TEST / v4_retro_test, CLIENT_CENSUS s5.test_users) by d9_finalize AFTER the build (TEST_EXPOSURE_REGISTER entry 1)",
+ "target_metadata_join": {
+  "target_rows_joined": 2617924,
+  "target_pid_mismatch": 0,
+  "target_ts_mismatch": 0,
+  "grace_targets_not_joined": 58
+ },
+ "n_test_only_users_appended": 450979,
+ "timings_s": {
+  "prepare": 79.5,
+  "total": 225.8,
+  "pass0_support_s": 24.6,
+  "passA_aggregate_s": 54.8,
+  "passT_test_extract_s": 92.5
+ },
+ "test_split_read": true,
+ "test_split_read_gate": "d9_read.read_with_test under the GateRecord above",
+ "no_raw_ids_written": true,
+ "receipt_sha256": "c8977171344c9681c81857641932e3423c75f7787c25cc061e8d97a07a420f3f"
+}

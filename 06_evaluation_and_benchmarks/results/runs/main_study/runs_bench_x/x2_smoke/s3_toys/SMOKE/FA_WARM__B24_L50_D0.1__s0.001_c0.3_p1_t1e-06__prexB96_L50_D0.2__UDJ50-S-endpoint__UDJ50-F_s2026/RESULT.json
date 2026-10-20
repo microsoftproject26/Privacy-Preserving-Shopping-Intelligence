@@ -1,0 +1,166 @@
+{
+ "arm": "FA_WARM",
+ "checkpoints": {
+  "CONTROLLED_BUDGET": {
+   "bytes": 6573251,
+   "file": "ckpt/smoke_theta.pt",
+   "mark": 0.01679087227471938,
+   "sha256": "9471f4db4cb05fcfcde78c4ad8d0a32e1f20e868808d0728297bb8326a39170f"
+  },
+  "PRACTICAL_BEST": {
+   "bytes": 6573251,
+   "file": "ckpt/smoke_theta.pt",
+   "mark": 0.01679087227471938,
+   "sha256": "9471f4db4cb05fcfcde78c4ad8d0a32e1f20e868808d0728297bb8326a39170f"
+  }
+ },
+ "kind": "fl",
+ "label": "SMOKE_NOT_EVIDENCE",
+ "run_id": "BM_s3_toys_FA_WARM__B24_L50_D0.1__s0.001_c0.3_p1_t1e-06__prexB96_L50_D0.2__UDJ50-S-endpoint__UDJ50-F_s2026_SMOKE",
+ "spec": {
+  "arm": "FA_WARM",
+  "budget_efe": 24,
+  "cfg": {
+   "dp": null,
+   "dropout_p": 0.1,
+   "endpoint_efe": 24.0,
+   "endpoint_rounds": 4045,
+   "eval_every_half_efe": 4,
+   "exposure_point": "end",
+   "lr_peak_local": 0.3,
+   "lr_shape": "fl_const",
+   "max_attempts": 2,
+   "method": "FA",
+   "mu": 0.0,
+   "n_shards": 2,
+   "pf": null,
+   "seed": 2026,
+   "server_opt": {
+    "beta1": 0.9,
+    "beta2": 0.99,
+    "lr": 0.001,
+    "name": "fedadam",
+    "tau": 1e-06,
+    "v_init": "tau_squared"
+   },
+   "solver": {
+    "batch_size": 16,
+    "clip": 1.0,
+    "fused": null,
+    "lr": 0.3,
+    "optimizer": "sgd_m",
+    "passes": 1,
+    "weight_decay": 0.0
+   }
+  },
+  "client_lr": 0.1,
+  "client_opt": "sgd_m",
+  "data": {
+   "dataset": "s3_toys",
+   "fingerprint": "63e90844c9fe008243429ae7f03bfaf61606f29c4b2429e4b213237b5f5d350b",
+   "n_clients": 9706,
+   "n_decisions": 54077
+  },
+  "dropout": [
+   0.1
+  ],
+  "early_stop_marks": null,
+  "effective": {
+   "client_lr": 0.3,
+   "endpoint_efe": 24.0,
+   "eval_every_half_efe": 4,
+   "local_passes": 1,
+   "rounds": 4045,
+   "server_lr": 0.001,
+   "server_tau": 1e-06
+  },
+  "exploratory": "POST_HOC_X",
+  "exposure_budget": {
+   "dropout_p": 0.1,
+   "endpoint_efe": 24.0,
+   "formula": "rounds = ceil(10 E N_clients / (576 P)) (launch_fl.fa_rounds at E EFE; = ceil(60 N / (576 P)) at E = 6)",
+   "group": 64,
+   "n_clients": 9706,
+   "passes": 1,
+   "rounds": 4045
+  },
+  "init_from": {
+   "checkpoint_sha256": "afcf406a550e98de7f2fc37923ec4b0f71c9e3445f28632f7f5b3280f8465608",
+   "dataset": "s3_toys",
+   "fl_init_kind": "CONTROLLED_BUDGET@0.050936979958034874_B96",
+   "kind": "PRE",
+   "pre_budget_efe": 96,
+   "pre_ckpt_rule": "CONTROLLED_BUDGET",
+   "pre_device_class": "CPU-FP32",
+   "pre_dropout": [
+    0.2
+   ],
+   "pre_mark": 0.050936979958034874,
+   "pre_run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_x/x2_smoke/s3_toys/SMOKE/PRE__B96_L50_D0.2__UDJ50-S_s2026",
+   "run_id": "BM_s3_toys_PRE__B96_L50_D0.2__UDJ50-S_s2026_SMOKE",
+   "seed": 2026,
+   "state_digest": "2b1c00d7e023aa4976d4cca57e50d9f68ce5829259a6de163ca42f950bab917c"
+  },
+  "knobs": {
+   "batch": 16,
+   "clip": 1.0,
+   "dropout_p": 0.1,
+   "endpoint_efe": 6.0,
+   "group": 64,
+   "m": 1024,
+   "max_attempts": 2,
+   "mu": 0.01,
+   "n_shards": 2,
+   "passes": 2,
+   "pf_clip": 1.0,
+   "pf_lam": 0.0001,
+   "rounds": 6827,
+   "rounds_1024": 384,
+   "s_cal_rounds": 20,
+   "s_cal_seed": 2026,
+   "sampling": "sweep",
+   "weight_decay": 1e-05
+  },
+  "local_passes": 1,
+  "lr_mult": 1.0,
+  "lr_peak_base": 0.0007114121116984968,
+  "lr_shape": "fl_const",
+  "max_len": 50,
+  "max_rounds": 4045,
+  "overrides": {
+   "budget_efe": 24,
+   "client_lr": 0.3,
+   "local_passes": 1,
+   "server_lr": 0.001,
+   "server_tau": 1e-06
+  },
+  "plan": {
+   "group_size": 64,
+   "sampling": "sweep"
+  },
+  "provenance": null,
+  "role": "MAIN",
+  "select_population": "OTHERS",
+  "server_lr": 0.01,
+  "server_opt": "fedadam",
+  "study": "A1_DISJOINT_PRE",
+  "tag": "POST_HOC_EXPLORATORY",
+  "upload_codec": null,
+  "user_subset": {
+   "file": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_x/x2_A1/splits/s3_toys__DJ50.json",
+   "file_sha256": "7bc6a21106d6d15dad933eeded2013617bb422a9c55b2bbf6837ac992812d51e",
+   "frac_S": 0.5,
+   "n_F": 9706,
+   "n_S": 9706,
+   "n_role_users": 9706,
+   "role": "F",
+   "rule": "PCG64(SeedSequence([BAND_TAG=0x42414E44, 2026])).permutation(U) over the sorted external user ids (= v4bench.data.band_users); S = first floor(frac U + 0.5), F = the rest",
+   "split_id": "DJ50",
+   "split_sha256": "f6d406a2fb5d38dea99ce0ce681ce687a10adb3546f5791a0f042bd3866cfa62"
+  },
+  "variant": "SASREC_D64_B2",
+  "warm_lr_factor": 0.25,
+  "warm_server_lr_factor": 0.1
+ },
+ "status": "SMOKE_DONE_NOT_EVIDENCE"
+}

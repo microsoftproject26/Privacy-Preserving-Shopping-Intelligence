@@ -1,0 +1,218 @@
+{
+ "N": 646067,
+ "attempt": 0,
+ "checkpoints": {},
+ "ckpt_avg": {
+  "deleted_sha256": {
+   "ckpt_avg": "922a5c28696a8f6146e8c0dd428ea062e5f77163401470b1e4ee8c141adcf8e4",
+   "snapshot_5.0": "750d679502bfb7d1334d6e59e966a8e01b1279574a52c304a4f0e499d3eaccf2",
+   "snapshot_5.5": "6b7823c6fba7fdc28a0424b69ed521402c64b9359f535b785ebc04a705d77c1c",
+   "snapshot_6.0": "dde96b01d4883e907b172965a74962164e8a400431fe552a46079edd707aaf53"
+  },
+  "delta_vs_endpoint": -0.0003508435249928582,
+  "endpoint_value": 0.12421667612052623,
+  "outcome": "CKPT_AVG_EVALUATED",
+  "rows_file": "CKPT_AVG_ROWS.json",
+  "status": "COMPLETE",
+  "value": 0.12386583259553337
+ },
+ "config_sha256": "caea07419ef1987de3cb2c693125c9190cab36dddefe60d7564de4181b97c2f8",
+ "data_version": "CLEAN_V2_POP5100_V2",
+ "determinism": {
+  "cublas_workspace_config": ":4096:8",
+  "mode": "STRICT",
+  "torch_effective": {
+   "deterministic_algorithms": true,
+   "warn_only": false
+  }
+ },
+ "disk_peak_bytes": 745704125,
+ "efe": 6.0,
+ "endpoint": {
+  "efe": 6.0,
+  "mark": 6.0,
+  "value": 0.12421667612052623
+ },
+ "eval_every_efe": 0.5,
+ "evals": [
+  {
+   "efe": 2.0,
+   "exposures": 1292134,
+   "improved": true,
+   "mark": 2.0,
+   "phase": "TUNING",
+   "rows_file": "evals/eval_2.0.rows.json",
+   "secondary": {
+    "hr@10": 0.23729497336351885,
+    "ndcg@10": 0.13186567658355944
+   },
+   "updates": 5048,
+   "value": 0.1057117480310072
+  },
+  {
+   "efe": 4.0,
+   "exposures": 2584268,
+   "improved": true,
+   "mark": 4.0,
+   "phase": "TUNING",
+   "rows_file": "evals/eval_4.0.rows.json",
+   "secondary": {
+    "hr@10": 0.26372666094093195,
+    "ndcg@10": 0.15057208808785721
+   },
+   "updates": 10096,
+   "value": 0.12211288288212824
+  },
+  {
+   "efe": 6.0,
+   "exposures": 3876402,
+   "improved": true,
+   "mark": 6.0,
+   "phase": "TUNING",
+   "rows_file": "evals/eval_6.0.rows.json",
+   "secondary": {
+    "hr@10": 0.2651878160130649,
+    "ndcg@10": 0.15255868991582533
+   },
+   "updates": 15144,
+   "value": 0.12421667612052623
+  }
+ ],
+ "exposures": 3876402,
+ "family": "SASREC",
+ "final_rng_sha256": "3124a372d1babbc0af5a080fdd5acd30280c6d0c203784191d24ac5370e5a09d",
+ "final_state_digest": "149f8d729ec298ae1692118974a6bd5a8786c43c95c2940b6e5b8383a9182f1f",
+ "hp": {
+  "hp_id": "P2S_SASREC_D64_B2_S0_s0",
+  "hp_registry_file_sha256": "7967247e34d67d9e94c1d5993f710db976badfc521ea323d02c0724b74d475ec",
+  "hp_registry_path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/contracts/hp_registry/HP_REGISTRY_SMALL_LADDER.json",
+  "hp_registry_self_sha256": "ccfb901a07229ec853753d865ea0e2a0cf27fcdef1e478dee318fdee0189a82b",
+  "hp_sha256": "bf2b55ebb5ed9d35209880d759893f9841a70dc69952054c6d77227f2d770b3d"
+ },
+ "hp_trial": {
+  "cell": {
+   "dropout_p": 0.1,
+   "lr_stratum": 0,
+   "model_variant": "SASREC_D64_B2",
+   "schedule": "S0"
+  },
+  "dropout": [
+   0.1
+  ],
+  "dropout_p": 0.1,
+  "dropout_sites": [
+   "all"
+  ],
+  "family": "SASREC",
+  "hp_id": "P2S_SASREC_D64_B2_S0_s0",
+  "index": 1,
+  "log10_peak_lr": -3.3978787452803374,
+  "lr_stratum": 0,
+  "model_variant": "SASREC_D64_B2",
+  "peak_lr": 0.00040005642964899735,
+  "schedule": "S0",
+  "sha256": "bf2b55ebb5ed9d35209880d759893f9841a70dc69952054c6d77227f2d770b3d"
+ },
+ "init_sha256": "e9eb0bb9dd30061790fa5dc747e14c9aa375e2069c06a85785de6251e8705b95",
+ "latest_deleted_sha256": "c539f0d797420b5199899abad0ed6d4472a8463c71760e2f7081d98880578527",
+ "latest_kept": false,
+ "manifest_registry": {
+  "data_version": "CLEAN_V2_POP5100_V2",
+  "eval_manifest": "CALIB_VALIDATION_5_100_32768",
+  "file_sha256": "1dafcef45a10b345b88fbd4ff77c3919fa0c21cbbc5f470505c17a3803efb022",
+  "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds/small_ladder/SASREC/stage1/P2S_SASREC_D64_B2_S0_s0_s2026/REGISTRY_V2_TRAINER_VIEW.json",
+  "role": "CALIBRATION",
+  "self_sha256": "93cb0f8994c5f2105127d027e16ae1927d2c7cb0031230edc28b546314f3cc1d",
+  "train_manifest": "CALIB_TRAIN_5_100_32768"
+ },
+ "manifest_role": "CALIBRATION",
+ "model_variant": "SASREC_D64_B2",
+ "peak_lr": 0.00040005642964899735,
+ "phase": "TUNING",
+ "population": "COHORT",
+ "row_status": "HP_SEARCH",
+ "run_id": "P2S_SASREC_D64_B2_S0_s0_s2026",
+ "run_label": "HP_SEARCH",
+ "run_role": "TUNING",
+ "schema": {
+  "schema_id": "L3S_NEAR_DUPLICATE_SESSION-minus-G11+G12a+G3+G4+G7",
+  "schema_self_sha256": "c53d47fe2555dd537e27e11d45a4e8b23739566e6b98179dcf521852aa918f87"
+ },
+ "seed": 2026,
+ "shared_numel": 20708708,
+ "status": "DONE_TUNING",
+ "train_state": {
+  "ceiling": 6.0,
+  "disk_peak_bytes": 662850736,
+  "done": true,
+  "evals": [
+   {
+    "efe": 2.0,
+    "exposures": 1292134,
+    "improved": true,
+    "mark": 2.0,
+    "phase": "TUNING",
+    "rows_file": "evals/eval_2.0.rows.json",
+    "secondary": {
+     "hr@10": 0.23729497336351885,
+     "ndcg@10": 0.13186567658355944
+    },
+    "updates": 5048,
+    "value": 0.1057117480310072
+   },
+   {
+    "efe": 4.0,
+    "exposures": 2584268,
+    "improved": true,
+    "mark": 4.0,
+    "phase": "TUNING",
+    "rows_file": "evals/eval_4.0.rows.json",
+    "secondary": {
+     "hr@10": 0.26372666094093195,
+     "ndcg@10": 0.15057208808785721
+    },
+    "updates": 10096,
+    "value": 0.12211288288212824
+   },
+   {
+    "efe": 6.0,
+    "exposures": 3876402,
+    "improved": true,
+    "mark": 6.0,
+    "phase": "TUNING",
+    "rows_file": "evals/eval_6.0.rows.json",
+    "secondary": {
+     "hr@10": 0.2651878160130649,
+     "ndcg@10": 0.15255868991582533
+    },
+    "updates": 15144,
+    "value": 0.12421667612052623
+   }
+  ],
+  "exposures": 3876402,
+  "pass_index": 6,
+  "perm_sha256": {
+   "0": "0c1fdfd8339e82bb8ca8af25f376add9117ac169bba543f74435b546fdf4cd81",
+   "1": "185a711660a85a3b8b327b5e03584e50aee3b823ed7ebb498750a1e4735ee51f",
+   "2": "0f5834d51a4db9907be43849519decaa5f1923620b1506b8d9cdec78b119b0c9",
+   "3": "6351d9476e35cb3ed60ba374b27bf1128e221b94633fb86d7790457c899be4ef",
+   "4": "aca38b64001d9e9d72feaa08c8f36dc002f449d0feb66fc6675cdeb494d1d6f0",
+   "5": "34345a3601e3c82ec285a8236b7e85f2e0017e2169f1a4fbb2ac039f42814f61"
+  },
+  "phase": "TUNING",
+  "pos": 0,
+  "snapshots": [
+   5.0,
+   5.5,
+   6.0
+  ],
+  "updates": 15144
+ },
+ "updates": 15144,
+ "values_at_marks": {
+  "2.0": 0.1057117480310072,
+  "4.0": 0.12211288288212824,
+  "6.0": 0.12421667612052623
+ },
+ "weight_files_left": []
+}

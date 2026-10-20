@@ -1,0 +1,503 @@
+{
+ "algebraic_dependencies": [
+  {
+   "id": "K3",
+   "of": [
+    "K2",
+    "K1"
+   ],
+   "relation": "K3_s = 100 x K2_s / K1_s (per seed and per resample, same W)"
+  },
+  {
+   "id": "K9",
+   "of": [
+    "K7",
+    "K1"
+   ],
+   "relation": "K9_s = (K7_s - K1_s) x C_BIG_s / 100 (per seed)"
+  },
+  {
+   "id": "K10",
+   "of": [
+    "K6",
+    "K2"
+   ],
+   "relation": "K10_s = (K6_s - K2_s) x C_BIG_s / 100 (per seed)"
+  },
+  {
+   "id": "K11",
+   "of": [
+    "K2",
+    "K8"
+   ],
+   "relation": "K11_s = (K2_s - K8_s) x C_BIG_s / 100 (per seed)"
+  },
+  {
+   "id": "K11b",
+   "of": [
+    "K11"
+   ],
+   "relation": "K11b_s = K11_s + (LO_s - LAST) (per seed)"
+  },
+  {
+   "id": "K17",
+   "of": [
+    "K2",
+    "K15"
+   ],
+   "relation": "K17 = K2(s2026) x K15 / 100: a composition, not independent evidence"
+  },
+  {
+   "id": "K18",
+   "of": [
+    "K7",
+    "K15"
+   ],
+   "relation": "K18 = K7(s2026) x K15 / 100"
+  },
+  {
+   "id": "K19",
+   "of": [
+    "K8",
+    "K15"
+   ],
+   "relation": "K19 = K8(s2026) x K15 / 100"
+  },
+  {
+   "id": "K20b",
+   "of": [
+    "K20",
+    "K15"
+   ],
+   "relation": "K20b_s = K20_s x C_BIG_s / C_FULL(s2026); at s2026 K20b = K20(s2026) x K15 / 100"
+  },
+  {
+   "id": "K20c",
+   "of": [
+    "K20b",
+    "K21"
+   ],
+   "relation": "K20b_s - K20c = 100 x K21_s / C_FULL(s2026)"
+  }
+ ],
+ "amendment_06P_erratum_1": "**ERRATUM 1 (2026-10-01, DL 324; before any freeze; no value read).** In P6, \"Holm family (secondary, 19)\" is a counting error.\nThe named list is binding and has **18** members: K1, K2, K3, K8, K9b, K9c, K11b, K12, K17, K20, K20c, K_INIT, P5, K4w, K5w,\nK12w, K13w, K14w. Fable's original list (FABLE_ENDGAME_REVIEW §5) also enumerates these 18. Nothing else changes.",
+ "amendment_06P_file_sha256": "75f8dbade9d48221a4677dd9156308a57f313b030beb6b18cbb38a9d83c8b7a5",
+ "amendment_06P_text": [
+  "**P1. Resolution of FA_WARM\\*.** FA_WARM\\* = FA_WARM_FROZEN (S8), by 06N N2 on the registered CALIB selections (DL 292). In K20, K20b\nand K21 the arm `FA_WARM` is read as `FA_WARM_FROZEN`: K20 = R(FA_WARM_FROZEN / C_BIG), K20b = R(FA_WARM_FROZEN / C_FULL) (2 seeds\nvs C_FULL s2026), K21 = FA_WARM_FROZEN − PRE (paired Δ, 2 seeds, PRACTICAL_BEST). **Primary = the pair {K20b, K21}**, read unadjusted\nand reported together; a claim about the deployment branch requires both. K2 = R(FA / C_BIG) becomes SECONDARY (\"random-start\nablation\"). K20c = R(PRE / C_FULL) unchanged (secondary, seed 2026).",
+  "**P2. The S7 variant.** FA_WARM (full-model warm start) keeps 2 MAIN seeds. Its rows are reported as the registered descriptive\ncomparison S8 − S7 (06L_C C8, with the bytes ratio) and as DESCRIPTIVE R rows (R(FA_WARM / C_FULL), FA_WARM − PRE) beside the\nprimary; no confirmatory contrast is defined on FA_WARM.",
+  "**P3. K_INIT = FA_WARM_FROZEN − FA** (paired Δ, seeds 2026/2027, PRACTICAL_BEST, CONTROLLED_BUDGET beside; \"value of the pretrained\nstart\"), SECONDARY, in the Holm family.",
+  "**P4. Warm-line method contrasts** (all on MAIN, the warm reference = C_FULL per DL 273): K4w = R(FP_WARM_FROZEN / C_FULL), K5w =\nR(PF_WARM_FROZEN / C_FULL) (2 seeds, PRACTICAL_BEST, SECONDARY; PF_WARM_FROZEN − FA_WARM_FROZEN DESCRIPTIVE with the 06L A5 caveat);\nK12w = R(DP8_FROZEN / FA_1024_WARM_FROZEN) (2 seeds, CONTROLLED_BUDGET / CONTROLLED_BUDGET, SECONDARY; PRACTICAL_BEST ratio\nDESCRIPTIVE with the 06D §3 disclosure); K13w = R(DP1_WARM_FROZEN / FA_1024_WARM_FROZEN) (seed 2026, CONTROLLED_BUDGET, SECONDARY);\nK14w = R(FA_Q8_WARM_FROZEN / FA_WARM_FROZEN) (2 seeds, TOST ±1 % relative as 06L_C C15, SECONDARY); R(FA_1024_WARM_FROZEN /\nFA_WARM_FROZEN) DESCRIPTIVE (clipping + Poisson-cohort cost). The cold K4, K5, K12, K13, K14 keep their text and tiers on the N33\nre-runs.",
+  "**P5. FT_FA_WARM_FROZEN − FA_WARM_FROZEN** (paired Δ, 2 seeds, PRACTICAL_BEST, base = the same-seed best.pt, harmed-client share\nbeside) is SECONDARY (06N N1 supersedes 06M_B B4's DESCRIPTIVE); FT_FA_WARM − FA_WARM stays DESCRIPTIVE.",
+  "**P6. Multiplicity (corrected, Fable §5 concurrence).** The primary pair {K20b, K21} is read unadjusted, outside Holm. Holm family\n(secondary, 19): K1, K2, K3, K8, K9b, K9c, K11b, K12, K17, K20, K20c, K_INIT, P5 (FT_FA_WARM_FROZEN − FA_WARM_FROZEN), K4w, K5w,\nK12w, K13w, K14w. Tertiary (unadjusted, Holm band beside): K4, K5, K6, K7, K9, K10, K11, K13, K14, K15, K16, K18, K19. The 06L_C\nC13 convention is unchanged (unadjusted 95 % paired bootstrap CIs, Holm band beside; K14 / K14w TOST ±1 % on the unadjusted 90 %\nCI). DESCRIPTIVE, outside every family: S8 − S7; the S7 R rows; PF_WARM_FROZEN − FA_WARM_FROZEN; R(FA_1024_WARM_FROZEN /\nFA_WARM_FROZEN); the PRACTICAL_BEST ratios of K12 / K13 / K12w / K13w. registered_seeds = the v3 map + K13w [2026]; every other new\nid [2026, 2027]; no seed cuts.",
+  "**P7.** `ANA_CONTRASTS_v4.json` carries P1–P6 verbatim, the algebraic dependencies (K20b_s = K20_s × C_BIG_s / C_FULL; K20b − K20c\n= 100·K21 / C_FULL), `post_validation_rule` unchanged; its sha256 is registered by the DL row and copied into ANA_SCRIPT_FREEZE and\nALL_METHODS_LOCK. The `--claims-only` output is regenerated under v4 and frozen with it."
+ ],
+ "authority": [
+  "contracts/PREG1_AMENDMENT_06N.md N1-N2",
+  "contracts/PREG1_AMENDMENT_06P.md P1-P7",
+  "company/gates/ANA_CONTRASTS_v3.json (K1-K21, K9b, K9c, K11b, K20b, K20c)"
+ ],
+ "base_best_only": [
+  "P5"
+ ],
+ "confirmatory_contrasts": [
+  {
+   "contrast": "R(C_SMALL / C_BIG)",
+   "id": "K1",
+   "question": "size cost"
+  },
+  {
+   "contrast": "R(FA / C_BIG)",
+   "id": "K2",
+   "question": "federated retention (headline)"
+  },
+  {
+   "contrast": "R(FA / C_SMALL)",
+   "id": "K3",
+   "question": "federation cost at matched size"
+  },
+  {
+   "contrast": "R(FP / C_BIG)",
+   "id": "K4",
+   "question": "FedProx retention"
+  },
+  {
+   "contrast": "R(PF / C_BIG)",
+   "id": "K5",
+   "question": "personalised-FL retention"
+  },
+  {
+   "contrast": "R(FT_FA / C_BIG)",
+   "id": "K6",
+   "question": "deployed on-device system (FL + local fine-tune)"
+  },
+  {
+   "contrast": "R(FT_C / C_BIG)",
+   "id": "K7",
+   "question": "cloud-trained + local fine-tune"
+  },
+  {
+   "contrast": "R(LO / C_BIG)",
+   "id": "K8",
+   "question": "device-only retention"
+  },
+  {
+   "contrast": "FT_C − C_SMALL",
+   "id": "K9",
+   "question": "local fine-tuning gain (paired Δ)"
+  },
+  {
+   "contrast": "FT_FA − FA",
+   "id": "K10",
+   "question": "local fine-tuning gain after FL (paired Δ)"
+  },
+  {
+   "contrast": "FA − LO",
+   "id": "K11",
+   "question": "collaboration value (paired Δ)"
+  },
+  {
+   "contrast": "R(DP8 / FA_1024)",
+   "id": "K12",
+   "question": "privacy cost at ε = 8"
+  },
+  {
+   "contrast": "R(DP1 / FA_1024)",
+   "id": "K13",
+   "question": "privacy cost at ε = 1 (seed 2026)"
+  },
+  {
+   "contrast": "R(FA_Q8 / FA)",
+   "id": "K14",
+   "question": "compression cost (8-bit uploads)"
+  },
+  {
+   "contrast": "R(C_BIG / C_FULL)",
+   "id": "K15",
+   "question": "cloud data advantage (seed 2026; if C_FULL runs)"
+  },
+  {
+   "contrast": "R(INT8 / FP32) for C_SMALL",
+   "id": "K16",
+   "question": "on-device quantisation cost (seed 2026)"
+  },
+  {
+   "contrast": "R(FA / C_FULL)",
+   "id": "K17",
+   "question": "federated retention vs the full-data cloud model (seed 2026)"
+  },
+  {
+   "contrast": "R(FT_C / C_FULL)",
+   "id": "K18",
+   "question": "cloud-trained + local fine-tune vs the full-data cloud model (seed 2026)"
+  },
+  {
+   "contrast": "R(LO / C_FULL)",
+   "id": "K19",
+   "question": "device-only vs the full-data cloud model (seed 2026)"
+  },
+  {
+   "contrast": "R(FA_WARM_FROZEN / C_BIG)",
+   "id": "K20",
+   "question": "deployment-branch federated retention vs the C_BIG cloud model (warm start from theta_pre, S8 frozen item tables = FA_WARM*; seeds 2026, 2027)"
+  },
+  {
+   "contrast": "FA_WARM_FROZEN − PRE",
+   "id": "K21",
+   "question": "value of federated training on the private users over the pretrained model alone (paired Δ) — PRIMARY with K20b (06N N1; 06P P1)"
+  },
+  {
+   "contrast": "FT_C − C_SMALL",
+   "id": "K9b",
+   "question": "local fine-tuning gain (paired Δ) for base-unseen users (UNSEEN_HOLDOUT)"
+  },
+  {
+   "contrast": "FT_PRE − PRE",
+   "id": "K9c",
+   "question": "local fine-tuning gain (paired Δ) over θ_pre on MAIN: the realistic L5 answer (FT_PRE = θ_pre + the registered FT_C procedure with SELECTION_FT_C)"
+  },
+  {
+   "contrast": "FA − LAST",
+   "id": "K11b",
+   "question": "collaboration value over the best own-history heuristic (paired Δ; LAST = the no-training device heuristic)"
+  },
+  {
+   "contrast": "R(FA_WARM_FROZEN / C_FULL)",
+   "id": "K20b",
+   "question": "deployment-branch federated retention vs its matched cloud reference C_FULL (2 FA_WARM_FROZEN seeds vs C_FULL s2026) — PRIMARY with K21 (06N N1; 06P P1)"
+  },
+  {
+   "contrast": "R(PRE / C_FULL)",
+   "id": "K20c",
+   "question": "the pretrained model alone vs its matched cloud reference C_FULL (PRE single seed)"
+  },
+  {
+   "contrast": "FA_WARM_FROZEN − FA",
+   "id": "K_INIT",
+   "question": "value of the pretrained start (paired Δ, seeds 2026 / 2027; 06N N1; 06P P3)"
+  },
+  {
+   "contrast": "R(FP_WARM_FROZEN / C_FULL)",
+   "id": "K4w",
+   "question": "FedProx retention on the pretrained line vs C_FULL (06P P4)"
+  },
+  {
+   "contrast": "R(PF_WARM_FROZEN / C_FULL)",
+   "id": "K5w",
+   "question": "personalised-FL retention on the pretrained line vs C_FULL (06P P4)"
+  },
+  {
+   "contrast": "FT_FA_WARM_FROZEN − FA_WARM_FROZEN",
+   "id": "P5",
+   "question": "local fine-tuning gain after the pretrained-line FL (paired Δ, base = the same-seed best.pt, harmed-client share beside; 06P P5)"
+  },
+  {
+   "contrast": "R(DP8_FROZEN / FA_1024_WARM_FROZEN)",
+   "id": "K12w",
+   "question": "privacy cost at ε = 8 on the pretrained line (06P P4)"
+  },
+  {
+   "contrast": "R(DP1_WARM_FROZEN / FA_1024_WARM_FROZEN)",
+   "id": "K13w",
+   "question": "privacy cost at ε = 1 on the pretrained line (seed 2026; 06P P4)"
+  },
+  {
+   "contrast": "R(FA_Q8_WARM_FROZEN / FA_WARM_FROZEN)",
+   "id": "K14w",
+   "question": "compression cost (8-bit uploads) on the pretrained line (06P P4)"
+  }
+ ],
+ "confirmatory_rule_map": {
+  "K12": "CONTROLLED_BUDGET",
+  "K12w": "CONTROLLED_BUDGET",
+  "K13": "CONTROLLED_BUDGET",
+  "K13w": "CONTROLLED_BUDGET"
+ },
+ "default_confirmatory_rule": "PRACTICAL_BEST",
+ "default_seeds": [
+  2026,
+  2027
+ ],
+ "document": "ANA_CONTRASTS_v4",
+ "dp_disclosure": "K12/K13/K12w/K13w PRACTICAL_BEST ratios are DESCRIPTIVE: best-of-12 checkpoint selection on the users' own validation data is not covered by the DP accountant (06D §3).",
+ "draft": false,
+ "format": "PPSI_V4_ANA_CONTRASTS_4",
+ "hierarchy": {
+  "primary": [
+   "K20b",
+   "K21"
+  ],
+  "secondary": [
+   "K1",
+   "K11b",
+   "K12",
+   "K12w",
+   "K13w",
+   "K14w",
+   "K17",
+   "K2",
+   "K20",
+   "K20c",
+   "K3",
+   "K4w",
+   "K5w",
+   "K8",
+   "K9b",
+   "K9c",
+   "K_INIT",
+   "P5"
+  ],
+  "tertiary": [
+   "K10",
+   "K11",
+   "K13",
+   "K14",
+   "K15",
+   "K16",
+   "K18",
+   "K19",
+   "K4",
+   "K5",
+   "K6",
+   "K7",
+   "K9"
+  ]
+ },
+ "holm_family": [
+  "K1",
+  "K2",
+  "K3",
+  "K8",
+  "K9b",
+  "K9c",
+  "K11b",
+  "K12",
+  "K17",
+  "K20",
+  "K20c",
+  "K_INIT",
+  "P5",
+  "K4w",
+  "K5w",
+  "K12w",
+  "K13w",
+  "K14w"
+ ],
+ "multiplicity_statement": "33 pre-registered contrasts (v3's 26 with K20 / K20b / K21 on FA_WARM_FROZEN, + K_INIT, P5, K4w, K5w, K12w, K13w, K14w); primary = the pair K20b + K21, read unadjusted, outside Holm (06P P1 / P6); Holm step-down over the secondary family of 18 (K1, K2, K3, K8, K9b, K9c, K11b, K12, K17, K20, K20c, K_INIT, P5, K4w, K5w, K12w, K13w, K14w; 06P P6); tertiary unadjusted with a DESCRIPTIVE Holm band beside (step-down within the tertiary set); unadjusted 95% paired user-bootstrap percentile CIs (1,000 resamples, seed 20260926) for every contrast; K14 / K14w TOST on the unadjusted 90% CI; algebraic dependencies are not independent evidence; every other number is DESCRIPTIVE (06P)",
+ "pairing_notes": {
+  "K11b": "LAST is seed-free (RULE_FREE, a BASELINE_CPU rank file, 06L-C §C3) and pairs with each FA seed of the rule",
+  "K20b": "2 FA_WARM_FROZEN seeds vs C_FULL s2026 (06L-C §C7; 06P P1): the one registered C_FULL seed is the denominator of both",
+  "K20c": "PRE single seed (2026) vs C_FULL s2026 (06L-C §C7)",
+  "K21": "PRE is ONE θ_pre (seed 2026) shared by both FA_WARM_FROZEN seeds (06K / DL 206 (2); 06P P1)",
+  "K4w": "2 FP_WARM_FROZEN seeds vs C_FULL s2026 (the one registered C_FULL seed; 06P P4)",
+  "K5w": "2 PF_WARM_FROZEN seeds vs C_FULL s2026 (the one registered C_FULL seed; 06P P4)",
+  "K9c": "PRE is ONE θ_pre (seed 2026) shared by both FT_PRE seeds (06K / DL 206 (2); 06L-C §C7)",
+  "K_INIT": "FA_WARM_FROZEN seed s vs the cold-start FA seed s (06P P3)",
+  "P5": "FT_FA_WARM_FROZEN seed s vs FA_WARM_FROZEN seed s; only a device run whose base is that seed's best.pt pairs (06P P5)",
+  "S8-S7": "FA_WARM_FROZEN seed s vs FA_WARM seed s (same θ_pre; 06L-C §C8: S8 runs with 2 seeds unconditionally)"
+ },
+ "populations": {
+  "D_FA1024w_FAw": "MAIN",
+  "D_FTw_S7": "MAIN",
+  "D_PFw_FAw": "MAIN",
+  "D_S7_C_FULL": "MAIN",
+  "D_S7_PRE": "MAIN",
+  "K1": "MAIN",
+  "K10": "MAIN",
+  "K11": "MAIN",
+  "K11b": "MAIN",
+  "K12": "MAIN",
+  "K12w": "MAIN",
+  "K13": "MAIN",
+  "K13w": "MAIN",
+  "K14": "MAIN",
+  "K14w": "MAIN",
+  "K15": "MAIN",
+  "K16": "MAIN",
+  "K17": "MAIN",
+  "K18": "MAIN",
+  "K19": "MAIN",
+  "K2": "MAIN",
+  "K20": "MAIN",
+  "K20b": "MAIN",
+  "K20c": "MAIN",
+  "K21": "MAIN",
+  "K3": "MAIN",
+  "K4": "MAIN",
+  "K4w": "MAIN",
+  "K5": "MAIN",
+  "K5w": "MAIN",
+  "K6": "MAIN",
+  "K7": "MAIN",
+  "K8": "MAIN",
+  "K9": "MAIN",
+  "K9b": "UNSEEN_HOLDOUT",
+  "K9c": "MAIN",
+  "K_INIT": "MAIN",
+  "P5": "MAIN",
+  "S8-S7": "MAIN"
+ },
+ "post_validation_rule": "Anything added after the first VALIDATION read is POST_VALIDATION_EXPLORATORY (06L-C status line; §C5): never confirmatory, never in the loaded registry.",
+ "prepared_utc": "2026-10-01",
+ "reading_rules": {
+  "K14": {
+   "equivalence_margin_relative_percent": 1.0,
+   "interval": [
+    99.0,
+    101.0
+   ],
+   "rule": "TOST at alpha 0.05: R(FA_Q8 / FA) is EQUIVALENT to 100 iff its 90% paired user-bootstrap percentile CI lies inside [99, 101] (06L-C §C15); the 95% CI and the ordinary claim rule are reported beside it"
+  },
+  "K14w": {
+   "equivalence_margin_relative_percent": 1.0,
+   "interval": [
+    99.0,
+    101.0
+   ],
+   "rule": "TOST at alpha 0.05: R(FA_Q8_WARM_FROZEN / FA_WARM_FROZEN) is EQUIVALENT to 100 iff its 90% paired user-bootstrap percentile CI lies inside [99, 101] (06L-C §C15); the 95% CI and the ordinary claim rule are reported beside it (06P P4)"
+  }
+ },
+ "registered_descriptive_contrasts": [
+  {
+   "contrast": "FA_WARM_FROZEN − FA_WARM",
+   "id": "S8-S7",
+   "question": "cost of not sending the item tables (paired Δ, reported with the bytes ratio; DESCRIPTIVE)"
+  },
+  {
+   "contrast": "R(FA_WARM / C_FULL)",
+   "id": "D_S7_C_FULL",
+   "question": "the S7 full-model warm start vs C_FULL (DESCRIPTIVE beside the primary; 06P P2)"
+  },
+  {
+   "contrast": "FA_WARM − PRE",
+   "id": "D_S7_PRE",
+   "question": "the S7 full-model warm start over theta_pre (DESCRIPTIVE beside the primary; 06P P2)"
+  },
+  {
+   "contrast": "PF_WARM_FROZEN − FA_WARM_FROZEN",
+   "id": "D_PFw_FAw",
+   "question": "personalisation on the pretrained line (DESCRIPTIVE, 06L A5 caveat; 06P P4)"
+  },
+  {
+   "contrast": "R(FA_1024_WARM_FROZEN / FA_WARM_FROZEN)",
+   "id": "D_FA1024w_FAw",
+   "question": "clipping + Poisson-cohort cost on the pretrained line (DESCRIPTIVE; 06P P4)"
+  },
+  {
+   "contrast": "FT_FA_WARM − FA_WARM",
+   "id": "D_FTw_S7",
+   "question": "local fine-tuning gain after the S7 warm FL (DESCRIPTIVE; 06P P5)"
+  }
+ ],
+ "registered_seeds": {
+  "K13": [
+   2026
+  ],
+  "K13w": [
+   2026
+  ],
+  "K15": [
+   2026
+  ],
+  "K16": [
+   2026
+  ],
+  "K17": [
+   2026
+  ],
+  "K18": [
+   2026
+  ],
+  "K19": [
+   2026
+  ],
+  "K20c": [
+   2026
+  ],
+  "K9b": [
+   2026
+  ]
+ },
+ "self_sha256": "2971e617d3a2843a69adef668b011b10c3c0d2c57f6422eb83196e5e7b0eb3ef",
+ "shared_denominators": {
+  "K20b": "C_FULL",
+  "K4w": "C_FULL",
+  "K5w": "C_FULL"
+ },
+ "status": "BUILT BY ANA-06 (2026-10-01) FROM contracts/PREG1_AMENDMENT_06P.md (REGISTERED 2026-10-01, DL 316-317); registered by the DECISION_LOG row that records this file's sha256 (06P P7), before the ANA freeze; used for the VALIDATION preflight and copied verbatim into ALL_METHODS_LOCK.json",
+ "supersedes": "company/gates/ANA_CONTRASTS_v3.json",
+ "tertiary_band_family": [
+  "K4",
+  "K5",
+  "K6",
+  "K7",
+  "K9",
+  "K10",
+  "K11",
+  "K13",
+  "K14",
+  "K15",
+  "K16",
+  "K18",
+  "K19"
+ ]
+}

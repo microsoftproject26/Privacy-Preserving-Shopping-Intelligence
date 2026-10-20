@@ -1,0 +1,440 @@
+{
+ "arm": "P2_W",
+ "arm_spec": {
+  "arm": "P2_W",
+  "cfg": {
+   "dp": null,
+   "dropout_p": 0.1,
+   "endpoint_efe": 6.0,
+   "endpoint_rounds": 13654,
+   "exposure_point": "end",
+   "lr_peak_local": 0.1,
+   "lr_shape": "fl_const",
+   "max_attempts": 2,
+   "method": "FA",
+   "mu": 0.0,
+   "n_shards": 2,
+   "pf": null,
+   "seed": 2027,
+   "server_opt": {
+    "beta1": 0.9,
+    "beta2": 0.99,
+    "lr": 3e-06,
+    "name": "fedadam",
+    "tau": 1e-06,
+    "v_init": "tau_squared"
+   },
+   "solver": {
+    "batch_size": 16,
+    "clip": 1.0,
+    "fused": null,
+    "item_lr_mult": 0.1,
+    "lr": 0.1,
+    "optimizer": "sgd_m",
+    "passes": 1,
+    "weight_decay": 0.0
+   }
+  },
+  "exposure_budget": {
+   "authority": "PREG1_AMENDMENT_06J \u00a73",
+   "dropout_p": 0.1,
+   "endpoint_efe": 6.0,
+   "formula": "rounds = ceil(6.0 x N_dec / (64 x 0.9 x P x N_dec / N_clients)) = ceil(60 N_clients / (576 P))",
+   "group": 64,
+   "n_clients": 131072,
+   "passes": 1,
+   "rounds": 13654
+  },
+  "init_from": {
+   "checkpoint_bytes": 82853197,
+   "checkpoint_sha256": "d84ddd25a2b68d4255e6f67278f5a821ae2853ba2912cb60bd1cec5a49bedbcb",
+   "family": "SASREC",
+   "fl_init_kind": "endpoint_6.0",
+   "kind": "PRETRAIN_FOR_FL",
+   "model_variant": "SASREC_D64_B2",
+   "run_id": "PRETRAIN_FOR_FL_SMALL_SASREC_D64_B2_FULLPRE_EXT_s2027",
+   "run_label": "PRETRAIN_FOR_FL",
+   "seed": 2027,
+   "state_digest": "96518bf67dc5a77317bacd14738753a724ce2c5ce3ccfbccba569ff663c4e9d1",
+   "train_manifest": "PRETRAIN_TRAIN_5_100_NONMAIN"
+  },
+  "lr_mult": 1.0,
+  "lr_peak_base": 0.0007114121116984968,
+  "max_rounds": 13654,
+  "p2_fixed": {
+   "authority": "PREG2 \u00a75.1",
+   "client_momentum": 0.9,
+   "client_opt": "sgd_m",
+   "clip": 1.0,
+   "dropout_p": 0.1,
+   "endpoint_efe": 6.0,
+   "group": 64,
+   "local_batch": 16,
+   "local_passes": 1,
+   "lr_shape": "fl_const",
+   "sampling": "sweep",
+   "weight_decay": 0.0
+  },
+  "p2_label": "fedadam|eta=3e-06|c=0.1|items=unfrozen|ilr=0.1",
+  "p2_recipe": {
+   "client_lr": 0.1,
+   "item_lr_mult": 0.1,
+   "items": "unfrozen",
+   "lora_lr_factor": null,
+   "lora_rank": null,
+   "personal_head": false,
+   "server_lr": 3e-06,
+   "server_opt": "fedadam",
+   "upload": "dense"
+  },
+  "plan": {
+   "group_size": 64,
+   "sampling": "sweep"
+  },
+  "role": "MAIN",
+  "study": "PREG2",
+  "upload_codec": null
+ },
+ "arm_spec_sha256": "396ed5203421893510e2aadf0cb95eb4fbbadfbe75788a99d84ecba0e5574b12",
+ "best_half_efe": 1,
+ "best_metric": 0.17199446719815906,
+ "bytes": {
+  "disclosure": "dropped clients (10% drop-out) are not charged a download (the ledger counts survivors)",
+  "fleet": {
+   "bytes_down": 65129383668992,
+   "bytes_up": 65129389959040,
+   "messages": 1572512,
+   "retry_bytes_down": 0,
+   "total": 130258773628032
+  },
+  "per_client": {
+   "max": 1159687704,
+   "mean": 993795575.1650391,
+   "median": 994018032.0,
+   "min": 0,
+   "rule": "visits x (down + up) of that client"
+  },
+  "per_visit": {
+   "alias_bytes_not_sent": 0,
+   "bootstrap_bytes_once": 0,
+   "download_bytes": 82834832,
+   "private_bytes_sent": 0,
+   "private_resident_bytes": 0,
+   "send_plus_receive_bytes": 165669672,
+   "shared_numel": 20708708,
+   "upload_bytes": 82834840
+  }
+ },
+ "checkpoints": [
+  "best.pt",
+  "endpoint_6.0.pt"
+ ],
+ "counters": {
+  "coverage_by_sweep": {
+   "0": {
+    "clients": 117935,
+    "fraction": 0.8997726440429688
+   },
+   "1": {
+    "clients": 118070,
+    "fraction": 0.9008026123046875
+   },
+   "2": {
+    "clients": 117976,
+    "fraction": 0.90008544921875
+   },
+   "3": {
+    "clients": 117849,
+    "fraction": 0.8991165161132812
+   },
+   "4": {
+    "clients": 117921,
+    "fraction": 0.8996658325195312
+   },
+   "5": {
+    "clients": 117909,
+    "fraction": 0.8995742797851562
+   },
+   "6": {
+    "clients": 78596,
+    "fraction": 0.599639892578125
+   }
+  },
+  "efe": 5.999705152223377,
+  "exposures": 15525893,
+  "max_visits": 7,
+  "min_visits": 0,
+  "noop_visits": 0,
+  "retries": 0,
+  "rounds": 13654,
+  "steps": 1347543,
+  "steps_hist": {
+   "1": 476599,
+   "2": 174766,
+   "3": 67794,
+   "4": 33898,
+   "5": 19039,
+   "6": 11877,
+   "7": 2283
+  },
+  "visits": 786256,
+  "wasted_steps": 0
+ },
+ "done": true,
+ "evals": [
+  [
+   1,
+   1133,
+   0.17199446719815906,
+   true,
+   "MAIN"
+  ],
+  [
+   2,
+   2277,
+   0.17200575000874765,
+   false,
+   "MAIN"
+  ],
+  [
+   3,
+   3412,
+   0.17199472429333348,
+   false,
+   "MAIN"
+  ],
+  [
+   4,
+   4543,
+   0.172029186096028,
+   false,
+   "MAIN"
+  ],
+  [
+   5,
+   5681,
+   0.1719791746594522,
+   false,
+   "MAIN"
+  ],
+  [
+   6,
+   6819,
+   0.17208474409724403,
+   false,
+   "MAIN"
+  ],
+  [
+   7,
+   7960,
+   0.1720673020599685,
+   false,
+   "MAIN"
+  ],
+  [
+   8,
+   9108,
+   0.17204545248056818,
+   false,
+   "MAIN"
+  ],
+  [
+   9,
+   10239,
+   0.17211925526321736,
+   false,
+   "MAIN"
+  ],
+  [
+   10,
+   11374,
+   0.17204645951859654,
+   false,
+   "MAIN"
+  ],
+  [
+   11,
+   12520,
+   0.17206817119123857,
+   false,
+   "MAIN"
+  ],
+  [
+   12,
+   13653,
+   0.17202754267614925,
+   false,
+   "MAIN"
+  ]
+ ],
+ "exploratory_label": "POST_HOC_EXPLORATORY",
+ "ledger": [
+  1572512,
+  65129383668992,
+  65129389959040,
+  0
+ ],
+ "lr_table": {
+  "E_total": 15525893,
+  "digest": "0d5f00226daba5d308c6c8e146983c4369e083c488d1be680f5f432ad3eb541b",
+  "final_lr": 0.010000000000000002,
+  "min_lr": 0.0007323861139592793,
+  "n_rounds": 13654,
+  "planned_efe": 5.999705152223377
+ },
+ "lr_table_digest": "0d5f00226daba5d308c6c8e146983c4369e083c488d1be680f5f432ad3eb541b",
+ "method": "FA",
+ "p2": {
+  "authority": "PREG2 \u00a75 (contracts/PREG2_FOLLOWUP_DRAFT \u00a75 as edited by FABLE_GATE_ENDGAME_SCRIPTS_20261003 \u00a79); PHASE2_IMPLEMENTATION_PLAN P2-02",
+  "label": "fedadam|eta=3e-06|c=0.1|items=unfrozen|ilr=0.1",
+  "post_run": null,
+  "pre_server": null,
+  "recipe": {
+   "client_lr": 0.1,
+   "item_lr_mult": 0.1,
+   "items": "unfrozen",
+   "lora_lr_factor": null,
+   "lora_rank": null,
+   "personal_head": false,
+   "server_lr": 3e-06,
+   "server_opt": "fedadam",
+   "upload": "dense"
+  }
+ },
+ "participation": {
+  "dropout_p": 0.1,
+  "dropped": 87600,
+  "endpoint_rounds": 13654,
+  "noop_rounds": 0,
+  "planned_efe": 5.999705152223377,
+  "rounds": 13654,
+  "sampled": 873856,
+  "survived": 786256
+ },
+ "phase": "MAIN",
+ "plan": {
+  "group_size": 64,
+  "keys_digest": "8356cab11d62e5fc3c99cf0594dbfade304f27947cbdd7cd39f4a25294bf44eb",
+  "manifest_hash": "5d5cd03679232d2214b9977189e9719acc3dc06842a7e03d08b3bc268f64f039",
+  "n_clients": 131072,
+  "partial_group_note": "none: N is a multiple of the group size",
+  "partial_group_policy": "SMALLER_FINAL_GROUP",
+  "partial_group_size": 0,
+  "rounds_per_sweep": 2048,
+  "sampling": "seeded permutation sweeps without replacement (PCG64), fixed consecutive groups",
+  "seed": 2027
+ },
+ "rounds": 13654,
+ "run_id": "EXT_FULLPRE2027_UNFROZEN_FL_s2027",
+ "seed_warm_binding_sha256": "2bcfcdde6e027cac4a976707905cca939d00a304700c368b8da7377727f55c17",
+ "server_digest": "26b89c32e7d53dc679f0e5895de17607c6f53b8dfb2e950f71da15bb91fe4acb",
+ "server_opt": {
+  "cfg": {
+   "beta1": 0.9,
+   "beta2": 0.99,
+   "lr": 3e-06,
+   "name": "fedadam",
+   "tau": 1e-06,
+   "v_init": "tau_squared"
+  },
+  "moments_digest": "ab10d3cbfed03b77cf3a1b069715f21d5514fa84d20062f9476c125f13bd2b4f",
+  "steps": 13654
+ },
+ "status": "DONE_MAIN",
+ "store_digest": null,
+ "train_loss_log": {
+  "authority": "FL-15 R5 (REAL_WORLD_FL_PRACTICE_AUDIT_20260930 R5): per-round client training loss from fl VisitRecord.loss_sum (sum of the batch-mean CE over a visit's steps); descriptive monitoring only, numerics unchanged; z > 0 (DP) runs record nothing (an un-noised data-dependent release, the 06L_E E1 reading)",
+  "complete": true,
+  "fields": [
+   "client_mean_loss",
+   "finite",
+   "loss_sum",
+   "mean_step_loss",
+   "n_clients",
+   "n_steps",
+   "round"
+  ],
+  "file": "TRAIN_LOSS.jsonl",
+  "missing_rounds": [],
+  "rounds_expected": 13654,
+  "rounds_logged": 13654,
+  "sha256": "b63865f4a3ab870648b6e61b115416c827d8677eb0c73cafc4290ac23d994436"
+ },
+ "update_norm_log": {
+  "authority": "PREG2 \u00a73.3 D1-ext: per round, per tensor group of the trained subset: ||Delta_agg||, the server step, ||theta - theta_pre||, cos(Delta_r, Delta_r-1), clients aggregated (omitted for z > 0); DESCRIPTIVE, never selects; post-noise server-side quantities only under DP (06L_E E1)",
+  "complete": true,
+  "cos_prev_unavailable_rounds": [
+   0
+  ],
+  "file": "UPDATE_NORM_LOG.jsonl",
+  "last_total_T": {
+   "agg_delta_l2": 0.0013016553653688344,
+   "numel": 20708708,
+   "pre_dist_l2": 1.2244315245890889,
+   "pre_l2": 1476.5033067017614,
+   "rel_pre_dist": 0.0008292778749844084,
+   "step_l2": 0.00024352476016271165
+  },
+  "missing_rounds": [],
+  "rounds_expected": 13654,
+  "rounds_logged": 13654,
+  "server_steps": 13654,
+  "sha256": "65f67bdbc2ee4d0beaff70aa9403a14fecd200cf75fef7f6b3e78d60c98673b0",
+  "strictly_increasing": true,
+  "trained_keys": [
+   "output_embed",
+   "output_bias",
+   "side_gate",
+   "user_gate",
+   "item_embed.weight",
+   "pos_embed.weight",
+   "blocks.0.ln1.weight",
+   "blocks.0.ln1.bias",
+   "blocks.0.qkv.weight",
+   "blocks.0.qkv.bias",
+   "blocks.0.out.weight",
+   "blocks.0.out.bias",
+   "blocks.0.ln2.weight",
+   "blocks.0.ln2.bias",
+   "blocks.0.ff1.weight",
+   "blocks.0.ff1.bias",
+   "blocks.0.ff2.weight",
+   "blocks.0.ff2.bias",
+   "blocks.1.ln1.weight",
+   "blocks.1.ln1.bias",
+   "blocks.1.qkv.weight",
+   "blocks.1.qkv.bias",
+   "blocks.1.out.weight",
+   "blocks.1.out.bias",
+   "blocks.1.ln2.weight",
+   "blocks.1.ln2.bias",
+   "blocks.1.ff1.weight",
+   "blocks.1.ff1.bias",
+   "blocks.1.ff2.weight",
+   "blocks.1.ff2.bias",
+   "final_norm.weight",
+   "final_norm.bias",
+   "input_norm.weight",
+   "input_norm.bias",
+   "side_embeds.category_tokens.weight",
+   "side_embeds.brand_tokens.weight",
+   "side_embeds.session_offset_tokens.weight",
+   "side_embeds.session_mode_main_category_tokens.weight",
+   "numflag_proj.weight",
+   "numflag_proj.bias",
+   "side_proj.weight",
+   "side_proj.bias",
+   "side_norm.weight",
+   "side_norm.bias",
+   "user_mlp.weight",
+   "user_mlp.bias",
+   "user_proj.weight",
+   "user_proj.bias",
+   "user_norm.weight",
+   "user_norm.bias"
+  ],
+  "trained_numel": 20708708,
+  "unparsable_lines": 0
+ },
+ "wall_s_this_leg": 49017.03
+}

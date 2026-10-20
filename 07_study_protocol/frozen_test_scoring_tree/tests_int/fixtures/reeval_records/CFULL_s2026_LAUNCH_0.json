@@ -1,0 +1,798 @@
+{
+ "comparison_key": {
+  "candidate_order_hash": "ab606d5e3728c993d31048f6d613838658d3a5ce8a0d0bd023611ce0ff027476",
+  "data_protocol_hash": "bc699a97dd2fab054e5a5c00f9661dd32b0677941d3f23f2e4b81751b3b7b330",
+  "data_version": "CLEAN_V2_POP5100_V2",
+  "determinism_mode": "STRICT",
+  "eval_batch": 1024,
+  "eval_device_class": "A16-FP32-DET",
+  "eval_manifest_id": "MAIN_VALIDATION_5_100_131072",
+  "eval_score_block": 158486,
+  "eval_stream": "EVAL_ROWS_ONLY",
+  "exposure_point": "end",
+  "feature_contract_hash": "e97600f508497398da47f48b029d49a6fffee316e6a0c1ea20e046fe81fda5aa",
+  "feature_schema_self_sha256": "c53d47fe2555dd537e27e11d45a4e8b23739566e6b98179dcf521852aa918f87",
+  "history_policy": "USER_HISTORY_L50",
+  "label_policy_hash": "75acea25716829cba74a7703f17208f405b455c72af2ec19f413585636f7e59a",
+  "manifest_registry_self_sha256": "c9e48641f5da6c5db188625b7a8d82168876ca75b7784f55cbe2bf01ab0100a7",
+  "population_hash": "df5d0c7e82bc0842f5c8435fafaa67f947d4fe951d5f9e6aed9ca58d10a46cdf",
+  "split": "VALIDATION",
+  "train_manifest_id": "FULL_TRAIN_5_100_TIEBREAK",
+  "transform_state_sha256": "2ff0ff4ec1d27d254972c2f212e81f5fee6277dc9cced31a6a5baf5b4b002727"
+ },
+ "config_sha256": "48b18b446b1404c4fc112b072706e2c25bc3749f74f44f70ee76133dbd3b2a28",
+ "data_paths": {
+  "header_list_path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/data_v3/receipts/MANIFEST_FILE_SHA256_R1.txt",
+  "lock_path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/contracts/DATA_PROTOCOL_LOCK_V2.json",
+  "manifest_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/data_v3/manifests",
+  "manifest_hashes_path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/data_v3/receipts/MANIFEST_HASHES.json",
+  "production": true,
+  "transform_state_path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/data_v2/TRANSFORM_STATE_CLEAN_V2.json"
+ },
+ "data_protocol_lock_v2": {
+  "data_version": "CLEAN_V2_POP5100_V2",
+  "lock_file_sha256": "905ee4f9b39a7bb249a45f9bfa061a9ce2712b20b9aedecb362a6720bfa91b7d",
+  "lock_self_sha256": "bc699a97dd2fab054e5a5c00f9661dd32b0677941d3f23f2e4b81751b3b7b330",
+  "manifest_registry": {
+   "file_sha256": "9d0ff201b62854cba444c03fb09c27aaaf773900a88752854c618510870525d4",
+   "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/contracts/manifest_registry/REGISTRY_V2_FULL_EXT.json",
+   "self_sha256": "c9e48641f5da6c5db188625b7a8d82168876ca75b7784f55cbe2bf01ab0100a7"
+  },
+  "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/contracts/DATA_PROTOCOL_LOCK_V2.json",
+  "schema": {
+   "registry_file_sha256": "c23454cb7d34886e0374349b73a4d153907ebc56b17061926e193e221e4a0bc6",
+   "registry_path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/contracts/derived_schemas/REGISTRY.json",
+   "schema_id": "L3S_NEAR_DUPLICATE_SESSION-minus-G11+G12a+G3+G4+G7",
+   "schema_self_sha256": "c53d47fe2555dd537e27e11d45a4e8b23739566e6b98179dcf521852aa918f87"
+  },
+  "trainer_registry_view": {
+   "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/CFULL/C_FULL_02B_SASREC_s2026/REGISTRY_V2_TRAINER_VIEW.json",
+   "roles": [
+    "CONTINUATION",
+    "MAIN"
+   ],
+   "self_sha256": "c2c8d5e5c3a17ec5f1a01723303f3be7ede84543dc464c9c9bb756d6832f256a"
+  }
+ },
+ "determinism": {
+  "at_trainer_init": {
+   "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+   "determinism_mode_in_effect": "STRICT",
+   "deterministic_algorithms": true,
+   "warn_only": false
+  },
+  "constant": "STRICT",
+  "passed_to_runconfig": true
+ },
+ "device": {
+  "in_process": "cuda:0",
+  "name": "NVIDIA A40",
+  "physical_gpu": 1,
+  "total_memory_bytes": 47697690624,
+  "uuid": "cec893f3-e7ca-2617-1fe8-a48b560c0d11"
+ },
+ "device_pin_sha256": "db744ca3f0da27ac7b65c41b4b32f2c68ec9d0bd66bbc0dc33e874a226834e6b",
+ "disk_at_start": {
+  "floor_bytes": 8589934592,
+  "free_bytes": 335831371776,
+  "headroom_bytes": 333147155328,
+  "planned_peak_bytes": 2684216448,
+  "utc": "2026-09-29T08:51:09Z"
+ },
+ "environment": {
+  "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+  "CUDA_VISIBLE_DEVICES": "1",
+  "PYTHONDONTWRITEBYTECODE": "1",
+  "cuda_imported_before_export": false
+ },
+ "eval_provider": {
+  "build": {
+   "cache_build_s": 145.95,
+   "cache_event_rows": 1693427,
+   "cache_nbytes": 288081456,
+   "history_policy": "USER_HISTORY_L50",
+   "mean_window_length": 39.9192652112508,
+   "peak_rss_bytes_after": 17209720832,
+   "rss_bytes_after": 9090830336,
+   "rss_bytes_before": 10054082560,
+   "total_s": 147.86,
+   "transform_state": {
+    "clip_extends_beyond_clean_v2": [],
+    "identity_with_clean_v2": true,
+    "scope": "NORMALIZERS_ONLY",
+    "source": "DEFAULT_CLEAN_V2 (the locked state)",
+    "transform_state_sha256": "2ff0ff4ec1d27d254972c2f212e81f5fee6277dc9cced31a6a5baf5b4b002727"
+   },
+   "verify_s": 1.75
+  },
+  "cache": {
+   "bucket_groups": 8,
+   "buckets": [
+    0,
+    63
+   ],
+   "build_s": 145.95,
+   "cache_nbytes": 288081456,
+   "group_log": [
+    {
+     "buckets": [
+      0,
+      7
+     ],
+     "group_store_rows": 8387922,
+     "index_alignment_decisions_checked": 6432200,
+     "kept_decisions": 65083,
+     "kept_rows": 210865,
+     "masks_dtype": "uint8",
+     "rss_bytes": 12943900672,
+     "s": 17.86
+    },
+    {
+     "buckets": [
+      8,
+      15
+     ],
+     "group_store_rows": 8382398,
+     "index_alignment_decisions_checked": 6426675,
+     "kept_decisions": 66449,
+     "kept_rows": 216043,
+     "masks_dtype": "uint8",
+     "rss_bytes": 12161290240,
+     "s": 18.35
+    },
+    {
+     "buckets": [
+      16,
+      23
+     ],
+     "group_store_rows": 8372363,
+     "index_alignment_decisions_checked": 6418264,
+     "kept_decisions": 64909,
+     "kept_rows": 210056,
+     "masks_dtype": "uint8",
+     "rss_bytes": 13450600448,
+     "s": 18.01
+    },
+    {
+     "buckets": [
+      24,
+      31
+     ],
+     "group_store_rows": 8346737,
+     "index_alignment_decisions_checked": 6395656,
+     "kept_decisions": 61562,
+     "kept_rows": 205001,
+     "masks_dtype": "uint8",
+     "rss_bytes": 12724240384,
+     "s": 17.87
+    },
+    {
+     "buckets": [
+      32,
+      39
+     ],
+     "group_store_rows": 8446859,
+     "index_alignment_decisions_checked": 6482430,
+     "kept_decisions": 65854,
+     "kept_rows": 214287,
+     "masks_dtype": "uint8",
+     "rss_bytes": 13061160960,
+     "s": 18.17
+    },
+    {
+     "buckets": [
+      40,
+      47
+     ],
+     "group_store_rows": 8378514,
+     "index_alignment_decisions_checked": 6424905,
+     "kept_decisions": 63425,
+     "kept_rows": 209116,
+     "masks_dtype": "uint8",
+     "rss_bytes": 13383344128,
+     "s": 17.79
+    },
+    {
+     "buckets": [
+      48,
+      55
+     ],
+     "group_store_rows": 8416698,
+     "index_alignment_decisions_checked": 6453904,
+     "kept_decisions": 67202,
+     "kept_rows": 216510,
+     "masks_dtype": "uint8",
+     "rss_bytes": 11842445312,
+     "s": 18.54
+    },
+    {
+     "buckets": [
+      56,
+      63
+     ],
+     "group_store_rows": 8386468,
+     "index_alignment_decisions_checked": 6434630,
+     "kept_decisions": 65230,
+     "kept_rows": 211549,
+     "masks_dtype": "uint8",
+     "rss_bytes": 12569067520,
+     "s": 17.7
+    }
+   ],
+   "history_policy": "USER_HISTORY_L50",
+   "kind": "eval",
+   "masks_dtype": "uint8",
+   "mean_window_length": 39.9192652112508,
+   "n_decisions": 519714,
+   "n_event_rows": 1693427,
+   "peak_rss_bytes_after": 17209720832,
+   "splits": [
+    "VALIDATION_SELECT",
+    "VALIDATION_CONFIRM"
+   ],
+   "store_splits": [
+    "TRAIN",
+    "VALIDATION_SELECT",
+    "VALIDATION_CONFIRM"
+   ]
+  },
+  "eval_batch": 1024,
+  "eval_stream": "E2E_ROWS",
+  "eval_stream_source": {
+   "lock_sha256": "0308640a79ef5fccb50bc456ee8f3ff1d506095c757e3b24fbb7b9c2e058238e",
+   "source": "v4eval.frozen_config.load().eval_stream",
+   "value": "EVAL_ROWS_ONLY"
+  },
+  "fingerprint": "37f5bbbad8851d3ee3ee624b3dd156b7a5a6f4302b288366f00fe508e17d417f",
+  "history": {
+   "context_length": 50,
+   "decision_splits": [
+    "VALIDATION_SELECT",
+    "VALIDATION_CONFIRM"
+   ],
+   "history_policy": "USER_HISTORY_L50",
+   "per_event_channels": "stored per-event values (session-relative channels restart at each segment start)",
+   "resolver": "v4hist.windows/1",
+   "session_mode_features": {
+    "keys": {
+     "current_matches_session_mode": "float32 [B]",
+     "current_matches_session_mode_available": "float32 [B]",
+     "session_mode_main_category_tokens": "int64 [B, 50]",
+     "session_mode_share": "float32 [B]"
+    },
+    "main_category_vocab": 16,
+    "scope": "inside the 50-event window; ties -> most recent occurrence",
+    "status": "CANDIDATE (DECISION_LOG 48; droppable)",
+    "unknown_token": 1
+   },
+   "session_offset_tokens": {
+    "cap": 7,
+    "dtype": "int64",
+    "key": "session_offset_tokens",
+    "rule": "min(session_index(d) - session_index(j), 7) + 1; PAD 0; v1 behavioural session (gap > 3600 s over all raw blocks; never fence-reset)",
+    "vocab": 9
+   },
+   "store_splits": [
+    "TRAIN",
+    "VALIDATION_SELECT",
+    "VALIDATION_CONFIRM"
+   ],
+   "window_rule": "rows [max(user_start, r - (L - 1)), r] of the user's retained stream in (user_id, segment_index, position_in_segment) order"
+  },
+  "history_policy": "USER_HISTORY_L50",
+  "manifest_binding": {
+   "content_sha256": "62562f25faa4ef0442dc714aa83fdf85e144f25292b0bf4ff04fcc1c0b50bb93",
+   "content_sha256_rule": "sha256 of the canonical JSON list [{table, row_count, table_content_sha256}] in the header's table order (REGISTRY_FS rules.content_sha256 = v4fs_data.fs_common.manifest_content_sha256), from the verified tables",
+   "header_content_sha256": "04fcde532dd7b84573e32e8117c6f8c6f345910aa5183a0a04bf04d6747a9156",
+   "header_sha256": "2e96bce6f4f37ebad9606f8ea4a87d8f56d323aa3b8ad4339dd185c1c1db82b1",
+   "manifest_id": "MAIN_VALIDATION_5_100_131072"
+  },
+  "manifest_hashes": {
+   "eval_ordered_decision_id_sha256": "4f45656a86dbc9d9bb2a59841ac2b538b23b09b0984840af1957a7953664b0dc",
+   "ordered_decision_id_sha256": "be97c8516f3c2e5ea89e2ffa60e35d8a57b72f9b8873e741b7366e765bb7caaf",
+   "rankable_ordered_decision_id_sha256": "f2bee71d896ee6e868f866cb08d888c44d46ee7f2889bf74969d729566f619c8"
+  },
+  "manifest_id": "MAIN_VALIDATION_5_100_131072",
+  "n_manifest_rows": 644694,
+  "n_stream_rows": 519714,
+  "prefetch_depth": 2,
+  "provider": "v4int.StoreEvalProvider/2",
+  "transform_state": {
+   "clip_extends_beyond_clean_v2": [],
+   "identity_with_clean_v2": true,
+   "scope": "NORMALIZERS_ONLY",
+   "source": "DEFAULT_CLEAN_V2 (the locked state)",
+   "transform_state_sha256": "2ff0ff4ec1d27d254972c2f212e81f5fee6277dc9cced31a6a5baf5b4b002727"
+  },
+  "verified": {
+   "canonical_ordered_decision_id_sha256": "be97c8516f3c2e5ea89e2ffa60e35d8a57b72f9b8873e741b7366e765bb7caaf",
+   "checks": {
+    "decisions.file_sha256_eq_registry": true,
+    "decisions.order_hash_eq_header": true,
+    "decisions.row_count_eq_registry": true,
+    "decisions.strictly_ascending": true,
+    "decisions.table_content_sha256_eq_registry": true,
+    "header.builder_code_sha256_eq_lock": true,
+    "header.candidate_order_eq_lock": true,
+    "header.catalogue_K_eq_lock": true,
+    "header.content_self_hash": true,
+    "header.data_protocol_lock_file_sha256_eq_lock_file": true,
+    "header.data_protocol_lock_sha256_eq_lock_self": true,
+    "header.data_version_eq_registry": true,
+    "header.dataset_version_eq_lock": true,
+    "header.eval_ordered_decision_id_sha256_eq_registry": true,
+    "header.manifest_id": true,
+    "header.n_decisions_eq_registry": true,
+    "header.n_eval_rows_eq_registry": true,
+    "header.n_rankable_rows_eq_registry": true,
+    "header.n_users_eq_registry": true,
+    "header.no_all_methods_lock": true,
+    "header.no_test_exposure_entry": true,
+    "header.ordered_decision_id_sha256_eq_registry": true,
+    "header.population_sha256_eq_registry": true,
+    "header.rankable_ordered_decision_id_sha256_eq_registry": true,
+    "header.schema_self_sha256_eq_lock": true,
+    "header.status_allowed": true,
+    "header.status_eq_registry_entry": true,
+    "header.tables_eq_registry": true,
+    "lock_self_sha256_recomputed": true,
+    "n_decisions_eq_header": true,
+    "n_decisions_eq_registry": true,
+    "ok_marker_matches_disk": true,
+    "registry.content_sha256": true,
+    "registry.header_content_sha256": true,
+    "registry.header_sha256": true,
+    "registry.self_sha256_verified": true,
+    "registry.source_lock_eq_lock": true,
+    "registry.transform_state_eq_lock": true,
+    "users.file_sha256_eq_registry": true,
+    "users.row_count_eq_registry": true,
+    "users.table_content_sha256_eq_registry": true
+   },
+   "checks_passed": 41,
+   "header_content_sha256": "04fcde532dd7b84573e32e8117c6f8c6f345910aa5183a0a04bf04d6747a9156",
+   "header_file_sha256": "2e96bce6f4f37ebad9606f8ea4a87d8f56d323aa3b8ad4339dd185c1c1db82b1",
+   "kind": "EVAL",
+   "lock_file_sha256": "905ee4f9b39a7bb249a45f9bfa061a9ce2712b20b9aedecb362a6720bfa91b7d",
+   "lock_self_sha256": "bc699a97dd2fab054e5a5c00f9661dd32b0677941d3f23f2e4b81751b3b7b330",
+   "manifest_id": "MAIN_VALIDATION_5_100_131072",
+   "n_decisions": 644694,
+   "ordered_decision_id_sha256": "be97c8516f3c2e5ea89e2ffa60e35d8a57b72f9b8873e741b7366e765bb7caaf",
+   "registry": {
+    "data_version": "CLEAN_V2_POP5100_V2",
+    "entry_content_sha256": "62562f25faa4ef0442dc714aa83fdf85e144f25292b0bf4ff04fcc1c0b50bb93",
+    "entry_header_sha256": "2e96bce6f4f37ebad9606f8ea4a87d8f56d323aa3b8ad4339dd185c1c1db82b1",
+    "file_sha256": "9d0ff201b62854cba444c03fb09c27aaaf773900a88752854c618510870525d4",
+    "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/contracts/manifest_registry/REGISTRY_V2_FULL_EXT.json",
+    "root": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4",
+    "run_label": null,
+    "self_sha256": "c9e48641f5da6c5db188625b7a8d82168876ca75b7784f55cbe2bf01ab0100a7"
+   },
+   "tables": {
+    "decisions": {
+     "file": "MAIN_VALIDATION_5_100_131072.decisions.parquet",
+     "file_sha256": "61f10854c300b28a03cb799a0b734a6ab77db90d5325a40b3617c4bcfc841919",
+     "row_count": 644694,
+     "table_content_sha256": "3d9b5b34a3183948d5eec5d6a1ced7d29be5b3992f294cd5f7ff6ef530c91150"
+    },
+    "users": {
+     "file": "MAIN_VALIDATION_5_100_131072.users.parquet",
+     "file_sha256": "a18bcb42cbb6ad63740e62c305973330ae34a3f2a3c4ac0d6085fa26ef4c64d9",
+     "row_count": 51211,
+     "table_content_sha256": "fdeeeb38e97e0fdb93eccfb8f86113ee09010969bf0524cf6ac0986086c41d7a"
+    }
+   },
+   "timings_s": {
+    "files_and_header": 0.03,
+    "lock_state_registry": 0.01,
+    "tables": 1.38,
+    "total": 1.42
+   },
+   "transform_state_file_sha256": "7dda2f56066c1ca11c32754fd2b701448a7d7920f3e68bf7facc77141f41ae7d",
+   "transform_state_self_sha256": "2ff0ff4ec1d27d254972c2f212e81f5fee6277dc9cced31a6a5baf5b4b002727",
+   "verified_by": "MANIFEST_REGISTRY"
+  }
+ },
+ "history_policy": "USER_HISTORY_L50",
+ "init_sha256": "fe075eddc6715e92d7c20066c89291ee4147d9aed9a28c939d4dcae626ded616",
+ "label": "PRODUCTION",
+ "manifests": {
+  "eval": "MAIN_VALIDATION_5_100_131072",
+  "source": "v4train.provider.expected_manifests (REGISTRY_V2 role)",
+  "train": "FULL_TRAIN_5_100_TIEBREAK",
+  "trainer_expects": [
+   "FULL_TRAIN_5_100_TIEBREAK",
+   "MAIN_VALIDATION_5_100_131072"
+  ]
+ },
+ "mode": "fresh",
+ "numpy": "2.4.6",
+ "population_label": null,
+ "preflight": {
+  "argv": [
+   "v4int/c_full.py",
+   "--ext-registry",
+   "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/contracts/manifest_registry/REGISTRY_V2_FULL_EXT.json",
+   "--",
+   "--family",
+   "SASREC",
+   "--seed",
+   "2026",
+   "--phase",
+   "MAIN",
+   "--recipe-id",
+   "02B_SASREC",
+   "--gpu",
+   "1",
+   "--run-dir",
+   "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/CFULL/C_FULL_02B_SASREC_s2026",
+   "--history-policy",
+   "USER_HISTORY_L50"
+  ],
+  "g1_gate": {
+   "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/company/gates/G1_APPROVED.json",
+   "required": true,
+   "sha256": "13af3b4ec32b7b32ad6f7fd187c6d3a879a952d3bf0e823384ce74940b76e250"
+  },
+  "gpu_check": {
+   "gpu_ready": "ok",
+   "inherited_cuda_visible_devices": null,
+   "nvidia_smi": {
+    "0": {
+     "memory_total_mib": 46068.0,
+     "memory_used_mib": 2905.0,
+     "name": "NVIDIA A40",
+     "utilization_pct": 19.0,
+     "uuid": "GPU-1fef4f8f-b712-b022-cf2e-c9cbf3eab7cf"
+    },
+    "1": {
+     "memory_total_mib": 46068.0,
+     "memory_used_mib": 0.0,
+     "name": "NVIDIA A40",
+     "utilization_pct": 0.0,
+     "uuid": "GPU-cec893f3-e7ca-2617-1fe8-a48b560c0d11"
+    }
+   }
+  },
+  "history_policy": "USER_HISTORY_L50",
+  "host": "jupyter-group-digi2026-g8",
+  "smoke": false,
+  "tuned_recipe": {
+   "recipe_id": "02B_SASREC"
+  },
+  "utc": "2026-09-29T08:45:44Z"
+ },
+ "providers_build_s": 317.69,
+ "python": "3.11.14",
+ "run_id": "C_FULL_02B_SASREC_s2026",
+ "smoke": null,
+ "snapshot": {
+  "isolated_modules": 11,
+  "verified_files": 24
+ },
+ "task": "INT-01 launch_central",
+ "torch": "2.13.0+cu130",
+ "train_provider": {
+  "build": {
+   "cache_build_s": 146.37,
+   "cache_event_rows": 31624798,
+   "cache_nbytes": 6160638088,
+   "history_policy": "USER_HISTORY_L50",
+   "mean_window_length": 19.872768652352537,
+   "peak_rss_bytes_after": 17209720832,
+   "rss_bytes_after": 10054078464,
+   "rss_bytes_before": 717148160,
+   "total_s": 169.8,
+   "transform_state": {
+    "clip_extends_beyond_clean_v2": [],
+    "identity_with_clean_v2": true,
+    "scope": "NORMALIZERS_ONLY",
+    "source": "DEFAULT_CLEAN_V2 (the locked state)",
+    "transform_state_sha256": "2ff0ff4ec1d27d254972c2f212e81f5fee6277dc9cced31a6a5baf5b4b002727"
+   },
+   "verify_s": 21.15
+  },
+  "cache": {
+   "bucket_groups": 8,
+   "buckets": [
+    0,
+    63
+   ],
+   "build_s": 146.37,
+   "cache_nbytes": 6160638088,
+   "group_log": [
+    {
+     "buckets": [
+      0,
+      7
+     ],
+     "group_store_rows": 6585061,
+     "index_alignment_decisions_checked": 5014110,
+     "kept_decisions": 3327531,
+     "kept_rows": 3945242,
+     "masks_dtype": "uint8",
+     "rss_bytes": 12474650624,
+     "s": 16.75
+    },
+    {
+     "buckets": [
+      8,
+      15
+     ],
+     "group_store_rows": 6585880,
+     "index_alignment_decisions_checked": 5014703,
+     "kept_decisions": 3337045,
+     "kept_rows": 3955061,
+     "masks_dtype": "uint8",
+     "rss_bytes": 12541849600,
+     "s": 17.1
+    },
+    {
+     "buckets": [
+      16,
+      23
+     ],
+     "group_store_rows": 6584508,
+     "index_alignment_decisions_checked": 5012658,
+     "kept_decisions": 3337796,
+     "kept_rows": 3956342,
+     "masks_dtype": "uint8",
+     "rss_bytes": 13718216704,
+     "s": 18.24
+    },
+    {
+     "buckets": [
+      24,
+      31
+     ],
+     "group_store_rows": 6564307,
+     "index_alignment_decisions_checked": 4996101,
+     "kept_decisions": 3338983,
+     "kept_rows": 3959587,
+     "masks_dtype": "uint8",
+     "rss_bytes": 13740351488,
+     "s": 17.93
+    },
+    {
+     "buckets": [
+      32,
+      39
+     ],
+     "group_store_rows": 6638935,
+     "index_alignment_decisions_checked": 5061136,
+     "kept_decisions": 3336857,
+     "kept_rows": 3954459,
+     "masks_dtype": "uint8",
+     "rss_bytes": 14613401600,
+     "s": 18.05
+    },
+    {
+     "buckets": [
+      40,
+      47
+     ],
+     "group_store_rows": 6597166,
+     "index_alignment_decisions_checked": 5025541,
+     "kept_decisions": 3313909,
+     "kept_rows": 3928115,
+     "masks_dtype": "uint8",
+     "rss_bytes": 14779109376,
+     "s": 17.7
+    },
+    {
+     "buckets": [
+      48,
+      55
+     ],
+     "group_store_rows": 6612909,
+     "index_alignment_decisions_checked": 5034164,
+     "kept_decisions": 3365864,
+     "kept_rows": 3988763,
+     "masks_dtype": "uint8",
+     "rss_bytes": 15254401024,
+     "s": 18.06
+    },
+    {
+     "buckets": [
+      56,
+      63
+     ],
+     "group_store_rows": 6591548,
+     "index_alignment_decisions_checked": 5022195,
+     "kept_decisions": 3319615,
+     "kept_rows": 3937229,
+     "masks_dtype": "uint8",
+     "rss_bytes": 16958308352,
+     "s": 17.95
+    }
+   ],
+   "history_policy": "USER_HISTORY_L50",
+   "kind": "loss",
+   "masks_dtype": "uint8",
+   "mean_window_length": 19.872768652352537,
+   "n_decisions": 26677600,
+   "n_event_rows": 31624798,
+   "peak_rss_bytes_after": 17209720832,
+   "splits": [
+    "TRAIN"
+   ],
+   "store_splits": [
+    "TRAIN"
+   ]
+  },
+  "fingerprint": "0ae0dff3d35e6476d803f9caea86befbd6010ce35e47979f4b0861732c91b370",
+  "history": {
+   "context_length": 50,
+   "decision_splits": [
+    "TRAIN"
+   ],
+   "history_policy": "USER_HISTORY_L50",
+   "per_event_channels": "stored per-event values (session-relative channels restart at each segment start)",
+   "resolver": "v4hist.windows/1",
+   "session_mode_features": {
+    "keys": {
+     "current_matches_session_mode": "float32 [B]",
+     "current_matches_session_mode_available": "float32 [B]",
+     "session_mode_main_category_tokens": "int64 [B, 50]",
+     "session_mode_share": "float32 [B]"
+    },
+    "main_category_vocab": 16,
+    "scope": "inside the 50-event window; ties -> most recent occurrence",
+    "status": "CANDIDATE (DECISION_LOG 48; droppable)",
+    "unknown_token": 1
+   },
+   "session_offset_tokens": {
+    "cap": 7,
+    "dtype": "int64",
+    "key": "session_offset_tokens",
+    "rule": "min(session_index(d) - session_index(j), 7) + 1; PAD 0; v1 behavioural session (gap > 3600 s over all raw blocks; never fence-reset)",
+    "vocab": 9
+   },
+   "store_splits": [
+    "TRAIN"
+   ],
+   "window_rule": "rows [max(user_start, r - (L - 1)), r] of the user's retained stream in (user_id, segment_index, position_in_segment) order"
+  },
+  "history_policy": "USER_HISTORY_L50",
+  "manifest_binding": {
+   "content_sha256": "7cb2062e33112ec2ecf1aa1849020f29976d76878d1a81eb3f1c7bc556d2b693",
+   "content_sha256_rule": "sha256 of the canonical JSON list [{table, row_count, table_content_sha256}] in the header's table order (REGISTRY_FS rules.content_sha256 = v4fs_data.fs_common.manifest_content_sha256), from the verified tables",
+   "header_content_sha256": "433b925705609bd9e2e12ca2ec7f9b0d04f00fd07b16251dfcee5dbec11ae16f",
+   "header_sha256": "2e720abb04ac449e9a5a19e59f2d058dd217cc134aa21e16ff402666d811fd3a",
+   "manifest_id": "FULL_TRAIN_5_100_TIEBREAK"
+  },
+  "manifest_id": "FULL_TRAIN_5_100_TIEBREAK",
+  "n_decisions": 26677600,
+  "provider": "v4int.StoreTrainProvider/2",
+  "split": "TRAIN",
+  "transform_state": {
+   "clip_extends_beyond_clean_v2": [],
+   "identity_with_clean_v2": true,
+   "scope": "NORMALIZERS_ONLY",
+   "source": "DEFAULT_CLEAN_V2 (the locked state)",
+   "transform_state_sha256": "2ff0ff4ec1d27d254972c2f212e81f5fee6277dc9cced31a6a5baf5b4b002727"
+  },
+  "verified": {
+   "canonical_ordered_decision_id_sha256": "ef24f53e1ac834025c586d3b3279e997bc65de111ed9357a4fa5e7e4db80fbda",
+   "checks": {
+    "central_order.file_sha256_eq_registry": true,
+    "central_order.hash_eq_header_derived": true,
+    "central_order.is_permutation": true,
+    "central_order.row_count_eq_registry": true,
+    "central_order.strictly_ascending": true,
+    "central_order.table_content_sha256_eq_registry": true,
+    "clients.file_sha256_eq_registry": true,
+    "clients.row_count_eq_registry": true,
+    "clients.table_content_sha256_eq_registry": true,
+    "decisions.file_sha256_eq_registry": true,
+    "decisions.old_split_train": true,
+    "decisions.order_hash_eq_header": true,
+    "decisions.row_count_eq_registry": true,
+    "decisions.table_content_sha256_eq_registry": true,
+    "decisions.target_class_in_range": true,
+    "decisions.target_status_observed": true,
+    "header.builder_code_sha256_eq_lock": true,
+    "header.candidate_order_eq_lock": true,
+    "header.catalogue_K_eq_lock": true,
+    "header.content_self_hash": true,
+    "header.data_protocol_lock_file_sha256_eq_lock_file": true,
+    "header.data_protocol_lock_sha256_eq_lock_self": true,
+    "header.data_version_eq_registry": true,
+    "header.dataset_version_eq_lock": true,
+    "header.eval_ordered_decision_id_sha256_eq_registry": true,
+    "header.manifest_id": true,
+    "header.n_decisions_eq_registry": true,
+    "header.n_eval_rows_eq_registry": true,
+    "header.n_rankable_rows_eq_registry": true,
+    "header.n_users_eq_registry": true,
+    "header.no_all_methods_lock": true,
+    "header.no_test_exposure_entry": true,
+    "header.ordered_decision_id_sha256_eq_registry": true,
+    "header.population_sha256_eq_registry": true,
+    "header.rankable_ordered_decision_id_sha256_eq_registry": true,
+    "header.schema_self_sha256_eq_lock": true,
+    "header.status_allowed": true,
+    "header.status_eq_registry_entry": true,
+    "header.tables_eq_registry": true,
+    "lock_self_sha256_recomputed": true,
+    "n_decisions_eq_header": true,
+    "n_decisions_eq_registry": true,
+    "ok_marker_matches_disk": true,
+    "registry.content_sha256": true,
+    "registry.header_content_sha256": true,
+    "registry.header_sha256": true,
+    "registry.self_sha256_verified": true,
+    "registry.source_lock_eq_lock": true,
+    "registry.transform_state_eq_lock": true
+   },
+   "checks_passed": 49,
+   "header_content_sha256": "433b925705609bd9e2e12ca2ec7f9b0d04f00fd07b16251dfcee5dbec11ae16f",
+   "header_file_sha256": "2e720abb04ac449e9a5a19e59f2d058dd217cc134aa21e16ff402666d811fd3a",
+   "kind": "TRAIN",
+   "lock_file_sha256": "905ee4f9b39a7bb249a45f9bfa061a9ce2712b20b9aedecb362a6720bfa91b7d",
+   "lock_self_sha256": "bc699a97dd2fab054e5a5c00f9661dd32b0677941d3f23f2e4b81751b3b7b330",
+   "manifest_id": "FULL_TRAIN_5_100_TIEBREAK",
+   "n_decisions": 26677600,
+   "ordered_decision_id_sha256": "5ebeef2b3a9b2c96c4fe93683e073ac556e7bef1835bb96f050f4f15927d5459",
+   "registry": {
+    "data_version": "CLEAN_V2_POP5100_V2",
+    "entry_content_sha256": "7cb2062e33112ec2ecf1aa1849020f29976d76878d1a81eb3f1c7bc556d2b693",
+    "entry_header_sha256": "2e720abb04ac449e9a5a19e59f2d058dd217cc134aa21e16ff402666d811fd3a",
+    "file_sha256": "9d0ff201b62854cba444c03fb09c27aaaf773900a88752854c618510870525d4",
+    "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/contracts/manifest_registry/REGISTRY_V2_FULL_EXT.json",
+    "root": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4",
+    "run_label": null,
+    "self_sha256": "c9e48641f5da6c5db188625b7a8d82168876ca75b7784f55cbe2bf01ab0100a7"
+   },
+   "tables": {
+    "central_order": {
+     "file": "FULL_TRAIN_5_100_TIEBREAK.central_order.parquet",
+     "file_sha256": "3f89121b6ed1de7eb609c1d1151dd7085a29c211c9784d8ac076b8a5afadc0f9",
+     "row_count": 26677600,
+     "table_content_sha256": "8f2e0c8dff216bfdf53996c1914a394c87bde45f489be1ee20f7631806652655"
+    },
+    "clients": {
+     "file": "FULL_TRAIN_5_100_TIEBREAK.clients.parquet",
+     "file_sha256": "218fa918b466faa409fdd6abee8e226b36ce0107478b0bb5ce950193b88f8ec9",
+     "row_count": 1348682,
+     "table_content_sha256": "ee2b27fa54a1767e47cf0cefbd686d22e52c33ca7c74afc4abd79b2ed6a0f6c7"
+    },
+    "decisions": {
+     "file": "FULL_TRAIN_5_100_TIEBREAK.decisions.parquet",
+     "file_sha256": "b26954207be3a731b1f4a1e679f04ae020259f8dcdba304e79563089cace0362",
+     "row_count": 26677600,
+     "table_content_sha256": "fa7c909ada78502373e032ab219bc0734699e150723cb5f8fedccfc29945f9a2"
+    }
+   },
+   "timings_s": {
+    "files_and_header": 1.39,
+    "lock_state_registry": 0.01,
+    "tables": 19.53,
+    "total": 20.93
+   },
+   "transform_state_file_sha256": "7dda2f56066c1ca11c32754fd2b701448a7d7920f3e68bf7facc77141f41ae7d",
+   "transform_state_self_sha256": "2ff0ff4ec1d27d254972c2f212e81f5fee6277dc9cced31a6a5baf5b4b002727",
+   "verified_by": "MANIFEST_REGISTRY"
+  }
+ },
+ "trainer_code_sha256": "f65e6fe76689395865dc304ba0cdcaf7e6a5d110c85340e5155e81b0f9ed8894",
+ "tuned_recipe": {
+  "dropout": [
+   0.1
+  ],
+  "model_variant": "SASREC_D256_B3",
+  "peak_lr": 0.00040005642964899735,
+  "recipe_id": "02B_SASREC",
+  "recipe_registry": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/contracts/hp_registry/TUNED_RECIPES_02B.json",
+  "recipe_sha256": "9a2530874a3abd096eb2f9c9f4b02f012f4015ac80137bf9328b4f69c1527f6d",
+  "schedule": "S0",
+  "theta0_init_sha256": "fe075eddc6715e92d7c20066c89291ee4147d9aed9a28c939d4dcae626ded616",
+  "theta0_variants": {
+   "file_sha256": "36f74c246b4bf17fedf045de7957becad9dad1df3e6c0ee95bc65b0f0410a404",
+   "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/contracts/model_variants/THETA0_VARIANTS.json",
+   "self_sha256": "1ac057fdfcf64b00bd8d31faaf48431a77718def84bd9d4404ef59fdec027ca8"
+  }
+ },
+ "tuning": null,
+ "utc_start": "2026-09-29T08:45:44Z"
+}

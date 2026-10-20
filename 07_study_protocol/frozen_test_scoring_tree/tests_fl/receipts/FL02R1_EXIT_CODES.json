@@ -1,0 +1,11 @@
+{
+ "task": "FL-02R1",
+ "utc": "2026-09-26",
+ "change": "fl.schedule conforms to PREG1 T2 P3: EDGE_TOL = 1e-12 (== v4train.schedule.END_TOL), main EFE in (6.0, 6.0 + 1e-12] clamped to the 6.0 value, 6.0 + 2e-12 refused; continuation as v4train.s_continuation ((6.0, 8.0], no tolerance at 8.0)",
+ "runs": [
+  {"suite": "tests_fl (all, via code/tests_fl/run_all.py)", "pytest_exit_code": 0, "bench_exit_code": 0, "runner_exit_code": 0,
+   "summary": "126 passed, 48 xfailed in 102.90s", "negative_controls_all_failed_as_intended": true},
+  {"suite": "tests_train (all)", "pytest_exit_code": 0, "summary": "67 passed, 17 xfailed in 112.76s", "skipped": 0,
+   "in_tolerance_comparison": "test_lr_point_evalconfig.py::test_t2_p3_tolerance_zone_matches_fl_when_fl_has_it PASSED (previously skipped)"}
+ ]
+}

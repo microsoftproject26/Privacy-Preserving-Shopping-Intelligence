@@ -1,0 +1,498 @@
+{
+ "arm": "DP8_WARM",
+ "bytes": {
+  "ledger": [
+   36320,
+   42235220480,
+   42235365760,
+   0
+  ]
+ },
+ "checkpoints": {
+  "CONTROLLED_BUDGET": {
+   "file": "ckpt/BM_ml_1m_DP8_WARM_s2027/endpoint_6.0.pt",
+   "mark": 6.0,
+   "sha256": "6a0def58d7a0b29003c67bcfb118bc1d9481d4c52fc98e552ccb178cb78aad0c"
+  },
+  "PRACTICAL_BEST": {
+   "file": "ckpt/BM_ml_1m_DP8_WARM_s2027/best.pt",
+   "mark": 1.0,
+   "sha256": "deb3219c10db985b356107f791cf569a130c29d445b1af0a5a705746d934faed"
+  }
+ },
+ "device": {
+  "cublas_workspace_config": ":4096:8",
+  "cuda": "13.0",
+  "cudnn": 92000,
+  "device_class": "NVIDIA_A40-FP32-DET",
+  "gpu_name": "NVIDIA A40",
+  "numerics": {
+   "cuda_matmul_allow_tf32": false,
+   "cudnn_allow_tf32": false,
+   "cudnn_deterministic": true,
+   "deterministic_algorithms": true,
+   "deterministic_warn_only": false,
+   "float32_matmul_precision": "highest",
+   "intra_op_threads": 16,
+   "torch": "2.13.0+cu130"
+  },
+  "physical_gpu": "1",
+  "torch": "2.13.0+cu130"
+ },
+ "device_class": "NVIDIA_A40-FP32-DET",
+ "evals": [
+  [
+   1,
+   31,
+   0.08615787435269832,
+   true,
+   "MAIN"
+  ],
+  [
+   2,
+   63,
+   0.08664555881927598,
+   true,
+   "MAIN"
+  ],
+  [
+   3,
+   95,
+   0.08598411249603995,
+   false,
+   "MAIN"
+  ],
+  [
+   4,
+   127,
+   0.0850347196619041,
+   false,
+   "MAIN"
+  ],
+  [
+   5,
+   159,
+   0.08509802360014551,
+   false,
+   "MAIN"
+  ],
+  [
+   6,
+   191,
+   0.085279037340021,
+   false,
+   "MAIN"
+  ],
+  [
+   7,
+   223,
+   0.08515861008952551,
+   false,
+   "MAIN"
+  ],
+  [
+   8,
+   255,
+   0.08378762971846264,
+   false,
+   "MAIN"
+  ],
+  [
+   9,
+   287,
+   0.08360349857420732,
+   false,
+   "MAIN"
+  ],
+  [
+   10,
+   319,
+   0.08484566624050321,
+   false,
+   "MAIN"
+  ],
+  [
+   11,
+   351,
+   0.08337045112049729,
+   false,
+   "MAIN"
+  ],
+  [
+   12,
+   383,
+   0.08354488514301346,
+   false,
+   "MAIN"
+  ]
+ ],
+ "frozen": null,
+ "init_from": {
+  "checkpoint_sha256": "e9f7034c4f5e54a7ef3b08f7c7e2b6ca59493f243b62983703c0db556d0bac63",
+  "dataset": "ml_1m",
+  "fl_init_kind": "endpoint_6.0",
+  "kind": "PRE",
+  "run_id": "BM_ml_1m_PRE_s2027",
+  "seed": 2027,
+  "state_digest": "a50206b50a69309ac5eeb9be9f9d9bd19236f1323c26721f31297c6b8226cde4"
+ },
+ "kind": "fl",
+ "run_id": "BM_ml_1m_DP8_WARM_s2027",
+ "spec": {
+  "arm": "DP8_WARM",
+  "cfg": {
+   "dp": {
+    "clip_norm": 0.45204108750489713,
+    "denominator": 47,
+    "noise_multiplier": 0.5642
+   },
+   "dropout_p": 0.0,
+   "endpoint_efe": 6.0,
+   "endpoint_rounds": 384,
+   "exposure_point": "end",
+   "lr_peak_local": 0.025,
+   "lr_shape": "fl_const",
+   "max_attempts": 2,
+   "method": "FA",
+   "mu": 0.0,
+   "n_shards": 2,
+   "pf": null,
+   "seed": 2027,
+   "server_opt": {
+    "beta1": 0.9,
+    "beta2": 0.99,
+    "lr": 0.001,
+    "name": "fedadam",
+    "tau": 0.001,
+    "v_init": "tau_squared"
+   },
+   "solver": {
+    "batch_size": 16,
+    "clip": 1.0,
+    "fused": null,
+    "lr": 0.025,
+    "optimizer": "sgd_m",
+    "passes": 2,
+    "weight_decay": 0.0
+   }
+  },
+  "client_lr": 0.1,
+  "client_opt": "sgd_m",
+  "data": {
+   "dataset": "ml_1m",
+   "fingerprint": "f4fd6f5b5095a0b25dd3b53cd20c8cd496d91c2eb6a3e0c16cba2e72a066aebd",
+   "n_clients": 6040,
+   "n_decisions": 982089
+  },
+  "device_class": "NVIDIA_A40-FP32-DET",
+  "dp_accounting": {
+   "N": 6040,
+   "T": 384,
+   "authority": "PREG1_AMENDMENT_07 R4 (registered z for identical q, T, delta)",
+   "delta": 5e-06,
+   "inclusion": "independent per client with probability EXACTLY 2^-7 (fl_engine.ExactQPlan); m = round(q N) is the fixed denominator only (B10 Q1)",
+   "m": 47,
+   "q_actual": 0.0078125,
+   "q_nominal": 0.0078125,
+   "z": 0.5642
+  },
+  "dropout": [
+   0.1
+  ],
+  "init_from": {
+   "checkpoint_sha256": "e9f7034c4f5e54a7ef3b08f7c7e2b6ca59493f243b62983703c0db556d0bac63",
+   "dataset": "ml_1m",
+   "fl_init_kind": "endpoint_6.0",
+   "kind": "PRE",
+   "run_id": "BM_ml_1m_PRE_s2027",
+   "seed": 2027,
+   "state_digest": "a50206b50a69309ac5eeb9be9f9d9bd19236f1323c26721f31297c6b8226cde4"
+  },
+  "knobs": {
+   "batch": 16,
+   "clip": 1.0,
+   "dropout_p": 0.1,
+   "endpoint_efe": 6.0,
+   "group": 64,
+   "m": 1024,
+   "max_attempts": 2,
+   "mu": 0.01,
+   "n_shards": 2,
+   "passes": 2,
+   "pf_clip": 1.0,
+   "pf_lam": 0.0001,
+   "rounds": 6827,
+   "rounds_1024": 384,
+   "s_cal_rounds": 20,
+   "s_cal_seed": 2026,
+   "sampling": "sweep",
+   "weight_decay": 1e-05
+  },
+  "local_passes": 2,
+  "lr_mult": 1.0,
+  "lr_peak_base": 0.0007114121116984968,
+  "lr_shape": "fl_const",
+  "max_len": 50,
+  "max_rounds": 384,
+  "plan": {
+   "group_size": 47,
+   "sampling": "poisson"
+  },
+  "poisson_local_rule": {
+   "authority": "DL 219",
+   "local_batch": 16,
+   "local_passes": 2,
+   "selected_local_passes": 1
+  },
+  "provenance": {
+   "ft_cell": "FT_C_f0.3_P4",
+   "pins": {
+    "device/SELECTION_FT_C.json": "e47965d2f4486fc2c30140a8ee14e79686a842decb091b3dff1de5646716c10c",
+    "fl/FL_TUNING_SELECTION.json": "9bca186e5025f5caa9e762f3c425fb3151923b79e60f01e6ecb063aac9c715ec",
+    "fl/FL_WARM_SELECTION_S7.json": "d67a0a851665495b092abbba4456f26a3423d6ef21665f5a0e2b65e2d78dc000",
+    "fl/FL_WARM_SELECTION_S8.json": "8b79d3052799dfa0ba208dce5db138da88aaa7024ba6511a374c59ce8c55a98a"
+   },
+   "tuning_winner_label": "fedadam|eta=0.01|m=1|shape=fl_const|client=sgd_m|clr=0.1|passes=1",
+   "warm_winners": {
+    "FA_WARM": "f=0.25|sf=0.1",
+    "FA_WARM_FROZEN": "f=1|sf=0.1"
+   }
+  },
+  "role": "MAIN",
+  "s_record": {
+   "S": 0.45204108750489713,
+   "file_sha256": "7ac70764233e1cf069062938a96301c0231b8a677216f8a7939b5f90a6a0d3e3",
+   "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_gpu/ml_1m/dp/S_RECORD_FA_WARM_s2027.json",
+   "self_sha256": "ade48d552c3b71e0b37ffec597ade6c3fe79764221bfad2fdffa129a1b33cee9"
+  },
+  "server_lr": 0.01,
+  "server_opt": "fedadam",
+  "upload_codec": null,
+  "variant": "SASREC_D64_B2",
+  "warm_lr_factor": 0.25,
+  "warm_server_lr_factor": 0.1
+ },
+ "spec_sha256": "784315100f26481c3a4f62a886eff965fd6a6aac2aedb41eb704b1b83d387691",
+ "status": "DONE_MAIN",
+ "summary": {
+  "counters": {
+   "coverage_by_sweep": {
+    "0": {
+     "clients": 3843,
+     "fraction": 0.6362582781456954
+    },
+    "1": {
+     "clients": 3836,
+     "fraction": 0.6350993377483444
+    },
+    "2": {
+     "clients": 3808,
+     "fraction": 0.6304635761589404
+    }
+   },
+   "efe": 6.079884816956508,
+   "exposures": 5970988,
+   "max_visits": 11,
+   "min_visits": 0,
+   "noop_visits": 0,
+   "retries": 0,
+   "rounds": 384,
+   "steps": 391394,
+   "steps_hist": {
+    "10": 1246,
+    "100": 33,
+    "102": 11,
+    "104": 34,
+    "106": 33,
+    "108": 25,
+    "110": 27,
+    "112": 17,
+    "114": 17,
+    "116": 6,
+    "118": 18,
+    "12": 938,
+    "120": 9,
+    "122": 8,
+    "124": 11,
+    "126": 13,
+    "128": 17,
+    "130": 2,
+    "132": 11,
+    "136": 5,
+    "14": 976,
+    "140": 3,
+    "144": 7,
+    "146": 9,
+    "152": 10,
+    "154": 9,
+    "156": 1,
+    "158": 9,
+    "16": 809,
+    "160": 10,
+    "162": 5,
+    "164": 1,
+    "166": 2,
+    "168": 5,
+    "18": 648,
+    "190": 5,
+    "20": 680,
+    "200": 6,
+    "218": 2,
+    "22": 512,
+    "232": 2,
+    "24": 348,
+    "26": 456,
+    "28": 335,
+    "290": 2,
+    "30": 288,
+    "32": 275,
+    "34": 244,
+    "36": 259,
+    "38": 297,
+    "4": 3232,
+    "40": 225,
+    "42": 175,
+    "44": 136,
+    "46": 161,
+    "48": 134,
+    "50": 166,
+    "52": 129,
+    "54": 112,
+    "56": 97,
+    "58": 89,
+    "6": 2224,
+    "60": 88,
+    "62": 81,
+    "64": 97,
+    "66": 106,
+    "68": 54,
+    "70": 79,
+    "72": 26,
+    "74": 59,
+    "76": 56,
+    "78": 58,
+    "8": 1585,
+    "80": 43,
+    "82": 16,
+    "84": 33,
+    "86": 31,
+    "88": 36,
+    "90": 22,
+    "92": 45,
+    "94": 21,
+    "96": 32,
+    "98": 16
+   },
+   "visits": 18160,
+   "wasted_steps": 0
+  },
+  "lr_table_digest": "16aef81fffda393fb67f68ff59aa97bf21466b52b27d0cfaa6646fcf8f52a5be",
+  "rounds": 384
+ },
+ "timing": {
+  "mean_round_s": 19.36280342063886,
+  "median_round_s": 19.088217804208398,
+  "n_clients": 6040,
+  "n_decisions": 982089,
+  "rounds_full_run": 384,
+  "rounds_this_leg": 384,
+  "wall_s_this_leg": 7435.4
+ },
+ "utc": "2026-10-04T10:31:44Z",
+ "validation": {
+  "CONTROLLED_BUDGET": {
+   "ALL": {
+    "hr@10": 0.16561775422325273,
+    "hr@20": 0.2477641603179861,
+    "mrr@20": 0.06445522429324578,
+    "n_unreachable": 0,
+    "n_users": 6038,
+    "ndcg@10": 0.08354488514301346,
+    "ndcg@20": 0.10414269251218192
+   },
+   "BAND": {
+    "hr@10": 0.17328918322295805,
+    "hr@20": 0.25275938189845476,
+    "mrr@20": 0.06768622092904995,
+    "n_unreachable": 0,
+    "n_users": 906,
+    "ndcg@10": 0.08811354542044914,
+    "ndcg@20": 0.10796639369954353
+   },
+   "BAND_COVERED_TARGET": {
+    "hr@10": 0.16589250165892502,
+    "hr@20": 0.24817518248175183,
+    "mrr@20": 0.0645621506772757,
+    "n_unreachable": 0,
+    "n_users": 6028,
+    "ndcg@10": 0.0836834798429853,
+    "ndcg@20": 0.10431545743008534
+   },
+   "BAND_UNCOVERED_TARGET": {
+    "hr@10": 0.0,
+    "hr@20": 0.0,
+    "mrr@20": 0.0,
+    "n_unreachable": 0,
+    "n_users": 10,
+    "ndcg@10": 0.0,
+    "ndcg@20": 0.0
+   },
+   "OTHERS": {
+    "hr@10": 0.1642634450506625,
+    "hr@20": 0.24688230709275136,
+    "mrr@20": 0.06388482621217824,
+    "n_unreachable": 0,
+    "n_users": 5132,
+    "ndcg@10": 0.08273833677758932,
+    "ndcg@20": 0.10346765874839595
+   }
+  },
+  "PRACTICAL_BEST": {
+   "ALL": {
+    "hr@10": 0.17008943358728057,
+    "hr@20": 0.25836369658827424,
+    "mrr@20": 0.06758821679445012,
+    "n_unreachable": 0,
+    "n_users": 6038,
+    "ndcg@10": 0.08664555881927598,
+    "ndcg@20": 0.10876033731840824
+   },
+   "BAND": {
+    "hr@10": 0.17549668874172186,
+    "hr@20": 0.26600441501103755,
+    "mrr@20": 0.07504837209297158,
+    "n_unreachable": 0,
+    "n_users": 906,
+    "ndcg@10": 0.09358587518790838,
+    "ndcg@20": 0.11618427530564404
+   },
+   "BAND_COVERED_TARGET": {
+    "hr@10": 0.170371599203716,
+    "hr@20": 0.258792302587923,
+    "mrr@20": 0.0677003405781171,
+    "n_unreachable": 0,
+    "n_users": 6028,
+    "ndcg@10": 0.08678929730437762,
+    "ndcg@20": 0.10894076256279842
+   },
+   "BAND_UNCOVERED_TARGET": {
+    "hr@10": 0.0,
+    "hr@20": 0.0,
+    "mrr@20": 0.0,
+    "n_unreachable": 0,
+    "n_users": 10,
+    "ndcg@10": 0.0,
+    "ndcg@20": 0.0
+   },
+   "OTHERS": {
+    "hr@10": 0.1691348402182385,
+    "hr@20": 0.2570148090413094,
+    "mrr@20": 0.06627120574603616,
+    "n_unreachable": 0,
+    "n_users": 5132,
+    "ndcg@10": 0.0854203198033015,
+    "ndcg@20": 0.1074497200509812
+   }
+  }
+ }
+}

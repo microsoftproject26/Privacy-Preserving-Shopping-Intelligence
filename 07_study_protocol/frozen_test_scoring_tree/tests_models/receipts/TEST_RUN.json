@@ -1,0 +1,277 @@
+{
+ "task": "MODEL-01 + SCHEMA-01",
+ "utc_start": "2026-09-28T05:55:25Z",
+ "host": "DESKTOP-KS1B8LQ",
+ "platform": "Windows-11-10.0.26200-SP0",
+ "python": "3.13.11",
+ "cpu_only": true,
+ "snapshot_before": {
+  "verify_snapshot_exit_code": 0,
+  "verify_snapshot_stdout": "OK",
+  "stderr_tail": "",
+  "pycache_dirs_under_snap_v1": [],
+  "manifest_sha256": "2a598674c5f6c5613c0147b386b58dbe763ce5baae3c34014d006406cbf05375"
+ },
+ "pytest_exit_code": 0,
+ "pytest_summary": "136 passed, 29 xfailed in 45.33s",
+ "pytest_wall_s": 47.9,
+ "counts": {
+  "passed": 136,
+  "xfailed": 29
+ },
+ "negative_controls": {
+  "test_build_adapter::test_nc_unrecentered_theta0": "FAILED_AS_INTENDED",
+  "test_diff_doc_and_isolation::test_nc_tampered_diff_document": "FAILED_AS_INTENDED",
+  "test_parity_snapshot::test_nc_parity_gru_activation_mutant": "FAILED_AS_INTENDED",
+  "test_parity_snapshot::test_nc_parity_sasrec_concat_order_mutant": "FAILED_AS_INTENDED",
+  "test_parity_snapshot::test_nc_parity_init_order_mutant": "FAILED_AS_INTENDED",
+  "test_schema01_derived::test_nc_projection_dropping_item_tokens": "FAILED_AS_INTENDED",
+  "test_schema01_derived::test_nc_l0_build_not_bitwise": "FAILED_AS_INTENDED",
+  "test_schema01r1_extensions::test_nc_projection_without_the_g13_mask": "FAILED_AS_INTENDED",
+  "test_schema_widths::test_nc_snapshot_gru_accepts_offsetting_widths": "FAILED_AS_INTENDED",
+  "test_schema_widths::test_nc_snapshot_sasrec_accepts_offsetting_widths": "FAILED_AS_INTENDED",
+  "test_t15_causal::test_nc_t15_future_perturbation_without_causal_mask[unpadded]": "FAILED_AS_INTENDED",
+  "test_t15_causal::test_nc_t15_future_perturbation_without_causal_mask[padded_reference]": "FAILED_AS_INTENDED",
+  "test_t15_causal::test_nc_t15_gradient_leakage_without_causal_mask": "FAILED_AS_INTENDED",
+  "test_t16_padding::test_nc_t16_last_column_readout[GRU]": "FAILED_AS_INTENDED",
+  "test_t16_padding::test_nc_t16_last_column_readout[SASREC]": "FAILED_AS_INTENDED",
+  "test_t16_padding::test_nc_t16_inverted_sdpa_mask": "FAILED_AS_INTENDED",
+  "test_t17_loss::test_nc_t17_mean_of_means[GRU]": "FAILED_AS_INTENDED",
+  "test_t17_loss::test_nc_t17_mean_of_means[SASREC]": "FAILED_AS_INTENDED",
+  "test_t17_loss::test_nc_t17_divide_by_batch_size": "FAILED_AS_INTENDED",
+  "test_t18_heads_memory::test_nc_t18_gru_untied_copy": "FAILED_AS_INTENDED",
+  "test_t18_heads_memory::test_nc_t18_sasrec_tied_head": "FAILED_AS_INTENDED",
+  "test_t18_heads_memory::test_nc_t18_dense_all_position_logits[GRU]": "FAILED_AS_INTENDED",
+  "test_t18_heads_memory::test_nc_t18_dense_all_position_logits[SASREC]": "FAILED_AS_INTENDED",
+  "test_t19_memorization_monitors::test_nc_t19_blind_query_cannot_memorize": "FAILED_AS_INTENDED",
+  "test_t19_memorization_monitors::test_nc_t19_finiteness_only_monitor": "FAILED_AS_INTENDED",
+  "test_t19_memorization_monitors::test_nc_t19_no_recentering_fails_gauge_check": "FAILED_AS_INTENDED",
+  "test_train04_sasrec_d64_b2::test_nc_size_order_would_wrongly_include_it": "FAILED_AS_INTENDED",
+  "test_train04_sasrec_d64_b2::test_nc_pre_existing_variant_hash_check_has_teeth": "FAILED_AS_INTENDED",
+  "test_train04_sasrec_d64_b2::test_nc_would_wrongly_match_sasrec_d256_b2_size": "FAILED_AS_INTENDED"
+ },
+ "negative_controls_all_failed_as_intended": true,
+ "nc_runxfail": {
+  "exit_code_expected_nonzero": 1,
+  "counts": {
+   "failure": 29
+  },
+  "all_fail_with_assertion": true,
+  "same_set_as_suite": true,
+  "per_control": {
+   "test_build_adapter::test_nc_unrecentered_theta0": {
+    "status": "failure",
+    "exception_types": [],
+    "assertion": "assert 0.03720624250447106 < 1e-06"
+   },
+   "test_diff_doc_and_isolation::test_nc_tampered_diff_document": {
+    "status": "failure",
+    "exception_types": [],
+    "assertion": "assert ['--- snap_v1...init__(', ...] == ['--- snap_v1...init__(', ...]"
+   },
+   "test_parity_snapshot::test_nc_parity_gru_activation_mutant": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: V2 (v1 widths) logits differ from the snapshot: max |d| = 0.34"
+   },
+   "test_parity_snapshot::test_nc_parity_sasrec_concat_order_mutant": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: V2 (v1 widths) logits differ from the snapshot: max |d| = 0.98"
+   },
+   "test_parity_snapshot::test_nc_parity_init_order_mutant": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: assert False"
+   },
+   "test_schema01_derived::test_nc_projection_dropping_item_tokens": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: the projected batch lost item_tokens"
+   },
+   "test_schema01_derived::test_nc_l0_build_not_bitwise": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: the L0 theta0 differs from the MODEL-01 theta0"
+   },
+   "test_schema01r1_extensions::test_nc_projection_without_the_g13_mask": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: the G13 mask column is missing"
+   },
+   "test_schema_widths::test_nc_snapshot_gru_accepts_offsetting_widths": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: forward did not raise <class 'ValueError'>"
+   },
+   "test_schema_widths::test_nc_snapshot_sasrec_accepts_offsetting_widths": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: forward did not raise <class 'ValueError'>"
+   },
+   "test_t15_causal::test_nc_t15_future_perturbation_without_causal_mask[unpadded]": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: a future event changed an earlier hidden state (max |d| 1.95)"
+   },
+   "test_t15_causal::test_nc_t15_future_perturbation_without_causal_mask[padded_reference]": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: a future event changed an earlier hidden state (max |d| 1.95)"
+   },
+   "test_t15_causal::test_nc_t15_gradient_leakage_without_causal_mask": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: future item rows received gradient (leakage)"
+   },
+   "test_t16_padding::test_nc_t16_last_column_readout[GRU]": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: readout is not the last real event: max |d| 0.604"
+   },
+   "test_t16_padding::test_nc_t16_last_column_readout[SASREC]": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: readout is not the last real event: max |d| 5.06"
+   },
+   "test_t16_padding::test_nc_t16_inverted_sdpa_mask": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: SDPA(bool mask, True = attend) mismatch: 3.8455601930618286"
+   },
+   "test_t17_loss::test_nc_t17_mean_of_means[GRU]": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: loss 4.4760613441467285 != full-batch mean 4.976747989654541"
+   },
+   "test_t17_loss::test_nc_t17_mean_of_means[SASREC]": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: loss 4.324774265289307 != full-batch mean 4.273322105407715"
+   },
+   "test_t17_loss::test_nc_t17_divide_by_batch_size": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: loss 4.169707775115967 != full-batch mean 4.976747989654541"
+   },
+   "test_t18_heads_memory::test_nc_t18_gru_untied_copy": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: head must share the item table storage"
+   },
+   "test_t18_heads_memory::test_nc_t18_sasrec_tied_head": {
+    "status": "failure",
+    "exception_types": [],
+    "assertion": "assert (tensor([[ 1.0904e-02,  3.1192e-02,  1.3037e-02,  ...,  9.3522e-03,\\n          4.1087e-02,  5.2951e-03],\\n        [-2.353...3.8647e-02, -5.7633e-03, -1.4783e-02,  ..., -8.8226e-03,\\n         -5"
+   },
+   "test_t18_heads_memory::test_nc_t18_dense_all_position_logits[GRU]": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: a [B, L, K]-like tensor was materialized: [('aten.mm.default', (150, 997)), ('aten._unsafe_view.default', (3, 50, 997)), ('aten.view.default', (150, 997)), ('aten._log_softmax.default'"
+   },
+   "test_t18_heads_memory::test_nc_t18_dense_all_position_logits[SASREC]": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: a [B, L, K]-like tensor was materialized: [('aten.mm.default', (18, 997)), ('aten._unsafe_view.default', (3, 6, 997)), ('aten.view.default', (18, 997)), ('aten._log_softmax.default', ("
+   },
+   "test_t19_memorization_monitors::test_nc_t19_blind_query_cannot_memorize": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: GRU memorized only 0.00 of 32 random-target decisions in 80 steps"
+   },
+   "test_t19_memorization_monitors::test_nc_t19_finiteness_only_monitor": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: an all-zero gradient must be flagged"
+   },
+   "test_t19_memorization_monitors::test_nc_t19_no_recentering_fails_gauge_check": {
+    "status": "failure",
+    "exception_types": [],
+    "assertion": "assert 0.151193975462338 < 1e-06"
+   },
+   "test_train04_sasrec_d64_b2::test_nc_size_order_would_wrongly_include_it": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: assert 'SASREC_D64_B2' in ('SASREC_D256_B2', 'SASREC_D256_B3', 'SASREC_D384_B2')"
+   },
+   "test_train04_sasrec_d64_b2::test_nc_pre_existing_variant_hash_check_has_teeth": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: assert '2e3f60d59476...f55a4ace1265c' == '97ba5cf06ca0...e5079860df664'"
+   },
+   "test_train04_sasrec_d64_b2::test_nc_would_wrongly_match_sasrec_d256_b2_size": {
+    "status": "failure",
+    "exception_types": [],
+    "assertion": "assert 20710048 == 83094112"
+   }
+  }
+ },
+ "diffdoc_check_exit_code": 0,
+ "measure_exit_code": 0,
+ "snapshot_after": {
+  "verify_snapshot_exit_code": 0,
+  "verify_snapshot_stdout": "OK",
+  "stderr_tail": "",
+  "pycache_dirs_under_snap_v1": [],
+  "manifest_sha256": "2a598674c5f6c5613c0147b386b58dbe763ce5baae3c34014d006406cbf05375"
+ },
+ "snapshot_unchanged": true,
+ "torch": "2.9.1+cpu",
+ "utc_end": "2026-09-28T05:56:39Z",
+ "receipt_sha256": {
+  "pytest_output.txt": "2b8c379051f4acef64c7c2485ae2bbc64cdb59f1dc272187d45b54483edc2379",
+  "junit.xml": "91a4223ea5189061958dbe6a586a78b351567d45929f044f749d12701aab8a03",
+  "nc_runxfail_output.txt": "a3ac9944edba7f568c63f9a2308f4f6fa191c9d67c9e2e528f5c97b975f8d80f",
+  "nc_runxfail_junit.xml": "ce82711b90e2878fdb47f3abd04f9bfea6ebcc1a0197de36d9fb85aef8afc36d",
+  "diffdoc_check.txt": "8049604a7c1346d26d4bfca15e9ea63e9141374a4e091f5f21ff647b99a95e94",
+  "MEASURED.json": "33c5dd1a9382d2718e59e9f86402c59e3ce829a598ea9dc8461b8513cf6c7889"
+ }
+}

@@ -1,0 +1,428 @@
+{
+ "arm": "PF_WARM_FROZEN",
+ "bytes": {
+  "ledger": [
+   426780,
+   88278589440,
+   88280296560,
+   0
+  ]
+ },
+ "checkpoints": {
+  "CONTROLLED_BUDGET": {
+   "file": "ckpt/BM_s3_sports_PF_WARM_FROZEN_s2027/endpoint_6.0.pt",
+   "mark": 6.0,
+   "pf_store": {
+    "file": "ckpt/BM_s3_sports_PF_WARM_FROZEN_s2027/pf_store_endpoint.pt",
+    "sha256": "8b8c4358a3f8a2dd3901d87bfc1049a37e645e301ca4fc3028c46ec0aa179191"
+   },
+   "sha256": "93726c901475aa5b5f63b916feb6cac726ef0636b2e22aa5cc8a9304de3f9ad1"
+  },
+  "PRACTICAL_BEST": {
+   "file": "ckpt/BM_s3_sports_PF_WARM_FROZEN_s2027/best.pt",
+   "mark": 1.0,
+   "pf_store": {
+    "file": "ckpt/BM_s3_sports_PF_WARM_FROZEN_s2027/pf_store_best.pt",
+    "sha256": "3bab7fb01429121095988d996288d70b9653e49f7e822235344d7bfa2ac8725f"
+   },
+   "sha256": "34a6d3c9d4789a450f11f6d983366ec1dfb49b895b9b2802a93f59c82aeab72b"
+  }
+ },
+ "evals": [
+  [
+   1,
+   310,
+   0.006810901876674603,
+   true,
+   "MAIN"
+  ],
+  [
+   2,
+   617,
+   0.007115476078056084,
+   true,
+   "MAIN"
+  ],
+  [
+   3,
+   927,
+   0.0069529789333421825,
+   false,
+   "MAIN"
+  ],
+  [
+   4,
+   1239,
+   0.007187575455726041,
+   false,
+   "MAIN"
+  ],
+  [
+   5,
+   1547,
+   0.007041041421878807,
+   false,
+   "MAIN"
+  ],
+  [
+   6,
+   1858,
+   0.007300280035099331,
+   false,
+   "MAIN"
+  ],
+  [
+   7,
+   2164,
+   0.007023716024842881,
+   false,
+   "MAIN"
+  ],
+  [
+   8,
+   2470,
+   0.007213329206429995,
+   false,
+   "MAIN"
+  ],
+  [
+   9,
+   2782,
+   0.007220042644058582,
+   false,
+   "MAIN"
+  ],
+  [
+   10,
+   3090,
+   0.0070929088771586974,
+   false,
+   "MAIN"
+  ],
+  [
+   11,
+   3400,
+   0.007101640355575592,
+   false,
+   "MAIN"
+  ],
+  [
+   12,
+   3708,
+   0.007224099914397687,
+   false,
+   "MAIN"
+  ]
+ ],
+ "frozen": {
+  "frozen_bytes": 9467820,
+  "frozen_keys": [
+   "item_embed.weight",
+   "output_embed",
+   "output_bias"
+  ],
+  "frozen_numel": 2366955,
+  "manifest_digest": "6c994ffa76bfca8bff00204096f2fcbe28028c27b395e26bf877ff90de755678",
+  "shared_bytes": 413696,
+  "shared_numel": 103424
+ },
+ "init_from": {
+  "checkpoint_sha256": "fa1f86f612e2d5dfbd53692b9a152d3ec069d8c41f031c7d70627a3ed5f76693",
+  "dataset": "s3_sports",
+  "fl_init_kind": "endpoint_6.0",
+  "kind": "PRE",
+  "run_id": "BM_s3_sports_PRE_s2027",
+  "seed": 2027,
+  "state_digest": "db812224a1326751984698a6fd988f02c43516eedb0043b4947b82594a03acd1"
+ },
+ "kind": "fl",
+ "run_id": "BM_s3_sports_PF_WARM_FROZEN_s2027",
+ "spec": {
+  "arm": "PF_WARM_FROZEN",
+  "cfg": {
+   "dp": null,
+   "dropout_p": 0.1,
+   "endpoint_efe": 6.0,
+   "endpoint_rounds": 3709,
+   "exposure_point": "end",
+   "lr_peak_local": 0.1,
+   "lr_shape": "fl_const",
+   "max_attempts": 2,
+   "method": "PF",
+   "mu": 0.0,
+   "n_shards": 2,
+   "pf": {
+    "clip": 1.0,
+    "lam": 0.0001,
+    "lr": 0.0007114121116984968
+   },
+   "seed": 2027,
+   "server_opt": {
+    "beta1": 0.9,
+    "beta2": 0.99,
+    "lr": 0.001,
+    "name": "fedadam",
+    "tau": 0.001,
+    "v_init": "tau_squared"
+   },
+   "solver": {
+    "batch_size": 16,
+    "clip": 1.0,
+    "fused": null,
+    "lr": 0.1,
+    "optimizer": "sgd_m",
+    "passes": 1,
+    "weight_decay": 0.0
+   }
+  },
+  "client_lr": 0.1,
+  "client_opt": "sgd_m",
+  "data": {
+   "dataset": "s3_sports",
+   "fingerprint": "6f58ceac640129d39db827ae006b3686a7a1dcee9cd90fbd10a0b4a4ead5f61a",
+   "n_clients": 35598,
+   "n_decisions": 189543
+  },
+  "dropout": [
+   0.1
+  ],
+  "exposure_budget": {
+   "dropout_p": 0.1,
+   "endpoint_efe": 6.0,
+   "formula": "rounds = ceil(60 N_clients / (576 P)) (launch_fl.fa_rounds, 06J \u00a73)",
+   "group": 64,
+   "n_clients": 35598,
+   "passes": 1,
+   "rounds": 3709
+  },
+  "frozen_item_tables": [
+   "item_embed.weight",
+   "output_embed",
+   "output_bias"
+  ],
+  "init_from": {
+   "checkpoint_sha256": "fa1f86f612e2d5dfbd53692b9a152d3ec069d8c41f031c7d70627a3ed5f76693",
+   "dataset": "s3_sports",
+   "fl_init_kind": "endpoint_6.0",
+   "kind": "PRE",
+   "run_id": "BM_s3_sports_PRE_s2027",
+   "seed": 2027,
+   "state_digest": "db812224a1326751984698a6fd988f02c43516eedb0043b4947b82594a03acd1"
+  },
+  "knobs": {
+   "batch": 16,
+   "clip": 1.0,
+   "dropout_p": 0.1,
+   "endpoint_efe": 6.0,
+   "group": 64,
+   "m": 1024,
+   "max_attempts": 2,
+   "mu": 0.01,
+   "n_shards": 2,
+   "passes": 2,
+   "pf_clip": 1.0,
+   "pf_lam": 0.0001,
+   "rounds": 6827,
+   "rounds_1024": 384,
+   "s_cal_rounds": 20,
+   "s_cal_seed": 2026,
+   "sampling": "sweep",
+   "weight_decay": 1e-05
+  },
+  "local_passes": 1,
+  "lr_mult": 1.0,
+  "lr_peak_base": 0.0007114121116984968,
+  "lr_shape": "fl_const",
+  "max_len": 50,
+  "max_rounds": 3709,
+  "plan": {
+   "group_size": 64,
+   "sampling": "sweep"
+  },
+  "provenance": {
+   "ft_cell": "FT_C_f0.3_P4",
+   "pins": {
+    "device/SELECTION_FT_C.json": "e47965d2f4486fc2c30140a8ee14e79686a842decb091b3dff1de5646716c10c",
+    "fl/FL_TUNING_SELECTION.json": "9bca186e5025f5caa9e762f3c425fb3151923b79e60f01e6ecb063aac9c715ec",
+    "fl/FL_WARM_SELECTION_S7.json": "d67a0a851665495b092abbba4456f26a3423d6ef21665f5a0e2b65e2d78dc000",
+    "fl/FL_WARM_SELECTION_S8.json": "8b79d3052799dfa0ba208dce5db138da88aaa7024ba6511a374c59ce8c55a98a"
+   },
+   "tuning_winner_label": "fedadam|eta=0.01|m=1|shape=fl_const|client=sgd_m|clr=0.1|passes=1",
+   "warm_winners": {
+    "FA_WARM": "f=0.25|sf=0.1",
+    "FA_WARM_FROZEN": "f=1|sf=0.1"
+   }
+  },
+  "role": "MAIN",
+  "server_lr": 0.01,
+  "server_opt": "fedadam",
+  "upload_codec": null,
+  "variant": "SASREC_D64_B2",
+  "warm_server_lr_factor": 0.1
+ },
+ "spec_sha256": "49f4c56d94602d3256c212632a550d934ef08abebf677bb67a3510e8dde9f5eb",
+ "status": "DONE_MAIN",
+ "summary": {
+  "counters": {
+   "coverage_by_sweep": {
+    "0": {
+     "clients": 32031,
+     "fraction": 0.8997977414461487
+    },
+    "1": {
+     "clients": 31982,
+     "fraction": 0.898421259621327
+    },
+    "2": {
+     "clients": 32040,
+     "fraction": 0.9000505646384628
+    },
+    "3": {
+     "clients": 32050,
+     "fraction": 0.9003314792965897
+    },
+    "4": {
+     "clients": 32148,
+     "fraction": 0.9030844429462329
+    },
+    "5": {
+     "clients": 32088,
+     "fraction": 0.9013989549974718
+    },
+    "6": {
+     "clients": 21051,
+     "fraction": 0.5913534468228552
+    }
+   },
+   "efe": 5.9898123380974235,
+   "exposures": 1135327,
+   "max_visits": 7,
+   "min_visits": 1,
+   "noop_visits": 0,
+   "retries": 0,
+   "rounds": 3709,
+   "steps": 224363,
+   "steps_hist": {
+    "1": 204953,
+    "19": 5,
+    "2": 6816,
+    "3": 1126,
+    "4": 304,
+    "5": 78,
+    "6": 79,
+    "7": 18,
+    "9": 11
+   },
+   "visits": 213390,
+   "wasted_steps": 0
+  },
+  "lr_table_digest": "941241d175c35e5b7fc14799e3905d9aec41f0e768c63f2d265142dea02bbf6c",
+  "rounds": 3709
+ },
+ "timing": {
+  "mean_round_s": 0.6685865573101921,
+  "median_round_s": 0.6127311568707228,
+  "n_clients": 35598,
+  "n_decisions": 189543,
+  "rounds_full_run": 3709,
+  "rounds_this_leg": 3709,
+  "wall_s_this_leg": 2480.73
+ },
+ "utc": "2026-10-02T06:31:06Z",
+ "validation": {
+  "CONTROLLED_BUDGET": {
+   "ALL": {
+    "hr@10": 0.013953488372093023,
+    "hr@20": 0.022607470049330513,
+    "mrr@20": 0.005796778085073596,
+    "n_unreachable": 0,
+    "n_users": 35475,
+    "ndcg@10": 0.007224099914397687,
+    "ndcg@20": 0.009400414126304515
+   },
+   "BAND": {
+    "hr@10": 0.012777151446824501,
+    "hr@20": 0.021608417888012026,
+    "mrr@20": 0.005504753924960137,
+    "n_unreachable": 0,
+    "n_users": 5322,
+    "ndcg@10": 0.0067174265915271635,
+    "ndcg@20": 0.008926929202930858
+   },
+   "BAND_COVERED_TARGET": {
+    "hr@10": 0.01737512724209344,
+    "hr@20": 0.028151216258906948,
+    "mrr@20": 0.007218249238933829,
+    "n_unreachable": 0,
+    "n_users": 28489,
+    "ndcg@10": 0.008995575290928357,
+    "ndcg@20": 0.01170555972939214
+   },
+   "BAND_UNCOVERED_TARGET": {
+    "hr@10": 0.0,
+    "hr@20": 0.0,
+    "mrr@20": 0.0,
+    "n_unreachable": 0,
+    "n_users": 6986,
+    "ndcg@10": 0.0,
+    "ndcg@20": 0.0
+   },
+   "OTHERS": {
+    "hr@10": 0.01416111166384771,
+    "hr@20": 0.0227838026067058,
+    "mrr@20": 0.005848320305752263,
+    "n_unreachable": 0,
+    "n_users": 30153,
+    "ndcg@10": 0.007313527680268977,
+    "ndcg@20": 0.009483984144617607
+   }
+  },
+  "PRACTICAL_BEST": {
+   "ALL": {
+    "hr@10": 0.013840732910500352,
+    "hr@20": 0.02167723749119098,
+    "mrr@20": 0.005625510681562233,
+    "n_unreachable": 0,
+    "n_users": 35475,
+    "ndcg@10": 0.007115476078056084,
+    "ndcg@20": 0.009068400706018496
+   },
+   "BAND": {
+    "hr@10": 0.012777151446824501,
+    "hr@20": 0.019917324314167605,
+    "mrr@20": 0.00538002488595593,
+    "n_unreachable": 0,
+    "n_users": 5322,
+    "ndcg@10": 0.006722794457559144,
+    "ndcg@20": 0.008501060718924746
+   },
+   "BAND_COVERED_TARGET": {
+    "hr@10": 0.01723472217347046,
+    "hr@20": 0.026992874442767385,
+    "mrr@20": 0.007004984079062805,
+    "n_unreachable": 0,
+    "n_users": 28489,
+    "ndcg@10": 0.008860314994174579,
+    "ndcg@20": 0.011292130824037565
+   },
+   "BAND_UNCOVERED_TARGET": {
+    "hr@10": 0.0,
+    "hr@20": 0.0,
+    "mrr@20": 0.0,
+    "n_unreachable": 0,
+    "n_users": 6986,
+    "ndcg@10": 0.0,
+    "ndcg@20": 0.0
+   },
+   "OTHERS": {
+    "hr@10": 0.014028454880111431,
+    "hr@20": 0.02198786190428813,
+    "mrr@20": 0.005668838887850721,
+    "n_unreachable": 0,
+    "n_users": 30153,
+    "ndcg@10": 0.007184784325470429,
+    "ndcg@20": 0.00916853612907136
+   }
+  }
+ }
+}

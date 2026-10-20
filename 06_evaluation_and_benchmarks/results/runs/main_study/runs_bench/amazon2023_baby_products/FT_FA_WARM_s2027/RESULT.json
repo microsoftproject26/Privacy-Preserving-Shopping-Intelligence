@@ -1,0 +1,146 @@
+{
+ "arm": "FT_FA_WARM",
+ "base_arm": "FA_WARM",
+ "base_run": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/amazon2023_baby_products/FA_WARM_s2027",
+ "checkpoints": {
+  "CONTROLLED_BUDGET": {
+   "file": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/amazon2023_baby_products/FA_WARM_s2027/ckpt/BM_amazon2023_baby_products_FA_WARM_s2027/endpoint_6.0.pt",
+   "mark": 6.0,
+   "sha256": "ae52e0833e757311e58b000b09d0c4dd1036534edb13cf0d842a1c5403fad36d"
+  },
+  "PRACTICAL_BEST": {
+   "file": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/amazon2023_baby_products/FA_WARM_s2027/ckpt/BM_amazon2023_baby_products_FA_WARM_s2027/best.pt",
+   "mark": 4.0,
+   "sha256": "a554e6082464e6b1bc22dd05b8771555708553ef20d5aa45b25bc6276a79819d"
+  }
+ },
+ "ft_cell": {
+  "cell": "FT_C_f0.3_P4",
+  "lr_frac": 0.3,
+  "passes": 4
+ },
+ "kind": "ft",
+ "run_id": "BM_amazon2023_baby_products_FT_FA_WARM_s2027",
+ "spec": {
+  "cfg": {
+   "seed": 2027
+  },
+  "seed": 2027
+ },
+ "status": "DONE_MAIN",
+ "timing": {
+  "CONTROLLED_BUDGET": {
+   "mean_support_events": 5.226125713222937,
+   "n_users": 150549,
+   "s_per_user": 0.07743290831429359,
+   "threads": 16,
+   "wall_s": 11657.45,
+   "workers": 2
+  },
+  "PRACTICAL_BEST": {
+   "mean_support_events": 5.226125713222937,
+   "n_users": 150549,
+   "s_per_user": 0.0616795656141264,
+   "threads": 16,
+   "wall_s": 9285.8,
+   "workers": 2
+  }
+ },
+ "utc": "2026-10-04T15:53:11Z",
+ "validation": {
+  "CONTROLLED_BUDGET": {
+   "ALL": {
+    "hr@10": 0.022026051318839713,
+    "hr@20": 0.037303469302353384,
+    "mrr@20": 0.008755239685117601,
+    "n_unreachable": 0,
+    "n_users": 150549,
+    "ndcg@10": 0.01102136535262053,
+    "ndcg@20": 0.014845829145550136
+   },
+   "BAND": {
+    "hr@10": 0.022360963513992207,
+    "hr@20": 0.038390010626992564,
+    "mrr@20": 0.008956116775942368,
+    "n_unreachable": 0,
+    "n_users": 22584,
+    "ndcg@10": 0.011213267566599981,
+    "ndcg@20": 0.015229487945212946
+   },
+   "BAND_COVERED_TARGET": {
+    "hr@10": 0.023704678028136795,
+    "hr@20": 0.040146402836554955,
+    "mrr@20": 0.009422484983377916,
+    "n_unreachable": 0,
+    "n_users": 139888,
+    "ndcg@10": 0.01186131428336718,
+    "ndcg@20": 0.01597724416700094
+   },
+   "BAND_UNCOVERED_TARGET": {
+    "hr@10": 0.0,
+    "hr@20": 0.0,
+    "mrr@20": 0.0,
+    "n_unreachable": 0,
+    "n_users": 10661,
+    "ndcg@10": 0.0,
+    "ndcg@20": 0.0
+   },
+   "OTHERS": {
+    "hr@10": 0.02196694408627359,
+    "hr@20": 0.03711171023326691,
+    "mrr@20": 0.00871978773951383,
+    "n_unreachable": 0,
+    "n_users": 127965,
+    "ndcg@10": 0.010987497344958186,
+    "ndcg@20": 0.014778118831545643
+   }
+  },
+  "PRACTICAL_BEST": {
+   "ALL": {
+    "hr@10": 0.02209911723093478,
+    "hr@20": 0.037336681080578416,
+    "mrr@20": 0.008701822250686966,
+    "n_unreachable": 0,
+    "n_users": 150549,
+    "ndcg@10": 0.010996399154535612,
+    "ndcg@20": 0.014821823498002653
+   },
+   "BAND": {
+    "hr@10": 0.02244952178533475,
+    "hr@20": 0.038478568898335105,
+    "mrr@20": 0.008966449241327055,
+    "n_unreachable": 0,
+    "n_users": 22584,
+    "ndcg@10": 0.011238832444273464,
+    "ndcg@20": 0.015260422666733957
+   },
+   "BAND_COVERED_TARGET": {
+    "hr@10": 0.023783312364177057,
+    "hr@20": 0.04018214571657326,
+    "mrr@20": 0.009364996554519845,
+    "n_unreachable": 0,
+    "n_users": 139888,
+    "ndcg@10": 0.011834445387139582,
+    "ndcg@20": 0.015951409025797794
+   },
+   "BAND_UNCOVERED_TARGET": {
+    "hr@10": 0.0,
+    "hr@20": 0.0,
+    "mrr@20": 0.0,
+    "n_unreachable": 0,
+    "n_users": 10661,
+    "ndcg@10": 0.0,
+    "ndcg@20": 0.0
+   },
+   "OTHERS": {
+    "hr@10": 0.022037275817606377,
+    "hr@20": 0.03713515414371117,
+    "mrr@20": 0.008655119355703057,
+    "n_unreachable": 0,
+    "n_users": 127965,
+    "ndcg@10": 0.010953613131674365,
+    "ndcg@20": 0.014744416991327955
+   }
+  }
+ }
+}

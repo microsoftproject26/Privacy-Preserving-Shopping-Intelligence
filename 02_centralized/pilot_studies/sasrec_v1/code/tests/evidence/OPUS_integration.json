@@ -1,0 +1,227 @@
+{
+ "utc": "2026-09-23T22:52:37Z",
+ "owner": "Opus",
+ "what": "integration evidence (synthetic data only)",
+ "tiny_end_to_end": {
+  "a0": {
+   "final_status": "COMPLETE",
+   "epochs": 4,
+   "updates": 64,
+   "eval_epochs": [
+    3,
+    4
+   ],
+   "phases": [
+    {
+     "warmup": 4,
+     "peak": 12,
+     "cosine": 0,
+     "floor": 0
+    },
+    {
+     "warmup": 0,
+     "peak": 0,
+     "cosine": 16,
+     "floor": 0
+    },
+    {
+     "warmup": 0,
+     "peak": 0,
+     "cosine": 0,
+     "floor": 16
+    },
+    {
+     "warmup": 0,
+     "peak": 0,
+     "cosine": 0,
+     "floor": 16
+    }
+   ],
+   "best_epoch": 4,
+   "best_metric": 0.15317106246948242,
+   "precision_training": "tf32",
+   "precision_eval": "strict_fp32",
+   "canary": {
+    "strict": {
+     "n": 1024,
+     "relative_error": 5.743312361709345e-07,
+     "threshold": 2e-05,
+     "looks_strict_fp32": true
+    },
+    "training_phase": {
+     "n": 1024,
+     "relative_error": 0.00029388600140803773,
+     "threshold": 2e-05,
+     "looks_strict_fp32": false
+    },
+    "eval_phase": {
+     "n": 1024,
+     "relative_error": 5.743312361709345e-07,
+     "threshold": 2e-05,
+     "looks_strict_fp32": true
+    }
+   }
+  },
+  "a1": {
+   "final_status": "COMPLETE",
+   "epochs": 4,
+   "updates": 64,
+   "eval_epochs": [
+    3,
+    4
+   ],
+   "phases": [
+    {
+     "warmup": 4,
+     "peak": 12,
+     "cosine": 0,
+     "floor": 0
+    },
+    {
+     "warmup": 0,
+     "peak": 0,
+     "cosine": 16,
+     "floor": 0
+    },
+    {
+     "warmup": 0,
+     "peak": 0,
+     "cosine": 0,
+     "floor": 16
+    },
+    {
+     "warmup": 0,
+     "peak": 0,
+     "cosine": 0,
+     "floor": 16
+    }
+   ],
+   "best_epoch": 4,
+   "best_metric": 0.14720304310321808,
+   "precision_training": "tf32",
+   "precision_eval": "strict_fp32",
+   "canary": {
+    "strict": {
+     "n": 1024,
+     "relative_error": 5.743312361709345e-07,
+     "threshold": 2e-05,
+     "looks_strict_fp32": true
+    },
+    "training_phase": {
+     "n": 1024,
+     "relative_error": 0.00029388600140803773,
+     "threshold": 2e-05,
+     "looks_strict_fp32": false
+    },
+    "eval_phase": {
+     "n": 1024,
+     "relative_error": 5.743312361709345e-07,
+     "threshold": 2e-05,
+     "looks_strict_fp32": true
+    }
+   }
+  },
+  "a0crash": {
+   "final_status": "COMPLETE",
+   "epochs": 4,
+   "updates": 64,
+   "eval_epochs": [
+    3,
+    4
+   ],
+   "phases": [
+    {
+     "warmup": 4,
+     "peak": 12,
+     "cosine": 0,
+     "floor": 0
+    },
+    {
+     "warmup": 0,
+     "peak": 0,
+     "cosine": 16,
+     "floor": 0
+    },
+    {
+     "warmup": 0,
+     "peak": 0,
+     "cosine": 0,
+     "floor": 16
+    },
+    {
+     "warmup": 0,
+     "peak": 0,
+     "cosine": 0,
+     "floor": 16
+    }
+   ],
+   "best_epoch": 4,
+   "best_metric": 0.15317106246948242,
+   "precision_training": "tf32",
+   "precision_eval": "strict_fp32",
+   "canary": {
+    "strict": {
+     "n": 1024,
+     "relative_error": 5.743312361709345e-07,
+     "threshold": 2e-05,
+     "looks_strict_fp32": true
+    },
+    "training_phase": {
+     "n": 1024,
+     "relative_error": 0.00029388600140803773,
+     "threshold": 2e-05,
+     "looks_strict_fp32": false
+    },
+    "eval_phase": {
+     "n": 1024,
+     "relative_error": 5.743312361709345e-07,
+     "threshold": 2e-05,
+     "looks_strict_fp32": true
+    }
+   }
+  }
+ },
+ "code_sha256": {
+  "train_sasrec.py": "e4da9847ddbd05e999dfe31fd7c8fedae7e0f282acc5fd3f7c9424934fc1650b",
+  "sasrec_model.py": "d110b73a143b0710c4993ff382ab74cc5a198af54dcfbee8f490dbb68b860549",
+  "sasrec_objective.py": "5e03bf50a1f307f1b21dba4820ca69985e3a55ff73b808a3a0d219e75373ebed",
+  "sasrec_schedule.py": "5db6cede50b07478d289f3d1887d6f46c42edfb7db3f4a99b00b1aedcce50230",
+  "precision.py": "45212e6b8c1f964a708a0def0b3cf61195b8811d5379903723f7d784f2444881",
+  "paths.py": "a87b789147f43cbf8f86c1249b5619f27e68d229bf91814df00530ac1e81d9df",
+  "sasrec_data.py": "e0872eaf7dbd3b8fc70b6bdba9a8ba9cd235f6d0d60136fe055a85fa9b2beebf",
+  "ckpt_io.py": "51a9303dcf6fc438be2cf85c9caa72080109b0dfa3f978ee6038fa748b6a46bc",
+  "synthetic_store.py": "b8bf3a180ba03a5c1cd8f3d47e3e309723db414f75d65f045bdae53d7c4afaf4",
+  "lock_retro.py": "1682e6497406a5d9c275cad72531d389bb4b9f7103a855e13130476ca5db4068",
+  "tf32_parity_gate.py": "da5f64a615bf31d4c28c58dbc65c0b58f6c4bd77857f0027087ebbe3e31fea00",
+  "bench_campaign.py": "93e2a110146d5d45b5ef791f4a48be3e4f41e0c3b412da3a620384e3da76c986"
+ },
+ "resume_bitwise_identical_best_weights": true,
+ "commands": [
+  "train_sasrec.py --run-id A0_ID256 --seed 2026 --run-dir tests/opus_tiny/a0 --test-tiny --tiny-planned-epochs 4 --precision-mode tf32 (rc 0)",
+  "same for A1_RICH256 (rc 0)",
+  "crash at --stop-after-updates 37 (rc 99), then --resume (rc 0): best weights bitwise identical to uninterrupted run, same metrics",
+  "lock_retro.py eval --mechanics-split VALIDATION_SELECT on the tiny runs (rc 0): fresh-process strict-FP32 macro MRR@20 == trainer best exactly; bootstrap produced"
+ ],
+ "mechanics": {
+  "models": [
+   "A0_ID256_s2026",
+   "A1_RICH256_s2026"
+  ],
+  "bootstraps": {
+   "VALIDATION_SELECT": {
+    "A1_RICH256_s2026_minus_A0_ID256_s2026": {
+     "diff": -0.005968044139004924,
+     "ci95": [
+      -0.010150822748614835,
+      -0.001798287572137412
+     ],
+     "n_users": 988,
+     "n_resamples": 1000,
+     "seed": 2026,
+     "metric": "user-macro MRR@20 end_to_end",
+     "note": "conditional on these fitted models and a previously inspected period"
+    }
+   }
+  }
+ }
+}

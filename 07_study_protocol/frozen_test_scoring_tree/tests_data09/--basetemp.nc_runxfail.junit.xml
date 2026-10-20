@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="28" skipped="1" tests="29" time="12.238" timestamp="2026-09-29T15:36:49.977303+03:00" hostname="DESKTOP-KS1B8LQ"><testcase classname="test_d9_build" name="test_nc_true_cold_restricted_to_validation_cold_users" time="0.623"><failure message="AssertionError: assert {'cold-a0-t',... 'testonly-0'} == {'cold-a0-t'}&#10;  &#10;  Extra items in the left set:&#10;  'cold-a1-t'&#10;  'testonly-0'&#10;  Use -v to get more diff">synth_build = {'rec': {'receipt': 'DATA09_BUILD_RECEIPT', 'task': 'DATA-09', 'status': 'PASS', 'full_build': False, ...}, 'out': Win...D70&gt;, 'root': WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/d9_ds0')}
+led = &lt;d9_testkit.Ledger object at 0x000001394FC25160&gt;
+
+    @nc("restricting M08 to the TRUE_COLD_VALIDATION users (VALIDATION-cold) is NOT the registered rule")
+    def test_nc_true_cold_restricted_to_validation_cold_users(synth_build, led):
+        t = _t(synth_build, D9.TRUE_COLD_TEST_ID)
+        val_cold = {u for u in led.m08_users() if led.nval_eval[u] &gt;= 1}
+&gt;       assert set(_row_users(t, led)) == val_cold
+E       AssertionError: assert {'cold-a0-t',... 'testonly-0'} == {'cold-a0-t'}
+E         
+E         Extra items in the left set:
+E         'cold-a1-t'
+E         'testonly-0'
+E         Use -v to get more diff
+
+test_d9_build.py:88: AssertionError</failure></testcase><testcase classname="test_d9_build" name="test_nc_g0_integrity_detects_a_mismatch" time="0.001"><failure message="assert False">synth_build = {'rec': {'receipt': 'DATA09_BUILD_RECEIPT', 'task': 'DATA-09', 'status': 'PASS', 'full_build': False, ...}, 'out': Win...D70&gt;, 'root': WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/d9_ds0')}
+led = &lt;d9_testkit.Ledger object at 0x000001394FC25160&gt;
+
+    @nc("a census that differs by one TEST decision must fail the G0 integrity comparison")
+    def test_nc_g0_integrity_detects_a_mismatch(synth_build, led):
+        sc, cc = _synthetic_census(led)
+        sc["per_old_split"]["TEST"]["decisions"] += 1
+&gt;       assert F.g0_integrity(synth_build["rec"]["full_population_retro_test_counters"], sc, cc)["all_match"]
+E       assert False
+
+test_d9_build.py:245: AssertionError</failure></testcase><testcase classname="test_d9_build" name="test_nc_validation_row_breaks_m07" time="0.003"><failure message="AssertionError: assert False&#10; +  where False = all(dict_values([False, False, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True]))&#10; +    where dict_values([False, False, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True]) = &lt;built-in method values of dict object at 0x000001398FEE7680&gt;()&#10; +      where &lt;built-in method values of dict object at 0x000001398FEE7680&gt; = {'decision_ts_in_retro_test': False, 'old_split_TEST': False, 'v4_split_RETRO_TEST': True, 'subperiod_NONE': True, ...}.values&#10; +        where {'decision_ts_in_retro_test': False, 'old_split_TEST': False, 'v4_split_RETRO_TEST': True, 'subperiod_NONE': True, ...} = _tampered({'rec': {'receipt': 'DATA09_BUILD_RECEIPT', 'task': 'DATA-09', 'status': 'PASS', 'full_build': False, ...}, 'out': Win...D70&gt;, 'root': WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/d9_ds0')}, 'MAIN_RETRO_TEST_5_100_131072', &lt;function test_nc_validation_row_breaks_m07.&lt;locals&gt;.f at 0x000001398FE3ECA0&gt;)&#10; +          where 'MAIN_RETRO_TEST_5_100_131072' = D9.MAIN_TEST_ID">synth_build = {'rec': {'receipt': 'DATA09_BUILD_RECEIPT', 'task': 'DATA-09', 'status': 'PASS', 'full_build': False, ...}, 'out': Win...D70&gt;, 'root': WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/d9_ds0')}
+
+    @nc("a VALIDATION row planted into a RETRO_TEST manifest must violate the M07 assertions")
+    def test_nc_validation_row_breaks_m07(synth_build):
+        def f(dec, usr):
+            dec["old_split"] = dec["old_split"].astype(object)
+            dec["old_split"][0] = "VALIDATION_CONFIRM"
+            dec["decision_ts_us"][0] = dec["decision_ts_us"][0] - 5 * 86_400_000_000
+&gt;       assert all(_tampered(synth_build, D9.MAIN_TEST_ID, f).values())
+E       AssertionError: assert False
+E        +  where False = all(dict_values([False, False, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True]))
+E        +    where dict_values([False, False, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True]) = &lt;built-in method values of dict object at 0x000001398FEE7680&gt;()
+E        +      where &lt;built-in method values of dict object at 0x000001398FEE7680&gt; = {'decision_ts_in_retro_test': False, 'old_split_TEST': False, 'v4_split_RETRO_TEST': True, 'subperiod_NONE': True, ...}.values
+E        +        where {'decision_ts_in_retro_test': False, 'old_split_TEST': False, 'v4_split_RETRO_TEST': True, 'subperiod_NONE': True, ...} = _tampered({'rec': {'receipt': 'DATA09_BUILD_RECEIPT', 'task': 'DATA-09', 'status': 'PASS', 'full_build': False, ...}, 'out': Win...D70&gt;, 'root': WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/d9_ds0')}, 'MAIN_RETRO_TEST_5_100_131072', &lt;function test_nc_validation_row_breaks_m07.&lt;locals&gt;.f at 0x000001398FE3ECA0&gt;)
+E        +          where 'MAIN_RETRO_TEST_5_100_131072' = D9.MAIN_TEST_ID
+
+test_d9_build.py:303: AssertionError</failure></testcase><testcase classname="test_d9_build" name="test_nc_grace_target_after_label_grace" time="0.005"><failure message="AssertionError: assert False&#10; +  where False = all(dict_values([True, True, True, True, True, True, True, True, True, True, False, True, False, True, True, True, True, True]))&#10; +    where dict_values([True, True, True, True, True, True, True, True, True, True, False, True, False, True, True, True, True, True]) = &lt;built-in method values of dict object at 0x000001398FECDDC0&gt;()&#10; +      where &lt;built-in method values of dict object at 0x000001398FECDDC0&gt; = {'decision_ts_in_retro_test': True, 'old_split_TEST': True, 'v4_split_RETRO_TEST': True, 'subperiod_NONE': True, ...}.values&#10; +        where {'decision_ts_in_retro_test': True, 'old_split_TEST': True, 'v4_split_RETRO_TEST': True, 'subperiod_NONE': True, ...} = _tampered({'rec': {'receipt': 'DATA09_BUILD_RECEIPT', 'task': 'DATA-09', 'status': 'PASS', 'full_build': False, ...}, 'out': Win...D70&gt;, 'root': WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/d9_ds0')}, 'MAIN_RETRO_TEST_5_100_131072', &lt;function test_nc_grace_target_after_label_grace.&lt;locals&gt;.f at 0x000001398FE3F060&gt;)">synth_build = {'rec': {'receipt': 'DATA09_BUILD_RECEIPT', 'task': 'DATA-09', 'status': 'PASS', 'full_build': False, ...}, 'out': Win...D70&gt;, 'root': WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/d9_ds0')}
+
+    @nc("a grace target at or after the end of LABEL_GRACE must violate the M07 assertions")
+    def test_nc_grace_target_after_label_grace(synth_build):
+        def f(dec, usr):
+            i = int(np.flatnonzero(dec["grace_matured"].astype(bool))[0])
+            dec["target_ts_us"][i] = GRACE_END_US
+        mid = next(m for m in D9.TEST_IDS if _t(synth_build, m)["decisions"]["grace_matured"].any())
+&gt;       assert all(_tampered(synth_build, mid, f).values())
+E       AssertionError: assert False
+E        +  where False = all(dict_values([True, True, True, True, True, True, True, True, True, True, False, True, False, True, True, True, True, True]))
+E        +    where dict_values([True, True, True, True, True, True, True, True, True, True, False, True, False, True, True, True, True, True]) = &lt;built-in method values of dict object at 0x000001398FECDDC0&gt;()
+E        +      where &lt;built-in method values of dict object at 0x000001398FECDDC0&gt; = {'decision_ts_in_retro_test': True, 'old_split_TEST': True, 'v4_split_RETRO_TEST': True, 'subperiod_NONE': True, ...}.values
+E        +        where {'decision_ts_in_retro_test': True, 'old_split_TEST': True, 'v4_split_RETRO_TEST': True, 'subperiod_NONE': True, ...} = _tampered({'rec': {'receipt': 'DATA09_BUILD_RECEIPT', 'task': 'DATA-09', 'status': 'PASS', 'full_build': False, ...}, 'out': Win...D70&gt;, 'root': WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/d9_ds0')}, 'MAIN_RETRO_TEST_5_100_131072', &lt;function test_nc_grace_target_after_label_grace.&lt;locals&gt;.f at 0x000001398FE3F060&gt;)
+
+test_d9_build.py:312: AssertionError</failure></testcase><testcase classname="test_d9_build" name="test_nc_censored_row_marked_eval" time="0.003"><failure message="AssertionError: assert False&#10; +  where False = all(dict_values([True, True, True, True, False, True, True, False, True, True, True, True, True, True, True, True, False, True]))&#10; +    where dict_values([True, True, True, True, False, True, True, False, True, True, True, True, True, True, True, True, False, True]) = &lt;built-in method values of dict object at 0x000001398FC523C0&gt;()&#10; +      where &lt;built-in method values of dict object at 0x000001398FC523C0&gt; = {'decision_ts_in_retro_test': True, 'old_split_TEST': True, 'v4_split_RETRO_TEST': True, 'subperiod_NONE': True, ...}.values&#10; +        where {'decision_ts_in_retro_test': True, 'old_split_TEST': True, 'v4_split_RETRO_TEST': True, 'subperiod_NONE': True, ...} = _tampered({'rec': {'receipt': 'DATA09_BUILD_RECEIPT', 'task': 'DATA-09', 'status': 'PASS', 'full_build': False, ...}, 'out': Win...D70&gt;, 'root': WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/d9_ds0')}, 'MAIN_RETRO_TEST_5_100_131072', &lt;function test_nc_censored_row_marked_eval.&lt;locals&gt;.f at 0x000001398FE3F380&gt;)&#10; +          where 'MAIN_RETRO_TEST_5_100_131072' = D9.MAIN_TEST_ID">synth_build = {'rec': {'receipt': 'DATA09_BUILD_RECEIPT', 'task': 'DATA-09', 'status': 'PASS', 'full_build': False, ...}, 'out': Win...D70&gt;, 'root': WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/d9_ds0')}
+
+    @nc("a censored row marked evaluable must violate the M07 assertions")
+    def test_nc_censored_row_marked_eval(synth_build):
+        def f(dec, usr):
+            i = int(np.flatnonzero(~dec["eval_mask"].astype(bool))[0])
+            dec["eval_mask"][i] = True
+&gt;       assert all(_tampered(synth_build, D9.MAIN_TEST_ID, f).values())
+E       AssertionError: assert False
+E        +  where False = all(dict_values([True, True, True, True, False, True, True, False, True, True, True, True, True, True, True, True, False, True]))
+E        +    where dict_values([True, True, True, True, False, True, True, False, True, True, True, True, True, True, True, True, False, True]) = &lt;built-in method values of dict object at 0x000001398FC523C0&gt;()
+E        +      where &lt;built-in method values of dict object at 0x000001398FC523C0&gt; = {'decision_ts_in_retro_test': True, 'old_split_TEST': True, 'v4_split_RETRO_TEST': True, 'subperiod_NONE': True, ...}.values
+E        +        where {'decision_ts_in_retro_test': True, 'old_split_TEST': True, 'v4_split_RETRO_TEST': True, 'subperiod_NONE': True, ...} = _tampered({'rec': {'receipt': 'DATA09_BUILD_RECEIPT', 'task': 'DATA-09', 'status': 'PASS', 'full_build': False, ...}, 'out': Win...D70&gt;, 'root': WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/d9_ds0')}, 'MAIN_RETRO_TEST_5_100_131072', &lt;function test_nc_censored_row_marked_eval.&lt;locals&gt;.f at 0x000001398FE3F380&gt;)
+E        +          where 'MAIN_RETRO_TEST_5_100_131072' = D9.MAIN_TEST_ID
+
+test_d9_build.py:320: AssertionError</failure></testcase><testcase classname="test_d9_build" name="test_nc_eval_user_key_not_dense" time="0.003"><failure message="AssertionError: assert False&#10; +  where False = all(dict_values([True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, False, True, True]))&#10; +    where dict_values([True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, False, True, True]) = &lt;built-in method values of dict object at 0x000001398FCD3280&gt;()&#10; +      where &lt;built-in method values of dict object at 0x000001398FCD3280&gt; = {'decision_ts_in_retro_test': True, 'old_split_TEST': True, 'v4_split_RETRO_TEST': True, 'subperiod_NONE': True, ...}.values&#10; +        where {'decision_ts_in_retro_test': True, 'old_split_TEST': True, 'v4_split_RETRO_TEST': True, 'subperiod_NONE': True, ...} = _tampered({'rec': {'receipt': 'DATA09_BUILD_RECEIPT', 'task': 'DATA-09', 'status': 'PASS', 'full_build': False, ...}, 'out': Win...D70&gt;, 'root': WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/d9_ds0')}, 'MAIN_RETRO_TEST_5_100_131072', &lt;function test_nc_eval_user_key_not_dense.&lt;locals&gt;.f at 0x000001398FE3F600&gt;)&#10; +          where 'MAIN_RETRO_TEST_5_100_131072' = D9.MAIN_TEST_ID">synth_build = {'rec': {'receipt': 'DATA09_BUILD_RECEIPT', 'task': 'DATA-09', 'status': 'PASS', 'full_build': False, ...}, 'out': Win...D70&gt;, 'root': WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/d9_ds0')}
+
+    @nc("eval_user_key not densified by client_key_hex order must violate the D6 rule")
+    def test_nc_eval_user_key_not_dense(synth_build):
+        def f(dec, usr):
+            usr["client_key_hex"] = usr["client_key_hex"][::-1].copy()
+&gt;       assert all(_tampered(synth_build, D9.MAIN_TEST_ID, f).values())
+E       AssertionError: assert False
+E        +  where False = all(dict_values([True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, False, True, True]))
+E        +    where dict_values([True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, False, True, True]) = &lt;built-in method values of dict object at 0x000001398FCD3280&gt;()
+E        +      where &lt;built-in method values of dict object at 0x000001398FCD3280&gt; = {'decision_ts_in_retro_test': True, 'old_split_TEST': True, 'v4_split_RETRO_TEST': True, 'subperiod_NONE': True, ...}.values
+E        +        where {'decision_ts_in_retro_test': True, 'old_split_TEST': True, 'v4_split_RETRO_TEST': True, 'subperiod_NONE': True, ...} = _tampered({'rec': {'receipt': 'DATA09_BUILD_RECEIPT', 'task': 'DATA-09', 'status': 'PASS', 'full_build': False, ...}, 'out': Win...D70&gt;, 'root': WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/d9_ds0')}, 'MAIN_RETRO_TEST_5_100_131072', &lt;function test_nc_eval_user_key_not_dense.&lt;locals&gt;.f at 0x000001398FE3F600&gt;)
+E        +          where 'MAIN_RETRO_TEST_5_100_131072' = D9.MAIN_TEST_ID
+
+test_d9_build.py:327: AssertionError</failure></testcase><testcase classname="test_d9_build" name="test_nc_main_rows_with_a_foreign_user" time="0.003"><failure message="assert [100000000040...00000085, ...] == [100000000040...00000085, ...]&#10;  &#10;  Right contains 2 more items, first extra item: 100000000551&#10;  Use -v to get more diff">synth_build = {'rec': {'receipt': 'DATA09_BUILD_RECEIPT', 'task': 'DATA-09', 'status': 'PASS', 'full_build': False, ...}, 'out': Win...D70&gt;, 'root': WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/d9_ds0')}
+led = &lt;d9_testkit.Ledger object at 0x000001394FC25160&gt;
+
+    @nc("a population that includes a non-band user's TEST rows is not the MAIN band's RETRO_TEST row set")
+    def test_nc_main_rows_with_a_foreign_user(synth_build, led):
+        t = _t(synth_build, D9.MAIN_TEST_ID)
+        pop = _population(D9.MAIN_TEST_ID, led) + ["testonly-0"]
+&gt;       assert t["decisions"]["decision_id"].tolist() == sorted(r["decision_id"] for r in led.test_rows(pop))
+E       assert [100000000040...00000085, ...] == [100000000040...00000085, ...]
+E         
+E         Right contains 2 more items, first extra item: 100000000551
+E         Use -v to get more diff
+
+test_d9_build.py:334: AssertionError</failure></testcase><testcase classname="test_d9_gate" name="test_nc_gate_no_lock" time="0.004"><failure message="AssertionError: assert False&#10; +  where False = _opens(WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/test_nc_gate_no_lock0/ALL_METHODS_LOCK.json'), WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/test_nc_gate_no_lock0/TEST_EXPOSURE_REGISTER.json'))">tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/test_nc_gate_no_lock0')
+
+    @nc("no ALL_METHODS_LOCK.json: the gate must refuse")
+    def test_nc_gate_no_lock(tmp_path):
+        lock, reg = make_gate_files(tmp_path)
+        lock.unlink()
+&gt;       assert _opens(lock, reg)
+E       AssertionError: assert False
+E        +  where False = _opens(WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/test_nc_gate_no_lock0/ALL_METHODS_LOCK.json'), WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/test_nc_gate_no_lock0/TEST_EXPOSURE_REGISTER.json'))
+
+test_d9_gate.py:96: AssertionError</failure></testcase><testcase classname="test_d9_gate" name="test_nc_gate_lock_sha_mismatch" time="0.008"><failure message="AssertionError: assert False&#10; +  where False = _opens(WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/test_nc_gate_lock_sha_mismatch0/ALL_METHODS_LOCK.json'), WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/test_nc_gate_lock_sha_mismatch0/TEST_EXPOSURE_REGISTER.json'))">tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/test_nc_gate_lock_sha_mismatch0')
+
+    @nc("the lock's sha256 differs from the register entry's: the gate must refuse")
+    def test_nc_gate_lock_sha_mismatch(tmp_path):
+        lock, reg = make_gate_files(tmp_path)
+        lock.write_text('{"document": "ALL_METHODS_LOCK", "v": 2}', encoding="utf-8")
+&gt;       assert _opens(lock, reg)
+E       AssertionError: assert False
+E        +  where False = _opens(WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/test_nc_gate_lock_sha_mismatch0/ALL_METHODS_LOCK.json'), WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/test_nc_gate_lock_sha_mismatch0/TEST_EXPOSURE_REGISTER.json'))
+
+test_d9_gate.py:103: AssertionError</failure></testcase><testcase classname="test_d9_gate" name="test_nc_gate_register_entry_missing" time="0.007"><failure message="AssertionError: assert False&#10; +  where False = _opens(WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/test_nc_gate_register_entry_mi0/ALL_METHODS_LOCK.json'), WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/test_nc_gate_register_entry_mi0/TEST_EXPOSURE_REGISTER.json'))">tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/test_nc_gate_register_entry_mi0')
+
+    @nc("no register entry binds the lock: the gate must refuse")
+    def test_nc_gate_register_entry_missing(tmp_path):
+        lock, reg = make_gate_files(tmp_path)
+        make_register(reg, [{"access_purpose": "STRUCTURAL_COUNT"}, {"access_purpose": "HISTORICAL_PRIOR_EXPOSURE"}])
+&gt;       assert _opens(lock, reg)
+E       AssertionError: assert False
+E        +  where False = _opens(WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/test_nc_gate_register_entry_mi0/ALL_METHODS_LOCK.json'), WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/test_nc_gate_register_entry_mi0/TEST_EXPOSURE_REGISTER.json'))
+
+test_d9_gate.py:110: AssertionError</failure></testcase><testcase classname="test_d9_gate" name="test_nc_gate_wrong_purpose" time="0.011"><failure message="AssertionError: assert False&#10; +  where False = _opens(WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/test_nc_gate_wrong_purpose0/ALL_METHODS_LOCK.json'), WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/test_nc_gate_wrong_purpose0/TEST_EXPOSURE_REGISTER.json'))">tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/test_nc_gate_wrong_purpose0')
+
+    @nc("an entry of the wrong purpose (LOCKED_EVALUATION) carrying the lock sha256 must not open the gate")
+    def test_nc_gate_wrong_purpose(tmp_path):
+        lock, reg = make_gate_files(tmp_path, purpose="LOCKED_EVALUATION")
+&gt;       assert _opens(lock, reg)
+E       AssertionError: assert False
+E        +  where False = _opens(WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/test_nc_gate_wrong_purpose0/ALL_METHODS_LOCK.json'), WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/test_nc_gate_wrong_purpose0/TEST_EXPOSURE_REGISTER.json'))
+
+test_d9_gate.py:116: AssertionError</failure></testcase><testcase classname="test_d9_gate" name="test_nc_gate_wrong_split" time="0.006"><failure message="AssertionError: assert False&#10; +  where False = _opens(WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/test_nc_gate_wrong_split0/ALL_METHODS_LOCK.json'), WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/test_nc_gate_wrong_split0/TEST_EXPOSURE_REGISTER.json'))">tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/test_nc_gate_wrong_split0')
+
+    @nc("a MANIFEST_BUILD entry of split LEGACY_TEST must not open the RETRO_TEST gate")
+    def test_nc_gate_wrong_split(tmp_path):
+        lock, reg = make_gate_files(tmp_path)
+        sha = hashlib.sha256(lock.read_bytes()).hexdigest()
+        make_register(reg, [{"access_purpose": "MANIFEST_BUILD", "split": "LEGACY_TEST", "all_methods_lock_sha256": sha}])
+&gt;       assert _opens(lock, reg)
+E       AssertionError: assert False
+E        +  where False = _opens(WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/test_nc_gate_wrong_split0/ALL_METHODS_LOCK.json'), WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/test_nc_gate_wrong_split0/TEST_EXPOSURE_REGISTER.json'))
+
+test_d9_gate.py:124: AssertionError</failure></testcase><testcase classname="test_d9_gate" name="test_nc_gate_broken_chain" time="0.010"><failure message="AssertionError: assert False&#10; +  where False = _opens(WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/test_nc_gate_broken_chain0/ALL_METHODS_LOCK.json'), WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/test_nc_gate_broken_chain0/TEST_EXPOSURE_REGISTER.json'))">tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/test_nc_gate_broken_chain0')
+
+    @nc("a tampered register entry (chain broken, not re-hashed) must not open the gate")
+    def test_nc_gate_broken_chain(tmp_path):
+        lock, reg = make_gate_files(tmp_path)
+        d = json.loads(reg.read_text(encoding="utf-8"))
+        d["entries"][0]["observations_description"] = "edited after the fact"
+        reg.write_text(json.dumps(d), encoding="utf-8")
+&gt;       assert _opens(lock, reg)
+E       AssertionError: assert False
+E        +  where False = _opens(WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/test_nc_gate_broken_chain0/ALL_METHODS_LOCK.json'), WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/test_nc_gate_broken_chain0/TEST_EXPOSURE_REGISTER.json'))
+
+test_d9_gate.py:133: AssertionError</failure></testcase><testcase classname="test_d9_gate" name="test_nc_gate_relinked_chain" time="0.011"><failure message="AssertionError: assert False&#10; +  where False = _opens(WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/test_nc_gate_relinked_chain0/ALL_METHODS_LOCK.json'), WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/test_nc_gate_relinked_chain0/TEST_EXPOSURE_REGISTER.json'))">tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/test_nc_gate_relinked_chain0')
+
+    @nc("a re-hashed but re-linked chain (entry 1 rewritten, entry 2 still points at the old hash) must not verify")
+    def test_nc_gate_relinked_chain(tmp_path):
+        lock, reg = make_gate_files(tmp_path)
+        d = json.loads(reg.read_text(encoding="utf-8"))
+        e = d["entries"][0]
+        e["source"] = "rewritten"
+        body = {k: v for k, v in e.items() if k != "entry_sha256"}
+        e["entry_sha256"] = hashlib.sha256(json.dumps(body, sort_keys=True, ensure_ascii=True, separators=(",", ":"))
+                                           .encode()).hexdigest()
+        reg.write_text(json.dumps(d), encoding="utf-8")
+&gt;       assert _opens(lock, reg)
+E       AssertionError: assert False
+E        +  where False = _opens(WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/test_nc_gate_relinked_chain0/ALL_METHODS_LOCK.json'), WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/test_nc_gate_relinked_chain0/TEST_EXPOSURE_REGISTER.json'))
+
+test_d9_gate.py:146: AssertionError</failure></testcase><testcase classname="test_d9_gate" name="test_nc_read_with_test_without_gate" time="0.001"><failure message="assert False">synth_ds = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/d9_ds0')
+
+    @nc("read_with_test without a GateRecord must refuse")
+    def test_nc_read_with_test_without_gate(synth_ds):
+        try:
+            read_with_test(_ledger(synth_ds), ["split"], None)
+            read = True
+        except TestGateError:
+            read = False
+&gt;       assert read
+E       assert False
+
+test_d9_gate.py:156: AssertionError</failure></testcase><testcase classname="test_d9_int07_gate" name="test_nc_forged_gate_opens_the_store_path" time="0.024"><failure message="assert False">synth_gate = GateRecord(lock_path='F:\\Queens University\\Microsoft Project\\eda\\.local_ai\\_pytest_tmp\\FABLE-DEEP3\\d9\\nc\\d9_g...08965160e6cd128d7c8ea6826', entry_utc='2026-10-01T00:00:00Z', n_register_entries=2, checked_utc='2026-09-29T12:36:50Z')
+
+    @nc("a forged GateRecord must not open the RETRO_TEST store path")
+    def test_nc_forged_gate_opens_the_store_path(synth_gate):
+        from v4int import retro_store as RS
+        try:
+            RS.require_gate(_forged(synth_gate))
+            opened = True
+        except TestGateError:
+            opened = False
+&gt;       assert opened
+E       assert False
+
+test_d9_int07_gate.py:227: AssertionError</failure></testcase><testcase classname="test_d9_int07_gate" name="test_nc_history_splits_accepts_test_after_import" time="0.001"><failure message="assert False">@nc("the locked history rule must still refuse a TEST decision after the TEST path is imported")
+    def test_nc_history_splits_accepts_test_after_import():
+        from v4hist.policy import HistoryPolicyError, history_splits
+        from v4int import retro_store as RS  # noqa: F401
+        try:
+            history_splits(("TEST",))
+            accepted = True
+        except HistoryPolicyError:
+            accepted = False
+&gt;       assert accepted
+E       assert False
+
+test_d9_int07_gate.py:239: AssertionError</failure></testcase><testcase classname="test_d9_int07_gate" name="test_nc_reeval_accepts_a_test_role_with_the_gate_closed" time="0.010"><failure message="AssertionError: assert False&#10; +  where False = &lt;function test_gate_ok at 0x000001398FFA47C0&gt;('MAIN_TEST')&#10; +    where &lt;function test_gate_ok at 0x000001398FFA47C0&gt; = &lt;module 'v4int.reeval' from 'F:\\Queens University\\Microsoft Project\\eda\\.local_ai\\ppsi_v4\\code\\v4int\\reeval.py'&gt;.test_gate_ok">@nc("reeval must refuse a TEST role while the real gate is closed")
+    @closed_gate_only
+    def test_nc_reeval_accepts_a_test_role_with_the_gate_closed():
+        from v4int import reeval as R
+&gt;       assert R.test_gate_ok("MAIN_TEST")
+E       AssertionError: assert False
+E        +  where False = &lt;function test_gate_ok at 0x000001398FFA47C0&gt;('MAIN_TEST')
+E        +    where &lt;function test_gate_ok at 0x000001398FFA47C0&gt; = &lt;module 'v4int.reeval' from 'F:\\Queens University\\Microsoft Project\\eda\\.local_ai\\ppsi_v4\\code\\v4int\\reeval.py'&gt;.test_gate_ok
+
+test_d9_int07_gate.py:246: AssertionError</failure></testcase><testcase classname="test_d9_int07_gate" name="test_nc_gated_cache_serves_validation_decisions" time="0.003"><failure message="assert False">synth_gate = GateRecord(lock_path='F:\\Queens University\\Microsoft Project\\eda\\.local_ai\\_pytest_tmp\\FABLE-DEEP3\\d9\\nc\\d9_g...08965160e6cd128d7c8ea6826', entry_utc='2026-10-01T00:00:00Z', n_register_entries=2, checked_utc='2026-09-29T12:36:50Z')
+
+    @nc("the gated cache branch must refuse the VALIDATION decision rule")
+    def test_nc_gated_cache_serves_validation_decisions(synth_gate):
+        from v4int import retro_store as RS
+        try:
+            RS.gated_path_builders(synth_gate, "USER_HISTORY_L50", ("VALIDATION_SELECT", "VALIDATION_CONFIRM"))
+            served = True
+        except RS.TestPathRefused:
+            served = False
+&gt;       assert served
+E       assert False
+
+test_d9_int07_gate.py:257: AssertionError</failure></testcase><testcase classname="test_d9_no_side_effect" name="test_nc_side_effect_detector" time="9.743"><failure message="AssertionError: assert {'CALIB_TRAIN... 0, ...}, ...} == {'CALIB_TRAIN... 0, ...}, ...}&#10;  &#10;  Omitting 14 identical items, use -vv to show&#10;  Differing items:&#10;  {'MAIN_VALIDATION_5_100_131072': {'eval_ordered_decision_id_sha256': '9c002ca9f87f8f58cedb5c11a7d0b9fea540dee62d88af86...sha256': 'c52f666768829f7295d284ce46888e2d754bdbd657ace5c6c014a8b99a722ca9', 'n_decisions': 12, 'n_eval_rows': 8, ...}} != {'MAIN_VALIDATION_5_100_131072': {'eval_ordered_decision_id_sha256': '9c002ca9f87f8f58cedb5c11a7d0b9fea540dee62d88af86...sha256': 'c52f666768829f7295d284ce46888e2d754bdbd657ace5c6c014a8b99a722ca9', 'n_decisions': 12, 'n_eval_rows': 8, ...}}&#10;  Use -v to get more diff">probes = ({'d6': {'CALIB_TRAIN_5_100_32768': {'eval_ordered_decision_id_sha256': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b9...': 'aeea6f0cc8b2be841a710d9d2e403466b96402f087a32cd2298d3fef3c40604c', 'n_decisions': 0, 'n_eval_rows': 0, ...}, ...}})
+
+    @nc("the identity comparison must detect a single changed table hash")
+    def test_nc_side_effect_detector(probes):
+        a, b = probes
+        b2 = copy.deepcopy(b)
+        e = b2["d6"]["MAIN_VALIDATION_5_100_131072"]["tables"]["decisions"]
+        e["table_content_sha256"] = "0" * 64
+&gt;       assert a["d6"] == b2["d6"]
+E       AssertionError: assert {'CALIB_TRAIN... 0, ...}, ...} == {'CALIB_TRAIN... 0, ...}, ...}
+E         
+E         Omitting 14 identical items, use -vv to show
+E         Differing items:
+E         {'MAIN_VALIDATION_5_100_131072': {'eval_ordered_decision_id_sha256': '9c002ca9f87f8f58cedb5c11a7d0b9fea540dee62d88af86...sha256': 'c52f666768829f7295d284ce46888e2d754bdbd657ace5c6c014a8b99a722ca9', 'n_decisions': 12, 'n_eval_rows': 8, ...}} != {'MAIN_VALIDATION_5_100_131072': {'eval_ordered_decision_id_sha256': '9c002ca9f87f8f58cedb5c11a7d0b9fea540dee62d88af86...sha256': 'c52f666768829f7295d284ce46888e2d754bdbd657ace5c6c014a8b99a722ca9', 'n_decisions': 12, 'n_eval_rows': 8, ...}}
+E         Use -v to get more diff
+
+test_d9_no_side_effect.py:62: AssertionError</failure></testcase><testcase classname="test_d9_real" name="test_nc_real_extension_tampered" time="0.000"><skipped type="pytest.skip" message="real DATA-09 build absent or the real TEST gate closed (local host)">F:\Queens University\Microsoft Project\eda\.local_ai\ppsi_v4\code\tests_data09\test_d9_real.py:56: real DATA-09 build absent or the real TEST gate closed (local host)</skipped></testcase><testcase classname="test_d9_registry_shim" name="test_nc_tampered_base_entry" time="1.010"><failure message="assert False">ws = {'root': WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/d9_ws0'), 'ex...crosoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/d9_ws0/contracts/manifest_registry/REGISTRY_V2.json'), ...}
+
+    @nc("a REGISTRY_V2 entry altered inside the extension (re-signed) must fail byte-identity")
+    def test_nc_tampered_base_entry(ws):
+        ext = copy.deepcopy(ws["ext"])
+        ext["manifests"]["MAIN_VALIDATION_5_100_131072"]["n_eval_rows"] += 1
+&gt;       assert R.verify_test_ext_registry(R.with_self(ext), _base(ws), sha256_file(ws["base_path"]))["all_ok"]
+E       assert False
+
+test_d9_registry_shim.py:120: AssertionError</failure></testcase><testcase classname="test_d9_registry_shim" name="test_nc_main_test_points_at_validation" time="0.007"><failure message="assert False">ws = {'root': WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/d9_ws0'), 'ex...crosoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/d9_ws0/contracts/manifest_registry/REGISTRY_V2.json'), ...}
+
+    @nc("MAIN_TEST pointing at a VALIDATION manifest must fail the extension rule")
+    def test_nc_main_test_points_at_validation(ws):
+        ext = copy.deepcopy(ws["ext"])
+        ext["roles"]["MAIN_TEST"]["eval"] = "MAIN_VALIDATION_5_100_131072"
+&gt;       assert R.verify_test_ext_registry(R.with_self(ext), _base(ws), sha256_file(ws["base_path"]))["all_ok"]
+E       assert False
+
+test_d9_registry_shim.py:127: AssertionError</failure></testcase><testcase classname="test_d9_registry_shim" name="test_nc_extra_top_key" time="0.007"><failure message="assert False">ws = {'root': WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/d9_ws0'), 'ex...crosoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/d9_ws0/contracts/manifest_registry/REGISTRY_V2.json'), ...}
+
+    @nc("an extra, unregistered top-level key must fail the extension rule")
+    def test_nc_extra_top_key(ws):
+        ext = dict(ws["ext"], surprise=1)
+&gt;       assert R.verify_test_ext_registry(R.with_self(ext), _base(ws), sha256_file(ws["base_path"]))["all_ok"]
+E       assert False
+
+test_d9_registry_shim.py:133: AssertionError</failure></testcase><testcase classname="test_d9_registry_shim" name="test_nc_entry_gate_differs" time="0.006"><failure message="assert False">ws = {'root': WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/d9_ws0'), 'ex...crosoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/d9_ws0/contracts/manifest_registry/REGISTRY_V2.json'), ...}
+
+    @nc("a RETRO_TEST entry whose gate fields differ from the extension's gate must fail")
+    def test_nc_entry_gate_differs(ws):
+        ext = copy.deepcopy(ws["ext"])
+        ext["manifests"][D9.HEAVY_TEST_ID]["test_exposure_register_entry_id"] = 99
+&gt;       assert R.verify_test_ext_registry(R.with_self(ext), _base(ws), sha256_file(ws["base_path"]))["all_ok"]
+E       assert False
+
+test_d9_registry_shim.py:140: AssertionError</failure></testcase><testcase classname="test_d9_registry_shim" name="test_nc_wrong_base_file_sha" time="0.002"><failure message="assert False">ws = {'root': WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/d9_ws0'), 'ex...crosoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/d9_ws0/contracts/manifest_registry/REGISTRY_V2.json'), ...}
+
+    @nc("an extension naming another base file sha256 must fail")
+    def test_nc_wrong_base_file_sha(ws):
+&gt;       assert R.verify_test_ext_registry(ws["ext"], _base(ws), "0" * 64)["all_ok"]
+E       assert False
+
+test_d9_registry_shim.py:145: AssertionError</failure></testcase><testcase classname="test_d9_registry_shim" name="test_nc_resolve_without_gate" time="0.001"><failure message="assert False">ws = {'root': WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/d9_ws0'), 'ex...crosoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/d9_ws0/contracts/manifest_registry/REGISTRY_V2.json'), ...}
+
+    @nc("resolving a TEST role with the real (closed) gate must refuse")
+    @closed_gate_only
+    def test_nc_resolve_without_gate(ws):
+        try:
+            TR.resolve_role("MAIN_TEST", ext_path=ws["ext_path"], base_path=ws["base_path"])
+            resolved = True
+        except TestGateError:
+            resolved = False
+&gt;       assert resolved
+E       assert False
+
+test_d9_registry_shim.py:191: AssertionError</failure></testcase><testcase classname="test_d9_registry_shim" name="test_nc_tampered_table_fails_verification" time="0.083"><failure message="assert False">ws = {'root': WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/d9_ws0'), 'ex...crosoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/d9_ws0/contracts/manifest_registry/REGISTRY_V2.json'), ...}
+verified = {'ext_path': WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/d9_ws0/co...Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/d9_gate0/TEST_EXPOSURE_REGISTER.json')}
+tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/test_nc_tampered_table_fails_v0')
+
+    @nc("a RETRO_TEST table file edited on disk must fail the gated verification")
+    def test_nc_tampered_table_fails_verification(ws, verified, tmp_path):
+        import v4int.verify as VF
+        root2 = tmp_path / "ws2"
+        shutil.copytree(ws["root"], root2)
+        f = root2 / D9.OUT_REL / "manifests" / f"{D9.HEAVY_TEST_ID}.decisions.parquet"
+        f.write_bytes(f.read_bytes() + b"\0")
+        try:
+            TR.verify_test_manifest(D9.HEAVY_TEST_ID, **dict(verified, root=root2, ext_path=root2 / EXT_REL))
+            ok = True
+        except VF.ManifestVerificationError:
+            ok = False
+&gt;       assert ok
+E       assert False
+
+test_d9_registry_shim.py:359: AssertionError</failure></testcase><testcase classname="test_d9_registry_shim" name="test_nc_foreign_gate_manifest_not_served" time="0.016"><failure message="assert False">ws = {'root': WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/d9_ws0'), 'ex...crosoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/d9_ws0/contracts/manifest_registry/REGISTRY_V2.json'), ...}
+verified = {'ext_path': WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/d9_ws0/co...Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/d9_gate0/TEST_EXPOSURE_REGISTER.json')}
+tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/d9/nc/test_nc_foreign_gate_manifest_0')
+
+    @nc("a RETRO_TEST manifest built under another gate must not be served")
+    def test_nc_foreign_gate_manifest_not_served(ws, verified, tmp_path):
+        lock2, reg2 = make_gate_files(tmp_path, lock_text='{"document": "ALL_METHODS_LOCK", "v": 4}')
+        try:
+            TR.verify_test_manifest(D9.MAIN_TEST_ID, **dict(verified, lock_path=lock2, register_path=reg2))
+            ok = True
+        except TestGateError:
+            ok = False
+&gt;       assert ok
+E       assert False
+
+test_d9_registry_shim.py:370: AssertionError</failure></testcase></testsuite></testsuites>

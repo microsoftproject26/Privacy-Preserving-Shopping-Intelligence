@@ -1,0 +1,237 @@
+{
+ "N": 645603,
+ "checkpoints": {
+  "best": {
+   "file": "checkpoints/best.pt",
+   "sha256": "bec606bdfe8ee243ab1cb0b6f53f3473a90db53034f580f00a30feb6e29193b8"
+  },
+  "endpoint_6.0": {
+   "file": "checkpoints/endpoint_6.0.pt",
+   "sha256": "ed2fc0d1b889972736b9377ddd13d5c1b8ccbcdbff1bb2f9c310cd252707f0f0"
+  }
+ },
+ "config_sha256": "ce5e63ce297bd6a97b2199c48d1e25a058508cf4f0337b5b2cd2ee154bbebb8a",
+ "controlled_budget": {
+  "efe": 6.0,
+  "mark": 6.0,
+  "value": 0.1299312702419247
+ },
+ "data_version": "FS_SCREEN_5_100_v1",
+ "determinism": {
+  "cublas_workspace_config": ":4096:8",
+  "mode": "STRICT",
+  "torch_effective": {
+   "deterministic_algorithms": true,
+   "warn_only": false
+  }
+ },
+ "efe": 6.0,
+ "eval_every_efe": 0.5,
+ "evals": [
+  {
+   "efe": 0.500022459623019,
+   "exposures": 322816,
+   "improved": true,
+   "mark": 0.5,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_0.5.rows.json",
+   "secondary": {
+    "hr@10": 0.18116118517673252,
+    "ndcg@10": 0.09539537644987475
+   },
+   "updates": 1261,
+   "value": 0.07513804322328912
+  },
+  {
+   "efe": 1.0,
+   "exposures": 645603,
+   "improved": true,
+   "mark": 1.0,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_1.0.rows.json",
+   "secondary": {
+    "hr@10": 0.22160635544666293,
+    "ndcg@10": 0.11796996461298138
+   },
+   "updates": 2522,
+   "value": 0.09284443130238833
+  },
+  {
+   "efe": 1.5000224596230192,
+   "exposures": 968419,
+   "improved": true,
+   "mark": 1.5,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_1.5.rows.json",
+   "secondary": {
+    "hr@10": 0.24486859266766814,
+    "ndcg@10": 0.13450659171043164
+   },
+   "updates": 3783,
+   "value": 0.10755056039332699
+  },
+  {
+   "efe": 2.0,
+   "exposures": 1291206,
+   "improved": true,
+   "mark": 2.0,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_2.0.rows.json",
+   "secondary": {
+    "hr@10": 0.2609041774836568,
+    "ndcg@10": 0.14336544151332425
+   },
+   "updates": 5044,
+   "value": 0.11426823917257303
+  },
+  {
+   "efe": 2.500022459623019,
+   "exposures": 1614022,
+   "improved": true,
+   "mark": 2.5,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_2.5.rows.json",
+   "secondary": {
+    "hr@10": 0.27532938160704057,
+    "ndcg@10": 0.15705412281003095
+   },
+   "updates": 6305,
+   "value": 0.12719171223338074
+  },
+  {
+   "efe": 3.0,
+   "exposures": 1936809,
+   "improved": true,
+   "mark": 3.0,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_3.0.rows.json",
+   "secondary": {
+    "hr@10": 0.28923685101966273,
+    "ndcg@10": 0.16691316422594227
+   },
+   "updates": 7566,
+   "value": 0.13600256572851188
+  },
+  {
+   "efe": 3.500022459623019,
+   "exposures": 2259625,
+   "improved": false,
+   "mark": 3.5,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_3.5.rows.json",
+   "secondary": {
+    "hr@10": 0.283136327989689,
+    "ndcg@10": 0.16374440824787861
+   },
+   "updates": 8827,
+   "value": 0.13349374856148255
+  },
+  {
+   "efe": 4.0,
+   "exposures": 2582412,
+   "improved": false,
+   "mark": 4.0,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_4.0.rows.json",
+   "secondary": {
+    "hr@10": 0.28236257196620523,
+    "ndcg@10": 0.16381937448991069
+   },
+   "updates": 10088,
+   "value": 0.1338037666720407
+  },
+  {
+   "efe": 4.500022459623019,
+   "exposures": 2905228,
+   "improved": false,
+   "mark": 4.5,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_4.5.rows.json",
+   "secondary": {
+    "hr@10": 0.27874081605639217,
+    "ndcg@10": 0.1612138810176115
+   },
+   "updates": 11349,
+   "value": 0.1313201680692727
+  },
+  {
+   "efe": 5.0,
+   "exposures": 3228015,
+   "improved": false,
+   "mark": 5.0,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_5.0.rows.json",
+   "secondary": {
+    "hr@10": 0.27717422136370645,
+    "ndcg@10": 0.1608773030044858
+   },
+   "updates": 12610,
+   "value": 0.1313989093888726
+  },
+  {
+   "efe": 5.500022459623019,
+   "exposures": 3550831,
+   "improved": false,
+   "mark": 5.5,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_5.5.rows.json",
+   "secondary": {
+    "hr@10": 0.2742734471995405,
+    "ndcg@10": 0.15884986111775634
+   },
+   "updates": 13871,
+   "value": 0.1295232507958554
+  },
+  {
+   "efe": 6.0,
+   "exposures": 3873618,
+   "improved": false,
+   "mark": 6.0,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_6.0.rows.json",
+   "secondary": {
+    "hr@10": 0.2748449584886418,
+    "ndcg@10": 0.15926614926472057
+   },
+   "updates": 15132,
+   "value": 0.1299312702419247
+  }
+ ],
+ "exposures": 3873618,
+ "family": "SASREC",
+ "final_rng_sha256": "3124a372d1babbc0af5a080fdd5acd30280c6d0c203784191d24ac5370e5a09d",
+ "final_state_digest": "758be2f1f620f9d3c7dd30a110614db5bf6c41baee700f213e5f4ff6390dda5e",
+ "init_sha256": "030c262abb104eddda27a879c0a0a775131110eb69eac4e3de2606dffa0a3416",
+ "label": "STOPPED_AT_CONTROLLED_ENDPOINT",
+ "latest_deleted_sha256": "fae53980b1fc793ac5395de37fe5ccd5e9c579743ef69a966d3e7a843f5dfd03",
+ "latest_kept": false,
+ "manifest_registry": {
+  "data_version": "FS_SCREEN_5_100_v1",
+  "eval_manifest": "FS_VALIDATION_5_100_32768",
+  "file_sha256": "d00a05e57a35553dddf1d5619656255e712b63efb810200b948d8b3b12f30aed",
+  "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/contracts/manifest_registry/REGISTRY_FS.json",
+  "role": "FEATURE_SEARCH_SCREEN",
+  "self_sha256": "aa86bea96b69c702bf502fbb6680512c65e5e2013d649bf42cd5a3720d9a371b",
+  "train_manifest": "FS_TRAIN_5_100_32768"
+ },
+ "manifest_role": "FEATURE_SEARCH_SCREEN",
+ "peak_lr": 0.001,
+ "phase": "MAIN",
+ "population": "COHORT",
+ "practical_best": {
+  "efe": 3.0,
+  "mark": 3.0,
+  "value": 0.13600256572851188
+ },
+ "row_status": "FEATURE_SEARCH_SCREEN",
+ "run_id": "FS__L0S_CLEAN_V2_SESSION__SASREC_s2026",
+ "run_label": "FEATURE_SEARCH_SCREEN",
+ "schema": {
+  "schema_id": "L0S_CLEAN_V2_SESSION",
+  "schema_self_sha256": "554c079a491bb5664cde017eadef21772342fccb70d54cbf78790b23dac6ce82"
+ },
+ "seed": 2026,
+ "status": "DONE_MAIN",
+ "still_improving": false,
+ "updates": 15132
+}

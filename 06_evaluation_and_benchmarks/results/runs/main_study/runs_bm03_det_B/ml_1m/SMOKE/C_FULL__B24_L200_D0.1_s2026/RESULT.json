@@ -1,0 +1,78 @@
+{
+ "arm": "C_FULL",
+ "checkpoints": {
+  "CONTROLLED_BUDGET": {
+   "bytes": 17303455,
+   "file": "ckpt/endpoint_6.0.pt",
+   "mark": 0.020071500648108268,
+   "sha256": "ac7aeadb15a0a48700145779ed4baf8f10e232707e778dea4470826a879683d8"
+  }
+ },
+ "device": {
+  "cublas_workspace_config": ":4096:8",
+  "cuda": "13.0",
+  "cudnn": 92000,
+  "device_class": "NVIDIA_A40-FP32-DET",
+  "gpu_name": "NVIDIA A40",
+  "numerics": {
+   "cuda_matmul_allow_tf32": false,
+   "cudnn_allow_tf32": false,
+   "cudnn_deterministic": true,
+   "deterministic_algorithms": true,
+   "deterministic_warn_only": false,
+   "float32_matmul_precision": "highest",
+   "intra_op_threads": 16,
+   "torch": "2.13.0+cu130"
+  },
+  "physical_gpu": "1",
+  "torch": "2.13.0+cu130"
+ },
+ "device_class": "NVIDIA_A40-FP32-DET",
+ "kind": "central",
+ "label": "SMOKE_NOT_EVIDENCE",
+ "run_id": "BM_ml_1m_C_FULL__B24_L200_D0.1_s2026_SMOKE",
+ "spec": {
+  "N_decisions": 982089,
+  "arm": "C_FULL",
+  "betas": [
+   0.9,
+   0.999
+  ],
+  "budget_efe": 24,
+  "device_class": "NVIDIA_A40-FP32-DET",
+  "dropout": [
+   0.1
+  ],
+  "early_stop_marks": 6,
+  "effective_batch": 256,
+  "eps": 1e-08,
+  "exposure_point": "end",
+  "grad_clip": 1.0,
+  "init_sha256": "eb7013fb7bd25ccafd8e548950857c317ae0d95a64283db8c9b7f0cb4c70f560",
+  "lr_table_sha256": "9c03d24943b687de3dd4e37568ce2925111e1db7ba75adeb52aae07ffc1ef708",
+  "marks": [
+   2.0,
+   4.0,
+   6.0,
+   8.0,
+   10.0,
+   12.0,
+   14.0,
+   16.0,
+   18.0,
+   20.0,
+   22.0,
+   24.0
+  ],
+  "max_len": 200,
+  "n_updates": 92088,
+  "peak_lr": 0.00040005642964899735,
+  "provenance": null,
+  "schedule": "S0",
+  "seed": 2026,
+  "select_population": "ALL",
+  "variant": "SASREC_D256_B3",
+  "weight_decay": 1e-05
+ },
+ "status": "SMOKE_DONE_NOT_EVIDENCE"
+}

@@ -1,0 +1,66 @@
+{
+ "weights": {
+  "A0_e5": {
+   "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/runs/A0_ID256_s2026_cool5/checkpoints/best_weights.pt",
+   "sha256": "0263932e412191c8e9b1311bf607a27e59962b3732d5bedad0cc49aad3ed5ea5"
+  },
+  "A1_e5": {
+   "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/runs/A1_RICH256_s2026_cool5/checkpoints/best_weights.pt",
+   "sha256": "c77a75e2d38b6abe3222be30913fe70735ad81597ef01c030b2c7996f60e9c0b"
+  },
+  "A1_e3": {
+   "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/runs/A1_RICH256_s2026/checkpoints/best_weights.pt",
+   "sha256": "89b8f06c5ce6d43db0b39d51f7ef559b2e07b5fa70fda5a7932d1efc6ced093f"
+  },
+  "A1_e4": {
+   "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/runs/A1_RICH256_s2026/checkpoints/epoch4_weights.pt",
+   "sha256": "f752d46764af3c339d6e90ce2b2153ba262e386b9530d111c62b3b4930598e86"
+  }
+ },
+ "ranks": {
+  "A0_e5": {
+   "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/runs/A0_ID256_s2026_cool5/ranks/epoch5.npz",
+   "sha256": "b640a4158ffc2b58e6f32371c3d3fe9fe6a7b7bf6acf66adf817eff86427d584"
+  },
+  "A1_e5": {
+   "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/runs/A1_RICH256_s2026_cool5/ranks/epoch5.npz",
+   "sha256": "d6d1426da6ee3436b009efd429213dd462e7ead613bf29a79a73d3f3f705e869"
+  },
+  "A1_e3": {
+   "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/runs/A1_RICH256_s2026/ranks/epoch3.npz",
+   "sha256": "6ce9f0fc9fe57d76360171e95909d488c4e75d01c4f98821eba44e200064acd5"
+  },
+  "A1_e4": {
+   "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/runs/A1_RICH256_s2026/ranks/epoch4.npz",
+   "sha256": "001aca60d8336947c03d07f838de3c6f35bbde1a46c3e1e591ee80afb92ee6f1"
+  }
+ },
+ "registry": {
+  "A0": {
+   "id": "A0_ID256",
+   "group": "item_only",
+   "d_model": 256,
+   "blocks": 2,
+   "heads": 4,
+   "ff_multiplier": 4,
+   "dropout": 0.2,
+   "peak_lr": 0.001,
+   "label_smoothing": 0.0,
+   "pair": "A0_A1",
+   "role": "mandatory_anchor"
+  },
+  "A1": {
+   "id": "A1_RICH256",
+   "group": "rich_frozen_channels",
+   "d_model": 256,
+   "blocks": 2,
+   "heads": 4,
+   "ff_multiplier": 4,
+   "dropout": 0.2,
+   "peak_lr": 0.001,
+   "label_smoothing": 0.0,
+   "pair": "A0_A1",
+   "role": "mandatory_anchor"
+  }
+ }
+}

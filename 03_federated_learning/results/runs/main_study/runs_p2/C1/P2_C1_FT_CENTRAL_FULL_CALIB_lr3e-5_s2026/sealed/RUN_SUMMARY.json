@@ -1,0 +1,259 @@
+{
+ "N": 646067,
+ "checkpoints": {
+  "best": {
+   "file": "checkpoints/best.pt",
+   "sha256": "672e392c0ed046c6ada6e4153e934ba09b11d177ffbf908aba60f9d56789582f"
+  },
+  "endpoint_6.0": {
+   "file": "checkpoints/endpoint_6.0.pt",
+   "sha256": "d46a5bf630afc6544ce126aff5e50a58a7f45faaac548e6b5750a4a595f897c3"
+  }
+ },
+ "config_sha256": "7625f6e411ad95cd0fbc1eef321dc16954de667a37e7f47c22074ec5ec721f43",
+ "continuation": null,
+ "controlled_budget": {
+  "efe": 6.0,
+  "mark": 6.0,
+  "value": 0.16572640476667558
+ },
+ "data_version": "CLEAN_V2_POP5100_V2",
+ "determinism": {
+  "cublas_workspace_config": ":4096:8",
+  "mode": "STRICT",
+  "torch_effective": {
+   "deterministic_algorithms": true,
+   "warn_only": false
+  }
+ },
+ "device_pin_sha256": "db744ca3f0da27ac7b65c41b4b32f2c68ec9d0bd66bbc0dc33e874a226834e6b",
+ "efe": 6.0,
+ "eval_every_efe": 0.5,
+ "evals": [
+  {
+   "efe": 0.5000595913426935,
+   "exposures": 323072,
+   "improved": true,
+   "mark": 0.5,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_0.5.rows.json",
+   "secondary": {
+    "hr@10": 0.34473252552141065,
+    "ndcg@10": 0.202238310997037
+   },
+   "updates": 1262,
+   "value": 0.16595989909106537
+  },
+  {
+   "efe": 1.0,
+   "exposures": 646067,
+   "improved": false,
+   "mark": 1.0,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_1.0.rows.json",
+   "secondary": {
+    "hr@10": 0.3447188958453836,
+    "ndcg@10": 0.2022778679894286
+   },
+   "updates": 2524,
+   "value": 0.1659680482917373
+  },
+  {
+   "efe": 1.5000595913426935,
+   "exposures": 969139,
+   "improved": false,
+   "mark": 1.5,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_1.5.rows.json",
+   "secondary": {
+    "hr@10": 0.344223006578972,
+    "ndcg@10": 0.20172635124336355
+   },
+   "updates": 3786,
+   "value": 0.16557617664698723
+  },
+  {
+   "efe": 2.0,
+   "exposures": 1292134,
+   "improved": false,
+   "mark": 2.0,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_2.0.rows.json",
+   "secondary": {
+    "hr@10": 0.3443578867000603,
+    "ndcg@10": 0.2014873697812796
+   },
+   "updates": 5048,
+   "value": 0.1651471048567098
+  },
+  {
+   "efe": 2.5000595913426937,
+   "exposures": 1615206,
+   "improved": false,
+   "mark": 2.5,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_2.5.rows.json",
+   "secondary": {
+    "hr@10": 0.34335247653607825,
+    "ndcg@10": 0.2014246340446099
+   },
+   "updates": 6310,
+   "value": 0.16551100830882529
+  },
+  {
+   "efe": 3.0,
+   "exposures": 1938201,
+   "improved": false,
+   "mark": 3.0,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_3.0.rows.json",
+   "secondary": {
+    "hr@10": 0.3438417594056495,
+    "ndcg@10": 0.20164282019580368
+   },
+   "updates": 7572,
+   "value": 0.16561934875251563
+  },
+  {
+   "efe": 3.5000595913426937,
+   "exposures": 2261273,
+   "improved": false,
+   "mark": 3.5,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_3.5.rows.json",
+   "secondary": {
+    "hr@10": 0.3440150006718113,
+    "ndcg@10": 0.20158496779838803
+   },
+   "updates": 8834,
+   "value": 0.16549592898287221
+  },
+  {
+   "efe": 4.0,
+   "exposures": 2584268,
+   "improved": false,
+   "mark": 4.0,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_4.0.rows.json",
+   "secondary": {
+    "hr@10": 0.3438806892474988,
+    "ndcg@10": 0.20169290618319577
+   },
+   "updates": 10096,
+   "value": 0.1656693191404917
+  },
+  {
+   "efe": 4.500059591342693,
+   "exposures": 2907340,
+   "improved": false,
+   "mark": 4.5,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_4.5.rows.json",
+   "secondary": {
+    "hr@10": 0.34408115545386564,
+    "ndcg@10": 0.20169991221333697
+   },
+   "updates": 11358,
+   "value": 0.16560348509721384
+  },
+  {
+   "efe": 5.0,
+   "exposures": 3230335,
+   "improved": false,
+   "mark": 5.0,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_5.0.rows.json",
+   "secondary": {
+    "hr@10": 0.3439994617533309,
+    "ndcg@10": 0.20172077716402342
+   },
+   "updates": 12620,
+   "value": 0.1656720883110442
+  },
+  {
+   "efe": 5.500059591342693,
+   "exposures": 3553407,
+   "improved": false,
+   "mark": 5.5,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_5.5.rows.json",
+   "secondary": {
+    "hr@10": 0.34382649711356145,
+    "ndcg@10": 0.20169747130399288
+   },
+   "updates": 13882,
+   "value": 0.1656905709683812
+  },
+  {
+   "efe": 6.0,
+   "exposures": 3876402,
+   "improved": false,
+   "mark": 6.0,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_6.0.rows.json",
+   "secondary": {
+    "hr@10": 0.3439790231243453,
+    "ndcg@10": 0.20175632290168377
+   },
+   "updates": 15144,
+   "value": 0.16572640476667558
+  }
+ ],
+ "exposures": 3876402,
+ "family": "SASREC",
+ "final_rng_sha256": "3124a372d1babbc0af5a080fdd5acd30280c6d0c203784191d24ac5370e5a09d",
+ "final_state_digest": "7a15c825e434d1623f7a16a9153fff69b4b1d0edefb25b6fc15ebeb445326f99",
+ "hp": null,
+ "hp_trial": null,
+ "init_sha256": "e9eb0bb9dd30061790fa5dc747e14c9aa375e2069c06a85785de6251e8705b95",
+ "label": "STOPPED_AT_CONTROLLED_ENDPOINT",
+ "latest_deleted_sha256": "b8079cc186b8439c25ec6ffc0ce16ad2283e5215c43fc2949d8f3bb1f03b2593",
+ "latest_kept": false,
+ "manifest_registry": {
+  "data_version": "CLEAN_V2_POP5100_V2",
+  "eval_manifest": "CALIB_VALIDATION_5_100_32768",
+  "file_sha256": "3c826a148046fd661ec703e228e43eb2bcf730cfc3aa6bf42859c0f3acf5dcce",
+  "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_p2/C1/P2_C1_FT_CENTRAL_FULL_CALIB_lr3e-5_s2026/REGISTRY_V2_TRAINER_VIEW.json",
+  "role": "MAIN",
+  "self_sha256": "36df72352ec1f169c142b3c9017219f7252fe8d9ae959b69cb3f6ee71bfc654f",
+  "train_manifest": "CALIB_TRAIN_5_100_32768"
+ },
+ "manifest_role": "MAIN",
+ "model_variant": "SASREC_D64_B2",
+ "p2_c1": {
+  "arm": "P2_C1_FT_CENTRAL_FULL",
+  "continuation": "DISABLED_FIXED_6.0_EFE",
+  "frozen_item_tables": null,
+  "init_checkpoint_bytes": 82853197,
+  "init_checkpoint_sha256": "cf08588c11f019cc760f129ba7ba6b23806297660e0170f9938436a5cb88cf78",
+  "init_record_sha256": "5ed989f6a23317aaf0fb6cf3e1288f7f925b77f423af866c361359583818a8b5",
+  "init_run_id": "PRETRAIN_FOR_FL_SMALL_SASREC_D64_B2_s2026",
+  "init_state_digest": "ee33345be4f20b61a53cd80fa11e1af702031bfcd1425af490825cd0019dc54a",
+  "peak_lr": 3e-05,
+  "role": "CALIBRATION",
+  "trained_numel": 20708708,
+  "variant": "FULL"
+ },
+ "p2_trainable_numel": 20708708,
+ "peak_lr": 3e-05,
+ "phase": "MAIN",
+ "population": "COHORT",
+ "practical_best": {
+  "efe": 0.5000595913426935,
+  "mark": 0.5,
+  "value": 0.16595989909106537
+ },
+ "row_status": "P2_CONTROL",
+ "run_id": "P2_C1_FT_CENTRAL_FULL_CALIB_lr3e-5_s2026",
+ "run_label": "P2_C1_FT_CENTRAL_FULL",
+ "run_role": "MAIN",
+ "schema": {
+  "schema_id": "L3S_NEAR_DUPLICATE_SESSION-minus-G11+G12a+G3+G4+G7",
+  "schema_self_sha256": "c53d47fe2555dd537e27e11d45a4e8b23739566e6b98179dcf521852aa918f87"
+ },
+ "seed": 2026,
+ "shared_numel": 20708708,
+ "status": "DONE_MAIN",
+ "still_improving": false,
+ "updates": 15144
+}

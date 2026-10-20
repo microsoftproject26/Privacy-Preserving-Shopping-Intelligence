@@ -1,0 +1,81 @@
+............x........x.......x.......x........................x.         [100%]
+=================================== PASSES ====================================
+________ test_register_schema_idempotent_and_cumulative_across_rounds _________
+---------------------------- Captured stdout call -----------------------------
+2026-09-27T17:22:19Z [stage_b] register_schema: writing L3S_NEAR_DUPLICATE_SESSION-minus-G12c+G8 (self ad6feabe863d...) into C:\Users\Ahmed\AppData\Local\Temp\pytest-of-Ahmed\pytest-618\test_register_schema_idempoten0\REGISTRY.json
+2026-09-27T17:22:19Z [stage_b] register_schema: writing L3S_NEAR_DUPLICATE_SESSION-minus-G12c (self c5f19e9df0d9...) into C:\Users\Ahmed\AppData\Local\Temp\pytest-of-Ahmed\pytest-618\test_register_schema_idempoten0\REGISTRY.json
+_____________ test_register_theta0_skips_when_already_registered ______________
+---------------------------- Captured stdout call -----------------------------
+2026-09-27T17:22:19Z [stage_b] register_theta0: L3S_NEAR_DUPLICATE_SESSION already fully registered for torch 2.9.1+cpu: skip
+__________ test_register_theta0_fails_closed_with_no_real_cuda_here ___________
+---------------------------- Captured stdout call -----------------------------
+2026-09-27T17:22:19Z [stage_b] register_schema: writing L3S_NEAR_DUPLICATE_SESSION-minus-G13 (self a975465fb1a9...) into C:\Users\Ahmed\AppData\Local\Temp\pytest-of-Ahmed\pytest-618\test_register_theta0_fails_clo0\REGISTRY.json
+2026-09-27T17:22:19Z [stage_b] register_theta0: L3S_NEAR_DUPLICATE_SESSION-minus-G13 missing [('GRU', 2026), ('GRU', 2027), ('SASREC', 2026), ('SASREC', 2027)]: checking GPU 1
+=========================== short test summary info ===========================
+PASSED tests_fs\test_decide.py::test_relative_drop_exact_scaling_and_seed_mean
+PASSED tests_fs\test_decide.py::test_the_ratio_ci_is_bootstrapped_directly
+PASSED tests_fs\test_decide.py::test_pass_boundaries[1.0-2.0-True]
+PASSED tests_fs\test_decide.py::test_pass_boundaries[0.3-1.99-True]
+PASSED tests_fs\test_decide.py::test_pass_boundaries[1.0000001-1.5-False]
+PASSED tests_fs\test_decide.py::test_pass_boundaries[0.5-2.0000001-False]
+PASSED tests_fs\test_decide.py::test_pass_boundaries[-0.4-0.8-True]
+PASSED tests_fs\test_decide.py::test_pass_boundaries[0.5-None-False]
+PASSED tests_fs\test_decide.py::test_accept_uses_the_worse_family
+PASSED tests_fs\test_decide.py::test_most_important_dropped_group
+PASSED tests_fs\test_decide.py::test_search_sequence
+PASSED tests_fs\test_decide.py::test_decide_runs_end_to_end
+PASSED tests_fs\test_importance.py::test_group_names_are_checked_against_the_schema
+PASSED tests_fs\test_importance.py::test_donor_maps_are_deterministic_permutations
+PASSED tests_fs\test_importance.py::test_whole_column_swap_keeps_every_window_consistent
+PASSED tests_fs\test_importance.py::test_importance_is_reproducible_and_evaluation_only
+PASSED tests_fs\test_importance.py::test_a_constant_channel_has_importance_exactly_zero
+PASSED tests_fs\test_importance.py::test_whole_column_pad_artifact_is_measured
+PASSED tests_fs\test_importance.py::test_userstats_round_trip_and_seed_combination
+PASSED tests_fs\test_importance.py::test_l3s_g13_swap_and_required_g1
+PASSED tests_fs\test_run_fs.py::test_preflight_refusals
+PASSED tests_fs\test_run_fs.py::test_preflight_gpu_checks
+PASSED tests_fs\test_run_fs.py::test_write_rows_refuses_unlabelled_output
+PASSED tests_fs\test_run_fs.py::test_production_config_is_the_fs_role_and_labelled_by_the_trainer
+PASSED tests_fs\test_run_fs.py::test_dry_run_l3_gru_end_to_end
+PASSED tests_fs\test_run_fs.py::test_dry_run_l0_sasrec_without_importance
+PASSED tests_fs\test_run_fs.py::test_session_key_contract_is_checked
+PASSED tests_fs\test_schemas.py::test_written_schemas_and_registry_self_hashes
+PASSED tests_fs\test_schemas.py::test_l0_is_the_full_clean_v2_and_l3_is_the_ladder_rung
+PASSED tests_fs\test_schemas.py::test_the_fs_groups_partition_l3_minus_item_tokens
+PASSED tests_fs\test_schemas.py::test_registry_tampering_is_refused
+PASSED tests_fs\test_schemas.py::test_derive_l3_minus_groups
+PASSED tests_fs\test_schemas.py::test_session_schemas_l0s_l3s
+PASSED tests_fs\test_schemas.py::test_required_channels_are_never_dropped_and_g13_is_droppable
+PASSED tests_fs\test_schemas.py::test_theta0_registry_merge
+PASSED tests_fs\test_schemas.py::test_the_committed_theta0_registry_verifies
+PASSED tests_fs\test_schemas.py::test_registered_theta0_equals_the_running_build_full_k[L3_NEAR_DUPLICATE-GRU]
+PASSED tests_fs\test_schemas.py::test_registered_theta0_equals_the_running_build_full_k[L3_NEAR_DUPLICATE-SASREC]
+PASSED tests_fs\test_schemas.py::test_registered_theta0_equals_the_running_build_full_k[L3S_NEAR_DUPLICATE_SESSION-GRU]
+PASSED tests_fs\test_schemas.py::test_registered_theta0_equals_the_running_build_full_k[L3S_NEAR_DUPLICATE_SESSION-SASREC]
+PASSED tests_fs\test_schemas.py::test_registered_theta0_equals_the_running_build_full_k[L0S_CLEAN_V2_SESSION-GRU]
+PASSED tests_fs\test_schemas.py::test_registered_theta0_equals_the_running_build_full_k[L0S_CLEAN_V2_SESSION-SASREC]
+PASSED tests_fs\test_stage_b.py::test_run_dir_naming_matches_fs_stageA
+PASSED tests_fs\test_stage_b.py::test_stage_a_dirs_are_the_8_canonical_dirs
+PASSED tests_fs\test_stage_b.py::test_missing_summaries
+PASSED tests_fs\test_stage_b.py::test_register_schema_idempotent_and_cumulative_across_rounds
+PASSED tests_fs\test_stage_b.py::test_register_schema_refuses_a_schema_id_mismatch
+PASSED tests_fs\test_stage_b.py::test_theta0_missing_empty_when_nothing_registered
+PASSED tests_fs\test_stage_b.py::test_gpu_precheck_ok_and_refusals
+PASSED tests_fs\test_stage_b.py::test_register_theta0_skips_when_already_registered
+PASSED tests_fs\test_stage_b.py::test_register_theta0_fails_closed_with_no_real_cuda_here
+PASSED tests_fs\test_stage_b.py::test_launch_commands_one_per_gpu
+PASSED tests_fs\test_stage_b.py::test_drive_locks_immediately_when_l3_passes
+PASSED tests_fs\test_stage_b.py::test_drive_trains_sstar_then_locks
+PASSED tests_fs\test_stage_b.py::test_drive_the_single_fallback_round
+PASSED tests_fs\test_stage_b.py::test_drive_refuses_train_without_v1_root_when_not_dry_run
+PASSED tests_fs\test_stage_b.py::test_merge_theta0_accumulates_and_keeps_the_self_hash_rule
+PASSED tests_fs\test_stage_b.py::test_merge_theta0_two_threads_neither_update_is_lost
+PASSED tests_fs\test_stage_b.py::test_merge_theta0_times_out_on_a_held_lock
+XFAIL tests_fs\test_decide.py::test_nc_rule_without_the_upper_bound - NEGATIVE CONTROL: a rule that ignores the upper bound accepts a drop whose CI reaches 2.5 %
+XFAIL tests_fs\test_importance.py::test_nc_cellwise_permutation_breaks_the_window - NEGATIVE CONTROL: a cell-wise permutation (every position drawn independently) is not a whole-column swap
+XFAIL tests_fs\test_run_fs.py::test_nc_unlabelled_writer - NEGATIVE CONTROL: a writer without the label check lets an unlabelled row through
+XFAIL tests_fs\test_schemas.py::test_nc_dropping_a_required_channel - NEGATIVE CONTROL: a derive without the REQUIRED-channel guard drops category_tokens
+XFAIL tests_fs\test_stage_b.py::test_nc_merge_theta0_ignores_a_stale_lock - NEGATIVE CONTROL: a stale lock file must not be silently ignored: merge_theta0 must time out, not overwrite past it
+59 passed, 5 xfailed in 41.27s
+
+--- stderr ---

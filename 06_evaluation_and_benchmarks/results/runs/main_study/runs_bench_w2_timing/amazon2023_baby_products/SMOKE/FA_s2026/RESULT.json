@@ -1,0 +1,112 @@
+{
+ "arm": "FA",
+ "checkpoints": {
+  "CONTROLLED_BUDGET": {
+   "bytes": 19001603,
+   "file": "ckpt/smoke_theta.pt",
+   "mark": 0.00710109134430087,
+   "sha256": "1b3f0f7f591a7f90ddb2779ce25789dc537babc3aa332b6c29ce6aa6c5ec7296"
+  },
+  "PRACTICAL_BEST": {
+   "bytes": 19001603,
+   "file": "ckpt/smoke_theta.pt",
+   "mark": 0.00710109134430087,
+   "sha256": "1b3f0f7f591a7f90ddb2779ce25789dc537babc3aa332b6c29ce6aa6c5ec7296"
+  }
+ },
+ "kind": "fl",
+ "label": "SMOKE_NOT_EVIDENCE",
+ "run_id": "BM_amazon2023_baby_products_FA_s2026_SMOKE",
+ "spec": {
+  "arm": "FA",
+  "cfg": {
+   "dp": null,
+   "dropout_p": 0.1,
+   "endpoint_efe": 6.0,
+   "endpoint_rounds": 15706,
+   "exposure_point": "end",
+   "lr_peak_local": 0.1,
+   "lr_shape": "fl_const",
+   "max_attempts": 2,
+   "method": "FA",
+   "mu": 0.0,
+   "n_shards": 2,
+   "pf": null,
+   "seed": 2026,
+   "server_opt": {
+    "beta1": 0.9,
+    "beta2": 0.99,
+    "lr": 0.01,
+    "name": "fedadam",
+    "tau": 0.001,
+    "v_init": "tau_squared"
+   },
+   "solver": {
+    "batch_size": 16,
+    "clip": 1.0,
+    "fused": null,
+    "lr": 0.1,
+    "optimizer": "sgd_m",
+    "passes": 1,
+    "weight_decay": 0.0
+   }
+  },
+  "client_lr": 0.1,
+  "client_opt": "sgd_m",
+  "data": {
+   "dataset": "amazon2023_baby_products",
+   "fingerprint": "95c0a5508c62aa53b0be5a9ff823e7867904fdb19ce897de23b75ce74ef99a90",
+   "n_clients": 150777,
+   "n_decisions": 788752
+  },
+  "dropout": [
+   0.1
+  ],
+  "exposure_budget": {
+   "dropout_p": 0.1,
+   "endpoint_efe": 6.0,
+   "formula": "rounds = ceil(60 N_clients / (576 P)) (launch_fl.fa_rounds, 06J \u00a73)",
+   "group": 64,
+   "n_clients": 150777,
+   "passes": 1,
+   "rounds": 15706
+  },
+  "knobs": {
+   "batch": 16,
+   "clip": 1.0,
+   "dropout_p": 0.1,
+   "endpoint_efe": 6.0,
+   "group": 64,
+   "m": 1024,
+   "max_attempts": 2,
+   "mu": 0.01,
+   "n_shards": 2,
+   "passes": 2,
+   "pf_clip": 1.0,
+   "pf_lam": 0.0001,
+   "rounds": 6827,
+   "rounds_1024": 384,
+   "s_cal_rounds": 20,
+   "s_cal_seed": 2026,
+   "sampling": "sweep",
+   "weight_decay": 1e-05
+  },
+  "local_passes": 1,
+  "lr_mult": 1.0,
+  "lr_peak_base": 0.0007114121116984968,
+  "lr_shape": "fl_const",
+  "max_len": 50,
+  "max_rounds": 15706,
+  "plan": {
+   "group_size": 64,
+   "sampling": "sweep"
+  },
+  "provenance": null,
+  "role": "MAIN",
+  "server_lr": 0.01,
+  "server_opt": "fedadam",
+  "upload_codec": null,
+  "variant": "SASREC_D64_B2"
+ },
+ "status": "SMOKE_DONE_NOT_EVIDENCE"
+}

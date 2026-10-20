@@ -1,0 +1,635 @@
+{
+  "suite": "B (Sonnet-tests independent adversarial tests, Gate P)",
+  "generated_utc": "2026-09-23T23:02:54Z",
+  "command_template": "cd $S/code && CUDA_VISIBLE_DEVICES=0 ~/venvs/ppsi-gpu/bin/python -m pytest <file> -v",
+  "per_file_summary": {
+    "tests/test_attention.py": {
+      "exit_code": 0,
+      "elapsed_s": 3.38,
+      "n_cases": 10,
+      "n_passed": 10,
+      "n_failed": 0,
+      "n_error": 0,
+      "n_skipped": 0,
+      "stdout_tail": "\u001b[1m============================= test session starts ==============================\u001b[0m\nplatform linux -- Python 3.11.14, pytest-9.1.1, pluggy-1.6.0 -- /home/jovyan/venvs/ppsi-gpu/bin/python\ncachedir: .pytest_cache\nrootdir: /home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence\nconfigfile: pyproject.toml\nplugins: anyio-4.14.2\n\u001b[1mcollecting ... \u001b[0mcollected 10 items\n\ntests/test_attention.py::test_fp64_hand_computed_matches_padded_reference \u001b[32mPASSED\u001b[0m\u001b[32m [ 10%]\u001b[0m\ntests/test_attention.py::test_future_mutation_does_not_leak_backward_or_forward \u001b[32mPASSED\u001b[0m\u001b[32m [ 20%]\u001b[0m\ntests/test_attention.py::test_causal_mask_direction_diagonal_and_no_nan \u001b[32mPASSED\u001b[0m\u001b[32m [ 30%]\u001b[0m\ntests/test_attention.py::test_eval_dropout_is_zero_and_repeated_evals_are_bitwise_identical \u001b[32mPASSED\u001b[0m\u001b[32m [ 40%]\u001b[0m\ntests/test_attention.py::test_unpadded_vs_padded_reference_outputs_and_gradients_agree \u001b[32mPASSED\u001b[0m\u001b[32m [ 50%]\u001b[0m\ntests/test_attention.py::test_pad_column_randomisation_leaves_output_unchanged[unpadded] \u001b[32mPASSED\u001b[0m\u001b[32m [ 60%]\u001b[0m\ntests/test_attention.py::test_pad_column_randomisation_leaves_output_unchanged[padded_reference] \u001b[32mPASSED\u001b[0m\u001b[32m [ 70%]\u001b[0m\ntests/test_attention.py::test_final_query_is_last_real_item_not_column_zero \u001b[32mPASSED\u001b[0m\u001b[32m [ 80%]\u001b[0m\ntests/test_attention.py::test_prefix_consistency_truncated_window_matches \u001b[32mPASSED\u001b[0m\u001b[32m [ 90%]\u001b[0m\ntests/test_attention.py::test_target_class_is_not_a_forward_argument \u001b[32mPASSED\u001b[0m\u001b[32m [100%]\u001b[0m\n\n- generated xml file: /home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/tests/evidence/_junit_test_attention.xml -\n\u001b[32m============================== \u001b[32m\u001b[1m10 passed\u001b[0m\u001b[32m in 0.90s\u001b[0m\u001b[32m ==============================\u001b[0m\n",
+      "stderr_tail": ""
+    },
+    "tests/test_head_objective.py": {
+      "exit_code": 0,
+      "elapsed_s": 5.96,
+      "n_cases": 8,
+      "n_passed": 8,
+      "n_failed": 0,
+      "n_error": 0,
+      "n_skipped": 0,
+      "stdout_tail": "\u001b[1m============================= test session starts ==============================\u001b[0m\nplatform linux -- Python 3.11.14, pytest-9.1.1, pluggy-1.6.0 -- /home/jovyan/venvs/ppsi-gpu/bin/python\ncachedir: .pytest_cache\nrootdir: /home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence\nconfigfile: pyproject.toml\nplugins: anyio-4.14.2\n\u001b[1mcollecting ... \u001b[0mcollected 8 items\n\ntests/test_head_objective.py::test_head_weight_is_a_view_of_item_embed_and_appears_once_in_optimizer_groups \u001b[32mPASSED\u001b[0m\u001b[32m [ 12%]\u001b[0m\ntests/test_head_objective.py::test_known_class_map_gate_rejects_noncontiguous_map \u001b[32mPASSED\u001b[0m\u001b[32m [ 25%]\u001b[0m\ntests/test_head_objective.py::test_pad_row_stays_zero_after_100_updates \u001b[32mPASSED\u001b[0m\u001b[32m [ 37%]\u001b[0m\ntests/test_head_objective.py::test_logits_are_BK_and_no_BTK_tensor_is_ever_created \u001b[32mPASSED\u001b[0m\u001b[32m [ 50%]\u001b[0m\ntests/test_head_objective.py::test_ce_sum_matches_reference_and_independent_full_K_formula[0.0] \u001b[32mPASSED\u001b[0m\u001b[32m [ 62%]\u001b[0m\ntests/test_head_objective.py::test_ce_sum_matches_reference_and_independent_full_K_formula[0.05] \u001b[32mPASSED\u001b[0m\u001b[32m [ 75%]\u001b[0m\ntests/test_head_objective.py::test_uneven_microbatch_accumulation_matches_full_batch_gradient \u001b[32mPASSED\u001b[0m\u001b[32m [ 87%]\u001b[0m\ntests/test_head_objective.py::test_init_loss_is_approximately_ln_K \u001b[32mPASSED\u001b[0m\u001b[32m [100%]\u001b[0m\n\n- generated xml file: /home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/tests/evidence/_junit_test_head_objective.xml -\n\u001b[32m============================== \u001b[32m\u001b[1m8 passed\u001b[0m\u001b[32m in 2.58s\u001b[0m\u001b[32m ===============================\u001b[0m\n",
+      "stderr_tail": ""
+    },
+    "tests/test_schedule_stopping.py": {
+      "exit_code": 0,
+      "elapsed_s": 2.99,
+      "n_cases": 22,
+      "n_passed": 22,
+      "n_failed": 0,
+      "n_error": 0,
+      "n_skipped": 0,
+      "stdout_tail": "\u001b[32mPASSED\u001b[0m\u001b[32m [ 36%]\u001b[0m\ntests/test_schedule_stopping.py::test_epoch_cap_safety_margin_negative_control \u001b[32mPASSED\u001b[0m\u001b[32m [ 40%]\u001b[0m\ntests/test_schedule_stopping.py::test_epoch_end_best_raw_max_tie_earlier_on_GRU_trajectories \u001b[32mPASSED\u001b[0m\u001b[32m [ 45%]\u001b[0m\ntests/test_schedule_stopping.py::test_epoch_end_exact_tie_keeps_earlier_epoch \u001b[32mPASSED\u001b[0m\u001b[32m [ 50%]\u001b[0m\ntests/test_schedule_stopping.py::test_floor_start_epoch_mutant_changes_epoch_end_miss_accounting \u001b[32mPASSED\u001b[0m\u001b[32m [ 54%]\u001b[0m\ntests/test_schedule_stopping.py::test_v1_gru_trajectories_never_stop_before_epoch5_and_match_hand_derived_misses \u001b[32mPASSED\u001b[0m\u001b[32m [ 59%]\u001b[0m\ntests/test_schedule_stopping.py::test_v1_pair_stopping_requires_BOTH_arms_and_both_stop_at_the_same_epoch \u001b[32mPASSED\u001b[0m\u001b[32m [ 63%]\u001b[0m\ntests/test_schedule_stopping.py::test_v1_early_stop_never_before_epoch5_randomised \u001b[32mPASSED\u001b[0m\u001b[32m [ 68%]\u001b[0m\ntests/test_schedule_stopping.py::test_fixed_epoch_stop_at_exactly_E_never_earlier[4] \u001b[32mPASSED\u001b[0m\u001b[32m [ 72%]\u001b[0m\ntests/test_schedule_stopping.py::test_fixed_epoch_stop_at_exactly_E_never_earlier[5] \u001b[32mPASSED\u001b[0m\u001b[32m [ 77%]\u001b[0m\ntests/test_schedule_stopping.py::test_fixed_epoch_stop_at_exactly_E_never_earlier[6] \u001b[32mPASSED\u001b[0m\u001b[32m [ 81%]\u001b[0m\ntests/test_schedule_stopping.py::test_equal_epoch_assertion_helper \u001b[32mPASSED\u001b[0m\u001b[32m [ 86%]\u001b[0m\ntests/test_schedule_stopping.py::test_select_configuration_tie_chain_metric_then_micro_recall \u001b[32mPASSED\u001b[0m\u001b[32m [ 90%]\u001b[0m\ntests/test_schedule_stopping.py::test_select_configuration_tie_chain_params_then_registry_order \u001b[32mPASSED\u001b[0m\u001b[32m [ 95%]\u001b[0m\ntests/test_schedule_stopping.py::test_select_configuration_no_eligible_runs \u001b[32mPASSED\u001b[0m\u001b[32m [100%]\u001b[0m\n\n- generated xml file: /home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/tests/evidence/_junit_test_schedule_stopping.xml -\n\u001b[32m============================== \u001b[32m\u001b[1m22 passed\u001b[0m\u001b[32m in 0.05s\u001b[0m\u001b[32m ==============================\u001b[0m\n",
+      "stderr_tail": ""
+    },
+    "tests/test_eval_and_precision.py": {
+      "exit_code": 0,
+      "elapsed_s": 18.82,
+      "n_cases": 16,
+      "n_passed": 16,
+      "n_failed": 0,
+      "n_error": 0,
+      "n_skipped": 0,
+      "stdout_tail": "sion.py::test_aggregate_end_to_end_matches_independent_reference[5] \u001b[32mPASSED\u001b[0m\u001b[32m [ 18%]\u001b[0m\ntests/test_eval_and_precision.py::test_aggregate_end_to_end_matches_independent_reference[10] \u001b[32mPASSED\u001b[0m\u001b[32m [ 25%]\u001b[0m\ntests/test_eval_and_precision.py::test_aggregate_end_to_end_matches_independent_reference[20] \u001b[32mPASSED\u001b[0m\u001b[32m [ 31%]\u001b[0m\ntests/test_eval_and_precision.py::test_aggregate_k10_and_k20_are_identical_given_max_rank_6 \u001b[32mPASSED\u001b[0m\u001b[32m [ 37%]\u001b[0m\ntests/test_eval_and_precision.py::test_aggregate_closed_excludes_OOV_rows_end_to_end_gives_zero_credit \u001b[32mPASSED\u001b[0m\u001b[32m [ 43%]\u001b[0m\ntests/test_eval_and_precision.py::test_all_OOV_user_gets_zero_credit_but_stays_counted_in_end_to_end \u001b[32mPASSED\u001b[0m\u001b[32m [ 50%]\u001b[0m\ntests/test_eval_and_precision.py::test_rank_uses_the_live_target_score_same_tensor \u001b[32mPASSED\u001b[0m\u001b[32m [ 56%]\u001b[0m\ntests/test_eval_and_precision.py::test_rank_targets_is_chunk_size_independent \u001b[32mPASSED\u001b[0m\u001b[32m [ 62%]\u001b[0m\ntests/test_eval_and_precision.py::test_int64_large_scores_stay_exact_no_float32_collision \u001b[32mPASSED\u001b[0m\u001b[32m [ 68%]\u001b[0m\ntests/test_eval_and_precision.py::test_tf32_canary_and_assert_strict_fp32_on_gpu \u001b[32mPASSED\u001b[0m\u001b[32m [ 75%]\u001b[0m\ntests/test_eval_and_precision.py::test_assert_strict_fp32_raises_on_bad_matmul_precision \u001b[32mPASSED\u001b[0m\u001b[32m [ 81%]\u001b[0m\ntests/test_eval_and_precision.py::test_training_precision_tf32_and_strict_eval_roundtrip \u001b[32mPASSED\u001b[0m\u001b[32m [ 87%]\u001b[0m\ntests/test_eval_and_precision.py::test_strict_eval_gives_bitwise_identical_ranks_tf32_process_vs_fresh_strict_process \u001b[32mPASSED\u001b[0m\u001b[32m [ 93%]\u001b[0m\ntests/test_eval_and_precision.py::test_fingerprint_fails_closed_on_a_changed_population \u001b[32mPASSED\u001b[0m\u001b[32m [100%]\u001b[0m\n\n- generated xml file: /home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/tests/evidence/_junit_test_eval_and_precision.xml -\n\u001b[32m============================= \u001b[32m\u001b[1m16 passed\u001b[0m\u001b[32m in 14.98s\u001b[0m\u001b[32m ==============================\u001b[0m\n",
+      "stderr_tail": ""
+    },
+    "tests/test_rich.py": {
+      "exit_code": 0,
+      "elapsed_s": 2.81,
+      "n_cases": 5,
+      "n_passed": 5,
+      "n_failed": 0,
+      "n_error": 0,
+      "n_skipped": 0,
+      "stdout_tail": "\u001b[1m============================= test session starts ==============================\u001b[0m\nplatform linux -- Python 3.11.14, pytest-9.1.1, pluggy-1.6.0 -- /home/jovyan/venvs/ppsi-gpu/bin/python\ncachedir: .pytest_cache\nrootdir: /home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence\nconfigfile: pyproject.toml\nplugins: anyio-4.14.2\n\u001b[1mcollecting ... \u001b[0mcollected 5 items\n\ntests/test_rich.py::test_common_param_init_bit_identical_between_id_and_rich_same_seed \u001b[32mPASSED\u001b[0m\u001b[32m [ 20%]\u001b[0m\ntests/test_rich.py::test_side_disabled_rich_model_equals_id_model \u001b[32mPASSED\u001b[0m\u001b[32m [ 40%]\u001b[0m\ntests/test_rich.py::test_active_side_and_user_branches_have_finite_nonzero_gradients \u001b[32mPASSED\u001b[0m\u001b[32m [ 60%]\u001b[0m\ntests/test_rich.py::test_permuting_a_side_tensor_changes_output \u001b[32mPASSED\u001b[0m\u001b[32m   [ 80%]\u001b[0m\ntests/test_rich.py::test_pad_position_side_field_change_does_not_affect_output \u001b[32mPASSED\u001b[0m\u001b[32m [100%]\u001b[0m\n\n- generated xml file: /home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/tests/evidence/_junit_test_rich.xml -\n\u001b[32m============================== \u001b[32m\u001b[1m5 passed\u001b[0m\u001b[32m in 0.20s\u001b[0m\u001b[32m ===============================\u001b[0m\n",
+      "stderr_tail": ""
+    },
+    "tests/test_trainer_exposure_resume.py": {
+      "exit_code": 0,
+      "elapsed_s": 130.79,
+      "n_cases": 7,
+      "n_passed": 7,
+      "n_failed": 0,
+      "n_error": 0,
+      "n_skipped": 0,
+      "stdout_tail": "\u001b[1m============================= test session starts ==============================\u001b[0m\nplatform linux -- Python 3.11.14, pytest-9.1.1, pluggy-1.6.0 -- /home/jovyan/venvs/ppsi-gpu/bin/python\ncachedir: .pytest_cache\nrootdir: /home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence\nconfigfile: pyproject.toml\nplugins: anyio-4.14.2\n\u001b[1mcollecting ... \u001b[0mcollected 7 items\n\ntests/test_trainer_exposure_resume.py::test_synthetic_store_decision_ids_are_globally_unique_across_splits \u001b[32mPASSED\u001b[0m\u001b[32m [ 14%]\u001b[0m\ntests/test_trainer_exposure_resume.py::test_epoch_permutation_matches_default_rng_and_matched_arms_agree \u001b[32mPASSED\u001b[0m\u001b[32m [ 28%]\u001b[0m\ntests/test_trainer_exposure_resume.py::test_coverage_exactly_N_across_a_mid_epoch_resume \u001b[32mPASSED\u001b[0m\u001b[32m [ 42%]\u001b[0m\ntests/test_trainer_exposure_resume.py::test_interrupted_vs_uninterrupted_future_losses_identical \u001b[32mPASSED\u001b[0m\u001b[32m [ 57%]\u001b[0m\ntests/test_trainer_exposure_resume.py::test_u_equals_epochs_times_U_and_tail_is_counted \u001b[32mPASSED\u001b[0m\u001b[32m [ 71%]\u001b[0m\ntests/test_trainer_exposure_resume.py::test_fixed_epoch_stop_at_exactly_planned_epochs_never_earlier \u001b[32mPASSED\u001b[0m\u001b[32m [ 85%]\u001b[0m\ntests/test_trainer_exposure_resume.py::test_equal_epoch_assertion_holds_for_matched_arms \u001b[32mPASSED\u001b[0m\u001b[32m [100%]\u001b[0m\n\n- generated xml file: /home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/tests/evidence/_junit_test_trainer_exposure_resume.xml -\n\u001b[32m======================== \u001b[32m\u001b[1m7 passed\u001b[0m\u001b[32m in 128.28s (0:02:08)\u001b[0m\u001b[32m =========================\u001b[0m\n",
+      "stderr_tail": ""
+    }
+  },
+  "per_test_cases": [
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_attention::test_fp64_hand_computed_matches_padded_reference",
+      "status": "passed",
+      "time_s": 0.193,
+      "reason": null,
+      "file": "tests/test_attention.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_attention::test_future_mutation_does_not_leak_backward_or_forward",
+      "status": "passed",
+      "time_s": 0.558,
+      "reason": null,
+      "file": "tests/test_attention.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_attention::test_causal_mask_direction_diagonal_and_no_nan",
+      "status": "passed",
+      "time_s": 0.012,
+      "reason": null,
+      "file": "tests/test_attention.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_attention::test_eval_dropout_is_zero_and_repeated_evals_are_bitwise_identical",
+      "status": "passed",
+      "time_s": 0.011,
+      "reason": null,
+      "file": "tests/test_attention.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_attention::test_unpadded_vs_padded_reference_outputs_and_gradients_agree",
+      "status": "passed",
+      "time_s": 0.039,
+      "reason": null,
+      "file": "tests/test_attention.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_attention::test_pad_column_randomisation_leaves_output_unchanged[unpadded]",
+      "status": "passed",
+      "time_s": 0.011,
+      "reason": null,
+      "file": "tests/test_attention.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_attention::test_pad_column_randomisation_leaves_output_unchanged[padded_reference]",
+      "status": "passed",
+      "time_s": 0.017,
+      "reason": null,
+      "file": "tests/test_attention.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_attention::test_final_query_is_last_real_item_not_column_zero",
+      "status": "passed",
+      "time_s": 0.009,
+      "reason": null,
+      "file": "tests/test_attention.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_attention::test_prefix_consistency_truncated_window_matches",
+      "status": "passed",
+      "time_s": 0.016,
+      "reason": null,
+      "file": "tests/test_attention.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_attention::test_target_class_is_not_a_forward_argument",
+      "status": "passed",
+      "time_s": 0.002,
+      "reason": null,
+      "file": "tests/test_attention.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_head_objective::test_head_weight_is_a_view_of_item_embed_and_appears_once_in_optimizer_groups",
+      "status": "passed",
+      "time_s": 0.038,
+      "reason": null,
+      "file": "tests/test_head_objective.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_head_objective::test_known_class_map_gate_rejects_noncontiguous_map",
+      "status": "passed",
+      "time_s": 0.008,
+      "reason": null,
+      "file": "tests/test_head_objective.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_head_objective::test_pad_row_stays_zero_after_100_updates",
+      "status": "passed",
+      "time_s": 2.369,
+      "reason": null,
+      "file": "tests/test_head_objective.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_head_objective::test_logits_are_BK_and_no_BTK_tensor_is_ever_created",
+      "status": "passed",
+      "time_s": 0.004,
+      "reason": null,
+      "file": "tests/test_head_objective.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_head_objective::test_ce_sum_matches_reference_and_independent_full_K_formula[0.0]",
+      "status": "passed",
+      "time_s": 0.004,
+      "reason": null,
+      "file": "tests/test_head_objective.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_head_objective::test_ce_sum_matches_reference_and_independent_full_K_formula[0.05]",
+      "status": "passed",
+      "time_s": 0.002,
+      "reason": null,
+      "file": "tests/test_head_objective.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_head_objective::test_uneven_microbatch_accumulation_matches_full_batch_gradient",
+      "status": "passed",
+      "time_s": 0.071,
+      "reason": null,
+      "file": "tests/test_head_objective.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_head_objective::test_init_loss_is_approximately_ln_K",
+      "status": "passed",
+      "time_s": 0.008,
+      "reason": null,
+      "file": "tests/test_head_objective.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_schedule_stopping::test_lr_at_boundaries_schedule_S_prime",
+      "status": "passed",
+      "time_s": 0.001,
+      "reason": null,
+      "file": "tests/test_schedule_stopping.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_schedule_stopping::test_lr_phase_labels_schedule_S_prime",
+      "status": "passed",
+      "time_s": 0.001,
+      "reason": null,
+      "file": "tests/test_schedule_stopping.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_schedule_stopping::test_floor_start_epoch_default_is_3",
+      "status": "passed",
+      "time_s": 0.001,
+      "reason": null,
+      "file": "tests/test_schedule_stopping.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_schedule_stopping::test_eval_epochs_floor_only",
+      "status": "passed",
+      "time_s": 0.001,
+      "reason": null,
+      "file": "tests/test_schedule_stopping.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_schedule_stopping::test_epoch_cap_fast_arms_reach_planned_6",
+      "status": "passed",
+      "time_s": 0.001,
+      "reason": null,
+      "file": "tests/test_schedule_stopping.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_schedule_stopping::test_epoch_cap_slow_arm_forces_5_or_4",
+      "status": "passed",
+      "time_s": 0.001,
+      "reason": null,
+      "file": "tests/test_schedule_stopping.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_schedule_stopping::test_epoch_cap_never_below_min_epochs",
+      "status": "passed",
+      "time_s": 0.001,
+      "reason": null,
+      "file": "tests/test_schedule_stopping.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_schedule_stopping::test_epoch_cap_uses_the_slower_arm_not_the_average",
+      "status": "passed",
+      "time_s": 0.001,
+      "reason": null,
+      "file": "tests/test_schedule_stopping.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_schedule_stopping::test_epoch_cap_safety_margin_negative_control",
+      "status": "passed",
+      "time_s": 0.001,
+      "reason": null,
+      "file": "tests/test_schedule_stopping.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_schedule_stopping::test_epoch_end_best_raw_max_tie_earlier_on_GRU_trajectories",
+      "status": "passed",
+      "time_s": 0.001,
+      "reason": null,
+      "file": "tests/test_schedule_stopping.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_schedule_stopping::test_epoch_end_exact_tie_keeps_earlier_epoch",
+      "status": "passed",
+      "time_s": 0.001,
+      "reason": null,
+      "file": "tests/test_schedule_stopping.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_schedule_stopping::test_floor_start_epoch_mutant_changes_epoch_end_miss_accounting",
+      "status": "passed",
+      "time_s": 0.001,
+      "reason": null,
+      "file": "tests/test_schedule_stopping.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_schedule_stopping::test_v1_gru_trajectories_never_stop_before_epoch5_and_match_hand_derived_misses",
+      "status": "passed",
+      "time_s": 0.001,
+      "reason": null,
+      "file": "tests/test_schedule_stopping.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_schedule_stopping::test_v1_pair_stopping_requires_BOTH_arms_and_both_stop_at_the_same_epoch",
+      "status": "passed",
+      "time_s": 0.001,
+      "reason": null,
+      "file": "tests/test_schedule_stopping.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_schedule_stopping::test_v1_early_stop_never_before_epoch5_randomised",
+      "status": "passed",
+      "time_s": 0.007,
+      "reason": null,
+      "file": "tests/test_schedule_stopping.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_schedule_stopping::test_fixed_epoch_stop_at_exactly_E_never_earlier[4]",
+      "status": "passed",
+      "time_s": 0.001,
+      "reason": null,
+      "file": "tests/test_schedule_stopping.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_schedule_stopping::test_fixed_epoch_stop_at_exactly_E_never_earlier[5]",
+      "status": "passed",
+      "time_s": 0.001,
+      "reason": null,
+      "file": "tests/test_schedule_stopping.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_schedule_stopping::test_fixed_epoch_stop_at_exactly_E_never_earlier[6]",
+      "status": "passed",
+      "time_s": 0.001,
+      "reason": null,
+      "file": "tests/test_schedule_stopping.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_schedule_stopping::test_equal_epoch_assertion_helper",
+      "status": "passed",
+      "time_s": 0.001,
+      "reason": null,
+      "file": "tests/test_schedule_stopping.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_schedule_stopping::test_select_configuration_tie_chain_metric_then_micro_recall",
+      "status": "passed",
+      "time_s": 0.001,
+      "reason": null,
+      "file": "tests/test_schedule_stopping.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_schedule_stopping::test_select_configuration_tie_chain_params_then_registry_order",
+      "status": "passed",
+      "time_s": 0.001,
+      "reason": null,
+      "file": "tests/test_schedule_stopping.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_schedule_stopping::test_select_configuration_no_eligible_runs",
+      "status": "passed",
+      "time_s": 0.001,
+      "reason": null,
+      "file": "tests/test_schedule_stopping.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_eval_and_precision::test_aggregate_end_to_end_matches_independent_reference[1]",
+      "status": "passed",
+      "time_s": 0.012,
+      "reason": null,
+      "file": "tests/test_eval_and_precision.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_eval_and_precision::test_aggregate_end_to_end_matches_independent_reference[2]",
+      "status": "passed",
+      "time_s": 0.003,
+      "reason": null,
+      "file": "tests/test_eval_and_precision.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_eval_and_precision::test_aggregate_end_to_end_matches_independent_reference[5]",
+      "status": "passed",
+      "time_s": 0.002,
+      "reason": null,
+      "file": "tests/test_eval_and_precision.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_eval_and_precision::test_aggregate_end_to_end_matches_independent_reference[10]",
+      "status": "passed",
+      "time_s": 0.002,
+      "reason": null,
+      "file": "tests/test_eval_and_precision.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_eval_and_precision::test_aggregate_end_to_end_matches_independent_reference[20]",
+      "status": "passed",
+      "time_s": 0.003,
+      "reason": null,
+      "file": "tests/test_eval_and_precision.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_eval_and_precision::test_aggregate_k10_and_k20_are_identical_given_max_rank_6",
+      "status": "passed",
+      "time_s": 0.004,
+      "reason": null,
+      "file": "tests/test_eval_and_precision.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_eval_and_precision::test_aggregate_closed_excludes_OOV_rows_end_to_end_gives_zero_credit",
+      "status": "passed",
+      "time_s": 0.002,
+      "reason": null,
+      "file": "tests/test_eval_and_precision.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_eval_and_precision::test_all_OOV_user_gets_zero_credit_but_stays_counted_in_end_to_end",
+      "status": "passed",
+      "time_s": 0.002,
+      "reason": null,
+      "file": "tests/test_eval_and_precision.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_eval_and_precision::test_rank_uses_the_live_target_score_same_tensor",
+      "status": "passed",
+      "time_s": 0.001,
+      "reason": null,
+      "file": "tests/test_eval_and_precision.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_eval_and_precision::test_rank_targets_is_chunk_size_independent",
+      "status": "passed",
+      "time_s": 0.002,
+      "reason": null,
+      "file": "tests/test_eval_and_precision.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_eval_and_precision::test_int64_large_scores_stay_exact_no_float32_collision",
+      "status": "passed",
+      "time_s": 0.001,
+      "reason": null,
+      "file": "tests/test_eval_and_precision.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_eval_and_precision::test_tf32_canary_and_assert_strict_fp32_on_gpu",
+      "status": "passed",
+      "time_s": 1.658,
+      "reason": null,
+      "file": "tests/test_eval_and_precision.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_eval_and_precision::test_assert_strict_fp32_raises_on_bad_matmul_precision",
+      "status": "passed",
+      "time_s": 0.002,
+      "reason": null,
+      "file": "tests/test_eval_and_precision.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_eval_and_precision::test_training_precision_tf32_and_strict_eval_roundtrip",
+      "status": "passed",
+      "time_s": 0.002,
+      "reason": null,
+      "file": "tests/test_eval_and_precision.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_eval_and_precision::test_strict_eval_gives_bitwise_identical_ranks_tf32_process_vs_fresh_strict_process",
+      "status": "passed",
+      "time_s": 13.18,
+      "reason": null,
+      "file": "tests/test_eval_and_precision.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_eval_and_precision::test_fingerprint_fails_closed_on_a_changed_population",
+      "status": "passed",
+      "time_s": 0.002,
+      "reason": null,
+      "file": "tests/test_eval_and_precision.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_rich::test_common_param_init_bit_identical_between_id_and_rich_same_seed",
+      "status": "passed",
+      "time_s": 0.05,
+      "reason": null,
+      "file": "tests/test_rich.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_rich::test_side_disabled_rich_model_equals_id_model",
+      "status": "passed",
+      "time_s": 0.074,
+      "reason": null,
+      "file": "tests/test_rich.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_rich::test_active_side_and_user_branches_have_finite_nonzero_gradients",
+      "status": "passed",
+      "time_s": 0.015,
+      "reason": null,
+      "file": "tests/test_rich.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_rich::test_permuting_a_side_tensor_changes_output",
+      "status": "passed",
+      "time_s": 0.009,
+      "reason": null,
+      "file": "tests/test_rich.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_rich::test_pad_position_side_field_change_does_not_affect_output",
+      "status": "passed",
+      "time_s": 0.029,
+      "reason": null,
+      "file": "tests/test_rich.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_trainer_exposure_resume::test_synthetic_store_decision_ids_are_globally_unique_across_splits",
+      "status": "passed",
+      "time_s": 0.12,
+      "reason": null,
+      "file": "tests/test_trainer_exposure_resume.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_trainer_exposure_resume::test_epoch_permutation_matches_default_rng_and_matched_arms_agree",
+      "status": "passed",
+      "time_s": 25.242,
+      "reason": null,
+      "file": "tests/test_trainer_exposure_resume.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_trainer_exposure_resume::test_coverage_exactly_N_across_a_mid_epoch_resume",
+      "status": "passed",
+      "time_s": 15.982,
+      "reason": null,
+      "file": "tests/test_trainer_exposure_resume.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_trainer_exposure_resume::test_interrupted_vs_uninterrupted_future_losses_identical",
+      "status": "passed",
+      "time_s": 28.918,
+      "reason": null,
+      "file": "tests/test_trainer_exposure_resume.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_trainer_exposure_resume::test_u_equals_epochs_times_U_and_tail_is_counted",
+      "status": "passed",
+      "time_s": 8.074,
+      "reason": null,
+      "file": "tests/test_trainer_exposure_resume.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_trainer_exposure_resume::test_fixed_epoch_stop_at_exactly_planned_epochs_never_earlier",
+      "status": "passed",
+      "time_s": 16.75,
+      "reason": null,
+      "file": "tests/test_trainer_exposure_resume.py"
+    },
+    {
+      "name": ".local_ai.sasrec_v1.code.tests.test_trainer_exposure_resume::test_equal_epoch_assertion_holds_for_matched_arms",
+      "status": "passed",
+      "time_s": 33.172,
+      "reason": null,
+      "file": "tests/test_trainer_exposure_resume.py"
+    }
+  ],
+  "overall": {
+    "total": 68,
+    "passed": 68,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+  },
+  "known_failures": {},
+  "gate_p2_protocol_change": {
+    "trigger": "owner 38h deadline; Fable Gate P2 (review/FABLE_GATE_P2_RESPONSE.md); registry v2 sha 74414b384dea6a615c5aecb479d004f313c1776460a087684ecdcf658ca1b136",
+    "schedule_S_prime": "peak_epochs=1, cosine_epochs=1, floor_start_epoch=3, planned_epochs=6, min_epochs_under_cut=4, no early stopping (fixed epochs / epoch_cap only)",
+    "resolved_defect": "synthetic_store.py decision_id collision fixed (sha b8bf3a18...); test_synthetic_store_decision_ids_are_globally_unique_across_splits kept as a permanent regression guard and now passes",
+    "dropped_registry_models": [
+      "C0_WIDE384",
+      "C1_REG256",
+      "R0_ID128"
+    ],
+    "trainer_registry_id_used_in_tests": "A0_ID256 (was R0_ID128, dropped in registry v2)"
+  },
+  "production_files_sha256": {
+    "paths.py": "a87b789147f43cbf8f86c1249b5619f27e68d229bf91814df00530ac1e81d9df",
+    "precision.py": "45212e6b8c1f964a708a0def0b3cf61195b8811d5379903723f7d784f2444881",
+    "sasrec_model.py": "d110b73a143b0710c4993ff382ab74cc5a198af54dcfbee8f490dbb68b860549",
+    "sasrec_objective.py": "5e03bf50a1f307f1b21dba4820ca69985e3a55ff73b808a3a0d219e75373ebed",
+    "sasrec_schedule.py": "5db6cede50b07478d289f3d1887d6f46c42edfb7db3f4a99b00b1aedcce50230",
+    "synthetic_store.py": "b8bf3a180ba03a5c1cd8f3d47e3e309723db414f75d65f045bdae53d7c4afaf4",
+    "sasrec_data.py": "e0872eaf7dbd3b8fc70b6bdba9a8ba9cd235f6d0d60136fe055a85fa9b2beebf",
+    "train_sasrec.py": "e4da9847ddbd05e999dfe31fd7c8fedae7e0f282acc5fd3f7c9424934fc1650b",
+    "reuse/eval_full.py": "6d2e413668a7356c11c18b4fb50b656c218f1205d0143a776927366ae2212d0c",
+    "reuse/evaluator.py": "e527b8c92cbcf46bc444c2860d1f42255218bf7637ca572d1e58c19a3cb40899",
+    "reuse/train.py": "d8500fa0bd37927594412edfb3f248fdb0352b6948b3e30cb97638dcf6597b60",
+    "reuse/full_store.py": "4fca9e66c0910e3a8335ffc06ed9258b29f31f30f9590831a8899c451be4ae8b"
+  },
+  "run_registry_locked_json_sha256": "74414b384dea6a615c5aecb479d004f313c1776460a087684ecdcf658ca1b136",
+  "test_owned_files_sha256": {
+    "tests/conftest.py": "870d6b7f1f3a7e29ab182e85de307fadb857b6bd1f1962545eb5dbbb890ad28e",
+    "tests/test_attention.py": "6f8f320898dba10f7ae34c1a281fe9425f810b943a0599476cfcab50100ff586",
+    "tests/test_head_objective.py": "f0baac9b6cdaeef73232aec25742e0446e30a38845b76d75af95300903485a85",
+    "tests/test_schedule_stopping.py": "aaf75315e2be2ffbdc2b687db336b0caac5ce1552fc16942fdbce1fddf51dce5",
+    "tests/test_eval_and_precision.py": "6030067b599d35b9b060cebdd3c3a319b0bf88153f20337ea6b62e0fab3a8fdd",
+    "tests/test_rich.py": "9055a28071172d6d2a4b738a72c3f03b9b6cc00f9765564e176338dfdba2c316",
+    "tests/test_trainer_exposure_resume.py": "d4539f43a42dc07808a269a720d4520dcf51ea12f281f66227f946ee45fa2ecf",
+    "tests/mutants/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tests/mutants/model_mutants.py": "2c5c8cf637ba7d7fa4b706b15be2f3ad9d563472543686d800b594c48a7b2870",
+    "tests/mutants/objective_mutants.py": "1af815dc37808238d6bacce9a159da46b3ecf98075c5af9a1a13ee7a087638a6",
+    "tests/mutants/schedule_mutants.py": "90951bf78c4f2694fe92c399af1a21e4d6868fb79ae196c79b68604de24b8cb5",
+    "tests/mutants/eval_mutants.py": "8a5590412de1348f743da7039fc242692ca68ef4e13f6cb84e09fdd8941ef0ca"
+  },
+  "negative_controls_present": [
+    "test_fp64_hand_computed_matches_padded_reference (disable_causal_mask divergence)",
+    "test_future_mutation_does_not_leak_backward_or_forward (disable_causal_mask leaks future grad)",
+    "test_eval_dropout_is_zero_and_repeated_evals_are_bitwise_identical (train-mode dropout differs)",
+    "test_unpadded_vs_padded_reference_outputs_and_gradients_agree (disable_causal_mask on one impl)",
+    "test_pad_column_randomisation_leaves_output_unchanged (force_all_positions_valid leaks PAD)",
+    "test_final_query_is_last_real_item_not_column_zero (blind_column_zero_readout diverges)",
+    "test_prefix_consistency_truncated_window_matches (disable_causal_mask breaks prefix consistency)",
+    "test_head_weight_is_a_view_of_item_embed_and_appears_once_in_optimizer_groups (untie_head_weight)",
+    "test_pad_row_stays_zero_after_100_updates (corrupt_pad_row)",
+    "test_ce_sum_matches_reference_and_independent_full_K_formula (label corruption != smoothing, eps>0)",
+    "test_uneven_microbatch_accumulation_matches_full_batch_gradient (mean_of_microbatch_means wrong agg)",
+    "test_lr_at_boundaries (warmup+1 off-by-one)",
+    "test_pair_stopping_requires_BOTH_arms_and_both_stop_at_the_same_epoch (single-arm-bug variant)",
+    "test_floor_start_epoch_off_by_one_mutant_changes_miss_trajectory (floor_start_epoch late)",
+    "test_int64_large_scores_stay_exact_no_float32_collision (cast_to_float32_before_rank)",
+    "test_tf32_canary_and_assert_strict_fp32_on_gpu (deliberately enabled TF32)",
+    "test_assert_strict_fp32_raises_on_bad_matmul_precision (matmul_precision='high')",
+    "test_fingerprint_fails_closed_on_a_changed_population (4 field mutations)",
+    "test_common_param_init_bit_identical_between_id_and_rich_same_seed (different seed)",
+    "test_side_disabled_rich_model_equals_id_model (side_enabled=True still differs)",
+    "test_pad_position_side_field_change_does_not_affect_output (force_all_positions_valid leaks)",
+    "test_lr_at_boundaries_schedule_S_prime (warmup+1 off-by-one; peak_epochs=2 shift)",
+    "test_floor_start_epoch_default_is_3 (peak_epochs/cosine_epochs shift)",
+    "test_eval_epochs_floor_only (floor_start off-by-one)",
+    "test_epoch_cap_uses_the_slower_arm_not_the_average (epoch_cap_ignores_slow_arm)",
+    "test_epoch_cap_safety_margin_negative_control (epoch_cap_no_safety_margin)",
+    "test_epoch_end_exact_tie_keeps_earlier_epoch (>=-based bug would move best_epoch)",
+    "test_floor_start_epoch_mutant_changes_epoch_end_miss_accounting (floor_start_epoch late, S')",
+    "test_fixed_epoch_stop_at_exactly_E_never_earlier (E-1 off-by-one)",
+    "test_equal_epoch_assertion_helper (unequal epoch counts)",
+    "test_v1_pair_stopping_requires_BOTH_arms_and_both_stop_at_the_same_epoch (kept for the record)",
+    "test_training_precision_tf32_and_strict_eval_roundtrip (wrong assert_training_precision; exception-safety)",
+    "test_strict_eval_gives_bitwise_identical_ranks_tf32_process_vs_fresh_strict_process (unguarded TF32 comparison logged)",
+    "test_equal_epoch_assertion_holds_for_matched_arms (truncated-epoch-count mutant)"
+  ]
+}

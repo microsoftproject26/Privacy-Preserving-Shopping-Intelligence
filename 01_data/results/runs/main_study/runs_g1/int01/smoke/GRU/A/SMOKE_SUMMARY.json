@@ -1,0 +1,178 @@
+{
+ "attempt": 0,
+ "config_sha256": "c3a69453e3c0fa8a6edb3f5d009cb24b516d6906c89ba4e7cdf05e19990293a4",
+ "determinism": {
+  "at_trainer_init": {
+   "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+   "determinism_mode_in_effect": "STRICT",
+   "deterministic_algorithms": true,
+   "warn_only": false
+  },
+  "constant": "STRICT",
+  "in_training_loop": {
+   "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+   "at_update": 1,
+   "determinism_mode_in_effect": "STRICT",
+   "deterministic_algorithms": true,
+   "warn_only": false
+  },
+  "passed_to_runconfig": true
+ },
+ "digests": {
+  "exposures": 153600,
+  "model_state_dict": "b762f0e8b02870e83b14a11e2902823832d73b891ce773f612b830ee5314dddb",
+  "optimizer_state_dict": "6bd84f04836b465e0bc217a89eba728bbe44451ff7c1ef5a9e8a8def69122eec",
+  "pass_index": 0,
+  "pos": 153600,
+  "rng_cuda": "ca7ecd372be74809288837e7e69c59b1c210d8d5d5ec1dfbc7bfdafe40f44e60",
+  "rng_torch_cpu": "3124a372d1babbc0af5a080fdd5acd30280c6d0c203784191d24ac5370e5a09d",
+  "stop_state": "b0ce6a51afde0e8d3d2173ceb8184013ead045987cf17f6e46b6821ddd9abc29",
+  "train_state": "0435e8ab6dc62db8a13cf66b3b4786980cbe1f1eb86f53f4da51ee42862eed46",
+  "updates": 600
+ },
+ "disk_at_end": {
+  "floor_bytes": 8589934592,
+  "free_bytes": 12991873024,
+  "headroom_bytes": 12991873024,
+  "planned_peak_bytes": 0,
+  "utc": "2026-09-26T18:57:12Z"
+ },
+ "disk_at_start": {
+  "floor_bytes": 8589934592,
+  "free_bytes": 12992086016,
+  "headroom_bytes": 12488954672,
+  "planned_peak_bytes": 503131344,
+  "utc": "2026-09-26T18:56:04Z"
+ },
+ "disk_at_stop": {
+  "floor_bytes": 8589934592,
+  "free_bytes": 12739174400,
+  "headroom_bytes": 12739174400,
+  "planned_peak_bytes": 0,
+  "utc": "2026-09-26T18:56:39Z"
+ },
+ "eval": {
+  "E2E_n_decisions": 200985,
+  "E2E_n_users": 15487,
+  "SMOKE_value_E2E_macro_mrr@20": 0.046909302952930505,
+  "eval_config": {
+   "cache_bytes": 1073741824,
+   "class_chunk": 32768,
+   "device_class_frozen": "A16-FP32-DET",
+   "eval_batch": 1024,
+   "eval_batch_amendment_id": null,
+   "eval_device_class": "A16-FP32-DET",
+   "eval_stream": "E2E_ROWS",
+   "frozen": true,
+   "lock_sha256": "0308640a79ef5fccb50bc456ee8f3ff1d506095c757e3b24fbb7b9c2e058238e",
+   "lock_version": "1.0.0",
+   "metric_accumulation": "FP64",
+   "path": "adapter_stream",
+   "score_block": 158486
+  },
+  "eval_stream": "E2E_ROWS",
+  "eval_wall_s": 33.12,
+  "gpu_peak_allocated_bytes": 2199555584,
+  "gpu_peak_reserved_bytes": 3806330880,
+  "manifest_id": "M06_CALIB_VALIDATION_WARM",
+  "ranks_sha256": "cc76f0f91a5395325e6929d08345800f9ba7cb1b9f54808b17b9b4060a481138",
+  "secondary": {
+   "hr@10": 0.10560849472295403,
+   "ndcg@10": 0.058896347051345437
+  }
+ },
+ "family": "GRU",
+ "gpu_memory_train": {
+  "peak_allocated_bytes": 854926336,
+  "peak_reserved_bytes": 1199570944
+ },
+ "host_peak_rss_bytes": 6500151296,
+ "host_rss_bytes": 2903085056,
+ "init_sha256": "f1dd4ec4b91c8f2a108588f96d70f6e81e54867460b675a67c45cc19f12d681d",
+ "label": "SMOKE_NOT_EVIDENCE",
+ "phase": "CALIBRATION",
+ "run_id": "SMOKE_NOT_EVIDENCE__GRU_CALIBRATION_s2026_lr1e-3",
+ "seed": 2026,
+ "stop_reason": "SMOKE_BUDGET_REACHED at update 600",
+ "task": "INT-01 smoke",
+ "timing": {
+  "checkpoint_updates": [
+   300,
+   600
+  ],
+  "leg_first_update": 1,
+  "leg_last_update": 600,
+  "loss_mean_by_window": [
+   [
+    50,
+    13.050570068359375
+   ],
+   [
+    100,
+    12.165262451171875
+   ],
+   [
+    150,
+    11.843677978515625
+   ],
+   [
+    200,
+    11.46552978515625
+   ],
+   [
+    250,
+    11.066768798828125
+   ],
+   [
+    300,
+    10.726602783203125
+   ],
+   [
+    350,
+    10.482890625
+   ],
+   [
+    400,
+    10.294466552734375
+   ],
+   [
+    450,
+    10.11052490234375
+   ],
+   [
+    500,
+    10.009100341796875
+   ],
+   [
+    550,
+    9.92379150390625
+   ],
+   [
+    600,
+    9.810625610351563
+   ]
+  ],
+  "monitor_data_wait_s": 1.95,
+  "monitor_step_wall_s": 26.801,
+  "monitor_windows": 12,
+  "train_wall_s_incl_start": 34.18,
+  "updates_per_s_after_warmup_excl_checkpoints": 20.648689860825744,
+  "updates_per_s_leg": 17.985496578296157
+ },
+ "trainer_code_sha256": "7b46309510ac7f71c6176d8fb8e985cdf26eb1f31f22ea2dad65f04c2134533a",
+ "utc_stop": "2026-09-26T18:56:39Z",
+ "weights_deleted": {
+  "deleted_sha256": {
+   "latest": "871bd9f0c11b48c526c3109be2662e4e0f985e26ca48c30c305d84d6448e12e3"
+  },
+  "disk_after_delete": {
+   "floor_bytes": 8589934592,
+   "free_bytes": 12992036864,
+   "headroom_bytes": 12992036864,
+   "planned_peak_bytes": 0,
+   "utc": "2026-09-26T18:56:39Z"
+  },
+  "utc": "2026-09-26T18:56:39Z",
+  "weight_files_left": []
+ }
+}

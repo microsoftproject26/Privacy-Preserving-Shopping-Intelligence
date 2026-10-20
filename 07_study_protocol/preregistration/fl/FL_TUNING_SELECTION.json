@@ -1,0 +1,208 @@
+{
+ "applies_to": [
+  "FA",
+  "FP",
+  "PF",
+  "FA_1024",
+  "DP",
+  "S_CAL",
+  "FA_Q8"
+ ],
+ "applies_to_exception": {
+  "arms": [
+   "FA_1024",
+   "DP",
+   "S_CAL"
+  ],
+  "local_batch": 16,
+  "local_passes": 2,
+  "rule": "DECISION_LOG row 219 (registered before any S4 read): FA_1024 / DP / S_CAL take this file's optimizer / LR / shape fields (optimizer, server_lr, server_tau, lr_mult, lr_shape, client_opt, client_lr) with local passes 2 and local batch 16 whatever S4 selects (their T = 384 and z values are registered); launch_fl records poisson_local_rule"
+ },
+ "best_candidate": "fedadam|eta=0.01|m=1|shape=fl_const|client=sgd_m|clr=0.1|passes=1",
+ "client_sgd": {
+  "clip": 1.0,
+  "dampening": 0.0,
+  "fresh_per_visit": true,
+  "momentum": 0.9,
+  "nesterov": false,
+  "weight_decay": 0.0
+ },
+ "configs": [
+  {
+   "arm_spec_sha256": "12c82ebe45550194d1d57e937370b7a4e74be67ac8ebb2171fa99dab9ace6151",
+   "client_lr": 0.1,
+   "client_opt": "sgd_m",
+   "excluded": false,
+   "incumbent": true,
+   "label": "fedadam|eta=0.01|m=1|shape=fl_const|client=sgd_m|clr=0.1",
+   "local_batch": 16,
+   "local_passes": 2,
+   "lr_mult": 1.0,
+   "lr_shape": "fl_const",
+   "optimizer": "fedadam",
+   "practical_best_mark": 6.0,
+   "result_rows_sha256": "16eb3b1d147b7337dec64c8377d653498a23e0fb9533771d973b9226c7a9dfe5",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/LRSCREEN_S3/A2_FEDADAM_eta0.01_FLCONST_SGD0.1",
+   "run_id": "FL_FA_LRSCREEN_FEDADAM_eta0.01_FLCONST_SGDM_lr0.1_x1_CALIB_s2026",
+   "run_summary_sha256": "c49d5f0fe7fb3de4b67c602eae408178635668477d42ecc3ab3b2c29cde61fc8",
+   "server_lr": 0.01,
+   "server_tau": 0.001,
+   "value": 0.09493602962038139
+  },
+  {
+   "arm_spec_sha256": "c0dbebf81b764333ecbec103388fb190ca93fbf50e70dd19d17a03e6b316a1a9",
+   "client_lr": 0.1,
+   "client_opt": "sgd_m",
+   "excluded": false,
+   "incumbent": false,
+   "label": "fedadam|eta=0.01|m=1|shape=fl_const|client=sgd_m|clr=0.1|batch=8",
+   "local_batch": 8,
+   "local_passes": 2,
+   "lr_mult": 1.0,
+   "lr_shape": "fl_const",
+   "optimizer": "fedadam",
+   "practical_best_mark": 6.0,
+   "result_rows_sha256": "bdc4751041f2f911847e8baac9777ae9ab6b462c97f7287e82d175bdbc62c493",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/LRSCREEN_S4/B8",
+   "run_id": "FL_FA_LRSCREEN_FEDADAM_eta0.01_FLCONST_SGDM_lr0.1_B8_x1_CALIB_s2026",
+   "run_summary_sha256": "d7bbaa4ca496dc7718aa052ed815eb64df97471351f1773f0a697a13b3dea30a",
+   "server_lr": 0.01,
+   "server_tau": 0.001,
+   "value": 0.0883514585121394
+  },
+  {
+   "arm_spec_sha256": "e8683325336375ab31dcf28cbf76a7a252dfc70067272138415c4b20af9ce57b",
+   "client_lr": 0.1,
+   "client_opt": "sgd_m",
+   "excluded": false,
+   "incumbent": false,
+   "label": "fedadam|eta=0.01|m=1|shape=fl_const|client=sgd_m|clr=0.1|passes=1",
+   "local_batch": 16,
+   "local_passes": 1,
+   "lr_mult": 1.0,
+   "lr_shape": "fl_const",
+   "optimizer": "fedadam",
+   "practical_best_mark": 6.0,
+   "result_rows_sha256": "a8d43184cf47fd127190cbf7f419990b1bfd58e878c93886dfac0ff23fbd1ce6",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/LRSCREEN_S4/P1",
+   "run_id": "FL_FA_LRSCREEN_FEDADAM_eta0.01_FLCONST_SGDM_lr0.1_P1_x1_CALIB_s2026",
+   "run_summary_sha256": "ffec498ba5559b9a18883379347a9561a524ed84a666021ed17760a2b06e3b7b",
+   "server_lr": 0.01,
+   "server_tau": 0.001,
+   "value": 0.10756161306487479
+  },
+  {
+   "arm_spec_sha256": "5179c0cb5b79c2f66bc40b3f94e248fac79ec39a5dde5df3ac0581d90cfc58bf",
+   "client_lr": 0.1,
+   "client_opt": "sgd_m",
+   "excluded": false,
+   "incumbent": false,
+   "label": "fedadam|eta=0.01|m=1|shape=fl_const|client=sgd_m|clr=0.1|passes=4",
+   "local_batch": 16,
+   "local_passes": 4,
+   "lr_mult": 1.0,
+   "lr_shape": "fl_const",
+   "optimizer": "fedadam",
+   "practical_best_mark": 6.0,
+   "result_rows_sha256": "74f20c7717324705a28a828e0cb61480740fe0814c530887fc21bb36c4cc1236",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/LRSCREEN_S4/P4",
+   "run_id": "FL_FA_LRSCREEN_FEDADAM_eta0.01_FLCONST_SGDM_lr0.1_P4_x1_CALIB_s2026",
+   "run_summary_sha256": "2a6bc158efb6fe001a2517e2d09f632cf32d93d498cfd6b84d23157bda387ca6",
+   "server_lr": 0.01,
+   "server_tau": 0.001,
+   "value": 0.07787786193341636
+  }
+ ],
+ "device": {
+  "device_pin_sha256": "db744ca3f0da27ac7b65c41b4b32f2c68ec9d0bd66bbc0dc33e874a226834e6b",
+  "eval_device_class": "NVIDIA_A40-FP32-DET"
+ },
+ "edges": [],
+ "eval_manifest_id": "CALIB_VALIDATION_5_100_32768",
+ "excluded": [],
+ "fedadam": {
+  "algorithm": "Reddi et al. 2021 ICLR Alg. 2 (FEDADAM), no bias correction, m_0 = 0, v_0 = tau^2",
+  "beta1": 0.9,
+  "beta2": 0.99,
+  "tau": 0.001,
+  "v_init": "tau_squared"
+ },
+ "fedavgm": {
+  "algorithm": "Hsu, Qi & Brown 2019 server momentum",
+  "beta1": 0.9,
+  "lr": 1.0
+ },
+ "first_selection": {
+  "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/contracts/fl/FL_TUNING_S3.json",
+  "self_sha256": "d665665e4691d55ce7c032dd1f53266b7fceccaf5e38c60d19cae153cf9bec23",
+  "sha256": "32decc6a55e536e9327b56839d5682353e05cc3a7ba283d5517a01bc0bc91934"
+ },
+ "format": "PPSI_V4_FL_TUNING_SELECTION_1",
+ "gain": 0.012625583444493396,
+ "incumbent": "fedadam|eta=0.01|m=1|shape=fl_const|client=sgd_m|clr=0.1",
+ "lr_peak_base": 0.0007114121116984968,
+ "m_star": 8.0,
+ "metric": "CALIB_VALIDATION E2E client-macro MRR@20 at PRACTICAL_BEST",
+ "min_gain": 0.002,
+ "no_measurable_gain": false,
+ "required": [
+  "fedadam|eta=0.01|m=1|shape=fl_const|client=sgd_m|clr=0.1|passes=1",
+  "fedadam|eta=0.01|m=1|shape=fl_const|client=sgd_m|clr=0.1|passes=4",
+  "fedadam|eta=0.01|m=1|shape=fl_const|client=sgd_m|clr=0.1|batch=8"
+ ],
+ "rule": "S4 winner: the highest CALIB_VALIDATION E2E client-macro MRR@20 at PRACTICAL_BEST over the S4 set (local passes 1, local passes 4, local batch 8, one at a time at the S3 winner; rounds recomputed to the 6.0-EFE budget; no LR re-screen) and the S3 winner (the incumbent); non-finite values excluded and recorded; |delta| <= 0.0005 ties -> the incumbent (2 passes / batch 16) \u2014 PREG1_AMENDMENT_06J \u00a73; 06J \u00a74(ii): if the best candidate (the highest finite non-incumbent value) gains < 0.002 over the incumbent, the stage is recorded 'no measurable gain' and the incumbent carries on (winner = incumbent, tie set = [incumbent])",
+ "self_sha256": "d361d6a33ad07eaacaa74c349165a1ae220778394bb132d54f54d9590d3596f8",
+ "stage": "S4",
+ "stage_history": [
+  {
+   "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/contracts/fl/LR_SELECTION_EXT.json",
+   "self_sha256": "e23431af959ec0d508a0f907a3066f784492fc45f91b7a878e83d97ec4f41a5e",
+   "sha256": "7d922e4a249acf45009b3e98ec8f72f34dc25fce5972476ddd2120f51e1393dc",
+   "stage": "S1b",
+   "winner": "fedavg|m=8"
+  },
+  {
+   "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/contracts/fl/FL_TUNING_S2.json",
+   "self_sha256": "89afd1c759ee0249b0fe7b024f842c7ea2e800d9ee9c9ce9fb119fc8b898150b",
+   "sha256": "24080b1eb515fcddba0fcd0f23b69c69ee2635c5530836f9de7ab6c6e5e8263d",
+   "stage": "S2",
+   "winner": "fedadam|eta=0.01|m=1"
+  },
+  {
+   "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/contracts/fl/FL_TUNING_S3.json",
+   "self_sha256": "d665665e4691d55ce7c032dd1f53266b7fceccaf5e38c60d19cae153cf9bec23",
+   "sha256": "32decc6a55e536e9327b56839d5682353e05cc3a7ba283d5517a01bc0bc91934",
+   "stage": "S3",
+   "winner": "fedadam|eta=0.01|m=1|shape=fl_const|client=sgd_m|clr=0.1"
+  }
+ ],
+ "task": "FL-10 v4int.lr_screen select-joint",
+ "tie_band_set": [
+  "fedadam|eta=0.01|m=1|shape=fl_const|client=sgd_m|clr=0.1|passes=1"
+ ],
+ "tie_order": "incumbent (default), then |log2(passes / 2)| (batch 8 keeps 2 passes), then batch 16 before 8, then fewer passes",
+ "tie_set": [
+  "fedadam|eta=0.01|m=1|shape=fl_const|client=sgd_m|clr=0.1|passes=1"
+ ],
+ "tie_tolerance": 0.0005,
+ "unchanged": "PF personal LR, FedProx mu, the FT grid, LO, beta1 / beta2 / tau defaults (amendments 06B \u00a71 / 06F / 06G / 06I / 06J)",
+ "utc": "2026-09-30T18:24:41Z",
+ "values": {
+  "fedadam|eta=0.01|m=1|shape=fl_const|client=sgd_m|clr=0.1": 0.09493602962038139,
+  "fedadam|eta=0.01|m=1|shape=fl_const|client=sgd_m|clr=0.1|batch=8": 0.0883514585121394,
+  "fedadam|eta=0.01|m=1|shape=fl_const|client=sgd_m|clr=0.1|passes=1": 0.10756161306487479,
+  "fedadam|eta=0.01|m=1|shape=fl_const|client=sgd_m|clr=0.1|passes=4": 0.07787786193341636
+ },
+ "winner": {
+  "client_lr": 0.1,
+  "client_opt": "sgd_m",
+  "label": "fedadam|eta=0.01|m=1|shape=fl_const|client=sgd_m|clr=0.1|passes=1",
+  "local_batch": 16,
+  "local_passes": 1,
+  "lr_mult": 1.0,
+  "lr_shape": "fl_const",
+  "optimizer": "fedadam",
+  "server_lr": 0.01,
+  "server_tau": 0.001
+ }
+}

@@ -1,0 +1,123 @@
+{
+ "authority": [
+  "contracts/PREG1_AMENDMENT_06B.md §2 (K1–K16 verbatim)",
+  "contracts/PREG1_AMENDMENT_06D.md §3 (rule map), §4 (hierarchy)"
+ ],
+ "confirmatory_contrasts": [
+  {
+   "contrast": "R(C_SMALL / C_BIG)",
+   "id": "K1",
+   "question": "size cost"
+  },
+  {
+   "contrast": "R(FA / C_BIG)",
+   "id": "K2",
+   "question": "federated retention (headline)"
+  },
+  {
+   "contrast": "R(FA / C_SMALL)",
+   "id": "K3",
+   "question": "federation cost at matched size"
+  },
+  {
+   "contrast": "R(FP / C_BIG)",
+   "id": "K4",
+   "question": "FedProx retention"
+  },
+  {
+   "contrast": "R(PF / C_BIG)",
+   "id": "K5",
+   "question": "personalised-FL retention"
+  },
+  {
+   "contrast": "R(FT_FA / C_BIG)",
+   "id": "K6",
+   "question": "deployed on-device system (FL + local fine-tune)"
+  },
+  {
+   "contrast": "R(FT_C / C_BIG)",
+   "id": "K7",
+   "question": "cloud-trained + local fine-tune"
+  },
+  {
+   "contrast": "R(LO / C_BIG)",
+   "id": "K8",
+   "question": "device-only retention"
+  },
+  {
+   "contrast": "FT_C − C_SMALL",
+   "id": "K9",
+   "question": "local fine-tuning gain (paired Δ)"
+  },
+  {
+   "contrast": "FT_FA − FA",
+   "id": "K10",
+   "question": "local fine-tuning gain after FL (paired Δ)"
+  },
+  {
+   "contrast": "FA − LO",
+   "id": "K11",
+   "question": "collaboration value (paired Δ)"
+  },
+  {
+   "contrast": "R(DP8 / FA_1024)",
+   "id": "K12",
+   "question": "privacy cost at ε = 8"
+  },
+  {
+   "contrast": "R(DP1 / FA_1024)",
+   "id": "K13",
+   "question": "privacy cost at ε = 1 (seed 2026)"
+  },
+  {
+   "contrast": "R(FA_Q8 / FA)",
+   "id": "K14",
+   "question": "compression cost (8-bit uploads)"
+  },
+  {
+   "contrast": "R(C_BIG / C_FULL)",
+   "id": "K15",
+   "question": "cloud data advantage (seed 2026; if C_FULL runs)"
+  },
+  {
+   "contrast": "R(INT8 / FP32) for C_SMALL",
+   "id": "K16",
+   "question": "on-device quantisation cost (seed 2026)"
+  }
+ ],
+ "confirmatory_rule_map": {
+  "K12": "CONTROLLED_BUDGET",
+  "K13": "CONTROLLED_BUDGET"
+ },
+ "default_confirmatory_rule": "PRACTICAL_BEST",
+ "dp_disclosure": "K12/K13 PRACTICAL_BEST ratios are DESCRIPTIVE: best-of-12 checkpoint selection on the users' own validation data is not covered by the DP accountant (06D §3).",
+ "format": "PPSI_V4_ANA_CONTRASTS_1",
+ "hierarchy": {
+  "primary": [
+   "K2"
+  ],
+  "secondary": [
+   "K1",
+   "K3",
+   "K8",
+   "K12"
+  ],
+  "tertiary": [
+   "K4",
+   "K5",
+   "K6",
+   "K7",
+   "K9",
+   "K10",
+   "K11",
+   "K13",
+   "K14",
+   "K15",
+   "K16"
+  ]
+ },
+ "multiplicity_statement": "16 pre-registered contrasts; unadjusted 95% paired user-bootstrap percentile CIs (1,000 resamples, seed 20260926); the hierarchy above is stated with the results; every other number is DESCRIPTIVE (06D §4).",
+ "registered_utc": "2026-09-28T22:10Z",
+ "self_sha256": "51f2f116852831048f79e9549c655005b6b18ea56d5c7277b3d0835b713d9c5e",
+ "status": "PRE_LOCK: used for the VALIDATION preflight; copied verbatim into ALL_METHODS_LOCK.json"
+}

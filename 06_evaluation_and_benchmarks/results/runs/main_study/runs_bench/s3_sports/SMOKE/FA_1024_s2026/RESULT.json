@@ -1,0 +1,128 @@
+{
+ "arm": "FA_1024",
+ "checkpoints": {
+  "CONTROLLED_BUDGET": {
+   "bytes": 9891075,
+   "file": "ckpt/smoke_theta.pt",
+   "mark": 0.1612088022242974,
+   "sha256": "f0c3c129b99cf87ee852edb5dd4ac5f30f71363022cdec7a8f8c7de81e2b09cb"
+  },
+  "PRACTICAL_BEST": {
+   "bytes": 9891075,
+   "file": "ckpt/smoke_theta.pt",
+   "mark": 0.1612088022242974,
+   "sha256": "f0c3c129b99cf87ee852edb5dd4ac5f30f71363022cdec7a8f8c7de81e2b09cb"
+  }
+ },
+ "kind": "fl",
+ "label": "SMOKE_NOT_EVIDENCE",
+ "run_id": "BM_s3_sports_FA_1024_s2026_SMOKE",
+ "spec": {
+  "arm": "FA_1024",
+  "cfg": {
+   "dp": {
+    "clip_norm": 0.25749268200389813,
+    "denominator": 278,
+    "noise_multiplier": 0.0
+   },
+   "dropout_p": 0.0,
+   "endpoint_efe": 6.0,
+   "endpoint_rounds": 384,
+   "exposure_point": "end",
+   "lr_peak_local": 0.1,
+   "lr_shape": "fl_const",
+   "max_attempts": 2,
+   "method": "FA",
+   "mu": 0.0,
+   "n_shards": 2,
+   "pf": null,
+   "seed": 2026,
+   "server_opt": {
+    "beta1": 0.9,
+    "beta2": 0.99,
+    "lr": 0.01,
+    "name": "fedadam",
+    "tau": 0.001,
+    "v_init": "tau_squared"
+   },
+   "solver": {
+    "batch_size": 16,
+    "clip": 1.0,
+    "fused": null,
+    "lr": 0.1,
+    "optimizer": "sgd_m",
+    "passes": 2,
+    "weight_decay": 0.0
+   }
+  },
+  "client_lr": 0.1,
+  "client_opt": "sgd_m",
+  "data": {
+   "dataset": "s3_sports",
+   "fingerprint": "6f58ceac640129d39db827ae006b3686a7a1dcee9cd90fbd10a0b4a4ead5f61a",
+   "n_clients": 35598,
+   "n_decisions": 189543
+  },
+  "dp_accounting": {
+   "N": 35598,
+   "T": 384,
+   "authority": "PREG1_AMENDMENT_07 R4 (registered z for identical q, T, delta)",
+   "delta": 5e-06,
+   "m": 278,
+   "q_actual": 0.007809427495926737,
+   "q_nominal": 0.0078125,
+   "z": 0.5642
+  },
+  "dropout": [
+   0.1
+  ],
+  "knobs": {
+   "batch": 16,
+   "clip": 1.0,
+   "dropout_p": 0.1,
+   "endpoint_efe": 6.0,
+   "group": 64,
+   "m": 1024,
+   "max_attempts": 2,
+   "mu": 0.01,
+   "n_shards": 2,
+   "passes": 2,
+   "pf_clip": 1.0,
+   "pf_lam": 0.0001,
+   "rounds": 6827,
+   "rounds_1024": 384,
+   "s_cal_rounds": 20,
+   "s_cal_seed": 2026,
+   "sampling": "sweep",
+   "weight_decay": 1e-05
+  },
+  "local_passes": 2,
+  "lr_mult": 1.0,
+  "lr_peak_base": 0.0007114121116984968,
+  "lr_shape": "fl_const",
+  "max_len": 50,
+  "max_rounds": 384,
+  "plan": {
+   "group_size": 278,
+   "sampling": "poisson"
+  },
+  "poisson_local_rule": {
+   "authority": "DL 219",
+   "local_batch": 16,
+   "local_passes": 2,
+   "selected_local_passes": 1
+  },
+  "role": "MAIN",
+  "s_record": {
+   "S": 0.25749268200389813,
+   "file_sha256": "d50294deaf4615d559f69eba2208ea02d730275794cbef322125f40c300e9ccb",
+   "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_sports/SMOKE/S_CAL_s2026/S_RECORD_SMOKE.json",
+   "self_sha256": "64b410ec71ff724aee0223c3df31883205ce8f90679d49b02e35a480bff7d9d6"
+  },
+  "server_lr": 0.01,
+  "server_opt": "fedadam",
+  "upload_codec": null,
+  "variant": "SASREC_D64_B2"
+ },
+ "status": "SMOKE_DONE_NOT_EVIDENCE"
+}

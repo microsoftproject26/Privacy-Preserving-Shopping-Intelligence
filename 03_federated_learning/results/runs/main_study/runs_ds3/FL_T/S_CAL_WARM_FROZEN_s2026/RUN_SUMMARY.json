@@ -1,0 +1,348 @@
+{
+ "arm": "S_CAL_WARM_FROZEN",
+ "arm_spec": {
+  "arm": "S_CAL_WARM_FROZEN",
+  "cfg": {
+   "dp": {
+    "clip_norm": null,
+    "denominator": 1024,
+    "noise_multiplier": 0.0
+   },
+   "dropout_p": 0.0,
+   "endpoint_efe": 6.0,
+   "endpoint_rounds": 384,
+   "exposure_point": "end",
+   "lr_peak_local": 0.1,
+   "lr_shape": "fl_const",
+   "max_attempts": 2,
+   "method": "FA",
+   "mu": 0.0,
+   "n_shards": 2,
+   "pf": null,
+   "seed": 2026,
+   "server_opt": {
+    "beta1": 0.9,
+    "beta2": 0.99,
+    "lr": 0.001,
+    "name": "fedadam",
+    "tau": 0.001,
+    "v_init": "tau_squared"
+   },
+   "solver": {
+    "batch_size": 16,
+    "clip": 1.0,
+    "fused": null,
+    "lr": 0.1,
+    "optimizer": "sgd_m",
+    "passes": 2,
+    "weight_decay": 0.0
+   }
+  },
+  "client_lr": 0.1,
+  "client_opt": "sgd_m",
+  "frozen_item_tables": [
+   "item_embed.weight",
+   "output_embed",
+   "output_bias"
+  ],
+  "init_from": {
+   "checkpoint_bytes": 82853197,
+   "checkpoint_sha256": "cf08588c11f019cc760f129ba7ba6b23806297660e0170f9938436a5cb88cf78",
+   "family": "SASREC",
+   "fl_init_kind": "endpoint_6.0",
+   "kind": "PRETRAIN_FOR_FL",
+   "model_variant": "SASREC_D64_B2",
+   "run_id": "PRETRAIN_FOR_FL_SMALL_SASREC_D64_B2_s2026",
+   "run_label": "PRETRAIN_FOR_FL",
+   "seed": 2026,
+   "state_digest": "ee33345be4f20b61a53cd80fa11e1af702031bfcd1425af490825cd0019dc54a",
+   "train_manifest": "PRETRAIN_TRAIN_5_100_NONMAIN"
+  },
+  "knobs": {
+   "batch": 16,
+   "clip": 1.0,
+   "dropout_p": 0.1,
+   "endpoint_efe": 6.0,
+   "group": 64,
+   "m": 1024,
+   "max_attempts": 2,
+   "mu": 0.01,
+   "n_shards": 2,
+   "passes": 2,
+   "pf_clip": 1.0,
+   "pf_lam": 0.0001,
+   "rounds": 6827,
+   "rounds_1024": 384,
+   "s_cal_rounds": 20,
+   "s_cal_seed": 2026,
+   "sampling": "sweep",
+   "weight_decay": 1e-05
+  },
+  "lr_mult": 1.0,
+  "lr_peak_base": 0.0007114121116984968,
+  "lr_shape": "fl_const",
+  "max_rounds": 20,
+  "plan": {
+   "group_size": 1024,
+   "sampling": "poisson"
+  },
+  "poisson_local_rule": {
+   "authority": "DECISION_LOG row 219",
+   "local_batch": 16,
+   "local_passes": 2,
+   "selected_local_batch": 16,
+   "selected_local_passes": 1
+  },
+  "role": "MAIN",
+  "server_lr": 0.01,
+  "server_opt": "fedadam",
+  "upload_codec": null,
+  "warm_server_lr_factor": 0.1
+ },
+ "arm_spec_sha256": "1fc8ef3be2f26f4f267ede280b1fd9b8347279fc64b1e289d99026d28f69bd12",
+ "best_half_efe": null,
+ "best_metric": null,
+ "bytes": {
+  "disclosure": "dropped clients (10% drop-out) are not charged a download (the ledger counts survivors)",
+  "fleet": {
+   "bytes_down": 21765315000,
+   "bytes_up": 21765480000,
+   "frozen_download_once_bytes": 1567468519848,
+   "frozen_download_once_clients": 19167,
+   "messages": 41250,
+   "retry_bytes_down": 0,
+   "total": 43530795000,
+   "total_incl_frozen_once": 1610999314848
+  },
+  "frozen_bootstrap_note": "per_visit.bootstrap_bytes_once also contains the frozen tables (they are FIXED buffers after the freeze), so it repeats per_visit.frozen_bytes_once for those keys; no total adds both (per_client_incl_frozen_once and fleet.total_incl_frozen_once use frozen_bytes_once only). A client dropped at its first visit is not charged the table download (the ledger counts survivors; 06A \u00a73 rule)",
+  "frozen_disclosure": "frozen item tables: downloaded once per client at its first (surviving) visit, never uploaded; the ledger / per-visit bytes count the uploaded parameters only",
+  "per_client": {
+   "max": 8442336,
+   "mean": 332113.60931396484,
+   "median": 0.0,
+   "min": 0,
+   "rule": "visits x (down + up) of that client"
+  },
+  "per_client_incl_frozen_once": {
+   "max": 90221880,
+   "mean": 12290949.362548828,
+   "median": 0.0,
+   "min": 0,
+   "rule": "visits x (down + up) + the frozen tables once if visited"
+  },
+  "per_visit": {
+   "alias_bytes_not_sent": 0,
+   "bootstrap_bytes_once": 81779544,
+   "download_bytes": 1055288,
+   "frozen_bytes_once": 81779544,
+   "frozen_disclosure": "the frozen item tables are downloaded ONCE per client (first visit) and never uploaded; per-visit bytes count the uploaded parameters only",
+   "frozen_keys": [
+    "item_embed.weight",
+    "output_embed",
+    "output_bias"
+   ],
+   "frozen_numel": 20444886,
+   "private_bytes_sent": 0,
+   "private_resident_bytes": 0,
+   "send_plus_receive_bytes": 2110584,
+   "shared_numel": 263822,
+   "upload_bytes": 1055296,
+   "uploaded_numel": 263822
+  }
+ },
+ "counters": {
+  "coverage_by_sweep": {
+   "0": {
+    "clients": 19167,
+    "fraction": 0.14623260498046875
+   }
+  },
+  "efe": 0.3152993149329772,
+  "exposures": 815924,
+  "max_visits": 4,
+  "min_visits": 0,
+  "noop_visits": 0,
+  "retries": 0,
+  "rounds": 20,
+  "steps": 70922,
+  "steps_hist": {
+   "10": 491,
+   "12": 324,
+   "14": 56,
+   "2": 12459,
+   "4": 4572,
+   "6": 1825,
+   "8": 898
+  },
+  "visits": 20625,
+  "wasted_steps": 0
+ },
+ "done": false,
+ "dp": {
+  "clip_norm": null,
+  "denominator": 1024,
+  "noise_multiplier": 0.0,
+  "rounds_logged": 20
+ },
+ "dp_noise_dimension": {
+  "frozen_keys_excluded": [
+   "item_embed.weight",
+   "output_embed",
+   "output_bias"
+  ],
+  "rule": "fl.dp clips / noises the manifest's shared (uploaded) keys only; accounting (z, q, T, delta) unchanged",
+  "uploaded_keys": [
+   "side_gate",
+   "user_gate",
+   "pos_embed.weight",
+   "blocks.0.ln1.weight",
+   "blocks.0.ln1.bias",
+   "blocks.0.qkv.weight",
+   "blocks.0.qkv.bias",
+   "blocks.0.out.weight",
+   "blocks.0.out.bias",
+   "blocks.0.ln2.weight",
+   "blocks.0.ln2.bias",
+   "blocks.0.ff1.weight",
+   "blocks.0.ff1.bias",
+   "blocks.0.ff2.weight",
+   "blocks.0.ff2.bias",
+   "blocks.1.ln1.weight",
+   "blocks.1.ln1.bias",
+   "blocks.1.qkv.weight",
+   "blocks.1.qkv.bias",
+   "blocks.1.out.weight",
+   "blocks.1.out.bias",
+   "blocks.1.ln2.weight",
+   "blocks.1.ln2.bias",
+   "blocks.1.ff1.weight",
+   "blocks.1.ff1.bias",
+   "blocks.1.ff2.weight",
+   "blocks.1.ff2.bias",
+   "final_norm.weight",
+   "final_norm.bias",
+   "input_norm.weight",
+   "input_norm.bias",
+   "side_embeds.category_tokens.weight",
+   "side_embeds.brand_tokens.weight",
+   "side_embeds.session_offset_tokens.weight",
+   "side_embeds.session_mode_main_category_tokens.weight",
+   "numflag_proj.weight",
+   "numflag_proj.bias",
+   "side_proj.weight",
+   "side_proj.bias",
+   "side_norm.weight",
+   "side_norm.bias",
+   "user_mlp.weight",
+   "user_mlp.bias",
+   "user_proj.weight",
+   "user_proj.bias",
+   "user_norm.weight",
+   "user_norm.bias"
+  ],
+  "uploaded_numel": 263822
+ },
+ "evals": [],
+ "frozen_item_tables": {
+  "frozen_bytes": 81779544,
+  "frozen_keys": [
+   "item_embed.weight",
+   "output_embed",
+   "output_bias"
+  ],
+  "frozen_numel": 20444886,
+  "manifest_digest": "5863a02b48ed4e9f9a348c66f28e63280565c73a4b5fccb30ffcf1995ab03162",
+  "shared_bytes": 1055288,
+  "shared_numel": 263822
+ },
+ "ledger": [
+  41250,
+  21765315000,
+  21765480000,
+  0
+ ],
+ "lr_table": {
+  "E_total": 15526656,
+  "digest": "af94db5682d606cebfdbe9ca8390338c87d916fb0a6803860c03a1a2e3b51de4",
+  "final_lr": 0.010000000000000002,
+  "min_lr": 0.010000000000000002,
+  "n_rounds": 384,
+  "planned_efe": 6.0
+ },
+ "lr_table_digest": "af94db5682d606cebfdbe9ca8390338c87d916fb0a6803860c03a1a2e3b51de4",
+ "method": "FA",
+ "participation": {
+  "E_realised_total": 15541872,
+  "E_total_expected": 15526656,
+  "cohort_size_max": 1090,
+  "cohort_size_min": 983,
+  "dropout_p": 0.0,
+  "dropped": 0,
+  "empty_rounds": 0,
+  "endpoint_rounds": 384,
+  "inclusion_probability": 0.0078125,
+  "noise_only_rounds": 0,
+  "noop_rounds": 0,
+  "planned_efe": 6.0,
+  "rounds": 20,
+  "sampled": 20625,
+  "sampling": "poisson",
+  "survived": 20625
+ },
+ "phase": "MAIN",
+ "plan": {
+  "group_size": 1024,
+  "inclusion_probability": 0.0078125,
+  "inclusion_rule": "u_i ~ Uniform{0..N-1} (PCG64, derive_seed(seed, 'poisson', r)); member iff u_i < group_size",
+  "keys_digest": "8356cab11d62e5fc3c99cf0594dbfade304f27947cbdd7cd39f4a25294bf44eb",
+  "manifest_hash": "5d5cd03679232d2214b9977189e9719acc3dc06842a7e03d08b3bc268f64f039",
+  "n_clients": 131072,
+  "rounds_per_sweep": 128,
+  "sampling": "independent Poisson participation per client per round (q = min(group_size, N) / N); variable cohort size (may be 0); logical order = sorted keys; 'sweeps' are blocks of rounds_per_sweep rounds",
+  "sampling_mode": "poisson",
+  "seed": 2026
+ },
+ "rounds": 20,
+ "run_id": "FL_S_CAL_WARM_FROZEN_SMALL_s2026",
+ "s_record": {
+  "S": 0.2754088599106647,
+  "file": "S_RECORD_WARM_FROZEN.json",
+  "format": "PPSI_V4_DP_S_RECORD_WARM_1",
+  "n_norms": 20625,
+  "self_sha256": "5201ba8f7e32b356a1a7340a7673142898f41d18d090a0521935d29861ddf90f"
+ },
+ "server_digest": "bfa724e0224e48fc6b19ed12b8937c21cf3395a4e7b01bdc1bbaa26b3e0e8974",
+ "server_opt": {
+  "cfg": {
+   "beta1": 0.9,
+   "beta2": 0.99,
+   "lr": 0.001,
+   "name": "fedadam",
+   "tau": 0.001,
+   "v_init": "tau_squared"
+  },
+  "moments_digest": "9e9125488793bbe27556864c3915e5a5abc2e842c98342b3aaacf23c0e256620",
+  "steps": 20
+ },
+ "status": "DONE_S_CAL",
+ "store_digest": null,
+ "train_loss_log": {
+  "authority": "FL-15 R5 (REAL_WORLD_FL_PRACTICE_AUDIT_20260930 R5): per-round client training loss from fl VisitRecord.loss_sum (sum of the batch-mean CE over a visit's steps); descriptive monitoring only, numerics unchanged; z > 0 (DP) runs record nothing (an un-noised data-dependent release, the 06L_E E1 reading)",
+  "complete": true,
+  "fields": [
+   "client_mean_loss",
+   "finite",
+   "loss_sum",
+   "mean_step_loss",
+   "n_clients",
+   "n_steps",
+   "round"
+  ],
+  "file": "TRAIN_LOSS.jsonl",
+  "missing_rounds": [],
+  "rounds_expected": 20,
+  "rounds_logged": 20,
+  "sha256": "930534356ca6994eaf8b32b67384c14e3adaa8015f4143e95bf020505e1458d2"
+ },
+ "wall_s_this_leg": 4368.26
+}

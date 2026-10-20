@@ -1,0 +1,127 @@
+{
+ "document": "R5B_RECEIPT",
+ "task": "OPS-11 R5b (Ops decision: sync final code TRAIN-02R2+R3 plus two Ops fixes, redo steps 5-7 on one code version)",
+ "utc_window": {"start": "2026-09-27T15:16:29Z", "stopped": "2026-09-27T16:03Z"},
+ "status": "DONE",
+ "disk_free_gib": {"before": "23G (49G total, 27G used, 54%)", "after": "23G (49G total, 27G used, 54%), unchanged throughout"},
+ "gpu_idle_before_and_after": true,
+
+ "step1_sync": {
+  "uploaded": {
+   "code_sync.tar": "1f848ab231b77bf829523dcd5c2a255b7a1e86e830ad83f93f25ba0f608e9e8c",
+   "SYNC_MANIFEST.json": "6ab31d357af500e6b6fc24222b8637b6759a95a32025fd1c0af1645b7a4ae333"
+  },
+  "server_sha256_verified_exact_match": true,
+  "preflight": {
+   "same": 366, "new": 3, "differ": 14, "server_only": 133,
+   "differ_all_expected": "13 exact-listed files in EXPECTED_DIFFER.txt + code/snap_v1/SNAPSHOT_MANIFEST.json (keep-server)",
+   "new_files_all_expected": ["code/tests_int/p2kit_int.py", "code/tests_int/test_train02r2.py", "code/tests_train/p2kit.py"],
+   "theta0_variants_json_check": {
+    "required": "must be IDENTICAL to the server copy already built in R5 (sha db181745...6e25a5); STOP if differing",
+    "result": "IDENTICAL — appeared in neither 'differ' nor 'new' (counted in 'same'); verified directly: local file sha256 db18174586302dbc8e21007f5f178e3b49378afdf3956a5ff54f2c0b456e25a5 == manifest's expected sha256, exact match. Not a STOP."
+   },
+   "unexpected_differences": []
+  },
+  "apply_receipt": {
+   "path": "runs_g1/r5b/R5B_CODE_SYNC_RECEIPT.json",
+   "sha256": "63f95a97564e55c3be4c2c35c13b647905b95844de6f9470b3cb80edca8a06a2",
+   "pass": true, "n_written": 16, "post_hash_mismatches": [],
+   "snapshot_unchanged": true
+  }
+ },
+
+ "step1b_pycache_cleanup_ops_authorised": {
+  "path": "runs_g1/r5b/PYCACHE_MANIFEST.json",
+  "sha256": "4ae58de1c5643b82a99457ac0b3e9cadd036f21cc18055a55e11f2d435d4599d",
+  "file": {"path": "code/__pycache__/ppsi_env.cpython-311.pyc", "size_bytes": 5515,
+            "sha256": "ceb05449f0d45f899135fa6ffac266156ec99fdfcbfdc2c6b2209f272cdd2ff7",
+            "mtime_utc": "2026-09-26T13:47:38Z"},
+  "removed": true,
+  "verified_no_pycache_anywhere_under_code_after": true
+ },
+
+ "step2_hp_registry_verify": "kept from R5 (unchanged this delta): exit 0, ok true, self_sha256 a3b48f20...ca7b",
+ "step3_theta0_variants": "kept from R5 (unchanged this delta, v1-root builder not re-run): contracts/model_variants/THETA0_VARIANTS.json file sha256 db181745...6e25a5, self sha256 e352fb0f...dda470; guard EQUAL both current-build variants both seeds; verified byte-identical to R5's local copy during R5b preflight (see step1)",
+
+ "step4_gpu_kept_from_r5": {
+  "sys04c_variant_bench": "PASS, all 6 legs, no triggers, all bitwise (corrected aggregation) — see runs_g1/r5/sys04c/SYS04C_VARIANT_BENCH_CORRECTED.json (sha256 8cb0b9c2ed2fa50464eac52dbf8deb7fcf0c8ea9b251c811e7ce56b26f1af25f). Not re-run in R5b: v4models/v4train device/bench code path unchanged in this delta (EXPECTED_DIFFER.txt for R5b touches only test files, v4int, and a subset of v4train recipe/trainer/p2_driver/tuned_recipes; sys04c_variant_bench.py itself IS in the R5b differ list but only for the SAME out_dir-absolute-path fix already verified working in R5 — Ops confirmed this fixes the aggregation bug directly, so the R5 per-leg measurements stand as evidence).",
+  "t3_gpu_receipt": "PASS bitwise, exit 0, kept unchanged — v4eval untouched in this delta. runs_g1/r5_t3_receipt/out/T3_GPU_RECEIPT.json, ranks_sha256 GRU 9c0f29db...caa / SASREC b96e325a...be9, evaluator_code_sha256 6cbc3e6f...aea0d."
+ },
+
+ "step5_all_suites": {
+  "detail_file": "runs_g1/r5b/R5_SUITES.json (sha256 283d765fd375acd1450e87d6b4c4d3b411639f2d68b4ab9240f5f8275adfbd41)",
+  "env": "CUDA_VISIBLE_DEVICES=-1, CUBLAS_WORKSPACE_CONFIG=:4096:8, PYTHONDONTWRITEBYTECODE=1, nice -n 10, sequential",
+  "accepted_minimums": {"tests_train": 177, "tests_int": 82, "tests_eval": 69, "tests_fs": 59, "tests_models": 130,
+                         "tests_hist": 62, "tests_base": 23, "tests_fl": 127, "tests_data06": 9},
+  "all_exit_0": true,
+  "summary_table": {
+   "tests_data": "0 (69 passed, 20 xfailed, 1 skipped)",
+   "tests_data06": "0 (9 passed, 7 xfailed) — meets 9",
+   "tests_eval": "0 (69 passed, 24 xfailed) — meets 69",
+   "tests_fl": "0 (127 passed, 48 xfailed) — meets 127",
+   "tests_fs": "0 (59 passed, 5 xfailed) — meets 59",
+   "tests_fs_data": "0 (21 passed, 16 xfailed) — FIXED vs R5 (was 20 passed + 1 failure; test_real_registry now passes with REGISTRY_FS's DL-45 'self_sha256' key)",
+   "tests_hist": "0 (63 passed/13 xfailed + tests_int_regression 82/16) — meets 62",
+   "tests_int": "0 (82 passed, 16 xfailed) — meets 82 exactly",
+   "tests_models": "0 (130 passed, 26 xfailed) — meets 130",
+   "tests_train": "0 (177 passed, 43 xfailed) — FIXED vs R5 (was 169 passed + 1 failure; test_theta0_variants_..._o_excl_and_load now accepts an existing THETA0_VARIANTS.json); meets 177 exactly",
+   "tests_base": "0 (23 passed, 5 xfailed) — meets 23"
+  },
+  "every_nc_failed_as_intended": true,
+  "no_pycache_left_after": true,
+  "tests_fl_independent_and_tests_sup": "not run — neither has run_all.py",
+  "tests_train_gpu": "no run_all.py — R5's corrected SYS-04c result is this suite's GPU evidence"
+ },
+
+ "step6_smokes": {
+  "gpu0_queue": ["CALIB_GRU (plain CALIBRATION smoke)", "TUNING_GRU (P2R2 hp-id P2_GRU_D128_S0_s0)"],
+  "gpu1_queue": ["TUNING_SASREC (P2R2 hp-id P2_SASREC_D384_B2_S0_s0, the largest model)"],
+  "note_path_bug_worked_around": "the launcher's --hp-registry/--theta0-variants args are Path(arg) taken literally relative to the process cwd (code/); passing the relative paths from the packet's example failed with 'HP registry ... does not exist' on both the GRU and SASREC TUNING launches. Not a code fix: re-ran with ABSOLUTE paths for --hp-registry and --theta0-variants (no script edit). This is an invocation detail, not a defect report.",
+  "CALIB_GRU": {
+   "command": "--family GRU --seed 2026 --phase CALIBRATION --peak-lr 1e-3 --gpu 0 --history-policy USER_HISTORY_L50 --smoke --smoke-updates 600 --checkpoint-every 300",
+   "exit_code": 0, "stop_reason": "SMOKE_BUDGET_REACHED at update 600",
+   "model_variant": "GRU_D128", "config_sha256": "b016cdc3cddae9800861de4f0891a8d196c35d5b3a65b5a3425970641327bf6e",
+   "SMOKE_value_E2E_macro_mrr@20": 0.05124159828829754,
+   "gpu_peak_train_allocated_bytes": 878298112, "gpu_peak_eval_allocated_bytes": 2200335360,
+   "weights_deleted": true, "checkpoints_dir_empty_after": true,
+   "smoke_summary_sha256": "05ab40af978502b60a9f93bb472dcdb0fcd8be9b8be951c8b05162197ab73bd3",
+   "path": "runs_g1/r5b/smokes/CALIB_GRU/SMOKE_SUMMARY.json"
+  },
+  "TUNING_GRU": {
+   "command": "--family GRU --seed 2026 --phase CALIBRATION --role TUNING --hp-id P2_GRU_D128_S0_s0 --hp-registry <abs>/contracts/hp_registry/HP_REGISTRY_P2R2.json --theta0-variants <abs>/contracts/model_variants/THETA0_VARIANTS.json --gpu 0 --history-policy USER_HISTORY_L50 --smoke --smoke-updates 600 --checkpoint-every 300",
+   "exit_code": 0, "stop_reason": "SMOKE_BUDGET_REACHED at update 600",
+   "hp_id": "P2_GRU_D128_S0_s0", "hp_registry_self_sha256": "a3b48f20357e67606f6ec642e1ed68260cbe5070105bd001a85dd09b3bc5ca7b",
+   "model_variant": "GRU_D128", "theta0_init_sha256": "4e6f85549a0c408ed6871d21afa416dbd60a687fbe6aaaf27d675c6a202cb0aa",
+   "key_base_has_model_variant_and_theta0_init_sha256": true,
+   "weights_deleted": true, "checkpoints_dir_empty_after": true,
+   "smoke_summary_sha256": "42af2883160a00dab9764e1a43dd56b28432a3f8984ba67ab303cb26e827c625",
+   "path": "runs_g1/r5b/smokes/TUNING_GRU/SMOKE_SUMMARY.json"
+  },
+  "TUNING_SASREC": {
+   "command": "--family SASREC --seed 2026 --phase CALIBRATION --role TUNING --hp-id P2_SASREC_D384_B2_S0_s0 --hp-registry <abs>/contracts/hp_registry/HP_REGISTRY_P2R2.json --theta0-variants <abs>/contracts/model_variants/THETA0_VARIANTS.json --gpu 1 --history-policy USER_HISTORY_L50 --smoke --smoke-updates 600 --checkpoint-every 300",
+   "exit_code": 0, "stop_reason": "SMOKE_BUDGET_REACHED at update 600",
+   "hp_id": "P2_SASREC_D384_B2_S0_s0",
+   "model_variant": "SASREC_D384_B2", "theta0_init_sha256": "8df715cc577b6cc62a5455e4da7cfc2182e365d73c4a3d6382813972363d3124",
+   "key_base_has_model_variant_and_theta0_init_sha256": true,
+   "note_largest_model_memory_disk": {
+    "gpu_peak_train_allocated_bytes": 2631282688, "gpu_peak_train_reserved_bytes": 3632267264,
+    "gpu_peak_eval_allocated_bytes": 3880414720, "gpu_peak_eval_reserved_bytes": 5423235072,
+    "disk_free_before_gib": 22.9, "disk_free_after_gib": 21.5,
+    "planned_peak_bytes_at_start": 5026556320, "disk_headroom_ok": true
+   },
+   "weights_deleted": true, "checkpoints_dir_empty_after": true,
+   "smoke_summary_sha256": "ec0adeaa08e4fdd97b408d45c2abb1f730165331cba277bf5eb92b8e45ffce96",
+   "path": "runs_g1/r5b/smokes/TUNING_SASREC/SMOKE_SUMMARY.json"
+  }
+ },
+
+ "step7_disk": "23G free before R5b, 23G free after (49G total, 54% used) — unchanged; each smoke's own disk_at_start/stop/end recorded above and in each SMOKE_SUMMARY.json",
+
+ "hard_rules_followed": {
+  "no_code_fixes": true,
+  "no_deletions_besides_authorised_pycache_and_own_mistakes": "removed only the Ops-authorised stray code/__pycache__/ppsi_env.cpython-311.pyc (recorded first) and my own failed first-attempt run dirs (TUNING_SASREC, TUNING_GRU) before relaunching with corrected absolute paths, in each case before anything downstream read them",
+  "no_pkill_in_cmd": true,
+  "no_production_launch": true,
+  "G1_APPROVED_not_created": true
+ }
+}

@@ -1,0 +1,7 @@
+Rebuilt from `exploratory_warm_tau_grid_calibration.csv` by `run_pipeline.py --from-results` (numbers copied, never recomputed).
+
+| server_lr | tau | best_mrr@20 | best_mark_efe | mrr@20_at_6_efe |
+|---|---|---|---|---|
+| 3e-06 | 1e-06 | 0.171311 | 3.5 | 0.171155 |
+| 1e-05 | 1e-06 | 0.171237 | 1 | 0.169721 |
+| 3e-05 | 1e-06 | 0.170536 | 0.5 | 0.16628 |

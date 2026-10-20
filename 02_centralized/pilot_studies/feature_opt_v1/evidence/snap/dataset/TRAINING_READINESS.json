@@ -1,0 +1,317 @@
+{
+  "run_id": "run_20260920_234844",
+  "task_version": "rees46_next_item_context_eda_v3",
+  "generated": "2026-09-21T14:44:39Z",
+  "source_hashes": {
+    "2019-10": "fedd938409b5f836ec89b39c861b13dad99fc7cd9beb1fddd97a2d50488b5b80",
+    "2019-11": "addd9a27ed99abdece368019ebfba19568972c7fcbe949db3484aab8a3bcffec"
+  },
+  "source_coverage": {
+    "per_source": [
+      {
+        "month": "2019-10",
+        "path": "F:\\Queens University\\Microsoft Project\\eda\\data\\raw\\2019-Oct.csv",
+        "sha256": "fedd938409b5f836ec89b39c861b13dad99fc7cd9beb1fddd97a2d50488b5b80",
+        "size_bytes": 5668612855,
+        "row_count": 42448764,
+        "min_timestamp_utc": "2019-10-01 00:00:00",
+        "max_timestamp_utc": "2019-10-31 23:59:59",
+        "unique_users": 3022290,
+        "unique_products": 166794
+      },
+      {
+        "month": "2019-11",
+        "path": "F:\\Queens University\\Microsoft Project\\eda\\data\\raw\\2019-Nov.csv",
+        "sha256": "addd9a27ed99abdece368019ebfba19568972c7fcbe949db3484aab8a3bcffec",
+        "size_bytes": 9006762395,
+        "row_count": 67501979,
+        "min_timestamp_utc": "2019-11-01 00:00:00",
+        "max_timestamp_utc": "2019-11-30 23:59:59",
+        "unique_users": 3696117,
+        "unique_products": 190662
+      }
+    ],
+    "combined": {
+      "total_raw_rows": 109950743,
+      "min_timestamp_utc": "2019-10-01 00:00:00",
+      "max_timestamp_utc": "2019-11-30 23:59:59",
+      "unique_users": 5316649,
+      "unique_products": 206876
+    },
+    "event_types_by_month": [
+      {
+        "month": "2019-10",
+        "event_type": "cart",
+        "events": 926516
+      },
+      {
+        "month": "2019-10",
+        "event_type": "purchase",
+        "events": 742849
+      },
+      {
+        "month": "2019-10",
+        "event_type": "view",
+        "events": 40779399
+      },
+      {
+        "month": "2019-11",
+        "event_type": "cart",
+        "events": 3028930
+      },
+      {
+        "month": "2019-11",
+        "event_type": "purchase",
+        "events": 916939
+      },
+      {
+        "month": "2019-11",
+        "event_type": "view",
+        "events": 63556110
+      }
+    ],
+    "unique_by_month": [
+      {
+        "month": "2019-10",
+        "unique_users": 3022290,
+        "unique_products": 166794
+      },
+      {
+        "month": "2019-11",
+        "unique_users": 3696117,
+        "unique_products": 190662
+      }
+    ],
+    "required_months": [
+      "2019-10",
+      "2019-11"
+    ],
+    "months_processed": [
+      "2019-10",
+      "2019-11"
+    ],
+    "missing_months": [],
+    "intentionally_partial": false
+  },
+  "raw_identifier_string_roundtrip": true,
+  "identifier_stored_types_verified": [
+    {
+      "artifact": "canonical",
+      "column": "product_id_raw",
+      "stored_type": "string"
+    },
+    {
+      "artifact": "canonical",
+      "column": "category_id_raw",
+      "stored_type": "string"
+    },
+    {
+      "artifact": "canonical",
+      "column": "user_id_raw",
+      "stored_type": "string"
+    },
+    {
+      "artifact": "canonical",
+      "column": "user_session_raw",
+      "stored_type": "string"
+    },
+    {
+      "artifact": "canonical",
+      "column": "user_id",
+      "stored_type": "string"
+    },
+    {
+      "artifact": "canonical",
+      "column": "product_id",
+      "stored_type": "string"
+    },
+    {
+      "artifact": "canonical",
+      "column": "category_id",
+      "stored_type": "string"
+    },
+    {
+      "artifact": "canonical",
+      "column": "user_session_normalized",
+      "stored_type": "string"
+    },
+    {
+      "artifact": "views",
+      "column": "user_id",
+      "stored_type": "string"
+    },
+    {
+      "artifact": "views",
+      "column": "product_id",
+      "stored_type": "string"
+    },
+    {
+      "artifact": "views",
+      "column": "category_id",
+      "stored_type": "string"
+    },
+    {
+      "artifact": "blocks",
+      "column": "user_id",
+      "stored_type": "string"
+    },
+    {
+      "artifact": "blocks",
+      "column": "product_id",
+      "stored_type": "string"
+    },
+    {
+      "artifact": "sequences/representatives",
+      "column": "user_id",
+      "stored_type": "string"
+    },
+    {
+      "artifact": "sequences/representatives",
+      "column": "product_id",
+      "stored_type": "string"
+    },
+    {
+      "artifact": "sequences/representatives",
+      "column": "derived_session_id",
+      "stored_type": "string"
+    },
+    {
+      "artifact": "sequences/representatives",
+      "column": "model_segment_id",
+      "stored_type": "string"
+    },
+    {
+      "artifact": "sequences/representatives",
+      "column": "category_id_resolved",
+      "stored_type": "string"
+    },
+    {
+      "artifact": "decision_ledgers",
+      "column": "user_id",
+      "stored_type": "string"
+    },
+    {
+      "artifact": "decision_ledgers",
+      "column": "product_id",
+      "stored_type": "string"
+    },
+    {
+      "artifact": "decision_ledgers",
+      "column": "target_product_id",
+      "stored_type": "string"
+    },
+    {
+      "artifact": "decision_ledgers_annotated",
+      "column": "user_id",
+      "stored_type": "string"
+    },
+    {
+      "artifact": "decision_ledgers_annotated",
+      "column": "product_id",
+      "stored_type": "string"
+    },
+    {
+      "artifact": "decision_ledgers_annotated",
+      "column": "target_product_id",
+      "stored_type": "string"
+    },
+    {
+      "artifact": "features",
+      "column": "user_id",
+      "stored_type": "string"
+    },
+    {
+      "artifact": "features",
+      "column": "product_id",
+      "stored_type": "string"
+    },
+    {
+      "artifact": "indices/decisions",
+      "column": "user_id",
+      "stored_type": "string"
+    },
+    {
+      "artifact": "indices/decisions",
+      "column": "target_product_id",
+      "stored_type": "string"
+    },
+    {
+      "artifact": "vocabularies",
+      "column": "product_id",
+      "stored_type": "string"
+    }
+  ],
+  "identifier_type_violations": [],
+  "identifier_storage_policy": "canonical identity of user_id / product_id / category_id / user_session / derived_session_id is the RAW SOURCE STRING in every canonical, audit, intermediate and decision-ledger artifact; contiguous TRAIN-fitted integer indices (product_idx / client_idx / category_idx / brand_idx) exist only in model-facing artifacts, with raw_string_id -> integer_index mapping files",
+  "config_hash": "21dcf09a60821d54602f880a46619435c097c8448d98ca335fde6f75a5fed77f",
+  "code_hash": "02fbb07147ed9c0ba54092dd4ee042ce6af42a06145178017999fb7b242dde73",
+  "full_data_processed": true,
+  "training_data_ready": true,
+  "validation_data_ready": true,
+  "test_build_ready": true,
+  "evaluation_protocol_status": "full_frozen_catalogue_chunked; seen items not filtered; OOV targets retained end-to-end and scored zero",
+  "metadata_recovery_families_enabled": {
+    "brand_product": true,
+    "category_id_product": true,
+    "category_code_product": true,
+    "category_code_category": true
+  },
+  "residual_missing_rates": {
+    "brand": 0.15676157651374098,
+    "category_id": 0.0,
+    "category_code": 0.3398308433115087
+  },
+  "feature_set_id": "rees46_next_item_shared_v4_localtime",
+  "context_length_default": 50,
+  "context_length_candidates": [
+    20,
+    50
+  ],
+  "catalogue_size": 158486,
+  "raw_rows": 109950743,
+  "valid_representatives": 76274561,
+  "train_contributing_decisions": 40180608,
+  "clients_all_splits": 5315561,
+  "client_vocabulary_size": 4204379,
+  "future_only_clients_oov": 1111182,
+  "metadata_recovery_effectiveness": "see warnings: enabled != effective. Coverage is reported per field.",
+  "test_access_disclosure": "TEST and LABEL_GRACE were physically read by the deterministic builder for routing, target maturation and fixed acceptance gates. No TEST/GRACE observation entered any fitted vocabulary, normalizer, metadata mapping or policy decision. Detailed TEST statistics are sealed under reports/sealed_test/. Historical unexposed-holdout status is NOT claimed.",
+  "logical_decision_digest": {
+    "decisions": 75083291,
+    "digest_bit_xor_hash": "16933510634980793212",
+    "note": "commutative digest: invariant to repartitioning and row order"
+  },
+  "logical_feature_digest": {
+    "rows": 75083291,
+    "digest_bit_xor_hash": "6792430621004509073",
+    "note": "commutative digest: invariant to repartitioning and row order"
+  },
+  "test_access_log_entries": 18,
+  "integration_smoke_passed": true,
+  "integration_smoke_checks": 241,
+  "cold_rebuild_identical": true,
+  "final_gate_checks_passed": 82,
+  "final_gate_checks_failed": 0,
+  "notebook_executed": true,
+  "html_exported": true,
+  "loader_parity_passed": true,
+  "checks_passed": 65,
+  "checks_failed": 0,
+  "checks_skipped_with_reason": [],
+  "blocking_issues": [],
+  "warnings": [
+    "COLD_START_FUTURE_USERS: 1,051,533 of 2,342,459 future-split clients (44.890%) are unseen in TRAIN; client_idx is the reserved OOV and the user-context channels are masked for them.",
+    "CLIENT_VOCABULARY_TRAIN_ONLY: 4,204,379 of 5,315,561 distinct clients are mapped; 1,111,182 future-only clients resolve to OOV.",
+    "RECOVERY_NOT_PRACTICALLY_EFFECTIVE:brand - 1,149 of 8,271,939 originally-missing TRAIN events (0.0139%). The family passed its acceptance gate; it did NOT resolve the missingness.",
+    "RECOVERY_ZERO_YIELD:category_id - nothing was missing, so the enabled family had nothing to resolve.",
+    "RECOVERY_ZERO_YIELD:category_code - 17,929,582 missing and 0 recovered; every remaining value stays MISSING.",
+    "RESIDUAL_MISSING: TRAIN brand 15.676%, TRAIN category_code 33.983% remain MISSING after recovery.",
+    "SINGLETON_SESSIONS: 5,448,432 of 17,984,974 derived sessions (30.294%) hold a single event and therefore produce no next-item decision.",
+    "CONTEXTUAL_TZ_UNCONFIRMED: Europe/Moscow is HYPOTHESIS_NOT_CONFIRMED_STORE_GEOGRAPHY; the TRAIN-only audit rules out UTC but cannot separate the candidates ['UTC+2', 'UTC+3', 'UTC+4']. Canonical time remains UTC everywhere.",
+    "TARGET_OOV_ON_TEST: 198,319 of 5,862,968 observed TEST targets (3.383%) fall outside the frozen catalogue. They are real ground truth and are NOT dropped, but they can never receive ranking credit, so they cap achievable top-k recall on TEST."
+  ],
+  "readiness_state": "READY_WITH_WARNINGS",
+  "human_review_required_before_training": true,
+  "exact_resume_command": "cd \"next_item_eda\" && .venv\\Scripts\\python.exe scripts\\run_pipeline.py --resume",
+  "exact_verify_command": "cd \"next_item_eda\" && .venv\\Scripts\\python.exe scripts\\verify_training_ready.py"
+}

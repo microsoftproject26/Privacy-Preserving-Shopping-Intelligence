@@ -1,0 +1,1253 @@
+{
+ "task": "CENSUS-02",
+ "evidence": "PROJECT_MEASURED",
+ "status": "PASS",
+ "utc": {
+  "census_start_date_u": "2026-09-26T19:33:27Z",
+  "census_end_date_u": "2026-09-26T19:34:40Z",
+  "job_start_date_u": "2026-09-26T19:33:26Z",
+  "job_end_date_u": "2026-09-26T19:34:40Z"
+ },
+ "full_population": true,
+ "buckets": 64,
+ "host": {
+  "platform": "Linux-6.8.0-117-generic-x86_64-with-glibc2.39",
+  "python": "3.11.14",
+  "numpy": "2.4.6",
+  "pyarrow": "21.0.0",
+  "cuda_visible_devices": "",
+  "omp_num_threads": "8"
+ },
+ "inputs": {
+  "dataset_root": "/home/jovyan/shared_data/rees46_nextitem_v1",
+  "version_hash": "860e5a1c3a81b8e4bbfeff4f245fa37638a43e4f260df179585964d2d4da8dbd",
+  "files_read": [
+   {
+    "path": "decisions/user_bucket=0/ledger.parquet",
+    "files_json_sha256": "98947d7c8fc959d038ea29dfb11a2bdeb64effcd8ab71b2b3a49e256c70fb883",
+    "measured_sha256": "98947d7c8fc959d038ea29dfb11a2bdeb64effcd8ab71b2b3a49e256c70fb883",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=1/ledger.parquet",
+    "files_json_sha256": "5e63b2d6833df7e4b06709086652b75d979a73eef7d9db97ffca32affe8b321d",
+    "measured_sha256": "5e63b2d6833df7e4b06709086652b75d979a73eef7d9db97ffca32affe8b321d",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=2/ledger.parquet",
+    "files_json_sha256": "1f95f8a750dd968fd2fff8ca098fe3da53d9c9eea461e39c70ef52eea1f69fea",
+    "measured_sha256": "1f95f8a750dd968fd2fff8ca098fe3da53d9c9eea461e39c70ef52eea1f69fea",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=3/ledger.parquet",
+    "files_json_sha256": "d21c712009332e866f4752d17d761b4857f76b4a1b0e909ecdc547909df8e767",
+    "measured_sha256": "d21c712009332e866f4752d17d761b4857f76b4a1b0e909ecdc547909df8e767",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=4/ledger.parquet",
+    "files_json_sha256": "bdfce9771bec8c8e3ef7eab522f12d8e930cbfdb28c08652f7278959561677d6",
+    "measured_sha256": "bdfce9771bec8c8e3ef7eab522f12d8e930cbfdb28c08652f7278959561677d6",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=5/ledger.parquet",
+    "files_json_sha256": "0a065cc2163792e4d5bb4f4b74ba0e72451b2d2191f2318f305ca4a3d89c1813",
+    "measured_sha256": "0a065cc2163792e4d5bb4f4b74ba0e72451b2d2191f2318f305ca4a3d89c1813",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=6/ledger.parquet",
+    "files_json_sha256": "e02baeffbadc80f9534befc162f7c2633f9bdfe44c611269420c015bdf57b03d",
+    "measured_sha256": "e02baeffbadc80f9534befc162f7c2633f9bdfe44c611269420c015bdf57b03d",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=7/ledger.parquet",
+    "files_json_sha256": "c5e50ef6b2a517d9c95172dcbaf8cc08bbfb42f5525057b8112e86c618868f00",
+    "measured_sha256": "c5e50ef6b2a517d9c95172dcbaf8cc08bbfb42f5525057b8112e86c618868f00",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=8/ledger.parquet",
+    "files_json_sha256": "f16069bc4008d987a9ee00b3fbb87fdba70e0b7275a13b57457da692fbddffed",
+    "measured_sha256": "f16069bc4008d987a9ee00b3fbb87fdba70e0b7275a13b57457da692fbddffed",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=9/ledger.parquet",
+    "files_json_sha256": "ad005cb923f175cf797a972c860aabd862cd233ae0bff649e0da59eb4257c9b1",
+    "measured_sha256": "ad005cb923f175cf797a972c860aabd862cd233ae0bff649e0da59eb4257c9b1",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=10/ledger.parquet",
+    "files_json_sha256": "61e457df4b3cd256741c4b640deb522d27e8bfaff84f877fdaea0b2afb9449fa",
+    "measured_sha256": "61e457df4b3cd256741c4b640deb522d27e8bfaff84f877fdaea0b2afb9449fa",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=11/ledger.parquet",
+    "files_json_sha256": "39cd6143413128592a5f9b80529812400e3972d7e1796fb71f2062f80a44d7fb",
+    "measured_sha256": "39cd6143413128592a5f9b80529812400e3972d7e1796fb71f2062f80a44d7fb",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=12/ledger.parquet",
+    "files_json_sha256": "83bf6bc2ca7902e9df99c94e04d3107349799ec5361af9660240d887cd46c45d",
+    "measured_sha256": "83bf6bc2ca7902e9df99c94e04d3107349799ec5361af9660240d887cd46c45d",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=13/ledger.parquet",
+    "files_json_sha256": "9649ce4e6a95be77dc49842d9a4b8cee5551787d2c813ccf6952751517e15695",
+    "measured_sha256": "9649ce4e6a95be77dc49842d9a4b8cee5551787d2c813ccf6952751517e15695",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=14/ledger.parquet",
+    "files_json_sha256": "bae297d893c62d317d7688e0aec5ab0de23c2ab7b37b3584a520641d2e7eaefc",
+    "measured_sha256": "bae297d893c62d317d7688e0aec5ab0de23c2ab7b37b3584a520641d2e7eaefc",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=15/ledger.parquet",
+    "files_json_sha256": "4b92e22e35844059d7e8db68942088ff525e6ceb9263d994c1d261624629e019",
+    "measured_sha256": "4b92e22e35844059d7e8db68942088ff525e6ceb9263d994c1d261624629e019",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=16/ledger.parquet",
+    "files_json_sha256": "7ad8d480b672720b893100c125b4181f15fce0a0832f3c5e20bec67c94036378",
+    "measured_sha256": "7ad8d480b672720b893100c125b4181f15fce0a0832f3c5e20bec67c94036378",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=17/ledger.parquet",
+    "files_json_sha256": "1e1ac6df3a10f155bac4c8b91943e09395bb25d959f4b21787cf3f8608ff0c62",
+    "measured_sha256": "1e1ac6df3a10f155bac4c8b91943e09395bb25d959f4b21787cf3f8608ff0c62",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=18/ledger.parquet",
+    "files_json_sha256": "86328b81c9e0af3869dc9b079aa86e9ce63ae25fe42c55c384e4832d7287ba47",
+    "measured_sha256": "86328b81c9e0af3869dc9b079aa86e9ce63ae25fe42c55c384e4832d7287ba47",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=19/ledger.parquet",
+    "files_json_sha256": "ba17af3e1bed0dd5111220c40e0167f71b0c5e1b86fb97762e2ff59103ea86cf",
+    "measured_sha256": "ba17af3e1bed0dd5111220c40e0167f71b0c5e1b86fb97762e2ff59103ea86cf",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=20/ledger.parquet",
+    "files_json_sha256": "1d22dc8020051fdbfb8aa1d8177ec0e7b47566d5dcc1bfd4572072dc4c1f4f9f",
+    "measured_sha256": "1d22dc8020051fdbfb8aa1d8177ec0e7b47566d5dcc1bfd4572072dc4c1f4f9f",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=21/ledger.parquet",
+    "files_json_sha256": "6b62daa860f4dbfd3e9bce05c642829f675906577411810f133590e2ea643d0b",
+    "measured_sha256": "6b62daa860f4dbfd3e9bce05c642829f675906577411810f133590e2ea643d0b",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=22/ledger.parquet",
+    "files_json_sha256": "ed6fc51ed94eb6f2799f195389f91dbf3486b1e7fce3955e03bad1b4bb6f245c",
+    "measured_sha256": "ed6fc51ed94eb6f2799f195389f91dbf3486b1e7fce3955e03bad1b4bb6f245c",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=23/ledger.parquet",
+    "files_json_sha256": "4bdb92362e627a6f49d7d0338bf4c0cb7c4ab0ed5bce087038350260f86601f4",
+    "measured_sha256": "4bdb92362e627a6f49d7d0338bf4c0cb7c4ab0ed5bce087038350260f86601f4",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=24/ledger.parquet",
+    "files_json_sha256": "84cb1a552c294afdf0f15f68d4b17bd576183712be6a6d341494a4d1c05cc38a",
+    "measured_sha256": "84cb1a552c294afdf0f15f68d4b17bd576183712be6a6d341494a4d1c05cc38a",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=25/ledger.parquet",
+    "files_json_sha256": "4ce7a9cce3370ae0c107d30c6b2d730820f17e2917de41dd967a188acce81477",
+    "measured_sha256": "4ce7a9cce3370ae0c107d30c6b2d730820f17e2917de41dd967a188acce81477",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=26/ledger.parquet",
+    "files_json_sha256": "88592940ff5e8204e9f30e3f6a65c0df918f6494e7014f57e549bbfbd3b0a69a",
+    "measured_sha256": "88592940ff5e8204e9f30e3f6a65c0df918f6494e7014f57e549bbfbd3b0a69a",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=27/ledger.parquet",
+    "files_json_sha256": "6af33aff34a3bbca3e745afcf973d9a1a82aad7ceb77a89d45e8606a7b3e53aa",
+    "measured_sha256": "6af33aff34a3bbca3e745afcf973d9a1a82aad7ceb77a89d45e8606a7b3e53aa",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=28/ledger.parquet",
+    "files_json_sha256": "b687c10138d759c5a21ab0fa832396283d93ad4c3e119272df16e4d84aff9a39",
+    "measured_sha256": "b687c10138d759c5a21ab0fa832396283d93ad4c3e119272df16e4d84aff9a39",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=29/ledger.parquet",
+    "files_json_sha256": "95f630286d3fe62511730fe5174a7ee0aacc48d8fb1dbe1d70e1763d4da106b3",
+    "measured_sha256": "95f630286d3fe62511730fe5174a7ee0aacc48d8fb1dbe1d70e1763d4da106b3",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=30/ledger.parquet",
+    "files_json_sha256": "ffec3c4359ffccac6bd992cb87e8083be3a3d96aebce11a9259c1614dd779a12",
+    "measured_sha256": "ffec3c4359ffccac6bd992cb87e8083be3a3d96aebce11a9259c1614dd779a12",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=31/ledger.parquet",
+    "files_json_sha256": "d0ede4827819e305cdcb6f2d40973d2de16829d4e62a7b38d7ef52c7739ff616",
+    "measured_sha256": "d0ede4827819e305cdcb6f2d40973d2de16829d4e62a7b38d7ef52c7739ff616",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=32/ledger.parquet",
+    "files_json_sha256": "4aaa05b9e83e378c3d52d0ef6ead7b2f49152369cd3c46f883ab869e71dbfc3b",
+    "measured_sha256": "4aaa05b9e83e378c3d52d0ef6ead7b2f49152369cd3c46f883ab869e71dbfc3b",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=33/ledger.parquet",
+    "files_json_sha256": "e3490f17de258dfbff0c3e2eba3032175c596d9b41defa2476837d111e9d0ea2",
+    "measured_sha256": "e3490f17de258dfbff0c3e2eba3032175c596d9b41defa2476837d111e9d0ea2",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=34/ledger.parquet",
+    "files_json_sha256": "f258dff0caa5dc24fd2ab1c9087bd694e972d6ed142c4bd8fd558a7312d8f157",
+    "measured_sha256": "f258dff0caa5dc24fd2ab1c9087bd694e972d6ed142c4bd8fd558a7312d8f157",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=35/ledger.parquet",
+    "files_json_sha256": "45709b030849b5139e9bdc8b7dab848375ec16d9bf14a25977279ab2c499b875",
+    "measured_sha256": "45709b030849b5139e9bdc8b7dab848375ec16d9bf14a25977279ab2c499b875",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=36/ledger.parquet",
+    "files_json_sha256": "4e9c4b2202ce9ed6292a5c422d251564138f229e0554491141ceadb72fdfe8cc",
+    "measured_sha256": "4e9c4b2202ce9ed6292a5c422d251564138f229e0554491141ceadb72fdfe8cc",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=37/ledger.parquet",
+    "files_json_sha256": "09af2286c06e4ad9084aecfb7b680fd7e8417bfa2fb7042e12ed6dd872dbf9a7",
+    "measured_sha256": "09af2286c06e4ad9084aecfb7b680fd7e8417bfa2fb7042e12ed6dd872dbf9a7",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=38/ledger.parquet",
+    "files_json_sha256": "444255e350f293e45607951b45320de84da129c4ed32068fc14ef5ddad04f594",
+    "measured_sha256": "444255e350f293e45607951b45320de84da129c4ed32068fc14ef5ddad04f594",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=39/ledger.parquet",
+    "files_json_sha256": "346ffc24438db34b8cc170f78ae325668e0385d9aac3519852dff60fb8ab358a",
+    "measured_sha256": "346ffc24438db34b8cc170f78ae325668e0385d9aac3519852dff60fb8ab358a",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=40/ledger.parquet",
+    "files_json_sha256": "552a676e1dcdf3437e20a96cd1699fdd727873da46a06d86901c16baa5e7ff00",
+    "measured_sha256": "552a676e1dcdf3437e20a96cd1699fdd727873da46a06d86901c16baa5e7ff00",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=41/ledger.parquet",
+    "files_json_sha256": "50ef7723101d17eb7eb4daa61547665e78654389a57ee1f3b90ac77e29729d64",
+    "measured_sha256": "50ef7723101d17eb7eb4daa61547665e78654389a57ee1f3b90ac77e29729d64",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=42/ledger.parquet",
+    "files_json_sha256": "c1f2193d298dcf2eefa7fe28ec949594dc101fd57f044a855808dcd7af84d893",
+    "measured_sha256": "c1f2193d298dcf2eefa7fe28ec949594dc101fd57f044a855808dcd7af84d893",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=43/ledger.parquet",
+    "files_json_sha256": "47e2e62d49d568a6fb9803831fbd393b812ccca9000dd6e65c8d3e764f82814d",
+    "measured_sha256": "47e2e62d49d568a6fb9803831fbd393b812ccca9000dd6e65c8d3e764f82814d",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=44/ledger.parquet",
+    "files_json_sha256": "1a674439d7a9330830f136e2601780d2b3c4df40094b449b213e6e6834d11c99",
+    "measured_sha256": "1a674439d7a9330830f136e2601780d2b3c4df40094b449b213e6e6834d11c99",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=45/ledger.parquet",
+    "files_json_sha256": "f505ccdfc0722fbb5f234350617576105f2d053c5260bd154fee37838d393c1d",
+    "measured_sha256": "f505ccdfc0722fbb5f234350617576105f2d053c5260bd154fee37838d393c1d",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=46/ledger.parquet",
+    "files_json_sha256": "edf76c3331eef3d079def1e9bdf2624fe0989c9a34466b783d80cdc8ff8d51c6",
+    "measured_sha256": "edf76c3331eef3d079def1e9bdf2624fe0989c9a34466b783d80cdc8ff8d51c6",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=47/ledger.parquet",
+    "files_json_sha256": "f4e9bbd84a15d0bf73796fb4beafc16ef10bce8fd6acf038d1e400f7136ce819",
+    "measured_sha256": "f4e9bbd84a15d0bf73796fb4beafc16ef10bce8fd6acf038d1e400f7136ce819",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=48/ledger.parquet",
+    "files_json_sha256": "04b80ef346be1ca17309b45f51a210d3e9217bebbebef0ea84c0d800505d44fd",
+    "measured_sha256": "04b80ef346be1ca17309b45f51a210d3e9217bebbebef0ea84c0d800505d44fd",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=49/ledger.parquet",
+    "files_json_sha256": "b0f81a7d40c55b484e8a4fb184be4207f667e71adc21af0cf9887d0d98c4b1a0",
+    "measured_sha256": "b0f81a7d40c55b484e8a4fb184be4207f667e71adc21af0cf9887d0d98c4b1a0",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=50/ledger.parquet",
+    "files_json_sha256": "fe2870e6be388ee14b0ccf1adfa223f4f4ba55a15a3e607ba922cba4d6d082c4",
+    "measured_sha256": "fe2870e6be388ee14b0ccf1adfa223f4f4ba55a15a3e607ba922cba4d6d082c4",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=51/ledger.parquet",
+    "files_json_sha256": "64f98ef1d5aaa12c2491e29bd299c4c5a3ce26621b997462a922426216429329",
+    "measured_sha256": "64f98ef1d5aaa12c2491e29bd299c4c5a3ce26621b997462a922426216429329",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=52/ledger.parquet",
+    "files_json_sha256": "470be99e481db3e4a2f9a6ef31a495fa8cbe70915da5db5d6cf5757e0c2aac8c",
+    "measured_sha256": "470be99e481db3e4a2f9a6ef31a495fa8cbe70915da5db5d6cf5757e0c2aac8c",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=53/ledger.parquet",
+    "files_json_sha256": "6c5a7bd2372785a90566ac9e753a668807fda59bf1e4ae8eea8b417895cc63e4",
+    "measured_sha256": "6c5a7bd2372785a90566ac9e753a668807fda59bf1e4ae8eea8b417895cc63e4",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=54/ledger.parquet",
+    "files_json_sha256": "a879ce56811075aca9e2676dbec29fab2f040b1965b79a1258bc6fb3e1655329",
+    "measured_sha256": "a879ce56811075aca9e2676dbec29fab2f040b1965b79a1258bc6fb3e1655329",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=55/ledger.parquet",
+    "files_json_sha256": "13412567035c63562a0206d14693b0c61ae75b30ed3b73d7f78f42304dbace42",
+    "measured_sha256": "13412567035c63562a0206d14693b0c61ae75b30ed3b73d7f78f42304dbace42",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=56/ledger.parquet",
+    "files_json_sha256": "577eb375ce2426e3a1759be4cfa6fbaf194c586cc523113e228dd14606a79588",
+    "measured_sha256": "577eb375ce2426e3a1759be4cfa6fbaf194c586cc523113e228dd14606a79588",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=57/ledger.parquet",
+    "files_json_sha256": "e0925ff31ec33dd4b2e51971ac05c2e6d5ca43a7f2a1046eac6275adbf996b89",
+    "measured_sha256": "e0925ff31ec33dd4b2e51971ac05c2e6d5ca43a7f2a1046eac6275adbf996b89",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=58/ledger.parquet",
+    "files_json_sha256": "4cd31916d0430344db58a8b8bba22670cf5213b50b18702beb55d219b7174761",
+    "measured_sha256": "4cd31916d0430344db58a8b8bba22670cf5213b50b18702beb55d219b7174761",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=59/ledger.parquet",
+    "files_json_sha256": "7d70c0bbe2e395366b1b3feab6f1388f82a0bc64fc6138453626f60844887ab3",
+    "measured_sha256": "7d70c0bbe2e395366b1b3feab6f1388f82a0bc64fc6138453626f60844887ab3",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=60/ledger.parquet",
+    "files_json_sha256": "7340a018a02fb0123c0c083b60175a209b37bf60eb322a470a44067926e0528b",
+    "measured_sha256": "7340a018a02fb0123c0c083b60175a209b37bf60eb322a470a44067926e0528b",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=61/ledger.parquet",
+    "files_json_sha256": "b78a4d9a3c819d5aad26a9de145dd05611e506d2b0155eef0c7693d1f96bd20e",
+    "measured_sha256": "b78a4d9a3c819d5aad26a9de145dd05611e506d2b0155eef0c7693d1f96bd20e",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=62/ledger.parquet",
+    "files_json_sha256": "22e8e655a70fb276b4a01efdc41524ce5316eabb26cab1b8c040322194354347",
+    "measured_sha256": "22e8e655a70fb276b4a01efdc41524ce5316eabb26cab1b8c040322194354347",
+    "match": true
+   },
+   {
+    "path": "decisions/user_bucket=63/ledger.parquet",
+    "files_json_sha256": "48d610b0cc9fef33d7137e91287b082bccd8d2aed0c36c7a9b879ca94d8d867a",
+    "measured_sha256": "48d610b0cc9fef33d7137e91287b082bccd8d2aed0c36c7a9b879ca94d8d867a",
+    "match": true
+   },
+   {
+    "path": "mappings/catalogue.parquet",
+    "files_json_sha256": "d99d0ce7dd05473f1fa84459b7e1e868c6f9412747d79e511661801b11268acd",
+    "measured_sha256": "d99d0ce7dd05473f1fa84459b7e1e868c6f9412747d79e511661801b11268acd",
+    "match": true
+   }
+  ],
+  "all_files_json_entries_match": true,
+  "other": {
+   "VERSION.json": {
+    "measured_sha256": "65f03c594d3d34dad1359c96c99bfff229d0602f569946933e6018199b4d1f01",
+    "files_json_sha256": "65f03c594d3d34dad1359c96c99bfff229d0602f569946933e6018199b4d1f01"
+   },
+   "FILES.json": {
+    "measured_sha256": "4d4d20d38eeb1b8cd9a7ba76eaea46e79312efc534cd15325604a03ef7004b1b",
+    "files_json_sha256": null
+   },
+   "splits/splits.json": {
+    "measured_sha256": "d1923cd51aa794090707a017df4e6334a8d90f24e35f2471efb7a07b44acf26f",
+    "files_json_sha256": "d1923cd51aa794090707a017df4e6334a8d90f24e35f2471efb7a07b44acf26f"
+   }
+  }
+ },
+ "other_inputs_sha256": {
+  "GRU_CLEAN_V2_MANIFEST_INVENTORY.json": "f2bb23f8cca1ebd299b3f2aa8ea4a09d562c0dd476dc75db2101216de9ea61ca",
+  "SASREC_CLEAN_V2_MANIFEST_INVENTORY.json": "919d5a081e635d96fd0d9a5150044e662189e6b4e3945dca9ef3541abf90c4d8",
+  "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/gru_v1/final_eval/vc_ranks_F0_item_only_h256.npy": "ffcf04a2ad049313a26bc2dfe58eb0a40e48e7c715362c7abc15f7013afed591",
+  "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/gru_v1/final_eval/VC_RESULTS.json": "72a90525b22d58c3124bb6a43c1d1d5498004ac54ac9c0420ad2bb29c914873c",
+  "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/retro_eval/VALIDATION_CONFIRM/A1_RICH256_s2027.ranks.npz": "c4b186474f80ec709680f30386b755a373fdfab9a759c873938fa98a40e8e7e0",
+  "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/retro_eval/VALIDATION_CONFIRM/A1_RICH256_s2027.json": "5bcfb572bd6ade4869777d56df7c3cc35c54d80ac5081f137f33cc8bc6ba1e6c"
+ },
+ "code": {
+  "census_v2_files_sha256": {
+   "__init__.py": "53af90132f6e00d0952e07b2584a9cfacee67d20b334c1ad7e5408f8a1e37927",
+   "census02.py": "4e3f583d366b0823edd9f4077b1d78d5c8b8b57cb3b98674eab4410aa9eae09a",
+   "core.py": "aca2fe3a69afaa6a38c75492acc3148a8ec5ccb7b79678af815acd8eef4d169a",
+   "finalize.py": "917f4fef9285fcbdceec5e8702eaa34d1e3cfc48a133e24c19eadf4017093a0a",
+   "job.sh": "83dbf98ff3ae79ea382c7db09a336bcb710c23a486570505ce74fdbb9d709450",
+   "test_census02.py": "76ca8daa57c6e9b59e7f15e8e5d9354a462c68ac94f6f0d5aacf9815390ea1ee"
+  },
+  "census_v2_tree_sha256": "3abce6cc8b914eca47bc0aebcf50db6c86bff3171e58b67adf1076a8e3de3d2f",
+  "imported_v4data_files_sha256": {
+   "v4data/common.py": "2f1173160282e147017785c518c8d1892ae9d9df65523b436fc4191748c6a699",
+   "v4data/manifests.py": "cad8b9ce18a82d9a3f5124e4e5aa85082735f21e8bdc2c55b3c6610578a8d126",
+   "v4data/reference_counts.py": "eee9d3057216efa1945ae5eeb7e758edee8171080efb6ce84485151ffdac3ea2"
+  },
+  "v4data_builder_code_sha256": "443254e9ed95e41a48076f91643c83fbc77355dc80bb6b111d8432703d3e34a5"
+ },
+ "resources": {
+  "peak_rss_self_mib": 4534.7,
+  "wall_s": 72.8,
+  "pass_s": 56.4,
+  "rss_guard": {
+   "peak_rss_mib_process_tree": 4564.7,
+   "limit_mib": 16384.0,
+   "rc": 0,
+   "killed_rss_guard": false,
+   "wall_s": 73.6,
+   "guard": "v4data.run_bounded (0.5 s VmRSS polling)"
+  }
+ },
+ "rows_materialised_by_split": {
+  "TRAIN": 52760314,
+  "VALIDATION_SELECT": 10930090,
+  "VALIDATION_CONFIRM": 3427555,
+  "TEST": 0
+ },
+ "test_split_read": false,
+ "reproduction_checks": [
+  {
+   "name": "catalogue.n_rows",
+   "expected": 158486,
+   "got": 158486,
+   "pass": true,
+   "source": "v4data.reference_counts",
+   "hard": true
+  },
+  {
+   "name": "catalogue.K_equals_lock",
+   "expected": 158486,
+   "got": 158486,
+   "pass": true,
+   "source": "v4data.common.K",
+   "hard": true
+  },
+  {
+   "name": "catalogue.support_mismatch",
+   "expected": 0,
+   "got": 0,
+   "pass": true,
+   "source": "support == catalogue.representative_views",
+   "hard": true
+  },
+  {
+   "name": "catalogue.K1_products_with_train_support",
+   "expected": 191890,
+   "got": 191890,
+   "pass": true,
+   "source": "v4data.reference_counts",
+   "hard": true
+  },
+  {
+   "name": "catalogue.support_ge5_set_equals_catalogue",
+   "expected": true,
+   "got": true,
+   "pass": true,
+   "source": "G0 CATALOGUE_SUPPORT",
+   "hard": true
+  },
+  {
+   "name": "oov.target_with_support_ge5_marked_oov",
+   "expected": 0,
+   "got": 0,
+   "pass": true,
+   "source": "EVAL M02 oov_cause_consistent",
+   "hard": true
+  },
+  {
+   "name": "oov.observed_uncatalogued_not_oov",
+   "expected": 0,
+   "got": 0,
+   "pass": true,
+   "source": "M02 oov_cause: has_obs & tc<0 implies oov",
+   "hard": true
+  },
+  {
+   "name": "G0.s5.users_with_ge1_example",
+   "expected": 2694998,
+   "got": 2694998,
+   "pass": true,
+   "source": "g0/data_census/CLIENT_CENSUS.json s5.users_with_ge1_example",
+   "hard": true
+  },
+  {
+   "name": "G0.s5.total_examples",
+   "expected": 40180608,
+   "got": 40180608,
+   "pass": true,
+   "source": "CLIENT_CENSUS.json s5.total_examples",
+   "hard": true
+  },
+  {
+   "name": "G0.s5.A1_users_in_train_zero_eligible",
+   "expected": 1509381,
+   "got": 1509381,
+   "pass": true,
+   "source": "CLIENT_CENSUS.json s5.users_in_train_with_zero_eligible_examples",
+   "hard": true
+  },
+  {
+   "name": "OPS_PREVIEW.B.users",
+   "expected": 1197003,
+   "got": 1197003,
+   "pass": true,
+   "source": "CENSUS-02 packet (from the G0 frequency table)",
+   "hard": true
+  },
+  {
+   "name": "OPS_PREVIEW.B.examples",
+   "expected": 2503629,
+   "got": 2503629,
+   "pass": true,
+   "source": "CENSUS-02 packet (from the G0 frequency table)",
+   "hard": true
+  },
+  {
+   "name": "OPS_PREVIEW.C.users",
+   "expected": 1446986,
+   "got": 1446986,
+   "pass": true,
+   "source": "CENSUS-02 packet (from the G0 frequency table)",
+   "hard": true
+  },
+  {
+   "name": "OPS_PREVIEW.C.examples",
+   "expected": 28623386,
+   "got": 28623386,
+   "pass": true,
+   "source": "CENSUS-02 packet (from the G0 frequency table)",
+   "hard": true
+  },
+  {
+   "name": "OPS_PREVIEW.D.users",
+   "expected": 51009,
+   "got": 51009,
+   "pass": true,
+   "source": "CENSUS-02 packet (from the G0 frequency table)",
+   "hard": true
+  },
+  {
+   "name": "OPS_PREVIEW.D.examples",
+   "expected": 9053593,
+   "got": 9053593,
+   "pass": true,
+   "source": "CENSUS-02 packet (from the G0 frequency table)",
+   "hard": true
+  },
+  {
+   "name": "DATA04.TRAIN.decisions",
+   "expected": 52760314,
+   "got": 52760314,
+   "pass": true,
+   "source": "v4data.reference_counts (g0/data_census/SPLIT_COUNTS.json per_old_split.TRAIN.decisions)",
+   "hard": true
+  },
+  {
+   "name": "DATA04.TRAIN.loss_mask_true",
+   "expected": 40180608,
+   "got": 40180608,
+   "pass": true,
+   "source": "v4data.reference_counts (SPLIT_COUNTS.json per_old_split.TRAIN.loss_mask_true)",
+   "hard": true
+  },
+  {
+   "name": "DATA04.TRAIN.target_oov_true",
+   "expected": 56560,
+   "got": 56560,
+   "pass": true,
+   "source": "v4data.reference_counts (SPLIT_COUNTS.json per_old_split.TRAIN.target_oov_true)",
+   "hard": true
+  },
+  {
+   "name": "DATA04.TRAIN.distinct_users",
+   "expected": 4204379,
+   "got": 4204379,
+   "pass": true,
+   "source": "v4data.reference_counts (SPLIT_COUNTS.json per_old_split.TRAIN.distinct_users)",
+   "hard": true
+  },
+  {
+   "name": "DATA04.TRAIN.status.OBSERVED_IN_PARTITION",
+   "expected": 40237168,
+   "got": 40237168,
+   "pass": true,
+   "source": "v4data.reference_counts (SPLIT_COUNTS.json per_old_split.TRAIN.target_status_counts)",
+   "hard": true
+  },
+  {
+   "name": "DATA04.TRAIN.status.NO_OBSERVED_NEXT",
+   "expected": 12512673,
+   "got": 12512673,
+   "pass": true,
+   "source": "v4data.reference_counts (SPLIT_COUNTS.json per_old_split.TRAIN.target_status_counts)",
+   "hard": true
+  },
+  {
+   "name": "DATA04.TRAIN.status.AMBIGUOUS_BOUNDARY",
+   "expected": 10472,
+   "got": 10472,
+   "pass": true,
+   "source": "v4data.reference_counts (SPLIT_COUNTS.json per_old_split.TRAIN.target_status_counts)",
+   "hard": true
+  },
+  {
+   "name": "DATA04.TRAIN.status.BOUNDARY_UNRESOLVED",
+   "expected": 1,
+   "got": 1,
+   "pass": true,
+   "source": "v4data.reference_counts (SPLIT_COUNTS.json per_old_split.TRAIN.target_status_counts)",
+   "hard": true
+  },
+  {
+   "name": "DATA04.VALIDATION_SELECT.decisions",
+   "expected": 10930090,
+   "got": 10930090,
+   "pass": true,
+   "source": "v4data.reference_counts (SPLIT_COUNTS.json per_old_split.VALIDATION_SELECT.decisions)",
+   "hard": true
+  },
+  {
+   "name": "DATA04.VALIDATION_SELECT.eval_mask_true",
+   "expected": 8826488,
+   "got": 8826488,
+   "pass": true,
+   "source": "v4data.reference_counts (SPLIT_COUNTS.json per_old_split.VALIDATION_SELECT.eval_mask_true)",
+   "hard": true
+  },
+  {
+   "name": "DATA04.VALIDATION_SELECT.distinct_users",
+   "expected": 1139657,
+   "got": 1139657,
+   "pass": true,
+   "source": "v4data.reference_counts (SPLIT_COUNTS.json per_old_split.VALIDATION_SELECT.distinct_users)",
+   "hard": true
+  },
+  {
+   "name": "DATA04.VALIDATION_CONFIRM.decisions",
+   "expected": 3427555,
+   "got": 3427555,
+   "pass": true,
+   "source": "v4data.reference_counts (SPLIT_COUNTS.json per_old_split.VALIDATION_CONFIRM.decisions)",
+   "hard": true
+  },
+  {
+   "name": "DATA04.VALIDATION_CONFIRM.eval_mask_true",
+   "expected": 2461568,
+   "got": 2461568,
+   "pass": true,
+   "source": "v4data.reference_counts (SPLIT_COUNTS.json per_old_split.VALIDATION_CONFIRM.eval_mask_true)",
+   "hard": true
+  },
+  {
+   "name": "DATA04.VALIDATION_CONFIRM.distinct_users",
+   "expected": 700093,
+   "got": 700093,
+   "pass": true,
+   "source": "v4data.reference_counts (SPLIT_COUNTS.json per_old_split.VALIDATION_CONFIRM.distinct_users)",
+   "hard": true
+  },
+  {
+   "name": "DATA04.VALIDATION.decisions",
+   "expected": 14357645,
+   "got": 14357645,
+   "pass": true,
+   "source": "v4data.reference_counts (SPLIT_COUNTS.json v4_validation_union.decisions)",
+   "hard": true
+  },
+  {
+   "name": "DATA04.VALIDATION.eval_mask_true",
+   "expected": 11288056,
+   "got": 11288056,
+   "pass": true,
+   "source": "v4data.reference_counts (SPLIT_COUNTS.json v4_validation_union.eval_mask_true)",
+   "hard": true
+  },
+  {
+   "name": "DATA04.VALIDATION.target_oov_true",
+   "expected": 96871,
+   "got": 96871,
+   "pass": true,
+   "source": "v4data.reference_counts (SPLIT_COUNTS.json v4_validation_union.target_oov_true)",
+   "hard": true
+  },
+  {
+   "name": "DATA04.VALIDATION.target_class_ge0",
+   "expected": 11191185,
+   "got": 11191185,
+   "pass": true,
+   "source": "v4data.reference_counts (SPLIT_COUNTS.json v4_validation_union.target_class_ge0)",
+   "hard": true
+  },
+  {
+   "name": "DATA04.VALIDATION.distinct_users",
+   "expected": 1578912,
+   "got": 1578912,
+   "pass": true,
+   "source": "v4data.reference_counts (SPLIT_COUNTS.json v4_validation_union.distinct_users)",
+   "hard": true
+  },
+  {
+   "name": "DATA04.VALIDATION.status.OBSERVED_IN_PARTITION",
+   "expected": 11288056,
+   "got": 11288056,
+   "pass": true,
+   "source": "v4data.reference_counts (SPLIT_COUNTS.json v4_validation_union.target_status_counts)",
+   "hard": true
+  },
+  {
+   "name": "DATA04.VALIDATION.status.NO_OBSERVED_NEXT",
+   "expected": 3064778,
+   "got": 3064778,
+   "pass": true,
+   "source": "v4data.reference_counts (SPLIT_COUNTS.json v4_validation_union.target_status_counts)",
+   "hard": true
+  },
+  {
+   "name": "DATA04.VALIDATION.status.AMBIGUOUS_BOUNDARY",
+   "expected": 4489,
+   "got": 4489,
+   "pass": true,
+   "source": "v4data.reference_counts (SPLIT_COUNTS.json v4_validation_union.target_status_counts)",
+   "hard": true
+  },
+  {
+   "name": "DATA04.VALIDATION.status.BOUNDARY_UNRESOLVED",
+   "expected": 322,
+   "got": 322,
+   "pass": true,
+   "source": "v4data.reference_counts (SPLIT_COUNTS.json v4_validation_union.target_status_counts)",
+   "hard": true
+  },
+  {
+   "name": "DATA04.VALIDATION.censor.CEN_LEGACY_BARRIER",
+   "expected": 170,
+   "got": 170,
+   "pass": true,
+   "source": "v4data.reference_counts (company/reviews/G0B_PROTOCOL_FABLE_POSITION.md:32; g0/BARRIER_COUNT.json L21)",
+   "hard": true
+  },
+  {
+   "name": "DATA04.VALIDATION.censor.CEN_AMBIGUOUS_NEXT_BARRIER",
+   "expected": 4489,
+   "got": 4489,
+   "pass": true,
+   "source": "v4data.reference_counts (G0B_PROTOCOL_FABLE_POSITION.md:32; SPLIT_COUNTS.json L83)",
+   "hard": true
+  },
+  {
+   "name": "DATA04.VALIDATION.censor.CEN_RIGHT_EDGE",
+   "expected": 152,
+   "got": 152,
+   "pass": true,
+   "source": "v4data.reference_counts (G0B_PROTOCOL_FABLE_POSITION.md:32; g0/BARRIER_COUNT.json L16)",
+   "hard": true
+  },
+  {
+   "name": "DATA04.VALIDATION.censor.CEN_NO_NEXT",
+   "expected": 3064778,
+   "got": 3064778,
+   "pass": true,
+   "source": "v4data.reference_counts (G0B_PROTOCOL_FABLE_POSITION.md:32; SPLIT_COUNTS.json L82)",
+   "hard": true
+  },
+  {
+   "name": "DATA04.label_time.train_loss_target_ts_ge_train_end",
+   "expected": 0,
+   "got": 0,
+   "pass": true,
+   "source": "v4data.reference_counts (g0/data_census/LABEL_TIME_AUDIT.json)",
+   "hard": true
+  },
+  {
+   "name": "DATA04.label_time.train_loss_target_ts_null",
+   "expected": 0,
+   "got": 0,
+   "pass": true,
+   "source": "v4data.reference_counts (LABEL_TIME_AUDIT.json)",
+   "hard": true
+  },
+  {
+   "name": "DATA04.label_time.val_eval_target_ts_ge_val_end",
+   "expected": 0,
+   "got": 0,
+   "pass": true,
+   "source": "v4data.reference_counts (LABEL_TIME_AUDIT.json)",
+   "hard": true
+  },
+  {
+   "name": "DATA04.label_time.decisions_ts_ge_2019_11_30_non_test",
+   "expected": 0,
+   "got": 0,
+   "pass": true,
+   "source": "v4data.reference_counts (LABEL_TIME_AUDIT.json decisions_with_decision_ts_ge_2019_11_30)",
+   "hard": true
+  },
+  {
+   "name": "DATA04.VALIDATION.oov_absent_from_train_s1_excluded",
+   "expected": 50124,
+   "got": 50124,
+   "pass": true,
+   "source": "v4data.reference_counts (CATALOGUE_SUPPORT.json thresholds.1.validation_union_label_coverage.excluded_count)",
+   "hard": true
+  },
+  {
+   "name": "check.m01_filter_vs_census_eligibility_mismatch",
+   "expected": 0,
+   "got": 0,
+   "pass": true,
+   "source": "DATA-04 integrity check (must be 0)",
+   "hard": true
+  },
+  {
+   "name": "check.val_eval_not_rankable_or_oov",
+   "expected": 0,
+   "got": 0,
+   "pass": true,
+   "source": "DATA-04 integrity check (must be 0)",
+   "hard": true
+  },
+  {
+   "name": "check.oov_not_eval_on_val",
+   "expected": 0,
+   "got": 0,
+   "pass": true,
+   "source": "DATA-04 integrity check (must be 0)",
+   "hard": true
+  },
+  {
+   "name": "DATA04.universe_size",
+   "expected": 2694998,
+   "got": 2694998,
+   "pass": true,
+   "source": "g0/data_census/COHORT_PROJECTIONS.json universe_size; g0/receipts_qa01/COHORT_RECEIPTS.json",
+   "hard": true
+  },
+  {
+   "name": "DATA04.users_in_train_zero_eligible",
+   "expected": 1509381,
+   "got": 1509381,
+   "pass": true,
+   "source": "REF",
+   "hard": true
+  },
+  {
+   "name": "DATA04.val_users_with_ge1_eval",
+   "expected": 1023523,
+   "got": 1023523,
+   "pass": true,
+   "source": "REF",
+   "hard": true
+  },
+  {
+   "name": "DATA04.val_users_warm",
+   "expected": 642228,
+   "got": 642228,
+   "pass": true,
+   "source": "REF",
+   "hard": true
+  },
+  {
+   "name": "DATA04.val_users_cold",
+   "expected": 381295,
+   "got": 381295,
+   "pass": true,
+   "source": "REF",
+   "hard": true
+  },
+  {
+   "name": "DATA04.cohort16384.population_sha256",
+   "expected": "3b845f51260fab7d10590827eafd0c9d8b58a3813f482d88b5ca4826f77a8c92",
+   "got": "3b845f51260fab7d10590827eafd0c9d8b58a3813f482d88b5ca4826f77a8c92",
+   "pass": true,
+   "source": "COHORT_PROJECTIONS.json cohorts.16384",
+   "hard": true
+  },
+  {
+   "name": "DATA04.cohort65536.population_sha256",
+   "expected": "3d680aa7222fb5c9246d03fe6088464c78095d90a344e3453acb68e98d53a6f4",
+   "got": "3d680aa7222fb5c9246d03fe6088464c78095d90a344e3453acb68e98d53a6f4",
+   "pass": true,
+   "source": "COHORT_PROJECTIONS.json cohorts.65536",
+   "hard": true
+  },
+  {
+   "name": "DATA04.cohort262144.population_sha256",
+   "expected": "54e1d3c2539fd4cd7fe22d2b8ef91bed1a786d69be27867406bb19141ac48184",
+   "got": "54e1d3c2539fd4cd7fe22d2b8ef91bed1a786d69be27867406bb19141ac48184",
+   "pass": true,
+   "source": "COHORT_PROJECTIONS.json cohorts.262144",
+   "hard": true
+  },
+  {
+   "name": "DATA04.cohortALL.population_sha256",
+   "expected": "db46b81d6ceb7d0c766e76ca2d0f5dede905cedf4b91881e168be4476b9bee14",
+   "got": "db46b81d6ceb7d0c766e76ca2d0f5dede905cedf4b91881e168be4476b9bee14",
+   "pass": true,
+   "source": "COHORT_PROJECTIONS.json cohorts.ALL",
+   "hard": true
+  },
+  {
+   "name": "DATA04.cohort262144.eligible_examples",
+   "expected": 3906929,
+   "got": 3906929,
+   "pass": true,
+   "source": "COHORT_PROJECTIONS.json cohorts.262144.eligible_train_examples_total",
+   "hard": true
+  },
+  {
+   "name": "DATA04.cohort262144.val_eval_rows",
+   "expected": 808610,
+   "got": 808610,
+   "pass": true,
+   "source": "COHORT_PROJECTIONS.json cohorts.262144.validation_union_eval_rows_total",
+   "hard": true
+  },
+  {
+   "name": "DATA04.cohort262144.users_ge1_eval",
+   "expected": 62368,
+   "got": 62368,
+   "pass": true,
+   "source": "COHORT_PROJECTIONS.json cohorts.262144.users_with_ge1_validation_eval_row",
+   "hard": true
+  },
+  {
+   "name": "DATA04.cohort262144.rankable",
+   "expected": 801762,
+   "got": 801762,
+   "pass": true,
+   "source": "g0/receipts_qa01/COHORT_RECEIPTS.json cohorts.262144",
+   "hard": true
+  },
+  {
+   "name": "DATA04.cohort262144.oov",
+   "expected": 6848,
+   "got": 6848,
+   "pass": true,
+   "source": "COHORT_RECEIPTS.json cohorts.262144",
+   "hard": true
+  },
+  {
+   "name": "DATA04.cohort262144.classes_ge1_positive",
+   "expected": 133154,
+   "got": 133154,
+   "pass": true,
+   "source": "COHORT_RECEIPTS.json cohorts.262144",
+   "hard": true
+  },
+  {
+   "name": "DATA04.cohort262144.classes_ge5_positive",
+   "expected": 72682,
+   "got": 72682,
+   "pass": true,
+   "source": "COHORT_RECEIPTS.json cohorts.262144",
+   "hard": true
+  },
+  {
+   "name": "DATA04.cohort262144.val_classes_zero_positive",
+   "expected": 5158,
+   "got": 5158,
+   "pass": true,
+   "source": "COHORT_RECEIPTS.json cohorts.262144",
+   "hard": true
+  },
+  {
+   "name": "DATA04.cohort262144.per_client_min",
+   "expected": 1,
+   "got": 1,
+   "pass": true,
+   "source": "REF",
+   "hard": true
+  },
+  {
+   "name": "DATA04.cohort262144.per_client_p50",
+   "expected": 6.0,
+   "got": 6.0,
+   "pass": true,
+   "source": "REF",
+   "hard": true
+  },
+  {
+   "name": "DATA04.cohort262144.per_client_max",
+   "expected": 3014,
+   "got": 3014,
+   "pass": true,
+   "source": "REF",
+   "hard": true
+  },
+  {
+   "name": "DATA04.cohort65536.eligible_examples",
+   "expected": 990362,
+   "got": 990362,
+   "pass": true,
+   "source": "COHORT_PROJECTIONS.json cohorts.65536.eligible_train_examples_total",
+   "hard": true
+  },
+  {
+   "name": "DATA04.cohort65536.val_eval_rows",
+   "expected": 200985,
+   "got": 200985,
+   "pass": true,
+   "source": "COHORT_PROJECTIONS.json cohorts.65536.validation_union_eval_rows_total",
+   "hard": true
+  },
+  {
+   "name": "DATA04.cohort65536.users_ge1_eval",
+   "expected": 15487,
+   "got": 15487,
+   "pass": true,
+   "source": "COHORT_PROJECTIONS.json cohorts.65536.users_with_ge1_validation_eval_row",
+   "hard": true
+  },
+  {
+   "name": "DATA04.cohort65536.rankable",
+   "expected": 199276,
+   "got": 199276,
+   "pass": true,
+   "source": "COHORT_RECEIPTS.json cohorts.65536",
+   "hard": true
+  },
+  {
+   "name": "DATA04.cohort65536.oov",
+   "expected": 1709,
+   "got": 1709,
+   "pass": true,
+   "source": "COHORT_RECEIPTS.json cohorts.65536",
+   "hard": true
+  },
+  {
+   "name": "DATA04.cohort65536.classes_ge1_positive",
+   "expected": 90545,
+   "got": 90545,
+   "pass": true,
+   "source": "COHORT_RECEIPTS.json cohorts.65536",
+   "hard": true
+  },
+  {
+   "name": "DATA04.cohort65536.classes_ge5_positive",
+   "expected": 31425,
+   "got": 31425,
+   "pass": true,
+   "source": "COHORT_RECEIPTS.json cohorts.65536",
+   "hard": true
+  },
+  {
+   "name": "DATA04.cohort65536.val_classes_zero_positive",
+   "expected": 7619,
+   "got": 7619,
+   "pass": true,
+   "source": "COHORT_RECEIPTS.json cohorts.65536",
+   "hard": true
+  },
+  {
+   "name": "DATA04.cold.COLD_NO_TRAIN_EVENTS.users",
+   "expected": 299035,
+   "got": 299035,
+   "pass": true,
+   "source": "g0/receipts_qa01/COLD_STRATA.json VALIDATION_union",
+   "hard": true
+  },
+  {
+   "name": "DATA04.cold.COLD_NO_TRAIN_EVENTS.eval_rows",
+   "expected": 2270516,
+   "got": 2270516,
+   "pass": true,
+   "source": "REF",
+   "hard": true
+  },
+  {
+   "name": "DATA04.cold.COLD_TRAIN_EVENTS_NO_LABEL.users",
+   "expected": 82260,
+   "got": 82260,
+   "pass": true,
+   "source": "COLD_STRATA.json VALIDATION_union",
+   "hard": true
+  },
+  {
+   "name": "DATA04.cold.COLD_TRAIN_EVENTS_NO_LABEL.eval_rows",
+   "expected": 587149,
+   "got": 587149,
+   "pass": true,
+   "source": "REF",
+   "hard": true
+  },
+  {
+   "name": "strata.user_shares_sum_to_1",
+   "expected": true,
+   "got": true,
+   "pass": true,
+   "source": "identity",
+   "hard": true
+  },
+  {
+   "name": "strata.example_shares_sum_to_1",
+   "expected": true,
+   "got": true,
+   "pass": true,
+   "source": "identity",
+   "hard": true
+  },
+  {
+   "name": "poolC.no_two_users_share_selection_key_v2",
+   "expected": true,
+   "got": true,
+   "pass": true,
+   "source": "CENSUS-02 deliverable 2",
+   "hard": true
+  },
+  {
+   "name": "poolC.prefixes_nested_and_keys_strictly_ascending",
+   "expected": true,
+   "got": true,
+   "pass": true,
+   "source": "construction",
+   "hard": true
+  },
+  {
+   "name": "inputs.all_files_json_entries_match",
+   "expected": true,
+   "got": true,
+   "pass": true,
+   "source": "FILES.json",
+   "hard": true
+  },
+  {
+   "name": "code.v4data_builder_code_sha256_is_DATA04",
+   "expected": "443254e9ed95e41a48076f91643c83fbc77355dc80bb6b111d8432703d3e34a5",
+   "got": "443254e9ed95e41a48076f91643c83fbc77355dc80bb6b111d8432703d3e34a5",
+   "pass": true,
+   "source": "DATA-04 handoff builder_code_sha256",
+   "hard": true
+  }
+ ],
+ "reproduction_all_pass": true,
+ "n_checks": 89,
+ "n_failed": 0,
+ "tests": {
+  "tests_passed": 10,
+  "tests_failed": 0,
+  "tests_total": 10,
+  "results": [
+   {
+    "name": "test_strata_boundaries",
+    "pass": true
+   },
+   {
+    "name": "test_selection_key_v2_known_answer",
+    "pass": true
+   },
+   {
+    "name": "test_key_nesting_and_population_hash",
+    "pass": true
+   },
+   {
+    "name": "test_calib_sizes",
+    "pass": true
+   },
+   {
+    "name": "test_fl_local_work_arithmetic",
+    "pass": true
+   },
+   {
+    "name": "test_gini_and_top_share",
+    "pass": true
+   },
+   {
+    "name": "test_head_sizes_reproduce_inventory",
+    "pass": true
+   },
+   {
+    "name": "test_shares_sum_to_one_pure",
+    "pass": true
+   },
+   {
+    "name": "test_synthetic_census_end_to_end",
+    "pass": true
+   },
+   {
+    "name": "test_prior_refuses_test_paths",
+    "pass": true
+   }
+  ],
+  "module": "census_v2/test_census02.py",
+  "module_sha256": "76ca8daa57c6e9b59e7f15e8e5d9354a462c68ac94f6f0d5aacf9815390ea1ee",
+  "utc_date_u": "2026-09-26T19:33:27Z"
+ },
+ "outputs_sha256": {
+  "STRATA_CENSUS.json": "9a53fb33e0b2d27768847282a8a56b37a7a760db289f0ad53db088183e4c1643",
+  "CANDIDATE_N_PROJECTIONS.json": "7edff7853d94d6cb9b27446b5fe6244a834460f5059fa05ae3d9d1cd9fffbb01",
+  "FL_LOCAL_WORK.json": "9f20575c0e7a75808e3b5439f458c02bdc907852801a5ed72d60b891c2eb82c0",
+  "CATALOGUE_OPTION_B.json": "8d480ac1a130bd26b8c87edcf54a9714006d42d4a1d617ef4aebaf57452d62e0",
+  "PRECISION_PRIOR.json": "44f3ae7a045e52d1af550d628be6f607989b3ac76d82fa986ad86efebec51d98"
+ },
+ "source": "census_v2/census02.py; PROJECT_MEASURED",
+ "receipt_sha256": "616a920b636541db2b41d9b9c6701baea57dd4e202a3050cf3cbbfafb511a03f"
+}

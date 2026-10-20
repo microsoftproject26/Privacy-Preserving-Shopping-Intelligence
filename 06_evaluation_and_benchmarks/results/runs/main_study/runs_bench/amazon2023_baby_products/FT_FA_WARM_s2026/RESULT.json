@@ -1,0 +1,146 @@
+{
+ "arm": "FT_FA_WARM",
+ "base_arm": "FA_WARM",
+ "base_run": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/amazon2023_baby_products/FA_WARM_s2026",
+ "checkpoints": {
+  "CONTROLLED_BUDGET": {
+   "file": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/amazon2023_baby_products/FA_WARM_s2026/ckpt/BM_amazon2023_baby_products_FA_WARM_s2026/endpoint_6.0.pt",
+   "mark": 6.0,
+   "sha256": "aff3a9b4e068c4d2cae0d0e618ede44465d4b30279e13b5f20bf2b4d5b4ffc0f"
+  },
+  "PRACTICAL_BEST": {
+   "file": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/amazon2023_baby_products/FA_WARM_s2026/ckpt/BM_amazon2023_baby_products_FA_WARM_s2026/best.pt",
+   "mark": 4.5,
+   "sha256": "8165fb1fd325745b48be0e64587d849edf3ca982a8cfcd24bf07dc7c69bdedd4"
+  }
+ },
+ "ft_cell": {
+  "cell": "FT_C_f0.3_P4",
+  "lr_frac": 0.3,
+  "passes": 4
+ },
+ "kind": "ft",
+ "run_id": "BM_amazon2023_baby_products_FT_FA_WARM_s2026",
+ "spec": {
+  "cfg": {
+   "seed": 2026
+  },
+  "seed": 2026
+ },
+ "status": "DONE_MAIN",
+ "timing": {
+  "CONTROLLED_BUDGET": {
+   "mean_support_events": 5.226125713222937,
+   "n_users": 150549,
+   "s_per_user": 0.06879175502317278,
+   "threads": 16,
+   "wall_s": 10356.53,
+   "workers": 2
+  },
+  "PRACTICAL_BEST": {
+   "mean_support_events": 5.226125713222937,
+   "n_users": 150549,
+   "s_per_user": 0.07459748105905573,
+   "threads": 16,
+   "wall_s": 11230.58,
+   "workers": 2
+  }
+ },
+ "utc": "2026-10-04T16:03:55Z",
+ "validation": {
+  "CONTROLLED_BUDGET": {
+   "ALL": {
+    "hr@10": 0.022318314967219977,
+    "hr@20": 0.03735660814751343,
+    "mrr@20": 0.008842290167862256,
+    "n_unreachable": 0,
+    "n_users": 150549,
+    "ndcg@10": 0.011165984687631953,
+    "ndcg@20": 0.014934585386188548
+   },
+   "BAND": {
+    "hr@10": 0.0231579879560751,
+    "hr@20": 0.038655685441020195,
+    "mrr@20": 0.008773587451764774,
+    "n_unreachable": 0,
+    "n_users": 22584,
+    "ndcg@10": 0.01128314639193935,
+    "ndcg@20": 0.015163936865906074
+   },
+   "BAND_COVERED_TARGET": {
+    "hr@10": 0.02401921537229784,
+    "hr@20": 0.04020359144458424,
+    "mrr@20": 0.009516169667744875,
+    "n_unreachable": 0,
+    "n_users": 139888,
+    "ndcg@10": 0.012016955198003422,
+    "ndcg@20": 0.016072764606723237
+   },
+   "BAND_UNCOVERED_TARGET": {
+    "hr@10": 0.0,
+    "hr@20": 0.0,
+    "mrr@20": 0.0,
+    "n_unreachable": 0,
+    "n_users": 10661,
+    "ndcg@10": 0.0,
+    "ndcg@20": 0.0
+   },
+   "OTHERS": {
+    "hr@10": 0.022170124643457197,
+    "hr@20": 0.037127339506896416,
+    "mrr@20": 0.008854415218777317,
+    "n_unreachable": 0,
+    "n_users": 127965,
+    "ndcg@10": 0.011145307315459263,
+    "ndcg@20": 0.014894108116482452
+   }
+  },
+  "PRACTICAL_BEST": {
+   "ALL": {
+    "hr@10": 0.022185467854319855,
+    "hr@20": 0.03707098685477818,
+    "mrr@20": 0.008661366479465856,
+    "n_unreachable": 0,
+    "n_users": 150549,
+    "ndcg@10": 0.011003527383652375,
+    "ndcg@20": 0.01473191243527788
+   },
+   "BAND": {
+    "hr@10": 0.022582359192348564,
+    "hr@20": 0.03861140630534892,
+    "mrr@20": 0.008657107540049818,
+    "n_unreachable": 0,
+    "n_users": 22584,
+    "ndcg@10": 0.011031553324591468,
+    "ndcg@20": 0.015055690770376176
+   },
+   "BAND_COVERED_TARGET": {
+    "hr@10": 0.023876243852224636,
+    "hr@20": 0.03989620267642686,
+    "mrr@20": 0.009321457609781435,
+    "n_unreachable": 0,
+    "n_users": 139888,
+    "ndcg@10": 0.011842116865502985,
+    "ndcg@20": 0.01585464575387917
+   },
+   "BAND_UNCOVERED_TARGET": {
+    "hr@10": 0.0,
+    "hr@20": 0.0,
+    "mrr@20": 0.0,
+    "n_unreachable": 0,
+    "n_users": 10661,
+    "ndcg@10": 0.0,
+    "ndcg@20": 0.0
+   },
+   "OTHERS": {
+    "hr@10": 0.02211542218575392,
+    "hr@20": 0.036799124760676746,
+    "mrr@20": 0.008662118121616224,
+    "n_unreachable": 0,
+    "n_users": 127965,
+    "ndcg@10": 0.010998581204226997,
+    "ndcg@20": 0.01467477017044093
+   }
+  }
+ }
+}

@@ -1,0 +1,433 @@
+{
+ "task": "MODEL-01",
+ "evidence": "PROJECT_MEASURED: local CPU build (strict FP32), no dataset rows read",
+ "family": "GRU",
+ "topology": {
+  "module": "v4models/gru_v2.py",
+  "class": "ContextGRU",
+  "channels": "F4-rich (6 token channels + numeric + flags + late-fused user context)",
+  "item_dim": 128,
+  "hidden": 256,
+  "layers": 1,
+  "head": "tied: item_embed rows [3, 3+K) + output_bias",
+  "proj_dropout": 0.2,
+  "readout_dropout": 0.1,
+  "query_dim": 128
+ },
+ "schema": {
+  "schema_id": "FEATURE_SCHEMA_CLEAN_V2",
+  "schema_version": "2.1.0",
+  "self_sha256": "55a244e1608bcdcdf6f1728595f534871b52154faebf2977e11ac1fb487052f9",
+  "file_sha256": "ecf5e405f86da90e63c6e923f783fb92c4cf2fe931d1f28617a76ad092ca86a7"
+ },
+ "widths": {
+  "view_id": "clean_v2_rich",
+  "numeric_dim": 15,
+  "flags_dim": 15,
+  "user_context_dim": 12,
+  "user_mask_dim": 4,
+  "categorical": [
+   "item_tokens",
+   "category_tokens",
+   "brand_tokens",
+   "main_category_tokens",
+   "daypart_tokens",
+   "weekday_tokens"
+  ],
+  "numeric_names": [
+   "log1p_price",
+   "utc_hour_sin",
+   "utc_hour_cos",
+   "utc_weekday_sin",
+   "utc_weekday_cos",
+   "local_weekday_sin",
+   "local_weekday_cos",
+   "is_weekend",
+   "log1p_prev_raw_view_gap_s",
+   "log1p_segment_elapsed_s",
+   "log1p_item_observed_age_s",
+   "prefix_representative_count",
+   "prefix_known_category_count",
+   "prefix_category_switch_count",
+   "current_known_category_run_length"
+  ],
+  "flag_names": [
+   "price_missing",
+   "price_zero",
+   "price_conflict",
+   "brand_missing",
+   "brand_recovered",
+   "brand_conflict",
+   "category_missing",
+   "category_recovered",
+   "category_conflict",
+   "category_code_missing",
+   "category_code_recovered",
+   "main_category_missing",
+   "prev_gap_unavailable",
+   "item_age_unavailable",
+   "simultaneous_block"
+  ],
+  "user_context_names": [
+   "log1p_prev_view_count",
+   "log1p_prev_session_count",
+   "recent_history_length",
+   "has_history",
+   "recent_distinct_items",
+   "recent_distinct_known_main_categories",
+   "recent_category_match_share",
+   "recent_brand_match_share",
+   "recent_mean_log_price",
+   "current_minus_recent_mean_log_price",
+   "log1p_time_since_prev_user_event_s",
+   "log1p_time_since_prev_session_last_event_s"
+  ],
+  "user_mask_names": [
+   "recent_category_match_supported",
+   "recent_brand_match_supported",
+   "recent_price_supported",
+   "prev_session_available"
+  ]
+ },
+ "K": 158486,
+ "vocab_sizes": {
+  "item_tokens": 158489,
+  "category_tokens": 663,
+  "brand_tokens": 3956,
+  "main_category_tokens": 16,
+  "daypart_tokens": 8,
+  "weekday_tokens": 10
+ },
+ "class_map": "product_idx_of_class = arange(3, 3 + K) from V1 mappings/catalogue.parquet (FILES.json sha256 verified)",
+ "parameter_inventory": {
+  "item_embed": 20286592,
+  "category_embed": 21216,
+  "brand_embed": 126592,
+  "main_category_embed": 128,
+  "daypart_embed": 32,
+  "weekday_embed": 40,
+  "numeric_flags_proj": 992,
+  "input_proj": 30848,
+  "input_norm": 256,
+  "input_dropout": 0,
+  "gru": 296448,
+  "user_ctx_proj": 1088,
+  "readout_proj": 41088,
+  "readout_dropout": 0,
+  "output_bias": 158486,
+  "total": 20963806,
+  "unique_parameter_tensors": 21,
+  "registered_parameter_names": 21
+ },
+ "shared_numel": 20963806,
+ "shared_bytes": 83855224,
+ "visit_bytes": {
+  "download_bytes": 83855224,
+  "upload_bytes": 83855232,
+  "send_plus_receive_bytes": 167710456,
+  "private_bytes_sent": 0,
+  "private_resident_bytes": 0,
+  "bootstrap_bytes_once": 1267888,
+  "alias_bytes_not_sent": 0,
+  "shared_numel": 20963806
+ },
+ "manifest_digest": "fcfc241e36d98a89b454c22c3c3109aae43eb26266196d844efe40afe1d7dd83",
+ "manifest": {
+  "entries": {
+   "output_bias": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     158486
+    ],
+    "numel": 158486,
+    "alias_of": null,
+    "rule": null
+   },
+   "product_idx_of_class": {
+    "role": "buffer",
+    "dtype": "torch.int64",
+    "shape": [
+     158486
+    ],
+    "numel": 158486,
+    "alias_of": null,
+    "rule": "fixed"
+   },
+   "item_embed.weight": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     158489,
+     128
+    ],
+    "numel": 20286592,
+    "alias_of": null,
+    "rule": null
+   },
+   "category_embed.weight": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     663,
+     32
+    ],
+    "numel": 21216,
+    "alias_of": null,
+    "rule": null
+   },
+   "brand_embed.weight": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     3956,
+     32
+    ],
+    "numel": 126592,
+    "alias_of": null,
+    "rule": null
+   },
+   "main_category_embed.weight": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     16,
+     8
+    ],
+    "numel": 128,
+    "alias_of": null,
+    "rule": null
+   },
+   "daypart_embed.weight": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     8,
+     4
+    ],
+    "numel": 32,
+    "alias_of": null,
+    "rule": null
+   },
+   "weekday_embed.weight": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     10,
+     4
+    ],
+    "numel": 40,
+    "alias_of": null,
+    "rule": null
+   },
+   "numeric_flags_proj.0.weight": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     32,
+     30
+    ],
+    "numel": 960,
+    "alias_of": null,
+    "rule": null
+   },
+   "numeric_flags_proj.0.bias": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     32
+    ],
+    "numel": 32,
+    "alias_of": null,
+    "rule": null
+   },
+   "input_proj.weight": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     128,
+     240
+    ],
+    "numel": 30720,
+    "alias_of": null,
+    "rule": null
+   },
+   "input_proj.bias": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     128
+    ],
+    "numel": 128,
+    "alias_of": null,
+    "rule": null
+   },
+   "input_norm.weight": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     128
+    ],
+    "numel": 128,
+    "alias_of": null,
+    "rule": null
+   },
+   "input_norm.bias": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     128
+    ],
+    "numel": 128,
+    "alias_of": null,
+    "rule": null
+   },
+   "gru.weight_ih_l0": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     768,
+     128
+    ],
+    "numel": 98304,
+    "alias_of": null,
+    "rule": null
+   },
+   "gru.weight_hh_l0": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     768,
+     256
+    ],
+    "numel": 196608,
+    "alias_of": null,
+    "rule": null
+   },
+   "gru.bias_ih_l0": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     768
+    ],
+    "numel": 768,
+    "alias_of": null,
+    "rule": null
+   },
+   "gru.bias_hh_l0": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     768
+    ],
+    "numel": 768,
+    "alias_of": null,
+    "rule": null
+   },
+   "user_ctx_proj.0.weight": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     64,
+     16
+    ],
+    "numel": 1024,
+    "alias_of": null,
+    "rule": null
+   },
+   "user_ctx_proj.0.bias": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     64
+    ],
+    "numel": 64,
+    "alias_of": null,
+    "rule": null
+   },
+   "readout_proj.weight": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     128,
+     320
+    ],
+    "numel": 40960,
+    "alias_of": null,
+    "rule": null
+   },
+   "readout_proj.bias": {
+    "role": "shared",
+    "dtype": "torch.float32",
+    "shape": [
+     128
+    ],
+    "numel": 128,
+    "alias_of": null,
+    "rule": null
+   }
+  },
+  "private_extra": {},
+  "nonpersistent_buffers": [],
+  "shared_numel": 20963806,
+  "shared_bytes": 83855224
+ },
+ "init_state": {
+  "2026": {
+   "init_sha256": "cf93ccf024a15500c597f7d1b670ce89f07318bacb30eedf71501ceaf4ccfee1",
+   "raw_init_sha256": "cf93ccf024a15500c597f7d1b670ce89f07318bacb30eedf71501ceaf4ccfee1",
+   "recentered_theta0": false
+  },
+  "2027": {
+   "init_sha256": "19338fa968b4fb5f8e62acc8a681a516c9164c648856b007ad97f87e1dbbb34d",
+   "raw_init_sha256": "19338fa968b4fb5f8e62acc8a681a516c9164c648856b007ad97f87e1dbbb34d",
+   "recentered_theta0": false
+  }
+ },
+ "init_hash_definition": "fl.numerics.state_digest over adapter.broadcast_state() (shared canonical keys + persistent buffers); SASRec: after the one C7 recentering on CPU",
+ "v1_reference": {
+  "shared_numel_at_v1_widths": 20964062,
+  "sys01_measured_v1": 20964062,
+  "equals_sys01": true,
+  "delta_v2_minus_v1": -256,
+  "changed_shapes": {
+   "numeric_flags_proj.0.weight": {
+    "v1": [
+     32,
+     34
+    ],
+    "v2": [
+     32,
+     30
+    ]
+   },
+   "user_ctx_proj.0.weight": {
+    "v1": [
+     64,
+     18
+    ],
+    "v2": [
+     64,
+     16
+    ]
+   }
+  },
+  "only_width_matrices_changed": true,
+  "same_key_set": true
+ },
+ "code_sha256": {
+  "v4models/gru_v2.py": "1a622c74533a2cad8ada81c46eb03d58b245c1fea727a7d6e93e8782fabe2e3e",
+  "snap_v1/reuse/model.py": "636d2ba18f850136721bf1ec2d923c1ee0f77c5726ea83a4be0bb786f46201e5",
+  "v4models/build.py": "1d9a4a2842ef84f018030411a0e8d19aad2ff0e9b46997a010a5b2c3dd46acfc",
+  "v4models/schema.py": "a2d61cb107ff5b696a5f8d37b06f649b4900088136e849be3a96f950f60c267b"
+ },
+ "environment": {
+  "torch": "2.9.1+cpu",
+  "python": "3.13.11",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "threads": 4,
+  "device": "cpu",
+  "note": "GRU init uses PyTorch default init from the seeded global CPU RNG; the hashes are tied to this torch build and must be re-measured on the execution host"
+ },
+ "utc": "2026-09-26T15:45:48Z"
+}

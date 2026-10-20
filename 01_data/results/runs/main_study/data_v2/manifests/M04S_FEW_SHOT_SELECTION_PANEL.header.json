@@ -1,0 +1,305 @@
+{
+ "manifest_id": "M04S_FEW_SHOT_SELECTION_PANEL",
+ "spec_id": "MANIFEST_SPEC_V4",
+ "spec_version": "1.2.0",
+ "status": "BUILT_PRE_LOCK",
+ "build_utc": "2026-09-26T16:19:17Z",
+ "builder_code_sha256": "443254e9ed95e41a48076f91643c83fbc77355dc80bb6b111d8432703d3e34a5",
+ "dataset_version_hash": "860e5a1c3a81b8e4bbfeff4f245fa37638a43e4f260df179585964d2d4da8dbd",
+ "dataset_code_hash": "02fbb07147ed9c0ba54092dd4ee042ce6af42a06145178017999fb7b242dde73",
+ "feature_schema_version": "2.1.0",
+ "feature_schema_self_sha256": "55a244e1608bcdcdf6f1728595f534871b52154faebf2977e11ac1fb487052f9",
+ "data_protocol_lock_sha256": "da51d271e97d3a681227a7063fd35b429797e52ee25586ba39843a37b7c839e1",
+ "population_lock_sha256": "PENDING until POPULATION_PLAN",
+ "salt": "PPSI_V4_POPULATION_20260926",
+ "catalogue_K": 158486,
+ "candidate_order_hash": "ab606d5e3728c993d31048f6d613838658d3a5ce8a0d0bd023611ce0ff027476",
+ "parent_manifests": [
+  "M03_COLD_PANEL_VAL"
+ ],
+ "tables": [
+  {
+   "table": "panel_users",
+   "row_count": 16384,
+   "table_content_sha256": "1e72f41286642971decfb8b7fba10c8204809cd863daf41a5aefd808f8848609",
+   "file_sha256": "791b0bde594e12b68fa198d68742b8129c1bf8857b92e904fb989813f97e6ed6"
+  },
+  {
+   "table": "panel_queries",
+   "row_count": 50244,
+   "table_content_sha256": "4228c0895a02c14117cce96052bf9df6a56fa1e51b3a24d1b34e87bc03716918",
+   "file_sha256": "8ee69ee7da682b0ec6eed2e2107e52eb455490f5f8d3aa76db06a23ed73e0ba7"
+  },
+  {
+   "table": "panel_support",
+   "row_count": 148941,
+   "table_content_sha256": "125bfbf617beee63c7f9354f9c715e87a21e24ea101df83d904a957b496f5ba3",
+   "file_sha256": "639854369faa7d9c35774edff2ca2d048160a409a74b9e1ef4e9b2c210ac119d"
+  }
+ ],
+ "ordered_decision_id_sha256": "ed02f967a5e06f538399d2b524441710400ef6988bd14cf33d394972c439ba72",
+ "eval_ordered_decision_id_sha256": "ed02f967a5e06f538399d2b524441710400ef6988bd14cf33d394972c439ba72",
+ "rankable_ordered_decision_id_sha256": "84b8db309ca3bb68b0cd181d8360de62307cbd90e8173b6b370d7344b19198a1",
+ "population_sha256": "53ef67317d80fa8d3e5284bd3505fd7280b4285d5ede3a1e0172025079872784",
+ "n_users": 16384,
+ "n_decisions": 50244,
+ "n_eval_rows": 50244,
+ "n_rankable_rows": 49805,
+ "counts_by_cause": {
+  "panel_label": "RECIPE_SELECTION",
+  "n_users": 16384,
+  "stratum_mix": {
+   "WARM": 0,
+   "COLD_NO_TRAIN_EVENTS": 12855,
+   "COLD_TRAIN_EVENTS_NO_LABEL": 3529
+  },
+  "fixed50_eligible_users": 276,
+  "fixed20_eligible_users": 1418,
+  "eligibility_by_subpanel_h": {
+   "FIXED_50_h0": {
+    "users": 276,
+    "rankable_queries": 268,
+    "support_labels": 0,
+    "users_with_zero_support": 276,
+    "by_stratum": {
+     "WARM": 0,
+     "COLD_NO_TRAIN_EVENTS": 217,
+     "COLD_TRAIN_EVENTS_NO_LABEL": 59
+    }
+   },
+   "FIXED_50_h1": {
+    "users": 276,
+    "rankable_queries": 268,
+    "support_labels": 0,
+    "users_with_zero_support": 276,
+    "by_stratum": {
+     "WARM": 0,
+     "COLD_NO_TRAIN_EVENTS": 217,
+     "COLD_TRAIN_EVENTS_NO_LABEL": 59
+    }
+   },
+   "FIXED_50_h5": {
+    "users": 276,
+    "rankable_queries": 268,
+    "support_labels": 1036,
+    "users_with_zero_support": 0,
+    "by_stratum": {
+     "WARM": 0,
+     "COLD_NO_TRAIN_EVENTS": 217,
+     "COLD_TRAIN_EVENTS_NO_LABEL": 59
+    }
+   },
+   "FIXED_50_h10": {
+    "users": 276,
+    "rankable_queries": 268,
+    "support_labels": 2356,
+    "users_with_zero_support": 0,
+    "by_stratum": {
+     "WARM": 0,
+     "COLD_NO_TRAIN_EVENTS": 217,
+     "COLD_TRAIN_EVENTS_NO_LABEL": 59
+    }
+   },
+   "FIXED_50_h20": {
+    "users": 276,
+    "rankable_queries": 268,
+    "support_labels": 4977,
+    "users_with_zero_support": 0,
+    "by_stratum": {
+     "WARM": 0,
+     "COLD_NO_TRAIN_EVENTS": 217,
+     "COLD_TRAIN_EVENTS_NO_LABEL": 59
+    }
+   },
+   "FIXED_50_h50": {
+    "users": 276,
+    "rankable_queries": 268,
+    "support_labels": 12753,
+    "users_with_zero_support": 0,
+    "by_stratum": {
+     "WARM": 0,
+     "COLD_NO_TRAIN_EVENTS": 217,
+     "COLD_TRAIN_EVENTS_NO_LABEL": 59
+    }
+   },
+   "FIXED_20_h0": {
+    "users": 1418,
+    "rankable_queries": 1399,
+    "support_labels": 0,
+    "users_with_zero_support": 1418,
+    "by_stratum": {
+     "WARM": 0,
+     "COLD_NO_TRAIN_EVENTS": 1121,
+     "COLD_TRAIN_EVENTS_NO_LABEL": 297
+    }
+   },
+   "FIXED_20_h1": {
+    "users": 1418,
+    "rankable_queries": 1399,
+    "support_labels": 0,
+    "users_with_zero_support": 1418,
+    "by_stratum": {
+     "WARM": 0,
+     "COLD_NO_TRAIN_EVENTS": 1121,
+     "COLD_TRAIN_EVENTS_NO_LABEL": 297
+    }
+   },
+   "FIXED_20_h5": {
+    "users": 1418,
+    "rankable_queries": 1399,
+    "support_labels": 5242,
+    "users_with_zero_support": 5,
+    "by_stratum": {
+     "WARM": 0,
+     "COLD_NO_TRAIN_EVENTS": 1121,
+     "COLD_TRAIN_EVENTS_NO_LABEL": 297
+    }
+   },
+   "FIXED_20_h10": {
+    "users": 1418,
+    "rankable_queries": 1399,
+    "support_labels": 11800,
+    "users_with_zero_support": 1,
+    "by_stratum": {
+     "WARM": 0,
+     "COLD_NO_TRAIN_EVENTS": 1121,
+     "COLD_TRAIN_EVENTS_NO_LABEL": 297
+    }
+   },
+   "FIXED_20_h20": {
+    "users": 1418,
+    "rankable_queries": 1399,
+    "support_labels": 24617,
+    "users_with_zero_support": 0,
+    "by_stratum": {
+     "WARM": 0,
+     "COLD_NO_TRAIN_EVENTS": 1121,
+     "COLD_TRAIN_EVENTS_NO_LABEL": 297
+    }
+   },
+   "ALL_AVAILABLE_h0": {
+    "users": 16384,
+    "rankable_queries": 16278,
+    "support_labels": 0,
+    "users_with_zero_support": 16384,
+    "by_stratum": {
+     "WARM": 0,
+     "COLD_NO_TRAIN_EVENTS": 12855,
+     "COLD_TRAIN_EVENTS_NO_LABEL": 3529
+    }
+   },
+   "ALL_AVAILABLE_h1": {
+    "users": 13441,
+    "rankable_queries": 13367,
+    "support_labels": 0,
+    "users_with_zero_support": 13441,
+    "by_stratum": {
+     "WARM": 0,
+     "COLD_NO_TRAIN_EVENTS": 9912,
+     "COLD_TRAIN_EVENTS_NO_LABEL": 3529
+    }
+   },
+   "ALL_AVAILABLE_h5": {
+    "users": 6519,
+    "rankable_queries": 6463,
+    "support_labels": 21326,
+    "users_with_zero_support": 165,
+    "by_stratum": {
+     "WARM": 0,
+     "COLD_NO_TRAIN_EVENTS": 4789,
+     "COLD_TRAIN_EVENTS_NO_LABEL": 1730
+    }
+   },
+   "ALL_AVAILABLE_h10": {
+    "users": 3460,
+    "rankable_queries": 3427,
+    "support_labels": 27464,
+    "users_with_zero_support": 8,
+    "by_stratum": {
+     "WARM": 0,
+     "COLD_NO_TRAIN_EVENTS": 2616,
+     "COLD_TRAIN_EVENTS_NO_LABEL": 844
+    }
+   },
+   "ALL_AVAILABLE_h20": {
+    "users": 1418,
+    "rankable_queries": 1399,
+    "support_labels": 24617,
+    "users_with_zero_support": 0,
+    "by_stratum": {
+     "WARM": 0,
+     "COLD_NO_TRAIN_EVENTS": 1121,
+     "COLD_TRAIN_EVENTS_NO_LABEL": 297
+    }
+   },
+   "ALL_AVAILABLE_h50": {
+    "users": 276,
+    "rankable_queries": 268,
+    "support_labels": 12753,
+    "users_with_zero_support": 0,
+    "by_stratum": {
+     "WARM": 0,
+     "COLD_NO_TRAIN_EVENTS": 217,
+     "COLD_TRAIN_EVENTS_NO_LABEL": 59
+    }
+   }
+  },
+  "n_query_rows": 50244,
+  "n_support_rows": 148941,
+  "note": "reported, never used to select (EVALUATION_CONTRACT_V4 E11.2)"
+ },
+ "expected_counts_check": [
+  {
+   "field": "n_users",
+   "expected": 16384,
+   "expected_source": "ranks 16,384 to 32,767 (REV/G0B_PROTOCOL_FABLE_POSITION.md L24)",
+   "observed": 16384,
+   "match": true
+  }
+ ],
+ "assertions": {
+  "query_keys_unique": true,
+  "every_support_row_has_its_query": true,
+  "support_strictly_before_query": true,
+  "query_never_support": true,
+  "support_count_matches": true,
+  "fixed_query_identical_across_h": true,
+  "all_available_prior_ge_h": true,
+  "one_query_per_user_per_subpanel_h": true,
+  "n_permitted_equals_h": true,
+  "h0_has_no_permitted_first": true,
+  "h0_has_no_support": true,
+  "query_decisions_are_e2e_validation": true,
+  "panel_is_M03_key_ranks_16384_32767": true,
+  "disjoint_from_M04": true
+ },
+ "observed_enum_values": {
+  "panel_users.cold_stratum": [
+   "COLD_NO_TRAIN_EVENTS",
+   "COLD_TRAIN_EVENTS_NO_LABEL"
+  ],
+  "panel_queries.panel_type": [
+   "ALL_AVAILABLE",
+   "FIXED_20",
+   "FIXED_50"
+  ],
+  "panel_support.panel_type": [
+   "ALL_AVAILABLE",
+   "FIXED_20",
+   "FIXED_50"
+  ]
+ },
+ "previously_seen_evaluation_period": true,
+ "all_methods_lock_sha256": null,
+ "test_exposure_register_entry_id": null,
+ "panel_label": "RECIPE_SELECTION",
+ "data_protocol_lock_file_sha256": "ebf4e86f6beb82e98283108a2dad9082727e8559b81301cd46f35f60c79fd7c0",
+ "reissue": {
+  "task": "DATA-04R1",
+  "reason": "header re-issued with the DATA_PROTOCOL_LOCK hashes; tables unchanged",
+  "previous_header_file_sha256": "8a47b211220da044728990d50e6ccc4778e9b10baa296923eae60bead81e0fbc",
+  "previous_header_content_sha256": "c856a848c9d03a77fd956d7a74a957971b20d5906fca1868fb098678ea63b836"
+ },
+ "reissue_utc": "2026-09-26T16:39:26Z",
+ "header_content_sha256": "55afd1da87526f34382ddbc4f39226fd1a077b84908d09e08cb14aff1d3b1a14"
+}

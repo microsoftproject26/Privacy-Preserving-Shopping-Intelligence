@@ -1,0 +1,159 @@
+{
+ "receipt": "FS01_SERVER_FINAL_RECEIPT",
+ "task": "FS-01",
+ "overall_pass": true,
+ "checks": {
+  "build_receipt_pass": true,
+  "equivalence_all_equal": true,
+  "registry_self_hash": true,
+  "tests_exit_0": true,
+  "tests_negative_controls_failed_as_intended": true,
+  "tests_real_data_ran": true,
+  "rss_guards_rc_0": true,
+  "transform_state_fs_registered": true,
+  "no_pycache_in_owned_code": true
+ },
+ "date_u": {
+  "final_job_end_utc": "2026-09-26T22:21:04Z",
+  "final_job_start_utc": "2026-09-26T22:20:08Z",
+  "manifests_job_end_utc": "2026-09-26T22:15:51Z",
+  "manifests_job_start_utc": "2026-09-26T22:13:32Z"
+ },
+ "df": {
+  "df_after_final": "free_bytes_after_final=12957519872",
+  "df_after_manifests": "free_bytes_after_manifests=12957859840",
+  "df_before_final": "free_bytes_before_final=12957659136",
+  "df_before_manifests": "free_bytes_before_manifests=12987305984"
+ },
+ "rss_guards": [
+  {
+   "cmd": [
+    "bash",
+    "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/code/v4fs_data/builds.sh",
+    "/home/jovyan/venvs/ppsi-gpu/bin/python",
+    "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/data_fs",
+    "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/data_fs/_run"
+   ],
+   "rc": 0,
+   "killed_rss_guard": false,
+   "peak_rss_mib": 4888.9,
+   "limit_mib": 16384.0,
+   "wall_s": 135.2,
+   "end_utc": "2026-09-26T22:15:51Z"
+  },
+  {
+   "cmd": [
+    "/home/jovyan/venvs/ppsi-gpu/bin/python",
+    "-B",
+    "-m",
+    "v4fs_data.fs_transform",
+    "--workers",
+    "6"
+   ],
+   "rc": 0,
+   "killed_rss_guard": false,
+   "peak_rss_mib": 10406.3,
+   "limit_mib": 16384.0,
+   "wall_s": 44.6,
+   "end_utc": "2026-09-26T22:20:53Z"
+  }
+ ],
+ "data_fs_bytes": 29401377,
+ "registry": {
+  "path": "contracts/manifest_registry/REGISTRY_FS.json",
+  "file_sha256": "291f95c668efda6e956ac17ebc01e6bb9faf937ae88bd48f53206318152b485a",
+  "registry_self_sha256": "1ebb0b79976cabc59539daf29a1be0e998c8a8bf0f64e4ebea7b255f851e7d60"
+ },
+ "build_receipt_sha256": "0d69e230ce50e6f9fa6af33f9b39ab08767a826395f2d59bffaf060161fc7639",
+ "equivalence_receipt_sha256": "6dd0729d1c77d958adc54febdf2e3bd6ad13dcd0b56a0dd70cfb4495e47bce17",
+ "tests": {
+  "exit_code": 0,
+  "counts": {
+   "passed": 21,
+   "xfailed": 16
+  },
+  "negative_controls": {
+   "n": 16,
+   "n_run": 16,
+   "n_skipped": 0,
+   "all_failed_as_intended": true
+  },
+  "summary_line": "\u001b[32m\u001b[32m\u001b[1m21 passed\u001b[0m, \u001b[33m16 xfailed\u001b[0m\u001b[32m in 5.38s\u001b[0m\u001b[0m"
+ },
+ "tests_receipt_file_sha256": "8b44f2d0dd66f48c494150b2f005e49b1e33b335b8da95e809d8468c4986f98b",
+ "manifests": {
+  "FS_TRAIN_5_100_32768": {
+   "n_users": 32768,
+   "n_decisions": 645603,
+   "n_eval_rows": 0,
+   "n_rankable_rows": 0,
+   "content_sha256": "5dd3c6597845cedd8499b0d433bc7475d3d6770b9c0d15f15caefa819ac3f1b9",
+   "header_sha256": "f608b2e8d5afc250d0a8764891297a5282b1488d90ae788a394ab03139ee3923",
+   "header_content_sha256": "4d076655ad7fbc5e6addf9a8962b5c09988e9f2034f28884b41dd948696e0c64",
+   "population_sha256": "492303ede1ff87d60faed831e5c0cec4483b47aa638e4ab3b1eb89c3c7e06d97",
+   "population_sha256_selection_key_v2": "650dfd6311966faabb4e280c2bc9b24951aed8b2d3a15e918cb834eaa0dc4605"
+  },
+  "FS_VALIDATION_5_100_32768": {
+   "n_users": 12885,
+   "n_decisions": 165269,
+   "n_eval_rows": 133763,
+   "n_rankable_rows": 132773,
+   "content_sha256": "00a79e7858135e98b485569ccf362f57f22bc96f350e9bddd2aab1913c381290",
+   "header_sha256": "fe68bde0529db4bc4a3d11a6da6a09758b860d616312d15fd9adef76fbff2da7",
+   "header_content_sha256": "3a85e0152932e251e04ae43566bf0418fcdc698e92fdf9fa94ac5c5171b5e466",
+   "population_sha256": "7fc6e740dbeb7c2d6c768a0e30d8ec08e4e21c90367811206b7f9aa186308b43",
+   "population_sha256_selection_key_v2": "7c1dc8f2250d04a1574370f4179c422990e535262d1b7beee7c2e1ad5914386b"
+  }
+ },
+ "fs_population_sha256_selection_key_v2": "650dfd6311966faabb4e280c2bc9b24951aed8b2d3a15e918cb834eaa0dc4605",
+ "transform_state": {
+  "path": "data_v2/TRANSFORM_STATE_CLEAN_V2.json",
+  "transform_state_sha256": "2ff0ff4ec1d27d254972c2f212e81f5fee6277dc9cced31a6a5baf5b4b002727",
+  "file_sha256": "7dda2f56066c1ca11c32754fd2b701448a7d7920f3e68bf7facc77141f41ae7d",
+  "rule": "shared statistics = full TRAIN as fitted (TRANSFORM_STATE_CLEAN_V2, unchanged), identical for every arm; the FS screen uses THIS state (DECISION_LOG 42 / 43)"
+ },
+ "transform_state_optional_sensitivity": {
+  "path": "data_fs/TRANSFORM_STATE_FS.json",
+  "transform_state_fs_sha256": "2fbbe6c013cb862106219be25756197e84959f96b366fe1fd2c3d9bab4ecc1fc",
+  "file_sha256": "d52db0ac9f2e16f84e8e49c0e348451dfd0c13f265aeb154709b3e4c9688f239",
+  "use": "OPTIONAL post-lock sensitivity analysis only. The FS screen uses TRANSFORM_STATE_CLEAN_V2 (full-TRAIN statistics, DECISION_LOG 42 / 43); this state is never used by the screen.",
+  "fit_population": "FS_TRAIN_5_100_32768",
+  "fit_population_header_content_sha256": "4d076655ad7fbc5e6addf9a8962b5c09988e9f2034f28884b41dd948696e0c64",
+  "normalizers": [
+   "current_known_category_run_length",
+   "current_minus_recent_mean_log_price",
+   "log1p_item_observed_age_s",
+   "log1p_prev_raw_view_gap_s",
+   "log1p_prev_session_count",
+   "log1p_prev_view_count",
+   "log1p_price",
+   "log1p_segment_elapsed_s",
+   "log1p_time_since_prev_session_last_event_s",
+   "log1p_time_since_prev_user_event_s",
+   "prefix_category_switch_count",
+   "prefix_known_category_count",
+   "prefix_representative_count",
+   "recent_distinct_items",
+   "recent_distinct_known_main_categories",
+   "recent_history_length",
+   "recent_mean_log_price"
+  ],
+  "method_proof_all_train_all_reproduced": true,
+  "self_hash_rule": "v4data.common.self_hash of the state without transform_state_fs_sha256"
+ },
+ "code": {
+  "fs_code_sha256": "287f36ee5f4c25aca0d7487aed95904ea90e5266e6a8a9d2350923f041ee339c",
+  "fs_code_sha256_rule": "v4data.common.code_tree_sha256 over the build files code/v4fs_data/{__init__,fs_common,fs_build}.py (fs_finalize.py is hashed in its own receipt)",
+  "fs_code_files_sha256": {
+   "__init__.py": "d26abe583229743a2d631c5d5bdecd662a419c498661a110af6c704b1d0776ff",
+   "fs_common.py": "a152cbc23c3a344ce4ca0d78e83b252c87842fb9fb6843b04f2f9483517b28b1",
+   "fs_build.py": "2885e2fffeb6f0a0c0dd25cb6f5eb9a35abf1ed0d1b9f37cbf28b36ef0595de6"
+  },
+  "census_v2_core_sha256": "aca2fe3a69afaa6a38c75492acc3148a8ec5ccb7b79678af815acd8eef4d169a",
+  "v4data_builder_code_sha256": "443254e9ed95e41a48076f91643c83fbc77355dc80bb6b111d8432703d3e34a5"
+ },
+ "finalize_code_sha256": "822ebf1702ddf9c360d31e14bc60640fa268aacbcd755a6c676e08aff563a565",
+ "transform_code_sha256": "d92f0a8bd6d04410f9cbe0a3a35c955ff7fa992f89e7435b91f6b5175419b50f",
+ "test_split_read": false,
+ "receipt_sha256": "9c60449ee695275b36d7fbcd23aacc35b73119ff7553174e233e77b12341b64d"
+}

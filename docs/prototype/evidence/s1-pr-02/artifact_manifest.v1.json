@@ -1,0 +1,62 @@
+{
+  "schema": "artifact_manifest_v1",
+  "version": 1,
+  "artifacts": {
+    "config": {
+      "path": "config/fl_synthetic_smoke.v1.json",
+      "sha256": "b707e38fa098e41bf1a1f21e9f81b736f16fd18321a513af384e347e7d356202"
+    },
+    "entry_point": {
+      "path": "scripts/federated/fl_synthetic_smoke.py",
+      "sha256": "d9a4c4af0bce162bba2b5f41293cdf841c6f92d83900161c125a9675f9a9d91a"
+    },
+    "lifecycle_test": {
+      "path": "tests/federated/test_fl_synthetic_smoke.py",
+      "sha256": "7a41a68ca2c253d51c72de3d8fef4656aa216fbb98d8301c480c145eeaf1e102"
+    },
+    "documentation": {
+      "path": "docs/federated-synthetic-smoke.md",
+      "sha256": "bc47fff3e1d033959849542a70a7dcedddd35733254459348e1f3d8c0701b8f6"
+    },
+    "smoke_summary": {
+      "path": "docs/evidence/s1-pr-02/fl_synthetic_smoke_summary.v1.json",
+      "sha256": "5a53a640ae45952f0233b08b5814703f9d28b023f17889946dd7853871dd82fd"
+    },
+    "environment_lock": {
+      "path": "uv.lock",
+      "sha256": "62d8bd8e72a119a975d75fcd14b6f0590295afdfb9acea9e5bb8b035565e1eff"
+    }
+  },
+  "environment_lock_history": [
+    {
+      "superseded_sha256": "cd86bcdb34077eaedd3ccf84e8ddc52a6424271cfd35f27ba0b7f32d7cbdf0dd",
+      "current_sha256": "eae55e08de93c7258d0f26173cf4f85245210c625617633f209c1742988979be",
+      "changed_on": "2026-09-11",
+      "changed_by": "S2-DS-01",
+      "reason": "the model lane declared `pandas==3.0.5` in pyproject.toml and did not regenerate uv.lock, so CI's `uv sync --locked` refused every run on this branch. Regenerating the lock added pandas, python-dateutil, six and tzdata, which changed the file this manifest hashes.",
+      "what_this_means_for_the_evidence": "S1-PR-02's synthetic smoke ran under the superseded lock, not this one. The manifest now verifies the CURRENT environment rather than the one that run used. If the exact environment of that run matters, its owner should re-run the smoke under this lock and republish the summary; nothing in the model lane depends on that decision."
+    },
+    {
+      "superseded_sha256": "eae55e08de93c7258d0f26173cf4f85245210c625617633f209c1742988979be",
+      "current_sha256": "55de5bca4a79969c7c7db8a787292f330181f9a67927dc57296cd80a33f019ad",
+      "changed_on": "2026-09-12",
+      "changed_by": "S2-SE-01",
+      "reason": "the deployment lane declared onnx==1.20.0 and onnxruntime==1.24.1 in pyproject.toml, so uv.lock was regenerated. The export needs the checker to validate the graph and the runtime to prove parity; parity that is not executed in the deployment runtime is not parity."
+    },
+    {
+      "superseded_sha256": "55de5bca4a79969c7c7db8a787292f330181f9a67927dc57296cd80a33f019ad",
+      "current_sha256": "c349d57a855fac5054fc5a4f0f0d7ebbbd3b4dc01e59b14b2f2f036d3fdcd377",
+      "changed_on": "2026-10-20",
+      "changed_by": "repository-restructure",
+      "reason": "the repository was reorganised into stage folders and pyproject.toml now maps every package to its stage folder through [tool.setuptools.package-dir], so uv.lock was regenerated for the new editable-install mapping, which changed the file this manifest hashes. No dependency version changed.",
+      "what_this_means_for_the_evidence": "S1-PR-02's smoke artifacts (config, entry point, lifecycle test, documentation, summary) are byte-identical to the run this evidence records; only the lock file's packaging metadata changed. The manifest verifies the CURRENT environment rather than the one that run used."
+    },
+    {
+      "superseded_sha256": "c349d57a855fac5054fc5a4f0f0d7ebbbd3b4dc01e59b14b2f2f036d3fdcd377",
+      "current_sha256": "62d8bd8e72a119a975d75fcd14b6f0590295afdfb9acea9e5bb8b035565e1eff",
+      "changed_on": "2026-10-20",
+      "changed_by": "repository-restructure",
+      "reason": "run_pipeline.py --from-results draws the stage figures with matplotlib, so matplotlib==3.11.2 was declared in pyproject.toml (with the ppsi_pipeline package map entry) and uv.lock was regenerated. The dependency only renders the curated result files; it never touches a computed number."
+    }
+  ]
+}

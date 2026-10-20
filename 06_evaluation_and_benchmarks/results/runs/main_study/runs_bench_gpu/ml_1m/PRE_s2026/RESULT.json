@@ -1,0 +1,306 @@
+{
+ "arm": "PRE",
+ "checkpoints": {
+  "CONTROLLED_BUDGET": {
+   "file": "ckpt/endpoint_6.0.pt",
+   "mark": 6.0,
+   "sha256": "bc5f4ca051b25b52ec90d48b84b3bdbf36956cf86541c3807b5e277c2981e929"
+  },
+  "PRACTICAL_BEST": {
+   "file": "ckpt/best.pt",
+   "mark": 3.0,
+   "sha256": "7da3bd95aed5584ba79c62b232782e13e7eced3f1cfaff5e96c2da7fb5e09d38"
+  }
+ },
+ "controlled_budget": 6.0,
+ "device": {
+  "cublas_workspace_config": ":4096:8",
+  "cuda": "13.0",
+  "cudnn": 92000,
+  "device_class": "NVIDIA_A40-FP32-DET",
+  "gpu_name": "NVIDIA A40",
+  "numerics": {
+   "cuda_matmul_allow_tf32": false,
+   "cudnn_allow_tf32": false,
+   "cudnn_deterministic": true,
+   "deterministic_algorithms": true,
+   "deterministic_warn_only": false,
+   "float32_matmul_precision": "highest",
+   "intra_op_threads": 16,
+   "torch": "2.13.0+cu130"
+  },
+  "physical_gpu": "0",
+  "torch": "2.13.0+cu130"
+ },
+ "device_class": "NVIDIA_A40-FP32-DET",
+ "early_stopped_at": null,
+ "kind": "central",
+ "run_id": "BM_ml_1m_PRE_s2026",
+ "spec": {
+  "N_decisions": 142965,
+  "arm": "PRE",
+  "betas": [
+   0.9,
+   0.999
+  ],
+  "budget_efe": 6,
+  "device_class": "NVIDIA_A40-FP32-DET",
+  "dropout": [
+   0.1
+  ],
+  "early_stop_marks": null,
+  "effective_batch": 256,
+  "eps": 1e-08,
+  "exposure_point": "end",
+  "grad_clip": 1.0,
+  "init_sha256": "782ab9e60f1a99ab0ab47785dc6f5476891a70e1c19de394a42ecb705986e708",
+  "lr_table_sha256": "2877ef0059ceead3cff6b722693af5beb4df99ab5017b2371b52e2f83a218279",
+  "marks": [
+   0.5,
+   1.0,
+   1.5,
+   2.0,
+   2.5,
+   3.0,
+   3.5,
+   4.0,
+   4.5,
+   5.0,
+   5.5,
+   6.0
+  ],
+  "max_len": 50,
+  "n_updates": 3354,
+  "peak_lr": 0.0007114121116984968,
+  "provenance": {
+   "ft_cell": "FT_C_f0.3_P4",
+   "pins": {
+    "device/SELECTION_FT_C.json": "e47965d2f4486fc2c30140a8ee14e79686a842decb091b3dff1de5646716c10c",
+    "fl/FL_TUNING_SELECTION.json": "9bca186e5025f5caa9e762f3c425fb3151923b79e60f01e6ecb063aac9c715ec",
+    "fl/FL_WARM_SELECTION_S7.json": "d67a0a851665495b092abbba4456f26a3423d6ef21665f5a0e2b65e2d78dc000",
+    "fl/FL_WARM_SELECTION_S8.json": "8b79d3052799dfa0ba208dce5db138da88aaa7024ba6511a374c59ce8c55a98a"
+   },
+   "tuning_winner_label": "fedadam|eta=0.01|m=1|shape=fl_const|client=sgd_m|clr=0.1|passes=1",
+   "warm_winners": {
+    "FA_WARM": "f=0.25|sf=0.1",
+    "FA_WARM_FROZEN": "f=1|sf=0.1"
+   }
+  },
+  "schedule": "S0",
+  "seed": 2026,
+  "select_population": "BAND",
+  "variant": "SASREC_D64_B2",
+  "weight_decay": 1e-05
+ },
+ "status": "DONE_MAIN",
+ "theta_pre_state_digest_endpoint": "2950ae9efeaf6bdf5b3b92888a0798c0bbb695085533beae0980d1f6e637f657",
+ "timing": {
+  "mean_step_s": 0.02745887364350264,
+  "median_step_s": 0.02725308947265148,
+  "n_steps_this_leg": 3354,
+  "n_updates_full_run": 3354,
+  "wall_s_this_leg": 120.74
+ },
+ "tracker": {
+  "best_mark": 3.0,
+  "best_value": 0.09434105663289513,
+  "history": [
+   {
+    "best_mark_after": 0.5,
+    "best_value_after": 0.018492955075987666,
+    "improved": true,
+    "mark": 0.5,
+    "phase": "MAIN",
+    "value": 0.018492955075987666
+   },
+   {
+    "best_mark_after": 1.0,
+    "best_value_after": 0.03397540878467406,
+    "improved": true,
+    "mark": 1.0,
+    "phase": "MAIN",
+    "value": 0.03397540878467406
+   },
+   {
+    "best_mark_after": 1.5,
+    "best_value_after": 0.06213865930239022,
+    "improved": true,
+    "mark": 1.5,
+    "phase": "MAIN",
+    "value": 0.06213865930239022
+   },
+   {
+    "best_mark_after": 2.0,
+    "best_value_after": 0.09142769948203298,
+    "improved": true,
+    "mark": 2.0,
+    "phase": "MAIN",
+    "value": 0.09142769948203298
+   },
+   {
+    "best_mark_after": 2.0,
+    "best_value_after": 0.09142769948203298,
+    "improved": false,
+    "mark": 2.5,
+    "phase": "MAIN",
+    "value": 0.09120886919731347
+   },
+   {
+    "best_mark_after": 3.0,
+    "best_value_after": 0.09434105663289513,
+    "improved": true,
+    "mark": 3.0,
+    "phase": "MAIN",
+    "value": 0.09434105663289513
+   },
+   {
+    "best_mark_after": 3.0,
+    "best_value_after": 0.09434105663289513,
+    "improved": false,
+    "mark": 3.5,
+    "phase": "MAIN",
+    "value": 0.09225408419103732
+   },
+   {
+    "best_mark_after": 3.0,
+    "best_value_after": 0.09434105663289513,
+    "improved": false,
+    "mark": 4.0,
+    "phase": "MAIN",
+    "value": 0.09178507453201612
+   },
+   {
+    "best_mark_after": 3.0,
+    "best_value_after": 0.09434105663289513,
+    "improved": false,
+    "mark": 4.5,
+    "phase": "MAIN",
+    "value": 0.09092791181932494
+   },
+   {
+    "best_mark_after": 3.0,
+    "best_value_after": 0.09434105663289513,
+    "improved": false,
+    "mark": 5.0,
+    "phase": "MAIN",
+    "value": 0.09229949101795354
+   },
+   {
+    "best_mark_after": 3.0,
+    "best_value_after": 0.09434105663289513,
+    "improved": false,
+    "mark": 5.5,
+    "phase": "MAIN",
+    "value": 0.09191035937106343
+   },
+   {
+    "best_mark_after": 3.0,
+    "best_value_after": 0.09434105663289513,
+    "improved": false,
+    "mark": 6.0,
+    "phase": "MAIN",
+    "value": 0.09237350722977747
+   }
+  ],
+  "main_best_mark": 3.0,
+  "main_best_value": 0.09434105663289513,
+  "tolerance": 0.0002
+ },
+ "utc": "2026-10-03T17:59:15Z",
+ "validation": {
+  "CONTROLLED_BUDGET": {
+   "ALL": {
+    "hr@10": 0.17157999337528984,
+    "hr@20": 0.26333222921497185,
+    "mrr@20": 0.06975813371421759,
+    "n_unreachable": 0,
+    "n_users": 6038,
+    "ndcg@10": 0.0883671766241028,
+    "ndcg@20": 0.11157274747438718
+   },
+   "BAND": {
+    "hr@10": 0.16556291390728478,
+    "hr@20": 0.2571743929359823,
+    "mrr@20": 0.07645916688342826,
+    "n_unreachable": 0,
+    "n_users": 906,
+    "ndcg@10": 0.09237350722977747,
+    "ndcg@20": 0.11555080038668306
+   },
+   "BAND_COVERED_TARGET": {
+    "hr@10": 0.17186463171864633,
+    "hr@20": 0.26376907763769075,
+    "mrr@20": 0.06987385722734667,
+    "n_unreachable": 0,
+    "n_users": 6028,
+    "ndcg@10": 0.08851377114404989,
+    "ndcg@20": 0.11175783829634203
+   },
+   "BAND_UNCOVERED_TARGET": {
+    "hr@10": 0.0,
+    "hr@20": 0.0,
+    "mrr@20": 0.0,
+    "n_unreachable": 0,
+    "n_users": 10,
+    "ndcg@10": 0.0,
+    "ndcg@20": 0.0
+   },
+   "OTHERS": {
+    "hr@10": 0.17264224473889322,
+    "hr@20": 0.26441932969602494,
+    "mrr@20": 0.06857513760133666,
+    "n_unreachable": 0,
+    "n_users": 5132,
+    "ndcg@10": 0.08765990157953123,
+    "ndcg@20": 0.11087046455573164
+   }
+  },
+  "PRACTICAL_BEST": {
+   "ALL": {
+    "hr@10": 0.16180854587611793,
+    "hr@20": 0.2553825770122557,
+    "mrr@20": 0.0686699305366285,
+    "n_unreachable": 0,
+    "n_users": 6038,
+    "ndcg@10": 0.08525208234829479,
+    "ndcg@20": 0.10886464799171672
+   },
+   "BAND": {
+    "hr@10": 0.16997792494481237,
+    "hr@20": 0.24282560706401765,
+    "mrr@20": 0.07634129592423627,
+    "n_unreachable": 0,
+    "n_users": 906,
+    "ndcg@10": 0.09434105663289513,
+    "ndcg@20": 0.11267544222171312
+   },
+   "BAND_COVERED_TARGET": {
+    "hr@10": 0.16207697412076974,
+    "hr@20": 0.25580623755806237,
+    "mrr@20": 0.06878384880228315,
+    "n_unreachable": 0,
+    "n_users": 6028,
+    "ndcg@10": 0.0853935091604187,
+    "ndcg@20": 0.10904524627969235
+   },
+   "BAND_UNCOVERED_TARGET": {
+    "hr@10": 0.0,
+    "hr@20": 0.0,
+    "mrr@20": 0.0,
+    "n_unreachable": 0,
+    "n_users": 10,
+    "ndcg@10": 0.0,
+    "ndcg@20": 0.0
+   },
+   "OTHERS": {
+    "hr@10": 0.1603663289166017,
+    "hr@20": 0.25759937646141856,
+    "mrr@20": 0.06731563259407732,
+    "n_unreachable": 0,
+    "n_users": 5132,
+    "ndcg@10": 0.08364752063710075,
+    "ndcg@20": 0.1081918928139348
+   }
+  }
+ }
+}

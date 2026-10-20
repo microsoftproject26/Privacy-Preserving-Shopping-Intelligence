@@ -1,0 +1,217 @@
+{
+ "arm": "C_SMALL",
+ "checkpoints": {
+  "PRACTICAL_BEST": {
+   "file": "ckpt/best.pt",
+   "mark": 4.0,
+   "sha256": "b026e96f5a60ffed3ac4d8f8841d5c1060b227e461780a8b998424cba3cbea3a"
+  }
+ },
+ "controlled_budget": "N/A (early stopped)",
+ "early_stopped_at": 16.0,
+ "kind": "central",
+ "run_id": "BM_s3_sports_C_SMALL__B24_L50_D0.1__UDJ15-F_s2027",
+ "spec": {
+  "N_decisions": 160946,
+  "arm": "C_SMALL",
+  "betas": [
+   0.9,
+   0.999
+  ],
+  "budget_efe": 24,
+  "central_recipe_id": "SMALL_SASREC_D64_B2",
+  "dropout": [
+   0.1
+  ],
+  "early_stop_marks": 6,
+  "effective_batch": 256,
+  "eps": 1e-08,
+  "exploratory": "POST_HOC_X",
+  "exposure_point": "end",
+  "grad_clip": 1.0,
+  "init_sha256": "a6a8fda5e3d79dafad824a435cea34ac8210ac15ee2321635f94abb1c7633a7e",
+  "lr_table_sha256": "57fb9f54d015e6222f88e7d90f45f203e6fef971d6968bdce6f098e7b95599ae",
+  "marks": [
+   2.0,
+   4.0,
+   6.0,
+   8.0,
+   10.0,
+   12.0,
+   14.0,
+   16.0,
+   18.0,
+   20.0,
+   22.0,
+   24.0
+  ],
+  "max_len": 50,
+  "n_updates": 15096,
+  "peak_lr": 0.0007114121116984968,
+  "provenance": {
+   "ft_cell": "FT_C_f0.3_P4",
+   "pins": {
+    "device/SELECTION_FT_C.json": "e47965d2f4486fc2c30140a8ee14e79686a842decb091b3dff1de5646716c10c",
+    "fl/FL_TUNING_SELECTION.json": "9bca186e5025f5caa9e762f3c425fb3151923b79e60f01e6ecb063aac9c715ec",
+    "fl/FL_WARM_SELECTION_S7.json": "d67a0a851665495b092abbba4456f26a3423d6ef21665f5a0e2b65e2d78dc000",
+    "fl/FL_WARM_SELECTION_S8.json": "8b79d3052799dfa0ba208dce5db138da88aaa7024ba6511a374c59ce8c55a98a"
+   },
+   "tuning_winner_label": "fedadam|eta=0.01|m=1|shape=fl_const|client=sgd_m|clr=0.1|passes=1",
+   "warm_winners": {
+    "FA_WARM": "f=0.25|sf=0.1",
+    "FA_WARM_FROZEN": "f=1|sf=0.1"
+   }
+  },
+  "schedule": "S0",
+  "seed": 2027,
+  "select_population": "OTHERS",
+  "study": "A1_DISJOINT_PRE",
+  "tag": "POST_HOC_EXPLORATORY",
+  "user_subset": {
+   "file": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_x/x2_A1/splits/s3_sports__DJ15.json",
+   "file_sha256": "91a95b2ad64ccf2644aefa96950839913f943476bb7244d112ede2b004c4472b",
+   "frac_S": 0.15,
+   "n_F": 30258,
+   "n_S": 5340,
+   "n_role_users": 30258,
+   "role": "F",
+   "rule": "PCG64(SeedSequence([BAND_TAG=0x42414E44, 2026])).permutation(U) over the sorted external user ids (= v4bench.data.band_users); S = first floor(frac U + 0.5), F = the rest",
+   "split_id": "DJ15",
+   "split_sha256": "9c56dc43dd81adb5ea1f572a52a014d6e93113d412ccfff6b0994d1675c7d41c"
+  },
+  "variant": "SASREC_D64_B2",
+  "weight_decay": 1e-05
+ },
+ "status": "DONE_MAIN",
+ "theta_pre_state_digest_endpoint": null,
+ "timing": {
+  "mean_step_s": 0.21656642293143685,
+  "median_step_s": 0.21047487668693066,
+  "n_steps_this_leg": 10064,
+  "n_updates_full_run": 15096,
+  "wall_s_this_leg": 2266.93
+ },
+ "tracker": {
+  "best_mark": 4.0,
+  "best_value": 0.02653790183021485,
+  "history": [
+   {
+    "best_mark_after": 2.0,
+    "best_value_after": 0.016259308637407977,
+    "improved": true,
+    "mark": 2.0,
+    "phase": "MAIN",
+    "value": 0.016259308637407977
+   },
+   {
+    "best_mark_after": 4.0,
+    "best_value_after": 0.02653790183021485,
+    "improved": true,
+    "mark": 4.0,
+    "phase": "MAIN",
+    "value": 0.02653790183021485
+   },
+   {
+    "best_mark_after": 4.0,
+    "best_value_after": 0.02653790183021485,
+    "improved": false,
+    "mark": 6.0,
+    "phase": "MAIN",
+    "value": 0.026599449231765198
+   },
+   {
+    "best_mark_after": 4.0,
+    "best_value_after": 0.02653790183021485,
+    "improved": false,
+    "mark": 8.0,
+    "phase": "MAIN",
+    "value": 0.023898150343544575
+   },
+   {
+    "best_mark_after": 4.0,
+    "best_value_after": 0.02653790183021485,
+    "improved": false,
+    "mark": 10.0,
+    "phase": "MAIN",
+    "value": 0.022992344177066717
+   },
+   {
+    "best_mark_after": 4.0,
+    "best_value_after": 0.02653790183021485,
+    "improved": false,
+    "mark": 12.0,
+    "phase": "MAIN",
+    "value": 0.02223577882887363
+   },
+   {
+    "best_mark_after": 4.0,
+    "best_value_after": 0.02653790183021485,
+    "improved": false,
+    "mark": 14.0,
+    "phase": "MAIN",
+    "value": 0.021879591038323966
+   },
+   {
+    "best_mark_after": 4.0,
+    "best_value_after": 0.02653790183021485,
+    "improved": false,
+    "mark": 16.0,
+    "phase": "MAIN",
+    "value": 0.021757845760630525
+   }
+  ],
+  "main_best_mark": 4.0,
+  "main_best_value": 0.02653790183021485,
+  "tolerance": 0.0002
+ },
+ "utc": "2026-10-09T17:22:44Z",
+ "validation": {
+  "PRACTICAL_BEST": {
+   "ALL": {
+    "hr@10": 0.04363636363636364,
+    "hr@20": 0.061000704721634956,
+    "mrr@20": 0.02234774445456542,
+    "n_unreachable": 0,
+    "n_users": 35475,
+    "ndcg@10": 0.02641661686032427,
+    "ndcg@20": 0.030760909318679995
+   },
+   "BAND": {
+    "hr@10": 0.04077414505824878,
+    "hr@20": 0.05881247651258925,
+    "mrr@20": 0.022289436379134147,
+    "n_unreachable": 0,
+    "n_users": 5322,
+    "ndcg@10": 0.02572944931107387,
+    "ndcg@20": 0.030220241886430885
+   },
+   "BAND_COVERED_TARGET": {
+    "hr@10": 0.05279230580223946,
+    "hr@20": 0.07392326862999754,
+    "mrr@20": 0.02674590421326248,
+    "n_unreachable": 0,
+    "n_users": 28489,
+    "ndcg@10": 0.03172687445627522,
+    "ndcg@20": 0.037016614377015464
+   },
+   "BAND_UNCOVERED_TARGET": {
+    "hr@10": 0.006298310907529345,
+    "hr@20": 0.00830231892356141,
+    "mrr@20": 0.004411991038372949,
+    "n_unreachable": 0,
+    "n_users": 6986,
+    "ndcg@10": 0.0047613164522156675,
+    "ndcg@20": 0.005250061708184834
+   },
+   "OTHERS": {
+    "hr@10": 0.04414154478824661,
+    "hr@20": 0.06138692667396279,
+    "mrr@20": 0.022358035821177208,
+    "n_unreachable": 0,
+    "n_users": 30153,
+    "ndcg@10": 0.02653790183021485,
+    "ndcg@20": 0.030856337039783358
+   }
+  }
+ }
+}

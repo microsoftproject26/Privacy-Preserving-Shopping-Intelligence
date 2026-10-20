@@ -1,0 +1,312 @@
+{
+ "arm": "EXT_LP_COLD_FA",
+ "arm_spec": {
+  "arm": "EXT_LP_COLD_FA",
+  "cfg": {
+   "dp": null,
+   "dropout_p": 0.1,
+   "endpoint_efe": 6.0,
+   "endpoint_rounds": 1707,
+   "exposure_point": "end",
+   "lr_peak_local": 0.1,
+   "lr_shape": "fl_const",
+   "max_attempts": 2,
+   "method": "FA",
+   "mu": 0.0,
+   "n_shards": 2,
+   "pf": null,
+   "seed": 2026,
+   "server_opt": {
+    "beta1": 0.9,
+    "beta2": 0.99,
+    "lr": 0.0003,
+    "name": "fedadam",
+    "tau": 1e-06,
+    "v_init": "tau_squared"
+   },
+   "solver": {
+    "batch_size": 16,
+    "clip": 1.0,
+    "fused": null,
+    "lr": 0.1,
+    "optimizer": "sgd_m",
+    "passes": 2,
+    "weight_decay": 0.0
+   }
+  },
+  "client_lr": 0.1,
+  "client_opt": "sgd_m",
+  "exposure_budget": {
+   "dropout_p": 0.1,
+   "endpoint_efe": 6.0,
+   "formula": "ceil(60*N/(576*passes))",
+   "group": 64,
+   "n_clients": 32768,
+   "passes": 2,
+   "rounds": 1707
+  },
+  "extension_cell": {
+   "cell": "cold_FA_eta0.0003_P2_E6_s2026",
+   "line": "cold",
+   "method": "FA",
+   "passes": 2,
+   "seed": 2026,
+   "server_lr": 0.0003,
+   "stage": "FA_SCREEN"
+  },
+  "local_passes": 2,
+  "lr_mult": 1.0,
+  "lr_peak_base": 0.0007114121116984968,
+  "lr_shape": "fl_const",
+  "max_rounds": 1707,
+  "plan": {
+   "group_size": 64,
+   "sampling": "sweep"
+  },
+  "role": "CALIBRATION",
+  "server_lr": 0.0003,
+  "server_opt": "fedadam",
+  "server_tau": 1e-06,
+  "study": "LOCAL_PASSES_CALIB_EXTENSION",
+  "upload_codec": null
+ },
+ "arm_spec_sha256": "637c052aeacc4ef9d5be6a7e2c2387fb2fbed8f5250f8b8c267dbf15627b380a",
+ "best_half_efe": 12,
+ "best_metric": 0.06445707710081133,
+ "bytes": {
+  "disclosure": "dropped clients (10% drop-out) are not charged a download (the ledger counts survivors)",
+  "fleet": {
+   "bytes_down": 8149290772160,
+   "bytes_up": 8149291559200,
+   "messages": 196760,
+   "retry_bytes_down": 0,
+   "total": 16298582331360
+  },
+  "per_client": {
+   "max": 662678688,
+   "mean": 497393259.62402344,
+   "median": 497009016.0,
+   "min": 0,
+   "rule": "visits x (down + up) of that client"
+  },
+  "per_visit": {
+   "alias_bytes_not_sent": 0,
+   "bootstrap_bytes_once": 0,
+   "download_bytes": 82834832,
+   "private_bytes_sent": 0,
+   "private_resident_bytes": 0,
+   "send_plus_receive_bytes": 165669672,
+   "shared_numel": 20708708,
+   "upload_bytes": 82834840
+  }
+ },
+ "checkpoints": [
+  "best.pt",
+  "endpoint_6.0.pt"
+ ],
+ "counters": {
+  "coverage_by_sweep": {
+   "0": {
+    "clients": 29579,
+    "fraction": 0.902679443359375
+   },
+   "1": {
+    "clients": 29425,
+    "fraction": 0.897979736328125
+   },
+   "2": {
+    "clients": 29527,
+    "fraction": 0.901092529296875
+   },
+   "3": {
+    "clients": 9849,
+    "fraction": 0.300567626953125
+   }
+  },
+  "efe": 6.000473635087382,
+  "exposures": 3876708,
+  "max_visits": 4,
+  "min_visits": 0,
+  "noop_visits": 0,
+  "retries": 0,
+  "rounds": 1707,
+  "steps": 336874,
+  "steps_hist": {
+   "10": 2329,
+   "12": 1490,
+   "14": 284,
+   "2": 59762,
+   "4": 21824,
+   "6": 8310,
+   "8": 4381
+  },
+  "visits": 98380,
+  "wasted_steps": 0
+ },
+ "done": true,
+ "evals": [
+  [
+   1,
+   142,
+   0.01624539616395383,
+   true,
+   "MAIN"
+  ],
+  [
+   2,
+   283,
+   0.017512640996201978,
+   true,
+   "MAIN"
+  ],
+  [
+   3,
+   424,
+   0.01923544035488402,
+   true,
+   "MAIN"
+  ],
+  [
+   4,
+   567,
+   0.020762057733362472,
+   true,
+   "MAIN"
+  ],
+  [
+   5,
+   710,
+   0.025750324566637308,
+   true,
+   "MAIN"
+  ],
+  [
+   6,
+   852,
+   0.03404700082801223,
+   true,
+   "MAIN"
+  ],
+  [
+   7,
+   997,
+   0.039304288088943415,
+   true,
+   "MAIN"
+  ],
+  [
+   8,
+   1138,
+   0.046015869556219294,
+   true,
+   "MAIN"
+  ],
+  [
+   9,
+   1279,
+   0.049110010645987114,
+   true,
+   "MAIN"
+  ],
+  [
+   10,
+   1421,
+   0.05574967050281931,
+   true,
+   "MAIN"
+  ],
+  [
+   11,
+   1565,
+   0.05966208999971366,
+   true,
+   "MAIN"
+  ],
+  [
+   12,
+   1706,
+   0.06445707710081133,
+   true,
+   "MAIN"
+  ]
+ ],
+ "exploratory_label": "POST_HOC_EXPLORATORY",
+ "ledger": [
+  196760,
+  8149290772160,
+  8149291559200,
+  0
+ ],
+ "localpasses_binding_sha256": "c79ff5ca0327a9adbc232cb2747e0df484b64d02db2c6dcc9838a5e740505c19",
+ "lr_table": {
+  "E_total": 3876708,
+  "digest": "3e49e7fed957196a6818e986b24f5ba236351540e33cc48df7c79672e5ec8733",
+  "final_lr": 0.010000000000000002,
+  "min_lr": 0.005858230814294083,
+  "n_rounds": 1707,
+  "planned_efe": 6.000473635087382
+ },
+ "lr_table_digest": "3e49e7fed957196a6818e986b24f5ba236351540e33cc48df7c79672e5ec8733",
+ "manifest_role": "CALIBRATION",
+ "method": "FA",
+ "participation": {
+  "dropout_p": 0.1,
+  "dropped": 10868,
+  "endpoint_rounds": 1707,
+  "noop_rounds": 0,
+  "planned_efe": 6.000473635087382,
+  "rounds": 1707,
+  "sampled": 109248,
+  "survived": 98380
+ },
+ "phase": "MAIN",
+ "plan": {
+  "group_size": 64,
+  "keys_digest": "6780c81a3e7b0a59b0a01fe976a9436463fdd93cfb3df92ffe842ca8d64f3f91",
+  "manifest_hash": "94ade68c5df4dcf8c2f3b29529b63dcb0193ab2e34ec529b467f628018c49f2e",
+  "n_clients": 32768,
+  "partial_group_note": "none: N is a multiple of the group size",
+  "partial_group_policy": "SMALLER_FINAL_GROUP",
+  "partial_group_size": 0,
+  "rounds_per_sweep": 512,
+  "sampling": "seeded permutation sweeps without replacement (PCG64), fixed consecutive groups",
+  "seed": 2026
+ },
+ "rounds": 1707,
+ "run_id": "EXT_LP_cold_FA_eta0.0003_P2_E6_s2026",
+ "run_role": "CALIBRATION",
+ "server_digest": "e315402260a522c84daf434e0affdd829fc0b4339684e14b6257b445bf99aa03",
+ "server_opt": {
+  "cfg": {
+   "beta1": 0.9,
+   "beta2": 0.99,
+   "lr": 0.0003,
+   "name": "fedadam",
+   "tau": 1e-06,
+   "v_init": "tau_squared"
+  },
+  "moments_digest": "7bda55302806616b9075aa50d0b3d1ee161c8a97f70a54ee7126a9c41be2df08",
+  "steps": 1707
+ },
+ "status": "DONE_CALIBRATION",
+ "store_digest": null,
+ "train_loss_log": {
+  "authority": "FL-15 R5 (REAL_WORLD_FL_PRACTICE_AUDIT_20260930 R5): per-round client training loss from fl VisitRecord.loss_sum (sum of the batch-mean CE over a visit's steps); descriptive monitoring only, numerics unchanged; z > 0 (DP) runs record nothing (an un-noised data-dependent release, the 06L_E E1 reading)",
+  "complete": true,
+  "fields": [
+   "client_mean_loss",
+   "finite",
+   "loss_sum",
+   "mean_step_loss",
+   "n_clients",
+   "n_steps",
+   "round"
+  ],
+  "file": "TRAIN_LOSS.jsonl",
+  "missing_rounds": [],
+  "rounds_expected": 1707,
+  "rounds_logged": 1707,
+  "sha256": "3b590c26b3dc0b0a9ab881955779cc1956a00875e52c98893efce7eeccd4f095"
+ },
+ "wall_s_this_leg": 11759.52
+}

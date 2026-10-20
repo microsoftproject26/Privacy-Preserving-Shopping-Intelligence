@@ -1,0 +1,147 @@
+{
+ "base": "FEATURE_SCHEMA_CLEAN_V2 2.1.0 self 55a244e1608bcdcdf6f1728595f534871b52154faebf2977e11ac1fb487052f9",
+ "extension_channels": {
+  "current_matches_session_mode": {
+   "block": "user_context",
+   "dtype": "float32",
+   "group": "G13 SESSION_INTENT",
+   "kind": "decision_float",
+   "mask": "current_matches_session_mode_available",
+   "shape": "[B]",
+   "source": "DATA-05 batch key (owner design DECISION_LOG 48)",
+   "values": "1 iff the current event's known main category equals the current-session prefix mode"
+  },
+  "current_matches_session_mode_available": {
+   "block": "user_context_masks",
+   "dtype": "float32",
+   "group": "G13 SESSION_INTENT",
+   "kind": "decision_mask",
+   "shape": "[B]",
+   "source": "DATA-05 batch key (owner design DECISION_LOG 48)",
+   "values": "1 iff current_matches_session_mode is defined"
+  },
+  "session_mode_main_category_tokens": {
+   "block": "categorical",
+   "dtype": "int64",
+   "embed_dim": {
+    "GRU": 8,
+    "SASREC": 8
+   },
+   "group": "G13 SESSION_INTENT",
+   "kind": "categorical_per_event",
+   "pad_token": 0,
+   "shape": "[B,50]",
+   "source": "DATA-05 batch key (owner design DECISION_LOG 48)",
+   "values": "0 = PAD; past session: that session's mode known main category; current session: the causal prefix mode; UNKNOWN when no known category yet",
+   "vocab": 17,
+   "vocab_status": "PROVISIONAL (main-category vocabulary 16 + UNKNOWN); DATA-05 reports the exact size"
+  },
+  "session_mode_share": {
+   "block": "user_context",
+   "dtype": "float32",
+   "group": "G13 SESSION_INTENT",
+   "kind": "decision_float",
+   "shape": "[B]",
+   "source": "DATA-05 batch key (owner design DECISION_LOG 48)",
+   "values": "count(mode) / known-category events of the current session so far"
+  },
+  "session_offset_tokens": {
+   "block": "categorical",
+   "dtype": "int64",
+   "embed_dim": {
+    "GRU": 4,
+    "SASREC": 4
+   },
+   "kind": "categorical_per_event",
+   "pad_token": 0,
+   "shape": "[B,50]",
+   "source": "DATA-05 batch key (owner directive DECISION_LOG 47)",
+   "values": "0 = PAD; min(offset, 7) + 1 on valid positions (1 = the current session)",
+   "vocab": 9
+  }
+ },
+ "format": "PPSI_V4_DERIVED_SCHEMA_1",
+ "keep": {
+  "categorical": [
+   "item_tokens",
+   "category_tokens",
+   "brand_tokens",
+   "session_offset_tokens",
+   "session_mode_main_category_tokens"
+  ],
+  "event_numeric_features": [
+   "log1p_price",
+   "log1p_prev_raw_view_gap_s",
+   "log1p_segment_elapsed_s",
+   "prefix_representative_count",
+   "prefix_known_category_count",
+   "prefix_category_switch_count",
+   "current_known_category_run_length"
+  ],
+  "event_quality_flags": [
+   "price_missing",
+   "prev_gap_unavailable"
+  ],
+  "user_context": [
+   "recent_category_match_share",
+   "recent_brand_match_share",
+   "recent_mean_log_price",
+   "current_minus_recent_mean_log_price",
+   "current_matches_session_mode",
+   "session_mode_share"
+  ],
+  "user_context_masks": [
+   "recent_category_match_supported",
+   "recent_brand_match_supported",
+   "recent_price_supported",
+   "current_matches_session_mode_available"
+  ]
+ },
+ "n_information_channels": 25,
+ "n_information_channels_note": "tokens + numeric + flags + user context + masks + the output catalogue",
+ "schema_id": "L3S_NEAR_DUPLICATE_SESSION-minus-G11+G12a+G3+G4+G7",
+ "self_sha256": "c53d47fe2555dd537e27e11d45a4e8b23739566e6b98179dcf521852aa918f87",
+ "self_sha256_canonicalization": "sha256 over json.dumps(object minus 'self_sha256', sort_keys=True, ensure_ascii=True, separators=(',', ':'), allow_nan=False), UTF-8",
+ "source": {
+  "derived_from": {
+   "schema_id": "L3S_NEAR_DUPLICATE_SESSION",
+   "self_sha256": "57cb1cd8fbb92dc9686a0b5ca436cbab11328e128b24d403eb610c9343aae649"
+  },
+  "dropped_channels": [
+   "item_age_unavailable",
+   "log1p_item_observed_age_s",
+   "log1p_prev_session_count",
+   "log1p_prev_view_count",
+   "log1p_time_since_prev_session_last_event_s",
+   "prev_session_available",
+   "recent_distinct_known_main_categories",
+   "utc_hour_cos",
+   "utc_hour_sin",
+   "weekday_tokens"
+  ],
+  "dropped_groups": [
+   "G11",
+   "G12a",
+   "G3",
+   "G4",
+   "G7"
+  ],
+  "groups": {
+   "path": "featstat_v5_100/FEATSTAT_INVENTORY.json",
+   "sha256": "05503be3d86b7854c861e070d9302f00824a5e09da3aa73cc8af9abe7530499e"
+  },
+  "ladder": {
+   "path": "featstat_v5_100/FEATSTAT_LADDER.json",
+   "sha256": "d08a8efdc1d020583083228fdf0b600b84309a9daf4f4d3513c12c60a7afcd96"
+  },
+  "task": "SCHEMA-01"
+ },
+ "title": "L3S_NEAR_DUPLICATE_SESSION minus ['G11', 'G12a', 'G3', 'G4', 'G7']",
+ "widths": {
+  "flags_dim": 2,
+  "numeric_dim": 7,
+  "tokens": 5,
+  "user_context_dim": 6,
+  "user_mask_dim": 4
+ }
+}

@@ -1,0 +1,4226 @@
+{
+  "dataset": {
+    "path": "/home/jovyan/shared_data/rees46_nextitem_v1",
+    "version_hash": "860e5a1c3a81b8e4bbfeff4f245fa37638a43e4f260df179585964d2d4da8dbd",
+    "integrity_before_test": {
+      "root": "/home/jovyan/shared_data/rees46_nextitem_v1",
+      "total_files_listed": 409,
+      "verified": 409,
+      "missing": [],
+      "mismatched": [],
+      "total_bytes": 9155066376,
+      "elapsed_s": 9.696747064590454,
+      "all_ok": true
+    },
+    "train_loss_decisions": 40180608,
+    "catalogue_size": 158486,
+    "vs_eval_decisions": 8826488,
+    "vs_eval_users": 790459
+  },
+  "protocol": {
+    "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/gru_v1/FULL_RUN_PROTOCOL.md",
+    "sha256": "1bfed6faccc31fff25fad7d606f905e44f98c09406dc78adccc88f186f85aab2"
+  },
+  "fable_review": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/gru_v1/FABLE_FULL_RUN_REVIEW.md",
+  "gates": {
+    "data_path_rerun": true,
+    "integration": true,
+    "benchmark": {
+      "kernel_rule": "fused iff F4 fused wall dec/s >= 1.05 x foreach",
+      "kernel": "fused",
+      "f4_foreach_alone": {
+        "arm": "F4_rich_side_information_h256",
+        "adamw_impl": "foreach",
+        "n_updates": 3000,
+        "median_decisions_per_s": 4058.2271888140704,
+        "data_wait_fraction": 0.0013845633206874227,
+        "median_step_seconds": 0.06308173201978207,
+        "wall_decisions_per_s": 3988.966934044319,
+        "loop_wall_seconds": 192.53105194866657,
+        "peak_gpu_mem_allocated_bytes": 969793024,
+        "peak_gpu_mem_reserved_bytes": 1176502272,
+        "host_rss_bytes": 19875618816
+      },
+      "f4_fused_alone": {
+        "arm": "F4_rich_side_information_h256",
+        "adamw_impl": "fused",
+        "n_updates": 3000,
+        "median_decisions_per_s": 4566.212899365126,
+        "data_wait_fraction": 0.0014140340668814292,
+        "median_step_seconds": 0.05606396496295929,
+        "wall_decisions_per_s": 4481.679022377318,
+        "loop_wall_seconds": 171.36434719339013,
+        "peak_gpu_mem_allocated_bytes": 969803776,
+        "peak_gpu_mem_reserved_bytes": 1176502272,
+        "host_rss_bytes": 19975692288
+      },
+      "f0_alone": {
+        "arm": "F0_item_only_h256",
+        "adamw_impl": "fused",
+        "n_updates": 3000,
+        "median_decisions_per_s": 4724.889007218686,
+        "data_wait_fraction": 0.0006879278497024646,
+        "median_step_seconds": 0.05418116692453623,
+        "wall_decisions_per_s": 4659.916634893973,
+        "loop_wall_seconds": 164.809815319255,
+        "peak_gpu_mem_allocated_bytes": 955651072,
+        "peak_gpu_mem_reserved_bytes": 1170210816,
+        "host_rss_bytes": 8478261248
+      },
+      "f0_concurrent": {
+        "arm": "F0_item_only_h256",
+        "adamw_impl": "fused",
+        "n_updates": 3000,
+        "median_decisions_per_s": 4729.336860906495,
+        "data_wait_fraction": 0.0006524999069423788,
+        "median_step_seconds": 0.05413021054118872,
+        "wall_decisions_per_s": 4669.865010107251,
+        "loop_wall_seconds": 164.45871526002884,
+        "peak_gpu_mem_allocated_bytes": 955651072,
+        "peak_gpu_mem_reserved_bytes": 1170210816,
+        "host_rss_bytes": 8371412992
+      },
+      "f4_concurrent": {
+        "arm": "F4_rich_side_information_h256",
+        "adamw_impl": "fused",
+        "n_updates": 3000,
+        "median_decisions_per_s": 4570.262939885772,
+        "data_wait_fraction": 0.002975676744941175,
+        "median_step_seconds": 0.05601428262889385,
+        "wall_decisions_per_s": 4468.972188449932,
+        "loop_wall_seconds": 171.8515953142196,
+        "peak_gpu_mem_allocated_bytes": 969803776,
+        "peak_gpu_mem_reserved_bytes": 1176502272,
+        "host_rss_bytes": 19704672256
+      },
+      "ratio_f0_concurrent_over_alone": 1.0021348826583683,
+      "ratio_f4_concurrent_over_alone": 0.9971647157540869,
+      "aggregate_concurrent_dec_s": 9138.837198557183,
+      "host_rss_concurrent_total_gib": 26.147891998291016,
+      "concurrency_rule": "concurrent iff both ratios >= 0.85 and >= 12 GiB pod headroom",
+      "decision": "CONCURRENT"
+    }
+  },
+  "baselines_full_vs": {
+    "POP_full": {
+      "end_to_end": {
+        "n": 8826488,
+        "user_count": 790459,
+        "micro": {
+          "recall@20": 0.04852507635951042,
+          "mrr@20": 0.011690052226185799,
+          "ndcg@20": 0.01963898167014122
+        },
+        "macro": {
+          "recall@20": 0.08525679260492325,
+          "mrr@20": 0.021579239517450333,
+          "ndcg@20": 0.03544088453054428
+        }
+      },
+      "closed": {
+        "n": 8776943,
+        "user_count": 789769,
+        "micro": {
+          "recall@20": 0.048798996955156326,
+          "mrr@20": 0.011756042018532753,
+          "ndcg@20": 0.019749840721488
+        },
+        "macro": {
+          "recall@20": 0.08540090173482895,
+          "mrr@20": 0.02161443419754505,
+          "ndcg@20": 0.03549978882074356
+        }
+      },
+      "cohorts": {
+        "warm": {
+          "n": 7234886,
+          "macro_mrr@20": 0.02007479965686798,
+          "micro_recall@20": 0.04519006982445717
+        },
+        "unseen": {
+          "n": 1591602,
+          "macro_mrr@20": 0.026071131229400635,
+          "micro_recall@20": 0.06368488818407059
+        }
+      },
+      "slices": {
+        "prior_views": {
+          "0": {
+            "n": 184569,
+            "user_count": 184569,
+            "micro": {
+              "mrr@20": 0.03085736557841301,
+              "recall@20": 0.11616794019937515
+            },
+            "macro": {
+              "mrr@20": 0.03085736185312271,
+              "recall@20": 0.11616794019937515
+            }
+          },
+          "1": {
+            "n": 184672,
+            "user_count": 184672,
+            "micro": {
+              "mrr@20": 0.025847764685750008,
+              "recall@20": 0.10139057040214539
+            },
+            "macro": {
+              "mrr@20": 0.025847764685750008,
+              "recall@20": 0.10139057040214539
+            }
+          },
+          "2-4": {
+            "n": 516201,
+            "user_count": 238640,
+            "micro": {
+              "mrr@20": 0.021179599687457085,
+              "recall@20": 0.08502695709466934
+            },
+            "macro": {
+              "mrr@20": 0.023275554180145264,
+              "recall@20": 0.09233294427394867
+            }
+          },
+          "5-9": {
+            "n": 751772,
+            "user_count": 239888,
+            "micro": {
+              "mrr@20": 0.017766334116458893,
+              "recall@20": 0.07195532321929932
+            },
+            "macro": {
+              "mrr@20": 0.021052449941635132,
+              "recall@20": 0.0834563747048378
+            }
+          },
+          "10+": {
+            "n": 7189274,
+            "user_count": 508627,
+            "micro": {
+              "mrr@20": 0.009517550468444824,
+              "recall@20": 0.04035956785082817
+            },
+            "macro": {
+              "mrr@20": 0.016779107972979546,
+              "recall@20": 0.06864533573389053
+            }
+          }
+        },
+        "prefix_len": {
+          "1": {
+            "n": 1317453,
+            "user_count": 790459,
+            "micro": {
+              "mrr@20": 0.02323528751730919,
+              "recall@20": 0.09226135909557343
+            },
+            "macro": {
+              "mrr@20": 0.025522517040371895,
+              "recall@20": 0.09999841451644897
+            }
+          },
+          "2": {
+            "n": 1000257,
+            "user_count": 633586,
+            "micro": {
+              "mrr@20": 0.017599165439605713,
+              "recall@20": 0.07306721806526184
+            },
+            "macro": {
+              "mrr@20": 0.01929672434926033,
+              "recall@20": 0.07955564558506012
+            }
+          },
+          "3-4": {
+            "n": 1435945,
+            "user_count": 521189,
+            "micro": {
+              "mrr@20": 0.013552633114159107,
+              "recall@20": 0.056881703436374664
+            },
+            "macro": {
+              "mrr@20": 0.015549477189779282,
+              "recall@20": 0.06428948789834976
+            }
+          },
+          "5-9": {
+            "n": 2008085,
+            "user_count": 374984,
+            "micro": {
+              "mrr@20": 0.009793877601623535,
+              "recall@20": 0.041632700711488724
+            },
+            "macro": {
+              "mrr@20": 0.012083358131349087,
+              "recall@20": 0.050493258982896805
+            }
+          },
+          "10-19": {
+            "n": 1627358,
+            "user_count": 194921,
+            "micro": {
+              "mrr@20": 0.006613095756620169,
+              "recall@20": 0.028298014774918556
+            },
+            "macro": {
+              "mrr@20": 0.008680282160639763,
+              "recall@20": 0.03650585189461708
+            }
+          },
+          "20-49": {
+            "n": 1115215,
+            "user_count": 74095,
+            "micro": {
+              "mrr@20": 0.003927143756300211,
+              "recall@20": 0.017250485718250275
+            },
+            "macro": {
+              "mrr@20": 0.005756029859185219,
+              "recall@20": 0.024925487115979195
+            }
+          },
+          "50+": {
+            "n": 322175,
+            "user_count": 11168,
+            "micro": {
+              "mrr@20": 0.0021657999604940414,
+              "recall@20": 0.009622099809348583
+            },
+            "macro": {
+              "mrr@20": 0.0031621698290109634,
+              "recall@20": 0.01377597264945507
+            }
+          }
+        }
+      },
+      "eval_seconds": 452.1300551891327
+    },
+    "TRANS_full": {
+      "end_to_end": {
+        "n": 8826488,
+        "user_count": 790459,
+        "micro": {
+          "recall@20": 0.409992516040802,
+          "mrr@20": 0.14090918004512787,
+          "ndcg@20": 0.2004593312740326
+        },
+        "macro": {
+          "recall@20": 0.4452919065952301,
+          "mrr@20": 0.16163773834705353,
+          "ndcg@20": 0.22468312084674835
+        }
+      },
+      "closed": {
+        "n": 8776943,
+        "user_count": 789769,
+        "micro": {
+          "recall@20": 0.41230687499046326,
+          "mrr@20": 0.14170458912849426,
+          "ndcg@20": 0.20159092545509338
+        },
+        "macro": {
+          "recall@20": 0.4464474022388458,
+          "mrr@20": 0.1620444506406784,
+          "ndcg@20": 0.2252558171749115
+        }
+      },
+      "cohorts": {
+        "warm": {
+          "n": 7234886,
+          "macro_mrr@20": 0.16162888705730438,
+          "micro_recall@20": 0.40844500064849854
+        },
+        "unseen": {
+          "n": 1591602,
+          "macro_mrr@20": 0.1616642028093338,
+          "micro_recall@20": 0.41702699661254883
+        }
+      },
+      "slices": {
+        "prior_views": {
+          "0": {
+            "n": 184569,
+            "user_count": 184569,
+            "micro": {
+              "mrr@20": 0.1721719354391098,
+              "recall@20": 0.4671098589897156
+            },
+            "macro": {
+              "mrr@20": 0.1721719354391098,
+              "recall@20": 0.4671098589897156
+            }
+          },
+          "1": {
+            "n": 184672,
+            "user_count": 184672,
+            "micro": {
+              "mrr@20": 0.1702548712491989,
+              "recall@20": 0.47148457169532776
+            },
+            "macro": {
+              "mrr@20": 0.1702549010515213,
+              "recall@20": 0.47148457169532776
+            }
+          },
+          "2-4": {
+            "n": 516201,
+            "user_count": 238640,
+            "micro": {
+              "mrr@20": 0.15979015827178955,
+              "recall@20": 0.4571804404258728
+            },
+            "macro": {
+              "mrr@20": 0.16372878849506378,
+              "recall@20": 0.4588124454021454
+            }
+          },
+          "5-9": {
+            "n": 751772,
+            "user_count": 239888,
+            "micro": {
+              "mrr@20": 0.15260298550128937,
+              "recall@20": 0.4426368772983551
+            },
+            "macro": {
+              "mrr@20": 0.15949441492557526,
+              "recall@20": 0.4496076703071594
+            }
+          },
+          "10+": {
+            "n": 7189274,
+            "user_count": 508627,
+            "micro": {
+              "mrr@20": 0.13677427172660828,
+              "recall@20": 0.4001448452472687
+            },
+            "macro": {
+              "mrr@20": 0.15515796840190887,
+              "recall@20": 0.43331727385520935
+            }
+          }
+        },
+        "prefix_len": {
+          "1": {
+            "n": 1317453,
+            "user_count": 790459,
+            "micro": {
+              "mrr@20": 0.17096243798732758,
+              "recall@20": 0.4555206000804901
+            },
+            "macro": {
+              "mrr@20": 0.17344467341899872,
+              "recall@20": 0.46260783076286316
+            }
+          },
+          "2": {
+            "n": 1000257,
+            "user_count": 633586,
+            "micro": {
+              "mrr@20": 0.16521722078323364,
+              "recall@20": 0.461202472448349
+            },
+            "macro": {
+              "mrr@20": 0.16750498116016388,
+              "recall@20": 0.4672837555408478
+            }
+          },
+          "3-4": {
+            "n": 1435945,
+            "user_count": 521189,
+            "micro": {
+              "mrr@20": 0.14999212324619293,
+              "recall@20": 0.43872779607772827
+            },
+            "macro": {
+              "mrr@20": 0.15283067524433136,
+              "recall@20": 0.443836510181427
+            }
+          },
+          "5-9": {
+            "n": 2008085,
+            "user_count": 374984,
+            "micro": {
+              "mrr@20": 0.1358703076839447,
+              "recall@20": 0.4077148139476776
+            },
+            "macro": {
+              "mrr@20": 0.14011843502521515,
+              "recall@20": 0.41430509090423584
+            }
+          },
+          "10-19": {
+            "n": 1627358,
+            "user_count": 194921,
+            "micro": {
+              "mrr@20": 0.12489164620637894,
+              "recall@20": 0.37870708107948303
+            },
+            "macro": {
+              "mrr@20": 0.12968333065509796,
+              "recall@20": 0.386875718832016
+            }
+          },
+          "20-49": {
+            "n": 1115215,
+            "user_count": 74095,
+            "micro": {
+              "mrr@20": 0.11596313118934631,
+              "recall@20": 0.35305747389793396
+            },
+            "macro": {
+              "mrr@20": 0.12247908860445023,
+              "recall@20": 0.36560991406440735
+            }
+          },
+          "50+": {
+            "n": 322175,
+            "user_count": 11168,
+            "micro": {
+              "mrr@20": 0.10072697699069977,
+              "recall@20": 0.30605727434158325
+            },
+            "macro": {
+              "mrr@20": 0.11020655184984207,
+              "recall@20": 0.3314068615436554
+            }
+          }
+        }
+      },
+      "eval_seconds": 798.0373167991638
+    }
+  },
+  "runs": {
+    "F0_item_only_h256": {
+      "summary": {
+        "arm": "F0_item_only_h256",
+        "final_status": "COMPLETE",
+        "epoch": 5,
+        "update": 941736,
+        "best_epoch": 4,
+        "best_metric": 0.17387431859970093,
+        "best_checkpoint_path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/gru_v1/experiments/full/F0_item_only_h256/checkpoints/best.pt",
+        "best_checkpoint_sha256": "2bd26b7ab63e6387e5f1e1b9dbf69bcba9c194c0ad8438cde7eaa45993ef8ccf",
+        "resume_count": 0,
+        "end_utc": "2026-09-23T17:11:30Z",
+        "selection_history": [
+          {
+            "epoch": 0,
+            "metric": 0.15437231957912445,
+            "delta": Infinity,
+            "raw_improved": true,
+            "patience": 0,
+            "lr_step_now": false,
+            "lr_decayed": false,
+            "stop_now": false,
+            "stop_reason": null,
+            "best_metric": 0.15437231957912445,
+            "best_epoch": 0
+          },
+          {
+            "epoch": 1,
+            "metric": 0.15904924273490906,
+            "delta": 0.004676923155784607,
+            "raw_improved": true,
+            "patience": 0,
+            "lr_step_now": false,
+            "lr_decayed": false,
+            "stop_now": false,
+            "stop_reason": null,
+            "best_metric": 0.15904924273490906,
+            "best_epoch": 1
+          },
+          {
+            "epoch": 2,
+            "metric": 0.16103708744049072,
+            "delta": 0.001987844705581665,
+            "raw_improved": true,
+            "patience": 0,
+            "lr_step_now": false,
+            "lr_decayed": false,
+            "stop_now": false,
+            "stop_reason": null,
+            "best_metric": 0.16103708744049072,
+            "best_epoch": 2
+          },
+          {
+            "epoch": 3,
+            "metric": 0.1613856703042984,
+            "delta": 0.0003485828638076782,
+            "raw_improved": true,
+            "patience": 1,
+            "lr_step_now": true,
+            "lr_decayed": true,
+            "stop_now": false,
+            "stop_reason": null,
+            "best_metric": 0.1613856703042984,
+            "best_epoch": 3
+          },
+          {
+            "epoch": 4,
+            "metric": 0.17387431859970093,
+            "delta": 0.012488648295402527,
+            "raw_improved": true,
+            "patience": 0,
+            "lr_step_now": false,
+            "lr_decayed": true,
+            "stop_now": false,
+            "stop_reason": null,
+            "best_metric": 0.17387431859970093,
+            "best_epoch": 4
+          },
+          {
+            "epoch": 5,
+            "metric": 0.17375758290290833,
+            "delta": -0.00011673569679260254,
+            "raw_improved": false,
+            "patience": 1,
+            "lr_step_now": false,
+            "lr_decayed": true,
+            "stop_now": true,
+            "stop_reason": "max_epochs",
+            "best_metric": 0.17387431859970093,
+            "best_epoch": 4
+          }
+        ]
+      },
+      "config_yaml": "arm: F0_item_only_h256\ngroup: F0_item_only\nchannels: F0\nadamw_impl: fused\nseed: 2026\nmicrobatch: 256\nlr_initial: 0.001\nlr_decayed: 0.0001\nbetas:\n- 0.9\n- 0.999\neps: 1.0e-08\nweight_decay: 1.0e-05\nwarmup_updates: 100\ngrad_clip_norm: 1.0\nmax_epochs: 6\ndelta_threshold: 0.001\npatience_limit: 2\nmin_epochs: 2\nn_train: 40180608\nn_vs: 8826488\nn_cohort: 112365\ntest_tiny: false\ndataset_version_hash: 860e5a1c3a81b8e4bbfeff4f245fa37638a43e4f260df179585964d2d4da8dbd\nckpt_every_updates: 10000\ndiag_every_updates: 20000\nlibrary_versions:\n  torch: 2.13.0+cu130\n  numpy: 2.4.6\n  pyarrow: 21.0.0\n  python: 3.11.14\n",
+      "environment": {
+        "torch_version": "2.13.0+cu130",
+        "torch_cuda_version": "13.0",
+        "cudnn_version": 92000,
+        "python_version": "3.11.14",
+        "platform": "Linux-6.8.0-117-generic-x86_64-with-glibc2.39",
+        "cuda_available": true,
+        "cuda_visible_devices": "0",
+        "gpu_name": "NVIDIA A16",
+        "gpu_count": 1
+      },
+      "hardware": {
+        "cpu_count": 256,
+        "nvidia_smi_gpus": [
+          "0, NVIDIA A16, 15356 MiB, 580.126.09",
+          "1, NVIDIA A16, 15356 MiB, 580.126.09"
+        ]
+      },
+      "git_state": {
+        "repo_root": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence",
+        "head": "bfc90a0ad5dae255f8cb49ca49431aea6dbb1cac",
+        "dirty": false
+      },
+      "start": {
+        "start_utc": "2026-09-23T00:52:54Z"
+      },
+      "epoch_selection": [
+        {
+          "epoch": 0,
+          "metric": 0.15437231957912445,
+          "delta": Infinity,
+          "raw_improved": true,
+          "patience": 0,
+          "lr_step_now": false,
+          "lr_decayed": false,
+          "stop_now": false,
+          "stop_reason": null,
+          "best_metric": 0.15437231957912445,
+          "best_epoch": 0
+        },
+        {
+          "epoch": 1,
+          "metric": 0.15904924273490906,
+          "delta": 0.004676923155784607,
+          "raw_improved": true,
+          "patience": 0,
+          "lr_step_now": false,
+          "lr_decayed": false,
+          "stop_now": false,
+          "stop_reason": null,
+          "best_metric": 0.15904924273490906,
+          "best_epoch": 1
+        },
+        {
+          "epoch": 2,
+          "metric": 0.16103708744049072,
+          "delta": 0.001987844705581665,
+          "raw_improved": true,
+          "patience": 0,
+          "lr_step_now": false,
+          "lr_decayed": false,
+          "stop_now": false,
+          "stop_reason": null,
+          "best_metric": 0.16103708744049072,
+          "best_epoch": 2
+        },
+        {
+          "epoch": 3,
+          "metric": 0.1613856703042984,
+          "delta": 0.0003485828638076782,
+          "raw_improved": true,
+          "patience": 1,
+          "lr_step_now": true,
+          "lr_decayed": true,
+          "stop_now": false,
+          "stop_reason": null,
+          "best_metric": 0.1613856703042984,
+          "best_epoch": 3
+        },
+        {
+          "epoch": 4,
+          "metric": 0.17387431859970093,
+          "delta": 0.012488648295402527,
+          "raw_improved": true,
+          "patience": 0,
+          "lr_step_now": false,
+          "lr_decayed": true,
+          "stop_now": false,
+          "stop_reason": null,
+          "best_metric": 0.17387431859970093,
+          "best_epoch": 4
+        },
+        {
+          "epoch": 5,
+          "metric": 0.17375758290290833,
+          "delta": -0.00011673569679260254,
+          "raw_improved": false,
+          "patience": 1,
+          "lr_step_now": false,
+          "lr_decayed": true,
+          "stop_now": true,
+          "stop_reason": "max_epochs",
+          "best_metric": 0.17387431859970093,
+          "best_epoch": 4
+        }
+      ],
+      "epoch_evals_full_vs": [
+        {
+          "epoch": 1,
+          "update": 156956,
+          "micro_recall@20": 0.40798935294151306,
+          "micro_mrr@20": 0.13324062526226044,
+          "micro_ndcg@20": 0.1936088502407074,
+          "macro_recall@20": 0.43941473960876465,
+          "macro_mrr@20": 0.15437231957912445,
+          "macro_ndcg@20": 0.21731866896152496,
+          "n": 8826488,
+          "user_count": 790459,
+          "eval_seconds": 1048.8035785928369
+        },
+        {
+          "epoch": 2,
+          "update": 313912,
+          "micro_recall@20": 0.42183685302734375,
+          "micro_mrr@20": 0.13970042765140533,
+          "micro_ndcg@20": 0.20178037881851196,
+          "macro_recall@20": 0.4487864673137665,
+          "macro_mrr@20": 0.15904924273490906,
+          "macro_ndcg@20": 0.22311964631080627,
+          "n": 8826488,
+          "user_count": 790459,
+          "eval_seconds": 1049.4979823604226
+        },
+        {
+          "epoch": 3,
+          "update": 470868,
+          "micro_recall@20": 0.4226512312889099,
+          "micro_mrr@20": 0.14182919263839722,
+          "micro_ndcg@20": 0.20364348590373993,
+          "macro_recall@20": 0.44794750213623047,
+          "macro_mrr@20": 0.16103708744049072,
+          "macro_ndcg@20": 0.22450006008148193,
+          "n": 8826488,
+          "user_count": 790459,
+          "eval_seconds": 1049.6096525974572
+        },
+        {
+          "epoch": 4,
+          "update": 627824,
+          "micro_recall@20": 0.4241172671318054,
+          "micro_mrr@20": 0.14250244200229645,
+          "micro_ndcg@20": 0.20449277758598328,
+          "macro_recall@20": 0.4492238163948059,
+          "macro_mrr@20": 0.1613856703042984,
+          "macro_ndcg@20": 0.22505329549312592,
+          "n": 8826488,
+          "user_count": 790459,
+          "eval_seconds": 1051.4121019802988
+        },
+        {
+          "epoch": 5,
+          "update": 784780,
+          "micro_recall@20": 0.4503058195114136,
+          "micro_mrr@20": 0.1573464721441269,
+          "micro_ndcg@20": 0.2220095545053482,
+          "macro_recall@20": 0.4677274227142334,
+          "macro_mrr@20": 0.17387431859970093,
+          "macro_ndcg@20": 0.23900875449180603,
+          "n": 8826488,
+          "user_count": 790459,
+          "eval_seconds": 1049.9165896531194
+        },
+        {
+          "epoch": 6,
+          "update": 941736,
+          "micro_recall@20": 0.4490116536617279,
+          "micro_mrr@20": 0.15723957121372223,
+          "micro_ndcg@20": 0.22165057063102722,
+          "macro_recall@20": 0.46718916296958923,
+          "macro_mrr@20": 0.17375758290290833,
+          "macro_ndcg@20": 0.23880808055400848,
+          "n": 8826488,
+          "user_count": 790459,
+          "eval_seconds": 1134.7407688647509
+        }
+      ],
+      "epoch_mean_train_loss": {
+        "1": 6.566809138026949,
+        "2": 6.041070246468685,
+        "3": 5.966511707296799,
+        "4": 5.9258652027792245,
+        "5": 5.726495711999458,
+        "6": 5.767224011943592
+      },
+      "diag_cohort": [
+        {
+          "update": 20000,
+          "cohort_macro_mrr@20": 0.1230100467801094
+        },
+        {
+          "update": 40000,
+          "cohort_macro_mrr@20": 0.13709896802902222
+        },
+        {
+          "update": 60000,
+          "cohort_macro_mrr@20": 0.14214617013931274
+        },
+        {
+          "update": 80000,
+          "cohort_macro_mrr@20": 0.14636491239070892
+        },
+        {
+          "update": 100000,
+          "cohort_macro_mrr@20": 0.15011486411094666
+        },
+        {
+          "update": 120000,
+          "cohort_macro_mrr@20": 0.15183396637439728
+        },
+        {
+          "update": 140000,
+          "cohort_macro_mrr@20": 0.15413233637809753
+        },
+        {
+          "update": 156956,
+          "cohort_macro_mrr@20": 0.1543836146593094
+        },
+        {
+          "update": 160000,
+          "cohort_macro_mrr@20": 0.15501795709133148
+        },
+        {
+          "update": 180000,
+          "cohort_macro_mrr@20": 0.15592750906944275
+        },
+        {
+          "update": 200000,
+          "cohort_macro_mrr@20": 0.1562235802412033
+        },
+        {
+          "update": 220000,
+          "cohort_macro_mrr@20": 0.15747323632240295
+        },
+        {
+          "update": 240000,
+          "cohort_macro_mrr@20": 0.1584767997264862
+        },
+        {
+          "update": 260000,
+          "cohort_macro_mrr@20": 0.15835785865783691
+        },
+        {
+          "update": 280000,
+          "cohort_macro_mrr@20": 0.15962451696395874
+        },
+        {
+          "update": 300000,
+          "cohort_macro_mrr@20": 0.15940512716770172
+        },
+        {
+          "update": 313912,
+          "cohort_macro_mrr@20": 0.16023114323616028
+        },
+        {
+          "update": 320000,
+          "cohort_macro_mrr@20": 0.16143766045570374
+        },
+        {
+          "update": 340000,
+          "cohort_macro_mrr@20": 0.15952923893928528
+        },
+        {
+          "update": 360000,
+          "cohort_macro_mrr@20": 0.15973100066184998
+        },
+        {
+          "update": 380000,
+          "cohort_macro_mrr@20": 0.1601516306400299
+        },
+        {
+          "update": 400000,
+          "cohort_macro_mrr@20": 0.1614210307598114
+        },
+        {
+          "update": 420000,
+          "cohort_macro_mrr@20": 0.16215084493160248
+        },
+        {
+          "update": 440000,
+          "cohort_macro_mrr@20": 0.16155551373958588
+        },
+        {
+          "update": 460000,
+          "cohort_macro_mrr@20": 0.1623748242855072
+        },
+        {
+          "update": 470868,
+          "cohort_macro_mrr@20": 0.16082480549812317
+        },
+        {
+          "update": 480000,
+          "cohort_macro_mrr@20": 0.1626282036304474
+        },
+        {
+          "update": 500000,
+          "cohort_macro_mrr@20": 0.16188174486160278
+        },
+        {
+          "update": 520000,
+          "cohort_macro_mrr@20": 0.16209633648395538
+        },
+        {
+          "update": 540000,
+          "cohort_macro_mrr@20": 0.16155332326889038
+        },
+        {
+          "update": 560000,
+          "cohort_macro_mrr@20": 0.16241836547851562
+        },
+        {
+          "update": 580000,
+          "cohort_macro_mrr@20": 0.15910616517066956
+        },
+        {
+          "update": 600000,
+          "cohort_macro_mrr@20": 0.1597929149866104
+        },
+        {
+          "update": 620000,
+          "cohort_macro_mrr@20": 0.16130399703979492
+        },
+        {
+          "update": 627824,
+          "cohort_macro_mrr@20": 0.16146725416183472
+        },
+        {
+          "update": 640000,
+          "cohort_macro_mrr@20": 0.1706508845090866
+        },
+        {
+          "update": 660000,
+          "cohort_macro_mrr@20": 0.17199240624904633
+        },
+        {
+          "update": 680000,
+          "cohort_macro_mrr@20": 0.17233295738697052
+        },
+        {
+          "update": 700000,
+          "cohort_macro_mrr@20": 0.17186734080314636
+        },
+        {
+          "update": 720000,
+          "cohort_macro_mrr@20": 0.1730620115995407
+        },
+        {
+          "update": 740000,
+          "cohort_macro_mrr@20": 0.17290019989013672
+        },
+        {
+          "update": 760000,
+          "cohort_macro_mrr@20": 0.1717471331357956
+        },
+        {
+          "update": 780000,
+          "cohort_macro_mrr@20": 0.17249464988708496
+        },
+        {
+          "update": 784780,
+          "cohort_macro_mrr@20": 0.17291171848773956
+        },
+        {
+          "update": 800000,
+          "cohort_macro_mrr@20": 0.17320072650909424
+        },
+        {
+          "update": 820000,
+          "cohort_macro_mrr@20": 0.17272809147834778
+        },
+        {
+          "update": 840000,
+          "cohort_macro_mrr@20": 0.17368392646312714
+        },
+        {
+          "update": 860000,
+          "cohort_macro_mrr@20": 0.17286016047000885
+        },
+        {
+          "update": 880000,
+          "cohort_macro_mrr@20": 0.1727350652217865
+        },
+        {
+          "update": 900000,
+          "cohort_macro_mrr@20": 0.1729225069284439
+        },
+        {
+          "update": 920000,
+          "cohort_macro_mrr@20": 0.17354242503643036
+        },
+        {
+          "update": 940000,
+          "cohort_macro_mrr@20": 0.1729034185409546
+        },
+        {
+          "update": 941736,
+          "cohort_macro_mrr@20": 0.17292042076587677
+        }
+      ],
+      "throughput_dps_median": 4694.144852636843,
+      "peak_gpu_mem_reserved_gib": 3.763671875,
+      "checkpoints": {
+        "best": {
+          "bytes": 250793043,
+          "sha256": "2bd26b7ab63e6387e5f1e1b9dbf69bcba9c194c0ad8438cde7eaa45993ef8ccf"
+        },
+        "latest": {
+          "bytes": 250793727,
+          "sha256": "1346529813165ff1ac56eb2bbb4696e767aa786b2b994b8ad05a0f1eeb1e2a13"
+        },
+        "previous": {
+          "bytes": 250793599,
+          "sha256": "a6279a4cea5865635769889183a1c0d7fae40eb7bab3fbdffc8fc3722492fea6"
+        }
+      },
+      "supervisor_log_tail": [
+        "[2026-09-23T00:51:20Z] supervisor start arm=F0_item_only_h256 gpu=0 run_dir=/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/gru_v1/experiments/full/F0_item_only_h256 pid=216403",
+        "[2026-09-23T00:51:20Z] launching train_full.py (restarts_so_far=0) args=<fresh> extra=--adamw-impl fused",
+        "[2026-09-23T17:11:31Z] train_full.py exited rc=0",
+        "[2026-09-23T17:11:31Z] COMPLETE (exit 0)"
+      ]
+    },
+    "F4_rich_side_information_h256": {
+      "summary": {
+        "arm": "F4_rich_side_information_h256",
+        "final_status": "COMPLETE",
+        "epoch": 5,
+        "update": 941736,
+        "best_epoch": 5,
+        "best_metric": 0.1659964770078659,
+        "best_checkpoint_path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/gru_v1/experiments/full/F4_rich_side_information_h256/checkpoints/best.pt",
+        "best_checkpoint_sha256": "e294cc0e2687e8b9d8e116412626e886c39e61e8e86fabad5bf11aea0ca210ac",
+        "resume_count": 0,
+        "end_utc": "2026-09-23T17:50:35Z",
+        "selection_history": [
+          {
+            "epoch": 0,
+            "metric": 0.1547858566045761,
+            "delta": Infinity,
+            "raw_improved": true,
+            "patience": 0,
+            "lr_step_now": false,
+            "lr_decayed": false,
+            "stop_now": false,
+            "stop_reason": null,
+            "best_metric": 0.1547858566045761,
+            "best_epoch": 0
+          },
+          {
+            "epoch": 1,
+            "metric": 0.16055013239383698,
+            "delta": 0.005764275789260864,
+            "raw_improved": true,
+            "patience": 0,
+            "lr_step_now": false,
+            "lr_decayed": false,
+            "stop_now": false,
+            "stop_reason": null,
+            "best_metric": 0.16055013239383698,
+            "best_epoch": 1
+          },
+          {
+            "epoch": 2,
+            "metric": 0.16249807178974152,
+            "delta": 0.001947939395904541,
+            "raw_improved": true,
+            "patience": 0,
+            "lr_step_now": false,
+            "lr_decayed": false,
+            "stop_now": false,
+            "stop_reason": null,
+            "best_metric": 0.16249807178974152,
+            "best_epoch": 2
+          },
+          {
+            "epoch": 3,
+            "metric": 0.16364768147468567,
+            "delta": 0.0011496096849441528,
+            "raw_improved": true,
+            "patience": 0,
+            "lr_step_now": false,
+            "lr_decayed": false,
+            "stop_now": false,
+            "stop_reason": null,
+            "best_metric": 0.16364768147468567,
+            "best_epoch": 3
+          },
+          {
+            "epoch": 4,
+            "metric": 0.1656986027956009,
+            "delta": 0.002050921320915222,
+            "raw_improved": true,
+            "patience": 0,
+            "lr_step_now": false,
+            "lr_decayed": false,
+            "stop_now": false,
+            "stop_reason": null,
+            "best_metric": 0.1656986027956009,
+            "best_epoch": 4
+          },
+          {
+            "epoch": 5,
+            "metric": 0.1659964770078659,
+            "delta": 0.00029787421226501465,
+            "raw_improved": true,
+            "patience": 1,
+            "lr_step_now": true,
+            "lr_decayed": true,
+            "stop_now": true,
+            "stop_reason": "max_epochs",
+            "best_metric": 0.1659964770078659,
+            "best_epoch": 5
+          }
+        ]
+      },
+      "config_yaml": "arm: F4_rich_side_information_h256\ngroup: F4_rich_side_information\nchannels: F4\nadamw_impl: fused\nseed: 2026\nmicrobatch: 256\nlr_initial: 0.001\nlr_decayed: 0.0001\nbetas:\n- 0.9\n- 0.999\neps: 1.0e-08\nweight_decay: 1.0e-05\nwarmup_updates: 100\ngrad_clip_norm: 1.0\nmax_epochs: 6\ndelta_threshold: 0.001\npatience_limit: 2\nmin_epochs: 2\nn_train: 40180608\nn_vs: 8826488\nn_cohort: 112365\ntest_tiny: false\ndataset_version_hash: 860e5a1c3a81b8e4bbfeff4f245fa37638a43e4f260df179585964d2d4da8dbd\nckpt_every_updates: 10000\ndiag_every_updates: 20000\nlibrary_versions:\n  torch: 2.13.0+cu130\n  numpy: 2.4.6\n  pyarrow: 21.0.0\n  python: 3.11.14\n",
+      "environment": {
+        "torch_version": "2.13.0+cu130",
+        "torch_cuda_version": "13.0",
+        "cudnn_version": 92000,
+        "python_version": "3.11.14",
+        "platform": "Linux-6.8.0-117-generic-x86_64-with-glibc2.39",
+        "cuda_available": true,
+        "cuda_visible_devices": "1",
+        "gpu_name": "NVIDIA A16",
+        "gpu_count": 1
+      },
+      "hardware": {
+        "cpu_count": 256,
+        "nvidia_smi_gpus": [
+          "0, NVIDIA A16, 15356 MiB, 580.126.09",
+          "1, NVIDIA A16, 15356 MiB, 580.126.09"
+        ]
+      },
+      "git_state": {
+        "repo_root": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence",
+        "head": "bfc90a0ad5dae255f8cb49ca49431aea6dbb1cac",
+        "dirty": false
+      },
+      "start": {
+        "start_utc": "2026-09-23T00:53:12Z"
+      },
+      "epoch_selection": [
+        {
+          "epoch": 0,
+          "metric": 0.1547858566045761,
+          "delta": Infinity,
+          "raw_improved": true,
+          "patience": 0,
+          "lr_step_now": false,
+          "lr_decayed": false,
+          "stop_now": false,
+          "stop_reason": null,
+          "best_metric": 0.1547858566045761,
+          "best_epoch": 0
+        },
+        {
+          "epoch": 1,
+          "metric": 0.16055013239383698,
+          "delta": 0.005764275789260864,
+          "raw_improved": true,
+          "patience": 0,
+          "lr_step_now": false,
+          "lr_decayed": false,
+          "stop_now": false,
+          "stop_reason": null,
+          "best_metric": 0.16055013239383698,
+          "best_epoch": 1
+        },
+        {
+          "epoch": 2,
+          "metric": 0.16249807178974152,
+          "delta": 0.001947939395904541,
+          "raw_improved": true,
+          "patience": 0,
+          "lr_step_now": false,
+          "lr_decayed": false,
+          "stop_now": false,
+          "stop_reason": null,
+          "best_metric": 0.16249807178974152,
+          "best_epoch": 2
+        },
+        {
+          "epoch": 3,
+          "metric": 0.16364768147468567,
+          "delta": 0.0011496096849441528,
+          "raw_improved": true,
+          "patience": 0,
+          "lr_step_now": false,
+          "lr_decayed": false,
+          "stop_now": false,
+          "stop_reason": null,
+          "best_metric": 0.16364768147468567,
+          "best_epoch": 3
+        },
+        {
+          "epoch": 4,
+          "metric": 0.1656986027956009,
+          "delta": 0.002050921320915222,
+          "raw_improved": true,
+          "patience": 0,
+          "lr_step_now": false,
+          "lr_decayed": false,
+          "stop_now": false,
+          "stop_reason": null,
+          "best_metric": 0.1656986027956009,
+          "best_epoch": 4
+        },
+        {
+          "epoch": 5,
+          "metric": 0.1659964770078659,
+          "delta": 0.00029787421226501465,
+          "raw_improved": true,
+          "patience": 1,
+          "lr_step_now": true,
+          "lr_decayed": true,
+          "stop_now": true,
+          "stop_reason": "max_epochs",
+          "best_metric": 0.1659964770078659,
+          "best_epoch": 5
+        }
+      ],
+      "epoch_evals_full_vs": [
+        {
+          "epoch": 1,
+          "update": 156956,
+          "micro_recall@20": 0.41902440786361694,
+          "micro_mrr@20": 0.13357804715633392,
+          "micro_ndcg@20": 0.19629672169685364,
+          "macro_recall@20": 0.4499441981315613,
+          "macro_mrr@20": 0.1547858566045761,
+          "macro_ndcg@20": 0.2199585884809494,
+          "n": 8826488,
+          "user_count": 790459,
+          "eval_seconds": 1081.659361809492
+        },
+        {
+          "epoch": 2,
+          "update": 313912,
+          "micro_recall@20": 0.4336599111557007,
+          "micro_mrr@20": 0.14082475006580353,
+          "micro_ndcg@20": 0.20523647964000702,
+          "macro_recall@20": 0.4602523744106293,
+          "macro_mrr@20": 0.16055013239383698,
+          "macro_ndcg@20": 0.22678251564502716,
+          "n": 8826488,
+          "user_count": 790459,
+          "eval_seconds": 1081.6127326339483
+        },
+        {
+          "epoch": 3,
+          "update": 470868,
+          "micro_recall@20": 0.43701639771461487,
+          "micro_mrr@20": 0.1435757875442505,
+          "micro_ndcg@20": 0.20815563201904297,
+          "macro_recall@20": 0.4608266353607178,
+          "macro_mrr@20": 0.16249807178974152,
+          "macro_ndcg@20": 0.22845827043056488,
+          "n": 8826488,
+          "user_count": 790459,
+          "eval_seconds": 1081.2343125324696
+        },
+        {
+          "epoch": 4,
+          "update": 627824,
+          "micro_recall@20": 0.44125059247016907,
+          "micro_mrr@20": 0.14504416286945343,
+          "micro_ndcg@20": 0.21023471653461456,
+          "macro_recall@20": 0.46561428904533386,
+          "macro_mrr@20": 0.16364768147468567,
+          "macro_ndcg@20": 0.23039188981056213,
+          "n": 8826488,
+          "user_count": 790459,
+          "eval_seconds": 1081.0231277104467
+        },
+        {
+          "epoch": 5,
+          "update": 784780,
+          "micro_recall@20": 0.44436755776405334,
+          "micro_mrr@20": 0.14728204905986786,
+          "micro_ndcg@20": 0.21269844472408295,
+          "macro_recall@20": 0.46718907356262207,
+          "macro_mrr@20": 0.1656986027956009,
+          "macro_ndcg@20": 0.2323824018239975,
+          "n": 8826488,
+          "user_count": 790459,
+          "eval_seconds": 1081.7837978638709
+        },
+        {
+          "epoch": 6,
+          "update": 941736,
+          "micro_recall@20": 0.44520118832588196,
+          "micro_mrr@20": 0.14801326394081116,
+          "micro_ndcg@20": 0.21347157657146454,
+          "macro_recall@20": 0.46736255288124084,
+          "macro_mrr@20": 0.1659964770078659,
+          "macro_ndcg@20": 0.23268385231494904,
+          "n": 8826488,
+          "user_count": 790459,
+          "eval_seconds": 1081.4154206365347
+        }
+      ],
+      "epoch_mean_train_loss": {
+        "1": 6.456172180230487,
+        "2": 5.96666922670109,
+        "3": 5.8974578779255955,
+        "4": 5.8699346652365065,
+        "5": 5.8402145051500325,
+        "6": 5.834539337856754
+      },
+      "diag_cohort": [
+        {
+          "update": 20000,
+          "cohort_macro_mrr@20": 0.12036272138357162
+        },
+        {
+          "update": 40000,
+          "cohort_macro_mrr@20": 0.13506180047988892
+        },
+        {
+          "update": 60000,
+          "cohort_macro_mrr@20": 0.1420493721961975
+        },
+        {
+          "update": 80000,
+          "cohort_macro_mrr@20": 0.14576376974582672
+        },
+        {
+          "update": 100000,
+          "cohort_macro_mrr@20": 0.14979711174964905
+        },
+        {
+          "update": 120000,
+          "cohort_macro_mrr@20": 0.1521088182926178
+        },
+        {
+          "update": 140000,
+          "cohort_macro_mrr@20": 0.15443125367164612
+        },
+        {
+          "update": 156956,
+          "cohort_macro_mrr@20": 0.1547369360923767
+        },
+        {
+          "update": 160000,
+          "cohort_macro_mrr@20": 0.15595772862434387
+        },
+        {
+          "update": 180000,
+          "cohort_macro_mrr@20": 0.15629519522190094
+        },
+        {
+          "update": 200000,
+          "cohort_macro_mrr@20": 0.15679024159908295
+        },
+        {
+          "update": 220000,
+          "cohort_macro_mrr@20": 0.15885630249977112
+        },
+        {
+          "update": 240000,
+          "cohort_macro_mrr@20": 0.15874992311000824
+        },
+        {
+          "update": 260000,
+          "cohort_macro_mrr@20": 0.16033540666103363
+        },
+        {
+          "update": 280000,
+          "cohort_macro_mrr@20": 0.1599615514278412
+        },
+        {
+          "update": 300000,
+          "cohort_macro_mrr@20": 0.15935003757476807
+        },
+        {
+          "update": 313912,
+          "cohort_macro_mrr@20": 0.16083723306655884
+        },
+        {
+          "update": 320000,
+          "cohort_macro_mrr@20": 0.16248539090156555
+        },
+        {
+          "update": 340000,
+          "cohort_macro_mrr@20": 0.162269726395607
+        },
+        {
+          "update": 360000,
+          "cohort_macro_mrr@20": 0.16156795620918274
+        },
+        {
+          "update": 380000,
+          "cohort_macro_mrr@20": 0.16160282492637634
+        },
+        {
+          "update": 400000,
+          "cohort_macro_mrr@20": 0.16112832725048065
+        },
+        {
+          "update": 420000,
+          "cohort_macro_mrr@20": 0.1623114049434662
+        },
+        {
+          "update": 440000,
+          "cohort_macro_mrr@20": 0.16188281774520874
+        },
+        {
+          "update": 460000,
+          "cohort_macro_mrr@20": 0.16237099468708038
+        },
+        {
+          "update": 470868,
+          "cohort_macro_mrr@20": 0.16253969073295593
+        },
+        {
+          "update": 480000,
+          "cohort_macro_mrr@20": 0.1643960326910019
+        },
+        {
+          "update": 500000,
+          "cohort_macro_mrr@20": 0.16359126567840576
+        },
+        {
+          "update": 520000,
+          "cohort_macro_mrr@20": 0.16256596148014069
+        },
+        {
+          "update": 540000,
+          "cohort_macro_mrr@20": 0.16367526352405548
+        },
+        {
+          "update": 560000,
+          "cohort_macro_mrr@20": 0.16371901333332062
+        },
+        {
+          "update": 580000,
+          "cohort_macro_mrr@20": 0.1625642031431198
+        },
+        {
+          "update": 600000,
+          "cohort_macro_mrr@20": 0.1632143259048462
+        },
+        {
+          "update": 620000,
+          "cohort_macro_mrr@20": 0.1641615480184555
+        },
+        {
+          "update": 627824,
+          "cohort_macro_mrr@20": 0.1637452095746994
+        },
+        {
+          "update": 640000,
+          "cohort_macro_mrr@20": 0.16426651179790497
+        },
+        {
+          "update": 660000,
+          "cohort_macro_mrr@20": 0.16544702649116516
+        },
+        {
+          "update": 680000,
+          "cohort_macro_mrr@20": 0.16448566317558289
+        },
+        {
+          "update": 700000,
+          "cohort_macro_mrr@20": 0.16509592533111572
+        },
+        {
+          "update": 720000,
+          "cohort_macro_mrr@20": 0.16543987393379211
+        },
+        {
+          "update": 740000,
+          "cohort_macro_mrr@20": 0.16490107774734497
+        },
+        {
+          "update": 760000,
+          "cohort_macro_mrr@20": 0.16372361779212952
+        },
+        {
+          "update": 780000,
+          "cohort_macro_mrr@20": 0.16507315635681152
+        },
+        {
+          "update": 784780,
+          "cohort_macro_mrr@20": 0.16547290980815887
+        },
+        {
+          "update": 800000,
+          "cohort_macro_mrr@20": 0.16666331887245178
+        },
+        {
+          "update": 820000,
+          "cohort_macro_mrr@20": 0.16532409191131592
+        },
+        {
+          "update": 840000,
+          "cohort_macro_mrr@20": 0.1652601957321167
+        },
+        {
+          "update": 860000,
+          "cohort_macro_mrr@20": 0.1639525294303894
+        },
+        {
+          "update": 880000,
+          "cohort_macro_mrr@20": 0.16575387120246887
+        },
+        {
+          "update": 900000,
+          "cohort_macro_mrr@20": 0.16512273252010345
+        },
+        {
+          "update": 920000,
+          "cohort_macro_mrr@20": 0.16717536747455597
+        },
+        {
+          "update": 940000,
+          "cohort_macro_mrr@20": 0.16447868943214417
+        },
+        {
+          "update": 941736,
+          "cohort_macro_mrr@20": 0.16704370081424713
+        }
+      ],
+      "throughput_dps_median": 4499.38173041666,
+      "peak_gpu_mem_reserved_gib": 4.376953125,
+      "checkpoints": {
+        "best": {
+          "bytes": 252878439,
+          "sha256": "e294cc0e2687e8b9d8e116412626e886c39e61e8e86fabad5bf11aea0ca210ac"
+        },
+        "latest": {
+          "bytes": 252879003,
+          "sha256": "360f576a8030c0af20d1da82226b85b7918d0ff0d651c8e1ea8e1e6274164882"
+        },
+        "previous": {
+          "bytes": 252878875,
+          "sha256": "3e6d4ded6304512b94ed0d1269484cfdf8fc39f90f5cb0147088fc9a9addd503"
+        }
+      },
+      "supervisor_log_tail": [
+        "[2026-09-23T00:51:20Z] supervisor start arm=F4_rich_side_information_h256 gpu=1 run_dir=/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/gru_v1/experiments/full/F4_rich_side_information_h256 pid=216431",
+        "[2026-09-23T00:51:20Z] launching train_full.py (restarts_so_far=0) args=<fresh> extra=--adamw-impl fused",
+        "[2026-09-23T17:50:37Z] train_full.py exited rc=0",
+        "[2026-09-23T17:50:37Z] COMPLETE (exit 0)"
+      ]
+    }
+  },
+  "lock": {
+    "selected_arm": "F0_item_only_h256",
+    "arms": {
+      "F0_item_only_h256": {
+        "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/gru_v1/experiments/full/F0_item_only_h256",
+        "best_checkpoint_path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/gru_v1/experiments/full/F0_item_only_h256/checkpoints/best.pt",
+        "best_checkpoint_sha256": "2bd26b7ab63e6387e5f1e1b9dbf69bcba9c194c0ad8438cde7eaa45993ef8ccf",
+        "epoch": 4,
+        "metric": 0.17387431859970093,
+        "config_path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/gru_v1/experiments/full/F0_item_only_h256/config.yaml"
+      },
+      "F4_rich_side_information_h256": {
+        "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/gru_v1/experiments/full/F4_rich_side_information_h256",
+        "best_checkpoint_path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/gru_v1/experiments/full/F4_rich_side_information_h256/checkpoints/best.pt",
+        "best_checkpoint_sha256": "e294cc0e2687e8b9d8e116412626e886c39e61e8e86fabad5bf11aea0ca210ac",
+        "epoch": 5,
+        "metric": 0.1659964770078659,
+        "config_path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/gru_v1/experiments/full/F4_rich_side_information_h256/config.yaml"
+      }
+    },
+    "protocol_sha256": "1bfed6faccc31fff25fad7d606f905e44f98c09406dc78adccc88f186f85aab2",
+    "protocol_path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/gru_v1/FULL_RUN_PROTOCOL.md",
+    "dataset_version_hash": "860e5a1c3a81b8e4bbfeff4f245fa37638a43e4f260df179585964d2d4da8dbd",
+    "code_sha256": {
+      "full_store.py": "4fca9e66c0910e3a8335ffc06ed9258b29f31f30f9590831a8899c451be4ae8b",
+      "train_full.py": "c0e1c903d8fe07fa16dc920bf0eadfd55e189df9073c79bc9347c6bff2b1d5a4",
+      "eval_full.py": "6d2e413668a7356c11c18b4fb50b656c218f1205d0143a776927366ae2212d0c",
+      "baselines_full.py": "19578e5c3548c284e812e29fabe9eeec7e534f21aaafb92514a26100c9d52d88",
+      "lock_and_eval.py": "8fa1e6c17ac963707170ca4ab8c14522e56c95ef4d389edb169ea1e45dfb5bb5",
+      "model.py": "636d2ba18f850136721bf1ec2d923c1ee0f77c5726ea83a4be0bb786f46201e5",
+      "objective.py": "34ed90403e3065cc81797cf58ce3dee50e312a7e7d6d39c9b38b41066c02f54f",
+      "evaluator.py": "e527b8c92cbcf46bc444c2860d1f42255218bf7637ca572d1e58c19a3cb40899",
+      "window_cache.py": "3b61b65822fd18b722a76497a065ca49dc74a88993f65a04b0e78058fb78608e",
+      "train.py": "d8500fa0bd37927594412edfb3f248fdb0352b6948b3e30cb97638dcf6597b60"
+    },
+    "utc": "2026-09-23T17:51:17.031197+00:00"
+  },
+  "validation_confirm": {
+    "F0_item_only_h256": {
+      "end_to_end": {
+        "n": 2461568,
+        "user_count": 373953,
+        "micro": {
+          "recall@20": 0.42420482635498047,
+          "mrr@20": 0.15313953161239624,
+          "ndcg@20": 0.21287697553634644
+        },
+        "macro": {
+          "recall@20": 0.44204089045524597,
+          "mrr@20": 0.1689881682395935,
+          "ndcg@20": 0.22944557666778564
+        }
+      },
+      "closed": {
+        "n": 2414242,
+        "user_count": 372504,
+        "micro": {
+          "recall@20": 0.43252044916152954,
+          "mrr@20": 0.1561414897441864,
+          "ndcg@20": 0.2170499563217163
+        },
+        "macro": {
+          "recall@20": 0.4469614624977112,
+          "mrr@20": 0.17085230350494385,
+          "ndcg@20": 0.2319832444190979
+        }
+      },
+      "cohorts": {
+        "warm": {
+          "n": 1782654,
+          "macro_mrr@20": 0.1663016527891159,
+          "micro_recall@20": 0.4186016917228699
+        },
+        "unseen": {
+          "n": 678914,
+          "macro_mrr@20": 0.17454519867897034,
+          "micro_recall@20": 0.4389171600341797
+        }
+      },
+      "descriptive_at_k": {
+        "@1": {
+          "end_to_end": {
+            "micro": {
+              "recall@1": 0.08461679518222809,
+              "mrr@1": 0.08461679518222809,
+              "ndcg@1": 0.08461679518222809
+            },
+            "macro": {
+              "recall@1": 0.09688916057348251,
+              "mrr@1": 0.09688916057348251,
+              "ndcg@1": 0.09688916057348251
+            }
+          },
+          "closed": {
+            "micro": {
+              "recall@1": 0.08627552539110184,
+              "mrr@1": 0.08627552539110184,
+              "ndcg@1": 0.08627552539110184
+            },
+            "macro": {
+              "recall@1": 0.09797588735818863,
+              "mrr@1": 0.09797588735818863,
+              "ndcg@1": 0.09797588735818863
+            }
+          }
+        },
+        "@2": {
+          "end_to_end": {
+            "micro": {
+              "recall@2": 0.13294656574726105,
+              "mrr@2": 0.10878168046474457,
+              "ndcg@2": 0.11510948091745377
+            },
+            "macro": {
+              "recall@2": 0.1501028835773468,
+              "mrr@2": 0.12349603325128555,
+              "ndcg@2": 0.13046328723430634
+            }
+          },
+          "closed": {
+            "micro": {
+              "recall@2": 0.13555268943309784,
+              "mrr@2": 0.11091411113739014,
+              "ndcg@2": 0.11736595630645752
+            },
+            "macro": {
+              "recall@2": 0.15174555778503418,
+              "mrr@2": 0.1248607188463211,
+              "ndcg@2": 0.13190075755119324
+            }
+          }
+        },
+        "@5": {
+          "end_to_end": {
+            "micro": {
+              "recall@5": 0.22467386722564697,
+              "mrr@5": 0.13350141048431396,
+              "ndcg@5": 0.15604515373706818
+            },
+            "macro": {
+              "recall@5": 0.24646466970443726,
+              "mrr@5": 0.14957211911678314,
+              "ndcg@5": 0.17355859279632568
+            }
+          },
+          "closed": {
+            "micro": {
+              "recall@5": 0.22907811403274536,
+              "mrr@5": 0.13611842691898346,
+              "ndcg@5": 0.1591040939092636
+            },
+            "macro": {
+              "recall@5": 0.24914084374904633,
+              "mrr@5": 0.15121667087078094,
+              "ndcg@5": 0.17545844614505768
+            }
+          }
+        },
+        "@10": {
+          "end_to_end": {
+            "micro": {
+              "recall@10": 0.317152738571167,
+              "mrr@10": 0.14573904871940613,
+              "ndcg@10": 0.1858457624912262
+            },
+            "macro": {
+              "recall@10": 0.33910274505615234,
+              "mrr@10": 0.16186818480491638,
+              "ndcg@10": 0.20344780385494232
+            }
+          },
+          "closed": {
+            "micro": {
+              "recall@10": 0.3233698308467865,
+              "mrr@10": 0.14859594404697418,
+              "ndcg@10": 0.18948885798454285
+            },
+            "macro": {
+              "recall@10": 0.34280335903167725,
+              "mrr@10": 0.1636480689048767,
+              "ndcg@10": 0.2056775689125061
+            }
+          }
+        }
+      },
+      "slices": {
+        "prior_views": {
+          "0": {
+            "n": 113783,
+            "user_count": 113783,
+            "micro": {
+              "mrr@20": 0.1502397656440735,
+              "recall@20": 0.4244922399520874
+            },
+            "macro": {
+              "mrr@20": 0.15023978054523468,
+              "recall@20": 0.4244922399520874
+            }
+          },
+          "1": {
+            "n": 101537,
+            "user_count": 101537,
+            "micro": {
+              "mrr@20": 0.20201599597930908,
+              "recall@20": 0.48470017313957214
+            },
+            "macro": {
+              "mrr@20": 0.20201601088047028,
+              "recall@20": 0.48470017313957214
+            }
+          },
+          "2-4": {
+            "n": 242779,
+            "user_count": 114807,
+            "micro": {
+              "mrr@20": 0.17882731556892395,
+              "recall@20": 0.4693610370159149
+            },
+            "macro": {
+              "mrr@20": 0.1812000870704651,
+              "recall@20": 0.4681784510612488
+            }
+          },
+          "5-9": {
+            "n": 294065,
+            "user_count": 98719,
+            "micro": {
+              "mrr@20": 0.16968336701393127,
+              "recall@20": 0.4562460780143738
+            },
+            "macro": {
+              "mrr@20": 0.17422932386398315,
+              "recall@20": 0.45792877674102783
+            }
+          },
+          "10+": {
+            "n": 1709404,
+            "user_count": 205942,
+            "micro": {
+              "mrr@20": 0.14393499493598938,
+              "recall@20": 0.4086669981479645
+            },
+            "macro": {
+              "mrr@20": 0.1617218405008316,
+              "recall@20": 0.4321502447128296
+            }
+          }
+        },
+        "prefix_len": {
+          "1": {
+            "n": 481870,
+            "user_count": 373953,
+            "micro": {
+              "mrr@20": 0.14675740897655487,
+              "recall@20": 0.41385436058044434
+            },
+            "macro": {
+              "mrr@20": 0.14831286668777466,
+              "recall@20": 0.41733360290527344
+            }
+          },
+          "2": {
+            "n": 343791,
+            "user_count": 275009,
+            "micro": {
+              "mrr@20": 0.20160739123821259,
+              "recall@20": 0.48341289162635803
+            },
+            "macro": {
+              "mrr@20": 0.2041892111301422,
+              "recall@20": 0.48710906505584717
+            }
+          },
+          "3-4": {
+            "n": 457300,
+            "user_count": 209777,
+            "micro": {
+              "mrr@20": 0.1688583940267563,
+              "recall@20": 0.4592280685901642
+            },
+            "macro": {
+              "mrr@20": 0.17369157075881958,
+              "recall@20": 0.4645976722240448
+            }
+          },
+          "5-9": {
+            "n": 565600,
+            "user_count": 135147,
+            "micro": {
+              "mrr@20": 0.15076221525669098,
+              "recall@20": 0.4287959635257721
+            },
+            "macro": {
+              "mrr@20": 0.1600925177335739,
+              "recall@20": 0.4403137266635895
+            }
+          },
+          "10-19": {
+            "n": 378212,
+            "user_count": 57221,
+            "micro": {
+              "mrr@20": 0.12939338386058807,
+              "recall@20": 0.389056921005249
+            },
+            "macro": {
+              "mrr@20": 0.1393996626138687,
+              "recall@20": 0.4024847149848938
+            }
+          },
+          "20-49": {
+            "n": 194807,
+            "user_count": 16535,
+            "micro": {
+              "mrr@20": 0.11095131188631058,
+              "recall@20": 0.3428829610347748
+            },
+            "macro": {
+              "mrr@20": 0.12206752598285675,
+              "recall@20": 0.36613866686820984
+            }
+          },
+          "50+": {
+            "n": 39988,
+            "user_count": 1615,
+            "micro": {
+              "mrr@20": 0.09733597934246063,
+              "recall@20": 0.30304092168807983
+            },
+            "macro": {
+              "mrr@20": 0.10829412192106247,
+              "recall@20": 0.31940925121307373
+            }
+          }
+        }
+      },
+      "eval_seconds": 245.7615311667323
+    },
+    "F4_rich_side_information_h256": {
+      "end_to_end": {
+        "n": 2461568,
+        "user_count": 373953,
+        "micro": {
+          "recall@20": 0.4124350845813751,
+          "mrr@20": 0.13958828151226044,
+          "ndcg@20": 0.19958610832691193
+        },
+        "macro": {
+          "recall@20": 0.4347570836544037,
+          "mrr@20": 0.15642870962619781,
+          "ndcg@20": 0.21793004870414734
+        }
+      },
+      "closed": {
+        "n": 2414242,
+        "user_count": 372504,
+        "micro": {
+          "recall@20": 0.42051997780799866,
+          "mrr@20": 0.14232461154460907,
+          "ndcg@20": 0.20349857211112976
+        },
+        "macro": {
+          "recall@20": 0.43956121802330017,
+          "mrr@20": 0.15808500349521637,
+          "ndcg@20": 0.22027844190597534
+        }
+      },
+      "cohorts": {
+        "warm": {
+          "n": 1782654,
+          "macro_mrr@20": 0.1542394459247589,
+          "micro_recall@20": 0.40750306844711304
+        },
+        "unseen": {
+          "n": 678914,
+          "macro_mrr@20": 0.16095712780952454,
+          "micro_recall@20": 0.4253852367401123
+        }
+      },
+      "descriptive_at_k": {
+        "@1": {
+          "end_to_end": {
+            "micro": {
+              "recall@1": 0.07230553776025772,
+              "mrr@1": 0.07230553776025772,
+              "ndcg@1": 0.07230553776025772
+            },
+            "macro": {
+              "recall@1": 0.08438796550035477,
+              "mrr@1": 0.08438796550035477,
+              "ndcg@1": 0.08438796550035477
+            }
+          },
+          "closed": {
+            "micro": {
+              "recall@1": 0.07372293621301651,
+              "mrr@1": 0.07372293621301651,
+              "ndcg@1": 0.07372293621301651
+            },
+            "macro": {
+              "recall@1": 0.08526412397623062,
+              "mrr@1": 0.08526412397623062,
+              "ndcg@1": 0.08526412397623062
+            }
+          }
+        },
+        "@2": {
+          "end_to_end": {
+            "micro": {
+              "recall@2": 0.11815395951271057,
+              "mrr@2": 0.09522974491119385,
+              "ndcg@2": 0.10123267024755478
+            },
+            "macro": {
+              "recall@2": 0.1366831362247467,
+              "mrr@2": 0.11053555458784103,
+              "ndcg@2": 0.11738253384828568
+            }
+          },
+          "closed": {
+            "micro": {
+              "recall@2": 0.12047010660171509,
+              "mrr@2": 0.0970965176820755,
+              "ndcg@2": 0.10321712493896484
+            },
+            "macro": {
+              "recall@2": 0.13810178637504578,
+              "mrr@2": 0.1116829663515091,
+              "ndcg@2": 0.11860097944736481
+            }
+          }
+        },
+        "@5": {
+          "end_to_end": {
+            "micro": {
+              "recall@5": 0.20870234072208405,
+              "mrr@5": 0.11956336349248886,
+              "ndcg@5": 0.14158444106578827
+            },
+            "macro": {
+              "recall@5": 0.2326500564813614,
+              "mrr@5": 0.13641247153282166,
+              "ndcg@5": 0.1602233201265335
+            }
+          },
+          "closed": {
+            "micro": {
+              "recall@5": 0.2127934992313385,
+              "mrr@5": 0.12190714478492737,
+              "ndcg@5": 0.14435988664627075
+            },
+            "macro": {
+              "recall@5": 0.23510600626468658,
+              "mrr@5": 0.13783860206604004,
+              "ndcg@5": 0.1619039922952652
+            }
+          }
+        },
+        "@10": {
+          "end_to_end": {
+            "micro": {
+              "recall@10": 0.30283257365226746,
+              "mrr@10": 0.13200199604034424,
+              "ndcg@10": 0.17189966142177582
+            },
+            "macro": {
+              "recall@10": 0.32770243287086487,
+              "mrr@10": 0.1489962488412857,
+              "ndcg@10": 0.19085873663425446
+            }
+          },
+          "closed": {
+            "micro": {
+              "recall@10": 0.30876895785331726,
+              "mrr@10": 0.13458961248397827,
+              "ndcg@10": 0.17526939511299133
+            },
+            "macro": {
+              "recall@10": 0.3312346339225769,
+              "mrr@10": 0.15056495368480682,
+              "ndcg@10": 0.1928863674402237
+            }
+          }
+        }
+      },
+      "slices": {
+        "prior_views": {
+          "0": {
+            "n": 113783,
+            "user_count": 113783,
+            "micro": {
+              "mrr@20": 0.14372512698173523,
+              "recall@20": 0.41883233189582825
+            },
+            "macro": {
+              "mrr@20": 0.14372514188289642,
+              "recall@20": 0.41883233189582825
+            }
+          },
+          "1": {
+            "n": 101537,
+            "user_count": 101537,
+            "micro": {
+              "mrr@20": 0.1852746307849884,
+              "recall@20": 0.476072758436203
+            },
+            "macro": {
+              "mrr@20": 0.1852746307849884,
+              "recall@20": 0.476072758436203
+            }
+          },
+          "2-4": {
+            "n": 242779,
+            "user_count": 114807,
+            "micro": {
+              "mrr@20": 0.16325151920318604,
+              "recall@20": 0.4590800702571869
+            },
+            "macro": {
+              "mrr@20": 0.16568869352340698,
+              "recall@20": 0.45831993222236633
+            }
+          },
+          "5-9": {
+            "n": 294065,
+            "user_count": 98719,
+            "micro": {
+              "mrr@20": 0.15506096184253693,
+              "recall@20": 0.4446159899234772
+            },
+            "macro": {
+              "mrr@20": 0.1600983589887619,
+              "recall@20": 0.4482554793357849
+            }
+          },
+          "10+": {
+            "n": 1709404,
+            "user_count": 205942,
+            "micro": {
+              "mrr@20": 0.1305766999721527,
+              "recall@20": 0.3960684537887573
+            },
+            "macro": {
+              "mrr@20": 0.1492691934108734,
+              "recall@20": 0.424886554479599
+            }
+          }
+        },
+        "prefix_len": {
+          "1": {
+            "n": 481870,
+            "user_count": 373953,
+            "micro": {
+              "mrr@20": 0.1407151222229004,
+              "recall@20": 0.41367173194885254
+            },
+            "macro": {
+              "mrr@20": 0.14205756783485413,
+              "recall@20": 0.41642674803733826
+            }
+          },
+          "2": {
+            "n": 343791,
+            "user_count": 275009,
+            "micro": {
+              "mrr@20": 0.18372371792793274,
+              "recall@20": 0.4755883514881134
+            },
+            "macro": {
+              "mrr@20": 0.18637634813785553,
+              "recall@20": 0.4793654978275299
+            }
+          },
+          "3-4": {
+            "n": 457300,
+            "user_count": 209777,
+            "micro": {
+              "mrr@20": 0.1534246802330017,
+              "recall@20": 0.4482003152370453
+            },
+            "macro": {
+              "mrr@20": 0.15754419565200806,
+              "recall@20": 0.4534147381782532
+            }
+          },
+          "5-9": {
+            "n": 565600,
+            "user_count": 135147,
+            "micro": {
+              "mrr@20": 0.13562658429145813,
+              "recall@20": 0.4135679006576538
+            },
+            "macro": {
+              "mrr@20": 0.14417307078838348,
+              "recall@20": 0.4253598749637604
+            }
+          },
+          "10-19": {
+            "n": 378212,
+            "user_count": 57221,
+            "micro": {
+              "mrr@20": 0.11542870104312897,
+              "recall@20": 0.368801087141037
+            },
+            "macro": {
+              "mrr@20": 0.12462231516838074,
+              "recall@20": 0.3827266991138458
+            }
+          },
+          "20-49": {
+            "n": 194807,
+            "user_count": 16535,
+            "micro": {
+              "mrr@20": 0.09650392830371857,
+              "recall@20": 0.321913480758667
+            },
+            "macro": {
+              "mrr@20": 0.10631036758422852,
+              "recall@20": 0.344838410615921
+            }
+          },
+          "50+": {
+            "n": 39988,
+            "user_count": 1615,
+            "micro": {
+              "mrr@20": 0.0827612429857254,
+              "recall@20": 0.28323498368263245
+            },
+            "macro": {
+              "mrr@20": 0.09123005717992783,
+              "recall@20": 0.29921966791152954
+            }
+          }
+        }
+      },
+      "eval_seconds": 250.99869811534882
+    },
+    "POP_full": {
+      "end_to_end": {
+        "n": 2461568,
+        "user_count": 373953,
+        "micro": {
+          "recall@20": 0.05426378548145294,
+          "mrr@20": 0.012987324967980385,
+          "ndcg@20": 0.021872246637940407
+        },
+        "macro": {
+          "recall@20": 0.08041275292634964,
+          "mrr@20": 0.020167941227555275,
+          "ndcg@20": 0.03325629606842995
+        }
+      },
+      "closed": {
+        "n": 2414242,
+        "user_count": 372504,
+        "micro": {
+          "recall@20": 0.055327512323856354,
+          "mrr@20": 0.013241913169622421,
+          "ndcg@20": 0.022301005199551582
+        },
+        "macro": {
+          "recall@20": 0.08100122958421707,
+          "mrr@20": 0.020310480147600174,
+          "ndcg@20": 0.033495575189590454
+        }
+      },
+      "cohorts": {
+        "warm": {
+          "n": 1782654,
+          "macro_mrr@20": 0.018634824082255363,
+          "micro_recall@20": 0.04963386058807373
+        },
+        "unseen": {
+          "n": 678914,
+          "macro_mrr@20": 0.023339174687862396,
+          "micro_recall@20": 0.0664207860827446
+        }
+      },
+      "descriptive_at_k": {
+        "@1": {
+          "end_to_end": {
+            "micro": {
+              "recall@1": 0.004589757416397333,
+              "mrr@1": 0.004589757416397333,
+              "ndcg@1": 0.004589757416397333
+            },
+            "macro": {
+              "recall@1": 0.006897013168781996,
+              "mrr@1": 0.006897013168781996,
+              "ndcg@1": 0.006897013168781996
+            }
+          },
+          "closed": {
+            "micro": {
+              "recall@1": 0.004679729696363211,
+              "mrr@1": 0.004679729696363211,
+              "ndcg@1": 0.004679729696363211
+            },
+            "macro": {
+              "recall@1": 0.0069435639306902885,
+              "mrr@1": 0.0069435639306902885,
+              "ndcg@1": 0.0069435639306902885
+            }
+          }
+        },
+        "@2": {
+          "end_to_end": {
+            "micro": {
+              "recall@2": 0.009011735208332539,
+              "mrr@2": 0.0068007465451955795,
+              "ndcg@2": 0.0073797148652374744
+            },
+            "macro": {
+              "recall@2": 0.014593749307096004,
+              "mrr@2": 0.010745381005108356,
+              "ndcg@2": 0.011753113009035587
+            }
+          },
+          "closed": {
+            "micro": {
+              "recall@2": 0.009188391268253326,
+              "mrr@2": 0.006934060249477625,
+              "ndcg@2": 0.007524378132075071
+            },
+            "macro": {
+              "recall@2": 0.014696469530463219,
+              "mrr@2": 0.010820017196238041,
+              "ndcg@2": 0.01183510385453701
+            }
+          }
+        },
+        "@5": {
+          "end_to_end": {
+            "micro": {
+              "recall@5": 0.019516421481966972,
+              "mrr@5": 0.009716490283608437,
+              "ndcg@5": 0.012139134109020233
+            },
+            "macro": {
+              "recall@5": 0.03210986778140068,
+              "mrr@5": 0.015542121604084969,
+              "ndcg@5": 0.019635431468486786
+            }
+          },
+          "closed": {
+            "micro": {
+              "recall@5": 0.019898999482393265,
+              "mrr@5": 0.009906959719955921,
+              "ndcg@5": 0.01237709540873766
+            },
+            "macro": {
+              "recall@5": 0.03233017772436142,
+              "mrr@5": 0.015648938715457916,
+              "ndcg@5": 0.019770320504903793
+            }
+          }
+        },
+        "@10": {
+          "end_to_end": {
+            "micro": {
+              "recall@10": 0.033667970448732376,
+              "mrr@10": 0.011573308147490025,
+              "ndcg@10": 0.01668383739888668
+            },
+            "macro": {
+              "recall@10": 0.05228274315595627,
+              "mrr@10": 0.01819797046482563,
+              "ndcg@10": 0.026122910901904106
+            }
+          },
+          "closed": {
+            "micro": {
+              "recall@10": 0.03432795777916908,
+              "mrr@10": 0.011800176464021206,
+              "ndcg@10": 0.01701088808476925
+            },
+            "macro": {
+              "recall@10": 0.05266856774687767,
+              "mrr@10": 0.01832621544599533,
+              "ndcg@10": 0.02631067857146263
+            }
+          }
+        }
+      },
+      "slices": {
+        "prior_views": {
+          "0": {
+            "n": 113783,
+            "user_count": 113783,
+            "micro": {
+              "mrr@20": 0.02693740278482437,
+              "recall@20": 0.10342494398355484
+            },
+            "macro": {
+              "mrr@20": 0.02693740464746952,
+              "recall@20": 0.10342494398355484
+            }
+          },
+          "1": {
+            "n": 101537,
+            "user_count": 101537,
+            "micro": {
+              "mrr@20": 0.022933274507522583,
+              "recall@20": 0.09122782945632935
+            },
+            "macro": {
+              "mrr@20": 0.022933274507522583,
+              "recall@20": 0.09122782945632935
+            }
+          },
+          "2-4": {
+            "n": 242779,
+            "user_count": 114807,
+            "micro": {
+              "mrr@20": 0.01903012953698635,
+              "recall@20": 0.07761379331350327
+            },
+            "macro": {
+              "mrr@20": 0.020790930837392807,
+              "recall@20": 0.08307711035013199
+            }
+          },
+          "5-9": {
+            "n": 294065,
+            "user_count": 98719,
+            "micro": {
+              "mrr@20": 0.015939852222800255,
+              "recall@20": 0.06625405699014664
+            },
+            "macro": {
+              "mrr@20": 0.018591254949569702,
+              "recall@20": 0.0756966769695282
+            }
+          },
+          "10+": {
+            "n": 1709404,
+            "user_count": 205942,
+            "micro": {
+              "mrr@20": 0.010101836174726486,
+              "recall@20": 0.043416887521743774
+            },
+            "macro": {
+              "mrr@20": 0.015754563733935356,
+              "recall@20": 0.06488999724388123
+            }
+          }
+        },
+        "prefix_len": {
+          "1": {
+            "n": 481870,
+            "user_count": 373953,
+            "micro": {
+              "mrr@20": 0.022384803742170334,
+              "recall@20": 0.08889119327068329
+            },
+            "macro": {
+              "mrr@20": 0.023170672357082367,
+              "recall@20": 0.0915490910410881
+            }
+          },
+          "2": {
+            "n": 343791,
+            "user_count": 275009,
+            "micro": {
+              "mrr@20": 0.017657440155744553,
+              "recall@20": 0.07272441685199738
+            },
+            "macro": {
+              "mrr@20": 0.018389634788036346,
+              "recall@20": 0.07528143376111984
+            }
+          },
+          "3-4": {
+            "n": 457300,
+            "user_count": 209777,
+            "micro": {
+              "mrr@20": 0.01339559257030487,
+              "recall@20": 0.05741307511925697
+            },
+            "macro": {
+              "mrr@20": 0.014494325965642929,
+              "recall@20": 0.06124870851635933
+            }
+          },
+          "5-9": {
+            "n": 565600,
+            "user_count": 135147,
+            "micro": {
+              "mrr@20": 0.009793632663786411,
+              "recall@20": 0.04273514822125435
+            },
+            "macro": {
+              "mrr@20": 0.011359414085745811,
+              "recall@20": 0.04841328412294388
+            }
+          },
+          "10-19": {
+            "n": 378212,
+            "user_count": 57221,
+            "micro": {
+              "mrr@20": 0.006787627935409546,
+              "recall@20": 0.03017355315387249
+            },
+            "macro": {
+              "mrr@20": 0.008402116596698761,
+              "recall@20": 0.035792574286460876
+            }
+          },
+          "20-49": {
+            "n": 194807,
+            "user_count": 16535,
+            "micro": {
+              "mrr@20": 0.0040557002648711205,
+              "recall@20": 0.018048632889986038
+            },
+            "macro": {
+              "mrr@20": 0.005453645717352629,
+              "recall@20": 0.023844515904784203
+            }
+          },
+          "50+": {
+            "n": 39988,
+            "user_count": 1615,
+            "micro": {
+              "mrr@20": 0.002246287651360035,
+              "recall@20": 0.009602881036698818
+            },
+            "macro": {
+              "mrr@20": 0.002140035619959235,
+              "recall@20": 0.010936874896287918
+            }
+          }
+        }
+      },
+      "eval_seconds": 124.63905477523804
+    },
+    "TRANS_full": {
+      "end_to_end": {
+        "n": 2461568,
+        "user_count": 373953,
+        "micro": {
+          "recall@20": 0.37390029430389404,
+          "mrr@20": 0.12802672386169434,
+          "ndcg@20": 0.18239280581474304
+        },
+        "macro": {
+          "recall@20": 0.41078099608421326,
+          "mrr@20": 0.1487395465373993,
+          "ndcg@20": 0.20691591501235962
+        }
+      },
+      "closed": {
+        "n": 2414242,
+        "user_count": 372504,
+        "micro": {
+          "recall@20": 0.38122978806495667,
+          "mrr@20": 0.13053640723228455,
+          "ndcg@20": 0.18596823513507843
+        },
+        "macro": {
+          "recall@20": 0.41481873393058777,
+          "mrr@20": 0.1501547396183014,
+          "ndcg@20": 0.20891062915325165
+        }
+      },
+      "cohorts": {
+        "warm": {
+          "n": 1782654,
+          "macro_mrr@20": 0.14718841016292572,
+          "micro_recall@20": 0.3690486252307892
+        },
+        "unseen": {
+          "n": 678914,
+          "macro_mrr@20": 0.151948019862175,
+          "micro_recall@20": 0.3866395354270935
+        }
+      },
+      "descriptive_at_k": {
+        "@1": {
+          "end_to_end": {
+            "micro": {
+              "recall@1": 0.06449182331562042,
+              "mrr@1": 0.06449182331562042,
+              "ndcg@1": 0.06449182331562042
+            },
+            "macro": {
+              "recall@1": 0.07865667343139648,
+              "mrr@1": 0.07865667343139648,
+              "ndcg@1": 0.07865667343139648
+            }
+          },
+          "closed": {
+            "micro": {
+              "recall@1": 0.06575604528188705,
+              "mrr@1": 0.06575604528188705,
+              "ndcg@1": 0.06575604528188705
+            },
+            "macro": {
+              "recall@1": 0.0793984904885292,
+              "mrr@1": 0.0793984904885292,
+              "ndcg@1": 0.0793984904885292
+            }
+          }
+        },
+        "@2": {
+          "end_to_end": {
+            "micro": {
+              "recall@2": 0.10926774889230728,
+              "mrr@2": 0.08687978237867355,
+              "ndcg@2": 0.09274228662252426
+            },
+            "macro": {
+              "recall@2": 0.12955473363399506,
+              "mrr@2": 0.10410570353269577,
+              "ndcg@2": 0.11076977103948593
+            }
+          },
+          "closed": {
+            "micro": {
+              "recall@2": 0.11140970885753632,
+              "mrr@2": 0.08858287334442139,
+              "ndcg@2": 0.09456029534339905
+            },
+            "macro": {
+              "recall@2": 0.130769744515419,
+              "mrr@2": 0.105084128677845,
+              "ndcg@2": 0.11181014776229858
+            }
+          }
+        },
+        "@5": {
+          "end_to_end": {
+            "micro": {
+              "recall@5": 0.1960465908050537,
+              "mrr@5": 0.1103210523724556,
+              "ndcg@5": 0.1315169483423233
+            },
+            "macro": {
+              "recall@5": 0.22610434889793396,
+              "mrr@5": 0.13020776212215424,
+              "ndcg@5": 0.15392887592315674
+            }
+          },
+          "closed": {
+            "micro": {
+              "recall@5": 0.1998896598815918,
+              "mrr@5": 0.1124836653470993,
+              "ndcg@5": 0.13409504294395447
+            },
+            "macro": {
+              "recall@5": 0.2282329946756363,
+              "mrr@5": 0.1314329206943512,
+              "ndcg@5": 0.15537741780281067
+            }
+          }
+        },
+        "@10": {
+          "end_to_end": {
+            "micro": {
+              "recall@10": 0.2808701694011688,
+              "mrr@10": 0.12159114331007004,
+              "ndcg@10": 0.1588965654373169
+            },
+            "macro": {
+              "recall@10": 0.31545373797416687,
+              "mrr@10": 0.1421293467283249,
+              "ndcg@10": 0.18281970918178558
+            }
+          },
+          "closed": {
+            "micro": {
+              "recall@10": 0.2863759994506836,
+              "mrr@10": 0.12397468835115433,
+              "ndcg@10": 0.16201138496398926
+            },
+            "macro": {
+              "recall@10": 0.31848251819610596,
+              "mrr@10": 0.1434742659330368,
+              "ndcg@10": 0.18455897271633148
+            }
+          }
+        }
+      },
+      "slices": {
+        "prior_views": {
+          "0": {
+            "n": 113783,
+            "user_count": 113783,
+            "micro": {
+              "mrr@20": 0.15825560688972473,
+              "recall@20": 0.43415096402168274
+            },
+            "macro": {
+              "mrr@20": 0.15825557708740234,
+              "recall@20": 0.43415096402168274
+            }
+          },
+          "1": {
+            "n": 101537,
+            "user_count": 101537,
+            "micro": {
+              "mrr@20": 0.16185075044631958,
+              "recall@20": 0.44393670558929443
+            },
+            "macro": {
+              "mrr@20": 0.16185075044631958,
+              "recall@20": 0.44393670558929443
+            }
+          },
+          "2-4": {
+            "n": 242779,
+            "user_count": 114807,
+            "micro": {
+              "mrr@20": 0.14496642351150513,
+              "recall@20": 0.41739195585250854
+            },
+            "macro": {
+              "mrr@20": 0.1489688903093338,
+              "recall@20": 0.4209078550338745
+            }
+          },
+          "5-9": {
+            "n": 294065,
+            "user_count": 98719,
+            "micro": {
+              "mrr@20": 0.13701596856117249,
+              "recall@20": 0.3987825810909271
+            },
+            "macro": {
+              "mrr@20": 0.143591970205307,
+              "recall@20": 0.40737295150756836
+            }
+          },
+          "10+": {
+            "n": 1709404,
+            "user_count": 205942,
+            "micro": {
+              "mrr@20": 0.12005320936441422,
+              "recall@20": 0.3552723526954651
+            },
+            "macro": {
+              "mrr@20": 0.13984771072864532,
+              "recall@20": 0.3922734558582306
+            }
+          }
+        },
+        "prefix_len": {
+          "1": {
+            "n": 481870,
+            "user_count": 373953,
+            "micro": {
+              "mrr@20": 0.15513665974140167,
+              "recall@20": 0.42314109206199646
+            },
+            "macro": {
+              "mrr@20": 0.1563711315393448,
+              "recall@20": 0.42630335688591003
+            }
+          },
+          "2": {
+            "n": 343791,
+            "user_count": 275009,
+            "micro": {
+              "mrr@20": 0.15366585552692413,
+              "recall@20": 0.42753592133522034
+            },
+            "macro": {
+              "mrr@20": 0.15556935966014862,
+              "recall@20": 0.4315810203552246
+            }
+          },
+          "3-4": {
+            "n": 457300,
+            "user_count": 209777,
+            "micro": {
+              "mrr@20": 0.13402299582958221,
+              "recall@20": 0.39564836025238037
+            },
+            "macro": {
+              "mrr@20": 0.13701890408992767,
+              "recall@20": 0.4002822935581207
+            }
+          },
+          "5-9": {
+            "n": 565600,
+            "user_count": 135147,
+            "micro": {
+              "mrr@20": 0.11726114898920059,
+              "recall@20": 0.35840168595314026
+            },
+            "macro": {
+              "mrr@20": 0.12233380228281021,
+              "recall@20": 0.3673190772533417
+            }
+          },
+          "10-19": {
+            "n": 378212,
+            "user_count": 57221,
+            "micro": {
+              "mrr@20": 0.10373207181692123,
+              "recall@20": 0.3209099769592285
+            },
+            "macro": {
+              "mrr@20": 0.1083817258477211,
+              "recall@20": 0.3310711681842804
+            }
+          },
+          "20-49": {
+            "n": 194807,
+            "user_count": 16535,
+            "micro": {
+              "mrr@20": 0.08943752199411392,
+              "recall@20": 0.2795330882072449
+            },
+            "macro": {
+              "mrr@20": 0.09634827822446823,
+              "recall@20": 0.29529833793640137
+            }
+          },
+          "50+": {
+            "n": 39988,
+            "user_count": 1615,
+            "micro": {
+              "mrr@20": 0.08238577842712402,
+              "recall@20": 0.25082525610923767
+            },
+            "macro": {
+              "mrr@20": 0.08288894593715668,
+              "recall@20": 0.25830331444740295
+            }
+          }
+        }
+      },
+      "eval_seconds": 230.3562717437744
+    },
+    "oov": {
+      "count": 47326,
+      "rate": 0.019225956788518538,
+      "n_eval": 2461568
+    }
+  },
+  "test": {
+    "F0_item_only_h256": {
+      "end_to_end": {
+        "n": 5862968,
+        "user_count": 746662,
+        "micro": {
+          "recall@20": 0.4162125587463379,
+          "mrr@20": 0.1512599140405655,
+          "ndcg@20": 0.20969556272029877
+        },
+        "macro": {
+          "recall@20": 0.43938806653022766,
+          "mrr@20": 0.1686950922012329,
+          "ndcg@20": 0.22865693271160126
+        }
+      },
+      "closed": {
+        "n": 5664649,
+        "user_count": 741642,
+        "micro": {
+          "recall@20": 0.4307841360569,
+          "mrr@20": 0.15655551850795746,
+          "ndcg@20": 0.21703696250915527
+        },
+        "macro": {
+          "recall@20": 0.44824540615081787,
+          "mrr@20": 0.17205479741096497,
+          "ndcg@20": 0.2332293540239334
+        }
+      },
+      "cohorts": {
+        "warm": {
+          "n": 4139931,
+          "macro_mrr@20": 0.16503380239009857,
+          "micro_recall@20": 0.4108189344406128
+        },
+        "unseen": {
+          "n": 1723037,
+          "macro_mrr@20": 0.17522858083248138,
+          "micro_recall@20": 0.4291718602180481
+        }
+      },
+      "descriptive_at_k": {
+        "@1": {
+          "end_to_end": {
+            "micro": {
+              "recall@1": 0.08373608440160751,
+              "mrr@1": 0.08373608440160751,
+              "ndcg@1": 0.08373608440160751
+            },
+            "macro": {
+              "recall@1": 0.09688866883516312,
+              "mrr@1": 0.09688866883516312,
+              "ndcg@1": 0.09688866883516312
+            }
+          },
+          "closed": {
+            "micro": {
+              "recall@1": 0.08666767925024033,
+              "mrr@1": 0.08666767925024033,
+              "ndcg@1": 0.08666767925024033
+            },
+            "macro": {
+              "recall@1": 0.09883945435285568,
+              "mrr@1": 0.09883945435285568,
+              "ndcg@1": 0.09883945435285568
+            }
+          }
+        },
+        "@2": {
+          "end_to_end": {
+            "micro": {
+              "recall@2": 0.13185369968414307,
+              "mrr@2": 0.10779488831758499,
+              "ndcg@2": 0.11409492045640945
+            },
+            "macro": {
+              "recall@2": 0.15022346377372742,
+              "mrr@2": 0.12355606257915497,
+              "ndcg@2": 0.1305391788482666
+            }
+          },
+          "closed": {
+            "micro": {
+              "recall@2": 0.13646988570690155,
+              "mrr@2": 0.11156878620386124,
+              "ndcg@2": 0.11808937788009644
+            },
+            "macro": {
+              "recall@2": 0.15320371091365814,
+              "mrr@2": 0.1260215789079666,
+              "ndcg@2": 0.1331394761800766
+            }
+          }
+        },
+        "@5": {
+          "end_to_end": {
+            "micro": {
+              "recall@5": 0.22223402559757233,
+              "mrr@5": 0.13215750455856323,
+              "ndcg@5": 0.15443460643291473
+            },
+            "macro": {
+              "recall@5": 0.24624104797840118,
+              "mrr@5": 0.1495150327682495,
+              "ndcg@5": 0.1734599471092224
+            }
+          },
+          "closed": {
+            "micro": {
+              "recall@5": 0.23001442849636078,
+              "mrr@5": 0.13678433001041412,
+              "ndcg@5": 0.1598413586616516
+            },
+            "macro": {
+              "recall@5": 0.25107380747795105,
+              "mrr@5": 0.1524786353111267,
+              "ndcg@5": 0.17688600718975067
+            }
+          }
+        },
+        "@10": {
+          "end_to_end": {
+            "micro": {
+              "recall@10": 0.312206894159317,
+              "mrr@10": 0.14407125115394592,
+              "ndcg@10": 0.1834353357553482
+            },
+            "macro": {
+              "recall@10": 0.33765360713005066,
+              "mrr@10": 0.1616603136062622,
+              "ndcg@10": 0.2029658704996109
+            }
+          },
+          "closed": {
+            "micro": {
+              "recall@10": 0.32313722372055054,
+              "mrr@10": 0.14911514520645142,
+              "ndcg@10": 0.18985743820667267
+            },
+            "macro": {
+              "recall@10": 0.34436142444610596,
+              "mrr@10": 0.16487136483192444,
+              "ndcg@10": 0.20699548721313477
+            }
+          }
+        }
+      },
+      "slices": {
+        "prior_views": {
+          "0": {
+            "n": 244732,
+            "user_count": 244732,
+            "micro": {
+              "mrr@20": 0.15268561244010925,
+              "recall@20": 0.427034467458725
+            },
+            "macro": {
+              "mrr@20": 0.15268561244010925,
+              "recall@20": 0.427034467458725
+            }
+          },
+          "1": {
+            "n": 223492,
+            "user_count": 223492,
+            "micro": {
+              "mrr@20": 0.198076069355011,
+              "recall@20": 0.47789183259010315
+            },
+            "macro": {
+              "mrr@20": 0.198076069355011,
+              "recall@20": 0.47789183259010315
+            }
+          },
+          "2-4": {
+            "n": 550172,
+            "user_count": 257447,
+            "micro": {
+              "mrr@20": 0.17629392445087433,
+              "recall@20": 0.4616665244102478
+            },
+            "macro": {
+              "mrr@20": 0.17912517488002777,
+              "recall@20": 0.4622265100479126
+            }
+          },
+          "5-9": {
+            "n": 684143,
+            "user_count": 223782,
+            "micro": {
+              "mrr@20": 0.16609245538711548,
+              "recall@20": 0.44710826873779297
+            },
+            "macro": {
+              "mrr@20": 0.1717439442873001,
+              "recall@20": 0.4502711594104767
+            }
+          },
+          "10+": {
+            "n": 4160429,
+            "user_count": 402494,
+            "micro": {
+              "mrr@20": 0.1429116129875183,
+              "recall@20": 0.40117135643959045
+            },
+            "macro": {
+              "mrr@20": 0.16035231947898865,
+              "recall@20": 0.42597490549087524
+            }
+          }
+        },
+        "prefix_len": {
+          "1": {
+            "n": 1128424,
+            "user_count": 746662,
+            "micro": {
+              "mrr@20": 0.1469421684741974,
+              "recall@20": 0.41073036193847656
+            },
+            "macro": {
+              "mrr@20": 0.14876483380794525,
+              "recall@20": 0.4153028726577759
+            }
+          },
+          "2": {
+            "n": 812078,
+            "user_count": 563460,
+            "micro": {
+              "mrr@20": 0.19861064851284027,
+              "recall@20": 0.4757080078125
+            },
+            "macro": {
+              "mrr@20": 0.20229144394397736,
+              "recall@20": 0.48058968782424927
+            }
+          },
+          "3-4": {
+            "n": 1088372,
+            "user_count": 438908,
+            "micro": {
+              "mrr@20": 0.1669141799211502,
+              "recall@20": 0.4512335956096649
+            },
+            "macro": {
+              "mrr@20": 0.17202839255332947,
+              "recall@20": 0.4576154053211212
+            }
+          },
+          "5-9": {
+            "n": 1353316,
+            "user_count": 289571,
+            "micro": {
+              "mrr@20": 0.14828012883663177,
+              "recall@20": 0.419225811958313
+            },
+            "macro": {
+              "mrr@20": 0.15784357488155365,
+              "recall@20": 0.43164053559303284
+            }
+          },
+          "10-19": {
+            "n": 910009,
+            "user_count": 126827,
+            "micro": {
+              "mrr@20": 0.1275741010904312,
+              "recall@20": 0.37813252210617065
+            },
+            "macro": {
+              "mrr@20": 0.13884156942367554,
+              "recall@20": 0.39509478211402893
+            }
+          },
+          "20-49": {
+            "n": 471422,
+            "user_count": 37844,
+            "micro": {
+              "mrr@20": 0.11023158580064774,
+              "recall@20": 0.3368213474750519
+            },
+            "macro": {
+              "mrr@20": 0.12261144071817398,
+              "recall@20": 0.36090946197509766
+            }
+          },
+          "50+": {
+            "n": 99347,
+            "user_count": 3544,
+            "micro": {
+              "mrr@20": 0.0939921960234642,
+              "recall@20": 0.29298317432403564
+            },
+            "macro": {
+              "mrr@20": 0.10159339010715485,
+              "recall@20": 0.3007187247276306
+            }
+          }
+        }
+      },
+      "eval_seconds": 578.0277063045651
+    },
+    "F4_rich_side_information_h256": {
+      "end_to_end": {
+        "n": 5862968,
+        "user_count": 746662,
+        "micro": {
+          "recall@20": 0.4052773416042328,
+          "mrr@20": 0.137933149933815,
+          "ndcg@20": 0.19674092531204224
+        },
+        "macro": {
+          "recall@20": 0.4327276647090912,
+          "mrr@20": 0.15650448203086853,
+          "ndcg@20": 0.2175668329000473
+        }
+      },
+      "closed": {
+        "n": 5664649,
+        "user_count": 741642,
+        "micro": {
+          "recall@20": 0.4194660484790802,
+          "mrr@20": 0.1427621841430664,
+          "ndcg@20": 0.203628808259964
+        },
+        "macro": {
+          "recall@20": 0.44134822487831116,
+          "mrr@20": 0.15946494042873383,
+          "ndcg@20": 0.22177137434482574
+        }
+      },
+      "cohorts": {
+        "warm": {
+          "n": 4139931,
+          "macro_mrr@20": 0.15329833328723907,
+          "micro_recall@20": 0.4004141688346863
+        },
+        "unseen": {
+          "n": 1723037,
+          "macro_mrr@20": 0.1622258424758911,
+          "micro_recall@20": 0.41696202754974365
+        }
+      },
+      "descriptive_at_k": {
+        "@1": {
+          "end_to_end": {
+            "micro": {
+              "recall@1": 0.07175376266241074,
+              "mrr@1": 0.07175376266241074,
+              "ndcg@1": 0.07175376266241074
+            },
+            "macro": {
+              "recall@1": 0.08475125581026077,
+              "mrr@1": 0.08475125581026077,
+              "ndcg@1": 0.08475125581026077
+            }
+          },
+          "closed": {
+            "micro": {
+              "recall@1": 0.07426585257053375,
+              "mrr@1": 0.07426585257053375,
+              "ndcg@1": 0.07426585257053375
+            },
+            "macro": {
+              "recall@1": 0.08631531149148941,
+              "mrr@1": 0.08631531149148941,
+              "ndcg@1": 0.08631531149148941
+            }
+          }
+        },
+        "@2": {
+          "end_to_end": {
+            "micro": {
+              "recall@2": 0.11704191565513611,
+              "mrr@2": 0.09439783543348312,
+              "ndcg@2": 0.10032740980386734
+            },
+            "macro": {
+              "recall@2": 0.13687165081501007,
+              "mrr@2": 0.11081145703792572,
+              "ndcg@2": 0.11763555556535721
+            }
+          },
+          "closed": {
+            "micro": {
+              "recall@2": 0.1211395412683487,
+              "mrr@2": 0.09770269691944122,
+              "ndcg@2": 0.10383985936641693
+            },
+            "macro": {
+              "recall@2": 0.1393946260213852,
+              "mrr@2": 0.112854965031147,
+              "ndcg@2": 0.11980462074279785
+            }
+          }
+        },
+        "@5": {
+          "end_to_end": {
+            "micro": {
+              "recall@5": 0.2062692493200302,
+              "mrr@5": 0.11838103830814362,
+              "ndcg@5": 0.14009462296962738
+            },
+            "macro": {
+              "recall@5": 0.23287150263786316,
+              "mrr@5": 0.1367070972919464,
+              "ndcg@5": 0.16049957275390625
+            }
+          },
+          "closed": {
+            "micro": {
+              "recall@5": 0.21349072456359863,
+              "mrr@5": 0.12252556532621384,
+              "ndcg@5": 0.14499931037425995
+            },
+            "macro": {
+              "recall@5": 0.23726733028888702,
+              "mrr@5": 0.13925446569919586,
+              "ndcg@5": 0.1635037362575531
+            }
+          }
+        },
+        "@10": {
+          "end_to_end": {
+            "micro": {
+              "recall@10": 0.2981327772140503,
+              "mrr@10": 0.1305234134197235,
+              "ndcg@10": 0.16968318819999695
+            },
+            "macro": {
+              "recall@10": 0.3270712196826935,
+              "mrr@10": 0.1491793692111969,
+              "ndcg@10": 0.1908620297908783
+            }
+          },
+          "closed": {
+            "micro": {
+              "recall@10": 0.30857038497924805,
+              "mrr@10": 0.13509304821491241,
+              "ndcg@10": 0.17562377452850342
+            },
+            "macro": {
+              "recall@10": 0.33339956402778625,
+              "mrr@10": 0.1519814282655716,
+              "ndcg@10": 0.19448786973953247
+            }
+          }
+        }
+      },
+      "slices": {
+        "prior_views": {
+          "0": {
+            "n": 244732,
+            "user_count": 244732,
+            "micro": {
+              "mrr@20": 0.1473146229982376,
+              "recall@20": 0.42346322536468506
+            },
+            "macro": {
+              "mrr@20": 0.1473146378993988,
+              "recall@20": 0.42346322536468506
+            }
+          },
+          "1": {
+            "n": 223492,
+            "user_count": 223492,
+            "micro": {
+              "mrr@20": 0.1823730319738388,
+              "recall@20": 0.4707774817943573
+            },
+            "macro": {
+              "mrr@20": 0.1823730170726776,
+              "recall@20": 0.4707774817943573
+            }
+          },
+          "2-4": {
+            "n": 550172,
+            "user_count": 257447,
+            "micro": {
+              "mrr@20": 0.16138134896755219,
+              "recall@20": 0.45301833748817444
+            },
+            "macro": {
+              "mrr@20": 0.16455447673797607,
+              "recall@20": 0.4546605348587036
+            }
+          },
+          "5-9": {
+            "n": 684143,
+            "user_count": 223782,
+            "micro": {
+              "mrr@20": 0.15230782330036163,
+              "recall@20": 0.4367654025554657
+            },
+            "macro": {
+              "mrr@20": 0.1582561731338501,
+              "recall@20": 0.44166114926338196
+            }
+          },
+          "10+": {
+            "n": 4160429,
+            "user_count": 402494,
+            "micro": {
+              "mrr@20": 0.12952949106693268,
+              "recall@20": 0.38919785618782043
+            },
+            "macro": {
+              "mrr@20": 0.14790946245193481,
+              "recall@20": 0.41889700293540955
+            }
+          }
+        },
+        "prefix_len": {
+          "1": {
+            "n": 1128424,
+            "user_count": 746662,
+            "micro": {
+              "mrr@20": 0.14177542924880981,
+              "recall@20": 0.4116218686103821
+            },
+            "macro": {
+              "mrr@20": 0.14355814456939697,
+              "recall@20": 0.41503962874412537
+            }
+          },
+          "2": {
+            "n": 812078,
+            "user_count": 563460,
+            "micro": {
+              "mrr@20": 0.18137988448143005,
+              "recall@20": 0.469334214925766
+            },
+            "macro": {
+              "mrr@20": 0.1846460998058319,
+              "recall@20": 0.4738929569721222
+            }
+          },
+          "3-4": {
+            "n": 1088372,
+            "user_count": 438908,
+            "micro": {
+              "mrr@20": 0.15162114799022675,
+              "recall@20": 0.4410780370235443
+            },
+            "macro": {
+              "mrr@20": 0.15613168478012085,
+              "recall@20": 0.44718092679977417
+            }
+          },
+          "5-9": {
+            "n": 1353316,
+            "user_count": 289571,
+            "micro": {
+              "mrr@20": 0.13320866227149963,
+              "recall@20": 0.40459582209587097
+            },
+            "macro": {
+              "mrr@20": 0.14190366864204407,
+              "recall@20": 0.4174557328224182
+            }
+          },
+          "10-19": {
+            "n": 910009,
+            "user_count": 126827,
+            "micro": {
+              "mrr@20": 0.11288386583328247,
+              "recall@20": 0.35912391543388367
+            },
+            "macro": {
+              "mrr@20": 0.12355693429708481,
+              "recall@20": 0.377110093832016
+            }
+          },
+          "20-49": {
+            "n": 471422,
+            "user_count": 37844,
+            "micro": {
+              "mrr@20": 0.09661698341369629,
+              "recall@20": 0.3158401548862457
+            },
+            "macro": {
+              "mrr@20": 0.10782565176486969,
+              "recall@20": 0.34038829803466797
+            }
+          },
+          "50+": {
+            "n": 99347,
+            "user_count": 3544,
+            "micro": {
+              "mrr@20": 0.07905536890029907,
+              "recall@20": 0.2738381624221802
+            },
+            "macro": {
+              "mrr@20": 0.08507885783910751,
+              "recall@20": 0.2805907130241394
+            }
+          }
+        }
+      },
+      "eval_seconds": 593.053560744971
+    },
+    "POP_full": {
+      "end_to_end": {
+        "n": 5862968,
+        "user_count": 746662,
+        "micro": {
+          "recall@20": 0.05551676079630852,
+          "mrr@20": 0.013236595317721367,
+          "ndcg@20": 0.022337863221764565
+        },
+        "macro": {
+          "recall@20": 0.08313332498073578,
+          "mrr@20": 0.021117886528372765,
+          "ndcg@20": 0.03459987789392471
+        }
+      },
+      "closed": {
+        "n": 5664649,
+        "user_count": 741642,
+        "micro": {
+          "recall@20": 0.05746040120720863,
+          "mrr@20": 0.013700009323656559,
+          "ndcg@20": 0.023119909688830376
+        },
+        "macro": {
+          "recall@20": 0.08420924842357635,
+          "mrr@20": 0.021386869251728058,
+          "ndcg@20": 0.0350441113114357
+        }
+      },
+      "cohorts": {
+        "warm": {
+          "n": 4139931,
+          "macro_mrr@20": 0.01907968707382679,
+          "micro_recall@20": 0.05038175731897354
+        },
+        "unseen": {
+          "n": 1723037,
+          "macro_mrr@20": 0.024755023419857025,
+          "micro_recall@20": 0.06785460561513901
+        }
+      },
+      "descriptive_at_k": {
+        "@1": {
+          "end_to_end": {
+            "micro": {
+              "recall@1": 0.004609269555658102,
+              "mrr@1": 0.004609269555658102,
+              "ndcg@1": 0.004609269555658102
+            },
+            "macro": {
+              "recall@1": 0.00739551056176424,
+              "mrr@1": 0.00739551056176424,
+              "ndcg@1": 0.00739551056176424
+            }
+          },
+          "closed": {
+            "micro": {
+              "recall@1": 0.004770639818161726,
+              "mrr@1": 0.004770639818161726,
+              "ndcg@1": 0.004770639818161726
+            },
+            "macro": {
+              "recall@1": 0.007485982496291399,
+              "mrr@1": 0.007485982496291399,
+              "ndcg@1": 0.007485982496291399
+            }
+          }
+        },
+        "@2": {
+          "end_to_end": {
+            "micro": {
+              "recall@2": 0.009263397194445133,
+              "mrr@2": 0.006936333142220974,
+              "ndcg@2": 0.007545697037130594
+            },
+            "macro": {
+              "recall@2": 0.015421593561768532,
+              "mrr@2": 0.011408553458750248,
+              "ndcg@2": 0.0124594047665596
+            }
+          },
+          "closed": {
+            "micro": {
+              "recall@2": 0.009587707929313183,
+              "mrr@2": 0.007179173640906811,
+              "ndcg@2": 0.007809871342033148
+            },
+            "macro": {
+              "recall@2": 0.015624471008777618,
+              "mrr@2": 0.01155522558838129,
+              "ndcg@2": 0.012620797380805016
+            }
+          }
+        },
+        "@5": {
+          "end_to_end": {
+            "micro": {
+              "recall@5": 0.019737783819437027,
+              "mrr@5": 0.009862169623374939,
+              "ndcg@5": 0.01230719406157732
+            },
+            "macro": {
+              "recall@5": 0.03319760039448738,
+              "mrr@5": 0.016311325132846832,
+              "ndcg@5": 0.02048829384148121
+            }
+          },
+          "closed": {
+            "micro": {
+              "recall@5": 0.02042880281805992,
+              "mrr@5": 0.010207443498075008,
+              "ndcg@5": 0.012738068588078022
+            },
+            "macro": {
+              "recall@5": 0.033611197024583817,
+              "mrr@5": 0.016516337171196938,
+              "ndcg@5": 0.0207450482994318
+            }
+          }
+        },
+        "@10": {
+          "end_to_end": {
+            "micro": {
+              "recall@10": 0.03442778438329697,
+              "mrr@10": 0.011782929301261902,
+              "ndcg@10": 0.017017988488078117
+            },
+            "macro": {
+              "recall@10": 0.05443877726793289,
+              "mrr@10": 0.01909344270825386,
+              "ndcg@10": 0.0273047536611557
+            }
+          },
+          "closed": {
+            "micro": {
+              "recall@10": 0.03563309833407402,
+              "mrr@10": 0.012195450253784657,
+              "ndcg@10": 0.017613787204027176
+            },
+            "macro": {
+              "recall@10": 0.05514565855264664,
+              "mrr@10": 0.019336408004164696,
+              "ndcg@10": 0.02765517868101597
+            }
+          }
+        }
+      },
+      "slices": {
+        "prior_views": {
+          "0": {
+            "n": 244732,
+            "user_count": 244732,
+            "micro": {
+              "mrr@20": 0.02906305342912674,
+              "recall@20": 0.10801202803850174
+            },
+            "macro": {
+              "mrr@20": 0.02906305342912674,
+              "recall@20": 0.10801202803850174
+            }
+          },
+          "1": {
+            "n": 223492,
+            "user_count": 223492,
+            "micro": {
+              "mrr@20": 0.024118365719914436,
+              "recall@20": 0.09436579048633575
+            },
+            "macro": {
+              "mrr@20": 0.024118365719914436,
+              "recall@20": 0.09436579048633575
+            }
+          },
+          "2-4": {
+            "n": 550172,
+            "user_count": 257447,
+            "micro": {
+              "mrr@20": 0.01962650567293167,
+              "recall@20": 0.08024217933416367
+            },
+            "macro": {
+              "mrr@20": 0.021425768733024597,
+              "recall@20": 0.08598792552947998
+            }
+          },
+          "5-9": {
+            "n": 684143,
+            "user_count": 223782,
+            "micro": {
+              "mrr@20": 0.01651281677186489,
+              "recall@20": 0.06894026696681976
+            },
+            "macro": {
+              "mrr@20": 0.01912345364689827,
+              "recall@20": 0.07773607224225998
+            }
+          },
+          "10+": {
+            "n": 4160429,
+            "user_count": 402494,
+            "micro": {
+              "mrr@20": 0.01033733133226633,
+              "recall@20": 0.04486484453082085
+            },
+            "macro": {
+              "mrr@20": 0.016061771661043167,
+              "recall@20": 0.06604056060314178
+            }
+          }
+        },
+        "prefix_len": {
+          "1": {
+            "n": 1128424,
+            "user_count": 746662,
+            "micro": {
+              "mrr@20": 0.023219184949994087,
+              "recall@20": 0.09109784662723541
+            },
+            "macro": {
+              "mrr@20": 0.024705858901143074,
+              "recall@20": 0.0953717827796936
+            }
+          },
+          "2": {
+            "n": 812078,
+            "user_count": 563460,
+            "micro": {
+              "mrr@20": 0.018002033233642578,
+              "recall@20": 0.07483147829771042
+            },
+            "macro": {
+              "mrr@20": 0.01923513039946556,
+              "recall@20": 0.07870663702487946
+            }
+          },
+          "3-4": {
+            "n": 1088372,
+            "user_count": 438908,
+            "micro": {
+              "mrr@20": 0.01364811509847641,
+              "recall@20": 0.05902944877743721
+            },
+            "macro": {
+              "mrr@20": 0.015103268437087536,
+              "recall@20": 0.06401319056749344
+            }
+          },
+          "5-9": {
+            "n": 1353316,
+            "user_count": 289571,
+            "micro": {
+              "mrr@20": 0.010038499720394611,
+              "recall@20": 0.04409021884202957
+            },
+            "macro": {
+              "mrr@20": 0.011808936484158039,
+              "recall@20": 0.050606619566679
+            }
+          },
+          "10-19": {
+            "n": 910009,
+            "user_count": 126827,
+            "micro": {
+              "mrr@20": 0.006721286568790674,
+              "recall@20": 0.02994036301970482
+            },
+            "macro": {
+              "mrr@20": 0.008377578109502792,
+              "recall@20": 0.035869013518095016
+            }
+          },
+          "20-49": {
+            "n": 471422,
+            "user_count": 37844,
+            "micro": {
+              "mrr@20": 0.004281601868569851,
+              "recall@20": 0.02062271162867546
+            },
+            "macro": {
+              "mrr@20": 0.005832971539348364,
+              "recall@20": 0.026410626247525215
+            }
+          },
+          "50+": {
+            "n": 99347,
+            "user_count": 3544,
+            "micro": {
+              "mrr@20": 0.00212624273262918,
+              "recall@20": 0.010518686845898628
+            },
+            "macro": {
+              "mrr@20": 0.002382987877354026,
+              "recall@20": 0.01182610634714365
+            }
+          }
+        }
+      },
+      "eval_seconds": 292.4807767868042
+    },
+    "TRANS_full": {
+      "end_to_end": {
+        "n": 5862968,
+        "user_count": 746662,
+        "micro": {
+          "recall@20": 0.36522337794303894,
+          "mrr@20": 0.1258813440799713,
+          "ndcg@20": 0.17883852124214172
+        },
+        "macro": {
+          "recall@20": 0.40648671984672546,
+          "mrr@20": 0.14760398864746094,
+          "ndcg@20": 0.20511554181575775
+        }
+      },
+      "closed": {
+        "n": 5664649,
+        "user_count": 741642,
+        "micro": {
+          "recall@20": 0.3780098259449005,
+          "mrr@20": 0.13028845191001892,
+          "ndcg@20": 0.18509964644908905
+        },
+        "macro": {
+          "recall@20": 0.4137059152126312,
+          "mrr@20": 0.15010866522789001,
+          "ndcg@20": 0.2086632400751114
+        }
+      },
+      "cohorts": {
+        "warm": {
+          "n": 4139931,
+          "macro_mrr@20": 0.14512468874454498,
+          "micro_recall@20": 0.3604903221130371
+        },
+        "unseen": {
+          "n": 1723037,
+          "macro_mrr@20": 0.15202826261520386,
+          "micro_recall@20": 0.37659549713134766
+        }
+      },
+      "descriptive_at_k": {
+        "@1": {
+          "end_to_end": {
+            "micro": {
+              "recall@1": 0.06371977180242538,
+              "mrr@1": 0.06371977180242538,
+              "ndcg@1": 0.06371977180242538
+            },
+            "macro": {
+              "recall@1": 0.07815337926149368,
+              "mrr@1": 0.07815337926149368,
+              "ndcg@1": 0.07815337926149368
+            }
+          },
+          "closed": {
+            "micro": {
+              "recall@1": 0.06595060229301453,
+              "mrr@1": 0.06595060229301453,
+              "ndcg@1": 0.06595060229301453
+            },
+            "macro": {
+              "recall@1": 0.07943834364414215,
+              "mrr@1": 0.07943834364414215,
+              "ndcg@1": 0.07943834364414215
+            }
+          }
+        },
+        "@2": {
+          "end_to_end": {
+            "micro": {
+              "recall@2": 0.10756360739469528,
+              "mrr@2": 0.08564168959856033,
+              "ndcg@2": 0.09138215333223343
+            },
+            "macro": {
+              "recall@2": 0.12833161652088165,
+              "mrr@2": 0.10324250161647797,
+              "ndcg@2": 0.10981231182813644
+            }
+          },
+          "closed": {
+            "micro": {
+              "recall@2": 0.11132940649986267,
+              "mrr@2": 0.0886400043964386,
+              "ndcg@2": 0.09458143264055252
+            },
+            "macro": {
+              "recall@2": 0.13047200441360474,
+              "mrr@2": 0.10495515912771225,
+              "ndcg@2": 0.11163699626922607
+            }
+          }
+        },
+        "@5": {
+          "end_to_end": {
+            "micro": {
+              "recall@5": 0.1929466426372528,
+              "mrr@5": 0.10870970040559769,
+              "ndcg@5": 0.12953633069992065
+            },
+            "macro": {
+              "recall@5": 0.2244943231344223,
+              "mrr@5": 0.1292809545993805,
+              "ndcg@5": 0.15283270180225372
+            }
+          },
+          "closed": {
+            "micro": {
+              "recall@5": 0.1997016966342926,
+              "mrr@5": 0.11251562088727951,
+              "ndcg@5": 0.13407139480113983
+            },
+            "macro": {
+              "recall@5": 0.22830325365066528,
+              "mrr@5": 0.1314445436000824,
+              "ndcg@5": 0.15540307760238647
+            }
+          }
+        },
+        "@10": {
+          "end_to_end": {
+            "micro": {
+              "recall@10": 0.27519747614860535,
+              "mrr@10": 0.11965501308441162,
+              "ndcg@10": 0.15610271692276
+            },
+            "macro": {
+              "recall@10": 0.31336918473243713,
+              "mrr@10": 0.14114922285079956,
+              "ndcg@10": 0.1815803349018097
+            }
+          },
+          "closed": {
+            "micro": {
+              "recall@10": 0.2848321199417114,
+              "mrr@10": 0.12384411692619324,
+              "ndcg@10": 0.16156786680221558
+            },
+            "macro": {
+              "recall@10": 0.31881508231163025,
+              "mrr@10": 0.14353077113628387,
+              "ndcg@10": 0.18467959761619568
+            }
+          }
+        }
+      },
+      "slices": {
+        "prior_views": {
+          "0": {
+            "n": 244732,
+            "user_count": 244732,
+            "micro": {
+              "mrr@20": 0.15953709185123444,
+              "recall@20": 0.434148371219635
+            },
+            "macro": {
+              "mrr@20": 0.15953709185123444,
+              "recall@20": 0.434148371219635
+            }
+          },
+          "1": {
+            "n": 223492,
+            "user_count": 223492,
+            "micro": {
+              "mrr@20": 0.1590825468301773,
+              "recall@20": 0.43907612562179565
+            },
+            "macro": {
+              "mrr@20": 0.1590825319290161,
+              "recall@20": 0.43907612562179565
+            }
+          },
+          "2-4": {
+            "n": 550172,
+            "user_count": 257447,
+            "micro": {
+              "mrr@20": 0.14319993555545807,
+              "recall@20": 0.4102935194969177
+            },
+            "macro": {
+              "mrr@20": 0.14765144884586334,
+              "recall@20": 0.41569462418556213
+            }
+          },
+          "5-9": {
+            "n": 684143,
+            "user_count": 223782,
+            "micro": {
+              "mrr@20": 0.13420313596725464,
+              "recall@20": 0.3902035057544708
+            },
+            "macro": {
+              "mrr@20": 0.14160896837711334,
+              "recall@20": 0.4005543887615204
+            }
+          },
+          "10+": {
+            "n": 4160429,
+            "user_count": 402494,
+            "micro": {
+              "mrr@20": 0.11845943331718445,
+              "recall@20": 0.34713390469551086
+            },
+            "macro": {
+              "mrr@20": 0.13684730231761932,
+              "recall@20": 0.38360393047332764
+            }
+          }
+        },
+        "prefix_len": {
+          "1": {
+            "n": 1128424,
+            "user_count": 746662,
+            "micro": {
+              "mrr@20": 0.1546027958393097,
+              "recall@20": 0.4182204604148865
+            },
+            "macro": {
+              "mrr@20": 0.1559201329946518,
+              "recall@20": 0.42213425040245056
+            }
+          },
+          "2": {
+            "n": 812078,
+            "user_count": 563460,
+            "micro": {
+              "mrr@20": 0.1515965610742569,
+              "recall@20": 0.42065665125846863
+            },
+            "macro": {
+              "mrr@20": 0.15387196838855743,
+              "recall@20": 0.4261099696159363
+            }
+          },
+          "3-4": {
+            "n": 1088372,
+            "user_count": 438908,
+            "micro": {
+              "mrr@20": 0.13179956376552582,
+              "recall@20": 0.3879096508026123
+            },
+            "macro": {
+              "mrr@20": 0.13485869765281677,
+              "recall@20": 0.39396312832832336
+            }
+          },
+          "5-9": {
+            "n": 1353316,
+            "user_count": 289571,
+            "micro": {
+              "mrr@20": 0.11485161632299423,
+              "recall@20": 0.34852540493011475
+            },
+            "macro": {
+              "mrr@20": 0.12036315351724625,
+              "recall@20": 0.35879263281822205
+            }
+          },
+          "10-19": {
+            "n": 910009,
+            "user_count": 126827,
+            "micro": {
+              "mrr@20": 0.10015280544757843,
+              "recall@20": 0.3094167113304138
+            },
+            "macro": {
+              "mrr@20": 0.10632739961147308,
+              "recall@20": 0.323010116815567
+            }
+          },
+          "20-49": {
+            "n": 471422,
+            "user_count": 37844,
+            "micro": {
+              "mrr@20": 0.08959738165140152,
+              "recall@20": 0.2724098563194275
+            },
+            "macro": {
+              "mrr@20": 0.0960506796836853,
+              "recall@20": 0.2905019223690033
+            }
+          },
+          "50+": {
+            "n": 99347,
+            "user_count": 3544,
+            "micro": {
+              "mrr@20": 0.08270996809005737,
+              "recall@20": 0.24067158997058868
+            },
+            "macro": {
+              "mrr@20": 0.07668384164571762,
+              "recall@20": 0.23401255905628204
+            }
+          }
+        }
+      },
+      "eval_seconds": 522.1788923740387
+    },
+    "oov": {
+      "count": 198319,
+      "rate": 0.03382570056667544,
+      "n_eval": 5862968
+    },
+    "bootstraps": {
+      "primary_GRU_minus_TRANS": {
+        "diff": 0.021091098994361263,
+        "ci95": [
+          0.020835010374944934,
+          0.021345262836083262
+        ],
+        "n_users": 746662,
+        "n_resamples": 1000,
+        "seed": 2026
+      },
+      "secondary_F4_minus_F0": {
+        "diff": -0.012190600682268599,
+        "ci95": [
+          -0.012446165452068586,
+          -0.011948323819380003
+        ],
+        "n_users": 746662,
+        "n_resamples": 1000,
+        "seed": 2026
+      }
+    }
+  },
+  "locks_files": {
+    "VC_CLAIM.json": {
+      "claimed_at_utc": "2026-09-23T17:51:19.798468+00:00",
+      "pid": 220933,
+      "host": "jupyter-group-digi2026-g8",
+      "incidents": []
+    },
+    "VC_DONE.json": {
+      "completed_at_utc": "2026-09-23T18:07:58.695344+00:00",
+      "out": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/gru_v1/final_eval/VC_RESULTS.json"
+    },
+    "TEST_CLAIM.json": {
+      "claimed_at_utc": "2026-09-23T18:08:02.271253+00:00",
+      "pid": 221140,
+      "host": "jupyter-group-digi2026-g8",
+      "incidents": []
+    },
+    "TEST_DONE.json": {
+      "completed_at_utc": "2026-09-23T18:43:44.218982+00:00",
+      "out": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/gru_v1/final_eval/TEST_RESULTS.json"
+    }
+  },
+  "disk_free_gib_final": 21.87112808227539,
+  "recall_at_k_cohort_midtraining": {
+    "population": {
+      "decisions": 112365,
+      "users": 10000,
+      "oov_targets": 499,
+      "note": "pilot 10k-user cohort = subset of VALIDATION_SELECT"
+    },
+    "models": {
+      "F0_item_only_h256": {
+        "best_epoch_0based": 3,
+        "best_full_vs_macro_mrr20": 0.1613856703042984,
+        "checkpoint_update": 627824,
+        "metrics": {
+          "@1": {
+            "recall_micro_e2e": 0.07233569171895163,
+            "recall_micro_closed": 0.07265835910821876,
+            "recall_macro_e2e": 0.0859341507930806,
+            "mrr_micro_e2e": 0.07233569171895163,
+            "mrr_micro_closed": 0.07265835910821876,
+            "mrr_macro_e2e": 0.0859341507930806
+          },
+          "@2": {
+            "recall_micro_e2e": 0.12042895919547902,
+            "recall_micro_closed": 0.12096615593656697,
+            "recall_macro_e2e": 0.14117003965420707,
+            "mrr_micro_e2e": 0.09638232545721533,
+            "mrr_micro_closed": 0.09681225752239286,
+            "mrr_macro_e2e": 0.11355209522364385
+          },
+          "@5": {
+            "recall_micro_e2e": 0.2164820006229698,
+            "recall_micro_closed": 0.21744766059392487,
+            "recall_macro_e2e": 0.24229022179791568,
+            "mrr_micro_e2e": 0.12217549948827482,
+            "mrr_micro_closed": 0.12272048701124559,
+            "mrr_macro_e2e": 0.1407033952081107
+          },
+          "@10": {
+            "recall_micro_e2e": 0.3140034708316647,
+            "recall_micro_closed": 0.3154041442440062,
+            "recall_macro_e2e": 0.34298771436655645,
+            "mrr_micro_e2e": 0.13510879016018515,
+            "mrr_micro_closed": 0.135711469135834,
+            "mrr_macro_e2e": 0.1540265380818021
+          },
+          "@20": {
+            "recall_micro_e2e": 0.4253192720153073,
+            "recall_micro_closed": 0.4272164911590653,
+            "recall_macro_e2e": 0.45066023000079714,
+            "mrr_micro_e2e": 0.14279354401538072,
+            "mrr_micro_closed": 0.14343050232678609,
+            "mrr_macro_e2e": 0.16146726747632123
+          }
+        },
+        "check_macro_mrr20_via_eval_full": 0.16146725416183472
+      },
+      "F4_rich_side_information_h256": {
+        "best_epoch_0based": 3,
+        "best_full_vs_macro_mrr20": 0.16364768147468567,
+        "checkpoint_update": 627824,
+        "metrics": {
+          "@1": {
+            "recall_micro_e2e": 0.07264717661193432,
+            "recall_micro_closed": 0.07297123344000858,
+            "recall_macro_e2e": 0.08490541486743246,
+            "mrr_micro_e2e": 0.07264717661193432,
+            "mrr_micro_closed": 0.07297123344000858,
+            "mrr_macro_e2e": 0.08490541486743246
+          },
+          "@2": {
+            "recall_micro_e2e": 0.12250255862590664,
+            "recall_micro_closed": 0.1230490050596249,
+            "recall_macro_e2e": 0.1413314894091901,
+            "mrr_micro_e2e": 0.09757486761892048,
+            "mrr_micro_closed": 0.09801011924981674,
+            "mrr_macro_e2e": 0.11311845213831127
+          },
+          "@5": {
+            "recall_micro_e2e": 0.22147465847906375,
+            "recall_micro_closed": 0.22246258916918457,
+            "recall_macro_e2e": 0.2474200479635479,
+            "mrr_micro_e2e": 0.12403684421305566,
+            "mrr_micro_closed": 0.12459013462535533,
+            "mrr_macro_e2e": 0.1417087227509224
+          },
+          "@10": {
+            "recall_micro_e2e": 0.3273528233880657,
+            "recall_micro_closed": 0.3288130441778557,
+            "recall_macro_e2e": 0.354466954824605,
+            "mrr_micro_e2e": 0.1380737555260316,
+            "mrr_micro_closed": 0.13868966030503047,
+            "mrr_macro_e2e": 0.15596980984153389
+          },
+          "@20": {
+            "recall_micro_e2e": 0.4435010901971254,
+            "recall_micro_closed": 0.44547941286896825,
+            "recall_macro_e2e": 0.46697823301772734,
+            "mrr_micro_e2e": 0.14610268474355534,
+            "mrr_micro_closed": 0.14675440411929985,
+            "mrr_macro_e2e": 0.16374520965481829
+          }
+        },
+        "check_macro_mrr20_via_eval_full": 0.1637452095746994
+      },
+      "POP_full": {
+        "metrics": {
+          "@1": {
+            "recall_micro_e2e": 0.003702220442308548,
+            "recall_micro_closed": 0.0037187349149875744,
+            "recall_macro_e2e": 0.006659439911943482,
+            "mrr_micro_e2e": 0.003702220442308548,
+            "mrr_micro_closed": 0.0037187349149875744,
+            "mrr_macro_e2e": 0.006659439911943482
+          },
+          "@2": {
+            "recall_micro_e2e": 0.007982912828727807,
+            "recall_micro_closed": 0.008018522160441957,
+            "recall_macro_e2e": 0.014688040890898469,
+            "mrr_micro_e2e": 0.005842566635518178,
+            "mrr_micro_closed": 0.005868628537714766,
+            "mrr_macro_e2e": 0.010673740401420974
+          },
+          "@5": {
+            "recall_micro_e2e": 0.01757664753259467,
+            "recall_micro_closed": 0.017655051579568412,
+            "recall_macro_e2e": 0.03460736392477577,
+            "mrr_micro_e2e": 0.008432341031459973,
+            "mrr_micro_closed": 0.008469955124881554,
+            "mrr_macro_e2e": 0.016099572150411624
+          },
+          "@10": {
+            "recall_micro_e2e": 0.029884750589596405,
+            "recall_micro_closed": 0.030018057318577585,
+            "recall_macro_e2e": 0.054480652252239636,
+            "mrr_micro_e2e": 0.010037809039277468,
+            "mrr_micro_closed": 0.010082584634280415,
+            "mrr_macro_e2e": 0.01868596300147249
+          },
+          "@20": {
+            "recall_micro_e2e": 0.04909891870244293,
+            "recall_micro_closed": 0.049317933956698194,
+            "recall_macro_e2e": 0.08530187997499847,
+            "mrr_micro_e2e": 0.01137100858548949,
+            "mrr_micro_closed": 0.011421731175768569,
+            "mrr_macro_e2e": 0.020905580513601786
+          }
+        }
+      },
+      "TRANS_full": {
+        "metrics": {
+          "@1": {
+            "recall_micro_e2e": 0.07319894985093223,
+            "recall_micro_closed": 0.07352546797060769,
+            "recall_macro_e2e": 0.08613251839922764,
+            "mrr_micro_e2e": 0.07319894985093223,
+            "mrr_micro_closed": 0.07352546797060769,
+            "mrr_macro_e2e": 0.08613251839922764
+          },
+          "@2": {
+            "recall_micro_e2e": 0.12181729186134473,
+            "recall_micro_closed": 0.1223606815296873,
+            "recall_macro_e2e": 0.1408377127915131,
+            "mrr_micro_e2e": 0.09750812085613848,
+            "mrr_micro_closed": 0.0979430747501475,
+            "mrr_macro_e2e": 0.11348511559537038
+          },
+          "@5": {
+            "recall_micro_e2e": 0.21835090998086593,
+            "recall_micro_closed": 0.2193249065846638,
+            "recall_macro_e2e": 0.24855744468733423,
+            "mrr_micro_e2e": 0.12354677464809623,
+            "mrr_micro_closed": 0.12409787901000602,
+            "mrr_macro_e2e": 0.14276072807094808
+          },
+          "@10": {
+            "recall_micro_e2e": 0.3102478529791305,
+            "recall_micro_closed": 0.31163177372928325,
+            "recall_macro_e2e": 0.3462496019142236,
+            "mrr_micro_e2e": 0.13574723177513193,
+            "mrr_micro_closed": 0.13635275864349042,
+            "mrr_macro_e2e": 0.15573067335462865
+          },
+          "@20": {
+            "recall_micro_e2e": 0.4107595781604592,
+            "recall_micro_closed": 0.41259185096454687,
+            "recall_macro_e2e": 0.44583212959540286,
+            "mrr_micro_e2e": 0.1427010431020527,
+            "mrr_micro_closed": 0.14333758879518488,
+            "mrr_macro_e2e": 0.16263196145398973
+          }
+        }
+      }
+    }
+  }
+}

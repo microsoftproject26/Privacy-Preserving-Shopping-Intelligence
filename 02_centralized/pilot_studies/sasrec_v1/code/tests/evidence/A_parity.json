@@ -1,0 +1,90 @@
+{
+  "seed": 777,
+  "n_random_requested": 4200,
+  "n_compared": 4210,
+  "n_buckets_used": 8,
+  "buckets": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "edge_cases_found": {
+    "pos1": [
+      100020500099,
+      0,
+      "TRAIN"
+    ],
+    "pos2": [
+      100018033880,
+      0,
+      "TRAIN"
+    ],
+    "pos49": [
+      100020272557,
+      0,
+      "TRAIN"
+    ],
+    "pos50": [
+      100020272676,
+      0,
+      "TRAIN"
+    ],
+    "pos51plus": [
+      100020273038,
+      0,
+      "TRAIN"
+    ],
+    "oov_item": [
+      1019620,
+      0,
+      "TRAIN"
+    ],
+    "missing_brand": [
+      100018032852,
+      0,
+      "TRAIN"
+    ],
+    "zero_price": [
+      9074432,
+      0,
+      "TRAIN"
+    ],
+    "oov_target_with_eval": [
+      100048790181,
+      0,
+      "VALIDATION_SELECT"
+    ],
+    "shared_client_idx_2": [
+      100048236537,
+      0,
+      "VALIDATION_SELECT"
+    ]
+  },
+  "edge_cases_missing": [
+    "missing_category",
+    "oov_target_without_eval"
+  ],
+  "edge_cases_unexpectedly_missing": [],
+  "max_float_abs_diff": 0.0,
+  "float_tolerance": 1.5e-08,
+  "mismatches": [],
+  "n_mismatches": 0,
+  "pass": true,
+  "elapsed_seconds": 433.48324704170227,
+  "command": "tests/parity_store_vs_loader.py --n-random 4200 --n-buckets 8 --seed 777",
+  "code_sha256": {
+    "sasrec_data.py": "e0872eaf7dbd3b8fc70b6bdba9a8ba9cd235f6d0d60136fe055a85fa9b2beebf",
+    "synthetic_store.py": "b8bf3a180ba03a5c1cd8f3d47e3e309723db414f75d65f045bdae53d7c4afaf4",
+    "tests/parity_store_vs_loader.py": "9b9dccf97c52c986b1826cede507df97532515e1c737f59c40426c62e8f3b8b5",
+    "reuse/full_store.py": "4fca9e66c0910e3a8335ffc06ed9258b29f31f30f9590831a8899c451be4ae8b",
+    "reuse/index_utils.py": "bc86975bd4216aa402df69c9c7017d7367021d3705ac5a2faf79ef97450d53fc",
+    "reuse/vendor/rees46_eda/loaders.py": "212b1b4ce4243956fd4be0ead22764190ca0cfbad22d5560fef8bbe67ecbac73",
+    "reuse/vendor/rees46_eda/config.py": "42f1027acb1f1844b7c899bb4d93d7925fb466c846bf558d1bc75589b8d0b913"
+  },
+  "dataset_version_hash": "860e5a1c3a81b8e4bbfeff4f245fa37638a43e4f260df179585964d2d4da8dbd"
+}

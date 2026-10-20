@@ -1,0 +1,150 @@
+{
+  "run_id": "A1_RICH256",
+  "seed": 2026,
+  "registry_entry": {
+    "id": "A1_RICH256",
+    "group": "rich_frozen_channels",
+    "d_model": 256,
+    "blocks": 2,
+    "heads": 4,
+    "ff_multiplier": 4,
+    "dropout": 0.2,
+    "peak_lr": 0.001,
+    "label_smoothing": 0.0,
+    "pair": "A0_A1",
+    "role": "mandatory_anchor"
+  },
+  "implementation": {
+    "position_convention": "window_start_0_to_len_minus_1_from_validity_mask; PAD contributes nothing; asserted against store position_ids-1",
+    "layout": "right_padded_contiguous_prefix; unpadded token-wise LN/QKV/FFN; causal product in padded [B,T] layout",
+    "attention_impl": "explicit_fp32_causal_math (lower-triangular incl. diagonal); no SDPA unless equivalence tests pass",
+    "tf32": false,
+    "float32_matmul_precision": "highest",
+    "deterministic_algorithms": "True(warn_only)",
+    "qkv_init": "one fused Linear(d,3d); Xavier-uniform applied separately to each [d,d] slice (Wq,Wk,Wv)",
+    "rich_rng_offset": 1000003,
+    "microbatch": "256 unless the post-Gate-C benchmark shows 128x2 faster (systems choice, frozen before training)",
+    "accumulation": 1,
+    "tail_last_update_decisions": 128,
+    "checkpoint_every_updates": 10000,
+    "diag_cohort_every_updates": 40000,
+    "diag_cohort": "archived fixed 112,365-decision VALIDATION_SELECT cohort (monitoring only)",
+    "rank_vectors": "int32 per epoch-end, compressed npz",
+    "tying": "UNTIED: separate output table W_out [K,d] (N(0,0.02) from the common generator) + output bias; class j <-> item token j+3",
+    "input": "z = LayerNorm_in(E[item] + P[pos] (+ rich side residual)), then input dropout; no sqrt(d) scale",
+    "recentering": "after every optimizer step: W_out -= mean_row(W_out); b -= mean(b)  (loss-neutral)",
+    "monitoring": "update_agg every 100 updates logs E/W_out common-mode and median row norms (8192-row sample) and bias mean/std"
+  },
+  "schedule": {
+    "name": "S_prime",
+    "warmup": 4,
+    "U": 16,
+    "peak_lr": 0.001,
+    "floor_mult": 0.1,
+    "peak_epochs": 1,
+    "cosine_epochs": 1,
+    "floor_start_epoch": 3,
+    "planned_epochs": 4,
+    "min_epochs_under_cut": 4,
+    "eval_epochs_planned": [
+      3,
+      4
+    ]
+  },
+  "precision_plan": {
+    "tf32_training": true,
+    "planned_epochs": 4,
+    "source": "test_tiny"
+  },
+  "precision_training": "tf32",
+  "precision_eval": "strict_fp32",
+  "precision_training_record": {
+    "cuda_matmul_allow_tf32": true,
+    "cudnn_allow_tf32": true,
+    "float32_matmul_precision": "high",
+    "cudnn_deterministic": true,
+    "cudnn_benchmark": false,
+    "deterministic_algorithms": true,
+    "deterministic_warn_only": true,
+    "reduced_precision_fp16_reduction": true,
+    "reduced_precision_bf16_reduction": true
+  },
+  "label_smoothing": 0.0,
+  "effective_batch": 256,
+  "microbatch": 256,
+  "betas": [
+    0.9,
+    0.999
+  ],
+  "eps": 1e-08,
+  "weight_decay": 1e-05,
+  "grad_clip": 1.0,
+  "optimizer": "AdamW fused",
+  "n_train": 4096,
+  "n_vs": 1029,
+  "n_cohort": 256,
+  "channels": "F4",
+  "epoch_cap_file": null,
+  "threads": {
+    "torch_intra_op": 3,
+    "torch_inter_op": 1,
+    "env": {
+      "OMP_NUM_THREADS": "3",
+      "MKL_NUM_THREADS": "3",
+      "OPENBLAS_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    }
+  },
+  "n_params": 2155407,
+  "param_inventory": {
+    "item_embed": 256000,
+    "pos_embed": 12800,
+    "blocks": 1579520,
+    "final_norm": 512,
+    "input_norm": 512,
+    "side_embeds": 904,
+    "numflag_proj": 1120,
+    "side_proj": 28928,
+    "side_norm": 512,
+    "user_mlp": 1216,
+    "user_proj": 16640,
+    "user_norm": 512,
+    "output_embed": 255232,
+    "output_bias": 997,
+    "side_gate": 1,
+    "user_gate": 1,
+    "total": 2155407
+  },
+  "canary": {
+    "strict": {
+      "n": 1024,
+      "relative_error": 5.743312361709345e-07,
+      "threshold": 2e-05,
+      "looks_strict_fp32": true
+    },
+    "training_phase": {
+      "n": 1024,
+      "relative_error": 0.00029388600140803773,
+      "threshold": 2e-05,
+      "looks_strict_fp32": false
+    },
+    "eval_phase": {
+      "n": 1024,
+      "relative_error": 5.743312361709345e-07,
+      "threshold": 2e-05,
+      "looks_strict_fp32": true
+    }
+  },
+  "gate_c": {
+    "test_tiny": true
+  },
+  "registry_sha256": "a303bc3f4addcd8f66396232a85820d64ea31cabfc315936cb303139216af257",
+  "test_tiny": true,
+  "physical_gpu": "1",
+  "dataset_version_hash": "SYNTHETIC",
+  "library_versions": {
+    "torch": "2.13.0+cu130",
+    "numpy": "2.4.6",
+    "python": "3.11.14"
+  }
+}

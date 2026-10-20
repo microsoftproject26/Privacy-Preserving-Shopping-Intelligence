@@ -1,0 +1,75 @@
+{
+ "binding_semantics": {
+  "content_sha256": "the manifest header's header_content_sha256",
+  "header_sha256": "sha256 of the manifest header file bytes"
+ },
+ "data_version": "CLEAN_V2_HISTORICAL_262144",
+ "document": "MANIFEST_ROLE_REGISTRY",
+ "manifests": {
+  "M01_COHORT_TRAIN": {
+   "content_sha256": "34dc0bd2b6324c0d37d4d856753bea7b892684aa891f9681fedf7e1dd58c2f4c",
+   "header_sha256": "e8f0bb75b394051e233edec7cfd1be125c87c500e9bc0364d8994c3f8c2bdc19",
+   "n_decisions": 3906929,
+   "n_eval_rows": 0,
+   "n_users": 262144,
+   "ordered_decision_id_sha256": "648cde528662e73b8f359bd9998aaee06170ea0bdbd687d8b43c05d8c94703f8",
+   "path": "data_v2/manifests/M01_COHORT_TRAIN",
+   "population_sha256": "54e1d3c2539fd4cd7fe22d2b8ef91bed1a786d69be27867406bb19141ac48184"
+  },
+  "M02_VALIDATION_WARM": {
+   "content_sha256": "f3be88958da1d0200dbe620bff17ae9a00d498bbc3b8e6cb0d9ebce8b93a88f2",
+   "header_sha256": "217ba646e9e056c905454d345c2450297a334fe6b6867a17a42026e3c57dfc67",
+   "n_decisions": 1000189,
+   "n_eval_rows": 808610,
+   "n_users": 81086,
+   "ordered_decision_id_sha256": "b46cf30b0972d0c1557a9f8c283bde43923a0c1ea0f9066a5ee5e8a5bcda4ba1",
+   "path": "data_v2/manifests/M02_VALIDATION_WARM",
+   "population_sha256": "cf10c2f6fbfa77c5c9bc264b316ea90030e15284b092d11251376ca51aed79d1"
+  },
+  "M05_CALIB_TRAIN": {
+   "content_sha256": "6699214e6a397a016497e3faec05be857c613ec12e27b73232b59539a3498de8",
+   "header_sha256": "ec43eaad789e695df5fdcec16be9877c1a61b3742671637a838470a9564a9ba9",
+   "n_decisions": 990362,
+   "n_eval_rows": 0,
+   "n_users": 65536,
+   "ordered_decision_id_sha256": "e528503ba8b35fef8859bce920e7be16b7a296170e3920dc7a5b4c500bc7cd5d",
+   "path": "data_v2/manifests/M05_CALIB_TRAIN",
+   "population_sha256": "3d680aa7222fb5c9246d03fe6088464c78095d90a344e3453acb68e98d53a6f4"
+  },
+  "M06_CALIB_VALIDATION_WARM": {
+   "content_sha256": "335d4b01b0c767cf40e9546fc89cfb2a398186549eaf3257799d02dff021583e",
+   "header_sha256": "a1cde713e0fa401d57644c83f652600dd70f6606adaa0b12fe2b2f947e1ed505",
+   "n_decisions": 248836,
+   "n_eval_rows": 200985,
+   "n_users": 20226,
+   "ordered_decision_id_sha256": "ee6f1ae8a944e6d88e784a06ef3b7f3c1181e763ecf61b021da42c781f4f1145",
+   "path": "data_v2/manifests/M06_CALIB_VALIDATION_WARM",
+   "population_sha256": "12a90c524dc4fc459d4d1df9b163588e29c2f24d84493bedd75106fa0e0d2f07"
+  }
+ },
+ "note": "OWNER_AMENDMENT_POP_5_100 (DECISION_LOG 31) made M01/M05/M02/M06 historical. This file replaces the ids formerly hard-coded in v4train.provider (TRAIN-01R2). Non-test rows of a run on this data version are labelled HISTORICAL_REFERENCE and are never selection evidence. The full-TRAIN tie-break manifests (M_FULL_TRAIN / M_FULL_VALIDATION_WARM) were never built, so no FULL_TRAIN role is registered.",
+ "roles": {
+  "CALIBRATION": {
+   "eval": "M06_CALIB_VALIDATION_WARM",
+   "train": "M05_CALIB_TRAIN"
+  },
+  "CONTINUATION": {
+   "eval": "M02_VALIDATION_WARM",
+   "train": "M01_COHORT_TRAIN"
+  },
+  "MAIN": {
+   "eval": "M02_VALIDATION_WARM",
+   "train": "M01_COHORT_TRAIN"
+  }
+ },
+ "self_sha256": "962cca6d2af2283da91a2530164a3f5d54e0231df9b8625ab98f4ffeaac09e2e",
+ "self_sha256_canonicalization": "sha256 over json.dumps(object minus self_sha256, sort_keys=True, ensure_ascii=True, separators=(',', ':'), allow_nan=False) (v4train.registry; = v4models.derived.self_hash)",
+ "status": "HISTORICAL_POPULATION",
+ "values_source": {
+  "caveat": "DATA-04R1 re-issued the headers after the lock; a provider bound to a re-issued header will not match these pre-lock values and is refused (fail-closed). Re-bind from the re-issued headers before any real launch on this data version.",
+  "file": "contracts/DATA_PROTOCOL_LOCK.json",
+  "file_sha256": "ebf4e86f6beb82e98283108a2dad9082727e8559b81301cd46f35f60c79fd7c0",
+  "lock_self_sha256": "da51d271e97d3a681227a7063fd35b429797e52ee25586ba39843a37b7c839e1",
+  "section": "population_and_manifests.manifest_hashes.manifests (PRE-LOCK headers)"
+ }
+}

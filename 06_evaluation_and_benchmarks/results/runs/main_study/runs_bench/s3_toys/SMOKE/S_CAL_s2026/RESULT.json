@@ -1,0 +1,122 @@
+{
+ "arm": "S_CAL",
+ "checkpoints": {
+  "CONTROLLED_BUDGET": {
+   "bytes": 6573187,
+   "file": "ckpt/smoke_theta.pt",
+   "mark": 0.1583745576576659,
+   "sha256": "2e8b0a8f36299ddd0bb9942b37eb42268cf4fc82e1a9877fc2d76e9d56dd41a7"
+  },
+  "PRACTICAL_BEST": {
+   "bytes": 6573187,
+   "file": "ckpt/smoke_theta.pt",
+   "mark": 0.1583745576576659,
+   "sha256": "2e8b0a8f36299ddd0bb9942b37eb42268cf4fc82e1a9877fc2d76e9d56dd41a7"
+  }
+ },
+ "kind": "fl",
+ "label": "SMOKE_NOT_EVIDENCE",
+ "run_id": "BM_s3_toys_S_CAL_s2026_SMOKE",
+ "spec": {
+  "arm": "S_CAL",
+  "cfg": {
+   "dp": {
+    "clip_norm": null,
+    "denominator": 152,
+    "noise_multiplier": 0.0
+   },
+   "dropout_p": 0.0,
+   "endpoint_efe": 6.0,
+   "endpoint_rounds": 384,
+   "exposure_point": "end",
+   "lr_peak_local": 0.1,
+   "lr_shape": "fl_const",
+   "max_attempts": 2,
+   "method": "FA",
+   "mu": 0.0,
+   "n_shards": 2,
+   "pf": null,
+   "seed": 2026,
+   "server_opt": {
+    "beta1": 0.9,
+    "beta2": 0.99,
+    "lr": 0.01,
+    "name": "fedadam",
+    "tau": 0.001,
+    "v_init": "tau_squared"
+   },
+   "solver": {
+    "batch_size": 16,
+    "clip": 1.0,
+    "fused": null,
+    "lr": 0.1,
+    "optimizer": "sgd_m",
+    "passes": 2,
+    "weight_decay": 0.0
+   }
+  },
+  "client_lr": 0.1,
+  "client_opt": "sgd_m",
+  "data": {
+   "dataset": "s3_toys",
+   "fingerprint": "b83ff25694004525faeb3c9b262fc9bbfd6fa2a8223f5548539a19d8b3198ea1",
+   "n_clients": 19412,
+   "n_decisions": 109361
+  },
+  "dp_accounting": {
+   "N": 19412,
+   "T": 384,
+   "authority": "PREG1_AMENDMENT_07 R4 (registered z for identical q, T, delta)",
+   "delta": 5e-06,
+   "m": 152,
+   "q_actual": 0.00783020811868947,
+   "q_nominal": 0.0078125,
+   "z": 0.5642
+  },
+  "dropout": [
+   0.1
+  ],
+  "knobs": {
+   "batch": 16,
+   "clip": 1.0,
+   "dropout_p": 0.1,
+   "endpoint_efe": 6.0,
+   "group": 64,
+   "m": 1024,
+   "max_attempts": 2,
+   "mu": 0.01,
+   "n_shards": 2,
+   "passes": 2,
+   "pf_clip": 1.0,
+   "pf_lam": 0.0001,
+   "rounds": 6827,
+   "rounds_1024": 384,
+   "s_cal_rounds": 20,
+   "s_cal_seed": 2026,
+   "sampling": "sweep",
+   "weight_decay": 1e-05
+  },
+  "local_passes": 2,
+  "lr_mult": 1.0,
+  "lr_peak_base": 0.0007114121116984968,
+  "lr_shape": "fl_const",
+  "max_len": 50,
+  "max_rounds": 20,
+  "plan": {
+   "group_size": 152,
+   "sampling": "poisson"
+  },
+  "poisson_local_rule": {
+   "authority": "DL 219",
+   "local_batch": 16,
+   "local_passes": 2,
+   "selected_local_passes": 1
+  },
+  "role": "MAIN",
+  "server_lr": 0.01,
+  "server_opt": "fedadam",
+  "upload_codec": null,
+  "variant": "SASREC_D64_B2"
+ },
+ "status": "SMOKE_DONE_NOT_EVIDENCE"
+}

@@ -1,0 +1,1020 @@
+{
+  "item_tokens": {
+    "canonical_source": "raw product_id string (source CSV)",
+    "recovery_or_derivation": "catalogue lookup, sorted-string TRAIN vocab, support>=5 (protocol.resolved.yaml:118-122)",
+    "raw_semantic_value": "product_idx contiguous int, PAD=0/MISSING=1/OOV=2/KNOWN_START=3 (dataset/FEATURE_DICTIONARY.md:13-19)",
+    "transform": "none (token IS the input, no numeric transform)",
+    "model_token_or_float": "int64 token, embedded via item_embed",
+    "projection": "nn.Embedding(item_vocab, d_model), padding_idx=0 (sasrec_model.py:154)",
+    "fusion": "x = item_embed(tok) + pos_embed(pos); enters the residual stream BEFORE block 0 (sasrec_model.py:285); this happens for BOTH F0(item_only) and A1(rich) arms",
+    "source_refs": [
+      "dataset/DATA_CONTRACT.md:181-183",
+      "reuse/vendor/rees46_eda/loaders.py:38-49",
+      "sasrec_v1/code/sasrec_model.py:154,282-285"
+    ],
+    "notes": "The SAME embedding table also supplies the class-adjacent output space via the arange(3,3+K) gate check (sasrec_model.py:138-144), though output_embed itself is a SEPARATE untied table (v3 recipe)."
+  },
+  "category_tokens": {
+    "canonical_source": "raw category_id string",
+    "recovery_or_derivation": "vocab lookup of category_id_resolved (validated_asof_exact_recovery family enabled, config metadata_recovery_families_enabled.category_id_product=true)",
+    "raw_semantic_value": "category_idx contiguous int, PAD=0/MISSING=1/OOV=2",
+    "transform": "none (token)",
+    "model_token_or_float": "int64 token, embedded via side_embeds['category_tokens']",
+    "projection": "nn.Embedding(vocab_sizes[ch], SIDE_DIMS[ch]) per channel (sasrec_model.py:165-166); SIDE_DIMS={category_tokens:32,brand_tokens:32,main_category_tokens:8,daypart_tokens:4,weekday_tokens:4}",
+    "fusion": "concatenated with the numflag projection (width=32+32+8+4+4+32=112), Linear->d_model, LayerNorm, then GATED (sigmoid(side_gate), GATE_INIT=-3.0 i.e. near-zero at init) and ADDED to x BEFORE block 0 (sasrec_model.py:168-171,251-256,286-290). Applies only when cfg.rich (A1).",
+    "source_refs": [
+      "dataset/FEATURE_DICTIONARY.md:26-29",
+      "reuse/vendor/rees46_eda/loaders.py:38-49",
+      "sasrec_v1/code/sasrec_model.py:49-52,165-171,251-256,286-290"
+    ],
+    "notes": ""
+  },
+  "brand_tokens": {
+    "canonical_source": "raw brand string",
+    "recovery_or_derivation": "vocab lookup of brand_resolved (brand_product recovery family enabled, 0.0139% effective yield -- TRAINING_READINESS.json)",
+    "raw_semantic_value": "brand_idx contiguous int, PAD=0/MISSING=1/OOV=2",
+    "transform": "none (token)",
+    "model_token_or_float": "int64 token, embedded via side_embeds['brand_tokens']",
+    "projection": "nn.Embedding(vocab_sizes[ch], SIDE_DIMS[ch]) per channel (sasrec_model.py:165-166); SIDE_DIMS={category_tokens:32,brand_tokens:32,main_category_tokens:8,daypart_tokens:4,weekday_tokens:4}",
+    "fusion": "concatenated with the numflag projection (width=32+32+8+4+4+32=112), Linear->d_model, LayerNorm, then GATED (sigmoid(side_gate), GATE_INIT=-3.0 i.e. near-zero at init) and ADDED to x BEFORE block 0 (sasrec_model.py:168-171,251-256,286-290). Applies only when cfg.rich (A1).",
+    "source_refs": [
+      "dataset/FEATURE_DICTIONARY.md:26-29",
+      "reuse/vendor/rees46_eda/loaders.py:38-49",
+      "sasrec_v1/code/sasrec_model.py:49-52,165-171,251-256,286-290"
+    ],
+    "notes": ""
+  },
+  "main_category_tokens": {
+    "canonical_source": "raw category_code string (root)",
+    "recovery_or_derivation": "first dot-delimited root of category_code_resolved (category_code_category recovery family enabled)",
+    "raw_semantic_value": "main_category_idx contiguous int, PAD=0/MISSING=1/OOV=2",
+    "transform": "none (token)",
+    "model_token_or_float": "int64 token, embedded via side_embeds['main_category_tokens']",
+    "projection": "nn.Embedding(vocab_sizes[ch], SIDE_DIMS[ch]) per channel (sasrec_model.py:165-166); SIDE_DIMS={category_tokens:32,brand_tokens:32,main_category_tokens:8,daypart_tokens:4,weekday_tokens:4}",
+    "fusion": "concatenated with the numflag projection (width=32+32+8+4+4+32=112), Linear->d_model, LayerNorm, then GATED (sigmoid(side_gate), GATE_INIT=-3.0 i.e. near-zero at init) and ADDED to x BEFORE block 0 (sasrec_model.py:168-171,251-256,286-290). Applies only when cfg.rich (A1).",
+    "source_refs": [
+      "dataset/FEATURE_DICTIONARY.md:26-29",
+      "reuse/vendor/rees46_eda/loaders.py:38-49",
+      "sasrec_v1/code/sasrec_model.py:49-52,165-171,251-256,286-290"
+    ],
+    "notes": ""
+  },
+  "daypart_tokens": {
+    "canonical_source": "block_ts (event timestamp)",
+    "recovery_or_derivation": "local_ts = block_ts + 3h (config.py:253-255, fixed offset, no DST in window) -> CASE band (config.py:242-248,258-264)",
+    "raw_semantic_value": "daypart string in {NIGHT,MORNING,AFTERNOON,EVENING,LATE_EVENING}",
+    "transform": "declared closed-vocabulary index, KNOWN_START+i (config.py:267-274)",
+    "model_token_or_float": "int64 token, embedded via side_embeds['daypart_tokens']",
+    "projection": "nn.Embedding(vocab_sizes[ch], SIDE_DIMS[ch]) per channel (sasrec_model.py:165-166); SIDE_DIMS={category_tokens:32,brand_tokens:32,main_category_tokens:8,daypart_tokens:4,weekday_tokens:4}",
+    "fusion": "concatenated with the numflag projection (width=32+32+8+4+4+32=112), Linear->d_model, LayerNorm, then GATED (sigmoid(side_gate), GATE_INIT=-3.0 i.e. near-zero at init) and ADDED to x BEFORE block 0 (sasrec_model.py:168-171,251-256,286-290). Applies only when cfg.rich (A1).",
+    "source_refs": [
+      "reuse/vendor/rees46_eda/config.py:234-248,258-274",
+      "sasrec_v1/code/sasrec_model.py:49-52,165-171,251-256,286-290"
+    ],
+    "notes": ""
+  },
+  "weekday_tokens": {
+    "canonical_source": "block_ts (event timestamp)",
+    "recovery_or_derivation": "local_ts = block_ts+3h -> isodow(local_ts) (config.py:277-279)",
+    "raw_semantic_value": "weekday name Monday..Sunday",
+    "transform": "declared closed-vocabulary index, KNOWN_START+i",
+    "model_token_or_float": "int64 token, embedded via side_embeds['weekday_tokens']",
+    "projection": "nn.Embedding(vocab_sizes[ch], SIDE_DIMS[ch]) per channel (sasrec_model.py:165-166); SIDE_DIMS={category_tokens:32,brand_tokens:32,main_category_tokens:8,daypart_tokens:4,weekday_tokens:4}",
+    "fusion": "concatenated with the numflag projection (width=32+32+8+4+4+32=112), Linear->d_model, LayerNorm, then GATED (sigmoid(side_gate), GATE_INIT=-3.0 i.e. near-zero at init) and ADDED to x BEFORE block 0 (sasrec_model.py:168-171,251-256,286-290). Applies only when cfg.rich (A1).",
+    "source_refs": [
+      "reuse/vendor/rees46_eda/config.py:234-235,249-250,277-279",
+      "sasrec_v1/code/sasrec_model.py:49-52,165-171,251-256,286-290"
+    ],
+    "notes": ""
+  },
+  "category_code_idx (category_code_token)": {
+    "canonical_source": "raw category_code string (full)",
+    "recovery_or_derivation": "vocab lookup of the FULL category_code_resolved (category_code_category family)",
+    "raw_semantic_value": "category_code_idx contiguous int (stored in mappings/vocab_category_code.parquet)",
+    "transform": "none",
+    "model_token_or_float": "NOT_FOUND -- never loaded into the A1 batch (absent from loaders.py IDX_COLUMNS and full_store.py _needed_feature_columns)",
+    "projection": "NOT_FOUND -- never reaches sasrec_model.py",
+    "fusion": "NOT_FOUND -- never reaches sasrec_model.py",
+    "source_refs": [
+      "dataset/FEATURE_DICTIONARY.md:29",
+      "reuse/vendor/rees46_eda/loaders.py:38-49",
+      "reuse/full_store.py:158-174"
+    ],
+    "notes": "Stored end-to-end but structurally cannot influence A1: two quality flags about it (category_code_missing/recovered) DO reach the model even though the token itself does not."
+  },
+  "log1p_price": {
+    "canonical_source": "price_raw (source CSV)",
+    "recovery_or_derivation": "price==0 forced INVALID (protocol B2.1, PROTOCOL_DEVIATIONS.md:42-61)",
+    "raw_semantic_value": "finite strictly-positive price in currency units",
+    "transform": "ln(1+price), clip TRAIN[0.1%,99.9%] in log space, z-score (mean=5.04455,std=1.20851)",
+    "model_token_or_float": "float32, concatenated into event_numeric_features[19]",
+    "projection": "concat(event_numeric_features[19], event_quality_flags[15]) -> Linear(34,32) -> GELU (numflag_proj, sasrec_model.py:53,167,253-254)",
+    "fusion": "one of the 6 concatenated parts feeding side_proj -> side_norm -> sigmoid(side_gate)*side, ADDED to x before block 0 (same residual as side_categorical). Applies only when cfg.rich (A1).",
+    "source_refs": [
+      "dataset/FEATURE_DICTIONARY.md:30-48",
+      "dataset/normalizers.json",
+      "sasrec_v1/code/sasrec_model.py:53,167,251-256"
+    ],
+    "notes": ""
+  },
+  "utc_hour_sin": {
+    "canonical_source": "block_ts",
+    "recovery_or_derivation": "none (closed form)",
+    "raw_semantic_value": "hour+min/60+sec/3600",
+    "transform": "sin(2*pi*h/24), never scaled",
+    "model_token_or_float": "float32, concatenated into event_numeric_features[19]",
+    "projection": "concat(event_numeric_features[19], event_quality_flags[15]) -> Linear(34,32) -> GELU (numflag_proj, sasrec_model.py:53,167,253-254)",
+    "fusion": "one of the 6 concatenated parts feeding side_proj -> side_norm -> sigmoid(side_gate)*side, ADDED to x before block 0 (same residual as side_categorical). Applies only when cfg.rich (A1).",
+    "source_refs": [
+      "dataset/FEATURE_DICTIONARY.md:30-48",
+      "dataset/normalizers.json",
+      "sasrec_v1/code/sasrec_model.py:53,167,251-256"
+    ],
+    "notes": ""
+  },
+  "utc_hour_cos": {
+    "canonical_source": "block_ts",
+    "recovery_or_derivation": "none",
+    "raw_semantic_value": "hour fraction",
+    "transform": "cos(2*pi*h/24), never scaled",
+    "model_token_or_float": "float32, concatenated into event_numeric_features[19]",
+    "projection": "concat(event_numeric_features[19], event_quality_flags[15]) -> Linear(34,32) -> GELU (numflag_proj, sasrec_model.py:53,167,253-254)",
+    "fusion": "one of the 6 concatenated parts feeding side_proj -> side_norm -> sigmoid(side_gate)*side, ADDED to x before block 0 (same residual as side_categorical). Applies only when cfg.rich (A1).",
+    "source_refs": [
+      "dataset/FEATURE_DICTIONARY.md:30-48",
+      "dataset/normalizers.json",
+      "sasrec_v1/code/sasrec_model.py:53,167,251-256"
+    ],
+    "notes": ""
+  },
+  "utc_weekday_sin": {
+    "canonical_source": "block_ts",
+    "recovery_or_derivation": "none",
+    "raw_semantic_value": "isodow(block_ts)",
+    "transform": "sin(2*pi*(isodow-1)/7), never scaled",
+    "model_token_or_float": "float32, concatenated into event_numeric_features[19]",
+    "projection": "concat(event_numeric_features[19], event_quality_flags[15]) -> Linear(34,32) -> GELU (numflag_proj, sasrec_model.py:53,167,253-254)",
+    "fusion": "one of the 6 concatenated parts feeding side_proj -> side_norm -> sigmoid(side_gate)*side, ADDED to x before block 0 (same residual as side_categorical). Applies only when cfg.rich (A1).",
+    "source_refs": [
+      "dataset/FEATURE_DICTIONARY.md:30-48",
+      "dataset/normalizers.json",
+      "sasrec_v1/code/sasrec_model.py:53,167,251-256"
+    ],
+    "notes": ""
+  },
+  "utc_weekday_cos": {
+    "canonical_source": "block_ts",
+    "recovery_or_derivation": "none",
+    "raw_semantic_value": "isodow(block_ts)",
+    "transform": "cos(2*pi*(isodow-1)/7), never scaled",
+    "model_token_or_float": "float32, concatenated into event_numeric_features[19]",
+    "projection": "concat(event_numeric_features[19], event_quality_flags[15]) -> Linear(34,32) -> GELU (numflag_proj, sasrec_model.py:53,167,253-254)",
+    "fusion": "one of the 6 concatenated parts feeding side_proj -> side_norm -> sigmoid(side_gate)*side, ADDED to x before block 0 (same residual as side_categorical). Applies only when cfg.rich (A1).",
+    "source_refs": [
+      "dataset/FEATURE_DICTIONARY.md:30-48",
+      "dataset/normalizers.json",
+      "sasrec_v1/code/sasrec_model.py:53,167,251-256"
+    ],
+    "notes": ""
+  },
+  "local_hour_sin": {
+    "canonical_source": "block_ts",
+    "recovery_or_derivation": "+3h fixed offset (config.py:235)",
+    "raw_semantic_value": "local hour fraction",
+    "transform": "sin(2*pi*lh/24), never scaled",
+    "model_token_or_float": "float32, concatenated into event_numeric_features[19]",
+    "projection": "concat(event_numeric_features[19], event_quality_flags[15]) -> Linear(34,32) -> GELU (numflag_proj, sasrec_model.py:53,167,253-254)",
+    "fusion": "one of the 6 concatenated parts feeding side_proj -> side_norm -> sigmoid(side_gate)*side, ADDED to x before block 0 (same residual as side_categorical). Applies only when cfg.rich (A1).",
+    "source_refs": [
+      "dataset/FEATURE_DICTIONARY.md:30-48",
+      "dataset/normalizers.json",
+      "sasrec_v1/code/sasrec_model.py:53,167,251-256"
+    ],
+    "notes": ""
+  },
+  "local_hour_cos": {
+    "canonical_source": "block_ts",
+    "recovery_or_derivation": "+3h fixed offset",
+    "raw_semantic_value": "local hour fraction",
+    "transform": "cos(2*pi*lh/24), never scaled",
+    "model_token_or_float": "float32, concatenated into event_numeric_features[19]",
+    "projection": "concat(event_numeric_features[19], event_quality_flags[15]) -> Linear(34,32) -> GELU (numflag_proj, sasrec_model.py:53,167,253-254)",
+    "fusion": "one of the 6 concatenated parts feeding side_proj -> side_norm -> sigmoid(side_gate)*side, ADDED to x before block 0 (same residual as side_categorical). Applies only when cfg.rich (A1).",
+    "source_refs": [
+      "dataset/FEATURE_DICTIONARY.md:30-48",
+      "dataset/normalizers.json",
+      "sasrec_v1/code/sasrec_model.py:53,167,251-256"
+    ],
+    "notes": ""
+  },
+  "local_weekday_sin": {
+    "canonical_source": "block_ts",
+    "recovery_or_derivation": "+3h offset then isodow",
+    "raw_semantic_value": "isodow(local_ts)",
+    "transform": "sin(2*pi*(isodow-1)/7), never scaled",
+    "model_token_or_float": "float32, concatenated into event_numeric_features[19]",
+    "projection": "concat(event_numeric_features[19], event_quality_flags[15]) -> Linear(34,32) -> GELU (numflag_proj, sasrec_model.py:53,167,253-254)",
+    "fusion": "one of the 6 concatenated parts feeding side_proj -> side_norm -> sigmoid(side_gate)*side, ADDED to x before block 0 (same residual as side_categorical). Applies only when cfg.rich (A1).",
+    "source_refs": [
+      "dataset/FEATURE_DICTIONARY.md:30-48",
+      "dataset/normalizers.json",
+      "sasrec_v1/code/sasrec_model.py:53,167,251-256"
+    ],
+    "notes": ""
+  },
+  "local_weekday_cos": {
+    "canonical_source": "block_ts",
+    "recovery_or_derivation": "+3h offset then isodow",
+    "raw_semantic_value": "isodow(local_ts)",
+    "transform": "cos(2*pi*(isodow-1)/7), never scaled",
+    "model_token_or_float": "float32, concatenated into event_numeric_features[19]",
+    "projection": "concat(event_numeric_features[19], event_quality_flags[15]) -> Linear(34,32) -> GELU (numflag_proj, sasrec_model.py:53,167,253-254)",
+    "fusion": "one of the 6 concatenated parts feeding side_proj -> side_norm -> sigmoid(side_gate)*side, ADDED to x before block 0 (same residual as side_categorical). Applies only when cfg.rich (A1).",
+    "source_refs": [
+      "dataset/FEATURE_DICTIONARY.md:30-48",
+      "dataset/normalizers.json",
+      "sasrec_v1/code/sasrec_model.py:53,167,251-256"
+    ],
+    "notes": ""
+  },
+  "is_weekend": {
+    "canonical_source": "block_ts",
+    "recovery_or_derivation": "+3h offset then isodow",
+    "raw_semantic_value": "isodow(local_ts)>=6",
+    "transform": "0/1 indicator, never scaled",
+    "model_token_or_float": "float32, concatenated into event_numeric_features[19]",
+    "projection": "concat(event_numeric_features[19], event_quality_flags[15]) -> Linear(34,32) -> GELU (numflag_proj, sasrec_model.py:53,167,253-254)",
+    "fusion": "one of the 6 concatenated parts feeding side_proj -> side_norm -> sigmoid(side_gate)*side, ADDED to x before block 0 (same residual as side_categorical). Applies only when cfg.rich (A1).",
+    "source_refs": [
+      "dataset/FEATURE_DICTIONARY.md:30-48",
+      "dataset/normalizers.json",
+      "sasrec_v1/code/sasrec_model.py:53,167,251-256"
+    ],
+    "notes": ""
+  },
+  "log1p_prev_raw_view_gap_s": {
+    "canonical_source": "prior VALID raw view timestamp (same user)",
+    "recovery_or_derivation": "sequence-barrier compression (protocol.resolved.yaml:56-57)",
+    "raw_semantic_value": "seconds since previous valid raw view",
+    "transform": "ln(1+s), clip+z-score (mean=5.17361,std=3.26035); 0+prev_gap_unavailable if none",
+    "model_token_or_float": "float32, concatenated into event_numeric_features[19]",
+    "projection": "concat(event_numeric_features[19], event_quality_flags[15]) -> Linear(34,32) -> GELU (numflag_proj, sasrec_model.py:53,167,253-254)",
+    "fusion": "one of the 6 concatenated parts feeding side_proj -> side_norm -> sigmoid(side_gate)*side, ADDED to x before block 0 (same residual as side_categorical). Applies only when cfg.rich (A1).",
+    "source_refs": [
+      "dataset/FEATURE_DICTIONARY.md:30-48",
+      "dataset/normalizers.json",
+      "sasrec_v1/code/sasrec_model.py:53,167,251-256"
+    ],
+    "notes": ""
+  },
+  "log1p_segment_elapsed_s": {
+    "canonical_source": "model segment's first block timestamp",
+    "recovery_or_derivation": "reset_model_segment_at_partition_fence (protocol.resolved.yaml:101)",
+    "raw_semantic_value": "seconds since segment start",
+    "transform": "ln(1+s), clip+z-score (mean=4.54889,std=2.83005)",
+    "model_token_or_float": "float32, concatenated into event_numeric_features[19]",
+    "projection": "concat(event_numeric_features[19], event_quality_flags[15]) -> Linear(34,32) -> GELU (numflag_proj, sasrec_model.py:53,167,253-254)",
+    "fusion": "one of the 6 concatenated parts feeding side_proj -> side_norm -> sigmoid(side_gate)*side, ADDED to x before block 0 (same residual as side_categorical). Applies only when cfg.rich (A1).",
+    "source_refs": [
+      "dataset/FEATURE_DICTIONARY.md:30-48",
+      "dataset/normalizers.json",
+      "sasrec_v1/code/sasrec_model.py:53,167,251-256"
+    ],
+    "notes": ""
+  },
+  "log1p_item_observed_age_s": {
+    "canonical_source": "item's first EARLIER TRAIN occurrence timestamp; frozen TRAIN-first-seen for future partitions",
+    "recovery_or_derivation": "future_partition_global_map: frozen_end_of_train (protocol.resolved.yaml:72)",
+    "raw_semantic_value": "seconds since first earlier occurrence",
+    "transform": "ln(1+s), clip+z-score (mean=14.22413,std=1.01729); 0+item_age_unavailable on first occurrence",
+    "model_token_or_float": "float32, concatenated into event_numeric_features[19]",
+    "projection": "concat(event_numeric_features[19], event_quality_flags[15]) -> Linear(34,32) -> GELU (numflag_proj, sasrec_model.py:53,167,253-254)",
+    "fusion": "one of the 6 concatenated parts feeding side_proj -> side_norm -> sigmoid(side_gate)*side, ADDED to x before block 0 (same residual as side_categorical). Applies only when cfg.rich (A1).",
+    "source_refs": [
+      "dataset/FEATURE_DICTIONARY.md:30-48",
+      "dataset/normalizers.json",
+      "sasrec_v1/code/sasrec_model.py:53,167,251-256"
+    ],
+    "notes": ""
+  },
+  "prefix_representative_count": {
+    "canonical_source": "position_in_segment",
+    "recovery_or_derivation": "none",
+    "raw_semantic_value": "position_in_segment - 1",
+    "transform": "clip+z-score (mean=6.71678,std=11.90826)",
+    "model_token_or_float": "float32, concatenated into event_numeric_features[19]",
+    "projection": "concat(event_numeric_features[19], event_quality_flags[15]) -> Linear(34,32) -> GELU (numflag_proj, sasrec_model.py:53,167,253-254)",
+    "fusion": "one of the 6 concatenated parts feeding side_proj -> side_norm -> sigmoid(side_gate)*side, ADDED to x before block 0 (same residual as side_categorical). Applies only when cfg.rich (A1).",
+    "source_refs": [
+      "dataset/FEATURE_DICTIONARY.md:30-48",
+      "dataset/normalizers.json",
+      "sasrec_v1/code/sasrec_model.py:53,167,251-256"
+    ],
+    "notes": ""
+  },
+  "prefix_item_count": {
+    "canonical_source": "position_in_segment",
+    "recovery_or_derivation": "none",
+    "raw_semantic_value": "position_in_segment",
+    "transform": "clip+z-score (mean=7.71678,std=11.90826) -- exactly prefix_representative_count+1",
+    "model_token_or_float": "float32, concatenated into event_numeric_features[19]",
+    "projection": "concat(event_numeric_features[19], event_quality_flags[15]) -> Linear(34,32) -> GELU (numflag_proj, sasrec_model.py:53,167,253-254)",
+    "fusion": "one of the 6 concatenated parts feeding side_proj -> side_norm -> sigmoid(side_gate)*side, ADDED to x before block 0 (same residual as side_categorical). Applies only when cfg.rich (A1).",
+    "source_refs": [
+      "dataset/FEATURE_DICTIONARY.md:30-48",
+      "dataset/normalizers.json",
+      "sasrec_v1/code/sasrec_model.py:53,167,251-256"
+    ],
+    "notes": ""
+  },
+  "prefix_known_category_count": {
+    "canonical_source": "main_category_idx sequence within segment prefix",
+    "recovery_or_derivation": "none",
+    "raw_semantic_value": "distinct known main categories so far",
+    "transform": "clip+z-score (mean=0.90657,std=0.68647)",
+    "model_token_or_float": "float32, concatenated into event_numeric_features[19]",
+    "projection": "concat(event_numeric_features[19], event_quality_flags[15]) -> Linear(34,32) -> GELU (numflag_proj, sasrec_model.py:53,167,253-254)",
+    "fusion": "one of the 6 concatenated parts feeding side_proj -> side_norm -> sigmoid(side_gate)*side, ADDED to x before block 0 (same residual as side_categorical). Applies only when cfg.rich (A1).",
+    "source_refs": [
+      "dataset/FEATURE_DICTIONARY.md:30-48",
+      "dataset/normalizers.json",
+      "sasrec_v1/code/sasrec_model.py:53,167,251-256"
+    ],
+    "notes": ""
+  },
+  "prefix_category_switch_count": {
+    "canonical_source": "main_category_idx sequence within segment prefix",
+    "recovery_or_derivation": "none",
+    "raw_semantic_value": "count of CHANGED transitions",
+    "transform": "clip+z-score (mean=0.14945,std=0.57863)",
+    "model_token_or_float": "float32, concatenated into event_numeric_features[19]",
+    "projection": "concat(event_numeric_features[19], event_quality_flags[15]) -> Linear(34,32) -> GELU (numflag_proj, sasrec_model.py:53,167,253-254)",
+    "fusion": "one of the 6 concatenated parts feeding side_proj -> side_norm -> sigmoid(side_gate)*side, ADDED to x before block 0 (same residual as side_categorical). Applies only when cfg.rich (A1).",
+    "source_refs": [
+      "dataset/FEATURE_DICTIONARY.md:30-48",
+      "dataset/normalizers.json",
+      "sasrec_v1/code/sasrec_model.py:53,167,251-256"
+    ],
+    "notes": ""
+  },
+  "current_known_category_run_length": {
+    "canonical_source": "main_category_idx sequence within segment prefix",
+    "recovery_or_derivation": "none",
+    "raw_semantic_value": "length of current same-category run",
+    "transform": "clip+z-score (mean=3.36355,std=6.37329)",
+    "model_token_or_float": "float32, concatenated into event_numeric_features[19]",
+    "projection": "concat(event_numeric_features[19], event_quality_flags[15]) -> Linear(34,32) -> GELU (numflag_proj, sasrec_model.py:53,167,253-254)",
+    "fusion": "one of the 6 concatenated parts feeding side_proj -> side_norm -> sigmoid(side_gate)*side, ADDED to x before block 0 (same residual as side_categorical). Applies only when cfg.rich (A1).",
+    "source_refs": [
+      "dataset/FEATURE_DICTIONARY.md:30-48",
+      "dataset/normalizers.json",
+      "sasrec_v1/code/sasrec_model.py:53,167,251-256"
+    ],
+    "notes": ""
+  },
+  "log1p_prefix_elapsed_s": {
+    "canonical_source": "segment start timestamp (identical basis to log1p_segment_elapsed_s)",
+    "recovery_or_derivation": "prefix state resets at model-segment boundary (FEATURE_DICTIONARY.md:48)",
+    "raw_semantic_value": "seconds since segment start",
+    "transform": "ln(1+s), clip+z-score (mean=4.54889,std=2.83005) -- IDENTICAL fitted params to log1p_segment_elapsed_s",
+    "model_token_or_float": "float32, concatenated into event_numeric_features[19]",
+    "projection": "concat(event_numeric_features[19], event_quality_flags[15]) -> Linear(34,32) -> GELU (numflag_proj, sasrec_model.py:53,167,253-254)",
+    "fusion": "one of the 6 concatenated parts feeding side_proj -> side_norm -> sigmoid(side_gate)*side, ADDED to x before block 0 (same residual as side_categorical). Applies only when cfg.rich (A1).",
+    "source_refs": [
+      "dataset/FEATURE_DICTIONARY.md:30-48",
+      "dataset/normalizers.json",
+      "sasrec_v1/code/sasrec_model.py:53,167,251-256"
+    ],
+    "notes": ""
+  },
+  "price_missing": {
+    "canonical_source": "pipeline-computed per-event indicator (next_item_eda pipeline*.py, NOT_VERIFIED byte-identity to frozen build)",
+    "recovery_or_derivation": "none (indicator itself IS the recovery/quality signal)",
+    "raw_semantic_value": "boolean condition at feature-build time",
+    "transform": "int8 passthrough, never scaled",
+    "model_token_or_float": "int8, concatenated into event_quality_flags[15]",
+    "projection": "concat(event_numeric_features[19], event_quality_flags[15]) -> Linear(34,32) -> GELU (numflag_proj, sasrec_model.py:53,167,253-254)",
+    "fusion": "one of the 6 concatenated parts feeding side_proj -> side_norm -> sigmoid(side_gate)*side, ADDED to x before block 0 (same residual as side_categorical). Applies only when cfg.rich (A1).",
+    "source_refs": [
+      "reuse/vendor/rees46_eda/config.py:382-398",
+      "sasrec_v1/code/sasrec_model.py:53,167,251-256"
+    ],
+    "notes": ""
+  },
+  "price_zero": {
+    "canonical_source": "pipeline-computed per-event indicator (next_item_eda pipeline*.py, NOT_VERIFIED byte-identity to frozen build)",
+    "recovery_or_derivation": "none (indicator itself IS the recovery/quality signal)",
+    "raw_semantic_value": "boolean condition at feature-build time",
+    "transform": "int8 passthrough, never scaled",
+    "model_token_or_float": "int8, concatenated into event_quality_flags[15]",
+    "projection": "concat(event_numeric_features[19], event_quality_flags[15]) -> Linear(34,32) -> GELU (numflag_proj, sasrec_model.py:53,167,253-254)",
+    "fusion": "one of the 6 concatenated parts feeding side_proj -> side_norm -> sigmoid(side_gate)*side, ADDED to x before block 0 (same residual as side_categorical). Applies only when cfg.rich (A1).",
+    "source_refs": [
+      "reuse/vendor/rees46_eda/config.py:382-398",
+      "sasrec_v1/code/sasrec_model.py:53,167,251-256"
+    ],
+    "notes": ""
+  },
+  "price_conflict": {
+    "canonical_source": "pipeline-computed per-event indicator (next_item_eda pipeline*.py, NOT_VERIFIED byte-identity to frozen build)",
+    "recovery_or_derivation": "none (indicator itself IS the recovery/quality signal)",
+    "raw_semantic_value": "boolean condition at feature-build time",
+    "transform": "int8 passthrough, never scaled",
+    "model_token_or_float": "int8, concatenated into event_quality_flags[15]",
+    "projection": "concat(event_numeric_features[19], event_quality_flags[15]) -> Linear(34,32) -> GELU (numflag_proj, sasrec_model.py:53,167,253-254)",
+    "fusion": "one of the 6 concatenated parts feeding side_proj -> side_norm -> sigmoid(side_gate)*side, ADDED to x before block 0 (same residual as side_categorical). Applies only when cfg.rich (A1).",
+    "source_refs": [
+      "reuse/vendor/rees46_eda/config.py:382-398",
+      "sasrec_v1/code/sasrec_model.py:53,167,251-256"
+    ],
+    "notes": ""
+  },
+  "brand_missing": {
+    "canonical_source": "pipeline-computed per-event indicator (next_item_eda pipeline*.py, NOT_VERIFIED byte-identity to frozen build)",
+    "recovery_or_derivation": "none (indicator itself IS the recovery/quality signal)",
+    "raw_semantic_value": "boolean condition at feature-build time",
+    "transform": "int8 passthrough, never scaled",
+    "model_token_or_float": "int8, concatenated into event_quality_flags[15]",
+    "projection": "concat(event_numeric_features[19], event_quality_flags[15]) -> Linear(34,32) -> GELU (numflag_proj, sasrec_model.py:53,167,253-254)",
+    "fusion": "one of the 6 concatenated parts feeding side_proj -> side_norm -> sigmoid(side_gate)*side, ADDED to x before block 0 (same residual as side_categorical). Applies only when cfg.rich (A1).",
+    "source_refs": [
+      "reuse/vendor/rees46_eda/config.py:382-398",
+      "sasrec_v1/code/sasrec_model.py:53,167,251-256"
+    ],
+    "notes": ""
+  },
+  "brand_recovered": {
+    "canonical_source": "pipeline-computed per-event indicator (next_item_eda pipeline*.py, NOT_VERIFIED byte-identity to frozen build)",
+    "recovery_or_derivation": "none (indicator itself IS the recovery/quality signal)",
+    "raw_semantic_value": "boolean condition at feature-build time",
+    "transform": "int8 passthrough, never scaled",
+    "model_token_or_float": "int8, concatenated into event_quality_flags[15]",
+    "projection": "concat(event_numeric_features[19], event_quality_flags[15]) -> Linear(34,32) -> GELU (numflag_proj, sasrec_model.py:53,167,253-254)",
+    "fusion": "one of the 6 concatenated parts feeding side_proj -> side_norm -> sigmoid(side_gate)*side, ADDED to x before block 0 (same residual as side_categorical). Applies only when cfg.rich (A1).",
+    "source_refs": [
+      "reuse/vendor/rees46_eda/config.py:382-398",
+      "sasrec_v1/code/sasrec_model.py:53,167,251-256"
+    ],
+    "notes": ""
+  },
+  "brand_conflict": {
+    "canonical_source": "pipeline-computed per-event indicator (next_item_eda pipeline*.py, NOT_VERIFIED byte-identity to frozen build)",
+    "recovery_or_derivation": "none (indicator itself IS the recovery/quality signal)",
+    "raw_semantic_value": "boolean condition at feature-build time",
+    "transform": "int8 passthrough, never scaled",
+    "model_token_or_float": "int8, concatenated into event_quality_flags[15]",
+    "projection": "concat(event_numeric_features[19], event_quality_flags[15]) -> Linear(34,32) -> GELU (numflag_proj, sasrec_model.py:53,167,253-254)",
+    "fusion": "one of the 6 concatenated parts feeding side_proj -> side_norm -> sigmoid(side_gate)*side, ADDED to x before block 0 (same residual as side_categorical). Applies only when cfg.rich (A1).",
+    "source_refs": [
+      "reuse/vendor/rees46_eda/config.py:382-398",
+      "sasrec_v1/code/sasrec_model.py:53,167,251-256"
+    ],
+    "notes": ""
+  },
+  "category_missing": {
+    "canonical_source": "pipeline-computed per-event indicator (next_item_eda pipeline*.py, NOT_VERIFIED byte-identity to frozen build)",
+    "recovery_or_derivation": "none (indicator itself IS the recovery/quality signal)",
+    "raw_semantic_value": "boolean condition at feature-build time",
+    "transform": "int8 passthrough, never scaled",
+    "model_token_or_float": "int8, concatenated into event_quality_flags[15]",
+    "projection": "concat(event_numeric_features[19], event_quality_flags[15]) -> Linear(34,32) -> GELU (numflag_proj, sasrec_model.py:53,167,253-254)",
+    "fusion": "one of the 6 concatenated parts feeding side_proj -> side_norm -> sigmoid(side_gate)*side, ADDED to x before block 0 (same residual as side_categorical). Applies only when cfg.rich (A1).",
+    "source_refs": [
+      "reuse/vendor/rees46_eda/config.py:382-398",
+      "sasrec_v1/code/sasrec_model.py:53,167,251-256"
+    ],
+    "notes": ""
+  },
+  "category_recovered": {
+    "canonical_source": "pipeline-computed per-event indicator (next_item_eda pipeline*.py, NOT_VERIFIED byte-identity to frozen build)",
+    "recovery_or_derivation": "none (indicator itself IS the recovery/quality signal)",
+    "raw_semantic_value": "boolean condition at feature-build time",
+    "transform": "int8 passthrough, never scaled",
+    "model_token_or_float": "int8, concatenated into event_quality_flags[15]",
+    "projection": "concat(event_numeric_features[19], event_quality_flags[15]) -> Linear(34,32) -> GELU (numflag_proj, sasrec_model.py:53,167,253-254)",
+    "fusion": "one of the 6 concatenated parts feeding side_proj -> side_norm -> sigmoid(side_gate)*side, ADDED to x before block 0 (same residual as side_categorical). Applies only when cfg.rich (A1).",
+    "source_refs": [
+      "reuse/vendor/rees46_eda/config.py:382-398",
+      "sasrec_v1/code/sasrec_model.py:53,167,251-256"
+    ],
+    "notes": ""
+  },
+  "category_conflict": {
+    "canonical_source": "pipeline-computed per-event indicator (next_item_eda pipeline*.py, NOT_VERIFIED byte-identity to frozen build)",
+    "recovery_or_derivation": "none (indicator itself IS the recovery/quality signal)",
+    "raw_semantic_value": "boolean condition at feature-build time",
+    "transform": "int8 passthrough, never scaled",
+    "model_token_or_float": "int8, concatenated into event_quality_flags[15]",
+    "projection": "concat(event_numeric_features[19], event_quality_flags[15]) -> Linear(34,32) -> GELU (numflag_proj, sasrec_model.py:53,167,253-254)",
+    "fusion": "one of the 6 concatenated parts feeding side_proj -> side_norm -> sigmoid(side_gate)*side, ADDED to x before block 0 (same residual as side_categorical). Applies only when cfg.rich (A1).",
+    "source_refs": [
+      "reuse/vendor/rees46_eda/config.py:382-398",
+      "sasrec_v1/code/sasrec_model.py:53,167,251-256"
+    ],
+    "notes": ""
+  },
+  "category_code_missing": {
+    "canonical_source": "pipeline-computed per-event indicator (next_item_eda pipeline*.py, NOT_VERIFIED byte-identity to frozen build)",
+    "recovery_or_derivation": "none (indicator itself IS the recovery/quality signal)",
+    "raw_semantic_value": "boolean condition at feature-build time",
+    "transform": "int8 passthrough, never scaled",
+    "model_token_or_float": "int8, concatenated into event_quality_flags[15]",
+    "projection": "concat(event_numeric_features[19], event_quality_flags[15]) -> Linear(34,32) -> GELU (numflag_proj, sasrec_model.py:53,167,253-254)",
+    "fusion": "one of the 6 concatenated parts feeding side_proj -> side_norm -> sigmoid(side_gate)*side, ADDED to x before block 0 (same residual as side_categorical). Applies only when cfg.rich (A1).",
+    "source_refs": [
+      "reuse/vendor/rees46_eda/config.py:382-398",
+      "sasrec_v1/code/sasrec_model.py:53,167,251-256"
+    ],
+    "notes": ""
+  },
+  "category_code_recovered": {
+    "canonical_source": "pipeline-computed per-event indicator (next_item_eda pipeline*.py, NOT_VERIFIED byte-identity to frozen build)",
+    "recovery_or_derivation": "none (indicator itself IS the recovery/quality signal)",
+    "raw_semantic_value": "boolean condition at feature-build time",
+    "transform": "int8 passthrough, never scaled",
+    "model_token_or_float": "int8, concatenated into event_quality_flags[15]",
+    "projection": "concat(event_numeric_features[19], event_quality_flags[15]) -> Linear(34,32) -> GELU (numflag_proj, sasrec_model.py:53,167,253-254)",
+    "fusion": "one of the 6 concatenated parts feeding side_proj -> side_norm -> sigmoid(side_gate)*side, ADDED to x before block 0 (same residual as side_categorical). Applies only when cfg.rich (A1).",
+    "source_refs": [
+      "reuse/vendor/rees46_eda/config.py:382-398",
+      "sasrec_v1/code/sasrec_model.py:53,167,251-256"
+    ],
+    "notes": ""
+  },
+  "main_category_missing": {
+    "canonical_source": "pipeline-computed per-event indicator (next_item_eda pipeline*.py, NOT_VERIFIED byte-identity to frozen build)",
+    "recovery_or_derivation": "none (indicator itself IS the recovery/quality signal)",
+    "raw_semantic_value": "boolean condition at feature-build time",
+    "transform": "int8 passthrough, never scaled",
+    "model_token_or_float": "int8, concatenated into event_quality_flags[15]",
+    "projection": "concat(event_numeric_features[19], event_quality_flags[15]) -> Linear(34,32) -> GELU (numflag_proj, sasrec_model.py:53,167,253-254)",
+    "fusion": "one of the 6 concatenated parts feeding side_proj -> side_norm -> sigmoid(side_gate)*side, ADDED to x before block 0 (same residual as side_categorical). Applies only when cfg.rich (A1).",
+    "source_refs": [
+      "reuse/vendor/rees46_eda/config.py:382-398",
+      "sasrec_v1/code/sasrec_model.py:53,167,251-256"
+    ],
+    "notes": ""
+  },
+  "prev_gap_unavailable": {
+    "canonical_source": "pipeline-computed per-event indicator (next_item_eda pipeline*.py, NOT_VERIFIED byte-identity to frozen build)",
+    "recovery_or_derivation": "none (indicator itself IS the recovery/quality signal)",
+    "raw_semantic_value": "boolean condition at feature-build time",
+    "transform": "int8 passthrough, never scaled",
+    "model_token_or_float": "int8, concatenated into event_quality_flags[15]",
+    "projection": "concat(event_numeric_features[19], event_quality_flags[15]) -> Linear(34,32) -> GELU (numflag_proj, sasrec_model.py:53,167,253-254)",
+    "fusion": "one of the 6 concatenated parts feeding side_proj -> side_norm -> sigmoid(side_gate)*side, ADDED to x before block 0 (same residual as side_categorical). Applies only when cfg.rich (A1).",
+    "source_refs": [
+      "reuse/vendor/rees46_eda/config.py:382-398",
+      "sasrec_v1/code/sasrec_model.py:53,167,251-256"
+    ],
+    "notes": ""
+  },
+  "item_age_unavailable": {
+    "canonical_source": "pipeline-computed per-event indicator (next_item_eda pipeline*.py, NOT_VERIFIED byte-identity to frozen build)",
+    "recovery_or_derivation": "none (indicator itself IS the recovery/quality signal)",
+    "raw_semantic_value": "boolean condition at feature-build time",
+    "transform": "int8 passthrough, never scaled",
+    "model_token_or_float": "int8, concatenated into event_quality_flags[15]",
+    "projection": "concat(event_numeric_features[19], event_quality_flags[15]) -> Linear(34,32) -> GELU (numflag_proj, sasrec_model.py:53,167,253-254)",
+    "fusion": "one of the 6 concatenated parts feeding side_proj -> side_norm -> sigmoid(side_gate)*side, ADDED to x before block 0 (same residual as side_categorical). Applies only when cfg.rich (A1).",
+    "source_refs": [
+      "reuse/vendor/rees46_eda/config.py:382-398",
+      "sasrec_v1/code/sasrec_model.py:53,167,251-256"
+    ],
+    "notes": ""
+  },
+  "simultaneous_block": {
+    "canonical_source": "pipeline-computed per-event indicator (next_item_eda pipeline*.py, NOT_VERIFIED byte-identity to frozen build)",
+    "recovery_or_derivation": "none (indicator itself IS the recovery/quality signal)",
+    "raw_semantic_value": "boolean condition at feature-build time",
+    "transform": "int8 passthrough, never scaled",
+    "model_token_or_float": "int8, concatenated into event_quality_flags[15]",
+    "projection": "concat(event_numeric_features[19], event_quality_flags[15]) -> Linear(34,32) -> GELU (numflag_proj, sasrec_model.py:53,167,253-254)",
+    "fusion": "one of the 6 concatenated parts feeding side_proj -> side_norm -> sigmoid(side_gate)*side, ADDED to x before block 0 (same residual as side_categorical). Applies only when cfg.rich (A1).",
+    "source_refs": [
+      "reuse/vendor/rees46_eda/config.py:382-398",
+      "sasrec_v1/code/sasrec_model.py:53,167,251-256"
+    ],
+    "notes": ""
+  },
+  "log1p_prev_view_count": {
+    "canonical_source": "prior representative count for user (replay stream)",
+    "recovery_or_derivation": "none",
+    "raw_semantic_value": "count of previous available representatives",
+    "transform": "ln(1+c), clip+z-score (mean=2.71272,std=1.4865); 0 for cold user + has_history=0",
+    "model_token_or_float": "float32, concatenated into user_context[12] (decision-time, not per-event)",
+    "projection": "concat(user_context[12], user_context_masks[6]) -> Linear(18,64) -> GELU -> Linear(64,d_model) -> LayerNorm (user_mlp/user_proj/user_norm, sasrec_model.py:54,172-175,258-261)",
+    "fusion": "sigmoid(user_gate)*u ADDED to h_last AFTER final_norm in _readout (sasrec_model.py:315-318) -- a DIFFERENT fusion point than item/side (post block stack, not pre-block-0). Applies only when cfg.rich (A1).",
+    "source_refs": [
+      "dataset/FEATURE_DICTIONARY.md:49-60",
+      "next_item_eda/src/rees46_eda/userctx.py:145-235 (NOT_VERIFIED byte-identity to frozen build, cited for formula only)",
+      "sasrec_v1/code/sasrec_model.py:54,172-175,258-261,315-318"
+    ],
+    "notes": ""
+  },
+  "log1p_prev_session_count": {
+    "canonical_source": "prior distinct behavioural sessions",
+    "recovery_or_derivation": "gap_seconds=3600 session boundary (config metadata)",
+    "raw_semantic_value": "count of distinct sessions so far",
+    "transform": "ln(1+c), clip+z-score (mean=1.46028,std=0.87821)",
+    "model_token_or_float": "float32, concatenated into user_context[12] (decision-time, not per-event)",
+    "projection": "concat(user_context[12], user_context_masks[6]) -> Linear(18,64) -> GELU -> Linear(64,d_model) -> LayerNorm (user_mlp/user_proj/user_norm, sasrec_model.py:54,172-175,258-261)",
+    "fusion": "sigmoid(user_gate)*u ADDED to h_last AFTER final_norm in _readout (sasrec_model.py:315-318) -- a DIFFERENT fusion point than item/side (post block stack, not pre-block-0). Applies only when cfg.rich (A1).",
+    "source_refs": [
+      "dataset/FEATURE_DICTIONARY.md:49-60",
+      "next_item_eda/src/rees46_eda/userctx.py:145-235 (NOT_VERIFIED byte-identity to frozen build, cited for formula only)",
+      "sasrec_v1/code/sasrec_model.py:54,172-175,258-261,315-318"
+    ],
+    "notes": ""
+  },
+  "recent_history_length": {
+    "canonical_source": "prior event count, capped",
+    "recovery_or_derivation": "window=100 (user_context_window_previous_representatives)",
+    "raw_semantic_value": "min(previous events,100)",
+    "transform": "clip+z-score (mean=28.86169,std=32.29289)",
+    "model_token_or_float": "float32, concatenated into user_context[12] (decision-time, not per-event)",
+    "projection": "concat(user_context[12], user_context_masks[6]) -> Linear(18,64) -> GELU -> Linear(64,d_model) -> LayerNorm (user_mlp/user_proj/user_norm, sasrec_model.py:54,172-175,258-261)",
+    "fusion": "sigmoid(user_gate)*u ADDED to h_last AFTER final_norm in _readout (sasrec_model.py:315-318) -- a DIFFERENT fusion point than item/side (post block stack, not pre-block-0). Applies only when cfg.rich (A1).",
+    "source_refs": [
+      "dataset/FEATURE_DICTIONARY.md:49-60",
+      "next_item_eda/src/rees46_eda/userctx.py:145-235 (NOT_VERIFIED byte-identity to frozen build, cited for formula only)",
+      "sasrec_v1/code/sasrec_model.py:54,172-175,258-261,315-318"
+    ],
+    "notes": ""
+  },
+  "has_history": {
+    "canonical_source": "prior event existence",
+    "recovery_or_derivation": "none",
+    "raw_semantic_value": "1 if any previous event",
+    "transform": "0/1 indicator, never scaled",
+    "model_token_or_float": "float32, concatenated into user_context[12] (decision-time, not per-event)",
+    "projection": "concat(user_context[12], user_context_masks[6]) -> Linear(18,64) -> GELU -> Linear(64,d_model) -> LayerNorm (user_mlp/user_proj/user_norm, sasrec_model.py:54,172-175,258-261)",
+    "fusion": "sigmoid(user_gate)*u ADDED to h_last AFTER final_norm in _readout (sasrec_model.py:315-318) -- a DIFFERENT fusion point than item/side (post block stack, not pre-block-0). Applies only when cfg.rich (A1).",
+    "source_refs": [
+      "dataset/FEATURE_DICTIONARY.md:49-60",
+      "next_item_eda/src/rees46_eda/userctx.py:145-235 (NOT_VERIFIED byte-identity to frozen build, cited for formula only)",
+      "sasrec_v1/code/sasrec_model.py:54,172-175,258-261,315-318"
+    ],
+    "notes": ""
+  },
+  "recent_distinct_items": {
+    "canonical_source": "prior 100 representatives",
+    "recovery_or_derivation": "distinct_in_window (userctx.py:189-191)",
+    "raw_semantic_value": "exact distinct product ids in window",
+    "transform": "clip+z-score (mean=21.48117,std=23.55078)",
+    "model_token_or_float": "float32, concatenated into user_context[12] (decision-time, not per-event)",
+    "projection": "concat(user_context[12], user_context_masks[6]) -> Linear(18,64) -> GELU -> Linear(64,d_model) -> LayerNorm (user_mlp/user_proj/user_norm, sasrec_model.py:54,172-175,258-261)",
+    "fusion": "sigmoid(user_gate)*u ADDED to h_last AFTER final_norm in _readout (sasrec_model.py:315-318) -- a DIFFERENT fusion point than item/side (post block stack, not pre-block-0). Applies only when cfg.rich (A1).",
+    "source_refs": [
+      "dataset/FEATURE_DICTIONARY.md:49-60",
+      "next_item_eda/src/rees46_eda/userctx.py:145-235 (NOT_VERIFIED byte-identity to frozen build, cited for formula only)",
+      "sasrec_v1/code/sasrec_model.py:54,172-175,258-261,315-318"
+    ],
+    "notes": ""
+  },
+  "recent_distinct_known_main_categories": {
+    "canonical_source": "prior 100 representatives, known-category subset",
+    "recovery_or_derivation": "distinct_in_window with contributes=cat_known (userctx.py:192-195)",
+    "raw_semantic_value": "exact distinct KNOWN main categories in window",
+    "transform": "clip+z-score (mean=1.6579,std=1.37781)",
+    "model_token_or_float": "float32, concatenated into user_context[12] (decision-time, not per-event)",
+    "projection": "concat(user_context[12], user_context_masks[6]) -> Linear(18,64) -> GELU -> Linear(64,d_model) -> LayerNorm (user_mlp/user_proj/user_norm, sasrec_model.py:54,172-175,258-261)",
+    "fusion": "sigmoid(user_gate)*u ADDED to h_last AFTER final_norm in _readout (sasrec_model.py:315-318) -- a DIFFERENT fusion point than item/side (post block stack, not pre-block-0). Applies only when cfg.rich (A1).",
+    "source_refs": [
+      "dataset/FEATURE_DICTIONARY.md:49-60",
+      "next_item_eda/src/rees46_eda/userctx.py:145-235 (NOT_VERIFIED byte-identity to frozen build, cited for formula only)",
+      "sasrec_v1/code/sasrec_model.py:54,172-175,258-261,315-318"
+    ],
+    "notes": ""
+  },
+  "recent_category_match_share": {
+    "canonical_source": "prior 100 representatives' main_category_idx vs current",
+    "recovery_or_derivation": "match_count_in_window / window_sum over KNOWN categories only (userctx.py:197-202)",
+    "raw_semantic_value": "share in [0,1]",
+    "transform": "passthrough (already bounded), never scaled; 0 when unsupported",
+    "model_token_or_float": "float32, concatenated into user_context[12] (decision-time, not per-event)",
+    "projection": "concat(user_context[12], user_context_masks[6]) -> Linear(18,64) -> GELU -> Linear(64,d_model) -> LayerNorm (user_mlp/user_proj/user_norm, sasrec_model.py:54,172-175,258-261)",
+    "fusion": "sigmoid(user_gate)*u ADDED to h_last AFTER final_norm in _readout (sasrec_model.py:315-318) -- a DIFFERENT fusion point than item/side (post block stack, not pre-block-0). Applies only when cfg.rich (A1).",
+    "source_refs": [
+      "dataset/FEATURE_DICTIONARY.md:49-60",
+      "next_item_eda/src/rees46_eda/userctx.py:145-235 (NOT_VERIFIED byte-identity to frozen build, cited for formula only)",
+      "sasrec_v1/code/sasrec_model.py:54,172-175,258-261,315-318"
+    ],
+    "notes": ""
+  },
+  "recent_brand_match_share": {
+    "canonical_source": "prior 100 representatives' brand_idx vs current",
+    "recovery_or_derivation": "match_count_in_window / window_sum over KNOWN brands only (userctx.py:205-209)",
+    "raw_semantic_value": "share in [0,1]",
+    "transform": "passthrough, never scaled; 0 when unsupported",
+    "model_token_or_float": "float32, concatenated into user_context[12] (decision-time, not per-event)",
+    "projection": "concat(user_context[12], user_context_masks[6]) -> Linear(18,64) -> GELU -> Linear(64,d_model) -> LayerNorm (user_mlp/user_proj/user_norm, sasrec_model.py:54,172-175,258-261)",
+    "fusion": "sigmoid(user_gate)*u ADDED to h_last AFTER final_norm in _readout (sasrec_model.py:315-318) -- a DIFFERENT fusion point than item/side (post block stack, not pre-block-0). Applies only when cfg.rich (A1).",
+    "source_refs": [
+      "dataset/FEATURE_DICTIONARY.md:49-60",
+      "next_item_eda/src/rees46_eda/userctx.py:145-235 (NOT_VERIFIED byte-identity to frozen build, cited for formula only)",
+      "sasrec_v1/code/sasrec_model.py:54,172-175,258-261,315-318"
+    ],
+    "notes": ""
+  },
+  "recent_mean_log_price": {
+    "canonical_source": "prior 100 representatives' log_price",
+    "recovery_or_derivation": "window_sum(valid log_price)/window_sum(price_ok) (userctx.py:212-219)",
+    "raw_semantic_value": "mean log1p(price) over valid recent prices",
+    "transform": "clip+z-score (mean=5.03827,std=0.88268); 0 when unsupported",
+    "model_token_or_float": "float32, concatenated into user_context[12] (decision-time, not per-event)",
+    "projection": "concat(user_context[12], user_context_masks[6]) -> Linear(18,64) -> GELU -> Linear(64,d_model) -> LayerNorm (user_mlp/user_proj/user_norm, sasrec_model.py:54,172-175,258-261)",
+    "fusion": "sigmoid(user_gate)*u ADDED to h_last AFTER final_norm in _readout (sasrec_model.py:315-318) -- a DIFFERENT fusion point than item/side (post block stack, not pre-block-0). Applies only when cfg.rich (A1).",
+    "source_refs": [
+      "dataset/FEATURE_DICTIONARY.md:49-60",
+      "next_item_eda/src/rees46_eda/userctx.py:145-235 (NOT_VERIFIED byte-identity to frozen build, cited for formula only)",
+      "sasrec_v1/code/sasrec_model.py:54,172-175,258-261,315-318"
+    ],
+    "notes": ""
+  },
+  "current_minus_recent_mean_log_price": {
+    "canonical_source": "current event's log_price MINUS recent_mean_log_price",
+    "recovery_or_derivation": "gate='both'=price_sup & price_ok, i.e. BOTH sides valid (userctx.py:221-222)",
+    "raw_semantic_value": "log1p(current)-recent_mean_log_price",
+    "transform": "clip+z-score (mean=0.00206,std=0.99333); 0 when EITHER side unavailable per upstream gate, but batch-time re-zeroing (loaders.py/full_store.py) only checks recent_price_supported -- see notes",
+    "model_token_or_float": "float32, concatenated into user_context[12] (decision-time, not per-event)",
+    "projection": "concat(user_context[12], user_context_masks[6]) -> Linear(18,64) -> GELU -> Linear(64,d_model) -> LayerNorm (user_mlp/user_proj/user_norm, sasrec_model.py:54,172-175,258-261)",
+    "fusion": "sigmoid(user_gate)*u ADDED to h_last AFTER final_norm in _readout (sasrec_model.py:315-318) -- a DIFFERENT fusion point than item/side (post block stack, not pre-block-0). Applies only when cfg.rich (A1).",
+    "source_refs": [
+      "dataset/FEATURE_DICTIONARY.md:49-60",
+      "next_item_eda/src/rees46_eda/userctx.py:145-235 (NOT_VERIFIED byte-identity to frozen build, cited for formula only)",
+      "sasrec_v1/code/sasrec_model.py:54,172-175,258-261,315-318"
+    ],
+    "notes": "OPEN QUESTION: upstream userctx.py:221-222 zeroes this feature when EITHER the recent window OR the CURRENT event's own price is invalid ('both = price_sup & price_ok'). Downstream re-zeroing in loaders.py:60-63,309-312 and full_store.py:296-307 keys ONLY on recent_price_supported. If the current price is invalid (price_missing=1) while the recent window is supported, the upstream raw value is already 0.0, but normalizers.apply() still maps that 0.0 through z=(0-mean)/std instead of leaving it at the documented 'missing->0-after-normalization' sentinel. Needs a bounded data check (profile_train_sample.py) to confirm whether this row population is empty or non-empty in practice."
+  },
+  "log1p_time_since_prev_user_event_s": {
+    "canonical_source": "previous representative's timestamp (same user)",
+    "recovery_or_derivation": "none",
+    "raw_semantic_value": "seconds since user's previous representative",
+    "transform": "ln(1+s), clip+z-score (mean=4.95025,std=3.37901); 0+prev_user_event_available=0 for cold user",
+    "model_token_or_float": "float32, concatenated into user_context[12] (decision-time, not per-event)",
+    "projection": "concat(user_context[12], user_context_masks[6]) -> Linear(18,64) -> GELU -> Linear(64,d_model) -> LayerNorm (user_mlp/user_proj/user_norm, sasrec_model.py:54,172-175,258-261)",
+    "fusion": "sigmoid(user_gate)*u ADDED to h_last AFTER final_norm in _readout (sasrec_model.py:315-318) -- a DIFFERENT fusion point than item/side (post block stack, not pre-block-0). Applies only when cfg.rich (A1).",
+    "source_refs": [
+      "dataset/FEATURE_DICTIONARY.md:49-60",
+      "next_item_eda/src/rees46_eda/userctx.py:145-235 (NOT_VERIFIED byte-identity to frozen build, cited for formula only)",
+      "sasrec_v1/code/sasrec_model.py:54,172-175,258-261,315-318"
+    ],
+    "notes": ""
+  },
+  "log1p_time_since_prev_session_last_event_s": {
+    "canonical_source": "previous session's last available event timestamp",
+    "recovery_or_derivation": "only computed at a NEW behavioural session boundary",
+    "raw_semantic_value": "seconds since previous session's last event",
+    "transform": "ln(1+s), clip+z-score (mean=1.86154,std=4.35493); 0+prev_session_available=0 otherwise",
+    "model_token_or_float": "float32, concatenated into user_context[12] (decision-time, not per-event)",
+    "projection": "concat(user_context[12], user_context_masks[6]) -> Linear(18,64) -> GELU -> Linear(64,d_model) -> LayerNorm (user_mlp/user_proj/user_norm, sasrec_model.py:54,172-175,258-261)",
+    "fusion": "sigmoid(user_gate)*u ADDED to h_last AFTER final_norm in _readout (sasrec_model.py:315-318) -- a DIFFERENT fusion point than item/side (post block stack, not pre-block-0). Applies only when cfg.rich (A1).",
+    "source_refs": [
+      "dataset/FEATURE_DICTIONARY.md:49-60",
+      "next_item_eda/src/rees46_eda/userctx.py:145-235 (NOT_VERIFIED byte-identity to frozen build, cited for formula only)",
+      "sasrec_v1/code/sasrec_model.py:54,172-175,258-261,315-318"
+    ],
+    "notes": ""
+  },
+  "has_history_mask": {
+    "canonical_source": "pipeline-computed support/availability indicator (userctx.py)",
+    "recovery_or_derivation": "none",
+    "raw_semantic_value": "boolean support condition",
+    "transform": "float32 (or uint8) passthrough, never scaled",
+    "model_token_or_float": "float32, concatenated into user_context_masks[6]",
+    "projection": "concat(user_context[12], user_context_masks[6]) -> Linear(18,64) -> GELU -> Linear(64,d_model) -> LayerNorm (user_mlp/user_proj/user_norm, sasrec_model.py:54,172-175,258-261)",
+    "fusion": "sigmoid(user_gate)*u ADDED to h_last AFTER final_norm in _readout (sasrec_model.py:315-318) -- a DIFFERENT fusion point than item/side (post block stack, not pre-block-0). Applies only when cfg.rich (A1).",
+    "source_refs": [
+      "reuse/vendor/rees46_eda/config.py:415-422",
+      "sasrec_v1/code/sasrec_model.py:54,172-175,258-261,315-318"
+    ],
+    "notes": ""
+  },
+  "recent_category_match_supported": {
+    "canonical_source": "pipeline-computed support/availability indicator (userctx.py)",
+    "recovery_or_derivation": "none",
+    "raw_semantic_value": "boolean support condition",
+    "transform": "float32 (or uint8) passthrough, never scaled",
+    "model_token_or_float": "float32, concatenated into user_context_masks[6]",
+    "projection": "concat(user_context[12], user_context_masks[6]) -> Linear(18,64) -> GELU -> Linear(64,d_model) -> LayerNorm (user_mlp/user_proj/user_norm, sasrec_model.py:54,172-175,258-261)",
+    "fusion": "sigmoid(user_gate)*u ADDED to h_last AFTER final_norm in _readout (sasrec_model.py:315-318) -- a DIFFERENT fusion point than item/side (post block stack, not pre-block-0). Applies only when cfg.rich (A1).",
+    "source_refs": [
+      "reuse/vendor/rees46_eda/config.py:415-422",
+      "sasrec_v1/code/sasrec_model.py:54,172-175,258-261,315-318"
+    ],
+    "notes": ""
+  },
+  "recent_brand_match_supported": {
+    "canonical_source": "pipeline-computed support/availability indicator (userctx.py)",
+    "recovery_or_derivation": "none",
+    "raw_semantic_value": "boolean support condition",
+    "transform": "float32 (or uint8) passthrough, never scaled",
+    "model_token_or_float": "float32, concatenated into user_context_masks[6]",
+    "projection": "concat(user_context[12], user_context_masks[6]) -> Linear(18,64) -> GELU -> Linear(64,d_model) -> LayerNorm (user_mlp/user_proj/user_norm, sasrec_model.py:54,172-175,258-261)",
+    "fusion": "sigmoid(user_gate)*u ADDED to h_last AFTER final_norm in _readout (sasrec_model.py:315-318) -- a DIFFERENT fusion point than item/side (post block stack, not pre-block-0). Applies only when cfg.rich (A1).",
+    "source_refs": [
+      "reuse/vendor/rees46_eda/config.py:415-422",
+      "sasrec_v1/code/sasrec_model.py:54,172-175,258-261,315-318"
+    ],
+    "notes": ""
+  },
+  "recent_price_supported": {
+    "canonical_source": "pipeline-computed support/availability indicator (userctx.py)",
+    "recovery_or_derivation": "none",
+    "raw_semantic_value": "boolean support condition",
+    "transform": "float32 (or uint8) passthrough, never scaled",
+    "model_token_or_float": "float32, concatenated into user_context_masks[6]",
+    "projection": "concat(user_context[12], user_context_masks[6]) -> Linear(18,64) -> GELU -> Linear(64,d_model) -> LayerNorm (user_mlp/user_proj/user_norm, sasrec_model.py:54,172-175,258-261)",
+    "fusion": "sigmoid(user_gate)*u ADDED to h_last AFTER final_norm in _readout (sasrec_model.py:315-318) -- a DIFFERENT fusion point than item/side (post block stack, not pre-block-0). Applies only when cfg.rich (A1).",
+    "source_refs": [
+      "reuse/vendor/rees46_eda/config.py:415-422",
+      "sasrec_v1/code/sasrec_model.py:54,172-175,258-261,315-318"
+    ],
+    "notes": ""
+  },
+  "prev_user_event_available": {
+    "canonical_source": "pipeline-computed support/availability indicator (userctx.py)",
+    "recovery_or_derivation": "none",
+    "raw_semantic_value": "boolean support condition",
+    "transform": "float32 (or uint8) passthrough, never scaled",
+    "model_token_or_float": "float32, concatenated into user_context_masks[6]",
+    "projection": "concat(user_context[12], user_context_masks[6]) -> Linear(18,64) -> GELU -> Linear(64,d_model) -> LayerNorm (user_mlp/user_proj/user_norm, sasrec_model.py:54,172-175,258-261)",
+    "fusion": "sigmoid(user_gate)*u ADDED to h_last AFTER final_norm in _readout (sasrec_model.py:315-318) -- a DIFFERENT fusion point than item/side (post block stack, not pre-block-0). Applies only when cfg.rich (A1).",
+    "source_refs": [
+      "reuse/vendor/rees46_eda/config.py:415-422",
+      "sasrec_v1/code/sasrec_model.py:54,172-175,258-261,315-318"
+    ],
+    "notes": ""
+  },
+  "prev_session_available": {
+    "canonical_source": "pipeline-computed support/availability indicator (userctx.py)",
+    "recovery_or_derivation": "none",
+    "raw_semantic_value": "boolean support condition",
+    "transform": "float32 (or uint8) passthrough, never scaled",
+    "model_token_or_float": "float32, concatenated into user_context_masks[6]",
+    "projection": "concat(user_context[12], user_context_masks[6]) -> Linear(18,64) -> GELU -> Linear(64,d_model) -> LayerNorm (user_mlp/user_proj/user_norm, sasrec_model.py:54,172-175,258-261)",
+    "fusion": "sigmoid(user_gate)*u ADDED to h_last AFTER final_norm in _readout (sasrec_model.py:315-318) -- a DIFFERENT fusion point than item/side (post block stack, not pre-block-0). Applies only when cfg.rich (A1).",
+    "source_refs": [
+      "reuse/vendor/rees46_eda/config.py:415-422",
+      "sasrec_v1/code/sasrec_model.py:54,172-175,258-261,315-318"
+    ],
+    "notes": ""
+  },
+  "attention_mask": {
+    "canonical_source": "position_in_segment vs context window",
+    "recovery_or_derivation": "min(context_length, position)",
+    "raw_semantic_value": "True on [0,length)",
+    "transform": "bool passthrough",
+    "model_token_or_float": "structural tensor, consumed directly by SASRecCE._layout, not embedded/projected",
+    "projection": "NOT_FOUND -- never reaches sasrec_model.py",
+    "fusion": "NOT_FOUND -- never reaches sasrec_model.py",
+    "source_refs": [
+      "sasrec_v1/code/sasrec_model.py:218-249"
+    ],
+    "notes": ""
+  },
+  "position_ids": {
+    "canonical_source": "position_in_segment",
+    "recovery_or_derivation": "1..length then 0",
+    "raw_semantic_value": "1-based position",
+    "transform": "int64 passthrough; NOT the embedding index used internally",
+    "model_token_or_float": "structural tensor, consumed directly by SASRecCE._layout, not embedded/projected",
+    "projection": "NOT_FOUND -- never reaches sasrec_model.py",
+    "fusion": "NOT_FOUND -- never reaches sasrec_model.py",
+    "source_refs": [
+      "sasrec_v1/code/sasrec_model.py:218-249"
+    ],
+    "notes": ""
+  },
+  "lengths": {
+    "canonical_source": "position_in_segment",
+    "recovery_or_derivation": "min(context_length, position)",
+    "raw_semantic_value": "valid prefix length",
+    "transform": "int64 passthrough",
+    "model_token_or_float": "structural tensor, consumed directly by SASRecCE._layout, not embedded/projected",
+    "projection": "NOT_FOUND -- never reaches sasrec_model.py",
+    "fusion": "NOT_FOUND -- never reaches sasrec_model.py",
+    "source_refs": [
+      "sasrec_v1/code/sasrec_model.py:218-249"
+    ],
+    "notes": ""
+  },
+  "last_valid_index": {
+    "canonical_source": "lengths",
+    "recovery_or_derivation": "lengths-1",
+    "raw_semantic_value": "index of query position",
+    "transform": "int64 passthrough",
+    "model_token_or_float": "structural tensor, consumed directly by SASRecCE._layout, not embedded/projected",
+    "projection": "NOT_FOUND -- never reaches sasrec_model.py",
+    "fusion": "NOT_FOUND -- never reaches sasrec_model.py",
+    "source_refs": [
+      "sasrec_v1/code/sasrec_model.py:218-249"
+    ],
+    "notes": ""
+  },
+  "target_class": {
+    "canonical_source": "decision ledger / vocabulary lookup (build-time)",
+    "recovery_or_derivation": "n/a",
+    "raw_semantic_value": "identifier or label value",
+    "transform": "none",
+    "model_token_or_float": "NOT_FOUND -- FORBIDDEN_PREDICTOR_KEYS (sasrec_data.py:48-52), never enters sasrec_model.py",
+    "projection": "NOT_FOUND -- never reaches sasrec_model.py",
+    "fusion": "NOT_FOUND -- never reaches sasrec_model.py",
+    "source_refs": [
+      "sasrec_v1/code/sasrec_data.py:48-52"
+    ],
+    "notes": ""
+  },
+  "loss_mask": {
+    "canonical_source": "decision ledger / vocabulary lookup (build-time)",
+    "recovery_or_derivation": "n/a",
+    "raw_semantic_value": "identifier or label value",
+    "transform": "none",
+    "model_token_or_float": "NOT_FOUND -- FORBIDDEN_PREDICTOR_KEYS (sasrec_data.py:48-52), never enters sasrec_model.py",
+    "projection": "NOT_FOUND -- never reaches sasrec_model.py",
+    "fusion": "NOT_FOUND -- never reaches sasrec_model.py",
+    "source_refs": [
+      "sasrec_v1/code/sasrec_data.py:48-52"
+    ],
+    "notes": ""
+  },
+  "eval_mask": {
+    "canonical_source": "decision ledger / vocabulary lookup (build-time)",
+    "recovery_or_derivation": "n/a",
+    "raw_semantic_value": "identifier or label value",
+    "transform": "none",
+    "model_token_or_float": "NOT_FOUND -- FORBIDDEN_PREDICTOR_KEYS (sasrec_data.py:48-52), never enters sasrec_model.py",
+    "projection": "NOT_FOUND -- never reaches sasrec_model.py",
+    "fusion": "NOT_FOUND -- never reaches sasrec_model.py",
+    "source_refs": [
+      "sasrec_v1/code/sasrec_data.py:48-52"
+    ],
+    "notes": ""
+  },
+  "decision_id": {
+    "canonical_source": "decision ledger / vocabulary lookup (build-time)",
+    "recovery_or_derivation": "n/a",
+    "raw_semantic_value": "identifier or label value",
+    "transform": "none",
+    "model_token_or_float": "NOT_FOUND -- FORBIDDEN_PREDICTOR_KEYS (sasrec_data.py:48-52), never enters sasrec_model.py",
+    "projection": "NOT_FOUND -- never reaches sasrec_model.py",
+    "fusion": "NOT_FOUND -- never reaches sasrec_model.py",
+    "source_refs": [
+      "sasrec_v1/code/sasrec_data.py:48-52"
+    ],
+    "notes": ""
+  },
+  "client_id": {
+    "canonical_source": "decision ledger / vocabulary lookup (build-time)",
+    "recovery_or_derivation": "n/a",
+    "raw_semantic_value": "identifier or label value",
+    "transform": "none",
+    "model_token_or_float": "NOT_FOUND -- FORBIDDEN_PREDICTOR_KEYS (sasrec_data.py:48-52), never enters sasrec_model.py",
+    "projection": "NOT_FOUND -- never reaches sasrec_model.py",
+    "fusion": "NOT_FOUND -- never reaches sasrec_model.py",
+    "source_refs": [
+      "sasrec_v1/code/sasrec_data.py:48-52"
+    ],
+    "notes": ""
+  },
+  "model_segment_id": {
+    "canonical_source": "decision ledger / vocabulary lookup (build-time)",
+    "recovery_or_derivation": "n/a",
+    "raw_semantic_value": "identifier or label value",
+    "transform": "none",
+    "model_token_or_float": "NOT_FOUND -- FORBIDDEN_PREDICTOR_KEYS (sasrec_data.py:48-52), never enters sasrec_model.py",
+    "projection": "NOT_FOUND -- never reaches sasrec_model.py",
+    "fusion": "NOT_FOUND -- never reaches sasrec_model.py",
+    "source_refs": [
+      "sasrec_v1/code/sasrec_data.py:48-52"
+    ],
+    "notes": ""
+  },
+  "local_hour": {
+    "canonical_source": "block_ts",
+    "recovery_or_derivation": "+3h offset (local_hour) / band lookup (local_daypart)",
+    "raw_semantic_value": "audit-only companion value",
+    "transform": "none",
+    "model_token_or_float": "NOT_FOUND -- never loaded by full_store.py or loaders.py",
+    "projection": "NOT_FOUND -- never reaches sasrec_model.py",
+    "fusion": "NOT_FOUND -- never reaches sasrec_model.py",
+    "source_refs": [
+      "dataset/FEATURE_DICTIONARY.md:35-36"
+    ],
+    "notes": ""
+  },
+  "local_daypart": {
+    "canonical_source": "block_ts",
+    "recovery_or_derivation": "+3h offset (local_hour) / band lookup (local_daypart)",
+    "raw_semantic_value": "audit-only companion value",
+    "transform": "none",
+    "model_token_or_float": "NOT_FOUND -- never loaded by full_store.py or loaders.py",
+    "projection": "NOT_FOUND -- never reaches sasrec_model.py",
+    "fusion": "NOT_FOUND -- never reaches sasrec_model.py",
+    "source_refs": [
+      "dataset/FEATURE_DICTIONARY.md:35-36"
+    ],
+    "notes": ""
+  }
+}

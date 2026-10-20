@@ -1,0 +1,101 @@
+{
+ "arm": "PRE",
+ "epochs_run": 0.300828874199979,
+ "label": "SMOKE_NOT_EVIDENCE",
+ "spec": {
+  "N_decisions": 142965,
+  "arm": "PRE",
+  "betas": [
+   0.9,
+   0.999
+  ],
+  "budget_efe": 6,
+  "dropout": [
+   0.1
+  ],
+  "early_stop_marks": null,
+  "effective_batch": 256,
+  "eps": 1e-08,
+  "exposure_point": "end",
+  "grad_clip": 1.0,
+  "init_sha256": "782ab9e60f1a99ab0ab47785dc6f5476891a70e1c19de394a42ecb705986e708",
+  "lr_table_sha256": "2877ef0059ceead3cff6b722693af5beb4df99ab5017b2371b52e2f83a218279",
+  "marks": [
+   0.5,
+   1.0,
+   1.5,
+   2.0,
+   2.5,
+   3.0,
+   3.5,
+   4.0,
+   4.5,
+   5.0,
+   5.5,
+   6.0
+  ],
+  "max_len": 50,
+  "n_updates": 3354,
+  "peak_lr": 0.0007114121116984968,
+  "schedule": "S0",
+  "seed": 2026,
+  "select_population": "BAND",
+  "variant": "SASREC_D64_B2",
+  "weight_decay": 1e-05
+ },
+ "summary": {
+  "ALL": {
+   "hr@10": 0.043377483443708606,
+   "hr@20": 0.0728476821192053,
+   "mrr@20": 0.01657510966526713,
+   "n_unreachable": 0,
+   "n_users": 6040,
+   "ndcg@10": 0.02118504539588359,
+   "ndcg@20": 0.028606435788817042
+  },
+  "BAND": {
+   "hr@10": 0.04083885209713024,
+   "hr@20": 0.0684326710816777,
+   "mrr@20": 0.016520640857876624,
+   "n_unreachable": 0,
+   "n_users": 906,
+   "ndcg@10": 0.020780221642368847,
+   "ndcg@20": 0.02771099697248739
+  },
+  "BAND_COVERED_TARGET": {
+   "hr@10": 0.04346383543463835,
+   "hr@20": 0.072992700729927,
+   "mrr@20": 0.016608105902158835,
+   "n_unreachable": 0,
+   "n_users": 6028,
+   "ndcg@10": 0.021227218678025364,
+   "ndcg@20": 0.028663382907175666
+  },
+  "BAND_UNCOVERED_TARGET": {
+   "hr@10": 0.0,
+   "hr@20": 0.0,
+   "mrr@20": 0.0,
+   "n_unreachable": 0,
+   "n_users": 12,
+   "ndcg@10": 0.0,
+   "ndcg@20": 0.0
+  },
+  "OTHERS": {
+   "hr@10": 0.04382547721075185,
+   "hr@20": 0.0736268017140631,
+   "mrr@20": 0.016584721807747806,
+   "n_unreachable": 0,
+   "n_users": 5134,
+   "ndcg@10": 0.021256484881797957,
+   "ndcg@20": 0.02876445440346345
+  }
+ },
+ "timing": {
+  "eval_s": 0.33,
+  "mean_step_s": 0.17597080667370132,
+  "median_step_s": 0.17461400385946035,
+  "n_steps_this_leg": 168,
+  "n_updates_full_run": 3354,
+  "wall_s_this_leg": 29.63
+ }
+}

@@ -1,0 +1,30 @@
+{
+  "description": "Byte-identical vendor of the minimal rees46_eda import closure needed for DecisionWindowLoader, collate, feature_group_view, model_inputs, gru_inputs.",
+  "source_root": "F:/Queens University/Microsoft Project/eda/next_item_eda/src/rees46_eda",
+  "vendor_root": "code/vendor/rees46_eda",
+  "code_hash": "02fbb07147ed9c0ba54092dd4ee042ce6af42a06145178017999fb7b242dde73",
+  "dataset": {
+    "path_lobot": "/home/jovyan/shared_data/rees46_nextitem_v1",
+    "path_local": "F:/Queens University/Microsoft Project/eda/rees46_nextitem_v1",
+    "version_hash": "860e5a1c3a81b8e4bbfeff4f245fa37638a43e4f260df179585964d2d4da8dbd"
+  },
+  "files": [
+    {
+      "name": "__init__.py",
+      "source_path": "F:/Queens University/Microsoft Project/eda/next_item_eda/src/rees46_eda/__init__.py",
+      "sha256": "921825af9559cfb2d2cd44264e62b6ee4ce6dcde615dc8e9e486b041db4f4c9f"
+    },
+    {
+      "name": "config.py",
+      "source_path": "F:/Queens University/Microsoft Project/eda/next_item_eda/src/rees46_eda/config.py",
+      "sha256": "42f1027acb1f1844b7c899bb4d93d7925fb466c846bf558d1bc75589b8d0b913"
+    },
+    {
+      "name": "loaders.py",
+      "source_path": "F:/Queens University/Microsoft Project/eda/next_item_eda/src/rees46_eda/loaders.py",
+      "sha256": "212b1b4ce4243956fd4be0ead22764190ca0cfbad22d5560fef8bbe67ecbac73"
+    }
+  ],
+  "import_closure_note": "torch_adapters.py was NOT vendored: it imports FROM loaders.py (the reverse direction) and is not imported by loaders.py, config.py, or __init__.py. The five required symbols (DecisionWindowLoader, DecisionWindowLoader.collate, feature_group_view, model_inputs, gru_inputs) are all defined directly in loaders.py, which imports only numpy, pyarrow.parquet, stdlib, and .config. config.py imports only yaml (present on Lobot, 6.0.3) plus stdlib. Verified empirically by importing the 3-file vendor tree on Lobot with torch_adapters.py absent -- see task_T-EFG_result.md for the exact import and layout=='frozen' assertion output.",
+  "yaml_lazy_import_edit": "not applied -- yaml 6.0.3 confirmed present in ~/venvs/ppsi-gpu on Lobot, so config.py is vendored unmodified (byte-identical, per sha256 above)."
+}

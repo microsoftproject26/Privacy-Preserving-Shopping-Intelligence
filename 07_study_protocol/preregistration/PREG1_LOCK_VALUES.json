@@ -1,0 +1,69 @@
+{
+ "document": "PREG1_LOCK_VALUES",
+ "version": "1.0.0",
+ "status": "FROZEN_BEFORE_ANY_CENTRAL_RESULT",
+ "decided_by": "Fable 5.1 (binding) after Opus-Fable deliberation; owner-ordered (DECISION_LOG 18)",
+ "sources": ["company/reviews/PREG1_DELIBERATION_PACKET.md", "company/reviews/PREG1_OPUS_POSITION.md", "company/reviews/PREG1_FABLE_POSITION.md", "company/reviews/PREG1_SCIENTIFIC_SYNTHESIS.md"],
+ "T1_architecture_selection": {
+  "primary_rule": "family with the higher mean over seeds 2026/2027 of PRACTICAL_BEST client-macro MRR@20 on M02 (262,144 cohort; 62,368 warm VALIDATION users)",
+  "definitions": {"delta_bar": "mean_GRU - mean_SASRec", "delta_s": "GRU_s - SASRec_s per seed", "g_f": "within-family |MRR_2026 - MRR_2027|"},
+  "trigger_any_of": {
+   "T1a": "abs(delta_bar) < 0.0020",
+   "T1b": "sign(delta_2026) != sign(delta_2027) OR any abs(delta_s) <= 0.0002",
+   "T1c": "abs(delta_bar) < 2 * max(g_GRU, g_SASRec)",
+   "T1d": "paired user bootstrap 95% CI of delta_bar (1000 resamples, seed 20260926, shared weights) contains 0"
+  },
+  "if_not_triggered": "DECISIVE_STABLE: select the higher cohort mean; skip the full-TRAIN tie-break",
+  "tiebreak": {
+   "population": "full TRAIN comparison union: 2,694,998 clients, 40,180,608 examples, N_EFE = 40,180,608",
+   "recipe": "identical to the cohort contest: cohort-calibrated peak LR, common schedule, exposure_point=end, 6.0 EFE, stopping rule C3, no continuation, no new calibration",
+   "evaluation": "every 0.5 EFE on the full warm VALIDATION manifest (642,228 users, 8,430,391 rows; registered and hashed before launch); M02 reported as a subset, descriptive; frozen evaluator T3",
+   "stage1": {"seeds": [2026], "decisive_iff": "abs(delta_full_2026) >= 0.0040 AND its paired user bootstrap 95% CI excludes 0", "on_decisive": "select; selection_basis = FULL_TRAIN_TIEBREAK_STAGE1; skip seed 2027", "budget_cap_gpu_h": 65, "read_rule": "both runs complete 6.0 EFE before either number is read"},
+   "stage2": {"seeds": [2027], "rule": "winner = higher full-data seed-mean iff abs(delta_bar_full) >= 0.0020 AND both full per-seed deltas share its sign", "inconclusive": "if all four per-seed deltas (2 cohort + 2 full) share one sign with |delta| > 0.0002 -> CONSISTENT_SMALL_ADVANTAGE (select that family); else ARCHITECTURE_EQUIVALENT_WITHIN_RESOLUTION"},
+   "budget_cap_total_gpu_h": 125,
+   "checkpoints": "strictly-best + endpoint_6.0 weights only; deleted after ARCHITECTURE_LOCK",
+   "row_status": "ARCHITECTURE_TIEBREAK, population ALL, comparison_status HISTORICAL_REFERENCE; never C_MATCHED; never seeds a downstream run",
+   "disclosure": "the 0.000869 full-data seed gap is SASRec-only (v1); GRU full-data seed spread under the common schedule is unmeasured"
+  },
+  "equivalent_outcome": {
+   "status": "OWNER_RATIFICATION_PENDING (amends PKG 05 §B tie chain)",
+   "proposed_fallback": "select GRU on cost (downstream core 88 vs 263 GPU-h); never on export feasibility",
+   "default_until_ratified": "HOLD: no ARCHITECTURE_LOCK, no downstream run; ask the owner",
+   "owner_unreachable_proxy": "GRU on cost, PROXY_DECISION_PENDING_RATIFICATION; only reversible GRU calibration may begin; no TEST, no ALL_METHODS_LOCK"
+  },
+  "downstream_C": "always the selected family's cohort contest runs (PRACTICAL_BEST and CONTROLLED_BUDGET rows), reused verbatim"
+ },
+ "T2_lr_exposure_point": {
+  "exposure_point": "end",
+  "definition": "LR of a unit of work = peak * s(EFE at the END of the exposures it consumes)",
+  "central_update": "peak * s((a + n) / N)",
+  "fl_round_FA_FP_PF": "lr_peak_local * s((E_r + n_r_planned) / N), constant across the round's local steps; planned == actual n_consumed enforced",
+  "pf_personal_lr": "shared peak * the same round factor",
+  "lo_step": "lr_peak * s(6 * (t + 1) / T), t = 0..T-1",
+  "s_knots": [[0.0, 0.0], [0.02, 1.0], [2.0, 1.0], [3.0, 0.1], [5.5, 0.1], [6.0, 0.01]],
+  "blocking_pins": ["P1 key explicit in every run config; launcher refuses a missing key (code default must not be relied on)",
+                    "P2 planned round-LR table hashed before training; min LR > 0; final main unit ends at 6N exposures with LR 0.01*peak",
+                    "P3 fl.schedule.s_of_efe == v4train.schedule.s_main/s_continuation bit-for-bit on knots + 10,000 grid points; 6.0 endpoint tolerance 1e-12 in both",
+                    "P4 one-client one-round-per-update fixture: FL round LRs == central lr_for_update exactly",
+                    "P5 LO for T in {1,2,6,7,300,10000}: lr(0) > 0, lr(T-1) == 0.01*peak, T effective updates",
+                    "P6 T26/T27 re-run under exposure_point=end",
+                    "P7 continuation rounds only after a STILL_IMPROVING receipt"],
+  "disclosure": "tiny LO clients skip the warmup segment (first step at s(6/T))"
+ },
+ "T3_eval_numerics": {
+  "applies_to": ["C", "FA", "FP", "PF", "CPF", "LO", "in-training marks", "final rows", "tie-break", "cold-start"],
+  "score_block": 158486,
+  "class_chunk": 32768,
+  "eval_batch": 1024,
+  "order": "manifest order, strictly ascending decision_id; tail batch unpadded",
+  "cache_bytes": 1073741824,
+  "device": "A16 CUDA, strict FP32",
+  "flags": {"matmul.allow_tf32": false, "cudnn.allow_tf32": false, "cudnn.benchmark": false, "cudnn.deterministic": true, "use_deterministic_algorithms": true, "CUBLAS_WORKSPACE_CONFIG": ":4096:8"},
+  "metric_accumulation": "FP64",
+  "comparison_key_additions": {"eval_score_block": 158486, "eval_batch": 1024, "eval_device_class": "A16-FP32-DET"},
+  "per_row_tie_diagnostic": "n_tied and pessimistic ranks",
+  "memory_rule": "if GPU memory contention appears, only eval_batch may change (a recorded amendment), never score_block",
+  "g1_gpu_receipt_required": ["pass-2 bitwise reproduction", "single block == BaseAdapter.logits bitwise", "two invocations of the full M02 rank vector for one checkpoint identical", "wall time and memory at K = 158,486"],
+  "onnx_device_study": "SERVER-CPU PROXY deployment/latency only; parity receipt vs frozen evaluator on the WARM_TRUNCATION panel, labelled DEVICE_PARITY / HISTORICAL_REFERENCE; never a headline row"
+ }
+}

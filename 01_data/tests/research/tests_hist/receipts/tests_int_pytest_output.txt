@@ -1,0 +1,361 @@
+.....x.......x.........xx....x..........xx.......xxxx...........xxxx.... [ 27%]
+......xxxxx..x......xx...........xxxxxxxx......x.x.....x...........xx... [ 55%]
+.x.....x...x....x........x............x.x..x..............x...x......... [ 83%]
+xx.x.....x...x..x....x...x................x                              [100%]
+=================================== PASSES ====================================
+________________ test_select_writes_a_verified_selection_once _________________
+---------------------------- Captured stderr call -----------------------------
+LR SELECTION REFUSED: F:\Queens University\Microsoft Project\eda\.local_ai\_pytest_tmp\INT-07\tmp_tests_hist\data05_pytest_tests_int\test_select_writes_a_verified_0\LR_SELECTION.json exists (O_EXCL: an LR selection is written once)
+__________________ test_select_ext_writes_verified_file_once __________________
+---------------------------- Captured stderr call -----------------------------
+LR SELECTION REFUSED: F:\Queens University\Microsoft Project\eda\.local_ai\_pytest_tmp\INT-07\tmp_tests_hist\data05_pytest_tests_int\test_select_ext_writes_verifie0\LR_SELECTION_EXT.json exists (O_EXCL: an LR selection is written once)
+______________________________ test_cli_refusals ______________________________
+---------------------------- Captured stderr call -----------------------------
+usage: __main__.py [-h] --arm {FA,FP,PF,FA_1024,DP,S_CAL,FA_Q8}
+                   [--family FAMILY] --seed SEED --gpu GPU --run-dir RUN_DIR
+                   [--run-id RUN_ID]
+                   --history-policy {USER_HISTORY_L50,SESSION_L50}
+                   [--small-recipe SMALL_RECIPE] [--epsilon EPSILON]
+                   [--lr-mult LR_MULT] [--lr-selection LR_SELECTION]
+                   [--role ROLE] [--server-opt {fedavg,fedadam}]
+                   [--server-lr SERVER_LR] [--fl-tuning FL_TUNING]
+                   [--clip-record CLIP_RECORD] [--dp-z-record DP_Z_RECORD]
+                   [--theta0-variants THETA0_VARIANTS]
+                   [--checkpoint-every CHECKPOINT_EVERY] [--resume]
+                   [--allow-shared-gpu] [--smoke]
+                   [--smoke-rounds SMOKE_ROUNDS]
+                   [--smoke-interrupt-at SMOKE_INTERRUPT_AT] [--dry-run]
+                   [--n-threads N_THREADS] [--eval-prefetch EVAL_PREFETCH]
+                   [--manifest-dir MANIFEST_DIR] [--lock-path LOCK_PATH]
+                   [--manifest-hashes MANIFEST_HASHES]
+                   [--header-list HEADER_LIST]
+                   [--transform-state TRANSFORM_STATE]
+__main__.py: error: argument --server-opt: invalid choice: 'fedyogi' (choose from fedavg, fedadam)
+_________________ test_select_joint_writes_verified_file_once _________________
+---------------------------- Captured stderr call -----------------------------
+LR SELECTION REFUSED: F:\Queens University\Microsoft Project\eda\.local_ai\_pytest_tmp\INT-07\tmp_tests_hist\data05_pytest_tests_int\test_select_joint_writes_verif0\FL_TUNING_SELECTION.json exists (O_EXCL: the FL tuning selection is written once)
+_________ test_gated_index_equals_v4hist_index_on_non_test_partitions _________
+---------------------------- Captured stdout setup ----------------------------
+15:37:17 wrote MAIN_RETRO_TEST_5_100_131072: users=4, decisions=12
+15:37:17 wrote UNEW_HOLDOUT_RETRO_TEST_32768: users=2, decisions=6
+15:37:17 wrote SPARSE_PANEL_16384_RETRO_TEST: users=1, decisions=2
+15:37:17 wrote HEAVY_PANEL_16384_RETRO_TEST: users=1, decisions=3
+15:37:17 wrote TRUE_COLD_RETRO_TEST: users=3, decisions=8
+_________________________ test_explicit_gpu_required __________________________
+---------------------------- Captured stderr call -----------------------------
+usage: __main__.py [-h] --family {GRU,SASREC} --seed SEED
+                   --phase {CALIBRATION,MAIN}
+                   [--population {COHORT,FULL_TRAIN}] [--peak-lr PEAK_LR]
+                   [--role {TUNING}] [--hp-id HP_ID]
+                   [--hp-registry HP_REGISTRY]
+                   [--theta0-variants THETA0_VARIANTS] [--recipe-id RECIPE_ID]
+                   [--tuned-recipes TUNED_RECIPES] --gpu GPU --run-dir RUN_DIR
+                   [--run-id RUN_ID] [--smoke] [--smoke-updates SMOKE_UPDATES]
+                   [--smoke-interrupt-at SMOKE_INTERRUPT_AT]
+                   [--checkpoint-every CHECKPOINT_EVERY] [--resume]
+                   [--continue-run] [--calibration-record CALIBRATION_RECORD]
+                   [--continuation-budget CONTINUATION_BUDGET]
+                   [--expected-init-sha256 EXPECTED_INIT_SHA256]
+                   [--log-every LOG_EVERY] [--n-threads N_THREADS]
+                   [--eval-prefetch EVAL_PREFETCH]
+                   [--train-manifest TRAIN_MANIFEST]
+                   [--eval-manifest EVAL_MANIFEST]
+                   [--manifest-dir MANIFEST_DIR] [--lock-path LOCK_PATH]
+                   [--manifest-hashes MANIFEST_HASHES]
+                   [--header-list HEADER_LIST]
+                   [--transform-state TRANSFORM_STATE]
+                   [--population-label POPULATION_LABEL] [--allow-shared-gpu]
+                   --history-policy {USER_HISTORY_L50,SESSION_L50}
+__main__.py: error: the following arguments are required: --gpu
+____________________________ test_tuning_preflight ____________________________
+---------------------------- Captured stderr call -----------------------------
+usage: __main__.py [-h] --family {GRU,SASREC} --seed SEED
+                   --phase {CALIBRATION,MAIN}
+                   [--population {COHORT,FULL_TRAIN}] [--peak-lr PEAK_LR]
+                   [--role {TUNING}] [--hp-id HP_ID]
+                   [--hp-registry HP_REGISTRY]
+                   [--theta0-variants THETA0_VARIANTS] [--recipe-id RECIPE_ID]
+                   [--tuned-recipes TUNED_RECIPES] --gpu GPU --run-dir RUN_DIR
+                   [--run-id RUN_ID] [--smoke] [--smoke-updates SMOKE_UPDATES]
+                   [--smoke-interrupt-at SMOKE_INTERRUPT_AT]
+                   [--checkpoint-every CHECKPOINT_EVERY] [--resume]
+                   [--continue-run] [--calibration-record CALIBRATION_RECORD]
+                   [--continuation-budget CONTINUATION_BUDGET]
+                   [--expected-init-sha256 EXPECTED_INIT_SHA256]
+                   [--log-every LOG_EVERY] [--n-threads N_THREADS]
+                   [--eval-prefetch EVAL_PREFETCH]
+                   [--train-manifest TRAIN_MANIFEST]
+                   [--eval-manifest EVAL_MANIFEST]
+                   [--manifest-dir MANIFEST_DIR] [--lock-path LOCK_PATH]
+                   [--manifest-hashes MANIFEST_HASHES]
+                   [--header-list HEADER_LIST]
+                   [--transform-state TRANSFORM_STATE]
+                   [--population-label POPULATION_LABEL] [--allow-shared-gpu]
+                   --history-policy {USER_HISTORY_L50,SESSION_L50}
+__main__.py: error: argument --role: invalid choice: 'MAIN' (choose from TUNING)
+___________ test_p3_driver_refuses_a_code_root_without_the_launcher ___________
+---------------------------- Captured stderr call -----------------------------
+P3 REFUSED: F:\Queens University\Microsoft Project\eda\.local_ai\_pytest_tmp\INT-07\tmp_tests_hist\data05_pytest_tests_int\test_p3_driver_refuses_a_code_0\empty holds no v4int/launch_central.py
+=========================== short test summary info ===========================
+PASSED tests_int\test_cache_stream.py::test_cache_equals_stream_on_20k_random_rows
+PASSED tests_int\test_cache_stream.py::test_cache_equals_stream_on_whole_trainer_batches
+PASSED tests_int\test_cache_stream.py::test_eval_cache_equals_stream_on_every_batch
+PASSED tests_int\test_cache_stream.py::test_rebuilt_provider_serves_identical_bytes
+PASSED tests_int\test_cache_stream.py::test_cache_holds_only_manifest_windows
+PASSED tests_int\test_eval_stream.py::test_batches_exact_size_unpadded_tail_manifest_order
+PASSED tests_int\test_eval_stream.py::test_batch_size_must_equal_the_frozen_eval_batch
+PASSED tests_int\test_eval_stream.py::test_stream_comes_from_the_registered_source
+PASSED tests_int\test_eval_stream.py::test_all_rows_stream_refused_by_the_store
+PASSED tests_int\test_eval_stream.py::test_prefetch_is_byte_identical_and_ordered
+PASSED tests_int\test_eval_stream.py::test_prefetch_propagates_errors_and_stops_its_thread
+PASSED tests_int\test_eval_stream.py::test_frozen_predict_path_runs_on_provider_batches
+PASSED tests_int\test_fl05_launch.py::test_digests_identical_to_pre_fl05_code_at_defaults
+PASSED tests_int\test_fl05_launch.py::test_lr_mult_scales_the_local_lr_only
+PASSED tests_int\test_fl05_launch.py::test_fa_q8_spec_is_fa_plus_the_codec
+PASSED tests_int\test_fl05_launch.py::test_calibration_role_spec_and_refusals
+PASSED tests_int\test_fl05_launch.py::test_preflight_fl05_refusals_and_run_ids
+PASSED tests_int\test_fl05_launch.py::test_calibration_rows_labelled_and_lr_mult_recorded
+PASSED tests_int\test_fl05_launch.py::test_fa_q8_engine_bytes_determinism_and_differs_from_fa
+PASSED tests_int\test_fl05_launch.py::test_fa_q8_resume_exact_and_arm_spec_guard
+PASSED tests_int\test_fl05_launch.py::test_lr_mult_changes_the_trajectory_only_through_the_lr
+PASSED tests_int\test_fl05_lr_screen.py::test_apply_rule_and_ties
+PASSED tests_int\test_fl05_lr_screen.py::test_select_writes_a_verified_selection_once
+PASSED tests_int\test_fl05_lr_screen.py::test_selection_file_tamper_refused
+PASSED tests_int\test_fl05_lr_screen.py::test_selection_refuses_bad_run_sets
+PASSED tests_int\test_fl05_real_calib.py::test_role_evaluator_is_the_frozen_t3_path
+PASSED tests_int\test_fl05_real_calib.py::test_two_real_calibration_rounds_with_the_role_evaluator
+PASSED tests_int\test_fl07_launch.py::test_dp_arm_specs_are_poisson_with_fixed_denominator
+PASSED tests_int\test_fl07_launch.py::test_changed_digests_old_to_new_and_unchanged_arms_byte_identical
+PASSED tests_int\test_fl07_launch.py::test_s_cal_fa1024_dp_end_to_end_on_poisson
+PASSED tests_int\test_fl07_launch.py::test_expected_exposure_total_in_the_summary
+PASSED tests_int\test_fl07_launch.py::test_non_poisson_dp_spec_refused_by_the_runtime
+PASSED tests_int\test_fl07_launch.py::test_smoke_first_evaluation_bound_uses_round_units
+PASSED tests_int\test_fl07_launch.py::test_non_smoke_main_run_requires_lr_selection
+PASSED tests_int\test_fl07_launch.py::test_fa_q8_upload_bytes_carry_the_fa_header
+PASSED tests_int\test_fl09_lr_ext.py::test_registered_multiplier_set_and_tags
+PASSED tests_int\test_fl09_lr_ext.py::test_old_grid_digests_byte_identical_to_pre_fl09_code
+PASSED tests_int\test_fl09_lr_ext.py::test_apply_rule_ext_ties_by_log2_distance_then_smaller_m
+PASSED tests_int\test_fl09_lr_ext.py::test_select_ext_writes_verified_file_once
+PASSED tests_int\test_fl09_lr_ext.py::test_ext_file_tamper_refused
+PASSED tests_int\test_fl09_lr_ext.py::test_selection_ext_refusals_and_exclusion
+PASSED tests_int\test_fl09_lr_ext.py::test_main_run_refuses_06b_file_once_ext_exists
+PASSED tests_int\test_fl10_fedadam_launch.py::test_default_digests_byte_identical_to_pre_fl10_code
+PASSED tests_int\test_fl10_fedadam_launch.py::test_default_trajectories_bit_identical_to_pre_fl10_code
+PASSED tests_int\test_fl10_fedadam_launch.py::test_server_opt_values_spec_and_run_ids
+PASSED tests_int\test_fl10_fedadam_launch.py::test_cli_refusals
+PASSED tests_int\test_fl10_fedadam_launch.py::test_fedadam_engine_rows_determinism_and_resume
+PASSED tests_int\test_fl10_fedadam_launch.py::test_dp_and_fa1024_with_fedadam_run
+PASSED tests_int\test_fl10_fedadam_launch.py::test_apply_rule_joint_ties
+PASSED tests_int\test_fl10_fedadam_launch.py::test_select_joint_writes_verified_file_once
+PASSED tests_int\test_fl10_fedadam_launch.py::test_tuning_file_tamper_refused
+PASSED tests_int\test_fl10_fedadam_launch.py::test_select_joint_refusals
+PASSED tests_int\test_fl10_fedadam_launch.py::test_main_refuses_lr_selection_once_tuning_exists
+PASSED tests_int\test_int03_launch_fl.py::test_registered_arm_specs
+PASSED tests_int\test_int03_launch_fl.py::test_registered_z_and_its_refusals
+PASSED tests_int\test_int03_launch_fl.py::test_architecture_lock_winner_only
+PASSED tests_int\test_int03_launch_fl.py::test_preflight_refusals_and_shared_gpu
+PASSED tests_int\test_int03_launch_fl.py::test_fa_end_to_end_rows_bytes_and_retention_files
+PASSED tests_int\test_int03_launch_fl.py::test_determinism_two_runs_bitwise
+PASSED tests_int\test_int03_launch_fl.py::test_resume_is_exact_pf_store_written
+PASSED tests_int\test_int03_launch_fl.py::test_s_cal_then_fa_1024_and_dp
+PASSED tests_int\test_int03_launch_fl.py::test_smoke_deletes_weights_and_relabels
+PASSED tests_int\test_int03_launch_fl.py::test_fresh_launch_refuses_an_existing_latest
+PASSED tests_int\test_int03_real_clients.py::test_one_client_is_one_user_with_its_own_rows
+PASSED tests_int\test_int03_real_clients.py::test_two_real_rounds_of_sasrec_d64_b2
+PASSED tests_int\test_int03_small.py::test_ladder_is_the_p2r2_sasrec_midpoints
+PASSED tests_int\test_int03_small.py::test_tampered_ladder_refused
+PASSED tests_int\test_int03_small.py::test_hook_leaves_every_other_file_unchanged
+PASSED tests_int\test_int03_small.py::test_tuning_values_and_runconfig_accept_a_ladder_trial
+PASSED tests_int\test_int03_small.py::test_ladder_driver_register_and_recipe_values
+PASSED tests_int\test_int03_small.py::test_launch_central_shared_gpu_flag
+PASSED tests_int\test_int04_device.py::test_spec_cells_and_refusals
+PASSED tests_int\test_int04_device.py::test_preflight_refusals
+PASSED tests_int\test_int04_device.py::test_no_support_assembly_equals_predict_adapter
+PASSED tests_int\test_int04_device.py::test_lo_cell_equals_direct_single_client_run
+PASSED tests_int\test_int04_device.py::test_determinism_and_resume_by_shard
+PASSED tests_int\test_int04_device.py::test_ft_select_on_unseen_val_then_apply
+PASSED tests_int\test_int04_device.py::test_warm_roles_unchanged_by_unseen_val_selection
+PASSED tests_int\test_int04_device.py::test_select_cell_tie_break
+PASSED tests_int\test_int04_device.py::test_causality_cutoff_and_refusal
+PASSED tests_int\test_int04_device.py::test_device_rows_format
+PASSED tests_int\test_int04_device.py::test_pf_personal_fn
+PASSED tests_int\test_int04_device.py::test_launch_fl_pf_uses_the_personal_evaluator
+PASSED tests_int\test_int04_real_clients.py::test_eval_batch_at_equals_stream_batches
+PASSED tests_int\test_int04_real_clients.py::test_lo_real_clients_end_to_end
+PASSED tests_int\test_int06_fl_device.py::test_pf_resume_uses_the_live_store_and_persists_the_best_mark_store
+PASSED tests_int\test_int06_fl_device.py::test_fa_has_no_pf_files_and_unchanged_rows
+PASSED tests_int\test_int06_fl_device.py::test_pf_best_record_refuses_a_stale_best_store
+PASSED tests_int\test_int06_fl_device.py::test_fl_resume_refuses_another_device_code_or_legacy_spec
+PASSED tests_int\test_int06_fl_device.py::test_device_rows_on_the_pinned_class_carry_the_pin
+PASSED tests_int\test_int06_fl_device.py::test_unpinned_device_rows_unchanged
+PASSED tests_int\test_int06_fl_device.py::test_shards_of_another_class_pin_or_code_never_merge
+PASSED tests_int\test_int06_fl_device.py::test_lo_select_on_unseen_val_writes_the_selection
+PASSED tests_int\test_int06_fl_device.py::test_lo_main_rows_mark_unselected_cells_descriptive
+PASSED tests_int\test_int06_reeval.py::test_dry_run_verifies_checkpoint_identity
+PASSED tests_int\test_int06_reeval.py::test_wrong_checkpoint_hash_refused
+PASSED tests_int\test_int06_reeval.py::test_test_role_refused_before_any_read
+PASSED tests_int\test_int06_reeval.py::test_argument_contract_refusals
+PASSED tests_int\test_int06_reeval.py::test_source_run_identity_refusals
+PASSED tests_int\test_int06_reeval.py::test_fl_dry_run_and_launch_identity
+PASSED tests_int\test_int06_reeval.py::test_fl_source_refusals
+PASSED tests_int\test_int06_reeval.py::test_pf_store_pairing
+PASSED tests_int\test_int06_reeval.py::test_central_checkpoint_reproduces_the_harness_rows
+PASSED tests_int\test_int06_reeval.py::test_fl_theta_reproduces_the_harness_rows
+PASSED tests_int\test_int06_reeval.py::test_pf_theta_and_store_reproduce_the_pf_evaluator
+PASSED tests_int\test_int06_reeval.py::test_role_key_base_is_the_launch_device_rule
+PASSED tests_int\test_int06_reeval.py::test_resolve_role_rules
+PASSED tests_int\test_int06_reeval.py::test_registry_extension_rule_and_wrapper
+PASSED tests_int\test_int06_reeval.py::test_relabel_and_pinned_row_guards
+PASSED tests_int\test_int06_reeval.py::test_write_outputs_layout_and_no_overwrite
+PASSED tests_int\test_int06_reeval.py::test_out_dir_must_be_new
+PASSED tests_int\test_int07_test_path.py::test_gated_index_equals_v4hist_index_on_non_test_partitions
+PASSED tests_int\test_int07_test_path.py::test_gated_history_rule_extends_history_splits_by_one_partition
+PASSED tests_int\test_int07_test_path.py::test_retro_test_windows_are_causal_and_hold_prior_validation_and_test_events
+PASSED tests_int\test_int07_test_path.py::test_validation_windows_are_byte_identical_in_a_test_inclusive_store
+PASSED tests_int\test_int07_test_path.py::test_validation_store_has_no_side_effect_from_the_test_path
+PASSED tests_int\test_int07_test_path.py::test_gated_cache_branch_merges_ascending_and_keeps_test_decisions_only
+PASSED tests_int\test_int07_test_path.py::test_gate_closing_refuses_every_store_entry_point
+PASSED tests_int\test_int07_test_path.py::test_retro_test_provider_serves_the_manifest_stream
+PASSED tests_int\test_int07_test_path.py::test_every_retro_test_manifest_is_served
+PASSED tests_int\test_int07_test_path.py::test_comparison_key_split_is_retro_test_for_the_gated_provider
+PASSED tests_int\test_int07_test_path.py::test_provider_under_a_foreign_gate_is_refused
+PASSED tests_int\test_int07_test_path.py::test_reeval_test_role_rows_carry_retro_test
+PASSED tests_int\test_int07_test_path.py::test_reeval_eval_only_test_role_binds_the_source_train_manifest
+PASSED tests_int\test_int07_test_path.py::test_device_arm_rows_on_retro_test
+PASSED tests_int\test_int07_test_path.py::test_device_test_cutoff_rule
+PASSED tests_int\test_int07_test_path.py::test_launch_device_test_role_rules
+PASSED tests_int\test_int07_test_path.py::test_baseline_rows_on_retro_test
+PASSED tests_int\test_int07_test_path.py::test_dump_rows_retro_writes_the_retro_test_rows
+PASSED tests_int\test_launcher.py::test_the_real_g1_file_does_not_exist
+PASSED tests_int\test_launcher.py::test_non_smoke_refused_without_g1_file
+PASSED tests_int\test_launcher.py::test_non_smoke_passes_preflight_with_g1_file_and_a_free_gpu
+PASSED tests_int\test_launcher.py::test_smoke_needs_no_g1_file
+PASSED tests_int\test_launcher.py::test_explicit_gpu_required
+PASSED tests_int\test_launcher.py::test_foreign_gpu_process_refused
+PASSED tests_int\test_launcher.py::test_other_refusals
+PASSED tests_int\test_launcher.py::test_export_environment_before_imports
+PASSED tests_int\test_launcher.py::test_data_paths_and_manifest_ids_are_not_hard_coded
+PASSED tests_int\test_launcher.py::test_determinism_constant_is_the_proposed_lock_value
+PASSED tests_int\test_launcher.py::test_smoke_cap_is_below_the_first_mark
+PASSED tests_int\test_launcher.py::test_cli_refuses_without_g1_and_without_gpu
+PASSED tests_int\test_launcher.py::test_f2_trainer_view_hash_is_root_independent
+PASSED tests_int\test_lock_v2_bindings.py::test_default_data_paths_bind_lock_v2
+PASSED tests_int\test_lock_v2_bindings.py::test_historical_data_paths_bind_the_v1_lock
+PASSED tests_int\test_lock_v2_bindings.py::test_registry_v2_accepted_under_lock_v2_by_the_b1_exception
+PASSED tests_int\test_lock_v2_bindings.py::test_b1_clause1_negative_control_wrong_supersedes
+PASSED tests_int\test_lock_v2_bindings.py::test_b1_clause2_negative_control_wrong_pinned_self_hash
+PASSED tests_int\test_lock_v2_bindings.py::test_b1_exception_never_applies_without_the_lock_argument
+PASSED tests_int\test_lock_v2_bindings.py::test_b1_any_other_pairing_refused
+PASSED tests_int\test_lock_v2_bindings.py::test_f3_direct_route_also_enforces_the_pinned_registry_self_hash
+PASSED tests_int\test_lock_v2_bindings.py::test_f1_superseded_lock_end_to_end
+PASSED tests_int\test_lock_v2_bindings.py::test_f1_header_field_wrong_vs_v1_lock_refused[builder_code_sha256-0000000000000000000000000000000000000000000000000000000000000000]
+PASSED tests_int\test_lock_v2_bindings.py::test_f1_header_field_wrong_vs_v1_lock_refused[feature_schema_self_sha256-1111111111111111111111111111111111111111111111111111111111111111]
+PASSED tests_int\test_lock_v2_bindings.py::test_f1_header_field_wrong_vs_v1_lock_refused[candidate_order_hash-2222222222222222222222222222222222222222222222222222222222222222]
+PASSED tests_int\test_lock_v2_bindings.py::test_f1_header_field_wrong_vs_v1_lock_refused[catalogue_K-1]
+PASSED tests_int\test_lock_v2_bindings.py::test_f1_header_lock_binding_checked_against_v1_not_v2
+PASSED tests_int\test_lock_v2_bindings.py::test_f1_transform_state_read_from_shared_statistics_wrong_value_refused
+PASSED tests_int\test_lock_v2_bindings.py::test_f1_forged_supersedes_file_refused_even_with_matching_declared_hashes
+PASSED tests_int\test_lock_v2_bindings.py::test_r4_comparison_key_is_the_closed_field_list_with_explicit_values
+PASSED tests_int\test_lock_v2_bindings.py::test_r4_requires_registry_verified_providers
+PASSED tests_int\test_lock_v2_bindings.py::test_r4_refuses_a_frozen_config_reporting_all_rows
+PASSED tests_int\test_protocol_order_targets.py::test_protocol_conformance
+PASSED tests_int\test_protocol_order_targets.py::test_canonical_order_is_strictly_ascending_decision_id
+PASSED tests_int\test_protocol_order_targets.py::test_every_row_loss_eligible_and_targets_agree
+PASSED tests_int\test_protocol_order_targets.py::test_batch_serves_exact_positions_in_order
+PASSED tests_int\test_protocol_order_targets.py::test_batch_is_a_pure_function
+PASSED tests_int\test_protocol_order_targets.py::test_target_disagreement_refused_at_build
+PASSED tests_int\test_protocol_order_targets.py::test_batch_integrity_check_is_live
+PASSED tests_int\test_protocol_order_targets.py::test_manifest_roles_come_from_the_locked_layout
+PASSED tests_int\test_protocol_order_targets.py::test_population_agnostic_any_registered_manifest
+PASSED tests_int\test_resume_exact.py::test_resume_is_bitwise_with_the_real_provider
+PASSED tests_int\test_smoke_selection.py::test_valid_evidence_is_accepted
+PASSED tests_int\test_smoke_selection.py::test_one_smoke_row_refuses_the_whole_selection
+PASSED tests_int\test_smoke_selection.py::test_smoke_rows_alone_refused
+PASSED tests_int\test_smoke_selection.py::test_smoke_row_with_restored_split_and_rule_still_refused
+PASSED tests_int\test_smoke_selection.py::test_smoke_rows_never_c_matched_or_downstream_c
+PASSED tests_int\test_train02_launcher.py::test_tuning_preflight
+PASSED tests_int\test_train02_launcher.py::test_driver_command_line_parses
+PASSED tests_int\test_train02_launcher.py::test_trial_values_from_the_hp_registry
+PASSED tests_int\test_train02_launcher.py::test_theta0_from_theta0_variants
+PASSED tests_int\test_train02_launcher.py::test_f2_tuning_refuses_manifest_overrides
+PASSED tests_int\test_train02_launcher.py::test_f6_recipe_preflight
+PASSED tests_int\test_train02_launcher.py::test_f6_recipe_values
+PASSED tests_int\test_train02_launcher.py::test_hp_registry_default_is_p2r2
+PASSED tests_int\test_train02r2.py::test_f3_non_smoke_binds_only_the_pinned_lock
+PASSED tests_int\test_train02r2.py::test_f3_v1_or_other_lock_is_launch_refused
+PASSED tests_int\test_train02r2.py::test_r3_smoke_is_a_required_keyword
+PASSED tests_int\test_train02r2.py::test_f4_population_hash_fallback_only_on_a_v1_lock
+PASSED tests_int\test_train03_launcher.py::test_launch_dict_equals_old_construction_fixture
+PASSED tests_int\test_train03_launcher.py::test_p3_command_line_parses_and_passes_preflight
+PASSED tests_int\test_train03_launcher.py::test_p3_driver_refuses_a_code_root_without_the_launcher
+PASSED tests_int\test_train03_launcher.py::test_budget_file_with_an_automatic_contest_run_is_refused
+PASSED tests_int\test_train03_launcher.py::test_sealed_cpu_launcher_boundary_scans_launch_and_streams
+PASSED tests_int\test_verification.py::test_all_four_manifests_verify
+PASSED tests_int\test_verification.py::test_table_file_hash_mismatch_refused
+PASSED tests_int\test_verification.py::test_lock_tampering_refused
+PASSED tests_int\test_verification.py::test_manifest_hashes_tampering_refused
+PASSED tests_int\test_verification.py::test_header_status_and_lock_binding_refused
+PASSED tests_int\test_verification.py::test_transform_state_and_marker_tampering_refused
+PASSED tests_int\test_verification.py::test_central_order_must_be_ascending_even_with_consistent_hashes
+PASSED tests_int\test_verification.py::test_test_manifests_refused_before_any_file
+PASSED tests_int\test_verification.py::test_test_rows_and_test_headers_refused
+PASSED tests_int\test_verification.py::test_real_builder_output_format_is_accepted
+PASSED tests_int\test_verification.py::test_fingerprint_changes_with_the_manifest
+XFAIL tests_int\test_cache_stream.py::test_nc_shifted_window_index_differs - NEGATIVE CONTROL: a cache whose window index is off by one row is not bitwise equal to the streaming store
+XFAIL tests_int\test_eval_stream.py::test_nc_all_rows_are_not_the_stream - NEGATIVE CONTROL: feeding every manifest row (censored rows included) is not the registered E2E stream
+XFAIL tests_int\test_fl05_launch.py::test_nc_naive_digest_changes_registered_digests - NEGATIVE CONTROL: hashing the spec WITH the FL-05 keys at their defaults changes every registered digest
+XFAIL tests_int\test_fl05_launch.py::test_nc_runtime_alone_refuses_cross_arm_resume - NEGATIVE CONTROL: fl.runtime alone (config digest, same run id) accepts an FA_Q8 checkpoint resumed as FA: ARM_SPEC.json is needed
+XFAIL tests_int\test_fl05_lr_screen.py::test_nc_argmax_without_tie_rule - NEGATIVE CONTROL: plain argmax (no tie rule) picks a different multiplier inside the 0.0005 tie band
+XFAIL tests_int\test_fl07_launch.py::test_nc_lr_mult_satisfies_the_requirement - NEGATIVE CONTROL: a check on --lr-mult instead of --lr-selection lets a non-smoke MAIN run through at a hand-picked multiplier
+XFAIL tests_int\test_fl07_launch.py::test_nc_old_uniform_spec_still_registered - NEGATIVE CONTROL: the pre-FL-07 (uniform-plan) DP spec is not the registered spec any more
+XFAIL tests_int\test_fl09_lr_ext.py::test_nc_unregistered_multiplier_accepted - NEGATIVE CONTROL: an unregistered multiplier (64) is accepted
+XFAIL tests_int\test_fl09_lr_ext.py::test_nc_missing_screened_run_accepted - NEGATIVE CONTROL: the extended selection accepts a run set that omits a first-screen run
+XFAIL tests_int\test_fl09_lr_ext.py::test_nc_06b_file_accepted_while_ext_exists - NEGATIVE CONTROL: the pre-FL-09 requirement (any --lr-selection) lets a MAIN run use the 06B file while the EXT file exists
+XFAIL tests_int\test_fl09_lr_ext.py::test_nc_argmax_ignores_log2_tie_order - NEGATIVE CONTROL: plain argmax (no 06F tie rule) picks a different multiplier inside the 0.0005 tie band
+XFAIL tests_int\test_fl10_fedadam_launch.py::test_nc_fedadam_without_server_lr_accepted - NEGATIVE CONTROL: --server-opt fedadam without --server-lr is accepted
+XFAIL tests_int\test_fl10_fedadam_launch.py::test_nc_server_lr_with_fedavg_accepted - NEGATIVE CONTROL: --server-lr with --server-opt fedavg is accepted
+XFAIL tests_int\test_fl10_fedadam_launch.py::test_nc_main_without_tuning_file_accepted - NEGATIVE CONTROL: a non-smoke MAIN run with the EXT LR selection is accepted while FL_TUNING_SELECTION.json exists
+XFAIL tests_int\test_fl10_fedadam_launch.py::test_nc_joint_selection_missing_run_accepted - NEGATIVE CONTROL: the joint selection accepts a run set missing one registered FedAdam run
+XFAIL tests_int\test_int03_launch_fl.py::test_nc_impure_client_source_breaks_resume - NEGATIVE CONTROL: an impure client source (rows depend on a call counter) makes the resumed run differ
+XFAIL tests_int\test_int03_launch_fl.py::test_nc_unrelabelled_rows - NEGATIVE CONTROL: the unrelabelled harness rows (method C, CENTRAL) are not downstream-arm rows
+XFAIL tests_int\test_int03_launch_fl.py::test_nc_unrounded_z - NEGATIVE CONTROL: a DP arm that used the receipt's unrounded bisection z would not be the registered z
+XFAIL tests_int\test_int03_launch_fl.py::test_nc_busy_gpu_accepted_without_flag - NEGATIVE CONTROL: a GPU check without the ownership refusal would accept a busy GPU without --allow-shared-gpu
+XFAIL tests_int\test_int03_launch_fl.py::test_nc_fa_without_dropout - NEGATIVE CONTROL: an FA spec without the registered drop-out drops no client
+XFAIL tests_int\test_int03_real_clients.py::test_nc_dense_key_is_not_the_user_key - NEGATIVE CONTROL: keying clients by the per-manifest dense client_ord (not client_key_hex) does not give the manifest's user keys
+XFAIL tests_int\test_int03_small.py::test_nc_ladder_without_design_check - NEGATIVE CONTROL: a ladder at other LRs would be accepted without the design check against P2R2
+XFAIL tests_int\test_int03_small.py::test_nc_hook_diverting_every_file - NEGATIVE CONTROL: a routing hook that diverted EVERY file would change the P2R2 load
+XFAIL tests_int\test_int04_device.py::test_nc_future_support_is_causal - NEGATIVE CONTROL: a support row at the cutoff (a future label) passes the causality property
+XFAIL tests_int\test_int04_device.py::test_nc_select_on_main - NEGATIVE CONTROL: selecting the FT cell on MAIN is allowed
+XFAIL tests_int\test_int04_device.py::test_nc_select_on_calibration_refused - NEGATIVE CONTROL: --select on --role CALIBRATION (the superseded INT-04 substitute) is still accepted (amendment 06A §1)
+XFAIL tests_int\test_int04_device.py::test_nc_apply_selection_from_other_role_refused - NEGATIVE CONTROL: a SELECTION.json recorded on another role (not UNSEEN_VAL) applies on MAIN / a panel
+XFAIL tests_int\test_int04_device.py::test_nc_shared_model_equals_per_client - NEGATIVE CONTROL: per-client LO weights give the same ranks as the shared start model (the per-client models are not used)
+XFAIL tests_int\test_int04_device.py::test_nc_lo_budgets_nested - NEGATIVE CONTROL: LO budgets are nested: a 4-pass s_efe trajectory evaluated after pass 1 equals the 1-pass recipe
+XFAIL tests_int\test_int04_device.py::test_nc_resume_other_spec - NEGATIVE CONTROL: a shard written under another spec (other seed) is accepted on resume
+XFAIL tests_int\test_int04_device.py::test_nc_plans_double_cover - NEGATIVE CONTROL: plans that score one row for two clients cover the manifest exactly once
+XFAIL tests_int\test_int06_fl_device.py::test_nc_stale_store_after_resume - NEGATIVE CONTROL: the pre-fix launcher (stale store after resume) reproduces the straight run's per-mark PF store digests
+XFAIL tests_int\test_int06_fl_device.py::test_nc_resume_on_another_device - NEGATIVE CONTROL: an FL resume leg on another device class is accepted
+XFAIL tests_int\test_int06_fl_device.py::test_nc_unselected_lo_cell_is_evidence - NEGATIVE CONTROL: an unselected LO cell's MAIN rows are downstream-retention evidence
+XFAIL tests_int\test_int06_reeval.py::test_nc_unloaded_theta0_reproduces - NEGATIVE CONTROL: an UNLOADED fresh model (theta0) reproduces the saved checkpoint's ranks
+XFAIL tests_int\test_int06_reeval.py::test_nc_empty_store_reproduces_pf - NEGATIVE CONTROL: scoring the PF weights with an EMPTY store (p = 0, the B1 symptom) reproduces the PF evaluator's ranks
+XFAIL tests_int\test_int06_reeval.py::test_nc_test_role_passes_gate - NEGATIVE CONTROL: a TEST role passes the pre-lock gate
+XFAIL tests_int\test_int07_test_path.py::test_nc_future_event_in_a_retro_test_window - NEGATIVE CONTROL: a RETRO_TEST window extended one event into the future must fail the causality proof
+XFAIL tests_int\test_int07_test_path.py::test_nc_gated_cache_accepts_a_validation_decision - NEGATIVE CONTROL: a RETRO_TEST subset store that silently accepts a VALIDATION decision
+XFAIL tests_int\test_int07_test_path.py::test_nc_retro_test_key_says_validation - NEGATIVE CONTROL: the RETRO_TEST provider's comparison key keeps split VALIDATION
+XFAIL tests_int\test_int07_test_path.py::test_nc_validation_row_passes_the_test_row_guard - NEGATIVE CONTROL: a row keyed VALIDATION passes the TEST-row guard of reeval
+XFAIL tests_int\test_launcher.py::test_nc_foreign_process_would_be_missed_without_the_check - NEGATIVE CONTROL: a launcher that skipped the GPU ownership check would accept a GPU with a foreign compute process
+XFAIL tests_int\test_launcher.py::test_nc_without_f2_the_view_hash_would_vary_with_the_root - NEGATIVE CONTROL: without F2, the view's self_sha256 would vary with the absolute workspace root
+XFAIL tests_int\test_lock_v2_bindings.py::test_nc_default_would_be_the_v1_lock_without_b2 - NEGATIVE CONTROL: a verifier that ignored B2 and always bound the v1 lock would never see LOCK_V2's own document/version
+XFAIL tests_int\test_lock_v2_bindings.py::test_nc_without_loading_the_real_v1_lock_a_forged_supersedes_would_be_trusted - NEGATIVE CONTROL: without loading the REAL v1 lock (trusting the declared hashes alone), the forged-file case above would not be refused
+XFAIL tests_int\test_lock_v2_bindings.py::test_nc_without_the_refusal_all_rows_would_be_accepted - NEGATIVE CONTROL: without the R2 guard, comparison_key_base would silently accept and record ALL_ROWS (F7: this monkeypatches the refusal OUT of the real comparison_key_base, so the control fails only if the real code path itself changes — not a hand-written stand-in the guard could drift away from unnoticed)
+XFAIL tests_int\test_protocol_order_targets.py::test_nc_table_order_is_not_canonical - NEGATIVE CONTROL: a provider whose canonical order is the manifest table order (client_ord, decision_id) is not ascending
+XFAIL tests_int\test_protocol_order_targets.py::test_nc_masked_row_is_not_loss_eligible - NEGATIVE CONTROL: the loss-eligibility check applied to a batch with one masked row must fail
+XFAIL tests_int\test_resume_exact.py::test_nc_impure_provider_breaks_resume - NEGATIVE CONTROL: an impure provider (the served rows depend on a call counter) makes the resumed run differ
+XFAIL tests_int\test_smoke_selection.py::test_nc_unlabelled_smoke_row_is_accepted - NEGATIVE CONTROL: a smoke-run row that is NOT relabelled (only its run id says smoke) would be accepted as evidence
+XFAIL tests_int\test_train02_launcher.py::test_nc_peak_lr_over_trial - NEGATIVE CONTROL: a launcher that takes --peak-lr over the HP trial
+XFAIL tests_int\test_train02_launcher.py::test_nc_tuning_accepts_manifest_overrides - NEGATIVE CONTROL: a TUNING preflight that accepts --train-manifest / --eval-manifest (MAIN_VALIDATION could be loaded)
+XFAIL tests_int\test_train02r2.py::test_nc_bind_without_pin - NEGATIVE CONTROL: a non-smoke bind that accepts any self-consistent lock (no G1 pin)
+XFAIL tests_int\test_train02r2.py::test_nc_population_fallback_under_v2 - NEGATIVE CONTROL: a population_hash that falls back to population_sha256 under LOCK_V2 (the pre-R2 behaviour)
+XFAIL tests_int\test_verification.py::test_nc_file_hash_check_is_what_refuses - NEGATIVE CONTROL: a verifier without the file-hash checks would accept a re-encoded (tampered) manifest file
+204 passed, 55 xfailed in 205.05s (0:03:25)
+
+--- stderr ---

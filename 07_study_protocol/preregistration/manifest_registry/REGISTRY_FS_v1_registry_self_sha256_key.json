@@ -1,0 +1,243 @@
+{
+ "registry": "MANIFEST_ROLE_REGISTRY",
+ "registry_version": 1,
+ "task": "FS-01",
+ "data_version": "FS_SCREEN_5_100_v1",
+ "run_label": "FEATURE_SEARCH_SCREEN",
+ "roles": {
+  "FEATURE_SEARCH_SCREEN": {
+   "train": "FS_TRAIN_5_100_32768",
+   "eval": "FS_VALIDATION_5_100_32768"
+  }
+ },
+ "manifests": {
+  "FS_TRAIN_5_100_32768": {
+   "path": "data_fs/manifests/FS_TRAIN_5_100_32768.header.json",
+   "manifest_dir": "data_fs/manifests",
+   "kind": "TRAIN",
+   "definition": "M01_COHORT_TRAIN",
+   "status": "FEATURE_SEARCH_SCREEN",
+   "content_sha256": "5dd3c6597845cedd8499b0d433bc7475d3d6770b9c0d15f15caefa819ac3f1b9",
+   "header_sha256": "f608b2e8d5afc250d0a8764891297a5282b1488d90ae788a394ab03139ee3923",
+   "header_content_sha256": "4d076655ad7fbc5e6addf9a8962b5c09988e9f2034f28884b41dd948696e0c64",
+   "n_users": 32768,
+   "n_decisions": 645603,
+   "n_eval_rows": 0,
+   "n_rankable_rows": 0,
+   "population_sha256": "492303ede1ff87d60faed831e5c0cec4483b47aa638e4ab3b1eb89c3c7e06d97",
+   "population_sha256_selection_key_v2": "650dfd6311966faabb4e280c2bc9b24951aed8b2d3a15e918cb834eaa0dc4605",
+   "ordered_decision_id_sha256": "36c5bbc74955352825e729052a7f52d9feabdf604cc4f2457548c79d2a654330",
+   "eval_ordered_decision_id_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "rankable_ordered_decision_id_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "parent_manifests": [],
+   "tables": {
+    "clients": {
+     "file": "data_fs/manifests/FS_TRAIN_5_100_32768.clients.parquet",
+     "file_sha256": "6bf0a9fb11f0dc42a565ce85c28b7e2bba266aa0a6ef1cd259be472646a647c2",
+     "table_content_sha256": "3636d3b6d2feb48ee8ad910d90f35582462ebf352413cfe0775127989bf1ba97",
+     "row_count": 32768
+    },
+    "decisions": {
+     "file": "data_fs/manifests/FS_TRAIN_5_100_32768.decisions.parquet",
+     "file_sha256": "2134c387fe2fcc6cc90ce759f797f9787282f9313b4b8ff02ef7eb830fbf8268",
+     "table_content_sha256": "69acc464f2044a950c65076a2adb5a2146a5f37b60f5010184c1ad3889956b3b",
+     "row_count": 645603
+    },
+    "central_order": {
+     "file": "data_fs/manifests/FS_TRAIN_5_100_32768.central_order.parquet",
+     "file_sha256": "736b3fb842e90ef86d0562c3ea9c13b26cce3ea3b4ceda0b61c660ce770de597",
+     "table_content_sha256": "21389d607eacf102495c150e5d4a5856e65949ce3b5239a8b60072e1cb9a7f63",
+     "row_count": 645603
+    }
+   },
+   "marker": "data_fs/manifests/FS_TRAIN_5_100_32768.OK"
+  },
+  "FS_VALIDATION_5_100_32768": {
+   "path": "data_fs/manifests/FS_VALIDATION_5_100_32768.header.json",
+   "manifest_dir": "data_fs/manifests",
+   "kind": "EVAL",
+   "definition": "M02_VALIDATION_WARM",
+   "status": "FEATURE_SEARCH_SCREEN",
+   "content_sha256": "00a79e7858135e98b485569ccf362f57f22bc96f350e9bddd2aab1913c381290",
+   "header_sha256": "fe68bde0529db4bc4a3d11a6da6a09758b860d616312d15fd9adef76fbff2da7",
+   "header_content_sha256": "3a85e0152932e251e04ae43566bf0418fcdc698e92fdf9fa94ac5c5171b5e466",
+   "n_users": 12885,
+   "n_decisions": 165269,
+   "n_eval_rows": 133763,
+   "n_rankable_rows": 132773,
+   "population_sha256": "7fc6e740dbeb7c2d6c768a0e30d8ec08e4e21c90367811206b7f9aa186308b43",
+   "population_sha256_selection_key_v2": "7c1dc8f2250d04a1574370f4179c422990e535262d1b7beee7c2e1ad5914386b",
+   "ordered_decision_id_sha256": "fe67f1860f30cefe043bc5462d7400febdd08fc2715a3ad1a805869c13353214",
+   "eval_ordered_decision_id_sha256": "ffc40fd33f6587d4caea43a1ef7f9074cd5029f81044ce5f975cb615e7120b11",
+   "rankable_ordered_decision_id_sha256": "9535e3d8f4943e68932b3ff87c70a1ac1a212e84a385719256b067129a5a2df8",
+   "parent_manifests": [
+    "FS_TRAIN_5_100_32768"
+   ],
+   "tables": {
+    "users": {
+     "file": "data_fs/manifests/FS_VALIDATION_5_100_32768.users.parquet",
+     "file_sha256": "4cde9411e993d68969eef4e678c52e9047391868dc1eaec4a624465b2c2dd0ca",
+     "table_content_sha256": "840ce072f28b9dfe3e70e6cbb27001d816a2356e9bea8d29f2008958b1d0854a",
+     "row_count": 12885
+    },
+    "decisions": {
+     "file": "data_fs/manifests/FS_VALIDATION_5_100_32768.decisions.parquet",
+     "file_sha256": "8bf7e8ed60ededb7318fdae7be6bbc1b39127ffd51f23ee8ef703ed6a251cf35",
+     "table_content_sha256": "a043671721f6a6d109cf3c1c9b8407524d86dd1d58a5a3e8e58a3e82bdbe2965",
+     "row_count": 165269
+    }
+   },
+   "marker": "data_fs/manifests/FS_VALIDATION_5_100_32768.OK"
+  }
+ },
+ "transform_state": {
+  "path": "data_v2/TRANSFORM_STATE_CLEAN_V2.json",
+  "transform_state_sha256": "2ff0ff4ec1d27d254972c2f212e81f5fee6277dc9cced31a6a5baf5b4b002727",
+  "file_sha256": "7dda2f56066c1ca11c32754fd2b701448a7d7920f3e68bf7facc77141f41ae7d",
+  "rule": "shared statistics = full TRAIN as fitted (TRANSFORM_STATE_CLEAN_V2, unchanged), identical for every arm; the FS screen uses THIS state (DECISION_LOG 42 / 43)"
+ },
+ "transform_state_optional_sensitivity": {
+  "path": "data_fs/TRANSFORM_STATE_FS.json",
+  "transform_state_fs_sha256": "2fbbe6c013cb862106219be25756197e84959f96b366fe1fd2c3d9bab4ecc1fc",
+  "file_sha256": "d52db0ac9f2e16f84e8e49c0e348451dfd0c13f265aeb154709b3e4c9688f239",
+  "use": "OPTIONAL post-lock sensitivity analysis only. The FS screen uses TRANSFORM_STATE_CLEAN_V2 (full-TRAIN statistics, DECISION_LOG 42 / 43); this state is never used by the screen.",
+  "fit_population": "FS_TRAIN_5_100_32768",
+  "fit_population_header_content_sha256": "4d076655ad7fbc5e6addf9a8962b5c09988e9f2034f28884b41dd948696e0c64",
+  "normalizers": [
+   "current_known_category_run_length",
+   "current_minus_recent_mean_log_price",
+   "log1p_item_observed_age_s",
+   "log1p_prev_raw_view_gap_s",
+   "log1p_prev_session_count",
+   "log1p_prev_view_count",
+   "log1p_price",
+   "log1p_segment_elapsed_s",
+   "log1p_time_since_prev_session_last_event_s",
+   "log1p_time_since_prev_user_event_s",
+   "prefix_category_switch_count",
+   "prefix_known_category_count",
+   "prefix_representative_count",
+   "recent_distinct_items",
+   "recent_distinct_known_main_categories",
+   "recent_history_length",
+   "recent_mean_log_price"
+  ],
+  "method_proof_all_train_all_reproduced": true,
+  "self_hash_rule": "v4data.common.self_hash of the state without transform_state_fs_sha256"
+ },
+ "path_root": "the ppsi_v4 workspace root (server: /home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4); every path is relative to it",
+ "source_data_protocol_lock": {
+  "lock_self_sha256": "da51d271e97d3a681227a7063fd35b429797e52ee25586ba39843a37b7c839e1",
+  "file_sha256": "ebf4e86f6beb82e98283108a2dad9082727e8559b81301cd46f35f60c79fd7c0"
+ },
+ "builder_code_sha256": "443254e9ed95e41a48076f91643c83fbc77355dc80bb6b111d8432703d3e34a5",
+ "fs_code_sha256": "287f36ee5f4c25aca0d7487aed95904ea90e5266e6a8a9d2350923f041ee339c",
+ "fs_population": {
+  "definition": "the n_fs users of the CENSUS-02 5-100 pool (5 <= n_eligible_TRAIN_examples <= 100, catalogue A, DATA-04 eligibility) with the LARGEST selection_key_v2 = int.from_bytes(sha256(b'PPSI_V4_POP_5_100_SEL_20260926|' + digest32).digest()[:8], 'big'), digest32 = the CLIENT_CONTRACT C1.2 digest; ranks in the ascending key order (rank 0 = smallest key)",
+  "n_fs": 32768,
+  "pool_size": 1446986,
+  "pool_examples": 28623386,
+  "pool_population_sha256_selection_key_v2": "e2a082cda5e3b246f1ea85cf1e78368c185e003ce1013572d07bd8ff471fbc70",
+  "fs_ranks": [
+   1414218,
+   1446986
+  ],
+  "fs_population_sha256_selection_key_v2": "650dfd6311966faabb4e280c2bc9b24951aed8b2d3a15e918cb834eaa0dc4605",
+  "disjointness": {
+   "MAIN": {
+    "ranks": [
+     0,
+     131072
+    ],
+    "overlap_users": 0,
+    "rank_ranges_disjoint": true,
+    "disjoint": true
+   },
+   "TIEBREAK": {
+    "ranks": [
+     0,
+     1348682
+    ],
+    "overlap_users": 0,
+    "rank_ranges_disjoint": true,
+    "disjoint": true
+   },
+   "U_NEW_VAL": {
+    "ranks": [
+     1348682,
+     1381450
+    ],
+    "overlap_users": 0,
+    "rank_ranges_disjoint": true,
+    "disjoint": true
+   },
+   "U_NEW_TEST": {
+    "ranks": [
+     1381450,
+     1414218
+    ],
+    "overlap_users": 0,
+    "rank_ranges_disjoint": true,
+    "disjoint": true
+   },
+   "PACKET_REGION_0_294912": {
+    "ranks": [
+     0,
+     294912
+    ],
+    "overlap_users": 0,
+    "rank_ranges_disjoint": true,
+    "disjoint": true
+   }
+  },
+  "bands": {
+   "MAIN": [
+    0,
+    131072
+   ],
+   "CALIB": [
+    0,
+    32768
+   ],
+   "TIEBREAK": [
+    0,
+    1348682
+   ],
+   "U_NEW_VAL": [
+    1348682,
+    1381450
+   ],
+   "U_NEW_TEST": [
+    1381450,
+    1414218
+   ],
+   "PACKET_REGION_0_294912": [
+    0,
+    294912
+   ],
+   "FS": [
+    1414218,
+    1446986
+   ]
+  }
+ },
+ "equivalence": {
+  "receipt": "data_fs/receipts/EQUIVALENCE_M05_M06.json",
+  "receipt_file_sha256": "e5089f07b6729e30133c99e1e62fb74c407a545ab075e4ebaf5f05b99aed97e3",
+  "receipt_sha256": "6dd0729d1c77d958adc54febdf2e3bd6ad13dcd0b56a0dd70cfb4495e47bce17",
+  "all_equal": true
+ },
+ "build_receipt": {
+  "receipt": "data_fs/receipts/FS_BUILD_RECEIPT.json",
+  "receipt_file_sha256": "0109a1b608125daff8fb004db451d7a4f1ef50c07fbb86396ffa7a7edc06be2b",
+  "receipt_sha256": "0d69e230ce50e6f9fa6af33f9b39ab08767a826395f2d59bffaf060161fc7639"
+ },
+ "selection_refusal": "FEATURE_SEARCH_SCREEN: owner-directed screening data (DECISION_LOG 39); every result row is refused by architecture selection, the T1 contest, the tie-break and calibration; TEST is never touched",
+ "rules": {
+  "content_sha256": "sha256 of canonical JSON [{table,row_count,table_content_sha256}] in header order (v4fs_data.fs_common.manifest_content_sha256)",
+  "header_sha256": "sha256 of the header file bytes",
+  "header_content_sha256": "the DATA-04 builder rule (v4int.verify.header_content_sha256)",
+  "registry_self_sha256": "v4data.common.self_hash: sha256 of the canonical JSON (sort_keys, ASCII, compact separators) of this object without registry_self_sha256"
+ },
+ "registry_self_sha256": "1ebb0b79976cabc59539daf29a1be0e998c8a8bf0f64e4ebea7b255f851e7d60"
+}

@@ -1,0 +1,59 @@
+............x.x...x.......x....x....x....x...x...xx.x                    [100%]
+=================================== PASSES ====================================
+=========================== short test summary info ===========================
+PASSED tests_trunc\test_e11_rules.py::test_budget_semantics_synthetic
+PASSED tests_trunc\test_e11_rules.py::test_window_length_and_query_last
+PASSED tests_trunc\test_e11_rules.py::test_local_event_and_shared_columns_unchanged
+PASSED tests_trunc\test_e11_rules.py::test_segment_prefix_recomputed_over_permitted_rows_synthetic
+PASSED tests_trunc\test_e11_rules.py::test_segment_channels_equal_stored_when_permitted_rows_start_a_segment
+PASSED tests_trunc\test_e11_rules.py::test_prev_gap_rule
+PASSED tests_trunc\test_e11_rules.py::test_non_query_user_context_zeroed
+PASSED tests_trunc\test_e11_rules.py::test_user_context_equals_naive_reference
+PASSED tests_trunc\test_e11_rules.py::test_h0_has_no_history_synthetic
+PASSED tests_trunc\test_e11_rules.py::test_vc_query_never_replays_vs_events_synthetic
+PASSED tests_trunc\test_e11_rules.py::test_carry_in_is_a_function_of_other_users_only
+PASSED tests_trunc\test_e11_rules.py::test_e11_7_deletion_invariance
+PASSED tests_trunc\test_e11_rules.py::test_e11_7_leaking_full_history_user_context_is_detected
+PASSED tests_trunc\test_e11_rules.py::test_session_keys_come_from_the_truncated_window
+PASSED tests_trunc\test_e11_rules.py::test_frozen_normalizers_shared_across_h
+PASSED tests_trunc\test_e11_rules.py::test_rule_coverage_equals_builder_column_sets
+PASSED tests_trunc\test_studies.py::test_study_a_cell_rows_format
+PASSED tests_trunc\test_studies.py::test_study_a_full_cell_equals_production_ranks
+PASSED tests_trunc\test_studies.py::test_truncation_changes_features_but_not_queries
+PASSED tests_trunc\test_studies.py::test_study_b_execute_on_truncated_support
+PASSED tests_trunc\test_studies.py::test_study_b_spec_requires_the_unseen_val_selection
+PASSED tests_trunc\test_studies.py::test_study_cells
+PASSED tests_trunc\test_studies.py::test_events_to_x
+PASSED tests_trunc\test_studies.py::test_events_to_x_table
+PASSED tests_trunc\test_studies.py::test_t41_receipt_gate
+PASSED tests_trunc\test_studies.py::test_preflight_refusals
+PASSED tests_trunc\test_studies.py::test_t41_receipt_passes_on_real_rows
+PASSED tests_trunc\test_studies.py::test_t41_receipt_smoke_and_panel_binding
+PASSED tests_trunc\test_studies.py::test_row_status_follows_the_panel_label_both_panels
+PASSED tests_trunc\test_studies.py::test_events_to_x_table_cref_arm_and_oov_counts
+PASSED tests_trunc\test_t40_support_panel.py::test_support_rule_synthetic
+PASSED tests_trunc\test_t40_support_panel.py::test_support_batches_are_causal_and_end_at_their_event
+PASSED tests_trunc\test_t40_support_panel.py::test_derived_panel_structure_and_events
+PASSED tests_trunc\test_t40_support_panel.py::test_subpanel_manifests
+PASSED tests_trunc\test_t40_support_panel.py::test_eligibility_counts
+PASSED tests_trunc\test_t40_support_panel.py::test_verify_panel_runs_lock_and_registry_checks
+PASSED tests_trunc\test_t40_support_panel.py::test_panel_rederived_accepts_the_derived_panel
+PASSED tests_trunc\test_t40_support_panel.py::test_panel_rederivation_catches_what_the_event_proof_misses
+PASSED tests_trunc\test_t41_golden.py::test_t41_golden_replay_validation_queries
+PASSED tests_trunc\test_t41_golden.py::test_t41_golden_replay_train_decisions
+PASSED tests_trunc\test_t41_golden.py::test_golden_compare_admits_only_flagged_partial_cells
+PASSED tests_trunc\test_t41_golden.py::test_merged_stream_nc_has_rows
+XFAIL tests_trunc\test_e11_rules.py::test_nc_deletion_invariance_extra_prior_event - NEGATIVE CONTROL: a builder that uses one extra (pre-window) event must change when the pre-window events are deleted
+XFAIL tests_trunc\test_e11_rules.py::test_nc_leaking_builder_equals_e11_4 - NEGATIVE CONTROL: the full-history user_context builder must NOT reproduce the E11.4 truncated features
+XFAIL tests_trunc\test_e11_rules.py::test_nc_rule_coverage_unsupported_future - NEGATIVE CONTROL: a rule table with an UNSUPPORTED_FUTURE column must be refused by the builder coverage check
+XFAIL tests_trunc\test_studies.py::test_nc_events_to_x_interpolates - NEGATIVE CONTROL: events-to-X must not interpolate between registered budgets
+XFAIL tests_trunc\test_studies.py::test_nc_t41_receipt_future_event_builder - NEGATIVE CONTROL: a T41 receipt built with a builder that leaks one extra (future) event must not PASS
+XFAIL tests_trunc\test_t40_support_panel.py::test_nc_support_includes_transition_into_query - NEGATIVE CONTROL: a support rule with <= at the query time admits the transition into e_q
+XFAIL tests_trunc\test_t40_support_panel.py::test_nc_shifted_panel_detected - NEGATIVE CONTROL: a panel whose permitted window is shifted by one event must fail the panel-vs-events proof
+XFAIL tests_trunc\test_t40_support_panel.py::test_nc_later_query_panel_rederived - NEGATIVE CONTROL: a registered panel whose q_u is later than the earliest qualifying decision must fail the re-derivation
+XFAIL tests_trunc\test_t41_golden.py::test_nc_golden_future_event - NEGATIVE CONTROL: a builder leaking one extra (future) event must fail the golden replay
+XFAIL tests_trunc\test_t41_golden.py::test_nc_golden_no_carry_in - NEGATIVE CONTROL: window sums without the v1 bucket-stream carry-in must fail the golden replay
+XFAIL tests_trunc\test_t41_golden.py::test_nc_golden_merged_stream - NEGATIVE CONTROL: a VALIDATION_CONFIRM query replaying VALIDATION_SELECT events must fail the golden replay
+42 passed, 11 xfailed in 60.20s (0:01:00)
+
+--- stderr ---

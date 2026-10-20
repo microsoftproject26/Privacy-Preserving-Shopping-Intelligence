@@ -1,0 +1,1189 @@
+FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF                  [100%]
+================================== FAILURES ===================================
+____________________ test_nc_shifted_window_index_differs _____________________
+
+big = (<v4int.providers.StoreTrainProvider object at 0x000001E57395BB60>, <v4data.store.CleanV2Store object at 0x000001E5716...test_tmp/INT-07/tmp_tests_int/pytest-of-Ahmed/pytest-5/big0/data_v2/TRANSFORM_STATE_CLEAN_V2.json'), production=False))
+
+    @nc("a cache whose window index is off by one row is not bitwise equal to the streaming store")
+    def test_nc_shifted_window_index_differs(big):
+        tp, ref, _ = big
+        bad = copy.copy(tp.ds)
+        bad.end_row = np.maximum(tp.ds.end_row - 1, 0)
+        pos = np.random.default_rng(1).choice(tp.n_decisions, 256, replace=False)
+        got = tp.store.batch(bad, pos)                                   # (an RC refusal would also be an AssertionError)
+        ok, why = batches_equal(got, _stream_batch(ref, tp, pos))
+>       assert ok, why
+E       AssertionError: tensor item_tokens differs
+E       assert False
+
+tests_int\test_cache_stream.py:99: AssertionError
+_____________________ test_nc_all_rows_are_not_the_stream _____________________
+
+providers = (<v4int.providers.StoreTrainProvider object at 0x000001E573CB9D10>, <v4int.providers.StoreEvalProvider object at 0x000001E573DF0440>)
+
+    @nc("feeding every manifest row (censored rows included) is not the registered E2E stream")
+    def test_nc_all_rows_are_not_the_stream(providers):
+        _, ep = providers
+>       assert ep.manifest.n == ep.n_stream_rows
+E       AssertionError: assert 1550 == 1395
+E        +  where 1550 = EvalManifest(header={'manifest_id': 'M06_CALIB_VALIDATION_WARM', 'spec_id': 'MANIFEST_SPEC_V4', 'spec_version': '1.2.0...NONE', 'NOT_APPLICABLE', 'NONE', ..., 'NONE', 'NONE', 'NONE'],\n      shape=(1550,), dtype=object)}, selection_key=None).n
+E        +    where EvalManifest(header={'manifest_id': 'M06_CALIB_VALIDATION_WARM', 'spec_id': 'MANIFEST_SPEC_V4', 'spec_version': '1.2.0...NONE', 'NOT_APPLICABLE', 'NONE', ..., 'NONE', 'NONE', 'NONE'],\n      shape=(1550,), dtype=object)}, selection_key=None) = <v4int.providers.StoreEvalProvider object at 0x000001E573DF0440>.manifest
+E        +  and   1395 = <v4int.providers.StoreEvalProvider object at 0x000001E573DF0440>.n_stream_rows
+
+tests_int\test_eval_stream.py:124: AssertionError
+_______________ test_nc_naive_digest_changes_registered_digests _______________
+
+    @nc("hashing the spec WITH the FL-05 keys at their defaults changes every registered digest")
+    def test_nc_naive_digest_changes_registered_digests():
+        s = F.arm_spec("FA", seed=2026, peak_lr=PEAK_REG, fused=True)
+        naive = hashlib.sha256(json.dumps(s, sort_keys=True, default=str).encode()).hexdigest()   # MUTANT: no drop rule
+>       assert naive == BASELINE["FA|2026|True|None"][0]
+E       AssertionError: assert 'f2108e762245...9bbcb2e72dd76' == 'fc715be7b951...d90e2b6ae3f88'
+E         
+E         - fc715be7b951108a55e7f55968d0e9bf2851cb8878d6542b174d90e2b6ae3f88
+E         + f2108e762245c1f370e854ffd8a9a3b27e10634213f48157ae09bbcb2e72dd76
+
+tests_int\test_fl05_launch.py:315: AssertionError
+_______________ test_nc_runtime_alone_refuses_cross_arm_resume ________________
+
+tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_int/pytest-of-Ahmed/pytest-5/test_nc_runtime_alone_refuses_0')
+
+    @nc("fl.runtime alone (config digest, same run id) accepts an FA_Q8 checkpoint resumed as FA: ARM_SPEC.json is needed")
+    def test_nc_runtime_alone_refuses_cross_arm_resume(tmp_path):
+        from fl.checkpoint import CheckpointError, CheckpointManager
+        from fl.participation import ParticipationPlan
+        from fl.runtime import FLRun
+        from fl.server import Server
+        run_tiny(tmp_path, tiny_spec("FA_Q8", rounds=12), "p", interrupt_at=5)
+        w = fl05_world()
+        spec = tiny_spec("FA", rounds=12)
+        plan = ParticipationPlan.build(list(w["keys"]), seed=2026, manifest_hash=w["manifest_hash"],
+                                       group_size=spec["plan"]["group_size"], sampling=spec["plan"]["sampling"])
+    
+        def resume():
+            FLRun.resume(F.fl_run_config(spec, "p", 64), plan, Server(w["server_adapter"], init_sha256=w["init_sha256"]),
+                         w["get_client"], w["n_decisions"], workers=w["workers"],
+                         ckpt=CheckpointManager(tmp_path / "p" / "ckpt", "p"), n_valid_by_key=w["n_valid_by_key"])
+>       assert_raises((CheckpointError, F.LaunchRefused), resume)
+
+tests_int\test_fl05_launch.py:334: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+exc = (<class 'fl.checkpoint.CheckpointError'>, <class 'v4int.launch_central.LaunchRefused'>)
+fn = <function test_nc_runtime_alone_refuses_cross_arm_resume.<locals>.resume at 0x000001E545D716C0>
+a = (), kw = {}
+
+    def assert_raises(exc, fn, *a, **kw):
+        try:
+            fn(*a, **kw)
+        except exc:
+            return
+>       raise AssertionError(f"{getattr(fn, '__name__', fn)} did not raise {exc}")
+E       AssertionError: resume did not raise (<class 'fl.checkpoint.CheckpointError'>, <class 'v4int.launch_central.LaunchRefused'>)
+
+tests_data\data_testkit.py:33: AssertionError
+_______________________ test_nc_argmax_without_tie_rule _______________________
+
+    @nc("plain argmax (no tie rule) picks a different multiplier inside the 0.0005 tie band")
+    def test_nc_argmax_without_tie_rule():
+        vals = {0.5: 0.0990, 1.0: 0.1000, 2.0: 0.1003}
+        argmax = max(vals, key=vals.get)                                              # MUTANT: no tie rule
+>       assert argmax == L.apply_rule(vals)[0]
+E       assert 2.0 == 1.0
+
+tests_int\test_fl05_lr_screen.py:127: AssertionError
+__________________ test_nc_lr_mult_satisfies_the_requirement __________________
+
+tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_int/pytest-of-Ahmed/pytest-5/test_nc_lr_mult_satisfies_the_0')
+
+    @nc("a check on --lr-mult instead of --lr-selection lets a non-smoke MAIN run through at a hand-picked multiplier")
+    def test_nc_lr_mult_satisfies_the_requirement(tmp_path):
+        def mutant(args):                                                    # MUTANT: any LR option counts
+            if not args.smoke and args.role == "MAIN" and args.lr_selection is None and args.lr_mult is None:
+                raise F.LaunchRefused("no LR option")
+>       assert_raises(F.LaunchRefused, mutant, _args(tmp_path, "--lr-mult", "1"))
+
+tests_int\test_fl07_launch.py:178: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+exc = <class 'v4int.launch_central.LaunchRefused'>
+fn = <function test_nc_lr_mult_satisfies_the_requirement.<locals>.mutant at 0x000001E545D737E0>
+a = (Namespace(arm='FA', family='SASREC', seed=2026, gpu=0, run_dir=WindowsPath('F:/Queens University/Microsoft Project/ed...=4, eval_prefetch=2, manifest_dir=None, lock_path=None, manifest_hashes=None, header_list=None, transform_state=None),)
+kw = {}
+
+    def assert_raises(exc, fn, *a, **kw):
+        try:
+            fn(*a, **kw)
+        except exc:
+            return
+>       raise AssertionError(f"{getattr(fn, '__name__', fn)} did not raise {exc}")
+E       AssertionError: mutant did not raise <class 'v4int.launch_central.LaunchRefused'>
+
+tests_data\data_testkit.py:33: AssertionError
+__________________ test_nc_old_uniform_spec_still_registered __________________
+
+    @nc("the pre-FL-07 (uniform-plan) DP spec is not the registered spec any more")
+    def test_nc_old_uniform_spec_still_registered():
+        s = F.arm_spec("DP", seed=2026, peak_lr=PEAK_REG, fused=True, clip_norm=1.2345, z=0.5642)
+        s["plan"] = {"group_size": 1024, "sampling": "uniform"}                # MUTANT: the old plan
+>       assert F.spec_digest(s) == BASELINE["DP|2026|True|0.5642"][0]
+E       AssertionError: assert '12eb9b592f49...0889d05dd415b' == '90893fcf2fc5...40b262b9d6f19'
+E         
+E         - 90893fcf2fc5591132cba1af6a5526b1a9584b196564fc122c740b262b9d6f19
+E         + 12eb9b592f49bf212c510a26ed7e8bb0ca7474e3b5bda065eb90889d05dd415b
+
+tests_int\test_fl07_launch.py:185: AssertionError
+__________________ test_nc_unregistered_multiplier_accepted ___________________
+
+    @nc("an unregistered multiplier (64) is accepted")
+    def test_nc_unregistered_multiplier_accepted():
+        try:
+            F.lr_mult_value(64)
+            accepted = True
+        except F.LaunchRefused:
+            accepted = False
+>       assert accepted, "64 was refused (as it must be)"
+E       AssertionError: 64 was refused (as it must be)
+E       assert False
+
+tests_int\test_fl09_lr_ext.py:241: AssertionError
+____________________ test_nc_missing_screened_run_accepted ____________________
+
+screen = {'root': WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_int/pytest-of-.../eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_int/pytest-of-Ahmed/pytest-5/fl09_screen0/contracts_fl/LR_SELECTION.json')}
+
+    @nc("the extended selection accepts a run set that omits a first-screen run")
+    def test_nc_missing_screened_run_accepted(screen):
+        d = screen["dirs"]
+        try:
+            L.selection_ext([d[1.0], d[2.0], d[4.0], d[8.0]], screen["first"])
+            accepted = True
+        except L.SelectionRefused:
+            accepted = False
+>       assert accepted, "the missing x0.5 run was refused (as it must be)"
+E       AssertionError: the missing x0.5 run was refused (as it must be)
+E       assert False
+
+tests_int\test_fl09_lr_ext.py:252: AssertionError
+_________________ test_nc_06b_file_accepted_while_ext_exists __________________
+
+screen = {'root': WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_int/pytest-of-.../eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_int/pytest-of-Ahmed/pytest-5/fl09_screen0/contracts_fl/LR_SELECTION.json')}
+tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_int/pytest-of-Ahmed/pytest-5/test_nc_06b_file_accepted_whil0')
+
+    @nc("the pre-FL-09 requirement (any --lr-selection) lets a MAIN run use the 06B file while the EXT file exists")
+    def test_nc_06b_file_accepted_while_ext_exists(screen, tmp_path):
+        folder = tmp_path / "c"
+        folder.mkdir()
+        first = folder / "LR_SELECTION.json"
+        shutil.copy(screen["first"], first)
+        L.write_selection_ext([screen["dirs"][m] for m in (0.5, 1.0, 2.0)], folder / F.LR_SELECTION_EXT_NAME, first)
+    
+        def mutant(args):                                                  # MUTANT: the FL-07 check only
+            if not args.smoke and args.role == "MAIN" and args.lr_selection is None:
+                raise F.LaunchRefused("no --lr-selection")
+>       assert_raises(F.LaunchRefused, mutant, _main_args(tmp_path, first))
+
+tests_int\test_fl09_lr_ext.py:266: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+exc = <class 'v4int.launch_central.LaunchRefused'>
+fn = <function test_nc_06b_file_accepted_while_ext_exists.<locals>.mutant at 0x000001E545DCC2C0>
+a = (Namespace(arm='FP', family='SASREC', seed=2026, gpu=0, run_dir=WindowsPath('F:/Queens University/Microsoft Project/ed...=4, eval_prefetch=2, manifest_dir=None, lock_path=None, manifest_hashes=None, header_list=None, transform_state=None),)
+kw = {}
+
+    def assert_raises(exc, fn, *a, **kw):
+        try:
+            fn(*a, **kw)
+        except exc:
+            return
+>       raise AssertionError(f"{getattr(fn, '__name__', fn)} did not raise {exc}")
+E       AssertionError: mutant did not raise <class 'v4int.launch_central.LaunchRefused'>
+
+tests_data\data_testkit.py:33: AssertionError
+____________________ test_nc_argmax_ignores_log2_tie_order ____________________
+
+    @nc("plain argmax (no 06F tie rule) picks a different multiplier inside the 0.0005 tie band")
+    def test_nc_argmax_ignores_log2_tie_order():
+        vals = {1.0: 0.1000, 4.0: 0.1003, 8.0: 0.1004}
+>       assert max(vals, key=vals.get) == L.apply_rule_ext(vals)[0]
+E       assert 8.0 == 1.0
+E        +  where 8.0 = max({1.0: 0.1, 4.0: 0.1003, 8.0: 0.1004}, key=<built-in method get of dict object at 0x000001E545F26100>)
+E        +    where <built-in method get of dict object at 0x000001E545F26100> = {1.0: 0.1, 4.0: 0.1003, 8.0: 0.1004}.get
+
+tests_int\test_fl09_lr_ext.py:272: AssertionError
+_________________ test_nc_fedadam_without_server_lr_accepted __________________
+
+tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_int/pytest-of-Ahmed/pytest-5/test_nc_fedadam_without_server0')
+
+    @nc("--server-opt fedadam without --server-lr is accepted")
+    def test_nc_fedadam_without_server_lr_accepted(tmp_path):
+>       assert _accepted(F.fl05_preflight, _args(tmp_path, "--server-opt", "fedadam")), "refused (as it must be)"
+E       AssertionError: refused (as it must be)
+E       assert False
+E        +  where False = _accepted(<function fl05_preflight at 0x000001E573843EC0>, Namespace(arm='FA', family='SASREC', seed=2026, gpu=0, run_dir=WindowsPath('F:/Queens University/Microsoft Project/eda...ds=4, eval_prefetch=2, manifest_dir=None, lock_path=None, manifest_hashes=None, header_list=None, transform_state=None))
+E        +    where <function fl05_preflight at 0x000001E573843EC0> = F.fl05_preflight
+E        +    and   Namespace(arm='FA', family='SASREC', seed=2026, gpu=0, run_dir=WindowsPath('F:/Queens University/Microsoft Project/eda...ds=4, eval_prefetch=2, manifest_dir=None, lock_path=None, manifest_hashes=None, header_list=None, transform_state=None) = _args(WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_int/pytest-of-Ahmed/pytest-5/test_nc_fedadam_without_server0'), '--server-opt', 'fedadam')
+
+tests_int\test_fl10_fedadam_launch.py:343: AssertionError
+___________________ test_nc_server_lr_with_fedavg_accepted ____________________
+
+tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_int/pytest-of-Ahmed/pytest-5/test_nc_server_lr_with_fedavg_0')
+
+    @nc("--server-lr with --server-opt fedavg is accepted")
+    def test_nc_server_lr_with_fedavg_accepted(tmp_path):
+>       assert _accepted(F.fl05_preflight, _args(tmp_path, "--server-opt", "fedavg", "--server-lr", "0.1")), \
+            "refused (as it must be)"
+E       AssertionError: refused (as it must be)
+E       assert False
+E        +  where False = _accepted(<function fl05_preflight at 0x000001E573843EC0>, Namespace(arm='FA', family='SASREC', seed=2026, gpu=0, run_dir=WindowsPath('F:/Queens University/Microsoft Project/eda...ds=4, eval_prefetch=2, manifest_dir=None, lock_path=None, manifest_hashes=None, header_list=None, transform_state=None))
+E        +    where <function fl05_preflight at 0x000001E573843EC0> = F.fl05_preflight
+E        +    and   Namespace(arm='FA', family='SASREC', seed=2026, gpu=0, run_dir=WindowsPath('F:/Queens University/Microsoft Project/eda...ds=4, eval_prefetch=2, manifest_dir=None, lock_path=None, manifest_hashes=None, header_list=None, transform_state=None) = _args(WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_int/pytest-of-Ahmed/pytest-5/test_nc_server_lr_with_fedavg_0'), '--server-opt', 'fedavg', '--server-lr', '0.1')
+
+tests_int\test_fl10_fedadam_launch.py:348: AssertionError
+__________________ test_nc_main_without_tuning_file_accepted __________________
+
+joint = {'root': WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_int/pytest-of-...cal_ai/_pytest_tmp/INT-07/tmp_tests_int/pytest-of-Ahmed/pytest-5/fl10_joint0/contracts_fl/LR_SELECTION_EXT.json'), ...}
+tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_int/pytest-of-Ahmed/pytest-5/test_nc_main_without_tuning_fi0')
+
+    @nc("a non-smoke MAIN run with the EXT LR selection is accepted while FL_TUNING_SELECTION.json exists")
+    def test_nc_main_without_tuning_file_accepted(joint, tmp_path):
+        folder = tmp_path / "c"
+        folder.mkdir()
+        ext = folder / F.LR_SELECTION_EXT_NAME
+        shutil.copy(joint["ext"], ext)
+        L.write_selection_joint(_all_runs(joint), folder / F.FL_TUNING_NAME, joint["ext"])
+>       assert _accepted(F.require_lr_selection, _args(tmp_path, "--lr-selection", str(ext), smoke=False, arm="FA")), \
+            "refused (as it must be)"
+E       AssertionError: refused (as it must be)
+E       assert False
+E        +  where False = _accepted(<function require_lr_selection at 0x000001E5737E0400>, Namespace(arm='FA', family='SASREC', seed=2026, gpu=0, run_dir=WindowsPath('F:/Queens University/Microsoft Project/eda...ds=4, eval_prefetch=2, manifest_dir=None, lock_path=None, manifest_hashes=None, header_list=None, transform_state=None))
+E        +    where <function require_lr_selection at 0x000001E5737E0400> = F.require_lr_selection
+E        +    and   Namespace(arm='FA', family='SASREC', seed=2026, gpu=0, run_dir=WindowsPath('F:/Queens University/Microsoft Project/eda...ds=4, eval_prefetch=2, manifest_dir=None, lock_path=None, manifest_hashes=None, header_list=None, transform_state=None) = _args(WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_int/pytest-of-Ahmed/pytest-5/test_nc_main_without_tuning_fi0'), '--lr-selection', 'F:\\Queens University\\Microsoft Project\\eda\\.local_ai\\_pytest_tmp\\INT-07\\tmp_tests_int\\pytest-of-Ahmed\\pytest-5\\test_nc_main_without_tuning_fi0\\c\\LR_SELECTION_EXT.json', smoke=False, arm='FA')
+E        +      where 'F:\\Queens University\\Microsoft Project\\eda\\.local_ai\\_pytest_tmp\\INT-07\\tmp_tests_int\\pytest-of-Ahmed\\pytest-5\\test_nc_main_without_tuning_fi0\\c\\LR_SELECTION_EXT.json' = str(WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_int/pytest-of-Ahmed/pytest-5/test_nc_main_without_tuning_fi0/c/LR_SELECTION_EXT.json'))
+
+tests_int\test_fl10_fedadam_launch.py:359: AssertionError
+________________ test_nc_joint_selection_missing_run_accepted _________________
+
+joint = {'root': WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_int/pytest-of-...cal_ai/_pytest_tmp/INT-07/tmp_tests_int/pytest-of-Ahmed/pytest-5/fl10_joint0/contracts_fl/LR_SELECTION_EXT.json'), ...}
+
+    @nc("the joint selection accepts a run set missing one registered FedAdam run")
+    def test_nc_joint_selection_missing_run_accepted(joint):
+        runs = list(joint["avg"].values()) + list(joint["adam"].values())[1:]
+>       assert _accepted(L.selection_joint, runs, joint["ext"], exc=L.SelectionRefused), "refused (as it must be)"
+E       AssertionError: refused (as it must be)
+E       assert False
+E        +  where False = _accepted(<function selection_joint at 0x000001E573A8CCC0>, [WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_int/pytest-of-Ahmed/py...t Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_int/pytest-of-Ahmed/pytest-5/fl10_joint0/fedadam_eta0.1_x1'), ...], WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_int/pytest-of-Ahmed/pytest-5/fl10_joint0/contracts_fl/LR_SELECTION_EXT.json'), exc=<class 'v4int.lr_screen.SelectionRefused'>)
+E        +    where <function selection_joint at 0x000001E573A8CCC0> = L.selection_joint
+E        +    and   <class 'v4int.lr_screen.SelectionRefused'> = L.SelectionRefused
+
+tests_int\test_fl10_fedadam_launch.py:366: AssertionError
+_________________ test_nc_impure_client_source_breaks_resume __________________
+
+tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_int/pytest-of-Ahmed/pytest-5/test_nc_impure_client_source_b0')
+
+    @nc("an impure client source (rows depend on a call counter) makes the resumed run differ")
+    def test_nc_impure_client_source_breaks_resume(tmp_path):
+>       _resume_equal(tmp_path, impure=True)
+
+tests_int\test_int03_launch_fl.py:217: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_int/pytest-of-Ahmed/pytest-5/test_nc_impure_client_source_b0')
+impure = True
+
+    def _resume_equal(tmp_path, impure=False):
+        straight, _ = _run(tmp_path, _tiny_spec("PF"), "s")
+        part, _ = _run(tmp_path, _tiny_spec("PF"), "p", interrupt_at=3, impure=impure)
+        assert part["status"] == "INTERRUPTED"
+        resumed, _ = _run(tmp_path, _tiny_spec("PF"), "p", resume=True, impure=impure)
+        for k in ("server_digest", "store_digest", "evals", "ledger", "counters"):
+>           assert straight["summary"][k] == resumed["summary"][k], k
+E           AssertionError: server_digest
+E           assert 'c0d3bccdab48...66520f8cb78fa' == '9310b39d8220...2452ddb1e78e1'
+E             
+E             - 9310b39d8220d6aa781984a0b65371565003264b27e26f1d41f2452ddb1e78e1
+E             + c0d3bccdab48439d4490e57dd107aaa803aaeda17c43cc56d9c66520f8cb78fa
+
+tests_int\test_int03_launch_fl.py:176: AssertionError
+__________________________ test_nc_unrelabelled_rows __________________________
+
+tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_int/pytest-of-Ahmed/pytest-5/test_nc_unrelabelled_rows0')
+
+    @nc("the unrelabelled harness rows (method C, CENTRAL) are not downstream-arm rows")
+    def test_nc_unrelabelled_rows(tmp_path):
+        rows = _world()["evaluate"](6.0)[1]
+>       assert all(r["method"] == "FA" and r["training_paradigm"] == "FEDERATED" for r in rows)
+E       assert False
+E        +  where False = all(<generator object test_nc_unrelabelled_rows.<locals>.<genexpr> at 0x000001E545D61970>)
+
+tests_int\test_int03_launch_fl.py:223: AssertionError
+_____________________________ test_nc_unrounded_z _____________________________
+
+tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_int/pytest-of-Ahmed/pytest-5/test_nc_unrounded_z0')
+
+    @nc("a DP arm that used the receipt's unrounded bisection z would not be the registered z")
+    def test_nc_unrounded_z(tmp_path):
+        rec = json.loads(F.DP_Z_RECORD.read_text(encoding="utf-8"))
+>       assert rec["records"][0]["z_bisection"] == F.DP_REGISTERED_Z[8.0]
+E       assert 0.5641495413146913 == 0.5642
+
+tests_int\test_int03_launch_fl.py:229: AssertionError
+___________________ test_nc_busy_gpu_accepted_without_flag ____________________
+
+tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_int/pytest-of-Ahmed/pytest-5/test_nc_busy_gpu_accepted_with0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001E573BF5810>
+
+    @nc("a GPU check without the ownership refusal would accept a busy GPU without --allow-shared-gpu")
+    def test_nc_busy_gpu_accepted_without_flag(tmp_path, monkeypatch):
+        import v4sup.gpu as G
+        monkeypatch.setattr(G, "gpu_ready", lambda *a, **k: (True, "ok"))           # MUTANT: no ownership check
+        busy = fake_runner(apps=[("00000000:46:00.0", "4242")], mem={"0": 100.0, "1": 0.0})
+        try:
+            F.preflight(_args(tmp_path), runner=busy, environ={}, gate_path=gate(tmp_path))
+            refused = False
+        except F.LaunchRefused:
+            refused = True
+>       assert refused, "without the ownership check a busy GPU is accepted"
+E       AssertionError: without the ownership check a busy GPU is accepted
+E       assert False
+
+tests_int\test_int03_launch_fl.py:242: AssertionError
+_________________________ test_nc_fa_without_dropout __________________________
+
+tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_int/pytest-of-Ahmed/pytest-5/test_nc_fa_without_dropout0')
+
+    @nc("an FA spec without the registered drop-out drops no client")
+    def test_nc_fa_without_dropout(tmp_path):
+        spec = _tiny_spec("FA")
+        spec["cfg"]["dropout_p"] = 0.0                                               # MUTANT
+        out, _ = _run(tmp_path, spec)
+>       assert out["summary"]["participation"]["dropped"] > 0
+E       assert 0 > 0
+
+tests_int\test_int03_launch_fl.py:250: AssertionError
+____________________ test_nc_dense_key_is_not_the_user_key ____________________
+
+real_env = {'root': WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_int/pytest-of-...], shape=(1456,)), 'target_class': array([  5416,     -1,  81799, ...,     -1,     -1, 151700], shape=(1456,)), ...}}}}
+providers = (<v4int.providers.StoreTrainProvider object at 0x000001E573CB9D10>, <v4int.providers.StoreEvalProvider object at 0x000001E573DF0440>)
+
+    @nc("keying clients by the per-manifest dense client_ord (not client_key_hex) does not give the manifest's user keys")
+    def test_nc_dense_key_is_not_the_user_key(real_env, providers):
+        from v4base.identity import train_client_ord_by_canonical_position
+        tp, _ = providers
+        ords = train_client_ord_by_canonical_position(tp, manifest_dir=real_env["paths"].manifest_dir)
+        keys = sorted({str(int(o)) for o in ords})
+>       assert keys == sorted(real_env["tables"]["M05_CALIB_TRAIN"]["clients"]["client_key_hex"].tolist())
+E       AssertionError: assert ['0', '1', '1...2', '13', ...] == ['045ec2ffcda...ce13341', ...]
+E         
+E         At index 0 diff: '0' != '045ec2ffcda3c1d569b175f94ef92a51b0884a2a09549b74a8cd5b10dff98af7'
+E         Use -v to get more diff
+
+tests_int\test_int03_real_clients.py:55: AssertionError
+_____________________ test_nc_ladder_without_design_check _____________________
+
+tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_int/pytest-of-Ahmed/pytest-5/test_nc_ladder_without_design_0')
+
+    @nc("a ladder at other LRs would be accepted without the design check against P2R2")
+    def test_nc_ladder_without_design_check(tmp_path):
+        obj = json.loads(_ladder(tmp_path).read_text(encoding="utf-8"))
+        obj["families"]["SASREC"][0]["peak_lr"] = 5e-3
+        obj["families"]["SASREC"][0]["sha256"] = SR.canonical_sha256(obj["families"]["SASREC"][0], exclude=("sha256",))
+        obj["self_sha256"] = SR.canonical_sha256(obj)                                  # self-consistent forgery
+        fresh = SR.ladder_obj()
+>       assert obj["families"] == fresh["families"], "the design check is what refuses the forged ladder"
+E       AssertionError: the design check is what refuses the forged ladder
+E       assert {'SASREC': [{...'all'], ...}]} == {'SASREC': [{...: 0.1}, ...}]}
+E         
+E         Differing items:
+E         {'SASREC': [{'cell': {'dropout_p': 0.1, 'lr_stratum': 0, 'model_variant': 'SASREC_D64_B2', 'schedule': 'S0'}, 'dropout...odel_variant': 'SASREC_D64_B2', 'schedule': 'S0'}, 'dropout': [0.1], 'dropout_p': 0.1, 'dropout_sites': ['all'], ...}]} != {'SASREC': [{'hp_id': 'P2S_SASREC_D64_B2_S0_s0', 'family': 'SASREC', 'index': 1, 'cell': {'model_variant': 'SASREC_D64...C', 'index': 4, 'cell': {'model_variant': 'SASREC_D64_B2', 'schedule': 'S0', 'lr_stratum': 3, 'dropout_p': 0.1}, ...}]}
+E         Use -v to get more diff
+
+tests_int\test_int03_small.py:177: AssertionError
+______________________ test_nc_hook_diverting_every_file ______________________
+
+tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_int/pytest-of-Ahmed/pytest-5/test_nc_hook_diverting_every_f0')
+
+    @nc("a routing hook that diverted EVERY file would change the P2R2 load")
+    def test_nc_hook_diverting_every_file(tmp_path):
+        import v4train.hp_registry as H
+        lad = SR.load_ladder(_ladder(tmp_path))                                        # MUTANT: ignores the path
+>       assert lad == SR._ORIG["load_hp_registry"](H.REGISTRY_PATH)
+E       AssertionError: assert {'path': 'F:\..., ...}]}, ...} == {'path': 'F:\...}, ...]}, ...}
+E         
+E         Omitting 1 identical items, use -vv to show
+E         Differing items:
+E         {'families': {'SASREC': [{'cell': {'dropout_p': 0.1, 'lr_stratum': 0, 'model_variant': 'SASREC_D64_B2', 'schedule': 'S...del_variant': 'SASREC_D64_B2', 'schedule': 'S0'}, 'dropout': [0.1], 'dropout_p': 0.1, 'dropout_sites': ['all'], ...}]}} != {'families': {'GRU': [{'cell': {'dropout_p': 0.1, 'lr_stratum': 0, 'model_variant': 'GRU_D128', 'schedule': 'S0'}, 'dr...riant': 'SASREC_D256_B3', 'schedule': 'S0'}, 'dropout': [0.3], 'dropout_p': 0.3, 'dropout_sites': ['all'], ...}, ...]}}
+E         {'raw': {'authority': 'contracts/...
+E         
+E         ...Full output truncated (5 lines hidden), use '-vv' to show
+
+tests_int\test_int03_small.py:184: AssertionError
+______________________ test_nc_future_support_is_causal _______________________
+
+    @nc("a support row at the cutoff (a future label) passes the causality property")
+    def test_nc_future_support_is_causal():
+>       assert D.support_causal_ok(np.array([0, 5, 10]), 10)
+E       assert False
+E        +  where False = <function support_causal_ok at 0x000001E573B72DE0>(array([ 0,  5, 10]), 10)
+E        +    where <function support_causal_ok at 0x000001E573B72DE0> = D.support_causal_ok
+E        +    and   array([ 0,  5, 10]) = <built-in function array>([0, 5, 10])
+E        +      where <built-in function array> = np.array
+
+tests_int\test_int04_device.py:291: AssertionError
+___________________________ test_nc_select_on_main ____________________________
+
+    @nc("selecting the FT cell on MAIN is allowed")
+    def test_nc_select_on_main():
+>       assert D.selection_role_ok("MAIN")
+E       AssertionError: assert False
+E        +  where False = <function selection_role_ok at 0x000001E573B72480>('MAIN')
+E        +    where <function selection_role_ok at 0x000001E573B72480> = D.selection_role_ok
+
+tests_int\test_int04_device.py:296: AssertionError
+____________________ test_nc_select_on_calibration_refused ____________________
+
+    @nc("--select on --role CALIBRATION (the superseded INT-04 substitute) is still accepted (amendment 06A §1)")
+    def test_nc_select_on_calibration_refused():
+        try:
+            D.check_role("CALIBRATION", select=True, arm="FT_C", selection=None)
+            refused = False
+        except D.LaunchRefused:
+            refused = True
+>       assert not refused
+E       assert not True
+
+tests_int\test_int04_device.py:306: AssertionError
+_______________ test_nc_apply_selection_from_other_role_refused _______________
+
+tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_int/pytest-of-Ahmed/pytest-5/test_nc_apply_selection_from_o0')
+
+    @nc("a SELECTION.json recorded on another role (not UNSEEN_VAL) applies on MAIN / a panel")
+    def test_nc_apply_selection_from_other_role_refused(tmp_path):
+        obj = {"format": D.SELECTION_FORMAT, "arm": "FT_C", "seed": 2026, "selection_role": "CALIBRATION",
+               "eval_manifest_content_sha256": "X", "cell": "FT_C_f0.1_P1",
+               "cells": {"cell": "FT_C_f0.1_P1", "passes": 1, "lr_frac": 0.1},
+               "values_primary": {"FT_C_f0.1_P1": 0.1}, "primary": "E2E/macro/mrr@20",
+               "rule": "max; ties -> canonical order", "spec_sha256": "x", "shard_set_sha256": "y",
+               "substitute": D.SELECTION_SUBSTITUTE}
+        obj["self_sha256"] = D._canon(obj)
+        p = tmp_path / "other_role.json"
+        p.write_text(json.dumps(obj), encoding="utf-8")
+        try:
+            D.load_selection(p)
+            refused = False
+        except D.LaunchRefused:
+            refused = True
+>       assert not refused
+E       assert not True
+
+tests_int\test_int04_device.py:325: AssertionError
+___________________ test_nc_shared_model_equals_per_client ____________________
+
+tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_int/pytest-of-Ahmed/pytest-5/test_nc_shared_model_equals_pe0')
+
+    @nc("per-client LO weights give the same ranks as the shared start model (the per-client models are not used)")
+    def test_nc_shared_model_equals_per_client(tmp_path):
+        w = _world()
+        _, _, _ = _run(w, tmp_path / "s", plans=_plans(w, with_support=False), n_shards=1)
+        _, _, _ = _run(w, tmp_path / "p", n_shards=1)
+        a = np.load(tmp_path / "s" / "cells" / "LO_P4.ranks_int32.npy")
+        b = np.load(tmp_path / "p" / "cells" / "LO_P4.ranks_int32.npy")
+>       assert np.array_equal(a, b)
+E       assert False
+E        +  where False = <function array_equal at 0x000001E5662A6B70>(array([-1,  3, 21, -1, 18, 18, 24, -1, 15,  4,  6, 14,  4,  2, -1,  9,  3,\n        6,  7, 18, 22, -1, 14,  5,  4,  4, 23, 20, -1, 16], dtype=int32), array([-1,  3, 22, -1, 19, 14, 24, -1, 15,  4,  6, 16,  4,  2, -1,  6,  5,\n        6,  7, 17, 20, -1, 14,  5,  4,  4, 23, 21, -1, 17], dtype=int32))
+E        +    where <function array_equal at 0x000001E5662A6B70> = np.array_equal
+
+tests_int\test_int04_device.py:335: AssertionError
+__________________________ test_nc_lo_budgets_nested __________________________
+
+    @nc("LO budgets are nested: a 4-pass s_efe trajectory evaluated after pass 1 equals the 1-pass recipe")
+    def test_nc_lo_budgets_nested():
+        from fl.client import ClientData
+        from fl.local_only import LORecipe, run_local_only
+        w = _world()
+        start = make_tiny_adapter(K=K, seed=1, tied=False).broadcast_state(clone=True)
+        spec = D.device_spec("LO", seed=2026, peak_lr=PEAK, role="MAIN", start_digest=state_digest(start))
+        ad = make_tiny_adapter(K=K, seed=1, tied=False)
+        runners = D.make_runners(spec, ad, start)
+        r4 = runners[2][1].recipe
+        nested = LORecipe(**dict(r4.__dict__, eval_at=(1, 4)))
+        cd = ClientData(w.keys[0], w.sup[w.keys[0]])
+        d_after_1 = run_local_only(ad, start, cd, nested, eval_hook=lambda a, b: state_digest(a.extract_shared()))
+        d_one = run_local_only(ad, start, cd, runners[0][1].recipe)
+>       assert d_after_1.evals[1] == d_one.final_digest
+E       AssertionError: assert '966d015cb65b...61f0799854613' == '11cd398bcf4e...fecf900b925f9'
+E         
+E         - 11cd398bcf4efa4f6beb3be5136f03ca445688c33765879b3fcfecf900b925f9
+E         + 966d015cb65b425f330374cd3c6f0e9bbca9f55e0cdc73874cf61f0799854613
+
+tests_int\test_int04_device.py:352: AssertionError
+__________________________ test_nc_resume_other_spec __________________________
+
+tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_int/pytest-of-Ahmed/pytest-5/test_nc_resume_other_spec0')
+
+    @nc("a shard written under another spec (other seed) is accepted on resume")
+    def test_nc_resume_other_spec(tmp_path):
+        w = _world()
+        spec, _, _ = _run(w, tmp_path / "o", n_shards=1)
+        rec = json.loads((tmp_path / "o" / "shards" / "shard_0000.json").read_text(encoding="utf-8"))
+>       assert rec["spec_sha256"] == D.spec_digest(dict(spec, seed=2027))
+E       AssertionError: assert '8430df678ce9...599ae49d33734' == '5383288877c0...ae947b66bd4c7'
+E         
+E         - 5383288877c07011f3c1cd0d16efd4c8da514f07697602b52b0ae947b66bd4c7
+E         + 8430df678ce91a265fd252d7166cc8cacca8e9bb3db8c5c55ff599ae49d33734
+
+tests_int\test_int04_device.py:360: AssertionError
+_________________________ test_nc_plans_double_cover __________________________
+
+    @nc("plans that score one row for two clients cover the manifest exactly once")
+    def test_nc_plans_double_cover():
+        w = _world()
+        plans = _plans(w)
+        plans[1].rows = np.concatenate([plans[1].rows, plans[0].rows[:1]])
+        try:
+>           D.check_plans_cover(w.m, plans)
+
+tests_int\test_int04_device.py:369: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+manifest = EvalManifest(header={'catalogue_K': 24, 'manifest_id': 'SYN_DEVICE'}, decision_id=array([ 7, 10, 13, 16, 19, 22, 25, 2...', 'NONE', 'NONE', 'NONE',
+       'CEN_NO_NEXT', 'NONE'], dtype='<U11'), catalogue_K=24, fields={}, selection_key=None)
+plans = [ClientPlan(key='user-00000', rows=array([10, 11, 12, 19]), stream_pos=array([ 8,  9, 10, 16]), support=array([0, 1, 2...user-00005', rows=array([ 1, 13, 16, 23]), stream_pos=array([ 0, 11, 13, 19]), support=array([0, 1, 2]), cutoff=10000)]
+
+    def check_plans_cover(manifest, plans: Sequence[ClientPlan]) -> None:
+        rows = np.concatenate([p.rows for p in plans]) if plans else np.zeros(0, dtype=np.int64)
+        want = np.flatnonzero(manifest.rankable)
+        if rows.size != np.unique(rows).size or not np.array_equal(np.sort(rows), want):
+>           raise LaunchRefused("the client plans do not cover every rankable row exactly once")
+E           v4int.launch_central.LaunchRefused: the client plans do not cover every rankable row exactly once
+
+v4int\launch_device.py:265: LaunchRefused
+
+During handling of the above exception, another exception occurred:
+
+    @nc("plans that score one row for two clients cover the manifest exactly once")
+    def test_nc_plans_double_cover():
+        w = _world()
+        plans = _plans(w)
+        plans[1].rows = np.concatenate([plans[1].rows, plans[0].rows[:1]])
+        try:
+            D.check_plans_cover(w.m, plans)
+        except D.LaunchRefused:
+>           raise AssertionError("double cover detected")
+E           AssertionError: double cover detected
+
+tests_int\test_int04_device.py:371: AssertionError
+______________________ test_nc_stale_store_after_resume _______________________
+
+tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_int/pytest-of-Ahmed/pytest-5/test_nc_stale_store_after_resu0')
+
+    @nc("the pre-fix launcher (stale store after resume) reproduces the straight run's per-mark PF store digests")
+    def test_nc_stale_store_after_resume(tmp_path):
+        _s, _r, ls, lp = _straight_and_resumed(tmp_path, stale=True)
+>       assert ls == lp
+E       AssertionError: assert {2.5: ('830a3...7931f89', 10)} == {2.5: ('830a3...7852b855', 0)}
+E         
+E         Omitting 2 identical items, use -vv to show
+E         Differing items:
+E         {5.5: ('0b05473c86400649058400cce9b3f44275584caf3dba57146be582851e590fc8', 10)} != {5.5: ('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 0)}
+E         {6.0: ('9e067d03fd9c82176af78022176ee6539817bed3a2ab24290f0afa81b7931f89', 10)} != {6.0: ('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 0)}
+E         Use -v to get more diff
+
+tests_int\test_int06_fl_device.py:112: AssertionError
+______________________ test_nc_resume_on_another_device _______________________
+
+tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_int/pytest-of-Ahmed/pytest-5/test_nc_resume_on_another_devi0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001E545DE0640>
+
+    @nc("an FL resume leg on another device class is accepted")
+    def test_nc_resume_on_another_device(tmp_path, monkeypatch):
+        F.execute(spec=_tiny_spec("FA"), run_id="n", run_dir=tmp_path / "n", say=lambda *_: None, interrupt_at=2,
+                  **_world())
+        monkeypatch.setattr(F, "device_record", lambda a: {"eval_device_class": "NVIDIA_A40-FP32-DET",
+                                                            "device_pin_sha256": "p"})
+        try:
+            F.execute(spec=_tiny_spec("FA"), run_id="n", run_dir=tmp_path / "n", say=lambda *_: None, resume=True,
+                      **_world())
+            accepted = True
+        except F.LaunchRefused:
+            accepted = False
+>       assert accepted
+E       assert False
+
+tests_int\test_int06_fl_device.py:151: AssertionError
+___________________ test_nc_unselected_lo_cell_is_evidence ____________________
+
+tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_int/pytest-of-Ahmed/pytest-5/test_nc_unselected_lo_cell_is_0')
+
+    @nc("an unselected LO cell's MAIN rows are downstream-retention evidence")
+    def test_nc_unselected_lo_cell_is_evidence(tmp_path):
+        _spec, _out = _lo(_dworld(), tmp_path / "nc", selection={"arm": "LO", "cell": "LO_P2"}, n_shards=1)
+        rows = json.loads((tmp_path / "nc" / "RESULT_ROWS.json").read_text(encoding="utf-8"))["rows"]
+>       assert all(r["comparison_status"] == "DOWNSTREAM_RETENTION" for r in rows)
+E       assert False
+E        +  where False = all(<generator object test_nc_unselected_lo_cell_is_evidence.<locals>.<genexpr> at 0x000001E545F7F1D0>)
+
+tests_int\test_int06_fl_device.py:272: AssertionError
+_____________________ test_nc_unloaded_theta0_reproduces ______________________
+
+providers = (<v4int.providers.StoreTrainProvider object at 0x000001E573CB9D10>, <v4int.providers.StoreEvalProvider object at 0x000001E573DF0440>)
+ref_central = (BuiltModel(family='SASREC', seed=2026, device='cpu', widths=InputWidths(numeric_dim=15, flags_dim=15, user_context_di...8d', 'rankable_ordered_decision_id_sha256': 'f42ff7ef9300ebb6d0a53aaa8e3ffd985c3ff0d428b3611f048cd336cae304ac'}, ...}))
+
+    @nc("an UNLOADED fresh model (theta0) reproduces the saved checkpoint's ranks")
+    def test_nc_unloaded_theta0_reproduces(providers, ref_central):
+        _, ep = providers
+        _, ref = ref_central
+        got = R.evaluate_role(_harness(_mk().adapter, ep), ep, _kb(), {})
+>       assert np.array_equal(np.asarray(got[2]), np.asarray(ref[2]))
+E       assert False
+E        +  where False = <function array_equal at 0x000001E5662A6B70>(array([ 83926,     -1, 154592, ...,   5234,  65588,  37900], shape=(1550,)), array([143612,     -1,  32829, ...,  44497,  67770,  65351], shape=(1550,)))
+E        +    where <function array_equal at 0x000001E5662A6B70> = np.array_equal
+E        +    and   array([ 83926,     -1, 154592, ...,   5234,  65588,  37900], shape=(1550,)) = <built-in function asarray>(array([ 83926,     -1, 154592, ...,   5234,  65588,  37900], shape=(1550,)))
+E        +      where <built-in function asarray> = np.asarray
+E        +    and   array([143612,     -1,  32829, ...,  44497,  67770,  65351], shape=(1550,)) = <built-in function asarray>(array([143612,     -1,  32829, ...,  44497,  67770,  65351], shape=(1550,)))
+E        +      where <built-in function asarray> = np.asarray
+
+tests_int\test_int06_reeval.py:307: AssertionError
+______________________ test_nc_empty_store_reproduces_pf ______________________
+
+providers = (<v4int.providers.StoreTrainProvider object at 0x000001E573CB9D10>, <v4int.providers.StoreEvalProvider object at 0x000001E573DF0440>)
+ref_central = (BuiltModel(family='SASREC', seed=2026, device='cpu', widths=InputWidths(numeric_dim=15, flags_dim=15, user_context_di...8d', 'rankable_ordered_decision_id_sha256': 'f42ff7ef9300ebb6d0a53aaa8e3ffd985c3ff0d428b3611f048cd336cae304ac'}, ...}))
+
+    @nc("scoring the PF weights with an EMPTY store (p = 0, the B1 symptom) reproduces the PF evaluator's ranks")
+    def test_nc_empty_store_reproduces_pf(providers, ref_central):
+        from fl.personal import PersonalStore
+        _, ep = providers
+        src, _ = ref_central
+        hexes, store = _hex_and_store(ep, src.adapter)
+        ref = D.pf_evaluator(_harness(src.adapter, ep), hexes)(0.0, store)
+        got = R.evaluate_role(_harness(src.adapter, ep), ep, _kb(), {}, store=PersonalStore(src.adapter.query_dim),
+                              hex_by_euk=hexes)
+>       assert np.array_equal(np.asarray(got[2]), np.asarray(ref[2]))
+E       assert False
+E        +  where False = <function array_equal at 0x000001E5662A6B70>(array([143612,     -1,  32829, ...,  44497,  67770,  65351], shape=(1550,)), array([137978,     -1,  29871, ...,  44497,  67770,  65351], shape=(1550,)))
+E        +    where <function array_equal at 0x000001E5662A6B70> = np.array_equal
+E        +    and   array([143612,     -1,  32829, ...,  44497,  67770,  65351], shape=(1550,)) = <built-in function asarray>(array([143612,     -1,  32829, ...,  44497,  67770,  65351], shape=(1550,)))
+E        +      where <built-in function asarray> = np.asarray
+E        +    and   array([137978,     -1,  29871, ...,  44497,  67770,  65351], shape=(1550,)) = <built-in function asarray>(array([137978,     -1,  29871, ...,  44497,  67770,  65351], shape=(1550,)))
+E        +      where <built-in function asarray> = np.asarray
+
+tests_int\test_int06_reeval.py:319: AssertionError
+________________________ test_nc_test_role_passes_gate ________________________
+
+    @nc("a TEST role passes the pre-lock gate")
+    def test_nc_test_role_passes_gate():
+>       assert R.test_gate_ok("MAIN_RETRO_TEST")
+E       AssertionError: assert False
+E        +  where False = <function test_gate_ok at 0x000001E573B0EFC0>('MAIN_RETRO_TEST')
+E        +    where <function test_gate_ok at 0x000001E573B0EFC0> = R.test_gate_ok
+
+tests_int\test_int06_reeval.py:394: AssertionError
+_________________ test_nc_future_event_in_a_retro_test_window _________________
+
+full = (<v4int.retro_store.GatedCleanV2Store object at 0x000001E573DF3B60>, RowIndex(splits=('TRAIN', 'VALIDATION_SELECT', 'V...ts': 85, 'user_row_pairs_checked': 557, 'ts_decreasing': 0, 'partition_decreasing': 0, 'segment_spans_partitions': 0}))
+
+    @nc("a RETRO_TEST window extended one event into the future must fail the causality proof")
+    def test_nc_future_event_in_a_retro_test_window(full):
+        from v4hist.windows import check_windows, window_rows
+        st, ri = full
+        ds, idx, valid = _policy_windows(st, ri, ("TEST",))
+        rows = ri.rows_of(ds.decision_id)
+        nxt = np.minimum(ds.end_row + 1, ri.n_rows - 1)                 # the next stored row (a later event or user)
+        ln = np.minimum(np.asarray(ds.length, dtype=np.int64) + 1, 50)
+        idx2, valid2 = window_rows(nxt, ln)
+>       check_windows(ri, rows, idx2, valid2, policy=USER)
+
+tests_int\test_int07_test_path.py:128: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+v4hist\windows.py:409: in check_windows
+    _need(bool(np.all(index.user_ord[iv] == index.user_ord[rv])), "a window row belongs to another user")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+cond = False, msg = 'a window row belongs to another user'
+exc = <class 'v4hist.windows.HistoryLeakError'>
+
+    def _need(cond, msg: str, exc=HistoryLeakError) -> None:
+        if not bool(cond):
+>           raise exc(msg)
+E           v4hist.windows.HistoryLeakError: a window row belongs to another user
+
+v4hist\windows.py:117: HistoryLeakError
+---------------------------- Captured stdout setup ----------------------------
+15:31:00 wrote MAIN_RETRO_TEST_5_100_131072: users=4, decisions=12
+15:31:00 wrote UNEW_HOLDOUT_RETRO_TEST_32768: users=2, decisions=6
+15:31:00 wrote SPARSE_PANEL_16384_RETRO_TEST: users=1, decisions=2
+15:31:00 wrote HEAVY_PANEL_16384_RETRO_TEST: users=1, decisions=3
+15:31:00 wrote TRUE_COLD_RETRO_TEST: users=3, decisions=8
+______________ test_nc_gated_cache_accepts_a_validation_decision ______________
+
+world = namespace(ds=WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_int/pytest... Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_int/pytest-of-Ahmed/pytest-5/int07_world0/ws/data_test/manifests'))
+
+    @nc("a RETRO_TEST subset store that silently accepts a VALIDATION decision")
+    def test_nc_gated_cache_accepts_a_validation_decision(world):
+        from v4int import retro_store as RS
+        from v4int.cache import CacheBuildError, build_subset_store
+        ids = np.sort(np.concatenate([_index_ids(world.ds, ("TEST",)), _index_ids(world.ds, ("VALIDATION_SELECT",))[:1]]))
+        try:
+            build_subset_store(ids, splits=RS.TEST_DECISION_SPLITS, kind="eval", state_sha256=None, history_policy=USER,
+                               ds_root=world.ds, buckets=[0], log=Q, test_gate=world.gate)
+            accepted = True
+        except CacheBuildError:
+            accepted = False
+>       assert accepted
+E       assert False
+
+tests_int\test_int07_test_path.py:197: AssertionError
+___________________ test_nc_retro_test_key_says_validation ____________________
+
+rep = <v4int.providers.StoreEvalProvider object at 0x000001E545C13890>
+
+    @nc("the RETRO_TEST provider's comparison key keeps split VALIDATION")
+    def test_nc_retro_test_key_says_validation(rep):
+        from v4int.providers import comparison_key_base
+>       assert comparison_key_base(None, K.support_key_standin(rep), rep)["split"] == "VALIDATION"
+E       AssertionError: assert 'RETRO_TEST' == 'VALIDATION'
+E         
+E         - VALIDATION
+E         + RETRO_TEST
+
+tests_int\test_int07_test_path.py:288: AssertionError
+______________ test_nc_validation_row_passes_the_test_row_guard _______________
+
+    @nc("a row keyed VALIDATION passes the TEST-row guard of reeval")
+    def test_nc_validation_row_passes_the_test_row_guard():
+        from v4int import reeval as R
+        try:
+            R.check_test_rows([{"split": "VALIDATION", "test_exposure_register_entry_id": 2}])
+            passed = True
+        except R.ReevalRefused:
+            passed = False
+>       assert passed
+E       assert False
+
+tests_int\test_int07_test_path.py:497: AssertionError
+__________ test_nc_foreign_process_would_be_missed_without_the_check __________
+
+tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_int/pytest-of-Ahmed/pytest-5/test_nc_foreign_process_would_0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001E545DA28B0>
+
+    @nc("a launcher that skipped the GPU ownership check would accept a GPU with a foreign compute process")
+    def test_nc_foreign_process_would_be_missed_without_the_check(tmp_path, monkeypatch):
+        import v4sup.gpu as G
+        monkeypatch.setattr(G, "gpu_ready", lambda needed, runner=None: (True, "ok (check disabled)"))
+>       assert_raises(L.LaunchRefused, L.preflight, args(tmp_path), runner=fake_runner(apps=[(BUS["0"], "4242")]),
+                      environ={})
+
+tests_int\test_launcher.py:189: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+exc = <class 'v4int.launch_central.LaunchRefused'>
+fn = <function preflight at 0x000001E573842480>
+a = (Namespace(family='GRU', seed=2026, phase='CALIBRATION', population='COHORT', peak_lr=0.001, role=None, hp_id=None, hp... header_list=None, transform_state=None, population_label=None, allow_shared_gpu=False, history_policy='SESSION_L50'),)
+kw = {'runner': <function fake_runner.<locals>.run at 0x000001E546346A20>, 'environ': {}}
+
+    def assert_raises(exc, fn, *a, **kw):
+        try:
+            fn(*a, **kw)
+        except exc:
+            return
+>       raise AssertionError(f"{getattr(fn, '__name__', fn)} did not raise {exc}")
+E       AssertionError: preflight did not raise <class 'v4int.launch_central.LaunchRefused'>
+
+tests_data\data_testkit.py:33: AssertionError
+__________ test_nc_without_f2_the_view_hash_would_vary_with_the_root __________
+
+tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_int/pytest-of-Ahmed/pytest-5/test_nc_without_f2_the_view_ha0')
+
+    @nc("without F2, the view's self_sha256 would vary with the absolute workspace root")
+    def test_nc_without_f2_the_view_hash_would_vary_with_the_root(tmp_path):
+        from v4int.verify import DataPaths
+        paths = DataPaths.default()
+        ctx = L.bind_data_protocol_lock_v2(paths, smoke=True)
+        (root_a, root_b), rel = _two_host_roots(tmp_path, ctx)
+    
+        def buggy_view(manifest_registry_path):                # the pre-F2 behaviour: the ABSOLUTE path, no file_sha256
+            from v4train.registry import with_self_sha256
+            reg = json.loads(Path(manifest_registry_path).read_text(encoding="utf-8"))
+            roles_view = {r: dict(reg["roles"][r]) for r in ("MAIN", "CALIBRATION") if r in reg["roles"]}
+            needed = {mid for pair in roles_view.values() for mid in pair.values()}
+            obj = with_self_sha256({"data_version": reg["data_version"], "roles": roles_view,
+                                    "manifests": {mid: dict(reg["manifests"][mid]) for mid in needed},
+                                    "derived_from": {"path": str(manifest_registry_path), "self_sha256": reg.get("self_sha256")}})
+            return obj["self_sha256"]
+        a = buggy_view(root_a / rel)
+        b = buggy_view(root_b / rel)
+>       assert a == b          # FAILS: the buggy view's hash differs because the absolute path differs
+        ^^^^^^^^^^^^^
+E       AssertionError: assert 'f4ca99907f8c...2424557858951' == '4ae7611e8e5a...b421071a80be9'
+E         
+E         - 4ae7611e8e5aae007b554449904cadebf555d80a870fc76daceb421071a80be9
+E         + f4ca99907f8ca5db881ba6b36e8e8cd3aee166241934422c2bf2424557858951
+
+tests_int\test_launcher.py:247: AssertionError
+_______________ test_nc_default_would_be_the_v1_lock_without_b2 _______________
+
+    @nc("a verifier that ignored B2 and always bound the v1 lock would never see LOCK_V2's own document/version")
+    def test_nc_default_would_be_the_v1_lock_without_b2():
+        lock, _, _ = verify_lock(DataPaths.default())
+>       assert lock.get("version") == "1.0.0"                      # the v1 DATA_PROTOCOL_LOCK's version
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: assert '2.0.0' == '1.0.0'
+E         
+E         - 1.0.0
+E         ? ^
+E         + 2.0.0
+E         ? ^
+
+tests_int\test_lock_v2_bindings.py:58: AssertionError
+_ test_nc_without_loading_the_real_v1_lock_a_forged_supersedes_would_be_trusted _
+
+    @nc("without loading the REAL v1 lock (trusting the declared hashes alone), the forged-file case above would not be "
+        "refused")
+    def test_nc_without_loading_the_real_v1_lock_a_forged_supersedes_would_be_trusted():
+        lock, _, _ = verify_lock(DataPaths.default())
+        forged = copy.deepcopy(lock)
+        forged["supersedes"]["file"] = "contracts/DOES_NOT_EXIST.json"
+        forged_self = lock_self_sha256(forged)
+    
+        def buggy_exception(src, stated, lk, lock_self):           # the pre-F1 behaviour: declared hashes only, no load
+            if not isinstance(lk, dict) or lock_self_sha256(lk) != lock_self:
+                return False
+            sup = lk.get("supersedes") or {}
+            pinned = ((lk.get("population_and_manifests") or {}).get("manifest_registry") or {})
+            c1 = sup.get("lock_self_sha256") == src.get("lock_self_sha256") and sup.get("file_sha256") == src.get("file_sha256")
+            c2 = stated == pinned.get("self_sha256")
+            return bool(c1 and c2)
+        reg = json.loads(REGISTRY_V2_PATH.read_text(encoding="utf-8"))
+        accepted = buggy_exception(reg["source_data_protocol_lock"], reg["self_sha256"], forged, forged_self)
+>       assert not accepted           # FAILS: the buggy (pre-F1) exception would have accepted a forged, unloaded file
+        ^^^^^^^^^^^^^^^^^^^
+E       assert not True
+
+tests_int\test_lock_v2_bindings.py:279: AssertionError
+___________ test_nc_without_the_refusal_all_rows_would_be_accepted ____________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001E5738696A0>
+
+    @nc("without the R2 guard, comparison_key_base would silently accept and record ALL_ROWS (F7: this monkeypatches the "
+        "refusal OUT of the real comparison_key_base, so the control fails only if the real code path itself changes — "
+        "not a hand-written stand-in the guard could drift away from unnoticed)")
+    def test_nc_without_the_refusal_all_rows_would_be_accepted(monkeypatch):
+        import v4int.providers as P
+        _, tp, ep = _r4_providers()
+        ep.frozen = SimpleNamespace(eval_stream="ALL_ROWS", comparison_key_additions=ep.frozen.comparison_key_additions)
+        monkeypatch.setattr(P, "_refuse_non_frozen_eval_stream", lambda eval_stream: None)  # remove exactly this guard
+        key = P.comparison_key_base(DataPaths.default(), tp, ep)   # the REAL function, guard neutralised
+>       assert key["eval_stream"] == "EVAL_ROWS_ONLY"          # FAILS: the un-guarded function actually recorded ALL_ROWS
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: assert 'ALL_ROWS' == 'EVAL_ROWS_ONLY'
+E         
+E         - EVAL_ROWS_ONLY
+E         + ALL_ROWS
+
+tests_int\test_lock_v2_bindings.py:359: AssertionError
+____________________ test_nc_table_order_is_not_canonical _____________________
+
+real_env = {'root': WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_int/pytest-of-...], shape=(1456,)), 'target_class': array([  5416,     -1,  81799, ...,     -1,     -1, 151700], shape=(1456,)), ...}}}}
+
+    @nc("a provider whose canonical order is the manifest table order (client_ord, decision_id) is not ascending")
+    def test_nc_table_order_is_not_canonical(real_env):
+        dec = real_env["tables"]["M05_CALIB_TRAIN"]["decisions"]
+        did = np.asarray(dec["decision_id"], dtype=np.int64)
+>       assert np.all(did[1:] > did[:-1])
+E       assert np.False_
+E        +  where np.False_ = <function all at 0x000001E56629E3B0>(array([     4427199,     11728766,     11729025, ..., 100029965595,\n       100029986872, 100029989068], shape=(1396,)) > array([     4426468,      4427199,     11728766, ..., 100022329938,\n       100029965595, 100029986872], shape=(1396,)))
+E        +    where <function all at 0x000001E56629E3B0> = np.all
+
+tests_int\test_protocol_order_targets.py:123: AssertionError
+___________________ test_nc_masked_row_is_not_loss_eligible ___________________
+
+providers = (<v4int.providers.StoreTrainProvider object at 0x000001E573CB9D10>, <v4int.providers.StoreEvalProvider object at 0x000001E573DF0440>)
+
+    @nc("the loss-eligibility check applied to a batch with one masked row must fail")
+    def test_nc_masked_row_is_not_loss_eligible(providers):
+        from v4train.objective import host_contributing
+        tp, _ = providers
+        b = dict(tp.batch(np.arange(32)))
+        b["loss_mask"] = b["loss_mask"].clone()
+        b["loss_mask"][3] = False
+>       assert host_contributing(b) == 32, "every served row must contribute to the loss"
+E       AssertionError: every served row must contribute to the loss
+E       assert 31 == 32
+E        +  where 31 = <function host_contributing at 0x000001E5738F5BC0>({'item_tokens': tensor([[  5295,      0,      0,  ...,      0,      0,      0],\n        [130767,      0,      0,  ...,...  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16,  1,\n         2,  1,  2,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11]), ...})
+
+tests_int\test_protocol_order_targets.py:133: AssertionError
+____________________ test_nc_impure_provider_breaks_resume ____________________
+
+tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_int/pytest-of-Ahmed/pytest-5/test_nc_impure_provider_breaks0')
+real_env = {'root': WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_int/pytest-of-...], shape=(1456,)), 'target_class': array([  5416,     -1,  81799, ...,     -1,     -1, 151700], shape=(1456,)), ...}}}}
+providers = (<v4int.providers.StoreTrainProvider object at 0x000001E573CB9D10>, <v4int.providers.StoreEvalProvider object at 0x000001E573DF0440>)
+int_registry = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_int/pytest-of-Ahmed/pytest-5/int01_registry0/REGISTRY_INT01_HARNESS.json')
+
+    @nc("an impure provider (the served rows depend on a call counter) makes the resumed run differ")
+    def test_nc_impure_provider_breaks_resume(tmp_path, real_env, providers, int_registry):
+        tp0, ep = providers
+        a, b = _straight_vs_resumed(tmp_path, lambda: ImpureProvider(tp0), ep, int_registry)
+>       assert a["model_state_dict"] == b["model_state_dict"]
+E       AssertionError: assert '6b49e6e4a72c...9648f4b1a1c3b' == '64eff154deb6...638dea681138b'
+E         
+E         - 64eff154deb62ff5989888162e99d811de71ae17c85a8e9a45c638dea681138b
+E         + 6b49e6e4a72ccc39cd678e38d1fbcbada6895dc17cc5efe02189648f4b1a1c3b
+
+tests_int\test_resume_exact.py:111: AssertionError
+__________________ test_nc_unlabelled_smoke_row_is_accepted ___________________
+
+    @nc("a smoke-run row that is NOT relabelled (only its run id says smoke) would be accepted as evidence")
+    def test_nc_unlabelled_smoke_row_is_accepted():
+        rows = evidence_rows()
+        rows[0] = dict(rows[0], run_id="SMOKE_NOT_EVIDENCE__GRU_CALIBRATION_s2026")
+>       assert_raises(SelectionError, select_family, rows, delta_bar_ci=CI)
+
+tests_int\test_smoke_selection.py:49: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+exc = <class 'v4train.selection.SelectionError'>
+fn = <function select_family at 0x000001E5738F7100>
+a = ([{'data_protocol_hash': 'D', 'feature_contract_hash': 'F', 'split': 'VALIDATION', 'label_policy_hash': 'L', ...}, {'d...{'data_protocol_hash': 'D', 'feature_contract_hash': 'F', 'split': 'VALIDATION', 'label_policy_hash': 'L', ...}, ...],)
+kw = {'delta_bar_ci': (0.005, 0.015)}
+
+    def assert_raises(exc, fn, *a, **kw):
+        try:
+            fn(*a, **kw)
+        except exc:
+            return
+>       raise AssertionError(f"{getattr(fn, '__name__', fn)} did not raise {exc}")
+E       AssertionError: select_family did not raise <class 'v4train.selection.SelectionError'>
+
+tests_data\data_testkit.py:33: AssertionError
+_________________________ test_nc_peak_lr_over_trial __________________________
+
+tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_int/pytest-of-Ahmed/pytest-5/test_nc_peak_lr_over_trial0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001E545DA9450>
+
+    @nc("a launcher that takes --peak-lr over the HP trial")
+    def test_nc_peak_lr_over_trial(tmp_path, monkeypatch):
+        real = L._tuning_values
+    
+        def mutant(args, fam):
+            v = real(L.parse_args([x for x in _argv_without_lr(args)]), fam)
+            if args.peak_lr is not None:
+                v["peak_lr"] = float(args.peak_lr)                                    # MUTANT
+            return v
+        monkeypatch.setattr(L, "_tuning_values", mutant)
+>       _check_trial_values(tmp_path)
+
+tests_int\test_train02_launcher.py:92: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests_int\test_train02_launcher.py:69: in _check_trial_values
+    assert_raises(L.LaunchRefused, L._tuning_values, targs(tmp_path, "--peak-lr", "1e-3"), "GRU")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+exc = <class 'v4int.launch_central.LaunchRefused'>
+fn = <function test_nc_peak_lr_over_trial.<locals>.mutant at 0x000001E545FCFA60>
+a = (Namespace(family='GRU', seed=2026, phase='CALIBRATION', population='COHORT', peak_lr=0.001, role='TUNING', hp_id='P2_...t=None, transform_state=None, population_label=None, allow_shared_gpu=False, history_policy='USER_HISTORY_L50'), 'GRU')
+kw = {}
+
+    def assert_raises(exc, fn, *a, **kw):
+        try:
+            fn(*a, **kw)
+        except exc:
+            return
+>       raise AssertionError(f"{getattr(fn, '__name__', fn)} did not raise {exc}")
+E       AssertionError: mutant did not raise <class 'v4int.launch_central.LaunchRefused'>
+
+tests_data\data_testkit.py:33: AssertionError
+__________________ test_nc_tuning_accepts_manifest_overrides __________________
+
+tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_int/pytest-of-Ahmed/pytest-5/test_nc_tuning_accepts_manifes0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001E545E72990>
+
+    @nc("a TUNING preflight that accepts --train-manifest / --eval-manifest (MAIN_VALIDATION could be loaded)")
+    def test_nc_tuning_accepts_manifest_overrides(tmp_path, monkeypatch):
+        real = L._role_preflight
+    
+        def lax(args, rec):
+            a = L.parse_args(_argv_without_lr(args) + (["--smoke", "--checkpoint-every", "300"] if args.smoke else []))
+            real(a, rec)                                                              # MUTANT: the manifest flags dropped
+        monkeypatch.setattr(L, "_role_preflight", lax)
+>       _check_manifest_flags_refused(tmp_path)
+
+tests_int\test_train02_launcher.py:148: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests_int\test_train02_launcher.py:130: in _check_manifest_flags_refused
+    assert_raises(L.LaunchRefused, L.preflight, targs(tmp_path, *extra), runner=fake_runner(), environ={},
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+exc = <class 'v4int.launch_central.LaunchRefused'>
+fn = <function preflight at 0x000001E573842480>
+a = (Namespace(family='GRU', seed=2026, phase='CALIBRATION', population='COHORT', peak_lr=None, role='TUNING', hp_id='P2_G...er_list=None, transform_state=None, population_label=None, allow_shared_gpu=False, history_policy='USER_HISTORY_L50'),)
+kw = {'runner': <function fake_runner.<locals>.run at 0x000001E5463CE480>, 'environ': {}, 'gate_path': WindowsPath('F:/Quee....local_ai/_pytest_tmp/INT-07/tmp_tests_int/pytest-of-Ahmed/pytest-5/test_nc_tuning_accepts_manifes0/G1_APPROVED.json')}
+
+    def assert_raises(exc, fn, *a, **kw):
+        try:
+            fn(*a, **kw)
+        except exc:
+            return
+>       raise AssertionError(f"{getattr(fn, '__name__', fn)} did not raise {exc}")
+E       AssertionError: preflight did not raise <class 'v4int.launch_central.LaunchRefused'>
+
+tests_data\data_testkit.py:33: AssertionError
+__________________________ test_nc_bind_without_pin ___________________________
+
+tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_int/pytest-of-Ahmed/pytest-5/test_nc_bind_without_pin0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001E545E71D60>
+
+    @nc("a non-smoke bind that accepts any self-consistent lock (no G1 pin)")
+    def test_nc_bind_without_pin(tmp_path, monkeypatch):
+        monkeypatch.setattr(L, "check_lock_pin", lambda lock_self, **kw: lock_self)                   # MUTANT
+>       _check_lock_pin(tmp_path)
+
+tests_int\test_train02r2.py:62: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests_int\test_train02r2.py:50: in _check_lock_pin
+    assert_raises(L.LaunchRefused, L.bind_data_protocol_lock_v2, forged, smoke=False, gate_path=ok)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+exc = <class 'v4int.launch_central.LaunchRefused'>
+fn = <function bind_data_protocol_lock_v2 at 0x000001E573842200>
+a = (DataPaths(manifest_dir=WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/data_v3/manifests'),...:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/data_v2/TRANSFORM_STATE_CLEAN_V2.json'), production=True),)
+kw = {'smoke': False, 'gate_path': WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_int/pytest-of-Ahmed/pytest-5/test_nc_bind_without_pin0/G1_APPROVED.json')}
+
+    def assert_raises(exc, fn, *a, **kw):
+        try:
+            fn(*a, **kw)
+        except exc:
+            return
+>       raise AssertionError(f"{getattr(fn, '__name__', fn)} did not raise {exc}")
+E       AssertionError: bind_data_protocol_lock_v2 did not raise <class 'v4int.launch_central.LaunchRefused'>
+
+tests_data\data_testkit.py:33: AssertionError
+____________________ test_nc_population_fallback_under_v2 _____________________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001E545D9ACF0>
+
+    @nc("a population_hash that falls back to population_sha256 under LOCK_V2 (the pre-R2 behaviour)")
+    def test_nc_population_fallback_under_v2(monkeypatch):
+        monkeypatch.setattr(P, "population_hash_of",                                                 # MUTANT
+                            lambda h, lock: h.get(P.POPULATION_HEADER_KEY) or h.get("population_sha256") or
+                            (_ for _ in ()).throw(ProviderError("none")))
+>       _check_population_hash()
+
+tests_int\test_train02r2.py:108: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests_int\test_train02r2.py:92: in _check_population_hash
+    assert_raises(ProviderError, comparison_key_base, DataPaths.default(), tp, ep)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+exc = <class 'v4int.providers.ProviderError'>
+fn = <function comparison_key_base at 0x000001E57382A520>
+a = (DataPaths(manifest_dir=WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/data_v3/manifests'),...ed gate): v4eval's E2E_ROWS mapping stays internal; ALL_ROWS is refused", 'all_rows_refused': True}), amendment=None)))
+kw = {}
+
+    def assert_raises(exc, fn, *a, **kw):
+        try:
+            fn(*a, **kw)
+        except exc:
+            return
+>       raise AssertionError(f"{getattr(fn, '__name__', fn)} did not raise {exc}")
+E       AssertionError: comparison_key_base did not raise <class 'v4int.providers.ProviderError'>
+
+tests_data\data_testkit.py:33: AssertionError
+___________________ test_nc_file_hash_check_is_what_refuses ___________________
+
+real_env = {'root': WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_int/pytest-of-...], shape=(1456,)), 'target_class': array([  5416,     -1,  81799, ...,     -1,     -1, 151700], shape=(1456,)), ...}}}}
+tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/INT-07/tmp_tests_int/pytest-of-Ahmed/pytest-5/test_nc_file_hash_check_is_wha0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001E545E41EF0>
+
+    @nc("a verifier without the file-hash checks would accept a re-encoded (tampered) manifest file")
+    def test_nc_file_hash_check_is_what_refuses(real_env, tmp_path, monkeypatch):
+        paths = _copy_env(real_env, tmp_path)
+        f = paths.manifest_dir / "M05_CALIB_TRAIN.decisions.parquet"
+        pq.write_table(pq.read_table(f), f, compression="gzip")
+        real_sha = V.sha256_file
+        lock = json.loads(paths.lock_path.read_text(encoding="utf-8"))
+        want = lock["population_and_manifests"]["manifest_hashes"]["manifests"]["M05_CALIB_TRAIN"]["tables"]["decisions"]
+        listed = V.parse_sha_list(paths.header_list_path)
+        marker = json.loads((paths.manifest_dir / "M05_CALIB_TRAIN.OK").read_text(encoding="utf-8"))["verified_sha256"]
+    
+        def fake_sha(p):                                                          # the deliberately wrong verifier
+            return want["file_sha256"] if Path(p).name == f.name else real_sha(p)
+        monkeypatch.setattr(V, "sha256_file", fake_sha)
+        monkeypatch.setattr(V, "parse_sha_list", lambda _p: dict(listed))
+        assert marker and listed
+>       assert_raises(ManifestVerificationError, verify_manifest, "M05_CALIB_TRAIN", paths)
+
+tests_int\test_verification.py:213: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+exc = <class 'v4int.verify.ManifestVerificationError'>
+fn = <function verify_manifest at 0x000001E573788CC0>
+a = ('M05_CALIB_TRAIN', DataPaths(manifest_dir=WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_t...nt/pytest-of-Ahmed/pytest-5/test_nc_file_hash_check_is_wha0/data_v2/TRANSFORM_STATE_CLEAN_V2.json'), production=False))
+kw = {}
+
+    def assert_raises(exc, fn, *a, **kw):
+        try:
+            fn(*a, **kw)
+        except exc:
+            return
+>       raise AssertionError(f"{getattr(fn, '__name__', fn)} did not raise {exc}")
+E       AssertionError: verify_manifest did not raise <class 'v4int.verify.ManifestVerificationError'>
+
+tests_data\data_testkit.py:33: AssertionError
+=========================== short test summary info ===========================
+FAILED tests_int\test_cache_stream.py::test_nc_shifted_window_index_differs
+FAILED tests_int\test_eval_stream.py::test_nc_all_rows_are_not_the_stream - A...
+FAILED tests_int\test_fl05_launch.py::test_nc_naive_digest_changes_registered_digests
+FAILED tests_int\test_fl05_launch.py::test_nc_runtime_alone_refuses_cross_arm_resume
+FAILED tests_int\test_fl05_lr_screen.py::test_nc_argmax_without_tie_rule - as...
+FAILED tests_int\test_fl07_launch.py::test_nc_lr_mult_satisfies_the_requirement
+FAILED tests_int\test_fl07_launch.py::test_nc_old_uniform_spec_still_registered
+FAILED tests_int\test_fl09_lr_ext.py::test_nc_unregistered_multiplier_accepted
+FAILED tests_int\test_fl09_lr_ext.py::test_nc_missing_screened_run_accepted
+FAILED tests_int\test_fl09_lr_ext.py::test_nc_06b_file_accepted_while_ext_exists
+FAILED tests_int\test_fl09_lr_ext.py::test_nc_argmax_ignores_log2_tie_order
+FAILED tests_int\test_fl10_fedadam_launch.py::test_nc_fedadam_without_server_lr_accepted
+FAILED tests_int\test_fl10_fedadam_launch.py::test_nc_server_lr_with_fedavg_accepted
+FAILED tests_int\test_fl10_fedadam_launch.py::test_nc_main_without_tuning_file_accepted
+FAILED tests_int\test_fl10_fedadam_launch.py::test_nc_joint_selection_missing_run_accepted
+FAILED tests_int\test_int03_launch_fl.py::test_nc_impure_client_source_breaks_resume
+FAILED tests_int\test_int03_launch_fl.py::test_nc_unrelabelled_rows - assert ...
+FAILED tests_int\test_int03_launch_fl.py::test_nc_unrounded_z - assert 0.5641...
+FAILED tests_int\test_int03_launch_fl.py::test_nc_busy_gpu_accepted_without_flag
+FAILED tests_int\test_int03_launch_fl.py::test_nc_fa_without_dropout - assert...
+FAILED tests_int\test_int03_real_clients.py::test_nc_dense_key_is_not_the_user_key
+FAILED tests_int\test_int03_small.py::test_nc_ladder_without_design_check - A...
+FAILED tests_int\test_int03_small.py::test_nc_hook_diverting_every_file - Ass...
+FAILED tests_int\test_int04_device.py::test_nc_future_support_is_causal - ass...
+FAILED tests_int\test_int04_device.py::test_nc_select_on_main - AssertionErro...
+FAILED tests_int\test_int04_device.py::test_nc_select_on_calibration_refused
+FAILED tests_int\test_int04_device.py::test_nc_apply_selection_from_other_role_refused
+FAILED tests_int\test_int04_device.py::test_nc_shared_model_equals_per_client
+FAILED tests_int\test_int04_device.py::test_nc_lo_budgets_nested - AssertionE...
+FAILED tests_int\test_int04_device.py::test_nc_resume_other_spec - AssertionE...
+FAILED tests_int\test_int04_device.py::test_nc_plans_double_cover - Assertion...
+FAILED tests_int\test_int06_fl_device.py::test_nc_stale_store_after_resume - ...
+FAILED tests_int\test_int06_fl_device.py::test_nc_resume_on_another_device - ...
+FAILED tests_int\test_int06_fl_device.py::test_nc_unselected_lo_cell_is_evidence
+FAILED tests_int\test_int06_reeval.py::test_nc_unloaded_theta0_reproduces - a...
+FAILED tests_int\test_int06_reeval.py::test_nc_empty_store_reproduces_pf - as...
+FAILED tests_int\test_int06_reeval.py::test_nc_test_role_passes_gate - Assert...
+FAILED tests_int\test_int07_test_path.py::test_nc_future_event_in_a_retro_test_window
+FAILED tests_int\test_int07_test_path.py::test_nc_gated_cache_accepts_a_validation_decision
+FAILED tests_int\test_int07_test_path.py::test_nc_retro_test_key_says_validation
+FAILED tests_int\test_int07_test_path.py::test_nc_validation_row_passes_the_test_row_guard
+FAILED tests_int\test_launcher.py::test_nc_foreign_process_would_be_missed_without_the_check
+FAILED tests_int\test_launcher.py::test_nc_without_f2_the_view_hash_would_vary_with_the_root
+FAILED tests_int\test_lock_v2_bindings.py::test_nc_default_would_be_the_v1_lock_without_b2
+FAILED tests_int\test_lock_v2_bindings.py::test_nc_without_loading_the_real_v1_lock_a_forged_supersedes_would_be_trusted
+FAILED tests_int\test_lock_v2_bindings.py::test_nc_without_the_refusal_all_rows_would_be_accepted
+FAILED tests_int\test_protocol_order_targets.py::test_nc_table_order_is_not_canonical
+FAILED tests_int\test_protocol_order_targets.py::test_nc_masked_row_is_not_loss_eligible
+FAILED tests_int\test_resume_exact.py::test_nc_impure_provider_breaks_resume
+FAILED tests_int\test_smoke_selection.py::test_nc_unlabelled_smoke_row_is_accepted
+FAILED tests_int\test_train02_launcher.py::test_nc_peak_lr_over_trial - Asser...
+FAILED tests_int\test_train02_launcher.py::test_nc_tuning_accepts_manifest_overrides
+FAILED tests_int\test_train02r2.py::test_nc_bind_without_pin - AssertionError...
+FAILED tests_int\test_train02r2.py::test_nc_population_fallback_under_v2 - As...
+FAILED tests_int\test_verification.py::test_nc_file_hash_check_is_what_refuses
+55 failed, 204 deselected in 61.94s (0:01:01)
+
+--- stderr ---

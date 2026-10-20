@@ -1,0 +1,779 @@
+{
+ "receipt": "DATA08_BUILD_RECEIPT",
+ "task": "DATA-08",
+ "status": "PASS",
+ "full_build": true,
+ "buckets": 64,
+ "python_utc_end": "2026-09-28T23:28:26Z",
+ "isolation_modules_checked": 11,
+ "lock": {
+  "path": "contracts/DATA_PROTOCOL_LOCK.json",
+  "file_sha256": "ebf4e86f6beb82e98283108a2dad9082727e8559b81301cd46f35f60c79fd7c0",
+  "lock_self_sha256": "da51d271e97d3a681227a7063fd35b429797e52ee25586ba39843a37b7c839e1",
+  "verified": true
+ },
+ "code": {
+  "d8_code_sha256": "720f8892546be8bba10b7283e427d525bf0cf23ff98ce07716b6ec0514033164",
+  "d8_code_sha256_rule": "v4data.common.code_tree_sha256 over code/v4data08/{__init__,d8_common,d8_build}.py",
+  "d8_code_files_sha256": {
+   "__init__.py": "7f753f0028a0e536033fa593b051427f28a68617b2e7c4c2f3eaddef2b5bdca5",
+   "d8_common.py": "60c9a1c522dc26c9a218a1f0d3107426a93e69a7b2bea0b31c6f48f5eac7a435",
+   "d8_build.py": "f1756380dd1bd1ba0ce0c8c25ac812425b40930ab707c096a1f26c8cb3550063"
+  },
+  "v4data06_files_sha256": {
+   "d6_common.py": "03cdd46249147293eb59b2ffc14cd910e8864694cf1b4695425680243308d946",
+   "d6_build.py": "277a2fdc08a4d8a2479ae07f9b6b2061ead60deb67e1db3c42ff699848f4d394"
+  },
+  "census_v2_core_sha256": "aca2fe3a69afaa6a38c75492acc3148a8ec5ccb7b79678af815acd8eef4d169a",
+  "v4fs_data_fs_common_sha256": "a152cbc23c3a344ce4ca0d78e83b252c87842fb9fb6843b04f2f9483517b28b1",
+  "v4data_builder_code_sha256": "443254e9ed95e41a48076f91643c83fbc77355dc80bb6b111d8432703d3e34a5"
+ },
+ "checks": [
+  {
+   "name": "code.v4data_builder_code_sha256_is_DATA04",
+   "observed": "443254e9ed95e41a48076f91643c83fbc77355dc80bb6b111d8432703d3e34a5",
+   "expected": "443254e9ed95e41a48076f91643c83fbc77355dc80bb6b111d8432703d3e34a5",
+   "source": "DATA-04 handoff",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "DATA04.universe_size",
+   "observed": 2694998,
+   "expected": 2694998,
+   "source": "g0/data_census/COHORT_PROJECTIONS.json universe_size; g0/receipts_qa01/COHORT_RECEIPTS.json",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "DATA04.s5_total_examples",
+   "observed": 40180608,
+   "expected": 40180608,
+   "source": "CLIENT_CENSUS.json s5.total_examples",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "DATA04.cohortALL.population_sha256",
+   "observed": "db46b81d6ceb7d0c766e76ca2d0f5dede905cedf4b91881e168be4476b9bee14",
+   "expected": "db46b81d6ceb7d0c766e76ca2d0f5dede905cedf4b91881e168be4476b9bee14",
+   "source": "COHORT_PROJECTIONS.json cohorts.ALL",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "pool.n_users",
+   "observed": 1446986,
+   "expected": 1446986,
+   "source": "CENSUS-02 / FS-01 / DATA-06",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "pool.population_sha256_selection_key_v2",
+   "observed": "e2a082cda5e3b246f1ea85cf1e78368c185e003ce1013572d07bd8ff471fbc70",
+   "expected": "e2a082cda5e3b246f1ea85cf1e78368c185e003ce1013572d07bd8ff471fbc70",
+   "source": "CENSUS-02 / FS-01 / DATA-06",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "pool.prefix32768.population_sha256_selection_key_v2",
+   "observed": "9be38de146f5069a88d57c867dfa021cf1c67f2d67ae1e58df63f7c6ac9c1f02",
+   "expected": "9be38de146f5069a88d57c867dfa021cf1c67f2d67ae1e58df63f7c6ac9c1f02",
+   "source": "CENSUS-02 candidate-N table",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "pool.prefix65536.population_sha256_selection_key_v2",
+   "observed": "565157638fa27126f2780e5f4312f777243dbb4c40e3b97e65170e13b6b8571e",
+   "expected": "565157638fa27126f2780e5f4312f777243dbb4c40e3b97e65170e13b6b8571e",
+   "source": "CENSUS-02 candidate-N table",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "pool.prefix131072.population_sha256_selection_key_v2",
+   "observed": "563e76637a384c2985fff5e272d4290f4f3e52c99f57eebec4c20cde0628b8b3",
+   "expected": "563e76637a384c2985fff5e272d4290f4f3e52c99f57eebec4c20cde0628b8b3",
+   "source": "CENSUS-02 candidate-N table",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "pool.prefix262144.population_sha256_selection_key_v2",
+   "observed": "e4cf6887d77ae2c5a12062bcb0438814598a598398b1badcfaf5cecb9e4eb70d",
+   "expected": "e4cf6887d77ae2c5a12062bcb0438814598a598398b1badcfaf5cecb9e4eb70d",
+   "source": "CENSUS-02 candidate-N table",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "TB.n_users",
+   "observed": 1348682,
+   "expected": 1348682,
+   "source": "v4fs_data.fs_common.BANDS['TIEBREAK']",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "TB.population_sha256_selection_key_v2",
+   "observed": "df5d0c7e82bc0842f5c8435fafaa67f947d4fe951d5f9e6aed9ca58d10a46cdf",
+   "expected": "df5d0c7e82bc0842f5c8435fafaa67f947d4fe951d5f9e6aed9ca58d10a46cdf",
+   "source": "FS-01 handoff \u00a71 band table (measured)",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "TB.n_eligible_examples",
+   "observed": 26677600,
+   "expected": 26677600,
+   "source": "pool 28,623,386 (CENSUS-02) - UNEW_VAL 650,203 - UNEW_HOLDOUT 649,980 - FS 645,603 (measured manifests); DERIVED, exact iff every band is a rank slice of the same pool",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "disjoint.TIEBREAK_vs_U_NEW_VAL",
+   "observed": 0,
+   "expected": 0,
+   "source": "rank-band construction over the shared pool",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "rank_ranges_disjoint.TIEBREAK_vs_U_NEW_VAL",
+   "observed": true,
+   "expected": true,
+   "source": "rank-band construction over the shared pool",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "disjoint.TIEBREAK_vs_U_NEW_TEST",
+   "observed": 0,
+   "expected": 0,
+   "source": "rank-band construction over the shared pool",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "rank_ranges_disjoint.TIEBREAK_vs_U_NEW_TEST",
+   "observed": true,
+   "expected": true,
+   "source": "rank-band construction over the shared pool",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "disjoint.TIEBREAK_vs_FS",
+   "observed": 0,
+   "expected": 0,
+   "source": "rank-band construction over the shared pool",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "rank_ranges_disjoint.TIEBREAK_vs_FS",
+   "observed": true,
+   "expected": true,
+   "source": "rank-band construction over the shared pool",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "pool_covered_exactly_once_by_TB_and_excluded_bands",
+   "observed": true,
+   "expected": true,
+   "source": "rank-band construction over the shared pool",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "MAIN.subset_of_TIEBREAK",
+   "observed": true,
+   "expected": true,
+   "source": "rank-band construction over the shared pool",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "CALIB.subset_of_TIEBREAK",
+   "observed": true,
+   "expected": true,
+   "source": "rank-band construction over the shared pool",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "TB.every_user_has_ge1_eligible_example",
+   "observed": true,
+   "expected": true,
+   "source": "pool definition (5 <= n_eligible <= 100)",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "DATA04.TRAIN.decisions",
+   "observed": 52760314,
+   "expected": 52760314,
+   "source": "g0/data_census/SPLIT_COUNTS.json per_old_split.TRAIN.decisions",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "DATA04.TRAIN.loss_mask_true",
+   "observed": 40180608,
+   "expected": 40180608,
+   "source": "SPLIT_COUNTS.json per_old_split.TRAIN.loss_mask_true",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "DATA04.TRAIN.target_oov_true",
+   "observed": 56560,
+   "expected": 56560,
+   "source": "SPLIT_COUNTS.json per_old_split.TRAIN.target_oov_true",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "DATA04.TRAIN.distinct_users",
+   "observed": 4204379,
+   "expected": 4204379,
+   "source": "SPLIT_COUNTS.json per_old_split.TRAIN.distinct_users",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "DATA04.TRAIN.status.OBSERVED_IN_PARTITION",
+   "observed": 40237168,
+   "expected": 40237168,
+   "source": "SPLIT_COUNTS.json per_old_split.TRAIN.target_status_counts",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "DATA04.TRAIN.status.NO_OBSERVED_NEXT",
+   "observed": 12512673,
+   "expected": 12512673,
+   "source": "SPLIT_COUNTS.json per_old_split.TRAIN.target_status_counts",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "DATA04.TRAIN.status.AMBIGUOUS_BOUNDARY",
+   "observed": 10472,
+   "expected": 10472,
+   "source": "SPLIT_COUNTS.json per_old_split.TRAIN.target_status_counts",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "DATA04.TRAIN.status.BOUNDARY_UNRESOLVED",
+   "observed": 1,
+   "expected": 1,
+   "source": "SPLIT_COUNTS.json per_old_split.TRAIN.target_status_counts",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "DATA04.VALIDATION_SELECT.decisions",
+   "observed": 10930090,
+   "expected": 10930090,
+   "source": "SPLIT_COUNTS.json per_old_split.VALIDATION_SELECT.decisions",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "DATA04.VALIDATION_SELECT.eval_mask_true",
+   "observed": 8826488,
+   "expected": 8826488,
+   "source": "SPLIT_COUNTS.json per_old_split.VALIDATION_SELECT.eval_mask_true",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "DATA04.VALIDATION_SELECT.distinct_users",
+   "observed": 1139657,
+   "expected": 1139657,
+   "source": "SPLIT_COUNTS.json per_old_split.VALIDATION_SELECT.distinct_users",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "DATA04.VALIDATION_CONFIRM.decisions",
+   "observed": 3427555,
+   "expected": 3427555,
+   "source": "SPLIT_COUNTS.json per_old_split.VALIDATION_CONFIRM.decisions",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "DATA04.VALIDATION_CONFIRM.eval_mask_true",
+   "observed": 2461568,
+   "expected": 2461568,
+   "source": "SPLIT_COUNTS.json per_old_split.VALIDATION_CONFIRM.eval_mask_true",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "DATA04.VALIDATION_CONFIRM.distinct_users",
+   "observed": 700093,
+   "expected": 700093,
+   "source": "SPLIT_COUNTS.json per_old_split.VALIDATION_CONFIRM.distinct_users",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "DATA04.VALIDATION.decisions",
+   "observed": 14357645,
+   "expected": 14357645,
+   "source": "SPLIT_COUNTS.json v4_validation_union.decisions",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "DATA04.VALIDATION.eval_mask_true",
+   "observed": 11288056,
+   "expected": 11288056,
+   "source": "SPLIT_COUNTS.json v4_validation_union.eval_mask_true",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "DATA04.VALIDATION.target_oov_true",
+   "observed": 96871,
+   "expected": 96871,
+   "source": "SPLIT_COUNTS.json v4_validation_union.target_oov_true",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "DATA04.VALIDATION.target_class_ge0",
+   "observed": 11191185,
+   "expected": 11191185,
+   "source": "SPLIT_COUNTS.json v4_validation_union.target_class_ge0",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "DATA04.VALIDATION.distinct_users",
+   "observed": 1578912,
+   "expected": 1578912,
+   "source": "SPLIT_COUNTS.json v4_validation_union.distinct_users",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "DATA04.VALIDATION.status.OBSERVED_IN_PARTITION",
+   "observed": 11288056,
+   "expected": 11288056,
+   "source": "SPLIT_COUNTS.json v4_validation_union.target_status_counts",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "DATA04.VALIDATION.status.NO_OBSERVED_NEXT",
+   "observed": 3064778,
+   "expected": 3064778,
+   "source": "SPLIT_COUNTS.json v4_validation_union.target_status_counts",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "DATA04.VALIDATION.status.AMBIGUOUS_BOUNDARY",
+   "observed": 4489,
+   "expected": 4489,
+   "source": "SPLIT_COUNTS.json v4_validation_union.target_status_counts",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "DATA04.VALIDATION.status.BOUNDARY_UNRESOLVED",
+   "observed": 322,
+   "expected": 322,
+   "source": "SPLIT_COUNTS.json v4_validation_union.target_status_counts",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "DATA04.VALIDATION.censor.CEN_LEGACY_BARRIER",
+   "observed": 170,
+   "expected": 170,
+   "source": "company/reviews/G0B_PROTOCOL_FABLE_POSITION.md:32; g0/BARRIER_COUNT.json L21",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "DATA04.VALIDATION.censor.CEN_AMBIGUOUS_NEXT_BARRIER",
+   "observed": 4489,
+   "expected": 4489,
+   "source": "G0B_PROTOCOL_FABLE_POSITION.md:32; SPLIT_COUNTS.json L83",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "DATA04.VALIDATION.censor.CEN_RIGHT_EDGE",
+   "observed": 152,
+   "expected": 152,
+   "source": "G0B_PROTOCOL_FABLE_POSITION.md:32; g0/BARRIER_COUNT.json L16",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "DATA04.VALIDATION.censor.CEN_NO_NEXT",
+   "observed": 3064778,
+   "expected": 3064778,
+   "source": "G0B_PROTOCOL_FABLE_POSITION.md:32; SPLIT_COUNTS.json L82",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "DATA04.label_time.train_loss_target_ts_ge_train_end",
+   "observed": 0,
+   "expected": 0,
+   "source": "g0/data_census/LABEL_TIME_AUDIT.json",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "DATA04.label_time.train_loss_target_ts_null",
+   "observed": 0,
+   "expected": 0,
+   "source": "LABEL_TIME_AUDIT.json",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "DATA04.label_time.val_eval_target_ts_ge_val_end",
+   "observed": 0,
+   "expected": 0,
+   "source": "LABEL_TIME_AUDIT.json",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "DATA04.label_time.decisions_ts_ge_2019_11_30_non_test",
+   "observed": 0,
+   "expected": 0,
+   "source": "LABEL_TIME_AUDIT.json decisions_with_decision_ts_ge_2019_11_30",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "DATA04.catalogue.n_rows",
+   "observed": 158486,
+   "expected": 158486,
+   "source": "g0/data_census/CATALOGUE_SUPPORT.json verification.n_catalogue_rows",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "DATA04.catalogue.support_mismatch",
+   "observed": 0,
+   "expected": 0,
+   "source": "CATALOGUE_SUPPORT.json verification.n_mismatch",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "DATA04.catalogue.K1_products_with_train_support",
+   "observed": 191890,
+   "expected": 191890,
+   "source": "CATALOGUE_SUPPORT.json verification.distinct_products_with_any_train_support_K1",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "DATA04.VALIDATION.oov_absent_from_train_s1_excluded",
+   "observed": 50124,
+   "expected": 50124,
+   "source": "CATALOGUE_SUPPORT.json thresholds.1.validation_union_label_coverage.excluded_count",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "DATA04.check.support_ge5_set_differs_from_catalogue",
+   "observed": 0,
+   "expected": 0,
+   "source": "DATA-04 integrity check",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "DATA04.check.decision_ts_outside_split_bounds",
+   "observed": 0,
+   "expected": 0,
+   "source": "DATA-04 integrity check",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "DATA04.check.m01_filter_vs_census_eligibility_mismatch",
+   "observed": 0,
+   "expected": 0,
+   "source": "DATA-04 integrity check",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "DATA04.check.loss_mask_with_negative_class",
+   "observed": 0,
+   "expected": 0,
+   "source": "DATA-04 integrity check",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "DATA04.check.target_oov_not_observed_or_classed",
+   "observed": 0,
+   "expected": 0,
+   "source": "DATA-04 integrity check",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "DATA04.check.AB_next_block_not_ambiguous_barrier",
+   "observed": 0,
+   "expected": 0,
+   "source": "DATA-04 integrity check",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "DATA04.check.BU_not_single_item_other_split",
+   "observed": 0,
+   "expected": 0,
+   "source": "DATA-04 integrity check",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "DATA04.check.has_obs_without_target_ts",
+   "observed": 0,
+   "expected": 0,
+   "source": "DATA-04 integrity check",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "M01_rows.all_in_TB",
+   "observed": true,
+   "expected": true,
+   "source": "pass_extract COHORT bit = TB",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "C_FULL_TRAIN.n_users_eq_TB",
+   "observed": 1348682,
+   "expected": 1348682,
+   "source": "v4fs_data.fs_common.BANDS['TIEBREAK']",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "C_FULL_TRAIN.n_decisions",
+   "observed": 26677600,
+   "expected": 26677600,
+   "source": "pool 28,623,386 (CENSUS-02) - UNEW_VAL 650,203 - UNEW_HOLDOUT 649,980 - FS 645,603 (measured manifests); DERIVED, exact iff every band is a rank slice of the same pool",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "C_FULL_TRAIN.n_users",
+   "observed": 1348682,
+   "expected": 1348682,
+   "source": "band construction",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "C_FULL_TRAIN.n_decisions_eq_sum_n_eligible",
+   "observed": 26677600,
+   "expected": 26677600,
+   "source": "locked M01 row_count == n_eligible",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "C_FULL_TRAIN.old_split_all_TRAIN",
+   "observed": true,
+   "expected": true,
+   "source": "TRAIN-period rows only",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "C_FULL_TRAIN.no_calib_subset",
+   "observed": 0,
+   "expected": 0,
+   "source": "D8: no calibration subset",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "C_FULL_TRAIN.assertion.target_ts_lt_train_end",
+   "observed": true,
+   "expected": true,
+   "source": "locked MANIFEST_SPEC M01 assertion",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "C_FULL_TRAIN.assertion.target_class_in_range",
+   "observed": true,
+   "expected": true,
+   "source": "locked MANIFEST_SPEC M01 assertion",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "C_FULL_TRAIN.assertion.status_all_observed",
+   "observed": true,
+   "expected": true,
+   "source": "locked MANIFEST_SPEC M01 assertion",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "C_FULL_TRAIN.assertion.every_client_row_count_ge1",
+   "observed": true,
+   "expected": true,
+   "source": "locked MANIFEST_SPEC M01 assertion",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "C_FULL_TRAIN.assertion.row_count_equals_n_eligible",
+   "observed": true,
+   "expected": true,
+   "source": "locked MANIFEST_SPEC M01 assertion",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "C_FULL_TRAIN.assertion.client_ranges_contiguous_cover",
+   "observed": true,
+   "expected": true,
+   "source": "locked MANIFEST_SPEC M01 assertion",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "C_FULL_TRAIN.assertion.selection_key_ascending_with_client_ord",
+   "observed": true,
+   "expected": true,
+   "source": "locked MANIFEST_SPEC M01 assertion",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "C_FULL_TRAIN.assertion.calib_prefix_is_first_65536",
+   "observed": true,
+   "expected": true,
+   "source": "locked MANIFEST_SPEC M01 assertion",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "C_FULL_TRAIN.assertion.decision_ts_in_train",
+   "observed": true,
+   "expected": true,
+   "source": "locked MANIFEST_SPEC M01 assertion",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "C_FULL_TRAIN.assertion.decision_id_unique",
+   "observed": true,
+   "expected": true,
+   "source": "locked MANIFEST_SPEC M01 assertion",
+   "pass": true,
+   "hard": true
+  },
+  {
+   "name": "C_FULL_TRAIN.assertion.train_rows_by_cause_sum",
+   "observed": true,
+   "expected": true,
+   "source": "locked MANIFEST_SPEC M01 assertion",
+   "pass": true,
+   "hard": true
+  }
+ ],
+ "n_checks": 84,
+ "n_failed": 0,
+ "manifests": {
+  "FULL_TRAIN_5_100_TIEBREAK": {
+   "tables": {
+    "clients": {
+     "row_count": 1348682,
+     "table_content_sha256": "ee2b27fa54a1767e47cf0cefbd686d22e52c33ca7c74afc4abd79b2ed6a0f6c7",
+     "file_sha256": "218fa918b466faa409fdd6abee8e226b36ce0107478b0bb5ce950193b88f8ec9"
+    },
+    "decisions": {
+     "row_count": 26677600,
+     "table_content_sha256": "fa7c909ada78502373e032ab219bc0734699e150723cb5f8fedccfc29945f9a2",
+     "file_sha256": "b26954207be3a731b1f4a1e679f04ae020259f8dcdba304e79563089cace0362"
+    },
+    "central_order": {
+     "row_count": 26677600,
+     "table_content_sha256": "8f2e0c8dff216bfdf53996c1914a394c87bde45f489be1ee20f7631806652655",
+     "file_sha256": "3f89121b6ed1de7eb609c1d1151dd7085a29c211c9784d8ac076b8a5afadc0f9"
+    }
+   },
+   "header_file_sha256": "2e720abb04ac449e9a5a19e59f2d058dd217cc134aa21e16ff402666d811fd3a",
+   "header_content_sha256": "433b925705609bd9e2e12ca2ec7f9b0d04f00fd07b16251dfcee5dbec11ae16f",
+   "ordered_decision_id_sha256": "5ebeef2b3a9b2c96c4fe93683e073ac556e7bef1835bb96f050f4f15927d5459",
+   "eval_ordered_decision_id_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "rankable_ordered_decision_id_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "population_sha256": "1f39d02db030953ee5ee517c96f3df7af270eba3530c2c2dde3a8a5cfda60ee2",
+   "n_users": 1348682,
+   "n_decisions": 26677600,
+   "n_eval_rows": 0,
+   "n_rankable_rows": 0
+  }
+ },
+ "role": "C_FULL",
+ "eval_manifest": "MAIN_VALIDATION_5_100_131072",
+ "population": {
+  "band": "TIEBREAK",
+  "rank_range": [
+   0,
+   1348682
+  ],
+  "pool_size": 1446986,
+  "n_users": 1348682,
+  "population_sha256_selection_key_v2": "df5d0c7e82bc0842f5c8435fafaa67f947d4fe951d5f9e6aed9ca58d10a46cdf",
+  "definition_source": "v4fs_data.fs_common.BANDS['TIEBREAK'] (code/v4fs_data/fs_common.py:48); DECISION_LOG 41/42; ADR-005",
+  "excluded_bands": {
+   "U_NEW_VAL": [
+    1348682,
+    1381450
+   ],
+   "U_NEW_TEST": [
+    1381450,
+    1414218
+   ],
+   "FS": [
+    1414218,
+    1446986
+   ]
+  },
+  "amendment_06_stated_users": 1315914,
+  "discrepancy_note": "PREG1_AMENDMENT_06 \u00a75 and the DATA-08 packet state 1,315,914 users. That is the SUPERSEDED first Fable POPULATION_5_100 ruling (DECISION_LOG 40: U_NEW_VAL / U_NEW_TEST 65,536 each, TIEBREAK = 1,446,986 - 131,072). The LOCKED D1 (DECISION_LOG 41/42, ADR-005, v4fs_data.fs_common.BANDS['TIEBREAK'] = (0, 1,348,682)) has U_NEW bands of 32,768 each and TB = r < 1,348,682, which also excludes the FS band (the top 32,768). The packet says 'if a TIEBREAK population already exists, REUSE it exactly', so this manifest is the locked TB band: 1,348,682 users. (A literal 'pool minus the two U_NEW bands' would be 1,381,450 and would include the FS screen band.)"
+ },
+ "n_validation_rows_collected_and_released": 6707779,
+ "timings_s": {
+  "prepare": 59.6,
+  "extract": 65.3,
+  "total": 248.3,
+  "pass0_support_s": 18.1,
+  "passA_aggregate_s": 41.5,
+  "passB_extract_s": 64.0
+ },
+ "test_split_read": false,
+ "no_raw_ids_written": true,
+ "receipt_sha256": "2600e74a65aa9cdeff4e1022681b4996387dd48bb084bd477c947fbc006a36fa"
+}
