@@ -1,0 +1,11 @@
+id,tier,question,contrast,kind,checkpoint_rule,metric,seeds,point,ci95_low,ci95_high,ci_vs_reference,holm,seed_2026,seed_2027,n_users
+Q1,primary,tuned warm federated model vs the pretrained model (primary; equivalence margin 0.0005),W_STAR − PRE,delta,practical_best,mrr@20,2026 2027,-8.1e-05,-0.000179,2.4e-05,includes,not in a Holm family (registered reading: equivalent),-7.5e-05,-8.7e-05,26254
+Q2,secondary,headroom: central fine-tuning of the pretrained model on the federated users' raw data,PRE_FT_CENTRAL − PRE,delta,practical_best,mrr@20,2026 2027,-0.000212,-0.000628,0.000208,includes,not rejected,-0.00023,-0.000194,26254
+Q3,secondary,tuned warm federated model vs central fine-tuning with frozen item tables,W_STAR − PRE_FT_CENTRAL_FROZEN,delta,practical_best,mrr@20,2026 2027,0.000166,2.7e-05,0.0003,above,not rejected,0.000166,0.000166,26254
+Q4,secondary,tuned warm federated model vs the phase-1 warm frozen-table federated model,W_STAR − FA_WARM_FROZEN,delta,practical_best,mrr@20,2026 2027,0.000427,7e-06,0.000893,above,not rejected,0.000257,0.000598,26254
+Q5,secondary,on-device fine-tuning of the tuned federated model vs of the pretrained model,FT_W_STAR − FT_PRE,delta,practical_best,mrr@20,2026 2027,-6e-06,-9.3e-05,7.5e-05,includes,not rejected,-5.1e-05,3.8e-05,26254
+Q6,secondary,privacy cost at epsilon 8 for the tuned federated model,R(W_STAR_DP8 / W_STAR_FA_1024),retention_pct,controlled_budget,mrr@20,2026 2027,100.0,100.0,100.0,includes,not rejected,100.0,100.0,26254
+Q7,secondary,tuned federated model at epsilon 8 vs the pretrained model,W_STAR_DP8 − PRE,delta,controlled_budget,mrr@20,2026 2027,-3.7e-05,-9.7e-05,2e-05,includes,not rejected,-3.4e-05,-4e-05,26254
+Q8,secondary,central device-size model on all 1.35M users vs the pretrained model,C_FULL_SMALL − PRE,delta,practical_best,mrr@20,2026,0.000541,-0.000457,0.001591,includes,not rejected,0.000541,,26254
+Q9,tertiary,tuned warm federated model vs the full-data central model,R(W_STAR / C_FULL),retention_pct,practical_best,mrr@20,2026 2027,88.72,87.95,89.43,below,tertiary (unadjusted),88.73,88.72,26254
+Q11,tertiary,privacy cost at epsilon 1 for the tuned federated model (one seed),R(W_STAR_DP1 / W_STAR_FA_1024),retention_pct,controlled_budget,mrr@20,2026,99.99,99.98,100.0,includes,tertiary (unadjusted),99.99,,26254
