@@ -1,19 +1,19 @@
-# 04_on_device - export, quantisation, payloads and browser latency
+# 04_on_device - export, quantization, payloads and browser latency
 
 ## Purpose
 
-The deployable side of the question: exporting models to ONNX, INT8 dynamic quantisation, the
+The deployable side of the question: exporting models to ONNX, INT8 dynamic quantization, the
 communication byte ledger, and latency of the exported model in a real browser runtime on a
 laptop, a phone and a server CPU. The on-device *adaptation* arms (device-only training,
 fine-tuning a shipped model) are trained by the
-[`03_federated_learning`](../03_federated_learning/README.md) engine and summarised here
+[`03_federated_learning`](../03_federated_learning/README.md) engine and summarized here
 because they answer the on-device question.
 
 ## Experiments, in order
 
 1. **Prototype export and the INT8 reversal (August-September 2026).** ONNX export at opset 17
    matched PyTorch outputs to within 1.79e-7 after a dynamic-batch defect was fixed.
-   Descriptive. Dynamic INT8 quantisation was accepted on the five-channel prototype (3.6662x
+   Descriptive. Dynamic INT8 quantization was accepted on the five-channel prototype (3.6662x
    smaller, 1.0709x faster at the median) and rejected on the real candidate (3.5111x smaller
    but slower: median 2.3623 ms against 1.8826 ms FP32), so the prototype shipped FP32. The
    byte ledger measured 800 bytes per transmission against an estimate of 544 (the estimate was
@@ -42,12 +42,12 @@ because they answer the on-device question.
 
 | Package | What it does | Origin |
 |---|---|---|
-| `code/ppsi/ondevice` | ONNX export (opset 17) and INT8 dynamic quantisation of the public package | Prototype stage (unchanged) |
+| `code/ppsi/ondevice` | ONNX export (opset 17) and INT8 dynamic quantization of the public package | Prototype stage (unchanged) |
 | `code/ppsi/deployment` | Deployment package of the prototype: byte ledger, export verification, browser demo assets | Prototype stage (unchanged) |
 | `code/v4dev` -> `code/onnx_device_protocol` (import name `v4dev`) | Research-tree device tooling: `export.py`, `quantize.py`, `bench.py`, `scoring.py`, checkpoint IO | Main study |
 | `code/v4dev/browser` -> `code/onnx_device_protocol/browser` (import name `v4dev.browser`) | The Edge WebAssembly latency bench (`bench.js`, `p2_bench.js`, pages, local server) | Main study |
 | `code/experiment_extensions/on_device` -> `code/closure_experiments/on_device` (import name `experiment_extensions.on_device`) | Closure-phase device extensions (latency pass, cloud-model probe) | Closure phase |
-| `scripts/prototype/deployment` | Prototype deployment scripts (export, quantisation benchmarks) | Prototype stage |
+| `scripts/prototype/deployment` | Prototype deployment scripts (export, quantization benchmarks) | Prototype stage |
 | `tests/prototype/{deployment,ondevice}`, `tests/research/tests_onnx_device_protocol` (formerly `tests_dev`) | CPU tests and the research device suite | Prototype / main study |
 
 ## How to run
@@ -58,7 +58,7 @@ uv run python 04_on_device/run.py --mode auto      # per unit: skip if complete,
 uv run python 04_on_device/run.py --force          # redo from scratch (old outputs are moved aside first)
 ```
 
-Export and quantisation need a saved checkpoint (from the Release assets or a server run tree
+Export and quantization need a saved checkpoint (from the Release assets or a server run tree
 under `PPSI_RUNS_ROOT`); the ONNX CPU scoring of K16 additionally needs the frozen dataset.
 The browser bench needs a local COI/COOP server (`code/onnx_device_protocol/browser/`) and a
 Chromium-based

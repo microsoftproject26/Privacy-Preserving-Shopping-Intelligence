@@ -12,9 +12,9 @@ entries.
 ## What the record contains, in order
 
 1. **Pre-registration lineage.** The registered deployment study and its amendments (01 to 07,
-   06A to 06P) and the separately registered follow-up analysis, kept as hashed files; the
-   reference copies live in `handover/reference/` (amendment 07 with addenda B12-B16, the
-   follow-up registration, the contrast files, the federated improvement ladder).
+   06A to 06P) and the separately registered follow-up analysis, kept as hashed files in
+   `preregistration/`; the contrast files are in `locks_and_gates/` and the federated
+   improvement ladder in `registers/`.
 2. **Locks, freezes and the gate chain.** The data protocol lock, the architecture lock after
    the backbone contest, the federated selections, the contrast registry (`ANA_CONTRASTS_v4`,
    hash prefix `f1769f0b`), the analysis freeze (final one `59c83c86`), and the lock of all
@@ -42,8 +42,8 @@ entries.
 
 | Folder | Contents |
 |---|---|
-| `handover/` | Handover documents 00-19 (research design, data, governance, validation results, follow-up analysis, benchmarks, server operations, runbooks, experiment register, incident and fix log) |
-| `handover/reference/` | Reference records: amendment 07 and addenda, the follow-up registration, contrast files, the federated improvement ladder, the TEST exposure register, endgame-script and lock runbooks |
+| `handover/` | Handover documents 01-07, 11-14, 18 and 19 (research design, data, governance, validation results, follow-up analysis, benchmarks, server operations, file map, glossary, open issues, experiment register, incident and fix log) |
+| `handover/reference/` | The team handover of 30 September 2026, the validation claim register, headline template and per-role metric tables, and the three Phase-2 hand-offs that the code cites |
 | `deployment_manifests/` | Sync and tool manifests of the frozen server code trees (`r4` to `r9`, `r7b`, `p2r1`, `bench5`, `bench5b`) with the A40 environment lock (`ENV_LOCK_A40.txt`, `ENV_PKGS_A40.txt`) and `SHA256SUMS.txt` |
 | `delivery_verification/` | Read-only closure verifiers: delivery and technical-closure verification, protected-tree inventories, update-norm summaries, compatibility and locked-benchmark retests, local suite runners |
 | `tools/` | Protocol tools as run at the time: the test-exposure register tool, the follow-up lock and no-op checks, the data-protocol lock writers, code sync and transfer helpers |
@@ -69,10 +69,12 @@ other stage folders.
 
 ## Known limitations
 
+Working material that a reader does not need is not published: review briefs and gate packets, worker hand-offs, team-internal guides, drafts, backup copies of operations scripts and the old supervisor decks. Some records, including the decision log, still name those files; the decisions and verdicts they led to are kept in the decision log and the files that remain.
+
 The registrations are team-internal records - hashed files, a decision log and a hash-chained
 register - and no third-party timestamps are claimed. The process made mistakes, which the
 records keep (an amendment overwritten by a second session and restored byte-identically; a
-duplicated decision-log row number; jobs stopped by an organisation spending limit); none
+duplicated decision-log row number; jobs stopped by an organization spending limit); none
 changed a reported result, and the incident log (`handover/19_INCIDENT_AND_FIX_LOG.md`)
 lists them. The independent reviews recorded here were AI-assisted reviews, not reviews by
 human domain experts. The register shows that TEST was sealed and never used for selection; it

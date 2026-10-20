@@ -27,7 +27,7 @@ on-device or federated models?"*
   on-device fine-tuning adds +0.002283 [0.001588, 0.003076].
 - **Confirmatory (follow-up analysis)**: the tuned warm-start federated model is equivalent to
   the pretrained model within +/-0.0005 (Q1 -0.000081 [-0.000179, 0.000024], read as EQUIVALENT).
-- **Exploratory**, after the test evaluation: the registered FedAdam stabiliser tau = 1e-3 was
+- **Exploratory**, after the test evaluation: the registered FedAdam stabilizer tau = 1e-3 was
   far larger than the observed update norms (~1e-7), so federated training barely moved (~0.06%
   in 13,654 rounds); with tau fixed, warm federated models reach 75-92% of the cloud model on
   six public benchmarks; the value of federation depends on how much data the server already has
