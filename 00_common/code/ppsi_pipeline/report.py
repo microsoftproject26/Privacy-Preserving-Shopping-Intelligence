@@ -10,7 +10,7 @@ Two builder kinds exist:
 
 * ``runs_inventory`` walks ``results/runs/**/RUN_SUMMARY.json`` (the sealed record of every
   run) and tabulates run / status / arm, with a status-overview figure.
-* ``csv_table`` re-renders one curated CSV. The thesis-facing figures of the study are plotted
+* ``csv_table`` re-renders one curated CSV. The report-facing figures of the study are plotted
   from columns recognised by name (``mark``/``efe``/``round`` on x, ``value``/``metric``/
   ``p50``/... on y, a low-cardinality text column as the series); when the columns of a file
   are not recognisable the table is still rebuilt and the figure is skipped with a warning that

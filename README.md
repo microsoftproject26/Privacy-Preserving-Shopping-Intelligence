@@ -48,7 +48,7 @@ on-device or federated models?"*
 | [`07_study_protocol/`](07_study_protocol/README.md) | Pre-registration records, deployment manifests, handover, delivery verification (never edited) |
 | [`environment/`](environment/README.md) | CPU lock and GPU requirements, `PPSI_*` path variables, data download and verification |
 | [`docs/prototype/`](docs/prototype) | Documentation of the prototype stage (August-September 2026) |
-| [`thesis/`](thesis) | Final report PDF and slides |
+| [`report/`](report) | Final report PDF and slides |
 | `tools/`, `config/`, `fixtures/` | One-command check (`tools/check.py`), configuration, small test fixtures |
 
 Each stage folder contains `code/`, `tests/prototype/`, `tests/research/`, `scripts/`,
@@ -129,9 +129,9 @@ CPU.
   saved result files of the sealed runs; if a summary and a primary file disagree, the primary
   file wins.
 
-## Thesis
+## Report
 
-The [`thesis/`](thesis) folder holds the final report PDF and the defence slides of the project.
+The [`report/`](report) folder holds the final report PDF and the defence slides of the project.
 
 ## How to cite
 
