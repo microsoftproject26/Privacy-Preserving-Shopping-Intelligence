@@ -1,0 +1,261 @@
+{
+ "task": "DATA-05",
+ "utc_start": "2026-09-26T22:21:15Z",
+ "host": "jupyter-group-digi2026-g8",
+ "platform": "Linux-6.8.0-117-generic-x86_64-with-glibc2.39",
+ "python": "3.11.14",
+ "cpu_only": true,
+ "tests_hist": {
+  "pytest_exit_code": 0,
+  "pytest_summary": "44 passed, 6 xfailed in 61.47s (0:01:01)",
+  "pytest_wall_s": 64.4,
+  "counts": {
+   "passed": 44,
+   "xfailed": 6
+  },
+  "negative_controls": {
+   "test_determinism::test_nc_cache_with_session_lengths_is_not_the_user_stream": "FAILED_AS_INTENDED",
+   "test_leakage::test_nc_window_includes_the_next_event": "FAILED_AS_INTENDED",
+   "test_leakage::test_nc_window_crosses_into_another_user": "FAILED_AS_INTENDED",
+   "test_leakage::test_nc_validation_window_reads_a_test_row": "FAILED_AS_INTENDED",
+   "test_policy::test_nc_provider_without_history_policy": "FAILED_AS_INTENDED",
+   "test_transform_state::test_nc_ignoring_the_state_is_caught": "FAILED_AS_INTENDED"
+  },
+  "negative_controls_all_failed_as_intended": true,
+  "nc_runxfail": {
+   "exit_code_expected_nonzero": 1,
+   "counts": {
+    "failure": 6
+   },
+   "all_fail_with_assertion": true,
+   "same_set_as_suite": true,
+   "per_control": {
+    "test_determinism::test_nc_cache_with_session_lengths_is_not_the_user_stream": {
+     "status": "failure",
+     "exception_types": [
+      "AssertionError"
+     ],
+     "assertion": "AssertionError: tensor item_tokens differs"
+    },
+    "test_leakage::test_nc_window_includes_the_next_event": {
+     "status": "failure",
+     "exception_types": [
+      "HistoryLeakError"
+     ],
+     "assertion": "v4hist.windows.HistoryLeakError: a window row comes after the decision in the user's stream (the window includes a future event)"
+    },
+    "test_leakage::test_nc_window_crosses_into_another_user": {
+     "status": "failure",
+     "exception_types": [
+      "HistoryLeakError"
+     ],
+     "assertion": "v4hist.windows.HistoryLeakError: a window row belongs to another user"
+    },
+    "test_leakage::test_nc_validation_window_reads_a_test_row": {
+     "status": "failure",
+     "exception_types": [
+      "HistoryLeakError"
+     ],
+     "assertion": "v4hist.windows.HistoryLeakError: a TEST-partition row appears in the window of a non-TEST decision"
+    },
+    "test_policy::test_nc_provider_without_history_policy": {
+     "status": "failure",
+     "exception_types": [
+      "AssertionError"
+     ],
+     "assertion": "AssertionError: a provider without a registered history_policy"
+    },
+    "test_transform_state::test_nc_ignoring_the_state_is_caught": {
+     "status": "failure",
+     "exception_types": [
+      "AssertionError"
+     ],
+     "assertion": "AssertionError: served values differ from the state's direct formula by 2.5256190299987793"
+    }
+   }
+  },
+  "files": [
+   "tests_hist_junit.xml",
+   "tests_hist_pytest_output.txt",
+   "tests_hist_nc_runxfail_junit.xml",
+   "tests_hist_nc_runxfail_output.txt"
+  ]
+ },
+ "tests_int_regression": {
+  "pytest_exit_code": 0,
+  "pytest_summary": "50 passed, 8 xfailed in 75.21s (0:01:15)",
+  "pytest_wall_s": 78.5,
+  "counts": {
+   "passed": 50,
+   "xfailed": 8
+  },
+  "negative_controls": {
+   "test_cache_stream::test_nc_shifted_window_index_differs": "FAILED_AS_INTENDED",
+   "test_eval_stream::test_nc_all_rows_are_not_the_stream": "FAILED_AS_INTENDED",
+   "test_launcher::test_nc_foreign_process_would_be_missed_without_the_check": "FAILED_AS_INTENDED",
+   "test_protocol_order_targets::test_nc_table_order_is_not_canonical": "FAILED_AS_INTENDED",
+   "test_protocol_order_targets::test_nc_masked_row_is_not_loss_eligible": "FAILED_AS_INTENDED",
+   "test_resume_exact::test_nc_impure_provider_breaks_resume": "FAILED_AS_INTENDED",
+   "test_smoke_selection::test_nc_unlabelled_smoke_row_is_accepted": "FAILED_AS_INTENDED",
+   "test_verification::test_nc_file_hash_check_is_what_refuses": "FAILED_AS_INTENDED"
+  },
+  "negative_controls_all_failed_as_intended": true,
+  "nc_runxfail": {
+   "exit_code_expected_nonzero": 1,
+   "counts": {
+    "failure": 8
+   },
+   "all_fail_with_assertion": true,
+   "same_set_as_suite": true,
+   "per_control": {
+    "test_cache_stream::test_nc_shifted_window_index_differs": {
+     "status": "failure",
+     "exception_types": [
+      "AssertionError"
+     ],
+     "assertion": "AssertionError: tensor item_tokens differs"
+    },
+    "test_eval_stream::test_nc_all_rows_are_not_the_stream": {
+     "status": "failure",
+     "exception_types": [
+      "AssertionError"
+     ],
+     "assertion": "AssertionError: assert 1550 == 1395"
+    },
+    "test_launcher::test_nc_foreign_process_would_be_missed_without_the_check": {
+     "status": "failure",
+     "exception_types": [
+      "AssertionError"
+     ],
+     "assertion": "AssertionError: preflight did not raise <class 'v4int.launch_central.LaunchRefused'>"
+    },
+    "test_protocol_order_targets::test_nc_table_order_is_not_canonical": {
+     "status": "failure",
+     "exception_types": [
+      "AssertionError"
+     ],
+     "assertion": "assert np.False_"
+    },
+    "test_protocol_order_targets::test_nc_masked_row_is_not_loss_eligible": {
+     "status": "failure",
+     "exception_types": [
+      "AssertionError"
+     ],
+     "assertion": "AssertionError: every served row must contribute to the loss"
+    },
+    "test_resume_exact::test_nc_impure_provider_breaks_resume": {
+     "status": "failure",
+     "exception_types": [
+      "AssertionError"
+     ],
+     "assertion": "AssertionError: assert '409c23e45dac...d143cd29c38ae' == 'e0ba006af263...028bf02bb201f'"
+    },
+    "test_smoke_selection::test_nc_unlabelled_smoke_row_is_accepted": {
+     "status": "failure",
+     "exception_types": [
+      "AssertionError"
+     ],
+     "assertion": "AssertionError: select_family did not raise <class 'v4train.selection.SelectionError'>"
+    },
+    "test_verification::test_nc_file_hash_check_is_what_refuses": {
+     "status": "failure",
+     "exception_types": [
+      "AssertionError"
+     ],
+     "assertion": "AssertionError: verify_manifest did not raise <class 'v4int.verify.ManifestVerificationError'>"
+    }
+   }
+  },
+  "files": [
+   "tests_int_junit.xml",
+   "tests_int_pytest_output.txt",
+   "tests_int_nc_runxfail_junit.xml",
+   "tests_int_nc_runxfail_output.txt"
+  ]
+ },
+ "integrity_before": {
+  "verify_snapshot_exit_code": 0,
+  "stderr_tail": "",
+  "pycache_dirs_under_snap_v1": [
+   "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/code/snap_v1/__pycache__",
+   "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/code/snap_v1/reuse/__pycache__",
+   "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/code/snap_v1/reuse/vendor/rees46_eda/__pycache__"
+  ],
+  "pycache_dirs_in_owned": [],
+  "g1_gate_file_exists": false
+ },
+ "integrity_after": {
+  "verify_snapshot_exit_code": 0,
+  "stderr_tail": "",
+  "pycache_dirs_under_snap_v1": [
+   "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/code/snap_v1/__pycache__",
+   "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/code/snap_v1/reuse/__pycache__",
+   "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/code/snap_v1/reuse/vendor/rees46_eda/__pycache__"
+  ],
+  "pycache_dirs_in_owned": [],
+  "g1_gate_file_exists": false
+ },
+ "locked_changed_files": [],
+ "locked_unchanged": true,
+ "locked_n_files": 100,
+ "locked_sha256": "6e0affd4a8e25a3912ca2058bac2fe83f22b35ae23252fcbf8999e35bec13e13",
+ "pycache_under_snap_v1_preexisting": [
+  "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/code/snap_v1/__pycache__",
+  "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/code/snap_v1/reuse/__pycache__",
+  "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/code/snap_v1/reuse/vendor/rees46_eda/__pycache__"
+ ],
+ "snapshot_unchanged": true,
+ "g1_gate_file_never_created": true,
+ "owned_sha256": {
+  "v4hist/__init__.py": "8f98e58f8b1989d9c02cf97d74db2264b755fd7686174e67cd2e6a407599f25f",
+  "v4hist/census.py": "eaa137ab8e42964c127e58433a4d37c588ebd3e8f924ce22fb0d686eaf067bc5",
+  "v4hist/policy.py": "f8936f9276a54d62ebb4b3ce4f7e8bb4a05499854787468b9cfafb9828e0bd93",
+  "v4hist/stream.py": "647abf141944c6ad6d58eeddc1070e1663b6d01a44952ac6a0c4539073c52351",
+  "v4hist/windows.py": "563a9dae4a658adf9272c3ff77c1049a4326ededa990e5f3331c0e52a0500895",
+  "tests_hist/conftest.py": "24292d8ba2a49fb50e9b006a832ef8a710809067135d61d1787389ee228b8156",
+  "tests_hist/histkit.py": "2a896c87c1f56a370cadea9c62676fd6034c9988277d3ae65e64823f8031a1fa",
+  "tests_hist/pytest.ini": "dba78097b36d546d6e0112ec4f87018e67d927c6c5b4d9b2a7a2f811d991447f",
+  "tests_hist/run_all.py": "c30634ef88cd71a4dc570888722ae6dacc0efd4cef09bb56cb56fad530a9a61c",
+  "tests_hist/server/data05_measure.py": "55e54e585516f1961b96632035604a68bc032bb07c0fc218687b6f1105c16b9e",
+  "tests_hist/server/job.sh": "4b415ebe9d802052d26b1724792adf0a3f660135d48adf8a1afa6f01915a9c64",
+  "tests_hist/server/job2.sh": "ed9cdd5182e18186e94abb123e707f2d7ec0a3a8b0508c40be9d72555864b2c9",
+  "tests_hist/test_determinism.py": "60e5e949b38be2daa9baf9adea38cc16e948a30bdd26b218e21aa7fe8ebf9d81",
+  "tests_hist/test_equivalence.py": "382806d99113bec2d21ca9df38690feda0cccae8aae45e2cb0665c48fac15a5d",
+  "tests_hist/test_leakage.py": "8ac71fbf0ab39ad37de8f63e1f291f5a5d3fc7eab7aac15793ab31e72a297d34",
+  "tests_hist/test_order_alignment.py": "5af928900692dab97bd3bfef5e9881913dbc663ac55d545a204f724fd466d10a",
+  "tests_hist/test_policy.py": "a2005d14704bf38c15f04c0e137f1c6e77b983216f812019dabb556c2dd64d6f",
+  "tests_hist/test_transform_state.py": "613a504a903fe287f6a586055dedf342d922a62cdbe0a28d086f6b7dbee37c85",
+  "v4int/__init__.py": "6507d0831481e023074541eee59a381496d1f594ee99e1ce2a4dbdef74e9cf66",
+  "v4int/cache.py": "cd30e73d1dd4623e953ec672da233ca14a78c18ba9fa52ddd20dc913af36d2a0",
+  "v4int/launch_central.py": "455ca302949ce1defe76ba9b3ae538dd6f4dc3f035c36d0aef5980c8dce29912",
+  "v4int/providers.py": "64c3375590bbc098628f22646d0b38b461341fb04981ced935d2d866f3967874",
+  "v4int/renorm.py": "e72467e0c667f73fe368542795d3be6b982fc3bf1fd957dd3890895ece3be818",
+  "v4int/smoke.py": "0ea39fd3198ea811e5524941397cbc1f30f19b95c5c7dc78d5b315c64a3f2edd",
+  "v4int/verify.py": "21577bbdd86e8b15d9425baa172e70f47c02b086920aab912985abe35f68f157",
+  "tests_int/conftest.py": "537f438b3a9ffadd3ccdf858a0e20bb4424597d5433ba26f1cea61440730c819",
+  "tests_int/intkit.py": "cd6ea4e9b02c2aa091a9edf53ba8f8d00049628b483e13bb39afc76dbbb3b5cb",
+  "tests_int/pytest.ini": "dba78097b36d546d6e0112ec4f87018e67d927c6c5b4d9b2a7a2f811d991447f",
+  "tests_int/run_all.py": "e49d3ef3ea5102430440dddb63a1c23543e327af8791e158f50de29239f18a67",
+  "tests_int/server/int01_measure.py": "84e5e604f60dd0a594dc4e630a403811c3275be5231835f04a31f21ff5843c93",
+  "tests_int/test_cache_stream.py": "0dbdc728d6f0677042317ac6fed0a4221f27ea8486f83ea918c6447443e9ffe8",
+  "tests_int/test_eval_stream.py": "51ef7ea6ff97ae3054e071936a53591dd2cf9521e036914f32ea9d4306485058",
+  "tests_int/test_launcher.py": "77db861b9bb9696f85fc7c49a55531ee8cb3416a50ba9613f557db8ec0ffd228",
+  "tests_int/test_protocol_order_targets.py": "b72c07f92b84bd4c20c0fc4902c455b819b6191fea09f4b3cacea19218952824",
+  "tests_int/test_resume_exact.py": "bb60dc1af26249894a0781bb1e3ac73fc6b533bae479437a2942376f35b91e8b",
+  "tests_int/test_smoke_selection.py": "025838649d7cc57f0b9006ec343c9c63146227fa4711cb803fb8a6ab2c1c6cef",
+  "tests_int/test_verification.py": "fa56b59bac9d96e2f78be7a004cee56614b72cc2e7d6a39723f5d421b6e7aecf"
+ },
+ "torch": "2.13.0+cu130",
+ "utc_end": "2026-09-26T22:24:34Z",
+ "receipt_sha256": {
+  "tests_hist_junit.xml": "9ebf3d3b9ff2d2f4bd484eb2b1939a4905a002e104934aa6f1cc3f763265ec0f",
+  "tests_hist_pytest_output.txt": "5669e138c20d553229665eed3719a4ac5f982a1e3de726e8e7839a6db330f61f",
+  "tests_hist_nc_runxfail_junit.xml": "d06520e424363af976231ec5e077c5a27c8a0270b2436cb771a7122b22767d79",
+  "tests_hist_nc_runxfail_output.txt": "a55595890282053b9daf3f72dbc98ec3b02634bf42a2aa4900d5a1d374a3917a",
+  "tests_int_junit.xml": "10ec5fe002c0c6534592e6a882c3cabecfb8ecd606c92750d0f64fdde1f6a230",
+  "tests_int_pytest_output.txt": "339823bc61147a17acfbdc5d3abfd89978caca02ed56bd98e6fb7ab857cb76ac",
+  "tests_int_nc_runxfail_junit.xml": "60c413541a771143b61ccb1d713b8143cc0594df7232efe21bed310968d42471",
+  "tests_int_nc_runxfail_output.txt": "3cb832c5cde802894771e64dded2836e959f9be1d98bb215c3d0b5335037fdc3"
+ },
+ "overall_exit_code": 0
+}

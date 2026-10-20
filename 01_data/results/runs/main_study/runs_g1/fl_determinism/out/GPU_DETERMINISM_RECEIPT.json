@@ -1,0 +1,144 @@
+{
+ "all_bitwise": true,
+ "checks": {
+  "init_hash_round_trip": true,
+  "lo_GRU_1024_bitwise_A_vs_B": true,
+  "lo_SASREC_1024_bitwise_A_vs_B": true,
+  "resume_GRU_bitwise": true,
+  "t34_GRU_FP_gpu_swap_bitwise": true,
+  "t34_GRU_FP_repeat_bitwise": true,
+  "t34_GRU_PF_gpu_swap_bitwise": true,
+  "t34_GRU_PF_repeat_bitwise": true,
+  "t34_SASREC_FP_gpu_swap_bitwise": true,
+  "t34_SASREC_FP_repeat_bitwise": true,
+  "t34_SASREC_PF_gpu_swap_bitwise": true,
+  "t34_SASREC_PF_repeat_bitwise": true
+ },
+ "comparisons": {
+  "init_hash_equals_local_inventory": false,
+  "note": "server-measured registered theta0 hashes vs MODEL-01's local inventory (torch builds differ: MODEL-01 risk 4); the lock records the server hashes"
+ },
+ "env": {
+  "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+  "cuda": "13.0",
+  "python": "3.11.14",
+  "torch": "2.13.0+cu130"
+ },
+ "init_hashes": {
+  "GRU": {
+   "2026": {
+    "after_device_round_trip": "f1dd4ec4b91c8f2a108588f96d70f6e81e54867460b675a67c45cc19f12d681d",
+    "equals_inventory": false,
+    "init_sha256": "f1dd4ec4b91c8f2a108588f96d70f6e81e54867460b675a67c45cc19f12d681d",
+    "inventory_init_sha256": "cf93ccf024a15500c597f7d1b670ce89f07318bacb30eedf71501ceaf4ccfee1",
+    "raw_init_sha256": "f1dd4ec4b91c8f2a108588f96d70f6e81e54867460b675a67c45cc19f12d681d",
+    "round_trip_bitwise": true,
+    "shared_numel": 20963806
+   },
+   "2027": {
+    "after_device_round_trip": "32a77042ef8b1a17b94976d831bb3a74e8c47e08ca21d398efca73f385dedb9b",
+    "equals_inventory": false,
+    "init_sha256": "32a77042ef8b1a17b94976d831bb3a74e8c47e08ca21d398efca73f385dedb9b",
+    "inventory_init_sha256": "19338fa968b4fb5f8e62acc8a681a516c9164c648856b007ad97f87e1dbbb34d",
+    "raw_init_sha256": "32a77042ef8b1a17b94976d831bb3a74e8c47e08ca21d398efca73f385dedb9b",
+    "round_trip_bitwise": true,
+    "shared_numel": 20963806
+   }
+  },
+  "SASREC": {
+   "2026": {
+    "after_device_round_trip": "e264064a1fc678ab4b0eea7aed0290ae522e58f809c82fef11e042c11a9063d4",
+    "equals_inventory": false,
+    "init_sha256": "e264064a1fc678ab4b0eea7aed0290ae522e58f809c82fef11e042c11a9063d4",
+    "inventory_init_sha256": "e45e6e9db7b05306697f7969d71dc550e6435ac6c0e43c7f84828f331028a925",
+    "raw_init_sha256": "ce38d24342fdc253edaa1f5030ae1d1b5c68386ac7d0372dde08adc232bde125",
+    "round_trip_bitwise": true,
+    "shared_numel": 83094112
+   },
+   "2027": {
+    "after_device_round_trip": "e27f857d41bf9ec2591729a2a3c2d1f1370bfdb5e25a307558617d397f8796ed",
+    "equals_inventory": false,
+    "init_sha256": "e27f857d41bf9ec2591729a2a3c2d1f1370bfdb5e25a307558617d397f8796ed",
+    "inventory_init_sha256": "e68706d6c8887baae3daf9f331d12fdace5b9ba6aef360ba8b14506f6543461c",
+    "raw_init_sha256": "b48a6cd8c6a56c0a2c6cd36839cffd26a183ae49384378d35342051dc8bab1b6",
+    "round_trip_bitwise": true,
+    "shared_numel": 83094112
+   }
+  }
+ },
+ "lo": {
+  "GRU": {
+   "A": {
+    "device": "cuda:0",
+    "gpu_name": "NVIDIA A16",
+    "mode": "strict",
+    "n_no_label": 64,
+    "order": "forward",
+    "steps_total": 8868,
+    "wall_s": 204.1678999569267
+   },
+   "B": {
+    "device": "cuda:1",
+    "gpu_name": "NVIDIA A16",
+    "mode": "strict",
+    "n_no_label": 64,
+    "order": "reverse",
+    "steps_total": 8868,
+    "wall_s": 202.90295992419124
+   },
+   "mismatched_clients": 0,
+   "warnings": []
+  },
+  "SASREC": {
+   "A": {
+    "device": "cuda:0",
+    "gpu_name": "NVIDIA A16",
+    "mode": "strict",
+    "n_no_label": 64,
+    "order": "forward",
+    "steps_total": 8868,
+    "wall_s": 533.4334941189736
+   },
+   "B": {
+    "device": "cuda:1",
+    "gpu_name": "NVIDIA A16",
+    "mode": "strict",
+    "n_no_label": 64,
+    "order": "reverse",
+    "steps_total": 8868,
+    "wall_s": 531.2790455501527
+   },
+   "mismatched_clients": 0,
+   "warnings": []
+  }
+ },
+ "modes": {
+  "lo_GRU": [
+   "strict",
+   "strict"
+  ],
+  "lo_SASREC": [
+   "strict",
+   "strict"
+  ],
+  "t34_GRU": "strict",
+  "t34_SASREC": "strict"
+ },
+ "nondeterministic_ops_verbatim": {},
+ "resume": {
+  "checkpoint_bytes": 85146261,
+  "checkpoint_sha256_deleted": "e66964953882a7a94677f9f0de60908abaf6c01aeec26863ea8dc0d4b360022f",
+  "files_after_cleanup": [],
+  "removal_log": [
+   {
+    "bytes": 85146261,
+    "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_g1/fl_determinism/tmp_ckpt/resume-GRU/latest.pt",
+    "reason": "run complete: the resumable is not retained (disk plan rule 2)",
+    "sha256": "e66964953882a7a94677f9f0de60908abaf6c01aeec26863ea8dc0d4b360022f",
+    "utc": "2026-09-26T16:31:19Z"
+   }
+  ]
+ },
+ "utc": "2026-09-26T16:31:22Z",
+ "what": "FL-02 GPU determinism receipt (Clean V2 families, full K, synthetic inputs)"
+}

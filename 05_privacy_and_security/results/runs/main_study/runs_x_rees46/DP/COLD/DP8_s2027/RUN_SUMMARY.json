@@ -1,0 +1,304 @@
+{
+ "arm": "DP",
+ "arm_spec": {
+  "arm": "DP",
+  "cfg": {
+   "dp": {
+    "clip_norm": 0.28821225448207666,
+    "denominator": 1024,
+    "noise_multiplier": 0.5642
+   },
+   "dropout_p": 0.0,
+   "endpoint_efe": 6.0,
+   "endpoint_rounds": 384,
+   "exposure_point": "end",
+   "lr_peak_local": 0.1,
+   "lr_shape": "fl_const",
+   "max_attempts": 2,
+   "method": "FA",
+   "mu": 0.0,
+   "n_shards": 2,
+   "pf": null,
+   "seed": 2027,
+   "server_opt": {
+    "beta1": 0.9,
+    "beta2": 0.99,
+    "lr": 0.001,
+    "name": "fedadam",
+    "tau": 1e-06,
+    "v_init": "tau_squared"
+   },
+   "solver": {
+    "batch_size": 16,
+    "clip": 1.0,
+    "fused": null,
+    "lr": 0.1,
+    "optimizer": "sgd_m",
+    "passes": 2,
+    "weight_decay": 0.0
+   }
+  },
+  "client_lr": 0.1,
+  "client_opt": "sgd_m",
+  "knobs": {
+   "batch": 16,
+   "clip": 1.0,
+   "dropout_p": 0.1,
+   "endpoint_efe": 6.0,
+   "group": 64,
+   "m": 1024,
+   "max_attempts": 2,
+   "mu": 0.01,
+   "n_shards": 2,
+   "passes": 2,
+   "pf_clip": 1.0,
+   "pf_lam": 0.0001,
+   "rounds": 6827,
+   "rounds_1024": 384,
+   "s_cal_rounds": 20,
+   "s_cal_seed": 2026,
+   "sampling": "sweep",
+   "weight_decay": 1e-05
+  },
+  "lr_mult": 1.0,
+  "lr_peak_base": 0.0007114121116984968,
+  "lr_shape": "fl_const",
+  "max_rounds": 384,
+  "plan": {
+   "group_size": 1024,
+   "sampling": "poisson"
+  },
+  "role": "MAIN",
+  "server_lr": 0.001,
+  "server_opt": "fedadam",
+  "server_tau": 1e-06,
+  "upload_codec": null
+ },
+ "arm_spec_sha256": "30da807ffa65eb2bf0202d89a98fa9d99fe8e835a02d81ffdacca59a65e661d4",
+ "best_half_efe": 12,
+ "best_metric": 0.0388238404636361,
+ "bytes": {
+  "disclosure": "dropped clients (10% drop-out) are not charged a download (the ledger counts survivors)",
+  "fleet": {
+   "bytes_down": 32617540457312,
+   "bytes_up": 32617543607440,
+   "messages": 787532,
+   "retry_bytes_down": 0,
+   "total": 65235084064752
+  },
+  "per_client": {
+   "max": 2153705736,
+   "mean": 497704193.6092529,
+   "median": 497009016.0,
+   "min": 0,
+   "rule": "visits x (down + up) of that client"
+  },
+  "per_visit": {
+   "alias_bytes_not_sent": 0,
+   "bootstrap_bytes_once": 0,
+   "download_bytes": 82834832,
+   "private_bytes_sent": 0,
+   "private_resident_bytes": 0,
+   "send_plus_receive_bytes": 165669672,
+   "shared_numel": 20708708,
+   "upload_bytes": 82834840
+  }
+ },
+ "checkpoints": [
+  "best.pt",
+  "endpoint_6.0.pt"
+ ],
+ "counters": {
+  "coverage_by_sweep": {
+   "0": {
+    "clients": 83385,
+    "fraction": 0.6361770629882812
+   },
+   "1": {
+    "clients": 83113,
+    "fraction": 0.6341018676757812
+   },
+   "2": {
+    "clients": 82758,
+    "fraction": 0.6313934326171875
+   }
+  },
+  "efe": 6.00606002992531,
+  "exposures": 15542338,
+  "max_visits": 13,
+  "min_visits": 0,
+  "noop_visits": 0,
+  "retries": 0,
+  "rounds": 384,
+  "steps": 1348990,
+  "steps_hist": {
+   "10": 9476,
+   "12": 5974,
+   "14": 1111,
+   "2": 238927,
+   "4": 87215,
+   "6": 34115,
+   "8": 16948
+  },
+  "visits": 393766,
+  "wasted_steps": 0
+ },
+ "done": true,
+ "dp": {
+  "clip_norm": 0.28821225448207666,
+  "denominator": 1024,
+  "noise_multiplier": 0.5642,
+  "rounds_logged": 0
+ },
+ "evals": [
+  [
+   1,
+   31,
+   0.018715705657235696,
+   true,
+   "MAIN"
+  ],
+  [
+   2,
+   63,
+   0.018776570709340766,
+   false,
+   "MAIN"
+  ],
+  [
+   3,
+   95,
+   0.020064535800953635,
+   true,
+   "MAIN"
+  ],
+  [
+   4,
+   127,
+   0.02167263216806207,
+   true,
+   "MAIN"
+  ],
+  [
+   5,
+   159,
+   0.02392353620563037,
+   true,
+   "MAIN"
+  ],
+  [
+   6,
+   191,
+   0.027058570955338267,
+   true,
+   "MAIN"
+  ],
+  [
+   7,
+   223,
+   0.029995101313220383,
+   true,
+   "MAIN"
+  ],
+  [
+   8,
+   255,
+   0.03125463086823329,
+   true,
+   "MAIN"
+  ],
+  [
+   9,
+   287,
+   0.03317752438578928,
+   true,
+   "MAIN"
+  ],
+  [
+   10,
+   319,
+   0.03474919929792891,
+   true,
+   "MAIN"
+  ],
+  [
+   11,
+   351,
+   0.03655844438511407,
+   true,
+   "MAIN"
+  ],
+  [
+   12,
+   383,
+   0.0388238404636361,
+   true,
+   "MAIN"
+  ]
+ ],
+ "ledger": [
+  787532,
+  32617540457312,
+  32617543607440,
+  0
+ ],
+ "lr_table": {
+  "E_total": 15526656,
+  "digest": "13c81a58e497d460b636f14fedf7419622f0b10447cd8a1e3ad4f4f4b13e37bc",
+  "final_lr": 0.010000000000000002,
+  "min_lr": 0.010000000000000002,
+  "n_rounds": 384,
+  "planned_efe": 6.0
+ },
+ "lr_table_digest": "13c81a58e497d460b636f14fedf7419622f0b10447cd8a1e3ad4f4f4b13e37bc",
+ "method": "FA",
+ "participation": {
+  "E_realised_total": 15542338,
+  "E_total_expected": 15526656,
+  "cohort_size_max": 1132,
+  "cohort_size_min": 944,
+  "dropout_p": 0.0,
+  "dropped": 0,
+  "empty_rounds": 0,
+  "endpoint_rounds": 384,
+  "inclusion_probability": 0.0078125,
+  "noise_only_rounds": 0,
+  "noop_rounds": 0,
+  "planned_efe": 6.0,
+  "rounds": 384,
+  "sampled": 393766,
+  "sampling": "poisson",
+  "survived": 393766
+ },
+ "phase": "MAIN",
+ "plan": {
+  "group_size": 1024,
+  "inclusion_probability": 0.0078125,
+  "inclusion_rule": "u_i ~ Uniform{0..N-1} (PCG64, derive_seed(seed, 'poisson', r)); member iff u_i < group_size",
+  "keys_digest": "8356cab11d62e5fc3c99cf0594dbfade304f27947cbdd7cd39f4a25294bf44eb",
+  "manifest_hash": "5d5cd03679232d2214b9977189e9719acc3dc06842a7e03d08b3bc268f64f039",
+  "n_clients": 131072,
+  "rounds_per_sweep": 128,
+  "sampling": "independent Poisson participation per client per round (q = min(group_size, N) / N); variable cohort size (may be 0); logical order = sorted keys; 'sweeps' are blocks of rounds_per_sweep rounds",
+  "sampling_mode": "poisson",
+  "seed": 2027
+ },
+ "rounds": 384,
+ "run_id": "FL_DP_eps8_SMALL_s2027",
+ "server_digest": "45147d59afe69de892e74807e9b649b166fc0e909e99fd45936609d1993433fe",
+ "server_opt": {
+  "cfg": {
+   "beta1": 0.9,
+   "beta2": 0.99,
+   "lr": 0.001,
+   "name": "fedadam",
+   "tau": 1e-06,
+   "v_init": "tau_squared"
+  },
+  "moments_digest": "a6b56ef56f327947fcdd1e9a0ed36c86320fd72a509dcc7f4fcde0d861cb5556",
+  "steps": 384
+ },
+ "status": "DONE_MAIN",
+ "store_digest": null,
+ "wall_s_this_leg": 53393.83
+}

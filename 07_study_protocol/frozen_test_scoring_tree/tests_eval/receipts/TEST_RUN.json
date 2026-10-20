@@ -1,0 +1,824 @@
+{
+ "task": "EVAL-02",
+ "runner": "code/tests_eval/run_all.py",
+ "utc": "2026-09-29T12:12:29Z",
+ "exit_code": 0,
+ "wall_s": 5.82,
+ "python": "3.13.11",
+ "platform": "Windows-11-10.0.26200-SP0",
+ "torch": "2.9.1+cpu",
+ "numpy": "2.4.1",
+ "evaluator_id": "v4eval-1.0.0",
+ "evaluator_code_sha256": "61b64e61c1a2e4f5a6fecd42f0ad3b98de26562d13a07758573cc9496b8d962e",
+ "test_files_sha256": {
+  "conftest.py": "de7ef8def06ec5102201e56c21698052371d482ae099dadfd1cf56432e5d9471",
+  "evaltestkit.py": "469e069400d9e5efb5cdafc7f6c3d8cb908d2acf06d87df62e0acf72a0e6cb7c",
+  "gpu_t3_receipt.py": "82d525cda2f07ed6bfc2d54b4fe9cc29a2406007410bbfb5cedc04e996064c02",
+  "run_all.py": "4f11fe6fb2dfefd7e712a66264678c037bda92af5c10cfdf1da8a2467b15887d",
+  "test_device_pin.py": "157d3c80ad73688893b91cb3ceb90152b063b6a59a45fd99445ca32946365978",
+  "test_frozen_config_t3.py": "f6ff39bc0e953cfdd4f7015afc5df9d6ae5656c9dee4ef2f34a75da97fdd24fa",
+  "test_gate_alignment_rows.py": "aa2baec92488b3ab4c47f317dcde9acdb6884f3daa03eb8495a9f89ba46f81f5",
+  "test_parity_snapshot.py": "2664c26c4ee97cdd86be3f644b0d017b91067ec509ed5f2f22731ec71d8de803",
+  "test_t35_t36_populations.py": "cf4c8df622bcc356f5e15d6da17a2da0564f189afa4b305fc461ebc8cf507adf",
+  "test_t37_ranking.py": "3dcbc05d78e3dcd8abd42c91a1f626578a1149dbf5cda8f6479b01f5110f7d13",
+  "test_t38_t39_bootstrap_quality.py": "c8a5713487eebc759d609eb918b8a89d68aad1b0ff29f48409063f99f5c00cfe",
+  "test_t49_report.py": "464fc3d205870d7f6f2a0e8d2f5476ae43a90f6a654f6957e243ef8c3ea02bb8"
+ },
+ "counts": {
+  "passed": 80,
+  "xfailed": 28
+ },
+ "n_cases": 108,
+ "negative_controls": {
+  "test_device_pin::test_nc_non_ascii_digest_rule": "FAILED_AS_INTENDED",
+  "test_device_pin::test_nc_absent_pin_accepts_a40": "FAILED_AS_INTENDED",
+  "test_device_pin::test_nc_tampered_pin_loads": "FAILED_AS_INTENDED",
+  "test_device_pin::test_nc_unpinned_rows_pinned": "FAILED_AS_INTENDED",
+  "test_frozen_config_t3::test_nc_t3_unverified_loader": "FAILED_AS_INTENDED",
+  "test_frozen_config_t3::test_nc_t3_permissive_overrides": "FAILED_AS_INTENDED",
+  "test_frozen_config_t3::test_nc_t3_unchecked_evaluate": "FAILED_AS_INTENDED",
+  "test_frozen_config_t3::test_nc_t3_multi_block_not_bitwise": "FAILED_AS_INTENDED",
+  "test_frozen_config_t3::test_nc_t3_unbatched": "FAILED_AS_INTENDED",
+  "test_gate_alignment_rows::test_nc_ungated_loader": "FAILED_AS_INTENDED",
+  "test_gate_alignment_rows::test_nc_length_only_alignment": "FAILED_AS_INTENDED",
+  "test_gate_alignment_rows::test_nc_keyless_row": "FAILED_AS_INTENDED",
+  "test_t35_t36_populations::test_nc_t36_invalid_factorization": "FAILED_AS_INTENDED",
+  "test_t35_t36_populations::test_nc_t35_oov_dropped": "FAILED_AS_INTENDED",
+  "test_t35_t36_populations::test_nc_t35_different_rankable_set": "FAILED_AS_INTENDED",
+  "test_t35_t36_populations::test_nc_legacy_client_idx_warm_cut": "FAILED_AS_INTENDED",
+  "test_t35_t36_populations::test_nc_legacy_empty_population_nan": "FAILED_AS_INTENDED",
+  "test_t35_t36_populations::test_nc_float32_macro": "FAILED_AS_INTENDED",
+  "test_t37_ranking::test_nc_t37_optimistic_ties": "FAILED_AS_INTENDED",
+  "test_t37_ranking::test_nc_t37_chunk_local_ties": "FAILED_AS_INTENDED",
+  "test_t37_ranking::test_nc_t37_legacy_accepts_nan": "FAILED_AS_INTENDED",
+  "test_t37_ranking::test_nc_t37_sampled_accepted": "FAILED_AS_INTENDED",
+  "test_t38_t39_bootstrap_quality::test_nc_t38_unpaired": "FAILED_AS_INTENDED",
+  "test_t38_t39_bootstrap_quality::test_nc_t38_sign_filtered": "FAILED_AS_INTENDED",
+  "test_t38_t39_bootstrap_quality::test_nc_t38_endpoint_ratio": "FAILED_AS_INTENDED",
+  "test_t38_t39_bootstrap_quality::test_nc_t39_clamped": "FAILED_AS_INTENDED",
+  "test_t38_t39_bootstrap_quality::test_nc_t39_zero_as_zero": "FAILED_AS_INTENDED",
+  "test_t49_report::test_nc_t49_fabricated_claim": "FAILED_AS_INTENDED"
+ },
+ "all_negative_controls_failed_as_intended": true,
+ "cases": [
+  {
+   "name": "test_device_pin::test_absent_pin_accepts_frozen_only",
+   "status": "passed",
+   "time_s": 0.005
+  },
+  {
+   "name": "test_device_pin::test_pin_roundtrip_and_tamper",
+   "status": "passed",
+   "time_s": 0.026
+  },
+  {
+   "name": "test_device_pin::test_live_device_name_must_match",
+   "status": "passed",
+   "time_s": 0.013
+  },
+  {
+   "name": "test_device_pin::test_pinned_class_is_extra_accepted_class",
+   "status": "passed",
+   "time_s": 0.002
+  },
+  {
+   "name": "test_device_pin::test_pin_uses_registered_compact_json_rule",
+   "status": "passed",
+   "time_s": 0.002
+  },
+  {
+   "name": "test_device_pin::test_pin_refuses_incomplete_strict_receipt",
+   "status": "passed",
+   "time_s": 0.022
+  },
+  {
+   "name": "test_device_pin::test_write_once_after_both_receipts",
+   "status": "passed",
+   "time_s": 0.026
+  },
+  {
+   "name": "test_device_pin::test_evaluator_identity_is_the_deployed_a40_block_identity",
+   "status": "passed",
+   "time_s": 0.003
+  },
+  {
+   "name": "test_device_pin::test_pinned_device_rows_are_measured_pinned_with_the_pin_sha",
+   "status": "passed",
+   "time_s": 0.019
+  },
+  {
+   "name": "test_device_pin::test_unpinned_non_frozen_device_rows_stay_rehearsal",
+   "status": "passed",
+   "time_s": 0.007
+  },
+  {
+   "name": "test_device_pin::test_default_pin_path_is_absent_in_the_repo",
+   "status": "passed",
+   "time_s": 0.002
+  },
+  {
+   "name": "test_device_pin::test_nc_non_ascii_digest_rule",
+   "status": "xfailed",
+   "time_s": 0.002
+  },
+  {
+   "name": "test_device_pin::test_nc_absent_pin_accepts_a40",
+   "status": "xfailed",
+   "time_s": 0.002
+  },
+  {
+   "name": "test_device_pin::test_nc_tampered_pin_loads",
+   "status": "xfailed",
+   "time_s": 0.013
+  },
+  {
+   "name": "test_device_pin::test_nc_unpinned_rows_pinned",
+   "status": "xfailed",
+   "time_s": 0.008
+  },
+  {
+   "name": "test_frozen_config_t3::test_t3_frozen_values",
+   "status": "passed",
+   "time_s": 0.003
+  },
+  {
+   "name": "test_frozen_config_t3::test_nc_t3_unverified_loader",
+   "status": "xfailed",
+   "time_s": 0.002
+  },
+  {
+   "name": "test_frozen_config_t3::test_t3_tampered_lock_refused",
+   "status": "passed",
+   "time_s": 0.055
+  },
+  {
+   "name": "test_frozen_config_t3::test_t3_override_refused",
+   "status": "passed",
+   "time_s": 0.004
+  },
+  {
+   "name": "test_frozen_config_t3::test_nc_t3_permissive_overrides",
+   "status": "xfailed",
+   "time_s": 0.002
+  },
+  {
+   "name": "test_frozen_config_t3::test_t3_amendment_record_verified",
+   "status": "passed",
+   "time_s": 0.016
+  },
+  {
+   "name": "test_frozen_config_t3::test_t3_mismatched_config_refused",
+   "status": "passed",
+   "time_s": 0.048
+  },
+  {
+   "name": "test_frozen_config_t3::test_nc_t3_unchecked_evaluate",
+   "status": "xfailed",
+   "time_s": 0.009
+  },
+  {
+   "name": "test_frozen_config_t3::test_t3_single_block_equals_adapter_logits_bitwise_cpu",
+   "status": "passed",
+   "time_s": 0.484
+  },
+  {
+   "name": "test_frozen_config_t3::test_t3_frozen_predict_uses_one_block_per_batch",
+   "status": "passed",
+   "time_s": 0.092
+  },
+  {
+   "name": "test_frozen_config_t3::test_t3_negative_control_fails_structurally_even_where_blocks_are_bit_identical",
+   "status": "passed",
+   "time_s": 0.512
+  },
+  {
+   "name": "test_frozen_config_t3::test_nc_t3_multi_block_not_bitwise",
+   "status": "xfailed",
+   "time_s": 0.565
+  },
+  {
+   "name": "test_frozen_config_t3::test_t3_frozen_batching",
+   "status": "passed",
+   "time_s": 0.013
+  },
+  {
+   "name": "test_frozen_config_t3::test_nc_t3_unbatched",
+   "status": "xfailed",
+   "time_s": 0.005
+  },
+  {
+   "name": "test_frozen_config_t3::test_t3_runtime_flags_enforced",
+   "status": "passed",
+   "time_s": 0.006
+  },
+  {
+   "name": "test_frozen_config_t3::test_t3_two_invocations_identical_and_equal_to_logits_ranks",
+   "status": "passed",
+   "time_s": 0.012
+  },
+  {
+   "name": "test_frozen_config_t3::test_t3_rows_carry_key_additions_and_tie_diagnostic",
+   "status": "passed",
+   "time_s": 0.014
+  },
+  {
+   "name": "test_frozen_config_t3::test_t3_stream_forms_e2e_rows_and_all_rows",
+   "status": "passed",
+   "time_s": 0.016
+  },
+  {
+   "name": "test_frozen_config_t3::test_t3_kwargs_must_equal_the_frozen_values",
+   "status": "passed",
+   "time_s": 0.016
+  },
+  {
+   "name": "test_frozen_config_t3::test_t3_v4train_call_pattern_compat",
+   "status": "passed",
+   "time_s": 0.103
+  },
+  {
+   "name": "test_frozen_config_t3::test_t3_method_rows_require_the_adapter_path",
+   "status": "passed",
+   "time_s": 0.007
+  },
+  {
+   "name": "test_gate_alignment_rows::test_test_gate",
+   "status": "passed",
+   "time_s": 0.015
+  },
+  {
+   "name": "test_gate_alignment_rows::test_nc_ungated_loader",
+   "status": "xfailed",
+   "time_s": 0.006
+  },
+  {
+   "name": "test_gate_alignment_rows::test_alignment",
+   "status": "passed",
+   "time_s": 0.005
+  },
+  {
+   "name": "test_gate_alignment_rows::test_nc_length_only_alignment",
+   "status": "xfailed",
+   "time_s": 0.003
+  },
+  {
+   "name": "test_gate_alignment_rows::test_batch_alignment_refusals",
+   "status": "passed",
+   "time_s": 0.005
+  },
+  {
+   "name": "test_gate_alignment_rows::test_manifest_validation_refusals",
+   "status": "passed",
+   "time_s": 0.002
+  },
+  {
+   "name": "test_gate_alignment_rows::test_row_comparison_key",
+   "status": "passed",
+   "time_s": 0.002
+  },
+  {
+   "name": "test_gate_alignment_rows::test_nc_keyless_row",
+   "status": "xfailed",
+   "time_s": 0.002
+  },
+  {
+   "name": "test_gate_alignment_rows::test_rows_from_result_and_block_rules",
+   "status": "passed",
+   "time_s": 0.009
+  },
+  {
+   "name": "test_gate_alignment_rows::test_undefined_value_row",
+   "status": "passed",
+   "time_s": 0.004
+  },
+  {
+   "name": "test_parity_snapshot::test_rank_parity_with_snapshot",
+   "status": "passed",
+   "time_s": 0.046
+  },
+  {
+   "name": "test_parity_snapshot::test_metric_parity_with_snapshot_aggregate[0]",
+   "status": "passed",
+   "time_s": 0.027
+  },
+  {
+   "name": "test_parity_snapshot::test_metric_parity_with_snapshot_aggregate[1]",
+   "status": "passed",
+   "time_s": 0.012
+  },
+  {
+   "name": "test_parity_snapshot::test_metric_parity_with_snapshot_aggregate[2]",
+   "status": "passed",
+   "time_s": 0.011
+  },
+  {
+   "name": "test_parity_snapshot::test_adapter_path_equals_snapshot_ranks[False-True]",
+   "status": "passed",
+   "time_s": 0.042
+  },
+  {
+   "name": "test_parity_snapshot::test_adapter_path_equals_snapshot_ranks[False-False]",
+   "status": "passed",
+   "time_s": 0.038
+  },
+  {
+   "name": "test_parity_snapshot::test_adapter_path_equals_snapshot_ranks[True-True]",
+   "status": "passed",
+   "time_s": 0.035
+  },
+  {
+   "name": "test_parity_snapshot::test_adapter_path_equals_snapshot_ranks[True-False]",
+   "status": "passed",
+   "time_s": 0.036
+  },
+  {
+   "name": "test_t35_t36_populations::test_t36_fixture_values",
+   "status": "passed",
+   "time_s": 0.003
+  },
+  {
+   "name": "test_t35_t36_populations::test_nc_t36_invalid_factorization",
+   "status": "xfailed",
+   "time_s": 0.002
+  },
+  {
+   "name": "test_t35_t36_populations::test_t36_identities_hold_on_random_results",
+   "status": "passed",
+   "time_s": 0.029
+  },
+  {
+   "name": "test_t35_t36_populations::test_t35_oov_zero_credit",
+   "status": "passed",
+   "time_s": 0.002
+  },
+  {
+   "name": "test_t35_t36_populations::test_nc_t35_oov_dropped",
+   "status": "xfailed",
+   "time_s": 0.003
+  },
+  {
+   "name": "test_t35_t36_populations::test_t35_identical_populations_across_methods",
+   "status": "passed",
+   "time_s": 0.015
+  },
+  {
+   "name": "test_t35_t36_populations::test_nc_t35_different_rankable_set",
+   "status": "xfailed",
+   "time_s": 0.008
+  },
+  {
+   "name": "test_t35_t36_populations::test_t35_censored_rows_never_in_a_denominator",
+   "status": "passed",
+   "time_s": 0.005
+  },
+  {
+   "name": "test_t35_t36_populations::test_strata_from_manifest_fields_only",
+   "status": "passed",
+   "time_s": 0.006
+  },
+  {
+   "name": "test_t35_t36_populations::test_strata_v4_cut",
+   "status": "passed",
+   "time_s": 0.002
+  },
+  {
+   "name": "test_t35_t36_populations::test_nc_legacy_client_idx_warm_cut",
+   "status": "xfailed",
+   "time_s": 0.002
+  },
+  {
+   "name": "test_t35_t36_populations::test_empty_population_is_undefined",
+   "status": "passed",
+   "time_s": 0.004
+  },
+  {
+   "name": "test_t35_t36_populations::test_nc_legacy_empty_population_nan",
+   "status": "xfailed",
+   "time_s": 0.002
+  },
+  {
+   "name": "test_t35_t36_populations::test_fp64_macro",
+   "status": "passed",
+   "time_s": 0.002
+  },
+  {
+   "name": "test_t35_t36_populations::test_nc_float32_macro",
+   "status": "xfailed",
+   "time_s": 0.003
+  },
+  {
+   "name": "test_t35_t36_populations::test_grid_and_primary_present",
+   "status": "passed",
+   "time_s": 0.006
+  },
+  {
+   "name": "test_t37_ranking::test_t37_tie_rule",
+   "status": "passed",
+   "time_s": 0.002
+  },
+  {
+   "name": "test_t37_ranking::test_t37_tie_rule_streaming_duplicate_rows",
+   "status": "passed",
+   "time_s": 0.002
+  },
+  {
+   "name": "test_t37_ranking::test_nc_t37_optimistic_ties",
+   "status": "xfailed",
+   "time_s": 0.002
+  },
+  {
+   "name": "test_t37_ranking::test_t37_class_chunk_invariance",
+   "status": "passed",
+   "time_s": 0.024
+  },
+  {
+   "name": "test_t37_ranking::test_t37_class_chunk_invariance_streaming",
+   "status": "passed",
+   "time_s": 0.022
+  },
+  {
+   "name": "test_t37_ranking::test_nc_t37_chunk_local_ties",
+   "status": "xfailed",
+   "time_s": 0.004
+  },
+  {
+   "name": "test_t37_ranking::test_t37_single_block_equals_precomputed_and_snapshot",
+   "status": "passed",
+   "time_s": 0.004
+  },
+  {
+   "name": "test_t37_ranking::test_t37_score_block_invariance_within_tolerance",
+   "status": "passed",
+   "time_s": 0.505
+  },
+  {
+   "name": "test_t37_ranking::test_t37_cache_and_recompute_agree",
+   "status": "passed",
+   "time_s": 0.005
+  },
+  {
+   "name": "test_t37_ranking::test_t37_nondeterministic_kernel_refused",
+   "status": "passed",
+   "time_s": 0.002
+  },
+  {
+   "name": "test_t37_ranking::test_t37_nonfinite_refused",
+   "status": "passed",
+   "time_s": 0.002
+  },
+  {
+   "name": "test_t37_ranking::test_t37_legacy_defect_nan_target_ranks_first",
+   "status": "passed",
+   "time_s": 0.002
+  },
+  {
+   "name": "test_t37_ranking::test_nc_t37_legacy_accepts_nan",
+   "status": "xfailed",
+   "time_s": 0.002
+  },
+  {
+   "name": "test_t37_ranking::test_t37_sampled_and_wrong_k_refused",
+   "status": "passed",
+   "time_s": 0.002
+  },
+  {
+   "name": "test_t37_ranking::test_nc_t37_sampled_accepted",
+   "status": "xfailed",
+   "time_s": 0.002
+  },
+  {
+   "name": "test_t37_ranking::test_t37_deterministic_repeat",
+   "status": "passed",
+   "time_s": 0.005
+  },
+  {
+   "name": "test_t38_t39_bootstrap_quality::test_t38_W_is_the_snapshot_draw_with_the_v4_seed",
+   "status": "passed",
+   "time_s": 0.021
+  },
+  {
+   "name": "test_t38_t39_bootstrap_quality::test_t38_paired_shared_W",
+   "status": "passed",
+   "time_s": 0.017
+  },
+  {
+   "name": "test_t38_t39_bootstrap_quality::test_nc_t38_unpaired",
+   "status": "xfailed",
+   "time_s": 0.012
+  },
+  {
+   "name": "test_t38_t39_bootstrap_quality::test_t38_parity_with_snapshot_paired_bootstrap",
+   "status": "passed",
+   "time_s": 0.013
+  },
+  {
+   "name": "test_t38_t39_bootstrap_quality::test_t38_all_contrasts_reported",
+   "status": "passed",
+   "time_s": 0.012
+  },
+  {
+   "name": "test_t38_t39_bootstrap_quality::test_nc_t38_sign_filtered",
+   "status": "xfailed",
+   "time_s": 0.012
+  },
+  {
+   "name": "test_t38_t39_bootstrap_quality::test_t38_ratio_bootstrapped_directly",
+   "status": "passed",
+   "time_s": 0.011
+  },
+  {
+   "name": "test_t38_t39_bootstrap_quality::test_nc_t38_endpoint_ratio",
+   "status": "xfailed",
+   "time_s": 0.009
+  },
+  {
+   "name": "test_t38_t39_bootstrap_quality::test_t38_zero_central_in_resamples_is_undefined",
+   "status": "passed",
+   "time_s": 0.01
+  },
+  {
+   "name": "test_t38_t39_bootstrap_quality::test_t38_per_seed_and_seed_mean",
+   "status": "passed",
+   "time_s": 0.018
+  },
+  {
+   "name": "test_t38_t39_bootstrap_quality::test_t38_pairing_refused_on_different_user_sets",
+   "status": "passed",
+   "time_s": 0.006
+  },
+  {
+   "name": "test_t38_t39_bootstrap_quality::test_t38_rankable_statistics_use_the_same_draw",
+   "status": "passed",
+   "time_s": 0.003
+  },
+  {
+   "name": "test_t38_t39_bootstrap_quality::test_t38_bootstrap_point_matches_evaluate",
+   "status": "passed",
+   "time_s": 0.004
+  },
+  {
+   "name": "test_t38_t39_bootstrap_quality::test_t39_retained_quality",
+   "status": "passed",
+   "time_s": 0.002
+  },
+  {
+   "name": "test_t38_t39_bootstrap_quality::test_nc_t39_clamped",
+   "status": "xfailed",
+   "time_s": 0.002
+  },
+  {
+   "name": "test_t38_t39_bootstrap_quality::test_nc_t39_zero_as_zero",
+   "status": "xfailed",
+   "time_s": 0.002
+  },
+  {
+   "name": "test_t49_report::test_t49_known_keys_and_typos",
+   "status": "passed",
+   "time_s": 0.006
+  },
+  {
+   "name": "test_t49_report::test_t49_missing_bootstrap_is_missing_evidence",
+   "status": "passed",
+   "time_s": 0.001
+  },
+  {
+   "name": "test_t49_report::test_nc_t49_fabricated_claim",
+   "status": "xfailed",
+   "time_s": 0.002
+  },
+  {
+   "name": "test_t49_report::test_t49_attached_bootstrap_is_read_by_schema",
+   "status": "passed",
+   "time_s": 0.008
+  },
+  {
+   "name": "test_t49_report::test_t49_claim_vocabulary",
+   "status": "passed",
+   "time_s": 0.002
+  },
+  {
+   "name": "test_t49_report::test_t49_strict_json",
+   "status": "passed",
+   "time_s": 0.002
+  }
+ ],
+ "data": "synthetic only; no manifest, ledger or TEST row read",
+ "platform_fp_notes": {
+  "frozen_path": {
+   "random_d32": {
+    "K": 158486,
+    "bitwise_equal_to_logits": true,
+    "block_spans": [
+     [
+      0,
+      158486
+     ]
+    ],
+    "n_block_calls": 1,
+    "single_block_of_width_K": true
+   },
+   "random_d8": {
+    "K": 158486,
+    "bitwise_equal_to_logits": true,
+    "block_spans": [
+     [
+      0,
+      158486
+     ]
+    ],
+    "n_block_calls": 1,
+    "single_block_of_width_K": true
+   },
+   "tiny_adapter": {
+    "K": 158486,
+    "bitwise_equal_to_logits": true,
+    "block_spans": [
+     [
+      0,
+      158486
+     ]
+    ],
+    "n_block_calls": 1,
+    "single_block_of_width_K": true
+   }
+  },
+  "meta_simulated_bit_identical_platform": {
+   "random_d32": {
+    "K": 158486,
+    "bitwise_equal_to_logits": true,
+    "block_spans": [
+     [
+      0,
+      32768
+     ],
+     [
+      32768,
+      65536
+     ],
+     [
+      65536,
+      98304
+     ],
+     [
+      98304,
+      131072
+     ],
+     [
+      131072,
+      158486
+     ]
+    ],
+    "n_block_calls": 5,
+    "single_block_of_width_K": false
+   },
+   "random_d8": {
+    "K": 158486,
+    "bitwise_equal_to_logits": true,
+    "block_spans": [
+     [
+      0,
+      32768
+     ],
+     [
+      32768,
+      65536
+     ],
+     [
+      65536,
+      98304
+     ],
+     [
+      98304,
+      131072
+     ],
+     [
+      131072,
+      158486
+     ]
+    ],
+    "n_block_calls": 5,
+    "single_block_of_width_K": false
+   },
+   "tiny_adapter": {
+    "K": 158486,
+    "bitwise_equal_to_logits": true,
+    "block_spans": [
+     [
+      0,
+      32768
+     ],
+     [
+      32768,
+      65536
+     ],
+     [
+      65536,
+      98304
+     ],
+     [
+      98304,
+      131072
+     ],
+     [
+      131072,
+      158486
+     ]
+    ],
+    "n_block_calls": 5,
+    "single_block_of_width_K": false
+   }
+  },
+  "negative_control_32768_blocks": {
+   "random_d32": {
+    "K": 158486,
+    "bitwise_equal_to_logits": false,
+    "block_spans": [
+     [
+      0,
+      32768
+     ],
+     [
+      32768,
+      65536
+     ],
+     [
+      65536,
+      98304
+     ],
+     [
+      98304,
+      131072
+     ],
+     [
+      131072,
+      158486
+     ]
+    ],
+    "n_block_calls": 5,
+    "single_block_of_width_K": false
+   },
+   "random_d8": {
+    "K": 158486,
+    "bitwise_equal_to_logits": false,
+    "block_spans": [
+     [
+      0,
+      32768
+     ],
+     [
+      32768,
+      65536
+     ],
+     [
+      65536,
+      98304
+     ],
+     [
+      98304,
+      131072
+     ],
+     [
+      131072,
+      158486
+     ]
+    ],
+    "n_block_calls": 5,
+    "single_block_of_width_K": false
+   },
+   "tiny_adapter": {
+    "K": 158486,
+    "bitwise_equal_to_logits": false,
+    "block_spans": [
+     [
+      0,
+      32768
+     ],
+     [
+      32768,
+      65536
+     ],
+     [
+      65536,
+      98304
+     ],
+     [
+      98304,
+      131072
+     ],
+     [
+      131072,
+      158486
+     ]
+    ],
+    "n_block_calls": 5,
+    "single_block_of_width_K": false
+   }
+  },
+  "platform": {
+   "machine": "AMD64",
+   "python": "3.13.11",
+   "system": "Windows",
+   "torch": "2.9.1+cpu"
+  }
+ }
+}

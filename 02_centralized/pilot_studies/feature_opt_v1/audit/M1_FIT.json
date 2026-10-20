@@ -1,0 +1,134 @@
+{
+ "label": "FULL_POPULATION",
+ "buckets": [
+  0,
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15,
+  16,
+  17,
+  18,
+  19,
+  20,
+  21,
+  22,
+  23,
+  24,
+  25,
+  26,
+  27,
+  28,
+  29,
+  30,
+  31,
+  32,
+  33,
+  34,
+  35,
+  36,
+  37,
+  38,
+  39,
+  40,
+  41,
+  42,
+  43,
+  44,
+  45,
+  46,
+  47,
+  48,
+  49,
+  50,
+  51,
+  52,
+  53,
+  54,
+  55,
+  56,
+  57,
+  58,
+  59,
+  60,
+  61,
+  62,
+  63
+ ],
+ "rows": {
+  "TRAIN": 52760314,
+  "VALIDATION_SELECT": 10930090
+ },
+ "fit_split": "TRAIN",
+ "clip": "recorded normalizers.json bounds",
+ "features": {
+  "log1p_time_since_prev_session_last_event_s": {
+   "mask": "prev_session_available",
+   "fitted_normalizer": {
+    "clip_lo": 0.0,
+    "clip_hi": 14.877890586853027,
+    "mean": 1.8615436239173029,
+    "std": 4.354925521013689,
+    "constant": false
+   },
+   "train_valid": {
+    "n": 8311461,
+    "mean": 11.8168906913688,
+    "std": 1.6580237946197298
+   },
+   "train_all_rows": {
+    "n": 52760314,
+    "mean": 1.8615436239173029,
+    "std": 4.354925521013732
+   },
+   "vs_valid_drift_only": {
+    "n": 1752249,
+    "mean": 11.48267597395858,
+    "std": 1.7738623312632695
+   },
+   "valid_mean": 11.8168906913688,
+   "valid_std": 1.6580237946197298,
+   "normalizer_reproduced_by_all_rows": true
+  },
+  "log1p_time_since_prev_user_event_s": {
+   "mask": "prev_user_event_available",
+   "fitted_normalizer": {
+    "clip_lo": 0.0,
+    "clip_hi": 14.877890586853027,
+    "mean": 4.950253279346413,
+    "std": 3.3790111405204004,
+    "constant": false
+   },
+   "train_valid": {
+    "n": 48555935,
+    "mean": 5.3788876148270335,
+    "std": 3.178172706038617
+   },
+   "train_all_rows": {
+    "n": 52760314,
+    "mean": 4.950253279346413,
+    "std": 3.3790111405204026
+   },
+   "vs_valid_drift_only": {
+    "n": 10580131,
+    "mean": 5.355895632149479,
+    "std": 3.0251783039302618
+   },
+   "valid_mean": 5.3788876148270335,
+   "valid_std": 3.178172706038617,
+   "normalizer_reproduced_by_all_rows": true
+  }
+ },
+ "seconds": 27.9
+}

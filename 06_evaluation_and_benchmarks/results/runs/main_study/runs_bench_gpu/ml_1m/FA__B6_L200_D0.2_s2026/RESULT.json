@@ -1,0 +1,478 @@
+{
+ "arm": "FA",
+ "bytes": {
+  "ledger": [
+   72270,
+   85427765280,
+   85428054360,
+   0
+  ]
+ },
+ "checkpoints": {
+  "CONTROLLED_BUDGET": {
+   "file": "ckpt/BM_ml_1m_FA__B6_L200_D0.2_s2026/endpoint_6.0.pt",
+   "mark": 6.0,
+   "sha256": "431666ac9e78a8bc95969f1313ec199f77eae54850deb747009c2d648cb861c0"
+  },
+  "PRACTICAL_BEST": {
+   "file": "ckpt/BM_ml_1m_FA__B6_L200_D0.2_s2026/best.pt",
+   "mark": 6.0,
+   "sha256": "431666ac9e78a8bc95969f1313ec199f77eae54850deb747009c2d648cb861c0"
+  }
+ },
+ "device": {
+  "cublas_workspace_config": ":4096:8",
+  "cuda": "13.0",
+  "cudnn": 92000,
+  "device_class": "NVIDIA_A40-FP32-DET",
+  "gpu_name": "NVIDIA A40",
+  "numerics": {
+   "cuda_matmul_allow_tf32": false,
+   "cudnn_allow_tf32": false,
+   "cudnn_deterministic": true,
+   "deterministic_algorithms": true,
+   "deterministic_warn_only": false,
+   "float32_matmul_precision": "highest",
+   "intra_op_threads": 16,
+   "torch": "2.13.0+cu130"
+  },
+  "physical_gpu": "0",
+  "torch": "2.13.0+cu130"
+ },
+ "device_class": "NVIDIA_A40-FP32-DET",
+ "evals": [
+  [
+   1,
+   50,
+   0.042747801523294944,
+   true,
+   "MAIN"
+  ],
+  [
+   2,
+   103,
+   0.06783062533179596,
+   true,
+   "MAIN"
+  ],
+  [
+   3,
+   156,
+   0.08729518999023705,
+   true,
+   "MAIN"
+  ],
+  [
+   4,
+   209,
+   0.09690419671355384,
+   true,
+   "MAIN"
+  ],
+  [
+   5,
+   260,
+   0.10300653942000938,
+   true,
+   "MAIN"
+  ],
+  [
+   6,
+   312,
+   0.10939518980241693,
+   true,
+   "MAIN"
+  ],
+  [
+   7,
+   364,
+   0.10607676219318984,
+   false,
+   "MAIN"
+  ],
+  [
+   8,
+   416,
+   0.10918558067357469,
+   false,
+   "MAIN"
+  ],
+  [
+   9,
+   471,
+   0.10887416255355509,
+   false,
+   "MAIN"
+  ],
+  [
+   10,
+   524,
+   0.10772973558724258,
+   false,
+   "MAIN"
+  ],
+  [
+   11,
+   576,
+   0.1073830418814253,
+   false,
+   "MAIN"
+  ],
+  [
+   12,
+   629,
+   0.11030374125292207,
+   true,
+   "MAIN"
+  ]
+ ],
+ "frozen": null,
+ "init_from": null,
+ "kind": "fl",
+ "run_id": "BM_ml_1m_FA__B6_L200_D0.2_s2026",
+ "spec": {
+  "arm": "FA",
+  "cfg": {
+   "dp": null,
+   "dropout_p": 0.1,
+   "endpoint_efe": 6.0,
+   "endpoint_rounds": 630,
+   "exposure_point": "end",
+   "lr_peak_local": 0.1,
+   "lr_shape": "fl_const",
+   "max_attempts": 2,
+   "method": "FA",
+   "mu": 0.0,
+   "n_shards": 2,
+   "pf": null,
+   "seed": 2026,
+   "server_opt": {
+    "beta1": 0.9,
+    "beta2": 0.99,
+    "lr": 0.01,
+    "name": "fedadam",
+    "tau": 0.001,
+    "v_init": "tau_squared"
+   },
+   "solver": {
+    "batch_size": 16,
+    "clip": 1.0,
+    "fused": null,
+    "lr": 0.1,
+    "optimizer": "sgd_m",
+    "passes": 1,
+    "weight_decay": 0.0
+   }
+  },
+  "client_lr": 0.1,
+  "client_opt": "sgd_m",
+  "data": {
+   "dataset": "ml_1m",
+   "fingerprint": "71a60c1d51b444581d3ac94a8de4e9418127e77ed5693a9eb219e4d60d8d5039",
+   "n_clients": 6040,
+   "n_decisions": 982089
+  },
+  "device_class": "NVIDIA_A40-FP32-DET",
+  "dropout": [
+   0.2
+  ],
+  "exposure_budget": {
+   "dropout_p": 0.1,
+   "endpoint_efe": 6.0,
+   "formula": "rounds = ceil(60 N_clients / (576 P)) (launch_fl.fa_rounds, 06J \u00a73)",
+   "group": 64,
+   "n_clients": 6040,
+   "passes": 1,
+   "rounds": 630
+  },
+  "knobs": {
+   "batch": 16,
+   "clip": 1.0,
+   "dropout_p": 0.1,
+   "endpoint_efe": 6.0,
+   "group": 64,
+   "m": 1024,
+   "max_attempts": 2,
+   "mu": 0.01,
+   "n_shards": 2,
+   "passes": 2,
+   "pf_clip": 1.0,
+   "pf_lam": 0.0001,
+   "rounds": 6827,
+   "rounds_1024": 384,
+   "s_cal_rounds": 20,
+   "s_cal_seed": 2026,
+   "sampling": "sweep",
+   "weight_decay": 1e-05
+  },
+  "local_passes": 1,
+  "lr_mult": 1.0,
+  "lr_peak_base": 0.0007114121116984968,
+  "lr_shape": "fl_const",
+  "max_len": 200,
+  "max_rounds": 630,
+  "plan": {
+   "group_size": 64,
+   "sampling": "sweep"
+  },
+  "provenance": {
+   "ft_cell": "FT_C_f0.3_P4",
+   "pins": {
+    "device/SELECTION_FT_C.json": "e47965d2f4486fc2c30140a8ee14e79686a842decb091b3dff1de5646716c10c",
+    "fl/FL_TUNING_SELECTION.json": "9bca186e5025f5caa9e762f3c425fb3151923b79e60f01e6ecb063aac9c715ec",
+    "fl/FL_WARM_SELECTION_S7.json": "d67a0a851665495b092abbba4456f26a3423d6ef21665f5a0e2b65e2d78dc000",
+    "fl/FL_WARM_SELECTION_S8.json": "8b79d3052799dfa0ba208dce5db138da88aaa7024ba6511a374c59ce8c55a98a"
+   },
+   "tuning_winner_label": "fedadam|eta=0.01|m=1|shape=fl_const|client=sgd_m|clr=0.1|passes=1",
+   "warm_winners": {
+    "FA_WARM": "f=0.25|sf=0.1",
+    "FA_WARM_FROZEN": "f=1|sf=0.1"
+   }
+  },
+  "role": "MAIN",
+  "server_lr": 0.01,
+  "server_opt": "fedadam",
+  "upload_codec": null,
+  "variant": "SASREC_D64_B2"
+ },
+ "spec_sha256": "bdcdb82a56471a4c447288353dca3481bda6c37ed66e0a16ca9f727ee66ba954",
+ "status": "DONE_MAIN",
+ "summary": {
+  "counters": {
+   "coverage_by_sweep": {
+    "0": {
+     "clients": 5431,
+     "fraction": 0.8991721854304636
+    },
+    "1": {
+     "clients": 5472,
+     "fraction": 0.9059602649006623
+    },
+    "2": {
+     "clients": 5478,
+     "fraction": 0.9069536423841059
+    },
+    "3": {
+     "clients": 5440,
+     "fraction": 0.9006622516556292
+    },
+    "4": {
+     "clients": 5437,
+     "fraction": 0.9001655629139073
+    },
+    "5": {
+     "clients": 5427,
+     "fraction": 0.8985099337748345
+    },
+    "6": {
+     "clients": 3450,
+     "fraction": 0.5711920529801324
+    }
+   },
+   "efe": 5.986865752492901,
+   "exposures": 5879635,
+   "max_visits": 7,
+   "min_visits": 3,
+   "noop_visits": 0,
+   "retries": 0,
+   "rounds": 630,
+   "steps": 385392,
+   "steps_hist": {
+    "10": 1325,
+    "100": 5,
+    "109": 7,
+    "11": 992,
+    "116": 7,
+    "12": 723,
+    "13": 909,
+    "14": 693,
+    "145": 6,
+    "15": 603,
+    "16": 516,
+    "17": 467,
+    "18": 497,
+    "19": 553,
+    "2": 6479,
+    "20": 455,
+    "21": 362,
+    "22": 283,
+    "23": 271,
+    "24": 263,
+    "25": 341,
+    "26": 263,
+    "27": 223,
+    "28": 171,
+    "29": 170,
+    "3": 4532,
+    "30": 160,
+    "31": 154,
+    "32": 209,
+    "33": 171,
+    "34": 114,
+    "35": 152,
+    "36": 61,
+    "37": 103,
+    "38": 97,
+    "39": 107,
+    "4": 3086,
+    "40": 98,
+    "41": 41,
+    "42": 70,
+    "43": 74,
+    "44": 63,
+    "45": 56,
+    "46": 93,
+    "47": 43,
+    "48": 63,
+    "49": 45,
+    "5": 2476,
+    "50": 54,
+    "51": 25,
+    "52": 63,
+    "53": 68,
+    "54": 49,
+    "55": 53,
+    "56": 26,
+    "57": 32,
+    "58": 18,
+    "59": 30,
+    "6": 1910,
+    "60": 19,
+    "61": 19,
+    "62": 11,
+    "63": 28,
+    "64": 29,
+    "65": 7,
+    "66": 13,
+    "68": 7,
+    "7": 1955,
+    "70": 7,
+    "72": 12,
+    "73": 12,
+    "74": 6,
+    "76": 17,
+    "77": 19,
+    "78": 13,
+    "79": 14,
+    "8": 1687,
+    "80": 13,
+    "81": 5,
+    "82": 5,
+    "83": 6,
+    "84": 4,
+    "9": 1235,
+    "95": 12
+   },
+   "visits": 36135,
+   "wasted_steps": 0
+  },
+  "lr_table_digest": "edd1842bbb98ad9bfe6e9fd844e8f43acd54eac5a6fd77b734d5537ae64a02c8",
+  "rounds": 630
+ },
+ "timing": {
+  "mean_round_s": 132.4987367630951,
+  "median_round_s": 13.988947032950819,
+  "n_clients": 6040,
+  "n_decisions": 982089,
+  "rounds_full_run": 630,
+  "rounds_this_leg": 630,
+  "wall_s_this_leg": 83474.35
+ },
+ "utc": "2026-10-05T13:17:44Z",
+ "validation": {
+  "CONTROLLED_BUDGET": {
+   "ALL": {
+    "hr@10": 0.2192779065915866,
+    "hr@20": 0.332891685988738,
+    "mrr@20": 0.08544351107926147,
+    "n_unreachable": 0,
+    "n_users": 6038,
+    "ndcg@10": 0.11030374125292207,
+    "ndcg@20": 0.1389649227194702
+   },
+   "BAND": {
+    "hr@10": 0.22958057395143489,
+    "hr@20": 0.3465783664459161,
+    "mrr@20": 0.08577701329133987,
+    "n_unreachable": 0,
+    "n_users": 906,
+    "ndcg@10": 0.11274009743747215,
+    "ndcg@20": 0.14215859617576562
+   },
+   "BAND_COVERED_TARGET": {
+    "hr@10": 0.21964167219641673,
+    "hr@20": 0.3334439283344393,
+    "mrr@20": 0.08558525545729607,
+    "n_unreachable": 0,
+    "n_users": 6028,
+    "ndcg@10": 0.11048672688870992,
+    "ndcg@20": 0.1391954551061979
+   },
+   "BAND_UNCOVERED_TARGET": {
+    "hr@10": 0.0,
+    "hr@20": 0.0,
+    "mrr@20": 0.0,
+    "n_unreachable": 0,
+    "n_users": 10,
+    "ndcg@10": 0.0,
+    "ndcg@20": 0.0
+   },
+   "OTHERS": {
+    "hr@10": 0.21745908028059235,
+    "hr@20": 0.3304754481683554,
+    "mrr@20": 0.08538463481189146,
+    "n_unreachable": 0,
+    "n_users": 5132,
+    "ndcg@10": 0.10987362848924274,
+    "ndcg@20": 0.1384011136486589
+   }
+  },
+  "PRACTICAL_BEST": {
+   "ALL": {
+    "hr@10": 0.2192779065915866,
+    "hr@20": 0.332891685988738,
+    "mrr@20": 0.08544351107926147,
+    "n_unreachable": 0,
+    "n_users": 6038,
+    "ndcg@10": 0.11030374125292207,
+    "ndcg@20": 0.1389649227194702
+   },
+   "BAND": {
+    "hr@10": 0.22958057395143489,
+    "hr@20": 0.3465783664459161,
+    "mrr@20": 0.08577701329133987,
+    "n_unreachable": 0,
+    "n_users": 906,
+    "ndcg@10": 0.11274009743747215,
+    "ndcg@20": 0.14215859617576562
+   },
+   "BAND_COVERED_TARGET": {
+    "hr@10": 0.21964167219641673,
+    "hr@20": 0.3334439283344393,
+    "mrr@20": 0.08558525545729607,
+    "n_unreachable": 0,
+    "n_users": 6028,
+    "ndcg@10": 0.11048672688870992,
+    "ndcg@20": 0.1391954551061979
+   },
+   "BAND_UNCOVERED_TARGET": {
+    "hr@10": 0.0,
+    "hr@20": 0.0,
+    "mrr@20": 0.0,
+    "n_unreachable": 0,
+    "n_users": 10,
+    "ndcg@10": 0.0,
+    "ndcg@20": 0.0
+   },
+   "OTHERS": {
+    "hr@10": 0.21745908028059235,
+    "hr@20": 0.3304754481683554,
+    "mrr@20": 0.08538463481189146,
+    "n_unreachable": 0,
+    "n_users": 5132,
+    "ndcg@10": 0.10987362848924274,
+    "ndcg@20": 0.1384011136486589
+   }
+  }
+ }
+}

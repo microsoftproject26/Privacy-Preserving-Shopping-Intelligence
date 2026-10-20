@@ -1,0 +1,678 @@
+"""v4int.reeval_p2 (P2-07 + P2-13, owner: Phase-2 scoring) - a SHIM around the UNEDITED v4int.reeval (pinned by sha256,
+REEVAL_SHA256, checked before every run). It scores Phase-2 checkpoints through reeval's own frozen T3 path on the
+registered A40 class; it adds admissions and checks, never a new evaluation path.
+
+  python -B code/v4int/reeval_p2.py <exactly v4int.reeval's arguments> [--dry-run]
+
+Binding spec: contracts/PREG2.md (REGISTERED, DL 411, sha256 be0561ab...) §4.1 (C0), §6.3 (T0a: S1-S8), §9; company/plans/
+PHASE2_IMPLEMENTATION_PLAN.md P2-07 / P2-13; contrasts file of record company/gates/P2_CONTRASTS_v3.json (Q8 in; DL 427).
+
+Admitted (everything else refuses BEFORE any checkpoint byte is read):
+  P2-07  --arm-label P2_ANCHOR_PRE_CALIB on --role CALIBRATION, and CALIBRATION for nothing else: the PRE central
+         checkpoint theta_pre only (--expect-sha256 must be the registered cf08588c..., then reeval's own sha check,
+         classification as the registered PRE source with every GATE-B / FIX-REEVAL check, and check_pre_init_record
+         = the run's PRETRAIN_FOR_FL_INIT.json fl_init), --ckpt-kind central, SASREC_D64_B2 / SMALL, seed 2026,
+         --selection-rule CONTROLLED_BUDGET (theta_pre = the 6.0 endpoint; one anchor, one label). Key: the
+         CALIBRATION role key (REGISTRY_V2 CALIBRATION pair, train side key-only), exactly as reeval scores PRE on a
+         panel. Output = reeval's: <out>/RESULT_ROWS.json {role CALIBRATION, rows: method P2_ANCHOR_PRE_CALIB, eval
+         manifest CALIB_VALIDATION_5_100_32768} + REEVAL_RECORD.json = what v4int.p2_select.read_anchor reads.
+  P2-13  on --role MAIN and MAIN_TEST (the MAIN users' RETRO_TEST role; every Q contrast is on MAIN users, PREG2 §9.1):
+    P2_WSTAR                 FL payload of the MAIN P2_W run P2_WSTAR_SMALL_s<2026|2027> (launch_fl): every LAUNCH leg
+                             agrees (arm / run id / arm spec sha / config digest / label / p2_selection); PRODUCTION, not
+                             smoke, fl05 role MAIN; LAUNCH arm P2_W (a Phase-1 FL run never qualifies); the arm spec hashes
+                             to its sha and passes launch_fl.check_p2_spec (= p2_arm_spec of its own recipe); spec role
+                             MAIN, seed = --seed; init_from = theta_pre (pinned sha256 / state digest); the bound
+                             P2_WARM_SELECTION_FINAL (launch_fl.bind_p2_selection record: registered path name, format,
+                             stage FINAL, recipe / label = the spec's, sha256 = the registered file's); --ckpt-kind pf iff
+                             the recipe has the WC5 personal head (method PF; reeval's PF store pairing unchanged);
+                             a LoRA recipe (WC1-WC4) needs the merged-LoRA payload of fl.peft.install_peft (theta = the
+                             merged base-architecture state; p2_lora format / r / alpha = r / targets / spec lora seed /
+                             merged digest = digest(theta) / lineage theta_pre digest) and a non-LoRA recipe refuses a
+                             p2_lora payload. (launch_fl f4e56b80 still refuses LoRA recipes in check_p2_spec: P2-04 is
+                             not wired, so a LoRA W* fails closed until it is.)
+    P2_C1_FT_CENTRAL_FULL /  central checkpoint of the MAIN C1 run (v4int.central_ft): run id = c1_run_id(variant, MAIN,
+    P2_C1_FT_CENTRAL_FROZEN  peak, seed), RUN_START p2_c1 identity (arm, variant, role MAIN, theta_pre pins, continuation
+                             disabled, frozen keys iff FROZEN), key base run label / initialization block P2_THETA_PRE,
+                             MAIN pair providers, the bound P2_C1_SELECTION (format / stage / variant / peak; sha256 = the
+                             registered file's); checkpoint kind = its file, endpoint mark 6.0, best mark >= 0.5, meta
+                             p2_c1 = the identity. Then reeval's MAIN-pair central path (theta0, config, state digest).
+    P2_C2_CFULL_SMALL        central checkpoint of the C2 run (v4int.c_full_small), admitted as a registered central
+                             source (reeval's CENTRAL_SOURCES pattern, for this call only): run id prefix
+                             P2_C2_CFULL_SMALL_, run label P2_C2_CFULL_SMALL, FULL_TRAIN_5_100_TIEBREAK ->
+                             MAIN_VALIDATION_5_100_131072 bound to REGISTRY_V2_FULL_EXT.json (FIX-REEVAL binding),
+                             SASREC_D64_B2 / SMALL, seed 2026, best.pt = PRACTICAL_BEST / endpoint_6.0.pt =
+                             CONTROLLED_BUDGET; key = the source train side on MAIN / MAIN_TEST (as C_FULL).
+  Every P2 arm: seeds per PREG2 §9.5; checkpoint file by rule (best.pt = PRACTICAL_BEST, endpoint_6.0.pt =
+  CONTROLLED_BUDGET); FL payload efe >= 0.5 for best.pt (mark 0 = theta_pre is never a candidate, §5.1) and >= 6.0
+  for the endpoint.
+Refused: every Phase-1 label (PRE / FA_WARM_FROZEN / FT_PRE / C_FULL with the S5 reason: their TEST rows come once from
+the Phase-1 plan; C_SMALL, FA, ... are not Phase-2 arms); the not-yet-buildable P2 labels (PENDING_LABELS: the DP chain
+P2-08a, DPFTRL / SECAGG Part B, FT_P2_WSTAR = launch_device); every other role (panels, UNSEEN_VAL, TRUE_COLD, other
+TEST roles); any TEST2 role (owner O2 = NO, DL 415).
+TEST roles (T0a, PREG2 §6.3 S1/S2): refused before any checkpoint byte is read unless (1) v4int.reeval.test_gate_ok
+(the DATA-09 gate) AND d9_gate.check_test_gate are open, (2) company/gates/P2_METHODS_LOCK.json and
+P2_SCRIPT_FREEZE.json exist, (3) the hash-chain-verified TEST_EXPOSURE_REGISTER holds a LOCKED_EVALUATION / RETRO_TEST
+entry for the Phase-1 ALL_METHODS_LOCK sha AND one whose all_methods_lock_sha256 is the P2_METHODS_LOCK file sha (and
+names P2_METHODS_LOCK in its description), and (4) the P2 lock (format PPSI_V4_P2_METHODS_LOCK_1, draft false, the PREG2
+sha, the P2_CONTRASTS_v3 self sha) seals (arm label, seed, rule) with this checkpoint's sha256 and does not declare the
+arm not run (p2_lock_arm: the layout tools/p2_report.check_p2_lock reads; P2-00's tools/p2_lock.py is not yet
+written, so this is the one alignment point). Then reeval's own
+gated TEST route (--registry-ext REGISTRY_V2_TEST_EXT.json, test_roles.install / resolve_role) runs unchanged.
+S8: nothing here prints a value. A P2-arm dry run prints no checkpoint efe / round / mark (they are replaced by
+SEALED_S8). Rows add study PREG2, p2_arm, p2_source_kind, p2_role_reading (none a comparison-key field); REEVAL_RECORD
+adds `p2_reeval` (task, authority, shas, checks, the TEST lock binding).
+How: the reeval module attributes below are replaced for ONE run() call inside p2_context and restored afterwards
+(ROLES / SOURCE_ROLES + CALIBRATION and CENTRAL_SOURCES PRE arm label = the anchor label for the anchor only;
+CENTRAL_SOURCES = {P2_C2_CFULL_SMALL, PRE} for C2 only; source_fl / check_warm_line / check_fl_payload for P2_WSTAR
+only; source_central for the central kinds; load_central for C1 (its checkpoint object is checked after reeval's CUDA
+export, before any weight is used; nothing here imports torch before that export in a real run); label_rows /
+write_outputs for every P2 call). reeval.py is not edited.
+"""
+from __future__ import annotations
+
+import contextlib
+import json
+import math
+import sys
+from pathlib import Path
+from typing import Mapping, Optional
+
+HERE = Path(__file__).resolve().parent
+CODE = HERE.parent
+V4 = CODE.parent
+if str(CODE) not in sys.path:
+    sys.path.insert(0, str(CODE))
+sys.dont_write_bytecode = True
+
+from v4int import reeval as R  # noqa: E402  (stdlib-only at import)
+
+TASK = "P2-07 + P2-13 v4int.reeval_p2"
+PREG2_SHA256 = "be0561abe5ceec450d3a75bef49853a3c480d3847f75559dd94e9e0545df18a8"
+AUTHORITY = (f"contracts/PREG2.md (REGISTERED, DL 411, sha256 {PREG2_SHA256}) §4.1, §6.3 S1-S8, §9; "
+             "company/plans/PHASE2_IMPLEMENTATION_PLAN.md P2-07 / P2-13; company/gates/P2_CONTRASTS_v3.json (DL 427)")
+REEVAL_SHA256 = "833f0c981b0622e717d3309fe9a782d46905f67da45c2c74fa8c063fc7ec09f1"   # the wrapped v4int/reeval.py
+CONTRASTS_PATH = V4 / "company" / "gates" / "P2_CONTRASTS_v3.json"
+CONTRASTS_SELF_SHA256 = "e98580564b618f411db7e7e328fbcedb6e1134f4be5b65806b34e12229373799"
+PRE_CHECKPOINT_SHA256 = "cf08588c11f019cc760f129ba7ba6b23806297660e0170f9938436a5cb88cf78"   # theta_pre (= central_ft)
+PRE_STATE_DIGEST = "ee33345be4f20b61a53cd80fa11e1af702031bfcd1425af490825cd0019dc54a"
+VARIANT, RECIPE = "SASREC_D64_B2", "SMALL_SASREC_D64_B2"
+PB, CB = "PRACTICAL_BEST", "CONTROLLED_BUDGET"
+RULE_FILES = {PB: R.BEST_FILE, CB: R.ENDPOINT_FILE}
+SEALED = "SEALED_S8"
+
+ANCHOR_LABEL = "P2_ANCHOR_PRE_CALIB"               # = the label v4int.p2_select.anchor_adapter reads
+ANCHOR_ROLE = "CALIBRATION"
+ANCHOR_EVAL_MANIFEST = "CALIB_VALIDATION_5_100_32768"   # = v4int.p2_select.CALIB_EVAL_MANIFEST
+ANCHOR_SEED = 2026
+ANCHOR_RULE = CB
+P2_ROLES = ("MAIN",)
+P2_TEST_ROLES = ("MAIN_TEST",)
+MAIN_PAIR = {"train": "MAIN_TRAIN_5_100_131072", "eval": "MAIN_VALIDATION_5_100_131072"}
+ARMS = {                                           # PREG2 §4.2 / §4.3 / §5; seeds §9.5
+    "P2_WSTAR": {"kind": "FL", "seeds": (2026, 2027), "launch_arm": "P2_W", "run_id": "P2_WSTAR_SMALL_s{seed}"},
+    "P2_C1_FT_CENTRAL_FULL": {"kind": "C1", "variant": "FULL", "seeds": (2026, 2027)},
+    "P2_C1_FT_CENTRAL_FROZEN": {"kind": "C1", "variant": "FROZEN", "seeds": (2026, 2027)},
+    "P2_C2_CFULL_SMALL": {"kind": "C2", "seeds": (2026,)},
+}
+PENDING_LABELS = {                                 # P2 labels of P2_CONTRASTS_v3 this shim cannot score yet
+    "P2_WSTAR_FA1024": "P2-08a (the DP-FedAvg chain for W*: launch_fl has no P2 DP arm yet)",
+    "P2_WSTAR_DP8": "P2-08a (the DP-FedAvg chain for W*: launch_fl has no P2 DP arm yet)",
+    "P2_WSTAR_DP1": "P2-08a (the DP-FedAvg chain for W*: launch_fl has no P2 DP arm yet)",
+    "P2_WSTAR_DPFTRL8": "P2-08b (Part B: DP-FTRL)",
+    "P2_WSTAR_SECAGG": "P2-09 (Part B: secure-aggregation simulation)",
+    "FT_P2_WSTAR": "the per-user local FT of W* (a launch_device arm, scored like FT_PRE, not a reeval source)",
+}
+S5_LABELS = ("PRE", "FA_WARM_FROZEN", "FT_PRE", "C_FULL")   # PREG2 §6.3 S5: TEST rows produced once by the Phase-1 plan
+C2_SOURCE = {"arm_label": "P2_C2_CFULL_SMALL", "ext": "REGISTRY_V2_FULL_EXT.json", "ext_role": "C_FULL",
+             "train": "FULL_TRAIN_5_100_TIEBREAK", "eval": "MAIN_VALIDATION_5_100_131072",
+             "run_id_prefix": "P2_C2_CFULL_SMALL_", "run_label": "P2_C2_CFULL_SMALL", "variant": VARIANT,
+             "recipe_id": RECIPE, "seed": 2026, "descriptive_seeds": (),
+             "checkpoint_files": (R.BEST_FILE, R.ENDPOINT_FILE), "rule_files": dict(RULE_FILES),
+             "own_eval_roles": ("MAIN", "MAIN_TEST"), "view_module": "v4data08.d8_registry"}   # = c_full_small's view
+SOURCE_KIND = {"ANCHOR": "PRE_ANCHOR_CENTRAL", "C1": "CENTRAL_C1", "C2": "CENTRAL_C2"}
+ROLE_READING = {ANCHOR_ROLE: "SELECTION_ANCHOR (PREG2 §4.1 C0: theta_pre on CALIB_VALIDATION, a CALIB selection value)",
+                "MAIN": "POST_VALIDATION_EXPLORATORY (PREG2 §6.4: Phase-2 arms on MAIN VALIDATION)",
+                "MAIN_TEST": "P2_SITTING_RETRO_TEST (T0a, PREG2 §6.3; the contrast label CONFIRMATORY_P2 / TERTIARY_P2 "
+                             "is tools/p2_report's)"}
+# registered files the MAIN runs were bound to (launch_fl.bind_p2_selection / central_ft.bind_c1_selection)
+SELECTION_FINAL = V4 / "contracts" / "fl" / "P2_WARM_SELECTION_FINAL.json"
+SELECTION_C1 = V4 / "contracts" / "fl" / "P2_C1_SELECTION.json"
+# T0a TEST binding (PREG2 §6.3 S1 / S2); None -> v4data09.d9_gate defaults (ALL_METHODS_LOCK / TEST_EXPOSURE_REGISTER)
+P2_METHODS_LOCK = V4 / "company" / "gates" / "P2_METHODS_LOCK.json"
+P2_SCRIPT_FREEZE = V4 / "company" / "gates" / "P2_SCRIPT_FREEZE.json"
+P2_LOCK_FORMAT = "PPSI_V4_P2_METHODS_LOCK_1"        # = tools/p2_report.P2_LOCK_FORMAT (the P2-00 interface P2-12 reads)
+AML_PATH: Optional[Path] = None
+REGISTER_PATH: Optional[Path] = None
+LOCKED_EVALUATION = "LOCKED_EVALUATION"
+TEST2_MARK = "TEST2"
+
+
+class P2ReevalRefused(R.ReevalRefused):
+    pass
+
+
+def _refuse(msg: str):
+    raise P2ReevalRefused(msg)
+
+
+def _canon(obj) -> str:
+    return json.dumps(obj, sort_keys=True, separators=(",", ":"), default=str)
+
+
+def _file_sha(p: Path) -> Optional[str]:
+    return R._sha(p) if Path(p).is_file() else None
+
+
+def check_reeval_unchanged() -> str:
+    """The wrapped module must be the registered, byte-identical v4int/reeval.py (the shim's checks assume its code)."""
+    got = R._sha(Path(R.__file__))
+    if got != REEVAL_SHA256:
+        _refuse(f"v4int/reeval.py sha256 {got} is not the registered {REEVAL_SHA256}: the P2 shim refuses to wrap it")
+    return got
+
+
+# ------------------------------------------------------------------------------------------------ admissions (no file)
+def label_plan(args) -> dict:
+    """Every P2 refusal that needs no file (before reeval.check_args and before any read)."""
+    role, label = str(args.role), str(args.arm_label or "")
+    if TEST2_MARK in role.upper():
+        _refuse(f"role {role}: TEST2 is not part of this study (owner O2 = NO, DL 415)")
+    if not R.ARM_LABEL_RE.match(label):
+        _refuse(f"--arm-label {label!r} is not an arm label ([A-Z][A-Z0-9_]*)")
+    if label in S5_LABELS:
+        _refuse(f"--arm-label {label} is a Phase-1 arm: its rows are produced once by the Phase-1 plan and hash-bound "
+                "into the Phase-2 block (PREG2 §6.3 S5); it is never scored through the P2 path")
+    if label in PENDING_LABELS:
+        _refuse(f"--arm-label {label} is not admitted by reeval_p2 yet: {PENDING_LABELS[label]}")
+    if role == ANCHOR_ROLE or label == ANCHOR_LABEL:
+        return anchor_plan(args)
+    arm = ARMS.get(label)
+    if arm is None:
+        _refuse(f"--arm-label {label} is not a Phase-2 arm {sorted(ARMS) + [ANCHOR_LABEL]} (Phase-1 arms are scored by "
+                "v4int.reeval under the Phase-1 plan; F2: the P2_ prefix)")
+    test = R.is_test_role(role)
+    if role not in P2_ROLES + P2_TEST_ROLES:
+        _refuse(f"role {role} is not a Phase-2 scoring role {P2_ROLES + P2_TEST_ROLES} (every Q contrast is on MAIN "
+                "users, PREG2 §9.1)")
+    kind = arm["kind"]
+    want_kind = ("fl", "pf") if kind == "FL" else ("central",)
+    if args.ckpt_kind not in want_kind:
+        _refuse(f"{label} is a {kind} checkpoint: --ckpt-kind {'/'.join(want_kind)}, not {args.ckpt_kind}")
+    if args.variant != VARIANT or args.recipe_id != RECIPE:
+        _refuse(f"{label} is {VARIANT} / {RECIPE}, not {args.variant} / {args.recipe_id}")
+    if int(args.seed) not in arm["seeds"]:
+        _refuse(f"{label} is registered at seeds {arm['seeds']} (PREG2 §9.5), not {args.seed}")
+    if Path(args.ckpt).name != RULE_FILES.get(args.selection_rule):
+        _refuse(f"{label}: --selection-rule {args.selection_rule} scores {RULE_FILES.get(args.selection_rule)}, not "
+                f"{Path(args.ckpt).name} (best.pt = PRACTICAL_BEST, endpoint_6.0.pt = CONTROLLED_BUDGET)")
+    return {"label": label, "kind": kind, "role": role, "test": test, "seed": int(args.seed),
+            "rule": args.selection_rule}
+
+
+def anchor_plan(args) -> dict:
+    """P2-07: role CALIBRATION <-> the anchor label, theta_pre only (the sha pin is checked before any read)."""
+    label, role = str(args.arm_label), str(args.role)
+    if label != ANCHOR_LABEL or role != ANCHOR_ROLE:
+        _refuse(f"role {ANCHOR_ROLE} admits only --arm-label {ANCHOR_LABEL} (PREG2 §4.1 C0), and that label only on "
+                f"{ANCHOR_ROLE}: got --arm-label {label} on --role {role}")
+    want = {"--ckpt-kind": (args.ckpt_kind, "central"), "--variant": (args.variant, VARIANT),
+            "--recipe-id": (args.recipe_id, RECIPE), "--seed": (int(args.seed), ANCHOR_SEED),
+            "--selection-rule": (args.selection_rule, ANCHOR_RULE),
+            "--expect-sha256": (str(args.expect_sha256 or "").lower(), PRE_CHECKPOINT_SHA256),
+            "checkpoint file": (Path(args.ckpt).name, R.ENDPOINT_FILE)}
+    bad = {k: got for k, (got, exp) in want.items() if got != exp}
+    if args.pf_store is not None or args.expect_pf_store_sha256:
+        bad["--pf-store"] = str(args.pf_store)
+    if args.registry_ext is not None:
+        bad["--registry-ext"] = str(args.registry_ext)
+    if bad:
+        _refuse(f"{ANCHOR_ROLE} scores the PRE checkpoint theta_pre only (registered sha256 {PRE_CHECKPOINT_SHA256}, "
+                f"endpoint_6.0.pt, central, {VARIANT}, seed {ANCHOR_SEED}, {ANCHOR_RULE}); refused: {bad}")
+    return {"label": label, "kind": "ANCHOR", "role": role, "test": False, "seed": ANCHOR_SEED, "rule": ANCHOR_RULE}
+
+
+# ------------------------------------------------------------------------------------------------ TEST binding (T0a)
+def p2_lock_arm(lock, *, label: str, seed: int, rule: str, checkpoint_sha256: str) -> dict:
+    """THE P2-LOCK ADAPTER (one edit, here, if P2-00's tools/p2_lock.py writes another layout). The layout is the one
+    tools/p2_report.check_p2_lock (P2-12) reads: format PPSI_V4_P2_METHODS_LOCK_1, draft false, preg2_sha256,
+    p2_contrasts_self_sha256, sealed_arms = [{arm, seed, rule, checkpoint_sha256}], declared_not_run = [{arm, seed
+    (null = every seed), reason}]. Exactly one sealed entry must be (label, seed, rule), with this checkpoint's sha256,
+    and the arm must not be declared not run (S4). The lock's self_sha256 is p2_report's to verify; here the file is
+    bound by its sha256 through the LOCKED_EVALUATION register entry (p2_test_gate)."""
+    if not isinstance(lock, Mapping):
+        _refuse("P2_METHODS_LOCK is not a JSON object")
+    bad = {k: lock.get(k) for k, want in (("format", P2_LOCK_FORMAT), ("draft", False), ("preg2_sha256", PREG2_SHA256),
+                                           ("p2_contrasts_self_sha256", CONTRASTS_SELF_SHA256)) if lock.get(k) != want}
+    if bad:
+        _refuse(f"P2_METHODS_LOCK is not a registered {P2_LOCK_FORMAT} lock of this study: {bad} (S1)")
+    for d in lock.get("declared_not_run") or []:
+        if isinstance(d, Mapping) and d.get("arm") == label and d.get("seed") in (None, int(seed)):
+            _refuse(f"{label} seed {seed} is declared not run in P2_METHODS_LOCK (S4): it is never scored on RETRO_TEST")
+    hits = [e for e in lock.get("sealed_arms") or []
+            if isinstance(e, Mapping) and (e.get("arm"), e.get("seed"), e.get("rule")) == (label, int(seed), rule)]
+    if len(hits) != 1:
+        _refuse(f"P2_METHODS_LOCK sealed_arms binds {len(hits)} entries for ({label}, seed {seed}, {rule}) (expected "
+                "exactly 1; S4: an arm without a sealed checkpoint is declared not run)")
+    if str(hits[0].get("checkpoint_sha256") or "").lower() != str(checkpoint_sha256).lower():
+        _refuse(f"P2_METHODS_LOCK binds ({label}, seed {seed}, {rule}) to checkpoint "
+                f"{hits[0].get('checkpoint_sha256')}, not {checkpoint_sha256}")
+    return {k: hits[0].get(k) for k in ("arm", "seed", "rule", "checkpoint_sha256") if k in hits[0]}
+
+
+def p2_test_gate(args, plan: Mapping) -> dict:
+    """T0a (PREG2 §6.3 S1 / S2), before any checkpoint byte is read: the DATA-09 gate (reeval's hook and the gate record)
+    AND the P2 lock: P2_METHODS_LOCK + P2_SCRIPT_FREEZE on this host, the two LOCKED_EVALUATION / RETRO_TEST register
+    entries (Phase-1 lock sha, P2 lock sha) in the verified hash chain, and the arm bound in the lock."""
+    from v4data09 import d9_gate as G
+    if not R.test_gate_ok(args.role):
+        _refuse(f"TEST role {args.role} refused: the DATA-09 TEST gate is closed (v4int.reeval.test_gate_ok)")
+    try:
+        g = G.check_test_gate(AML_PATH, REGISTER_PATH)
+    except G.TestGateRefused as e:
+        _refuse(f"TEST role {args.role} refused: the DATA-09 TEST gate is closed ({e})")
+    lock_p, frz_p = Path(P2_METHODS_LOCK), Path(P2_SCRIPT_FREEZE)
+    for p, what in ((lock_p, "P2_METHODS_LOCK"), (frz_p, "P2_SCRIPT_FREEZE")):
+        if not p.is_file():
+            _refuse(f"TEST role {args.role} refused: {what} ({p}) is not registered on this host - PREG2 §6.3 S2: the P2 "
+                    "lock and freeze precede the first TEST reeval of any arm")
+    lock_sha, frz_sha = R._sha(lock_p), R._sha(frz_p)
+    reg = G._strict_json(Path(g.register_path))
+    tool = G._register_tool()
+    errs = tool.verify(reg)
+    if errs:
+        _refuse(f"TEST_EXPOSURE_REGISTER hash chain does not verify: {errs}")
+    ents = [e for e in reg.get("entries") or [] if isinstance(e, Mapping)
+            and e.get("access_purpose") == LOCKED_EVALUATION and e.get("split") == "RETRO_TEST"]
+    p1 = [e for e in ents if e.get("all_methods_lock_sha256") == g.lock_sha256]
+    p2 = [e for e in ents if e.get("all_methods_lock_sha256") == lock_sha]
+    if not p1:
+        _refuse("TEST refused: no LOCKED_EVALUATION / RETRO_TEST register entry for the Phase-1 ALL_METHODS_LOCK "
+                f"{g.lock_sha256} (PREG2 §6.3 S2)")
+    if not p2:
+        _refuse(f"TEST refused: no LOCKED_EVALUATION / RETRO_TEST register entry whose all_methods_lock_sha256 binds "
+                f"P2_METHODS_LOCK {lock_sha} (PREG2 §6.3 S2)")
+    if "P2_METHODS_LOCK" not in str(min(p2, key=lambda e: e["entry_id"]).get("observations_description") or ""):
+        _refuse("TEST refused: the Phase-2 LOCKED_EVALUATION entry does not name P2_METHODS_LOCK in its "
+                "observations_description (PREG2 §13 item 6; as tools/p2_report.check_locked_evaluations)")
+    try:
+        lock = R._strict(lock_p)
+    except (OSError, ValueError) as e:
+        _refuse(f"P2_METHODS_LOCK unreadable ({e})")
+    arm = p2_lock_arm(lock, label=plan["label"], seed=plan["seed"], rule=plan["rule"],
+                      checkpoint_sha256=str(args.expect_sha256))
+    return {"data09_gate": g.binding(), "p2_methods_lock": {"path": str(lock_p), "sha256": lock_sha},
+            "p2_script_freeze": {"path": str(frz_p), "sha256": frz_sha},
+            "locked_evaluation_entry_ids": {"phase1": int(min(p1, key=lambda e: e["entry_id"])["entry_id"]),
+                                            "p2": int(min(p2, key=lambda e: e["entry_id"])["entry_id"])},
+            "arm_binding": arm, "register_file_sha256": g.register_file_sha256}
+
+
+# ------------------------------------------------------------------------------------------------ FL sources (P2_W)
+def check_launch_selection(launch: Mapping, spec: Mapping) -> dict:
+    """The MAIN P2_W run's bound P2_WARM_SELECTION_FINAL (launch_fl.bind_p2_selection record) = the spec's recipe and the
+    registered file's current bytes."""
+    import v4int.launch_fl as LF
+    b = launch.get("p2_selection")
+    if not isinstance(b, Mapping):
+        _refuse("the P2_W run carries no bound p2_selection (a MAIN P2_W run takes its recipe from the registered "
+                "P2_WARM_SELECTION_FINAL only, launch_fl.bind_p2_selection)")
+    p = Path(str(b.get("path") or ""))
+    if (p.name, p.parent.name, p.parent.parent.name) != (SELECTION_FINAL.name, "fl", "contracts"):
+        _refuse(f"the run's p2_selection path {p} is not the registered contracts/fl/{SELECTION_FINAL.name}")
+    if b.get("format") != LF.P2_SELECTION_FORMAT or b.get("stage") != "FINAL":
+        _refuse(f"the run's p2_selection is {b.get('format')!r} / stage {b.get('stage')!r}, not "
+                f"{LF.P2_SELECTION_FORMAT} / FINAL")
+    if _canon(b.get("recipe")) != _canon(spec.get("p2_recipe")) or b.get("label") != spec.get("p2_label"):
+        _refuse("the run's p2_selection recipe / label differ from its arm spec's p2_recipe / p2_label")
+    reg = Path(SELECTION_FINAL)
+    if not reg.is_file():
+        _refuse(f"the registered selection {reg} is not on this host: the P2_W binding cannot be verified")
+    sha = R._sha(reg)
+    if sha != str(b.get("sha256") or "").lower():
+        _refuse(f"the registered {reg.name} (sha256 {sha}) is not the file the run was bound to ({b.get('sha256')})")
+    return {"path": str(reg), "sha256": sha, "label": b.get("label"), "self_sha256": b.get("self_sha256")}
+
+
+def p2_source_fl(ckpt: Path, args, ctx: dict) -> dict:
+    """reeval.source_fl mirrored for a P2_W MAIN run (the same checks, each in the same order) with the P2 rules in place
+    of the Phase-1 ones (check_warm_line's role: the label is bound to the run, theta_pre required, the spec is the
+    registered recipe's); returns reeval's source record."""
+    import v4int.launch_fl as LF
+    ckpt = Path(ckpt)
+    label = ctx["plan"]["label"]
+    if ckpt.parent.parent.name != "ckpt":
+        _refuse(f"{ckpt} is not under an FL <run>/ckpt/<run_id>/ directory")
+    run_dir = ckpt.parent.parent.parent
+    launches = sorted(run_dir.glob("LAUNCH_*.json"), key=lambda q: int(q.stem.split("_")[1]))
+    if not launches:
+        _refuse(f"FL run {run_dir} has no LAUNCH_<k>.json")
+    recs = [R._strict(q) for q in launches]
+    first = recs[0]
+    for q, r in zip(launches, recs):
+        for k in ("arm", "run_id", "arm_spec_sha256", "fl_config_digest", "label", "p2_selection"):
+            if _canon(r.get(k)) != _canon(first.get(k)):
+                _refuse(f"{q.name}: {k} differs from {launches[0].name}")
+    if first.get("label") != "PRODUCTION" or str(first.get("run_id", "")).startswith(R.SMOKE):
+        _refuse("a smoke FL run's checkpoint is not evidence")
+    if ckpt.parent.name != first.get("run_id"):
+        _refuse(f"checkpoint directory {ckpt.parent.name!r} is not the run id {first.get('run_id')!r}")
+    if (first.get("fl05") or {}).get("role", "MAIN") != "MAIN":
+        _refuse("only MAIN P2_W runs are scored (a CALIBRATION screen run is read by v4int.p2_select, never re-evaluated)")
+    arm = first.get("arm")
+    if not LF.is_p2_arm(arm) or arm != ARMS[label]["launch_arm"]:
+        _refuse(f"FL arm {arm!r} is not the Phase-2 arm {ARMS[label]['launch_arm']} of {label} (a Phase-1 FL run is "
+                "never a P2 arm)")
+    spec = first.get("arm_spec") or {}
+    if LF.spec_digest(spec) != first.get("arm_spec_sha256") or spec.get("arm") != arm:
+        _refuse("the LAUNCH arm spec does not hash to its arm_spec_sha256 / names another arm")
+    try:
+        LF.check_p2_spec(spec)
+    except LF.LaunchRefused as e:
+        _refuse(f"the run's arm spec is refused by launch_fl.check_p2_spec: {e}")
+    if spec.get("role", "MAIN") != "MAIN":
+        _refuse(f"the run's arm spec role is {spec.get('role')!r}, not MAIN")
+    seed = int((spec.get("cfg") or {}).get("seed", -1))
+    if seed != int(args.seed):
+        _refuse("the FL run's seed differs from --seed")
+    want_rid = ARMS[label]["run_id"].format(seed=seed)
+    if first.get("run_id") != want_rid:
+        _refuse(f"run id {first.get('run_id')!r} is not the bound MAIN run {want_rid} (launch_fl.p2_run_id)")
+    pf = spec["cfg"].get("method") == "PF"
+    if (args.ckpt_kind == "pf") != pf:
+        _refuse(f"the P2_W run (method {spec['cfg'].get('method')}) needs --ckpt-kind {'pf' if pf else 'fl'}")
+    rec = first.get("small_recipe") or {}
+    if rec.get("model_variant") != args.variant or rec.get("recipe_id") != args.recipe_id:
+        _refuse("the FL run's SMALL recipe differs from --variant / --recipe-id")
+    init = spec.get("init_from") or {}
+    bad = {k: init.get(k) for k, want in (("checkpoint_sha256", PRE_CHECKPOINT_SHA256),
+                                          ("state_digest", PRE_STATE_DIGEST)) if init.get(k) != want}
+    if bad:
+        _refuse(f"the run's init_from is not the registered theta_pre ({bad})")
+    sel = check_launch_selection(first, spec)
+    r2 = spec["p2_recipe"]
+    ctx["checks"]["fl"] = {"launch_arm": arm, "run_id": first["run_id"], "arm_spec_sha256": first["arm_spec_sha256"],
+                           "p2_label": spec["p2_label"], "check_p2_spec": True, "method": spec["cfg"].get("method"),
+                           "theta_pre": dict(init), "p2_selection": sel, "lora_rank": r2.get("lora_rank"),
+                           "personal_head": bool(r2.get("personal_head")), "legs": len(launches)}
+    ctx["spec"] = spec
+    return {"kind": args.ckpt_kind, "run_dir": run_dir, "launch": first,
+            "launch_files": {q.name: R._sha(q) for q in launches}, "run_id": first["run_id"], "arm": arm}
+
+
+def check_lora_payload(payload: Mapping, spec: Mapping) -> Optional[dict]:
+    """A LoRA recipe (WC1-WC4) -> the merged-LoRA payload of fl.peft.install_peft; a non-LoRA recipe -> no p2_lora."""
+    r = (spec.get("p2_recipe") or {}).get("lora_rank")
+    rec = payload.get("p2_lora")
+    if r is None:
+        if rec is not None:
+            _refuse("the payload carries p2_lora but the run's recipe has no LoRA rank")
+        return None
+    from fl.numerics import state_digest
+    from fl.peft import LORA_A, LORA_B, BASE_B, BASE_W, LORA_TARGETS, P2_LORA_FORMAT
+    if not isinstance(rec, Mapping) or rec.get("format") != P2_LORA_FORMAT:
+        _refuse(f"a LoRA W* checkpoint must be the merged-LoRA payload ({P2_LORA_FORMAT}, fl.peft.install_peft)")
+    meta = rec.get("meta") or {}
+    want = {"r": int(r), "alpha": float(r), "targets": list(LORA_TARGETS)}
+    L = spec.get("lora")
+    if isinstance(L, Mapping):                                 # P2-04 spec layout (when wired): r / alpha / targets / seed
+        want.update(r=int(L.get("r", r)), alpha=float(L.get("alpha", r)), targets=list(L.get("targets", LORA_TARGETS)))
+        if "seed" in L:
+            want["seed"] = int(L["seed"])
+    bad = {k: meta.get(k) for k, v in want.items() if meta.get(k) != v}
+    if bad:
+        _refuse(f"the payload's LoRA meta {bad} differs from the run's recipe {want} (PREG2 §5.4: alpha = r)")
+    theta = payload.get("theta") or {}
+    leaves = sorted(k for k in theta if k.rsplit(".", 1)[-1] in (LORA_A, LORA_B, BASE_W, BASE_B))
+    if leaves:
+        _refuse(f"the payload theta is not the merged base-architecture state (LoRA keys {leaves[:2]})")
+    if state_digest(theta) != rec.get("merged_theta_digest"):
+        _refuse("the payload theta does not hash to its p2_lora merged_theta_digest")
+    if (rec.get("lineage") or {}).get("theta_pre_digest") != PRE_STATE_DIGEST:
+        _refuse("the LoRA lineage theta_pre digest is not the registered theta_pre")
+    return {"format": P2_LORA_FORMAT, "r": meta.get("r"), "alpha": meta.get("alpha"), "targets": meta.get("targets"),
+            "merged_theta_digest": rec.get("merged_theta_digest"), "lora_init_sha256": rec["lineage"].get("lora_init_sha256")}
+
+
+def check_payload_mark(payload: Mapping, ckpt_name: str) -> None:
+    """best.pt: efe >= 0.5 (mark 0 = theta_pre is never a PRACTICAL_BEST candidate, §5.1); endpoint: efe >= 6.0."""
+    try:
+        efe = float(payload.get("efe"))
+    except (TypeError, ValueError):
+        efe = float("nan")
+    floor = 0.5 if ckpt_name == R.BEST_FILE else R.ENDPOINT_MARK
+    if not math.isfinite(efe) or efe < floor - 1e-9:
+        _refuse(f"the {ckpt_name} payload is not at a scored mark >= {floor} EFE (§5.1: mark 0 is never a candidate)")
+
+
+# ------------------------------------------------------------------------------------------------ central sources
+def check_c1_source(src: Mapping, ckpt: Path, args, ctx: dict) -> dict:
+    """The MAIN C1 run (v4int.central_ft) behind a P2_C1 label: identity, theta_pre, selection binding (RUN_START only,
+    torch-free: this runs before reeval's CUDA export); the checkpoint object is checked by check_c1_checkpoint (dry
+    run: here; real run: on reeval.load_central, after the export and before any weight is used)."""
+    from v4int import central_ft as CF
+    label = ctx["plan"]["label"]
+    var = ARMS[label]["variant"]
+    if src.get("central_source") is not None:
+        _refuse(f"{label}: the checkpoint's run is the registered {src.get('central_source')} source, not a C1 run")
+    start = src["start"]
+    rid = str(start.get("run_id", ""))
+    p2 = start.get("p2_c1") or {}
+    ident = p2.get("identity") or {}
+    want = {"arm": label, "variant": var, "role": "MAIN", "init_checkpoint_sha256": PRE_CHECKPOINT_SHA256,
+            "init_state_digest": PRE_STATE_DIGEST, "continuation": CF.CONTINUATION_RULE,
+            "frozen_item_tables": list(CF.FROZEN_ITEM_KEYS) if var == "FROZEN" else None}
+    bad = {k: ident.get(k) for k, v in want.items() if ident.get(k) != v}
+    try:
+        peak = float(ident.get("peak_lr"))
+    except (TypeError, ValueError):
+        peak = float("nan")
+    if not math.isfinite(peak) or not CF.in_grid(peak):
+        bad["peak_lr"] = ident.get("peak_lr")
+    elif rid != CF.c1_run_id(var, "MAIN", peak, int(args.seed)):
+        bad["run_id"] = rid
+    if bad:
+        _refuse(f"{label}: not a MAIN C1 run of this arm (RUN_START p2_c1 identity / run id): {bad}")
+    kb = start.get("key_base") or {}
+    blk = str(kb.get("initialization_block") or "")
+    if kb.get("run_label") != label or not blk.startswith(f"{CF.INIT_BLOCK}|") or PRE_CHECKPOINT_SHA256 not in blk:
+        _refuse(f"{label}: key base run_label {kb.get('run_label')!r} / initialization_block {blk[:40]!r} are not the "
+                "C1 shim's (P2_THETA_PRE)")
+    prov = {"train": (start.get("train_provider") or {}).get("manifest_id"),
+            "eval": (start.get("eval_provider") or {}).get("manifest_id")}
+    if prov != MAIN_PAIR:
+        _refuse(f"{label}: providers {prov} are not the MAIN pair {MAIN_PAIR}")
+    sel = p2.get("selection") or {}
+    p = Path(str(sel.get("path") or ""))
+    sbad = {k: sel.get(k) for k, v in (("format", CF.C1_SELECTION_FORMAT), ("stage", CF.C1_SELECTION_STAGE),
+                                       ("variant", var)) if sel.get(k) != v}
+    if (p.name, p.parent.name, p.parent.parent.name) != (SELECTION_C1.name, "fl", "contracts"):
+        sbad["path"] = str(p)
+    try:
+        if round(float(sel.get("peak_lr")), 12) != round(peak, 12):
+            sbad["peak_lr"] = sel.get("peak_lr")
+    except (TypeError, ValueError):
+        sbad["peak_lr"] = sel.get("peak_lr")
+    if sbad:
+        _refuse(f"{label}: the run's bound C1 selection is not the registered P2_C1_SELECTION of this variant: {sbad}")
+    reg = Path(SELECTION_C1)
+    if not reg.is_file():
+        _refuse(f"the registered selection {reg} is not on this host: the C1 binding cannot be verified")
+    sha = R._sha(reg)
+    if sha != str(sel.get("sha256") or "").lower():
+        _refuse(f"the registered {reg.name} (sha256 {sha}) is not the file the C1 run was bound to ({sel.get('sha256')})")
+    out = {"run_id": rid, "identity": dict(ident), "selection": {"path": str(reg), "sha256": sha},
+           "key_base_run_label": kb.get("run_label"), "checkpoint_kind": None}
+    ctx["checks"]["c1"] = out
+    if args.dry_run:                                                  # no CUDA export in a dry run (reeval's rule)
+        import torch
+        check_c1_checkpoint(torch.load(ckpt, map_location="cpu", weights_only=False), ckpt, ctx)
+    return out
+
+
+def check_c1_checkpoint(obj, ckpt: Path, ctx: dict) -> None:
+    """The C1 checkpoint object: v4train {meta, model}, kind = its file, endpoint mark 6.0, best mark >= 0.5 (theta_pre
+    is never a candidate), meta p2_c1 = the RUN_START identity."""
+    label = ctx["plan"]["label"]
+    ident = (ctx["checks"].get("c1") or {}).get("identity")
+    if ident is None:
+        _refuse(f"{label}: the C1 run identity was not verified before the checkpoint")
+    if not isinstance(obj, Mapping) or not isinstance(obj.get("model"), Mapping):
+        _refuse("the checkpoint is not a v4train {meta, model} checkpoint")
+    R.check_source_checkpoint(label, obj, ckpt)                       # kind = file, endpoint mark 6.0 (REV-DELTA-03)
+    meta = obj.get("meta") or {}
+    if dict(meta.get("p2_c1") or {}) != dict(ident):
+        _refuse(f"{label}: the checkpoint meta p2_c1 differs from the run's RUN_START identity")
+    if Path(ckpt).name == R.BEST_FILE:
+        try:
+            ok = float(meta.get("mark")) >= 0.5 - 1e-9
+        except (TypeError, ValueError):
+            ok = False
+        if not ok:
+            _refuse(f"{label}: best.pt is not at a mark >= 0.5 (theta_pre is never a candidate, PREG2 §4.2)")
+    ctx["checks"]["c1"]["checkpoint_kind"] = obj.get("kind")
+
+
+def check_central_source(src: Mapping, ckpt: Path, args, ctx: dict) -> None:
+    kind, label = ctx["plan"]["kind"], ctx["plan"]["label"]
+    if kind == "ANCHOR":
+        if src.get("central_source") != "PRE":
+            _refuse(f"{ANCHOR_LABEL}: the checkpoint's run is not the registered PRE source (theta_pre)")
+        ctx["checks"]["anchor"] = {"central_source": "PRE", "run_id": src.get("run_id"),
+                                   "checkpoint_sha256_pin": PRE_CHECKPOINT_SHA256, "rule": ANCHOR_RULE,
+                                   "eval_manifest": ANCHOR_EVAL_MANIFEST}
+    elif kind == "C1":
+        check_c1_source(src, ckpt, args, ctx)
+    elif kind == "C2":
+        if src.get("central_source") != label:
+            _refuse(f"{label}: the checkpoint's run is not the C2 run (classified {src.get('central_source')!r})")
+        ctx["checks"]["c2"] = {"central_source": label, "run_id": src.get("run_id"), "ext": C2_SOURCE["ext"],
+                               "run_id_prefix": C2_SOURCE["run_id_prefix"]}
+
+
+# ------------------------------------------------------------------------------------------------ records / rows
+def p2_row_labels(plan: Mapping) -> dict:
+    out = {"study": "PREG2", "p2_arm": plan["label"], "p2_reeval_task": TASK,
+           "p2_source_kind": plan.get("source_kind") or SOURCE_KIND.get(plan["kind"], plan["kind"]),
+           "p2_role_reading": ROLE_READING[plan["role"]]}
+    if plan["kind"] == "ANCHOR":
+        out["p2_anchor"] = "PRE_CALIB"
+    return out
+
+
+def p2_record(ctx: Mapping) -> dict:
+    plan = ctx["plan"]
+    return {"task": TASK, "authority": AUTHORITY, "preg2_sha256": PREG2_SHA256, "reeval_sha256": REEVAL_SHA256,
+            "shim_sha256": R._sha(Path(__file__)),
+            "contrasts": {"path": "company/gates/P2_CONTRASTS_v3.json", "file_sha256": _file_sha(CONTRASTS_PATH),
+                          "self_sha256_registered": CONTRASTS_SELF_SHA256},
+            "arm_label": plan["label"], "source_kind": plan.get("source_kind") or SOURCE_KIND.get(plan["kind"]),
+            "role": plan["role"], "role_reading": ROLE_READING[plan["role"]], "seed": plan["seed"],
+            "selection_rule": plan["rule"], "checks": dict(ctx["checks"]), "test_lock": plan.get("test_lock")}
+
+
+def _redact(rec: dict) -> dict:
+    """S8: a P2-arm dry run prints no checkpoint efe / round / mark (the PRACTICAL_BEST mark is the run's outcome)."""
+    out = dict(rec)
+    for k in ("fl_round", "fl_efe"):
+        if k in out:
+            out[k] = SEALED
+    for k in ("checkpoint_meta", "checkpoint_file"):
+        if isinstance(out.get(k), Mapping):
+            out[k] = {kk: (SEALED if kk in ("efe", "mark") else v) for kk, v in out[k].items()}
+    return out
+
+
+# ------------------------------------------------------------------------------------------------ the context
+@contextlib.contextmanager
+def p2_context(ctx: dict):
+    """Replace the reeval attributes this P2 call needs (module docstring "How"), restore them afterwards."""
+    plan = ctx["plan"]
+    kind = plan["kind"]
+    o_label, o_write = R.label_rows, R.write_outputs
+
+    def label_rows(rows, args, *, checkpoint_sha256, source_run_id, efe, extra):
+        return o_label(rows, args, checkpoint_sha256=checkpoint_sha256, source_run_id=source_run_id, efe=efe,
+                       extra=dict(extra, **p2_row_labels(plan)))
+
+    def write_outputs(out, *, record, **kw):
+        return o_write(out, record=dict(record, p2_reeval=p2_record(ctx)), **kw)
+
+    patches = {"label_rows": label_rows, "write_outputs": write_outputs}
+    if kind in ("ANCHOR", "C1", "C2"):
+        o_src = R.source_central
+
+        def source_central(ckpt, args):
+            src = o_src(ckpt, args)
+            check_central_source(src, ckpt, args, ctx)
+            return src
+
+        patches["source_central"] = source_central
+    if kind == "C1":
+        o_load = R.load_central
+
+        def load_central(bm, obj, start, args):                       # after the CUDA export, before any weight
+            check_c1_checkpoint(obj, args.ckpt, ctx)
+            return o_load(bm, obj, start, args)
+
+        patches["load_central"] = load_central
+    if kind == "ANCHOR":
+        patches.update(ROLES=tuple(R.ROLES) + (ANCHOR_ROLE,), SOURCE_ROLES=tuple(R.SOURCE_ROLES) + (ANCHOR_ROLE,),
+                       CENTRAL_SOURCES=dict(R.CENTRAL_SOURCES, PRE=dict(R.CENTRAL_SOURCES["PRE"],
+                                                                        arm_label=ANCHOR_LABEL)))
+    elif kind == "C2":                       # C_FULL shares C2's train manifest: it is out of the table for this call
+        patches["CENTRAL_SOURCES"] = {C2_SOURCE["arm_label"]: dict(C2_SOURCE), "PRE": dict(R.CENTRAL_SOURCES["PRE"])}
+    elif kind == "FL":
+        o_pay = R.check_fl_payload
+
+        def check_fl_payload(payload, src):
+            o_pay(payload, src)
+            check_payload_mark(payload, ctx["ckpt_name"])
+            lora = check_lora_payload(payload, ctx["spec"])
+            ctx["checks"]["payload"] = {"mark_rule": "best >= 0.5 EFE / endpoint >= 6.0 EFE", "merged_lora": lora}
+            plan["source_kind"] = "FL_MERGED_LORA" if lora else ("FL_PF" if src["kind"] == "pf" else "FL")
+
+        patches.update(source_fl=lambda ckpt, args: p2_source_fl(ckpt, args, ctx),
+                       check_warm_line=lambda args, src: None,       # the P2 line checks run in p2_source_fl
+                       check_fl_payload=check_fl_payload)
+    if getattr(R, "__p2_context__", False):
+        _refuse("a P2 re-evaluation is already running in this process (no nesting)")
+    saved = {k: getattr(R, k) for k in patches}
+    try:
+        for k, v in patches.items():
+            setattr(R, k, v)
+        R.__p2_context__ = True
+        yield ctx
+    finally:
+        for k, v in saved.items():
+            setattr(R, k, v)
+        R.__p2_context__ = False
+
+
+# ------------------------------------------------------------------------------------------------ the run
+def run(args) -> dict:
+    check_reeval_unchanged()
+    plan = label_plan(args)
+    plan["test_lock"] = p2_test_gate(args, plan) if plan["test"] else None
+    ctx = {"plan": plan, "checks": {}, "ckpt_name": Path(args.ckpt).name, "spec": None}
+    with p2_context(ctx):
+        rec = R.run(args)
+    if args.dry_run:
+        rec = dict(rec if plan["kind"] == "ANCHOR" else _redact(rec), p2_reeval=p2_record(ctx))
+        if "row_labels" in rec:
+            rec["row_labels"] = dict(rec["row_labels"], **p2_row_labels(plan))
+    return rec
+
+
+def main(argv=None) -> int:
+    args = R.parse_args(argv)
+    try:
+        rec = run(args)
+        print(json.dumps(rec, sort_keys=True, default=str))
+        return 0
+    except Exception as e:                                          # noqa: BLE001  (every refusal exits 1)
+        print(f"REEVAL_P2 REFUSED: {type(e).__name__}: {e}", file=sys.stderr)
+        return 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

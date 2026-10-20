@@ -1,0 +1,42 @@
+# status snapshot 2026-09-25T12:31:47Z (read-only commands)
+## df
+/dev/longhorn/pvc-887ca12c-2b82-4d41-8e47-80ecbb3a9dd4     50089 38045     12028  76% /home/jovyan
+## campaign checkpoints (bytes)
+-- sasrec_v1/runs/A0_ID256_s2026/checkpoints
+331608515 2026-09-25T04:31:52Z best_weights.pt
+331600895 2026-09-25T09:22:23Z epoch4_weights.pt
+1004895227 2026-09-25T08:29:13Z latest.pt
+-- sasrec_v1/runs/A1_RICH256_s2026/checkpoints
+332402826 2026-09-25T04:49:26Z best_weights.pt
+332394820 2026-09-25T09:22:25Z epoch4_weights.pt
+1007280995 2026-09-25T08:52:48Z latest.pt
+-- sasrec_v1/runs/A1_RICH256_s2026_cool5/checkpoints
+1006167331 2026-09-25T12:26:27Z latest.pt
+1005846179 2026-09-25T12:12:43Z previous.pt
+-- sasrec_v1/runs/A1_RICH256_s2027/checkpoints
+1006410275 2026-09-25T12:23:41Z latest.pt
+1006089379 2026-09-25T12:09:35Z previous.pt
+## run status (state, update, eta)
+A0_ID256_s2026 COMPLETE 627824 None 2026-09-25T08:29:20Z
+A1_RICH256_s2026 COMPLETE 627824 None 2026-09-25T08:52:55Z
+A1_RICH256_s2026_cool5 RUNNING 753564 2026-09-25T13:39:15Z 2026-09-25T12:31:24Z
+A1_RICH256_s2027 RUNNING 135303 2026-09-26T00:33:57Z 2026-09-25T12:31:01Z
+## orchestrator jobs
+{"A1_RICH256_s2026_cool5": {"status": "RUNNING", "gate": {"c_u680000": 0.18294325470924377, "c_u720000": 0.1851026564836502, "threshold": 0.1806, "go": true, "note": "first two diag points at/after 4U+40k (diag cadence 40k global updates)"}}}
+cooldowns_go None final_stage None
+## locks / retro
+/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/locks:
+
+/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/retro_eval:
+## feature study queue
+{
+ "created_utc": "2026-09-25T11:44:27Z",
+ "stages": {},
+ "updated_utc": "2026-09-25T12:29:27Z",
+ "state": "QUEUED_RESOURCE",
+ "waiting_for": "T1_protect",
+ "reason": "campaign FINAL_STAGE_DONE absent"
+}
+## gpus
+0, 97 %, 5560 MiB, 15356 MiB
+1, 98 %, 5558 MiB, 15356 MiB

@@ -1,0 +1,26 @@
+{
+ "what": "LO determinism receipt: 1,024 synthetic clients, run A in-process (forward order) vs run B in a fresh interpreter (PYTHONHASHSEED=12345, reverse order, same reused-worker procedure)",
+ "tolerance": "exact (bitwise final-state sha256 and bit-identical eval floats)",
+ "n_clients": 1024,
+ "n_no_label": 76,
+ "steps_total": 8376,
+ "recipe_digest": "fdbfd82519e1c441161f340517a937c2ccad1b4a65f9837fc7ab103ef3c686b8",
+ "theta0_digest": "a0b4f247b0ce9d72c39f8bd5e051676ccfeec6acccfc5d6de04301a9437c0a81",
+ "combined_digest_A": "13f96152a1d3dbff6eb6246f519003b17b05e903bf7120b28828177647c6f6fb",
+ "combined_digest_B": "13f96152a1d3dbff6eb6246f519003b17b05e903bf7120b28828177647c6f6fb",
+ "mismatched_clients": 0,
+ "numerics": {
+  "torch": "2.13.0+cu130",
+  "cuda_matmul_allow_tf32": false,
+  "cudnn_allow_tf32": false,
+  "float32_matmul_precision": "highest",
+  "deterministic_algorithms": true,
+  "deterministic_warn_only": true,
+  "cudnn_deterministic": true,
+  "intra_op_threads": 1
+ },
+ "wall_s_A": 11.960490759462118,
+ "wall_s_B": 11.660489974543452,
+ "subprocess_exit_code": 0,
+ "verdict": "REPRODUCED_EXACTLY"
+}

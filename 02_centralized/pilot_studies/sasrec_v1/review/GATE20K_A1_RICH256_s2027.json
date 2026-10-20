@@ -1,0 +1,42 @@
+{
+ "go": true,
+ "checks": {
+  "loss_decreasing": true,
+  "grad_norm_not_climbing": true,
+  "E_common_mode_bounded": true,
+  "E_median_row_norm_le_5_abs": true,
+  "W_median_row_norm_le_5_abs": true,
+  "W_common_mode_le_1e-3": true,
+  "all_finite": true
+ },
+ "original_criterion_4_outcome_reported_not_gating": {
+  "E_median_row_norm_le_3x_init": false,
+  "W_median_row_norm_le_3x_init": false
+ },
+ "descriptive_E_common_mode_ratio": 0.16508190618811303,
+ "values": {
+  "loss_9k_10k": 6.453914491176604,
+  "loss_19k_20k": 6.191481797695159,
+  "gn_5k_6k": 1.1692843928337098,
+  "gn_19k_20k": 0.8753272543549537,
+  "emb_at_100": {
+   "E_mean_row_norm": 0.0008664787164889276,
+   "E_median_row_norm": 0.3197588324546814,
+   "W_mean_row_norm": 2.67303756906756e-09,
+   "W_median_row_norm": 0.3190508782863617,
+   "b_mean": 3.7608775143617434e-13,
+   "b_std": 0.0006094004493206739
+  },
+  "emb_at_20k": {
+   "E_mean_row_norm": 0.23128634691238403,
+   "E_median_row_norm": 1.401039958000183,
+   "W_mean_row_norm": 7.645976296544177e-09,
+   "W_median_row_norm": 1.0083246231079102,
+   "b_mean": -2.618774175289218e-08,
+   "b_std": 2.242516279220581
+  }
+ },
+ "run": "A1_RICH256_s2027",
+ "rule": "Waits until BOTH v3 anchors have logged update 20,000, then evaluates on\nTRAINING signals only (metrics.jsonl `update_agg`, 100-update means; windows of the 10 records\nending at the named update are used to reduce noise, declared here before any v3 data exists):\n  - mean_loss(19k..20k) <= mean_loss(9k..10k) - 0.02\n  - mean_grad_norm(19k..20k) <= 1.25 x mean_grad_norm(5k..6k)\n  - E_mean_row_norm(20k) <= 0.5\n  - [amendment 1, config/run_registry.v3_amendment_1.json] median row norms of E and W_out <= 5.0 absolute\n    and W_out ||mean row|| <= 1e-3; the original 3x-init outcome is reported, not gating\n  - every logged loss / grad norm finite",
+ "decided_utc": "2026-09-25T09:51:30Z"
+}

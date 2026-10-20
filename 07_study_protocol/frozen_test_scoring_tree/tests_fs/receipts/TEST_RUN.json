@@ -1,0 +1,156 @@
+{
+ "task": "SCHEMA-01",
+ "utc_start": "2026-09-27T17:21:47Z",
+ "host": "DESKTOP-KS1B8LQ",
+ "platform": "Windows-11-10.0.26200-SP0",
+ "python": "3.13.11",
+ "cpu_only": true,
+ "before": {
+  "verify_snapshot_exit_code": 0,
+  "stderr_tail": "",
+  "pycache_dirs_under_snap_v1": [],
+  "pycache_dirs_in_owned": [],
+  "code_sha256": {
+   "v4fs/__init__.py": "edbd1b0a07d9fba30a0c249d1d2bc1eff067ecc54a3a5fcaad75927187957722",
+   "v4fs/decide.py": "8b1ffe08ef78f676176bea6ed85164e68e759d668a6f79ee1f90ed630b981cac",
+   "v4fs/importance.py": "127f2fad7c1d1189b8f8ece4d3692289ef021b13ac5a2db1fe26f324d0d271f8",
+   "v4fs/run_fs.py": "a8b7b5bed75a257d780a192557445fdf14ec41afdc88a39ffb50eaac0e6f9a42",
+   "v4fs/schemas.py": "64a6535a2c60b28fddb336d6c292b87b2776b7ddceb90b4c2c96432a719fd3c2",
+   "v4fs/stage_b.py": "17517c657866909f381cd7530db559702fca6fa31c3be894a2fd9467bc9c9610",
+   "v4fs/theta0.py": "3d0057097e6ca97e5b505cc987250d30cd1fa73ae02ba138ded272034790b0cc",
+   "v4models/__init__.py": "d8c199aa4fbbd75c48b79bc49a1e9252a34269d7df6f6eefc52bfd5e373c50bd",
+   "v4models/build.py": "be66b4674102f0090704fc5a5cd14d6e8d33c31f95fd1d99b26a9103c5f00d2b",
+   "v4models/derived.py": "307c637e8d4798daf4c3ed36cb3eb81c82bbcea06e808a5a01e07bbf55ea1f02",
+   "v4models/diffdoc.py": "f6036fa8f2527f75a724c3e4cccf980daae56d67a46f9b44ff9bd609e5704c1e",
+   "v4models/gru_v2.py": "a605cbaa67eea903b6faada3706a60353d1f570b219302026ef556d9001b29c1",
+   "v4models/inventory.py": "1f090257f102ec4786ec4e753beceefea4708966b090321f3464d991c9c02634",
+   "v4models/monitors.py": "7e35dfb97754d07e671859889933cebd2be3c3aa91bb9c9d6b8595b9e93984be",
+   "v4models/sasrec_v2.py": "c466028bbaf985973bda476a94ff5f8acef499c2c03c6afb1c4d115b349caf94",
+   "v4models/schema.py": "ffeeddf4af988e11143ee52e7b6b747b3ff463eff7c285f8699f6ac3e71c3736",
+   "v4models/synthetic.py": "ad8ac17fbba50fa1ab2957383b68bbb1519b0bf5eead34051a66f0fb0561e4b0",
+   "v4models/variants.py": "94e1f209c94194cbd48cea9e0042d12bc4a65f729136ca5fd013b5dd7dbe62de"
+  }
+ },
+ "pytest_exit_code": 0,
+ "pytest_summary": "59 passed, 5 xfailed in 41.27s",
+ "pytest_wall_s": 43.6,
+ "counts": {
+  "passed": 59,
+  "xfailed": 5
+ },
+ "skipped": [],
+ "negative_controls": {
+  "test_decide::test_nc_rule_without_the_upper_bound": "FAILED_AS_INTENDED",
+  "test_importance::test_nc_cellwise_permutation_breaks_the_window": "FAILED_AS_INTENDED",
+  "test_run_fs::test_nc_unlabelled_writer": "FAILED_AS_INTENDED",
+  "test_schemas::test_nc_dropping_a_required_channel": "FAILED_AS_INTENDED",
+  "test_stage_b::test_nc_merge_theta0_ignores_a_stale_lock": "FAILED_AS_INTENDED"
+ },
+ "negative_controls_all_failed_as_intended": true,
+ "nc_runxfail": {
+  "exit_code_expected_nonzero": 1,
+  "counts": {
+   "failure": 5
+  },
+  "all_fail_with_assertion": true,
+  "same_set_as_suite": true,
+  "per_control": {
+   "test_decide::test_nc_rule_without_the_upper_bound": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: the naive rule accepted a drop with UB 2.5 %"
+   },
+   "test_importance::test_nc_cellwise_permutation_breaks_the_window": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: log1p_price: a recipient row is not its donor's whole column"
+   },
+   "test_run_fs::test_nc_unlabelled_writer": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: an unlabelled row was written"
+   },
+   "test_schemas::test_nc_dropping_a_required_channel": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: a REQUIRED channel was dropped"
+   },
+   "test_stage_b::test_nc_merge_theta0_ignores_a_stale_lock": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: a naive merge would proceed even with another writer's lock held"
+   }
+  }
+ },
+ "dry_run_cli": {
+  "exit_code": 0,
+  "run_label": "FEATURE_SEARCH_SCREEN",
+  "weight_files_left": [],
+  "pt_files": [],
+  "n_importance_groups": 15,
+  "importance_baseline_equals_controlled_budget": true,
+  "environment": {
+   "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+   "CUDA_VISIBLE_DEVICES": "-1",
+   "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "trainer_support": {
+   "data_version": true,
+   "labels_rows": true,
+   "manifest_registry": true,
+   "role": true,
+   "run_label_property": true,
+   "schema_registry": true
+  },
+  "deleted": [
+   "best",
+   "endpoint_6.0"
+  ]
+ },
+ "after": {
+  "verify_snapshot_exit_code": 0,
+  "stderr_tail": "",
+  "pycache_dirs_under_snap_v1": [],
+  "pycache_dirs_in_owned": [],
+  "code_sha256": {
+   "v4fs/__init__.py": "edbd1b0a07d9fba30a0c249d1d2bc1eff067ecc54a3a5fcaad75927187957722",
+   "v4fs/decide.py": "8b1ffe08ef78f676176bea6ed85164e68e759d668a6f79ee1f90ed630b981cac",
+   "v4fs/importance.py": "127f2fad7c1d1189b8f8ece4d3692289ef021b13ac5a2db1fe26f324d0d271f8",
+   "v4fs/run_fs.py": "a8b7b5bed75a257d780a192557445fdf14ec41afdc88a39ffb50eaac0e6f9a42",
+   "v4fs/schemas.py": "64a6535a2c60b28fddb336d6c292b87b2776b7ddceb90b4c2c96432a719fd3c2",
+   "v4fs/stage_b.py": "17517c657866909f381cd7530db559702fca6fa31c3be894a2fd9467bc9c9610",
+   "v4fs/theta0.py": "3d0057097e6ca97e5b505cc987250d30cd1fa73ae02ba138ded272034790b0cc",
+   "v4models/__init__.py": "d8c199aa4fbbd75c48b79bc49a1e9252a34269d7df6f6eefc52bfd5e373c50bd",
+   "v4models/build.py": "be66b4674102f0090704fc5a5cd14d6e8d33c31f95fd1d99b26a9103c5f00d2b",
+   "v4models/derived.py": "307c637e8d4798daf4c3ed36cb3eb81c82bbcea06e808a5a01e07bbf55ea1f02",
+   "v4models/diffdoc.py": "f6036fa8f2527f75a724c3e4cccf980daae56d67a46f9b44ff9bd609e5704c1e",
+   "v4models/gru_v2.py": "a605cbaa67eea903b6faada3706a60353d1f570b219302026ef556d9001b29c1",
+   "v4models/inventory.py": "1f090257f102ec4786ec4e753beceefea4708966b090321f3464d991c9c02634",
+   "v4models/monitors.py": "7e35dfb97754d07e671859889933cebd2be3c3aa91bb9c9d6b8595b9e93984be",
+   "v4models/sasrec_v2.py": "c466028bbaf985973bda476a94ff5f8acef499c2c03c6afb1c4d115b349caf94",
+   "v4models/schema.py": "ffeeddf4af988e11143ee52e7b6b747b3ff463eff7c285f8699f6ac3e71c3736",
+   "v4models/synthetic.py": "ad8ac17fbba50fa1ab2957383b68bbb1519b0bf5eead34051a66f0fb0561e4b0",
+   "v4models/variants.py": "94e1f209c94194cbd48cea9e0042d12bc4a65f729136ca5fd013b5dd7dbe62de"
+  }
+ },
+ "work_left": false,
+ "torch": "2.9.1+cpu",
+ "utc_end": "2026-09-27T17:22:43Z",
+ "receipt_sha256": {
+  "pytest_output.txt": "107912c30f5e05b7904ed5358b3912bd8c9c74b65c372b8fbfdf2bd803820d26",
+  "junit.xml": "354dcbb6ffb959fda13736daa679b4a9b53c1366488d26ab9ae3e7fae717241a",
+  "nc_runxfail_output.txt": "0d9995faaaa3f893f045c6e99f93698f0b80b23103bb8337a3434a2584a365d4",
+  "nc_runxfail_junit.xml": "8320d24ed8dcc1b7dbc7bec19bdd3ec5c833da410707452e59bcc8352336957f",
+  "dry_run_cli.txt": "5d45a891b371b4c642c79474acff5174c655338be9f491efc85e2f89c18e6cb8"
+ }
+}

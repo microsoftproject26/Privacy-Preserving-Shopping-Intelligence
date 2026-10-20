@@ -1,0 +1,148 @@
+{
+ "arm": "FA_WARM",
+ "checkpoints": {
+  "CONTROLLED_BUDGET": {
+   "bytes": 6573251,
+   "file": "ckpt/smoke_theta.pt",
+   "mark": 0.058174303453699214,
+   "sha256": "a2cac9d29de7703c9ac3cef42ff812aaddec929531d50fcde5d3b15e3c9a4530"
+  },
+  "PRACTICAL_BEST": {
+   "bytes": 6573251,
+   "file": "ckpt/smoke_theta.pt",
+   "mark": 0.058174303453699214,
+   "sha256": "a2cac9d29de7703c9ac3cef42ff812aaddec929531d50fcde5d3b15e3c9a4530"
+  }
+ },
+ "kind": "fl",
+ "label": "SMOKE_NOT_EVIDENCE",
+ "run_id": "BM_s3_toys_FA_WARM__B24_L50_D0.1__s0.01_c0.1_p1__preB96_L50_D0.2-best_s2026_SMOKE",
+ "spec": {
+  "arm": "FA_WARM",
+  "budget_efe": 24,
+  "cfg": {
+   "dp": null,
+   "dropout_p": 0.1,
+   "endpoint_efe": 24.0,
+   "endpoint_rounds": 8089,
+   "eval_every_half_efe": 4,
+   "exposure_point": "end",
+   "lr_peak_local": 0.1,
+   "lr_shape": "fl_const",
+   "max_attempts": 2,
+   "method": "FA",
+   "mu": 0.0,
+   "n_shards": 2,
+   "pf": null,
+   "seed": 2026,
+   "server_opt": {
+    "beta1": 0.9,
+    "beta2": 0.99,
+    "lr": 0.01,
+    "name": "fedadam",
+    "tau": 0.001,
+    "v_init": "tau_squared"
+   },
+   "solver": {
+    "batch_size": 16,
+    "clip": 1.0,
+    "fused": null,
+    "lr": 0.1,
+    "optimizer": "sgd_m",
+    "passes": 1,
+    "weight_decay": 0.0
+   }
+  },
+  "client_lr": 0.1,
+  "client_opt": "sgd_m",
+  "data": {
+   "dataset": "s3_toys",
+   "fingerprint": "b83ff25694004525faeb3c9b262fc9bbfd6fa2a8223f5548539a19d8b3198ea1",
+   "n_clients": 19412,
+   "n_decisions": 109361
+  },
+  "dropout": [
+   0.1
+  ],
+  "early_stop_marks": null,
+  "effective": {
+   "client_lr": 0.1,
+   "endpoint_efe": 24.0,
+   "eval_every_half_efe": 4,
+   "local_passes": 1,
+   "rounds": 8089,
+   "server_lr": 0.01
+  },
+  "exploratory": "POST_HOC_X",
+  "exposure_budget": {
+   "dropout_p": 0.1,
+   "endpoint_efe": 24.0,
+   "formula": "rounds = ceil(10 E N_clients / (576 P)) (launch_fl.fa_rounds at E EFE; = ceil(60 N / (576 P)) at E = 6)",
+   "group": 64,
+   "n_clients": 19412,
+   "passes": 1,
+   "rounds": 8089
+  },
+  "init_from": {
+   "checkpoint_sha256": "2acd62327bf99802baabe7260aea98d063ebe1d43d0ffe74cb4f8eeb3539840b",
+   "dataset": "s3_toys",
+   "fl_init_kind": "PRACTICAL_BEST@16.0_B96",
+   "kind": "PRE",
+   "pre_budget_efe": 96,
+   "pre_ckpt_rule": "PRACTICAL_BEST",
+   "pre_device_class": "CPU-FP32",
+   "pre_dropout": [
+    0.2
+   ],
+   "pre_mark": 16.0,
+   "pre_run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench/s3_toys/PRE__B96_L50_D0.2_s2026",
+   "run_id": "BM_s3_toys_PRE__B96_L50_D0.2_s2026",
+   "seed": 2026,
+   "state_digest": "d7932dd3a25de65924c34e4dfa602f11cc580813797b3618336c510dacf714d8"
+  },
+  "knobs": {
+   "batch": 16,
+   "clip": 1.0,
+   "dropout_p": 0.1,
+   "endpoint_efe": 6.0,
+   "group": 64,
+   "m": 1024,
+   "max_attempts": 2,
+   "mu": 0.01,
+   "n_shards": 2,
+   "passes": 2,
+   "pf_clip": 1.0,
+   "pf_lam": 0.0001,
+   "rounds": 6827,
+   "rounds_1024": 384,
+   "s_cal_rounds": 20,
+   "s_cal_seed": 2026,
+   "sampling": "sweep",
+   "weight_decay": 1e-05
+  },
+  "local_passes": 1,
+  "lr_mult": 1.0,
+  "lr_peak_base": 0.0007114121116984968,
+  "lr_shape": "fl_const",
+  "max_len": 50,
+  "max_rounds": 8089,
+  "overrides": {
+   "budget_efe": 24,
+   "client_lr": 0.1,
+   "server_lr": 0.01
+  },
+  "plan": {
+   "group_size": 64,
+   "sampling": "sweep"
+  },
+  "provenance": null,
+  "role": "MAIN",
+  "server_lr": 0.01,
+  "server_opt": "fedadam",
+  "upload_codec": null,
+  "variant": "SASREC_D64_B2",
+  "warm_lr_factor": 0.25,
+  "warm_server_lr_factor": 0.1
+ },
+ "status": "SMOKE_DONE_NOT_EVIDENCE"
+}

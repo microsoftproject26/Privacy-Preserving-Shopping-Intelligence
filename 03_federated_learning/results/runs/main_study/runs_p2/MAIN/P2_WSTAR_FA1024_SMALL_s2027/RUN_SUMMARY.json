@@ -1,0 +1,576 @@
+{
+ "arm": "P2_WSTAR_FA1024",
+ "arm_spec": {
+  "arm": "P2_WSTAR_FA1024",
+  "cfg": {
+   "dp": {
+    "clip_norm": 0.2753900886098082,
+    "denominator": 1024,
+    "noise_multiplier": 0.0
+   },
+   "dropout_p": 0.0,
+   "endpoint_efe": 6.0,
+   "endpoint_rounds": 384,
+   "exposure_point": "end",
+   "lr_peak_local": 0.1,
+   "lr_shape": "fl_const",
+   "max_attempts": 2,
+   "method": "FA",
+   "mu": 0.0,
+   "n_shards": 2,
+   "pf": null,
+   "seed": 2027,
+   "server_opt": {
+    "beta1": 0.9,
+    "beta2": 0.99,
+    "lr": 3e-06,
+    "name": "fedadam",
+    "tau": 0.001,
+    "v_init": "tau_squared"
+   },
+   "solver": {
+    "batch_size": 16,
+    "clip": 1.0,
+    "fused": null,
+    "lr": 0.1,
+    "optimizer": "sgd_m",
+    "passes": 2,
+    "weight_decay": 0.0
+   }
+  },
+  "frozen_item_tables": [
+   "item_embed.weight",
+   "output_embed",
+   "output_bias"
+  ],
+  "init_from": {
+   "checkpoint_bytes": 82853197,
+   "checkpoint_sha256": "cf08588c11f019cc760f129ba7ba6b23806297660e0170f9938436a5cb88cf78",
+   "family": "SASREC",
+   "fl_init_kind": "endpoint_6.0",
+   "kind": "PRETRAIN_FOR_FL",
+   "model_variant": "SASREC_D64_B2",
+   "run_id": "PRETRAIN_FOR_FL_SMALL_SASREC_D64_B2_s2026",
+   "run_label": "PRETRAIN_FOR_FL",
+   "seed": 2026,
+   "state_digest": "ee33345be4f20b61a53cd80fa11e1af702031bfcd1425af490825cd0019dc54a",
+   "train_manifest": "PRETRAIN_TRAIN_5_100_NONMAIN"
+  },
+  "lr_mult": 1.0,
+  "lr_peak_base": 0.0007114121116984968,
+  "max_rounds": 384,
+  "p2_dp": {
+   "N": 131072,
+   "T": 384,
+   "accountant": "the registered RDP record (DP_Z_RECORD_FL04 via load_z); no new accountant",
+   "delta": 5e-06,
+   "disclosure_D_i": "a small-step recipe over 384 rounds may move theta little; that is the registered mechanism's answer, not a defect to tune away (PREG2 \u00a75.5 D-i)",
+   "epsilon": null,
+   "m": 1024,
+   "noise_multiplier": 0.0,
+   "s_cal_rounds": 20,
+   "s_cal_seed": 2026,
+   "semantics": "FA_1024",
+   "stage": "WD"
+  },
+  "p2_dp_fixed": {
+   "authority": "PREG2 \u00a75.5 / Fable E-O4d: passes 2 / batch 16 for BOTH FA1024 and DP (DL 219 rule)",
+   "client_momentum": 0.9,
+   "client_opt": "sgd_m",
+   "clip": 1.0,
+   "dropout_p": 0.0,
+   "local_batch": 16,
+   "local_passes": 2,
+   "lr_shape": "fl_const",
+   "sampling": "poisson",
+   "weight_decay": 0.0
+  },
+  "p2_label": "fedadam|eta=3e-06|c=0.1",
+  "p2_recipe": {
+   "client_lr": 0.1,
+   "item_lr_mult": null,
+   "items": "frozen",
+   "lora_lr_factor": null,
+   "lora_rank": null,
+   "personal_head": false,
+   "server_lr": 3e-06,
+   "server_opt": "fedadam",
+   "upload": "dense"
+  },
+  "p2_s_record_sha256": "2169067ffd4d318885422b33cdd20811bbf673f202c6df195e3a1ff0bc9929cf",
+  "p2_selection": {
+   "label": "fedadam|eta=3e-06|c=0.1",
+   "self_sha256": "7aedaebe59dab183e627837a1099d14059d1d0fe4d0725c0bc471c8183582d58",
+   "sha256": "25aadc2ea8fd3d1a48015d9da748876db80f031cbe14551ab96bc624861252d7"
+  },
+  "plan": {
+   "group_size": 1024,
+   "sampling": "poisson"
+  },
+  "role": "MAIN",
+  "study": "PREG2",
+  "upload_codec": null
+ },
+ "arm_spec_sha256": "dd8cc541cf34efdef2ac921b54295dc8b6885dfbf6701331d273aedbcd42f1c9",
+ "best_half_efe": 1,
+ "best_metric": 0.1728938556528825,
+ "bytes": {
+  "disclosure": "dropped clients (10% drop-out) are not charged a download (the ledger counts survivors)",
+  "fleet": {
+   "bytes_down": 415536534608,
+   "bytes_up": 415539684736,
+   "frozen_download_once_bytes": 10191448552824,
+   "frozen_download_once_clients": 124621,
+   "messages": 787532,
+   "retry_bytes_down": 0,
+   "total": 831076219344,
+   "total_incl_frozen_once": 11022524772168
+  },
+  "frozen_bootstrap_note": "per_visit.bootstrap_bytes_once also contains the frozen tables (they are FIXED buffers after the freeze), so it repeats per_visit.frozen_bytes_once for those keys; no total adds both (per_client_incl_frozen_once and fleet.total_incl_frozen_once use frozen_bytes_once only). A client dropped at its first visit is not charged the table download (the ledger counts survivors; 06A \u00a73 rule)",
+  "frozen_disclosure": "frozen item tables: downloaded once per client at its first (surviving) visit, never uploaded; the ledger / per-visit bytes count the uploaded parameters only",
+  "per_client": {
+   "max": 27437592,
+   "mean": 6340608.362915039,
+   "median": 6331752.0,
+   "min": 0,
+   "rule": "visits x (down + up) of that client"
+  },
+  "per_client_incl_frozen_once": {
+   "max": 109217136,
+   "mean": 84095190.21734619,
+   "median": 88111296.0,
+   "min": 0,
+   "rule": "visits x (down + up) + the frozen tables once if visited"
+  },
+  "per_visit": {
+   "alias_bytes_not_sent": 0,
+   "bootstrap_bytes_once": 81779544,
+   "download_bytes": 1055288,
+   "frozen_bytes_once": 81779544,
+   "frozen_disclosure": "the frozen item tables are downloaded ONCE per client (first visit) and never uploaded; per-visit bytes count the uploaded parameters only",
+   "frozen_keys": [
+    "item_embed.weight",
+    "output_embed",
+    "output_bias"
+   ],
+   "frozen_numel": 20444886,
+   "private_bytes_sent": 0,
+   "private_resident_bytes": 0,
+   "send_plus_receive_bytes": 2110584,
+   "shared_numel": 263822,
+   "upload_bytes": 1055296,
+   "uploaded_numel": 263822
+  }
+ },
+ "checkpoints": [
+  "best.pt",
+  "endpoint_6.0.pt"
+ ],
+ "clip_log": {
+  "authority": "PREG1_AMENDMENT_06L A4 / 06L_E E1: z = 0 runs only (clipped fraction per round, no per-client norms); z > 0 runs record nothing about clipping",
+  "complete": true,
+  "fields": [
+   "clipped_fraction",
+   "n_clipped",
+   "n_deltas",
+   "round"
+  ],
+  "file": "CLIP_LOG.jsonl",
+  "missing_rounds": [],
+  "n_missing": 0,
+  "rounds_expected": 384,
+  "rounds_logged": 384,
+  "sha256": "75cbf09fb50d3e089ee1ef92e6e524de7c8bb687b995ba65941be27ccab911c1",
+  "unexpected_rounds": []
+ },
+ "counters": {
+  "coverage_by_sweep": {
+   "0": {
+    "clients": 83385,
+    "fraction": 0.6361770629882812
+   },
+   "1": {
+    "clients": 83113,
+    "fraction": 0.6341018676757812
+   },
+   "2": {
+    "clients": 82758,
+    "fraction": 0.6313934326171875
+   }
+  },
+  "efe": 6.00606002992531,
+  "exposures": 15542338,
+  "max_visits": 13,
+  "min_visits": 0,
+  "noop_visits": 0,
+  "retries": 0,
+  "rounds": 384,
+  "steps": 1348990,
+  "steps_hist": {
+   "10": 9476,
+   "12": 5974,
+   "14": 1111,
+   "2": 238927,
+   "4": 87215,
+   "6": 34115,
+   "8": 16948
+  },
+  "visits": 393766,
+  "wasted_steps": 0
+ },
+ "done": true,
+ "dp": {
+  "clip_norm": 0.2753900886098082,
+  "denominator": 1024,
+  "noise_multiplier": 0.0,
+  "rounds_logged": 0
+ },
+ "dp_noise_dimension": {
+  "frozen_keys_excluded": [
+   "item_embed.weight",
+   "output_embed",
+   "output_bias"
+  ],
+  "rule": "fl.dp clips / noises the manifest's shared (uploaded) keys only; accounting (z, q, T, delta) unchanged",
+  "uploaded_keys": [
+   "side_gate",
+   "user_gate",
+   "pos_embed.weight",
+   "blocks.0.ln1.weight",
+   "blocks.0.ln1.bias",
+   "blocks.0.qkv.weight",
+   "blocks.0.qkv.bias",
+   "blocks.0.out.weight",
+   "blocks.0.out.bias",
+   "blocks.0.ln2.weight",
+   "blocks.0.ln2.bias",
+   "blocks.0.ff1.weight",
+   "blocks.0.ff1.bias",
+   "blocks.0.ff2.weight",
+   "blocks.0.ff2.bias",
+   "blocks.1.ln1.weight",
+   "blocks.1.ln1.bias",
+   "blocks.1.qkv.weight",
+   "blocks.1.qkv.bias",
+   "blocks.1.out.weight",
+   "blocks.1.out.bias",
+   "blocks.1.ln2.weight",
+   "blocks.1.ln2.bias",
+   "blocks.1.ff1.weight",
+   "blocks.1.ff1.bias",
+   "blocks.1.ff2.weight",
+   "blocks.1.ff2.bias",
+   "final_norm.weight",
+   "final_norm.bias",
+   "input_norm.weight",
+   "input_norm.bias",
+   "side_embeds.category_tokens.weight",
+   "side_embeds.brand_tokens.weight",
+   "side_embeds.session_offset_tokens.weight",
+   "side_embeds.session_mode_main_category_tokens.weight",
+   "numflag_proj.weight",
+   "numflag_proj.bias",
+   "side_proj.weight",
+   "side_proj.bias",
+   "side_norm.weight",
+   "side_norm.bias",
+   "user_mlp.weight",
+   "user_mlp.bias",
+   "user_proj.weight",
+   "user_proj.bias",
+   "user_norm.weight",
+   "user_norm.bias"
+  ],
+  "uploaded_numel": 263822
+ },
+ "evals": [
+  [
+   1,
+   31,
+   0.1728938556528825,
+   true,
+   "MAIN"
+  ],
+  [
+   2,
+   63,
+   0.17290313444137764,
+   false,
+   "MAIN"
+  ],
+  [
+   3,
+   95,
+   0.17291196301396447,
+   false,
+   "MAIN"
+  ],
+  [
+   4,
+   127,
+   0.1729085719190331,
+   false,
+   "MAIN"
+  ],
+  [
+   5,
+   159,
+   0.17289130873892045,
+   false,
+   "MAIN"
+  ],
+  [
+   6,
+   191,
+   0.17288664669978615,
+   false,
+   "MAIN"
+  ],
+  [
+   7,
+   223,
+   0.17288700160620413,
+   false,
+   "MAIN"
+  ],
+  [
+   8,
+   255,
+   0.1728814295769177,
+   false,
+   "MAIN"
+  ],
+  [
+   9,
+   287,
+   0.17288641772791574,
+   false,
+   "MAIN"
+  ],
+  [
+   10,
+   319,
+   0.17288252263838413,
+   false,
+   "MAIN"
+  ],
+  [
+   11,
+   351,
+   0.1728806877589899,
+   false,
+   "MAIN"
+  ],
+  [
+   12,
+   383,
+   0.1728779806639201,
+   false,
+   "MAIN"
+  ]
+ ],
+ "frozen_item_tables": {
+  "frozen_bytes": 81779544,
+  "frozen_keys": [
+   "item_embed.weight",
+   "output_embed",
+   "output_bias"
+  ],
+  "frozen_numel": 20444886,
+  "manifest_digest": "5863a02b48ed4e9f9a348c66f28e63280565c73a4b5fccb30ffcf1995ab03162",
+  "shared_bytes": 1055288,
+  "shared_numel": 263822
+ },
+ "ledger": [
+  787532,
+  415536534608,
+  415539684736,
+  0
+ ],
+ "lr_table": {
+  "E_total": 15526656,
+  "digest": "13c81a58e497d460b636f14fedf7419622f0b10447cd8a1e3ad4f4f4b13e37bc",
+  "final_lr": 0.010000000000000002,
+  "min_lr": 0.010000000000000002,
+  "n_rounds": 384,
+  "planned_efe": 6.0
+ },
+ "lr_table_digest": "13c81a58e497d460b636f14fedf7419622f0b10447cd8a1e3ad4f4f4b13e37bc",
+ "method": "FA",
+ "p2": {
+  "authority": "PREG2 \u00a75.5 (Fable gate FABLE_GATE_ENDGAME_SCRIPTS_20261003 \u00a79.2 E-O4d); PHASE2_IMPLEMENTATION_PLAN P2-08a (Part A); registered z / accounting = DP_Z_RECORD_FL04 (amendment 06 \u00a72 Q5)",
+  "dp_chain": {
+   "N": 131072,
+   "T": 384,
+   "accountant": "the registered RDP record (DP_Z_RECORD_FL04 via load_z); no new accountant",
+   "delta": 5e-06,
+   "disclosure_D_i": "a small-step recipe over 384 rounds may move theta little; that is the registered mechanism's answer, not a defect to tune away (PREG2 \u00a75.5 D-i)",
+   "epsilon": null,
+   "m": 1024,
+   "noise_multiplier": 0.0,
+   "s_cal_rounds": 20,
+   "s_cal_seed": 2026,
+   "semantics": "FA_1024",
+   "stage": "WD"
+  },
+  "label": "fedadam|eta=3e-06|c=0.1",
+  "post_run": null,
+  "pre_server": null,
+  "recipe": {
+   "client_lr": 0.1,
+   "item_lr_mult": null,
+   "items": "frozen",
+   "lora_lr_factor": null,
+   "lora_rank": null,
+   "personal_head": false,
+   "server_lr": 3e-06,
+   "server_opt": "fedadam",
+   "upload": "dense"
+  },
+  "selection": {
+   "label": "fedadam|eta=3e-06|c=0.1",
+   "self_sha256": "7aedaebe59dab183e627837a1099d14059d1d0fe4d0725c0bc471c8183582d58",
+   "sha256": "25aadc2ea8fd3d1a48015d9da748876db80f031cbe14551ab96bc624861252d7"
+  }
+ },
+ "participation": {
+  "E_realised_total": 15542338,
+  "E_total_expected": 15526656,
+  "cohort_size_max": 1132,
+  "cohort_size_min": 944,
+  "dropout_p": 0.0,
+  "dropped": 0,
+  "empty_rounds": 0,
+  "endpoint_rounds": 384,
+  "inclusion_probability": 0.0078125,
+  "noise_only_rounds": 0,
+  "noop_rounds": 0,
+  "planned_efe": 6.0,
+  "rounds": 384,
+  "sampled": 393766,
+  "sampling": "poisson",
+  "survived": 393766
+ },
+ "phase": "MAIN",
+ "plan": {
+  "group_size": 1024,
+  "inclusion_probability": 0.0078125,
+  "inclusion_rule": "u_i ~ Uniform{0..N-1} (PCG64, derive_seed(seed, 'poisson', r)); member iff u_i < group_size",
+  "keys_digest": "8356cab11d62e5fc3c99cf0594dbfade304f27947cbdd7cd39f4a25294bf44eb",
+  "manifest_hash": "5d5cd03679232d2214b9977189e9719acc3dc06842a7e03d08b3bc268f64f039",
+  "n_clients": 131072,
+  "rounds_per_sweep": 128,
+  "sampling": "independent Poisson participation per client per round (q = min(group_size, N) / N); variable cohort size (may be 0); logical order = sorted keys; 'sweeps' are blocks of rounds_per_sweep rounds",
+  "sampling_mode": "poisson",
+  "seed": 2027
+ },
+ "rounds": 384,
+ "run_id": "P2_WSTAR_FA1024_SMALL_s2027",
+ "server_digest": "0a1416a19e3b53ee45bde0cba191436741b7edbf957c719ac389d27b731ae7f0",
+ "server_opt": {
+  "cfg": {
+   "beta1": 0.9,
+   "beta2": 0.99,
+   "lr": 3e-06,
+   "name": "fedadam",
+   "tau": 0.001,
+   "v_init": "tau_squared"
+  },
+  "moments_digest": "2282b61467d0a357fe0a8a1ca1d3eecbb4b5e561e1bda89cfcf13dc7d9a85b2b",
+  "steps": 384
+ },
+ "status": "DONE_MAIN",
+ "store_digest": null,
+ "train_loss_log": {
+  "authority": "FL-15 R5 (REAL_WORLD_FL_PRACTICE_AUDIT_20260930 R5): per-round client training loss from fl VisitRecord.loss_sum (sum of the batch-mean CE over a visit's steps); descriptive monitoring only, numerics unchanged; z > 0 (DP) runs record nothing (an un-noised data-dependent release, the 06L_E E1 reading)",
+  "complete": true,
+  "fields": [
+   "client_mean_loss",
+   "finite",
+   "loss_sum",
+   "mean_step_loss",
+   "n_clients",
+   "n_steps",
+   "round"
+  ],
+  "file": "TRAIN_LOSS.jsonl",
+  "missing_rounds": [],
+  "rounds_expected": 384,
+  "rounds_logged": 384,
+  "sha256": "79534a2e8c0c287e719986a63b11beeb22d82777ac6dc203391093491dbf7fcd"
+ },
+ "update_norm_log": {
+  "authority": "PREG2 \u00a73.3 D1-ext: per round, per tensor group of the trained subset: ||Delta_agg||, the server step, ||theta - theta_pre||, cos(Delta_r, Delta_r-1), clients aggregated (omitted for z > 0); DESCRIPTIVE, never selects; post-noise server-side quantities only under DP (06L_E E1)",
+  "complete": true,
+  "cos_prev_unavailable_rounds": [
+   0
+  ],
+  "file": "UPDATE_NORM_LOG.jsonl",
+  "last_total_T": {
+   "agg_delta_l2": 0.00265790708177679,
+   "numel": 263822,
+   "pre_dist_l2": 0.0037847421510732683,
+   "pre_l2": 183.6536448327408,
+   "rel_pre_dist": 2.0608042680122972e-05,
+   "step_l2": 5.084309025975657e-06
+  },
+  "missing_rounds": [],
+  "rounds_expected": 384,
+  "rounds_logged": 384,
+  "server_steps": 384,
+  "sha256": "19e346e235461af36e9862153cd40a501a8cb35ec7dc45c0017069a5bb5ce1d8",
+  "strictly_increasing": true,
+  "trained_keys": [
+   "side_gate",
+   "user_gate",
+   "pos_embed.weight",
+   "blocks.0.ln1.weight",
+   "blocks.0.ln1.bias",
+   "blocks.0.qkv.weight",
+   "blocks.0.qkv.bias",
+   "blocks.0.out.weight",
+   "blocks.0.out.bias",
+   "blocks.0.ln2.weight",
+   "blocks.0.ln2.bias",
+   "blocks.0.ff1.weight",
+   "blocks.0.ff1.bias",
+   "blocks.0.ff2.weight",
+   "blocks.0.ff2.bias",
+   "blocks.1.ln1.weight",
+   "blocks.1.ln1.bias",
+   "blocks.1.qkv.weight",
+   "blocks.1.qkv.bias",
+   "blocks.1.out.weight",
+   "blocks.1.out.bias",
+   "blocks.1.ln2.weight",
+   "blocks.1.ln2.bias",
+   "blocks.1.ff1.weight",
+   "blocks.1.ff1.bias",
+   "blocks.1.ff2.weight",
+   "blocks.1.ff2.bias",
+   "final_norm.weight",
+   "final_norm.bias",
+   "input_norm.weight",
+   "input_norm.bias",
+   "side_embeds.category_tokens.weight",
+   "side_embeds.brand_tokens.weight",
+   "side_embeds.session_offset_tokens.weight",
+   "side_embeds.session_mode_main_category_tokens.weight",
+   "numflag_proj.weight",
+   "numflag_proj.bias",
+   "side_proj.weight",
+   "side_proj.bias",
+   "side_norm.weight",
+   "side_norm.bias",
+   "user_mlp.weight",
+   "user_mlp.bias",
+   "user_proj.weight",
+   "user_proj.bias",
+   "user_norm.weight",
+   "user_norm.bias"
+  ],
+  "trained_numel": 263822,
+  "unparsable_lines": 0
+ },
+ "wall_s_this_leg": 46091.22
+}

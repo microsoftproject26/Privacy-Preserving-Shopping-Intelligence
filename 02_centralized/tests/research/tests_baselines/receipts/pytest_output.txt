@@ -1,0 +1,81 @@
+..xx.........x.................x....x..x.....x......x................... [ 97%]
+xx                                                                       [100%]
+=================================== PASSES ====================================
+=========================== short test summary info ===========================
+PASSED tests_base/test_causality.py::test_last_ignores_padding_even_when_poisoned_to_look_like_the_current_event
+PASSED tests_base/test_causality.py::test_sknn_pool_never_contains_a_padded_only_item
+PASSED tests_base/test_evaluator_parity.py::test_predict_scores_ranks_match_the_hand_computed_ranks
+PASSED tests_base/test_evaluator_parity.py::test_full_baseline_evaluation_agrees_and_produces_baseline_rows
+PASSED tests_base/test_identity.py::test_train_client_ord_by_canonical_position
+PASSED tests_base/test_identity.py::test_train_client_key_hex_by_ord
+PASSED tests_base/test_identity.py::test_train_client_key_hex_by_canonical_position_composes_both
+PASSED tests_base/test_identity.py::test_eval_client_key_hex_by_eval_user_key
+PASSED tests_base/test_identity.py::test_wrong_file_sha256_is_refused
+PASSED tests_base/test_identity.py::test_non_dense_client_ord_is_refused
+PASSED tests_base/test_identity.py::test_out_of_range_client_ord_is_refused
+PASSED tests_base/test_knn_emb.py::test_gru_extraction_contiguous
+PASSED tests_base/test_knn_emb.py::test_gru_extraction_non_contiguous_class_map
+PASSED tests_base/test_knn_emb.py::test_sasrec_extraction_is_direct_no_offset
+PASSED tests_base/test_knn_emb.py::test_gru_missing_class_map_raises_key_error
+PASSED tests_base/test_knn_emb.py::test_sasrec_wrong_shape_raises_value_error
+PASSED tests_base/test_knn_emb.py::test_unknown_family_raises_value_error
+PASSED tests_base/test_knn_emb.py::test_load_checkpoint_state_dict_unwraps_every_documented_container[<lambda>0]
+PASSED tests_base/test_knn_emb.py::test_load_checkpoint_state_dict_unwraps_every_documented_container[<lambda>1]
+PASSED tests_base/test_knn_emb.py::test_load_checkpoint_state_dict_unwraps_every_documented_container[<lambda>2]
+PASSED tests_base/test_knn_emb.py::test_load_checkpoint_state_dict_unwraps_every_documented_container[<lambda>3]
+PASSED tests_base/test_knn_emb.py::test_load_checkpoint_state_dict_unwraps_every_documented_container[<lambda>4]
+PASSED tests_base/test_knn_emb.py::test_hand_computed_cosine_and_zero_norm_row
+PASSED tests_base/test_knn_emb.py::test_empty_history_falls_back_to_the_popularity_row
+PASSED tests_base/test_knn_emb.py::test_degenerate_zero_mean_history_falls_back_too
+PASSED tests_base/test_knn_emb.py::test_history_window_keeps_only_the_most_recent_items
+PASSED tests_base/test_knn_emb.py::test_history_window_counts_valid_items_not_columns_skipping_an_oov_gap
+PASSED tests_base/test_knn_emb.py::test_padding_never_leaks_into_the_mean_even_when_poisoned
+PASSED tests_base/test_main_refusal.py::test_main_is_refused_without_the_flag
+PASSED tests_base/test_main_refusal.py::test_main_is_allowed_with_the_flag
+PASSED tests_base/test_main_refusal.py::test_calibration_never_needs_the_flag
+PASSED tests_base/test_main_refusal.py::test_the_refusal_is_a_systemexit_subclass_so_the_cli_exits_cleanly
+PASSED tests_base/test_pop_last_exact.py::test_pop_counts_are_the_exact_train_target_histogram
+PASSED tests_base/test_pop_last_exact.py::test_last_scores_are_exact_recency_by_column
+PASSED tests_base/test_rss_guard.py::test_configure_low_priority_is_best_effort_and_caps_threads
+PASSED tests_base/test_rss_guard.py::test_guard_passes_under_the_limit_and_tracks_the_peak
+PASSED tests_base/test_rss_guard.py::test_guard_aborts_at_or_over_16_gib
+PASSED tests_base/test_rss_guard.py::test_guard_never_aborts_or_passes_on_an_unmeasurable_host
+PASSED tests_base/test_rss_guard.py::test_guard_actually_aborts_a_fit_loop_when_it_trips
+PASSED tests_base/test_rule.py::test_category_brand_map_with_a_mode_tie_broken_by_the_smaller_token
+PASSED tests_base/test_rule.py::test_fit_category_brand_map_dedupes_overlapping_windows_per_user
+PASSED tests_base/test_rule.py::test_pop_counts_and_within_category_brand_shares
+PASSED tests_base/test_rule.py::test_hand_computed_final_score_including_the_unknown_item_masked_to_zero
+PASSED tests_base/test_rule.py::test_empty_permitted_history_scores_all_zero
+PASSED tests_base/test_rule.py::test_padding_never_leaks_into_the_permitted_history_share_even_when_poisoned
+PASSED tests_base/test_run_execute.py::test_execute_pop
+PASSED tests_base/test_run_execute.py::test_execute_last
+PASSED tests_base/test_run_execute.py::test_execute_sknn_direct
+PASSED tests_base/test_run_execute.py::test_execute_sknn_grid
+PASSED tests_base/test_run_execute.py::test_execute_rule
+PASSED tests_base/test_run_execute.py::test_execute_rule_needs_user_keys
+PASSED tests_base/test_run_execute.py::test_execute_knn_emb
+PASSED tests_base/test_run_execute.py::test_execute_knn_emb_big_gets_a_different_label
+PASSED tests_base/test_run_execute.py::test_execute_knn_emb_needs_item_table_and_family
+PASSED tests_base/test_run_execute.py::test_grid_refused_for_non_sknn_baselines
+PASSED tests_base/test_sknn_fixture.py::test_top_k_scores_match_a_hand_written_oracle
+PASSED tests_base/test_sknn_fixture.py::test_most_recent_sampling_drops_the_oldest_shared_session
+PASSED tests_base/test_sknn_fixture.py::test_no_shared_item_is_an_empty_score_not_an_error
+PASSED tests_base/test_strata.py::test_scan_user_train_stats_hand_computed_and_deduped
+PASSED tests_base/test_strata.py::test_cutpoints_match_an_independent_numpy_percentile_call
+PASSED tests_base/test_strata.py::test_write_then_load_round_trips_and_verifies_the_self_hash
+PASSED tests_base/test_strata.py::test_tampering_the_file_is_refused_by_the_self_hash_check
+PASSED tests_base/test_strata.py::test_assign_stratum_bucketing_and_no_train_sentinel
+PASSED tests_base/test_strata.py::test_registry_is_keyed_by_client_key_hex_not_a_dense_rank
+XFAIL tests_base/test_causality.py::test_nc_last_would_leak_padding_without_the_length_mask - NEGATIVE CONTROL: without the length mask, the poisoned padding (session_offset also poisoned to 1) would leak into LAST
+XFAIL tests_base/test_causality.py::test_nc_sknn_pool_would_leak_padding_without_the_length_mask - NEGATIVE CONTROL: without the length mask, the poisoned padding would leak into the SKNN past-session pool
+XFAIL tests_base/test_identity.py::test_nc_wrong_file_would_be_trusted_without_the_hash_check - NEGATIVE CONTROL: without the file_sha256 verification, a corrupted/substituted clients table would be silently trusted
+XFAIL tests_base/test_knn_emb.py::test_nc_zero_norm_mean_would_produce_nan_without_the_guard - NEGATIVE CONTROL: without the mean-norm guard, a degenerate (norm-zero) mean history embedding would divide by zero (NaN), not fall back to the popularity row
+XFAIL tests_base/test_main_refusal.py::test_nc_main_would_run_through_without_the_gate - NEGATIVE CONTROL: without the phase check, a bare 'MAIN' call would run straight through instead of refusing
+XFAIL tests_base/test_pop_last_exact.py::test_nc_pop_fit_would_accept_an_out_of_range_target_without_the_check - NEGATIVE CONTROL: without the range check, POP fit would silently accept an out-of-range TRAIN target_class
+XFAIL tests_base/test_rss_guard.py::test_nc_guard_would_allow_the_exact_limit_without_the_ge_comparison - NEGATIVE CONTROL: without the >= (only a strict >) the guard would let RSS exactly AT the 16 GiB limit through
+XFAIL tests_base/test_rule.py::test_nc_unknown_category_term_would_leak_without_the_mask - NEGATIVE CONTROL: pop_within_cat is genuinely nonzero for the unknown-category item here -- the known>=3 mask in score_batch is doing real work, not guarding an already-zero (vacuous) case
+XFAIL tests_base/test_strata.py::test_nc_joining_by_dense_key_picks_the_wrong_user - NEGATIVE CONTROL: joining eval_user_key directly against the registry's dense TRAIN client_ord (ignoring client_key_hex) picks the WRONG user whenever the two manifests densify their users in a different order
+XFAIL tests_base/test_strata.py::test_nc_write_registry_would_overwrite_without_o_excl - NEGATIVE CONTROL: without O_EXCL, a second write_registry call would silently overwrite the frozen cut points
+64 passed, 10 xfailed in 3.05s
+
+--- stderr ---

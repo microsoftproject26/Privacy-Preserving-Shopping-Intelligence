@@ -1,0 +1,34 @@
+{
+  "checked_utc": "2026-09-23T21:19:03Z",
+  "execution_location": "Lobot server jupyter-group-digi2026-g8 via the existing authorised Jupyter kernel channel (tools/lobot.py); local Windows only edits the mirror",
+  "server_user": "jovyan (shared account)",
+  "repo": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence",
+  "repo_head": "bfc90a0",
+  "branch": "main",
+  "git_author_ident": "AhmedAbdelhamed01 <114183798+AhmedAbdelhamed01@users.noreply.github.com>",
+  "git_exclude_has_local_ai": true,
+  "commits_pushes_prs": "none (forbidden in this task)",
+  "gpus": [
+    {"index": 0, "name": "NVIDIA A16", "memory_used_mib": 3, "memory_total_mib": 15356, "compute_apps": 0},
+    {"index": 1, "name": "NVIDIA A16", "memory_used_mib": 3, "memory_total_mib": 15356, "compute_apps": 0}
+  ],
+  "disk_free_gib": 21.871,
+  "cgroup": {"cpu.max": "max 100000", "cpu.weight": 532, "memory.max_bytes": 68719476736, "memory.high": "max", "pids.max": 629145},
+  "cpu_note": "os.cpu_count()=256 and affinity=256 are host values, not a quota; policy keeps 3 threads per GPU process (8-CPU pod allocation per team setup)",
+  "libraries": {"torch": "2.13.0+cu130", "cuda": "13.0", "cudnn": 92000, "numpy": "2.4.6", "pyarrow": "21.0.0", "yaml": "6.0.3", "psutil": "7.2.2", "scipy": "1.17.1"},
+  "python_env": "~/venvs/ppsi-gpu (unchanged, no new env)",
+  "dataset": {
+    "path": "/home/jovyan/shared_data/rees46_nextitem_v1",
+    "version_hash": "860e5a1c3a81b8e4bbfeff4f245fa37638a43e4f260df179585964d2d4da8dbd",
+    "integrity": "409/409 files sha256 OK (state/verify_frozen_preflight.json, all_ok=true)"
+  },
+  "gru_v1_artifacts_intact": {
+    "locks": ["MODEL_LOCK.json", "TEST_CLAIM.json", "TEST_DONE.json", "VC_CLAIM.json", "VC_DONE.json"],
+    "checkpoints": "F0 and F4 best/latest/previous present",
+    "policy": "read-only; never modified or deleted"
+  },
+  "running_owner_jobs": "none (no GPU compute apps; only VS Code tunnels / jupyter; teammate tunnel-ahmed untouched)",
+  "housekeeping": "removed the empty directory tree '.local_ai/gru_v1\\r' (own artifact of an old CRLF bug; 16 KB, empty dirs only)",
+  "reuse_copy": "code/reuse: 14 GRU v1 modules byte-identical (REUSE_MANIFEST.json all_identical=true), chmod a-w",
+  "train_window_length_stats": {"n": 40180608, "mean": 8.313, "median": 5, "frac_len1": 0.1808, "frac_len50": 0.0183, "batch256_contains_len50": 0.99}
+}

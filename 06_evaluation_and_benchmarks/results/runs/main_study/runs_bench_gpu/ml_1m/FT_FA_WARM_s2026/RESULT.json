@@ -1,0 +1,166 @@
+{
+ "arm": "FT_FA_WARM",
+ "base_arm": "FA_WARM",
+ "base_run": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_gpu/ml_1m/FA_WARM_s2026",
+ "checkpoints": {
+  "CONTROLLED_BUDGET": {
+   "file": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_gpu/ml_1m/FA_WARM_s2026/ckpt/BM_ml_1m_FA_WARM_s2026/endpoint_6.0.pt",
+   "mark": 6.0,
+   "sha256": "d8c692d7afe7c1670de0063f553f443b790f631f9a4cfffbe992402bcf03f1c1"
+  },
+  "PRACTICAL_BEST": {
+   "file": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_gpu/ml_1m/FA_WARM_s2026/ckpt/BM_ml_1m_FA_WARM_s2026/best.pt",
+   "mark": 6.0,
+   "sha256": "d8c692d7afe7c1670de0063f553f443b790f631f9a4cfffbe992402bcf03f1c1"
+  }
+ },
+ "device": {
+  "cublas_workspace_config": ":4096:8",
+  "cuda": "13.0",
+  "cudnn": 92000,
+  "device_class": "NVIDIA_A40-FP32-DET",
+  "gpu_name": "NVIDIA A40",
+  "numerics": {
+   "cuda_matmul_allow_tf32": false,
+   "cudnn_allow_tf32": false,
+   "cudnn_deterministic": true,
+   "deterministic_algorithms": true,
+   "deterministic_warn_only": false,
+   "float32_matmul_precision": "highest",
+   "intra_op_threads": 16,
+   "torch": "2.13.0+cu130"
+  },
+  "physical_gpu": "0",
+  "torch": "2.13.0+cu130"
+ },
+ "device_class": "NVIDIA_A40-FP32-DET",
+ "ft_cell": {
+  "cell": "FT_C_f0.3_P4",
+  "lr_frac": 0.3,
+  "passes": 4
+ },
+ "kind": "ft",
+ "run_id": "BM_ml_1m_FT_FA_WARM_s2026",
+ "spec": {
+  "cfg": {
+   "seed": 2026
+  },
+  "seed": 2026
+ },
+ "status": "DONE_MAIN",
+ "timing": {
+  "CONTROLLED_BUDGET": {
+   "mean_support_events": 162.591255382577,
+   "n_users": 6038,
+   "s_per_user": 0.48094700037249716,
+   "threads": 16,
+   "wall_s": 2903.96,
+   "workers": 2
+  },
+  "PRACTICAL_BEST": {
+   "mean_support_events": 162.591255382577,
+   "n_users": 6038,
+   "s_per_user": 0.4724004908214049,
+   "threads": 16,
+   "wall_s": 2852.35,
+   "workers": 2
+  }
+ },
+ "utc": "2026-10-05T17:04:22Z",
+ "validation": {
+  "CONTROLLED_BUDGET": {
+   "ALL": {
+    "hr@10": 0.22888373633653528,
+    "hr@20": 0.332891685988738,
+    "mrr@20": 0.09189994471190216,
+    "n_unreachable": 0,
+    "n_users": 6038,
+    "ndcg@10": 0.11809665926855525,
+    "ndcg@20": 0.14427197419816978
+   },
+   "BAND": {
+    "hr@10": 0.22075055187637968,
+    "hr@20": 0.33774834437086093,
+    "mrr@20": 0.0851933395805005,
+    "n_unreachable": 0,
+    "n_users": 906,
+    "ndcg@10": 0.1106793151730934,
+    "ndcg@20": 0.1399140969015828
+   },
+   "BAND_COVERED_TARGET": {
+    "hr@10": 0.22926343729263438,
+    "hr@20": 0.3334439283344393,
+    "mrr@20": 0.09205239982920789,
+    "n_unreachable": 0,
+    "n_users": 6028,
+    "ndcg@10": 0.1182925727709915,
+    "ndcg@20": 0.14451131058535985
+   },
+   "BAND_UNCOVERED_TARGET": {
+    "hr@10": 0.0,
+    "hr@20": 0.0,
+    "mrr@20": 0.0,
+    "n_unreachable": 0,
+    "n_users": 10,
+    "ndcg@10": 0.0,
+    "ndcg@20": 0.0
+   },
+   "OTHERS": {
+    "hr@10": 0.230319563522993,
+    "hr@20": 0.33203429462197975,
+    "mrr@20": 0.09308392449542707,
+    "n_unreachable": 0,
+    "n_users": 5132,
+    "ndcg@10": 0.1194061124545429,
+    "ndcg@20": 0.145041311070872
+   }
+  },
+  "PRACTICAL_BEST": {
+   "ALL": {
+    "hr@10": 0.22888373633653528,
+    "hr@20": 0.332891685988738,
+    "mrr@20": 0.09189994471190216,
+    "n_unreachable": 0,
+    "n_users": 6038,
+    "ndcg@10": 0.11809665926855525,
+    "ndcg@20": 0.14427197419816978
+   },
+   "BAND": {
+    "hr@10": 0.22075055187637968,
+    "hr@20": 0.33774834437086093,
+    "mrr@20": 0.0851933395805005,
+    "n_unreachable": 0,
+    "n_users": 906,
+    "ndcg@10": 0.1106793151730934,
+    "ndcg@20": 0.1399140969015828
+   },
+   "BAND_COVERED_TARGET": {
+    "hr@10": 0.22926343729263438,
+    "hr@20": 0.3334439283344393,
+    "mrr@20": 0.09205239982920789,
+    "n_unreachable": 0,
+    "n_users": 6028,
+    "ndcg@10": 0.1182925727709915,
+    "ndcg@20": 0.14451131058535985
+   },
+   "BAND_UNCOVERED_TARGET": {
+    "hr@10": 0.0,
+    "hr@20": 0.0,
+    "mrr@20": 0.0,
+    "n_unreachable": 0,
+    "n_users": 10,
+    "ndcg@10": 0.0,
+    "ndcg@20": 0.0
+   },
+   "OTHERS": {
+    "hr@10": 0.230319563522993,
+    "hr@20": 0.33203429462197975,
+    "mrr@20": 0.09308392449542707,
+    "n_unreachable": 0,
+    "n_users": 5132,
+    "ndcg@10": 0.1194061124545429,
+    "ndcg@20": 0.145041311070872
+   }
+  }
+ }
+}

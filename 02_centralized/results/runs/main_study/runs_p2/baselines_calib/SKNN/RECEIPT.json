@@ -1,0 +1,110 @@
+{
+  "baseline": "SKNN",
+  "config": {
+    "sknn_k": 500,
+    "sknn_sample_size": 5000,
+    "grid": true,
+    "fit_chunk": null,
+    "eval_batch": 1024,
+    "eval_config": {
+      "frozen": true,
+      "path": "precomputed_scores",
+      "score_block": 158486,
+      "class_chunk": 32768,
+      "eval_batch": 1024,
+      "cache_bytes": 1073741824,
+      "metric_accumulation": "FP64",
+      "eval_device_class": "A16-FP32-DET",
+      "device_class_frozen": "A16-FP32-DET",
+      "lock_sha256": "0308640a79ef5fccb50bc456ee8f3ff1d506095c757e3b24fbb7b9c2e058238e",
+      "lock_version": "1.0.0",
+      "eval_batch_amendment_id": null,
+      "eval_stream": "EVAL_ROWS_ONLY"
+    }
+  },
+  "v4base_code_sha256": "1c87592bcbc60e0f4de99dc364984400545f97e91a8daa6c4774d6a799961aa8",
+  "evaluator_code_sha256": "6cbc3e6f2a6a237650e04f328b9991427d79867046279c3ae7d9e6a27edaea0d",
+  "wall_s": 10350.456,
+  "n_rows": 48,
+  "grid": {
+    "points": [
+      {
+        "k": 50,
+        "sample_size": 500,
+        "value": 0.0960702068632066
+      },
+      {
+        "k": 50,
+        "sample_size": 1000,
+        "value": 0.09722758441230149
+      },
+      {
+        "k": 50,
+        "sample_size": 5000,
+        "value": 0.0964424474722018
+      },
+      {
+        "k": 100,
+        "sample_size": 500,
+        "value": 0.09800813099808374
+      },
+      {
+        "k": 100,
+        "sample_size": 1000,
+        "value": 0.10001601199587958
+      },
+      {
+        "k": 100,
+        "sample_size": 5000,
+        "value": 0.10074051842779333
+      },
+      {
+        "k": 200,
+        "sample_size": 500,
+        "value": 0.0988484593288175
+      },
+      {
+        "k": 200,
+        "sample_size": 1000,
+        "value": 0.10115578708204623
+      },
+      {
+        "k": 200,
+        "sample_size": 5000,
+        "value": 0.10253770246070429
+      },
+      {
+        "k": 500,
+        "sample_size": 500,
+        "value": 0.09692236706419213
+      },
+      {
+        "k": 500,
+        "sample_size": 1000,
+        "value": 0.1007993791419168
+      },
+      {
+        "k": 500,
+        "sample_size": 5000,
+        "value": 0.10272515194069669
+      }
+    ],
+    "selected": {
+      "k": 500,
+      "sample_size": 5000,
+      "value": 0.10272515194069669
+    }
+  },
+  "resource": {
+    "limit_bytes": 17179869184,
+    "peak_seen_bytes": 2285842432,
+    "n_checks": 2537,
+    "rss_measurable_on_this_host": true
+  },
+  "low_priority": {
+    "torch_num_threads": 2,
+    "os_nice_available": true,
+    "os_nice_result": 19,
+    "nice_increment_requested": 10
+  }
+}

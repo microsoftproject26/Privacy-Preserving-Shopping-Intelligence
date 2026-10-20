@@ -1,0 +1,124 @@
+{
+ "default_variant": {
+  "GRU": "GRU_D128",
+  "SASREC": "SASREC_D256_B2"
+ },
+ "format": "PPSI_V4_MODEL_VARIANT_REGISTRY_1",
+ "self_sha256": "542edf3772f60603b198db34c97945a91f90737c73a3d35cf85d30c1add7d480",
+ "size_order": {
+  "GRU": [
+   "GRU_D128",
+   "GRU_D256"
+  ],
+  "SASREC": [
+   "SASREC_D256_B2",
+   "SASREC_D256_B3",
+   "SASREC_D384_B2"
+  ]
+ },
+ "source": "contracts/PREG1_AMENDMENT_02R1.md \u00a71; company/reviews/BEST_BACKBONE_FABLE_FOLLOWUP_SIZE.md (b), (d); TRAIN-02 item 0a",
+ "task": "TRAIN-02 item 0a",
+ "theta0": "per variant x seed in contracts/model_variants/THETA0_VARIANTS.json (v4train.theta0_variants; CPU build, SASRec C7-recentered); derived_schemas/REGISTRY.json and THETA0_REGISTRY.json unchanged",
+ "variants": {
+  "GRU_D128": {
+   "current_build": true,
+   "d": 128,
+   "definition": "current build: item embedding 128, input_proj -> 128, LayerNorm(128), nn.GRU(128, 256), readout_proj -> 128, tied head + output_bias",
+   "dropout_default": [
+    0.2,
+    0.1
+   ],
+   "dropout_sites": [
+    "input",
+    "readout"
+   ],
+   "family": "GRU",
+   "head": "tied",
+   "hidden": 256,
+   "layers": 1
+  },
+  "GRU_D256": {
+   "current_build": false,
+   "d": 256,
+   "definition": "item embedding 256, input_proj -> 256, LayerNorm(256), nn.GRU(256, 256), readout_proj -> 256, tied head + output_bias (hidden unchanged)",
+   "dropout_default": [
+    0.2,
+    0.1
+   ],
+   "dropout_sites": [
+    "input",
+    "readout"
+   ],
+   "family": "GRU",
+   "head": "tied",
+   "hidden": 256,
+   "layers": 1
+  },
+  "SASREC_D256_B2": {
+   "current_build": true,
+   "definition": "current build: SASRecConfig.from_registry(fl.families.SASREC_ENTRY)",
+   "dropout_default": [
+    0.2
+   ],
+   "dropout_sites": [
+    "all"
+   ],
+   "family": "SASREC",
+   "head": "untied",
+   "recenter": "C7",
+   "sasrec_entry": {
+    "blocks": 2,
+    "d_model": 256,
+    "dropout": 0.2,
+    "ff_multiplier": 4,
+    "group": "rich_frozen_channels",
+    "heads": 4,
+    "id": "A1_RICH256"
+   }
+  },
+  "SASREC_D256_B3": {
+   "current_build": false,
+   "definition": "the current build with one more causal block (3 blocks)",
+   "dropout_default": [
+    0.2
+   ],
+   "dropout_sites": [
+    "all"
+   ],
+   "family": "SASREC",
+   "head": "untied",
+   "recenter": "C7",
+   "sasrec_entry": {
+    "blocks": 3,
+    "d_model": 256,
+    "dropout": 0.2,
+    "ff_multiplier": 4,
+    "group": "rich_frozen_channels",
+    "heads": 4,
+    "id": "SASREC_D256_B3"
+   }
+  },
+  "SASREC_D384_B2": {
+   "current_build": false,
+   "definition": "d_model 384, 4 heads (head dim 96), ff x4, 2 blocks, untied, C7 recentering",
+   "dropout_default": [
+    0.2
+   ],
+   "dropout_sites": [
+    "all"
+   ],
+   "family": "SASREC",
+   "head": "untied",
+   "recenter": "C7",
+   "sasrec_entry": {
+    "blocks": 2,
+    "d_model": 384,
+    "dropout": 0.2,
+    "ff_multiplier": 4,
+    "group": "rich_frozen_channels",
+    "heads": 4,
+    "id": "SASREC_D384_B2"
+   }
+  }
+ }
+}

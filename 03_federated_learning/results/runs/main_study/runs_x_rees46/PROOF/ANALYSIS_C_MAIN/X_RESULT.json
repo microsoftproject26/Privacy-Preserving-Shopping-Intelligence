@@ -1,0 +1,143 @@
+{
+ "bootstrap": "make_plan seed 20261004, 1000",
+ "contrasts": [],
+ "eval_manifest_id": "MAIN_VALIDATION_5_100_131072",
+ "inputs": {
+  "C_FULL|2026|CB": {
+   "arm": "C_FULL",
+   "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/REEVAL_A40/C_FULL_s2026_CB/evals/MAIN.ranks_int32.npy",
+   "rule": "CONTROLLED_BUDGET",
+   "seed": 2026,
+   "sha256": "89751c0dbf231ac5e52f390e952a9f7f9a9506488eb969647d04b63d45ed0e33"
+  },
+  "C_FULL|2026|PB": {
+   "arm": "C_FULL",
+   "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/REEVAL_A40/C_FULL_s2026_PB/evals/MAIN.ranks_int32.npy",
+   "rule": "PRACTICAL_BEST",
+   "seed": 2026,
+   "sha256": "89751c0dbf231ac5e52f390e952a9f7f9a9506488eb969647d04b63d45ed0e33"
+  },
+  "C_FULL|2027|CB": {
+   "arm": "C_FULL",
+   "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/REEVAL_A40/C_FULL_s2027_CB/evals/MAIN.ranks_int32.npy",
+   "rule": "CONTROLLED_BUDGET",
+   "seed": 2027,
+   "sha256": "55b4cc31f159e6c8e148bfb9b9cc0cb617ca53365effcd0534b7a4b2f9d105fe"
+  },
+  "C_FULL|2027|PB": {
+   "arm": "C_FULL",
+   "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/REEVAL_A40/C_FULL_s2027_PB/evals/MAIN.ranks_int32.npy",
+   "rule": "PRACTICAL_BEST",
+   "seed": 2027,
+   "sha256": "55b4cc31f159e6c8e148bfb9b9cc0cb617ca53365effcd0534b7a4b2f9d105fe"
+  },
+  "FA_WARM_PB100K|2026|CB": {
+   "arm": "FA_WARM_PB100K",
+   "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/PROOF/FA_WARM_PB100K_s2026_CB_MAIN/evals/MAIN.ranks_int32.npy",
+   "rule": "CONTROLLED_BUDGET",
+   "seed": 2026,
+   "sha256": "eea735c494990787eb0f62658c34dd466324d487b23f06649c6b490c6aaa7aa3"
+  },
+  "FA_WARM_PB100K|2026|PB": {
+   "arm": "FA_WARM_PB100K",
+   "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/PROOF/FA_WARM_PB100K_s2026_PB_MAIN/evals/MAIN.ranks_int32.npy",
+   "rule": "PRACTICAL_BEST",
+   "seed": 2026,
+   "sha256": "eea735c494990787eb0f62658c34dd466324d487b23f06649c6b490c6aaa7aa3"
+  },
+  "PRE100K|2026|CB": {
+   "arm": "PRE100K",
+   "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/PROOF/PRE100K_s2026_CB_MAIN/evals/MAIN.ranks_int32.npy",
+   "rule": "CONTROLLED_BUDGET",
+   "seed": 2026,
+   "sha256": "d5943394a418065e1bd778e548b1853bf41b3d992f14f1684e041131cc591f89"
+  },
+  "PRE100K|2026|PB": {
+   "arm": "PRE100K",
+   "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/PROOF/PRE100K_s2026_CB_MAIN/evals/MAIN.ranks_int32.npy",
+   "rule": "PRACTICAL_BEST",
+   "seed": 2026,
+   "sha256": "d5943394a418065e1bd778e548b1853bf41b3d992f14f1684e041131cc591f89"
+  },
+  "PRE|2026|CB": {
+   "arm": "PRE",
+   "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/REEVAL_A40/PRE_s2026_CB/evals/MAIN.ranks_int32.npy",
+   "rule": "CONTROLLED_BUDGET",
+   "seed": 2026,
+   "sha256": "827b5bf6d618575a24a1405201e224237e050e760d6f2ca3ea76dfad34b838a0"
+  },
+  "PRE|2026|PB": {
+   "arm": "PRE",
+   "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/REEVAL_A40/PRE_s2026_PB/evals/MAIN.ranks_int32.npy",
+   "rule": "PRACTICAL_BEST",
+   "seed": 2026,
+   "sha256": "827b5bf6d618575a24a1405201e224237e050e760d6f2ca3ea76dfad34b838a0"
+  }
+ },
+ "label": "POST_HOC_EXPLORATORY",
+ "metrics": [
+  "mrr@20 (primary)",
+  "ndcg@10",
+  "hr@10"
+ ],
+ "points": {
+  "C_FULL|2026|CB": {
+   "hr@10": 0.3916439076602413,
+   "mrr@20": 0.19419217133966563,
+   "ndcg@10": 0.23515127006332748
+  },
+  "C_FULL|2026|PB": {
+   "hr@10": 0.3916439076602413,
+   "mrr@20": 0.19419217133966563,
+   "ndcg@10": 0.23515127006332748
+  },
+  "C_FULL|2027|CB": {
+   "hr@10": 0.3909267505504747,
+   "mrr@20": 0.19471639297681728,
+   "ndcg@10": 0.2353837359760833
+  },
+  "C_FULL|2027|PB": {
+   "hr@10": 0.3909267505504747,
+   "mrr@20": 0.19471639297681728,
+   "ndcg@10": 0.2353837359760833
+  },
+  "FA_WARM_PB100K|2026|CB": {
+   "hr@10": 0.3216129838694232,
+   "mrr@20": 0.15130936548370646,
+   "ndcg@10": 0.1858203688500457
+  },
+  "FA_WARM_PB100K|2026|PB": {
+   "hr@10": 0.3216129838694232,
+   "mrr@20": 0.15130936548370646,
+   "ndcg@10": 0.1858203688500457
+  },
+  "PRE100K|2026|CB": {
+   "hr@10": 0.3069543533194731,
+   "mrr@20": 0.14483277517633866,
+   "ndcg@10": 0.17776769651023647
+  },
+  "PRE100K|2026|PB": {
+   "hr@10": 0.3069543533194731,
+   "mrr@20": 0.14483277517633866,
+   "ndcg@10": 0.17776769651023647
+  },
+  "PRE|2026|CB": {
+   "hr@10": 0.36089528081819006,
+   "mrr@20": 0.1728961969080497,
+   "ndcg@10": 0.21111463133121466
+  },
+  "PRE|2026|PB": {
+   "hr@10": 0.36089528081819006,
+   "mrr@20": 0.1728961969080497,
+   "ndcg@10": 0.21111463133121466
+  }
+ },
+ "register_binding": null,
+ "role": "MAIN",
+ "tools": {
+  "p2_report.py": "934cc8a0e93f3edd44e5c950f89996149a1f2b26dd7737f9c78b383b7dff215e",
+  "retention_report.py": "9a3b2c2a918ef2baacc5299426941f1eb94c366f5bb6aa7c29b4bfdbca0afe58",
+  "x_analysis.py": "509a9f9715ab124ca751f3ed5ebc6ad2240a9dd014d406f98271581c7c37b151"
+ },
+ "utc": "2026-10-10T03:33:21Z"
+}

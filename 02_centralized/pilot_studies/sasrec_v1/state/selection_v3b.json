@@ -1,0 +1,57 @@
+{
+  "selected": "A1_RICH256_s2027",
+  "selected_best_metric": 0.18651340901851654,
+  "tied_within_1e-6": [
+    "A1_RICH256_s2027"
+  ],
+  "ranking": [
+    [
+      "A1_RICH256_s2027",
+      0.18651340901851654
+    ],
+    [
+      "A1_RICH256_s2026",
+      0.18629789352416992
+    ],
+    [
+      "A0_ID256_s2026",
+      0.17858543992042542
+    ]
+  ],
+  "ineligible": [],
+  "rule": "max full-VS macro MRR@20; tie<=1e-6 -> micro R@20 -> fewer params -> registry order",
+  "candidates": [
+    {
+      "run_id": "A0_ID256_s2026",
+      "seed": 2026,
+      "final_status": "COMPLETE",
+      "best_metric": 0.17858543992042542,
+      "best_epoch": 5,
+      "micro_recall20_at_best": 0.45404207706451416,
+      "n_params": 82897430,
+      "summary_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/runs/A0_ID256_s2026_cool5"
+    },
+    {
+      "run_id": "A1_RICH256_s2026",
+      "seed": 2026,
+      "final_status": "COMPLETE",
+      "best_metric": 0.18629789352416992,
+      "best_epoch": 5,
+      "micro_recall20_at_best": 0.47043377161026,
+      "n_params": 83094368,
+      "summary_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/runs/A1_RICH256_s2026_cool5"
+    },
+    {
+      "run_id": "A1_RICH256_s2027",
+      "seed": 2027,
+      "final_status": "COMPLETE",
+      "best_metric": 0.18651340901851654,
+      "best_epoch": 5,
+      "micro_recall20_at_best": 0.47074589133262634,
+      "n_params": 83094368,
+      "summary_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/runs/A1_RICH256_s2027_cool5"
+    }
+  ],
+  "unavailable_runs": [],
+  "rule_source": "amendment 2: max full-VS macro MRR@20 over {A0_s2026, A1_s2026, A1_s2027} x epochs {3,4,5}"
+}

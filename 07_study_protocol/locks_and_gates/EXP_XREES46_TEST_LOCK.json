@@ -1,0 +1,844 @@
+{
+ "analysis": {
+  "confirmatory_inputs_read_only": "runs_ds3/TEST/REEVAL, runs_p2/TEST/REEVAL (sha256 bound above)",
+  "contrasts": [
+   {
+    "id": "B1_X_FA_WARM-PRE|PB",
+    "kind": "delta",
+    "note": "the K21 / Q1 analogue: tau-fixed warm FL (unfrozen) - theta_pre; seed mean, PRE shared",
+    "pairs": [
+     [
+      "X_FA|2026|PB",
+      "PRE|2026|PB"
+     ],
+     [
+      "X_FA|2027|PB",
+      "PRE|2026|PB"
+     ]
+    ]
+   },
+   {
+    "id": "B2_X_FA_WARM-P2_WSTAR|PB",
+    "kind": "delta",
+    "note": "tau fix (+ unfrozen items) vs the confirmatory W* (tau 1e-3, frozen)",
+    "pairs": [
+     [
+      "X_FA|2026|PB",
+      "P2_WSTAR|2026|PB"
+     ],
+     [
+      "X_FA|2027|PB",
+      "P2_WSTAR|2027|PB"
+     ]
+    ]
+   },
+   {
+    "id": "R_X_FA_WARM/C_FULL|PB",
+    "kind": "ratio",
+    "pairs": [
+     [
+      "X_FA|2026|PB",
+      "C_FULL|2026|PB"
+     ],
+     [
+      "X_FA|2027|PB",
+      "C_FULL|2027|PB"
+     ]
+    ]
+   },
+   {
+    "id": "R_P2_WSTAR/C_FULL|PB",
+    "kind": "ratio",
+    "pairs": [
+     [
+      "P2_WSTAR|2026|PB",
+      "C_FULL|2026|PB"
+     ],
+     [
+      "P2_WSTAR|2027|PB",
+      "C_FULL|2027|PB"
+     ]
+    ]
+   },
+   {
+    "id": "B1_X_FA_WARM-PRE|CB",
+    "kind": "delta",
+    "note": "the K21 / Q1 analogue: tau-fixed warm FL (unfrozen) - theta_pre; seed mean, PRE shared",
+    "pairs": [
+     [
+      "X_FA|2026|CB",
+      "PRE|2026|CB"
+     ],
+     [
+      "X_FA|2027|CB",
+      "PRE|2026|CB"
+     ]
+    ]
+   },
+   {
+    "id": "B2_X_FA_WARM-P2_WSTAR|CB",
+    "kind": "delta",
+    "note": "tau fix (+ unfrozen items) vs the confirmatory W* (tau 1e-3, frozen)",
+    "pairs": [
+     [
+      "X_FA|2026|CB",
+      "P2_WSTAR|2026|CB"
+     ],
+     [
+      "X_FA|2027|CB",
+      "P2_WSTAR|2027|CB"
+     ]
+    ]
+   },
+   {
+    "id": "R_X_FA_WARM/C_FULL|CB",
+    "kind": "ratio",
+    "pairs": [
+     [
+      "X_FA|2026|CB",
+      "C_FULL|2026|CB"
+     ],
+     [
+      "X_FA|2027|CB",
+      "C_FULL|2027|CB"
+     ]
+    ]
+   },
+   {
+    "id": "R_P2_WSTAR/C_FULL|CB",
+    "kind": "ratio",
+    "pairs": [
+     [
+      "P2_WSTAR|2026|CB",
+      "C_FULL|2026|CB"
+     ],
+     [
+      "P2_WSTAR|2027|CB",
+      "C_FULL|2027|CB"
+     ]
+    ]
+   },
+   {
+    "id": "D1_X_FA_COLD-FA|PB",
+    "kind": "delta",
+    "note": "tau fix on the cold arm: X_FA_cold - the confirmatory FA (tau 1e-3), seed-paired",
+    "pairs": [
+     [
+      "X_FA_COLD|2026|PB",
+      "FA|2026|PB"
+     ],
+     [
+      "X_FA_COLD|2027|PB",
+      "FA|2027|PB"
+     ]
+    ]
+   },
+   {
+    "id": "D2_X_FA_COLD-PRE|PB",
+    "kind": "delta",
+    "pairs": [
+     [
+      "X_FA_COLD|2026|PB",
+      "PRE|2026|PB"
+     ],
+     [
+      "X_FA_COLD|2027|PB",
+      "PRE|2026|PB"
+     ]
+    ]
+   },
+   {
+    "id": "R_X_FA_COLD/C_FULL|PB",
+    "kind": "ratio",
+    "note": "K17 analogue",
+    "pairs": [
+     [
+      "X_FA_COLD|2026|PB",
+      "C_FULL|2026|PB"
+     ],
+     [
+      "X_FA_COLD|2027|PB",
+      "C_FULL|2027|PB"
+     ]
+    ]
+   },
+   {
+    "id": "R_X_FA_COLD/C_SMALL|PB",
+    "kind": "ratio",
+    "note": "K3 analogue",
+    "pairs": [
+     [
+      "X_FA_COLD|2026|PB",
+      "C_SMALL|2026|PB"
+     ],
+     [
+      "X_FA_COLD|2027|PB",
+      "C_SMALL|2027|PB"
+     ]
+    ]
+   },
+   {
+    "id": "R_FA/C_FULL|PB",
+    "kind": "ratio",
+    "note": "the confirmatory K17 recomputed on the same W, for reference",
+    "pairs": [
+     [
+      "FA|2026|PB",
+      "C_FULL|2026|PB"
+     ],
+     [
+      "FA|2027|PB",
+      "C_FULL|2027|PB"
+     ]
+    ]
+   },
+   {
+    "id": "D1_X_FA_COLD-FA|CB",
+    "kind": "delta",
+    "note": "tau fix on the cold arm: X_FA_cold - the confirmatory FA (tau 1e-3), seed-paired",
+    "pairs": [
+     [
+      "X_FA_COLD|2026|CB",
+      "FA|2026|CB"
+     ],
+     [
+      "X_FA_COLD|2027|CB",
+      "FA|2027|CB"
+     ]
+    ]
+   },
+   {
+    "id": "D2_X_FA_COLD-PRE|CB",
+    "kind": "delta",
+    "pairs": [
+     [
+      "X_FA_COLD|2026|CB",
+      "PRE|2026|CB"
+     ],
+     [
+      "X_FA_COLD|2027|CB",
+      "PRE|2026|CB"
+     ]
+    ]
+   },
+   {
+    "id": "R_X_FA_COLD/C_FULL|CB",
+    "kind": "ratio",
+    "note": "K17 analogue",
+    "pairs": [
+     [
+      "X_FA_COLD|2026|CB",
+      "C_FULL|2026|CB"
+     ],
+     [
+      "X_FA_COLD|2027|CB",
+      "C_FULL|2027|CB"
+     ]
+    ]
+   },
+   {
+    "id": "R_X_FA_COLD/C_SMALL|CB",
+    "kind": "ratio",
+    "note": "K3 analogue",
+    "pairs": [
+     [
+      "X_FA_COLD|2026|CB",
+      "C_SMALL|2026|CB"
+     ],
+     [
+      "X_FA_COLD|2027|CB",
+      "C_SMALL|2027|CB"
+     ]
+    ]
+   },
+   {
+    "id": "R_FA/C_FULL|CB",
+    "kind": "ratio",
+    "note": "the confirmatory K17 recomputed on the same W, for reference",
+    "pairs": [
+     [
+      "FA|2026|CB",
+      "C_FULL|2026|CB"
+     ],
+     [
+      "FA|2027|CB",
+      "C_FULL|2027|CB"
+     ]
+    ]
+   }
+  ],
+  "entries": {
+   "C_FULL|2026|CB": {
+    "arm": "C_FULL",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/TEST/REEVAL/C_FULL_s2026_CB/evals/MAIN_TEST.ranks_int32.npy",
+    "rule": "CONTROLLED_BUDGET",
+    "seed": 2026,
+    "sha256": "f1ae1a421808686ea6bc4ef224853f390449abb0b3f177627f64b46ba6e5ece5"
+   },
+   "C_FULL|2026|PB": {
+    "arm": "C_FULL",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/TEST/REEVAL/C_FULL_s2026_PB/evals/MAIN_TEST.ranks_int32.npy",
+    "rule": "PRACTICAL_BEST",
+    "seed": 2026,
+    "sha256": "f1ae1a421808686ea6bc4ef224853f390449abb0b3f177627f64b46ba6e5ece5"
+   },
+   "C_FULL|2027|CB": {
+    "arm": "C_FULL",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/TEST/REEVAL/C_FULL_s2027_CB/evals/MAIN_TEST.ranks_int32.npy",
+    "rule": "CONTROLLED_BUDGET",
+    "seed": 2027,
+    "sha256": "9abda456b33cdc43ac8304c8946e73464d215c5474cd372bc8e625045fe28f94"
+   },
+   "C_FULL|2027|PB": {
+    "arm": "C_FULL",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/TEST/REEVAL/C_FULL_s2027_PB/evals/MAIN_TEST.ranks_int32.npy",
+    "rule": "PRACTICAL_BEST",
+    "seed": 2027,
+    "sha256": "9abda456b33cdc43ac8304c8946e73464d215c5474cd372bc8e625045fe28f94"
+   },
+   "C_SMALL|2026|CB": {
+    "arm": "C_SMALL",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/TEST/REEVAL/C_SMALL_s2026_CB/evals/MAIN_TEST.ranks_int32.npy",
+    "rule": "CONTROLLED_BUDGET",
+    "seed": 2026,
+    "sha256": "dcae91dc54d0cf32e7b6da3f15315749644e8f31aa12091e56a0fe5e9b9b0504"
+   },
+   "C_SMALL|2026|PB": {
+    "arm": "C_SMALL",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/TEST/REEVAL/C_SMALL_s2026_PB/evals/MAIN_TEST.ranks_int32.npy",
+    "rule": "PRACTICAL_BEST",
+    "seed": 2026,
+    "sha256": "badf76c11c063ed56b9f96cf7f9ed9420e27c3e68bbf355c8b8b6ace0265659d"
+   },
+   "C_SMALL|2027|CB": {
+    "arm": "C_SMALL",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/TEST/REEVAL/C_SMALL_s2027_CB/evals/MAIN_TEST.ranks_int32.npy",
+    "rule": "CONTROLLED_BUDGET",
+    "seed": 2027,
+    "sha256": "0cef840924c31253fa013c37dec13c4a359107925eddb9682f9ce30c9f8fb9fd"
+   },
+   "C_SMALL|2027|PB": {
+    "arm": "C_SMALL",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/TEST/REEVAL/C_SMALL_s2027_PB/evals/MAIN_TEST.ranks_int32.npy",
+    "rule": "PRACTICAL_BEST",
+    "seed": 2027,
+    "sha256": "ff8264473c73b2c075cdde64a0b26dc73b93afacd941a343bfa4588c8577818c"
+   },
+   "FA_WARM_FROZEN|2026|CB": {
+    "arm": "FA_WARM_FROZEN",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/TEST/REEVAL/FA_WARM_FROZEN_s2026_CB/evals/MAIN_TEST.ranks_int32.npy",
+    "rule": "CONTROLLED_BUDGET",
+    "seed": 2026,
+    "sha256": "9778deb246bb8fc799b185b8d50b5149b47d7876a1ead76c16d7fc2bb1fcbd9d"
+   },
+   "FA_WARM_FROZEN|2026|PB": {
+    "arm": "FA_WARM_FROZEN",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/TEST/REEVAL/FA_WARM_FROZEN_s2026_PB/evals/MAIN_TEST.ranks_int32.npy",
+    "rule": "PRACTICAL_BEST",
+    "seed": 2026,
+    "sha256": "4ad035eb55bb3c5dbb21cfd8cb4ad6f8e71abe99e24ecf2cf4480f1e34e6fd4e"
+   },
+   "FA_WARM_FROZEN|2027|CB": {
+    "arm": "FA_WARM_FROZEN",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/TEST/REEVAL/FA_WARM_FROZEN_s2027_CB/evals/MAIN_TEST.ranks_int32.npy",
+    "rule": "CONTROLLED_BUDGET",
+    "seed": 2027,
+    "sha256": "31bf6ebd9930aad27b103c92558e56623dcd043ef30da31f3821dd6a8a33ca4c"
+   },
+   "FA_WARM_FROZEN|2027|PB": {
+    "arm": "FA_WARM_FROZEN",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/TEST/REEVAL/FA_WARM_FROZEN_s2027_PB/evals/MAIN_TEST.ranks_int32.npy",
+    "rule": "PRACTICAL_BEST",
+    "seed": 2027,
+    "sha256": "dc3b7c4753cece5bb637d814d92230bf352b3289ebef9ab2391b6629a4325656"
+   },
+   "FA_WARM|2026|CB": {
+    "arm": "FA_WARM",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/TEST/REEVAL/FA_WARM_s2026_CB/evals/MAIN_TEST.ranks_int32.npy",
+    "rule": "CONTROLLED_BUDGET",
+    "seed": 2026,
+    "sha256": "46fd194106ee1b89d68a91e2bbec60da2cdec81ee909892e091d942352a7f7e0"
+   },
+   "FA_WARM|2026|PB": {
+    "arm": "FA_WARM",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/TEST/REEVAL/FA_WARM_s2026_PB/evals/MAIN_TEST.ranks_int32.npy",
+    "rule": "PRACTICAL_BEST",
+    "seed": 2026,
+    "sha256": "a3666778bdafd514e72fa2f047bc908e8c52f878d4c7522ba731a544a8c76f0f"
+   },
+   "FA_WARM|2027|CB": {
+    "arm": "FA_WARM",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/TEST/REEVAL/FA_WARM_s2027_CB/evals/MAIN_TEST.ranks_int32.npy",
+    "rule": "CONTROLLED_BUDGET",
+    "seed": 2027,
+    "sha256": "5a94f9b496a5cad283dbdec2eb998e0213cbd3bdcac7f5592048621228e9cb84"
+   },
+   "FA_WARM|2027|PB": {
+    "arm": "FA_WARM",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/TEST/REEVAL/FA_WARM_s2027_PB/evals/MAIN_TEST.ranks_int32.npy",
+    "rule": "PRACTICAL_BEST",
+    "seed": 2027,
+    "sha256": "919c621e755eca2780acd2caeeaacf750a11ae64f87208df7612d715d31d163e"
+   },
+   "FA|2026|CB": {
+    "arm": "FA",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/TEST/REEVAL/FA_s2026_CB/evals/MAIN_TEST.ranks_int32.npy",
+    "rule": "CONTROLLED_BUDGET",
+    "seed": 2026,
+    "sha256": "918402b523d105f8b6ccc11baea34fa2ae795a84840acaa1c7e7df55d53c2ac2"
+   },
+   "FA|2026|PB": {
+    "arm": "FA",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/TEST/REEVAL/FA_s2026_PB/evals/MAIN_TEST.ranks_int32.npy",
+    "rule": "PRACTICAL_BEST",
+    "seed": 2026,
+    "sha256": "918402b523d105f8b6ccc11baea34fa2ae795a84840acaa1c7e7df55d53c2ac2"
+   },
+   "FA|2027|CB": {
+    "arm": "FA",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/TEST/REEVAL/FA_s2027_CB/evals/MAIN_TEST.ranks_int32.npy",
+    "rule": "CONTROLLED_BUDGET",
+    "seed": 2027,
+    "sha256": "0fef3d531f0b80ff8925c6cbe13948b12e49fb522a32058e1975a7fc27cd0f84"
+   },
+   "FA|2027|PB": {
+    "arm": "FA",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/TEST/REEVAL/FA_s2027_PB/evals/MAIN_TEST.ranks_int32.npy",
+    "rule": "PRACTICAL_BEST",
+    "seed": 2027,
+    "sha256": "0fef3d531f0b80ff8925c6cbe13948b12e49fb522a32058e1975a7fc27cd0f84"
+   },
+   "P2_WSTAR|2026|CB": {
+    "arm": "P2_WSTAR",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_p2/TEST/REEVAL/P2_WSTAR_s2026_CB/evals/MAIN_TEST.ranks_int32.npy",
+    "rule": "CONTROLLED_BUDGET",
+    "seed": 2026,
+    "sha256": "aeda8f8111eab89bdc772cb91e73b8f84886b922d486aea701a2fefb22c79406"
+   },
+   "P2_WSTAR|2026|PB": {
+    "arm": "P2_WSTAR",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_p2/TEST/REEVAL/P2_WSTAR_s2026_PB/evals/MAIN_TEST.ranks_int32.npy",
+    "rule": "PRACTICAL_BEST",
+    "seed": 2026,
+    "sha256": "9b68caf0f50c144665657c4fd1bf2f54ee373527a01601b36752d928c40bd932"
+   },
+   "P2_WSTAR|2027|CB": {
+    "arm": "P2_WSTAR",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_p2/TEST/REEVAL/P2_WSTAR_s2027_CB/evals/MAIN_TEST.ranks_int32.npy",
+    "rule": "CONTROLLED_BUDGET",
+    "seed": 2027,
+    "sha256": "cf20b82bdc60dc5f1a9de92f1b9ad35c54348433e94c2047ee6c3cf46a2ec4e8"
+   },
+   "P2_WSTAR|2027|PB": {
+    "arm": "P2_WSTAR",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_p2/TEST/REEVAL/P2_WSTAR_s2027_PB/evals/MAIN_TEST.ranks_int32.npy",
+    "rule": "PRACTICAL_BEST",
+    "seed": 2027,
+    "sha256": "484db8c0658ad4f55bb1b19ee540956804fa9b420e01bbc4ccc9ea91f0e0234f"
+   },
+   "PRE|2026|CB": {
+    "arm": "PRE",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/TEST/REEVAL/PRE_s2026_CB/evals/MAIN_TEST.ranks_int32.npy",
+    "rule": "CONTROLLED_BUDGET",
+    "seed": 2026,
+    "sha256": "6971cb46a4d0394f6e68755fe3f65752b39b56f8d1fc591e94f65d06aca00f67"
+   },
+   "PRE|2026|PB": {
+    "arm": "PRE",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/TEST/REEVAL/PRE_s2026_PB/evals/MAIN_TEST.ranks_int32.npy",
+    "rule": "PRACTICAL_BEST",
+    "seed": 2026,
+    "sha256": "6971cb46a4d0394f6e68755fe3f65752b39b56f8d1fc591e94f65d06aca00f67"
+   },
+   "X_FA_COLD|2026|CB": {
+    "arm": "X_FA_COLD",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/TEST/REEVAL/XC_FA_COLD_s2026_CB/evals/MAIN_TEST.ranks_int32.npy",
+    "rule": "CONTROLLED_BUDGET",
+    "seed": 2026,
+    "sha256": null
+   },
+   "X_FA_COLD|2026|PB": {
+    "arm": "X_FA_COLD",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/TEST/REEVAL/XC_FA_COLD_s2026_PB/evals/MAIN_TEST.ranks_int32.npy",
+    "rule": "PRACTICAL_BEST",
+    "seed": 2026,
+    "sha256": null
+   },
+   "X_FA_COLD|2027|CB": {
+    "arm": "X_FA_COLD",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/TEST/REEVAL/XC_FA_COLD_s2027_CB/evals/MAIN_TEST.ranks_int32.npy",
+    "rule": "CONTROLLED_BUDGET",
+    "seed": 2027,
+    "sha256": null
+   },
+   "X_FA_COLD|2027|PB": {
+    "arm": "X_FA_COLD",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/TEST/REEVAL/XC_FA_COLD_s2027_PB/evals/MAIN_TEST.ranks_int32.npy",
+    "rule": "PRACTICAL_BEST",
+    "seed": 2027,
+    "sha256": null
+   },
+   "X_FA|2026|CB": {
+    "arm": "X_FA_WARM",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/TEST/REEVAL/XW_FA_s2026_CB/evals/MAIN_TEST.ranks_int32.npy",
+    "rule": "CONTROLLED_BUDGET",
+    "seed": 2026,
+    "sha256": null
+   },
+   "X_FA|2026|PB": {
+    "arm": "X_FA_WARM",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/TEST/REEVAL/XW_FA_s2026_PB/evals/MAIN_TEST.ranks_int32.npy",
+    "rule": "PRACTICAL_BEST",
+    "seed": 2026,
+    "sha256": null
+   },
+   "X_FA|2027|CB": {
+    "arm": "X_FA_WARM",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/TEST/REEVAL/XW_FA_s2027_CB/evals/MAIN_TEST.ranks_int32.npy",
+    "rule": "CONTROLLED_BUDGET",
+    "seed": 2027,
+    "sha256": null
+   },
+   "X_FA|2027|PB": {
+    "arm": "X_FA_WARM",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/TEST/REEVAL/XW_FA_s2027_PB/evals/MAIN_TEST.ranks_int32.npy",
+    "rule": "PRACTICAL_BEST",
+    "seed": 2027,
+    "sha256": null
+   }
+  },
+  "role": "MAIN_TEST",
+  "script": "x_rees46/x_analysis.py",
+  "validation_proof_entries": {
+   "C_FULL|2026|CB": {
+    "arm": "C_FULL",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/REEVAL_A40/C_FULL_s2026_CB/evals/MAIN.ranks_int32.npy",
+    "rule": "CONTROLLED_BUDGET",
+    "seed": 2026,
+    "sha256": "89751c0dbf231ac5e52f390e952a9f7f9a9506488eb969647d04b63d45ed0e33"
+   },
+   "C_FULL|2026|PB": {
+    "arm": "C_FULL",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/REEVAL_A40/C_FULL_s2026_PB/evals/MAIN.ranks_int32.npy",
+    "rule": "PRACTICAL_BEST",
+    "seed": 2026,
+    "sha256": "89751c0dbf231ac5e52f390e952a9f7f9a9506488eb969647d04b63d45ed0e33"
+   },
+   "C_FULL|2027|CB": {
+    "arm": "C_FULL",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/REEVAL_A40/C_FULL_s2027_CB/evals/MAIN.ranks_int32.npy",
+    "rule": "CONTROLLED_BUDGET",
+    "seed": 2027,
+    "sha256": "55b4cc31f159e6c8e148bfb9b9cc0cb617ca53365effcd0534b7a4b2f9d105fe"
+   },
+   "C_FULL|2027|PB": {
+    "arm": "C_FULL",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/REEVAL_A40/C_FULL_s2027_PB/evals/MAIN.ranks_int32.npy",
+    "rule": "PRACTICAL_BEST",
+    "seed": 2027,
+    "sha256": "55b4cc31f159e6c8e148bfb9b9cc0cb617ca53365effcd0534b7a4b2f9d105fe"
+   },
+   "C_SMALL|2026|CB": {
+    "arm": "C_SMALL",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/REEVAL_A40/C_SMALL_s2026_CB/evals/MAIN.ranks_int32.npy",
+    "rule": "CONTROLLED_BUDGET",
+    "seed": 2026,
+    "sha256": "fe10a9a04fef4c349ea2e76e7071672293ab56c04648eda50b11bc6ae94cf6d6"
+   },
+   "C_SMALL|2026|PB": {
+    "arm": "C_SMALL",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/REEVAL_A40/C_SMALL_s2026_PB/evals/MAIN.ranks_int32.npy",
+    "rule": "PRACTICAL_BEST",
+    "seed": 2026,
+    "sha256": "7a391b6fc6d1aa1fd874ced59170023e7668bed261a1377135d83030c661a58e"
+   },
+   "C_SMALL|2027|CB": {
+    "arm": "C_SMALL",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/REEVAL_A40/C_SMALL_s2027_CB/evals/MAIN.ranks_int32.npy",
+    "rule": "CONTROLLED_BUDGET",
+    "seed": 2027,
+    "sha256": "70f93a3ecc85463223e35e19ccb79f609be2606e7fb8cec1245206c6142d21b0"
+   },
+   "C_SMALL|2027|PB": {
+    "arm": "C_SMALL",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/REEVAL_A40/C_SMALL_s2027_PB/evals/MAIN.ranks_int32.npy",
+    "rule": "PRACTICAL_BEST",
+    "seed": 2027,
+    "sha256": "7bd5fa61d478da4fbc5c550f8b353c5b9bd83bfec781f21d9aa164b5280279f5"
+   },
+   "PRE|2026|CB": {
+    "arm": "PRE",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/REEVAL_A40/PRE_s2026_CB/evals/MAIN.ranks_int32.npy",
+    "rule": "CONTROLLED_BUDGET",
+    "seed": 2026,
+    "sha256": "827b5bf6d618575a24a1405201e224237e050e760d6f2ca3ea76dfad34b838a0"
+   },
+   "PRE|2026|PB": {
+    "arm": "PRE",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/REEVAL_A40/PRE_s2026_PB/evals/MAIN.ranks_int32.npy",
+    "rule": "PRACTICAL_BEST",
+    "seed": 2026,
+    "sha256": "827b5bf6d618575a24a1405201e224237e050e760d6f2ca3ea76dfad34b838a0"
+   },
+   "X_FA_COLD|2026|CB": {
+    "arm": "X_FA_COLD",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/PROOF/XC_FA_COLD_s2026_CB_MAIN/evals/MAIN.ranks_int32.npy",
+    "rule": "CONTROLLED_BUDGET",
+    "seed": 2026,
+    "sha256": null
+   },
+   "X_FA_COLD|2026|PB": {
+    "arm": "X_FA_COLD",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/PROOF/XC_FA_COLD_s2026_PB_MAIN/evals/MAIN.ranks_int32.npy",
+    "rule": "PRACTICAL_BEST",
+    "seed": 2026,
+    "sha256": null
+   },
+   "X_FA_COLD|2027|CB": {
+    "arm": "X_FA_COLD",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/PROOF/XC_FA_COLD_s2027_CB_MAIN/evals/MAIN.ranks_int32.npy",
+    "rule": "CONTROLLED_BUDGET",
+    "seed": 2027,
+    "sha256": null
+   },
+   "X_FA_COLD|2027|PB": {
+    "arm": "X_FA_COLD",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/PROOF/XC_FA_COLD_s2027_PB_MAIN/evals/MAIN.ranks_int32.npy",
+    "rule": "PRACTICAL_BEST",
+    "seed": 2027,
+    "sha256": null
+   },
+   "X_FA|2026|CB": {
+    "arm": "X_FA_WARM",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/PROOF/XW_FA_s2026_CB_MAIN/evals/MAIN.ranks_int32.npy",
+    "rule": "CONTROLLED_BUDGET",
+    "seed": 2026,
+    "sha256": null
+   },
+   "X_FA|2026|PB": {
+    "arm": "X_FA_WARM",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/PROOF/XW_FA_s2026_PB_MAIN/evals/MAIN.ranks_int32.npy",
+    "rule": "PRACTICAL_BEST",
+    "seed": 2026,
+    "sha256": null
+   },
+   "X_FA|2027|CB": {
+    "arm": "X_FA_WARM",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/PROOF/XW_FA_s2027_CB_MAIN/evals/MAIN.ranks_int32.npy",
+    "rule": "CONTROLLED_BUDGET",
+    "seed": 2027,
+    "sha256": null
+   },
+   "X_FA|2027|PB": {
+    "arm": "X_FA_WARM",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/PROOF/XW_FA_s2027_PB_MAIN/evals/MAIN.ranks_int32.npy",
+    "rule": "PRACTICAL_BEST",
+    "seed": 2027,
+    "sha256": null
+   }
+  }
+ },
+ "authority": "owner approval DL 539 (exploratory TEST looks, labelled POST_HOC_EXPLORATORY, reported beside the confirmatory T0a results, never instead of them); Fable gate + register entry by Ops",
+ "binds": "checkpoints by sha256, the scoring tree by digest, the pinned scripts, the analysis spec and contrasts; no metric value was opened to build it (VALIDATION values of these runs were seen, DL 539)",
+ "bootstrap_seed": 20261004,
+ "code": {
+  "pinned_files": {
+   "runs_x_rees46/COLD/X_COLD_SELECTION_FINAL.json": "729c3bfbaf447f9a530db3e9b3a21859f55186131f72ee1fc9bb4a75c82ee868",
+   "runs_x_rees46/X_SELECTION_FINAL.json": "41138fc857c1d2e83cdd280d45153f8b4e7168301587f120f54bd26f71d2c739",
+   "tools/g2_run.py": "3893a49a71be49f5baf338b93195e2e885eecb9326705902913bd4d5e1abb44d",
+   "tools/p2_report.py": "934cc8a0e93f3edd44e5c950f89996149a1f2b26dd7737f9c78b383b7dff215e",
+   "tools/retention_report.py": "9a3b2c2a918ef2baacc5299426941f1eb94c366f5bb6aa7c29b4bfdbca0afe58",
+   "tools/test_exposure_register.py": "7d59e828f0d8514541ac9cd68393053e064f9c70df3e3655e9c4f0a34eae2622",
+   "x_rees46/launch_fl_x.py": "062676a1ff502ce805c6f09d1bca92d9b57630a4c4e41d473851d395fcb0dcef",
+   "x_rees46/launch_fl_x3.py": "99ec80a42a52d2db19297e7b8600ba64ed690ae1d0daa59711a95604c40b081c",
+   "x_rees46/reeval_cold_x.py": "424f9983d895d3ca29e917ff0472136788af1dc9fb1067e4e12837472ea3d1e7",
+   "x_rees46/reeval_p2_x.py": "b0b69315283c4b4bf73d1fdf37be1c1eb08bee837900251c98b929c0f893842a",
+   "x_rees46/reeval_x.py": "f27ae384dbecfcf83f00185da66baf7f3aa93a85f74ba29e8578a787088c4b26",
+   "x_rees46/x_analysis.py": "509a9f9715ab124ca751f3ed5ebc6ad2240a9dd014d406f98271581c7c37b151",
+   "x_rees46/x_execute_fix.py": "270105d897ad91d5c078dc115f04afc2a3d7c33f7b095d865e70cb210e2791da",
+   "x_rees46/x_select.py": "66f2813030685b0f254d9f2faa0a8661a1666e6cbf65431f55ca5a729c8f8c63",
+   "x_rees46/x_select2.py": "57e63e4a2e9abc4aac901db0881641e04e5e0e78a3844a78df755ca0a87bb912"
+  },
+  "scoring_tree": {
+   "aggregate_sha256": "966e90280ac7f3d3fdc07ed057674c8f16ac75d420e2c88183422d298b7c6790",
+   "copied_from": "code_p2r4 (unchanged bytes)",
+   "n_files": 724,
+   "name": "code_x1",
+   "rule": "sha256(compact sort_keys JSON of {posix relpath: file sha256})"
+  }
+ },
+ "device_optional": [],
+ "document": "EXP_XREES46_TEST_LOCK",
+ "draft": false,
+ "format": "PPSI_V4_X_EXP_TEST_LOCK_1",
+ "label": "POST_HOC_EXPLORATORY",
+ "n_resamples": 1000,
+ "pre_provenance": {
+  "checkpoint_sha256": "cf08588c11f019cc760f129ba7ba6b23806297660e0170f9938436a5cb88cf78",
+  "init_record": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_pretrain/PRETRAIN_FOR_FL_SMALL_SASREC_D64_B2_s2026/PRETRAIN_FOR_FL_INIT.json",
+  "init_record_sha256": "5ed989f6a23317aaf0fb6cf3e1288f7f925b77f423af866c361359583818a8b5",
+  "registered_in": "company/gates/ALL_METHODS_LOCK.json (PRE) and P2_METHODS_LOCK phase1_reused",
+  "run_id": "PRETRAIN_FOR_FL_SMALL_SASREC_D64_B2_s2026",
+  "theta_pre_checkpoint": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_pretrain/PRETRAIN_FOR_FL_SMALL_SASREC_D64_B2_s2026/sealed/checkpoints/endpoint_6.0.pt",
+  "train_manifest": "PRETRAIN_TRAIN_5_100_NONMAIN",
+  "x_fa_cold_init": "none (cold, from scratch)",
+  "x_fa_warm_init_from_equals_theta_pre": true
+ },
+ "scorer_env": {
+  "X_RECIPE_SHA": "8f1fdcd0e7c1acc9ebe78861487d2c445a6461ffb499d8c6914644bc8ae50ea9",
+  "X_RUN_ID_FMT": "P2_W_FEDADAM_eta3e-06_c0.1_UNFROZEN_ilr0.1_XTAU1e-06_SMALL_s{seed}",
+  "X_TAU": "1e-06"
+ },
+ "scoring_tree_reason": "EXP_XREES46_TEST_LOCK (T2): Part B X_FA warm (keys XW_*) + C1 X_FA cold (keys XC_*), MAIN s2026 + s2027 each, one\n    scoring tree code_x1 for all (byte copy of code_p2r4: the P2-style warm arm needs reeval_p2 = code_p2r4; the cold arm\n    was trained by code_x1's launch_fl and is scored by code_x1's v4int/reeval.py, byte-identical to code_ds3r7's).",
+ "sealed_arms": [
+  {
+   "arm_label": "X_FA",
+   "checkpoint_id": "P2_W_FEDADAM_eta3e-06_c0.1_UNFROZEN_ilr0.1_XTAU1e-06_SMALL_s2026:best",
+   "checkpoint_sha256": "7e1942aac1689f2034d2b44a3f913114e2bd27f8c141d22d5bb32e0754db4676",
+   "ckpt": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/MAIN/X_FA_UNF_eta3e-06_tau1e-6_s2026/ckpt/P2_W_FEDADAM_eta3e-06_c0.1_UNFROZEN_ilr0.1_XTAU1e-06_SMALL_s2026/best.pt",
+   "ckpt_kind": "fl",
+   "key": "XW_FA_s2026_PB",
+   "out_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/TEST/REEVAL/XW_FA_s2026_PB",
+   "recipe_id": "SMALL_SASREC_D64_B2",
+   "role": "MAIN_TEST",
+   "rule": "PRACTICAL_BEST",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/MAIN/X_FA_UNF_eta3e-06_tau1e-6_s2026",
+   "scorer": "reeval_p2_x",
+   "seed": 2026,
+   "variant": "SASREC_D64_B2",
+   "x_arm": "X_FA_WARM"
+  },
+  {
+   "arm_label": "X_FA",
+   "checkpoint_id": "P2_W_FEDADAM_eta3e-06_c0.1_UNFROZEN_ilr0.1_XTAU1e-06_SMALL_s2026:endpoint_6.0",
+   "checkpoint_sha256": "48a8af519854b254ee258dd0dc46a29de3cbb5058ba2ff4411aaf5f570970bab",
+   "ckpt": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/MAIN/X_FA_UNF_eta3e-06_tau1e-6_s2026/ckpt/P2_W_FEDADAM_eta3e-06_c0.1_UNFROZEN_ilr0.1_XTAU1e-06_SMALL_s2026/endpoint_6.0.pt",
+   "ckpt_kind": "fl",
+   "key": "XW_FA_s2026_CB",
+   "out_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/TEST/REEVAL/XW_FA_s2026_CB",
+   "recipe_id": "SMALL_SASREC_D64_B2",
+   "role": "MAIN_TEST",
+   "rule": "CONTROLLED_BUDGET",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/MAIN/X_FA_UNF_eta3e-06_tau1e-6_s2026",
+   "scorer": "reeval_p2_x",
+   "seed": 2026,
+   "variant": "SASREC_D64_B2",
+   "x_arm": "X_FA_WARM"
+  },
+  {
+   "arm_label": "X_FA",
+   "checkpoint_id": "P2_W_FEDADAM_eta3e-06_c0.1_UNFROZEN_ilr0.1_XTAU1e-06_SMALL_s2027:best",
+   "checkpoint_sha256": "57fb8ce9a9ac87af8d3ccc583f8067c15ad7314b45f16857c52d87911d13c54f",
+   "ckpt": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/MAIN/X_FA_UNF_eta3e-06_tau1e-6_s2027/ckpt/P2_W_FEDADAM_eta3e-06_c0.1_UNFROZEN_ilr0.1_XTAU1e-06_SMALL_s2027/best.pt",
+   "ckpt_kind": "fl",
+   "key": "XW_FA_s2027_PB",
+   "out_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/TEST/REEVAL/XW_FA_s2027_PB",
+   "recipe_id": "SMALL_SASREC_D64_B2",
+   "role": "MAIN_TEST",
+   "rule": "PRACTICAL_BEST",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/MAIN/X_FA_UNF_eta3e-06_tau1e-6_s2027",
+   "scorer": "reeval_p2_x",
+   "seed": 2027,
+   "variant": "SASREC_D64_B2",
+   "x_arm": "X_FA_WARM"
+  },
+  {
+   "arm_label": "X_FA",
+   "checkpoint_id": "P2_W_FEDADAM_eta3e-06_c0.1_UNFROZEN_ilr0.1_XTAU1e-06_SMALL_s2027:endpoint_6.0",
+   "checkpoint_sha256": "73a8e4b4e057f4057dc9804158a308ba740f22b8d5faa57873f7219a1597b512",
+   "ckpt": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/MAIN/X_FA_UNF_eta3e-06_tau1e-6_s2027/ckpt/P2_W_FEDADAM_eta3e-06_c0.1_UNFROZEN_ilr0.1_XTAU1e-06_SMALL_s2027/endpoint_6.0.pt",
+   "ckpt_kind": "fl",
+   "key": "XW_FA_s2027_CB",
+   "out_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/TEST/REEVAL/XW_FA_s2027_CB",
+   "recipe_id": "SMALL_SASREC_D64_B2",
+   "role": "MAIN_TEST",
+   "rule": "CONTROLLED_BUDGET",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/MAIN/X_FA_UNF_eta3e-06_tau1e-6_s2027",
+   "scorer": "reeval_p2_x",
+   "seed": 2027,
+   "variant": "SASREC_D64_B2",
+   "x_arm": "X_FA_WARM"
+  },
+  {
+   "arm_label": "FA",
+   "checkpoint_id": "FL_FA_SMALL_s2026:best",
+   "checkpoint_sha256": "2f1d814f6adc6be95886118a7e4363c8b0c925e85e2446a4a7208f5950056daf",
+   "ckpt": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/COLD/MAIN/X_FA_COLD_eta0.001_tau1e-6_E6_s2026/ckpt/FL_FA_SMALL_s2026/best.pt",
+   "ckpt_kind": "fl",
+   "key": "XC_FA_COLD_s2026_PB",
+   "out_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/TEST/REEVAL/XC_FA_COLD_s2026_PB",
+   "recipe_id": "SMALL_SASREC_D64_B2",
+   "role": "MAIN_TEST",
+   "rule": "PRACTICAL_BEST",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/COLD/MAIN/X_FA_COLD_eta0.001_tau1e-6_E6_s2026",
+   "scorer": "reeval_cold_x",
+   "seed": 2026,
+   "variant": "SASREC_D64_B2",
+   "x_arm": "X_FA_COLD"
+  },
+  {
+   "arm_label": "FA",
+   "checkpoint_id": "FL_FA_SMALL_s2026:endpoint_6.0",
+   "checkpoint_sha256": "2f1d814f6adc6be95886118a7e4363c8b0c925e85e2446a4a7208f5950056daf",
+   "ckpt": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/COLD/MAIN/X_FA_COLD_eta0.001_tau1e-6_E6_s2026/ckpt/FL_FA_SMALL_s2026/endpoint_6.0.pt",
+   "ckpt_kind": "fl",
+   "key": "XC_FA_COLD_s2026_CB",
+   "out_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/TEST/REEVAL/XC_FA_COLD_s2026_CB",
+   "recipe_id": "SMALL_SASREC_D64_B2",
+   "role": "MAIN_TEST",
+   "rule": "CONTROLLED_BUDGET",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/COLD/MAIN/X_FA_COLD_eta0.001_tau1e-6_E6_s2026",
+   "scorer": "reeval_cold_x",
+   "seed": 2026,
+   "variant": "SASREC_D64_B2",
+   "x_arm": "X_FA_COLD"
+  },
+  {
+   "arm_label": "FA",
+   "checkpoint_id": "FL_FA_SMALL_s2027:best",
+   "checkpoint_sha256": "1757e218b29a59c8fa49b1bc2daf96259fa6b600be876c35591121cb0a6116e4",
+   "ckpt": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/COLD/MAIN/X_FA_COLD_eta0.001_tau1e-6_E6_s2027/ckpt/FL_FA_SMALL_s2027/best.pt",
+   "ckpt_kind": "fl",
+   "key": "XC_FA_COLD_s2027_PB",
+   "out_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/TEST/REEVAL/XC_FA_COLD_s2027_PB",
+   "recipe_id": "SMALL_SASREC_D64_B2",
+   "role": "MAIN_TEST",
+   "rule": "PRACTICAL_BEST",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/COLD/MAIN/X_FA_COLD_eta0.001_tau1e-6_E6_s2027",
+   "scorer": "reeval_cold_x",
+   "seed": 2027,
+   "variant": "SASREC_D64_B2",
+   "x_arm": "X_FA_COLD"
+  },
+  {
+   "arm_label": "FA",
+   "checkpoint_id": "FL_FA_SMALL_s2027:endpoint_6.0",
+   "checkpoint_sha256": "1757e218b29a59c8fa49b1bc2daf96259fa6b600be876c35591121cb0a6116e4",
+   "ckpt": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/COLD/MAIN/X_FA_COLD_eta0.001_tau1e-6_E6_s2027/ckpt/FL_FA_SMALL_s2027/endpoint_6.0.pt",
+   "ckpt_kind": "fl",
+   "key": "XC_FA_COLD_s2027_CB",
+   "out_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/TEST/REEVAL/XC_FA_COLD_s2027_CB",
+   "recipe_id": "SMALL_SASREC_D64_B2",
+   "role": "MAIN_TEST",
+   "rule": "CONTROLLED_BUDGET",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/COLD/MAIN/X_FA_COLD_eta0.001_tau1e-6_E6_s2027",
+   "scorer": "reeval_cold_x",
+   "seed": 2027,
+   "variant": "SASREC_D64_B2",
+   "x_arm": "X_FA_COLD"
+  }
+ ],
+ "seed_sets": {
+  "X_FA_COLD": [
+   2026,
+   2027
+  ],
+  "X_FA_WARM": [
+   2026,
+   2027
+  ]
+ },
+ "self_sha256": "69f465da3f1a58956ed58d482bdd59c9f0a4ffef23335dd74493d25ff728945a",
+ "study": "PPSI V4 X-REES46",
+ "written_utc": "2026-10-09T03:50:07Z"
+}

@@ -1,0 +1,398 @@
+{
+  "EVAL": {
+    "build": {
+      "cache_build_s": 184.43,
+      "cache_event_rows": 1693427,
+      "cache_nbytes": 288081456,
+      "history_policy": "USER_HISTORY_L50",
+      "mean_window_length": 39.9192652112508,
+      "peak_rss_bytes_after": 8271646720,
+      "rss_bytes_after": 2768318464,
+      "rss_bytes_before": 1932558336,
+      "total_s": 186.42,
+      "transform_state": {
+        "clip_extends_beyond_clean_v2": [],
+        "identity_with_clean_v2": true,
+        "scope": "NORMALIZERS_ONLY",
+        "source": "DEFAULT_CLEAN_V2 (the locked state)",
+        "transform_state_sha256": "2ff0ff4ec1d27d254972c2f212e81f5fee6277dc9cced31a6a5baf5b4b002727"
+      },
+      "verify_s": 1.83
+    },
+    "cache": {
+      "bucket_groups": 8,
+      "buckets": [
+        0,
+        63
+      ],
+      "build_s": 184.43,
+      "cache_nbytes": 288081456,
+      "group_log": [
+        {
+          "buckets": [
+            0,
+            7
+          ],
+          "group_store_rows": 8387922,
+          "index_alignment_decisions_checked": 6432200,
+          "kept_decisions": 65083,
+          "kept_rows": 210865,
+          "masks_dtype": "uint8",
+          "rss_bytes": 6936997888,
+          "s": 27.03
+        },
+        {
+          "buckets": [
+            8,
+            15
+          ],
+          "group_store_rows": 8382398,
+          "index_alignment_decisions_checked": 6426675,
+          "kept_decisions": 66449,
+          "kept_rows": 216043,
+          "masks_dtype": "uint8",
+          "rss_bytes": 6928785408,
+          "s": 22.85
+        },
+        {
+          "buckets": [
+            16,
+            23
+          ],
+          "group_store_rows": 8372363,
+          "index_alignment_decisions_checked": 6418264,
+          "kept_decisions": 64909,
+          "kept_rows": 210056,
+          "masks_dtype": "uint8",
+          "rss_bytes": 7026024448,
+          "s": 22.93
+        },
+        {
+          "buckets": [
+            24,
+            31
+          ],
+          "group_store_rows": 8346737,
+          "index_alignment_decisions_checked": 6395656,
+          "kept_decisions": 61562,
+          "kept_rows": 205001,
+          "masks_dtype": "uint8",
+          "rss_bytes": 6817067008,
+          "s": 22.03
+        },
+        {
+          "buckets": [
+            32,
+            39
+          ],
+          "group_store_rows": 8446859,
+          "index_alignment_decisions_checked": 6482430,
+          "kept_decisions": 65854,
+          "kept_rows": 214287,
+          "masks_dtype": "uint8",
+          "rss_bytes": 7324016640,
+          "s": 22.11
+        },
+        {
+          "buckets": [
+            40,
+            47
+          ],
+          "group_store_rows": 8378514,
+          "index_alignment_decisions_checked": 6424905,
+          "kept_decisions": 63425,
+          "kept_rows": 209116,
+          "masks_dtype": "uint8",
+          "rss_bytes": 6994382848,
+          "s": 22.03
+        },
+        {
+          "buckets": [
+            48,
+            55
+          ],
+          "group_store_rows": 8416698,
+          "index_alignment_decisions_checked": 6453904,
+          "kept_decisions": 67202,
+          "kept_rows": 216510,
+          "masks_dtype": "uint8",
+          "rss_bytes": 7084130304,
+          "s": 22.02
+        },
+        {
+          "buckets": [
+            56,
+            63
+          ],
+          "group_store_rows": 8386468,
+          "index_alignment_decisions_checked": 6434630,
+          "kept_decisions": 65230,
+          "kept_rows": 211549,
+          "masks_dtype": "uint8",
+          "rss_bytes": 6854545408,
+          "s": 21.73
+        }
+      ],
+      "history_policy": "USER_HISTORY_L50",
+      "kind": "eval",
+      "masks_dtype": "uint8",
+      "mean_window_length": 39.9192652112508,
+      "n_decisions": 519714,
+      "n_event_rows": 1693427,
+      "peak_rss_bytes_after": 8271646720,
+      "splits": [
+        "VALIDATION_SELECT",
+        "VALIDATION_CONFIRM"
+      ],
+      "store_splits": [
+        "TRAIN",
+        "VALIDATION_SELECT",
+        "VALIDATION_CONFIRM"
+      ]
+    },
+    "eval_batch": 1024,
+    "eval_stream": "E2E_ROWS",
+    "eval_stream_source": {
+      "lock_sha256": "0308640a79ef5fccb50bc456ee8f3ff1d506095c757e3b24fbb7b9c2e058238e",
+      "source": "v4eval.frozen_config.load().eval_stream",
+      "value": "EVAL_ROWS_ONLY"
+    },
+    "fingerprint": "ec5a55c66d083a5c89c05b2714b3e9e15fbd6d1d32a3da5fe2d724d3bfb92737",
+    "history": {
+      "context_length": 50,
+      "decision_splits": [
+        "VALIDATION_SELECT",
+        "VALIDATION_CONFIRM"
+      ],
+      "history_policy": "USER_HISTORY_L50",
+      "per_event_channels": "stored per-event values (session-relative channels restart at each segment start)",
+      "resolver": "v4hist.windows/1",
+      "session_mode_features": {
+        "keys": {
+          "current_matches_session_mode": "float32 [B]",
+          "current_matches_session_mode_available": "float32 [B]",
+          "session_mode_main_category_tokens": "int64 [B, 50]",
+          "session_mode_share": "float32 [B]"
+        },
+        "main_category_vocab": 16,
+        "scope": "inside the 50-event window; ties -> most recent occurrence",
+        "status": "CANDIDATE (DECISION_LOG 48; droppable)",
+        "unknown_token": 1
+      },
+      "session_offset_tokens": {
+        "cap": 7,
+        "dtype": "int64",
+        "key": "session_offset_tokens",
+        "rule": "min(session_index(d) - session_index(j), 7) + 1; PAD 0; v1 behavioural session (gap > 3600 s over all raw blocks; never fence-reset)",
+        "vocab": 9
+      },
+      "store_splits": [
+        "TRAIN",
+        "VALIDATION_SELECT",
+        "VALIDATION_CONFIRM"
+      ],
+      "window_rule": "rows [max(user_start, r - (L - 1)), r] of the user's retained stream in (user_id, segment_index, position_in_segment) order"
+    },
+    "history_policy": "USER_HISTORY_L50",
+    "manifest_binding": {
+      "content_sha256": "62562f25faa4ef0442dc714aa83fdf85e144f25292b0bf4ff04fcc1c0b50bb93",
+      "content_sha256_rule": "sha256 of the canonical JSON list [{table, row_count, table_content_sha256}] in the header's table order (REGISTRY_FS rules.content_sha256 = v4fs_data.fs_common.manifest_content_sha256), from the verified tables",
+      "header_content_sha256": "04fcde532dd7b84573e32e8117c6f8c6f345910aa5183a0a04bf04d6747a9156",
+      "header_sha256": "2e96bce6f4f37ebad9606f8ea4a87d8f56d323aa3b8ad4339dd185c1c1db82b1",
+      "manifest_id": "MAIN_VALIDATION_5_100_131072"
+    },
+    "manifest_hashes": {
+      "eval_ordered_decision_id_sha256": "4f45656a86dbc9d9bb2a59841ac2b538b23b09b0984840af1957a7953664b0dc",
+      "ordered_decision_id_sha256": "be97c8516f3c2e5ea89e2ffa60e35d8a57b72f9b8873e741b7366e765bb7caaf",
+      "rankable_ordered_decision_id_sha256": "f2bee71d896ee6e868f866cb08d888c44d46ee7f2889bf74969d729566f619c8"
+    },
+    "manifest_id": "MAIN_VALIDATION_5_100_131072",
+    "n_manifest_rows": 644694,
+    "n_stream_rows": 519714,
+    "prefetch_depth": 2,
+    "provider": "v4int.StoreEvalProvider/2",
+    "transform_state": {
+      "clip_extends_beyond_clean_v2": [],
+      "identity_with_clean_v2": true,
+      "scope": "NORMALIZERS_ONLY",
+      "source": "DEFAULT_CLEAN_V2 (the locked state)",
+      "transform_state_sha256": "2ff0ff4ec1d27d254972c2f212e81f5fee6277dc9cced31a6a5baf5b4b002727"
+    },
+    "verified": {
+      "canonical_ordered_decision_id_sha256": "be97c8516f3c2e5ea89e2ffa60e35d8a57b72f9b8873e741b7366e765bb7caaf",
+      "checks": {
+        "decisions.file_sha256_eq_registry": true,
+        "decisions.order_hash_eq_header": true,
+        "decisions.row_count_eq_registry": true,
+        "decisions.strictly_ascending": true,
+        "decisions.table_content_sha256_eq_registry": true,
+        "header.builder_code_sha256_eq_lock": true,
+        "header.candidate_order_eq_lock": true,
+        "header.catalogue_K_eq_lock": true,
+        "header.content_self_hash": true,
+        "header.data_protocol_lock_file_sha256_eq_lock_file": true,
+        "header.data_protocol_lock_sha256_eq_lock_self": true,
+        "header.data_version_eq_registry": true,
+        "header.dataset_version_eq_lock": true,
+        "header.eval_ordered_decision_id_sha256_eq_registry": true,
+        "header.manifest_id": true,
+        "header.n_decisions_eq_registry": true,
+        "header.n_eval_rows_eq_registry": true,
+        "header.n_rankable_rows_eq_registry": true,
+        "header.n_users_eq_registry": true,
+        "header.no_all_methods_lock": true,
+        "header.no_test_exposure_entry": true,
+        "header.ordered_decision_id_sha256_eq_registry": true,
+        "header.population_sha256_eq_registry": true,
+        "header.rankable_ordered_decision_id_sha256_eq_registry": true,
+        "header.schema_self_sha256_eq_lock": true,
+        "header.status_allowed": true,
+        "header.status_eq_registry_entry": true,
+        "header.tables_eq_registry": true,
+        "lock_self_sha256_recomputed": true,
+        "n_decisions_eq_header": true,
+        "n_decisions_eq_registry": true,
+        "ok_marker_matches_disk": true,
+        "registry.content_sha256": true,
+        "registry.header_content_sha256": true,
+        "registry.header_sha256": true,
+        "registry.self_sha256_verified": true,
+        "registry.source_lock_eq_lock": true,
+        "registry.transform_state_eq_lock": true,
+        "users.file_sha256_eq_registry": true,
+        "users.row_count_eq_registry": true,
+        "users.table_content_sha256_eq_registry": true
+      },
+      "checks_passed": 41,
+      "header_content_sha256": "04fcde532dd7b84573e32e8117c6f8c6f345910aa5183a0a04bf04d6747a9156",
+      "header_file_sha256": "2e96bce6f4f37ebad9606f8ea4a87d8f56d323aa3b8ad4339dd185c1c1db82b1",
+      "kind": "EVAL",
+      "lock_file_sha256": "905ee4f9b39a7bb249a45f9bfa061a9ce2712b20b9aedecb362a6720bfa91b7d",
+      "lock_self_sha256": "bc699a97dd2fab054e5a5c00f9661dd32b0677941d3f23f2e4b81751b3b7b330",
+      "manifest_id": "MAIN_VALIDATION_5_100_131072",
+      "n_decisions": 644694,
+      "ordered_decision_id_sha256": "be97c8516f3c2e5ea89e2ffa60e35d8a57b72f9b8873e741b7366e765bb7caaf",
+      "registry": {
+        "data_version": "CLEAN_V2_POP5100_V2",
+        "entry_content_sha256": "62562f25faa4ef0442dc714aa83fdf85e144f25292b0bf4ff04fcc1c0b50bb93",
+        "entry_header_sha256": "2e96bce6f4f37ebad9606f8ea4a87d8f56d323aa3b8ad4339dd185c1c1db82b1",
+        "file_sha256": "56dd0840cb50e89250a8b9a54dc1d4f621e9e6f9500ec44441cf07cb472ef740",
+        "path": "/home/jovyan/EID PROJECT NEW/DELIVERY_REVIEW/EXTENSIONS_20261013/ppsi_v4/contracts/manifest_registry/REGISTRY_V2.json",
+        "root": "/home/jovyan/EID PROJECT NEW/DELIVERY_REVIEW/EXTENSIONS_20261013/ppsi_v4",
+        "run_label": null,
+        "self_sha256": "f6a0820791ad39e84aa86ebde2c37c12e76a45be6034d9068621a2c431b21c41"
+      },
+      "tables": {
+        "decisions": {
+          "file": "MAIN_VALIDATION_5_100_131072.decisions.parquet",
+          "file_sha256": "61f10854c300b28a03cb799a0b734a6ab77db90d5325a40b3617c4bcfc841919",
+          "row_count": 644694,
+          "table_content_sha256": "3d9b5b34a3183948d5eec5d6a1ced7d29be5b3992f294cd5f7ff6ef530c91150"
+        },
+        "users": {
+          "file": "MAIN_VALIDATION_5_100_131072.users.parquet",
+          "file_sha256": "a18bcb42cbb6ad63740e62c305973330ae34a3f2a3c4ac0d6085fa26ef4c64d9",
+          "row_count": 51211,
+          "table_content_sha256": "fdeeeb38e97e0fdb93eccfb8f86113ee09010969bf0524cf6ac0986086c41d7a"
+        }
+      },
+      "timings_s": {
+        "files_and_header": 0.03,
+        "lock_state_registry": 0.01,
+        "tables": 1.48,
+        "total": 1.52
+      },
+      "transform_state_file_sha256": "7dda2f56066c1ca11c32754fd2b701448a7d7920f3e68bf7facc77141f41ae7d",
+      "transform_state_self_sha256": "2ff0ff4ec1d27d254972c2f212e81f5fee6277dc9cced31a6a5baf5b4b002727",
+      "verified_by": "MANIFEST_REGISTRY"
+    }
+  },
+  "catalogue_K": 158486,
+  "document": "REES46_TRAINING_FREE_VALIDATION",
+  "files_sha256": {
+    "MC/RESULT.json": "5cd0b05c1a6c7087b722c383dc8e279656cd75b991237a38e28f8d9071b23d1f",
+    "MC/eq_before_int32.npy": "6bb97ebada845bb14f193d46f60a432b41db91ee4df7cccd1c79cd50e1be0a4b",
+    "MC/n_tied_int32.npy": "bea7c0da5af50d4f83e7cf870501f00872a400fd95f22fae723a363b48d69357",
+    "MC/ranks_int32.npy": "8c93cf582beca2613441324576381df305cfe4e11fe99fc8182213e2c68e847c",
+    "MC/rows.json": "4fe0ff9017b77586f00bf22bdc9e04829dd7180a88895380e46aac0f1b31e8e0",
+    "PCTM/RESULT.json": "bf2770232432c26e00324beca095c7542ba84bac0a15f1ca4e0993dcf8c7a918",
+    "PCTM/eq_before_int32.npy": "0eb366c4571cb84db2a451e6ccf6051a08a7fce642b43a40e7e9e9f41d4178cf",
+    "PCTM/n_tied_int32.npy": "4a99bf0872c840979607373b54cdc6bc7eae0419fefaef553a4818dd9718ee4c",
+    "PCTM/ranks_int32.npy": "58736a7f157047995365ea230ecab907a8e025c5e98891609bbc317c0beabb29",
+    "PCTM/rows.json": "e1a733be02a7077c3d412c1e14576122a2ec7826601dc826fa0acb1b538fc2df",
+    "STARTED.json": "655763432a3687cef3c789767a79189efa23f43d1655b00b5e2cbeb47781d5d2",
+    "SeqRules/RESULT.json": "7046095e2ce19b6892bc0b5e17d974b222b8003eec1935bc66b762c9625d6966",
+    "SeqRules/eq_before_int32.npy": "93b1b983d6d5f34de2300c16d0f4eec850edbf1bff698d9ea2161efa2aab4c6a",
+    "SeqRules/n_tied_int32.npy": "cb2828d68c126ad4bd9ff2e17cd25a2f322e3f53abbe238ee281d4c41eb23bc1",
+    "SeqRules/ranks_int32.npy": "e9838bf194e224e30781acb7065509d904f6ce1023e67d9fa2abd5bca7c16f20",
+    "SeqRules/rows.json": "ecd558685796b052589b4cf567f87b804ad5adf596b24ced152c45c8400b8ab6"
+  },
+  "fit_receipt_sha256": "c7567f0496572b09963ce6c56f00a8c7623bcff907bc8b8deccbfe1b1bc30b16",
+  "label": "POST_HOC_EXPLORATORY_DESCRIPTIVE",
+  "n_rows": 644694,
+  "phase": "MAIN",
+  "protocol": {
+    "document": "REES46_FIXED_TRAINING_FREE_V1",
+    "fit_scope": "eligible TRAIN decisions; one source-at-original-offset to target pair per decision",
+    "history_policy": "USER_HISTORY_L50",
+    "label": "POST_HOC_EXPLORATORY_DESCRIPTIVE",
+    "max_offset": 10,
+    "popularity_scope": "TRAIN target frequency, matching REES46 POP; not raw-event frequency",
+    "prediction_path": "rees46_training_free_exact_sparse_v1",
+    "ranking": "all frozen output classes, descending FP32 scores, ascending class ID ties; no seen filter",
+    "recipe_source": "capacity_probes/configs/table1.json Beauty; fixed transfer, no REES46 selection",
+    "recipes": {
+      "MC": {
+        "distance": 1
+      },
+      "PCTM": {
+        "counts": "inv:10:0.5",
+        "kernel": "exp:0.6",
+        "pop_boost": -0.04,
+        "tau": 11250.0
+      },
+      "SeqRules": {
+        "history_length": 10,
+        "history_weighting": "quadratic",
+        "idf_weight": false,
+        "pruning": 100,
+        "steps": 10,
+        "weighting": "log"
+      }
+    },
+    "registry_file_sha256": "56dd0840cb50e89250a8b9a54dc1d4f621e9e6f9500ec44441cf07cb472ef740",
+    "role_ids": {
+      "CALIBRATION": [
+        "CALIB_TRAIN_5_100_32768",
+        "CALIB_VALIDATION_5_100_32768"
+      ],
+      "MAIN": [
+        "MAIN_TRAIN_5_100_131072",
+        "MAIN_VALIDATION_5_100_131072"
+      ]
+    },
+    "selection": "NONE",
+    "test_supported": false
+  },
+  "registry": {
+    "file_sha256": "56dd0840cb50e89250a8b9a54dc1d4f621e9e6f9500ec44441cf07cb472ef740",
+    "path": "/home/jovyan/EID PROJECT NEW/DELIVERY_REVIEW/EXTENSIONS_20261013/ppsi_v4/contracts/manifest_registry/REGISTRY_V2.json"
+  },
+  "resource": {
+    "limit_bytes": 17179869184,
+    "n_checks": 509,
+    "peak_seen_bytes": 2833981440,
+    "rss_measurable_on_this_host": true
+  },
+  "source_binding": {
+    "adapter_sha256": "3fbc6730f49e982389a59b025a6c401a5f441cf04acdfbfcb9ad49b82fa2f046",
+    "evaluator_code_sha256": "61b64e61c1a2e4f5a6fecd42f0ad3b98de26562d13a07758573cc9496b8d962e",
+    "manifest_verifier_sha256": "383a756dffafe28c8cd9f6b17361121b2a617019c16d8d816197b09e86ce6fb2",
+    "protocol_sha256": "e9cdfbfd7a619ada1a3f8077d5a2c75eaa2c293ed8d59b2f8439bf9dec4d2103",
+    "provider_sha256": "87ecd99542a209976154608b244c8ffa23302584639d51be2d1ee1ce50f2c63f",
+    "registry_expected_sha256": "56dd0840cb50e89250a8b9a54dc1d4f621e9e6f9500ec44441cf07cb472ef740"
+  },
+  "status": "COMPLETE",
+  "utc": "2026-10-14T04:59:14.889063+00:00",
+  "wall_s": 1022.5692037902772
+}

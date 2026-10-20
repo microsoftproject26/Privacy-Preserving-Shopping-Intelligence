@@ -1,0 +1,75 @@
+{
+  "started_utc": "2026-09-22T23:55:23Z",
+  "store": {
+    "n_rows": 63690404,
+    "build_s": 100.4,
+    "rss_gib_after_build": 15.37,
+    "rss_gib_after_decisions": 16.19
+  },
+  "counts": {
+    "train_loss": 40180608,
+    "vs_eval": 8826488,
+    "vs_users": 790459
+  },
+  "G_iii_store": {
+    "F0_item_only": {
+      "pass": true,
+      "max_abs_diff": 0.0,
+      "problems": [],
+      "bit_identical_repeat": true,
+      "update": 7814,
+      "macro_mrr20": 0.10079484432935715
+    },
+    "F4_rich_side_information": {
+      "pass": true,
+      "max_abs_diff": 1.4901161193847656e-08,
+      "problems": [],
+      "bit_identical_repeat": true,
+      "update": 7814,
+      "macro_mrr20": 0.10115985572338104
+    }
+  },
+  "G_base_store": {
+    "fit_identical_to_pilot_cache_fit": true,
+    "POP": {
+      "pass": true,
+      "max_abs_diff": 0.0,
+      "problems": []
+    },
+    "TRANS": {
+      "pass": true,
+      "max_abs_diff": 1.4901161193847656e-08,
+      "problems": []
+    },
+    "pass": true
+  },
+  "X_fit": {
+    "pop_equal": true,
+    "trans_equal": true,
+    "max_pop": 199677,
+    "max_trans": 52414,
+    "max_composite": 10466122369,
+    "nnz": 12281909,
+    "pass": true
+  },
+  "X_eval_rows": {
+    "decision_id": true,
+    "target_class": true,
+    "client_idx": true,
+    "eval_user_key": true,
+    "last_item": true,
+    "prefix_position": true,
+    "prior_view_count": true,
+    "eval_mask_all_true": true,
+    "pass": true
+  },
+  "T_vs_eval": {
+    "seconds": 1067.9,
+    "rows_per_s": 8316.94479489182,
+    "peak_gpu_mem_gib": 2.513749599456787,
+    "note": "pilot F0 checkpoint on full VS; informational timing only"
+  },
+  "overall_pass": true,
+  "peak_rss_gib": 32.36,
+  "finished_utc": "2026-09-23T00:19:03Z"
+}

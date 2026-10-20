@@ -1,0 +1,20 @@
+{
+ "amendment": 1,
+ "amends_registry_sha256": "a303bc3f4addcd8f66396232a85820d64ea31cabfc315936cb303139216af257",
+ "utc": "2026-09-24T17:36:36Z",
+ "decided_by": "claude-fable-5-1 (owner delegate), review/AUTO_DECISION_GATE20K.md",
+ "field": "go_no_go_20k.at_20k_updates_both_arms.median_row_norms_E_and_W_le_x_init",
+ "original": "median row norms of E and W_out <= 3 x init (init ~0.32 -> 0.96)",
+ "replacement": [
+  "median row norm of E <= 5.0 absolute",
+  "median row norm of W_out <= 5.0 absolute",
+  "W_out ||mean row|| <= 1e-3"
+ ],
+ "descriptive_only": "||mean row E|| / median row E",
+ "rationale": "calibration error in the original threshold (deterministically failed by any healthy run from a 0.02-std init); v2 pathology = common-mode rows ~162, detected by the absolute cap and the unchanged E common-mode <= 0.5",
+ "conditions": [
+  "report the original 3x-init outcome alongside the amended one at 20k",
+  "no further gate changes after the 20k value is seen"
+ ],
+ "why_sidecar": "the running trainers pin the registry sha for exact resume; editing the registry file itself would make any crash-resume refuse (exit 5)"
+}

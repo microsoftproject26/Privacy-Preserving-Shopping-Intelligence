@@ -1,0 +1,62 @@
+{
+ "arm": "PRE",
+ "checkpoints": {
+  "CONTROLLED_BUDGET": {
+   "bytes": 34002335,
+   "file": "ckpt/endpoint_6.0.pt",
+   "mark": 0.06104685823297961,
+   "sha256": "3282c6d14c4b071910752ef87b9d27c1f941b8be759c1e5983577fec796d5e03"
+  }
+ },
+ "kind": "central",
+ "label": "SMOKE_NOT_EVIDENCE",
+ "run_id": "BM_s3_toys_PRE__B96_L50_D0.2__V256_s2026_SMOKE",
+ "spec": {
+  "N_decisions": 16774,
+  "arm": "PRE",
+  "betas": [
+   0.9,
+   0.999
+  ],
+  "budget_efe": 96,
+  "central_recipe_id": "02B_SASREC",
+  "dropout": [
+   0.2
+  ],
+  "early_stop_marks": null,
+  "effective_batch": 256,
+  "eps": 1e-08,
+  "exploratory": "POST_HOC_X",
+  "exposure_point": "end",
+  "grad_clip": 1.0,
+  "init_sha256": "c5d6b339cd73268b2c0ffbc6f7ca6bbc4e97c2c834f98dfe82629de4352e7656",
+  "lr_table_sha256": "d11e5b269e284a35aec2dd8ff63d81ac3cf45e87a4d5d30c476d48f9d9e726c6",
+  "marks": [
+   8.0,
+   16.0,
+   24.0,
+   32.0,
+   40.0,
+   48.0,
+   56.0,
+   64.0,
+   72.0,
+   80.0,
+   88.0,
+   96.0
+  ],
+  "max_len": 50,
+  "n_updates": 6336,
+  "peak_lr": 0.00040005642964899735,
+  "provenance": null,
+  "schedule": "S0",
+  "seed": 2026,
+  "select_population": "BAND",
+  "study": "A2B_D256",
+  "tag": "POST_HOC_EXPLORATORY",
+  "user_subset": null,
+  "variant": "SASREC_D256_B3",
+  "weight_decay": 1e-05
+ },
+ "status": "SMOKE_DONE_NOT_EVIDENCE"
+}

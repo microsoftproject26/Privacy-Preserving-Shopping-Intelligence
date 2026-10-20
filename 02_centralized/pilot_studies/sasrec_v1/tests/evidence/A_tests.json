@@ -1,0 +1,181 @@
+{
+  "command": "/home/jovyan/venvs/ppsi-gpu/bin/python -m pytest tests/test_data_adapter.py -q --junitxml=/tmp/A_tests_junit.xml",
+  "exit_code": 0,
+  "elapsed_seconds": 134.4306881427765,
+  "n_tests": 27,
+  "n_passed": 27,
+  "n_failed": 0,
+  "n_skipped": 0,
+  "tests": [
+    {
+      "name": "test_A1_train_loss_population_real",
+      "classname": ".local_ai.sasrec_v1.code.tests.test_data_adapter",
+      "time": 93.462,
+      "status": "pass"
+    },
+    {
+      "name": "test_A1_duplicate_missing_detector_negative_control",
+      "classname": ".local_ai.sasrec_v1.code.tests.test_data_adapter",
+      "time": 0.001,
+      "status": "pass"
+    },
+    {
+      "name": "test_A2_catalogue_bijective_from_file",
+      "classname": ".local_ai.sasrec_v1.code.tests.test_data_adapter",
+      "time": 0.043,
+      "status": "pass"
+    },
+    {
+      "name": "test_A2_negative_control_broken_mapping_detected",
+      "classname": ".local_ai.sasrec_v1.code.tests.test_data_adapter",
+      "time": 0.001,
+      "status": "pass"
+    },
+    {
+      "name": "test_A3_repack_preserves_order_and_alignment",
+      "classname": ".local_ai.sasrec_v1.code.tests.test_data_adapter",
+      "time": 0.012,
+      "status": "pass"
+    },
+    {
+      "name": "test_A3_repack_idempotent_on_already_right_padded",
+      "classname": ".local_ai.sasrec_v1.code.tests.test_data_adapter",
+      "time": 0.009,
+      "status": "pass"
+    },
+    {
+      "name": "test_A4_padding_batch_equivalence_poisoned_pad",
+      "classname": ".local_ai.sasrec_v1.code.tests.test_data_adapter",
+      "time": 0.333,
+      "status": "pass"
+    },
+    {
+      "name": "test_A5_synthetic_lengths_1_2_49_50_present",
+      "classname": ".local_ai.sasrec_v1.code.tests.test_data_adapter",
+      "time": 0.171,
+      "status": "pass"
+    },
+    {
+      "name": "test_A5_all_pad_row_raises",
+      "classname": ".local_ai.sasrec_v1.code.tests.test_data_adapter",
+      "time": 0.005,
+      "status": "pass"
+    },
+    {
+      "name": "test_A5_prefix_position_51plus_cropped_to_last50_real",
+      "classname": ".local_ai.sasrec_v1.code.tests.test_data_adapter",
+      "time": 19.316,
+      "status": "pass"
+    },
+    {
+      "name": "test_A6_missing_and_oov_features_survive_real",
+      "classname": ".local_ai.sasrec_v1.code.tests.test_data_adapter",
+      "time": 12.985,
+      "status": "pass"
+    },
+    {
+      "name": "test_A6_adapter_does_not_mutate_values",
+      "classname": ".local_ai.sasrec_v1.code.tests.test_data_adapter",
+      "time": 0.012,
+      "status": "pass"
+    },
+    {
+      "name": "test_A7_oov_target_distinct_branches",
+      "classname": ".local_ai.sasrec_v1.code.tests.test_data_adapter",
+      "time": 0.003,
+      "status": "pass"
+    },
+    {
+      "name": "test_A7_negative_control_branches_collapse_without_mask",
+      "classname": ".local_ai.sasrec_v1.code.tests.test_data_adapter",
+      "time": 0.002,
+      "status": "pass"
+    },
+    {
+      "name": "test_A8_repeated_target_legal_and_never_forwarded",
+      "classname": ".local_ai.sasrec_v1.code.tests.test_data_adapter",
+      "time": 0.093,
+      "status": "pass"
+    },
+    {
+      "name": "test_A8_negative_control_forbidden_key_raises",
+      "classname": ".local_ai.sasrec_v1.code.tests.test_data_adapter",
+      "time": 0.001,
+      "status": "pass"
+    },
+    {
+      "name": "test_synthetic_store_train_vs_decision_ids_disjoint",
+      "classname": ".local_ai.sasrec_v1.code.tests.test_data_adapter",
+      "time": 0.485,
+      "status": "pass"
+    },
+    {
+      "name": "test_synthetic_store_decision_id_collision_negative_control",
+      "classname": ".local_ai.sasrec_v1.code.tests.test_data_adapter",
+      "time": 0.001,
+      "status": "pass"
+    },
+    {
+      "name": "test_A9_synthetic_distinct_users_share_client_idx_2",
+      "classname": ".local_ai.sasrec_v1.code.tests.test_data_adapter",
+      "time": 0.041,
+      "status": "pass"
+    },
+    {
+      "name": "test_A9_real_distinct_eval_users_share_client_idx_2",
+      "classname": ".local_ai.sasrec_v1.code.tests.test_data_adapter",
+      "time": 4.553,
+      "status": "pass"
+    },
+    {
+      "name": "test_predictor_kwargs_id_and_rich_selection",
+      "classname": ".local_ai.sasrec_v1.code.tests.test_data_adapter",
+      "time": 0.019,
+      "status": "pass"
+    },
+    {
+      "name": "test_predictor_kwargs_raises_on_corrupted_allowlist",
+      "classname": ".local_ai.sasrec_v1.code.tests.test_data_adapter",
+      "time": 0.005,
+      "status": "pass"
+    },
+    {
+      "name": "test_forbidden_keys_never_intersect_real_allowlists",
+      "classname": ".local_ai.sasrec_v1.code.tests.test_data_adapter",
+      "time": 0.001,
+      "status": "pass"
+    },
+    {
+      "name": "test_check_right_padded_positive_and_negative",
+      "classname": ".local_ai.sasrec_v1.code.tests.test_data_adapter",
+      "time": 0.005,
+      "status": "pass"
+    },
+    {
+      "name": "test_build_training_store_rejects_bad_channels",
+      "classname": ".local_ai.sasrec_v1.code.tests.test_data_adapter",
+      "time": 0.001,
+      "status": "pass"
+    },
+    {
+      "name": "test_build_eval_store_rejects_bad_split",
+      "classname": ".local_ai.sasrec_v1.code.tests.test_data_adapter",
+      "time": 0.001,
+      "status": "pass"
+    },
+    {
+      "name": "test_build_eval_store_refuses_without_lock",
+      "classname": ".local_ai.sasrec_v1.code.tests.test_data_adapter",
+      "time": 0.001,
+      "status": "pass"
+    }
+  ],
+  "source_sha256": {
+    "sasrec_data.py": "e0872eaf7dbd3b8fc70b6bdba9a8ba9cd235f6d0d60136fe055a85fa9b2beebf",
+    "synthetic_store.py": "b8bf3a180ba03a5c1cd8f3d47e3e309723db414f75d65f045bdae53d7c4afaf4",
+    "tests/test_data_adapter.py": "47194b9332c913ee6ade7d6a1dc787f0e48e0742dd132d38e710d0e65d9902c1",
+    "tests/parity_store_vs_loader.py": "9b9dccf97c52c986b1826cede507df97532515e1c737f59c40426c62e8f3b8b5"
+  },
+  "stdout_tail": "...........................                                              [100%]\n=============================== warnings summary ===============================\ntests/test_data_adapter.py:93\n  /home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/code/tests/test_data_adapter.py:93: PytestUnknownMarkWarning: Unknown pytest.mark.real - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html\n    @pytest.mark.real\n\ntests/test_data_adapter.py:130\n  /home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/code/tests/test_data_adapter.py:130: PytestUnknownMarkWarning: Unknown pytest.mark.real - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html\n    @pytest.mark.real\n\ntests/test_data_adapter.py:281\n  /home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/code/tests/test_data_adapter.py:281: PytestUnknownMarkWarning: Unknown pytest.mark.real - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html\n    @pytest.mark.real\n\ntests/test_data_adapter.py:315\n  /home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/code/tests/test_data_adapter.py:315: PytestUnknownMarkWarning: Unknown pytest.mark.real - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html\n    @pytest.mark.real\n\ntests/test_data_adapter.py:524\n  /home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/code/tests/test_data_adapter.py:524: PytestUnknownMarkWarning: Unknown pytest.mark.real - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html\n    @pytest.mark.real\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n27 passed, 5 warnings in 131.69s (0:02:11)\n",
+  "stderr_tail": ""
+}

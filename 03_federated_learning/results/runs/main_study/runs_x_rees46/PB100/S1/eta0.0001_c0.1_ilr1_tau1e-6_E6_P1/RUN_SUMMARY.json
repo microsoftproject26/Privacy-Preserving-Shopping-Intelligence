@@ -1,0 +1,438 @@
+{
+ "arm": "P2_W",
+ "arm_spec": {
+  "arm": "P2_W",
+  "cfg": {
+   "dp": null,
+   "dropout_p": 0.1,
+   "endpoint_efe": 6.0,
+   "endpoint_rounds": 3414,
+   "exposure_point": "end",
+   "lr_peak_local": 0.1,
+   "lr_shape": "fl_const",
+   "max_attempts": 2,
+   "method": "FA",
+   "mu": 0.0,
+   "n_shards": 2,
+   "pf": null,
+   "seed": 2026,
+   "server_opt": {
+    "beta1": 0.9,
+    "beta2": 0.99,
+    "lr": 0.0001,
+    "name": "fedadam",
+    "tau": 1e-06,
+    "v_init": "tau_squared"
+   },
+   "solver": {
+    "batch_size": 16,
+    "clip": 1.0,
+    "fused": null,
+    "item_lr_mult": 1.0,
+    "lr": 0.1,
+    "optimizer": "sgd_m",
+    "passes": 1,
+    "weight_decay": 0.0
+   }
+  },
+  "exposure_budget": {
+   "authority": "PREG1_AMENDMENT_06J \u00a73",
+   "dropout_p": 0.1,
+   "endpoint_efe": 6.0,
+   "formula": "X2: rounds = ceil(10 x 6 x N / (576 P)) (POST_HOC_EXPLORATORY budget)",
+   "group": 64,
+   "n_clients": 32768,
+   "passes": 1,
+   "rounds": 3414
+  },
+  "init_from": {
+   "checkpoint_bytes": 82853197,
+   "checkpoint_sha256": "22135cdf132eae1d405dd802acf1a756c9aba122e02c9a01f53876894bd58383",
+   "family": "SASREC",
+   "fl_init_kind": "endpoint_6.0",
+   "kind": "PRETRAIN_FOR_FL",
+   "model_variant": "SASREC_D64_B2",
+   "run_id": "PRETRAIN_FOR_FL_SMALL_SASREC_D64_B2_s2026",
+   "run_label": "PRETRAIN_FOR_FL",
+   "seed": 2026,
+   "state_digest": "3e1c48efe79a1f1a1377719c144af9fe8e8610060ea7cc18b6bff545b61ce4e2",
+   "train_manifest": "PRETRAIN_TRAIN_5_100_NONMAIN"
+  },
+  "lr_mult": 1.0,
+  "lr_peak_base": 0.0007114121116984968,
+  "max_rounds": 3414,
+  "p2_fixed": {
+   "authority": "PREG2 \u00a75.1",
+   "client_momentum": 0.9,
+   "client_opt": "sgd_m",
+   "clip": 1.0,
+   "dropout_p": 0.1,
+   "endpoint_efe": 6.0,
+   "group": 64,
+   "local_batch": 16,
+   "local_passes": 1,
+   "lr_shape": "fl_const",
+   "sampling": "sweep",
+   "weight_decay": 0.0
+  },
+  "p2_label": "fedadam|eta=0.0001|c=0.1|items=unfrozen|ilr=1",
+  "p2_recipe": {
+   "client_lr": 0.1,
+   "item_lr_mult": 1.0,
+   "items": "unfrozen",
+   "lora_lr_factor": null,
+   "lora_rank": null,
+   "personal_head": false,
+   "server_lr": 0.0001,
+   "server_opt": "fedadam",
+   "upload": "dense"
+  },
+  "plan": {
+   "group_size": 64,
+   "sampling": "sweep"
+  },
+  "role": "CALIBRATION",
+  "study": "PREG2",
+  "upload_codec": null
+ },
+ "arm_spec_sha256": "7404eddb4459d6bc82d7efb68d5d5e0baa162d8c7d3ca8e8fb1f4fee5247507f",
+ "best_half_efe": 5,
+ "best_metric": 0.14613976205663762,
+ "bytes": {
+  "disclosure": "dropped clients (10% drop-out) are not charged a download (the ledger counts survivors)",
+  "fleet": {
+   "bytes_down": 16288889868976,
+   "bytes_up": 16288891442120,
+   "messages": 393286,
+   "retry_bytes_down": 0,
+   "total": 32577781311096
+  },
+  "per_client": {
+   "max": 1159687704,
+   "mean": 994194986.3005371,
+   "median": 994018032.0,
+   "min": 331339344,
+   "rule": "visits x (down + up) of that client"
+  },
+  "per_visit": {
+   "alias_bytes_not_sent": 0,
+   "bootstrap_bytes_once": 0,
+   "download_bytes": 82834832,
+   "private_bytes_sent": 0,
+   "private_resident_bytes": 0,
+   "send_plus_receive_bytes": 165669672,
+   "shared_numel": 20708708,
+   "upload_bytes": 82834840
+  }
+ },
+ "checkpoints": [
+  "best.pt",
+  "endpoint_6.0.pt"
+ ],
+ "counters": {
+  "coverage_by_sweep": {
+   "0": {
+    "clients": 29579,
+    "fraction": 0.902679443359375
+   },
+   "1": {
+    "clients": 29425,
+    "fraction": 0.897979736328125
+   },
+   "2": {
+    "clients": 29527,
+    "fraction": 0.901092529296875
+   },
+   "3": {
+    "clients": 29434,
+    "fraction": 0.89825439453125
+   },
+   "4": {
+    "clients": 29409,
+    "fraction": 0.897491455078125
+   },
+   "5": {
+    "clients": 29544,
+    "fraction": 0.901611328125
+   },
+   "6": {
+    "clients": 19725,
+    "fraction": 0.601959228515625
+   }
+  },
+  "efe": 5.9956119102198375,
+  "exposures": 3873567,
+  "max_visits": 7,
+  "min_visits": 2,
+  "noop_visits": 0,
+  "retries": 0,
+  "rounds": 3414,
+  "steps": 336582,
+  "steps_hist": {
+   "1": 119469,
+   "2": 43585,
+   "3": 16669,
+   "4": 8751,
+   "5": 4648,
+   "6": 2955,
+   "7": 566
+  },
+  "visits": 196643,
+  "wasted_steps": 0
+ },
+ "done": true,
+ "evals": [
+  [
+   1,
+   283,
+   0.14468011180822124,
+   true,
+   "MAIN"
+  ],
+  [
+   2,
+   566,
+   0.1459280613196958,
+   true,
+   "MAIN"
+  ],
+  [
+   3,
+   851,
+   0.14517182511813914,
+   false,
+   "MAIN"
+  ],
+  [
+   4,
+   1137,
+   0.14492061115816746,
+   false,
+   "MAIN"
+  ],
+  [
+   5,
+   1420,
+   0.14613976205663762,
+   true,
+   "MAIN"
+  ],
+  [
+   6,
+   1705,
+   0.14540516968138587,
+   false,
+   "MAIN"
+  ],
+  [
+   7,
+   1990,
+   0.14555425967424726,
+   false,
+   "MAIN"
+  ],
+  [
+   8,
+   2274,
+   0.1446570712508517,
+   false,
+   "MAIN"
+  ],
+  [
+   9,
+   2563,
+   0.1460382313343958,
+   false,
+   "MAIN"
+  ],
+  [
+   10,
+   2848,
+   0.14514289064757666,
+   false,
+   "MAIN"
+  ],
+  [
+   11,
+   3132,
+   0.1446462184863034,
+   false,
+   "MAIN"
+  ],
+  [
+   12,
+   3413,
+   0.14490388438329332,
+   false,
+   "MAIN"
+  ]
+ ],
+ "ledger": [
+  393286,
+  16288889868976,
+  16288891442120,
+  0
+ ],
+ "lr_table": {
+  "E_total": 3873567,
+  "digest": "64f6b17dc46dd12048506c841c3d6f105dedb380964efe2b6645382c78ca1d9e",
+  "final_lr": 0.010000000000000002,
+  "min_lr": 0.0029291154071470417,
+  "n_rounds": 3414,
+  "planned_efe": 5.9956119102198375
+ },
+ "lr_table_digest": "64f6b17dc46dd12048506c841c3d6f105dedb380964efe2b6645382c78ca1d9e",
+ "method": "FA",
+ "p2": {
+  "authority": "PREG2 \u00a75 (contracts/PREG2_FOLLOWUP_DRAFT \u00a75 as edited by FABLE_GATE_ENDGAME_SCRIPTS_20261003 \u00a79); PHASE2_IMPLEMENTATION_PLAN P2-02",
+  "label": "fedadam|eta=0.0001|c=0.1|items=unfrozen|ilr=1",
+  "post_run": null,
+  "pre_server": null,
+  "recipe": {
+   "client_lr": 0.1,
+   "item_lr_mult": 1.0,
+   "items": "unfrozen",
+   "lora_lr_factor": null,
+   "lora_rank": null,
+   "personal_head": false,
+   "server_lr": 0.0001,
+   "server_opt": "fedadam",
+   "upload": "dense"
+  }
+ },
+ "participation": {
+  "dropout_p": 0.1,
+  "dropped": 21853,
+  "endpoint_rounds": 3414,
+  "noop_rounds": 0,
+  "planned_efe": 5.9956119102198375,
+  "rounds": 3414,
+  "sampled": 218496,
+  "survived": 196643
+ },
+ "phase": "MAIN",
+ "plan": {
+  "group_size": 64,
+  "keys_digest": "6780c81a3e7b0a59b0a01fe976a9436463fdd93cfb3df92ffe842ca8d64f3f91",
+  "manifest_hash": "94ade68c5df4dcf8c2f3b29529b63dcb0193ab2e34ec529b467f628018c49f2e",
+  "n_clients": 32768,
+  "partial_group_note": "none: N is a multiple of the group size",
+  "partial_group_policy": "SMALLER_FINAL_GROUP",
+  "partial_group_size": 0,
+  "rounds_per_sweep": 512,
+  "sampling": "seeded permutation sweeps without replacement (PCG64), fixed consecutive groups",
+  "seed": 2026
+ },
+ "rounds": 3414,
+ "run_id": "P2_W_FEDADAM_eta0.0001_c0.1_UNFROZEN_ilr1_XTAU1e-06_E6_P1_CALIB_s2026",
+ "server_digest": "ddab984644f9d7e10b7749fedb2527a86283fa96a7dee86ffcba63079ee14a64",
+ "server_opt": {
+  "cfg": {
+   "beta1": 0.9,
+   "beta2": 0.99,
+   "lr": 0.0001,
+   "name": "fedadam",
+   "tau": 1e-06,
+   "v_init": "tau_squared"
+  },
+  "moments_digest": "6732960f972a176705f6fca937ad474eefb76c3892ab7337312f04adc99a6347",
+  "steps": 3414
+ },
+ "status": "DONE_MAIN",
+ "store_digest": null,
+ "train_loss_log": {
+  "authority": "FL-15 R5 (REAL_WORLD_FL_PRACTICE_AUDIT_20260930 R5): per-round client training loss from fl VisitRecord.loss_sum (sum of the batch-mean CE over a visit's steps); descriptive monitoring only, numerics unchanged; z > 0 (DP) runs record nothing (an un-noised data-dependent release, the 06L_E E1 reading)",
+  "complete": true,
+  "fields": [
+   "client_mean_loss",
+   "finite",
+   "loss_sum",
+   "mean_step_loss",
+   "n_clients",
+   "n_steps",
+   "round"
+  ],
+  "file": "TRAIN_LOSS.jsonl",
+  "missing_rounds": [],
+  "rounds_expected": 3414,
+  "rounds_logged": 3414,
+  "sha256": "59e9f6645831220e7ec6044f459520c90c3f5c1953328c7f7cea43ff7248b5ce"
+ },
+ "update_norm_log": {
+  "authority": "PREG2 \u00a73.3 D1-ext: per round, per tensor group of the trained subset: ||Delta_agg||, the server step, ||theta - theta_pre||, cos(Delta_r, Delta_r-1), clients aggregated (omitted for z > 0); DESCRIPTIVE, never selects; post-noise server-side quantities only under DP (06L_E E1)",
+  "complete": true,
+  "cos_prev_unavailable_rounds": [
+   0
+  ],
+  "file": "UPDATE_NORM_LOG.jsonl",
+  "last_total_T": {
+   "agg_delta_l2": 0.009054208295344408,
+   "numel": 20708708,
+   "pre_dist_l2": 36.44854483235017,
+   "pre_l2": 811.989003090849,
+   "rel_pre_dist": 0.04488797840070273,
+   "step_l2": 0.015560908172802645
+  },
+  "missing_rounds": [],
+  "rounds_expected": 3414,
+  "rounds_logged": 3414,
+  "server_steps": 3414,
+  "sha256": "ead83c6fdfd86f83b743db9d70f2f5b1d7fee05349bbd11baf78971cc1a543f8",
+  "strictly_increasing": true,
+  "trained_keys": [
+   "output_embed",
+   "output_bias",
+   "side_gate",
+   "user_gate",
+   "item_embed.weight",
+   "pos_embed.weight",
+   "blocks.0.ln1.weight",
+   "blocks.0.ln1.bias",
+   "blocks.0.qkv.weight",
+   "blocks.0.qkv.bias",
+   "blocks.0.out.weight",
+   "blocks.0.out.bias",
+   "blocks.0.ln2.weight",
+   "blocks.0.ln2.bias",
+   "blocks.0.ff1.weight",
+   "blocks.0.ff1.bias",
+   "blocks.0.ff2.weight",
+   "blocks.0.ff2.bias",
+   "blocks.1.ln1.weight",
+   "blocks.1.ln1.bias",
+   "blocks.1.qkv.weight",
+   "blocks.1.qkv.bias",
+   "blocks.1.out.weight",
+   "blocks.1.out.bias",
+   "blocks.1.ln2.weight",
+   "blocks.1.ln2.bias",
+   "blocks.1.ff1.weight",
+   "blocks.1.ff1.bias",
+   "blocks.1.ff2.weight",
+   "blocks.1.ff2.bias",
+   "final_norm.weight",
+   "final_norm.bias",
+   "input_norm.weight",
+   "input_norm.bias",
+   "side_embeds.category_tokens.weight",
+   "side_embeds.brand_tokens.weight",
+   "side_embeds.session_offset_tokens.weight",
+   "side_embeds.session_mode_main_category_tokens.weight",
+   "numflag_proj.weight",
+   "numflag_proj.bias",
+   "side_proj.weight",
+   "side_proj.bias",
+   "side_norm.weight",
+   "side_norm.bias",
+   "user_mlp.weight",
+   "user_mlp.bias",
+   "user_proj.weight",
+   "user_proj.bias",
+   "user_norm.weight",
+   "user_norm.bias"
+  ],
+  "trained_numel": 20708708,
+  "unparsable_lines": 0
+ },
+ "wall_s_this_leg": 19334.39
+}

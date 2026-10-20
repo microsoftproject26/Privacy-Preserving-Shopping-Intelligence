@@ -1,0 +1,338 @@
+{
+ "a_star": {
+  "label": "fedadam|eta=3e-06|c=0.1",
+  "recipe": {
+   "client_lr": 0.1,
+   "item_lr_mult": null,
+   "items": "frozen",
+   "lora_lr_factor": null,
+   "lora_rank": null,
+   "personal_head": false,
+   "server_lr": 3e-06,
+   "server_opt": "fedadam",
+   "upload": "dense"
+  },
+  "source": "P2_RUN"
+ },
+ "anchor": {
+  "eval_manifest_id": "CALIB_VALIDATION_5_100_32768",
+  "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_p2/ANCHOR/REEVAL_A40/P2_ANCHOR_PRE_CALIB_CALIBRATION_s2026_CB",
+  "reeval_record_sha256": "5ec42159b830ca205847384dede8a61dd83c038d45f63dccda0cd55330962445",
+  "result_rows_sha256": "1d36944482e73adc9d1e12faeb7d3734507b3f0a50ca61586bfefe26d8a11872",
+  "value": 0.17130159869656741
+ },
+ "anchor_min_gain": 0.001,
+ "anchor_rule": "NO_MEASURABLE_CALIB_GAIN iff CALIB_GAIN < 0.001 (exact, strict)",
+ "authority": "contracts/PREG2.md (REGISTERED, DL 411, sha256 be0561abe5ceec450d3a75bef49853a3c480d3847f75559dd94e9e0545df18a8) \u00a74.2, \u00a75.1-\u00a75.9, \u00a76.3 S8, \u00a711 D-j; company/plans/PHASE2_IMPLEMENTATION_PLAN.md P2-06; company/reviews/REV-P2-06.md",
+ "base_decision": {
+  "best_value_label": "fedadam|eta=3e-06|c=0.1",
+  "tie_set": [
+   "fedadam|eta=3e-06|c=0.1"
+  ],
+  "winner": "fedadam|eta=3e-06|c=0.1"
+ },
+ "best_value": 0.17131507813241315,
+ "best_value_label": "fedadam|eta=3e-06|c=0.1",
+ "c1_selection": {
+  "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/contracts/fl/P2_C1_SELECTION.json",
+  "self_sha256": "b1e97008bbc12cfb4fb7a1df93dd98f8384c46fc9f969b3e5ec357178aef8b21",
+  "sha256": "20a23295c9c8a7a952bf67cc99b0adbe007cac73174710927483b3b2674c40f4"
+ },
+ "calib_gain": 1.347943584574e-05,
+ "candidates": [
+  {
+   "arm": "P2_W",
+   "arm_spec_sha256": "88b4702eae5907a390697ac6cfa86844172b50b52be79c473f99782d03cddff2",
+   "bytes_per_visit": 1055296,
+   "client_lr_applied": {
+    "exact": "1/10",
+    "float": 0.1
+   },
+   "d1ext": {
+    "authority": "PREG2 \u00a73.3 D1-ext: per round, per tensor group of the trained subset: ||Delta_agg||, the server step, ||theta - theta_pre||, cos(Delta_r, Delta_r-1), clients aggregated (omitted for z > 0); DESCRIPTIVE, never selects; post-noise server-side quantities only under DP (06L_E E1)",
+    "complete": true,
+    "cos_prev_unavailable_rounds": [
+     0
+    ],
+    "file": "UPDATE_NORM_LOG.jsonl",
+    "last_total_T": {
+     "agg_delta_l2": 0.009578741035711012,
+     "numel": 263822,
+     "pre_dist_l2": 0.03837276148230594,
+     "pre_l2": 183.6536448327408,
+     "rel_pre_dist": 0.00020894091983447008,
+     "step_l2": 5.563111573341333e-06
+    },
+    "missing_rounds": [],
+    "rounds_expected": 3414,
+    "rounds_logged": 3414,
+    "server_steps": 3414,
+    "sha256": "bbbee231a80914c90c78f55ddc0f30ae1b105df44c7e3316a2f5ddf5fa46d03b",
+    "strictly_increasing": true,
+    "trained_keys": [
+     "side_gate",
+     "user_gate",
+     "pos_embed.weight",
+     "blocks.0.ln1.weight",
+     "blocks.0.ln1.bias",
+     "blocks.0.qkv.weight",
+     "blocks.0.qkv.bias",
+     "blocks.0.out.weight",
+     "blocks.0.out.bias",
+     "blocks.0.ln2.weight",
+     "blocks.0.ln2.bias",
+     "blocks.0.ff1.weight",
+     "blocks.0.ff1.bias",
+     "blocks.0.ff2.weight",
+     "blocks.0.ff2.bias",
+     "blocks.1.ln1.weight",
+     "blocks.1.ln1.bias",
+     "blocks.1.qkv.weight",
+     "blocks.1.qkv.bias",
+     "blocks.1.out.weight",
+     "blocks.1.out.bias",
+     "blocks.1.ln2.weight",
+     "blocks.1.ln2.bias",
+     "blocks.1.ff1.weight",
+     "blocks.1.ff1.bias",
+     "blocks.1.ff2.weight",
+     "blocks.1.ff2.bias",
+     "final_norm.weight",
+     "final_norm.bias",
+     "input_norm.weight",
+     "input_norm.bias",
+     "side_embeds.category_tokens.weight",
+     "side_embeds.brand_tokens.weight",
+     "side_embeds.session_offset_tokens.weight",
+     "side_embeds.session_mode_main_category_tokens.weight",
+     "numflag_proj.weight",
+     "numflag_proj.bias",
+     "side_proj.weight",
+     "side_proj.bias",
+     "side_norm.weight",
+     "side_norm.bias",
+     "user_mlp.weight",
+     "user_mlp.bias",
+     "user_proj.weight",
+     "user_proj.bias",
+     "user_norm.weight",
+     "user_norm.bias"
+    ],
+    "trained_numel": 263822,
+    "unparsable_lines": 0
+   },
+   "device": {
+    "device_pin_sha256": "db744ca3f0da27ac7b65c41b4b32f2c68ec9d0bd66bbc0dc33e874a226834e6b",
+    "eval_device_class": "NVIDIA_A40-FP32-DET"
+   },
+   "eval_manifest_id": "CALIB_VALIDATION_5_100_32768",
+   "excluded": false,
+   "label": "fedadam|eta=3e-06|c=0.1",
+   "max_of_12_marks": 0.17132395080303256,
+   "nonfinite_fields": [],
+   "practical_best_mark": 0.5,
+   "reason": null,
+   "recipe": {
+    "client_lr": 0.1,
+    "item_lr_mult": null,
+    "items": "frozen",
+    "lora_lr_factor": null,
+    "lora_rank": null,
+    "personal_head": false,
+    "server_lr": 3e-06,
+    "server_opt": "fedadam",
+    "upload": "dense"
+   },
+   "result_rows_sha256": "6d138476e75eb2512e31ce0ff659c0b323998ecb7397442f1bba4cc20d263c1e",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_p2/WA/P2_W_FEDADAM_eta3e-06_c0.1_CALIB_s2026",
+   "run_id": "P2_W_FEDADAM_eta3e-06_c0.1_CALIB_s2026",
+   "run_summary_sha256": "3e4398cb89d29821696cfed9a57fc31e365bf89d0201a4277e92987851a6004b",
+   "server_step": {
+    "exact": "3/1000000",
+    "float": 3e-06
+   },
+   "set": "A_STAR",
+   "source": "P2_RUN",
+   "split": "VALIDATION",
+   "trained_params": [
+    263822,
+    0
+   ],
+   "value": 0.17131507813241315
+  }
+ ],
+ "common": {
+  "cfg.dropout_p": 0.1,
+  "cfg.endpoint_efe": 6.0,
+  "cfg.endpoint_rounds": 3414,
+  "cfg.lr_shape": "fl_const",
+  "cfg.seed": 2026,
+  "cfg.solver.batch_size": 16,
+  "cfg.solver.clip": 1.0,
+  "cfg.solver.passes": 1,
+  "cfg.solver.weight_decay": 0.0,
+  "exposure_budget": {
+   "authority": "PREG1_AMENDMENT_06J \u00a73",
+   "dropout_p": 0.1,
+   "endpoint_efe": 6.0,
+   "formula": "rounds = ceil(6.0 x N_dec / (64 x 0.9 x P x N_dec / N_clients)) = ceil(60 N_clients / (576 P))",
+   "group": 64,
+   "n_clients": 32768,
+   "passes": 1,
+   "rounds": 3414
+  },
+  "init_from": {
+   "checkpoint_bytes": 82853197,
+   "checkpoint_sha256": "cf08588c11f019cc760f129ba7ba6b23806297660e0170f9938436a5cb88cf78",
+   "family": "SASREC",
+   "fl_init_kind": "endpoint_6.0",
+   "kind": "PRETRAIN_FOR_FL",
+   "model_variant": "SASREC_D64_B2",
+   "run_id": "PRETRAIN_FOR_FL_SMALL_SASREC_D64_B2_s2026",
+   "run_label": "PRETRAIN_FOR_FL",
+   "seed": 2026,
+   "state_digest": "ee33345be4f20b61a53cd80fa11e1af702031bfcd1425af490825cd0019dc54a",
+   "train_manifest": "PRETRAIN_TRAIN_5_100_NONMAIN"
+  },
+  "lr_peak_base": 0.0007114121116984968,
+  "max_rounds": 3414,
+  "p2_fixed": {
+   "authority": "PREG2 \u00a75.1",
+   "client_momentum": 0.9,
+   "client_opt": "sgd_m",
+   "clip": 1.0,
+   "dropout_p": 0.1,
+   "endpoint_efe": 6.0,
+   "group": 64,
+   "local_batch": 16,
+   "local_passes": 1,
+   "lr_shape": "fl_const",
+   "sampling": "sweep",
+   "weight_decay": 0.0
+  },
+  "plan": {
+   "group_size": 64,
+   "sampling": "sweep"
+  },
+  "role": "CALIBRATION",
+  "study": "PREG2"
+ },
+ "device": {
+  "device_pin_sha256": "db744ca3f0da27ac7b65c41b4b32f2c68ec9d0bd66bbc0dc33e874a226834e6b",
+  "eval_device_class": "NVIDIA_A40-FP32-DET"
+ },
+ "dropped": {
+  "arms": [],
+  "cap_gpu_h": 250.0,
+  "cap_plan": null,
+  "cells": [],
+  "note": "every dropped unit is declared not run in P2_METHODS_LOCK (\u00a75.9); Part-B arms unfinished at lock time are declared not run under \u00a72.1, not here",
+  "order": [
+   "DP1",
+   "SECAGG_MAIN",
+   "DPFTRL_S2027",
+   "WC3/WC4",
+   "WB2",
+   "WC1/WC2",
+   "WB3",
+   "C2"
+  ],
+  "units": []
+ },
+ "edge": {
+  "existing_cells": [],
+  "new_cells": [],
+  "notes": [],
+  "registered_cells": [],
+  "rule": "\u00a75.7 (registered): a winner on the edge of a numeric axis -> that axis extended once, one step outward, at the winner's other coordinates; at most 3 extension runs per stage; re-applied over the union; the winner again on the new edge -> EDGE_UNRESOLVED; no second extension",
+  "status": "NOT_ON_EDGE",
+  "unstepped_edges": [
+   "A*'s axes were handled at stage WA (one extension only)"
+  ],
+  "winner_before_extension": "fedadam|eta=3e-06|c=0.1"
+ },
+ "edge_wa": {
+  "notes": [],
+  "status": "EDGE_UNRESOLVED"
+ },
+ "eval_manifest_id": "CALIB_VALIDATION_5_100_32768",
+ "excluded": [],
+ "flags": [
+  "EDGE_UNRESOLVED",
+  "NO_MEASURABLE_CALIB_GAIN",
+  "FUTILITY_SKIP_WB_WC"
+ ],
+ "format": "PPSI_V4_P2_WARM_SELECTION_FINAL_1",
+ "futility": {
+  "anchor_value": 0.17130159869656741,
+  "c1_best": 0.17125836217457724,
+  "c1_gain": -4.323652199017e-05,
+  "c1_selection": {
+   "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/contracts/fl/P2_C1_SELECTION.json",
+   "self_sha256": "b1e97008bbc12cfb4fb7a1df93dd98f8384c46fc9f969b3e5ec357178aef8b21",
+   "sha256": "20a23295c9c8a7a952bf67cc99b0adbe007cac73174710927483b3b2674c40f4"
+  },
+  "decision": "FUTILITY_SKIP_WB_WC",
+  "disclosure": "D-j: Futility uses CALIB headroom (32,768 users); MAIN has 131,072 users, so FUTILITY_SKIP_WB_WC may under-read the headroom available on MAIN.",
+  "rule": "PREG2 \u00a75.8: skip WB and WC iff both gains < 0.001 (strict); A* = W* goes to MAIN",
+  "skip_wb_wc": true,
+  "threshold": 0.001,
+  "wa_best": 0.1714139535669492,
+  "wa_gain": 0.00011235487038179,
+  "wa_selection": {
+   "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/contracts/fl/P2_WARM_SELECTION_A.json",
+   "self_sha256": "d2066129ae0de1e9e68c1d53669da1b79ea2492a59275cbb8b891b41da2cad26",
+   "sha256": "06a75d6518f66013efa7d1e49d75d9e28d50e6211d94064df410884d3022de00"
+  }
+ },
+ "metric": "CALIB_VALIDATION E2E client-macro MRR@20 at PRACTICAL_BEST (marks 0.5 .. 6.0; mark 0 never a candidate)",
+ "no_measurable_calib_gain": true,
+ "nonfinite_diagnostics": [],
+ "required": [
+  "fedadam|eta=3e-06|c=0.1"
+ ],
+ "rule": "W* = the highest CALIB value over {A*} + WB (3) + WC (5) minus the \u00a75.9 drops (or {A*} alone under FUTILITY_SKIP_WB_WC, \u00a75.8); non-finite runs excluded and recorded; ties best - value <= 0.001 -> (1) fewer upload bytes per visit, (2) fewer trained parameters, (3) the smaller effective server step (FedAdam eta_s; FedAvgM eta_s / (1 - 0.9); FedAvg eta_s; exact rationals), (4) the smaller client LR applied, (5) the lexically first label; \u00a75.7 edge rule on a WB / WC winner \u2014 PREG2 (REGISTERED) \u00a75.3-\u00a75.9",
+ "self_sha256": "7aedaebe59dab183e627837a1099d14059d1d0fe4d0725c0bc471c8183582d58",
+ "split": "VALIDATION",
+ "stage": "FINAL",
+ "task": "P2-06 v4int.p2_select",
+ "tie_band_rule": "best - value <= 0.001 (exact, inclusive)",
+ "tie_order": "(1) fewer upload bytes per visit, (2) fewer trained parameters, (3) the smaller effective server step (FedAdam eta_s; FedAvgM eta_s / (1 - 0.9); FedAvg eta_s; exact rationals), (4) the smaller client LR applied, (5) the lexically first label",
+ "tie_set": [
+  "fedadam|eta=3e-06|c=0.1"
+ ],
+ "tie_tolerance": 0.001,
+ "tool": {
+  "central_ft_sha256": "4d95d12cd55def363917b165c1ef805c647d99a0f23f4e5b084ccef69e5c4077",
+  "launch_fl_sha256": "fb5c274fb7a7deddb9cbd652ee0f8722be088ffbc687483e51618198661baaf4",
+  "lr_screen_sha256": "1a391b1ef60b548930b9b1844c972c863d4c3de026656004ba20082fa39f8fd3",
+  "p2_select_sha256": "7a05afcd91337c2cfc1a7a124844c82f92712c71233142a07eb914e0c26c792f",
+  "preg2_sha256_registered": "be0561abe5ceec450d3a75bef49853a3c480d3847f75559dd94e9e0545df18a8"
+ },
+ "utc": "2026-10-04T17:42:49Z",
+ "values": {
+  "fedadam|eta=3e-06|c=0.1": 0.17131507813241315
+ },
+ "wa_selection": {
+  "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/contracts/fl/P2_WARM_SELECTION_A.json",
+  "self_sha256": "d2066129ae0de1e9e68c1d53669da1b79ea2492a59275cbb8b891b41da2cad26",
+  "sha256": "06a75d6518f66013efa7d1e49d75d9e28d50e6211d94064df410884d3022de00"
+ },
+ "winner": "fedadam|eta=3e-06|c=0.1",
+ "winner_recipe": {
+  "client_lr": 0.1,
+  "item_lr_mult": null,
+  "items": "frozen",
+  "lora_lr_factor": null,
+  "lora_rank": null,
+  "personal_head": false,
+  "server_lr": 3e-06,
+  "server_opt": "fedadam",
+  "upload": "dense"
+ },
+ "winner_result_rows_sha256": "6d138476e75eb2512e31ce0ff659c0b323998ecb7397442f1bba4cc20d263c1e",
+ "winner_run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_p2/WA/P2_W_FEDADAM_eta3e-06_c0.1_CALIB_s2026",
+ "winner_set": "A_STAR",
+ "winner_source": "P2_RUN",
+ "winner_value": 0.17131507813241315
+}

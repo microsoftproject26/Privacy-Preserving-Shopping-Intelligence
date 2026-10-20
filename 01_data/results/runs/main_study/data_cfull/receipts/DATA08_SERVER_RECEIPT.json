@@ -1,0 +1,96 @@
+{
+ "receipt": "DATA08_SERVER_RECEIPT",
+ "task": "DATA-08",
+ "overall_pass": true,
+ "checks": {
+  "build_receipt_pass": true,
+  "manifest_on_disk": true,
+  "ext_registry_rule": true,
+  "base_registry_pinned_by_lock_v2": true,
+  "tests_exit_0": true,
+  "tests_negative_controls_failed_as_intended": true,
+  "tests_real_data_ran": true,
+  "rss_guards_rc_0": true,
+  "no_pycache_in_owned_code": true,
+  "no_test_manifest_or_role": true
+ },
+ "date_u": {},
+ "df": {},
+ "rss_guards": [
+  {
+   "cmd": [
+    "/home/jovyan/venvs/ppsi-gpu/bin/python",
+    "-B",
+    "-m",
+    "v4data08.d8_build",
+    "--out",
+    "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/data_cfull"
+   ],
+   "rc": 0,
+   "killed_rss_guard": false,
+   "peak_rss_mib": 13760.0,
+   "limit_mib": 16384.0,
+   "wall_s": 251.2,
+   "end_utc": "2026-09-28T23:28:28Z"
+  }
+ ],
+ "data_cfull_bytes": 564073480,
+ "ext_registry": {
+  "path": "contracts/manifest_registry/REGISTRY_V2_FULL_EXT.json",
+  "file_sha256": "9d0ff201b62854cba444c03fb09c27aaaf773900a88752854c618510870525d4",
+  "self_sha256": "c9e48641f5da6c5db188625b7a8d82168876ca75b7784f55cbe2bf01ab0100a7",
+  "extends": {
+   "path": "contracts/manifest_registry/REGISTRY_V2.json",
+   "file_sha256": "56dd0840cb50e89250a8b9a54dc1d4f621e9e6f9500ec44441cf07cb472ef740",
+   "self_sha256": "f6a0820791ad39e84aa86ebde2c37c12e76a45be6034d9068621a2c431b21c41",
+   "rule": "every REGISTRY_V2 key / role / manifest / population band is canonical-JSON identical here (v4data08.d8_registry.verify_ext_registry); additions only: roles.C_FULL, manifests.FULL_TRAIN_5_100_TIEBREAK, population_bands.TIEBREAK and the extension_* keys"
+  }
+ },
+ "build_receipt_sha256": "2600e74a65aa9cdeff4e1022681b4996387dd48bb084bd477c947fbc006a36fa",
+ "tests": {
+  "exit_code": 0,
+  "counts": {
+   "passed": 27,
+   "xfailed": 14
+  },
+  "negative_controls": {
+   "n": 14,
+   "n_run": 14,
+   "n_skipped": 0,
+   "all_failed_as_intended": true
+  },
+  "summary_line": "\u001b[32m\u001b[32m\u001b[1m27 passed\u001b[0m, \u001b[33m14 xfailed\u001b[0m\u001b[32m in 34.04s\u001b[0m\u001b[0m"
+ },
+ "tests_receipt_file_sha256": "2d5070338d57119c53df828bdb2b24326fec443f7f744143d9bf6e4be430762a",
+ "manifest": {
+  "FULL_TRAIN_5_100_TIEBREAK": {
+   "n_users": 1348682,
+   "n_decisions": 26677600,
+   "content_sha256": "7cb2062e33112ec2ecf1aa1849020f29976d76878d1a81eb3f1c7bc556d2b693",
+   "header_sha256": "2e720abb04ac449e9a5a19e59f2d058dd217cc134aa21e16ff402666d811fd3a",
+   "header_content_sha256": "433b925705609bd9e2e12ca2ec7f9b0d04f00fd07b16251dfcee5dbec11ae16f",
+   "population_sha256": "1f39d02db030953ee5ee517c96f3df7af270eba3530c2c2dde3a8a5cfda60ee2",
+   "population_sha256_selection_key_v2": "df5d0c7e82bc0842f5c8435fafaa67f947d4fe951d5f9e6aed9ca58d10a46cdf"
+  }
+ },
+ "population_discrepancy": "PREG1_AMENDMENT_06 \u00a75 and the DATA-08 packet state 1,315,914 users. That is the SUPERSEDED first Fable POPULATION_5_100 ruling (DECISION_LOG 40: U_NEW_VAL / U_NEW_TEST 65,536 each, TIEBREAK = 1,446,986 - 131,072). The LOCKED D1 (DECISION_LOG 41/42, ADR-005, v4fs_data.fs_common.BANDS['TIEBREAK'] = (0, 1,348,682)) has U_NEW bands of 32,768 each and TB = r < 1,348,682, which also excludes the FS band (the top 32,768). The packet says 'if a TIEBREAK population already exists, REUSE it exactly', so this manifest is the locked TB band: 1,348,682 users. (A literal 'pool minus the two U_NEW bands' would be 1,381,450 and would include the FS screen band.)",
+ "code": {
+  "d8_code_sha256": "720f8892546be8bba10b7283e427d525bf0cf23ff98ce07716b6ec0514033164",
+  "d8_code_sha256_rule": "v4data.common.code_tree_sha256 over code/v4data08/{__init__,d8_common,d8_build}.py",
+  "d8_code_files_sha256": {
+   "__init__.py": "7f753f0028a0e536033fa593b051427f28a68617b2e7c4c2f3eaddef2b5bdca5",
+   "d8_common.py": "60c9a1c522dc26c9a218a1f0d3107426a93e69a7b2bea0b31c6f48f5eac7a435",
+   "d8_build.py": "f1756380dd1bd1ba0ce0c8c25ac812425b40930ab707c096a1f26c8cb3550063"
+  },
+  "v4data06_files_sha256": {
+   "d6_common.py": "03cdd46249147293eb59b2ffc14cd910e8864694cf1b4695425680243308d946",
+   "d6_build.py": "277a2fdc08a4d8a2479ae07f9b6b2061ead60deb67e1db3c42ff699848f4d394"
+  },
+  "census_v2_core_sha256": "aca2fe3a69afaa6a38c75492acc3148a8ec5ccb7b79678af815acd8eef4d169a",
+  "v4fs_data_fs_common_sha256": "a152cbc23c3a344ce4ca0d78e83b252c87842fb9fb6843b04f2f9483517b28b1",
+  "v4data_builder_code_sha256": "443254e9ed95e41a48076f91643c83fbc77355dc80bb6b111d8432703d3e34a5"
+ },
+ "finalize_code_sha256": "0044249cca9b62fcf9e8552d3c09ca4b183336fdee1d1479623d254a5364c948",
+ "test_split_read": false,
+ "receipt_sha256": "827bc19cda144b91c5ba354d4b7e4fe4217fe3f0ec0ccbe7c9b27f72b975b0e8"
+}

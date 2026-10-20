@@ -1,242 +1,142 @@
-# Privacy-Preserving-Shopping-Intelligence-via-Federated-On-Device-Learning
-_______________________________________________________________________________
+# Privacy-Preserving Shopping Intelligence via Federated and On-Device Learning
 
-## Final results
+This repository holds the code and the curated records of an MSc graduation project (Queen's
+University, School of Computing; Digilians programme, 2026). The project measures how much
+shopping-recommendation quality survives when a cloud-trained sequential recommender is replaced
+by a federated or an on-device model. All main-study experiments rank the full catalogue of
+158,486 products of the REES46 e-commerce log (October and November 2019) with SASRec
+next-product models, score with client-macro MRR@20, and express quality as the retention of a
+cloud reference; 131,072 users of the log simulate devices. The study was run under a
+pre-registered, gated protocol with a single sealed test evaluation, and every number in this
+repository carries the evidence label it was given in the final report.
 
-How much recommendation quality survives the move from the cloud to federated or on-device models: the final
-report is [`docs/results.md`](docs/results.md), the aggregate result tables are in [`results/`](results/), and
-[`notebooks/final_results.ipynb`](notebooks/final_results.ipynb) draws the key figures from them.
+## Research question
 
-On REES46 the deployable warm federated system keeps 88.5 % of the full-data central model, but adds nothing over
-the server-pretrained model it starts from. How much federated training adds depends on how strong that pretrain
-is, and a FedAdam setting (`tau`) had to be fixed before federated training learned at all
-([`docs/fedadam-tau.md`](docs/fedadam-tau.md)).
+*"How much shopping recommendation quality can be retained when moving from cloud-based to
+on-device or federated models?"*
 
-## Phase 1 data pipeline
+## Headline answer
 
-The reproducible REES46 October 2019 CSV-to-Parquet pipeline is documented in
-[`docs/s1-ds-02-csv-to-parquet.md`](docs/s1-ds-02-csv-to-parquet.md).
+- **Confirmatory** (REES46 TEST, 26,254 users, 229,742 decisions; the single sealed test
+  evaluation of 5-7 October 2026): the realistic edge system - a warm-start federated model with
+  frozen item tables - keeps **88.49% [87.73, 89.18]** of the full-data cloud model; the
+  server-pretrained model alone keeps 88.77% [88.03, 89.47]; the cold federated model keeps
+  70.10% [69.19, 70.94].
+- **Confirmatory**: federated training on top of the pretrained model changes MRR@20 by
+  -0.000508 [-0.000933, -0.000037] (federation adds nothing over a strong server pretrain);
+  on-device fine-tuning adds +0.002283 [0.001588, 0.003076].
+- **Confirmatory (follow-up analysis)**: the tuned warm-start federated model is equivalent to
+  the pretrained model within +/-0.0005 (Q1 -0.000081 [-0.000179, 0.000024], read as EQUIVALENT).
+- **Exploratory**, after the test evaluation: the registered FedAdam stabiliser tau = 1e-3 was
+  far larger than the observed update norms (~1e-7), so federated training barely moved (~0.06%
+  in 13,654 rounds); with tau fixed, warm federated models reach 75-92% of the cloud model on
+  six public benchmarks; the value of federation depends on how much data the server already has
+  (federated training adds +0.00911 over a 100,000-user pretrain and nothing measurable over the
+  1,217,610-user pretrain).
 
-Run its fast synthetic validation with:
+## Stage map
 
-```powershell
-python scripts/data/convert_rees46.py self-test
-```
-
-Raw CSV, ZIP, and generated Parquet artifacts are intentionally excluded from
-normal Git history. The repository contains their versioned manifests, hashes,
-aggregate conversion report, and reproduction code.
-
-
-
-## Phase 1 research protocol — status: `G1 = GO`
-
-The data foundation every later model stands on is complete and frozen. It answers one question
-before any modelling: **is there anything for a model to gain here?**
-
-### The gate
-
-| Criterion | Evidence |
+| Folder | Contents |
 |---|---|
-| Cohort large enough to simulate a federation | **388,789** clients against a gate of 10,000 |
-| Every task leaves room above a model-free rule | smallest room **0.144** |
-| Every task can resolve differences far smaller than that room | weakest task **128 steps** |
-| A sequence model beats the model-free rule on real data | macro gain **+0.0204** |
-| That advantage survives on the thinnest clients | smallest bucket **+0.0184** |
+| [`00_common/`](00_common/README.md) | Shared code: root `ppsi` package, `ppsi_paths` filesystem roots, server launchers, shared tests |
+| [`01_data/`](01_data/README.md) | REES46 data pipeline: census, frozen dataset builds, feature statistics, feature-search data |
+| [`02_centralized/`](02_centralized/README.md) | Central training: pilot-study record, backbone contest, cloud references, server pretraining |
+| [`03_federated_learning/`](03_federated_learning/README.md) | Federated simulator, federated recipe tuning stages, federated arms, tau-fixed re-runs |
+| [`04_on_device/`](04_on_device/README.md) | ONNX/INT8 export, communication byte ledger, browser latency bench, on-device arms |
+| [`05_privacy_and_security/`](05_privacy_and_security/README.md) | DP mechanisms, membership-inference and update-leakage audits, secure-aggregation simulation |
+| [`06_evaluation_and_benchmarks/`](06_evaluation_and_benchmarks/README.md) | Full-catalogue evaluator, contrast statistics, six public benchmarks, frozen code records |
+| [`07_study_protocol/`](07_study_protocol/README.md) | Pre-registration records, deployment manifests, handover, delivery verification (never edited) |
+| [`environment/`](environment/README.md) | CPU lock and GPU requirements, `PPSI_*` path variables, data download and verification |
+| [`docs/prototype/`](docs/prototype) | Documentation of the prototype stage (August-September 2026) |
+| [`thesis/`](thesis) | Final report PDF and slides |
+| `tools/`, `config/`, `fixtures/` | One-command check (`tools/check.py`), configuration, small test fixtures |
 
-Full verdict and the five conditions that travel with every number:
-[`docs/evidence/s1-ds-09/g1_gate_v1.frozen.json`](docs/evidence/s1-ds-09/g1_gate_v1.frozen.json)
+Each stage folder contains `code/`, `tests/prototype/`, `tests/research/`, `scripts/`,
+`results/` (curated summaries; raw run trees live under `results/runs/main_study/` and
+`results/runs/closure_phase/`) and `figures/`.
 
-### Tasks
+## Quick start
 
-| Task | Notebook | Documentation |
-|---|---|---|
-| `S1-DS-03` canonical event | [notebook](notebooks/S1_DS_03_Canonical_Event_EN.ipynb) | [en](docs/s1-ds-03-canonical-event.md) · [ar](docs/ar/s1-ds-03-canonical-event.md) |
-| `S1-DS-04` data audit | [notebook](notebooks/S1_DS_04_Data_Audit.ipynb) | [en](docs/s1-ds-04-data-audit.md) · [ar](docs/ar/s1-ds-04-data-audit.md) |
-| `S1-DS-05/06` cohort + temporal split | [notebook](notebooks/S1_DS_05_06_Cohort_Temporal_Protocol.ipynb) | [en](docs/s1-ds-05-06-cohort-temporal-protocol.md) · [ar](docs/ar/s1-ds-05-06-cohort-temporal-protocol.md) |
-| `S1-ALL-D1` + `S1-DS-07` protocol + task examples | [notebook](notebooks/S1_D1_DS_07_T3_Protocol_and_Task_Examples.ipynb) | [en](docs/s1-d1-ds-07-t3-protocol-and-task-examples.md) · [ar](docs/ar/s1-d1-ds-07-t3-protocol-and-task-examples.md) |
-| `S1-DS-09` freeze + `G1` gate | [notebook](notebooks/S1_DS_09_Freeze_and_G1.ipynb) | [en](docs/s1-ds-09-freeze-and-g1.md) · [ar](docs/ar/s1-ds-09-freeze-and-g1.md) |
-| `S2-SMOKE` first GRU on real data | [notebook](notebooks/S2_SMOKE_GRU_On_Real_Data.ipynb) | [en](docs/s2-smoke-gru-on-real-data.md) · [ar](docs/ar/s2-smoke-gru-on-real-data.md) |
-
-### Decisions
-
-`ADR-001` fixes how every comparison in this project is averaged and which slice `T1` is compared
-on. All three decisions were written **before the numbers they affect existed** — see
-[`docs/decisions/ADR-001-evaluation-protocol.md`](docs/decisions/ADR-001-evaluation-protocol.md).
-
-### Getting the data
-
-Task examples and cohort manifests carry `user_id`, so they are **not in this repository** — this
-repo is public and the project is about privacy-preserving learning.
-
-**Start here:** [`docs/data-access.md`](docs/data-access.md) — what to download for your task,
-where to put it, and how to verify the checksums.
-
-Committed here instead are the artifacts with no user-level data: the protocol, the vocabulary,
-the item catalogue, the candidate lists, the price transform, and the gate verdict.
-
-### What comes next
-
-[`docs/ar/roadmap.md`](docs/ar/roadmap.md) — the remaining tasks per lane, the models to be tried
-beyond the GRU, and how the final comparison table is meant to read.
-
-## Public benchmark datasets
-
-`ppsi/benchmarks` converts public sequential-recommendation benchmarks (Amazon Reviews 2023 5-core, MBHT Taobao /
-Tmall) into one leave-one-out layout and provides sampled metrics for comparison with published results. See
-[`docs/benchmark-datasets.md`](docs/benchmark-datasets.md).
-
-```powershell
-uv run python -m pytest tests/benchmarks -q
+```bash
+uv sync --locked --group dev                      # CPU environment from uv.lock (Python 3.11.14)
+uv pip install -r environment/requirements-gpu.txt   # GPU set used on the NVIDIA A40 server (torch 2.13.0+cu130)
+uv run python tools/check.py                      # one-command check: lock, package map, ruff, prototype tests
+uv run python -m pytest -n auto                   # prototype tests on all cores
+uv run python run_pipeline.py --from-results      # rebuild every stage's tables and figures from saved results (no GPU, no data)
+uv run python run_pipeline.py --mode auto         # per training unit: skip if complete, resume from checkpoint if supported, else start
+uv run python run_pipeline.py --force             # retrain from scratch (old outputs are moved aside first)
+uv run python 03_federated_learning/run.py --from-results   # the same per stage (01..06 each have run.py)
 ```
 
-## Training / Federated Development Environment
+All server paths come from `ppsi_paths` and can be overridden with environment variables
+`PPSI_PROJECT_ROOT`, `PPSI_DATA_ROOT`, `PPSI_RUNS_ROOT`, `PPSI_RESULTS_ROOT`,
+`PPSI_PILOT_ROOT` (see [`00_common/code/ppsi_paths/__init__.py`](00_common/code/ppsi_paths/__init__.py)
+for the full list and defaults, and [`environment/README.md`](environment/README.md) for a
+summary).
 
-The canonical Phase 1 training environment is defined by:
+Research code of the main study is hash-pinned: it is kept byte-identical, so re-running an old
+study is done from the original flat code tree recorded in
+[`07_study_protocol/`](07_study_protocol/README.md); `--from-results` and the prototype tests
+work from the stage layout.
 
-- `.python-version`
-- `pyproject.toml`
-- `uv.lock`
+## Data access
 
-First-time setup:
+The REES46 data is not redistributed. Download it from Kaggle ("eCommerce behavior data from
+multi category store", REES46) and verify the checksum in
+[`docs/prototype/data-source.md`](docs/prototype/data-source.md): the raw October 2019 file
+`2019-Oct.csv` is 5,668,612,855 bytes with 42,448,764 rows and SHA-256
+`FEDD938409B5F836EC89B39C861B13DAD99FC7CD9BEB1FDDD97A2D50488B5B80`. All experiments read the
+frozen derived dataset `rees46_nextitem_v1` (409 files, 8.6 GiB, version hash
+`860e5a1c3a81b8e4bbfeff4f245fa37638a43e4f260df179585964d2d4da8dbd`), which is built by the
+[`01_data/`](01_data/README.md) stage and points `PPSI_DATA_ROOT` at its location.
 
-```powershell
-uv python install 3.11.14
-uv sync --locked --group dev
+## Checkpoints and run records
+
+Checkpoints and full run records (73 GB) are published as GitHub Release `artifacts-v1.0` in
+self-contained tar parts named `<stage>.partNN.tar` (each below 1.9 GB), plus `MANIFEST.tsv`
+(path, bytes, sha256, part) and `SHA256SUMS`. Verify a download against `SHA256SUMS`, then
+extract a part straight into a clone:
+
+```bash
+sha256sum -c SHA256SUMS
+tar -xf 03_federated_learning.part01.tar -C <clone>
 ```
 
-Validate:
+## Hardware
 
-```powershell
-uv run --locked python scripts/env_smoke.py
-```
+All main-study training and scoring ran on the Queen's University Lobot JupyterHub cluster,
+2x NVIDIA A40, 128 CPU cores. Browser latency was measured on a laptop, a phone and a server
+CPU.
 
-Expected final line:
+## Repository conventions
 
-```text
-SMOKE STATUS: PASS
-```
+- **Evidence labels.** Every reported number carries one of: *confirmatory* (main analysis;
+  registered before the value existed and scored once on TEST in the single test evaluation),
+  *confirmatory (follow-up)* (the same for the registered follow-up study, scored in the same
+  test evaluation), *validation* (measured on the validation week, including the backbone
+  contest and the single registered validation read; values at the best-of-12-marks rule are
+  optimistic), *exploratory* (anything added after those reads, including every registered
+  post-test look), *descriptive* (no claim: tuning reads, baselines, panels, external
+  benchmarks). A label records when the governing rule was registered relative to when the
+  value was read; results never move between labels.
+- **Frozen records.** Everything under [`07_study_protocol/`](07_study_protocol/README.md) is a
+  record and is never edited: the pre-registration and its amendments, locks and gates, the
+  hash-chained TEST exposure register, the decision log extracts, the deployment manifests of
+  the frozen server code trees, and the delivery-verification evidence.
+- **Hash pins.** Research code of the main study is kept byte-identical; corrections go into a
+  new tree, and each run records the tree it ran from.
+- **No redrawing of results.** Curated summaries under `<stage>/results/` are derived from the
+  saved result files of the sealed runs; if a summary and a primary file disagree, the primary
+  file wins.
 
-Full setup, VS Code, CPU/GPU, and compatibility documentation:
+## Thesis
 
-[`docs/training-environment.md`](docs/training-environment.md)
+The [`thesis/`](thesis) folder holds the final report PDF and the defence slides of the project.
 
-## Sequence models
+## How to cite
 
-`ppsi/seqrec` holds the next-item models used by every deployment arm: ContextGRU (tied item-embedding head) and
-SASRecCE (causal Transformer with an untied, recentered head), their size variants (including a small on-device
-SASRec), a deterministic builder and the adapters for the federated simulator. See
-[`docs/sequence-models.md`](docs/sequence-models.md).
+See [`CITATION.cff`](CITATION.cff) (title, group author, repository URL).
 
-```powershell
-uv run python -m pytest tests/seqrec -q
-```
+## License
 
-## Benchmark runner
-
-`ppsi/benchrun` runs the deployment-study arms (central, federated, on-device fine-tuning, the DP chain) with the same
-code on public leave-one-out benchmarks, with full-catalogue ranking, a JSON recipe for every hyperparameter, a
-holdout evaluation after model selection, and an opt-in deterministic GPU device class. See
-[`docs/benchmark-runner.md`](docs/benchmark-runner.md).
-
-```powershell
-uv run python -m pytest tests/benchrun -q
-```
-
-## Federated simulator
-
-`ppsi/fedsim` simulates cross-device federated training in one process: FedAvg, FedProx, personalised FedAvg,
-DP-FedAvg with RDP accounting, compressed uploads, frozen item tables, local-only training and on-device
-fine-tuning, with deterministic aggregation, resumable runs and virtual byte accounting. It is model-agnostic and its
-tests use synthetic clients only:
-
-```powershell
-uv run python -m pytest tests/fedsim -q
-```
-
-Design, module map and a runnable example: [`docs/federated-simulator.md`](docs/federated-simulator.md)
-
-## Full-catalogue evaluator
-
-`ppsi/evaluation/fullrank` scores every method (cloud, federated, personalised, on-device) with the same code: exact
-ranks against the full catalogue, end-to-end and rankable-only MRR / HR / NDCG with coverage, float64 aggregation,
-an explicit UNDEFINED value for empty populations, and a paired user bootstrap. See
-[`docs/full-catalogue-evaluator.md`](docs/full-catalogue-evaluator.md).
-
-```powershell
-uv run python -m pytest tests/evaluation/fullrank -q
-```
-
-## On-device inference benchmark
-
-`ppsi/ondevice` exports a sequence model to ONNX (deterministic, fixed batch 1), quantises it to INT8, benchmarks
-latency, memory and parity under onnxruntime, and ships two static ONNX Runtime Web pages for measuring the same files
-in a browser. See [`docs/on-device-benchmark.md`](docs/on-device-benchmark.md).
-
-```powershell
-uv run python -m pytest tests/ondevice -q
-```
-
-## Local CI checks
-
-Pull requests and pushes to `main` run one CI workflow. Run the same checks locally with:
-
-```powershell
-uv run python scripts/check.py
-```
-
-That runs every CI check in the same order CI runs them, cheapest first, and stops at the
-first failure with the command that fixes it. `--fast` stops before the environment smoke
-and the test suite when you only want the quick gates.
-
-The individual commands, if you would rather run one:
-
-```powershell
-uv lock --check
-uv sync --locked --group dev
-uv run --locked ruff check ppsi scripts tests
-uv run --locked python -X utf8 scripts/experiments/validate_experiment_contracts.py
-uv run --locked python scripts/env_smoke.py
-uv run --locked python -m pytest -q
-```
-
-The workflow uses synthetic and committed fixtures only. It does not download REES46 or require a
-GPU.
-
-### Adding or changing a dependency
-
-CI installs with `uv sync --locked`, which refuses to resolve anything `uv.lock` does not already
-pin. Editing `pyproject.toml` without regenerating the lock therefore fails the very first CI step,
-before lint or tests run, with:
-
-```text
-The lockfile at `uv.lock` needs to be updated, but `--locked` was provided.
-```
-
-After any change to `pyproject.toml`:
-
-```powershell
-uv lock
-git add pyproject.toml uv.lock
-```
-
-Commit both together. A lock that arrives in a later commit leaves every commit in between
-uninstallable.
-
-### When CI fails
-
-| First failing step | What it means | What to run |
-|---|---|---|
-| uv.lock matches pyproject.toml | `uv.lock` does not match `pyproject.toml` | `uv lock`, then commit `uv.lock` |
-| Install locked environment | The pinned interpreter is missing | `uv python install` |
-| Lint | Ruff findings; most are mechanical | `uv run --locked ruff check ppsi scripts tests --fix` |
-| Test | A real test failure | `uv run --locked python -m pytest -q` |
-| Environment smoke | The pinned interpreter or Torch is not usable | `uv python install`, then re-sync |
-| Contract smoke | A frozen schema or identity no longer validates | Read the named contract before changing it |
-
-The steps run in order and stop at the first failure, so a later step being untouched does not mean
-it would pass.
-
-Ruff enforces the pinned Python version, `3.11.14`. Syntax introduced in a later Python parses on a
-newer local interpreter and fails here, so run the checks above before pushing rather than relying
-on whichever Python is on your PATH.
+MIT License; see [`LICENSE`](LICENSE).

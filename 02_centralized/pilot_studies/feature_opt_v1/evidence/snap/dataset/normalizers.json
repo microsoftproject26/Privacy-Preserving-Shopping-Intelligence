@@ -1,0 +1,143 @@
+{
+  "fit_scope": "TRAIN",
+  "clip_quantiles": [
+    0.001,
+    0.999
+  ],
+  "policy": "log first, clip in transformed space, z-score on clipped TRAIN values fitted on VALID rows only (missing sentinels excluded from the fit); sine/cosine and boolean flags are never clipped or scaled; numeric missing maps to zero AFTER normalization plus a missing indicator",
+  "features": {
+    "log1p_price": {
+      "clip_lo": 1.1568812131881714,
+      "clip_hi": 7.849124908447266,
+      "mean": 5.044546584943278,
+      "std": 1.2085117678255766,
+      "constant": false
+    },
+    "log1p_prev_raw_view_gap_s": {
+      "clip_lo": 0.6931471824645996,
+      "clip_hi": 14.891372680664062,
+      "mean": 5.1736099894168595,
+      "std": 3.260352895552582,
+      "constant": false
+    },
+    "log1p_segment_elapsed_s": {
+      "clip_lo": 0.0,
+      "clip_hi": 9.561067581176758,
+      "mean": 4.548892813156198,
+      "std": 2.8300548438973165,
+      "constant": false
+    },
+    "log1p_item_observed_age_s": {
+      "clip_lo": 8.02975845336914,
+      "clip_hi": 15.191439628601074,
+      "mean": 14.22412792514704,
+      "std": 1.0172904496293862,
+      "constant": false
+    },
+    "prefix_representative_count": {
+      "clip_lo": 0.0,
+      "clip_hi": 140.0,
+      "mean": 6.716780248881764,
+      "std": 11.908258422307725,
+      "constant": false
+    },
+    "prefix_item_count": {
+      "clip_lo": 1.0,
+      "clip_hi": 141.0,
+      "mean": 7.716780248881764,
+      "std": 11.90825842230758,
+      "constant": false
+    },
+    "prefix_known_category_count": {
+      "clip_lo": 0.0,
+      "clip_hi": 5.0,
+      "mean": 0.9065716515637113,
+      "std": 0.6864654920303485,
+      "constant": false
+    },
+    "prefix_category_switch_count": {
+      "clip_lo": 0.0,
+      "clip_hi": 7.0,
+      "mean": 0.14945208627833412,
+      "std": 0.5786311229001491,
+      "constant": false
+    },
+    "current_known_category_run_length": {
+      "clip_lo": 0.0,
+      "clip_hi": 75.0,
+      "mean": 3.363553295001239,
+      "std": 6.373294435509018,
+      "constant": false
+    },
+    "log1p_prefix_elapsed_s": {
+      "clip_lo": 0.0,
+      "clip_hi": 9.561067581176758,
+      "mean": 4.548892813156198,
+      "std": 2.8300548438974196,
+      "constant": false
+    },
+    "log1p_prev_view_count": {
+      "clip_lo": 0.0,
+      "clip_hi": 7.233455181121826,
+      "mean": 2.71272120104425,
+      "std": 1.4864951148151226,
+      "constant": false
+    },
+    "log1p_prev_session_count": {
+      "clip_lo": 0.0,
+      "clip_hi": 4.499809741973877,
+      "mean": 1.4602753643756328,
+      "std": 0.8782144329172249,
+      "constant": false
+    },
+    "recent_history_length": {
+      "clip_lo": 0.0,
+      "clip_hi": 100.0,
+      "mean": 28.861692104410146,
+      "std": 32.2928896703294,
+      "constant": false
+    },
+    "recent_distinct_items": {
+      "clip_lo": 0.0,
+      "clip_hi": 98.0,
+      "mean": 21.481166658712457,
+      "std": 23.550778893801716,
+      "constant": false
+    },
+    "recent_distinct_known_main_categories": {
+      "clip_lo": 0.0,
+      "clip_hi": 8.0,
+      "mean": 1.6579027562269626,
+      "std": 1.3778057920104756,
+      "constant": false
+    },
+    "recent_mean_log_price": {
+      "clip_lo": 1.9052822589874268,
+      "clip_hi": 7.467418193817139,
+      "mean": 5.038273336856364,
+      "std": 0.8826839088123053,
+      "constant": false
+    },
+    "current_minus_recent_mean_log_price": {
+      "clip_lo": -4.090688228607178,
+      "clip_hi": 3.681367874145508,
+      "mean": 0.0020607022950704136,
+      "std": 0.9933321718650419,
+      "constant": false
+    },
+    "log1p_time_since_prev_user_event_s": {
+      "clip_lo": 0.0,
+      "clip_hi": 14.877890586853027,
+      "mean": 4.950253279346413,
+      "std": 3.3790111405204004,
+      "constant": false
+    },
+    "log1p_time_since_prev_session_last_event_s": {
+      "clip_lo": 0.0,
+      "clip_hi": 14.877890586853027,
+      "mean": 1.8615436239173029,
+      "std": 4.354925521013689,
+      "constant": false
+    }
+  }
+}

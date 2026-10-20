@@ -1,0 +1,76 @@
+{
+ "config": {
+  "K": 2000,
+  "N": 200000,
+  "cublas_workspace_config": ":4096:8",
+  "effective_batch": 256,
+  "probe_wrapper": "v4train.trainer.enforce_strict_fp32 substituted to force warn_only (no strict switch exists on RunConfig/CentralTrainer; see module docstring)",
+  "seed": 2026
+ },
+ "cuda_build": "13.0",
+ "table": [
+  {
+   "bitwise_run_to_run": true,
+   "family": "GRU",
+   "loss_sequence_equal": true,
+   "mode": "strict",
+   "n_reps": 2,
+   "nondeterminism_warnings": [],
+   "offending_ops": [],
+   "param_max_abs_diff": 0.0,
+   "runs": true,
+   "updates_per_s": [
+    49.880872497652724,
+    59.66645949005236
+   ]
+  },
+  {
+   "bitwise_run_to_run": true,
+   "family": "GRU",
+   "loss_sequence_equal": true,
+   "mode": "warn",
+   "n_reps": 2,
+   "nondeterminism_warnings": [],
+   "offending_ops": [],
+   "param_max_abs_diff": 0.0,
+   "runs": true,
+   "updates_per_s": [
+    50.35906896943292,
+    49.21738185522943
+   ]
+  },
+  {
+   "bitwise_run_to_run": true,
+   "family": "SASREC",
+   "loss_sequence_equal": true,
+   "mode": "strict",
+   "n_reps": 2,
+   "nondeterminism_warnings": [],
+   "offending_ops": [],
+   "param_max_abs_diff": 0.0,
+   "runs": true,
+   "updates_per_s": [
+    25.761087773684427,
+    24.014241341020828
+   ]
+  },
+  {
+   "bitwise_run_to_run": true,
+   "family": "SASREC",
+   "loss_sequence_equal": true,
+   "mode": "warn",
+   "n_reps": 2,
+   "nondeterminism_warnings": [],
+   "offending_ops": [],
+   "param_max_abs_diff": 0.0,
+   "runs": true,
+   "updates_per_s": [
+    24.457991705211658,
+    27.169770686447006
+   ]
+  }
+ ],
+ "torch": "2.13.0+cu130",
+ "utc": "2026-09-26T17:51:42Z",
+ "what": "SYS-04 training determinism probe (v4train.CentralTrainer, synthetic providers, A16 GPU 1; evidence for PREG1_AMENDMENT_01 item 4)"
+}

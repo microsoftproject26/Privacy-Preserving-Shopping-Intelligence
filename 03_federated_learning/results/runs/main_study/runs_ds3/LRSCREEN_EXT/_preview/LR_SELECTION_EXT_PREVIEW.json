@@ -1,0 +1,143 @@
+{
+ "applies_to": [
+  "FA",
+  "FP",
+  "PF",
+  "FA_1024",
+  "DP",
+  "S_CAL",
+  "FA_Q8"
+ ],
+ "best_value_lr_mult": 8.0,
+ "edge": {
+  "largest_screened": 16.0,
+  "next_registered_multiplier": 32.0,
+  "note": "informational only: the 06F edge rule decides whether one more (doubled) run is screened",
+  "selected_is_largest_screened": false
+ },
+ "eval_manifest_id": "CALIB_VALIDATION_5_100_32768",
+ "excluded": [],
+ "first_screen": {
+  "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/contracts/fl/LR_SELECTION.json",
+  "selected_lr_mult": 2.0,
+  "self_sha256": "1e944cd8e1c1312201727527692c2bfdc178a5864c1c69db597a698cc025ef23",
+  "sha256": "cdf6663d98f462ccf99bb1fe43442f247002efb77e98add14e0ad2957d706f38"
+ },
+ "first_screen_file_sha256": "cdf6663d98f462ccf99bb1fe43442f247002efb77e98add14e0ad2957d706f38",
+ "format": "PPSI_V4_FL_LR_SELECTION_EXT_1",
+ "lr_peak_base": 0.0007114121116984968,
+ "metric": "CALIB_VALIDATION E2E client-macro MRR@20 at PRACTICAL_BEST",
+ "rule": "select the multiplier with the highest CALIB_VALIDATION client-macro MRR@20 (E2E) at PRACTICAL_BEST over every screened multiplier (runs with a non-finite value excluded and recorded); every multiplier within |delta| <= 0.0005 of the best is tied; the tied multiplier with the smallest |log2 m| wins, then the smaller m \u2014 PREG1_AMENDMENT_06F \u00a73 (extends 06B \u00a71)",
+ "runs": [
+  {
+   "arm_spec_sha256": "ecfa591ce0eec2598048ee1f065a448bd2c7f33e2aab61f6eb070f208b85bbc3",
+   "eval_manifest_id": "CALIB_VALIDATION_5_100_32768",
+   "lr_mult": 1.0,
+   "lr_peak_base": 0.0007114121116984968,
+   "max_of_12_marks": 0.023507176808579878,
+   "practical_best_mark": 2.5,
+   "result_rows_sha256": "41aa16a20d049e706bb494dbb91d39c6fc830eec3fc350f2c93478d4a5ec6e13",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/LRSCREEN/x1",
+   "run_id": "FL_FA_LRSCREEN_x1_CALIB_s2026",
+   "run_summary_sha256": "b00c92f2bef7080551d39967298074632dd53914121358ddc6ba489e7f3b61f6",
+   "split": "VALIDATION",
+   "value": 0.023472999619809514
+  },
+  {
+   "arm_spec_sha256": "599ae82313ff96357aabe9bf733afcf252ff28214ed7bf5b1de1143764cc79f4",
+   "eval_manifest_id": "CALIB_VALIDATION_5_100_32768",
+   "lr_mult": 0.5,
+   "lr_peak_base": 0.0007114121116984968,
+   "max_of_12_marks": 0.020289379478991763,
+   "practical_best_mark": 5.0,
+   "result_rows_sha256": "c0a007221ca3058a4f48b47122a1025f5867c542166028d559ebb128d2225703",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/LRSCREEN/x0.5",
+   "run_id": "FL_FA_LRSCREEN_x0.5_CALIB_s2026",
+   "run_summary_sha256": "7a44c970fe73c77571042517d7e37337e0e724346eb6df1886af6114ffc2210b",
+   "split": "VALIDATION",
+   "value": 0.020263155927244314
+  },
+  {
+   "arm_spec_sha256": "6988f42d738fcf394dd4f70b5c84b36f2c6df6dfcca160867bb559857c22bc70",
+   "eval_manifest_id": "CALIB_VALIDATION_5_100_32768",
+   "lr_mult": 2.0,
+   "lr_peak_base": 0.0007114121116984968,
+   "max_of_12_marks": 0.025562024102856924,
+   "practical_best_mark": 1.5,
+   "result_rows_sha256": "54d58ca8ebf96c8fc3558764413bc1c5ad93fcbcad11a81d2b5fb521a3774996",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/LRSCREEN/x2",
+   "run_id": "FL_FA_LRSCREEN_x2_CALIB_s2026",
+   "run_summary_sha256": "c7293ca4ce5d14cb5141c4c69a82adb0f694ea3ebc69663dcd95b40790fd681c",
+   "split": "VALIDATION",
+   "value": 0.025562024102856924
+  },
+  {
+   "arm_spec_sha256": "c9e82719c9912786d5f3fd2c58363798f5fe90913d4cb783eb781b2fdc2b72e7",
+   "eval_manifest_id": "CALIB_VALIDATION_5_100_32768",
+   "lr_mult": 4.0,
+   "lr_peak_base": 0.0007114121116984968,
+   "max_of_12_marks": 0.02756999594204576,
+   "practical_best_mark": 2.5,
+   "result_rows_sha256": "23d62fddfad05faf0a4a47e202fad2d180d586ab451a71378cecf1e413c78f6a",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/LRSCREEN_EXT/x4",
+   "run_id": "FL_FA_LRSCREEN_x4_CALIB_s2026",
+   "run_summary_sha256": "7fe6ef1dcd548b2a13072968397ecfeb8c770888b0a2594e6fb471585704c6af",
+   "split": "VALIDATION",
+   "value": 0.02756999594204576
+  },
+  {
+   "arm_spec_sha256": "c0d2ad1d1926c31947dbfd5c100a8f12afc116b7cdd472f69a69854ed0ac6dd8",
+   "eval_manifest_id": "CALIB_VALIDATION_5_100_32768",
+   "lr_mult": 8.0,
+   "lr_peak_base": 0.0007114121116984968,
+   "max_of_12_marks": 0.028796359775180216,
+   "practical_best_mark": 3.5,
+   "result_rows_sha256": "d6972ad455746ba4d287f7f83878124b8492e96b6d957e0d8330000398845b1f",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/LRSCREEN_EXT/x8",
+   "run_id": "FL_FA_LRSCREEN_x8_CALIB_s2026",
+   "run_summary_sha256": "7d8b934d381df6c198b72c23ad4fd86c8a4e5fb0ee361b1fd53b9b66d6163d6a",
+   "split": "VALIDATION",
+   "value": 0.028796359775180216
+  },
+  {
+   "arm_spec_sha256": "653f497d13d478cf330e32f4112e8fa8f62c243ce4aa0ce5927e831c2072dd8d",
+   "eval_manifest_id": "CALIB_VALIDATION_5_100_32768",
+   "lr_mult": 16.0,
+   "lr_peak_base": 0.0007114121116984968,
+   "max_of_12_marks": 0.02305103454175668,
+   "practical_best_mark": 3.5,
+   "result_rows_sha256": "ec69dead385ad58271a51d0cb1627323b1dd20c956d255d3f8664c3678bda140",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/LRSCREEN_EXT/x16",
+   "run_id": "FL_FA_LRSCREEN_x16_CALIB_s2026",
+   "run_summary_sha256": "7c3021373f2846b7a07d0ea98df0b07b790c68cb786fe9425de05ff5e99afa51",
+   "split": "VALIDATION",
+   "value": 0.022908635477175213
+  }
+ ],
+ "screened": [
+  1.0,
+  0.5,
+  2.0,
+  4.0,
+  8.0,
+  16.0
+ ],
+ "selected_lr_mult": 8.0,
+ "self_sha256": "374fba5a57ba69fee23aa1da8fa414aa2279a3f4b4554566eafab5044053a271",
+ "task": "FL-09 v4int.lr_screen",
+ "tie_order": "smallest |log2 m|, then the smaller m",
+ "tie_set": [
+  8.0
+ ],
+ "tie_tolerance": 0.0005,
+ "unchanged": "PF personal LR, FedProx mu, the FT grid, LO (amendments 06B \u00a71 / 06F)",
+ "utc": "2026-09-29T14:42:44Z",
+ "values": {
+  "0.5": 0.020263155927244314,
+  "1": 0.023472999619809514,
+  "16": 0.022908635477175213,
+  "2": 0.025562024102856924,
+  "4": 0.02756999594204576,
+  "8": 0.028796359775180216
+ }
+}

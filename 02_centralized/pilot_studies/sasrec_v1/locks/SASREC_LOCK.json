@@ -1,0 +1,375 @@
+{
+  "created_utc": "2026-09-26T05:05:18Z",
+  "host": "jupyter-group-digi2026-g8",
+  "label": "PREVIOUSLY INSPECTED / RETROSPECTIVE BENCHMARK",
+  "test_exposure": "previously_seen_in_GRU_project",
+  "vc_exposure": "previously_seen_in_GRU_project",
+  "selected_single_model": "A1_RICH256_s2027",
+  "selection": {
+    "selected": "A1_RICH256_s2027",
+    "selected_best_metric": 0.18651340901851654,
+    "tied_within_1e-6": [
+      "A1_RICH256_s2027"
+    ],
+    "ranking": [
+      [
+        "A1_RICH256_s2027",
+        0.18651340901851654
+      ],
+      [
+        "A1_RICH256_s2026",
+        0.18629789352416992
+      ],
+      [
+        "A0_ID256_s2026",
+        0.17858543992042542
+      ]
+    ],
+    "ineligible": [],
+    "rule": "max full-VS macro MRR@20; tie<=1e-6 -> micro R@20 -> fewer params -> registry order",
+    "candidates": [
+      {
+        "run_id": "A0_ID256_s2026",
+        "seed": 2026,
+        "final_status": "COMPLETE",
+        "best_metric": 0.17858543992042542,
+        "best_epoch": 5,
+        "micro_recall20_at_best": 0.45404207706451416,
+        "n_params": 82897430,
+        "summary_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/runs/A0_ID256_s2026_cool5"
+      },
+      {
+        "run_id": "A1_RICH256_s2026",
+        "seed": 2026,
+        "final_status": "COMPLETE",
+        "best_metric": 0.18629789352416992,
+        "best_epoch": 5,
+        "micro_recall20_at_best": 0.47043377161026,
+        "n_params": 83094368,
+        "summary_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/runs/A1_RICH256_s2026_cool5"
+      },
+      {
+        "run_id": "A1_RICH256_s2027",
+        "seed": 2027,
+        "final_status": "COMPLETE",
+        "best_metric": 0.18651340901851654,
+        "best_epoch": 5,
+        "micro_recall20_at_best": 0.47074589133262634,
+        "n_params": 83094368,
+        "summary_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/runs/A1_RICH256_s2027_cool5"
+      }
+    ],
+    "unavailable_runs": [],
+    "rule_source": "amendment 2: max full-VS macro MRR@20 over {A0_s2026, A1_s2026, A1_s2027} x epochs {3,4,5}"
+  },
+  "entries": {
+    "A0_ID256_s2026": {
+      "kind": "single",
+      "run_id": "A0_ID256",
+      "seed": 2026,
+      "group": "item_only",
+      "summary_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/runs/A0_ID256_s2026_cool5",
+      "summary_sha256": "5c4c7dbce08b164dfd43a503accee3091d87e43eaadbdc4fd7b9f57f28eaf181",
+      "best_epoch": 5,
+      "best_metric_full_vs": 0.17858543992042542,
+      "weights": [
+        "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/runs/A0_ID256_s2026_cool5/checkpoints/best_weights.pt"
+      ],
+      "weights_sha256": [
+        "0263932e412191c8e9b1311bf607a27e59962b3732d5bedad0cc49aad3ed5ea5"
+      ],
+      "registry_entry": {
+        "id": "A0_ID256",
+        "group": "item_only",
+        "d_model": 256,
+        "blocks": 2,
+        "heads": 4,
+        "ff_multiplier": 4,
+        "dropout": 0.2,
+        "peak_lr": 0.001,
+        "label_smoothing": 0.0,
+        "pair": "A0_A1",
+        "role": "mandatory_anchor"
+      }
+    },
+    "A1_RICH256_s2026": {
+      "kind": "single",
+      "run_id": "A1_RICH256",
+      "seed": 2026,
+      "group": "rich_frozen_channels",
+      "summary_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/runs/A1_RICH256_s2026_cool5",
+      "summary_sha256": "8025bd882ce5678b056f7978826eba4a5312d24137db9708e34bf4e87b594315",
+      "best_epoch": 5,
+      "best_metric_full_vs": 0.18629789352416992,
+      "weights": [
+        "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/runs/A1_RICH256_s2026_cool5/checkpoints/best_weights.pt"
+      ],
+      "weights_sha256": [
+        "c77a75e2d38b6abe3222be30913fe70735ad81597ef01c030b2c7996f60e9c0b"
+      ],
+      "registry_entry": {
+        "id": "A1_RICH256",
+        "group": "rich_frozen_channels",
+        "d_model": 256,
+        "blocks": 2,
+        "heads": 4,
+        "ff_multiplier": 4,
+        "dropout": 0.2,
+        "peak_lr": 0.001,
+        "label_smoothing": 0.0,
+        "pair": "A0_A1",
+        "role": "mandatory_anchor"
+      }
+    },
+    "A1_RICH256_s2027": {
+      "kind": "single",
+      "run_id": "A1_RICH256",
+      "seed": 2027,
+      "group": "rich_frozen_channels",
+      "summary_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/runs/A1_RICH256_s2027_cool5",
+      "summary_sha256": "447ead11f1040f559dc3f8ce28e65896c85c000ec3c5b7aaf19cc9b449b5bc82",
+      "best_epoch": 5,
+      "best_metric_full_vs": 0.18651340901851654,
+      "weights": [
+        "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/runs/A1_RICH256_s2027_cool5/checkpoints/best_weights.pt"
+      ],
+      "weights_sha256": [
+        "e9780ba6b8dd7aa0b477ecbe0f1c8394659acd77bade147557f3ff8a9618e5ab"
+      ],
+      "registry_entry": {
+        "id": "A1_RICH256",
+        "group": "rich_frozen_channels",
+        "d_model": 256,
+        "blocks": 2,
+        "heads": 4,
+        "ff_multiplier": 4,
+        "dropout": 0.2,
+        "peak_lr": 0.001,
+        "label_smoothing": 0.0,
+        "pair": "A0_A1",
+        "role": "mandatory_anchor"
+      }
+    },
+    "S1": {
+      "kind": "ensemble_logprob_mean",
+      "members": [
+        "A1_RICH256_s2026",
+        "A1_RICH256_s2027"
+      ],
+      "rule": "equal weights fixed a priori; mean of per-member log-softmax; members at their best epoch"
+    },
+    "S2": {
+      "kind": "ensemble_logprob_mean",
+      "members": [
+        "A0_ID256_s2026",
+        "A1_RICH256_s2026"
+      ],
+      "rule": "equal weights fixed a priori; mean of per-member log-softmax; members at their best epoch"
+    },
+    "S3": {
+      "kind": "ensemble_logprob_mean",
+      "members": [
+        "A0_ID256_s2026",
+        "A1_RICH256_s2026",
+        "A1_RICH256_s2027"
+      ],
+      "rule": "equal weights fixed a priori; mean of per-member log-softmax; members at their best epoch"
+    },
+    "S4a": {
+      "kind": "weight_average",
+      "run": "A1_RICH256_s2026",
+      "group": "rich_frozen_channels",
+      "epochs_available": [
+        3,
+        4,
+        5
+      ],
+      "epochs_missing": [],
+      "weights": [
+        "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/runs/A1_RICH256_s2026/checkpoints/best_weights.pt",
+        "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/runs/A1_RICH256_s2026/checkpoints/epoch4_weights.pt",
+        "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/runs/A1_RICH256_s2026_cool5/checkpoints/epoch5_weights.pt"
+      ],
+      "weights_sha256": [
+        "89b8f06c5ce6d43db0b39d51f7ef559b2e07b5fa70fda5a7932d1efc6ced093f",
+        "f752d46764af3c339d6e90ce2b2153ba262e386b9530d111c62b3b4930598e86",
+        "6007a4e14d7f8e676ce5e33f05da650e82cd1b505979ec07de1ba354cc487ecc"
+      ],
+      "registry_entry": {
+        "id": "A1_RICH256",
+        "group": "rich_frozen_channels",
+        "d_model": 256,
+        "blocks": 2,
+        "heads": 4,
+        "ff_multiplier": 4,
+        "dropout": 0.2,
+        "peak_lr": 0.001,
+        "label_smoothing": 0.0,
+        "pair": "A0_A1",
+        "role": "mandatory_anchor"
+      },
+      "seed": 2026,
+      "rule": "uniform state_dict average of the run's epochs {3,4,5} (whatever exists, disclosed)"
+    },
+    "S4b": {
+      "kind": "weight_average",
+      "run": "A1_RICH256_s2027",
+      "group": "rich_frozen_channels",
+      "epochs_available": [
+        3,
+        4,
+        5
+      ],
+      "epochs_missing": [],
+      "weights": [
+        "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/runs/A1_RICH256_s2027/checkpoints/epoch3_weights.pt",
+        "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/runs/A1_RICH256_s2027/checkpoints/epoch4_weights.pt",
+        "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/runs/A1_RICH256_s2027_cool5/checkpoints/epoch5_weights.pt"
+      ],
+      "weights_sha256": [
+        "46f169865b1ad66b6f1a97da22b54efcf548a4923beb5cd9f4d5fd1658c535d3",
+        "3d151431e9b3decaf3e57f1273be410794b3035cee856b0388f5f3d91a085366",
+        "6063592a818c4b410f988af646b83d9f2f3733ed7f2319b541e3ffb7acac8b83"
+      ],
+      "registry_entry": {
+        "id": "A1_RICH256",
+        "group": "rich_frozen_channels",
+        "d_model": 256,
+        "blocks": 2,
+        "heads": 4,
+        "ff_multiplier": 4,
+        "dropout": 0.2,
+        "peak_lr": 0.001,
+        "label_smoothing": 0.0,
+        "pair": "A0_A1",
+        "role": "mandatory_anchor"
+      },
+      "seed": 2027,
+      "rule": "uniform state_dict average of the run's epochs {3,4,5} (whatever exists, disclosed)"
+    }
+  },
+  "headline": "A1_RICH256_s2027",
+  "pair_check": {
+    "comparable": true,
+    "basis": "both cooldowns (5 epochs)",
+    "epochs": [
+      5,
+      5
+    ],
+    "reason": null
+  },
+  "dropped_entries": {},
+  "archived_baselines": {
+    "GRU_F0_locked": {
+      "VALIDATION_CONFIRM": {
+        "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/gru_v1/final_eval/vc_ranks_F0_item_only_h256.npy",
+        "sha256": "ffcf04a2ad049313a26bc2dfe58eb0a40e48e7c715362c7abc15f7013afed591"
+      },
+      "TEST": {
+        "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/gru_v1/final_eval/ranks_F0_item_only_h256.npy",
+        "sha256": "83fc60f532f70d0a12e7a5b9a111b8e19e1fe118e1658da824b211c9219a9ad2"
+      }
+    },
+    "GRU_F4_descriptive": {
+      "VALIDATION_CONFIRM": {
+        "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/gru_v1/final_eval/vc_ranks_F4_rich_side_information_h256.npy",
+        "sha256": "57bf2684db172eae7a7ac512852b841f7dd800148f6e31106c5c2f74f20e4bc5"
+      },
+      "TEST": {
+        "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/gru_v1/final_eval/ranks_F4_rich_side_information_h256.npy",
+        "sha256": "1e5e850ff708c29811d2a8a7d36aedea4fce4f2586ae5adfb6ed57f84ec94a88"
+      }
+    },
+    "TRANS_full": {
+      "VALIDATION_CONFIRM": {
+        "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/gru_v1/final_eval/vc_ranks_TRANS_full.npy",
+        "sha256": "3a88a164d43eb583a39619ac2c42dcf09374ed84a7615dfa6f3d974b1fd4999b"
+      },
+      "TEST": {
+        "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/gru_v1/final_eval/ranks_TRANS_full.npy",
+        "sha256": "7d1bc12709c28e328ac90827cbe117d599e8e134e8ab905eb3d45d65ee084322"
+      }
+    },
+    "POP_full": {
+      "VALIDATION_CONFIRM": {
+        "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/gru_v1/final_eval/vc_ranks_POP_full.npy",
+        "sha256": "1b7762b65c73b0f99b9622aae4179577c2b4e3f929f1b8b72773e98793f18fe1"
+      },
+      "TEST": {
+        "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/gru_v1/final_eval/ranks_POP_full.npy",
+        "sha256": "e896cbabaf2f4d406ebdb191da6cdd38a35ed0cdd57eaa0579eee91e5bb1b53f"
+      }
+    }
+  },
+  "gru_lock": {
+    "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/gru_v1/locks/MODEL_LOCK.json",
+    "sha256": "89e8e159daef80d5f9f8b7709adea3fbcf5b662e8a10b2fa68d47c79ea75854d"
+  },
+  "gru_results": {
+    "VALIDATION_CONFIRM": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/gru_v1/final_eval/VC_RESULTS.json",
+      "sha256": "72a90525b22d58c3124bb6a43c1d1d5498004ac54ac9c0420ad2bb29c914873c"
+    },
+    "TEST": {
+      "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/gru_v1/final_eval/TEST_RESULTS.json",
+      "sha256": "50daf7614a2bfaa839ab4f65c5c9b9c78ef66622fc872f1dbc7f75e10dcf77ca"
+    }
+  },
+  "registry_sha256": "a303bc3f4addcd8f66396232a85820d64ea31cabfc315936cb303139216af257",
+  "amendments": {
+    "run_registry.v3_amendment_1.json": "4e5941061b777567e998ae32776fbd61798b66a539e8c8598318a247b752519c",
+    "run_registry.v3_amendment_2.json": "32c5c939b9e242dc1812c5535627031338f8575c9d0b3a461879a1296841d93b"
+  },
+  "gate_files": {
+    "GATE_C_COOLDOWN_PASS.json": "0dd70203ab62de7be7c087ea1a6055cd5ca94efe3cf18efba5db13d9cbfe5a46",
+    "GATE_C_PASS.json": "ebdb66844f23d8b80c94518c20da1e9eadfd2590830fb9950bd279427d087fe7"
+  },
+  "runtime_code_drift_since_gate_c": {},
+  "code_sha256": {
+    "bench_campaign.py": "5346af2c0c44c14789b4fea89f9c8563d1b8e64e2a5f1424375f8c235f37c316",
+    "bench_sizing.py": "43f586c1aa9f0fba24892645cb8f004725f1cb5eecda95114a9ca2e4fa645fb6",
+    "ckpt_io.py": "51a9303dcf6fc438be2cf85c9caa72080109b0dfa3f978ee6038fa748b6a46bc",
+    "continue_cooldown.py": "2f33832fff1b9d57a79786a73d42e5de5398e6ae906fec1425af96f47453ae18",
+    "ensembles.py": "dcd382fefb646c408a09208c516199537e01a81917eaadc264aceeb0e1979992",
+    "lock_retro.py": "5672f6b1c7b39dd0835d76d00cf4ff0d96c0c507d659093661e9b4c3e58365d7",
+    "lock_retro_v3b.py": "902efb23f0ccb61fd414e9a3ea60069d13317b835e12ec1a33e5458f859f78b7",
+    "paths.py": "beaae27159524e6e404b739d91b5e3c7fc201e55fdfeb559222128c691fa55be",
+    "precision.py": "45212e6b8c1f964a708a0def0b3cf61195b8811d5379903723f7d784f2444881",
+    "queue_runner.py": "9084c5098c65f99c73f6a91fa7a999f473a42399e8f2be977c7b9e3df9f2da91",
+    "render_report.py": "948eb14ae499edda308dfa962802e05797ac6e43cfd20aeaa0500e0bfc1b91fc",
+    "resources.py": "f181b19cbcf71ed9769be1126564c2b066c0769ce7ec214688ff112c3ee4010b",
+    "sasrec_data.py": "e0872eaf7dbd3b8fc70b6bdba9a8ba9cd235f6d0d60136fe055a85fa9b2beebf",
+    "sasrec_model.py": "ec8763112e8f81c3d43538e48cb947c7106e75f0be7350347d3eaf639ad8fb71",
+    "sasrec_objective.py": "5e03bf50a1f307f1b21dba4820ca69985e3a55ff73b808a3a0d219e75373ebed",
+    "sasrec_schedule.py": "5db6cede50b07478d289f3d1887d6f46c42edfb7db3f4a99b00b1aedcce50230",
+    "synthetic_store.py": "b8bf3a180ba03a5c1cd8f3d47e3e309723db414f75d65f045bdae53d7c4afaf4",
+    "tf32_parity_gate.py": "316e761f5771c55b166983f906d69275ec6986e3f4ec6cf2363c6fa9f42dd0e6",
+    "train_sasrec.py": "270b1b15007337e2093b4fbcf713ee0303ea4602910c3ec62462ff7faeb969d3",
+    "reuse/baselines_full.py": "19578e5c3548c284e812e29fabe9eeec7e534f21aaafb92514a26100c9d52d88",
+    "reuse/eval_full.py": "6d2e413668a7356c11c18b4fb50b656c218f1205d0143a776927366ae2212d0c",
+    "reuse/evaluator.py": "e527b8c92cbcf46bc444c2860d1f42255218bf7637ca572d1e58c19a3cb40899",
+    "reuse/full_store.py": "4fca9e66c0910e3a8335ffc06ed9258b29f31f30f9590831a8899c451be4ae8b",
+    "reuse/index_utils.py": "bc86975bd4216aa402df69c9c7017d7367021d3705ac5a2faf79ef97450d53fc",
+    "reuse/lock_and_eval.py": "8fa1e6c17ac963707170ca4ab8c14522e56c95ef4d389edb169ea1e45dfb5bb5",
+    "reuse/model.py": "636d2ba18f850136721bf1ec2d923c1ee0f77c5726ea83a4be0bb786f46201e5",
+    "reuse/objective.py": "34ed90403e3065cc81797cf58ce3dee50e312a7e7d6d39c9b38b41066c02f54f",
+    "reuse/train.py": "d8500fa0bd37927594412edfb3f248fdb0352b6948b3e30cb97638dcf6597b60",
+    "reuse/vendor/rees46_eda/__init__.py": "921825af9559cfb2d2cd44264e62b6ee4ce6dcde615dc8e9e486b041db4f4c9f",
+    "reuse/vendor/rees46_eda/config.py": "42f1027acb1f1844b7c899bb4d93d7925fb466c846bf558d1bc75589b8d0b913",
+    "reuse/vendor/rees46_eda/loaders.py": "212b1b4ce4243956fd4be0ead22764190ca0cfbad22d5560fef8bbe67ecbac73",
+    "reuse/verify_frozen.py": "c1e800c1b6fd400a85f435e8f9a69c17d208c8af3a1d58ea213110cf13890073",
+    "reuse/window_cache.py": "3b61b65822fd18b722a76497a065ca49dc74a88993f65a04b0e78058fb78608e"
+  },
+  "dataset_version_hash": "860e5a1c3a81b8e4bbfeff4f245fa37638a43e4f260df179585964d2d4da8dbd",
+  "integrity": {
+    "root": "/home/jovyan/shared_data/rees46_nextitem_v1",
+    "total_files_listed": 409,
+    "verified": 409,
+    "total_bytes": 9155066376,
+    "elapsed_s": 9.077683925628662,
+    "all_ok": true,
+    "n_missing": 0,
+    "n_mismatched": 0,
+    "receipt": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/state/verify_frozen_before_retro.json"
+  }
+}

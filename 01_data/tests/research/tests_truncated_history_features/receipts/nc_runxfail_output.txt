@@ -1,0 +1,207 @@
+FFFFFFFFFFF                                                              [100%]
+================================== FAILURES ===================================
+________________ test_nc_deletion_invariance_extra_prior_event ________________
+
+sample_table = EventTable(user_hex=array(['ab211e650602f19a8be476e5e84c9d0e7251c7baa01a21e015a0cee9737da6af',
+       '29ae0f88103e77b...source={'bucket': 0, 'rows_in_bucket_non_test': 1038917, 'rows_kept': 1038917, 'rows_deleted': 1027752, 'sample': 300})
+
+    @nc("a builder that uses one extra (pre-window) event must change when the pre-window events are deleted")
+    def test_nc_deletion_invariance_extra_prior_event(sample_table):
+        leaky = make_builder(sample_table, ExtraPriorEventBuilder)
+        rec = deletion_invariance(leaky, _pairs(sample_table, 40, seed=9), lambda t: make_builder(t, ExtraPriorEventBuilder))
+>       assert rec["n_changed"] == 0, rec
+E       AssertionError: {'n_checked': 40, 'n_changed': 40, 'changed_decisions': [100048834702, 100053000681, 100048285789, 100052229203, 100047471153, 100037585546, ...]}
+E       assert 40 == 0
+
+tests_trunc\test_e11_rules.py:245: AssertionError
+____________________ test_nc_leaking_builder_equals_e11_4 _____________________
+
+builder = <v4trunc.builder.TruncatedHistoryBuilder object at 0x0000023C572F1FD0>
+sample_table = EventTable(user_hex=array(['ab211e650602f19a8be476e5e84c9d0e7251c7baa01a21e015a0cee9737da6af',
+       '29ae0f88103e77b...source={'bucket': 0, 'rows_in_bucket_non_test': 1038917, 'rows_kept': 1038917, 'rows_deleted': 1027752, 'sample': 300})
+
+    @nc("the full-history user_context builder must NOT reproduce the E11.4 truncated features")
+    def test_nc_leaking_builder_equals_e11_4(builder, sample_table):
+        pairs = [(q, h) for q, h in _pairs(sample_table, 40, seed=11) if h < 20]
+>       assert not any(_leak_differs(builder, make_builder(sample_table, FullHistoryUctxBuilder), pairs))
+E       AssertionError: assert not True
+E        +  where True = any([True, True, True, True, True, True, ...])
+E        +    where [True, True, True, True, True, True, ...] = _leak_differs(<v4trunc.builder.TruncatedHistoryBuilder object at 0x0000023C572F1FD0>, <trunckit.FullHistoryUctxBuilder object at 0x0000023C572F2510>, [(266, 1), (10775, 10), (10426, 10), (8385, 10), (10758, 0), (8892, 10), ...])
+E        +      where <trunckit.FullHistoryUctxBuilder object at 0x0000023C572F2510> = make_builder(EventTable(user_hex=array(['ab211e650602f19a8be476e5e84c9d0e7251c7baa01a21e015a0cee9737da6af',\n       '29ae0f88103e77b...source={'bucket': 0, 'rows_in_bucket_non_test': 1038917, 'rows_kept': 1038917, 'rows_deleted': 1027752, 'sample': 300}), FullHistoryUctxBuilder)
+
+tests_trunc\test_e11_rules.py:261: AssertionError
+__________________ test_nc_rule_coverage_unsupported_future ___________________
+
+    @nc("a rule table with an UNSUPPORTED_FUTURE column must be refused by the builder coverage check")
+    def test_nc_rule_coverage_unsupported_future():
+        from v4trunc.rules import LOCAL_HISTORY
+>       assert _coverage_ok(dict(COLUMN_RULES, recent_brand_match_share=(LOCAL_HISTORY, "UNSUPPORTED_FUTURE")))
+E       AssertionError: assert False
+E        +  where False = _coverage_ok({'product_idx': ('SHARED_TRAIN_STATISTIC', 'SHARED_FROZEN'), 'category_idx': ('SHARED_CATALOGUE', 'SHARED_FROZEN'), 'brand_idx': ('SHARED_CATALOGUE', 'SHARED_FROZEN'), 'main_category_idx': ('SHARED_CATALOGUE', 'SHARED_FROZEN'), ...})
+E        +    where {'product_idx': ('SHARED_TRAIN_STATISTIC', 'SHARED_FROZEN'), 'category_idx': ('SHARED_CATALOGUE', 'SHARED_FROZEN'), 'brand_idx': ('SHARED_CATALOGUE', 'SHARED_FROZEN'), 'main_category_idx': ('SHARED_CATALOGUE', 'SHARED_FROZEN'), ...} = dict({'product_idx': ('SHARED_TRAIN_STATISTIC', 'SHARED_FROZEN'), 'category_idx': ('SHARED_CATALOGUE', 'SHARED_FROZEN'), 'brand_idx': ('SHARED_CATALOGUE', 'SHARED_FROZEN'), 'main_category_idx': ('SHARED_CATALOGUE', 'SHARED_FROZEN'), ...}, recent_brand_match_share=('LOCAL_HISTORY', 'UNSUPPORTED_FUTURE'))
+
+tests_trunc\test_e11_rules.py:322: AssertionError
+______________________ test_nc_events_to_x_interpolates _______________________
+
+    @nc("events-to-X must not interpolate between registered budgets")
+    def test_nc_events_to_x_interpolates():
+        m = {5: 0.15, 10: 0.20}
+        # REV-ANA-01 B-F5: an interpolating rule returns 8 (not a registered budget); the NC claims a value outside
+        # {5, 10} is returned, which the registered (no-interpolation) rule never does
+>       assert T.events_to_x(m, 0.20)["90"] not in (5, 10)
+E       assert 10 not in (5, 10)
+
+tests_trunc\test_studies.py:161: AssertionError
+__________________ test_nc_t41_receipt_future_event_builder ___________________
+
+derived_panel = PanelManifest(manifest_id='DERIVED_WARM_TRUNCATION', header={'manifest_id': 'DERIVED_WARM_TRUNCATION', 'panel_label': ...d={'transform_state_self_sha256': '2ff0ff4ec1d27d254972c2f212e81f5fee6277dc9cced31a6a5baf5b4b002727', 'derived': True})
+sample_table = EventTable(user_hex=array(['ab211e650602f19a8be476e5e84c9d0e7251c7baa01a21e015a0cee9737da6af',
+       '29ae0f88103e77b...source={'bucket': 0, 'rows_in_bucket_non_test': 1038917, 'rows_kept': 1038917, 'rows_deleted': 1027752, 'sample': 300})
+
+    @nc("a T41 receipt built with a builder that leaks one extra (future) event must not PASS")
+    def test_nc_t41_receipt_future_event_builder(derived_panel, sample_table):
+        from trunckit import FutureEventBuilder, make_builder
+        obj = T.t41_receipt(_world(make_builder(sample_table, FutureEventBuilder), derived_panel, sample_table),
+                            say=lambda *_: None)
+>       assert obj["status"] == "PASS"
+E       AssertionError: assert 'FAIL' == 'PASS'
+E         
+E         - PASS
+E         + FAIL
+
+tests_trunc\test_studies.py:255: AssertionError
+_______________ test_nc_support_includes_transition_into_query ________________
+
+    @nc("a support rule with <= at the query time admits the transition into e_q")
+    def test_nc_support_includes_transition_into_query():
+        t = _user()
+        q = 5
+        perm = np.arange(q - 1, q)
+        bad = perm[t.meta["target_ts_us"][perm] <= t.meta["decision_ts_us"][q]]      # the wrong (non-strict) rule
+>       assert bad.size == support_rows(t, q, 1).size
+E       AssertionError: assert 1 == 0
+E        +  where 1 = array([4]).size
+E        +  and   0 = array([], dtype=int64).size
+E        +    where array([], dtype=int64) = support_rows(EventTable(user_hex=array(['0000000000000000000000000000000000000000000000000000000000000000'],\n      dtype=object), u...00000,\n       5200000000]), 'in_index': array([ True,  True,  True,  True,  True,  True])}, source={'synthetic': True}), 5, 1)
+
+tests_trunc\test_t40_support_panel.py:52: AssertionError
+_______________________ test_nc_shifted_panel_detected ________________________
+
+sample_table = EventTable(user_hex=array(['ab211e650602f19a8be476e5e84c9d0e7251c7baa01a21e015a0cee9737da6af',
+       '29ae0f88103e77b...source={'bucket': 0, 'rows_in_bucket_non_test': 1038917, 'rows_kept': 1038917, 'rows_deleted': 1027752, 'sample': 300})
+derived_panel = PanelManifest(manifest_id='DERIVED_WARM_TRUNCATION', header={'manifest_id': 'DERIVED_WARM_TRUNCATION', 'panel_label': ...d={'transform_state_self_sha256': '2ff0ff4ec1d27d254972c2f212e81f5fee6277dc9cced31a6a5baf5b4b002727', 'derived': True})
+
+    @nc("a panel whose permitted window is shifted by one event must fail the panel-vs-events proof")
+    def test_nc_shifted_panel_detected(sample_table, derived_panel):
+        import copy
+        pm = copy.deepcopy(derived_panel)
+        m = np.asarray(pm.queries["h"]) > 0
+        pm.queries["permitted_first_decision_id"] = np.where(m, np.asarray(pm.queries["permitted_first_decision_id"]) + 7,
+                                                             pm.queries["permitted_first_decision_id"])
+        c = check_panel_against_events(pm, sample_table)
+>       assert all(c.values())
+E       AssertionError: assert False
+E        +  where False = all(dict_values([True, True, False, True, True, True, True, True]))
+E        +    where dict_values([True, True, False, True, True, True, True, True]) = <built-in method values of dict object at 0x0000023C57368480>()
+E        +      where <built-in method values of dict object at 0x0000023C57368480> = {'query_user_is_panel_user': True, 'n_prior_events_available_eq_store_rank': True, 'permitted_first_decision_id_eq_store_order': False, 'query_decision_ts_eq': True, ...}.values
+
+tests_trunc\test_t40_support_panel.py:118: AssertionError
+_____________________ test_nc_later_query_panel_rederived _____________________
+
+sample_table = EventTable(user_hex=array(['ab211e650602f19a8be476e5e84c9d0e7251c7baa01a21e015a0cee9737da6af',
+       '29ae0f88103e77b...source={'bucket': 0, 'rows_in_bucket_non_test': 1038917, 'rows_kept': 1038917, 'rows_deleted': 1027752, 'sample': 300})
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000023C571EBE10>
+
+    @nc("a registered panel whose q_u is later than the earliest qualifying decision must fail the re-derivation")
+    def test_nc_later_query_panel_rederived(sample_table, monkeypatch):
+        from v4trunc.panel import check_panel_rederived
+>       assert all(check_panel_rederived(_later_query_panel(sample_table, monkeypatch), sample_table).values())
+E       AssertionError: assert False
+E        +  where False = all(dict_values([True, True, True, False, True]))
+E        +    where dict_values([True, True, True, False, True]) = <built-in method values of dict object at 0x0000023C5B97DE80>()
+E        +      where <built-in method values of dict object at 0x0000023C5B97DE80> = {'rederived.query_rows_unique': True, 'rederived.loaded_users_are_panel_users': True, 'rederived.query_users_loaded': True, 'rederived.query_set_eq_panel': False, ...}.values
+E        +        where {'rederived.query_rows_unique': True, 'rederived.loaded_users_are_panel_users': True, 'rederived.query_users_loaded': True, 'rederived.query_set_eq_panel': False, ...} = <function check_panel_rederived at 0x0000023C171060C0>(PanelManifest(manifest_id='DERIVED_WARM_TRUNCATION', header={'manifest_id': 'DERIVED_WARM_TRUNCATION', 'panel_label': ...'support_target_class': array([103847, 102478, 105298, ..., 145069, 145142, 145214],\n      shape=(14688,))}, record={}), EventTable(user_hex=array(['ab211e650602f19a8be476e5e84c9d0e7251c7baa01a21e015a0cee9737da6af',\n       '29ae0f88103e77b...source={'bucket': 0, 'rows_in_bucket_non_test': 1038917, 'rows_kept': 1038917, 'rows_deleted': 1027752, 'sample': 300}))
+E        +          where PanelManifest(manifest_id='DERIVED_WARM_TRUNCATION', header={'manifest_id': 'DERIVED_WARM_TRUNCATION', 'panel_label': ...'support_target_class': array([103847, 102478, 105298, ..., 145069, 145142, 145214],\n      shape=(14688,))}, record={}) = _later_query_panel(EventTable(user_hex=array(['ab211e650602f19a8be476e5e84c9d0e7251c7baa01a21e015a0cee9737da6af',\n       '29ae0f88103e77b...source={'bucket': 0, 'rows_in_bucket_non_test': 1038917, 'rows_kept': 1038917, 'rows_deleted': 1027752, 'sample': 300}), <_pytest.monkeypatch.MonkeyPatch object at 0x0000023C571EBE10>)
+
+tests_trunc\test_t40_support_panel.py:199: AssertionError
+_________________________ test_nc_golden_future_event _________________________
+
+sample_table = EventTable(user_hex=array(['ab211e650602f19a8be476e5e84c9d0e7251c7baa01a21e015a0cee9737da6af',
+       '29ae0f88103e77b...source={'bucket': 0, 'rows_in_bucket_non_test': 1038917, 'rows_kept': 1038917, 'rows_deleted': 1027752, 'sample': 300})
+
+    @nc("a builder leaking one extra (future) event must fail the golden replay")
+    def test_nc_golden_future_event(sample_table):
+>       assert_golden(_golden(make_builder(sample_table, FutureEventBuilder), _val_ids(sample_table, 600)))
+
+tests_trunc\test_t41_golden.py:60: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+rec = {'n_compared': 600, 'diff_rows': {'attention_mask': 395, 'brand_tokens': 600, 'category_tokens': 582, 'current_matches_session_mode': 48, ...}, 'keys_missing': [], 'keys_extra': [], ...}
+
+    def assert_golden(rec: dict) -> None:
+>       assert rec["pass"], (f"T41 golden replay FAILED: diff rows {rec['diff_rows']}, missing {rec['keys_missing']}, "
+               ^^^^^^^^^^^
+                             f"extra {rec['keys_extra']}, non-array {rec['non_array_diff']}")
+E       AssertionError: T41 golden replay FAILED: diff rows {'attention_mask': 395, 'brand_tokens': 600, 'category_tokens': 582, 'current_matches_session_mode': 48, 'current_matches_session_mode_available': 45, 'daypart_tokens': 600, 'event_numeric_features': 600, 'event_quality_flags': 346, 'item_tokens': 600, 'last_valid_index': 395, 'lengths': 395, 'main_category_tokens': 574, 'position_ids': 395, 'session_mode_main_category_tokens': 548, 'session_mode_share': 107, 'session_offset_tokens': 600, 'user_context': 600, 'user_context_masks': 201, 'weekday_tokens': 600}, missing [], extra [], non-array []
+
+v4trunc\golden.py:129: AssertionError
+_________________________ test_nc_golden_no_carry_in __________________________
+
+sample_table = EventTable(user_hex=array(['ab211e650602f19a8be476e5e84c9d0e7251c7baa01a21e015a0cee9737da6af',
+       '29ae0f88103e77b...source={'bucket': 0, 'rows_in_bucket_non_test': 1038917, 'rows_kept': 1038917, 'rows_deleted': 1027752, 'sample': 300})
+
+    @nc("window sums without the v1 bucket-stream carry-in must fail the golden replay")
+    def test_nc_golden_no_carry_in(sample_table):
+>       assert_golden(_golden(make_builder(sample_table, NoCarryBuilder), _val_ids(sample_table)))
+
+tests_trunc\test_t41_golden.py:65: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+rec = {'n_compared': 3284, 'diff_rows': {'user_context': 17}, 'keys_missing': [], 'keys_extra': [], ...}
+
+    def assert_golden(rec: dict) -> None:
+>       assert rec["pass"], (f"T41 golden replay FAILED: diff rows {rec['diff_rows']}, missing {rec['keys_missing']}, "
+               ^^^^^^^^^^^
+                             f"extra {rec['keys_extra']}, non-array {rec['non_array_diff']}")
+E       AssertionError: T41 golden replay FAILED: diff rows {'user_context': 17}, missing [], extra [], non-array []
+
+v4trunc\golden.py:129: AssertionError
+________________________ test_nc_golden_merged_stream _________________________
+
+sample_table = EventTable(user_hex=array(['ab211e650602f19a8be476e5e84c9d0e7251c7baa01a21e015a0cee9737da6af',
+       '29ae0f88103e77b...source={'bucket': 0, 'rows_in_bucket_non_test': 1038917, 'rows_kept': 1038917, 'rows_deleted': 1027752, 'sample': 300})
+
+    @nc("a VALIDATION_CONFIRM query replaying VALIDATION_SELECT events must fail the golden replay")
+    def test_nc_golden_merged_stream(sample_table):
+        t = sample_table
+        rows = _vc_rows_with_vs_history(t)
+        assert rows.size > 0                                   # B-F5: never skipped (precondition test above)
+>       assert_golden(_golden(make_builder(t, MergedStreamBuilder), np.sort(t.decision_id[rows])))
+
+tests_trunc\test_t41_golden.py:85: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+rec = {'n_compared': 436, 'diff_rows': {'user_context': 436, 'user_context_masks': 12}, 'keys_missing': [], 'keys_extra': [], ...}
+
+    def assert_golden(rec: dict) -> None:
+>       assert rec["pass"], (f"T41 golden replay FAILED: diff rows {rec['diff_rows']}, missing {rec['keys_missing']}, "
+               ^^^^^^^^^^^
+                             f"extra {rec['keys_extra']}, non-array {rec['non_array_diff']}")
+E       AssertionError: T41 golden replay FAILED: diff rows {'user_context': 436, 'user_context_masks': 12}, missing [], extra [], non-array []
+
+v4trunc\golden.py:129: AssertionError
+=========================== short test summary info ===========================
+FAILED tests_trunc\test_e11_rules.py::test_nc_deletion_invariance_extra_prior_event
+FAILED tests_trunc\test_e11_rules.py::test_nc_leaking_builder_equals_e11_4 - ...
+FAILED tests_trunc\test_e11_rules.py::test_nc_rule_coverage_unsupported_future
+FAILED tests_trunc\test_studies.py::test_nc_events_to_x_interpolates - assert...
+FAILED tests_trunc\test_studies.py::test_nc_t41_receipt_future_event_builder
+FAILED tests_trunc\test_t40_support_panel.py::test_nc_support_includes_transition_into_query
+FAILED tests_trunc\test_t40_support_panel.py::test_nc_shifted_panel_detected
+FAILED tests_trunc\test_t40_support_panel.py::test_nc_later_query_panel_rederived
+FAILED tests_trunc\test_t41_golden.py::test_nc_golden_future_event - Assertio...
+FAILED tests_trunc\test_t41_golden.py::test_nc_golden_no_carry_in - Assertion...
+FAILED tests_trunc\test_t41_golden.py::test_nc_golden_merged_stream - Asserti...
+11 failed, 42 deselected in 26.75s
+
+--- stderr ---

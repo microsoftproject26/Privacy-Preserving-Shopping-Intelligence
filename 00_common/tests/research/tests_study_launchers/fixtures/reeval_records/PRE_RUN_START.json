@@ -1,0 +1,333 @@
+{
+ "N": 24089824,
+ "calibration_record": null,
+ "config": {
+  "calibration_record": null,
+  "checkpoint_every": 0,
+  "continuation_budget": null,
+  "cuda_visible_devices": "0",
+  "data_version": "CLEAN_V2_POP5100_V2",
+  "determinism_mode": "STRICT",
+  "dropout": [
+   0.1
+  ],
+  "effective_batch": 256,
+  "eval_config": {
+   "cache_bytes": 1073741824,
+   "class_chunk": 32768,
+   "eval_batch_size": 1024,
+   "eval_device_class": "A16-FP32-DET",
+   "flags": {
+    "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+    "cudnn.allow_tf32": false,
+    "cudnn.benchmark": false,
+    "cudnn.deterministic": true,
+    "matmul.allow_tf32": false,
+    "use_deterministic_algorithms": true
+   },
+   "lock_sha256": "0308640a79ef5fccb50bc456ee8f3ff1d506095c757e3b24fbb7b9c2e058238e",
+   "lock_version": "1.0.0",
+   "metric_accumulation": "FP64",
+   "order": "manifest order, strictly ascending decision_id; tail batch unpadded",
+   "score_block": 158486,
+   "source": "v4eval.frozen_config.load()"
+  },
+  "expected_init_sha256": null,
+  "exposure_point": "end",
+  "family": "SASREC",
+  "key": {
+   "candidate_order_hash": "ab606d5e3728c993d31048f6d613838658d3a5ce8a0d0bd023611ce0ff027476",
+   "data_protocol_hash": "bc699a97dd2fab054e5a5c00f9661dd32b0677941d3f23f2e4b81751b3b7b330",
+   "data_version": "CLEAN_V2_POP5100_V2",
+   "determinism_mode": "STRICT",
+   "eval_batch": 1024,
+   "eval_device_class": "A16-FP32-DET",
+   "eval_manifest_id": "UNEW_VAL_VALIDATION_32768",
+   "eval_score_block": 158486,
+   "eval_stream": "EVAL_ROWS_ONLY",
+   "exposure_point": "end",
+   "feature_contract_hash": "e97600f508497398da47f48b029d49a6fffee316e6a0c1ea20e046fe81fda5aa",
+   "feature_schema_self_sha256": "c53d47fe2555dd537e27e11d45a4e8b23739566e6b98179dcf521852aa918f87",
+   "history_policy": "USER_HISTORY_L50",
+   "label_policy_hash": "75acea25716829cba74a7703f17208f405b455c72af2ec19f413585636f7e59a",
+   "manifest_registry_self_sha256": "bf136d1d925b62b7c39787ee52abda2ae09b063e484684f21c9dc7dae4ff70b4",
+   "population_hash": "716beeb961633a9d0918df6bc981cbaafa03bbf9a36b2e2614f4ee4f916989c4",
+   "split": "VALIDATION",
+   "train_manifest_id": "PRETRAIN_TRAIN_5_100_NONMAIN",
+   "transform_state_sha256": "2ff0ff4ec1d27d254972c2f212e81f5fee6277dc9cced31a6a5baf5b4b002727"
+  },
+  "log_every": 50,
+  "manifest_registry": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_pretrain/PRETRAIN_FOR_FL_SMALL_SASREC_D64_B2_s2026/REGISTRY_V2_TRAINER_VIEW.json",
+  "microbatch": 0,
+  "model_variant": "SASREC_D64_B2",
+  "peak_lr": 0.0007114121116984968,
+  "phase": "MAIN",
+  "population": "COHORT",
+  "recipe": {
+   "betas": [
+    0.9,
+    0.999
+   ],
+   "calibration_multipliers": [
+    1.0,
+    0.5
+   ],
+   "calibration_seed": 2026,
+   "effective_batch": 256,
+   "eps": 1e-08,
+   "executed_peak_lr": 0.001,
+   "fused": true,
+   "grad_clip": 1.0,
+   "gru_dropout": [
+    0.2,
+    0.1
+   ],
+   "label_smoothing": 0.0,
+   "optimizer": "AdamW",
+   "sasrec_dropout": 0.2,
+   "seeds": [
+    2026,
+    2027
+   ],
+   "source": "G0B_PROTOCOL_FABLE_POSITION.md C8 L28; G0_PLAN_FABLE_POSITION.md D6 L36-L38; G0B C3 L18",
+   "weight_decay": 1e-05,
+   "weight_decay_scope": "ndim>=2"
+  },
+  "recipe_id": "SMALL_SASREC_D64_B2",
+  "recipe_registry": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/contracts/hp_registry/SMALL_RECIPE_SASREC_D64_B2.json",
+  "role": null,
+  "run_id": "PRETRAIN_FOR_FL_SMALL_SASREC_D64_B2_s2026",
+  "schedule": "S0",
+  "schema_registry": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/contracts/derived_schemas/REGISTRY.json",
+  "seed": 2026,
+  "test_overrides": false,
+  "theta0_init_sha256": "e9eb0bb9dd30061790fa5dc747e14c9aa375e2069c06a85785de6251e8705b95"
+ },
+ "config_sha256": "f23c8f2d83bc13a314eaf06594d130e5bf20654672fd20ca44f804b11a61cee2",
+ "continuation_budget": null,
+ "cuda_visible_devices": {
+  "at_v4train_import": "0",
+  "config": "0",
+  "env": "0"
+ },
+ "data_version": "CLEAN_V2_POP5100_V2",
+ "determinism": {
+  "cublas_workspace_config": ":4096:8",
+  "mode": "STRICT",
+  "torch_effective": {
+   "deterministic_algorithms": true,
+   "warn_only": false
+  }
+ },
+ "device": "cuda:0",
+ "device_pin_sha256": "db744ca3f0da27ac7b65c41b4b32f2c68ec9d0bd66bbc0dc33e874a226834e6b",
+ "disk": {
+  "free_gib": 309.20011138916016,
+  "reason": "free 309.20 GiB, headroom 308.58 GiB >= floor 8.0 GiB",
+  "state": "OK"
+ },
+ "dropout": [
+  0.1
+ ],
+ "eval_config": {
+  "cache_bytes": 1073741824,
+  "class_chunk": 32768,
+  "eval_batch_size": 1024,
+  "eval_device_class": "A16-FP32-DET",
+  "flags": {
+   "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+   "cudnn.allow_tf32": false,
+   "cudnn.benchmark": false,
+   "cudnn.deterministic": true,
+   "matmul.allow_tf32": false,
+   "use_deterministic_algorithms": true
+  },
+  "lock_sha256": "0308640a79ef5fccb50bc456ee8f3ff1d506095c757e3b24fbb7b9c2e058238e",
+  "lock_version": "1.0.0",
+  "metric_accumulation": "FP64",
+  "order": "manifest order, strictly ascending decision_id; tail batch unpadded",
+  "score_block": 158486,
+  "source": "v4eval.frozen_config.load()"
+ },
+ "eval_config_sha256": "695c6f8017ae1d3096c5aa376eb3163453bce8f0c30f038489865fb7aa2cd28b",
+ "eval_device_class": "NVIDIA_A40-FP32-DET",
+ "eval_provider": {
+  "fingerprint": "6f100b6e43945707bd9ebdf4c4ec04f051f311173e23e90be222a4ffe9a1c6b6",
+  "hashes": {
+   "eval_ordered_decision_id_sha256": "319e07e33a2900bf32edbea1799cdd55e3244226980c1d1f847e2028e3ac4bf2",
+   "ordered_decision_id_sha256": "3286f9e63a59571887f74c10e328df922f1a9b5f2b9dadcef93ef72b98d30be8",
+   "rankable_ordered_decision_id_sha256": "2f4d6938bb4f680d8ad34e8dc9d72870ffeeb91447c6ec4981c90698c2f0106e"
+  },
+  "manifest_id": "UNEW_VAL_VALIDATION_32768"
+ },
+ "evaluator_code_sha256": "61b64e61c1a2e4f5a6fecd42f0ad3b98de26562d13a07758573cc9496b8d962e",
+ "exposure_point": "end",
+ "family": "SASREC",
+ "hp": null,
+ "init_sha256": "e9eb0bb9dd30061790fa5dc747e14c9aa375e2069c06a85785de6251e8705b95",
+ "key_base": {
+  "candidate_order_hash": "ab606d5e3728c993d31048f6d613838658d3a5ce8a0d0bd023611ce0ff027476",
+  "cublas_workspace_config": ":4096:8",
+  "data_protocol_hash": "bc699a97dd2fab054e5a5c00f9661dd32b0677941d3f23f2e4b81751b3b7b330",
+  "data_version": "CLEAN_V2_POP5100_V2",
+  "determinism_mode": "STRICT",
+  "eval_batch": 1024,
+  "eval_device_class": "A16-FP32-DET",
+  "eval_manifest_id": "UNEW_VAL_VALIDATION_32768",
+  "eval_score_block": 158486,
+  "eval_stream": "EVAL_ROWS_ONLY",
+  "exposure_point": "end",
+  "family": "SASREC",
+  "feature_contract_hash": "e97600f508497398da47f48b029d49a6fffee316e6a0c1ea20e046fe81fda5aa",
+  "feature_schema_self_sha256": "c53d47fe2555dd537e27e11d45a4e8b23739566e6b98179dcf521852aa918f87",
+  "history_policy": "USER_HISTORY_L50",
+  "initialization_block": "I_META_RANDOM|SASREC|seed=2026|theta0_sha256=e9eb0bb9dd30061790fa5dc747e14c9aa375e2069c06a85785de6251e8705b95",
+  "label_policy_hash": "75acea25716829cba74a7703f17208f405b455c72af2ec19f413585636f7e59a",
+  "manifest_registry_self_sha256": "28b17caa371959f1b426eab60db276ba3560e4de05026330b55b3a45b3c0c421",
+  "manifest_registry_sha256": "f7ee9761c9ee8ade170bc60c80f6a96f241c258bef1a7e6cdd0a6dc472d3bfab",
+  "manifest_role": "MAIN",
+  "model_variant": "SASREC_D64_B2",
+  "objective_id": "EXACT_FULL_K_CE_SUM_OVER_LOSS_ELIGIBLE_DIVIDE_ONCE_LS0",
+  "optimizer_lifecycle": "PERSISTENT_ADAMW",
+  "population_hash": "716beeb961633a9d0918df6bc981cbaafa03bbf9a36b2e2614f4ee4f916989c4",
+  "precision_id": "FP32_STRICT:matmul_tf32=off,cudnn_tf32=off,float32_matmul_precision=highest,deterministic_algorithms=STRICT",
+  "recipe_id": "SMALL_SASREC_D64_B2",
+  "recipe_sha256": "fdf47b931d564946b4be153395097607aa4b895272b2da1d863a2503b8f0ca39",
+  "run_label": "PRETRAIN_FOR_FL",
+  "run_role": "MAIN",
+  "schema_id": "L3S_NEAR_DUPLICATE_SESSION-minus-G11+G12a+G3+G4+G7",
+  "schema_self_sha256": "c53d47fe2555dd537e27e11d45a4e8b23739566e6b98179dcf521852aa918f87",
+  "split": "VALIDATION",
+  "theta0_init_sha256": "e9eb0bb9dd30061790fa5dc747e14c9aa375e2069c06a85785de6251e8705b95",
+  "topology_hash": "004d6eb00d130a8d082ef52452f1df455cb4e17533ef6422a09ad5b75034cd96",
+  "train_manifest_id": "PRETRAIN_TRAIN_5_100_NONMAIN",
+  "training_paradigm": "CENTRAL",
+  "transform_state_sha256": "2ff0ff4ec1d27d254972c2f212e81f5fee6277dc9cced31a6a5baf5b4b002727"
+ },
+ "lr_schedule_id": "S0",
+ "manifest_digest": "df21f357a21effbce96692f6b1c21d8aa1fed4b051c8caecba5299ff9e08312c",
+ "manifest_registry": {
+  "bindings": {
+   "eval": {
+    "bound_by": [
+     "content_header_sha256"
+    ],
+    "content_sha256": "6802cc6cec658eae71985ea2f27d2aad3c81853263758e0fb4d45c9f719b8455",
+    "fingerprint": "6f100b6e43945707bd9ebdf4c4ec04f051f311173e23e90be222a4ffe9a1c6b6",
+    "header_sha256": "4b9c68e138a94e8d0205d2734213f5baca669b6bbf7b674de7957217e9d6c761",
+    "manifest_id": "UNEW_VAL_VALIDATION_32768",
+    "n_decisions": 167797
+   },
+   "train": {
+    "bound_by": [
+     "content_header_sha256"
+    ],
+    "content_sha256": "879a7a524696b7203e2688b233ccd8ba3e4a3bb58ee7707342ff8403bd443831",
+    "fingerprint": "08a251d8765a4ab9bff4f5de16940b661961197b397058b61da884edeb467de1",
+    "header_sha256": "f5a2eaa2ded7032908898dc7cdf670da5faec8f400aaecade67a3ae25b7e740f",
+    "manifest_id": "PRETRAIN_TRAIN_5_100_NONMAIN",
+    "n_decisions": 24089824
+   }
+  },
+  "data_version": "CLEAN_V2_POP5100_V2",
+  "eval_manifest": "UNEW_VAL_VALIDATION_32768",
+  "file_sha256": "f7ee9761c9ee8ade170bc60c80f6a96f241c258bef1a7e6cdd0a6dc472d3bfab",
+  "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_pretrain/PRETRAIN_FOR_FL_SMALL_SASREC_D64_B2_s2026/REGISTRY_V2_TRAINER_VIEW.json",
+  "role": "MAIN",
+  "self_sha256": "28b17caa371959f1b426eab60db276ba3560e4de05026330b55b3a45b3c0c421",
+  "train_manifest": "PRETRAIN_TRAIN_5_100_NONMAIN"
+ },
+ "manifest_role": "MAIN",
+ "model_variant": "SASREC_D64_B2",
+ "model_variant_registry": {
+  "file_sha256": "3df9fdf706f525922c6d792212ba7878c932391231e93e35d871f926d8921eeb",
+  "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/contracts/model_variants/MODEL_VARIANT_REGISTRY.json",
+  "self_sha256": "db7beb26203fb658e25eea4e02f632589b8c14fc99b4cf058b187f5b5df963a8",
+  "variant": "SASREC_D64_B2"
+ },
+ "models_code_sha256": "a41fa79839851db09e008a0a4079bd145e2adb02d5653d238a227d8dcacf0bc2",
+ "numerics": {
+  "cuda_matmul_allow_tf32": false,
+  "cudnn_allow_tf32": false,
+  "cudnn_deterministic": true,
+  "deterministic_algorithms": true,
+  "deterministic_warn_only": false,
+  "float32_matmul_precision": "highest",
+  "intra_op_threads": 4,
+  "torch": "2.13.0+cu130"
+ },
+ "order_policy": "positions = Generator(PCG64(SeedSequence([0x56345452, seed, pass]))).permutation(N) over the canonical ascending-decision_id order; consecutive effective batches; tail batch at its own size",
+ "phase": "MAIN",
+ "planned_lr_table": {
+  "final_exposures": 144538944,
+  "last_lr": 7.114121116984965e-06,
+  "min_lr": 3.7800504602029307e-07,
+  "n_updates": 564606,
+  "phase": "MAIN",
+  "point": "end",
+  "schedule": "S0",
+  "sha256": "03d4605f1c943339a45194ebd2e0f388ba9c0f120fc37904a99d669c472abb3f"
+ },
+ "population": "COHORT",
+ "precision_id": "FP32_STRICT:matmul_tf32=off,cudnn_tf32=off,float32_matmul_precision=highest,deterministic_algorithms=STRICT",
+ "raw_init_sha256": "94f1473c314c5754b357c0381024527e028aa06a6ea89a37c42e93b17bafa7e2",
+ "run_id": "PRETRAIN_FOR_FL_SMALL_SASREC_D64_B2_s2026",
+ "run_label": "PRETRAIN_FOR_FL",
+ "run_role": "MAIN",
+ "schedule": "v4train.schedule (G0 D6; G0B C3)",
+ "schema": {
+  "file": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/contracts/derived_schemas/L3S_NEAR_DUPLICATE_SESSION-minus-G11+G12a+G3+G4+G7.json",
+  "file_sha256": "626ca93e7f51606fe4269f4551a65c0246f85f9f199d2af92881dca971e8b759",
+  "kind": "DERIVED",
+  "registry": {
+   "file_sha256": "c23454cb7d34886e0374349b73a4d153907ebc56b17061926e193e221e4a0bc6",
+   "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/contracts/derived_schemas/REGISTRY.json",
+   "self_sha256": "06d1f13698129edd8621ed2bcff861f8c7bc6e2de3488cd7a04fdc53317a3896"
+  },
+  "schema_id": "L3S_NEAR_DUPLICATE_SESSION-minus-G11+G12a+G3+G4+G7",
+  "schema_self_sha256": "c53d47fe2555dd537e27e11d45a4e8b23739566e6b98179dcf521852aa918f87"
+ },
+ "schema_self_sha256": "c53d47fe2555dd537e27e11d45a4e8b23739566e6b98179dcf521852aa918f87",
+ "seed": 2026,
+ "shared_numel": 20708708,
+ "test_overrides": false,
+ "theta0_init_sha256": "e9eb0bb9dd30061790fa5dc747e14c9aa375e2069c06a85785de6251e8705b95",
+ "theta0_recentered": true,
+ "torch": "2.13.0+cu130",
+ "train_phase": "MAIN",
+ "train_provider": {
+  "fingerprint": "08a251d8765a4ab9bff4f5de16940b661961197b397058b61da884edeb467de1",
+  "manifest_id": "PRETRAIN_TRAIN_5_100_NONMAIN"
+ },
+ "trainer_code_sha256": "f65e6fe76689395865dc304ba0cdcaf7e6a5d110c85340e5155e81b0f9ed8894",
+ "tuned_recipe": {
+  "g1b_pin": {
+   "gate": null,
+   "note": "SMALL recipe: production path + self-hash recorded (no G1B pin covers it; INT-03 disclosure)",
+   "pinned": "b11be7e1409dee9098375d91f2c68dca0666cd9fc6d2d63ce4b2ff8684ce2f5b"
+  },
+  "recipe": {
+   "dropout": [
+    0.1
+   ],
+   "family": "SASREC",
+   "mean_6.0": 0.1278484374217706,
+   "model_variant": "SASREC_D64_B2",
+   "peak_lr": 0.0007114121116984968,
+   "recipe_id": "SMALL_SASREC_D64_B2",
+   "schedule": "S0",
+   "sha256": "fdf47b931d564946b4be153395097607aa4b895272b2da1d863a2503b8f0ca39",
+   "source_hp_id": "P2S_SASREC_D64_B2_S0_s1",
+   "source_hp_sha256": "01c05c1b768d75cde03e0e1982fc7a7371cb85d102189414b45eafea6e58261b",
+   "stage1_self_sha256": "eeee68d8c89a2dd879506ee4f665b98dc4dba04964f1250a873d2d2b342c6baf",
+   "stage2_self_sha256": "e7f785437bbfddeb54af48171ded18315231f27de2d31b43c07be6423cab6c00"
+  },
+  "recipe_id": "SMALL_SASREC_D64_B2",
+  "recipe_sha256": "fdf47b931d564946b4be153395097607aa4b895272b2da1d863a2503b8f0ca39",
+  "source_hp_id": "P2S_SASREC_D64_B2_S0_s1",
+  "tuned_recipes_file_sha256": "828a59ee19503870f4843031119a01d15d6270a42719984f26c59394edf8a31b",
+  "tuned_recipes_path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/contracts/hp_registry/SMALL_RECIPE_SASREC_D64_B2.json",
+  "tuned_recipes_self_sha256": "b11be7e1409dee9098375d91f2c68dca0666cd9fc6d2d63ce4b2ff8684ce2f5b"
+ },
+ "utc": "2026-09-29T13:08:49Z"
+}

@@ -1,0 +1,58 @@
+{
+  "_definitions": {
+    "universe_U": "users with >=1 TRAIN-eligible example under support>=5 (split==TRAIN, has_observed_target, target_ts<TRAIN_END, target_class>=0); identical definition to g0/data_census/scripts/pass2_census.py's elig_s5_row / CLIENT_CENSUS.json s5.users_with_ge1_example, recomputed here independently.",
+    "selection_key": "int.from_bytes(sha256(b'PPSI_V4_POPULATION_20260926' + b'|' + user_id.encode('utf-8')).digest()[:8], 'big'); cohort(N) = the N users of U with the smallest key.",
+    "rankable_vs_oov": "on a VALIDATION(union) eval_mask=true row, rankable means target_class>=0 (target in the support>=5 catalogue); oov means target_oov=true (observed target outside the catalogue). These two are exhaustive and mutually exclusive over eval_mask=true rows.",
+    "cohort_train_positive": "a TRAIN row with has_observed_target, target_ts<TRAIN_END and target_class>=0 (an eligible example, per CLIENT_CENSUS.json), counted by its target_class, restricted to the cohort's users."
+  },
+  "universe_check_vs_g0_data_census": {
+    "universe_size_recomputed": 2694998,
+    "universe_size_census_data_census": 2694998,
+    "matches_census": true
+  },
+  "cohorts": {
+    "65536": {
+      "cohort_selection": {
+        "requested_N": 65536,
+        "actual_users": 65536,
+        "selected_keys_sha256_hex": "3d680aa7222fb5c9246d03fe6088464c78095d90a344e3453acb68e98d53a6f4",
+        "census_selected_keys_sha256_hex": "3d680aa7222fb5c9246d03fe6088464c78095d90a344e3453acb68e98d53a6f4",
+        "matches_census": true
+      },
+      "validation_union_label_coverage_support_ge5": {
+        "note": "cohort universe = support>=5 TRAIN-eligible users only, so every cohort member is warm by construction; 'the cohort's own warm VALIDATION rows' is therefore ALL of the cohort's VALIDATION(union) eval_mask=true rows -- there is no cold subset to exclude within a cohort.",
+        "rankable_target_count": 199276,
+        "oov_target_count": 1709,
+        "total_eval_rows": 200985
+      },
+      "catalogue_classes_with_cohort_train_positives": {
+        "total_catalogue_classes_K5": 158486,
+        "classes_with_ge1_cohort_train_positive": 90545,
+        "classes_with_ge5_cohort_train_positive": 31425
+      },
+      "classes_as_validation_target_with_zero_cohort_train_positives": 7619
+    },
+    "262144": {
+      "cohort_selection": {
+        "requested_N": 262144,
+        "actual_users": 262144,
+        "selected_keys_sha256_hex": "54e1d3c2539fd4cd7fe22d2b8ef91bed1a786d69be27867406bb19141ac48184",
+        "census_selected_keys_sha256_hex": "54e1d3c2539fd4cd7fe22d2b8ef91bed1a786d69be27867406bb19141ac48184",
+        "matches_census": true
+      },
+      "validation_union_label_coverage_support_ge5": {
+        "note": "cohort universe = support>=5 TRAIN-eligible users only, so every cohort member is warm by construction; 'the cohort's own warm VALIDATION rows' is therefore ALL of the cohort's VALIDATION(union) eval_mask=true rows -- there is no cold subset to exclude within a cohort.",
+        "rankable_target_count": 801762,
+        "oov_target_count": 6848,
+        "total_eval_rows": 808610
+      },
+      "catalogue_classes_with_cohort_train_positives": {
+        "total_catalogue_classes_K5": 158486,
+        "classes_with_ge1_cohort_train_positive": 133154,
+        "classes_with_ge5_cohort_train_positive": 72682
+      },
+      "classes_as_validation_target_with_zero_cohort_train_positives": 5158
+    }
+  },
+  "reproducibility": "one bucket re-run: see scripts/validate_rerun.py; diffs scripts/_pass1_bucket_log.jsonl and scripts/_pass2_bucket_log.jsonl."
+}

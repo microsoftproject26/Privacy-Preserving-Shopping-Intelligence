@@ -1,0 +1,358 @@
+{
+  "dataset_root": "/home/jovyan/shared_data/rees46_nextitem_v1",
+  "class_map": {
+    "n": 158486,
+    "expected_n": 158486,
+    "matches_arange_plus_3": true,
+    "pass": true
+  },
+  "f4_build_seconds": 67.90115547180176,
+  "f4_n_rows": 63690404,
+  "f4_mask_dtype": "uint8",
+  "counts": {
+    "train_loss_n": 40180608,
+    "expected_train_loss_n": 40180608,
+    "vs_eval_n": 8826488,
+    "expected_vs_eval_n": 8826488,
+    "vs_distinct_eval_users": 790459,
+    "expected_vs_distinct_eval_users": 790459,
+    "store_rejects_vc_test_splits": true,
+    "pass": true
+  },
+  "gate_i_f4": {
+    "n_compared_train": 1000000,
+    "expected_n_train": 1000000,
+    "n_compared_vs": 112365,
+    "expected_n_vs": 112365,
+    "n_arrays_checked": 19,
+    "train_mismatches": [],
+    "vs_mismatches": [],
+    "eval_user_key_mismatches": 0,
+    "pass": true
+  },
+  "f0_build_seconds": 49.087162256240845,
+  "f0_n_rows": 63690404,
+  "gate_i_f0_subset": {
+    "n_sample_train": 20000,
+    "n_sample_vs": 20000,
+    "mismatches_train": [],
+    "mismatches_vs": [],
+    "pass": true
+  },
+  "gate_ii": {
+    "n_compared": 4206,
+    "n_random_requested": 4200,
+    "n_buckets_used": 10,
+    "edge_cases_found": {
+      "pos1": [
+        100020500099,
+        0,
+        "TRAIN"
+      ],
+      "pos49": [
+        100020272557,
+        0,
+        "TRAIN"
+      ],
+      "pos50": [
+        100020272676,
+        0,
+        "TRAIN"
+      ],
+      "pos51plus": [
+        100020273038,
+        0,
+        "TRAIN"
+      ],
+      "seg_first": [
+        100020500099,
+        0,
+        "TRAIN"
+      ],
+      "loss_false_context": [
+        100047810546,
+        0,
+        "VALIDATION_SELECT"
+      ],
+      "unseen_user": [
+        100035022829,
+        0,
+        "VALIDATION_SELECT"
+      ]
+    },
+    "edge_cases_missing": [
+      "crossing_train_vs",
+      "seg_last"
+    ],
+    "edge_cases_structurally_absent_allowed": [
+      "crossing_train_vs",
+      "seg_last"
+    ],
+    "edge_cases_unexpectedly_missing": [],
+    "mismatches": [],
+    "pass": true
+  },
+  "negative_controls": {
+    "shift_by_one_detected": true,
+    "perturbed_normaliser_detected": true,
+    "pass": true
+  },
+  "t11": {
+    "unseen_client_smallest8_decision_ids": [
+      100032591892,
+      100032591905,
+      100032591968,
+      100032591983,
+      100032591989,
+      100032592002,
+      100032592037,
+      100032592038
+    ],
+    "seen_client_smallest8_decision_ids": [
+      100032591848,
+      100032591849,
+      100032591850,
+      100032591851,
+      100032591852,
+      100032591853,
+      100032591855,
+      100032591857
+    ],
+    "n_unseen_found": 8,
+    "n_seen_found": 8,
+    "original_vacuous_check_result": true,
+    "real_check_result_on_broken_input": false,
+    "vacuous_check_masks_the_bug": true,
+    "cold_user_transition_example": {
+      "eval_user_key": 0,
+      "n_decisions": 4,
+      "has_history_mask_sequence": [
+        0.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    "pass": true
+  },
+  "feature_invariants": {
+    "prefix_item_count_eq_position": {
+      "holds": true,
+      "violations": 0
+    },
+    "prefix_representative_count_eq_position_minus_1": {
+      "holds": true,
+      "violations": 0
+    },
+    "log1p_prefix_elapsed_s_eq_log1p_segment_elapsed_s": {
+      "holds": true,
+      "violations": 0
+    },
+    "is_weekend_eq_weekday_in_8_9": {
+      "holds": true,
+      "violations": 0
+    },
+    "daypart_consistent_with_local_hour": {
+      "holds": true,
+      "violations": 0
+    },
+    "price_missing_implies_log1p_price_zero": {
+      "holds": true,
+      "violations": 0,
+      "n_price_missing_in_sample": 225
+    },
+    "n_sample": 100000,
+    "all_hold": true
+  },
+  "normalizer_check": {
+    "fit_scope": "TRAIN",
+    "population": "TRAIN rows (split=='TRAIN'), restricted per-feature to rows NOT zero-filled by MISSING_FLAG_OF / USER_MISSING_FLAG_OF (empirically confirmed fit population -- see docstring above)",
+    "features": {
+      "log1p_price": {
+        "recomputed_mean": 5.044546584943278,
+        "recorded_mean": 5.044546584943278,
+        "rel_dev_mean": 0.0,
+        "recomputed_std": 1.2085117678255766,
+        "recorded_std": 1.2085117678255766,
+        "rel_dev_std": 0.0,
+        "n": 52637423
+      },
+      "log1p_prev_raw_view_gap_s": {
+        "recomputed_mean": 5.1736099894168595,
+        "recorded_mean": 5.1736099894168595,
+        "rel_dev_mean": 0.0,
+        "recomputed_std": 3.2603528955525674,
+        "recorded_std": 3.260352895552582,
+        "rel_dev_std": 4.494894998956323e-15,
+        "n": 48555935
+      },
+      "log1p_segment_elapsed_s": {
+        "recomputed_mean": 4.548892813156198,
+        "recorded_mean": 4.548892813156198,
+        "rel_dev_mean": 0.0,
+        "recomputed_std": 2.8300548438973725,
+        "recorded_std": 2.8300548438973165,
+        "rel_dev_std": 1.977178660045011e-14,
+        "n": 52760314
+      },
+      "log1p_item_observed_age_s": {
+        "recomputed_mean": 14.22412792514704,
+        "recorded_mean": 14.22412792514704,
+        "rel_dev_mean": 0.0,
+        "recomputed_std": 1.0172904496293522,
+        "recorded_std": 1.0172904496293862,
+        "rel_dev_std": 3.339540301976352e-14,
+        "n": 52568479
+      },
+      "prefix_representative_count": {
+        "recomputed_mean": 6.716780248881764,
+        "recorded_mean": 6.716780248881764,
+        "rel_dev_mean": 0.0,
+        "recomputed_std": 11.908258422307663,
+        "recorded_std": 11.908258422307725,
+        "rel_dev_std": 5.22095567413461e-15,
+        "n": 52760314
+      },
+      "prefix_item_count": {
+        "recomputed_mean": 7.716780248881764,
+        "recorded_mean": 7.716780248881764,
+        "rel_dev_mean": 0.0,
+        "recomputed_std": 11.908258422307663,
+        "recorded_std": 11.90825842230758,
+        "rel_dev_std": 7.010997619552275e-15,
+        "n": 52760314
+      },
+      "prefix_known_category_count": {
+        "recomputed_mean": 0.9065716515637113,
+        "recorded_mean": 0.9065716515637113,
+        "rel_dev_mean": 0.0,
+        "recomputed_std": 0.6864654920303339,
+        "recorded_std": 0.6864654920303485,
+        "rel_dev_std": 2.1186675501449047e-14,
+        "n": 52760314
+      },
+      "prefix_category_switch_count": {
+        "recomputed_mean": 0.14945208627833412,
+        "recorded_mean": 0.14945208627833412,
+        "rel_dev_mean": 0.0,
+        "recomputed_std": 0.5786311229001427,
+        "recorded_std": 0.5786311229001491,
+        "rel_dev_std": 1.0936624370714025e-14,
+        "n": 52760314
+      },
+      "current_known_category_run_length": {
+        "recomputed_mean": 3.363553295001239,
+        "recorded_mean": 3.363553295001239,
+        "rel_dev_mean": 0.0,
+        "recomputed_std": 6.373294435508954,
+        "recorded_std": 6.373294435509018,
+        "rel_dev_std": 1.0033876022126945e-14,
+        "n": 52760314
+      },
+      "log1p_prefix_elapsed_s": {
+        "recomputed_mean": 4.548892813156198,
+        "recorded_mean": 4.548892813156198,
+        "rel_dev_mean": 0.0,
+        "recomputed_std": 2.8300548438973725,
+        "recorded_std": 2.8300548438974196,
+        "rel_dev_std": 1.6633407774981232e-14,
+        "n": 52760314
+      },
+      "log1p_prev_view_count": {
+        "recomputed_mean": 2.71272120104425,
+        "recorded_mean": 2.71272120104425,
+        "rel_dev_mean": 0.0,
+        "recomputed_std": 1.4864951148151218,
+        "recorded_std": 1.4864951148151226,
+        "rel_dev_std": 5.974983777935854e-16,
+        "n": 52760314
+      },
+      "log1p_prev_session_count": {
+        "recomputed_mean": 1.4602753643756328,
+        "recorded_mean": 1.4602753643756328,
+        "rel_dev_mean": 0.0,
+        "recomputed_std": 0.878214432917217,
+        "recorded_std": 0.8782144329172249,
+        "rel_dev_std": 8.975693383510556e-15,
+        "n": 52760314
+      },
+      "recent_history_length": {
+        "recomputed_mean": 28.861692104410146,
+        "recorded_mean": 28.861692104410146,
+        "rel_dev_mean": 0.0,
+        "recomputed_std": 32.292889670329956,
+        "recorded_std": 32.2928896703294,
+        "rel_dev_std": 1.7162395175867357e-14,
+        "n": 52760314
+      },
+      "recent_distinct_items": {
+        "recomputed_mean": 21.481166658712457,
+        "recorded_mean": 21.481166658712457,
+        "rel_dev_mean": 0.0,
+        "recomputed_std": 23.550778893801503,
+        "recorded_std": 23.550778893801716,
+        "rel_dev_std": 9.051200458772595e-15,
+        "n": 52760314
+      },
+      "recent_distinct_known_main_categories": {
+        "recomputed_mean": 1.6579027562269626,
+        "recorded_mean": 1.6579027562269626,
+        "rel_dev_mean": 0.0,
+        "recomputed_std": 1.377805792010465,
+        "recorded_std": 1.3778057920104756,
+        "rel_dev_std": 7.735590239353898e-15,
+        "n": 52760314
+      },
+      "recent_mean_log_price": {
+        "recomputed_mean": 5.038273336856364,
+        "recorded_mean": 5.038273336856364,
+        "rel_dev_mean": 0.0,
+        "recomputed_std": 0.8826839088123096,
+        "recorded_std": 0.8826839088123053,
+        "rel_dev_std": 4.905345790050896e-15,
+        "n": 48551545
+      },
+      "current_minus_recent_mean_log_price": {
+        "recomputed_mean": 0.0020607022950704192,
+        "recorded_mean": 0.0020607022950704136,
+        "rel_dev_mean": 2.7358882990577635e-15,
+        "recomputed_std": 0.9933321718650323,
+        "recorded_std": 0.9933321718650419,
+        "rel_dev_std": 9.612009237402979e-15,
+        "n": 48551545
+      },
+      "log1p_time_since_prev_user_event_s": {
+        "recomputed_mean": 4.950253279346413,
+        "recorded_mean": 4.950253279346413,
+        "rel_dev_mean": 0.0,
+        "recomputed_std": 3.3790111405204026,
+        "recorded_std": 3.3790111405204004,
+        "rel_dev_std": 6.571289519064275e-16,
+        "n": 52760314
+      },
+      "log1p_time_since_prev_session_last_event_s": {
+        "recomputed_mean": 1.8615436239173029,
+        "recorded_mean": 1.8615436239173029,
+        "rel_dev_mean": 0.0,
+        "recomputed_std": 4.354925521013732,
+        "recorded_std": 4.354925521013689,
+        "rel_dev_std": 9.993452782442967e-15,
+        "n": 52760314
+      }
+    },
+    "max_rel_deviation": 3.339540301976352e-14,
+    "hard_fail_threshold": 0.01,
+    "pass": true
+  },
+  "overall_pass": true,
+  "hard_gates_checked": [
+    "class_map",
+    "counts",
+    "gate_i_f4",
+    "gate_ii",
+    "negative_controls",
+    "t11",
+    "normalizer_check",
+    "gate_i_f0_subset"
+  ]
+}

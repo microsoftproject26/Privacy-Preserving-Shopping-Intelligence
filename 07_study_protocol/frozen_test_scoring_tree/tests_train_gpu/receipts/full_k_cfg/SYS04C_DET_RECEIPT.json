@@ -1,0 +1,122 @@
+{
+ "config": {
+  "K": 158486,
+  "N": 100000,
+  "cublas_workspace_config": ":4096:8",
+  "determinism_path": "RunConfig.determinism_mode (SYS-04c / TRAIN-01R1): the real trainer applies and verifies the mode; no probe wrapper is used",
+  "effective_batch": 256,
+  "seed": 2026,
+  "trainer_code_sha256": "7b46309510ac7f71c6176d8fb8e985cdf26eb1f31f22ea2dad65f04c2134533a"
+ },
+ "cross_mode": [
+  {
+   "bitwise_overall": true,
+   "comparable": true,
+   "family": "GRU",
+   "loss_sequence_equal": true,
+   "mode_a": "strict",
+   "mode_b": "warn",
+   "param_max_abs_diff": 0.0
+  },
+  {
+   "bitwise_overall": true,
+   "comparable": true,
+   "family": "SASREC",
+   "loss_sequence_equal": true,
+   "mode_a": "strict",
+   "mode_b": "warn",
+   "param_max_abs_diff": 0.0
+  }
+ ],
+ "cuda_build": "13.0",
+ "negative_checks": [
+  {
+   "cublas_workspace_config": null,
+   "device": "cuda:0",
+   "error_text": "determinism_mode STRICT needs CUBLAS_WORKSPACE_CONFIG in (':4096:8', ':16:8') exported by the launcher; it is None",
+   "error_type": "TrainerError",
+   "family": "GRU",
+   "mode": "strict",
+   "name": "negcheck_cublas_unset",
+   "refused": true,
+   "status": "RAISES"
+  }
+ ],
+ "table": [
+  {
+   "bitwise_run_to_run": true,
+   "family": "GRU",
+   "loss_sequence_equal": true,
+   "mode": "strict",
+   "n_reps": 2,
+   "nondeterminism_warnings": [],
+   "offending_ops": [],
+   "param_max_abs_diff": 0.0,
+   "peak_memory_allocated_gib": [
+    0.7654719352722168,
+    0.7654719352722168
+   ],
+   "runs": true,
+   "updates_per_s": [
+    17.09365125397415,
+    17.368114471801125
+   ]
+  },
+  {
+   "bitwise_run_to_run": null,
+   "family": "GRU",
+   "loss_sequence_equal": null,
+   "mode": "warn",
+   "n_reps": 1,
+   "nondeterminism_warnings": [],
+   "offending_ops": [],
+   "param_max_abs_diff": null,
+   "peak_memory_allocated_gib": [
+    0.7654719352722168
+   ],
+   "runs": true,
+   "updates_per_s": [
+    16.592919179526923
+   ]
+  },
+  {
+   "bitwise_run_to_run": true,
+   "family": "SASREC",
+   "loss_sequence_equal": true,
+   "mode": "strict",
+   "n_reps": 2,
+   "nondeterminism_warnings": [],
+   "offending_ops": [],
+   "param_max_abs_diff": 0.0,
+   "peak_memory_allocated_gib": [
+    1.642960548400879,
+    1.642960548400879
+   ],
+   "runs": true,
+   "updates_per_s": [
+    9.44854496626857,
+    9.384084629991085
+   ]
+  },
+  {
+   "bitwise_run_to_run": null,
+   "family": "SASREC",
+   "loss_sequence_equal": null,
+   "mode": "warn",
+   "n_reps": 1,
+   "nondeterminism_warnings": [],
+   "offending_ops": [],
+   "param_max_abs_diff": null,
+   "peak_memory_allocated_gib": [
+    1.642960548400879
+   ],
+   "runs": true,
+   "updates_per_s": [
+    9.489550645494399
+   ]
+  }
+ ],
+ "torch": "2.13.0+cu130",
+ "utc": "2026-09-26T18:29:00Z",
+ "what": "SYS-04 training determinism probe (v4train.CentralTrainer, synthetic providers, A16 GPU 1; evidence for PREG1_AMENDMENT_01 item 4)"
+}

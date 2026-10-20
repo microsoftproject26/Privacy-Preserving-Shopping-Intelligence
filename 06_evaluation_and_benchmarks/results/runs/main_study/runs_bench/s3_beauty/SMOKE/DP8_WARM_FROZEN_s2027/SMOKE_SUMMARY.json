@@ -1,0 +1,77 @@
+{
+ "arm": "DP8_WARM_FROZEN",
+ "efe": 0.16106473484358472,
+ "frozen": {
+  "frozen_bytes": 6240240,
+  "frozen_keys": [
+   "item_embed.weight",
+   "output_embed",
+   "output_bias"
+  ],
+  "frozen_numel": 1560060,
+  "manifest_digest": "8a848763582d5951ae93491fcdf15c0be62265c6baee6663e1304f3857cf2f21",
+  "shared_bytes": 413696,
+  "shared_numel": 103424
+ },
+ "label": "SMOKE_NOT_EVIDENCE",
+ "rounds": 10,
+ "run_id": "BM_s3_beauty_DP8_WARM_FROZEN_s2027_SMOKE",
+ "spec_sha256": "5bcaeea7717510ff114b7f96783235772f8f8517592784520513147b6b661fbf",
+ "summary": {
+  "ALL": {
+   "hr@10": 0.0053792361484669175,
+   "hr@20": 0.010579164425318272,
+   "mrr@20": 0.0019783497440307167,
+   "n_unreachable": 0,
+   "n_users": 22308,
+   "ndcg@10": 0.002491007142477138,
+   "ndcg@20": 0.003798570805284496
+  },
+  "BAND": {
+   "hr@10": 0.004482964734010759,
+   "hr@20": 0.010161386730424387,
+   "mrr@20": 0.002081552505976845,
+   "n_unreachable": 0,
+   "n_users": 3346,
+   "ndcg@10": 0.0023368048747318864,
+   "ndcg@20": 0.0037540070162926046
+  },
+  "BAND_COVERED_TARGET": {
+   "hr@10": 0.00669867143016635,
+   "hr@20": 0.013174053812660489,
+   "mrr@20": 0.0024636053416231566,
+   "n_unreachable": 0,
+   "n_users": 17914,
+   "ndcg@10": 0.0031020088944054927,
+   "ndcg@20": 0.00473029571978824
+  },
+  "BAND_UNCOVERED_TARGET": {
+   "hr@10": 0.0,
+   "hr@20": 0.0,
+   "mrr@20": 0.0,
+   "n_unreachable": 0,
+   "n_users": 4394,
+   "ndcg@10": 0.0,
+   "ndcg@20": 0.0
+  },
+  "OTHERS": {
+   "hr@10": 0.005537390570614914,
+   "hr@20": 0.010652884716802025,
+   "mrr@20": 0.0019601387725365843,
+   "n_unreachable": 0,
+   "n_users": 18962,
+   "ndcg@10": 0.002518217393920847,
+   "ndcg@20": 0.0038064344503623815
+  }
+ },
+ "timing": {
+  "eval_s": 2.69,
+  "mean_round_s": 3.818758805282414,
+  "median_round_s": 3.918097439222038,
+  "n_clients": 22363,
+  "n_decisions": 131413,
+  "rounds_full_run": 384,
+  "rounds_this_leg": 10,
+  "wall_s_this_leg": 38.19
+ }
+}

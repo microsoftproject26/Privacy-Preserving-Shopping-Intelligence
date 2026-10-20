@@ -1,0 +1,52 @@
+{
+  "data_version": "rees46_nextitem_v1",
+  "version_hash": "860e5a1c3a81b8e4bbfeff4f245fa37638a43e4f260df179585964d2d4da8dbd",
+  "frozen_at": "2026-09-21T14:45:12Z",
+  "run_id": "run_20260920_234844",
+  "task_version": "rees46_next_item_context_eda_v3",
+  "readiness_state": "READY_WITH_WARNINGS",
+  "final_gate_checks_passed": 82,
+  "final_gate_checks_failed": 0,
+  "cold_rebuild_identical": true,
+  "notebook_executed": true,
+  "problems_recorded_at_freeze": [],
+  "components": {
+    "source_sha256": {
+      "2019-10": "fedd938409b5f836ec89b39c861b13dad99fc7cd9beb1fddd97a2d50488b5b80",
+      "2019-11": "addd9a27ed99abdece368019ebfba19568972c7fcbe949db3484aab8a3bcffec"
+    },
+    "protocol_resolved_sha256": "19fa45cccd83e5e4b35f94faafd4e9b03139ebfee2452d29ae91824f1860f271",
+    "config_hash": "21dcf09a60821d54602f880a46619435c097c8448d98ca335fde6f75a5fed77f",
+    "code_hash": "02fbb07147ed9c0ba54092dd4ee042ce6af42a06145178017999fb7b242dde73",
+    "mapping_sha256": {
+      "catalogue.parquet": "d99d0ce7dd05473f1fa84459b7e1e868c6f9412747d79e511661801b11268acd",
+      "clients.parquet": "8de39e057470937bd6b31da99de7cf38f7ad08e4690b734a6b1b3e54ce65b8f1",
+      "vocab_brand.parquet": "58bae6d72dcacc11cbddb1ede5b850eeddc4bb3114996193273a761278eb5ee1",
+      "vocab_category_code.parquet": "1089d8c67b2d46c19be3d3433cc95b7c3891ea22801162406ae43804f0be7b4b",
+      "vocab_category_id.parquet": "6acb8f667f6589ec13c98b8336ea7ef2a92d1ccf34cd6fbc3337e5e14d264f19",
+      "vocab_main_category.parquet": "c814d0e7b9a638a0a60ea032af18dcf9df1d7c4af45b268ec7e4394e19e2e27d"
+    },
+    "decision_ledger_digest": {
+      "rows": 75083291,
+      "digest_a": "692598595779064881874853847",
+      "digest_b": "692549268225607964739564088",
+      "digest_md5": "37540119942772452400155979"
+    },
+    "logical_decision_digest": {
+      "decisions": 75083291,
+      "digest_bit_xor_hash": "16933510634980793212",
+      "note": "commutative digest: invariant to repartitioning and row order"
+    },
+    "logical_feature_digest": {
+      "rows": 75083291,
+      "digest_bit_xor_hash": "6792430621004509073",
+      "note": "commutative digest: invariant to repartitioning and row order"
+    }
+  },
+  "files": 409,
+  "files_bulk_copied_from_the_run": 395,
+  "materialisation": {
+    "hardlink": 393
+  },
+  "policy": "IMMUTABLE. Preprocessing must NOT be changed in response to GRU or SASRec results. Any change to preprocessing produces a NEW version (v2) and a separate experiment; tuning the data on model scores would destroy the cleanliness of the comparison."
+}

@@ -1,0 +1,225 @@
+{
+ "arm": "C_SMALL",
+ "checkpoints": {
+  "PRACTICAL_BEST": {
+   "file": "ckpt/best.pt",
+   "mark": 6.0,
+   "sha256": "23bbf68a92e1a6efb8f951a68b47b5d43eddf4c758f451858902856dfbc875c7"
+  }
+ },
+ "controlled_budget": "N/A (early stopped)",
+ "early_stopped_at": 18.0,
+ "kind": "central",
+ "run_id": "BM_s3_sports_C_SMALL__B24_L50_D0.1__UDJ50-F_s2026",
+ "spec": {
+  "N_decisions": 94289,
+  "arm": "C_SMALL",
+  "betas": [
+   0.9,
+   0.999
+  ],
+  "budget_efe": 24,
+  "central_recipe_id": "SMALL_SASREC_D64_B2",
+  "dropout": [
+   0.1
+  ],
+  "early_stop_marks": 6,
+  "effective_batch": 256,
+  "eps": 1e-08,
+  "exploratory": "POST_HOC_X",
+  "exposure_point": "end",
+  "grad_clip": 1.0,
+  "init_sha256": "2172a07dfcc0cc18626201ee20a220d846aaf4a7f4bb8c0863e1015e93a0998b",
+  "lr_table_sha256": "9ad61e428f08aaa63eb728ae03261b1dc5d0217c62cd6cb51263fe720cf7078d",
+  "marks": [
+   2.0,
+   4.0,
+   6.0,
+   8.0,
+   10.0,
+   12.0,
+   14.0,
+   16.0,
+   18.0,
+   20.0,
+   22.0,
+   24.0
+  ],
+  "max_len": 50,
+  "n_updates": 8856,
+  "peak_lr": 0.0007114121116984968,
+  "provenance": {
+   "ft_cell": "FT_C_f0.3_P4",
+   "pins": {
+    "device/SELECTION_FT_C.json": "e47965d2f4486fc2c30140a8ee14e79686a842decb091b3dff1de5646716c10c",
+    "fl/FL_TUNING_SELECTION.json": "9bca186e5025f5caa9e762f3c425fb3151923b79e60f01e6ecb063aac9c715ec",
+    "fl/FL_WARM_SELECTION_S7.json": "d67a0a851665495b092abbba4456f26a3423d6ef21665f5a0e2b65e2d78dc000",
+    "fl/FL_WARM_SELECTION_S8.json": "8b79d3052799dfa0ba208dce5db138da88aaa7024ba6511a374c59ce8c55a98a"
+   },
+   "tuning_winner_label": "fedadam|eta=0.01|m=1|shape=fl_const|client=sgd_m|clr=0.1|passes=1",
+   "warm_winners": {
+    "FA_WARM": "f=0.25|sf=0.1",
+    "FA_WARM_FROZEN": "f=1|sf=0.1"
+   }
+  },
+  "schedule": "S0",
+  "seed": 2026,
+  "select_population": "OTHERS",
+  "study": "A1_DISJOINT_PRE",
+  "tag": "POST_HOC_EXPLORATORY",
+  "user_subset": {
+   "file": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_x/x2_A1/splits/s3_sports__DJ50.json",
+   "file_sha256": "3465979d0054549edf2c7e275c61d99efb81dbbef21c887a3ef09a7a0e1da032",
+   "frac_S": 0.5,
+   "n_F": 17799,
+   "n_S": 17799,
+   "n_role_users": 17799,
+   "role": "F",
+   "rule": "PCG64(SeedSequence([BAND_TAG=0x42414E44, 2026])).permutation(U) over the sorted external user ids (= v4bench.data.band_users); S = first floor(frac U + 0.5), F = the rest",
+   "split_id": "DJ50",
+   "split_sha256": "cc5bec59c252a3b73d1506323d0dbe9b653cc330f69575973af73e6bac9049ed"
+  },
+  "variant": "SASREC_D64_B2",
+  "weight_decay": 1e-05
+ },
+ "status": "DONE_MAIN",
+ "theta_pre_state_digest_endpoint": null,
+ "timing": {
+  "mean_step_s": 0.21226112825419666,
+  "median_step_s": 0.21054630260914564,
+  "n_steps_this_leg": 6642,
+  "n_updates_full_run": 8856,
+  "wall_s_this_leg": 1496.33
+ },
+ "tracker": {
+  "best_mark": 6.0,
+  "best_value": 0.02052397769169951,
+  "history": [
+   {
+    "best_mark_after": 2.0,
+    "best_value_after": 0.012040726695697092,
+    "improved": true,
+    "mark": 2.0,
+    "phase": "MAIN",
+    "value": 0.012040726695697092
+   },
+   {
+    "best_mark_after": 4.0,
+    "best_value_after": 0.019123151174972066,
+    "improved": true,
+    "mark": 4.0,
+    "phase": "MAIN",
+    "value": 0.019123151174972066
+   },
+   {
+    "best_mark_after": 6.0,
+    "best_value_after": 0.02052397769169951,
+    "improved": true,
+    "mark": 6.0,
+    "phase": "MAIN",
+    "value": 0.02052397769169951
+   },
+   {
+    "best_mark_after": 6.0,
+    "best_value_after": 0.02052397769169951,
+    "improved": false,
+    "mark": 8.0,
+    "phase": "MAIN",
+    "value": 0.01972451408809743
+   },
+   {
+    "best_mark_after": 6.0,
+    "best_value_after": 0.02052397769169951,
+    "improved": false,
+    "mark": 10.0,
+    "phase": "MAIN",
+    "value": 0.019087222337174636
+   },
+   {
+    "best_mark_after": 6.0,
+    "best_value_after": 0.02052397769169951,
+    "improved": false,
+    "mark": 12.0,
+    "phase": "MAIN",
+    "value": 0.01860858446291566
+   },
+   {
+    "best_mark_after": 6.0,
+    "best_value_after": 0.02052397769169951,
+    "improved": false,
+    "mark": 14.0,
+    "phase": "MAIN",
+    "value": 0.018481047584480166
+   },
+   {
+    "best_mark_after": 6.0,
+    "best_value_after": 0.02052397769169951,
+    "improved": false,
+    "mark": 16.0,
+    "phase": "MAIN",
+    "value": 0.01818667244260352
+   },
+   {
+    "best_mark_after": 6.0,
+    "best_value_after": 0.02052397769169951,
+    "improved": false,
+    "mark": 18.0,
+    "phase": "MAIN",
+    "value": 0.018147567562274
+   }
+  ],
+  "main_best_mark": 6.0,
+  "main_best_value": 0.02052397769169951,
+  "tolerance": 0.0002
+ },
+ "utc": "2026-10-09T17:47:02Z",
+ "validation": {
+  "PRACTICAL_BEST": {
+   "ALL": {
+    "hr@10": 0.03131782945736434,
+    "hr@20": 0.043044397463002114,
+    "mrr@20": 0.01785391484155385,
+    "n_unreachable": 0,
+    "n_users": 35475,
+    "ndcg@10": 0.020386823669124098,
+    "ndcg@20": 0.023341829181721237
+   },
+   "BAND": {
+    "hr@10": 0.030219315555054405,
+    "hr@20": 0.04172069684839601,
+    "mrr@20": 0.017990402354965962,
+    "n_unreachable": 0,
+    "n_users": 17737,
+    "ndcg@10": 0.020249661913898154,
+    "ndcg@20": 0.023147897436062045
+   },
+   "BAND_COVERED_TARGET": {
+    "hr@10": 0.03205854168481575,
+    "hr@20": 0.04405145628248686,
+    "mrr@20": 0.01825855668571078,
+    "n_unreachable": 0,
+    "n_users": 34437,
+    "ndcg@10": 0.020857342465480194,
+    "ndcg@20": 0.023879346993702394
+   },
+   "BAND_UNCOVERED_TARGET": {
+    "hr@10": 0.00674373795761079,
+    "hr@20": 0.009633911368015413,
+    "mrr@20": 0.004429395393353231,
+    "n_unreachable": 0,
+    "n_users": 1038,
+    "ndcg@10": 0.004776750653599214,
+    "ndcg@20": 0.005508976685386739
+   },
+   "OTHERS": {
+    "hr@10": 0.03241628142969895,
+    "hr@20": 0.04436802345247491,
+    "mrr@20": 0.01771743502278112,
+    "n_unreachable": 0,
+    "n_users": 17738,
+    "ndcg@10": 0.02052397769169951,
+    "ndcg@20": 0.02353574999425687
+   }
+  }
+ }
+}

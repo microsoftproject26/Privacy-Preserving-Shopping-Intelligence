@@ -1,0 +1,178 @@
+{
+  "feature_set_id": "rees46_next_item_shared_v4_localtime",
+  "groups": {
+    "F0_item_only": {
+      "quality_flags": [],
+      "categorical": [
+        "item_tokens"
+      ],
+      "numeric": [],
+      "user_context": []
+    },
+    "F1_core_categorical": {
+      "quality_flags": [],
+      "categorical": [
+        "item_tokens",
+        "category_tokens",
+        "brand_tokens",
+        "main_category_tokens"
+      ],
+      "numeric": [],
+      "user_context": []
+    },
+    "F2_time_context": {
+      "quality_flags": [
+        "ALL"
+      ],
+      "categorical": [
+        "item_tokens",
+        "category_tokens",
+        "brand_tokens",
+        "main_category_tokens",
+        "daypart_tokens",
+        "weekday_tokens"
+      ],
+      "numeric": [
+        "local_hour_sin",
+        "local_hour_cos",
+        "local_weekday_sin",
+        "local_weekday_cos",
+        "is_weekend",
+        "utc_hour_sin",
+        "utc_hour_cos",
+        "utc_weekday_sin",
+        "utc_weekday_cos",
+        "log1p_prev_raw_view_gap_s",
+        "log1p_segment_elapsed_s",
+        "log1p_item_observed_age_s",
+        "prefix_representative_count"
+      ],
+      "user_context": []
+    },
+    "F3_user_session_context": {
+      "quality_flags": [
+        "ALL"
+      ],
+      "categorical": [
+        "item_tokens",
+        "category_tokens",
+        "brand_tokens",
+        "main_category_tokens",
+        "daypart_tokens",
+        "weekday_tokens"
+      ],
+      "numeric": [
+        "local_hour_sin",
+        "local_hour_cos",
+        "local_weekday_sin",
+        "local_weekday_cos",
+        "is_weekend",
+        "utc_hour_sin",
+        "utc_hour_cos",
+        "utc_weekday_sin",
+        "utc_weekday_cos",
+        "log1p_prev_raw_view_gap_s",
+        "log1p_segment_elapsed_s",
+        "log1p_item_observed_age_s",
+        "prefix_representative_count",
+        "prefix_item_count",
+        "prefix_known_category_count",
+        "prefix_category_switch_count",
+        "current_known_category_run_length",
+        "log1p_prefix_elapsed_s"
+      ],
+      "user_context": [
+        "ALL"
+      ]
+    },
+    "F4_rich_side_information": {
+      "quality_flags": [
+        "ALL"
+      ],
+      "categorical": [
+        "item_tokens",
+        "category_tokens",
+        "brand_tokens",
+        "main_category_tokens",
+        "daypart_tokens",
+        "weekday_tokens"
+      ],
+      "numeric": [
+        "ALL"
+      ],
+      "user_context": [
+        "ALL"
+      ]
+    }
+  },
+  "event_numeric_block_order": [
+    "log1p_price",
+    "utc_hour_sin",
+    "utc_hour_cos",
+    "utc_weekday_sin",
+    "utc_weekday_cos",
+    "local_hour_sin",
+    "local_hour_cos",
+    "local_weekday_sin",
+    "local_weekday_cos",
+    "is_weekend",
+    "log1p_prev_raw_view_gap_s",
+    "log1p_segment_elapsed_s",
+    "log1p_item_observed_age_s",
+    "prefix_representative_count",
+    "prefix_item_count",
+    "prefix_known_category_count",
+    "prefix_category_switch_count",
+    "current_known_category_run_length",
+    "log1p_prefix_elapsed_s"
+  ],
+  "event_quality_flags_order": [
+    "price_missing",
+    "price_zero",
+    "price_conflict",
+    "brand_missing",
+    "brand_recovered",
+    "brand_conflict",
+    "category_missing",
+    "category_recovered",
+    "category_conflict",
+    "category_code_missing",
+    "category_code_recovered",
+    "main_category_missing",
+    "prev_gap_unavailable",
+    "item_age_unavailable",
+    "simultaneous_block"
+  ],
+  "user_context_order": [
+    "log1p_prev_view_count",
+    "log1p_prev_session_count",
+    "recent_history_length",
+    "has_history",
+    "recent_distinct_items",
+    "recent_distinct_known_main_categories",
+    "recent_category_match_share",
+    "recent_brand_match_share",
+    "recent_mean_log_price",
+    "current_minus_recent_mean_log_price",
+    "log1p_time_since_prev_user_event_s",
+    "log1p_time_since_prev_session_last_event_s"
+  ],
+  "user_context_masks_order": [
+    "has_history_mask",
+    "recent_category_match_supported",
+    "recent_brand_match_supported",
+    "recent_price_supported",
+    "prev_user_event_available",
+    "prev_session_available"
+  ],
+  "reserved_indices": {
+    "PAD": 0,
+    "MISSING": 1,
+    "OOV": 2,
+    "KNOWN_START": 3
+  },
+  "contextual_timezone": "Europe/Moscow",
+  "contextual_timezone_status": "HYPOTHESIS_NOT_CONFIRMED_STORE_GEOGRAPHY",
+  "canonical_timezone": "UTC - never modified",
+  "note": "Selection helper: rees46_eda.loaders.feature_group_view(batch, group)."
+}

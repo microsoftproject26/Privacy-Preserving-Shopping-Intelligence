@@ -1,0 +1,276 @@
+{
+ "N": 26677600,
+ "checkpoints": {
+  "best": {
+   "file": "checkpoints/best.pt",
+   "sha256": "2d46312c6f0a68e14a6b81c1ecf53c6cc05c75c33def13b7a63dbaff460be5e7"
+  },
+  "endpoint_6.0": {
+   "file": "checkpoints/endpoint_6.0.pt",
+   "sha256": "0da17f3b9e560cc547590f0e6cd9a8e4514a7dcaf456cc3378f571e8baca7475"
+  }
+ },
+ "config_sha256": "48b18b446b1404c4fc112b072706e2c25bc3749f74f44f70ee76133dbd3b2a28",
+ "continuation": "AUTO_C3",
+ "continuation_stop_mark": 7.0,
+ "controlled_budget": {
+  "efe": 6.0,
+  "mark": 6.0,
+  "value": 0.19419217133966563
+ },
+ "data_version": "CLEAN_V2_POP5100_V2",
+ "determinism": {
+  "cublas_workspace_config": ":4096:8",
+  "mode": "STRICT",
+  "torch_effective": {
+   "deterministic_algorithms": true,
+   "warn_only": false
+  }
+ },
+ "device_pin_sha256": "db744ca3f0da27ac7b65c41b4b32f2c68ec9d0bd66bbc0dc33e874a226834e6b",
+ "efe": 7.0,
+ "eval_every_efe": 0.5,
+ "evals": [
+  {
+   "efe": 0.5000029987705041,
+   "exposures": 13338880,
+   "improved": true,
+   "mark": 0.5,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_0.5.rows.json",
+   "secondary": {
+    "hr@10": 0.3415791958358155,
+    "ndcg@10": 0.19766214573404584
+   },
+   "updates": 52105,
+   "value": 0.16088998403431015
+  },
+  {
+   "efe": 1.0,
+   "exposures": 26677600,
+   "improved": true,
+   "mark": 1.0,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_1.0.rows.json",
+   "secondary": {
+    "hr@10": 0.3527292971560467,
+    "ndcg@10": 0.20634064784866504
+   },
+   "updates": 104210,
+   "value": 0.16887668153438457
+  },
+  {
+   "efe": 1.5000029987705041,
+   "exposures": 40016480,
+   "improved": true,
+   "mark": 1.5,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_1.5.rows.json",
+   "secondary": {
+    "hr@10": 0.35834229620161906,
+    "ndcg@10": 0.21104830330557994
+   },
+   "updates": 156315,
+   "value": 0.17342690726316343
+  },
+  {
+   "efe": 2.0,
+   "exposures": 53355200,
+   "improved": true,
+   "mark": 2.0,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_2.0.rows.json",
+   "secondary": {
+    "hr@10": 0.3615489218885902,
+    "ndcg@10": 0.21353339749817332
+   },
+   "updates": 208420,
+   "value": 0.17556772326282458
+  },
+  {
+   "efe": 2.500002998770504,
+   "exposures": 66694080,
+   "improved": true,
+   "mark": 2.5,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_2.5.rows.json",
+   "secondary": {
+    "hr@10": 0.37411812868562355,
+    "ndcg@10": 0.22240716753891906
+   },
+   "updates": 260525,
+   "value": 0.18322511397179517
+  },
+  {
+   "efe": 3.0,
+   "exposures": 80032800,
+   "improved": true,
+   "mark": 3.0,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_3.0.rows.json",
+   "secondary": {
+    "hr@10": 0.3896433829419008,
+    "ndcg@10": 0.2333971620293087
+   },
+   "updates": 312630,
+   "value": 0.19275439069005543
+  },
+  {
+   "efe": 3.500002998770504,
+   "exposures": 93371680,
+   "improved": false,
+   "mark": 3.5,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_3.5.rows.json",
+   "secondary": {
+    "hr@10": 0.3884740934648968,
+    "ndcg@10": 0.2331499460576104
+   },
+   "updates": 364735,
+   "value": 0.19277072016404245
+  },
+  {
+   "efe": 4.0,
+   "exposures": 106710400,
+   "improved": false,
+   "mark": 4.0,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_4.0.rows.json",
+   "secondary": {
+    "hr@10": 0.3891293250483973,
+    "ndcg@10": 0.2331111381257539
+   },
+   "updates": 416840,
+   "value": 0.19240891098478397
+  },
+  {
+   "efe": 4.500002998770504,
+   "exposures": 120049280,
+   "improved": false,
+   "mark": 4.5,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_4.5.rows.json",
+   "secondary": {
+    "hr@10": 0.3875176354477245,
+    "ndcg@10": 0.23271524570471147
+   },
+   "updates": 468945,
+   "value": 0.19240734556874578
+  },
+  {
+   "efe": 5.0,
+   "exposures": 133388000,
+   "improved": false,
+   "mark": 5.0,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_5.0.rows.json",
+   "secondary": {
+    "hr@10": 0.3879508548577684,
+    "ndcg@10": 0.23249550522374798
+   },
+   "updates": 521050,
+   "value": 0.19196371554834446
+  },
+  {
+   "efe": 5.500002998770504,
+   "exposures": 146726880,
+   "improved": false,
+   "mark": 5.5,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_5.5.rows.json",
+   "secondary": {
+    "hr@10": 0.38669479868609063,
+    "ndcg@10": 0.23113170353725548
+   },
+   "updates": 573155,
+   "value": 0.1905506395511667
+  },
+  {
+   "efe": 6.0,
+   "exposures": 160065600,
+   "improved": true,
+   "mark": 6.0,
+   "phase": "MAIN",
+   "rows_file": "evals/eval_6.0.rows.json",
+   "secondary": {
+    "hr@10": 0.3916439076602413,
+    "ndcg@10": 0.23515127006332748
+   },
+   "updates": 625260,
+   "value": 0.19419217133966563
+  },
+  {
+   "efe": 6.500002998770504,
+   "exposures": 173404480,
+   "improved": false,
+   "mark": 6.5,
+   "phase": "CONTINUATION",
+   "rows_file": "evals/eval_6.5.rows.json",
+   "secondary": {
+    "hr@10": 0.3863217470970084,
+    "ndcg@10": 0.2308584389009041
+   },
+   "updates": 677365,
+   "value": 0.1902658905818845
+  },
+  {
+   "efe": 7.0,
+   "exposures": 186743200,
+   "improved": false,
+   "mark": 7.0,
+   "phase": "CONTINUATION",
+   "rows_file": "evals/eval_7.0.rows.json",
+   "secondary": {
+    "hr@10": 0.3861424947560483,
+    "ndcg@10": 0.2309587419951198
+   },
+   "updates": 729470,
+   "value": 0.19052367535902315
+  }
+ ],
+ "exposures": 186743200,
+ "family": "SASREC",
+ "final_rng_sha256": "3124a372d1babbc0af5a080fdd5acd30280c6d0c203784191d24ac5370e5a09d",
+ "final_state_digest": "485b657b911a7685053d47c87d298ec4afef1a82ce315986165f73c536a7d85c",
+ "hp": null,
+ "hp_trial": null,
+ "init_sha256": "fe075eddc6715e92d7c20066c89291ee4147d9aed9a28c939d4dcae626ded616",
+ "label": "BUDGET_LIMITED_STILL_IMPROVING",
+ "latest_deleted_sha256": "965f330ebff4b25f2004937c5de87682bb5628fdae3de9d9cdf1af04ad4fdfb9",
+ "manifest_registry": {
+  "data_version": "CLEAN_V2_POP5100_V2",
+  "eval_manifest": "MAIN_VALIDATION_5_100_131072",
+  "file_sha256": "406b8bb11e1ee0fe7e0566894d026e33c033c2afe8aff6b5fe8c78d704d846b8",
+  "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/CFULL/C_FULL_02B_SASREC_s2026/REGISTRY_V2_TRAINER_VIEW.json",
+  "role": "MAIN",
+  "self_sha256": "c2c8d5e5c3a17ec5f1a01723303f3be7ede84543dc464c9c9bb756d6832f256a",
+  "train_manifest": "FULL_TRAIN_5_100_TIEBREAK"
+ },
+ "manifest_role": "MAIN",
+ "model_variant": "SASREC_D256_B3",
+ "peak_lr": 0.00040005642964899735,
+ "phase": "CONTINUATION",
+ "practical_best": {
+  "efe": 6.0,
+  "mark": 6.0,
+  "value": 0.19419217133966563
+ },
+ "practical_best_extended": {
+  "checkpoint": "best",
+  "efe": 6.0,
+  "mark": 6.0,
+  "value": 0.19419217133966563
+ },
+ "run_id": "C_FULL_02B_SASREC_s2026",
+ "run_label": "PRODUCTION",
+ "run_role": "MAIN",
+ "schema": {
+  "schema_id": "L3S_NEAR_DUPLICATE_SESSION-minus-G11+G12a+G3+G4+G7",
+  "schema_self_sha256": "c53d47fe2555dd537e27e11d45a4e8b23739566e6b98179dcf521852aa918f87"
+ },
+ "seed": 2026,
+ "shared_numel": 83881764,
+ "status": "DONE_CONTINUATION",
+ "still_improving": true,
+ "updates": 729470
+}

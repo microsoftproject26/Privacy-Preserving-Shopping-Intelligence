@@ -1,0 +1,109 @@
+{
+ "receipt": "DATA10_SERVER_RECEIPT",
+ "task": "DATA-10",
+ "overall_pass": true,
+ "checks": {
+  "build_receipt_pass": true,
+  "manifest_on_disk": true,
+  "ext_registry_rule": true,
+  "base_registry_pinned_by_lock_v2": true,
+  "tests_exit_0": true,
+  "tests_negative_controls_failed_as_intended": true,
+  "tests_real_data_ran": true,
+  "rss_guards_rc_0": true,
+  "no_pycache_in_owned_code": true,
+  "no_test_manifest_or_role": true
+ },
+ "date_u": {
+  "build_job_end_utc": "2026-09-29T12:43:15Z",
+  "build_job_start_utc": "2026-09-29T12:39:03Z",
+  "final_job_end_utc": "2026-09-29T12:44:08Z",
+  "final_job_start_utc": "2026-09-29T12:43:15Z"
+ },
+ "df": {
+  "df_after_build": "free_bytes_after_build=332004687872",
+  "df_after_final": "free_bytes_after_final=332004573184",
+  "df_before_build": "free_bytes_before_build=332513259520",
+  "df_before_final": "free_bytes_before_final=332004679680"
+ },
+ "rss_guards": [
+  {
+   "cmd": [
+    "/home/jovyan/venvs/ppsi-gpu/bin/python",
+    "-B",
+    "-m",
+    "v4data10.d10_build",
+    "--out",
+    "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/data_pretrain"
+   ],
+   "rc": 0,
+   "killed_rss_guard": false,
+   "peak_rss_mib": 11307.9,
+   "limit_mib": 16384.0,
+   "wall_s": 251.7,
+   "end_utc": "2026-09-29T12:43:15Z"
+  }
+ ],
+ "data_pretrain_bytes": 508335586,
+ "ext_registry": {
+  "path": "contracts/manifest_registry/REGISTRY_V2_PRETRAIN_EXT.json",
+  "file_sha256": "2754b5b87e723e2536aa237016b2a225464188152859cc74766ec279611a1a39",
+  "self_sha256": "bf136d1d925b62b7c39787ee52abda2ae09b063e484684f21c9dc7dae4ff70b4",
+  "extends": {
+   "path": "contracts/manifest_registry/REGISTRY_V2.json",
+   "file_sha256": "56dd0840cb50e89250a8b9a54dc1d4f621e9e6f9500ec44441cf07cb472ef740",
+   "self_sha256": "f6a0820791ad39e84aa86ebde2c37c12e76a45be6034d9068621a2c431b21c41",
+   "rule": "every REGISTRY_V2 key / role / manifest / population band is canonical-JSON identical here (v4data10.d10_registry.verify_ext_registry); additions only: roles.PRETRAIN, manifests.PRETRAIN_TRAIN_5_100_NONMAIN, population_bands.PRETRAIN_NONMAIN and the extension_* keys"
+  }
+ },
+ "build_receipt_sha256": "4eb92f3a2c63c25d2f7170a416ced418025fe9f959dcb2138917af22127db0e9",
+ "tests": {
+  "exit_code": 0,
+  "counts": {
+   "passed": 50,
+   "xfailed": 20
+  },
+  "negative_controls": {
+   "n": 20,
+   "n_run": 20,
+   "n_skipped": 0,
+   "all_failed_as_intended": true
+  },
+  "summary_line": "\u001b[32m\u001b[32m\u001b[1m50 passed\u001b[0m, \u001b[33m20 xfailed\u001b[0m\u001b[32m in 34.28s\u001b[0m\u001b[0m"
+ },
+ "tests_receipt_file_sha256": "87a654059a58715dc1c332c35ee7778b7201587b79fdb8b760e2c96a29b09f79",
+ "manifest": {
+  "PRETRAIN_TRAIN_5_100_NONMAIN": {
+   "n_users": 1217610,
+   "n_decisions": 24089824,
+   "content_sha256": "879a7a524696b7203e2688b233ccd8ba3e4a3bb58ee7707342ff8403bd443831",
+   "header_sha256": "f5a2eaa2ded7032908898dc7cdf670da5faec8f400aaecade67a3ae25b7e740f",
+   "header_content_sha256": "bbee6af232b6cd66a565bb4d3649e32b48643ff97c1030fdc2a9cfeb155aef03",
+   "population_sha256": "8c9c7b2d978e946aca40af4376f94e629c546815ba261d93ddf782be2ab696d9",
+   "population_sha256_selection_key_v2": "716beeb961633a9d0918df6bc981cbaafa03bbf9a36b2e2614f4ee4f916989c4"
+  }
+ },
+ "code": {
+  "d10_code_sha256": "f92248df21fe28f0610e09da309e9914434f380dc6a31f65c5b9b0ca6ea0273f",
+  "d10_code_sha256_rule": "v4data.common.code_tree_sha256 over code/v4data10/{__init__,d10_common,d10_build}.py",
+  "d10_code_files_sha256": {
+   "__init__.py": "4a9dbefb7099166af5a7840960ab0b840dd5d36d01db864745d5768de4d0cc78",
+   "d10_common.py": "614d8fa2f082b995edb3f6b88663ad08c6dbe799e4f6751187b75faf060e0083",
+   "d10_build.py": "53afe3c669d727d178bbfb4ce47be1cf9f02cec6eb4469c1f7c4842da01b55a0"
+  },
+  "v4data08_files_sha256": {
+   "d8_common.py": "60c9a1c522dc26c9a218a1f0d3107426a93e69a7b2bea0b31c6f48f5eac7a435",
+   "d8_build.py": "f1756380dd1bd1ba0ce0c8c25ac812425b40930ab707c096a1f26c8cb3550063"
+  },
+  "v4data06_files_sha256": {
+   "d6_common.py": "03cdd46249147293eb59b2ffc14cd910e8864694cf1b4695425680243308d946",
+   "d6_build.py": "277a2fdc08a4d8a2479ae07f9b6b2061ead60deb67e1db3c42ff699848f4d394"
+  },
+  "census_v2_core_sha256": "aca2fe3a69afaa6a38c75492acc3148a8ec5ccb7b79678af815acd8eef4d169a",
+  "v4fs_data_fs_common_sha256": "a152cbc23c3a344ce4ca0d78e83b252c87842fb9fb6843b04f2f9483517b28b1",
+  "v4data_builder_code_sha256": "443254e9ed95e41a48076f91643c83fbc77355dc80bb6b111d8432703d3e34a5"
+ },
+ "finalize_code_sha256": "c8f129f077d679e640c3ac4490e430602041eb249f4ba7501a20872eeaea3cc4",
+ "test_split_read": false,
+ "receipt_sha256": "7026d6690c6bc93c20dab9a62cfca8a515a1284e876e43daa4c2e7ad7f5882b4"
+}

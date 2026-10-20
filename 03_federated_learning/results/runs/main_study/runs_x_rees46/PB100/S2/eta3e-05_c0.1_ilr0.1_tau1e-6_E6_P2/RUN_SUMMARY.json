@@ -1,0 +1,426 @@
+{
+ "arm": "P2_W",
+ "arm_spec": {
+  "arm": "P2_W",
+  "cfg": {
+   "dp": null,
+   "dropout_p": 0.1,
+   "endpoint_efe": 6.0,
+   "endpoint_rounds": 1707,
+   "exposure_point": "end",
+   "lr_peak_local": 0.1,
+   "lr_shape": "fl_const",
+   "max_attempts": 2,
+   "method": "FA",
+   "mu": 0.0,
+   "n_shards": 2,
+   "pf": null,
+   "seed": 2026,
+   "server_opt": {
+    "beta1": 0.9,
+    "beta2": 0.99,
+    "lr": 3e-05,
+    "name": "fedadam",
+    "tau": 1e-06,
+    "v_init": "tau_squared"
+   },
+   "solver": {
+    "batch_size": 16,
+    "clip": 1.0,
+    "fused": null,
+    "item_lr_mult": 0.1,
+    "lr": 0.1,
+    "optimizer": "sgd_m",
+    "passes": 2,
+    "weight_decay": 0.0
+   }
+  },
+  "exposure_budget": {
+   "authority": "PREG1_AMENDMENT_06J \u00a73",
+   "dropout_p": 0.1,
+   "endpoint_efe": 6.0,
+   "formula": "X2: rounds = ceil(10 x 6 x N / (576 P)) (POST_HOC_EXPLORATORY budget)",
+   "group": 64,
+   "n_clients": 32768,
+   "passes": 2,
+   "rounds": 1707
+  },
+  "init_from": {
+   "checkpoint_bytes": 82853197,
+   "checkpoint_sha256": "22135cdf132eae1d405dd802acf1a756c9aba122e02c9a01f53876894bd58383",
+   "family": "SASREC",
+   "fl_init_kind": "endpoint_6.0",
+   "kind": "PRETRAIN_FOR_FL",
+   "model_variant": "SASREC_D64_B2",
+   "run_id": "PRETRAIN_FOR_FL_SMALL_SASREC_D64_B2_s2026",
+   "run_label": "PRETRAIN_FOR_FL",
+   "seed": 2026,
+   "state_digest": "3e1c48efe79a1f1a1377719c144af9fe8e8610060ea7cc18b6bff545b61ce4e2",
+   "train_manifest": "PRETRAIN_TRAIN_5_100_NONMAIN"
+  },
+  "lr_mult": 1.0,
+  "lr_peak_base": 0.0007114121116984968,
+  "max_rounds": 1707,
+  "p2_fixed": {
+   "authority": "PREG2 \u00a75.1",
+   "client_momentum": 0.9,
+   "client_opt": "sgd_m",
+   "clip": 1.0,
+   "dropout_p": 0.1,
+   "endpoint_efe": 6.0,
+   "group": 64,
+   "local_batch": 16,
+   "local_passes": 2,
+   "lr_shape": "fl_const",
+   "sampling": "sweep",
+   "weight_decay": 0.0
+  },
+  "p2_label": "fedadam|eta=3e-05|c=0.1|items=unfrozen|ilr=0.1",
+  "p2_recipe": {
+   "client_lr": 0.1,
+   "item_lr_mult": 0.1,
+   "items": "unfrozen",
+   "lora_lr_factor": null,
+   "lora_rank": null,
+   "personal_head": false,
+   "server_lr": 3e-05,
+   "server_opt": "fedadam",
+   "upload": "dense"
+  },
+  "plan": {
+   "group_size": 64,
+   "sampling": "sweep"
+  },
+  "role": "CALIBRATION",
+  "study": "PREG2",
+  "upload_codec": null
+ },
+ "arm_spec_sha256": "5e620fc3b010c867324c82359b6e7460c1387fed00d4f4f0afe42da810c6c8f9",
+ "best_half_efe": 11,
+ "best_metric": 0.14619368070889643,
+ "bytes": {
+  "disclosure": "dropped clients (10% drop-out) are not charged a download (the ledger counts survivors)",
+  "fleet": {
+   "bytes_down": 8149290772160,
+   "bytes_up": 8149291559200,
+   "messages": 196760,
+   "retry_bytes_down": 0,
+   "total": 16298582331360
+  },
+  "per_client": {
+   "max": 662678688,
+   "mean": 497393259.62402344,
+   "median": 497009016.0,
+   "min": 0,
+   "rule": "visits x (down + up) of that client"
+  },
+  "per_visit": {
+   "alias_bytes_not_sent": 0,
+   "bootstrap_bytes_once": 0,
+   "download_bytes": 82834832,
+   "private_bytes_sent": 0,
+   "private_resident_bytes": 0,
+   "send_plus_receive_bytes": 165669672,
+   "shared_numel": 20708708,
+   "upload_bytes": 82834840
+  }
+ },
+ "checkpoints": [
+  "best.pt",
+  "endpoint_6.0.pt"
+ ],
+ "counters": {
+  "coverage_by_sweep": {
+   "0": {
+    "clients": 29579,
+    "fraction": 0.902679443359375
+   },
+   "1": {
+    "clients": 29425,
+    "fraction": 0.897979736328125
+   },
+   "2": {
+    "clients": 29527,
+    "fraction": 0.901092529296875
+   },
+   "3": {
+    "clients": 9849,
+    "fraction": 0.300567626953125
+   }
+  },
+  "efe": 6.000473635087382,
+  "exposures": 3876708,
+  "max_visits": 4,
+  "min_visits": 0,
+  "noop_visits": 0,
+  "retries": 0,
+  "rounds": 1707,
+  "steps": 336874,
+  "steps_hist": {
+   "10": 2329,
+   "12": 1490,
+   "14": 284,
+   "2": 59762,
+   "4": 21824,
+   "6": 8310,
+   "8": 4381
+  },
+  "visits": 98380,
+  "wasted_steps": 0
+ },
+ "done": true,
+ "evals": [
+  [
+   1,
+   142,
+   0.14351863686702523,
+   true,
+   "MAIN"
+  ],
+  [
+   2,
+   283,
+   0.14413080538590256,
+   true,
+   "MAIN"
+  ],
+  [
+   3,
+   424,
+   0.14411032926935774,
+   false,
+   "MAIN"
+  ],
+  [
+   4,
+   567,
+   0.14452370287021005,
+   true,
+   "MAIN"
+  ],
+  [
+   5,
+   710,
+   0.1448312058497194,
+   true,
+   "MAIN"
+  ],
+  [
+   6,
+   852,
+   0.1450807183672501,
+   true,
+   "MAIN"
+  ],
+  [
+   7,
+   997,
+   0.1454213859726291,
+   true,
+   "MAIN"
+  ],
+  [
+   8,
+   1138,
+   0.14552839432147546,
+   false,
+   "MAIN"
+  ],
+  [
+   9,
+   1279,
+   0.1457046447818729,
+   true,
+   "MAIN"
+  ],
+  [
+   10,
+   1421,
+   0.1458334756277618,
+   false,
+   "MAIN"
+  ],
+  [
+   11,
+   1565,
+   0.14619368070889643,
+   true,
+   "MAIN"
+  ],
+  [
+   12,
+   1706,
+   0.1461419547056561,
+   false,
+   "MAIN"
+  ]
+ ],
+ "ledger": [
+  196760,
+  8149290772160,
+  8149291559200,
+  0
+ ],
+ "lr_table": {
+  "E_total": 3876708,
+  "digest": "3e49e7fed957196a6818e986b24f5ba236351540e33cc48df7c79672e5ec8733",
+  "final_lr": 0.010000000000000002,
+  "min_lr": 0.005858230814294083,
+  "n_rounds": 1707,
+  "planned_efe": 6.000473635087382
+ },
+ "lr_table_digest": "3e49e7fed957196a6818e986b24f5ba236351540e33cc48df7c79672e5ec8733",
+ "method": "FA",
+ "p2": {
+  "authority": "PREG2 \u00a75 (contracts/PREG2_FOLLOWUP_DRAFT \u00a75 as edited by FABLE_GATE_ENDGAME_SCRIPTS_20261003 \u00a79); PHASE2_IMPLEMENTATION_PLAN P2-02",
+  "label": "fedadam|eta=3e-05|c=0.1|items=unfrozen|ilr=0.1",
+  "post_run": null,
+  "pre_server": null,
+  "recipe": {
+   "client_lr": 0.1,
+   "item_lr_mult": 0.1,
+   "items": "unfrozen",
+   "lora_lr_factor": null,
+   "lora_rank": null,
+   "personal_head": false,
+   "server_lr": 3e-05,
+   "server_opt": "fedadam",
+   "upload": "dense"
+  }
+ },
+ "participation": {
+  "dropout_p": 0.1,
+  "dropped": 10868,
+  "endpoint_rounds": 1707,
+  "noop_rounds": 0,
+  "planned_efe": 6.000473635087382,
+  "rounds": 1707,
+  "sampled": 109248,
+  "survived": 98380
+ },
+ "phase": "MAIN",
+ "plan": {
+  "group_size": 64,
+  "keys_digest": "6780c81a3e7b0a59b0a01fe976a9436463fdd93cfb3df92ffe842ca8d64f3f91",
+  "manifest_hash": "94ade68c5df4dcf8c2f3b29529b63dcb0193ab2e34ec529b467f628018c49f2e",
+  "n_clients": 32768,
+  "partial_group_note": "none: N is a multiple of the group size",
+  "partial_group_policy": "SMALLER_FINAL_GROUP",
+  "partial_group_size": 0,
+  "rounds_per_sweep": 512,
+  "sampling": "seeded permutation sweeps without replacement (PCG64), fixed consecutive groups",
+  "seed": 2026
+ },
+ "rounds": 1707,
+ "run_id": "P2_W_FEDADAM_eta3e-05_c0.1_UNFROZEN_ilr0.1_XTAU1e-06_E6_P2_CALIB_s2026",
+ "server_digest": "618717d19d1f2c7dcff3eac7cb8724b033bad7b4387968c2b7409e7bbbedb920",
+ "server_opt": {
+  "cfg": {
+   "beta1": 0.9,
+   "beta2": 0.99,
+   "lr": 3e-05,
+   "name": "fedadam",
+   "tau": 1e-06,
+   "v_init": "tau_squared"
+  },
+  "moments_digest": "3694c3d938a5c0984402c89e9ccd2491a6c09466aedc849effd878418e19f8d9",
+  "steps": 1707
+ },
+ "status": "DONE_MAIN",
+ "store_digest": null,
+ "train_loss_log": {
+  "authority": "FL-15 R5 (REAL_WORLD_FL_PRACTICE_AUDIT_20260930 R5): per-round client training loss from fl VisitRecord.loss_sum (sum of the batch-mean CE over a visit's steps); descriptive monitoring only, numerics unchanged; z > 0 (DP) runs record nothing (an un-noised data-dependent release, the 06L_E E1 reading)",
+  "complete": true,
+  "fields": [
+   "client_mean_loss",
+   "finite",
+   "loss_sum",
+   "mean_step_loss",
+   "n_clients",
+   "n_steps",
+   "round"
+  ],
+  "file": "TRAIN_LOSS.jsonl",
+  "missing_rounds": [],
+  "rounds_expected": 1707,
+  "rounds_logged": 1707,
+  "sha256": "cec77338791fa425439934dbd5dc9e6ff75bd69c3796f8000b36190c457a4bad"
+ },
+ "update_norm_log": {
+  "authority": "PREG2 \u00a73.3 D1-ext: per round, per tensor group of the trained subset: ||Delta_agg||, the server step, ||theta - theta_pre||, cos(Delta_r, Delta_r-1), clients aggregated (omitted for z > 0); DESCRIPTIVE, never selects; post-noise server-side quantities only under DP (06L_E E1)",
+  "complete": true,
+  "cos_prev_unavailable_rounds": [
+   0
+  ],
+  "file": "UPDATE_NORM_LOG.jsonl",
+  "last_total_T": {
+   "agg_delta_l2": 0.006897968080796718,
+   "numel": 20708708,
+   "pre_dist_l2": 5.082849951000136,
+   "pre_l2": 811.989003090849,
+   "rel_pre_dist": 0.006259752203111356,
+   "step_l2": 0.0031514031512149105
+  },
+  "missing_rounds": [],
+  "rounds_expected": 1707,
+  "rounds_logged": 1707,
+  "server_steps": 1707,
+  "sha256": "758105e3b60465514d734c574761f4c3655e486fe9a0ed0eef341e37b7a50a7b",
+  "strictly_increasing": true,
+  "trained_keys": [
+   "output_embed",
+   "output_bias",
+   "side_gate",
+   "user_gate",
+   "item_embed.weight",
+   "pos_embed.weight",
+   "blocks.0.ln1.weight",
+   "blocks.0.ln1.bias",
+   "blocks.0.qkv.weight",
+   "blocks.0.qkv.bias",
+   "blocks.0.out.weight",
+   "blocks.0.out.bias",
+   "blocks.0.ln2.weight",
+   "blocks.0.ln2.bias",
+   "blocks.0.ff1.weight",
+   "blocks.0.ff1.bias",
+   "blocks.0.ff2.weight",
+   "blocks.0.ff2.bias",
+   "blocks.1.ln1.weight",
+   "blocks.1.ln1.bias",
+   "blocks.1.qkv.weight",
+   "blocks.1.qkv.bias",
+   "blocks.1.out.weight",
+   "blocks.1.out.bias",
+   "blocks.1.ln2.weight",
+   "blocks.1.ln2.bias",
+   "blocks.1.ff1.weight",
+   "blocks.1.ff1.bias",
+   "blocks.1.ff2.weight",
+   "blocks.1.ff2.bias",
+   "final_norm.weight",
+   "final_norm.bias",
+   "input_norm.weight",
+   "input_norm.bias",
+   "side_embeds.category_tokens.weight",
+   "side_embeds.brand_tokens.weight",
+   "side_embeds.session_offset_tokens.weight",
+   "side_embeds.session_mode_main_category_tokens.weight",
+   "numflag_proj.weight",
+   "numflag_proj.bias",
+   "side_proj.weight",
+   "side_proj.bias",
+   "side_norm.weight",
+   "side_norm.bias",
+   "user_mlp.weight",
+   "user_mlp.bias",
+   "user_proj.weight",
+   "user_proj.bias",
+   "user_norm.weight",
+   "user_norm.bias"
+  ],
+  "trained_numel": 20708708,
+  "unparsable_lines": 0
+ },
+ "wall_s_this_leg": 15564.88
+}

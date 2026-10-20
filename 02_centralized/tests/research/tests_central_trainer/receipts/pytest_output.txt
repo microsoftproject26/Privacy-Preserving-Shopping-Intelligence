@@ -1,0 +1,947 @@
+.............xxx...x.....xx..................x..x....................... [ 26%]
+......xxxxx....xx........x....xx..........xxx...............xxxxxx....x. [ 52%]
+.......xxx....x...........x...............x...x....x....x.x...x...x.x... [ 79%]
+.x..x..x..x...x.......FF..x.x.x.x......x...x..xEEEEEEEEE                 [100%]
+=================================== ERRORS ====================================
+___________ ERROR at setup of test_nc_train05_repeated_registry_pin ___________
+
+registered = (WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-1/tr..._tmp\\FABLE-DEEP3\\pytest-of-Ahmed\\pytest-1\\train050\\TUNED_RECIPES_02B.json', 'peak_lr': 0.001687023975571048, ...})
+tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-1/test_nc_train05_repeated_regis0')
+
+    @pytest.fixture
+    def contest05(registered, tmp_path):
+        _, _, out, gate, _, _ = registered
+>       reg = TR.load_tuned_recipes(out)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests_train\test_train05.py:216: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-1/train050/TUNED_RECIPES_02B.json')
+hp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/contracts/hp_registry/HP_REGISTRY_P2R2.json')
+reverify_stages = True
+
+    def load_tuned_recipes(path=REGISTRY_PATH, hp_path=HP_REGISTRY_PATH, *, reverify_stages: bool = True) -> dict:
+        p = Path(path)
+        if not p.is_file():
+            raise TunedRecipeError(f"tuned-recipes registry {p} does not exist (written after P2 by register-02b)")
+        data = p.read_bytes()
+        try:
+            obj = json.loads(data.decode("utf-8"),
+                             parse_constant=lambda c: (_ for _ in ()).throw(ValueError(f"non-strict constant {c}")))
+        except ValueError as e:
+            raise TunedRecipeError(f"{p} is not strict JSON ({e})") from None
+        if not isinstance(obj, dict) or obj.get("format") != FORMAT:
+            raise TunedRecipeError(f"{p} is not a {FORMAT} object")
+        if obj.get("self_sha256") != canonical_sha256(obj):
+            raise TunedRecipeError(f"{p}: self-hash mismatch")
+        try:
+            hp = load_hp_registry(hp_path)
+        except HPRegistryError as e:
+            raise TunedRecipeError(f"HP registry refused: {e}") from None
+        if (obj.get("hp_registry") or {}).get("self_sha256") != hp["self_sha256"]:
+            raise TunedRecipeError(f"{p} was registered under another HP registry")
+        for rid, r in (obj.get("recipes") or {}).items():
+            if r.get("sha256") != canonical_sha256(r, exclude=("sha256",)) or r.get("recipe_id") != rid:
+                raise TunedRecipeError(f"{p}: recipe {rid} sha256 / id mismatch")
+            if r.get("family") not in FAMILIES or rid not in (recipe_id_of(r["family"]), c2_id_of(r["family"])):
+                raise TunedRecipeError(f"{p}: invalid recipe id / family {rid}")
+            try:
+                t = trial(hp, r["source_hp_id"])
+            except HPRegistryError as e:
+                raise TunedRecipeError(f"{p}: recipe {rid}: {e}") from None
+            if t["sha256"] != r["source_hp_sha256"] or any(t[k] != r[k] for k in RECIPE_FIELDS):
+                raise TunedRecipeError(f"{p}: recipe {rid} differs from its source HP trial {r['source_hp_id']}")
+            if reverify_stages:                                                    # F1 / R3: stage files and run evidence
+                stages = {}
+                for k in ("stage1_file", "stage2_file"):
+                    sf = r.get(k) or {}
+                    ap = v4_abs(sf["path"]) if sf.get("path") else None
+                    if ap is None or not ap.is_file() or _sha_file(ap) != sf.get("file_sha256"):
+>                       raise TunedRecipeError(f"{p}: recipe {rid}: {k} {sf.get('path')} is missing or changed")
+E                       v4train.tuned_recipes.TunedRecipeError: F:\Queens University\Microsoft Project\eda\.local_ai\_pytest_tmp\FABLE-DEEP3\pytest-of-Ahmed\pytest-1\train050\TUNED_RECIPES_02B.json: recipe 02B_GRU: stage1_file code/tests_train/_p2work/8132a30e45153d7f/P2_GRU_STAGE1.json is missing or changed
+
+v4train\tuned_recipes.py:335: TunedRecipeError
+________________ ERROR at setup of test_nc_train05_missing_run ________________
+
+registered = (WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-1/tr..._tmp\\FABLE-DEEP3\\pytest-of-Ahmed\\pytest-1\\train050\\TUNED_RECIPES_02B.json', 'peak_lr': 0.001687023975571048, ...})
+tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-1/test_nc_train05_missing_run0')
+
+    @pytest.fixture
+    def contest05(registered, tmp_path):
+        _, _, out, gate, _, _ = registered
+>       reg = TR.load_tuned_recipes(out)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests_train\test_train05.py:216: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-1/train050/TUNED_RECIPES_02B.json')
+hp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/contracts/hp_registry/HP_REGISTRY_P2R2.json')
+reverify_stages = True
+
+    def load_tuned_recipes(path=REGISTRY_PATH, hp_path=HP_REGISTRY_PATH, *, reverify_stages: bool = True) -> dict:
+        p = Path(path)
+        if not p.is_file():
+            raise TunedRecipeError(f"tuned-recipes registry {p} does not exist (written after P2 by register-02b)")
+        data = p.read_bytes()
+        try:
+            obj = json.loads(data.decode("utf-8"),
+                             parse_constant=lambda c: (_ for _ in ()).throw(ValueError(f"non-strict constant {c}")))
+        except ValueError as e:
+            raise TunedRecipeError(f"{p} is not strict JSON ({e})") from None
+        if not isinstance(obj, dict) or obj.get("format") != FORMAT:
+            raise TunedRecipeError(f"{p} is not a {FORMAT} object")
+        if obj.get("self_sha256") != canonical_sha256(obj):
+            raise TunedRecipeError(f"{p}: self-hash mismatch")
+        try:
+            hp = load_hp_registry(hp_path)
+        except HPRegistryError as e:
+            raise TunedRecipeError(f"HP registry refused: {e}") from None
+        if (obj.get("hp_registry") or {}).get("self_sha256") != hp["self_sha256"]:
+            raise TunedRecipeError(f"{p} was registered under another HP registry")
+        for rid, r in (obj.get("recipes") or {}).items():
+            if r.get("sha256") != canonical_sha256(r, exclude=("sha256",)) or r.get("recipe_id") != rid:
+                raise TunedRecipeError(f"{p}: recipe {rid} sha256 / id mismatch")
+            if r.get("family") not in FAMILIES or rid not in (recipe_id_of(r["family"]), c2_id_of(r["family"])):
+                raise TunedRecipeError(f"{p}: invalid recipe id / family {rid}")
+            try:
+                t = trial(hp, r["source_hp_id"])
+            except HPRegistryError as e:
+                raise TunedRecipeError(f"{p}: recipe {rid}: {e}") from None
+            if t["sha256"] != r["source_hp_sha256"] or any(t[k] != r[k] for k in RECIPE_FIELDS):
+                raise TunedRecipeError(f"{p}: recipe {rid} differs from its source HP trial {r['source_hp_id']}")
+            if reverify_stages:                                                    # F1 / R3: stage files and run evidence
+                stages = {}
+                for k in ("stage1_file", "stage2_file"):
+                    sf = r.get(k) or {}
+                    ap = v4_abs(sf["path"]) if sf.get("path") else None
+                    if ap is None or not ap.is_file() or _sha_file(ap) != sf.get("file_sha256"):
+>                       raise TunedRecipeError(f"{p}: recipe {rid}: {k} {sf.get('path')} is missing or changed")
+E                       v4train.tuned_recipes.TunedRecipeError: F:\Queens University\Microsoft Project\eda\.local_ai\_pytest_tmp\FABLE-DEEP3\pytest-of-Ahmed\pytest-1\train050\TUNED_RECIPES_02B.json: recipe 02B_GRU: stage1_file code/tests_train/_p2work/8132a30e45153d7f/P2_GRU_STAGE1.json is missing or changed
+
+v4train\tuned_recipes.py:335: TunedRecipeError
+_______________ ERROR at setup of test_nc_train05_missing_part ________________
+
+registered = (WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-1/tr..._tmp\\FABLE-DEEP3\\pytest-of-Ahmed\\pytest-1\\train050\\TUNED_RECIPES_02B.json', 'peak_lr': 0.001687023975571048, ...})
+tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-1/test_nc_train05_missing_part0')
+
+    @pytest.fixture
+    def contest05(registered, tmp_path):
+        _, _, out, gate, _, _ = registered
+>       reg = TR.load_tuned_recipes(out)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests_train\test_train05.py:216: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-1/train050/TUNED_RECIPES_02B.json')
+hp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/contracts/hp_registry/HP_REGISTRY_P2R2.json')
+reverify_stages = True
+
+    def load_tuned_recipes(path=REGISTRY_PATH, hp_path=HP_REGISTRY_PATH, *, reverify_stages: bool = True) -> dict:
+        p = Path(path)
+        if not p.is_file():
+            raise TunedRecipeError(f"tuned-recipes registry {p} does not exist (written after P2 by register-02b)")
+        data = p.read_bytes()
+        try:
+            obj = json.loads(data.decode("utf-8"),
+                             parse_constant=lambda c: (_ for _ in ()).throw(ValueError(f"non-strict constant {c}")))
+        except ValueError as e:
+            raise TunedRecipeError(f"{p} is not strict JSON ({e})") from None
+        if not isinstance(obj, dict) or obj.get("format") != FORMAT:
+            raise TunedRecipeError(f"{p} is not a {FORMAT} object")
+        if obj.get("self_sha256") != canonical_sha256(obj):
+            raise TunedRecipeError(f"{p}: self-hash mismatch")
+        try:
+            hp = load_hp_registry(hp_path)
+        except HPRegistryError as e:
+            raise TunedRecipeError(f"HP registry refused: {e}") from None
+        if (obj.get("hp_registry") or {}).get("self_sha256") != hp["self_sha256"]:
+            raise TunedRecipeError(f"{p} was registered under another HP registry")
+        for rid, r in (obj.get("recipes") or {}).items():
+            if r.get("sha256") != canonical_sha256(r, exclude=("sha256",)) or r.get("recipe_id") != rid:
+                raise TunedRecipeError(f"{p}: recipe {rid} sha256 / id mismatch")
+            if r.get("family") not in FAMILIES or rid not in (recipe_id_of(r["family"]), c2_id_of(r["family"])):
+                raise TunedRecipeError(f"{p}: invalid recipe id / family {rid}")
+            try:
+                t = trial(hp, r["source_hp_id"])
+            except HPRegistryError as e:
+                raise TunedRecipeError(f"{p}: recipe {rid}: {e}") from None
+            if t["sha256"] != r["source_hp_sha256"] or any(t[k] != r[k] for k in RECIPE_FIELDS):
+                raise TunedRecipeError(f"{p}: recipe {rid} differs from its source HP trial {r['source_hp_id']}")
+            if reverify_stages:                                                    # F1 / R3: stage files and run evidence
+                stages = {}
+                for k in ("stage1_file", "stage2_file"):
+                    sf = r.get(k) or {}
+                    ap = v4_abs(sf["path"]) if sf.get("path") else None
+                    if ap is None or not ap.is_file() or _sha_file(ap) != sf.get("file_sha256"):
+>                       raise TunedRecipeError(f"{p}: recipe {rid}: {k} {sf.get('path')} is missing or changed")
+E                       v4train.tuned_recipes.TunedRecipeError: F:\Queens University\Microsoft Project\eda\.local_ai\_pytest_tmp\FABLE-DEEP3\pytest-of-Ahmed\pytest-1\train050\TUNED_RECIPES_02B.json: recipe 02B_GRU: stage1_file code/tests_train/_p2work/8132a30e45153d7f/P2_GRU_STAGE1.json is missing or changed
+
+v4train\tuned_recipes.py:335: TunedRecipeError
+_____________ ERROR at setup of test_nc_train05_registry_identity _____________
+
+registered = (WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-1/tr..._tmp\\FABLE-DEEP3\\pytest-of-Ahmed\\pytest-1\\train050\\TUNED_RECIPES_02B.json', 'peak_lr': 0.001687023975571048, ...})
+tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-1/test_nc_train05_registry_ident0')
+
+    @pytest.fixture
+    def contest05(registered, tmp_path):
+        _, _, out, gate, _, _ = registered
+>       reg = TR.load_tuned_recipes(out)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests_train\test_train05.py:216: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-1/train050/TUNED_RECIPES_02B.json')
+hp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/contracts/hp_registry/HP_REGISTRY_P2R2.json')
+reverify_stages = True
+
+    def load_tuned_recipes(path=REGISTRY_PATH, hp_path=HP_REGISTRY_PATH, *, reverify_stages: bool = True) -> dict:
+        p = Path(path)
+        if not p.is_file():
+            raise TunedRecipeError(f"tuned-recipes registry {p} does not exist (written after P2 by register-02b)")
+        data = p.read_bytes()
+        try:
+            obj = json.loads(data.decode("utf-8"),
+                             parse_constant=lambda c: (_ for _ in ()).throw(ValueError(f"non-strict constant {c}")))
+        except ValueError as e:
+            raise TunedRecipeError(f"{p} is not strict JSON ({e})") from None
+        if not isinstance(obj, dict) or obj.get("format") != FORMAT:
+            raise TunedRecipeError(f"{p} is not a {FORMAT} object")
+        if obj.get("self_sha256") != canonical_sha256(obj):
+            raise TunedRecipeError(f"{p}: self-hash mismatch")
+        try:
+            hp = load_hp_registry(hp_path)
+        except HPRegistryError as e:
+            raise TunedRecipeError(f"HP registry refused: {e}") from None
+        if (obj.get("hp_registry") or {}).get("self_sha256") != hp["self_sha256"]:
+            raise TunedRecipeError(f"{p} was registered under another HP registry")
+        for rid, r in (obj.get("recipes") or {}).items():
+            if r.get("sha256") != canonical_sha256(r, exclude=("sha256",)) or r.get("recipe_id") != rid:
+                raise TunedRecipeError(f"{p}: recipe {rid} sha256 / id mismatch")
+            if r.get("family") not in FAMILIES or rid not in (recipe_id_of(r["family"]), c2_id_of(r["family"])):
+                raise TunedRecipeError(f"{p}: invalid recipe id / family {rid}")
+            try:
+                t = trial(hp, r["source_hp_id"])
+            except HPRegistryError as e:
+                raise TunedRecipeError(f"{p}: recipe {rid}: {e}") from None
+            if t["sha256"] != r["source_hp_sha256"] or any(t[k] != r[k] for k in RECIPE_FIELDS):
+                raise TunedRecipeError(f"{p}: recipe {rid} differs from its source HP trial {r['source_hp_id']}")
+            if reverify_stages:                                                    # F1 / R3: stage files and run evidence
+                stages = {}
+                for k in ("stage1_file", "stage2_file"):
+                    sf = r.get(k) or {}
+                    ap = v4_abs(sf["path"]) if sf.get("path") else None
+                    if ap is None or not ap.is_file() or _sha_file(ap) != sf.get("file_sha256"):
+>                       raise TunedRecipeError(f"{p}: recipe {rid}: {k} {sf.get('path')} is missing or changed")
+E                       v4train.tuned_recipes.TunedRecipeError: F:\Queens University\Microsoft Project\eda\.local_ai\_pytest_tmp\FABLE-DEEP3\pytest-of-Ahmed\pytest-1\train050\TUNED_RECIPES_02B.json: recipe 02B_GRU: stage1_file code/tests_train/_p2work/8132a30e45153d7f/P2_GRU_STAGE1.json is missing or changed
+
+v4train\tuned_recipes.py:335: TunedRecipeError
+________________ ERROR at setup of test_nc_train05_config_hash ________________
+
+registered = (WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-1/tr..._tmp\\FABLE-DEEP3\\pytest-of-Ahmed\\pytest-1\\train050\\TUNED_RECIPES_02B.json', 'peak_lr': 0.001687023975571048, ...})
+tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-1/test_nc_train05_config_hash0')
+
+    @pytest.fixture
+    def contest05(registered, tmp_path):
+        _, _, out, gate, _, _ = registered
+>       reg = TR.load_tuned_recipes(out)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests_train\test_train05.py:216: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-1/train050/TUNED_RECIPES_02B.json')
+hp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/contracts/hp_registry/HP_REGISTRY_P2R2.json')
+reverify_stages = True
+
+    def load_tuned_recipes(path=REGISTRY_PATH, hp_path=HP_REGISTRY_PATH, *, reverify_stages: bool = True) -> dict:
+        p = Path(path)
+        if not p.is_file():
+            raise TunedRecipeError(f"tuned-recipes registry {p} does not exist (written after P2 by register-02b)")
+        data = p.read_bytes()
+        try:
+            obj = json.loads(data.decode("utf-8"),
+                             parse_constant=lambda c: (_ for _ in ()).throw(ValueError(f"non-strict constant {c}")))
+        except ValueError as e:
+            raise TunedRecipeError(f"{p} is not strict JSON ({e})") from None
+        if not isinstance(obj, dict) or obj.get("format") != FORMAT:
+            raise TunedRecipeError(f"{p} is not a {FORMAT} object")
+        if obj.get("self_sha256") != canonical_sha256(obj):
+            raise TunedRecipeError(f"{p}: self-hash mismatch")
+        try:
+            hp = load_hp_registry(hp_path)
+        except HPRegistryError as e:
+            raise TunedRecipeError(f"HP registry refused: {e}") from None
+        if (obj.get("hp_registry") or {}).get("self_sha256") != hp["self_sha256"]:
+            raise TunedRecipeError(f"{p} was registered under another HP registry")
+        for rid, r in (obj.get("recipes") or {}).items():
+            if r.get("sha256") != canonical_sha256(r, exclude=("sha256",)) or r.get("recipe_id") != rid:
+                raise TunedRecipeError(f"{p}: recipe {rid} sha256 / id mismatch")
+            if r.get("family") not in FAMILIES or rid not in (recipe_id_of(r["family"]), c2_id_of(r["family"])):
+                raise TunedRecipeError(f"{p}: invalid recipe id / family {rid}")
+            try:
+                t = trial(hp, r["source_hp_id"])
+            except HPRegistryError as e:
+                raise TunedRecipeError(f"{p}: recipe {rid}: {e}") from None
+            if t["sha256"] != r["source_hp_sha256"] or any(t[k] != r[k] for k in RECIPE_FIELDS):
+                raise TunedRecipeError(f"{p}: recipe {rid} differs from its source HP trial {r['source_hp_id']}")
+            if reverify_stages:                                                    # F1 / R3: stage files and run evidence
+                stages = {}
+                for k in ("stage1_file", "stage2_file"):
+                    sf = r.get(k) or {}
+                    ap = v4_abs(sf["path"]) if sf.get("path") else None
+                    if ap is None or not ap.is_file() or _sha_file(ap) != sf.get("file_sha256"):
+>                       raise TunedRecipeError(f"{p}: recipe {rid}: {k} {sf.get('path')} is missing or changed")
+E                       v4train.tuned_recipes.TunedRecipeError: F:\Queens University\Microsoft Project\eda\.local_ai\_pytest_tmp\FABLE-DEEP3\pytest-of-Ahmed\pytest-1\train050\TUNED_RECIPES_02B.json: recipe 02B_GRU: stage1_file code/tests_train/_p2work/8132a30e45153d7f/P2_GRU_STAGE1.json is missing or changed
+
+v4train\tuned_recipes.py:335: TunedRecipeError
+_________ ERROR at setup of test_g2_tie_exclusion_and_diagnostic_flip _________
+
+registered = (WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-1/tr..._tmp\\FABLE-DEEP3\\pytest-of-Ahmed\\pytest-1\\train050\\TUNED_RECIPES_02B.json', 'peak_lr': 0.001687023975571048, ...})
+tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-1/test_g2_tie_exclusion_and_diag0')
+
+    @pytest.fixture
+    def contest05(registered, tmp_path):
+        _, _, out, gate, _, _ = registered
+>       reg = TR.load_tuned_recipes(out)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests_train\test_train05.py:216: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-1/train050/TUNED_RECIPES_02B.json')
+hp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/contracts/hp_registry/HP_REGISTRY_P2R2.json')
+reverify_stages = True
+
+    def load_tuned_recipes(path=REGISTRY_PATH, hp_path=HP_REGISTRY_PATH, *, reverify_stages: bool = True) -> dict:
+        p = Path(path)
+        if not p.is_file():
+            raise TunedRecipeError(f"tuned-recipes registry {p} does not exist (written after P2 by register-02b)")
+        data = p.read_bytes()
+        try:
+            obj = json.loads(data.decode("utf-8"),
+                             parse_constant=lambda c: (_ for _ in ()).throw(ValueError(f"non-strict constant {c}")))
+        except ValueError as e:
+            raise TunedRecipeError(f"{p} is not strict JSON ({e})") from None
+        if not isinstance(obj, dict) or obj.get("format") != FORMAT:
+            raise TunedRecipeError(f"{p} is not a {FORMAT} object")
+        if obj.get("self_sha256") != canonical_sha256(obj):
+            raise TunedRecipeError(f"{p}: self-hash mismatch")
+        try:
+            hp = load_hp_registry(hp_path)
+        except HPRegistryError as e:
+            raise TunedRecipeError(f"HP registry refused: {e}") from None
+        if (obj.get("hp_registry") or {}).get("self_sha256") != hp["self_sha256"]:
+            raise TunedRecipeError(f"{p} was registered under another HP registry")
+        for rid, r in (obj.get("recipes") or {}).items():
+            if r.get("sha256") != canonical_sha256(r, exclude=("sha256",)) or r.get("recipe_id") != rid:
+                raise TunedRecipeError(f"{p}: recipe {rid} sha256 / id mismatch")
+            if r.get("family") not in FAMILIES or rid not in (recipe_id_of(r["family"]), c2_id_of(r["family"])):
+                raise TunedRecipeError(f"{p}: invalid recipe id / family {rid}")
+            try:
+                t = trial(hp, r["source_hp_id"])
+            except HPRegistryError as e:
+                raise TunedRecipeError(f"{p}: recipe {rid}: {e}") from None
+            if t["sha256"] != r["source_hp_sha256"] or any(t[k] != r[k] for k in RECIPE_FIELDS):
+                raise TunedRecipeError(f"{p}: recipe {rid} differs from its source HP trial {r['source_hp_id']}")
+            if reverify_stages:                                                    # F1 / R3: stage files and run evidence
+                stages = {}
+                for k in ("stage1_file", "stage2_file"):
+                    sf = r.get(k) or {}
+                    ap = v4_abs(sf["path"]) if sf.get("path") else None
+                    if ap is None or not ap.is_file() or _sha_file(ap) != sf.get("file_sha256"):
+>                       raise TunedRecipeError(f"{p}: recipe {rid}: {k} {sf.get('path')} is missing or changed")
+E                       v4train.tuned_recipes.TunedRecipeError: F:\Queens University\Microsoft Project\eda\.local_ai\_pytest_tmp\FABLE-DEEP3\pytest-of-Ahmed\pytest-1\train050\TUNED_RECIPES_02B.json: recipe 02B_GRU: stage1_file code/tests_train/_p2work/8132a30e45153d7f/P2_GRU_STAGE1.json is missing or changed
+
+v4train\tuned_recipes.py:335: TunedRecipeError
+___________ ERROR at setup of test_g2_diagnostic_error_is_reported ____________
+
+registered = (WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-1/tr..._tmp\\FABLE-DEEP3\\pytest-of-Ahmed\\pytest-1\\train050\\TUNED_RECIPES_02B.json', 'peak_lr': 0.001687023975571048, ...})
+tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-1/test_g2_diagnostic_error_is_re0')
+
+    @pytest.fixture
+    def contest05(registered, tmp_path):
+        _, _, out, gate, _, _ = registered
+>       reg = TR.load_tuned_recipes(out)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests_train\test_train05.py:216: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-1/train050/TUNED_RECIPES_02B.json')
+hp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/contracts/hp_registry/HP_REGISTRY_P2R2.json')
+reverify_stages = True
+
+    def load_tuned_recipes(path=REGISTRY_PATH, hp_path=HP_REGISTRY_PATH, *, reverify_stages: bool = True) -> dict:
+        p = Path(path)
+        if not p.is_file():
+            raise TunedRecipeError(f"tuned-recipes registry {p} does not exist (written after P2 by register-02b)")
+        data = p.read_bytes()
+        try:
+            obj = json.loads(data.decode("utf-8"),
+                             parse_constant=lambda c: (_ for _ in ()).throw(ValueError(f"non-strict constant {c}")))
+        except ValueError as e:
+            raise TunedRecipeError(f"{p} is not strict JSON ({e})") from None
+        if not isinstance(obj, dict) or obj.get("format") != FORMAT:
+            raise TunedRecipeError(f"{p} is not a {FORMAT} object")
+        if obj.get("self_sha256") != canonical_sha256(obj):
+            raise TunedRecipeError(f"{p}: self-hash mismatch")
+        try:
+            hp = load_hp_registry(hp_path)
+        except HPRegistryError as e:
+            raise TunedRecipeError(f"HP registry refused: {e}") from None
+        if (obj.get("hp_registry") or {}).get("self_sha256") != hp["self_sha256"]:
+            raise TunedRecipeError(f"{p} was registered under another HP registry")
+        for rid, r in (obj.get("recipes") or {}).items():
+            if r.get("sha256") != canonical_sha256(r, exclude=("sha256",)) or r.get("recipe_id") != rid:
+                raise TunedRecipeError(f"{p}: recipe {rid} sha256 / id mismatch")
+            if r.get("family") not in FAMILIES or rid not in (recipe_id_of(r["family"]), c2_id_of(r["family"])):
+                raise TunedRecipeError(f"{p}: invalid recipe id / family {rid}")
+            try:
+                t = trial(hp, r["source_hp_id"])
+            except HPRegistryError as e:
+                raise TunedRecipeError(f"{p}: recipe {rid}: {e}") from None
+            if t["sha256"] != r["source_hp_sha256"] or any(t[k] != r[k] for k in RECIPE_FIELDS):
+                raise TunedRecipeError(f"{p}: recipe {rid} differs from its source HP trial {r['source_hp_id']}")
+            if reverify_stages:                                                    # F1 / R3: stage files and run evidence
+                stages = {}
+                for k in ("stage1_file", "stage2_file"):
+                    sf = r.get(k) or {}
+                    ap = v4_abs(sf["path"]) if sf.get("path") else None
+                    if ap is None or not ap.is_file() or _sha_file(ap) != sf.get("file_sha256"):
+>                       raise TunedRecipeError(f"{p}: recipe {rid}: {k} {sf.get('path')} is missing or changed")
+E                       v4train.tuned_recipes.TunedRecipeError: F:\Queens University\Microsoft Project\eda\.local_ai\_pytest_tmp\FABLE-DEEP3\pytest-of-Ahmed\pytest-1\train050\TUNED_RECIPES_02B.json: recipe 02B_GRU: stage1_file code/tests_train/_p2work/8132a30e45153d7f/P2_GRU_STAGE1.json is missing or changed
+
+v4train\tuned_recipes.py:335: TunedRecipeError
+___________ ERROR at setup of test_nc_train05_foreign_primary_rows ____________
+
+registered = (WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-1/tr..._tmp\\FABLE-DEEP3\\pytest-of-Ahmed\\pytest-1\\train050\\TUNED_RECIPES_02B.json', 'peak_lr': 0.001687023975571048, ...})
+tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-1/test_nc_train05_foreign_primar0')
+
+    @pytest.fixture
+    def contest05(registered, tmp_path):
+        _, _, out, gate, _, _ = registered
+>       reg = TR.load_tuned_recipes(out)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests_train\test_train05.py:216: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-1/train050/TUNED_RECIPES_02B.json')
+hp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/contracts/hp_registry/HP_REGISTRY_P2R2.json')
+reverify_stages = True
+
+    def load_tuned_recipes(path=REGISTRY_PATH, hp_path=HP_REGISTRY_PATH, *, reverify_stages: bool = True) -> dict:
+        p = Path(path)
+        if not p.is_file():
+            raise TunedRecipeError(f"tuned-recipes registry {p} does not exist (written after P2 by register-02b)")
+        data = p.read_bytes()
+        try:
+            obj = json.loads(data.decode("utf-8"),
+                             parse_constant=lambda c: (_ for _ in ()).throw(ValueError(f"non-strict constant {c}")))
+        except ValueError as e:
+            raise TunedRecipeError(f"{p} is not strict JSON ({e})") from None
+        if not isinstance(obj, dict) or obj.get("format") != FORMAT:
+            raise TunedRecipeError(f"{p} is not a {FORMAT} object")
+        if obj.get("self_sha256") != canonical_sha256(obj):
+            raise TunedRecipeError(f"{p}: self-hash mismatch")
+        try:
+            hp = load_hp_registry(hp_path)
+        except HPRegistryError as e:
+            raise TunedRecipeError(f"HP registry refused: {e}") from None
+        if (obj.get("hp_registry") or {}).get("self_sha256") != hp["self_sha256"]:
+            raise TunedRecipeError(f"{p} was registered under another HP registry")
+        for rid, r in (obj.get("recipes") or {}).items():
+            if r.get("sha256") != canonical_sha256(r, exclude=("sha256",)) or r.get("recipe_id") != rid:
+                raise TunedRecipeError(f"{p}: recipe {rid} sha256 / id mismatch")
+            if r.get("family") not in FAMILIES or rid not in (recipe_id_of(r["family"]), c2_id_of(r["family"])):
+                raise TunedRecipeError(f"{p}: invalid recipe id / family {rid}")
+            try:
+                t = trial(hp, r["source_hp_id"])
+            except HPRegistryError as e:
+                raise TunedRecipeError(f"{p}: recipe {rid}: {e}") from None
+            if t["sha256"] != r["source_hp_sha256"] or any(t[k] != r[k] for k in RECIPE_FIELDS):
+                raise TunedRecipeError(f"{p}: recipe {rid} differs from its source HP trial {r['source_hp_id']}")
+            if reverify_stages:                                                    # F1 / R3: stage files and run evidence
+                stages = {}
+                for k in ("stage1_file", "stage2_file"):
+                    sf = r.get(k) or {}
+                    ap = v4_abs(sf["path"]) if sf.get("path") else None
+                    if ap is None or not ap.is_file() or _sha_file(ap) != sf.get("file_sha256"):
+>                       raise TunedRecipeError(f"{p}: recipe {rid}: {k} {sf.get('path')} is missing or changed")
+E                       v4train.tuned_recipes.TunedRecipeError: F:\Queens University\Microsoft Project\eda\.local_ai\_pytest_tmp\FABLE-DEEP3\pytest-of-Ahmed\pytest-1\train050\TUNED_RECIPES_02B.json: recipe 02B_GRU: stage1_file code/tests_train/_p2work/8132a30e45153d7f/P2_GRU_STAGE1.json is missing or changed
+
+v4train\tuned_recipes.py:335: TunedRecipeError
+________ ERROR at setup of test_g2_passes_only_selected_recipes_to_t1 _________
+
+registered = (WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-1/tr..._tmp\\FABLE-DEEP3\\pytest-of-Ahmed\\pytest-1\\train050\\TUNED_RECIPES_02B.json', 'peak_lr': 0.001687023975571048, ...})
+tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-1/test_g2_passes_only_selected_r0')
+
+    @pytest.fixture
+    def contest05(registered, tmp_path):
+        _, _, out, gate, _, _ = registered
+>       reg = TR.load_tuned_recipes(out)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests_train\test_train05.py:216: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-1/train050/TUNED_RECIPES_02B.json')
+hp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/contracts/hp_registry/HP_REGISTRY_P2R2.json')
+reverify_stages = True
+
+    def load_tuned_recipes(path=REGISTRY_PATH, hp_path=HP_REGISTRY_PATH, *, reverify_stages: bool = True) -> dict:
+        p = Path(path)
+        if not p.is_file():
+            raise TunedRecipeError(f"tuned-recipes registry {p} does not exist (written after P2 by register-02b)")
+        data = p.read_bytes()
+        try:
+            obj = json.loads(data.decode("utf-8"),
+                             parse_constant=lambda c: (_ for _ in ()).throw(ValueError(f"non-strict constant {c}")))
+        except ValueError as e:
+            raise TunedRecipeError(f"{p} is not strict JSON ({e})") from None
+        if not isinstance(obj, dict) or obj.get("format") != FORMAT:
+            raise TunedRecipeError(f"{p} is not a {FORMAT} object")
+        if obj.get("self_sha256") != canonical_sha256(obj):
+            raise TunedRecipeError(f"{p}: self-hash mismatch")
+        try:
+            hp = load_hp_registry(hp_path)
+        except HPRegistryError as e:
+            raise TunedRecipeError(f"HP registry refused: {e}") from None
+        if (obj.get("hp_registry") or {}).get("self_sha256") != hp["self_sha256"]:
+            raise TunedRecipeError(f"{p} was registered under another HP registry")
+        for rid, r in (obj.get("recipes") or {}).items():
+            if r.get("sha256") != canonical_sha256(r, exclude=("sha256",)) or r.get("recipe_id") != rid:
+                raise TunedRecipeError(f"{p}: recipe {rid} sha256 / id mismatch")
+            if r.get("family") not in FAMILIES or rid not in (recipe_id_of(r["family"]), c2_id_of(r["family"])):
+                raise TunedRecipeError(f"{p}: invalid recipe id / family {rid}")
+            try:
+                t = trial(hp, r["source_hp_id"])
+            except HPRegistryError as e:
+                raise TunedRecipeError(f"{p}: recipe {rid}: {e}") from None
+            if t["sha256"] != r["source_hp_sha256"] or any(t[k] != r[k] for k in RECIPE_FIELDS):
+                raise TunedRecipeError(f"{p}: recipe {rid} differs from its source HP trial {r['source_hp_id']}")
+            if reverify_stages:                                                    # F1 / R3: stage files and run evidence
+                stages = {}
+                for k in ("stage1_file", "stage2_file"):
+                    sf = r.get(k) or {}
+                    ap = v4_abs(sf["path"]) if sf.get("path") else None
+                    if ap is None or not ap.is_file() or _sha_file(ap) != sf.get("file_sha256"):
+>                       raise TunedRecipeError(f"{p}: recipe {rid}: {k} {sf.get('path')} is missing or changed")
+E                       v4train.tuned_recipes.TunedRecipeError: F:\Queens University\Microsoft Project\eda\.local_ai\_pytest_tmp\FABLE-DEEP3\pytest-of-Ahmed\pytest-1\train050\TUNED_RECIPES_02B.json: recipe 02B_GRU: stage1_file code/tests_train/_p2work/8132a30e45153d7f/P2_GRU_STAGE1.json is missing or changed
+
+v4train\tuned_recipes.py:335: TunedRecipeError
+================================== FAILURES ===================================
+_________________ test_production_gru_resume_across_g1b_part2 _________________
+
+tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-1/test_production_gru_resume_acr0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001EC93200C20>
+
+    def test_production_gru_resume_across_g1b_part2(tmp_path, monkeypatch):
+>       d, c, tp, ep, before, r1, reg2 = _interrupted_gru_across_part2(tmp_path, monkeypatch)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests_train\test_train03.py:265: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests_train\test_train03.py:254: in _interrupted_gru_across_part2
+    else register_02b(p2, out, families=("SASREC",)))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+v4train\p2_driver.py:311: in register_02b
+    return write_registry(Path(p2_dir), families, Path(out) if out else REGISTRY_PATH,
+v4train\tuned_recipes.py:251: in write_registry
+    prev = load_tuned_recipes(path, hp_path) if path.exists() else None
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-1/test_production_gru_resume_acr0/TUNED_RECIPES_02B.json')
+hp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/contracts/hp_registry/HP_REGISTRY_P2R2.json')
+reverify_stages = True
+
+    def load_tuned_recipes(path=REGISTRY_PATH, hp_path=HP_REGISTRY_PATH, *, reverify_stages: bool = True) -> dict:
+        p = Path(path)
+        if not p.is_file():
+            raise TunedRecipeError(f"tuned-recipes registry {p} does not exist (written after P2 by register-02b)")
+        data = p.read_bytes()
+        try:
+            obj = json.loads(data.decode("utf-8"),
+                             parse_constant=lambda c: (_ for _ in ()).throw(ValueError(f"non-strict constant {c}")))
+        except ValueError as e:
+            raise TunedRecipeError(f"{p} is not strict JSON ({e})") from None
+        if not isinstance(obj, dict) or obj.get("format") != FORMAT:
+            raise TunedRecipeError(f"{p} is not a {FORMAT} object")
+        if obj.get("self_sha256") != canonical_sha256(obj):
+            raise TunedRecipeError(f"{p}: self-hash mismatch")
+        try:
+            hp = load_hp_registry(hp_path)
+        except HPRegistryError as e:
+            raise TunedRecipeError(f"HP registry refused: {e}") from None
+        if (obj.get("hp_registry") or {}).get("self_sha256") != hp["self_sha256"]:
+            raise TunedRecipeError(f"{p} was registered under another HP registry")
+        for rid, r in (obj.get("recipes") or {}).items():
+            if r.get("sha256") != canonical_sha256(r, exclude=("sha256",)) or r.get("recipe_id") != rid:
+                raise TunedRecipeError(f"{p}: recipe {rid} sha256 / id mismatch")
+            if r.get("family") not in FAMILIES or rid not in (recipe_id_of(r["family"]), c2_id_of(r["family"])):
+                raise TunedRecipeError(f"{p}: invalid recipe id / family {rid}")
+            try:
+                t = trial(hp, r["source_hp_id"])
+            except HPRegistryError as e:
+                raise TunedRecipeError(f"{p}: recipe {rid}: {e}") from None
+            if t["sha256"] != r["source_hp_sha256"] or any(t[k] != r[k] for k in RECIPE_FIELDS):
+                raise TunedRecipeError(f"{p}: recipe {rid} differs from its source HP trial {r['source_hp_id']}")
+            if reverify_stages:                                                    # F1 / R3: stage files and run evidence
+                stages = {}
+                for k in ("stage1_file", "stage2_file"):
+                    sf = r.get(k) or {}
+                    ap = v4_abs(sf["path"]) if sf.get("path") else None
+                    if ap is None or not ap.is_file() or _sha_file(ap) != sf.get("file_sha256"):
+>                       raise TunedRecipeError(f"{p}: recipe {rid}: {k} {sf.get('path')} is missing or changed")
+E                       v4train.tuned_recipes.TunedRecipeError: F:\Queens University\Microsoft Project\eda\.local_ai\_pytest_tmp\FABLE-DEEP3\pytest-of-Ahmed\pytest-1\test_production_gru_resume_acr0\TUNED_RECIPES_02B.json: recipe 02B_GRU: stage1_file code/tests_train/_p2work/db86f43b76e850ba/P2_GRU_STAGE1.json is missing or changed
+
+v4train\tuned_recipes.py:335: TunedRecipeError
+______________ test_nc_production_resume_with_changed_gru_recipe ______________
+
+tmp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-1/test_nc_production_resume_with0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001EC93409320>
+
+    @nc("a GRU recipe changed by part 2 must not resume under the old run identity")
+    def test_nc_production_resume_with_changed_gru_recipe(tmp_path, monkeypatch):
+>       d, c, tp, ep, _, r1, _ = _interrupted_gru_across_part2(tmp_path, monkeypatch)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests_train\test_train03.py:277: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests_train\test_train03.py:254: in _interrupted_gru_across_part2
+    else register_02b(p2, out, families=("SASREC",)))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+v4train\p2_driver.py:311: in register_02b
+    return write_registry(Path(p2_dir), families, Path(out) if out else REGISTRY_PATH,
+v4train\tuned_recipes.py:251: in write_registry
+    prev = load_tuned_recipes(path, hp_path) if path.exists() else None
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/_pytest_tmp/FABLE-DEEP3/pytest-of-Ahmed/pytest-1/test_nc_production_resume_with0/TUNED_RECIPES_02B.json')
+hp_path = WindowsPath('F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/contracts/hp_registry/HP_REGISTRY_P2R2.json')
+reverify_stages = True
+
+    def load_tuned_recipes(path=REGISTRY_PATH, hp_path=HP_REGISTRY_PATH, *, reverify_stages: bool = True) -> dict:
+        p = Path(path)
+        if not p.is_file():
+            raise TunedRecipeError(f"tuned-recipes registry {p} does not exist (written after P2 by register-02b)")
+        data = p.read_bytes()
+        try:
+            obj = json.loads(data.decode("utf-8"),
+                             parse_constant=lambda c: (_ for _ in ()).throw(ValueError(f"non-strict constant {c}")))
+        except ValueError as e:
+            raise TunedRecipeError(f"{p} is not strict JSON ({e})") from None
+        if not isinstance(obj, dict) or obj.get("format") != FORMAT:
+            raise TunedRecipeError(f"{p} is not a {FORMAT} object")
+        if obj.get("self_sha256") != canonical_sha256(obj):
+            raise TunedRecipeError(f"{p}: self-hash mismatch")
+        try:
+            hp = load_hp_registry(hp_path)
+        except HPRegistryError as e:
+            raise TunedRecipeError(f"HP registry refused: {e}") from None
+        if (obj.get("hp_registry") or {}).get("self_sha256") != hp["self_sha256"]:
+            raise TunedRecipeError(f"{p} was registered under another HP registry")
+        for rid, r in (obj.get("recipes") or {}).items():
+            if r.get("sha256") != canonical_sha256(r, exclude=("sha256",)) or r.get("recipe_id") != rid:
+                raise TunedRecipeError(f"{p}: recipe {rid} sha256 / id mismatch")
+            if r.get("family") not in FAMILIES or rid not in (recipe_id_of(r["family"]), c2_id_of(r["family"])):
+                raise TunedRecipeError(f"{p}: invalid recipe id / family {rid}")
+            try:
+                t = trial(hp, r["source_hp_id"])
+            except HPRegistryError as e:
+                raise TunedRecipeError(f"{p}: recipe {rid}: {e}") from None
+            if t["sha256"] != r["source_hp_sha256"] or any(t[k] != r[k] for k in RECIPE_FIELDS):
+                raise TunedRecipeError(f"{p}: recipe {rid} differs from its source HP trial {r['source_hp_id']}")
+            if reverify_stages:                                                    # F1 / R3: stage files and run evidence
+                stages = {}
+                for k in ("stage1_file", "stage2_file"):
+                    sf = r.get(k) or {}
+                    ap = v4_abs(sf["path"]) if sf.get("path") else None
+                    if ap is None or not ap.is_file() or _sha_file(ap) != sf.get("file_sha256"):
+>                       raise TunedRecipeError(f"{p}: recipe {rid}: {k} {sf.get('path')} is missing or changed")
+E                       v4train.tuned_recipes.TunedRecipeError: F:\Queens University\Microsoft Project\eda\.local_ai\_pytest_tmp\FABLE-DEEP3\pytest-of-Ahmed\pytest-1\test_nc_production_resume_with0\TUNED_RECIPES_02B.json: recipe 02B_GRU: stage1_file code/tests_train/_p2work/f82ad024ff266840/P2_GRU_STAGE1.json is missing or changed
+
+v4train\tuned_recipes.py:335: TunedRecipeError
+=================================== PASSES ====================================
+=========================== short test summary info ===========================
+PASSED tests_train\test_cuda_visibility.py::test_required_key_and_mismatch_refused
+PASSED tests_train\test_cuda_visibility.py::test_recorded_in_run_start
+PASSED tests_train\test_cuda_visibility.py::test_subprocess_launcher_trap
+PASSED tests_train\test_determinism_mode.py::test_required_key_lock_value_and_precision_id
+PASSED tests_train\test_determinism_mode.py::test_strict_needs_the_launcher_cublas_setting
+PASSED tests_train\test_determinism_mode.py::test_mode_applied_from_either_torch_state[STRICT]
+PASSED tests_train\test_determinism_mode.py::test_mode_applied_from_either_torch_state[WARN_ONLY]
+PASSED tests_train\test_determinism_mode.py::test_effective_state_is_verified_and_drift_fails_closed
+PASSED tests_train\test_determinism_mode.py::test_mode_applied_and_recorded_real_eval[STRICT]
+PASSED tests_train\test_determinism_mode.py::test_mode_applied_and_recorded_real_eval[WARN_ONLY]
+PASSED tests_train\test_determinism_mode.py::test_resume_refuses_a_changed_mode_or_cublas
+PASSED tests_train\test_determinism_mode.py::test_resume_checks_the_checkpoint_record
+PASSED tests_train\test_determinism_mode.py::test_continuation_refuses_a_changed_mode_or_cublas
+PASSED tests_train\test_full_train_mode.py::test_full_train_run_same_recipe_and_labels
+PASSED tests_train\test_full_train_mode.py::test_tiebreak_values_are_sealed_while_live
+PASSED tests_train\test_full_train_mode.py::test_full_train_guards
+PASSED tests_train\test_int06_device_pin.py::test_no_pin_refuses_a_non_a16_class
+PASSED tests_train\test_int06_device_pin.py::test_pin_with_another_gpu_name_refused
+PASSED tests_train\test_int06_device_pin.py::test_pinned_class_accepted_and_recorded_everywhere
+PASSED tests_train\test_int06_device_pin.py::test_a16_path_records_no_pin_field
+PASSED tests_train\test_int06_device_pin.py::test_resume_under_another_pin_refused
+PASSED tests_train\test_lr_point_evalconfig.py::test_t2_lock_values_and_required_key
+PASSED tests_train\test_lr_point_evalconfig.py::test_t2_p2_planned_table
+PASSED tests_train\test_lr_point_evalconfig.py::test_t2_every_update_uses_the_planned_lr[end]
+PASSED tests_train\test_lr_point_evalconfig.py::test_t2_every_update_uses_the_planned_lr[start]
+PASSED tests_train\test_lr_point_evalconfig.py::test_t2_start_point_refused_outside_tests
+PASSED tests_train\test_lr_point_evalconfig.py::test_t2_p3_matches_fl_schedule_bit_for_bit
+PASSED tests_train\test_lr_point_evalconfig.py::test_t2_p3_endpoint_tolerance_1e12
+PASSED tests_train\test_lr_point_evalconfig.py::test_t2_p3_tolerance_zone_matches_fl_when_fl_has_it
+PASSED tests_train\test_lr_point_evalconfig.py::test_t3_frozen_eval_config_is_the_lock
+PASSED tests_train\test_lr_point_evalconfig.py::test_t3_rows_carry_the_frozen_key_and_runtime_device
+PASSED tests_train\test_lr_point_evalconfig.py::test_t3_runtime_flags_and_device_refusals
+PASSED tests_train\test_monitors_guards.py::test_no_per_step_sync_and_monitor_records[GRU]
+PASSED tests_train\test_monitors_guards.py::test_no_per_step_sync_and_monitor_records[SASREC]
+PASSED tests_train\test_monitors_guards.py::test_nonfinite_fails_closed_and_keeps_a_valid_resumable
+PASSED tests_train\test_monitors_guards.py::test_strict_fp32_guard
+PASSED tests_train\test_monitors_guards.py::test_disk_guard
+PASSED tests_train\test_monitors_guards.py::test_roles_and_test_manifest_refusal
+PASSED tests_train\test_monitors_guards.py::test_recipe_and_key_guards
+PASSED tests_train\test_order_policy.py::test_pass_permutation_is_pure_and_distinct
+PASSED tests_train\test_order_policy.py::test_trainer_serves_the_seeded_order_for_both_families
+PASSED tests_train\test_registry_schema_labels.py::test_required_registry_keys
+PASSED tests_train\test_registry_schema_labels.py::test_historical_registry_file_replaces_the_hard_coded_ids
+PASSED tests_train\test_registry_schema_labels.py::test_registry_shape_refusals
+PASSED tests_train\test_registry_schema_labels.py::test_registry_hash_mismatch_refused
+PASSED tests_train\test_registry_schema_labels.py::test_data_version_and_role_refusals
+PASSED tests_train\test_registry_schema_labels.py::test_manifest_id_not_in_registry_refused
+PASSED tests_train\test_registry_schema_labels.py::test_provider_binding_mismatches_refused
+PASSED tests_train\test_registry_schema_labels.py::test_ids_recorded_everywhere_real_eval
+PASSED tests_train\test_registry_schema_labels.py::test_resume_refuses_a_changed_registry
+PASSED tests_train\test_registry_schema_labels.py::test_resume_refuses_a_changed_schema
+PASSED tests_train\test_registry_schema_labels.py::test_continuation_needs_the_continuation_role
+PASSED tests_train\test_registry_schema_labels.py::test_derived_schema_accepted_through_the_registry[False]
+PASSED tests_train\test_registry_schema_labels.py::test_derived_schema_accepted_through_the_registry[True]
+PASSED tests_train\test_registry_schema_labels.py::test_schema_not_in_registry_refused
+PASSED tests_train\test_registry_schema_labels.py::test_derived_schema_tampering_refused
+PASSED tests_train\test_registry_schema_labels.py::test_schema01_derived_schema_trains_end_to_end
+PASSED tests_train\test_registry_schema_labels.py::test_run_label_and_role_derivation
+PASSED tests_train\test_registry_schema_labels.py::test_screen_role_uses_the_test_free_settings
+PASSED tests_train\test_registry_schema_labels.py::test_non_test_rows_carry_production_and_historical_labels
+PASSED tests_train\test_registry_schema_labels.py::test_non_test_screen_run
+PASSED tests_train\test_registry_schema_labels.py::test_selection_refuses_each_label[PRODUCTION]
+PASSED tests_train\test_registry_schema_labels.py::test_selection_refuses_each_label[SMOKE_NOT_EVIDENCE]
+PASSED tests_train\test_registry_schema_labels.py::test_selection_refuses_each_label[FEATURE_SEARCH_SCREEN]
+PASSED tests_train\test_registry_schema_labels.py::test_selection_refuses_each_label[HISTORICAL_REFERENCE]
+PASSED tests_train\test_registry_schema_labels.py::test_selection_refuses_each_label[HP_SEARCH]
+PASSED tests_train\test_registry_schema_labels.py::test_selection_refuses_each_label[None]
+PASSED tests_train\test_registry_schema_labels.py::test_calibration_choice_and_record_guards
+PASSED tests_train\test_registry_schema_labels.py::test_screen_rows_refused_by_selection
+PASSED tests_train\test_registry_schema_labels.py::test_non_test_calibration_is_production_and_is_consumed
+PASSED tests_train\test_retention_calibration.py::test_retention_main_not_still_improving_real_eval
+PASSED tests_train\test_retention_calibration.py::test_retention_still_improving_keeps_the_resumable
+PASSED tests_train\test_retention_calibration.py::test_calibration_keeps_no_weights_and_chooses_by_mrr_at_2
+PASSED tests_train\test_retention_calibration.py::test_choose_peak_rule
+PASSED tests_train\test_t17_accumulation.py::test_ce_sum_count_equals_the_executed_objectives
+PASSED tests_train\test_t17_accumulation.py::test_t17_exact_microbatch_accumulation[16-GRU]
+PASSED tests_train\test_t17_accumulation.py::test_t17_exact_microbatch_accumulation[16-SASREC]
+PASSED tests_train\test_t17_accumulation.py::test_t17_exact_microbatch_accumulation[7-GRU]
+PASSED tests_train\test_t17_accumulation.py::test_t17_exact_microbatch_accumulation[7-SASREC]
+PASSED tests_train\test_t17_accumulation.py::test_t17_tail_batch_normalized_by_its_own_count[GRU]
+PASSED tests_train\test_t17_accumulation.py::test_t17_tail_batch_normalized_by_its_own_count[SASREC]
+PASSED tests_train\test_t17_accumulation.py::test_t17_pass_exposure_accounting_and_microbatch_trajectory
+PASSED tests_train\test_t20_resume.py::test_t20_resume_mid_efe_is_bitwise[GRU]
+PASSED tests_train\test_t20_resume.py::test_t20_resume_mid_efe_is_bitwise[SASREC]
+PASSED tests_train\test_t20_resume.py::test_t20_crash_inside_a_checkpoint_write
+PASSED tests_train\test_t20_resume.py::test_resume_refusals
+PASSED tests_train\test_t21_schedule_stopping.py::test_schedule_shape_and_refusals
+PASSED tests_train\test_t21_schedule_stopping.py::test_t21_low_lr_before_stop
+PASSED tests_train\test_t21_schedule_stopping.py::test_still_improving_rule_and_tolerance
+PASSED tests_train\test_t21_schedule_stopping.py::test_t21_patience_is_not_off_by_one
+PASSED tests_train\test_t21_schedule_stopping.py::test_t21_no_early_stop_before_6
+PASSED tests_train\test_t21_schedule_stopping.py::test_still_improving_in_the_trainer[6.0-True]
+PASSED tests_train\test_t21_schedule_stopping.py::test_still_improving_in_the_trainer[5.5-True]
+PASSED tests_train\test_t21_schedule_stopping.py::test_still_improving_in_the_trainer[5.0-False]
+PASSED tests_train\test_t21_schedule_stopping.py::test_t21_cap_is_not_a_target
+PASSED tests_train\test_t21_schedule_stopping.py::test_continuation_refusals
+PASSED tests_train\test_t22_selection.py::test_selection_constants_are_the_lock_numbers
+PASSED tests_train\test_t22_selection.py::test_decisive_stable
+PASSED tests_train\test_t22_selection.py::test_each_trigger_alone[T1a-g0-s0-ci0-T1a]
+PASSED tests_train\test_t22_selection.py::test_each_trigger_alone[T1b_sign-g1-s1-ci1-T1b]
+PASSED tests_train\test_t22_selection.py::test_each_trigger_alone[T1b_small-g2-s2-ci2-T1b]
+PASSED tests_train\test_t22_selection.py::test_each_trigger_alone[T1c-g3-s3-ci3-T1c]
+PASSED tests_train\test_t22_selection.py::test_each_trigger_alone[T1d-g4-s4-ci4-T1d]
+PASSED tests_train\test_t22_selection.py::test_t1c_fires_alone
+PASSED tests_train\test_t22_selection.py::test_cohort_refusals
+PASSED tests_train\test_t22_selection.py::test_read_rule_both_runs_complete_before_reading
+PASSED tests_train\test_t22_selection.py::test_stage1_branches
+PASSED tests_train\test_t22_selection.py::test_stage2_branches
+PASSED tests_train\test_t22_selection.py::test_c_matched_guard_draft_and_cpf
+PASSED tests_train\test_t22_selection.py::test_lock_draft_needs_server_measured_init_hashes
+PASSED tests_train\test_t22_selection.py::test_end_to_end_contest_trigger_and_stage1
+PASSED tests_train\test_train02_p2_driver.py::test_register_02b_script_refuses_without_pythonpath
+PASSED tests_train\test_train02_p2_driver.py::test_run_values_and_exclusions
+PASSED tests_train\test_train02_p2_driver.py::test_stage1_plan_best_per_level_and_triggers
+PASSED tests_train\test_train02_p2_driver.py::test_choose_with_tie
+PASSED tests_train\test_train02_p2_driver.py::test_ckpt_avg_carry
+PASSED tests_train\test_train02_p2_driver.py::test_stage2_select
+PASSED tests_train\test_train02_p2_driver.py::test_launch_cmd_and_child_env
+PASSED tests_train\test_train02_p2_driver.py::test_dry_run_prints_the_rung_and_writes_nothing
+PASSED tests_train\test_train02_p2_driver.py::test_stage1_then_stage2_end_to_end
+PASSED tests_train\test_train02_p2_driver.py::test_stage2_needs_a_verified_stage1
+PASSED tests_train\test_train02_tuning.py::test_tuning_run_marks_snapshots_and_ckpt_avg[P2_GRU_D256_S1_s4]
+PASSED tests_train\test_train02_tuning.py::test_tuning_run_marks_snapshots_and_ckpt_avg[P2_SASREC_D384_B2_S0_s3]
+PASSED tests_train\test_train02_tuning.py::test_uniform_average_unit
+PASSED tests_train\test_train02_tuning.py::test_real_evaluator_ckpt_avg_end_to_end
+PASSED tests_train\test_train02_tuning.py::test_non_test_tuning_rows_are_hp_search_and_refused[P2_GRU_D256_S0_s0]
+PASSED tests_train\test_train02_tuning.py::test_non_test_tuning_rows_are_hp_search_and_refused[P2_SASREC_D256_B3_S1_s1]
+PASSED tests_train\test_train02_tuning.py::test_theta0_mismatch_refused
+PASSED tests_train\test_train02_tuning.py::test_resume_exact_per_variant[GRU_D128]
+PASSED tests_train\test_train02_tuning.py::test_resume_exact_per_variant[GRU_D256]
+PASSED tests_train\test_train02_tuning.py::test_resume_exact_per_variant[SASREC_D256_B2]
+PASSED tests_train\test_train02_tuning.py::test_resume_exact_per_variant[SASREC_D256_B3]
+PASSED tests_train\test_train02_tuning.py::test_resume_exact_per_variant[SASREC_D384_B2]
+PASSED tests_train\test_train02_tuning.py::test_crash_inside_ckpt_avg_resumes
+PASSED tests_train\test_train02_tuning.py::test_resume_refuses_a_changed_hp_registry_file
+PASSED tests_train\test_train02_tuning.py::test_trial_dropout_checked_and_keys
+PASSED tests_train\test_train02_variants_hp.py::test_variant_registry_file_and_o_excl
+PASSED tests_train\test_train02_variants_hp.py::test_variant_registry_tampering_refused
+PASSED tests_train\test_train02_variants_hp.py::test_current_builds_bit_identical_small_k[GRU]
+PASSED tests_train\test_train02_variants_hp.py::test_current_builds_bit_identical_small_k[SASREC]
+PASSED tests_train\test_train02_variants_hp.py::test_current_builds_bit_identical_to_theta0_registry_full_k
+PASSED tests_train\test_train02_variants_hp.py::test_contextgrud_mirror_at_d128_is_bitwise_contextgru[BASE]
+PASSED tests_train\test_train02_variants_hp.py::test_contextgrud_mirror_at_d128_is_bitwise_contextgru[L3_NEAR_DUPLICATE]
+PASSED tests_train\test_train02_variants_hp.py::test_contextgrud_mirror_at_d128_is_bitwise_contextgru[L0S_CLEAN_V2_SESSION]
+PASSED tests_train\test_train02_variants_hp.py::test_new_variant_shapes
+PASSED tests_train\test_train02_variants_hp.py::test_per_variant_adapter_equivalence_and_theta0_determinism[GRU_D128]
+PASSED tests_train\test_train02_variants_hp.py::test_per_variant_adapter_equivalence_and_theta0_determinism[GRU_D256]
+PASSED tests_train\test_train02_variants_hp.py::test_per_variant_adapter_equivalence_and_theta0_determinism[SASREC_D256_B2]
+PASSED tests_train\test_train02_variants_hp.py::test_per_variant_adapter_equivalence_and_theta0_determinism[SASREC_D256_B3]
+PASSED tests_train\test_train02_variants_hp.py::test_per_variant_adapter_equivalence_and_theta0_determinism[SASREC_D384_B2]
+PASSED tests_train\test_train02_variants_hp.py::test_per_variant_adapter_equivalence_and_theta0_determinism[SASREC_D64_B2]
+PASSED tests_train\test_train02_variants_hp.py::test_dropout_through_build_kwargs_only
+PASSED tests_train\test_train02_variants_hp.py::test_variant_is_built
+PASSED tests_train\test_train02_variants_hp.py::test_theta0_variants_small_k_determinism_o_excl_and_load
+PASSED tests_train\test_train02_variants_hp.py::test_theta0_variants_guard_equal_at_full_k
+PASSED tests_train\test_train02_variants_hp.py::test_theta0_variants_guard_blocks_write
+PASSED tests_train\test_train02_variants_hp.py::test_derived_schema_registry_and_theta0_registry_byte_identical
+PASSED tests_train\test_train02_variants_hp.py::test_new_keys_left_out_of_the_hash_while_none
+PASSED tests_train\test_train02_variants_hp.py::test_tuning_role_derivations
+PASSED tests_train\test_train02_variants_hp.py::test_hp_rule_accepts_only_the_named_trial
+PASSED tests_train\test_train02_variants_hp.py::test_tuning_refusals
+PASSED tests_train\test_train02_variants_hp.py::test_hp_registry_design_02r2
+PASSED tests_train\test_train02_variants_hp.py::test_hp_registry_o_excl
+PASSED tests_train\test_train02_variants_hp.py::test_stale_p2_registry_refused_for_launches
+PASSED tests_train\test_train02_variants_hp.py::test_hp_registry_tampering_refused
+PASSED tests_train\test_train02_variants_hp.py::test_hp_verify_cli
+PASSED tests_train\test_train02_variants_hp.py::test_s0_planned_table_bit_identical_to_train01r2
+PASSED tests_train\test_train02_variants_hp.py::test_s1_is_the_registered_schedule
+PASSED tests_train\test_train02_variants_hp.py::test_t2_pins_hold_for_s1
+PASSED tests_train\test_train02r1.py::test_non_finite_ckpt_avg_keeps_the_endpoint[nan]
+PASSED tests_train\test_train02r1.py::test_non_finite_ckpt_avg_keeps_the_endpoint[undefined]
+PASSED tests_train\test_train02r1.py::test_theta0_guard_verdict
+PASSED tests_train\test_train02r1.py::test_theta0_missing_entry_blocks_the_write_at_full_k
+PASSED tests_train\test_train02r1.py::test_register_02b
+PASSED tests_train\test_train02r1.py::test_register_one_family_at_a_time
+PASSED tests_train\test_train02r1.py::test_forged_stage_files_refused
+PASSED tests_train\test_train02r1.py::test_register_02b_refusals_and_reverification
+PASSED tests_train\test_train02r1.py::test_main_recipe_rule
+PASSED tests_train\test_train02r1.py::test_main_run_with_a_recipe_records_it
+PASSED tests_train\test_train02r1.py::test_non_test_recipe_needs_the_pinned_production_registry
+PASSED tests_train\test_train02r1.py::test_r5_driver_format_is_what_02b_consumes
+PASSED tests_train\test_train02r1.py::test_values_bound_to_run_summaries
+PASSED tests_train\test_train02r1.py::test_evidence_reverified_on_load_and_endpoint_rows
+PASSED tests_train\test_train02r1.py::test_02b_loads_from_another_cwd
+PASSED tests_train\test_train03.py::test_seal_by_construction_scripted
+PASSED tests_train\test_train03.py::test_seal_real_evaluator
+PASSED tests_train\test_train03.py::test_other_roles_keep_their_layout
+PASSED tests_train\test_train03.py::test_automatic_continuation_and_extended_rows
+PASSED tests_train\test_train03.py::test_resume_exact_inside_the_automatic_continuation
+PASSED tests_train\test_train03.py::test_s1_recipe_continues_with_the_c3_knots
+PASSED tests_train\test_train03.py::test_runconfig_continuation_rules
+PASSED tests_train\test_train03.py::test_g1b_format
+PASSED tests_train\test_train03.py::test_unseal_gate_passes_and_guards_every_sealed_read
+PASSED tests_train\test_train03.py::test_unseal_clause1_all_four_complete
+PASSED tests_train\test_train03.py::test_unseal_clause2_both_g1b_parts
+PASSED tests_train\test_train03.py::test_unseal_clause3_gru_entry_byte_identical
+PASSED tests_train\test_train03.py::test_unseal_clause4_config_hashes
+PASSED tests_train\test_train03.py::test_p3_driver_plan_and_modes
+PASSED tests_train\test_train05.py::test_c2_ranking_and_c1_launcher_identity
+PASSED tests_train\test_train05.py::test_registry_versions_and_g1b
+PASSED tests_train\test_train05.py::test_candidate_pin_order_starts_at_v1
+PASSED tests_train\test_train05.py::test_production_resume_across_part1r_format_2
+PASSED tests_train\test_train05.py::test_refuse_changed_existing_entry
+PASSED tests_train\test_train05.py::test_load_retains_stored_run_dir_suffix_tolerance
+PASSED tests_train\test_train05.py::test_one_valid_size_records_no_c2
+PASSED tests_train\test_train05.py::test_eight_run_unseal
+PASSED tests_train\test_train05.py::test_unseal_four_clauses
+PASSED tests_train\test_train05.py::test_unseal_registry_byte_identity
+XFAIL tests_train\test_determinism_mode.py::test_nc_trainer_ignores_the_mode - NEGATIVE CONTROL: a trainer that ignores determinism_mode (the pre-R1 hard-coded warn-only call)
+XFAIL tests_train\test_determinism_mode.py::test_nc_rows_without_the_mode - NEGATIVE CONTROL: result rows that do not record the determinism mode
+XFAIL tests_train\test_determinism_mode.py::test_nc_resume_ignores_a_mode_change - NEGATIVE CONTROL: a resume that ignores a determinism-mode change
+XFAIL tests_train\test_full_train_mode.py::test_nc_tiebreak_keeps_resumable - NEGATIVE CONTROL: a tie-break run that keeps its 6.0 resumable like a STILL_IMPROVING contest run
+XFAIL tests_train\test_int06_device_pin.py::test_nc_a40_accepted_without_pin - NEGATIVE CONTROL: without a pin the A40 class is an accepted evaluation class
+XFAIL tests_train\test_int06_device_pin.py::test_nc_pin_for_another_gpu_accepted - NEGATIVE CONTROL: a pin registered for another GPU name is accepted for the live GPU
+XFAIL tests_train\test_monitors_guards.py::test_nc_per_step_sync - NEGATIVE CONTROL: a monitor that reads the loss on every update (a per-step host sync)
+XFAIL tests_train\test_order_policy.py::test_nc_naive_order_collides_across_seeds - NEGATIVE CONTROL: the GRU1 order rule default_rng(seed + pass) collides across seeds 2026 / 2027
+XFAIL tests_train\test_registry_schema_labels.py::test_nc_manifest_id_not_in_registry - NEGATIVE CONTROL: a trainer that accepts a manifest id that is not the registry's for the role (the pre-R2 open door)
+XFAIL tests_train\test_registry_schema_labels.py::test_nc_registry_hash_mismatch - NEGATIVE CONTROL: a registry loader that does not verify the registry's self-hash
+XFAIL tests_train\test_registry_schema_labels.py::test_nc_schema_not_in_registry - NEGATIVE CONTROL: a schema check that trusts the schema object instead of the derived-schema registry
+XFAIL tests_train\test_registry_schema_labels.py::test_nc_screen_row_accepted_by_selection - NEGATIVE CONTROL: a cohort selection that accepts FEATURE_SEARCH_SCREEN rows as evidence
+XFAIL tests_train\test_registry_schema_labels.py::test_nc_resume_with_changed_schema - NEGATIVE CONTROL: a resume that ignores a schema change
+XFAIL tests_train\test_retention_calibration.py::test_nc_retention_skips_deletion - NEGATIVE CONTROL: a retention step that never deletes the 6.0 resumable of a finished run
+XFAIL tests_train\test_retention_calibration.py::test_nc_calibration_keeps_weights - NEGATIVE CONTROL: a calibration that keeps its resumable weights
+XFAIL tests_train\test_t17_accumulation.py::test_nc_t17_mean_of_means - NEGATIVE CONTROL: mean of microbatch means (each microbatch divided by its own count)
+XFAIL tests_train\test_t20_resume.py::test_nc_t20_no_rng_restore - NEGATIVE CONTROL: resume without restoring the RNG state (dropout stream) is not bitwise
+XFAIL tests_train\test_t20_resume.py::test_nc_t20_no_optimizer_restore - NEGATIVE CONTROL: resume that drops the AdamW moments is not bitwise
+XFAIL tests_train\test_t21_schedule_stopping.py::test_nc_t21_constant_schedule - NEGATIVE CONTROL: a constant-LR schedule never enters a low-LR phase before the stop
+XFAIL tests_train\test_t21_schedule_stopping.py::test_nc_t21_patience_one - NEGATIVE CONTROL: a patience-1 continuation stop rule is off by one
+XFAIL tests_train\test_t21_schedule_stopping.py::test_nc_t21_cap_as_target - NEGATIVE CONTROL: a continuation that ignores patience runs to the cap
+XFAIL tests_train\test_t22_selection.py::test_nc_max_seed_selector - NEGATIVE CONTROL: selecting by the best seed instead of the seed mean
+XFAIL tests_train\test_t22_selection.py::test_nc_trigger_without_t1c - NEGATIVE CONTROL: a trigger that omits T1c misses a seed-noise-dominated gap
+XFAIL tests_train\test_t22_selection.py::test_nc_stage1_without_ci - NEGATIVE CONTROL: stage 1 decided on |delta| alone, without the CI condition
+XFAIL tests_train\test_t22_selection.py::test_nc_early_reader - NEGATIVE CONTROL: a reader that reads the tie-break as soon as one run has finished
+XFAIL tests_train\test_t22_selection.py::test_nc_c_matched_accepts_tiebreak - NEGATIVE CONTROL: a C_MATCHED guard that accepts ARCHITECTURE_TIEBREAK rows
+XFAIL tests_train\test_t22_selection.py::test_nc_equivalent_autoselects - NEGATIVE CONTROL: an EQUIVALENT outcome that silently selects GRU and drafts the lock
+XFAIL tests_train\test_train02_p2_driver.py::test_nc_tie_rule_without_band - NEGATIVE CONTROL: a tie rule that ignores the 0.0005 band (always the higher mean)
+XFAIL tests_train\test_train02_tuning.py::test_nc_snapshots_kept - NEGATIVE CONTROL: a CKPT_AVG step that keeps the snapshots and the average
+XFAIL tests_train\test_train02_tuning.py::test_nc_ckpt_avg_is_the_endpoint - NEGATIVE CONTROL: a CKPT_AVG that evaluates the 6.0 weights instead of the uniform average
+XFAIL tests_train\test_train02_tuning.py::test_nc_tuning_every_half_efe - NEGATIVE CONTROL: a TUNING run evaluated at every 0.5 EFE (the MAIN marks)
+XFAIL tests_train\test_train02_tuning.py::test_nc_selection_accepts_hp_search - NEGATIVE CONTROL: a selection that accepts HP_SEARCH rows as evidence
+XFAIL tests_train\test_train02_variants_hp.py::test_nc_variant_registry_without_code_check - NEGATIVE CONTROL: a variant-registry loader that checks only the self-hash (not the code table)
+XFAIL tests_train\test_train02_variants_hp.py::test_nc_build_ignores_variant - NEGATIVE CONTROL: a build that ignores the variant argument (always the current module)
+XFAIL tests_train\test_train02_variants_hp.py::test_nc_theta0_writer_ignores_guard - NEGATIVE CONTROL: a theta0 writer that ignores the current-build guard
+XFAIL tests_train\test_train02_variants_hp.py::test_nc_validate_without_hp_rule - NEGATIVE CONTROL: a validate() that accepts off-recipe values without the HP-registry rule
+XFAIL tests_train\test_train02_variants_hp.py::test_nc_stale_registry_accepted - NEGATIVE CONTROL: a loader that accepts the superseded 02R1 registry (format check removed)
+XFAIL tests_train\test_train02_variants_hp.py::test_nc_hp_loader_without_verification - NEGATIVE CONTROL: an HP registry loader that does not verify the file
+XFAIL tests_train\test_train02_variants_hp.py::test_nc_s1_mutated_knots - NEGATIVE CONTROL: an S1 whose knots are not the registered ones (decay starts at 4.0)
+XFAIL tests_train\test_train02r1.py::test_nc_non_finite_ckpt_avg_raises - NEGATIVE CONTROL: the pre-F1 CKPT_AVG step that raises on a non-finite metric (the run stays PENDING_CKPT_AVG)
+XFAIL tests_train\test_train02r1.py::test_nc_guard_passes_missing_entry - NEGATIVE CONTROL: a production guard that passes a missing THETA0_REGISTRY entry (the pre-F3 rule)
+XFAIL tests_train\test_train02r1.py::test_nc_trusts_recorded_selection - NEGATIVE CONTROL: a registration that trusts the stage-2 file's recorded selection (the pre-R2 behaviour)
+XFAIL tests_train\test_train02r1.py::test_nc_recipe_lookup_fallback - NEGATIVE CONTROL: a recipe lookup that falls back to another registered recipe
+XFAIL tests_train\test_train02r1.py::test_nc_no_production_pin - NEGATIVE CONTROL: a non-test recipe run that accepts any self-consistent tuned-recipes file (no G1b pin)
+XFAIL tests_train\test_train02r1.py::test_nc_values_not_bound_to_evidence - NEGATIVE CONTROL: a registration that does not re-read the run dirs (values trusted from the stage files)
+XFAIL tests_train\test_train03.py::test_nc_unsealed_contest_run - NEGATIVE CONTROL: a contest run that writes its values outside sealed/ (the pre-TRAIN-03 layout)
+XFAIL tests_train\test_train03.py::test_nc_unseal_without_clause1 - NEGATIVE CONTROL: an unseal gate without the completeness clause
+XFAIL tests_train\test_train03.py::test_nc_unseal_without_clause2 - NEGATIVE CONTROL: an unseal gate that accepts a G1b file with one part
+XFAIL tests_train\test_train03.py::test_nc_unseal_without_clause3 - NEGATIVE CONTROL: an unseal gate without the GRU byte-identity clause
+XFAIL tests_train\test_train03.py::test_nc_unseal_without_clause4 - NEGATIVE CONTROL: an unseal gate without the RunConfig-hash clause
+XFAIL tests_train\test_train05.py::test_nc_train05_tampered_c2_stage_config - NEGATIVE CONTROL: a self-hashed stage-2 C2 config that differs from the recomputed selection
+XFAIL tests_train\test_train05.py::test_nc_train05_parameter_count_seed_mismatch - NEGATIVE CONTROL: a gate that accepts candidate seeds with disagreeing RUN_START shared_numel
+XFAIL tests_train\test_train05.py::test_nc_train05_six_runs_without_sasrec_c2 - NEGATIVE CONTROL: a six-run registry with SASREC C2 silently omitted
+ERROR tests_train\test_train05.py::test_nc_train05_repeated_registry_pin - v4...
+ERROR tests_train\test_train05.py::test_nc_train05_missing_run - v4train.tune...
+ERROR tests_train\test_train05.py::test_nc_train05_missing_part - v4train.tun...
+ERROR tests_train\test_train05.py::test_nc_train05_registry_identity - v4trai...
+ERROR tests_train\test_train05.py::test_nc_train05_config_hash - v4train.tune...
+ERROR tests_train\test_train05.py::test_g2_tie_exclusion_and_diagnostic_flip
+ERROR tests_train\test_train05.py::test_g2_diagnostic_error_is_reported - v4t...
+ERROR tests_train\test_train05.py::test_nc_train05_foreign_primary_rows - v4t...
+ERROR tests_train\test_train05.py::test_g2_passes_only_selected_recipes_to_t1
+FAILED tests_train\test_train03.py::test_production_gru_resume_across_g1b_part2
+FAILED tests_train\test_train03.py::test_nc_production_resume_with_changed_gru_recipe
+2 failed, 208 passed, 53 xfailed, 9 errors in 416.81s (0:06:56)
+
+--- stderr ---

@@ -1,0 +1,769 @@
+FFFFFFFFFFFFFFFFFFFFFFFFFFFFF                                            [100%]
+================================== FAILURES ===================================
+_________________________ test_nc_unrecentered_theta0 _________________________
+
+    @nc("a build that forgets the C7 recentering leaves a visible common mode in theta0")
+    def test_nc_unrecentered_theta0():
+        from v4models.build import construct_module
+        from models_testkit import poc, vocab
+        m = construct_module("SASREC", V2, SEED, vocab_sizes=vocab(K_SMALL), poc=poc(K_SMALL))
+        a = ADAPTERS["SASREC"](m, V2)
+>       assert common_mode_report(a)["head"]["common_mode_norm"] < 1e-6
+E       assert 0.03720624250447106 < 1e-06
+
+tests_models\test_build_adapter.py:132: AssertionError
+_______________________ test_nc_tampered_diff_document ________________________
+
+    @nc("a document whose hunk text was edited no longer matches the live diff")
+    def test_nc_tampered_diff_document():
+        import re
+        text = diffdoc.DOC.read_text(encoding="utf-8")
+        bad = text.replace("+USER_HIDDEN = 64", "+USER_HIDDEN = 65", 1)
+        blocks_bad = [m.group(1).rstrip("\n") for m in re.finditer(r"```diff\n(.*?)\n```", bad, flags=re.S)]
+>       assert blocks_bad == diffdoc.blocks()
+E       assert ['--- snap_v1...init__(', ...] == ['--- snap_v1...init__(', ...]
+E         
+E         At index 23 diff: '@@ -51,8 +68,25 @@\n SIDE_DIMS = {"category_tokens": 32, "brand_tokens": 32, "main_category_tokens": 8,\n              "daypart_tokens": 4, "weekday_tokens": 4}\n-NUMERIC_DIM, FLAGS_DIM, NUMFLAG_OUT = 19, 15, 32\n-USER_CTX_DIM, USER_MASK_DIM, USER_HIDDEN = 12, 6, 64\n+NUMFLAG_OUT = 32       # input widths (numeric / flags / user ctx / user mask) come from `widths`\n+USER_HIDDEN = 65\n GATE_INIT = -3.0\n RICH_RNG_OFFSET = 1_000_003\n+EXTENSION_SIDE_CHANNELS = ("session_offset_tokens", "session_mode_main_category_tokens")   # SCHEMA-01R1 (DATA-05)\n+EXT...
+E         
+E         ...Full output truncated (2 lines hidden), use '-vv' to show
+
+tests_models\test_diff_doc_and_isolation.py:92: AssertionError
+____________________ test_nc_parity_gru_activation_mutant _____________________
+
+    @nc("copy error: GRU numeric+flag activation GELU -> ReLU (same weights)")
+    def test_nc_parity_gru_activation_mutant():
+        ref, new = _pair("GRU")
+        new.numeric_flags_proj[1] = nn.ReLU()
+>       _assert_eval_parity(ref, new, batch(9, widths=V1, seed=3))
+
+tests_models\test_parity_snapshot.py:120: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+ref = ContextGRU(
+  (item_embed): Embedding(67, 128, padding_idx=0)
+  (category_embed): Embedding(663, 32)
+  (brand_embed): ...eadout_proj): Linear(in_features=320, out_features=128, bias=True)
+  (readout_dropout): Dropout(p=0.1, inplace=False)
+)
+new = ContextGRU(
+  (item_embed): Embedding(67, 128, padding_idx=0)
+  (category_embed): Embedding(663, 32)
+  (brand_embed): ...eadout_proj): Linear(in_features=320, out_features=128, bias=True)
+  (readout_dropout): Dropout(p=0.1, inplace=False)
+)
+b = {'item_tokens': tensor([[47, 61, 24, 41, 59, 26, 19, 52, 21, 47, 66, 21, 40,  4, 10, 65, 18, 48,
+         60,  8, 13, ...8, 13, 14,  3, 15,  5,  4, 11,  0,  0,  0,  0,
+          0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0]]), ...}
+
+    def _assert_eval_parity(ref, new, b) -> None:
+        ref.eval()
+        new.eval()
+        with torch.no_grad():
+            ya, yb = forward(ref, b), forward(new, b)
+        assert ya.shape == yb.shape == (b["item_tokens"].shape[0], K_SMALL)
+>       assert torch.equal(ya, yb), f"V2 (v1 widths) logits differ from the snapshot: max |d| = {maxdiff(ya, yb):.3g}"
+E       AssertionError: V2 (v1 widths) logits differ from the snapshot: max |d| = 0.34
+E       assert False
+E        +  where False = <built-in method equal of type object at 0x00007FFA4E8278E0>(tensor([[-4.3798e-01, -8.0709e-01,  6.8186e-01, -1.7829e+00, -5.2147e-01,\n         -1.0492e+00, -8.4213e-01,  2.1403e+...+00,  1.1728e+00,  7.5174e-01, -1.5826e+00,  2.0059e+00,\n          1.5060e-01,  1.2914e-01, -1.6446e+00, -2.2649e+00]]), tensor([[-4.7645e-01, -8.4898e-01,  5.8163e-01, -1.9001e+00, -4.2668e-01,\n         -1.0886e+00, -9.9610e-01,  2.1248e+...+00,  1.2100e+00,  8.0878e-01, -1.6051e+00,  1.9671e+00,\n          9.7401e-02,  2.4209e-01, -1.5983e+00, -2.2334e+00]]))
+E        +    where <built-in method equal of type object at 0x00007FFA4E8278E0> = torch.equal
+
+tests_models\test_parity_snapshot.py:40: AssertionError
+__________________ test_nc_parity_sasrec_concat_order_mutant __________________
+
+    @nc("copy error: SASRec side residual concatenates flags before numerics (same weights)")
+    def test_nc_parity_sasrec_concat_order_mutant():
+        ref, new = _pair("SASREC")
+    
+        def wrong(self, tok_sel, num_sel, flag_sel):
+            parts = [self.side_embeds[ch](tok_sel[ch]) for ch in sasrec_v2.SIDE_CHANNELS]
+            nf = torch.cat([flag_sel.to(torch.float32), num_sel.to(torch.float32)], dim=-1)
+            parts.append(F.gelu(self.numflag_proj(nf)))
+            return torch.sigmoid(self.side_gate) * self.side_norm(self.side_proj(torch.cat(parts, dim=-1)))
+    
+        new._side_residual = types.MethodType(wrong, new)
+>       _assert_eval_parity(ref, new, batch(9, widths=V1, seed=3))
+
+tests_models\test_parity_snapshot.py:134: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+ref = SASRecCE(
+  (item_embed): Embedding(67, 256, padding_idx=0)
+  (pos_embed): Embedding(50, 256)
+  (blocks): ModuleList(
+...ear(in_features=64, out_features=256, bias=True)
+  (user_norm): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+)
+new = SASRecCE(
+  (item_embed): Embedding(67, 256, padding_idx=0)
+  (pos_embed): Embedding(50, 256)
+  (blocks): ModuleList(
+...ear(in_features=64, out_features=256, bias=True)
+  (user_norm): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+)
+b = {'item_tokens': tensor([[47, 61, 24, 41, 59, 26, 19, 52, 21, 47, 66, 21, 40,  4, 10, 65, 18, 48,
+         60,  8, 13, ...8, 13, 14,  3, 15,  5,  4, 11,  0,  0,  0,  0,
+          0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0]]), ...}
+
+    def _assert_eval_parity(ref, new, b) -> None:
+        ref.eval()
+        new.eval()
+        with torch.no_grad():
+            ya, yb = forward(ref, b), forward(new, b)
+        assert ya.shape == yb.shape == (b["item_tokens"].shape[0], K_SMALL)
+>       assert torch.equal(ya, yb), f"V2 (v1 widths) logits differ from the snapshot: max |d| = {maxdiff(ya, yb):.3g}"
+E       AssertionError: V2 (v1 widths) logits differ from the snapshot: max |d| = 0.98
+E       assert False
+E        +  where False = <built-in method equal of type object at 0x00007FFA4E8278E0>(tensor([[-0.0947, -0.0688, -0.1219,  0.2205,  0.0088,  0.0746,  0.2052, -0.5334,\n         -0.0251, -0.0560, -0.1337, -... -0.3484,  0.6840,  0.4023, -0.0105,\n          0.1259,  0.1110,  0.3365,  0.0919,  0.0402, -0.0321, -0.5227, -0.2446]]), tensor([[-2.6019e-01, -2.8638e-02,  1.0263e-01, -8.4991e-02,  4.0567e-01,\n         -5.5777e-01, -1.3594e-01, -4.1808e-...-01, -1.1885e-01,  3.2377e-01, -4.7200e-02, -2.7569e-01,\n          1.6985e-01,  5.4315e-01, -1.7539e-01, -1.1297e-01]]))
+E        +    where <built-in method equal of type object at 0x00007FFA4E8278E0> = torch.equal
+
+tests_models\test_parity_snapshot.py:40: AssertionError
+______________________ test_nc_parity_init_order_mutant _______________________
+
+    @nc("a V2 build whose init consumes the RNG in another order (different seed) is not the snapshot init")
+    def test_nc_parity_init_order_mutant():
+        a, b = snap_model("GRU", SEED), v2_model("GRU", SEED + 1, widths=V1)
+>       assert states_equal(a.state_dict(), b.state_dict())
+E       AssertionError: assert False
+E        +  where False = states_equal(OrderedDict({'output_bias': tensor([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.... -0.0332, -0.0357,  0.0500, -0.0253,\n         0.0468, -0.0336, -0.0511,  0.0176, -0.0161,  0.0408,  0.0153, -0.0441])}), OrderedDict({'output_bias': tensor([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.... -0.0077,  0.0314, -0.0243,  0.0329,\n        -0.0066, -0.0330, -0.0302,  0.0085,  0.0545, -0.0307,  0.0121, -0.0460])}))
+E        +    where OrderedDict({'output_bias': tensor([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.... -0.0332, -0.0357,  0.0500, -0.0253,\n         0.0468, -0.0336, -0.0511,  0.0176, -0.0161,  0.0408,  0.0153, -0.0441])}) = state_dict()
+E        +      where state_dict = ContextGRU(\n  (item_embed): Embedding(67, 128, padding_idx=0)\n  (category_embed): Embedding(663, 32)\n  (brand_embed): ...eadout_proj): Linear(in_features=320, out_features=128, bias=True)\n  (readout_dropout): Dropout(p=0.1, inplace=False)\n).state_dict
+E        +    and   OrderedDict({'output_bias': tensor([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.... -0.0077,  0.0314, -0.0243,  0.0329,\n        -0.0066, -0.0330, -0.0302,  0.0085,  0.0545, -0.0307,  0.0121, -0.0460])}) = state_dict()
+E        +      where state_dict = ContextGRU(\n  (item_embed): Embedding(67, 128, padding_idx=0)\n  (category_embed): Embedding(663, 32)\n  (brand_embed): ...eadout_proj): Linear(in_features=320, out_features=128, bias=True)\n  (readout_dropout): Dropout(p=0.1, inplace=False)\n).state_dict
+
+tests_models\test_parity_snapshot.py:140: AssertionError
+___________________ test_nc_projection_dropping_item_tokens ___________________
+
+    @nc("a projection that drops item_tokens removes the task's item-ID sequence")
+    def test_nc_projection_dropping_item_tokens():
+        bad = dataclasses.replace(L3.projection, tokens_dropped=L3.projection.tokens_dropped + ("item_tokens",))
+        p = bad.apply(batch(3, seed=1))
+>       assert "item_tokens" in p, "the projected batch lost item_tokens"
+E       AssertionError: the projected batch lost item_tokens
+E       assert 'item_tokens' in {'category_tokens': tensor([[548,  89, 422, 135, 148, 657, 544, 628, 121, 277, 573,  85, 548, 646,\n         148, 622, ... 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,\n         0, 0]]), 'lengths': tensor([46, 40, 25]), ...}
+
+tests_models\test_schema01_derived.py:300: AssertionError
+________________________ test_nc_l0_build_not_bitwise _________________________
+
+    @nc("an L0 build whose token channels are in a non-canonical order (init order) is not bitwise the MODEL-01 build")
+    def test_nc_l0_build_not_bitwise():
+        wrong = dataclasses.replace(V2, categorical=("item_tokens", "brand_tokens", "category_tokens",
+                                                     "main_category_tokens", "daypart_tokens", "weekday_tokens"))
+        a = build("GRU", SCHEMA, SEED, "cpu", K=K_SMALL)
+        d = build("GRU", wrong, SEED, "cpu", K=K_SMALL)
+>       assert d.init_sha256 == a.init_sha256, "the L0 theta0 differs from the MODEL-01 theta0"
+E       AssertionError: the L0 theta0 differs from the MODEL-01 theta0
+E       assert 'e02d8c21daba...05ff572854a80' == '24b1a0dbafd6...f53fd7fbabb7d'
+E         
+E         - 24b1a0dbafd6bf557e719bdee3016aefd68042b05ef9a555cacf53fd7fbabb7d
+E         + e02d8c21dabaa1fe4bb43e5cc40e2e040df11b109ba76ed959905ff572854a80
+
+tests_models\test_schema01_derived.py:309: AssertionError
+___________________ test_nc_projection_without_the_g13_mask ___________________
+
+    @nc("a projection that appends the G13 values but forgets their availability mask")
+    def test_nc_projection_without_the_g13_mask():
+        import dataclasses
+        mutant = dataclasses.replace(L3S.projection, ext_columns={"user_context": G13_FLOATS, "user_context_masks": ()})
+        b = batch_s(n=5, seed=2)
+        p = mutant.apply(b)
+>       assert p["user_context_masks"].shape[-1] == 5 and torch.equal(p["user_context_masks"][:, -1], b[G13_MASK]),         "the G13 mask column is missing"
+E       AssertionError: the G13 mask column is missing
+E       assert (4 == 5)
+
+tests_models\test_schema01r1_extensions.py:162: AssertionError
+_______________ test_nc_snapshot_gru_accepts_offsetting_widths ________________
+
+    @nc("the snapshot GRU (hard-coded widths, no check) silently accepts numeric 23 + flags 11 = 34")
+    def test_nc_snapshot_gru_accepts_offsetting_widths():
+        m = snap_model("GRU", 2026).eval()
+        with torch.no_grad():
+>           assert_raises(ValueError, forward, m, _bad_batch((23, 11, 12, 6)))
+
+tests_models\test_schema_widths.py:150: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+exc = <class 'ValueError'>, fn = <function forward at 0x000002E2008A3600>
+a = (ContextGRU(
+  (item_embed): Embedding(67, 128, padding_idx=0)
+  (category_embed): Embedding(663, 32)
+  (brand_embed):...,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+          0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0]]), ...})
+kw = {}
+
+    def assert_raises(exc, fn, *a, **kw):
+        """Like pytest.raises, but a missing exception is an AssertionError (so negative controls can use it)."""
+        try:
+            fn(*a, **kw)
+        except exc:
+            return
+>       raise AssertionError(f"{getattr(fn, '__name__', fn)} did not raise {exc}")
+E       AssertionError: forward did not raise <class 'ValueError'>
+
+tests_models\models_testkit.py:41: AssertionError
+______________ test_nc_snapshot_sasrec_accepts_offsetting_widths ______________
+
+    @nc("the snapshot SASRec (hard-coded widths, no check) silently accepts user ctx 14 + masks 4 = 18")
+    def test_nc_snapshot_sasrec_accepts_offsetting_widths():
+        m = snap_model("SASREC", 2026).eval()
+        with torch.no_grad():
+>           assert_raises(ValueError, forward, m, _bad_batch((19, 15, 14, 4)))
+
+tests_models\test_schema_widths.py:157: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+exc = <class 'ValueError'>, fn = <function forward at 0x000002E2008A3600>
+a = (SASRecCE(
+  (item_embed): Embedding(67, 256, padding_idx=0)
+  (pos_embed): Embedding(50, 256)
+  (blocks): ModuleList(...,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+          0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0]]), ...})
+kw = {}
+
+    def assert_raises(exc, fn, *a, **kw):
+        """Like pytest.raises, but a missing exception is an AssertionError (so negative controls can use it)."""
+        try:
+            fn(*a, **kw)
+        except exc:
+            return
+>       raise AssertionError(f"{getattr(fn, '__name__', fn)} did not raise {exc}")
+E       AssertionError: forward did not raise <class 'ValueError'>
+
+tests_models\models_testkit.py:41: AssertionError
+________ test_nc_t15_future_perturbation_without_causal_mask[unpadded] ________
+
+impl = 'unpadded'
+
+    @nc("causal mask disabled: a future event changes an earlier hidden state")
+    @pytest.mark.parametrize("impl", IMPLS)
+    def test_nc_t15_future_perturbation_without_causal_mask(impl):
+>       _future_check(_model(impl, broken_causal=True))
+
+tests_models\test_t15_causal.py:123: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+m = SASRecCE(
+  (item_embed): Embedding(67, 256, padding_idx=0)
+  (pos_embed): Embedding(50, 256)
+  (blocks): ModuleList(
+...ear(in_features=64, out_features=256, bias=True)
+  (user_norm): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+)
+seed = 0
+
+    def _future_check(m, seed: int = 0):
+        b = batch(4, seed=seed, min_len=9, max_len=14)
+        am = b["attention_mask"]
+        fut = am.clone()
+        fut[:, :P + 1] = False
+        h0 = _hidden(m, b)
+        h1 = _hidden(m, _perturb(b, fut, torch.Generator().manual_seed(seed + 1)))
+>       assert torch.equal(h0[:, :P + 1], h1[:, :P + 1]), \
+            f"a future event changed an earlier hidden state (max |d| {maxdiff(h0[:, :P + 1], h1[:, :P + 1]):.3g})"
+E       AssertionError: a future event changed an earlier hidden state (max |d| 1.95)
+E       assert False
+E        +  where False = <built-in method equal of type object at 0x00007FFA4E8278E0>(tensor([[[ 0.7231, -0.8874, -0.5830,  ..., -1.8971,  0.9589,  0.4527],\n         [ 1.4012, -2.0359, -2.3005,  ..., -2.7...86, -1.2064,  ..., -1.0367,  1.1462,  0.0638],\n         [-0.1346, -1.5757,  0.8017,  ...,  1.4912,  1.1353,  0.3593]]]), tensor([[[ 4.4451e-01, -1.0754e+00, -6.8956e-01,  ..., -1.7860e+00,\n           5.7671e-01,  4.5151e-01],\n         [ 8....5.1901e-01],\n         [-8.3168e-02, -1.7228e+00,  7.4036e-01,  ...,  1.7470e+00,\n           6.7933e-01, -8.6540e-02]]]))
+E        +    where <built-in method equal of type object at 0x00007FFA4E8278E0> = torch.equal
+
+tests_models\test_t15_causal.py:55: AssertionError
+____ test_nc_t15_future_perturbation_without_causal_mask[padded_reference] ____
+
+impl = 'padded_reference'
+
+    @nc("causal mask disabled: a future event changes an earlier hidden state")
+    @pytest.mark.parametrize("impl", IMPLS)
+    def test_nc_t15_future_perturbation_without_causal_mask(impl):
+>       _future_check(_model(impl, broken_causal=True))
+
+tests_models\test_t15_causal.py:123: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+m = SASRecCE(
+  (item_embed): Embedding(67, 256, padding_idx=0)
+  (pos_embed): Embedding(50, 256)
+  (blocks): ModuleList(
+...ear(in_features=64, out_features=256, bias=True)
+  (user_norm): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+)
+seed = 0
+
+    def _future_check(m, seed: int = 0):
+        b = batch(4, seed=seed, min_len=9, max_len=14)
+        am = b["attention_mask"]
+        fut = am.clone()
+        fut[:, :P + 1] = False
+        h0 = _hidden(m, b)
+        h1 = _hidden(m, _perturb(b, fut, torch.Generator().manual_seed(seed + 1)))
+>       assert torch.equal(h0[:, :P + 1], h1[:, :P + 1]), \
+            f"a future event changed an earlier hidden state (max |d| {maxdiff(h0[:, :P + 1], h1[:, :P + 1]):.3g})"
+E       AssertionError: a future event changed an earlier hidden state (max |d| 1.95)
+E       assert False
+E        +  where False = <built-in method equal of type object at 0x00007FFA4E8278E0>(tensor([[[ 0.7231, -0.8874, -0.5830,  ..., -1.8971,  0.9589,  0.4527],\n         [ 1.4012, -2.0359, -2.3005,  ..., -2.7...86, -1.2064,  ..., -1.0367,  1.1462,  0.0638],\n         [-0.1346, -1.5757,  0.8017,  ...,  1.4912,  1.1353,  0.3593]]]), tensor([[[ 4.4451e-01, -1.0754e+00, -6.8956e-01,  ..., -1.7860e+00,\n           5.7671e-01,  4.5151e-01],\n         [ 8....5.1901e-01],\n         [-8.3168e-02, -1.7228e+00,  7.4036e-01,  ...,  1.7470e+00,\n           6.7933e-01, -8.6541e-02]]]))
+E        +    where <built-in method equal of type object at 0x00007FFA4E8278E0> = torch.equal
+
+tests_models\test_t15_causal.py:55: AssertionError
+______________ test_nc_t15_gradient_leakage_without_causal_mask _______________
+
+    @nc("causal mask disabled: gradient leaks from h_p into future inputs")
+    def test_nc_t15_gradient_leakage_without_causal_mask():
+>       _grad_check(_model("unpadded", broken_causal=True), train=False)
+
+tests_models\test_t15_causal.py:128: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+m = SASRecCE(
+  (item_embed): Embedding(67, 256, padding_idx=0)
+  (pos_embed): Embedding(50, 256)
+  (blocks): ModuleList(
+...ear(in_features=64, out_features=256, bias=True)
+  (user_norm): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+)
+train = False
+
+    def _grad_check(m, train: bool):
+        b = batch(1, seed=5, min_len=10, max_len=10)
+        ids = torch.randperm(64, generator=torch.Generator().manual_seed(1))[:10] + 3
+        b["item_tokens"][0, :10] = ids                                         # distinct rows per position
+        num = b["event_numeric_features"].clone().requires_grad_(True)
+        kw = kwargs_for(m, b)
+        kw["event_numeric_features"] = num
+        m.train(train)
+        m.zero_grad(set_to_none=True)
+        with seeded(11):
+            h = m.hidden_states(**kw)
+            h[:, P].sum().backward()
+        g = m.item_embed.weight.grad
+>       assert torch.count_nonzero(g[ids[P + 1:]]) == 0, "future item rows received gradient (leakage)"
+E       AssertionError: future item rows received gradient (leakage)
+E       assert tensor(1024) == 0
+E        +  where tensor(1024) = <built-in method count_nonzero of type object at 0x00007FFA4E8278E0>(tensor([[  4.8096,  -0.0937,  -1.4483,  ...,   4.9306,  -1.5252,  -0.4672],\n        [  9.0500, -14.1571,  -1.3397,  .....0695,  ...,   6.8257,   0.2562,   0.3169],\n        [ -5.6400,  -2.5346,  -1.0093,  ...,   0.7530,  -2.2105,   7.3419]]))
+E        +    where <built-in method count_nonzero of type object at 0x00007FFA4E8278E0> = torch.count_nonzero
+
+tests_models\test_t15_causal.py:107: AssertionError
+____________________ test_nc_t16_last_column_readout[GRU] _____________________
+
+family = 'GRU'
+
+    @nc("readout taken at the last stored column instead of the last real event")
+    @pytest.mark.parametrize("family", FAMS)
+    def test_nc_t16_last_column_readout(family):
+>       _readout_check(family, "unpadded", last_column=True)
+
+tests_models\test_t16_padding.py:215: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+family = 'GRU', impl = 'unpadded', last_column = True
+
+    def _readout_check(family, impl, last_column: bool):
+        m = _m(family, impl)
+        b = batch(6, seed=6, min_len=2, max_len=15)
+        with torch.no_grad():
+            ref = _gru_ref_query(m, b, last_column) if is_gru(m) else _sasrec_ref_query(m, b, last_column)
+            q = query(m, b)
+>       assert torch.allclose(q, ref, atol=2e-6, rtol=0), f"readout is not the last real event: max |d| {maxdiff(q, ref):.3g}"
+E       AssertionError: readout is not the last real event: max |d| 0.604
+E       assert False
+E        +  where False = <built-in method allclose of type object at 0x00007FFA4E8278E0>(tensor([[ 1.7034e-01, -3.2310e-02, -9.3121e-02,  1.6246e-01,  1.5891e-01,\n         -1.3716e-01,  4.1330e-02, -1.0146e-...      1.5343e-02,  2.6270e-01, -2.6164e-02, -8.0883e-02,  1.5651e-01,\n          7.8815e-02,  2.4518e-01,  2.6361e-01]]), tensor([[-2.2659e-01, -3.7144e-01, -1.8324e-01,  1.0992e-01,  2.5426e-01,\n          1.0797e-02,  1.3611e-01,  2.4038e-...      1.7226e-01,  1.2433e-01, -1.7581e-01,  3.6788e-01, -1.2713e-01,\n         -6.1007e-03,  1.5217e-01, -2.3066e-01]]), atol=2e-06, rtol=0)
+E        +    where <built-in method allclose of type object at 0x00007FFA4E8278E0> = torch.allclose
+
+tests_models\test_t16_padding.py:125: AssertionError
+___________________ test_nc_t16_last_column_readout[SASREC] ___________________
+
+family = 'SASREC'
+
+    @nc("readout taken at the last stored column instead of the last real event")
+    @pytest.mark.parametrize("family", FAMS)
+    def test_nc_t16_last_column_readout(family):
+>       _readout_check(family, "unpadded", last_column=True)
+
+tests_models\test_t16_padding.py:215: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+family = 'SASREC', impl = 'unpadded', last_column = True
+
+    def _readout_check(family, impl, last_column: bool):
+        m = _m(family, impl)
+        b = batch(6, seed=6, min_len=2, max_len=15)
+        with torch.no_grad():
+            ref = _gru_ref_query(m, b, last_column) if is_gru(m) else _sasrec_ref_query(m, b, last_column)
+            q = query(m, b)
+>       assert torch.allclose(q, ref, atol=2e-6, rtol=0), f"readout is not the last real event: max |d| {maxdiff(q, ref):.3g}"
+E       AssertionError: readout is not the last real event: max |d| 5.06
+E       assert False
+E        +  where False = <built-in method allclose of type object at 0x00007FFA4E8278E0>(tensor([[ 0.9236, -1.1952, -0.6546,  ...,  0.1051,  0.9301,  0.6459],\n        [ 0.1260,  1.6592, -0.1294,  ...,  0.101...2484, -0.1546,  ...,  0.3412,  1.3026, -0.9137],\n        [-0.5156, -0.3765, -0.8648,  ...,  0.4858,  0.5282,  0.8595]]), tensor([[-0.0257, -0.2881, -0.8688,  ..., -1.2434,  1.0334, -0.7290],\n        [-0.6228, -1.1978, -1.8875,  ..., -1.716...0581, -1.6069,  ..., -0.0964,  1.5938,  0.0992],\n        [ 0.1847,  0.4586, -0.4901,  ..., -0.4713,  0.8225, -0.8219]]), atol=2e-06, rtol=0)
+E        +    where <built-in method allclose of type object at 0x00007FFA4E8278E0> = torch.allclose
+
+tests_models\test_t16_padding.py:125: AssertionError
+_______________________ test_nc_t16_inverted_sdpa_mask ________________________
+
+    @nc("SDPA called with the inverted boolean convention (True = masked, the nn.MultiheadAttention key_padding style)")
+    def test_nc_t16_inverted_sdpa_mask():
+>       _sdpa_check(invert=True)
+
+tests_models\test_t16_padding.py:220: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+invert = True
+
+    def _sdpa_check(invert: bool = False):
+        m = _m("SASREC")
+        blk, qkv, q, k, v = _attention_inputs(m)
+        B, T = qkv.shape[:2]
+        with torch.no_grad():
+            ours = blk._attend(qkv, m.causal)
+            mask = m.causal[:T, :T]
+            sd = F.scaled_dot_product_attention(q, k, v, attn_mask=(~mask if invert else mask), dropout_p=0.0)
+            sd = sd.transpose(1, 2).reshape(B, T, blk.d)
+>       assert torch.allclose(ours, sd, atol=1e-5, rtol=0), f"SDPA(bool mask, True = attend) mismatch: {maxdiff(ours, sd)}"
+E       AssertionError: SDPA(bool mask, True = attend) mismatch: 3.8455601930618286
+E       assert False
+E        +  where False = <built-in method allclose of type object at 0x00007FFA4E8278E0>(tensor([[[-5.4607e-01, -6.3018e-01, -6.3465e-01,  ...,  1.6553e+00,\n           5.2037e-01, -2.3262e-01],\n         [-3....6.6466e-01],\n         [ 9.7333e-02,  3.2973e-01,  3.1662e-01,  ...,  1.1653e+00,\n           1.9451e-01,  4.4186e-01]]]), tensor([[[ 0.4022,  0.3023,  0.0783,  ...,  0.1172,  0.4607,  0.3659],\n         [ 0.4756,  0.3418,  0.4216,  ...,  0.1...25,  0.8071,  ..., -0.4556, -0.3822,  0.8725],\n         [ 0.0000,  0.0000,  0.0000,  ...,  0.0000,  0.0000,  0.0000]]]), atol=1e-05, rtol=0)
+E        +    where <built-in method allclose of type object at 0x00007FFA4E8278E0> = torch.allclose
+
+tests_models\test_t16_padding.py:187: AssertionError
+_______________________ test_nc_t17_mean_of_means[GRU] ________________________
+
+family = 'GRU'
+
+    @nc("mean of microbatch means (the tail microbatch is over-weighted)")
+    @pytest.mark.parametrize("family", FAMS)
+    def test_nc_t17_mean_of_means(family):
+>       _tail_check(family, "mean_of_means")
+
+tests_models\test_t17_loss.py:141: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+family = 'GRU', divide = 'mean_of_means'
+
+    def _tail_check(family, divide):
+        m = v2_model(family, 6).eval()
+        b = _data(seed=1)
+        l_full, g_full = _full(m, b)
+        l_acc, g_acc = _accumulate(m, b, divide)
+>       assert abs(float(l_acc) - float(l_full)) < 1e-6, f"loss {float(l_acc)} != full-batch mean {float(l_full)}"
+E       AssertionError: loss 4.4760613441467285 != full-batch mean 4.976747989654541
+E       assert 0.5006866455078125 < 1e-06
+E        +  where 0.5006866455078125 = abs((4.4760613441467285 - 4.976747989654541))
+E        +    where 4.4760613441467285 = float(tensor(4.4761))
+E        +    and   4.976747989654541 = float(tensor(4.9767))
+
+tests_models\test_t17_loss.py:105: AssertionError
+______________________ test_nc_t17_mean_of_means[SASREC] ______________________
+
+family = 'SASREC'
+
+    @nc("mean of microbatch means (the tail microbatch is over-weighted)")
+    @pytest.mark.parametrize("family", FAMS)
+    def test_nc_t17_mean_of_means(family):
+>       _tail_check(family, "mean_of_means")
+
+tests_models\test_t17_loss.py:141: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+family = 'SASREC', divide = 'mean_of_means'
+
+    def _tail_check(family, divide):
+        m = v2_model(family, 6).eval()
+        b = _data(seed=1)
+        l_full, g_full = _full(m, b)
+        l_acc, g_acc = _accumulate(m, b, divide)
+>       assert abs(float(l_acc) - float(l_full)) < 1e-6, f"loss {float(l_acc)} != full-batch mean {float(l_full)}"
+E       AssertionError: loss 4.324774265289307 != full-batch mean 4.273322105407715
+E       assert 0.0514521598815918 < 1e-06
+E        +  where 0.0514521598815918 = abs((4.324774265289307 - 4.273322105407715))
+E        +    where 4.324774265289307 = float(tensor(4.3248))
+E        +    and   4.273322105407715 = float(tensor(4.2733))
+
+tests_models\test_t17_loss.py:105: AssertionError
+______________________ test_nc_t17_divide_by_batch_size _______________________
+
+    @nc("dividing by the row count B instead of the contributing-decision count")
+    def test_nc_t17_divide_by_batch_size():
+>       _tail_check("GRU", "batch_size")
+
+tests_models\test_t17_loss.py:146: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+family = 'GRU', divide = 'batch_size'
+
+    def _tail_check(family, divide):
+        m = v2_model(family, 6).eval()
+        b = _data(seed=1)
+        l_full, g_full = _full(m, b)
+        l_acc, g_acc = _accumulate(m, b, divide)
+>       assert abs(float(l_acc) - float(l_full)) < 1e-6, f"loss {float(l_acc)} != full-batch mean {float(l_full)}"
+E       AssertionError: loss 4.169707775115967 != full-batch mean 4.976747989654541
+E       assert 0.8070402145385742 < 1e-06
+E        +  where 0.8070402145385742 = abs((4.169707775115967 - 4.976747989654541))
+E        +    where 4.169707775115967 = float(tensor(4.1697))
+E        +    and   4.976747989654541 = float(tensor(4.9767))
+
+tests_models\test_t17_loss.py:105: AssertionError
+_________________________ test_nc_t18_gru_untied_copy _________________________
+
+    @nc("GRU head is an untied COPY of the item rows (a second parameter, double-counted)")
+    def test_nc_t18_gru_untied_copy():
+        a = v2_adapter("GRU", K=64)
+        m = a.module
+        m.head_copy = nn.Parameter(m.item_embed.weight[3:3 + m.K].detach().clone())
+        a.head_weight = lambda: m.head_copy
+>       _gru_tied_check(a)
+
+tests_models\test_t18_heads_memory.py:140: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+a = <v4models.build.GRUV2Adapter object at 0x000002E200995F30>
+
+    def _gru_tied_check(a):
+        m = a.module
+        W = a.head_weight()
+        E = m.item_embed.weight
+>       assert W.untyped_storage().data_ptr() == E.untyped_storage().data_ptr(), "head must share the item table storage"
+E       AssertionError: head must share the item table storage
+E       assert 4288752549888 == 4288637788160
+E        +  where 4288752549888 = <built-in method data_ptr of torch.storage.UntypedStorage object at 0x000002E200CED4A0>()
+E        +    where <built-in method data_ptr of torch.storage.UntypedStorage object at 0x000002E200CED4A0> =  235\n 99\n 82\n 63\n 49\n 172\n 193\n 191\n 121\n 77\n 51\n 63\n 85\n 98\n 214\n 63\n 114\n 8\n 98\n 63\n 1\n 119\n 177\n 190\n 246\n 128\n 31\n...9\n 70\n 191\n 178\n 144\n 32\n 64\n 222\n 86\n 121\n 63\n 71\n 97\n 32\n 61\n[torch.storage.UntypedStorage(device=cpu) of size 32768].data_ptr
+E        +      where  235\n 99\n 82\n 63\n 49\n 172\n 193\n 191\n 121\n 77\n 51\n 63\n 85\n 98\n 214\n 63\n 114\n 8\n 98\n 63\n 1\n 119\n 177\n 190\n 246\n 128\n 31\n...9\n 70\n 191\n 178\n 144\n 32\n 64\n 222\n 86\n 121\n 63\n 71\n 97\n 32\n 61\n[torch.storage.UntypedStorage(device=cpu) of size 32768] = <built-in method untyped_storage of Parameter object at 0x000002E200CEDB30>()
+E        +        where <built-in method untyped_storage of Parameter object at 0x000002E200CEDB30> = Parameter containing:\ntensor([[ 0.8218, -1.5131,  0.7004,  ...,  0.4977,  0.4715,  1.0622],\n        [ 0.5728, -0.2061,...7,  0.2417, -0.8056],\n        [-0.2363, -0.2653, -1.4897,  ...,  2.5088,  0.9740,  0.0392]],\n       requires_grad=True).untyped_storage
+E        +  and   4288637788160 = <built-in method data_ptr of torch.storage.UntypedStorage object at 0x000002E200CED860>()
+E        +    where <built-in method data_ptr of torch.storage.UntypedStorage object at 0x000002E200CED860> =  0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n ...9\n 70\n 191\n 178\n 144\n 32\n 64\n 222\n 86\n 121\n 63\n 71\n 97\n 32\n 61\n[torch.storage.UntypedStorage(device=cpu) of size 34304].data_ptr
+E        +      where  0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n 0\n ...9\n 70\n 191\n 178\n 144\n 32\n 64\n 222\n 86\n 121\n 63\n 71\n 97\n 32\n 61\n[torch.storage.UntypedStorage(device=cpu) of size 34304] = <built-in method untyped_storage of Parameter object at 0x000002E200CEEC60>()
+E        +        where <built-in method untyped_storage of Parameter object at 0x000002E200CEEC60> = Parameter containing:\ntensor([[ 0.0000,  0.0000,  0.0000,  ...,  0.0000,  0.0000,  0.0000],\n        [ 0.8360,  0.9804,...7,  0.2417, -0.8056],\n        [-0.2363, -0.2653, -1.4897,  ...,  2.5088,  0.9740,  0.0392]],\n       requires_grad=True).untyped_storage
+
+tests_models\test_t18_heads_memory.py:35: AssertionError
+________________________ test_nc_t18_sasrec_tied_head _________________________
+
+    @nc("SASRec head tied back to the input table (the v2 failure configuration)")
+    def test_nc_t18_sasrec_tied_head():
+        a = v2_adapter("SASREC", K=64)
+        m = a.module
+        a.head_weight = lambda: m.item_embed.weight[3:3 + m.K]
+>       _sasrec_distinct_check(a)
+
+tests_models\test_t18_heads_memory.py:148: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+a = <v4models.build.SASRecV2Adapter object at 0x000002E20085F390>
+
+    def _sasrec_distinct_check(a):
+        m = a.module
+        W, E = a.head_weight(), m.item_embed.weight
+>       assert W is m.output_embed and isinstance(W, nn.Parameter) and W.shape == (m.K, m.d)
+E       assert (tensor([[ 1.0904e-02,  3.1192e-02,  1.3037e-02,  ...,  9.3522e-03,\n          4.1087e-02,  5.2951e-03],\n        [-2.353...3.8647e-02, -5.7633e-03, -1.4783e-02,  ..., -8.8226e-03,\n         -5.1431e-05,  1.2356e-02]], grad_fn=<SliceBackward0>) is Parameter containing:\ntensor([[-0.0289, -0.0237,  0.0194,  ...,  0.0401,  0.0199,  0.0023],\n        [ 0.0295,  0.0209,...8,  0.0071,  0.0133],\n        [ 0.0019,  0.0349, -0.0127,  ..., -0.0226, -0.0063, -0.0055]],\n       requires_grad=True))
+E        +  where Parameter containing:\ntensor([[-0.0289, -0.0237,  0.0194,  ...,  0.0401,  0.0199,  0.0023],\n        [ 0.0295,  0.0209,...8,  0.0071,  0.0133],\n        [ 0.0019,  0.0349, -0.0127,  ..., -0.0226, -0.0063, -0.0055]],\n       requires_grad=True) = SASRecCE(\n  (item_embed): Embedding(67, 256, padding_idx=0)\n  (pos_embed): Embedding(50, 256)\n  (blocks): ModuleList(\n...ear(in_features=64, out_features=256, bias=True)\n  (user_norm): LayerNorm((256,), eps=1e-05, elementwise_affine=True)\n).output_embed
+
+tests_models\test_t18_heads_memory.py:67: AssertionError
+_________________ test_nc_t18_dense_all_position_logits[GRU] __________________
+
+family = 'GRU'
+
+    @nc("dense all-position logits materialize a [B, L, K] tensor")
+    @pytest.mark.parametrize("family", FAMS)
+    def test_nc_t18_dense_all_position_logits(family):
+>       _no_blk_check(family, dense=True)
+
+tests_models\test_t18_heads_memory.py:154: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+family = 'GRU', dense = True
+
+    def _no_blk_check(family: str, dense: bool = False):
+        a = v2_adapter(family, K=KB)
+        m = a.module
+        m.train()
+        b = batch(B, K=KB, seed=4, min_len=5, max_len=7)
+        rec = KShapeRecorder()
+    
+        def step():
+            with seeded(5):
+                if not dense:
+                    return F.cross_entropy(a.scores(b), b["target_class"])
+                if family == "SASREC":        # MUTANT: SASRec-style all-position logits [B, T, K]
+                    seq = m.hidden_states(**kwargs_for(m, b))
+                    return F.cross_entropy((m.final_norm(seq) @ m.output_embed.t()).flatten(0, 1),
+                                           torch.randint(0, KB, (seq.shape[0] * seq.shape[1],)))
+                kw = kwargs_for(m, b)         # MUTANT: GRU per-position logits [B, L, K]
+                x = m._embed_and_project(**{k: v for k, v in kw.items()
+                                            if k not in ("lengths", "attention_mask", "user_context", "user_context_masks")})
+                out, _ = m.gru(x)
+                logits = out[..., :128] @ a.head_weight().t()
+                return F.cross_entropy(logits.flatten(0, 1), torch.randint(0, KB, (logits.shape[0] * logits.shape[1],)))
+    
+        train_step_under(rec, step)
+        kt = rec.k_tensors(KB)
+        assert any(s == (KB, a.query_dim) and "mm" in f for f, s in kt), "sanity: the backward head-gradient op was recorded"
+        bad = rec.violations(KB, allowed_rows=(1, B, a.query_dim))
+>       assert not bad, f"a [B, L, K]-like tensor was materialized: {bad[:4]} (peak rows {rec.peak_k_rows(KB)})"
+E       AssertionError: a [B, L, K]-like tensor was materialized: [('aten.mm.default', (150, 997)), ('aten._unsafe_view.default', (3, 50, 997)), ('aten.view.default', (150, 997)), ('aten._log_softmax.default', (150, 997))] (peak rows 150)
+E       assert not [('aten.mm.default', (150, 997)), ('aten._unsafe_view.default', (3, 50, 997)), ('aten.view.default', (150, 997)), ('at...oftmax.default', (150, 997)), ('aten.detach.default', (150, 997)), ('aten.nll_loss_backward.default', (150, 997)), ...]
+
+tests_models\test_t18_heads_memory.py:124: AssertionError
+________________ test_nc_t18_dense_all_position_logits[SASREC] ________________
+
+family = 'SASREC'
+
+    @nc("dense all-position logits materialize a [B, L, K] tensor")
+    @pytest.mark.parametrize("family", FAMS)
+    def test_nc_t18_dense_all_position_logits(family):
+>       _no_blk_check(family, dense=True)
+
+tests_models\test_t18_heads_memory.py:154: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+family = 'SASREC', dense = True
+
+    def _no_blk_check(family: str, dense: bool = False):
+        a = v2_adapter(family, K=KB)
+        m = a.module
+        m.train()
+        b = batch(B, K=KB, seed=4, min_len=5, max_len=7)
+        rec = KShapeRecorder()
+    
+        def step():
+            with seeded(5):
+                if not dense:
+                    return F.cross_entropy(a.scores(b), b["target_class"])
+                if family == "SASREC":        # MUTANT: SASRec-style all-position logits [B, T, K]
+                    seq = m.hidden_states(**kwargs_for(m, b))
+                    return F.cross_entropy((m.final_norm(seq) @ m.output_embed.t()).flatten(0, 1),
+                                           torch.randint(0, KB, (seq.shape[0] * seq.shape[1],)))
+                kw = kwargs_for(m, b)         # MUTANT: GRU per-position logits [B, L, K]
+                x = m._embed_and_project(**{k: v for k, v in kw.items()
+                                            if k not in ("lengths", "attention_mask", "user_context", "user_context_masks")})
+                out, _ = m.gru(x)
+                logits = out[..., :128] @ a.head_weight().t()
+                return F.cross_entropy(logits.flatten(0, 1), torch.randint(0, KB, (logits.shape[0] * logits.shape[1],)))
+    
+        train_step_under(rec, step)
+        kt = rec.k_tensors(KB)
+        assert any(s == (KB, a.query_dim) and "mm" in f for f, s in kt), "sanity: the backward head-gradient op was recorded"
+        bad = rec.violations(KB, allowed_rows=(1, B, a.query_dim))
+>       assert not bad, f"a [B, L, K]-like tensor was materialized: {bad[:4]} (peak rows {rec.peak_k_rows(KB)})"
+E       AssertionError: a [B, L, K]-like tensor was materialized: [('aten.mm.default', (18, 997)), ('aten._unsafe_view.default', (3, 6, 997)), ('aten.view.default', (18, 997)), ('aten._log_softmax.default', (18, 997))] (peak rows 256)
+E       assert not [('aten.mm.default', (18, 997)), ('aten._unsafe_view.default', (3, 6, 997)), ('aten.view.default', (18, 997)), ('aten._log_softmax.default', (18, 997)), ('aten.detach.default', (18, 997)), ('aten.nll_loss_backward.default', (18, 997)), ...]
+
+tests_models\test_t18_heads_memory.py:124: AssertionError
+___________________ test_nc_t19_blind_query_cannot_memorize ___________________
+
+    @nc("an input-blind query (q * 0) cannot memorize random targets")
+    def test_nc_t19_blind_query_cannot_memorize():
+>       _memorization_check("GRU", blind=True)
+
+tests_models\test_t19_memorization_monitors.py:163: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+family = 'GRU', blind = True
+
+    def _memorization_check(family, blind=False):
+        a = v2_adapter(family, seed=2026, K=K)
+        b = batch(32, K=K, seed=11, min_len=2, max_len=8)
+        acc, hist = _train(a, b, blind=blind, monitor=not blind)
+>       assert acc >= 0.95, f"{family} memorized only {acc:.2f} of 32 random-target decisions in {STEPS} steps"
+E       AssertionError: GRU memorized only 0.00 of 32 random-target decisions in 80 steps
+E       assert 0.0 >= 0.95
+
+tests_models\test_t19_memorization_monitors.py:70: AssertionError
+_____________________ test_nc_t19_finiteness_only_monitor _____________________
+
+    @nc("a monitor that only checks finiteness misses an all-zero gradient")
+    def test_nc_t19_finiteness_only_monitor():
+        def naive(named):
+            ok = all(p.grad is None or bool(torch.isfinite(p.grad).all()) for _, p in named)
+            return {"verdict": "OK" if ok else "NONFINITE"}
+>       _monitor_detects(naive)
+
+tests_models\test_t19_memorization_monitors.py:171: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+monitor = <function test_nc_t19_finiteness_only_monitor.<locals>.naive at 0x000002E20742CE00>
+family = 'GRU'
+
+    def _monitor_detects(monitor, family="GRU"):
+        a = v2_adapter(family, K=K)
+        b = batch(8, K=K, seed=3)
+        _one_backward(a, b)
+        assert monitor(a.module.named_parameters())["verdict"] == "OK"
+        _one_backward(a, b, scale=0.0)
+>       assert monitor(a.module.named_parameters())["verdict"] == "ZERO", "an all-zero gradient must be flagged"
+E       AssertionError: an all-zero gradient must be flagged
+E       assert 'OK' == 'ZERO'
+E         
+E         - ZERO
+E         + OK
+
+tests_models\test_t19_memorization_monitors.py:97: AssertionError
+________________ test_nc_t19_no_recentering_fails_gauge_check _________________
+
+    @nc("without per-step recentering the SASRec head leaves the recentered gauge")
+    def test_nc_t19_no_recentering_fails_gauge_check():
+        d = _drift_run(recenter=False)
+>       assert max(h["common_mode_norm"] for h in d) < 1e-6
+E       assert 0.151193975462338 < 1e-06
+E        +  where 0.151193975462338 = max(<generator object test_nc_t19_no_recentering_fails_gauge_check.<locals>.<genexpr> at 0x000002E20631F780>)
+
+tests_models\test_t19_memorization_monitors.py:177: AssertionError
+_________________ test_nc_size_order_would_wrongly_include_it _________________
+
+    @nc("SASREC_D64_B2 wrongly believed to be a P2 contest size (it must NOT be in SIZE_ORDER)")
+    def test_nc_size_order_would_wrongly_include_it():
+>       assert NAME in V.SIZE_ORDER["SASREC"]
+E       AssertionError: assert 'SASREC_D64_B2' in ('SASREC_D256_B2', 'SASREC_D256_B3', 'SASREC_D384_B2')
+
+tests_models\test_train04_sasrec_d64_b2.py:85: AssertionError
+______________ test_nc_pre_existing_variant_hash_check_has_teeth ______________
+
+    @nc("a tampered SASREC_D256_B2 entry must be caught by the pinned pre-existing-variants hash")
+    def test_nc_pre_existing_variant_hash_check_has_teeth():
+        tampered = {k: V.VARIANTS[k] for k in PRE_EXISTING_VARIANTS}
+        tampered["SASREC_D256_B2"] = dict(tampered["SASREC_D256_B2"], head="tied")     # deliberately wrong
+>       assert _canon_sha256(tampered) == PRE_EXISTING_VARIANTS_SHA256
+E       AssertionError: assert '2e3f60d59476...f55a4ace1265c' == '97ba5cf06ca0...e5079860df664'
+E         
+E         - 97ba5cf06ca032c5cba13179607b8a58097c75a8505218b1a61e5079860df664
+E         + 2e3f60d59476bc576a9bcd28c26fe068b85cec84d0b5d4c5c09f55a4ace1265c
+
+tests_models\test_train04_sasrec_d64_b2.py:101: AssertionError
+_______________ test_nc_would_wrongly_match_sasrec_d256_b2_size _______________
+
+    @nc("SASREC_D64_B2 must be strictly smaller than the current SASREC_D256_B2 build, not equal to it")
+    def test_nc_would_wrongly_match_sasrec_d256_b2_size():
+        from v4models.schema import load_schema
+        schema = load_schema()
+        small = build("SASREC", schema, 2026, "cpu", K=FULL_K, variant=NAME).manifest.shared_numel
+        current = build("SASREC", schema, 2026, "cpu", K=FULL_K, variant="SASREC_D256_B2").manifest.shared_numel
+>       assert small == current
+E       assert 20710048 == 83094112
+
+tests_models\test_train04_sasrec_d64_b2.py:130: AssertionError
+=========================== short test summary info ===========================
+FAILED tests_models\test_build_adapter.py::test_nc_unrecentered_theta0 - asse...
+FAILED tests_models\test_diff_doc_and_isolation.py::test_nc_tampered_diff_document
+FAILED tests_models\test_parity_snapshot.py::test_nc_parity_gru_activation_mutant
+FAILED tests_models\test_parity_snapshot.py::test_nc_parity_sasrec_concat_order_mutant
+FAILED tests_models\test_parity_snapshot.py::test_nc_parity_init_order_mutant
+FAILED tests_models\test_schema01_derived.py::test_nc_projection_dropping_item_tokens
+FAILED tests_models\test_schema01_derived.py::test_nc_l0_build_not_bitwise - ...
+FAILED tests_models\test_schema01r1_extensions.py::test_nc_projection_without_the_g13_mask
+FAILED tests_models\test_schema_widths.py::test_nc_snapshot_gru_accepts_offsetting_widths
+FAILED tests_models\test_schema_widths.py::test_nc_snapshot_sasrec_accepts_offsetting_widths
+FAILED tests_models\test_t15_causal.py::test_nc_t15_future_perturbation_without_causal_mask[unpadded]
+FAILED tests_models\test_t15_causal.py::test_nc_t15_future_perturbation_without_causal_mask[padded_reference]
+FAILED tests_models\test_t15_causal.py::test_nc_t15_gradient_leakage_without_causal_mask
+FAILED tests_models\test_t16_padding.py::test_nc_t16_last_column_readout[GRU]
+FAILED tests_models\test_t16_padding.py::test_nc_t16_last_column_readout[SASREC]
+FAILED tests_models\test_t16_padding.py::test_nc_t16_inverted_sdpa_mask - Ass...
+FAILED tests_models\test_t17_loss.py::test_nc_t17_mean_of_means[GRU] - Assert...
+FAILED tests_models\test_t17_loss.py::test_nc_t17_mean_of_means[SASREC] - Ass...
+FAILED tests_models\test_t17_loss.py::test_nc_t17_divide_by_batch_size - Asse...
+FAILED tests_models\test_t18_heads_memory.py::test_nc_t18_gru_untied_copy - A...
+FAILED tests_models\test_t18_heads_memory.py::test_nc_t18_sasrec_tied_head - ...
+FAILED tests_models\test_t18_heads_memory.py::test_nc_t18_dense_all_position_logits[GRU]
+FAILED tests_models\test_t18_heads_memory.py::test_nc_t18_dense_all_position_logits[SASREC]
+FAILED tests_models\test_t19_memorization_monitors.py::test_nc_t19_blind_query_cannot_memorize
+FAILED tests_models\test_t19_memorization_monitors.py::test_nc_t19_finiteness_only_monitor
+FAILED tests_models\test_t19_memorization_monitors.py::test_nc_t19_no_recentering_fails_gauge_check
+FAILED tests_models\test_train04_sasrec_d64_b2.py::test_nc_size_order_would_wrongly_include_it
+FAILED tests_models\test_train04_sasrec_d64_b2.py::test_nc_pre_existing_variant_hash_check_has_teeth
+FAILED tests_models\test_train04_sasrec_d64_b2.py::test_nc_would_wrongly_match_sasrec_d256_b2_size
+29 failed, 136 deselected in 6.32s
+
+--- stderr ---

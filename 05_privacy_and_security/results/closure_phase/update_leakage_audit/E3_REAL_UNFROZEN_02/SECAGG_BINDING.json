@@ -1,0 +1,231 @@
+{
+  "aggregation": "n_consumed_weighted_mean",
+  "attack_aggregate": "ideal_FP64_mean_of_observed_FP32_deltas; distinct_from_server_FP32_full_weight_mean",
+  "encoder_sketch": {
+    "dimensions": 512,
+    "kind": "linear_CountSketch",
+    "map_sha256": "1e0ea6f6fb870830f003f0fe023a7856a608f1a72ddfb35c544b941961c9d011",
+    "n_features": 263822,
+    "seed": 20261013
+  },
+  "fixed_point_clip": 1.0,
+  "graph_k": 32,
+  "production_crypto": false,
+  "raw_coordinate_seed": 20261014,
+  "raw_coordinate_sha256": "143c7204242033ef21d916cd3273937e8b1469e20a79d9388d9f4b81ba6a0cd0",
+  "raw_coordinate_space": 10407118,
+  "raw_coordinates": 4096,
+  "scope": "limited_shared_raw_coordinates_and_linear_encoder_sketch; not_full_model",
+  "secagg_seed": 20261015,
+  "self_sha256": "0bc1bbdeb6da5f4b2af3f3fd092b0b5de54e9a8eeefaeb2576512a9f38098668",
+  "shapes": {
+    "blocks.0.ff1.bias": [
+      256
+    ],
+    "blocks.0.ff1.weight": [
+      256,
+      64
+    ],
+    "blocks.0.ff2.bias": [
+      64
+    ],
+    "blocks.0.ff2.weight": [
+      64,
+      256
+    ],
+    "blocks.0.ln1.bias": [
+      64
+    ],
+    "blocks.0.ln1.weight": [
+      64
+    ],
+    "blocks.0.ln2.bias": [
+      64
+    ],
+    "blocks.0.ln2.weight": [
+      64
+    ],
+    "blocks.0.out.bias": [
+      64
+    ],
+    "blocks.0.out.weight": [
+      64,
+      64
+    ],
+    "blocks.0.qkv.bias": [
+      192
+    ],
+    "blocks.0.qkv.weight": [
+      192,
+      64
+    ],
+    "blocks.1.ff1.bias": [
+      256
+    ],
+    "blocks.1.ff1.weight": [
+      256,
+      64
+    ],
+    "blocks.1.ff2.bias": [
+      64
+    ],
+    "blocks.1.ff2.weight": [
+      64,
+      256
+    ],
+    "blocks.1.ln1.bias": [
+      64
+    ],
+    "blocks.1.ln1.weight": [
+      64
+    ],
+    "blocks.1.ln2.bias": [
+      64
+    ],
+    "blocks.1.ln2.weight": [
+      64
+    ],
+    "blocks.1.out.bias": [
+      64
+    ],
+    "blocks.1.out.weight": [
+      64,
+      64
+    ],
+    "blocks.1.qkv.bias": [
+      192
+    ],
+    "blocks.1.qkv.weight": [
+      192,
+      64
+    ],
+    "final_norm.bias": [
+      64
+    ],
+    "final_norm.weight": [
+      64
+    ],
+    "input_norm.bias": [
+      64
+    ],
+    "input_norm.weight": [
+      64
+    ],
+    "item_embed.weight": [
+      158489,
+      64
+    ],
+    "numflag_proj.bias": [
+      32
+    ],
+    "numflag_proj.weight": [
+      32,
+      9
+    ],
+    "pos_embed.weight": [
+      50,
+      64
+    ],
+    "side_embeds.brand_tokens.weight": [
+      3956,
+      32
+    ],
+    "side_embeds.category_tokens.weight": [
+      663,
+      32
+    ],
+    "side_embeds.session_mode_main_category_tokens.weight": [
+      17,
+      8
+    ],
+    "side_embeds.session_offset_tokens.weight": [
+      9,
+      4
+    ],
+    "side_gate": [],
+    "side_norm.bias": [
+      64
+    ],
+    "side_norm.weight": [
+      64
+    ],
+    "side_proj.bias": [
+      64
+    ],
+    "side_proj.weight": [
+      64,
+      108
+    ],
+    "user_gate": [],
+    "user_mlp.bias": [
+      64
+    ],
+    "user_mlp.weight": [
+      64,
+      10
+    ],
+    "user_norm.bias": [
+      64
+    ],
+    "user_norm.weight": [
+      64
+    ],
+    "user_proj.bias": [
+      64
+    ],
+    "user_proj.weight": [
+      64,
+      64
+    ]
+  },
+  "shared_key_order": [
+    "item_embed.weight",
+    "side_gate",
+    "user_gate",
+    "pos_embed.weight",
+    "blocks.0.ln1.weight",
+    "blocks.0.ln1.bias",
+    "blocks.0.qkv.weight",
+    "blocks.0.qkv.bias",
+    "blocks.0.out.weight",
+    "blocks.0.out.bias",
+    "blocks.0.ln2.weight",
+    "blocks.0.ln2.bias",
+    "blocks.0.ff1.weight",
+    "blocks.0.ff1.bias",
+    "blocks.0.ff2.weight",
+    "blocks.0.ff2.bias",
+    "blocks.1.ln1.weight",
+    "blocks.1.ln1.bias",
+    "blocks.1.qkv.weight",
+    "blocks.1.qkv.bias",
+    "blocks.1.out.weight",
+    "blocks.1.out.bias",
+    "blocks.1.ln2.weight",
+    "blocks.1.ln2.bias",
+    "blocks.1.ff1.weight",
+    "blocks.1.ff1.bias",
+    "blocks.1.ff2.weight",
+    "blocks.1.ff2.bias",
+    "final_norm.weight",
+    "final_norm.bias",
+    "input_norm.weight",
+    "input_norm.bias",
+    "side_embeds.category_tokens.weight",
+    "side_embeds.brand_tokens.weight",
+    "side_embeds.session_offset_tokens.weight",
+    "side_embeds.session_mode_main_category_tokens.weight",
+    "numflag_proj.weight",
+    "numflag_proj.bias",
+    "side_proj.weight",
+    "side_proj.bias",
+    "side_norm.weight",
+    "side_norm.bias",
+    "user_mlp.weight",
+    "user_mlp.bias",
+    "user_proj.weight",
+    "user_proj.bias",
+    "user_norm.weight",
+    "user_norm.bias"
+  ]
+}

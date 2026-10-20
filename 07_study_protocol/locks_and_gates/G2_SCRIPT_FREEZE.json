@@ -1,0 +1,27 @@
+{
+ "authority": "contracts/PREG1_AMENDMENT_05.md \u00a75 (G2 script hash frozen before unsealing); reviews G2-01 (Opus ACCEPT_WITH_FIXES, fixes applied)",
+ "code_root": "code_p3b (pack tar 739053b8\u2026; library v4train/{selection,unseal,bootstrap_ci,tuned_recipes}.py)",
+ "document": "G2_SCRIPT_FREEZE",
+ "g2_script": {
+  "path": "tools/g2_run.py",
+  "sha256": "3893a49a71be49f5baf338b93195e2e885eecb9326705902913bd4d5e1abb44d"
+ },
+ "library_sha256": {
+  "bootstrap_ci.py": "47bae8c9eb72fa3757d9090afa6e87877b29fbd7dd1538351909bc4bbc4bf567",
+  "selection.py": "678e915361d2c84fac0510ace37992be1924bd643ed1c08e45296935e40ede8c",
+  "tuned_recipes.py": "38280878831e80655740ffba58c95917e5851f1fb5410c52f33640367d72b5bd",
+  "unseal.py": "27b2e46ddfdf138905cd75a6fa1afbd10f61178f7863abced018a855c8142216"
+ },
+ "run_command": "python -B tools/g2_run.py --code-root <V4>/code_p3b --runs-root <V4>/runs_p3 --out <V4>/runs_p3/g2 --expect-script-sha256 <g2_script.sha256>  (after --preflight exit 0)",
+ "server_evidence": {
+  "early_preflight": "runs_p3/g2_checks/preflight_now.out: REFUSED (runs missing) as expected, rc 2",
+  "manifest_path": "runs_p3/g2_checks/manifest_check.out: check_counts passed (51,211 / 12,715 / 38,496 enforced); RUN_START checks TRAINER_VIEW for 5 started runs",
+  "p2_smoke": "runs_p3/g2_checks/smoke_p2.out: 29 runs, 116 rows, undefined 0, max_abs_diff 0.0, query_order_hash 29/29, PASS"
+ },
+ "smoke_tool": {
+  "path": "tools/g2_smoke_p2.py",
+  "sha256": "d633831afd9a7c98e8cb4a29fa2cc7dbebc457debcc369982dfdd48b11811a07"
+ },
+ "written_by": "Operations Director (Claude)",
+ "written_utc": "2026-09-28T04:28:45Z"
+}

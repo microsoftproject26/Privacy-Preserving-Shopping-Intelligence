@@ -1,0 +1,515 @@
+{
+ "task": "INT-01",
+ "utc_start": "2026-09-29T12:25:41Z",
+ "host": "DESKTOP-KS1B8LQ",
+ "platform": "Windows-11-10.0.26200-SP0",
+ "python": "3.13.11",
+ "cpu_only": true,
+ "pytest_exit_code": 0,
+ "pytest_summary": "204 passed, 55 xfailed in 262.55s (0:04:22)",
+ "pytest_wall_s": 265.5,
+ "counts": {
+  "passed": 204,
+  "xfailed": 55
+ },
+ "negative_controls": {
+  "test_cache_stream::test_nc_shifted_window_index_differs": "FAILED_AS_INTENDED",
+  "test_eval_stream::test_nc_all_rows_are_not_the_stream": "FAILED_AS_INTENDED",
+  "test_fl05_launch::test_nc_naive_digest_changes_registered_digests": "FAILED_AS_INTENDED",
+  "test_fl05_launch::test_nc_runtime_alone_refuses_cross_arm_resume": "FAILED_AS_INTENDED",
+  "test_fl05_lr_screen::test_nc_argmax_without_tie_rule": "FAILED_AS_INTENDED",
+  "test_fl07_launch::test_nc_lr_mult_satisfies_the_requirement": "FAILED_AS_INTENDED",
+  "test_fl07_launch::test_nc_old_uniform_spec_still_registered": "FAILED_AS_INTENDED",
+  "test_fl09_lr_ext::test_nc_unregistered_multiplier_accepted": "FAILED_AS_INTENDED",
+  "test_fl09_lr_ext::test_nc_missing_screened_run_accepted": "FAILED_AS_INTENDED",
+  "test_fl09_lr_ext::test_nc_06b_file_accepted_while_ext_exists": "FAILED_AS_INTENDED",
+  "test_fl09_lr_ext::test_nc_argmax_ignores_log2_tie_order": "FAILED_AS_INTENDED",
+  "test_fl10_fedadam_launch::test_nc_fedadam_without_server_lr_accepted": "FAILED_AS_INTENDED",
+  "test_fl10_fedadam_launch::test_nc_server_lr_with_fedavg_accepted": "FAILED_AS_INTENDED",
+  "test_fl10_fedadam_launch::test_nc_main_without_tuning_file_accepted": "FAILED_AS_INTENDED",
+  "test_fl10_fedadam_launch::test_nc_joint_selection_missing_run_accepted": "FAILED_AS_INTENDED",
+  "test_int03_launch_fl::test_nc_impure_client_source_breaks_resume": "FAILED_AS_INTENDED",
+  "test_int03_launch_fl::test_nc_unrelabelled_rows": "FAILED_AS_INTENDED",
+  "test_int03_launch_fl::test_nc_unrounded_z": "FAILED_AS_INTENDED",
+  "test_int03_launch_fl::test_nc_busy_gpu_accepted_without_flag": "FAILED_AS_INTENDED",
+  "test_int03_launch_fl::test_nc_fa_without_dropout": "FAILED_AS_INTENDED",
+  "test_int03_real_clients::test_nc_dense_key_is_not_the_user_key": "FAILED_AS_INTENDED",
+  "test_int03_small::test_nc_ladder_without_design_check": "FAILED_AS_INTENDED",
+  "test_int03_small::test_nc_hook_diverting_every_file": "FAILED_AS_INTENDED",
+  "test_int04_device::test_nc_future_support_is_causal": "FAILED_AS_INTENDED",
+  "test_int04_device::test_nc_select_on_main": "FAILED_AS_INTENDED",
+  "test_int04_device::test_nc_select_on_calibration_refused": "FAILED_AS_INTENDED",
+  "test_int04_device::test_nc_apply_selection_from_other_role_refused": "FAILED_AS_INTENDED",
+  "test_int04_device::test_nc_shared_model_equals_per_client": "FAILED_AS_INTENDED",
+  "test_int04_device::test_nc_lo_budgets_nested": "FAILED_AS_INTENDED",
+  "test_int04_device::test_nc_resume_other_spec": "FAILED_AS_INTENDED",
+  "test_int04_device::test_nc_plans_double_cover": "FAILED_AS_INTENDED",
+  "test_int06_fl_device::test_nc_stale_store_after_resume": "FAILED_AS_INTENDED",
+  "test_int06_fl_device::test_nc_resume_on_another_device": "FAILED_AS_INTENDED",
+  "test_int06_fl_device::test_nc_unselected_lo_cell_is_evidence": "FAILED_AS_INTENDED",
+  "test_int06_reeval::test_nc_unloaded_theta0_reproduces": "FAILED_AS_INTENDED",
+  "test_int06_reeval::test_nc_empty_store_reproduces_pf": "FAILED_AS_INTENDED",
+  "test_int06_reeval::test_nc_test_role_passes_gate": "FAILED_AS_INTENDED",
+  "test_int07_test_path::test_nc_future_event_in_a_retro_test_window": "FAILED_AS_INTENDED",
+  "test_int07_test_path::test_nc_gated_cache_accepts_a_validation_decision": "FAILED_AS_INTENDED",
+  "test_int07_test_path::test_nc_retro_test_key_says_validation": "FAILED_AS_INTENDED",
+  "test_int07_test_path::test_nc_validation_row_passes_the_test_row_guard": "FAILED_AS_INTENDED",
+  "test_launcher::test_nc_foreign_process_would_be_missed_without_the_check": "FAILED_AS_INTENDED",
+  "test_launcher::test_nc_without_f2_the_view_hash_would_vary_with_the_root": "FAILED_AS_INTENDED",
+  "test_lock_v2_bindings::test_nc_default_would_be_the_v1_lock_without_b2": "FAILED_AS_INTENDED",
+  "test_lock_v2_bindings::test_nc_without_loading_the_real_v1_lock_a_forged_supersedes_would_be_trusted": "FAILED_AS_INTENDED",
+  "test_lock_v2_bindings::test_nc_without_the_refusal_all_rows_would_be_accepted": "FAILED_AS_INTENDED",
+  "test_protocol_order_targets::test_nc_table_order_is_not_canonical": "FAILED_AS_INTENDED",
+  "test_protocol_order_targets::test_nc_masked_row_is_not_loss_eligible": "FAILED_AS_INTENDED",
+  "test_resume_exact::test_nc_impure_provider_breaks_resume": "FAILED_AS_INTENDED",
+  "test_smoke_selection::test_nc_unlabelled_smoke_row_is_accepted": "FAILED_AS_INTENDED",
+  "test_train02_launcher::test_nc_peak_lr_over_trial": "FAILED_AS_INTENDED",
+  "test_train02_launcher::test_nc_tuning_accepts_manifest_overrides": "FAILED_AS_INTENDED",
+  "test_train02r2::test_nc_bind_without_pin": "FAILED_AS_INTENDED",
+  "test_train02r2::test_nc_population_fallback_under_v2": "FAILED_AS_INTENDED",
+  "test_verification::test_nc_file_hash_check_is_what_refuses": "FAILED_AS_INTENDED"
+ },
+ "negative_controls_all_failed_as_intended": true,
+ "nc_runxfail": {
+  "exit_code_expected_nonzero": 1,
+  "counts": {
+   "failure": 55
+  },
+  "all_fail_with_assertion": true,
+  "same_set_as_suite": true,
+  "per_control": {
+   "test_cache_stream::test_nc_shifted_window_index_differs": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: tensor item_tokens differs"
+   },
+   "test_eval_stream::test_nc_all_rows_are_not_the_stream": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: assert 1550 == 1395"
+   },
+   "test_fl05_launch::test_nc_naive_digest_changes_registered_digests": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: assert 'f2108e762245...9bbcb2e72dd76' == 'fc715be7b951...d90e2b6ae3f88'"
+   },
+   "test_fl05_launch::test_nc_runtime_alone_refuses_cross_arm_resume": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: resume did not raise (<class 'fl.checkpoint.CheckpointError'>, <class 'v4int.launch_central.LaunchRefused'>)"
+   },
+   "test_fl05_lr_screen::test_nc_argmax_without_tie_rule": {
+    "status": "failure",
+    "exception_types": [],
+    "assertion": "assert 2.0 == 1.0"
+   },
+   "test_fl07_launch::test_nc_lr_mult_satisfies_the_requirement": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: mutant did not raise <class 'v4int.launch_central.LaunchRefused'>"
+   },
+   "test_fl07_launch::test_nc_old_uniform_spec_still_registered": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: assert '12eb9b592f49...0889d05dd415b' == '90893fcf2fc5...40b262b9d6f19'"
+   },
+   "test_fl09_lr_ext::test_nc_unregistered_multiplier_accepted": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: 64 was refused (as it must be)"
+   },
+   "test_fl09_lr_ext::test_nc_missing_screened_run_accepted": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: the missing x0.5 run was refused (as it must be)"
+   },
+   "test_fl09_lr_ext::test_nc_06b_file_accepted_while_ext_exists": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: mutant did not raise <class 'v4int.launch_central.LaunchRefused'>"
+   },
+   "test_fl09_lr_ext::test_nc_argmax_ignores_log2_tie_order": {
+    "status": "failure",
+    "exception_types": [],
+    "assertion": "assert 8.0 == 1.0"
+   },
+   "test_fl10_fedadam_launch::test_nc_fedadam_without_server_lr_accepted": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: refused (as it must be)"
+   },
+   "test_fl10_fedadam_launch::test_nc_server_lr_with_fedavg_accepted": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: refused (as it must be)"
+   },
+   "test_fl10_fedadam_launch::test_nc_main_without_tuning_file_accepted": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: refused (as it must be)"
+   },
+   "test_fl10_fedadam_launch::test_nc_joint_selection_missing_run_accepted": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: refused (as it must be)"
+   },
+   "test_int03_launch_fl::test_nc_impure_client_source_breaks_resume": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: server_digest"
+   },
+   "test_int03_launch_fl::test_nc_unrelabelled_rows": {
+    "status": "failure",
+    "exception_types": [],
+    "assertion": "assert False"
+   },
+   "test_int03_launch_fl::test_nc_unrounded_z": {
+    "status": "failure",
+    "exception_types": [],
+    "assertion": "assert 0.5641495413146913 == 0.5642"
+   },
+   "test_int03_launch_fl::test_nc_busy_gpu_accepted_without_flag": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: without the ownership check a busy GPU is accepted"
+   },
+   "test_int03_launch_fl::test_nc_fa_without_dropout": {
+    "status": "failure",
+    "exception_types": [],
+    "assertion": "assert 0 > 0"
+   },
+   "test_int03_real_clients::test_nc_dense_key_is_not_the_user_key": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: assert ['0', '1', '1...2', '13', ...] == ['045ec2ffcda...ce13341', ...]"
+   },
+   "test_int03_small::test_nc_ladder_without_design_check": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: the design check is what refuses the forged ladder"
+   },
+   "test_int03_small::test_nc_hook_diverting_every_file": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: assert {'path': 'F:\\..., ...}]}, ...} == {'path': 'F:\\...}, ...]}, ...}"
+   },
+   "test_int04_device::test_nc_future_support_is_causal": {
+    "status": "failure",
+    "exception_types": [],
+    "assertion": "assert False"
+   },
+   "test_int04_device::test_nc_select_on_main": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: assert False"
+   },
+   "test_int04_device::test_nc_select_on_calibration_refused": {
+    "status": "failure",
+    "exception_types": [],
+    "assertion": "assert not True"
+   },
+   "test_int04_device::test_nc_apply_selection_from_other_role_refused": {
+    "status": "failure",
+    "exception_types": [],
+    "assertion": "assert not True"
+   },
+   "test_int04_device::test_nc_shared_model_equals_per_client": {
+    "status": "failure",
+    "exception_types": [],
+    "assertion": "assert False"
+   },
+   "test_int04_device::test_nc_lo_budgets_nested": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: assert '966d015cb65b...61f0799854613' == '11cd398bcf4e...fecf900b925f9'"
+   },
+   "test_int04_device::test_nc_resume_other_spec": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: assert '8430df678ce9...599ae49d33734' == '5383288877c0...ae947b66bd4c7'"
+   },
+   "test_int04_device::test_nc_plans_double_cover": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: double cover detected"
+   },
+   "test_int06_fl_device::test_nc_stale_store_after_resume": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: assert {2.5: ('830a3...7931f89', 10)} == {2.5: ('830a3...7852b855', 0)}"
+   },
+   "test_int06_fl_device::test_nc_resume_on_another_device": {
+    "status": "failure",
+    "exception_types": [],
+    "assertion": "assert False"
+   },
+   "test_int06_fl_device::test_nc_unselected_lo_cell_is_evidence": {
+    "status": "failure",
+    "exception_types": [],
+    "assertion": "assert False"
+   },
+   "test_int06_reeval::test_nc_unloaded_theta0_reproduces": {
+    "status": "failure",
+    "exception_types": [],
+    "assertion": "assert False"
+   },
+   "test_int06_reeval::test_nc_empty_store_reproduces_pf": {
+    "status": "failure",
+    "exception_types": [],
+    "assertion": "assert False"
+   },
+   "test_int06_reeval::test_nc_test_role_passes_gate": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: assert False"
+   },
+   "test_int07_test_path::test_nc_future_event_in_a_retro_test_window": {
+    "status": "failure",
+    "exception_types": [],
+    "assertion": "v4hist.windows.HistoryLeakError: a window row belongs to another user"
+   },
+   "test_int07_test_path::test_nc_gated_cache_accepts_a_validation_decision": {
+    "status": "failure",
+    "exception_types": [],
+    "assertion": "assert False"
+   },
+   "test_int07_test_path::test_nc_retro_test_key_says_validation": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: assert 'RETRO_TEST' == 'VALIDATION'"
+   },
+   "test_int07_test_path::test_nc_validation_row_passes_the_test_row_guard": {
+    "status": "failure",
+    "exception_types": [],
+    "assertion": "assert False"
+   },
+   "test_launcher::test_nc_foreign_process_would_be_missed_without_the_check": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: preflight did not raise <class 'v4int.launch_central.LaunchRefused'>"
+   },
+   "test_launcher::test_nc_without_f2_the_view_hash_would_vary_with_the_root": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: assert 'f4ca99907f8c...2424557858951' == '4ae7611e8e5a...b421071a80be9'"
+   },
+   "test_lock_v2_bindings::test_nc_default_would_be_the_v1_lock_without_b2": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: assert '2.0.0' == '1.0.0'"
+   },
+   "test_lock_v2_bindings::test_nc_without_loading_the_real_v1_lock_a_forged_supersedes_would_be_trusted": {
+    "status": "failure",
+    "exception_types": [],
+    "assertion": "assert not True"
+   },
+   "test_lock_v2_bindings::test_nc_without_the_refusal_all_rows_would_be_accepted": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: assert 'ALL_ROWS' == 'EVAL_ROWS_ONLY'"
+   },
+   "test_protocol_order_targets::test_nc_table_order_is_not_canonical": {
+    "status": "failure",
+    "exception_types": [],
+    "assertion": "assert np.False_"
+   },
+   "test_protocol_order_targets::test_nc_masked_row_is_not_loss_eligible": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: every served row must contribute to the loss"
+   },
+   "test_resume_exact::test_nc_impure_provider_breaks_resume": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: assert '6b49e6e4a72c...9648f4b1a1c3b' == '64eff154deb6...638dea681138b'"
+   },
+   "test_smoke_selection::test_nc_unlabelled_smoke_row_is_accepted": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: select_family did not raise <class 'v4train.selection.SelectionError'>"
+   },
+   "test_train02_launcher::test_nc_peak_lr_over_trial": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: mutant did not raise <class 'v4int.launch_central.LaunchRefused'>"
+   },
+   "test_train02_launcher::test_nc_tuning_accepts_manifest_overrides": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: preflight did not raise <class 'v4int.launch_central.LaunchRefused'>"
+   },
+   "test_train02r2::test_nc_bind_without_pin": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: bind_data_protocol_lock_v2 did not raise <class 'v4int.launch_central.LaunchRefused'>"
+   },
+   "test_train02r2::test_nc_population_fallback_under_v2": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: comparison_key_base did not raise <class 'v4int.providers.ProviderError'>"
+   },
+   "test_verification::test_nc_file_hash_check_is_what_refuses": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: verify_manifest did not raise <class 'v4int.verify.ManifestVerificationError'>"
+   }
+  }
+ },
+ "integrity_before": {
+  "verify_snapshot_exit_code": 0,
+  "stderr_tail": "",
+  "pycache_dirs_under_snap_v1": [],
+  "pycache_dirs_in_owned": [],
+  "g1_gate_file_exists": true,
+  "g1_gate_file_sha256": "13af3b4ec32b7b32ad6f7fd187c6d3a879a952d3bf0e823384ce74940b76e250"
+ },
+ "integrity_after": {
+  "verify_snapshot_exit_code": 0,
+  "stderr_tail": "",
+  "pycache_dirs_under_snap_v1": [],
+  "pycache_dirs_in_owned": [],
+  "g1_gate_file_exists": true,
+  "g1_gate_file_sha256": "13af3b4ec32b7b32ad6f7fd187c6d3a879a952d3bf0e823384ce74940b76e250"
+ },
+ "locked_changed_files": [],
+ "locked_packages_unchanged": true,
+ "locked_packages_n_files": 102,
+ "locked_packages_sha256": "f5d98477bec8d9b06a3dd8a11e9e2a9720367958bb3ccdc349ab78294edfc68b",
+ "snapshot_unchanged": true,
+ "g1_gate_file_never_created": true,
+ "owned_sha256": {
+  "v4int/__init__.py": "b70edf264f80d33ab40d9f4b3867336c5da054279ea7ed386cf80a76b6db39ea",
+  "v4int/c_full.py": "ec31af91d1351e28e68666ecdacdcb59a4184bbc7555d7fbe0dd8dab32b6e50b",
+  "v4int/cache.py": "e2e773d9e3860bff6403b88e7c330e664754687c7923e92ee8a8fc6cdda2920a",
+  "v4int/dump_rows_retro.py": "9853cc554799542605c3e0e896a895ba10b55b5ca7a8ce030b338f72a0844889",
+  "v4int/launch_central.py": "08445207d6be1c373085c39c4b85d2827ac821375d6b8919780fc69b0fc99287",
+  "v4int/launch_device.py": "6dd4a4e7e8e045379887c0c0bd71f297d1eb556cde6facf0dec4b15615d0176f",
+  "v4int/launch_fl.py": "536bfe55ee92f1af468ab20438aa67e002fe4ff73b6b1e7fc0ac441b59eef67b",
+  "v4int/launch_trunc.py": "1f6304df1ba79ca9ee447a369e09e7556b50e26989906beb11db23b3c6cf4767",
+  "v4int/lr_screen.py": "e14414569c98a0703c00278082934c8330a6c17231d173cc6cd81a45bfcf7e23",
+  "v4int/pretrain_small.py": "9cb5816280c2afad6237531287ac9d518c90a1cd5a0154a0a4ea10bfbecf02b4",
+  "v4int/providers.py": "87ecd99542a209976154608b244c8ffa23302584639d51be2d1ee1ce50f2c63f",
+  "v4int/reeval.py": "33a8a9cef1e8ddbb941e4f8f929f277f1ed98b252483f85bac87d527d143058e",
+  "v4int/renorm.py": "e72467e0c667f73fe368542795d3be6b982fc3bf1fd957dd3890895ece3be818",
+  "v4int/retro_store.py": "22a57e706bf4457c963f7bd78c4aba86fb35b7ede8ab09867479588bfcb5a8ef",
+  "v4int/small_recipe.py": "30fe7a72d7af474be6ebe3c259e50629ab4a52294c660964c08b936e8c450ffd",
+  "v4int/smoke.py": "0ea39fd3198ea811e5524941397cbc1f30f19b95c5c7dc78d5b315c64a3f2edd",
+  "v4int/test_roles.py": "b02391e29bf5212a23b83a13509d05026f0b9c07fac2402a30694beb48b7291b",
+  "v4int/verify.py": "383a756dffafe28c8cd9f6b17361121b2a617019c16d8d816197b09e86ce6fb2",
+  "tests_int/conftest.py": "dc5b2d9209bb995491c6a7db8a3a9b1b5fbcd6ffc81bfdb0f591e4cbd77061b9",
+  "tests_int/int07_probe.py": "0b1227eb9764347cc522406b4733291c98c96e7ea9ccd3fd7b85fdb0758df997",
+  "tests_int/int07kit.py": "b85dd1db366c7f8170073e4c47258cf2c13a01e09803497239d431c843ae77f4",
+  "tests_int/intkit.py": "e6215caa1441eb5b496d663f018e8d91c541254658c5c888bb4ae68bfc2ca5aa",
+  "tests_int/p2kit_int.py": "328c73054abae2e028149ea5f49b93251d72a6760f1afb3d80cb795b31dde073",
+  "tests_int/run_all.py": "2e6b8846526f716b8fe793719aface1d1daa87efb72a35e5b6c477eb5a331095",
+  "tests_int/server/int01_measure.py": "84e5e604f60dd0a594dc4e630a403811c3275be5231835f04a31f21ff5843c93",
+  "tests_int/test_cache_stream.py": "0dbdc728d6f0677042317ac6fed0a4221f27ea8486f83ea918c6447443e9ffe8",
+  "tests_int/test_eval_stream.py": "a216bc2645c507b4561b2d8ebf9ee380459c55a376ce4f8ea9e2fa6faac07ba6",
+  "tests_int/test_fl05_launch.py": "48eb75c841aac1a5e4c3cc9ff087590040e2c45b0f3e4f1dc756b17b27a4d085",
+  "tests_int/test_fl05_lr_screen.py": "b9a9b3e38c7cd9d6350cf39d73e81313ce6f655167fd835d206792d8a7dc0778",
+  "tests_int/test_fl05_real_calib.py": "c676d32387bfeda03da0ed8fe9b2cf6ee8731f3326ad12d8e2df6975146fe932",
+  "tests_int/test_fl07_launch.py": "e602929ce8f116940defab9becc9d7c5d4d5dfe0345f164b9e3139b3e1755692",
+  "tests_int/test_fl09_lr_ext.py": "f14202dac923fabe2bdd9caaf27b05a194754bb8449d0912f724646bcaa12294",
+  "tests_int/test_fl10_fedadam_launch.py": "302cb556476370eccf6cc4f2f27370f446e4c31131a7728ac30733ccae5a5309",
+  "tests_int/test_int03_launch_fl.py": "6e27d81c80c100242d4e6519285b4e4d659028eaba24b3088fa58dbc2ca84d83",
+  "tests_int/test_int03_real_clients.py": "6729730abd97c41d4ca863d88d3d44bc096338bc0a491d2a7cf3adb6abed7fb1",
+  "tests_int/test_int03_small.py": "d1c7a8738f229418a465f11d44ee281e1b48f657af330676eda6d9b04b6bf536",
+  "tests_int/test_int04_device.py": "8a2c7565bb4874ce448e2d572a872cf332998d4383f68c06ca2e2066757c9055",
+  "tests_int/test_int04_real_clients.py": "8b1b0b0297b999dacc8203ff571d27096069e8e149920a471e968a947b782686",
+  "tests_int/test_int06_fl_device.py": "1f1e023db7f329e02ed5c0d9d46abe11cee78c83ca31722ab86af8ded03c5af9",
+  "tests_int/test_int06_reeval.py": "b524e0a5502e74e592da405bcba338d0d9ddf76bcdc3dbf8d904d9004fc00134",
+  "tests_int/test_int07_test_path.py": "7dfdd8021bf564a02b41bc8cb44c716cb085d1cf52c8e1ee1f93607b78bb991e",
+  "tests_int/test_launcher.py": "34cc90f9cbb49b350f1e69511fe91395af7c2cc56bd7561322611350256241bc",
+  "tests_int/test_lock_v2_bindings.py": "1cd3066df262bac9d03af60681b50a407881b50d7d282cf806943af09526860a",
+  "tests_int/test_protocol_order_targets.py": "b72c07f92b84bd4c20c0fc4902c455b819b6191fea09f4b3cacea19218952824",
+  "tests_int/test_resume_exact.py": "053d2fcd1a34d7faa157345959d3b6bb58fd91e0fff8f91a5a4abb6a820e63c3",
+  "tests_int/test_smoke_selection.py": "025838649d7cc57f0b9006ec343c9c63146227fa4711cb803fb8a6ab2c1c6cef",
+  "tests_int/test_train02_launcher.py": "f752885c2dd3d0106b2d7b54fc778873e3a32fffda4c2f36d0423e767c46f23b",
+  "tests_int/test_train02r2.py": "ee8f2c88dc99b15f94a2b483775fa69817fc5b50809e9dcae0e3e18ea606d7d3",
+  "tests_int/test_train03_launcher.py": "7b52c178175848a688b0876b0f4c71fdad60d72ece4f5ddf995d95615e708fa4",
+  "tests_int/test_verification.py": "fa56b59bac9d96e2f78be7a004cee56614b72cc2e7d6a39723f5d421b6e7aecf"
+ },
+ "torch": "2.9.1+cpu",
+ "utc_end": "2026-09-29T12:31:17Z",
+ "receipt_sha256": {
+  "pytest_output.txt": "1581b66eb52da9b29e26d1889a7fc69e6400ad735b0aa358465da09a1f1db6fa",
+  "junit.xml": "ef2a2c3215abdc70c98cb5aac285468c4f90f4472b5348d067cd8685d14041c0",
+  "nc_runxfail_output.txt": "645c12ae3a3eae0a2db8a6543e17cc3fca80df191d923c5d18768608241213ca",
+  "nc_runxfail_junit.xml": "bfa9aa21fe444b9abeec5ac3435e6f87f2bd5950cb89e2cf751eeb48ccab8de3"
+ },
+ "overall_exit_code": 0
+}

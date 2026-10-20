@@ -1,0 +1,15 @@
+# Downstream BIG/SMALL design — Fable 5.1 ruling (verbatim; received 2026-09-27; owner directive DECISION_LOG 83)
+
+Fable ruling on the downstream BIG/SMALL design: APPROVE_WITH_AMENDMENTS (≤ 400 words).
+
+(a) Confirmed, amended. Single-backbone still means ONE family; it now carries two registered sizes: BIG (server, the G2 winner's size) and SMALL (device cap). All six matrix arms — C_SMALL, FA, FP, PF, CPF, LO — run at SMALL with one recipe, one θ0 per seed, MAIN, 6 EFE, T3 evaluator, so the matrix keeps internal equality. My "never a smaller backbone" trigger becomes: no FL/LO arm at any size other than the registered SMALL, and C_SMALL must exist before any FL result is read. C_BIG = the P3 winner runs themselves (no re-run).
+
+(b) SMALL definition (registered now): the winner family with d reduced until the per-visit dense payload (down+up, FP32) ≤ 170 MB — today's GRU_D128 (168 MB) — everything else identical to BIG (blocks, heads, ff, tying, dropout). Client optimizer state ≤ 4× the shared bytes follows. Under this cap: GRU → D128 (already registered; if GRU wins at D128, BIG = SMALL and the size step is zero by construction — a legitimate finding, not a gap); SASRec → SASREC_D64_B2 (≈ 20.4M params, ≈ 164 MB per visit, 4 heads of dim 16), parameter-matched to GRU_D128. Register SASREC_D64_B2 now: variant entry, θ0 seeds 2026/2027 (server CPU build, C7 recentering), inventory, SYS-04c bench — conditional use. A tighter 85 MB tier (D64 for both) is offered to the owner as optional, not required.
+
+(c) Recipe for SMALL: if the size is in P2 (GRU_D128), its per-size stage-2 winner (2 seeds) — no extra tuning. Otherwise a registered 4-LR mini-ladder on CALIB at the four SASRec midpoints, schedule and dropout inherited from the winner, best re-run at seed 2027, same selection rule (≈ 1.5 GPU-h). Disclose the asymmetry; it only guards against overstating the size cost.
+
+(d) Cost (INFERENCE, SYS-02 scaled to 2.59M examples): matrix at ≈ 21M params ≈ 58 GPU-h whichever family wins (vs ≈ 174 for SASRec at D256); plus C_SMALL 2 seeds ≈ 2.6, mini-ladder ≈ 1.5, θ0/bench ≈ 0.3. G2 unchanged (T1 on P3 as is).
+
+Decomposition confirmed: C_BIG→C_SMALL (size), C_SMALL→FL_SMALL (federation), FL_SMALL vs LO_SMALL (collaboration). Acceptability: threshold PENDING owner; my proposal to register: relative drop of client-macro MRR@20 (seed-mean, 2 seeds) ≤ 2% point and UB95 ≤ 3% by paired user bootstrap, for C_BIG→FL_SMALL and C_BIG→C_SMALL separately, decided on MAIN TEST at ALL_METHODS_LOCK; must be registered before the first FL result is read.
+
+(e) PREG1_AMENDMENT_03 (registration only, before any P2 value is read): the cap, the SMALL rule, SASREC_D64_B2, the recipe rule, the arm list, the decomposition, C_BIG = P3 runs, the threshold placeholder. Triggers: SMALL variant fails bench/θ0 determinism; C_SMALL 6.0 value < 0.5× C_BIG; any cap change after a P2/P3 read; threshold unregistered at the first FL read; SYS-02b at SMALL > 125% of ≈ 62 GPU-h; earlier triggers stand.

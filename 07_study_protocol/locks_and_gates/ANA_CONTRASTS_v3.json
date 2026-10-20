@@ -1,0 +1,407 @@
+{
+ "algebraic_dependencies": [
+  {
+   "id": "K3",
+   "of": [
+    "K2",
+    "K1"
+   ],
+   "relation": "K3_s = 100 x K2_s / K1_s (per seed and per resample, same W)"
+  },
+  {
+   "id": "K9",
+   "of": [
+    "K7",
+    "K1"
+   ],
+   "relation": "K9_s = (K7_s - K1_s) x C_BIG_s / 100 (per seed)"
+  },
+  {
+   "id": "K10",
+   "of": [
+    "K6",
+    "K2"
+   ],
+   "relation": "K10_s = (K6_s - K2_s) x C_BIG_s / 100 (per seed)"
+  },
+  {
+   "id": "K11",
+   "of": [
+    "K2",
+    "K8"
+   ],
+   "relation": "K11_s = (K2_s - K8_s) x C_BIG_s / 100 (per seed)"
+  },
+  {
+   "id": "K11b",
+   "of": [
+    "K11"
+   ],
+   "relation": "K11b_s = K11_s + (LO_s - LAST) (per seed)"
+  },
+  {
+   "id": "K17",
+   "of": [
+    "K2",
+    "K15"
+   ],
+   "relation": "K17 = K2(s2026) x K15 / 100: a composition, not independent evidence"
+  },
+  {
+   "id": "K18",
+   "of": [
+    "K7",
+    "K15"
+   ],
+   "relation": "K18 = K7(s2026) x K15 / 100"
+  },
+  {
+   "id": "K19",
+   "of": [
+    "K8",
+    "K15"
+   ],
+   "relation": "K19 = K8(s2026) x K15 / 100"
+  },
+  {
+   "id": "K20b",
+   "of": [
+    "K20",
+    "K15"
+   ],
+   "relation": "K20b_s = K20_s x C_BIG_s / C_FULL(s2026); at s2026 K20b = K20(s2026) x K15 / 100"
+  },
+  {
+   "id": "K20c",
+   "of": [
+    "K20b",
+    "K21"
+   ],
+   "relation": "K20b_s - K20c = 100 x K21_s / C_FULL(s2026)"
+  }
+ ],
+ "authority": [
+  "contracts/PREG1_AMENDMENT_06B.md §2 (K1-K16 verbatim)",
+  "contracts/PREG1_AMENDMENT_06D.md §3 (rule map), §4 (hierarchy)",
+  "contracts/PREG1_AMENDMENT_06E.md section 2 (registered seeds)",
+  "contracts/PREG1_AMENDMENT_06I.md section 1 (K17-K19)",
+  "contracts/PREG1_AMENDMENT_06K.md section 2 (K20, K21)",
+  "contracts/PREG1_AMENDMENT_06L_C.md §C3 (K11b), §C4 (this file), §C7 (K9b, K9c, K20b, K20c), §C8 (S8-S7), §C13-C15 (Holm band, K14 margin)"
+ ],
+ "confirmatory_contrasts": [
+  {
+   "contrast": "R(C_SMALL / C_BIG)",
+   "id": "K1",
+   "population": "MAIN",
+   "question": "size cost",
+   "source": "PREG1_AMENDMENT_06B §2 (verbatim)"
+  },
+  {
+   "contrast": "R(FA / C_BIG)",
+   "id": "K2",
+   "population": "MAIN",
+   "question": "federated retention (headline)",
+   "source": "PREG1_AMENDMENT_06B §2 (verbatim)"
+  },
+  {
+   "contrast": "R(FA / C_SMALL)",
+   "id": "K3",
+   "population": "MAIN",
+   "question": "federation cost at matched size",
+   "source": "PREG1_AMENDMENT_06B §2 (verbatim)"
+  },
+  {
+   "contrast": "R(FP / C_BIG)",
+   "id": "K4",
+   "population": "MAIN",
+   "question": "FedProx retention",
+   "source": "PREG1_AMENDMENT_06B §2 (verbatim)"
+  },
+  {
+   "contrast": "R(PF / C_BIG)",
+   "id": "K5",
+   "population": "MAIN",
+   "question": "personalised-FL retention",
+   "source": "PREG1_AMENDMENT_06B §2 (verbatim)"
+  },
+  {
+   "contrast": "R(FT_FA / C_BIG)",
+   "id": "K6",
+   "population": "MAIN",
+   "question": "deployed on-device system (FL + local fine-tune)",
+   "source": "PREG1_AMENDMENT_06B §2 (verbatim)"
+  },
+  {
+   "contrast": "R(FT_C / C_BIG)",
+   "id": "K7",
+   "population": "MAIN",
+   "question": "cloud-trained + local fine-tune",
+   "source": "PREG1_AMENDMENT_06B §2 (verbatim)"
+  },
+  {
+   "contrast": "R(LO / C_BIG)",
+   "id": "K8",
+   "population": "MAIN",
+   "question": "device-only retention",
+   "source": "PREG1_AMENDMENT_06B §2 (verbatim)"
+  },
+  {
+   "contrast": "FT_C − C_SMALL",
+   "id": "K9",
+   "population": "MAIN",
+   "question": "local fine-tuning gain (paired Δ)",
+   "source": "PREG1_AMENDMENT_06B §2 (verbatim)"
+  },
+  {
+   "contrast": "FT_FA − FA",
+   "id": "K10",
+   "population": "MAIN",
+   "question": "local fine-tuning gain after FL (paired Δ)",
+   "source": "PREG1_AMENDMENT_06B §2 (verbatim)"
+  },
+  {
+   "contrast": "FA − LO",
+   "id": "K11",
+   "population": "MAIN",
+   "question": "collaboration value (paired Δ)",
+   "source": "PREG1_AMENDMENT_06B §2 (verbatim)"
+  },
+  {
+   "contrast": "R(DP8 / FA_1024)",
+   "id": "K12",
+   "population": "MAIN",
+   "question": "privacy cost at ε = 8",
+   "source": "PREG1_AMENDMENT_06B §2 (verbatim)"
+  },
+  {
+   "contrast": "R(DP1 / FA_1024)",
+   "id": "K13",
+   "population": "MAIN",
+   "question": "privacy cost at ε = 1 (seed 2026)",
+   "source": "PREG1_AMENDMENT_06B §2 (verbatim)"
+  },
+  {
+   "contrast": "R(FA_Q8 / FA)",
+   "id": "K14",
+   "population": "MAIN",
+   "question": "compression cost (8-bit uploads)",
+   "source": "PREG1_AMENDMENT_06B §2 (verbatim)"
+  },
+  {
+   "contrast": "R(C_BIG / C_FULL)",
+   "id": "K15",
+   "population": "MAIN",
+   "question": "cloud data advantage (seed 2026; if C_FULL runs)",
+   "source": "PREG1_AMENDMENT_06B §2 (verbatim)"
+  },
+  {
+   "contrast": "R(INT8 / FP32) for C_SMALL",
+   "id": "K16",
+   "population": "MAIN",
+   "question": "on-device quantisation cost (seed 2026)",
+   "source": "PREG1_AMENDMENT_06B §2 (verbatim)"
+  },
+  {
+   "contrast": "R(FA / C_FULL)",
+   "id": "K17",
+   "population": "MAIN",
+   "question": "federated retention vs the full-data cloud model (seed 2026)",
+   "source": "PREG1_AMENDMENT_06I §1 (verbatim)"
+  },
+  {
+   "contrast": "R(FT_C / C_FULL)",
+   "id": "K18",
+   "population": "MAIN",
+   "question": "cloud-trained + local fine-tune vs the full-data cloud model (seed 2026)",
+   "source": "PREG1_AMENDMENT_06I §1 (verbatim)"
+  },
+  {
+   "contrast": "R(LO / C_FULL)",
+   "id": "K19",
+   "population": "MAIN",
+   "question": "device-only vs the full-data cloud model (seed 2026)",
+   "source": "PREG1_AMENDMENT_06I §1 (verbatim)"
+  },
+  {
+   "contrast": "R(FA_WARM / C_BIG)",
+   "id": "K20",
+   "population": "MAIN",
+   "question": "deployment-branch federated retention vs the C_BIG cloud model (warm start from theta_pre; seeds 2026, 2027)",
+   "source": "PREG1_AMENDMENT_06K §2 (formula); question text = ANA-03's wording of 06K's description"
+  },
+  {
+   "contrast": "FA_WARM − PRE",
+   "id": "K21",
+   "population": "MAIN",
+   "question": "value of federated training on the private users over the pretrained model alone (paired Δ)",
+   "source": "PREG1_AMENDMENT_06K §2 (formula; question = its own parenthesis)"
+  },
+  {
+   "contrast": "FT_C − C_SMALL",
+   "id": "K9b",
+   "population": "UNSEEN_HOLDOUT",
+   "question": "local fine-tuning gain (paired Δ) for base-unseen users (UNSEEN_HOLDOUT)",
+   "source": "PREG1_AMENDMENT_06L_C §C7 (formula); question = review 10 [9-R2 (b)] wording"
+  },
+  {
+   "contrast": "FT_PRE − PRE",
+   "id": "K9c",
+   "population": "MAIN",
+   "question": "local fine-tuning gain (paired Δ) over θ_pre on MAIN: the realistic L5 answer (FT_PRE = θ_pre + the registered FT_C procedure with SELECTION_FT_C)",
+   "source": "PREG1_AMENDMENT_06L_C §C7 (formula; FT_PRE definition verbatim)"
+  },
+  {
+   "contrast": "FA − LAST",
+   "id": "K11b",
+   "population": "MAIN",
+   "question": "collaboration value over the best own-history heuristic (paired Δ; LAST = the no-training device heuristic)",
+   "source": "PREG1_AMENDMENT_06L_C §C3 (formula); question = review 10 [9-R1 (c)] + the §C3 heading"
+  },
+  {
+   "contrast": "R(FA_WARM / C_FULL)",
+   "id": "K20b",
+   "population": "MAIN",
+   "question": "deployment-branch federated retention vs its matched cloud reference C_FULL (2 FA_WARM seeds vs C_FULL s2026)",
+   "source": "PREG1_AMENDMENT_06L_C §C7 (formula; seeds verbatim); question = DL 206 (1) wording"
+  },
+  {
+   "contrast": "R(PRE / C_FULL)",
+   "id": "K20c",
+   "population": "MAIN",
+   "question": "the pretrained model alone vs its matched cloud reference C_FULL (PRE single seed)",
+   "source": "PREG1_AMENDMENT_06L_C §C7 (formula; seed verbatim); question = DL 206 (1) wording"
+  }
+ ],
+ "confirmatory_rule_map": {
+  "K12": "CONTROLLED_BUDGET",
+  "K13": "CONTROLLED_BUDGET"
+ },
+ "default_confirmatory_rule": "PRACTICAL_BEST",
+ "default_seeds": [
+  2026,
+  2027
+ ],
+ "document": "ANA_CONTRASTS_v3",
+ "dp_disclosure": "K12/K13 PRACTICAL_BEST ratios are DESCRIPTIVE: best-of-12 checkpoint selection on the users' own validation data is not covered by the DP accountant (06D §3).",
+ "format": "PPSI_V4_ANA_CONTRASTS_3",
+ "hierarchy": {
+  "primary": [
+   "K2"
+  ],
+  "secondary": [
+   "K1",
+   "K3",
+   "K8",
+   "K9b",
+   "K9c",
+   "K11b",
+   "K12",
+   "K17",
+   "K20",
+   "K20b",
+   "K20c",
+   "K21"
+  ],
+  "tertiary": [
+   "K4",
+   "K5",
+   "K6",
+   "K7",
+   "K9",
+   "K10",
+   "K11",
+   "K13",
+   "K14",
+   "K15",
+   "K16",
+   "K18",
+   "K19"
+  ]
+ },
+ "multiplicity_statement": "26 pre-registered contrasts (K1-K21, K9b, K9c, K11b, K20b, K20c); unadjusted 95% paired user-bootstrap percentile CIs (1,000 resamples, seed 20260926) with a DESCRIPTIVE Holm band beside them (normal intervals from the bootstrap SE, family = these 26; 06L-C C13); hierarchy: K2 primary; K1, K3, K8, K9b, K9c, K11b, K12, K17, K20, K20b, K20c, K21 secondary; the rest tertiary (06D §4; 06I §1; 06K; 06L-C); algebraic dependencies (K3 = K2/K1; K17-K19 = the matching K x K15; the rest in `algebraic_dependencies`) are not independent evidence; every other number is DESCRIPTIVE",
+ "pairing_notes": {
+  "K11b": "LAST is seed-free (RULE_FREE, a BASELINE_CPU rank file, 06L-C §C3) and pairs with each FA seed of the rule",
+  "K20b": "2 FA_WARM seeds vs C_FULL s2026 (06L-C §C7): the one registered C_FULL seed is the denominator of both",
+  "K20c": "PRE single seed (2026) vs C_FULL s2026 (06L-C §C7)",
+  "K21": "PRE is ONE θ_pre (seed 2026) shared by both FA_WARM seeds (06K / DL 206 (2))",
+  "K9c": "PRE is ONE θ_pre (seed 2026) shared by both FT_PRE seeds (06K / DL 206 (2); 06L-C §C7)",
+  "S8-S7": "FA_WARM_FROZEN seed s vs FA_WARM seed s (same θ_pre; 06L-C §C8: S8 runs with 2 seeds unconditionally)"
+ },
+ "populations": {
+  "K1": "MAIN",
+  "K10": "MAIN",
+  "K11": "MAIN",
+  "K11b": "MAIN",
+  "K12": "MAIN",
+  "K13": "MAIN",
+  "K14": "MAIN",
+  "K15": "MAIN",
+  "K16": "MAIN",
+  "K17": "MAIN",
+  "K18": "MAIN",
+  "K19": "MAIN",
+  "K2": "MAIN",
+  "K20": "MAIN",
+  "K20b": "MAIN",
+  "K20c": "MAIN",
+  "K21": "MAIN",
+  "K3": "MAIN",
+  "K4": "MAIN",
+  "K5": "MAIN",
+  "K6": "MAIN",
+  "K7": "MAIN",
+  "K8": "MAIN",
+  "K9": "MAIN",
+  "K9b": "UNSEEN_HOLDOUT",
+  "K9c": "MAIN",
+  "S8-S7": "MAIN"
+ },
+ "post_validation_rule": "Anything added after the first VALIDATION read is POST_VALIDATION_EXPLORATORY (06L-C status line; §C5): never confirmatory, never in the loaded registry.",
+ "prepared_utc": "2026-09-29",
+ "reading_rules": {
+  "K14": {
+   "equivalence_margin_relative_percent": 1.0,
+   "interval": [
+    99.0,
+    101.0
+   ],
+   "rule": "TOST at alpha 0.05: R(FA_Q8 / FA) is EQUIVALENT to 100 iff its 90% paired user-bootstrap percentile CI lies inside [99, 101] (06L-C §C15); the 95% CI and the ordinary claim rule are reported beside it"
+  }
+ },
+ "registered_descriptive_contrasts": [
+  {
+   "contrast": "FA_WARM_FROZEN − FA_WARM",
+   "id": "S8-S7",
+   "question": "cost of not sending the item tables (paired Δ, reported with the bytes ratio; DESCRIPTIVE)"
+  }
+ ],
+ "registered_seeds": {
+  "K13": [
+   2026
+  ],
+  "K15": [
+   2026
+  ],
+  "K16": [
+   2026
+  ],
+  "K17": [
+   2026
+  ],
+  "K18": [
+   2026
+  ],
+  "K19": [
+   2026
+  ],
+  "K20c": [
+   2026
+  ],
+  "K9b": [
+   2026
+  ]
+ },
+ "self_sha256": "fcef13983365c16c6404e0fa29e1851bf8bd3bba1a0a2977d1a0644006065ca0",
+ "status": "PREPARED BY ANA-04 FOR REGISTRATION UNDER PREG1_AMENDMENT_06L_C §C4; registered by the DECISION_LOG row that records this file's sha256 (before the ANA freeze and before the VALIDATION preflight); used for the VALIDATION preflight and copied verbatim into ALL_METHODS_LOCK.json",
+ "supersedes": "company/gates/ANA_CONTRASTS_v2.json (K1-K19); company/gates/ANA_CONTRASTS.json (K1-K16)"
+}

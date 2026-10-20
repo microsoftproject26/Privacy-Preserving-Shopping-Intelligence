@@ -1,0 +1,262 @@
+{
+ "FedBN": "excluded_by_owner",
+ "allowed_subsequent_method_codes": [
+  "C",
+  "FA",
+  "FP",
+  "PF",
+  "CPF",
+  "LO"
+ ],
+ "budget_caps_gpu_h": {
+  "stage1": 65,
+  "total": 125
+ },
+ "c_big": {
+  "checkpoints": {
+   "2026": {
+    "best.pt": {
+     "bytes": 335549225,
+     "sha256": "df35157f8ea93762ffed75048a43217d8ce1406de208b8429fd3f04af226c749"
+    },
+    "endpoint_6.0.pt": {
+     "bytes": 335549289,
+     "sha256": "7fb323b282539b788c7b1b4f590a8a8f033a7fd68b9f7ca3adb39d1233f723ed"
+    }
+   },
+   "2027": {
+    "best.pt": {
+     "bytes": 335549225,
+     "sha256": "a8bbfff90bbe35ca6de239503e6ec9225e16fcb68a9eb87e64d6bf4e8aa84b75"
+    },
+    "endpoint_6.0.pt": {
+     "bytes": 335549289,
+     "sha256": "4b9a7d566ad6bd720a57f51e57dcafa70355624b4e5b8160eae43e0077559492"
+    }
+   }
+  },
+  "definition": "the existing 02B_SASREC contest runs, no re-run; PRACTICAL_BEST = best.pt (mark 3.0 EFE), CONTROLLED_BUDGET = endpoint_6.0.pt",
+  "runs": {
+   "2026": "runs_p3/SASREC/02B_SASREC_s2026",
+   "2027": "runs_p3/SASREC/02B_SASREC_s2027"
+  }
+ },
+ "cohort_deficit": 0.0,
+ "comparison_key": {
+  "candidate_order_hash": "ab606d5e3728c993d31048f6d613838658d3a5ce8a0d0bd023611ce0ff027476",
+  "data_protocol_hash": "bc699a97dd2fab054e5a5c00f9661dd32b0677941d3f23f2e4b81751b3b7b330",
+  "data_version": "CLEAN_V2_POP5100_V2",
+  "eval_batch": 1024,
+  "eval_device_class": "A16-FP32-DET",
+  "eval_score_block": 158486,
+  "eval_stream": "E2E_ROWS",
+  "evaluator_code_sha256": "6cbc3e6f2a6a237650e04f328b9991427d79867046279c3ae7d9e6a27edaea0d",
+  "feature_contract_hash": "e97600f508497398da47f48b029d49a6fffee316e6a0c1ea20e046fe81fda5aa",
+  "label_policy_hash": "75acea25716829cba74a7703f17208f405b455c72af2ec19f413585636f7e59a",
+  "manifest_registry_sha256": "1dafcef45a10b345b88fbd4ff77c3919fa0c21cbbc5f470505c17a3803efb022",
+  "objective_id": "EXACT_FULL_K_CE_SUM_OVER_LOSS_ELIGIBLE_DIVIDE_ONCE_LS0",
+  "population_hash": "563e76637a384c2985fff5e272d4290f4f3e52c99f57eebec4c20cde0628b8b3",
+  "precision_id": "FP32_STRICT:matmul_tf32=off,cudnn_tf32=off,float32_matmul_precision=highest,deterministic_algorithms=STRICT",
+  "query_order_hash": "4f45656a86dbc9d9bb2a59841ac2b538b23b09b0984840af1957a7953664b0dc",
+  "schema_id": "L3S_NEAR_DUPLICATE_SESSION-minus-G11+G12a+G3+G4+G7",
+  "schema_self_sha256": "c53d47fe2555dd537e27e11d45a4e8b23739566e6b98179dcf521852aa918f87",
+  "split": "VALIDATION"
+ },
+ "conditions_open": [
+  "5: REPORTED diagnostics from existing eval_6.0 ranks (CONTROLLED_BUDGET between-family delta + paired CI; GRU 7.0 PRACTICAL_BEST_EXTENDED values) \u2014 never selection"
+ ],
+ "decision_status": "DECISIVE_STABLE",
+ "disclosure": "the 0.000869 full-data seed gap is SASRec-only (v1); GRU full-data seed spread under the common schedule is unmeasured (PREG1 T1 tiebreak.disclosure)",
+ "document": "ARCHITECTURE_LOCK",
+ "downstream_C": "the selected family's cohort contest runs (PRACTICAL_BEST and CONTROLLED_BUDGET rows), reused verbatim; ARCHITECTURE_TIEBREAK rows are never C_MATCHED",
+ "draft": {
+  "path": "runs_p3/g2/ARCHITECTURE_LOCK.DRAFT.json",
+  "sha256": "3a0db5b3ca8aff556bb4e3e91773bb4f1d9e06ff78f7abdb134947d3793f10eb",
+  "values": "unchanged"
+ },
+ "e11_9a_recipe_grid": {
+  "FT_arms": "FT_C / FT_FA: whole SMALL model, passes {1,2,4} \u00d7 LR {0.1, 0.3} \u00d7 SMALL peak, selected once on M04S FIXED_20 (amendment 04 \u00a73)",
+  "LO": "full local model, own support only",
+  "PF_CPF": "personal component p_u only (initialised 0), own support only",
+  "lambda": 0.0001,
+  "lambda_source": "Ops registration now (the value used in the FL-02 GPU determinism receipt, code/fl/gpu_receipt.py:137); not data-selected",
+  "local_passes": [
+   1,
+   2,
+   4
+  ],
+  "panel": "M04S FIXED_20 (selected once; M04 never selects)",
+  "personal_lr": "shared peak \u00d7 the same round factor (PREG1_LOCK_VALUES T2 pf_personal_lr)",
+  "registered": "at ARCHITECTURE_LOCK, before any M04S read"
+ },
+ "family_mean_metric": {
+  "GRU": 0.1569369715955897,
+  "SASREC": 0.16120845634134878
+ },
+ "family_seed_metrics": {
+  "GRU": {
+   "2026": 0.15714055813547465,
+   "2027": 0.15673338505570475
+  },
+  "SASREC": {
+   "2026": 0.16119612974187786,
+   "2027": 0.16122078294081973
+  }
+ },
+ "fedbn_allowed": false,
+ "forbidden_downstream_families": [
+  "GRU"
+ ],
+ "g2_result": "G2_RESULT.json",
+ "g2_result_sha256": "3397a643e4bdcb42ff6cecaf110ac9053dde965f0ce14dc8bf2012d11735ffef",
+ "g2_script_sha256": "3893a49a71be49f5baf338b93195e2e885eecb9326705902913bd4d5e1abb44d",
+ "init_hash_receipt": {
+  "derived_from": "public RUN_START.json theta0_init_sha256 of the selected recipe's seeds (tools/g2_run.py)",
+  "family": "SASREC",
+  "hashes": {
+   "SASREC": {
+    "2026": "fe075eddc6715e92d7c20066c89291ee4147d9aed9a28c939d4dcae626ded616",
+    "2027": "b6e22c58eb46913136747976f1b0663df5384f33940c38b228347e3f7c3f3a0c"
+   }
+  },
+  "host": "cuda:0",
+  "host_field": "RUN_START.device",
+  "recipe_id": "02B_SASREC",
+  "run_start_sha256": {
+   "2026": "ad64282bbce049ef46e5c889c4afc06c89be5b1478f73a02c65af298e451522e",
+   "2027": "d8b60cca0953552663706c464ce6259e637e19711dd9609b11ab942d6ef69eff"
+  },
+  "source": "SERVER_MEASURED",
+  "torch": "2.13.0+cu130"
+ },
+ "initial_hash_source": {
+  "host": "cuda:0",
+  "source": "SERVER_MEASURED",
+  "torch": "2.13.0+cu130"
+ },
+ "initial_untrained_weights_hash_by_seed": {
+  "2026": "fe075eddc6715e92d7c20066c89291ee4147d9aed9a28c939d4dcae626ded616",
+  "2027": "b6e22c58eb46913136747976f1b0663df5384f33940c38b228347e3f7c3f3a0c"
+ },
+ "input_rows_sha256": "05e18197305d52cfcf332bebb470b05f488bb5f3601f32514bfe281dc7921911",
+ "locked_by": "Operations Director (Claude), per Fable G2 ruling CONFIRM_WITH_CONDITIONS",
+ "locked_utc": "2026-09-28T11:33:51Z",
+ "measured_seed_gaps_main": {
+  "GRU": 0.0004071730797698958,
+  "SASREC": 2.4653198941876342e-05,
+  "note": "MAIN seed gaps now measured; the registered disclosure string above is kept verbatim"
+ },
+ "metric": "client_macro_mrr@20",
+ "note": "Winner family is locked; its trained weights are NOT default initialization for FL/LO.",
+ "p5_singles_losing_family": {
+  "checkpoints": {
+   "2026": {
+    "best.pt": {
+     "bytes": 85125037,
+     "sha256": "2a7dab7c567ff74bc6c7904c5e8876a9ed99f29298d9e01959283051569ecc37"
+    }
+   },
+   "2027": {
+    "best.pt": {
+     "bytes": 85125037,
+     "sha256": "c70654408d23c7d613dc60bc6d80fdac1e45048cc62bf1b2829dd0c2ef504362"
+    }
+   }
+  },
+  "note": "best@6.0; never deleted",
+  "recipe_id": "02B_GRU"
+ },
+ "parameter_counts": {
+  "02B_GRU": 20962210,
+  "02B_SASREC": 83881764,
+  "SMALL_SASREC_D64_B2": 20710048
+ },
+ "representative_seed": 2026,
+ "requires": "Fable G2 verdict; server re-measured theta0 hashes",
+ "retention_rule": "C_BIG and P5 checkpoints and all 8 run dirs are never deleted; C2 candidates stay CANDIDATE_NOT_SELECTED",
+ "reverses_cohort_order": false,
+ "seeds": [
+  2026,
+  2027
+ ],
+ "selected_on": "VALIDATION",
+ "selected_recipe": {
+  "model_variant": "SASREC_D256_B3",
+  "recipe_id": "02B_SASREC",
+  "recipe_sha256": "9a2530874a3abd096eb2f9c9f4b02f012f4015ac80137bf9328b4f69c1527f6d",
+  "source_hp_id": "P2_SASREC_D256_B3_S0_s0",
+  "tuned_recipes_self_sha256": "0b0bc3b4d54d0444ab04045008d8401980ee724cae16a963598e59834175dc42"
+ },
+ "selected_recipe_id": "02B_SASREC",
+ "selection_basis": "COHORT_DECISIVE_STABLE",
+ "selection_rule": "PRACTICAL_BEST",
+ "stage1": null,
+ "stage2": null,
+ "status": "LOCKED",
+ "sys02b_fl_forecast": {
+  "basis": "INFERENCE \u2014 amendment 03 \u00a76 (SMALL core \u2248 62 GPU-h, trigger > 125%) and amendment 04 \u00a75 (full downstream \u2248 140\u2013165 GPU-h incl. optional arms; owner tiering DL 89 defers KD_SMALL, FT_KD, DP \u03b5=1, CPF)",
+  "core_gpu_h": 62,
+  "refine": "SYS-04c/SYS-05 bench of SASREC_D64_B2 after its registry entry + \u03b80 (TRAIN-04)",
+  "trigger": "downstream core > 1.5\u00d7 this forecast \u2192 Ops brings reduction options to Fable (never a smaller backbone)"
+ },
+ "theta0_remeasured": {
+  "SASREC_D256_B3": {
+   "2026": "fe075eddc6715e92d7c20066c89291ee4147d9aed9a28c939d4dcae626ded616",
+   "2027": "b6e22c58eb46913136747976f1b0663df5384f33940c38b228347e3f7c3f3a0c"
+  },
+  "lock_prep_sha256": "9e0da3a2757609bcd415df378ed45867a1ef5383948332dda0606cc7a96941f4",
+  "match_run_start": true,
+  "source": "runs_p3/g2/LOCK_PREP.json (server CPU, strict FP32, code_p3b theta0_variants.measure)"
+ },
+ "topology_hash": {
+  "02B_GRU (P5 singles)": "fca0786d5f8eebf6eb48837d086c96e5ae29ac36e4bf9e7faf89c4968a72b56e",
+  "02B_SASREC": "5d6ba76fbc762e31f5fb6f428482f682b4af7724d0b06a808909bc4c9f52e198"
+ },
+ "trigger": {
+  "delta_bar": -0.004271484745759085,
+  "delta_bar_ci95": [
+   -0.005180012280494037,
+   -0.003260910206321458
+  ],
+  "delta_s": {
+   "2026": -0.004055571606403213,
+   "2027": -0.004487397885114985
+  },
+  "family_mean": {
+   "GRU": 0.1569369715955897,
+   "SASREC": 0.16120845634134878
+  },
+  "per_seed": {
+   "GRU": {
+    "2026": 0.15714055813547465,
+    "2027": 0.15673338505570475
+   },
+   "SASREC": {
+    "2026": 0.16119612974187786,
+    "2027": 0.16122078294081973
+   }
+  },
+  "seed_gap": {
+   "GRU": 0.0004071730797698958,
+   "SASREC": 2.4653198941876342e-05
+  },
+  "triggered": false,
+  "triggers": {
+   "T1a": false,
+   "T1b": false,
+   "T1c": false,
+   "T1d": false
+  }
+ },
+ "verdict": {
+  "path": "company/reviews/G2_FABLE_RULING.md",
+  "sha256": "4c7d4eb01699b8ed317f1fe92eee5c78337f5b40c8f3d182f0037af70819e35f",
+  "verdict": "CONFIRM_WITH_CONDITIONS"
+ },
+ "winner_family": "SASREC",
+ "winner_payload": {
+  "BIG_02B_SASREC_bytes_per_visit_fp32_down_up": 671054112,
+  "SMALL_SASREC_D64_B2_bytes_per_visit": 165680392,
+  "note": "02R1 \u00a74: FL arms run at SMALL (amendment 03); BIG payload recorded for the size step"
+ }
+}

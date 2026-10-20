@@ -1,0 +1,195 @@
+Every run directory under `results/runs/` with its RUN_SUMMARY status, rebuilt by `run_pipeline.py --from-results`.
+
+| phase | run | arm | status |
+|---|---|---|---|
+| closure_phase | closure_phase/LOCAL_PASSES/cold_FA_eta0.0003_P2_E6_s2026 | EXT_LP_COLD_FA | DONE_CALIBRATION |
+| closure_phase | closure_phase/LOCAL_PASSES/cold_FA_eta0.0003_P4_E6_s2026 | EXT_LP_COLD_FA | DONE_CALIBRATION |
+| closure_phase | closure_phase/LOCAL_PASSES/cold_FA_eta0.001_P2_E6_s2026 | EXT_LP_COLD_FA | DONE_CALIBRATION |
+| closure_phase | closure_phase/LOCAL_PASSES/cold_FA_eta0.001_P4_E6_s2026 | EXT_LP_COLD_FA | DONE_CALIBRATION |
+| closure_phase | closure_phase/LOCAL_PASSES/cold_FP_eta0.001_P2_E6_s2026 | EXT_LP_COLD_FP | DONE_CALIBRATION |
+| closure_phase | closure_phase/LOCAL_PASSES/cold_PF_eta0.001_P2_E6_s2026 | EXT_LP_COLD_PF | DONE_CALIBRATION |
+| closure_phase | closure_phase/LOCAL_PASSES/pb100_FA_eta0.0001_P4_E6_s2026 | EXT_LP_PB100_FA | DONE_CALIBRATION |
+| closure_phase | closure_phase/LOCAL_PASSES/pb100_FA_eta3e-05_P4_E6_s2026 | EXT_LP_PB100_FA | DONE_CALIBRATION |
+| closure_phase | closure_phase/LOCAL_PASSES/pb100_FP_eta3e-05_P2_E6_s2026 | EXT_LP_PB100_FP | DONE_CALIBRATION |
+| closure_phase | closure_phase/LOCAL_PASSES/pb100_PF_eta3e-05_P2_E6_s2026 | EXT_LP_PB100_PF | DONE_CALIBRATION |
+| main_study | main_study/new_runs/full_pre_seed_matrix/EXT_FULLPRE2027_FROZEN_FL_s2026 | FA_WARM_FROZEN | DONE_MAIN |
+| main_study | main_study/new_runs/full_pre_seed_matrix/EXT_FULLPRE2027_FROZEN_FL_s2027 | FA_WARM_FROZEN | DONE_MAIN |
+| main_study | main_study/new_runs/full_pre_seed_matrix/EXT_FULLPRE2027_UNFROZEN_FL_s2026 | P2_W | DONE_MAIN |
+| main_study | main_study/new_runs/full_pre_seed_matrix/EXT_FULLPRE2027_UNFROZEN_FL_s2027 | P2_W | DONE_MAIN |
+| main_study | main_study/runs_ds3/FL/LADDER_S1a_FA_s2026 | FA | DONE_MAIN |
+| main_study | main_study/runs_ds3/FL_T/DP1_WARM_FROZEN_s2026 | DP_WARM_FROZEN | DONE_MAIN |
+| main_study | main_study/runs_ds3/FL_T/DP8_FROZEN_s2026 | DP_WARM_FROZEN | DONE_MAIN |
+| main_study | main_study/runs_ds3/FL_T/DP8_FROZEN_s2027 | DP_WARM_FROZEN | DONE_MAIN |
+| main_study | main_study/runs_ds3/FL_T/FA_1024_WARM_FROZEN_s2026 | FA_1024_WARM_FROZEN | DONE_MAIN |
+| main_study | main_study/runs_ds3/FL_T/FA_1024_WARM_FROZEN_s2027 | FA_1024_WARM_FROZEN | DONE_MAIN |
+| main_study | main_study/runs_ds3/FL_T/FA_Q8_WARM_FROZEN_s2026 | FA_Q8_WARM_FROZEN | DONE_MAIN |
+| main_study | main_study/runs_ds3/FL_T/FA_Q8_WARM_FROZEN_s2027 | FA_Q8_WARM_FROZEN | DONE_MAIN |
+| main_study | main_study/runs_ds3/FL_T/FA_WARM_FROZEN_s2026 | FA_WARM_FROZEN | DONE_MAIN |
+| main_study | main_study/runs_ds3/FL_T/FA_WARM_FROZEN_s2027 | FA_WARM_FROZEN | DONE_MAIN |
+| main_study | main_study/runs_ds3/FL_T/FA_WARM_s2026 | FA_WARM | DONE_MAIN |
+| main_study | main_study/runs_ds3/FL_T/FA_WARM_s2027 | FA_WARM | DONE_MAIN |
+| main_study | main_study/runs_ds3/FL_T/FA_s2026 | FA | DONE_MAIN |
+| main_study | main_study/runs_ds3/FL_T/FA_s2027 | FA | DONE_MAIN |
+| main_study | main_study/runs_ds3/FL_T/FP_WARM_FROZEN_s2026 | FP_WARM_FROZEN | DONE_MAIN |
+| main_study | main_study/runs_ds3/FL_T/FP_WARM_FROZEN_s2027 | FP_WARM_FROZEN | DONE_MAIN |
+| main_study | main_study/runs_ds3/FL_T/N33_DP1_s2026 | DP | DONE_MAIN |
+| main_study | main_study/runs_ds3/FL_T/N33_DP8_s2026 | DP | DONE_MAIN |
+| main_study | main_study/runs_ds3/FL_T/N33_DP8_s2027 | DP | DONE_MAIN |
+| main_study | main_study/runs_ds3/FL_T/N33_FA_1024_s2026 | FA_1024 | DONE_MAIN |
+| main_study | main_study/runs_ds3/FL_T/N33_FA_1024_s2027 | FA_1024 | DONE_MAIN |
+| main_study | main_study/runs_ds3/FL_T/N33_FA_Q8_s2026 | FA_Q8 | DONE_MAIN |
+| main_study | main_study/runs_ds3/FL_T/N33_FA_Q8_s2027 | FA_Q8 | DONE_MAIN |
+| main_study | main_study/runs_ds3/FL_T/N33_FP_s2026 | FP | DONE_MAIN |
+| main_study | main_study/runs_ds3/FL_T/N33_FP_s2027 | FP | DONE_MAIN |
+| main_study | main_study/runs_ds3/FL_T/N33_PF_s2026 | PF | DONE_MAIN |
+| main_study | main_study/runs_ds3/FL_T/N33_PF_s2027 | PF | DONE_MAIN |
+| main_study | main_study/runs_ds3/FL_T/PF_WARM_FROZEN_s2026 | PF_WARM_FROZEN | DONE_MAIN |
+| main_study | main_study/runs_ds3/FL_T/PF_WARM_FROZEN_s2027 | PF_WARM_FROZEN | DONE_MAIN |
+| main_study | main_study/runs_ds3/FL_T/S_CAL | S_CAL | DONE_S_CAL |
+| main_study | main_study/runs_ds3/FL_T/S_CAL_WARM_FROZEN_s2026 | S_CAL_WARM_FROZEN | DONE_S_CAL |
+| main_study | main_study/runs_ds3/LRSCREEN/x0.5 | FA | DONE_MAIN |
+| main_study | main_study/runs_ds3/LRSCREEN/x1 | FA | DONE_MAIN |
+| main_study | main_study/runs_ds3/LRSCREEN/x2 | FA | DONE_MAIN |
+| main_study | main_study/runs_ds3/LRSCREEN_EXT/x16 | FA | DONE_MAIN |
+| main_study | main_study/runs_ds3/LRSCREEN_EXT/x4 | FA | DONE_MAIN |
+| main_study | main_study/runs_ds3/LRSCREEN_EXT/x8 | FA | DONE_MAIN |
+| main_study | main_study/runs_ds3/LRSCREEN_S2/FEDADAM_eta0.001_x1 | FA | DONE_MAIN |
+| main_study | main_study/runs_ds3/LRSCREEN_S2/FEDADAM_eta0.003_x1 | FA | DONE_MAIN |
+| main_study | main_study/runs_ds3/LRSCREEN_S2/FEDADAM_eta0.01_tau1e-5_x1 | FA | DONE_MAIN |
+| main_study | main_study/runs_ds3/LRSCREEN_S2/FEDADAM_eta0.01_x1 | FA | DONE_MAIN |
+| main_study | main_study/runs_ds3/LRSCREEN_S2/FEDADAM_eta0.01_x8 | FA | DONE_MAIN |
+| main_study | main_study/runs_ds3/LRSCREEN_S2/FEDADAM_eta0.1_x1 | FA | DONE_MAIN |
+| main_study | main_study/runs_ds3/LRSCREEN_S2/FEDADAM_eta0.1_x8 | FA | DONE_MAIN |
+| main_study | main_study/runs_ds3/LRSCREEN_S2/FEDAVGM_x0.5 | FA | DONE_MAIN |
+| main_study | main_study/runs_ds3/LRSCREEN_S2/FEDAVGM_x1 | FA | DONE_MAIN |
+| main_study | main_study/runs_ds3/LRSCREEN_S2/FEDAVGM_x2 | FA | DONE_MAIN |
+| main_study | main_study/runs_ds3/LRSCREEN_S2/FEDAVGM_x8 | FA | DONE_MAIN |
+| main_study | main_study/runs_ds3/LRSCREEN_S3/A2_FEDADAM_eta0.01_FLCONST_SGD0.1 | FA | DONE_MAIN |
+| main_study | main_study/runs_ds3/LRSCREEN_S3/A2_FEDADAM_eta0.01_FLCONST_SGD1.0 | FA | DONE_MAIN |
+| main_study | main_study/runs_ds3/LRSCREEN_S3/W_FEDADAM_eta0.01_FLCONST_ADAMW | FA | DONE_MAIN |
+| main_study | main_study/runs_ds3/LRSCREEN_S3/W_FEDADAM_eta0.01_FLCONST_SGD0.01 | FA | DONE_MAIN |
+| main_study | main_study/runs_ds3/LRSCREEN_S4/B8 | FA | DONE_MAIN |
+| main_study | main_study/runs_ds3/LRSCREEN_S4/P1 | FA | DONE_MAIN |
+| main_study | main_study/runs_ds3/LRSCREEN_S4/P4 | FA | DONE_MAIN |
+| main_study | main_study/runs_ds3/S7S8_T/S7Ta | FA_WARM | DONE_MAIN |
+| main_study | main_study/runs_ds3/S7S8_T/S7Tb | FA_WARM | DONE_MAIN |
+| main_study | main_study/runs_ds3/S7S8_T/S7Tc | FA_WARM | DONE_MAIN |
+| main_study | main_study/runs_ds3/S7S8_T/S7Td | FA_WARM | DONE_MAIN |
+| main_study | main_study/runs_ds3/S7S8_T/S8Ta | FA_WARM_FROZEN | DONE_MAIN |
+| main_study | main_study/runs_ds3/S7S8_T/S8Tb | FA_WARM_FROZEN | DONE_MAIN |
+| main_study | main_study/runs_ds3/S7S8_T/S8Tc | FA_WARM_FROZEN | DONE_MAIN |
+| main_study | main_study/runs_ds3/S7S8_T/S8Td | FA_WARM_FROZEN | DONE_MAIN |
+| main_study | main_study/runs_ds3/WARM_PREVIEW/FA_WARM_FEDAVG_f0.25 | FA_WARM | DONE_MAIN |
+| main_study | main_study/runs_ds3/WARM_PREVIEW/FA_WARM_FROZEN_f1 | FA_WARM_FROZEN | DONE_MAIN |
+| main_study | main_study/runs_ds3/WARM_PREVIEW/FA_WARM_FROZEN_f4 | FA_WARM_FROZEN | DONE_MAIN |
+| main_study | main_study/runs_ds3/WARM_PREVIEW/FA_WARM_eta0.001_f0.25 | FA_WARM | DONE_MAIN |
+| main_study | main_study/runs_ds3/WARM_PREVIEW/FA_WARM_eta0.001_f1 | FA_WARM | DONE_MAIN |
+| main_study | main_study/runs_ds3/WARM_PREVIEW/FA_WARM_f0.25 | FA_WARM | DONE_MAIN |
+| main_study | main_study/runs_ds3/WARM_PREVIEW/FA_WARM_f1 | FA_WARM | DONE_MAIN |
+| main_study | main_study/runs_exp_pb100/FA_WARM_FROZEN_PB100K_s2026 | FA_WARM_FROZEN | DONE_MAIN |
+| main_study | main_study/runs_exp_pb100/FA_WARM_PB100K_s2026 | FA_WARM | DONE_MAIN |
+| main_study | main_study/runs_exp_pb100/PRETRAIN_FOR_FL_SMALL_SASREC_D64_B2_PB100K_s2026 |  | DONE_MAIN |
+| main_study | main_study/runs_exp_pb100/PRETRAIN_FOR_FL_SMALL_SASREC_D64_B2_PB100K_s2026/sealed |  | DONE_MAIN |
+| main_study | main_study/runs_p2/C1/P2_C1_FT_CENTRAL_FROZEN_CALIB_lr1e-4_s2026 |  | DONE_MAIN |
+| main_study | main_study/runs_p2/C1/P2_C1_FT_CENTRAL_FROZEN_CALIB_lr1e-4_s2026/sealed |  | DONE_MAIN |
+| main_study | main_study/runs_p2/C1/P2_C1_FT_CENTRAL_FROZEN_CALIB_lr1e-5_s2026 |  | DONE_MAIN |
+| main_study | main_study/runs_p2/C1/P2_C1_FT_CENTRAL_FROZEN_CALIB_lr1e-5_s2026/sealed |  | DONE_MAIN |
+| main_study | main_study/runs_p2/C1/P2_C1_FT_CENTRAL_FROZEN_CALIB_lr3e-4_s2026 |  | DONE_MAIN |
+| main_study | main_study/runs_p2/C1/P2_C1_FT_CENTRAL_FROZEN_CALIB_lr3e-4_s2026/sealed |  | DONE_MAIN |
+| main_study | main_study/runs_p2/C1/P2_C1_FT_CENTRAL_FROZEN_CALIB_lr3e-5_s2026 |  | DONE_MAIN |
+| main_study | main_study/runs_p2/C1/P2_C1_FT_CENTRAL_FROZEN_CALIB_lr3e-5_s2026/sealed |  | DONE_MAIN |
+| main_study | main_study/runs_p2/C1/P2_C1_FT_CENTRAL_FROZEN_CALIB_lr3e-6_s2026 |  | DONE_MAIN |
+| main_study | main_study/runs_p2/C1/P2_C1_FT_CENTRAL_FROZEN_CALIB_lr3e-6_s2026/sealed |  | DONE_MAIN |
+| main_study | main_study/runs_p2/C1/P2_C1_FT_CENTRAL_FROZEN_MAIN_s2026 |  | DONE_MAIN |
+| main_study | main_study/runs_p2/C1/P2_C1_FT_CENTRAL_FROZEN_MAIN_s2026/sealed |  | DONE_MAIN |
+| main_study | main_study/runs_p2/C1/P2_C1_FT_CENTRAL_FROZEN_MAIN_s2027 |  | DONE_MAIN |
+| main_study | main_study/runs_p2/C1/P2_C1_FT_CENTRAL_FROZEN_MAIN_s2027/sealed |  | DONE_MAIN |
+| main_study | main_study/runs_p2/C1/P2_C1_FT_CENTRAL_FULL_CALIB_lr1e-4_s2026 |  | DONE_MAIN |
+| main_study | main_study/runs_p2/C1/P2_C1_FT_CENTRAL_FULL_CALIB_lr1e-4_s2026/sealed |  | DONE_MAIN |
+| main_study | main_study/runs_p2/C1/P2_C1_FT_CENTRAL_FULL_CALIB_lr1e-5_s2026 |  | DONE_MAIN |
+| main_study | main_study/runs_p2/C1/P2_C1_FT_CENTRAL_FULL_CALIB_lr1e-5_s2026/sealed |  | DONE_MAIN |
+| main_study | main_study/runs_p2/C1/P2_C1_FT_CENTRAL_FULL_CALIB_lr3e-4_s2026 |  | DONE_MAIN |
+| main_study | main_study/runs_p2/C1/P2_C1_FT_CENTRAL_FULL_CALIB_lr3e-4_s2026/sealed |  | DONE_MAIN |
+| main_study | main_study/runs_p2/C1/P2_C1_FT_CENTRAL_FULL_CALIB_lr3e-5_s2026 |  | DONE_MAIN |
+| main_study | main_study/runs_p2/C1/P2_C1_FT_CENTRAL_FULL_CALIB_lr3e-5_s2026/sealed |  | DONE_MAIN |
+| main_study | main_study/runs_p2/C1/P2_C1_FT_CENTRAL_FULL_CALIB_lr3e-6_s2026 |  | DONE_MAIN |
+| main_study | main_study/runs_p2/C1/P2_C1_FT_CENTRAL_FULL_CALIB_lr3e-6_s2026/sealed |  | DONE_MAIN |
+| main_study | main_study/runs_p2/C1/P2_C1_FT_CENTRAL_FULL_MAIN_s2026 |  | DONE_MAIN |
+| main_study | main_study/runs_p2/C1/P2_C1_FT_CENTRAL_FULL_MAIN_s2026/sealed |  | DONE_MAIN |
+| main_study | main_study/runs_p2/C1/P2_C1_FT_CENTRAL_FULL_MAIN_s2027 |  | DONE_MAIN |
+| main_study | main_study/runs_p2/C1/P2_C1_FT_CENTRAL_FULL_MAIN_s2027/sealed |  | DONE_MAIN |
+| main_study | main_study/runs_p2/C2/P2_C2_CFULL_SMALL_SASREC_D64_B2_s2026 |  | DONE_CONTINUATION |
+| main_study | main_study/runs_p2/C2/P2_C2_CFULL_SMALL_SASREC_D64_B2_s2026/sealed |  | DONE_CONTINUATION |
+| main_study | main_study/runs_p2/MAIN/FT_P2_WSTAR_s2026 | FT_P2_WSTAR | DONE |
+| main_study | main_study/runs_p2/MAIN/FT_P2_WSTAR_s2027 | FT_P2_WSTAR | DONE |
+| main_study | main_study/runs_p2/MAIN/P2_WSTAR_DP1_SMALL_s2026 | P2_WSTAR_DP1 | DONE_MAIN |
+| main_study | main_study/runs_p2/MAIN/P2_WSTAR_DP8_SMALL_s2026 | P2_WSTAR_DP8 | DONE_MAIN |
+| main_study | main_study/runs_p2/MAIN/P2_WSTAR_DP8_SMALL_s2027 | P2_WSTAR_DP8 | DONE_MAIN |
+| main_study | main_study/runs_p2/MAIN/P2_WSTAR_FA1024_SMALL_s2026 | P2_WSTAR_FA1024 | DONE_MAIN |
+| main_study | main_study/runs_p2/MAIN/P2_WSTAR_FA1024_SMALL_s2027 | P2_WSTAR_FA1024 | DONE_MAIN |
+| main_study | main_study/runs_p2/MAIN/P2_WSTAR_SMALL_s2026 | P2_W | DONE_MAIN |
+| main_study | main_study/runs_p2/MAIN/P2_WSTAR_SMALL_s2027 | P2_W | DONE_MAIN |
+| main_study | main_study/runs_p2/MAIN/P2_WSTAR_S_CAL_SMALL_s2026 | P2_WSTAR_S_CAL | DONE_S_CAL |
+| main_study | main_study/runs_p2/WA/P2_W_FEDADAM_eta0.0001_c0.003_CALIB_s2026 | P2_W | DONE_MAIN |
+| main_study | main_study/runs_p2/WA/P2_W_FEDADAM_eta0.0001_c0.01_CALIB_s2026 | P2_W | DONE_MAIN |
+| main_study | main_study/runs_p2/WA/P2_W_FEDADAM_eta0.0001_c0.03_CALIB_s2026 | P2_W | DONE_MAIN |
+| main_study | main_study/runs_p2/WA/P2_W_FEDADAM_eta0.0001_c0.1_CALIB_s2026 | P2_W | DONE_MAIN |
+| main_study | main_study/runs_p2/WA/P2_W_FEDADAM_eta0.0003_c0.003_CALIB_s2026 | P2_W | DONE_MAIN |
+| main_study | main_study/runs_p2/WA/P2_W_FEDADAM_eta0.0003_c0.01_CALIB_s2026 | P2_W | DONE_MAIN |
+| main_study | main_study/runs_p2/WA/P2_W_FEDADAM_eta0.0003_c0.03_CALIB_s2026 | P2_W | DONE_MAIN |
+| main_study | main_study/runs_p2/WA/P2_W_FEDADAM_eta1e-05_c0.1_CALIB_s2026 | P2_W | DONE_MAIN |
+| main_study | main_study/runs_p2/WA/P2_W_FEDADAM_eta3e-06_c0.1_CALIB_s2026 | P2_W | DONE_MAIN |
+| main_study | main_study/runs_p2/WA/P2_W_FEDAVGM_eta0.03_c0.003_CALIB_s2026 | P2_W | DONE_MAIN |
+| main_study | main_study/runs_p2/WA/P2_W_FEDAVGM_eta0.03_c0.01_CALIB_s2026 | P2_W | DONE_MAIN |
+| main_study | main_study/runs_p2/WA/P2_W_FEDAVGM_eta0.03_c0.03_CALIB_s2026 | P2_W | DONE_MAIN |
+| main_study | main_study/runs_p2/WA/P2_W_FEDAVGM_eta0.1_c0.003_CALIB_s2026 | P2_W | DONE_MAIN |
+| main_study | main_study/runs_p2/WA/P2_W_FEDAVGM_eta0.1_c0.01_CALIB_s2026 | P2_W | DONE_MAIN |
+| main_study | main_study/runs_p2/WA/P2_W_FEDAVGM_eta0.1_c0.03_CALIB_s2026 | P2_W | DONE_MAIN |
+| main_study | main_study/runs_p2/WA/P2_W_FEDAVG_eta0.3_c0.003_CALIB_s2026 | P2_W | DONE_MAIN |
+| main_study | main_study/runs_p2/WA/P2_W_FEDAVG_eta0.3_c0.01_CALIB_s2026 | P2_W | DONE_MAIN |
+| main_study | main_study/runs_p2/WA/P2_W_FEDAVG_eta0.3_c0.03_CALIB_s2026 | P2_W | DONE_MAIN |
+| main_study | main_study/runs_p2/WA/P2_W_FEDAVG_eta1_c0.003_CALIB_s2026 | P2_W | DONE_MAIN |
+| main_study | main_study/runs_p2/WA/P2_W_FEDAVG_eta1_c0.01_CALIB_s2026 | P2_W | DONE_MAIN |
+| main_study | main_study/runs_p2/WA/P2_W_FEDAVG_eta1_c0.03_CALIB_s2026 | P2_W | DONE_MAIN |
+| main_study | main_study/runs_x_rees46/COLD/G/FA_eta0.0001_tau1e-6_E6 | FA | DONE_MAIN |
+| main_study | main_study/runs_x_rees46/COLD/G/FA_eta0.0003_tau1e-6_E6 | FA | DONE_MAIN |
+| main_study | main_study/runs_x_rees46/COLD/G/FA_eta0.001_tau1e-6_E12 | FA | DONE_MAIN |
+| main_study | main_study/runs_x_rees46/COLD/G/FA_eta0.001_tau1e-6_E6 | FA | DONE_MAIN |
+| main_study | main_study/runs_x_rees46/COLD/G/FA_eta0.01_tau1e-6_E6 | FA | DONE_MAIN |
+| main_study | main_study/runs_x_rees46/COLD/MAIN/X_FA_COLD_eta0.001_tau1e-6_E6_s2026 | FA | DONE_MAIN |
+| main_study | main_study/runs_x_rees46/COLD/MAIN/X_FA_COLD_eta0.001_tau1e-6_E6_s2027 | FA | DONE_MAIN |
+| main_study | main_study/runs_x_rees46/G/UNF_eta1e-05_tau1e-6 | P2_W | DONE_MAIN |
+| main_study | main_study/runs_x_rees46/G/UNF_eta3e-05_tau1e-6 | P2_W | DONE_MAIN |
+| main_study | main_study/runs_x_rees46/G/UNF_eta3e-06_tau1e-6 | P2_W | DONE_MAIN |
+| main_study | main_study/runs_x_rees46/MAIN/X_FA_UNF_eta3e-06_tau1e-6_s2026 | P2_W | DONE_MAIN |
+| main_study | main_study/runs_x_rees46/MAIN/X_FA_UNF_eta3e-06_tau1e-6_s2027 | P2_W | DONE_MAIN |
+| main_study | main_study/runs_x_rees46/PB100/DP/DP8_s2026 | P2_WSTAR_DP8 | DONE_MAIN |
+| main_study | main_study/runs_x_rees46/PB100/DP/DP8_s2027 | P2_WSTAR_DP8 | DONE_MAIN |
+| main_study | main_study/runs_x_rees46/PB100/DP/S_CAL | P2_WSTAR_S_CAL | DONE_S_CAL |
+| main_study | main_study/runs_x_rees46/PB100/MAIN/X2_eta3e-05_c0.1_ilr0.1_tau1e-6_E6_P1_s2026 | P2_W | DONE_MAIN |
+| main_study | main_study/runs_x_rees46/PB100/MAIN/X2_eta3e-05_c0.1_ilr0.1_tau1e-6_E6_P1_s2027 | P2_W | DONE_MAIN |
+| main_study | main_study/runs_x_rees46/PB100/S1/eta0.0001_c0.1_ilr0.1_tau1e-6_E6_P1 | P2_W | DONE_MAIN |
+| main_study | main_study/runs_x_rees46/PB100/S1/eta0.0001_c0.1_ilr1_tau1e-6_E6_P1 | P2_W | DONE_MAIN |
+| main_study | main_study/runs_x_rees46/PB100/S1/eta0.0001_c0.3_ilr0.1_tau1e-6_E6_P1 | P2_W | DONE_MAIN |
+| main_study | main_study/runs_x_rees46/PB100/S1/eta0.0001_c0.3_ilr1_tau1e-6_E6_P1 | P2_W | DONE_MAIN |
+| main_study | main_study/runs_x_rees46/PB100/S1/eta0.001_c0.03_ilr1_tau1e-3_E6_P1 | P2_W | DONE_MAIN |
+| main_study | main_study/runs_x_rees46/PB100/S1/eta1e-05_c0.1_ilr0.1_tau1e-6_E6_P1 | P2_W | DONE_MAIN |
+| main_study | main_study/runs_x_rees46/PB100/S1/eta1e-05_c0.1_ilr1_tau1e-6_E6_P1 | P2_W | DONE_MAIN |
+| main_study | main_study/runs_x_rees46/PB100/S1/eta1e-05_c0.3_ilr0.1_tau1e-6_E6_P1 | P2_W | DONE_MAIN |
+| main_study | main_study/runs_x_rees46/PB100/S1/eta1e-05_c0.3_ilr1_tau1e-6_E6_P1 | P2_W | DONE_MAIN |
+| main_study | main_study/runs_x_rees46/PB100/S1/eta3e-05_c0.1_ilr0.1_tau1e-6_E6_P1 | P2_W | DONE_MAIN |
+| main_study | main_study/runs_x_rees46/PB100/S1/eta3e-05_c0.1_ilr1_tau1e-6_E6_P1 | P2_W | DONE_MAIN |
+| main_study | main_study/runs_x_rees46/PB100/S1/eta3e-05_c0.3_ilr0.1_tau1e-6_E6_P1 | P2_W | DONE_MAIN |
+| main_study | main_study/runs_x_rees46/PB100/S1/eta3e-05_c0.3_ilr1_tau1e-6_E6_P1 | P2_W | DONE_MAIN |
+| main_study | main_study/runs_x_rees46/PB100/S1/eta3e-06_c0.1_ilr0.1_tau1e-6_E6_P1 | P2_W | DONE_MAIN |
+| main_study | main_study/runs_x_rees46/PB100/S1/eta3e-06_c0.1_ilr1_tau1e-6_E6_P1 | P2_W | DONE_MAIN |
+| main_study | main_study/runs_x_rees46/PB100/S1/eta3e-06_c0.3_ilr0.1_tau1e-6_E6_P1 | P2_W | DONE_MAIN |
+| main_study | main_study/runs_x_rees46/PB100/S1/eta3e-06_c0.3_ilr1_tau1e-6_E6_P1 | P2_W | DONE_MAIN |
+| main_study | main_study/runs_x_rees46/PB100/S2/eta0.0001_c0.1_ilr0.1_tau1e-6_E6_P2 | P2_W | DONE_MAIN |
+| main_study | main_study/runs_x_rees46/PB100/S2/eta3e-05_c0.1_ilr0.1_tau1e-6_E6_P2 | P2_W | DONE_MAIN |
+| main_study | main_study/runs_x_rees46/PB100/S3/eta0.0001_c0.1_ilr0.1_tau1e-6_E12_P1 | P2_W | DONE_MAIN |
+| main_study | main_study/runs_x_rees46/PB100/S3/eta0.0001_c0.1_ilr0.1_tau1e-6_E24_P1 | P2_W | DONE_MAIN |
+| main_study | main_study/runs_x_rees46/PB100/S3/eta3e-05_c0.1_ilr0.1_tau1e-6_E12_P1 | P2_W | DONE_MAIN |
+| main_study | main_study/runs_x_rees46/PB100/S3/eta3e-05_c0.1_ilr0.1_tau1e-6_E24_P1 | P2_W | DONE_MAIN |
+| main_study | main_study/runs_x_rees46/PB100/S3/eta3e-05_c0.3_ilr0.1_tau1e-6_E12_P1 | P2_W | DONE_MAIN |
+| main_study | main_study/runs_x_rees46/PB100/S3/eta3e-05_c0.3_ilr0.1_tau1e-6_E24_P1 | P2_W | DONE_MAIN |

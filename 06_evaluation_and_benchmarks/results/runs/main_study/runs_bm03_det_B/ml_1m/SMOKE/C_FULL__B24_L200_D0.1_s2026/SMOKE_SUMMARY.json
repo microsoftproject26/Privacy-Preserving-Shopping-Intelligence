@@ -1,0 +1,103 @@
+{
+ "arm": "C_FULL",
+ "epochs_run": 0.020071500648108268,
+ "label": "SMOKE_NOT_EVIDENCE",
+ "spec": {
+  "N_decisions": 982089,
+  "arm": "C_FULL",
+  "betas": [
+   0.9,
+   0.999
+  ],
+  "budget_efe": 24,
+  "device_class": "NVIDIA_A40-FP32-DET",
+  "dropout": [
+   0.1
+  ],
+  "early_stop_marks": 6,
+  "effective_batch": 256,
+  "eps": 1e-08,
+  "exposure_point": "end",
+  "grad_clip": 1.0,
+  "init_sha256": "eb7013fb7bd25ccafd8e548950857c317ae0d95a64283db8c9b7f0cb4c70f560",
+  "lr_table_sha256": "9c03d24943b687de3dd4e37568ce2925111e1db7ba75adeb52aae07ffc1ef708",
+  "marks": [
+   2.0,
+   4.0,
+   6.0,
+   8.0,
+   10.0,
+   12.0,
+   14.0,
+   16.0,
+   18.0,
+   20.0,
+   22.0,
+   24.0
+  ],
+  "max_len": 200,
+  "n_updates": 92088,
+  "peak_lr": 0.00040005642964899735,
+  "provenance": null,
+  "schedule": "S0",
+  "seed": 2026,
+  "select_population": "ALL",
+  "variant": "SASREC_D256_B3",
+  "weight_decay": 1e-05
+ },
+ "summary": {
+  "ALL": {
+   "hr@10": 0.013249420337860219,
+   "hr@20": 0.023517721099701887,
+   "mrr@20": 0.0043592308453297215,
+   "n_unreachable": 0,
+   "n_users": 6038,
+   "ndcg@10": 0.005861957158185197,
+   "ndcg@20": 0.008432805979704567
+  },
+  "BAND": {
+   "hr@10": 0.005518763796909493,
+   "hr@20": 0.02097130242825607,
+   "mrr@20": 0.0037951980784080514,
+   "n_unreachable": 0,
+   "n_users": 906,
+   "ndcg@10": 0.0033650587773999233,
+   "ndcg@20": 0.007340691998523168
+  },
+  "BAND_COVERED_TARGET": {
+   "hr@10": 0.013271400132714002,
+   "hr@20": 0.023556735235567353,
+   "mrr@20": 0.004366462482432126,
+   "n_unreachable": 0,
+   "n_users": 6028,
+   "ndcg@10": 0.0058716817055610845,
+   "ndcg@20": 0.008446795372504343
+  },
+  "BAND_UNCOVERED_TARGET": {
+   "hr@10": 0.0,
+   "hr@20": 0.0,
+   "mrr@20": 0.0,
+   "n_unreachable": 0,
+   "n_users": 10,
+   "ndcg@10": 0.0,
+   "ndcg@20": 0.0
+  },
+  "OTHERS": {
+   "hr@10": 0.01461418550272798,
+   "hr@20": 0.02396726422447389,
+   "mrr@20": 0.004458804829513477,
+   "n_unreachable": 0,
+   "n_users": 5132,
+   "ndcg@10": 0.0063027580024937425,
+   "ndcg@20": 0.00862560708394275
+  }
+ },
+ "timing": {
+  "eval_s": 0.69,
+  "mean_step_s": 0.028221722184257073,
+  "median_step_s": 0.01787702925503254,
+  "n_steps_this_leg": 77,
+  "n_updates_full_run": 92088,
+  "wall_s_this_leg": 8.3
+ }
+}

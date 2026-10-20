@@ -1,0 +1,5108 @@
+{
+ "bootstrap": "make_plan seed 20261004, 1000",
+ "contrasts": [
+  {
+   "hr@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     -0.00046187258018053274,
+     0.0005107106266907043
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.0630703561966441,
+    "improved_share": 0.07104307722500246,
+    "kind": "delta",
+    "metric": "hr@10",
+    "n_decisions": 519714,
+    "n_seeds": 2,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "X_FA_WARM|2026|PRACTICAL_BEST|MAIN",
+      "b": "PRE|2026|PRACTICAL_BEST|MAIN",
+      "ci95": [
+       -0.0003983114969763876,
+       0.0005583515596620776
+      ],
+      "harmed_share": 0.047075851241291336,
+      "improved_share": 0.052791678932391325,
+      "point": 6.963323852926528e-05,
+      "seed": 2026,
+      "tied_share": 0.9001324698263173,
+      "value_a": 0.3609649140567193,
+      "value_b": 0.36089528081819006
+     },
+     {
+      "a": "X_FA_WARM|2027|PRACTICAL_BEST|MAIN",
+      "b": "PRE|2026|PRACTICAL_BEST|MAIN",
+      "ci95": [
+       -0.000609839495141648,
+       0.0005222954247526584
+      ],
+      "harmed_share": 0.05453341183397115,
+      "improved_share": 0.06118143459915612,
+      "point": -3.495763382771466e-05,
+      "seed": 2027,
+      "tied_share": 0.8842851535668728,
+      "value_a": 0.36086032318436234,
+      "value_b": 0.36089528081819006
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": 0.0,
+     "P25": 0.0,
+     "P50": 0.0,
+     "P75": 0.0,
+     "P90": 0.0
+    },
+    "point": 1.733780235077531e-05,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 6.963323852926528e-05,
+      "2027": -3.495763382771466e-05
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": false,
+     "seed_spread": 0.00010459087235697995,
+     "seed_variance": 5.469625290197036e-09,
+     "status": "COMPUTED",
+     "user_ci_half_width": 0.0004862916034356185,
+     "user_seed_interval": [
+      -0.0004707574648800785,
+      0.0005054330695816291
+     ]
+    },
+    "seeds": [
+     2026,
+     2027
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.8658865665783535,
+    "worst_decile_mean_delta": -0.049015449241666384
+   },
+   "id": "B1_X_FA_WARM-PRE|PB",
+   "kind": "delta",
+   "label": "POST_HOC_EXPLORATORY",
+   "mrr@20": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     7.077493416561589e-05,
+     0.0005679961582369164
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.3043371602394269,
+    "improved_share": 0.33107643999607494,
+    "kind": "delta",
+    "metric": "mrr@20",
+    "n_decisions": 519714,
+    "n_seeds": 2,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "X_FA_WARM|2026|PRACTICAL_BEST|MAIN",
+      "b": "PRE|2026|PRACTICAL_BEST|MAIN",
+      "ci95": [
+       5.251094171003987e-05,
+       0.0005518096627364237
+      ],
+      "harmed_share": 0.2788489843979982,
+      "improved_share": 0.2995044647237759,
+      "point": 0.00029924405893655415,
+      "seed": 2026,
+      "tied_share": 0.4216465508782259,
+      "value_a": 0.17319544096698625,
+      "value_b": 0.1728961969080497
+     },
+     {
+      "a": "X_FA_WARM|2027|PRACTICAL_BEST|MAIN",
+      "b": "PRE|2026|PRACTICAL_BEST|MAIN",
+      "ci95": [
+       5.511319511037269e-05,
+       0.000608855949240232
+      ],
+      "harmed_share": 0.2911147090570111,
+      "improved_share": 0.31665194779707584,
+      "point": 0.00033339139185983857,
+      "seed": 2027,
+      "tied_share": 0.39223334314591307,
+      "value_a": 0.17322958829990953,
+      "value_b": 0.1728961969080497
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.008325126670714922,
+     "P25": -0.0010002354671472188,
+     "P50": 0.0,
+     "P75": 0.0014285714285714197,
+     "P90": 0.008928571428571425
+    },
+    "point": 0.00031631772539819636,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 0.00029924405893655415,
+      "2027": 0.00033339139185983857
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": false,
+     "seed_spread": 3.4147332923284424e-05,
+     "seed_variance": 5.830201728868122e-10,
+     "status": "COMPUTED",
+     "user_ci_half_width": 0.00024861061203565026,
+     "user_seed_interval": [
+      6.410071760237703e-05,
+      0.0005685347331940157
+     ]
+    },
+    "seeds": [
+     2026,
+     2027
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.3645863997644981,
+    "tost_q1_margin": {
+     "ci90": [
+      0.00010333337572466864,
+      0.000527553909085248
+     ],
+     "equivalent": false,
+     "margin": [
+      -0.0005,
+      0.0005
+     ],
+     "status": "COMPUTED"
+    },
+    "worst_decile_mean_delta": -0.03339782797137382
+   },
+   "ndcg@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     -2.887859138447564e-06,
+     0.0004832976711766742
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.24820920419978412,
+    "improved_share": 0.2694289078598764,
+    "kind": "delta",
+    "metric": "ndcg@10",
+    "n_decisions": 519714,
+    "n_seeds": 2,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "X_FA_WARM|2026|PRACTICAL_BEST|MAIN",
+      "b": "PRE|2026|PRACTICAL_BEST|MAIN",
+      "ci95": [
+       1.418470427850677e-05,
+       0.0004947962375512038
+      ],
+      "harmed_share": 0.2181091158865666,
+      "improved_share": 0.2348150328721421,
+      "point": 0.0002477552928787097,
+      "seed": 2026,
+      "tied_share": 0.5470758512412913,
+      "value_a": 0.21136238662409337,
+      "value_b": 0.21111463133121466
+     },
+     {
+      "a": "X_FA_WARM|2027|PRACTICAL_BEST|MAIN",
+      "b": "PRE|2026|PRACTICAL_BEST|MAIN",
+      "ci95": [
+       -3.234805158962642e-05,
+       0.0005056165574692669
+      ],
+      "harmed_share": 0.23432440388578157,
+      "improved_share": 0.2536306544990678,
+      "point": 0.0002377442923441886,
+      "seed": 2027,
+      "tied_share": 0.5120449416151506,
+      "value_a": 0.21135237562355885,
+      "value_b": 0.21111463133121466
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.009358305594352353,
+     "P25": 0.0,
+     "P50": 0.0,
+     "P75": 0.0008021772240302209,
+     "P90": 0.010987534436551571
+    },
+    "point": 0.00024274979261144913,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 0.0002477552928787097,
+      "2027": 0.0002377442923441886
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": false,
+     "seed_spread": 1.0011000534521086e-05,
+     "seed_variance": 5.0110065851090734e-11,
+     "status": "COMPUTED",
+     "user_ci_half_width": 0.00024309276515756088,
+     "user_seed_interval": [
+      2.977067238278783e-06,
+      0.0004825225179846195
+     ]
+    },
+    "seeds": [
+     2026,
+     2027
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.4823618879403395,
+    "worst_decile_mean_delta": -0.03535558121372318
+   },
+   "note": "the K21 / Q1 analogue: tau-fixed warm FL (unfrozen) - theta_pre; seed mean, PRE shared",
+   "pairs": [
+    [
+     "X_FA|2026|PB",
+     "PRE|2026|PB"
+    ],
+    [
+     "X_FA|2027|PB",
+     "PRE|2026|PB"
+    ]
+   ]
+  },
+  {
+   "hr@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     -0.00047860503879945324,
+     0.000475742762132384
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.0621136296732411,
+    "improved_share": 0.06981650475910117,
+    "kind": "delta",
+    "metric": "hr@10",
+    "n_decisions": 519714,
+    "n_seeds": 2,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "X_FA_WARM|2026|PRACTICAL_BEST|MAIN",
+      "b": "P2_WSTAR|2026|PRACTICAL_BEST|MAIN",
+      "ci95": [
+       -0.00043404588278832257,
+       0.0005470855838613409
+      ],
+      "harmed_share": 0.04587381022470807,
+      "improved_share": 0.051417917770581884,
+      "point": 4.6906872305685354e-05,
+      "seed": 2026,
+      "tied_share": 0.90270827200471,
+      "value_a": 0.3609649140567193,
+      "value_b": 0.36091800718441364
+     },
+     {
+      "a": "X_FA_WARM|2027|PRACTICAL_BEST|MAIN",
+      "b": "P2_WSTAR|2027|PRACTICAL_BEST|MAIN",
+      "ci95": [
+       -0.0006143195256736427,
+       0.0004678101899149688
+      ],
+      "harmed_share": 0.05330683936806987,
+      "improved_share": 0.05970954764007458,
+      "point": -5.569843350367032e-05,
+      "seed": 2027,
+      "tied_share": 0.8869836129918556,
+      "value_a": 0.36086032318436234,
+      "value_b": 0.360916021617866
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": 0.0,
+     "P25": 0.0,
+     "P50": 0.0,
+     "P75": 0.0,
+     "P90": 0.0
+    },
+    "point": -4.3957805989924825e-06,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 4.6906872305685354e-05,
+      "2027": -5.569843350367032e-05
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": false,
+     "seed_spread": 0.00010260530580935567,
+     "seed_variance": 5.263924390115699e-09,
+     "status": "COMPUTED",
+     "user_ci_half_width": 0.00047717390046591863,
+     "user_seed_interval": [
+      -0.0004830225055372382,
+      0.00047423094433925324
+     ]
+    },
+    "seeds": [
+     2026,
+     2027
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.8680698655676578,
+    "worst_decile_mean_delta": -0.047467207852432
+   },
+   "id": "B2_X_FA_WARM-P2_WSTAR|PB",
+   "kind": "delta",
+   "label": "POST_HOC_EXPLORATORY",
+   "mrr@20": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     0.00011595959808195604,
+     0.0006109930647007599
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.3001668138553626,
+    "improved_share": 0.3317142576783436,
+    "kind": "delta",
+    "metric": "mrr@20",
+    "n_decisions": 519714,
+    "n_seeds": 2,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "X_FA_WARM|2026|PRACTICAL_BEST|MAIN",
+      "b": "P2_WSTAR|2026|PRACTICAL_BEST|MAIN",
+      "ci95": [
+       9.309904825693105e-05,
+       0.0005929990435765885
+      ],
+      "harmed_share": 0.27315768815621627,
+      "improved_share": 0.2974192915317437,
+      "point": 0.0003350761543843006,
+      "seed": 2026,
+      "tied_share": 0.42942302031204005,
+      "value_a": 0.17319544096698625,
+      "value_b": 0.17286036481260195
+     },
+     {
+      "a": "X_FA_WARM|2027|PRACTICAL_BEST|MAIN",
+      "b": "P2_WSTAR|2027|PRACTICAL_BEST|MAIN",
+      "ci95": [
+       0.00010794242672806306,
+       0.0006634450021455337
+      ],
+      "harmed_share": 0.28689529977431066,
+      "improved_share": 0.3151555293886763,
+      "point": 0.00038658791627183,
+      "seed": 2027,
+      "tied_share": 0.39794917083701303,
+      "value_a": 0.17322958829990953,
+      "value_b": 0.1728430003836377
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.00790202222020404,
+     "P25": -0.0009157509157509298,
+     "P50": 0.0,
+     "P75": 0.001388888888888884,
+     "P90": 0.008800078288714663
+    },
+    "point": 0.0003608320353280653,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 0.0003350761543843006,
+      "2027": 0.00038658791627183
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": false,
+     "seed_spread": 5.151176188752937e-05,
+     "seed_variance": 1.3267308063787618e-09,
+     "status": "COMPUTED",
+     "user_ci_half_width": 0.00024751673330940195,
+     "user_seed_interval": [
+      0.00010720027522755635,
+      0.0006144637954285742
+     ]
+    },
+    "seeds": [
+     2026,
+     2027
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.3681189284662938,
+    "tost_q1_margin": {
+     "ci90": [
+      0.0001472076248166296,
+      0.0005669980811505389
+     ],
+     "equivalent": false,
+     "margin": [
+      -0.0005,
+      0.0005
+     ],
+     "status": "COMPUTED"
+    },
+    "worst_decile_mean_delta": -0.032514939098943804
+   },
+   "ndcg@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     3.105455552086731e-05,
+     0.0005079869037357211
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.24519183593366697,
+    "improved_share": 0.26893827887351585,
+    "kind": "delta",
+    "metric": "ndcg@10",
+    "n_decisions": 519714,
+    "n_seeds": 2,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "X_FA_WARM|2026|PRACTICAL_BEST|MAIN",
+      "b": "P2_WSTAR|2026|PRACTICAL_BEST|MAIN",
+      "ci95": [
+       3.886548836357293e-05,
+       0.0005085032091071397
+      ],
+      "harmed_share": 0.21310470022568934,
+      "improved_share": 0.2331959572171524,
+      "point": 0.00026651558836843225,
+      "seed": 2026,
+      "tied_share": 0.5536993425571582,
+      "value_a": 0.21136238662409337,
+      "value_b": 0.21109587103572494
+     },
+     {
+      "a": "X_FA_WARM|2027|PRACTICAL_BEST|MAIN",
+      "b": "P2_WSTAR|2027|PRACTICAL_BEST|MAIN",
+      "ci95": [
+       -1.5112516697973743e-06,
+       0.0005242710074891119
+      ],
+      "harmed_share": 0.23106172112648415,
+      "improved_share": 0.2518153272495339,
+      "point": 0.00027023223091526827,
+      "seed": 2027,
+      "tied_share": 0.5171229516239819,
+      "value_a": 0.21135237562355885,
+      "value_b": 0.21108214339264358
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.008996784095002876,
+     "P25": 0.0,
+     "P50": 0.0,
+     "P75": 0.0007478230841308255,
+     "P90": 0.010805589979676863
+    },
+    "point": 0.00026837390964185026,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 0.00026651558836843225,
+      "2027": 0.00027023223091526827
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": false,
+     "seed_spread": 3.716642546836013e-06,
+     "seed_variance": 6.906715910475843e-12,
+     "status": "COMPUTED",
+     "user_ci_half_width": 0.0002384661741074269,
+     "user_seed_interval": [
+      3.289340438242163e-05,
+      0.0005038544149012789
+     ]
+    },
+    "seeds": [
+     2026,
+     2027
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.4858698851928172,
+    "worst_decile_mean_delta": -0.03437547045570458
+   },
+   "note": "tau fix (+ unfrozen items) vs the confirmatory W* (tau 1e-3, frozen)",
+   "pairs": [
+    [
+     "X_FA|2026|PB",
+     "P2_WSTAR|2026|PB"
+    ],
+    [
+     "X_FA|2027|PB",
+     "P2_WSTAR|2027|PB"
+    ]
+   ]
+  },
+  {
+   "hr@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     91.87744069533528,
+     92.60402976247482
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.37707290746737315,
+    "improved_share": 0.17113139044254735,
+    "kind": "retained",
+    "metric": "hr@10",
+    "n_decisions": 519714,
+    "n_seeds": 2,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       91.76522284727123,
+       92.59085953650157
+      ],
+      "den": "C_FULL|2026|PRACTICAL_BEST|MAIN",
+      "harmed_share": 0.3117701893827887,
+      "improved_share": 0.13683642429594742,
+      "n_resamples_zero_denominator": 0,
+      "num": "X_FA_WARM|2026|PRACTICAL_BEST|MAIN",
+      "point": 92.1666102795255,
+      "seed": 2026,
+      "tied_share": 0.5513933863212639,
+      "value_den": 0.3916439076602413,
+      "value_num": 0.3609649140567193
+     },
+     {
+      "ci95": [
+       91.89122397999321,
+       92.71315583601994
+      ],
+      "den": "C_FULL|2027|PRACTICAL_BEST|MAIN",
+      "harmed_share": 0.3103964282209793,
+      "improved_share": 0.13509469139436758,
+      "n_resamples_zero_denominator": 0,
+      "num": "X_FA_WARM|2027|PRACTICAL_BEST|MAIN",
+      "point": 92.30893579838805,
+      "seed": 2027,
+      "tied_share": 0.5545088803846532,
+      "value_den": 0.3909267505504747,
+      "value_num": 0.36086032318436234
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.16666666666666666,
+     "P25": -0.0625,
+     "P50": 0.0,
+     "P75": 0.0,
+     "P90": 0.0647252090800491
+    },
+    "point": 92.23777303895677,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 92.1666102795255,
+      "2027": 92.30893579838805
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": false,
+     "seed_spread": 0.14232551886254896,
+     "seed_variance": 0.01012827665974689,
+     "status": "COMPUTED",
+     "user_ci_half_width": 0.36329453356977126,
+     "user_seed_interval": [
+      91.83540544204665,
+      92.6401406358669
+     ]
+    },
+    "seeds": [
+     2026,
+     2027
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.45179570209007947,
+    "worst_decile_mean_delta": -0.3238362654980006
+   },
+   "id": "R_X_FA_WARM/C_FULL|PB",
+   "kind": "ratio",
+   "label": "POST_HOC_EXPLORATORY",
+   "mrr@20": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     88.57094510484818,
+     89.54632177483977
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.5602247080757531,
+    "improved_share": 0.2917770581885978,
+    "kind": "retained",
+    "metric": "mrr@20",
+    "n_decisions": 519714,
+    "n_seeds": 2,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       88.6390532782764,
+       89.70772270276873
+      ],
+      "den": "C_FULL|2026|PRACTICAL_BEST|MAIN",
+      "harmed_share": 0.522887842213718,
+      "improved_share": 0.2978608576194682,
+      "n_resamples_zero_denominator": 0,
+      "num": "X_FA_WARM|2026|PRACTICAL_BEST|MAIN",
+      "point": 89.1876535352429,
+      "seed": 2026,
+      "tied_share": 0.17925130016681384,
+      "value_den": 0.19419217133966563,
+      "value_num": 0.17319544096698625
+     },
+     {
+      "ci95": [
+       88.39854023732507,
+       89.51287695588616
+      ],
+      "den": "C_FULL|2027|PRACTICAL_BEST|MAIN",
+      "harmed_share": 0.5266411539593759,
+      "improved_share": 0.29442645471494455,
+      "n_resamples_zero_denominator": 0,
+      "num": "X_FA_WARM|2027|PRACTICAL_BEST|MAIN",
+      "point": 88.96507666949954,
+      "seed": 2027,
+      "tied_share": 0.1789323913256795,
+      "value_den": 0.19471639297681728,
+      "value_num": 0.17322958829990953
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.10763888888888888,
+     "P25": -0.046905162583374654,
+     "P50": -0.00802473670120729,
+     "P75": 0.00641234897752278,
+     "P90": 0.049469451782223874
+    },
+    "point": 89.07636510237123,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 89.1876535352429,
+      "2027": 88.96507666949954
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": false,
+     "seed_spread": 0.22257686574336333,
+     "seed_variance": 0.02477023058206959,
+     "status": "COMPUTED",
+     "user_ci_half_width": 0.487688334995795,
+     "user_seed_interval": [
+      88.52432866190617,
+      89.62840154283629
+     ]
+    },
+    "seeds": [
+     2026,
+     2027
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.1479982337356491,
+    "worst_decile_mean_delta": -0.2105772074437977
+   },
+   "ndcg@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     89.43613368388534,
+     90.22036925739502
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.5381218722402119,
+    "improved_share": 0.2639093317633206,
+    "kind": "retained",
+    "metric": "ndcg@10",
+    "n_decisions": 519714,
+    "n_seeds": 2,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       89.42841012841983,
+       90.30792650271451
+      ],
+      "den": "C_FULL|2026|PRACTICAL_BEST|MAIN",
+      "harmed_share": 0.5013737611618094,
+      "improved_share": 0.25937101363948584,
+      "n_resamples_zero_denominator": 0,
+      "num": "X_FA_WARM|2026|PRACTICAL_BEST|MAIN",
+      "point": 89.8835828388987,
+      "seed": 2026,
+      "tied_share": 0.23925522519870474,
+      "value_den": 0.23515127006332748,
+      "value_num": 0.21136238662409337
+     },
+     {
+      "ci95": [
+       89.33358942304571,
+       90.21453162628872
+      ],
+      "den": "C_FULL|2027|PRACTICAL_BEST|MAIN",
+      "harmed_share": 0.501888921597488,
+      "improved_share": 0.2581935040722206,
+      "n_resamples_zero_denominator": 0,
+      "num": "X_FA_WARM|2027|PRACTICAL_BEST|MAIN",
+      "point": 89.79056040007531,
+      "seed": 2027,
+      "tied_share": 0.23991757433029143,
+      "value_den": 0.2353837359760833,
+      "value_num": 0.21135237562355885
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.11713036721963174,
+     "P25": -0.0549337845452451,
+     "P50": -0.007304895944582841,
+     "P75": 0.0030837700020838257,
+     "P90": 0.05315375826171207
+    },
+    "point": 89.837071619487,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 89.8835828388987,
+      "2027": 89.79056040007531
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": false,
+     "seed_spread": 0.09302243882339667,
+     "seed_variance": 0.004326587062326288,
+     "status": "COMPUTED",
+     "user_ci_half_width": 0.392117786754838,
+     "user_seed_interval": [
+      89.41681884026409,
+      90.25732439870993
+     ]
+    },
+    "seeds": [
+     2026,
+     2027
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.19796879599646747,
+    "worst_decile_mean_delta": -0.2100154251678597
+   },
+   "note": null,
+   "pairs": [
+    [
+     "X_FA|2026|PB",
+     "C_FULL|2026|PB"
+    ],
+    [
+     "X_FA|2027|PB",
+     "C_FULL|2027|PB"
+    ]
+   ]
+  },
+  {
+   "hr@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     91.87757536869276,
+     92.61020119945456
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.37886370326758906,
+    "improved_share": 0.17066529290550486,
+    "kind": "retained",
+    "metric": "hr@10",
+    "n_decisions": 519714,
+    "n_seeds": 2,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       91.75854048029039,
+       92.57474750232375
+      ],
+      "den": "C_FULL|2026|PRACTICAL_BEST|MAIN",
+      "harmed_share": 0.3140270827200471,
+      "improved_share": 0.13695908154253753,
+      "n_resamples_zero_denominator": 0,
+      "num": "P2_WSTAR|2026|PRACTICAL_BEST|MAIN",
+      "point": 92.15463336085314,
+      "seed": 2026,
+      "tied_share": 0.5490138357374154,
+      "value_den": 0.3916439076602413,
+      "value_num": 0.36091800718441364
+     },
+     {
+      "ci95": [
+       91.91771231200502,
+       92.72736136440913
+      ],
+      "den": "C_FULL|2027|PRACTICAL_BEST|MAIN",
+      "harmed_share": 0.31206456677460503,
+      "improved_share": 0.13357374153665,
+      "n_resamples_zero_denominator": 0,
+      "num": "P2_WSTAR|2027|PRACTICAL_BEST|MAIN",
+      "point": 92.32318359120993,
+      "seed": 2027,
+      "tied_share": 0.5543616916887449,
+      "value_den": 0.3909267505504747,
+      "value_num": 0.360916021617866
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.16666666666666666,
+     "P25": -0.06521739130434781,
+     "P50": 0.0,
+     "P75": 0.0,
+     "P90": 0.06666666666666665
+    },
+    "point": 92.23890847603153,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 92.15463336085314,
+      "2027": 92.32318359120993
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": false,
+     "seed_spread": 0.16855023035678585,
+     "seed_variance": 0.014204590076662787,
+     "status": "COMPUTED",
+     "user_ci_half_width": 0.3663129153809024,
+     "user_seed_interval": [
+      91.82709192249428,
+      92.65072502956878
+     ]
+    },
+    "seeds": [
+     2026,
+     2027
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.4504710038269061,
+    "worst_decile_mean_delta": -0.32451488295992115
+   },
+   "id": "R_P2_WSTAR/C_FULL|PB",
+   "kind": "ratio",
+   "label": "POST_HOC_EXPLORATORY",
+   "mrr@20": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     88.39335734828668,
+     89.35497001546238
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.5627023844568737,
+    "improved_share": 0.289127661662251,
+    "kind": "retained",
+    "metric": "mrr@20",
+    "n_decisions": 519714,
+    "n_seeds": 2,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       88.46390967432302,
+       89.54191585452227
+      ],
+      "den": "C_FULL|2026|PRACTICAL_BEST|MAIN",
+      "harmed_share": 0.5258561475811991,
+      "improved_share": 0.29526052399175745,
+      "n_resamples_zero_denominator": 0,
+      "num": "P2_WSTAR|2026|PRACTICAL_BEST|MAIN",
+      "point": 89.01510479032042,
+      "seed": 2026,
+      "tied_share": 0.17888332842704346,
+      "value_den": 0.19419217133966563,
+      "value_num": 0.17286036481260195
+     },
+     {
+      "ci95": [
+       88.22702068599565,
+       89.28827319196373
+      ],
+      "den": "C_FULL|2027|PRACTICAL_BEST|MAIN",
+      "harmed_share": 0.5289471101952703,
+      "improved_share": 0.29297909920518106,
+      "n_resamples_zero_denominator": 0,
+      "num": "P2_WSTAR|2027|PRACTICAL_BEST|MAIN",
+      "point": 88.76653770194696,
+      "seed": 2027,
+      "tied_share": 0.17807379059954861,
+      "value_den": 0.19471639297681728,
+      "value_num": 0.1728430003836377
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.10794233544233542,
+     "P25": -0.04767365157990158,
+     "P50": -0.008172856184219823,
+     "P75": 0.006175207937425988,
+     "P90": 0.049144356460532945
+    },
+    "point": 88.8908212461337,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 89.01510479032042,
+      "2027": 88.76653770194696
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": false,
+     "seed_spread": 0.24856708837346275,
+     "seed_variance": 0.03089279871123042,
+     "status": "COMPUTED",
+     "user_ci_half_width": 0.4808063335878501,
+     "user_seed_interval": [
+      88.33111737658723,
+      89.45052511568016
+     ]
+    },
+    "seeds": [
+     2026,
+     2027
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.14816995388087528,
+    "worst_decile_mean_delta": -0.21113768115622147
+   },
+   "ndcg@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     89.32606987128057,
+     90.10933256117234
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.5405504857226965,
+    "improved_share": 0.26101462074379356,
+    "kind": "retained",
+    "metric": "ndcg@10",
+    "n_decisions": 519714,
+    "n_seeds": 2,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       89.33145441599082,
+       90.20352193201138
+      ],
+      "den": "C_FULL|2026|PRACTICAL_BEST|MAIN",
+      "harmed_share": 0.5035079972524776,
+      "improved_share": 0.2580953782749485,
+      "n_resamples_zero_denominator": 0,
+      "num": "P2_WSTAR|2026|PRACTICAL_BEST|MAIN",
+      "point": 89.7702449061303,
+      "seed": 2026,
+      "tied_share": 0.23839662447257384,
+      "value_den": 0.23515127006332748,
+      "value_num": 0.21109587103572494
+     },
+     {
+      "ci95": [
+       89.22869244042404,
+       90.08996516483762
+      ],
+      "den": "C_FULL|2027|PRACTICAL_BEST|MAIN",
+      "harmed_share": 0.5042684721813365,
+      "improved_share": 0.2561819252281425,
+      "n_resamples_zero_denominator": 0,
+      "num": "P2_WSTAR|2027|PRACTICAL_BEST|MAIN",
+      "point": 89.67575542861256,
+      "seed": 2027,
+      "tied_share": 0.23954960259052105,
+      "value_den": 0.2353837359760833,
+      "value_num": 0.21108214339264358
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.1172148826606029,
+     "P25": -0.05555555555555558,
+     "P50": -0.007748544511365901,
+     "P75": 0.002524172548943493,
+     "P90": 0.05372570398591743
+    },
+    "point": 89.72300016737142,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 89.7702449061303,
+      "2027": 89.67575542861256
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": false,
+     "seed_spread": 0.09448947751774028,
+     "seed_variance": 0.0044641306807877736,
+     "status": "COMPUTED",
+     "user_ci_half_width": 0.3916313449458855,
+     "user_seed_interval": [
+      89.30602509771177,
+      90.13997523703108
+     ]
+    },
+    "seeds": [
+     2026,
+     2027
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.19843489353350996,
+    "worst_decile_mean_delta": -0.21036130730026212
+   },
+   "note": null,
+   "pairs": [
+    [
+     "P2_WSTAR|2026|PB",
+     "C_FULL|2026|PB"
+    ],
+    [
+     "P2_WSTAR|2027|PB",
+     "C_FULL|2027|PB"
+    ]
+   ]
+  },
+  {
+   "hr@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     -0.0002659398359739821,
+     0.001097411478232673
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.1018055146698067,
+    "improved_share": 0.10688352467863801,
+    "kind": "delta",
+    "metric": "hr@10",
+    "n_decisions": 519714,
+    "n_seeds": 2,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "X_FA_WARM|2026|CONTROLLED_BUDGET|MAIN",
+      "b": "PRE|2026|CONTROLLED_BUDGET|MAIN",
+      "ci95": [
+       -0.00042758672067555453,
+       0.0009649241984116081
+      ],
+      "harmed_share": 0.08890197232852518,
+      "improved_share": 0.09405357668531057,
+      "point": 0.0002916310807521971,
+      "seed": 2026,
+      "tied_share": 0.8170444509861643,
+      "value_a": 0.36118691189894225,
+      "value_b": 0.36089528081819006
+     },
+     {
+      "a": "X_FA_WARM|2027|CONTROLLED_BUDGET|MAIN",
+      "b": "PRE|2026|CONTROLLED_BUDGET|MAIN",
+      "ci95": [
+       -0.00015893552703356988,
+       0.0012389526038474638
+      ],
+      "harmed_share": 0.08772446276125993,
+      "improved_share": 0.09447061132371701,
+      "point": 0.0005291013563130664,
+      "seed": 2027,
+      "tied_share": 0.8178049259150231,
+      "value_a": 0.3614243821745031,
+      "value_b": 0.36089528081819006
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.006357332903329833,
+     "P25": 0.0,
+     "P50": 0.0,
+     "P75": 0.0,
+     "P90": 0.011494252873563215
+    },
+    "point": 0.0004103662185326318,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 0.0002916310807521971,
+      "2027": 0.0005291013563130664
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": false,
+     "seed_spread": 0.0002374702755608693,
+     "seed_variance": 2.81960658874776e-08,
+     "status": "COMPUTED",
+     "user_ci_half_width": 0.0006816756571033276,
+     "user_seed_interval": [
+      -0.0002990119339270949,
+      0.0011197443709923586
+     ]
+    },
+    "seeds": [
+     2026,
+     2027
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.7913109606515553,
+    "worst_decile_mean_delta": -0.09284525692984655
+   },
+   "id": "B1_X_FA_WARM-PRE|CB",
+   "kind": "delta",
+   "label": "POST_HOC_EXPLORATORY",
+   "mrr@20": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     -0.00022343481399830534,
+     0.0005523964565401086
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.34510842900598565,
+    "improved_share": 0.36213325483269554,
+    "kind": "delta",
+    "metric": "mrr@20",
+    "n_decisions": 519714,
+    "n_seeds": 2,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "X_FA_WARM|2026|CONTROLLED_BUDGET|MAIN",
+      "b": "PRE|2026|CONTROLLED_BUDGET|MAIN",
+      "ci95": [
+       -0.0002775951792649223,
+       0.0005604879204622104
+      ],
+      "harmed_share": 0.33433912275537236,
+      "improved_share": 0.34996565597095475,
+      "point": 0.0001353015039784189,
+      "seed": 2026,
+      "tied_share": 0.31569522127367283,
+      "value_a": 0.1730314984120281,
+      "value_b": 0.1728961969080497
+     },
+     {
+      "a": "X_FA_WARM|2027|CONTROLLED_BUDGET|MAIN",
+      "b": "PRE|2026|CONTROLLED_BUDGET|MAIN",
+      "ci95": [
+       -0.00019472395951634772,
+       0.0005635003620341493
+      ],
+      "harmed_share": 0.3351241291335492,
+      "improved_share": 0.35052987930526935,
+      "point": 0.0001830187689416951,
+      "seed": 2027,
+      "tied_share": 0.3143459915611814,
+      "value_a": 0.1730792156769914,
+      "value_b": 0.1728961969080497
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.017640745381973497,
+     "P25": -0.003526808854820953,
+     "P50": 0.0,
+     "P75": 0.0039442978896104056,
+     "P90": 0.018629651455212653
+    },
+    "point": 0.000159160136460057,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 0.0001353015039784189,
+      "2027": 0.0001830187689416951
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": false,
+     "seed_spread": 4.771726496327622e-05,
+     "seed_variance": 1.1384686877877541e-09,
+     "status": "COMPUTED",
+     "user_ci_half_width": 0.000387915635269207,
+     "user_seed_interval": [
+      -0.00022624054735089058,
+      0.0005445608202710046
+     ]
+    },
+    "seeds": [
+     2026,
+     2027
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.2927583161613188,
+    "tost_q1_margin": {
+     "ci90": [
+      -0.00016118814974873386,
+      0.00047677001837018987
+     ],
+     "equivalent": true,
+     "margin": [
+      -0.0005,
+      0.0005
+     ],
+     "status": "COMPUTED"
+    },
+    "worst_decile_mean_delta": -0.0586190109667563
+   },
+   "ndcg@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     -0.00014012343856600537,
+     0.0005702103563434875
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.29724757138651753,
+    "improved_share": 0.30958689039348447,
+    "kind": "delta",
+    "metric": "ndcg@10",
+    "n_decisions": 519714,
+    "n_seeds": 2,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "X_FA_WARM|2026|CONTROLLED_BUDGET|MAIN",
+      "b": "PRE|2026|CONTROLLED_BUDGET|MAIN",
+      "ci95": [
+       -0.00021858691751395972,
+       0.0005448465538841061
+      ],
+      "harmed_share": 0.2846384064370523,
+      "improved_share": 0.2958738102247081,
+      "point": 0.00015610561363099684,
+      "seed": 2026,
+      "tied_share": 0.4194877833382396,
+      "value_a": 0.21127073694484566,
+      "value_b": 0.21111463133121466
+     },
+     {
+      "a": "X_FA_WARM|2027|CONTROLLED_BUDGET|MAIN",
+      "b": "PRE|2026|CONTROLLED_BUDGET|MAIN",
+      "ci95": [
+       -8.93219499404109e-05,
+       0.0006148934891131586
+      ],
+      "harmed_share": 0.2856932587577274,
+      "improved_share": 0.29641350210970463,
+      "point": 0.00027000809254371094,
+      "seed": 2027,
+      "tied_share": 0.41789323913256793,
+      "value_a": 0.21138463942375837,
+      "value_b": 0.21111463133121466
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.02108761971139217,
+     "P25": -0.0030591416847456435,
+     "P50": 0.0,
+     "P75": 0.0036087202804368952,
+     "P90": 0.02205107316534044
+    },
+    "point": 0.0002130568530873539,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 0.00015610561363099684,
+      "2027": 0.00027000809254371094
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": false,
+     "seed_spread": 0.0001139024789127141,
+     "seed_variance": 6.4868873512306405e-09,
+     "status": "COMPUTED",
+     "user_ci_half_width": 0.00035516689745474644,
+     "user_seed_interval": [
+      -0.00015705096173246146,
+      0.0005831646679071692
+     ]
+    },
+    "seeds": [
+     2026,
+     2027
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.39316553821999806,
+    "worst_decile_mean_delta": -0.059773638344782984
+   },
+   "note": "the K21 / Q1 analogue: tau-fixed warm FL (unfrozen) - theta_pre; seed mean, PRE shared",
+   "pairs": [
+    [
+     "X_FA|2026|CB",
+     "PRE|2026|CB"
+    ],
+    [
+     "X_FA|2027|CB",
+     "PRE|2026|CB"
+    ]
+   ]
+  },
+  {
+   "hr@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     0.00012408538719173648,
+     0.0014671913524042712
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.09795407712687666,
+    "improved_share": 0.1065891472868217,
+    "kind": "delta",
+    "metric": "hr@10",
+    "n_decisions": 519714,
+    "n_seeds": 2,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "X_FA_WARM|2026|CONTROLLED_BUDGET|MAIN",
+      "b": "P2_WSTAR|2026|CONTROLLED_BUDGET|MAIN",
+      "ci95": [
+       -5.971298217117837e-05,
+       0.001385197858181715
+      ],
+      "harmed_share": 0.08465803159650673,
+      "improved_share": 0.09356294769895006,
+      "point": 0.0006858428383344495,
+      "seed": 2026,
+      "tied_share": 0.8217790207045432,
+      "value_a": 0.36118691189894225,
+      "value_b": 0.3605010690606078
+     },
+     {
+      "a": "X_FA_WARM|2027|CONTROLLED_BUDGET|MAIN",
+      "b": "P2_WSTAR|2027|CONTROLLED_BUDGET|MAIN",
+      "ci95": [
+       0.00029594323265605963,
+       0.0016184965017913555
+      ],
+      "harmed_share": 0.08343145913060544,
+      "improved_share": 0.09405357668531057,
+      "point": 0.0009511809973988816,
+      "seed": 2027,
+      "tied_share": 0.822514964184084,
+      "value_a": 0.3614243821745031,
+      "value_b": 0.36047320117710424
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": 0.0,
+     "P25": 0.0,
+     "P50": 0.0,
+     "P75": 0.0,
+     "P90": 0.011363636363636354
+    },
+    "point": 0.0008185119178666656,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 0.0006858428383344495,
+      "2027": 0.0009511809973988816
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": false,
+     "seed_spread": 0.00026533815906443214,
+     "seed_variance": 3.520216932785095e-08,
+     "status": "COMPUTED",
+     "user_ci_half_width": 0.0006715529826062674,
+     "user_seed_interval": [
+      0.00011331711695450341,
+      0.0015237067187788278
+     ]
+    },
+    "seeds": [
+     2026,
+     2027
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.7954567755863017,
+    "worst_decile_mean_delta": -0.0867829815454712
+   },
+   "id": "B2_X_FA_WARM-P2_WSTAR|CB",
+   "kind": "delta",
+   "label": "POST_HOC_EXPLORATORY",
+   "mrr@20": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     1.6104507873141576e-05,
+     0.0007780647444208796
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.33649789029535865,
+    "improved_share": 0.36495437150426846,
+    "kind": "delta",
+    "metric": "mrr@20",
+    "n_decisions": 519714,
+    "n_seeds": 2,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "X_FA_WARM|2026|CONTROLLED_BUDGET|MAIN",
+      "b": "P2_WSTAR|2026|CONTROLLED_BUDGET|MAIN",
+      "ci95": [
+       -2.891952613838372e-05,
+       0.0008002868183848452
+      ],
+      "harmed_share": 0.3252134236090668,
+      "improved_share": 0.3524678638013934,
+      "point": 0.0003702185664180291,
+      "seed": 2026,
+      "tied_share": 0.3223187125895398,
+      "value_a": 0.1730314984120281,
+      "value_b": 0.17266127984561008
+     },
+     {
+      "a": "X_FA_WARM|2027|CONTROLLED_BUDGET|MAIN",
+      "b": "P2_WSTAR|2027|CONTROLLED_BUDGET|MAIN",
+      "ci95": [
+       4.235909694337362e-05,
+       0.0007935815402022308
+      ],
+      "harmed_share": 0.3260229614365617,
+      "improved_share": 0.3510450397409479,
+      "point": 0.0004246150979403118,
+      "seed": 2027,
+      "tied_share": 0.3229319988224904,
+      "value_a": 0.1730792156769914,
+      "value_b": 0.17265460057905108
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.016666666666666663,
+     "P25": -0.003007077682967752,
+     "P50": 0.0,
+     "P75": 0.003927225535169242,
+     "P90": 0.018268748150714168
+    },
+    "point": 0.00039741683217917045,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 0.0003702185664180291,
+      "2027": 0.0004246150979403118
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": false,
+     "seed_spread": 5.439653152228274e-05,
+     "seed_variance": 1.47949132082735e-09,
+     "status": "COMPUTED",
+     "user_ci_half_width": 0.000380980118273869,
+     "user_seed_interval": [
+      1.7751271353337573e-05,
+      0.0007770823930050033
+     ]
+    },
+    "seeds": [
+     2026,
+     2027
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.2985477382003729,
+    "tost_q1_margin": {
+     "ci90": [
+      8.084647146221549e-05,
+      0.0007145949036158765
+     ],
+     "equivalent": false,
+     "margin": [
+      -0.0005,
+      0.0005
+     ],
+     "status": "COMPUTED"
+    },
+    "worst_decile_mean_delta": -0.05668767429054302
+   },
+   "ndcg@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     0.00015651051666576814,
+     0.0008340317177858868
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.28888234716907074,
+    "improved_share": 0.31275144735550975,
+    "kind": "delta",
+    "metric": "ndcg@10",
+    "n_decisions": 519714,
+    "n_seeds": 2,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "X_FA_WARM|2026|CONTROLLED_BUDGET|MAIN",
+      "b": "P2_WSTAR|2026|CONTROLLED_BUDGET|MAIN",
+      "ci95": [
+       6.294797825432893e-05,
+       0.0008128969839575103
+      ],
+      "harmed_share": 0.2746295751152978,
+      "improved_share": 0.2990628986360514,
+      "point": 0.0004289115986355896,
+      "seed": 2026,
+      "tied_share": 0.42630752624865076,
+      "value_a": 0.21127073694484566,
+      "value_b": 0.21084182534621007
+     },
+     {
+      "a": "X_FA_WARM|2027|CONTROLLED_BUDGET|MAIN",
+      "b": "P2_WSTAR|2027|CONTROLLED_BUDGET|MAIN",
+      "ci95": [
+       0.00019936834525869919,
+       0.0008871654449577729
+      ],
+      "harmed_share": 0.27693553135119225,
+      "improved_share": 0.29771366892356,
+      "point": 0.0005519541682117157,
+      "seed": 2027,
+      "tied_share": 0.42535079972524775,
+      "value_a": 0.21138463942375837,
+      "value_b": 0.21083268525554666
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.01961626306798749,
+     "P25": -0.0024854091591141932,
+     "P50": 0.0,
+     "P75": 0.0036243216370393776,
+     "P90": 0.021888050268091007
+    },
+    "point": 0.0004904328834236527,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 0.0004289115986355896,
+      "2027": 0.0005519541682117157
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": false,
+     "seed_spread": 0.00012304256957612614,
+     "seed_variance": 7.56973696394792e-09,
+     "status": "COMPUTED",
+     "user_ci_half_width": 0.0003387606005600593,
+     "user_seed_interval": [
+      0.00012302821302106744,
+      0.0008578375538262379
+     ]
+    },
+    "seeds": [
+     2026,
+     2027
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.3983662054754195,
+    "worst_decile_mean_delta": -0.057375078920060094
+   },
+   "note": "tau fix (+ unfrozen items) vs the confirmatory W* (tau 1e-3, frozen)",
+   "pairs": [
+    [
+     "X_FA|2026|CB",
+     "P2_WSTAR|2026|CB"
+    ],
+    [
+     "X_FA|2027|CB",
+     "P2_WSTAR|2027|CB"
+    ]
+   ]
+  },
+  {
+   "hr@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     91.95604964084963,
+     92.71429832514295
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.37697478167010107,
+    "improved_share": 0.17198999116867825,
+    "kind": "retained",
+    "metric": "hr@10",
+    "n_decisions": 519714,
+    "n_seeds": 2,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       91.8226066032257,
+       92.64789223403595
+      ],
+      "den": "C_FULL|2026|CONTROLLED_BUDGET|MAIN",
+      "harmed_share": 0.31150034344029043,
+      "improved_share": 0.13681189284662937,
+      "n_resamples_zero_denominator": 0,
+      "num": "X_FA_WARM|2026|CONTROLLED_BUDGET|MAIN",
+      "point": 92.22329387344357,
+      "seed": 2026,
+      "tied_share": 0.5516877637130801,
+      "value_den": 0.3916439076602413,
+      "value_num": 0.36118691189894225
+     },
+     {
+      "ci95": [
+       92.03658423105097,
+       92.87781822640886
+      ],
+      "den": "C_FULL|2027|CONTROLLED_BUDGET|MAIN",
+      "harmed_share": 0.3095623589441664,
+      "improved_share": 0.1359778235698165,
+      "n_resamples_zero_denominator": 0,
+      "num": "X_FA_WARM|2027|CONTROLLED_BUDGET|MAIN",
+      "point": 92.45322344034311,
+      "seed": 2027,
+      "tied_share": 0.554459817486017,
+      "value_den": 0.3909267505504747,
+      "value_num": 0.3614243821745031
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.16666666666666666,
+     "P25": -0.0625,
+     "P50": 0.0,
+     "P75": 0.0,
+     "P90": 0.06666666666666665
+    },
+    "point": 92.33825865689334,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 92.22329387344357,
+      "2027": 92.45322344034311
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": false,
+     "seed_spread": 0.2299295668995427,
+     "seed_variance": 0.02643380286730564,
+     "status": "COMPUTED",
+     "user_ci_half_width": 0.37912434214666035,
+     "user_seed_interval": [
+      91.89508132942895,
+      92.78143598435774
+     ]
+    },
+    "seeds": [
+     2026,
+     2027
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.4510352271612207,
+    "worst_decile_mean_delta": -0.32369069285364177
+   },
+   "id": "R_X_FA_WARM/C_FULL|CB",
+   "kind": "ratio",
+   "label": "POST_HOC_EXPLORATORY",
+   "mrr@20": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     88.48405018816437,
+     89.48698254560757
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.5606172112648415,
+    "improved_share": 0.29162986949268965,
+    "kind": "retained",
+    "metric": "mrr@20",
+    "n_decisions": 519714,
+    "n_seeds": 2,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       88.55423486357721,
+       89.61735657123783
+      ],
+      "den": "C_FULL|2026|CONTROLLED_BUDGET|MAIN",
+      "harmed_share": 0.5231822196055343,
+      "improved_share": 0.2981307035619664,
+      "n_resamples_zero_denominator": 0,
+      "num": "X_FA_WARM|2026|CONTROLLED_BUDGET|MAIN",
+      "point": 89.10323069068271,
+      "seed": 2026,
+      "tied_share": 0.17868707683249926,
+      "value_den": 0.19419217133966563,
+      "value_num": 0.1730314984120281
+     },
+     {
+      "ci95": [
+       88.32142876207898,
+       89.42491133216463
+      ],
+      "den": "C_FULL|2027|CONTROLLED_BUDGET|MAIN",
+      "harmed_share": 0.5271563143950545,
+      "improved_share": 0.2942056716710823,
+      "n_resamples_zero_denominator": 0,
+      "num": "X_FA_WARM|2027|CONTROLLED_BUDGET|MAIN",
+      "point": 88.88785018608989,
+      "seed": 2027,
+      "tied_share": 0.17863801393386322,
+      "value_den": 0.19471639297681728,
+      "value_num": 0.1730792156769914
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.1077878787878788,
+     "P25": -0.04674933862433864,
+     "P50": -0.007869618807118806,
+     "P75": 0.0064840938475275835,
+     "P90": 0.04881383893883916
+    },
+    "point": 88.9955404383863,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 89.10323069068271,
+      "2027": 88.88785018608989
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": false,
+     "seed_spread": 0.21538050459281521,
+     "seed_variance": 0.023194380879327847,
+     "status": "COMPUTED",
+     "user_ci_half_width": 0.5014661787215999,
+     "user_seed_interval": [
+      88.44927295521885,
+      89.54180792155375
+     ]
+    },
+    "seeds": [
+     2026,
+     2027
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.14775291924246883,
+    "worst_decile_mean_delta": -0.21139826753310711
+   },
+   "ndcg@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     89.41997362704566,
+     90.2230132860005
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.539103130212933,
+    "improved_share": 0.26312432538514374,
+    "kind": "retained",
+    "metric": "ndcg@10",
+    "n_decisions": 519714,
+    "n_seeds": 2,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       89.41276951209571,
+       90.29474206050709
+      ],
+      "den": "C_FULL|2026|CONTROLLED_BUDGET|MAIN",
+      "harmed_share": 0.5005887547836326,
+      "improved_share": 0.2600088313217545,
+      "n_resamples_zero_denominator": 0,
+      "num": "X_FA_WARM|2026|CONTROLLED_BUDGET|MAIN",
+      "point": 89.84460806354537,
+      "seed": 2026,
+      "tied_share": 0.2394024138946129,
+      "value_den": 0.23515127006332748,
+      "value_num": 0.21127073694484566
+     },
+     {
+      "ci95": [
+       89.35099909096937,
+       90.23336208368428
+      ],
+      "den": "C_FULL|2027|CONTROLLED_BUDGET|MAIN",
+      "harmed_share": 0.5025022078304386,
+      "improved_share": 0.2587822588558532,
+      "n_resamples_zero_denominator": 0,
+      "num": "X_FA_WARM|2027|CONTROLLED_BUDGET|MAIN",
+      "point": 89.80426729450694,
+      "seed": 2027,
+      "tied_share": 0.23871553331370818,
+      "value_den": 0.2353837359760833,
+      "value_num": 0.21138463942375837
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.11633456975917414,
+     "P25": -0.054484864599336685,
+     "P50": -0.0073007263187591515,
+     "P75": 0.0032053464401672407,
+     "P90": 0.05274420744902631
+    },
+    "point": 89.82443767902615,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 89.84460806354537,
+      "2027": 89.80426729450694
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": false,
+     "seed_spread": 0.040340769038422764,
+     "seed_variance": 0.0008136888233056844,
+     "status": "COMPUTED",
+     "user_ci_half_width": 0.40151982947741516,
+     "user_seed_interval": [
+      89.41187200939103,
+      90.23700334866126
+     ]
+    },
+    "seeds": [
+     2026,
+     2027
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.19777254440192327,
+    "worst_decile_mean_delta": -0.21085403869638594
+   },
+   "note": null,
+   "pairs": [
+    [
+     "X_FA|2026|CB",
+     "C_FULL|2026|CB"
+    ],
+    [
+     "X_FA|2027|CB",
+     "C_FULL|2027|CB"
+    ]
+   ]
+  },
+  {
+   "hr@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     91.76745583355604,
+     92.496612196293
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.38031105877735255,
+    "improved_share": 0.16997841232460015,
+    "kind": "retained",
+    "metric": "hr@10",
+    "n_decisions": 519714,
+    "n_seeds": 2,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       91.64213967694651,
+       92.45827944912052
+      ],
+      "den": "C_FULL|2026|CONTROLLED_BUDGET|MAIN",
+      "harmed_share": 0.3149592777941321,
+      "improved_share": 0.13546266313413796,
+      "n_resamples_zero_denominator": 0,
+      "num": "P2_WSTAR|2026|CONTROLLED_BUDGET|MAIN",
+      "point": 92.04817488782425,
+      "seed": 2026,
+      "tied_share": 0.54957805907173,
+      "value_den": 0.3916439076602413,
+      "value_num": 0.3605010690606078
+     },
+     {
+      "ci95": [
+       91.8011622723044,
+       92.62236317373329
+      ],
+      "den": "C_FULL|2027|CONTROLLED_BUDGET|MAIN",
+      "harmed_share": 0.31387989402413896,
+      "improved_share": 0.1330095182023354,
+      "n_resamples_zero_denominator": 0,
+      "num": "P2_WSTAR|2027|CONTROLLED_BUDGET|MAIN",
+      "point": 92.20990906084376,
+      "seed": 2027,
+      "tied_share": 0.5531105877735256,
+      "value_den": 0.3909267505504747,
+      "value_num": 0.36047320117710424
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.16666666666666666,
+     "P25": -0.06666666666666662,
+     "P50": 0.0,
+     "P75": 0.0,
+     "P90": 0.06589854624188261
+    },
+    "point": 92.129041974334,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 92.04817488782425,
+      "2027": 92.20990906084376
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": false,
+     "seed_spread": 0.16173417301951076,
+     "seed_variance": 0.013078971361152521,
+     "status": "COMPUTED",
+     "user_ci_half_width": 0.3645781813684792,
+     "user_seed_interval": [
+      91.71846903073035,
+      92.53961491793766
+     ]
+    },
+    "seeds": [
+     2026,
+     2027
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.4497105288980473,
+    "worst_decile_mean_delta": -0.32617133097882617
+   },
+   "id": "R_P2_WSTAR/C_FULL|CB",
+   "kind": "ratio",
+   "label": "POST_HOC_EXPLORATORY",
+   "mrr@20": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     88.27244604522224,
+     89.2530217030025
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.5626042586596016,
+    "improved_share": 0.2892257874595231,
+    "kind": "retained",
+    "metric": "mrr@20",
+    "n_decisions": 519714,
+    "n_seeds": 2,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       88.37241669655432,
+       89.42049008918207
+      ],
+      "den": "C_FULL|2026|CONTROLLED_BUDGET|MAIN",
+      "harmed_share": 0.5258316161318811,
+      "improved_share": 0.2952114610931214,
+      "n_resamples_zero_denominator": 0,
+      "num": "P2_WSTAR|2026|CONTROLLED_BUDGET|MAIN",
+      "point": 88.91258522652008,
+      "seed": 2026,
+      "tied_share": 0.17895692277499756,
+      "value_den": 0.19419217133966563,
+      "value_num": 0.17266127984561008
+     },
+     {
+      "ci95": [
+       88.11347661659042,
+       89.18848723375433
+      ],
+      "den": "C_FULL|2027|CONTROLLED_BUDGET|MAIN",
+      "harmed_share": 0.5298057109214013,
+      "improved_share": 0.2918997154351879,
+      "n_resamples_zero_denominator": 0,
+      "num": "P2_WSTAR|2027|CONTROLLED_BUDGET|MAIN",
+      "point": 88.66978169609334,
+      "seed": 2027,
+      "tied_share": 0.17829457364341086,
+      "value_den": 0.19471639297681728,
+      "value_num": 0.17265460057905108
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.10833333333333335,
+     "P25": -0.0478856997529775,
+     "P50": -0.008169671872440668,
+     "P75": 0.005952380952380952,
+     "P90": 0.04909230650302102
+    },
+    "point": 88.7911834613067,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 88.91258522652008,
+      "2027": 88.66978169609334
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": false,
+     "seed_spread": 0.24280353042674108,
+     "seed_variance": 0.029476777193844693,
+     "status": "COMPUTED",
+     "user_ci_half_width": 0.490287828890132,
+     "user_seed_interval": [
+      88.23187611201206,
+      89.35049081060134
+     ]
+    },
+    "seeds": [
+     2026,
+     2027
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.14816995388087528,
+    "worst_decile_mean_delta": -0.21270871796932575
+   },
+   "ndcg@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     89.2142535278049,
+     89.99323669448265
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.5412618977529192,
+    "improved_share": 0.2607693062506133,
+    "kind": "retained",
+    "metric": "ndcg@10",
+    "n_decisions": 519714,
+    "n_seeds": 2,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       89.22743144186056,
+       90.08780705154737
+      ],
+      "den": "C_FULL|2026|CONTROLLED_BUDGET|MAIN",
+      "harmed_share": 0.5036551859483859,
+      "improved_share": 0.257653812187224,
+      "n_resamples_zero_denominator": 0,
+      "num": "P2_WSTAR|2026|CONTROLLED_BUDGET|MAIN",
+      "point": 89.66220989979313,
+      "seed": 2026,
+      "tied_share": 0.23869100186439016,
+      "value_den": 0.23515127006332748,
+      "value_num": 0.21084182534621007
+     },
+     {
+      "ci95": [
+       89.11475663919155,
+       89.99027525159717
+      ],
+      "den": "C_FULL|2027|CONTROLLED_BUDGET|MAIN",
+      "harmed_share": 0.5041458149347463,
+      "improved_share": 0.2567461485624571,
+      "n_resamples_zero_denominator": 0,
+      "num": "P2_WSTAR|2027|CONTROLLED_BUDGET|MAIN",
+      "point": 89.56977608553582,
+      "seed": 2027,
+      "tied_share": 0.23910803650279658,
+      "value_den": 0.2353837359760833,
+      "value_num": 0.21083268525554666
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.11794849207257027,
+     "P25": -0.05577983330077553,
+     "P50": -0.007928006062597776,
+     "P75": 0.002287385377468887,
+     "P90": 0.05318062256260043
+    },
+    "point": 89.61599299266447,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 89.66220989979313,
+      "2027": 89.56977608553582
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": false,
+     "seed_spread": 0.0924338142573049,
+     "seed_variance": 0.0042720050090769715,
+     "status": "COMPUTED",
+     "user_ci_half_width": 0.3894915833388737,
+     "user_seed_interval": [
+      89.19730606794518,
+      90.03467991738377
+     ]
+    },
+    "seeds": [
+     2026,
+     2027
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.19796879599646747,
+    "worst_decile_mean_delta": -0.21197662010499285
+   },
+   "note": null,
+   "pairs": [
+    [
+     "P2_WSTAR|2026|CB",
+     "C_FULL|2026|CB"
+    ],
+    [
+     "P2_WSTAR|2027|CB",
+     "C_FULL|2027|CB"
+    ]
+   ]
+  },
+  {
+   "hr@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     -0.01272844202292613,
+     -0.010220927090024617
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.32261308998135607,
+    "improved_share": 0.2288293592385438,
+    "kind": "delta",
+    "metric": "hr@10",
+    "n_decisions": 519714,
+    "n_seeds": 2,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "X_FA_COLD|2026|PRACTICAL_BEST|MAIN",
+      "b": "FA|2026|PRACTICAL_BEST|MAIN",
+      "ci95": [
+       -0.012270343856197366,
+       -0.00897149596598354
+      ],
+      "harmed_share": 0.25250220783043864,
+      "improved_share": 0.18832793641448337,
+      "point": -0.010600164438502313,
+      "seed": 2026,
+      "tied_share": 0.559169855755078,
+      "value_a": 0.28875794877574473,
+      "value_b": 0.29935811321424705
+     },
+     {
+      "a": "X_FA_COLD|2027|PRACTICAL_BEST|MAIN",
+      "b": "FA|2027|PRACTICAL_BEST|MAIN",
+      "ci95": [
+       -0.014021846721259303,
+       -0.010469092930554856
+      ],
+      "harmed_share": 0.2521097046413502,
+      "improved_share": 0.1856049455401825,
+      "point": -0.012266194648110462,
+      "seed": 2027,
+      "tied_share": 0.5622853498184672,
+      "value_a": 0.2868174802830669,
+      "value_b": 0.2990836749311774
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.125,
+     "P25": -0.03846153846153845,
+     "P50": 0.0,
+     "P75": 0.0,
+     "P90": 0.08333333333333333
+    },
+    "point": -0.011433179543306388,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": -0.010600164438502313,
+      "2027": -0.012266194648110462
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": true,
+     "seed_spread": 0.0016660302096081492,
+     "seed_variance": 1.3878283296634867e-06,
+     "status": "COMPUTED",
+     "user_ci_half_width": 0.001253757466450756,
+     "user_seed_interval": [
+      -0.013488209032247237,
+      -0.009378150054365538
+     ]
+    },
+    "seeds": [
+     2026,
+     2027
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.44855755078010007,
+    "worst_decile_mean_delta": -0.24984515249799147
+   },
+   "id": "D1_X_FA_COLD-FA|PB",
+   "kind": "delta",
+   "label": "POST_HOC_EXPLORATORY",
+   "mrr@20": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     -0.008838144518166275,
+     -0.0074041874748853095
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.47468354430379744,
+    "improved_share": 0.3633843587479148,
+    "kind": "delta",
+    "metric": "mrr@20",
+    "n_decisions": 519714,
+    "n_seeds": 2,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "X_FA_COLD|2026|PRACTICAL_BEST|MAIN",
+      "b": "FA|2026|PRACTICAL_BEST|MAIN",
+      "ci95": [
+       -0.009519596975304865,
+       -0.007449141211167057
+      ],
+      "harmed_share": 0.44384751251103916,
+      "improved_share": 0.3430477872632715,
+      "point": -0.008425614294772704,
+      "seed": 2026,
+      "tied_share": 0.21310470022568934,
+      "value_a": 0.13061184227841396,
+      "value_b": 0.13903745657318667
+     },
+     {
+      "a": "X_FA_COLD|2027|PRACTICAL_BEST|MAIN",
+      "b": "FA|2027|PRACTICAL_BEST|MAIN",
+      "ci95": [
+       -0.008757633266058006,
+       -0.006829768390045554
+      ],
+      "harmed_share": 0.4403640467078795,
+      "improved_share": 0.3453046806005299,
+      "point": -0.007812725978194657,
+      "seed": 2027,
+      "tied_share": 0.2143312726915906,
+      "value_a": 0.13066720204833096,
+      "value_b": 0.13847992802652562
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.06817761924256437,
+     "P25": -0.025720455748651255,
+     "P50": 0.0,
+     "P75": 0.012260397543125173,
+     "P90": 0.04609976806055237
+    },
+    "point": -0.00811917013648368,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": -0.008425614294772704,
+      "2027": -0.007812725978194657
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": false,
+     "seed_spread": 0.0006128883165780474,
+     "seed_variance": 1.8781604429893645e-07,
+     "status": "COMPUTED",
+     "user_ci_half_width": 0.0007169785216404826,
+     "user_seed_interval": [
+      -0.00908831489917375,
+      -0.007150025373793612
+     ]
+    },
+    "seeds": [
+     2026,
+     2027
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.1619320969482877,
+    "tost_q1_margin": {
+     "ci90": [
+      -0.00875258744951098,
+      -0.007515080458817546
+     ],
+     "equivalent": false,
+     "margin": [
+      -0.0005,
+      0.0005
+     ],
+     "status": "COMPUTED"
+    },
+    "worst_decile_mean_delta": -0.14719442494968718
+   },
+   "ndcg@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     -0.009664197972446014,
+     -0.00818552796679069
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.4538808752821117,
+    "improved_share": 0.327298596801099,
+    "kind": "delta",
+    "metric": "ndcg@10",
+    "n_decisions": 519714,
+    "n_seeds": 2,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "X_FA_COLD|2026|PRACTICAL_BEST|MAIN",
+      "b": "FA|2026|PRACTICAL_BEST|MAIN",
+      "ci95": [
+       -0.01005421810723219,
+       -0.00796167776460326
+      ],
+      "harmed_share": 0.40604454911196153,
+      "improved_share": 0.3089490727112158,
+      "point": -0.008964777243444577,
+      "seed": 2026,
+      "tied_share": 0.2850063781768227,
+      "value_a": 0.16244504442975294,
+      "value_b": 0.17140982167319752
+     },
+     {
+      "a": "X_FA_COLD|2027|PRACTICAL_BEST|MAIN",
+      "b": "FA|2027|PRACTICAL_BEST|MAIN",
+      "ci95": [
+       -0.009868271135805164,
+       -0.007900458934696644
+      ],
+      "harmed_share": 0.404548130703562,
+      "improved_share": 0.30872828966735355,
+      "point": -0.008872506011232711,
+      "seed": 2027,
+      "tied_share": 0.2867235796290845,
+      "value_a": 0.16204059186138337,
+      "value_b": 0.17091309787261608
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.07819947402959578,
+     "P25": -0.030815082273067174,
+     "P50": 0.0,
+     "P75": 0.011905125174573525,
+     "P90": 0.05353173995820915
+    },
+    "point": -0.008918641627338644,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": -0.008964777243444577,
+      "2027": -0.008872506011232711
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": false,
+     "seed_spread": 9.227123221186573e-05,
+     "seed_variance": 4.2569901469480235e-09,
+     "status": "COMPUTED",
+     "user_ci_half_width": 0.0007393350028276615,
+     "user_seed_interval": [
+      -0.009686277429466605,
+      -0.008151005825210684
+     ]
+    },
+    "seeds": [
+     2026,
+     2027
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.21882052791678933,
+    "worst_decile_mean_delta": -0.15116950837184584
+   },
+   "note": "tau fix on the cold arm: X_FA_cold - the confirmatory FA (tau 1e-3), seed-paired",
+   "pairs": [
+    [
+     "X_FA_COLD|2026|PB",
+     "FA|2026|PB"
+    ],
+    [
+     "X_FA_COLD|2027|PB",
+     "FA|2027|PB"
+    ]
+   ]
+  },
+  {
+   "hr@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     -0.07488703574976584,
+     -0.07131456872482306
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.5065008340692768,
+    "improved_share": 0.1332057697968796,
+    "kind": "delta",
+    "metric": "hr@10",
+    "n_decisions": 519714,
+    "n_seeds": 2,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "X_FA_COLD|2026|PRACTICAL_BEST|MAIN",
+      "b": "PRE|2026|PRACTICAL_BEST|MAIN",
+      "ci95": [
+       -0.07424001025362782,
+       -0.07008536657368389
+      ],
+      "harmed_share": 0.4330291433617898,
+      "improved_share": 0.10148660582867236,
+      "point": -0.07213733204244532,
+      "seed": 2026,
+      "tied_share": 0.4654842508095378,
+      "value_a": 0.28875794877574473,
+      "value_b": 0.36089528081819006
+     },
+     {
+      "a": "X_FA_COLD|2027|PRACTICAL_BEST|MAIN",
+      "b": "PRE|2026|PRACTICAL_BEST|MAIN",
+      "ci95": [
+       -0.0760667161198014,
+       -0.07214312271855475
+      ],
+      "harmed_share": 0.43423118437837305,
+      "improved_share": 0.10116769698753802,
+      "point": -0.07407780053512314,
+      "seed": 2027,
+      "tied_share": 0.4646011186340889,
+      "value_a": 0.2868174802830669,
+      "value_b": 0.36089528081819006
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.25,
+     "P25": -0.13636363636363635,
+     "P50": -0.01249999999999999,
+     "P75": 0.0,
+     "P90": 0.05
+    },
+    "point": -0.07310756628878423,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": -0.07213733204244532,
+      "2027": -0.07407780053512314
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": true,
+     "seed_spread": 0.001940468492677816,
+     "seed_variance": 1.8827089855376576e-06,
+     "status": "COMPUTED",
+     "user_ci_half_width": 0.00178623351247139,
+     "user_seed_interval": [
+      -0.0757269338680737,
+      -0.07048819870949476
+     ]
+    },
+    "seeds": [
+     2026,
+     2027
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.3602933961338436,
+    "worst_decile_mean_delta": -0.4538692490957198
+   },
+   "id": "D2_X_FA_COLD-PRE|PB",
+   "kind": "delta",
+   "label": "POST_HOC_EXPLORATORY",
+   "mrr@20": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     -0.04351812456444608,
+     -0.041074618378836227
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.6151996859974487,
+    "improved_share": 0.24077617505642232,
+    "kind": "delta",
+    "metric": "mrr@20",
+    "n_decisions": 519714,
+    "n_seeds": 2,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "X_FA_COLD|2026|PRACTICAL_BEST|MAIN",
+      "b": "PRE|2026|PRACTICAL_BEST|MAIN",
+      "ci95": [
+       -0.043645422866352764,
+       -0.040988604760858374
+      ],
+      "harmed_share": 0.6050191345304681,
+      "improved_share": 0.22617996271219704,
+      "point": -0.04228435462963573,
+      "seed": 2026,
+      "tied_share": 0.1688009027573349,
+      "value_a": 0.13061184227841396,
+      "value_b": 0.1728961969080497
+     },
+     {
+      "a": "X_FA_COLD|2027|PRACTICAL_BEST|MAIN",
+      "b": "PRE|2026|PRACTICAL_BEST|MAIN",
+      "ci95": [
+       -0.043607547750106244,
+       -0.04091289298957518
+      ],
+      "harmed_share": 0.604013345108429,
+      "improved_share": 0.22407025807084682,
+      "point": -0.04222899485971873,
+      "seed": 2027,
+      "tied_share": 0.17191639682072418,
+      "value_a": 0.13066720204833096,
+      "value_b": 0.1728961969080497
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.15389919158459825,
+     "P25": -0.07262400793650796,
+     "P50": -0.019291125541125574,
+     "P75": 0.0,
+     "P90": 0.041639610389610754
+    },
+    "point": -0.04225667474467723,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": -0.04228435462963573,
+      "2027": -0.04222899485971873
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": false,
+     "seed_spread": 5.535976991699609e-05,
+     "seed_variance": 1.5323520626313728e-09,
+     "status": "COMPUTED",
+     "user_ci_half_width": 0.001221753092804926,
+     "user_seed_interval": [
+      -0.04344038214186,
+      -0.04107296734749446
+     ]
+    },
+    "seeds": [
+     2026,
+     2027
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.14402413894612895,
+    "tost_q1_margin": {
+     "ci90": [
+      -0.04329949720550607,
+      -0.041292231706855254
+     ],
+     "equivalent": false,
+     "margin": [
+      -0.0005,
+      0.0005
+     ],
+     "status": "COMPUTED"
+    },
+    "worst_decile_mean_delta": -0.28761168085891575
+   },
+   "ndcg@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     -0.05010703793864928,
+     -0.04773074044610747
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.5998920616230007,
+    "improved_share": 0.20653027180845845,
+    "kind": "delta",
+    "metric": "ndcg@10",
+    "n_decisions": 519714,
+    "n_seeds": 2,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "X_FA_COLD|2026|PRACTICAL_BEST|MAIN",
+      "b": "PRE|2026|PRACTICAL_BEST|MAIN",
+      "ci95": [
+       -0.05003503512428443,
+       -0.04738836365360851
+      ],
+      "harmed_share": 0.5732999705622608,
+      "improved_share": 0.19718378961829064,
+      "point": -0.048669586901461726,
+      "seed": 2026,
+      "tied_share": 0.22951623981944852,
+      "value_a": 0.16244504442975294,
+      "value_b": 0.21111463133121466
+     },
+     {
+      "a": "X_FA_COLD|2027|PRACTICAL_BEST|MAIN",
+      "b": "PRE|2026|PRACTICAL_BEST|MAIN",
+      "ci95": [
+       -0.0504693868573098,
+       -0.04780825863602506
+      ],
+      "harmed_share": 0.5719752722990874,
+      "improved_share": 0.1966686291826121,
+      "point": -0.0490740394698313,
+      "seed": 2027,
+      "tied_share": 0.23135609851830047,
+      "value_a": 0.16204059186138337,
+      "value_b": 0.21111463133121466
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.1708508826987566,
+     "P25": -0.08983657716563685,
+     "P50": -0.026103845388931925,
+     "P75": 0.0,
+     "P90": 0.04314974364829283
+    },
+    "point": -0.04887181318564651,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": -0.048669586901461726,
+      "2027": -0.0490740394698313
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": false,
+     "seed_spread": 0.0004044525683695732,
+     "seed_variance": 8.179094003037215e-08,
+     "status": "COMPUTED",
+     "user_ci_half_width": 0.0011881487462709062,
+     "user_seed_interval": [
+      -0.0501194229301283,
+      -0.04762420344116473
+     ]
+    },
+    "seeds": [
+     2026,
+     2027
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.19357766656854086,
+    "worst_decile_mean_delta": -0.2930228373570603
+   },
+   "note": null,
+   "pairs": [
+    [
+     "X_FA_COLD|2026|PB",
+     "PRE|2026|PB"
+    ],
+    [
+     "X_FA_COLD|2027|PB",
+     "PRE|2026|PB"
+    ]
+   ]
+  },
+  {
+   "hr@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     73.11491952885325,
+     73.97507894637951
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.5850995976842311,
+    "improved_share": 0.08772446276125993,
+    "kind": "retained",
+    "metric": "hr@10",
+    "n_decisions": 519714,
+    "n_seeds": 2,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       73.19465944416142,
+       74.24110441797045
+      ],
+      "den": "C_FULL|2026|PRACTICAL_BEST|MAIN",
+      "harmed_share": 0.5008586007261309,
+      "improved_share": 0.07560592679815524,
+      "n_resamples_zero_denominator": 0,
+      "num": "X_FA_COLD|2026|PRACTICAL_BEST|MAIN",
+      "point": 73.72971802391673,
+      "seed": 2026,
+      "tied_share": 0.4235354724757139,
+      "value_den": 0.3916439076602413,
+      "value_num": 0.28875794877574473
+     },
+     {
+      "ci95": [
+       72.84376798450278,
+       73.86892797934388
+      ],
+      "den": "C_FULL|2027|PRACTICAL_BEST|MAIN",
+      "harmed_share": 0.4998773427534099,
+      "improved_share": 0.0751888921597488,
+      "n_resamples_zero_denominator": 0,
+      "num": "X_FA_COLD|2027|PRACTICAL_BEST|MAIN",
+      "point": 73.36859907366056,
+      "seed": 2027,
+      "tied_share": 0.42493376508684133,
+      "value_den": 0.3909267505504747,
+      "value_num": 0.2868174802830669
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.3146560846560845,
+     "P25": -0.1666666666666667,
+     "P50": -0.06666666666666665,
+     "P75": 0.0,
+     "P90": 0.0
+    },
+    "point": 73.54915854878865,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 73.72971802391673,
+      "2027": 73.36859907366056
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": false,
+     "seed_spread": 0.36111895025617,
+     "seed_variance": 0.06520344811705911,
+     "status": "COMPUTED",
+     "user_ci_half_width": 0.43007970876313095,
+     "user_seed_interval": [
+      72.98610481404587,
+      74.11221228353143
+     ]
+    },
+    "seeds": [
+     2026,
+     2027
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.32717593955450885,
+    "worst_decile_mean_delta": -0.4956017140973106
+   },
+   "id": "R_X_FA_COLD/C_FULL|PB",
+   "kind": "ratio",
+   "label": "POST_HOC_EXPLORATORY",
+   "mrr@20": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     66.58672281677855,
+     67.68458148012694
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.6957609655578452,
+    "improved_share": 0.1797664606024924,
+    "kind": "retained",
+    "metric": "mrr@20",
+    "n_decisions": 519714,
+    "n_seeds": 2,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       66.60430469430584,
+       67.90395662913267
+      ],
+      "den": "C_FULL|2026|PRACTICAL_BEST|MAIN",
+      "harmed_share": 0.6572711215778628,
+      "improved_share": 0.18612010597586107,
+      "n_resamples_zero_denominator": 0,
+      "num": "X_FA_COLD|2026|PRACTICAL_BEST|MAIN",
+      "point": 67.25906681889768,
+      "seed": 2026,
+      "tied_share": 0.15660877244627613,
+      "value_den": 0.19419217133966563,
+      "value_num": 0.13061184227841396
+     },
+     {
+      "ci95": [
+       66.461546031837,
+       67.68553506633098
+      ],
+      "den": "C_FULL|2027|PRACTICAL_BEST|MAIN",
+      "harmed_share": 0.6565351780983221,
+      "improved_share": 0.1838632126386027,
+      "n_resamples_zero_denominator": 0,
+      "num": "X_FA_COLD|2027|PRACTICAL_BEST|MAIN",
+      "point": 67.10642080550869,
+      "seed": 2027,
+      "tied_share": 0.15960160926307526,
+      "value_den": 0.19471639297681728,
+      "value_num": 0.13066720204833096
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.19583333333333336,
+     "P25": -0.10151094644480516,
+     "P50": -0.03914465164465163,
+     "P75": 0.0,
+     "P90": 0.027630182317682526
+    },
+    "point": 67.18274381220319,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 67.25906681889768,
+      "2027": 67.10642080550869
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": false,
+     "seed_spread": 0.15264601338898842,
+     "seed_variance": 0.011650402701775616,
+     "status": "COMPUTED",
+     "user_ci_half_width": 0.548929331674195,
+     "user_seed_interval": [
+      66.60976641794245,
+      67.75572120646392
+     ]
+    },
+    "seeds": [
+     2026,
+     2027
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.12447257383966245,
+    "worst_decile_mean_delta": -0.3380752888313525
+   },
+   "ndcg@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     68.4597942131345,
+     69.40655260707105
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.6816553821999803,
+    "improved_share": 0.1518987341772152,
+    "kind": "retained",
+    "metric": "ndcg@10",
+    "n_decisions": 519714,
+    "n_seeds": 2,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       68.48361703871868,
+       69.63827473914712
+      ],
+      "den": "C_FULL|2026|PRACTICAL_BEST|MAIN",
+      "harmed_share": 0.6303601216759886,
+      "improved_share": 0.15908644882739673,
+      "n_resamples_zero_denominator": 0,
+      "num": "X_FA_COLD|2026|PRACTICAL_BEST|MAIN",
+      "point": 69.08108316234296,
+      "seed": 2026,
+      "tied_share": 0.21055342949661465,
+      "value_den": 0.23515127006332748,
+      "value_num": 0.16244504442975294
+     },
+     {
+      "ci95": [
+       68.27896223652785,
+       69.34075820333804
+      ],
+      "den": "C_FULL|2027|PRACTICAL_BEST|MAIN",
+      "harmed_share": 0.6300902757334903,
+      "improved_share": 0.15700127563536453,
+      "n_resamples_zero_denominator": 0,
+      "num": "X_FA_COLD|2027|PRACTICAL_BEST|MAIN",
+      "point": 68.84103151368447,
+      "seed": 2027,
+      "tied_share": 0.21290844863114514,
+      "value_den": 0.2353837359760833,
+      "value_num": 0.16204059186138337
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.21405179677700553,
+     "P25": -0.12190446348685448,
+     "P50": -0.050923394709778316,
+     "P75": 0.0,
+     "P90": 0.026820550220957043
+    },
+    "point": 68.96105733801372,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 69.08108316234296,
+      "2027": 68.84103151368447
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": false,
+     "seed_spread": 0.24005164865849338,
+     "seed_variance": 0.028812397011830373,
+     "status": "COMPUTED",
+     "user_ci_half_width": 0.47337919696827413,
+     "user_seed_interval": [
+      68.429489568161,
+      69.49262510786643
+     ]
+    },
+    "seeds": [
+     2026,
+     2027
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.16644588362280444,
+    "worst_decile_mean_delta": -0.3442493226728418
+   },
+   "note": "K17 analogue",
+   "pairs": [
+    [
+     "X_FA_COLD|2026|PB",
+     "C_FULL|2026|PB"
+    ],
+    [
+     "X_FA_COLD|2027|PB",
+     "C_FULL|2027|PB"
+    ]
+   ]
+  },
+  {
+   "hr@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     88.27013789168065,
+     89.08366755710969
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.41877637130801687,
+    "improved_share": 0.1642135217348641,
+    "kind": "retained",
+    "metric": "hr@10",
+    "n_decisions": 519714,
+    "n_seeds": 2,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       88.37943208144755,
+       89.48903159918544
+      ],
+      "den": "C_SMALL|2026|PRACTICAL_BEST|MAIN",
+      "harmed_share": 0.33058581100971446,
+      "improved_share": 0.14402413894612895,
+      "n_resamples_zero_denominator": 0,
+      "num": "X_FA_COLD|2026|PRACTICAL_BEST|MAIN",
+      "point": 88.9119873859671,
+      "seed": 2026,
+      "tied_share": 0.5253900500441566,
+      "value_den": 0.32476829870222784,
+      "value_num": 0.28875794877574473
+     },
+     {
+      "ci95": [
+       87.90889940678167,
+       89.01316562382672
+      ],
+      "den": "C_SMALL|2027|PRACTICAL_BEST|MAIN",
+      "harmed_share": 0.33173878912766164,
+      "improved_share": 0.14328819546658816,
+      "n_resamples_zero_denominator": 0,
+      "num": "X_FA_COLD|2027|PRACTICAL_BEST|MAIN",
+      "point": 88.44915652372381,
+      "seed": 2027,
+      "tied_share": 0.5249730154057501,
+      "value_den": 0.3242738444952121,
+      "value_num": 0.2868174802830669
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.16666666666666666,
+     "P25": -0.07499999999999998,
+     "P50": 0.0,
+     "P75": 0.0,
+     "P90": 0.05882352941176472
+    },
+    "point": 88.68057195484545,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 88.9119873859671,
+      "2027": 88.44915652372381
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": true,
+     "seed_spread": 0.46283086224327974,
+     "seed_variance": 0.10710620352242889,
+     "status": "COMPUTED",
+     "user_ci_half_width": 0.40676483271452213,
+     "user_seed_interval": [
+      88.07089042529806,
+      89.29025348439284
+     ]
+    },
+    "seeds": [
+     2026,
+     2027
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.41701010695711904,
+    "worst_decile_mean_delta": -0.3199660282188018
+   },
+   "id": "R_X_FA_COLD/C_SMALL|PB",
+   "kind": "ratio",
+   "label": "POST_HOC_EXPLORATORY",
+   "mrr@20": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     84.04449441758096,
+     85.08157196592423
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.5660877244627612,
+    "improved_share": 0.2835590226670592,
+    "kind": "retained",
+    "metric": "mrr@20",
+    "n_decisions": 519714,
+    "n_seeds": 2,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       83.99500469674489,
+       85.32501320818228
+      ],
+      "den": "C_SMALL|2026|PRACTICAL_BEST|MAIN",
+      "harmed_share": 0.5225934648219017,
+      "improved_share": 0.2835590226670592,
+      "n_resamples_zero_denominator": 0,
+      "num": "X_FA_COLD|2026|PRACTICAL_BEST|MAIN",
+      "point": 84.67571061900308,
+      "seed": 2026,
+      "tied_share": 0.19384751251103916,
+      "value_den": 0.15424947877449735,
+      "value_num": 0.13061184227841396
+     },
+     {
+      "ci95": [
+       83.77841191812117,
+       85.20687795826372
+      ],
+      "den": "C_SMALL|2027|PRACTICAL_BEST|MAIN",
+      "harmed_share": 0.5211461093121381,
+      "improved_share": 0.28247963889706607,
+      "n_resamples_zero_denominator": 0,
+      "num": "X_FA_COLD|2027|PRACTICAL_BEST|MAIN",
+      "point": 84.51234762737587,
+      "seed": 2027,
+      "tied_share": 0.1963742517907958,
+      "value_den": 0.15461314910391186,
+      "value_num": 0.13066720204833096
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.1038021390159548,
+     "P25": -0.04440329505280487,
+     "P50": -0.007638888888888889,
+     "P75": 0.004171732181331565,
+     "P90": 0.038461538461538464
+    },
+    "point": 84.59402912318947,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 84.67571061900308,
+      "2027": 84.51234762737587
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": false,
+     "seed_spread": 0.1633629916272099,
+     "seed_variance": 0.013343733516695927,
+     "status": "COMPUTED",
+     "user_ci_half_width": 0.5185387741716312,
+     "user_seed_interval": [
+      84.05289979992831,
+      85.13515844645063
+     ]
+    },
+    "seeds": [
+     2026,
+     2027
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.15035325287017956,
+    "worst_decile_mean_delta": -0.20415708699679647
+   },
+   "ndcg@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     85.4254153837025,
+     86.2638168981205
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.5459964674712982,
+    "improved_share": 0.25117750956726526,
+    "kind": "retained",
+    "metric": "ndcg@10",
+    "n_decisions": 519714,
+    "n_seeds": 2,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       85.47185941860864,
+       86.54182604459287
+      ],
+      "den": "C_SMALL|2026|PRACTICAL_BEST|MAIN",
+      "harmed_share": 0.4885683446178,
+      "improved_share": 0.25115297811794723,
+      "n_resamples_zero_denominator": 0,
+      "num": "X_FA_COLD|2026|PRACTICAL_BEST|MAIN",
+      "point": 86.01875411837277,
+      "seed": 2026,
+      "tied_share": 0.26027867726425274,
+      "value_den": 0.18884840415871157,
+      "value_num": 0.16244504442975294
+     },
+     {
+      "ci95": [
+       85.082450685541,
+       86.31656912281953
+      ],
+      "den": "C_SMALL|2027|PRACTICAL_BEST|MAIN",
+      "harmed_share": 0.48714552055735455,
+      "improved_share": 0.2510793837699931,
+      "n_resamples_zero_denominator": 0,
+      "num": "X_FA_COLD|2027|PRACTICAL_BEST|MAIN",
+      "point": 85.72043233414138,
+      "seed": 2027,
+      "tied_share": 0.26177509567265234,
+      "value_den": 0.18903380145091106,
+      "value_num": 0.16204059186138337
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.11492342007355924,
+     "P25": -0.05393170250021887,
+     "P50": -0.008368873577526916,
+     "P75": 0.00029826807128515657,
+     "P90": 0.041666666666666664
+    },
+    "point": 85.86959322625708,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 86.01875411837277,
+      "2027": 85.72043233414138
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": false,
+     "seed_spread": 0.29832178423139055,
+     "seed_variance": 0.04449794347350017,
+     "status": "COMPUTED",
+     "user_ci_half_width": 0.41920075720899774,
+     "user_seed_interval": [
+      85.3548618607473,
+      86.38432459176686
+     ]
+    },
+    "seeds": [
+     2026,
+     2027
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.20282602296143656,
+    "worst_decile_mean_delta": -0.2067859136079224
+   },
+   "note": "K3 analogue",
+   "pairs": [
+    [
+     "X_FA_COLD|2026|PB",
+     "C_SMALL|2026|PB"
+    ],
+    [
+     "X_FA_COLD|2027|PB",
+     "C_SMALL|2027|PB"
+    ]
+   ]
+  },
+  {
+   "hr@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     76.05680878366964,
+     76.91681540854363
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.5532823079187519,
+    "improved_share": 0.09746344814051615,
+    "kind": "retained",
+    "metric": "hr@10",
+    "n_decisions": 519714,
+    "n_seeds": 2,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       75.92099355822076,
+       76.92137375255842
+      ],
+      "den": "C_FULL|2026|PRACTICAL_BEST|MAIN",
+      "harmed_share": 0.47407025807084685,
+      "improved_share": 0.08186144637425179,
+      "n_resamples_zero_denominator": 0,
+      "num": "FA|2026|PRACTICAL_BEST|MAIN",
+      "point": 76.436300261294,
+      "seed": 2026,
+      "tied_share": 0.4440682955549014,
+      "value_den": 0.3916439076602413,
+      "value_num": 0.29935811321424705
+     },
+     {
+      "ci95": [
+       75.9950016172342,
+       77.03101879945596
+      ],
+      "den": "C_FULL|2027|PRACTICAL_BEST|MAIN",
+      "harmed_share": 0.4735796290844863,
+      "improved_share": 0.0829162986949269,
+      "n_resamples_zero_denominator": 0,
+      "num": "FA|2027|PRACTICAL_BEST|MAIN",
+      "point": 76.5063210716661,
+      "seed": 2027,
+      "tied_share": 0.4435040722205868,
+      "value_den": 0.3909267505504747,
+      "value_num": 0.2990836749311774
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.28571428571428575,
+     "P25": -0.16666666666666666,
+     "P50": -0.04999999999999999,
+     "P75": 0.0,
+     "P90": 0.0
+    },
+    "point": 76.47131066648004,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 76.436300261294,
+      "2027": 76.5063210716661
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": false,
+     "seed_spread": 0.07002081037209962,
+     "seed_variance": 0.0024514569425827665,
+     "status": "COMPUTED",
+     "user_ci_half_width": 0.43000331243699463,
+     "user_seed_interval": [
+      76.03190703916417,
+      76.9107142937959
+     ]
+    },
+    "seeds": [
+     2026,
+     2027
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.349254243940732,
+    "worst_decile_mean_delta": -0.48339911170846983
+   },
+   "id": "R_FA/C_FULL|PB",
+   "kind": "ratio",
+   "label": "POST_HOC_EXPLORATORY",
+   "mrr@20": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     70.82736114649512,
+     71.90845498787439
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.6721126484152684,
+    "improved_share": 0.20034834658031597,
+    "kind": "retained",
+    "metric": "mrr@20",
+    "n_decisions": 519714,
+    "n_seeds": 2,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       70.96528646211898,
+       72.22096738236473
+      ],
+      "den": "C_FULL|2026|PRACTICAL_BEST|MAIN",
+      "harmed_share": 0.6359532921204984,
+      "improved_share": 0.2019919536846237,
+      "n_resamples_zero_denominator": 0,
+      "num": "FA|2026|PRACTICAL_BEST|MAIN",
+      "point": 71.59786906651006,
+      "seed": 2026,
+      "tied_share": 0.16205475419487783,
+      "value_den": 0.19419217133966563,
+      "value_num": 0.13903745657318667
+     },
+     {
+      "ci95": [
+       70.48329294876373,
+       71.76064164934651
+      ],
+      "den": "C_FULL|2027|PRACTICAL_BEST|MAIN",
+      "harmed_share": 0.6338681189284663,
+      "improved_share": 0.20348837209302326,
+      "n_resamples_zero_denominator": 0,
+      "num": "FA|2027|PRACTICAL_BEST|MAIN",
+      "point": 71.11878250693195,
+      "seed": 2027,
+      "tied_share": 0.16264350897851046,
+      "value_den": 0.19471639297681728,
+      "value_num": 0.13847992802652562
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.1804092261904762,
+     "P25": -0.09166666666666667,
+     "P50": -0.03196832228372477,
+     "P75": 0.0,
+     "P90": 0.03292411836529493
+    },
+    "point": 71.358325786721,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 71.59786906651006,
+      "2027": 71.11878250693195
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": false,
+     "seed_spread": 0.4790865595781071,
+     "seed_variance": 0.11476196578419356,
+     "status": "COMPUTED",
+     "user_ci_half_width": 0.5405469206896356,
+     "user_seed_interval": [
+      70.63264508858869,
+      72.0840064848533
+     ]
+    },
+    "seeds": [
+     2026,
+     2027
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.12753900500441567,
+    "worst_decile_mean_delta": -0.3187634455386755
+   },
+   "ndcg@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     72.2904625502596,
+     73.22212507638946
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.6567068982435482,
+    "improved_share": 0.16970856638210186,
+    "kind": "retained",
+    "metric": "ndcg@10",
+    "n_decisions": 519714,
+    "n_seeds": 2,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       72.34680916553633,
+       73.44957241350552
+      ],
+      "den": "C_FULL|2026|PRACTICAL_BEST|MAIN",
+      "harmed_share": 0.6107349622215681,
+      "improved_share": 0.16948778333823963,
+      "n_resamples_zero_denominator": 0,
+      "num": "FA|2026|PRACTICAL_BEST|MAIN",
+      "point": 72.89342797384677,
+      "seed": 2026,
+      "tied_share": 0.21977725444019233,
+      "value_den": 0.23515127006332748,
+      "value_num": 0.17140982167319752
+     },
+     {
+      "ci95": [
+       72.09442686107306,
+       73.18286167276251
+      ],
+      "den": "C_FULL|2027|PRACTICAL_BEST|MAIN",
+      "harmed_share": 0.6083308801884015,
+      "improved_share": 0.17321656363457952,
+      "n_resamples_zero_denominator": 0,
+      "num": "FA|2027|PRACTICAL_BEST|MAIN",
+      "point": 72.61041089516146,
+      "seed": 2027,
+      "tied_share": 0.21845255617701895,
+      "value_den": 0.2353837359760833,
+      "value_num": 0.17091309787261608
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.19695333654718875,
+     "P25": -0.10923346130327802,
+     "P50": -0.04144501046279618,
+     "P75": 0.0,
+     "P90": 0.03307110369550707
+    },
+    "point": 72.75191943450412,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 72.89342797384677,
+      "2027": 72.61041089516146
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": false,
+     "seed_spread": 0.28301707868530457,
+     "seed_variance": 0.04004933341378194,
+     "status": "COMPUTED",
+     "user_ci_half_width": 0.4658312630649277,
+     "user_seed_interval": [
+      72.19883686394252,
+      73.30500200506572
+     ]
+    },
+    "seeds": [
+     2026,
+     2027
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.17358453537434992,
+    "worst_decile_mean_delta": -0.3286869074164104
+   },
+   "note": "the confirmatory K17 recomputed on the same W, for reference",
+   "pairs": [
+    [
+     "FA|2026|PB",
+     "C_FULL|2026|PB"
+    ],
+    [
+     "FA|2027|PB",
+     "C_FULL|2027|PB"
+    ]
+   ]
+  },
+  {
+   "hr@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     -0.01272844202292613,
+     -0.010220927090024617
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.32261308998135607,
+    "improved_share": 0.2288293592385438,
+    "kind": "delta",
+    "metric": "hr@10",
+    "n_decisions": 519714,
+    "n_seeds": 2,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "X_FA_COLD|2026|CONTROLLED_BUDGET|MAIN",
+      "b": "FA|2026|CONTROLLED_BUDGET|MAIN",
+      "ci95": [
+       -0.012270343856197366,
+       -0.00897149596598354
+      ],
+      "harmed_share": 0.25250220783043864,
+      "improved_share": 0.18832793641448337,
+      "point": -0.010600164438502313,
+      "seed": 2026,
+      "tied_share": 0.559169855755078,
+      "value_a": 0.28875794877574473,
+      "value_b": 0.29935811321424705
+     },
+     {
+      "a": "X_FA_COLD|2027|CONTROLLED_BUDGET|MAIN",
+      "b": "FA|2027|CONTROLLED_BUDGET|MAIN",
+      "ci95": [
+       -0.014021846721259303,
+       -0.010469092930554856
+      ],
+      "harmed_share": 0.2521097046413502,
+      "improved_share": 0.1856049455401825,
+      "point": -0.012266194648110462,
+      "seed": 2027,
+      "tied_share": 0.5622853498184672,
+      "value_a": 0.2868174802830669,
+      "value_b": 0.2990836749311774
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.125,
+     "P25": -0.03846153846153845,
+     "P50": 0.0,
+     "P75": 0.0,
+     "P90": 0.08333333333333333
+    },
+    "point": -0.011433179543306388,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": -0.010600164438502313,
+      "2027": -0.012266194648110462
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": true,
+     "seed_spread": 0.0016660302096081492,
+     "seed_variance": 1.3878283296634867e-06,
+     "status": "COMPUTED",
+     "user_ci_half_width": 0.001253757466450756,
+     "user_seed_interval": [
+      -0.013488209032247237,
+      -0.009378150054365538
+     ]
+    },
+    "seeds": [
+     2026,
+     2027
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.44855755078010007,
+    "worst_decile_mean_delta": -0.24984515249799147
+   },
+   "id": "D1_X_FA_COLD-FA|CB",
+   "kind": "delta",
+   "label": "POST_HOC_EXPLORATORY",
+   "mrr@20": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     -0.008838144518166275,
+     -0.0074041874748853095
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.47468354430379744,
+    "improved_share": 0.3633843587479148,
+    "kind": "delta",
+    "metric": "mrr@20",
+    "n_decisions": 519714,
+    "n_seeds": 2,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "X_FA_COLD|2026|CONTROLLED_BUDGET|MAIN",
+      "b": "FA|2026|CONTROLLED_BUDGET|MAIN",
+      "ci95": [
+       -0.009519596975304865,
+       -0.007449141211167057
+      ],
+      "harmed_share": 0.44384751251103916,
+      "improved_share": 0.3430477872632715,
+      "point": -0.008425614294772704,
+      "seed": 2026,
+      "tied_share": 0.21310470022568934,
+      "value_a": 0.13061184227841396,
+      "value_b": 0.13903745657318667
+     },
+     {
+      "a": "X_FA_COLD|2027|CONTROLLED_BUDGET|MAIN",
+      "b": "FA|2027|CONTROLLED_BUDGET|MAIN",
+      "ci95": [
+       -0.008757633266058006,
+       -0.006829768390045554
+      ],
+      "harmed_share": 0.4403640467078795,
+      "improved_share": 0.3453046806005299,
+      "point": -0.007812725978194657,
+      "seed": 2027,
+      "tied_share": 0.2143312726915906,
+      "value_a": 0.13066720204833096,
+      "value_b": 0.13847992802652562
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.06817761924256437,
+     "P25": -0.025720455748651255,
+     "P50": 0.0,
+     "P75": 0.012260397543125173,
+     "P90": 0.04609976806055237
+    },
+    "point": -0.00811917013648368,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": -0.008425614294772704,
+      "2027": -0.007812725978194657
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": false,
+     "seed_spread": 0.0006128883165780474,
+     "seed_variance": 1.8781604429893645e-07,
+     "status": "COMPUTED",
+     "user_ci_half_width": 0.0007169785216404826,
+     "user_seed_interval": [
+      -0.00908831489917375,
+      -0.007150025373793612
+     ]
+    },
+    "seeds": [
+     2026,
+     2027
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.1619320969482877,
+    "tost_q1_margin": {
+     "ci90": [
+      -0.00875258744951098,
+      -0.007515080458817546
+     ],
+     "equivalent": false,
+     "margin": [
+      -0.0005,
+      0.0005
+     ],
+     "status": "COMPUTED"
+    },
+    "worst_decile_mean_delta": -0.14719442494968718
+   },
+   "ndcg@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     -0.009664197972446014,
+     -0.00818552796679069
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.4538808752821117,
+    "improved_share": 0.327298596801099,
+    "kind": "delta",
+    "metric": "ndcg@10",
+    "n_decisions": 519714,
+    "n_seeds": 2,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "X_FA_COLD|2026|CONTROLLED_BUDGET|MAIN",
+      "b": "FA|2026|CONTROLLED_BUDGET|MAIN",
+      "ci95": [
+       -0.01005421810723219,
+       -0.00796167776460326
+      ],
+      "harmed_share": 0.40604454911196153,
+      "improved_share": 0.3089490727112158,
+      "point": -0.008964777243444577,
+      "seed": 2026,
+      "tied_share": 0.2850063781768227,
+      "value_a": 0.16244504442975294,
+      "value_b": 0.17140982167319752
+     },
+     {
+      "a": "X_FA_COLD|2027|CONTROLLED_BUDGET|MAIN",
+      "b": "FA|2027|CONTROLLED_BUDGET|MAIN",
+      "ci95": [
+       -0.009868271135805164,
+       -0.007900458934696644
+      ],
+      "harmed_share": 0.404548130703562,
+      "improved_share": 0.30872828966735355,
+      "point": -0.008872506011232711,
+      "seed": 2027,
+      "tied_share": 0.2867235796290845,
+      "value_a": 0.16204059186138337,
+      "value_b": 0.17091309787261608
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.07819947402959578,
+     "P25": -0.030815082273067174,
+     "P50": 0.0,
+     "P75": 0.011905125174573525,
+     "P90": 0.05353173995820915
+    },
+    "point": -0.008918641627338644,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": -0.008964777243444577,
+      "2027": -0.008872506011232711
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": false,
+     "seed_spread": 9.227123221186573e-05,
+     "seed_variance": 4.2569901469480235e-09,
+     "status": "COMPUTED",
+     "user_ci_half_width": 0.0007393350028276615,
+     "user_seed_interval": [
+      -0.009686277429466605,
+      -0.008151005825210684
+     ]
+    },
+    "seeds": [
+     2026,
+     2027
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.21882052791678933,
+    "worst_decile_mean_delta": -0.15116950837184584
+   },
+   "note": "tau fix on the cold arm: X_FA_cold - the confirmatory FA (tau 1e-3), seed-paired",
+   "pairs": [
+    [
+     "X_FA_COLD|2026|CB",
+     "FA|2026|CB"
+    ],
+    [
+     "X_FA_COLD|2027|CB",
+     "FA|2027|CB"
+    ]
+   ]
+  },
+  {
+   "hr@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     -0.07488703574976584,
+     -0.07131456872482306
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.5065008340692768,
+    "improved_share": 0.1332057697968796,
+    "kind": "delta",
+    "metric": "hr@10",
+    "n_decisions": 519714,
+    "n_seeds": 2,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "X_FA_COLD|2026|CONTROLLED_BUDGET|MAIN",
+      "b": "PRE|2026|CONTROLLED_BUDGET|MAIN",
+      "ci95": [
+       -0.07424001025362782,
+       -0.07008536657368389
+      ],
+      "harmed_share": 0.4330291433617898,
+      "improved_share": 0.10148660582867236,
+      "point": -0.07213733204244532,
+      "seed": 2026,
+      "tied_share": 0.4654842508095378,
+      "value_a": 0.28875794877574473,
+      "value_b": 0.36089528081819006
+     },
+     {
+      "a": "X_FA_COLD|2027|CONTROLLED_BUDGET|MAIN",
+      "b": "PRE|2026|CONTROLLED_BUDGET|MAIN",
+      "ci95": [
+       -0.0760667161198014,
+       -0.07214312271855475
+      ],
+      "harmed_share": 0.43423118437837305,
+      "improved_share": 0.10116769698753802,
+      "point": -0.07407780053512314,
+      "seed": 2027,
+      "tied_share": 0.4646011186340889,
+      "value_a": 0.2868174802830669,
+      "value_b": 0.36089528081819006
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.25,
+     "P25": -0.13636363636363635,
+     "P50": -0.01249999999999999,
+     "P75": 0.0,
+     "P90": 0.05
+    },
+    "point": -0.07310756628878423,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": -0.07213733204244532,
+      "2027": -0.07407780053512314
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": true,
+     "seed_spread": 0.001940468492677816,
+     "seed_variance": 1.8827089855376576e-06,
+     "status": "COMPUTED",
+     "user_ci_half_width": 0.00178623351247139,
+     "user_seed_interval": [
+      -0.0757269338680737,
+      -0.07048819870949476
+     ]
+    },
+    "seeds": [
+     2026,
+     2027
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.3602933961338436,
+    "worst_decile_mean_delta": -0.4538692490957198
+   },
+   "id": "D2_X_FA_COLD-PRE|CB",
+   "kind": "delta",
+   "label": "POST_HOC_EXPLORATORY",
+   "mrr@20": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     -0.04351812456444608,
+     -0.041074618378836227
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.6151996859974487,
+    "improved_share": 0.24077617505642232,
+    "kind": "delta",
+    "metric": "mrr@20",
+    "n_decisions": 519714,
+    "n_seeds": 2,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "X_FA_COLD|2026|CONTROLLED_BUDGET|MAIN",
+      "b": "PRE|2026|CONTROLLED_BUDGET|MAIN",
+      "ci95": [
+       -0.043645422866352764,
+       -0.040988604760858374
+      ],
+      "harmed_share": 0.6050191345304681,
+      "improved_share": 0.22617996271219704,
+      "point": -0.04228435462963573,
+      "seed": 2026,
+      "tied_share": 0.1688009027573349,
+      "value_a": 0.13061184227841396,
+      "value_b": 0.1728961969080497
+     },
+     {
+      "a": "X_FA_COLD|2027|CONTROLLED_BUDGET|MAIN",
+      "b": "PRE|2026|CONTROLLED_BUDGET|MAIN",
+      "ci95": [
+       -0.043607547750106244,
+       -0.04091289298957518
+      ],
+      "harmed_share": 0.604013345108429,
+      "improved_share": 0.22407025807084682,
+      "point": -0.04222899485971873,
+      "seed": 2027,
+      "tied_share": 0.17191639682072418,
+      "value_a": 0.13066720204833096,
+      "value_b": 0.1728961969080497
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.15389919158459825,
+     "P25": -0.07262400793650796,
+     "P50": -0.019291125541125574,
+     "P75": 0.0,
+     "P90": 0.041639610389610754
+    },
+    "point": -0.04225667474467723,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": -0.04228435462963573,
+      "2027": -0.04222899485971873
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": false,
+     "seed_spread": 5.535976991699609e-05,
+     "seed_variance": 1.5323520626313728e-09,
+     "status": "COMPUTED",
+     "user_ci_half_width": 0.001221753092804926,
+     "user_seed_interval": [
+      -0.04344038214186,
+      -0.04107296734749446
+     ]
+    },
+    "seeds": [
+     2026,
+     2027
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.14402413894612895,
+    "tost_q1_margin": {
+     "ci90": [
+      -0.04329949720550607,
+      -0.041292231706855254
+     ],
+     "equivalent": false,
+     "margin": [
+      -0.0005,
+      0.0005
+     ],
+     "status": "COMPUTED"
+    },
+    "worst_decile_mean_delta": -0.28761168085891575
+   },
+   "ndcg@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     -0.05010703793864928,
+     -0.04773074044610747
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.5998920616230007,
+    "improved_share": 0.20653027180845845,
+    "kind": "delta",
+    "metric": "ndcg@10",
+    "n_decisions": 519714,
+    "n_seeds": 2,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "X_FA_COLD|2026|CONTROLLED_BUDGET|MAIN",
+      "b": "PRE|2026|CONTROLLED_BUDGET|MAIN",
+      "ci95": [
+       -0.05003503512428443,
+       -0.04738836365360851
+      ],
+      "harmed_share": 0.5732999705622608,
+      "improved_share": 0.19718378961829064,
+      "point": -0.048669586901461726,
+      "seed": 2026,
+      "tied_share": 0.22951623981944852,
+      "value_a": 0.16244504442975294,
+      "value_b": 0.21111463133121466
+     },
+     {
+      "a": "X_FA_COLD|2027|CONTROLLED_BUDGET|MAIN",
+      "b": "PRE|2026|CONTROLLED_BUDGET|MAIN",
+      "ci95": [
+       -0.0504693868573098,
+       -0.04780825863602506
+      ],
+      "harmed_share": 0.5719752722990874,
+      "improved_share": 0.1966686291826121,
+      "point": -0.0490740394698313,
+      "seed": 2027,
+      "tied_share": 0.23135609851830047,
+      "value_a": 0.16204059186138337,
+      "value_b": 0.21111463133121466
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.1708508826987566,
+     "P25": -0.08983657716563685,
+     "P50": -0.026103845388931925,
+     "P75": 0.0,
+     "P90": 0.04314974364829283
+    },
+    "point": -0.04887181318564651,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": -0.048669586901461726,
+      "2027": -0.0490740394698313
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": false,
+     "seed_spread": 0.0004044525683695732,
+     "seed_variance": 8.179094003037215e-08,
+     "status": "COMPUTED",
+     "user_ci_half_width": 0.0011881487462709062,
+     "user_seed_interval": [
+      -0.0501194229301283,
+      -0.04762420344116473
+     ]
+    },
+    "seeds": [
+     2026,
+     2027
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.19357766656854086,
+    "worst_decile_mean_delta": -0.2930228373570603
+   },
+   "note": null,
+   "pairs": [
+    [
+     "X_FA_COLD|2026|CB",
+     "PRE|2026|CB"
+    ],
+    [
+     "X_FA_COLD|2027|CB",
+     "PRE|2026|CB"
+    ]
+   ]
+  },
+  {
+   "hr@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     73.11491952885325,
+     73.97507894637951
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.5850995976842311,
+    "improved_share": 0.08772446276125993,
+    "kind": "retained",
+    "metric": "hr@10",
+    "n_decisions": 519714,
+    "n_seeds": 2,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       73.19465944416142,
+       74.24110441797045
+      ],
+      "den": "C_FULL|2026|CONTROLLED_BUDGET|MAIN",
+      "harmed_share": 0.5008586007261309,
+      "improved_share": 0.07560592679815524,
+      "n_resamples_zero_denominator": 0,
+      "num": "X_FA_COLD|2026|CONTROLLED_BUDGET|MAIN",
+      "point": 73.72971802391673,
+      "seed": 2026,
+      "tied_share": 0.4235354724757139,
+      "value_den": 0.3916439076602413,
+      "value_num": 0.28875794877574473
+     },
+     {
+      "ci95": [
+       72.84376798450278,
+       73.86892797934388
+      ],
+      "den": "C_FULL|2027|CONTROLLED_BUDGET|MAIN",
+      "harmed_share": 0.4998773427534099,
+      "improved_share": 0.0751888921597488,
+      "n_resamples_zero_denominator": 0,
+      "num": "X_FA_COLD|2027|CONTROLLED_BUDGET|MAIN",
+      "point": 73.36859907366056,
+      "seed": 2027,
+      "tied_share": 0.42493376508684133,
+      "value_den": 0.3909267505504747,
+      "value_num": 0.2868174802830669
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.3146560846560845,
+     "P25": -0.1666666666666667,
+     "P50": -0.06666666666666665,
+     "P75": 0.0,
+     "P90": 0.0
+    },
+    "point": 73.54915854878865,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 73.72971802391673,
+      "2027": 73.36859907366056
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": false,
+     "seed_spread": 0.36111895025617,
+     "seed_variance": 0.06520344811705911,
+     "status": "COMPUTED",
+     "user_ci_half_width": 0.43007970876313095,
+     "user_seed_interval": [
+      72.98610481404587,
+      74.11221228353143
+     ]
+    },
+    "seeds": [
+     2026,
+     2027
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.32717593955450885,
+    "worst_decile_mean_delta": -0.4956017140973106
+   },
+   "id": "R_X_FA_COLD/C_FULL|CB",
+   "kind": "ratio",
+   "label": "POST_HOC_EXPLORATORY",
+   "mrr@20": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     66.58672281677855,
+     67.68458148012694
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.6957609655578452,
+    "improved_share": 0.1797664606024924,
+    "kind": "retained",
+    "metric": "mrr@20",
+    "n_decisions": 519714,
+    "n_seeds": 2,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       66.60430469430584,
+       67.90395662913267
+      ],
+      "den": "C_FULL|2026|CONTROLLED_BUDGET|MAIN",
+      "harmed_share": 0.6572711215778628,
+      "improved_share": 0.18612010597586107,
+      "n_resamples_zero_denominator": 0,
+      "num": "X_FA_COLD|2026|CONTROLLED_BUDGET|MAIN",
+      "point": 67.25906681889768,
+      "seed": 2026,
+      "tied_share": 0.15660877244627613,
+      "value_den": 0.19419217133966563,
+      "value_num": 0.13061184227841396
+     },
+     {
+      "ci95": [
+       66.461546031837,
+       67.68553506633098
+      ],
+      "den": "C_FULL|2027|CONTROLLED_BUDGET|MAIN",
+      "harmed_share": 0.6565351780983221,
+      "improved_share": 0.1838632126386027,
+      "n_resamples_zero_denominator": 0,
+      "num": "X_FA_COLD|2027|CONTROLLED_BUDGET|MAIN",
+      "point": 67.10642080550869,
+      "seed": 2027,
+      "tied_share": 0.15960160926307526,
+      "value_den": 0.19471639297681728,
+      "value_num": 0.13066720204833096
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.19583333333333336,
+     "P25": -0.10151094644480516,
+     "P50": -0.03914465164465163,
+     "P75": 0.0,
+     "P90": 0.027630182317682526
+    },
+    "point": 67.18274381220319,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 67.25906681889768,
+      "2027": 67.10642080550869
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": false,
+     "seed_spread": 0.15264601338898842,
+     "seed_variance": 0.011650402701775616,
+     "status": "COMPUTED",
+     "user_ci_half_width": 0.548929331674195,
+     "user_seed_interval": [
+      66.60976641794245,
+      67.75572120646392
+     ]
+    },
+    "seeds": [
+     2026,
+     2027
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.12447257383966245,
+    "worst_decile_mean_delta": -0.3380752888313525
+   },
+   "ndcg@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     68.4597942131345,
+     69.40655260707105
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.6816553821999803,
+    "improved_share": 0.1518987341772152,
+    "kind": "retained",
+    "metric": "ndcg@10",
+    "n_decisions": 519714,
+    "n_seeds": 2,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       68.48361703871868,
+       69.63827473914712
+      ],
+      "den": "C_FULL|2026|CONTROLLED_BUDGET|MAIN",
+      "harmed_share": 0.6303601216759886,
+      "improved_share": 0.15908644882739673,
+      "n_resamples_zero_denominator": 0,
+      "num": "X_FA_COLD|2026|CONTROLLED_BUDGET|MAIN",
+      "point": 69.08108316234296,
+      "seed": 2026,
+      "tied_share": 0.21055342949661465,
+      "value_den": 0.23515127006332748,
+      "value_num": 0.16244504442975294
+     },
+     {
+      "ci95": [
+       68.27896223652785,
+       69.34075820333804
+      ],
+      "den": "C_FULL|2027|CONTROLLED_BUDGET|MAIN",
+      "harmed_share": 0.6300902757334903,
+      "improved_share": 0.15700127563536453,
+      "n_resamples_zero_denominator": 0,
+      "num": "X_FA_COLD|2027|CONTROLLED_BUDGET|MAIN",
+      "point": 68.84103151368447,
+      "seed": 2027,
+      "tied_share": 0.21290844863114514,
+      "value_den": 0.2353837359760833,
+      "value_num": 0.16204059186138337
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.21405179677700553,
+     "P25": -0.12190446348685448,
+     "P50": -0.050923394709778316,
+     "P75": 0.0,
+     "P90": 0.026820550220957043
+    },
+    "point": 68.96105733801372,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 69.08108316234296,
+      "2027": 68.84103151368447
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": false,
+     "seed_spread": 0.24005164865849338,
+     "seed_variance": 0.028812397011830373,
+     "status": "COMPUTED",
+     "user_ci_half_width": 0.47337919696827413,
+     "user_seed_interval": [
+      68.429489568161,
+      69.49262510786643
+     ]
+    },
+    "seeds": [
+     2026,
+     2027
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.16644588362280444,
+    "worst_decile_mean_delta": -0.3442493226728418
+   },
+   "note": "K17 analogue",
+   "pairs": [
+    [
+     "X_FA_COLD|2026|CB",
+     "C_FULL|2026|CB"
+    ],
+    [
+     "X_FA_COLD|2027|CB",
+     "C_FULL|2027|CB"
+    ]
+   ]
+  },
+  {
+   "hr@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     89.46130858040172,
+     90.31508217329095
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.4051859483858306,
+    "improved_share": 0.1805514669806692,
+    "kind": "retained",
+    "metric": "hr@10",
+    "n_decisions": 519714,
+    "n_seeds": 2,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       89.46748185509817,
+       90.64255753920831
+      ],
+      "den": "C_SMALL|2026|CONTROLLED_BUDGET|MAIN",
+      "harmed_share": 0.3213619860661368,
+      "improved_share": 0.15619173780786968,
+      "n_resamples_zero_denominator": 0,
+      "num": "X_FA_COLD|2026|CONTROLLED_BUDGET|MAIN",
+      "point": 90.03915005966995,
+      "seed": 2026,
+      "tied_share": 0.5224462761259935,
+      "value_den": 0.3207026594369023,
+      "value_num": 0.28875794877574473
+     },
+     {
+      "ci95": [
+       89.16521307316772,
+       90.30078297468118
+      ],
+      "den": "C_SMALL|2027|CONTROLLED_BUDGET|MAIN",
+      "harmed_share": 0.32096948287704835,
+      "improved_share": 0.15614267490923364,
+      "n_resamples_zero_denominator": 0,
+      "num": "X_FA_COLD|2027|CONTROLLED_BUDGET|MAIN",
+      "point": 89.71789692963608,
+      "seed": 2027,
+      "tied_share": 0.522887842213718,
+      "value_den": 0.3196881448391641,
+      "value_num": 0.2868174802830669
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.16666666666666666,
+     "P25": -0.07142857142857142,
+     "P50": 0.0,
+     "P75": 0.0,
+     "P90": 0.07142857142857142
+    },
+    "point": 89.87852349465302,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 90.03915005966995,
+      "2027": 89.71789692963608
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": false,
+     "seed_spread": 0.3212531300338668,
+     "seed_variance": 0.051601786778278265,
+     "status": "COMPUTED",
+     "user_ci_half_width": 0.426886796444613,
+     "user_seed_interval": [
+      89.34640036008781,
+      90.41064662921823
+     ]
+    },
+    "seeds": [
+     2026,
+     2027
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.41426258463350013,
+    "worst_decile_mean_delta": -0.3203464147330173
+   },
+   "id": "R_X_FA_COLD/C_SMALL|CB",
+   "kind": "ratio",
+   "label": "POST_HOC_EXPLORATORY",
+   "mrr@20": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     85.01586073016949,
+     86.0599850191842
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.5521538612501227,
+    "improved_share": 0.29724757138651753,
+    "kind": "retained",
+    "metric": "mrr@20",
+    "n_decisions": 519714,
+    "n_seeds": 2,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       84.72980882513471,
+       86.11224558106291
+      ],
+      "den": "C_SMALL|2026|CONTROLLED_BUDGET|MAIN",
+      "harmed_share": 0.5116279069767442,
+      "improved_share": 0.2933961338435875,
+      "n_resamples_zero_denominator": 0,
+      "num": "X_FA_COLD|2026|CONTROLLED_BUDGET|MAIN",
+      "point": 85.43955346511186,
+      "seed": 2026,
+      "tied_share": 0.19497595917966834,
+      "value_den": 0.15287046453461117,
+      "value_num": 0.13061184227841396
+     },
+     {
+      "ci95": [
+       84.92111583077552,
+       86.32047089711187
+      ],
+      "den": "C_SMALL|2027|CONTROLLED_BUDGET|MAIN",
+      "harmed_share": 0.5058384849376901,
+      "improved_share": 0.2970267883426553,
+      "n_resamples_zero_denominator": 0,
+      "num": "X_FA_COLD|2027|CONTROLLED_BUDGET|MAIN",
+      "point": 85.62907475246848,
+      "seed": 2027,
+      "tied_share": 0.1971347267196546,
+      "value_den": 0.15259676976080386,
+      "value_num": 0.13066720204833096
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.1028114962291117,
+     "P25": -0.04307177380368171,
+     "P50": -0.005936228826094856,
+     "P75": 0.00625,
+     "P90": 0.041666666666666664
+    },
+    "point": 85.53431410879017,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 85.43955346511186,
+      "2027": 85.62907475246848
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": false,
+     "seed_spread": 0.18952128735662654,
+     "seed_variance": 0.017959159180656506,
+     "status": "COMPUTED",
+     "user_ci_half_width": 0.5220621445073519,
+     "user_seed_interval": [
+      84.97238192470024,
+      86.0962462928801
+     ]
+    },
+    "seeds": [
+     2026,
+     2027
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.15059856736335983,
+    "worst_decile_mean_delta": -0.206087875905357
+   },
+   "ndcg@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     86.40742580190326,
+     87.28775979748109
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.5335344912177411,
+    "improved_share": 0.2647924639387695,
+    "kind": "retained",
+    "metric": "ndcg@10",
+    "n_decisions": 519714,
+    "n_seeds": 2,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       86.28412840518214,
+       87.43984162032638
+      ],
+      "den": "C_SMALL|2026|CONTROLLED_BUDGET|MAIN",
+      "harmed_share": 0.48089000098125795,
+      "improved_share": 0.25976351682857424,
+      "n_resamples_zero_denominator": 0,
+      "num": "X_FA_COLD|2026|CONTROLLED_BUDGET|MAIN",
+      "point": 86.85129126969055,
+      "seed": 2026,
+      "tied_share": 0.2593464821901678,
+      "value_den": 0.18703814538039365,
+      "value_num": 0.16244504442975294
+     },
+     {
+      "ci95": [
+       86.24210031670309,
+       87.42822983699527
+      ],
+      "den": "C_SMALL|2027|CONTROLLED_BUDGET|MAIN",
+      "harmed_share": 0.4739721322735747,
+      "improved_share": 0.26395839466195664,
+      "n_resamples_zero_denominator": 0,
+      "num": "X_FA_COLD|2027|CONTROLLED_BUDGET|MAIN",
+      "point": 86.8424006158824,
+      "seed": 2027,
+      "tied_share": 0.26206947306446865,
+      "value_den": 0.1865915620851091,
+      "value_num": 0.16204059186138337
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.11522579548553408,
+     "P25": -0.05182483456493246,
+     "P50": -0.006113057244643158,
+     "P75": 0.0029263344492471057,
+     "P90": 0.04764453025360419
+    },
+    "point": 86.84684594278647,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 86.85129126969055,
+      "2027": 86.8424006158824
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": false,
+     "seed_spread": 0.008890653808151683,
+     "seed_variance": 3.952186256820101e-05,
+     "status": "COMPUTED",
+     "user_ci_half_width": 0.4401669977889142,
+     "user_seed_interval": [
+      86.40111790771633,
+      87.29257397785662
+     ]
+    },
+    "seeds": [
+     2026,
+     2027
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.20167304484348936,
+    "worst_decile_mean_delta": -0.20917263594715332
+   },
+   "note": "K3 analogue",
+   "pairs": [
+    [
+     "X_FA_COLD|2026|CB",
+     "C_SMALL|2026|CB"
+    ],
+    [
+     "X_FA_COLD|2027|CB",
+     "C_SMALL|2027|CB"
+    ]
+   ]
+  },
+  {
+   "hr@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     76.05680878366964,
+     76.91681540854363
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.5532823079187519,
+    "improved_share": 0.09746344814051615,
+    "kind": "retained",
+    "metric": "hr@10",
+    "n_decisions": 519714,
+    "n_seeds": 2,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       75.92099355822076,
+       76.92137375255842
+      ],
+      "den": "C_FULL|2026|CONTROLLED_BUDGET|MAIN",
+      "harmed_share": 0.47407025807084685,
+      "improved_share": 0.08186144637425179,
+      "n_resamples_zero_denominator": 0,
+      "num": "FA|2026|CONTROLLED_BUDGET|MAIN",
+      "point": 76.436300261294,
+      "seed": 2026,
+      "tied_share": 0.4440682955549014,
+      "value_den": 0.3916439076602413,
+      "value_num": 0.29935811321424705
+     },
+     {
+      "ci95": [
+       75.9950016172342,
+       77.03101879945596
+      ],
+      "den": "C_FULL|2027|CONTROLLED_BUDGET|MAIN",
+      "harmed_share": 0.4735796290844863,
+      "improved_share": 0.0829162986949269,
+      "n_resamples_zero_denominator": 0,
+      "num": "FA|2027|CONTROLLED_BUDGET|MAIN",
+      "point": 76.5063210716661,
+      "seed": 2027,
+      "tied_share": 0.4435040722205868,
+      "value_den": 0.3909267505504747,
+      "value_num": 0.2990836749311774
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.28571428571428575,
+     "P25": -0.16666666666666666,
+     "P50": -0.04999999999999999,
+     "P75": 0.0,
+     "P90": 0.0
+    },
+    "point": 76.47131066648004,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 76.436300261294,
+      "2027": 76.5063210716661
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": false,
+     "seed_spread": 0.07002081037209962,
+     "seed_variance": 0.0024514569425827665,
+     "status": "COMPUTED",
+     "user_ci_half_width": 0.43000331243699463,
+     "user_seed_interval": [
+      76.03190703916417,
+      76.9107142937959
+     ]
+    },
+    "seeds": [
+     2026,
+     2027
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.349254243940732,
+    "worst_decile_mean_delta": -0.48339911170846983
+   },
+   "id": "R_FA/C_FULL|CB",
+   "kind": "ratio",
+   "label": "POST_HOC_EXPLORATORY",
+   "mrr@20": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     70.82736114649512,
+     71.90845498787439
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.6721126484152684,
+    "improved_share": 0.20034834658031597,
+    "kind": "retained",
+    "metric": "mrr@20",
+    "n_decisions": 519714,
+    "n_seeds": 2,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       70.96528646211898,
+       72.22096738236473
+      ],
+      "den": "C_FULL|2026|CONTROLLED_BUDGET|MAIN",
+      "harmed_share": 0.6359532921204984,
+      "improved_share": 0.2019919536846237,
+      "n_resamples_zero_denominator": 0,
+      "num": "FA|2026|CONTROLLED_BUDGET|MAIN",
+      "point": 71.59786906651006,
+      "seed": 2026,
+      "tied_share": 0.16205475419487783,
+      "value_den": 0.19419217133966563,
+      "value_num": 0.13903745657318667
+     },
+     {
+      "ci95": [
+       70.48329294876373,
+       71.76064164934651
+      ],
+      "den": "C_FULL|2027|CONTROLLED_BUDGET|MAIN",
+      "harmed_share": 0.6338681189284663,
+      "improved_share": 0.20348837209302326,
+      "n_resamples_zero_denominator": 0,
+      "num": "FA|2027|CONTROLLED_BUDGET|MAIN",
+      "point": 71.11878250693195,
+      "seed": 2027,
+      "tied_share": 0.16264350897851046,
+      "value_den": 0.19471639297681728,
+      "value_num": 0.13847992802652562
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.1804092261904762,
+     "P25": -0.09166666666666667,
+     "P50": -0.03196832228372477,
+     "P75": 0.0,
+     "P90": 0.03292411836529493
+    },
+    "point": 71.358325786721,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 71.59786906651006,
+      "2027": 71.11878250693195
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": false,
+     "seed_spread": 0.4790865595781071,
+     "seed_variance": 0.11476196578419356,
+     "status": "COMPUTED",
+     "user_ci_half_width": 0.5405469206896356,
+     "user_seed_interval": [
+      70.63264508858869,
+      72.0840064848533
+     ]
+    },
+    "seeds": [
+     2026,
+     2027
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.12753900500441567,
+    "worst_decile_mean_delta": -0.3187634455386755
+   },
+   "ndcg@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     72.2904625502596,
+     73.22212507638946
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.6567068982435482,
+    "improved_share": 0.16970856638210186,
+    "kind": "retained",
+    "metric": "ndcg@10",
+    "n_decisions": 519714,
+    "n_seeds": 2,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       72.34680916553633,
+       73.44957241350552
+      ],
+      "den": "C_FULL|2026|CONTROLLED_BUDGET|MAIN",
+      "harmed_share": 0.6107349622215681,
+      "improved_share": 0.16948778333823963,
+      "n_resamples_zero_denominator": 0,
+      "num": "FA|2026|CONTROLLED_BUDGET|MAIN",
+      "point": 72.89342797384677,
+      "seed": 2026,
+      "tied_share": 0.21977725444019233,
+      "value_den": 0.23515127006332748,
+      "value_num": 0.17140982167319752
+     },
+     {
+      "ci95": [
+       72.09442686107306,
+       73.18286167276251
+      ],
+      "den": "C_FULL|2027|CONTROLLED_BUDGET|MAIN",
+      "harmed_share": 0.6083308801884015,
+      "improved_share": 0.17321656363457952,
+      "n_resamples_zero_denominator": 0,
+      "num": "FA|2027|CONTROLLED_BUDGET|MAIN",
+      "point": 72.61041089516146,
+      "seed": 2027,
+      "tied_share": 0.21845255617701895,
+      "value_den": 0.2353837359760833,
+      "value_num": 0.17091309787261608
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.19695333654718875,
+     "P25": -0.10923346130327802,
+     "P50": -0.04144501046279618,
+     "P75": 0.0,
+     "P90": 0.03307110369550707
+    },
+    "point": 72.75191943450412,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 72.89342797384677,
+      "2027": 72.61041089516146
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": false,
+     "seed_spread": 0.28301707868530457,
+     "seed_variance": 0.04004933341378194,
+     "status": "COMPUTED",
+     "user_ci_half_width": 0.4658312630649277,
+     "user_seed_interval": [
+      72.19883686394252,
+      73.30500200506572
+     ]
+    },
+    "seeds": [
+     2026,
+     2027
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.17358453537434992,
+    "worst_decile_mean_delta": -0.3286869074164104
+   },
+   "note": "the confirmatory K17 recomputed on the same W, for reference",
+   "pairs": [
+    [
+     "FA|2026|CB",
+     "C_FULL|2026|CB"
+    ],
+    [
+     "FA|2027|CB",
+     "C_FULL|2027|CB"
+    ]
+   ]
+  }
+ ],
+ "eval_manifest_id": "MAIN_VALIDATION_5_100_131072",
+ "inputs": {
+  "C_FULL|2026|CB": {
+   "arm": "C_FULL",
+   "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/REEVAL_A40/C_FULL_s2026_CB/evals/MAIN.ranks_int32.npy",
+   "rule": "CONTROLLED_BUDGET",
+   "seed": 2026,
+   "sha256": "89751c0dbf231ac5e52f390e952a9f7f9a9506488eb969647d04b63d45ed0e33"
+  },
+  "C_FULL|2026|PB": {
+   "arm": "C_FULL",
+   "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/REEVAL_A40/C_FULL_s2026_PB/evals/MAIN.ranks_int32.npy",
+   "rule": "PRACTICAL_BEST",
+   "seed": 2026,
+   "sha256": "89751c0dbf231ac5e52f390e952a9f7f9a9506488eb969647d04b63d45ed0e33"
+  },
+  "C_FULL|2027|CB": {
+   "arm": "C_FULL",
+   "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/REEVAL_A40/C_FULL_s2027_CB/evals/MAIN.ranks_int32.npy",
+   "rule": "CONTROLLED_BUDGET",
+   "seed": 2027,
+   "sha256": "55b4cc31f159e6c8e148bfb9b9cc0cb617ca53365effcd0534b7a4b2f9d105fe"
+  },
+  "C_FULL|2027|PB": {
+   "arm": "C_FULL",
+   "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/REEVAL_A40/C_FULL_s2027_PB/evals/MAIN.ranks_int32.npy",
+   "rule": "PRACTICAL_BEST",
+   "seed": 2027,
+   "sha256": "55b4cc31f159e6c8e148bfb9b9cc0cb617ca53365effcd0534b7a4b2f9d105fe"
+  },
+  "C_SMALL|2026|CB": {
+   "arm": "C_SMALL",
+   "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/REEVAL_A40/C_SMALL_s2026_CB/evals/MAIN.ranks_int32.npy",
+   "rule": "CONTROLLED_BUDGET",
+   "seed": 2026,
+   "sha256": "fe10a9a04fef4c349ea2e76e7071672293ab56c04648eda50b11bc6ae94cf6d6"
+  },
+  "C_SMALL|2026|PB": {
+   "arm": "C_SMALL",
+   "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/REEVAL_A40/C_SMALL_s2026_PB/evals/MAIN.ranks_int32.npy",
+   "rule": "PRACTICAL_BEST",
+   "seed": 2026,
+   "sha256": "7a391b6fc6d1aa1fd874ced59170023e7668bed261a1377135d83030c661a58e"
+  },
+  "C_SMALL|2027|CB": {
+   "arm": "C_SMALL",
+   "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/REEVAL_A40/C_SMALL_s2027_CB/evals/MAIN.ranks_int32.npy",
+   "rule": "CONTROLLED_BUDGET",
+   "seed": 2027,
+   "sha256": "70f93a3ecc85463223e35e19ccb79f609be2606e7fb8cec1245206c6142d21b0"
+  },
+  "C_SMALL|2027|PB": {
+   "arm": "C_SMALL",
+   "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/REEVAL_A40/C_SMALL_s2027_PB/evals/MAIN.ranks_int32.npy",
+   "rule": "PRACTICAL_BEST",
+   "seed": 2027,
+   "sha256": "7bd5fa61d478da4fbc5c550f8b353c5b9bd83bfec781f21d9aa164b5280279f5"
+  },
+  "FA|2026|CB": {
+   "arm": "FA",
+   "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/FL_T/FA_s2026/evals/eval_6.0.ranks_int32.npy",
+   "rule": "CONTROLLED_BUDGET",
+   "seed": 2026,
+   "sha256": "287d71e311584daf1d466dd4b62a8357174c7582d258fb38a0cad85e67e36df8",
+   "source": "in-run MAIN_VALIDATION eval, mark 6.0"
+  },
+  "FA|2026|PB": {
+   "arm": "FA",
+   "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/FL_T/FA_s2026/evals/eval_6.0.ranks_int32.npy",
+   "rule": "PRACTICAL_BEST",
+   "seed": 2026,
+   "sha256": "287d71e311584daf1d466dd4b62a8357174c7582d258fb38a0cad85e67e36df8",
+   "source": "in-run MAIN_VALIDATION eval, mark 6.0"
+  },
+  "FA|2027|CB": {
+   "arm": "FA",
+   "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/FL_T/FA_s2027/evals/eval_6.0.ranks_int32.npy",
+   "rule": "CONTROLLED_BUDGET",
+   "seed": 2027,
+   "sha256": "d8d71dacc37e4c5ac6efe3d71550db5841f959eb417c193374a32c77011dcb83",
+   "source": "in-run MAIN_VALIDATION eval, mark 6.0"
+  },
+  "FA|2027|PB": {
+   "arm": "FA",
+   "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/FL_T/FA_s2027/evals/eval_6.0.ranks_int32.npy",
+   "rule": "PRACTICAL_BEST",
+   "seed": 2027,
+   "sha256": "d8d71dacc37e4c5ac6efe3d71550db5841f959eb417c193374a32c77011dcb83",
+   "source": "in-run MAIN_VALIDATION eval, mark 6.0"
+  },
+  "P2_WSTAR|2026|CB": {
+   "arm": "P2_WSTAR",
+   "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_p2/MAIN/P2_WSTAR_SMALL_s2026/evals/eval_6.0.ranks_int32.npy",
+   "rule": "CONTROLLED_BUDGET",
+   "seed": 2026,
+   "sha256": "b40a80274f208534666a89bdf9a1a4b5d7dba9fa20c74bfdb739fc4568662160",
+   "source": "in-run MAIN_VALIDATION eval, mark 6.0"
+  },
+  "P2_WSTAR|2026|PB": {
+   "arm": "P2_WSTAR",
+   "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_p2/MAIN/P2_WSTAR_SMALL_s2026/evals/eval_0.5.ranks_int32.npy",
+   "rule": "PRACTICAL_BEST",
+   "seed": 2026,
+   "sha256": "23f17993e49206e38d776bc834b4b6712643457fc9f951c37f56759e848df322",
+   "source": "in-run MAIN_VALIDATION eval, mark 0.5"
+  },
+  "P2_WSTAR|2027|CB": {
+   "arm": "P2_WSTAR",
+   "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_p2/MAIN/P2_WSTAR_SMALL_s2027/evals/eval_6.0.ranks_int32.npy",
+   "rule": "CONTROLLED_BUDGET",
+   "seed": 2027,
+   "sha256": "d1fba8ba5a8ee2a3f7abb71d0b72a56c21b1bced850f1621352a53c5c444e989",
+   "source": "in-run MAIN_VALIDATION eval, mark 6.0"
+  },
+  "P2_WSTAR|2027|PB": {
+   "arm": "P2_WSTAR",
+   "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_p2/MAIN/P2_WSTAR_SMALL_s2027/evals/eval_0.5.ranks_int32.npy",
+   "rule": "PRACTICAL_BEST",
+   "seed": 2027,
+   "sha256": "650ac01bd5935915559f9185e003c9c0febca446f949c2829574ef2426e6f1ca",
+   "source": "in-run MAIN_VALIDATION eval, mark 0.5"
+  },
+  "PRE|2026|CB": {
+   "arm": "PRE",
+   "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/REEVAL_A40/PRE_s2026_CB/evals/MAIN.ranks_int32.npy",
+   "rule": "CONTROLLED_BUDGET",
+   "seed": 2026,
+   "sha256": "827b5bf6d618575a24a1405201e224237e050e760d6f2ca3ea76dfad34b838a0"
+  },
+  "PRE|2026|PB": {
+   "arm": "PRE",
+   "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/REEVAL_A40/PRE_s2026_PB/evals/MAIN.ranks_int32.npy",
+   "rule": "PRACTICAL_BEST",
+   "seed": 2026,
+   "sha256": "827b5bf6d618575a24a1405201e224237e050e760d6f2ca3ea76dfad34b838a0"
+  },
+  "X_FA_COLD|2026|CB": {
+   "arm": "X_FA_COLD",
+   "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/PROOF/XC_FA_COLD_s2026_CB_MAIN/evals/MAIN.ranks_int32.npy",
+   "rule": "CONTROLLED_BUDGET",
+   "seed": 2026,
+   "sha256": "a820139cd175c47d222c0c381ad622b6aed94db679b25b34cd8d83b61db2a86b"
+  },
+  "X_FA_COLD|2026|PB": {
+   "arm": "X_FA_COLD",
+   "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/PROOF/XC_FA_COLD_s2026_PB_MAIN/evals/MAIN.ranks_int32.npy",
+   "rule": "PRACTICAL_BEST",
+   "seed": 2026,
+   "sha256": "a820139cd175c47d222c0c381ad622b6aed94db679b25b34cd8d83b61db2a86b"
+  },
+  "X_FA_COLD|2027|CB": {
+   "arm": "X_FA_COLD",
+   "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/PROOF/XC_FA_COLD_s2027_CB_MAIN/evals/MAIN.ranks_int32.npy",
+   "rule": "CONTROLLED_BUDGET",
+   "seed": 2027,
+   "sha256": "c97d76ff22b54cc430e75555d520bad2a815e3ed5fa938fdd3dfe62b574af4e1"
+  },
+  "X_FA_COLD|2027|PB": {
+   "arm": "X_FA_COLD",
+   "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/PROOF/XC_FA_COLD_s2027_PB_MAIN/evals/MAIN.ranks_int32.npy",
+   "rule": "PRACTICAL_BEST",
+   "seed": 2027,
+   "sha256": "c97d76ff22b54cc430e75555d520bad2a815e3ed5fa938fdd3dfe62b574af4e1"
+  },
+  "X_FA|2026|CB": {
+   "arm": "X_FA_WARM",
+   "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/PROOF/XW_FA_s2026_CB_MAIN/evals/MAIN.ranks_int32.npy",
+   "rule": "CONTROLLED_BUDGET",
+   "seed": 2026,
+   "sha256": "6eef55403739b222661da1a6729073110ca948cd627b03083e58599a2355c1af"
+  },
+  "X_FA|2026|PB": {
+   "arm": "X_FA_WARM",
+   "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/PROOF/XW_FA_s2026_PB_MAIN/evals/MAIN.ranks_int32.npy",
+   "rule": "PRACTICAL_BEST",
+   "seed": 2026,
+   "sha256": "6226d9558f8b58de26a986a4069db4971716b67952ae9ec8b49ada6ff8e31286"
+  },
+  "X_FA|2027|CB": {
+   "arm": "X_FA_WARM",
+   "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/PROOF/XW_FA_s2027_CB_MAIN/evals/MAIN.ranks_int32.npy",
+   "rule": "CONTROLLED_BUDGET",
+   "seed": 2027,
+   "sha256": "fbdb96b65aeba66ccc59f1db446b6509fa73f53682e22083aecf006f59f0ff31"
+  },
+  "X_FA|2027|PB": {
+   "arm": "X_FA_WARM",
+   "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/PROOF/XW_FA_s2027_PB_MAIN/evals/MAIN.ranks_int32.npy",
+   "rule": "PRACTICAL_BEST",
+   "seed": 2027,
+   "sha256": "48343fca5b407bda9c6044b341335eb51ce4d81582b5a84c7f16fe20cf92c2eb"
+  }
+ },
+ "label": "POST_HOC_EXPLORATORY",
+ "metrics": [
+  "mrr@20 (primary)",
+  "ndcg@10",
+  "hr@10"
+ ],
+ "points": {
+  "C_FULL|2026|CB": {
+   "hr@10": 0.3916439076602413,
+   "mrr@20": 0.19419217133966563,
+   "ndcg@10": 0.23515127006332748
+  },
+  "C_FULL|2026|PB": {
+   "hr@10": 0.3916439076602413,
+   "mrr@20": 0.19419217133966563,
+   "ndcg@10": 0.23515127006332748
+  },
+  "C_FULL|2027|CB": {
+   "hr@10": 0.3909267505504747,
+   "mrr@20": 0.19471639297681728,
+   "ndcg@10": 0.2353837359760833
+  },
+  "C_FULL|2027|PB": {
+   "hr@10": 0.3909267505504747,
+   "mrr@20": 0.19471639297681728,
+   "ndcg@10": 0.2353837359760833
+  },
+  "C_SMALL|2026|CB": {
+   "hr@10": 0.3207026594369023,
+   "mrr@20": 0.15287046453461117,
+   "ndcg@10": 0.18703814538039365
+  },
+  "C_SMALL|2026|PB": {
+   "hr@10": 0.32476829870222784,
+   "mrr@20": 0.15424947877449735,
+   "ndcg@10": 0.18884840415871157
+  },
+  "C_SMALL|2027|CB": {
+   "hr@10": 0.3196881448391641,
+   "mrr@20": 0.15259676976080386,
+   "ndcg@10": 0.1865915620851091
+  },
+  "C_SMALL|2027|PB": {
+   "hr@10": 0.3242738444952121,
+   "mrr@20": 0.15461314910391186,
+   "ndcg@10": 0.18903380145091106
+  },
+  "FA|2026|CB": {
+   "hr@10": 0.29935811321424705,
+   "mrr@20": 0.13903745657318667,
+   "ndcg@10": 0.17140982167319752
+  },
+  "FA|2026|PB": {
+   "hr@10": 0.29935811321424705,
+   "mrr@20": 0.13903745657318667,
+   "ndcg@10": 0.17140982167319752
+  },
+  "FA|2027|CB": {
+   "hr@10": 0.2990836749311774,
+   "mrr@20": 0.13847992802652562,
+   "ndcg@10": 0.17091309787261608
+  },
+  "FA|2027|PB": {
+   "hr@10": 0.2990836749311774,
+   "mrr@20": 0.13847992802652562,
+   "ndcg@10": 0.17091309787261608
+  },
+  "P2_WSTAR|2026|CB": {
+   "hr@10": 0.3605010690606078,
+   "mrr@20": 0.17266127984561008,
+   "ndcg@10": 0.21084182534621007
+  },
+  "P2_WSTAR|2026|PB": {
+   "hr@10": 0.36091800718441364,
+   "mrr@20": 0.17286036481260195,
+   "ndcg@10": 0.21109587103572494
+  },
+  "P2_WSTAR|2027|CB": {
+   "hr@10": 0.36047320117710424,
+   "mrr@20": 0.17265460057905108,
+   "ndcg@10": 0.21083268525554666
+  },
+  "P2_WSTAR|2027|PB": {
+   "hr@10": 0.360916021617866,
+   "mrr@20": 0.1728430003836377,
+   "ndcg@10": 0.21108214339264358
+  },
+  "PRE|2026|CB": {
+   "hr@10": 0.36089528081819006,
+   "mrr@20": 0.1728961969080497,
+   "ndcg@10": 0.21111463133121466
+  },
+  "PRE|2026|PB": {
+   "hr@10": 0.36089528081819006,
+   "mrr@20": 0.1728961969080497,
+   "ndcg@10": 0.21111463133121466
+  },
+  "X_FA_COLD|2026|CB": {
+   "hr@10": 0.28875794877574473,
+   "mrr@20": 0.13061184227841396,
+   "ndcg@10": 0.16244504442975294
+  },
+  "X_FA_COLD|2026|PB": {
+   "hr@10": 0.28875794877574473,
+   "mrr@20": 0.13061184227841396,
+   "ndcg@10": 0.16244504442975294
+  },
+  "X_FA_COLD|2027|CB": {
+   "hr@10": 0.2868174802830669,
+   "mrr@20": 0.13066720204833096,
+   "ndcg@10": 0.16204059186138337
+  },
+  "X_FA_COLD|2027|PB": {
+   "hr@10": 0.2868174802830669,
+   "mrr@20": 0.13066720204833096,
+   "ndcg@10": 0.16204059186138337
+  },
+  "X_FA|2026|CB": {
+   "hr@10": 0.36118691189894225,
+   "mrr@20": 0.1730314984120281,
+   "ndcg@10": 0.21127073694484566
+  },
+  "X_FA|2026|PB": {
+   "hr@10": 0.3609649140567193,
+   "mrr@20": 0.17319544096698625,
+   "ndcg@10": 0.21136238662409337
+  },
+  "X_FA|2027|CB": {
+   "hr@10": 0.3614243821745031,
+   "mrr@20": 0.1730792156769914,
+   "ndcg@10": 0.21138463942375837
+  },
+  "X_FA|2027|PB": {
+   "hr@10": 0.36086032318436234,
+   "mrr@20": 0.17322958829990953,
+   "ndcg@10": 0.21135237562355885
+  }
+ },
+ "register_binding": null,
+ "role": "MAIN",
+ "tools": {
+  "p2_report.py": "934cc8a0e93f3edd44e5c950f89996149a1f2b26dd7737f9c78b383b7dff215e",
+  "retention_report.py": "9a3b2c2a918ef2baacc5299426941f1eb94c366f5bb6aa7c29b4bfdbca0afe58",
+  "x_analysis.py": "509a9f9715ab124ca751f3ed5ebc6ad2240a9dd014d406f98271581c7c37b151"
+ },
+ "utc": "2026-10-09T03:59:12Z"
+}

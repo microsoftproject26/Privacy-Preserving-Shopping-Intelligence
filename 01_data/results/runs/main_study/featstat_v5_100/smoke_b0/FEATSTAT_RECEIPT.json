@@ -1,0 +1,147 @@
+{
+ "task": "FEATSTAT-01",
+ "stage": "FINAL",
+ "date_u_start": "2026-09-26T19:45:54Z",
+ "date_u_written": "2026-09-26T19:46:28Z",
+ "wall_seconds": 34.2,
+ "phaseA_seconds": 8.8,
+ "peak_rss": {
+  "VmHWM": 2575.6640625,
+  "VmRSS": 2236.56640625
+ },
+ "buckets": [
+  0
+ ],
+ "ds_root": "/home/jovyan/shared_data/rees46_nextitem_v1",
+ "version_hash": "860e5a1c3a81b8e4bbfeff4f245fa37638a43e4f260df179585964d2d4da8dbd",
+ "schema_self_sha256": "55a244e1608bcdcdf6f1728595f534871b52154faebf2977e11ac1fb487052f9",
+ "transform_state_sha256": "2ff0ff4ec1d27d254972c2f212e81f5fee6277dc9cced31a6a5baf5b4b002727",
+ "transform_state_file_sha256": "7dda2f56066c1ca11c32754fd2b701448a7d7920f3e68bf7facc77141f41ae7d",
+ "inputs_read_sha256_checked_against_FILES_json": 6,
+ "input_hash_mismatches": [],
+ "input_sha256": {
+  "model_ready/user_bucket=0/features.parquet": "560bad7cbb67ddcc2e7abed41eb34df5c3ee615768f4375cda5e86879710d731",
+  "decisions_index/split=TRAIN/user_bucket=0/data_0.parquet": "fb630e583c0ab9b42c8e09bf9c536ccc841f3dbb832f9840ec07ff32392c5ec1",
+  "mappings/catalogue.parquet": "d99d0ce7dd05473f1fa84459b7e1e868c6f9412747d79e511661801b11268acd",
+  "mappings/normalizers.json": "9815062498898987eff20ddeacaf3fee40d36e94c8556a887ddc8698b6144f45",
+  "mappings/vocab_category_code.parquet": "1089d8c67b2d46c19be3d3433cc95b7c3891ea22801162406ae43804f0be7b4b",
+  "VERSION.json": "65f03c594d3d34dad1359c96c99bfff229d0602f569946933e6018199b4d1f01"
+ },
+ "code_sha256": {
+  "__init__.py": "8330e6d1137654dba57123fde6ef2fa27ec601a20cb6c1357b20ad83133ef388",
+  "fs_core.py": "5bea425f10a8f1e9938ad285e5ac3587338be26a2d42a973a124251a29e215ae",
+  "fs_inventory.py": "2bd998a87d9653dcded12d631a58250baeadd1c837e556459fc8c96b4f7b23ac",
+  "fs_run.py": "b4bce2679b80bdc8e57fe8d95ef9ce51101038b722c44188dc215ed056f4e2dc",
+  "test_fs_core.py": "dc726e3bd1a7cc36f49c4672c346cb0b2988dc684ef3fe96a52c6478ac1cfc61"
+ },
+ "v4data_sha256": {
+  "__init__.py": "e84d269cfb259d5137c4575e5e0704cb4c36083267878eea46145ac3d3b3db53",
+  "build_all.py": "561fc7e52ca4802f14d67ecb0134bee4a2cf7314d4f2ff82755aea239889efb3",
+  "common.py": "2f1173160282e147017785c518c8d1892ae9d9df65523b436fc4191748c6a699",
+  "manifests.py": "cad8b9ce18a82d9a3f5124e4e5aa85082735f21e8bdc2c55b3c6610578a8d126",
+  "reference_counts.py": "eee9d3057216efa1945ae5eeb7e758edee8171080efb6ce84485151ffdac3ea2",
+  "run_bounded.py": "2a74f3ef1c812931a9860789f2a77660e26c5b7d274b1e655cea04bf3874a09c",
+  "store.py": "f799213a026b640ebf6401294eda5dfd5c3a5fdf2d87056c5ddd04336a0a925c",
+  "transform.py": "98cce282e17602def2e9600f4b10f4092eba2407f42a61e2029ac8779da16bcf",
+  "transform_state.py": "dfaa7185077d81b5e554a7d3b342228e683d41af923ee6a89a586699b281d571"
+ },
+ "population_reproduction": {
+  "pool_users": {
+   "measured": 22542,
+   "expected": 1446986,
+   "equal": false
+  },
+  "pool_examples": {
+   "measured": 449499,
+   "expected": 28623386,
+   "equal": false
+  },
+  "nge1_users": {
+   "measured": 42101,
+   "expected": 2694998,
+   "equal": false
+  },
+  "nge1_examples": {
+   "measured": 622168,
+   "expected": 40180608,
+   "equal": false
+  },
+  "B_users": {
+   "measured": 18792,
+   "expected": 1197003,
+   "equal": false
+  },
+  "B_examples": {
+   "measured": 39249,
+   "expected": 2503629,
+   "equal": false
+  },
+  "D_users": {
+   "measured": 767,
+   "expected": 51009,
+   "equal": false
+  },
+  "D_examples": {
+   "measured": 133420,
+   "expected": 9053593,
+   "equal": false
+  },
+  "A1_users": {
+   "measured": 23542,
+   "expected": 1509381,
+   "equal": false
+  }
+ },
+ "population_reproduction_all_equal": false,
+ "clean_v2_verification": {
+  "store_batch_windows_checked": 512,
+  "store_batch_mismatches": 0,
+  "pad_nonzero": 0,
+  "encode_rows_max_abs_diff": {
+   "event_numeric_features": 0.0,
+   "event_quality_flags": 0.0,
+   "user_context": 4.76837158203125e-07,
+   "user_context_masks": 0.0
+  },
+  "alignment_checks": 1,
+  "rc_counts_view": {
+   "RC1": 0,
+   "RC2": 0,
+   "RC3": 0,
+   "RC4": 0,
+   "RC5": 0,
+   "RC6": 0,
+   "RC7": 0
+  },
+  "names_ok": true
+ },
+ "bucket_log": [
+  {
+   "bucket": 0,
+   "train_rows": 817291,
+   "decisions": 622168,
+   "pool_decisions": 449499,
+   "users": 65643,
+   "seconds": 8.7,
+   "rss": {
+    "VmHWM": 2515.01171875,
+    "VmRSS": 2384.87890625
+   }
+  }
+ ],
+ "fd_path_pairs": {
+  "constant": 333,
+  "binary": 748,
+  "dense": 452,
+  "sort": 178
+ },
+ "fd_path_seconds": {
+  "constant": 0.001157999038696289,
+  "binary": 5.295352935791016,
+  "dense": 6.630861043930054,
+  "sort": 3.488356113433838
+ },
+ "no_validation_or_test_rows_read": true,
+ "reads": "features.parquet read with split == TRAIN filter at read; CleanV2Store built with splits=('TRAIN',) (the snapshot CompactStore filters its own read to TRAIN); decisions_index split=TRAIN only; mappings catalogue/normalizers/vocab_category_code",
+ "no_raw_identifier_written": true
+}

@@ -1,0 +1,63 @@
+{
+ "arm": "FT_FA_WARM_FROZEN",
+ "bytes": {
+  "down_after_bootstrap": "base shared bytes once",
+  "up": 0
+ },
+ "device": "cuda:0",
+ "device_pin_sha256": "db744ca3f0da27ac7b65c41b4b32f2c68ec9d0bd66bbc0dc33e874a226834e6b",
+ "n_clients": 40718,
+ "n_no_support": 0,
+ "n_shards": 64,
+ "role": "MAIN",
+ "selected_cell": "FT_FA_WARM_FROZEN_f0.3_P4",
+ "shard_set_sha256": "3cf0c09dcc72e719cdb450c2fab705ce4d6a9f72c627f5adf7908f70ced1e4c5",
+ "shards_this_leg": 64,
+ "spec": {
+  "arm": "FT_FA_WARM_FROZEN",
+  "base_arm": "FA_WARM_FROZEN",
+  "cells": [
+   {
+    "cell": "FT_FA_WARM_FROZEN_f0.3_P4",
+    "lr_frac": 0.3,
+    "passes": 4
+   }
+  ],
+  "ft_procedure": "FT_C",
+  "fused": true,
+  "knobs": {
+   "batch": 16,
+   "clip": 1.0,
+   "exposure_point": "end",
+   "ft_lr_fracs": [
+    0.1,
+    0.3
+   ],
+   "ft_passes": [
+    1,
+    2,
+    4
+   ],
+   "lo_lr_shape": "s_efe",
+   "lo_passes": [
+    1,
+    2,
+    4
+   ],
+   "weight_decay": 1e-05
+  },
+  "peak_lr": 0.0007114121116984968,
+  "procedure_selection_arm": "FT_C",
+  "procedure_selection_cell": "FT_C_f0.3_P4",
+  "procedure_selection_self_sha256": "43e4fbee19246913ef8e93281b14fd30c08bcf7025a42edd193cacad4cf36e0c",
+  "role": "MAIN",
+  "seed": 2026,
+  "select": false,
+  "selected_cell": "FT_FA_WARM_FROZEN_f0.3_P4",
+  "selection_substitute": "PREG1_AMENDMENT_06A \u00a71: M04S FIXED_20 = the UNSEEN_VAL role of REGISTRY_V2 (support UNEW_VAL_SUPPORT_32768 -> eval UNEW_VAL_VALIDATION_32768), disjoint from MAIN, UNSEEN_HOLDOUT and every report panel; supersedes INT-04's CALIBRATION substitute (CALIB_VALIDATION is the rank-0-32,768 prefix of MAIN and would let report users take part in the selection); defined in v4int.launch_device, registered by Ops in amendment 06A",
+  "start_digest": "c93de846d79cc10779eb14c06d6610fb2c425d67b46779a0740604ff498a3e95"
+ },
+ "spec_sha256": "7054d5a0e5aa1018135edfce3fef94ac18594543f6aecad5495adb9c28ba0323",
+ "status": "DONE",
+ "wall_s_this_leg": 34181.11
+}

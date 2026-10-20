@@ -1,0 +1,429 @@
+{
+ "N": 26677600,
+ "calibration_record": null,
+ "config": {
+  "calibration_record": null,
+  "checkpoint_every": 0,
+  "continuation_budget": null,
+  "cuda_visible_devices": "1",
+  "data_version": "CLEAN_V2_POP5100_V2",
+  "determinism_mode": "STRICT",
+  "dropout": [
+   0.1
+  ],
+  "effective_batch": 256,
+  "eval_config": {
+   "cache_bytes": 1073741824,
+   "class_chunk": 32768,
+   "eval_batch_size": 1024,
+   "eval_device_class": "A16-FP32-DET",
+   "flags": {
+    "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+    "cudnn.allow_tf32": false,
+    "cudnn.benchmark": false,
+    "cudnn.deterministic": true,
+    "matmul.allow_tf32": false,
+    "use_deterministic_algorithms": true
+   },
+   "lock_sha256": "0308640a79ef5fccb50bc456ee8f3ff1d506095c757e3b24fbb7b9c2e058238e",
+   "lock_version": "1.0.0",
+   "metric_accumulation": "FP64",
+   "order": "manifest order, strictly ascending decision_id; tail batch unpadded",
+   "score_block": 158486,
+   "source": "v4eval.frozen_config.load()"
+  },
+  "expected_init_sha256": null,
+  "exposure_point": "end",
+  "family": "SASREC",
+  "key": {
+   "candidate_order_hash": "ab606d5e3728c993d31048f6d613838658d3a5ce8a0d0bd023611ce0ff027476",
+   "data_protocol_hash": "bc699a97dd2fab054e5a5c00f9661dd32b0677941d3f23f2e4b81751b3b7b330",
+   "data_version": "CLEAN_V2_POP5100_V2",
+   "determinism_mode": "STRICT",
+   "eval_batch": 1024,
+   "eval_device_class": "A16-FP32-DET",
+   "eval_manifest_id": "MAIN_VALIDATION_5_100_131072",
+   "eval_score_block": 158486,
+   "eval_stream": "EVAL_ROWS_ONLY",
+   "exposure_point": "end",
+   "feature_contract_hash": "e97600f508497398da47f48b029d49a6fffee316e6a0c1ea20e046fe81fda5aa",
+   "feature_schema_self_sha256": "c53d47fe2555dd537e27e11d45a4e8b23739566e6b98179dcf521852aa918f87",
+   "history_policy": "USER_HISTORY_L50",
+   "label_policy_hash": "75acea25716829cba74a7703f17208f405b455c72af2ec19f413585636f7e59a",
+   "manifest_registry_self_sha256": "c9e48641f5da6c5db188625b7a8d82168876ca75b7784f55cbe2bf01ab0100a7",
+   "population_hash": "df5d0c7e82bc0842f5c8435fafaa67f947d4fe951d5f9e6aed9ca58d10a46cdf",
+   "split": "VALIDATION",
+   "train_manifest_id": "FULL_TRAIN_5_100_TIEBREAK",
+   "transform_state_sha256": "2ff0ff4ec1d27d254972c2f212e81f5fee6277dc9cced31a6a5baf5b4b002727"
+  },
+  "log_every": 50,
+  "manifest_registry": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/CFULL/C_FULL_02B_SASREC_s2026/REGISTRY_V2_TRAINER_VIEW.json",
+  "microbatch": 0,
+  "model_variant": "SASREC_D256_B3",
+  "peak_lr": 0.00040005642964899735,
+  "phase": "MAIN",
+  "population": "COHORT",
+  "recipe": {
+   "betas": [
+    0.9,
+    0.999
+   ],
+   "calibration_multipliers": [
+    1.0,
+    0.5
+   ],
+   "calibration_seed": 2026,
+   "effective_batch": 256,
+   "eps": 1e-08,
+   "executed_peak_lr": 0.001,
+   "fused": true,
+   "grad_clip": 1.0,
+   "gru_dropout": [
+    0.2,
+    0.1
+   ],
+   "label_smoothing": 0.0,
+   "optimizer": "AdamW",
+   "sasrec_dropout": 0.2,
+   "seeds": [
+    2026,
+    2027
+   ],
+   "source": "G0B_PROTOCOL_FABLE_POSITION.md C8 L28; G0_PLAN_FABLE_POSITION.md D6 L36-L38; G0B C3 L18",
+   "weight_decay": 1e-05,
+   "weight_decay_scope": "ndim>=2"
+  },
+  "recipe_id": "02B_SASREC",
+  "recipe_registry": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/contracts/hp_registry/TUNED_RECIPES_02B.json",
+  "role": null,
+  "run_id": "C_FULL_02B_SASREC_s2026",
+  "schedule": "S0",
+  "schema_registry": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/contracts/derived_schemas/REGISTRY.json",
+  "seed": 2026,
+  "test_overrides": false,
+  "theta0_init_sha256": "fe075eddc6715e92d7c20066c89291ee4147d9aed9a28c939d4dcae626ded616"
+ },
+ "config_sha256": "48b18b446b1404c4fc112b072706e2c25bc3749f74f44f70ee76133dbd3b2a28",
+ "continuation_budget": null,
+ "cuda_visible_devices": {
+  "at_v4train_import": "1",
+  "config": "1",
+  "env": "1"
+ },
+ "data_version": "CLEAN_V2_POP5100_V2",
+ "determinism": {
+  "cublas_workspace_config": ":4096:8",
+  "mode": "STRICT",
+  "torch_effective": {
+   "deterministic_algorithms": true,
+   "warn_only": false
+  }
+ },
+ "device": "cuda:0",
+ "device_pin_sha256": "db744ca3f0da27ac7b65c41b4b32f2c68ec9d0bd66bbc0dc33e874a226834e6b",
+ "disk": {
+  "free_gib": 312.76730728149414,
+  "reason": "free 312.77 GiB, headroom 310.27 GiB >= floor 8.0 GiB",
+  "state": "OK"
+ },
+ "dropout": [
+  0.1
+ ],
+ "eval_config": {
+  "cache_bytes": 1073741824,
+  "class_chunk": 32768,
+  "eval_batch_size": 1024,
+  "eval_device_class": "A16-FP32-DET",
+  "flags": {
+   "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+   "cudnn.allow_tf32": false,
+   "cudnn.benchmark": false,
+   "cudnn.deterministic": true,
+   "matmul.allow_tf32": false,
+   "use_deterministic_algorithms": true
+  },
+  "lock_sha256": "0308640a79ef5fccb50bc456ee8f3ff1d506095c757e3b24fbb7b9c2e058238e",
+  "lock_version": "1.0.0",
+  "metric_accumulation": "FP64",
+  "order": "manifest order, strictly ascending decision_id; tail batch unpadded",
+  "score_block": 158486,
+  "source": "v4eval.frozen_config.load()"
+ },
+ "eval_config_sha256": "695c6f8017ae1d3096c5aa376eb3163453bce8f0c30f038489865fb7aa2cd28b",
+ "eval_device_class": "NVIDIA_A40-FP32-DET",
+ "eval_provider": {
+  "fingerprint": "37f5bbbad8851d3ee3ee624b3dd156b7a5a6f4302b288366f00fe508e17d417f",
+  "hashes": {
+   "eval_ordered_decision_id_sha256": "4f45656a86dbc9d9bb2a59841ac2b538b23b09b0984840af1957a7953664b0dc",
+   "ordered_decision_id_sha256": "be97c8516f3c2e5ea89e2ffa60e35d8a57b72f9b8873e741b7366e765bb7caaf",
+   "rankable_ordered_decision_id_sha256": "f2bee71d896ee6e868f866cb08d888c44d46ee7f2889bf74969d729566f619c8"
+  },
+  "manifest_id": "MAIN_VALIDATION_5_100_131072"
+ },
+ "evaluator_code_sha256": "61b64e61c1a2e4f5a6fecd42f0ad3b98de26562d13a07758573cc9496b8d962e",
+ "exposure_point": "end",
+ "family": "SASREC",
+ "hp": null,
+ "init_sha256": "fe075eddc6715e92d7c20066c89291ee4147d9aed9a28c939d4dcae626ded616",
+ "key_base": {
+  "candidate_order_hash": "ab606d5e3728c993d31048f6d613838658d3a5ce8a0d0bd023611ce0ff027476",
+  "cublas_workspace_config": ":4096:8",
+  "data_protocol_hash": "bc699a97dd2fab054e5a5c00f9661dd32b0677941d3f23f2e4b81751b3b7b330",
+  "data_version": "CLEAN_V2_POP5100_V2",
+  "determinism_mode": "STRICT",
+  "eval_batch": 1024,
+  "eval_device_class": "A16-FP32-DET",
+  "eval_manifest_id": "MAIN_VALIDATION_5_100_131072",
+  "eval_score_block": 158486,
+  "eval_stream": "EVAL_ROWS_ONLY",
+  "exposure_point": "end",
+  "family": "SASREC",
+  "feature_contract_hash": "e97600f508497398da47f48b029d49a6fffee316e6a0c1ea20e046fe81fda5aa",
+  "feature_schema_self_sha256": "c53d47fe2555dd537e27e11d45a4e8b23739566e6b98179dcf521852aa918f87",
+  "history_policy": "USER_HISTORY_L50",
+  "initialization_block": "I_META_RANDOM|SASREC|seed=2026|theta0_sha256=fe075eddc6715e92d7c20066c89291ee4147d9aed9a28c939d4dcae626ded616",
+  "label_policy_hash": "75acea25716829cba74a7703f17208f405b455c72af2ec19f413585636f7e59a",
+  "manifest_registry_self_sha256": "c2c8d5e5c3a17ec5f1a01723303f3be7ede84543dc464c9c9bb756d6832f256a",
+  "manifest_registry_sha256": "406b8bb11e1ee0fe7e0566894d026e33c033c2afe8aff6b5fe8c78d704d846b8",
+  "manifest_role": "MAIN",
+  "model_variant": "SASREC_D256_B3",
+  "objective_id": "EXACT_FULL_K_CE_SUM_OVER_LOSS_ELIGIBLE_DIVIDE_ONCE_LS0",
+  "optimizer_lifecycle": "PERSISTENT_ADAMW",
+  "population_hash": "df5d0c7e82bc0842f5c8435fafaa67f947d4fe951d5f9e6aed9ca58d10a46cdf",
+  "precision_id": "FP32_STRICT:matmul_tf32=off,cudnn_tf32=off,float32_matmul_precision=highest,deterministic_algorithms=STRICT",
+  "recipe_id": "02B_SASREC",
+  "recipe_sha256": "9a2530874a3abd096eb2f9c9f4b02f012f4015ac80137bf9328b4f69c1527f6d",
+  "run_label": "PRODUCTION",
+  "run_role": "MAIN",
+  "schema_id": "L3S_NEAR_DUPLICATE_SESSION-minus-G11+G12a+G3+G4+G7",
+  "schema_self_sha256": "c53d47fe2555dd537e27e11d45a4e8b23739566e6b98179dcf521852aa918f87",
+  "split": "VALIDATION",
+  "theta0_init_sha256": "fe075eddc6715e92d7c20066c89291ee4147d9aed9a28c939d4dcae626ded616",
+  "topology_hash": "5d6ba76fbc762e31f5fb6f428482f682b4af7724d0b06a808909bc4c9f52e198",
+  "train_manifest_id": "FULL_TRAIN_5_100_TIEBREAK",
+  "training_paradigm": "CENTRAL",
+  "transform_state_sha256": "2ff0ff4ec1d27d254972c2f212e81f5fee6277dc9cced31a6a5baf5b4b002727"
+ },
+ "lr_schedule_id": "S0",
+ "manifest_digest": "00ea2bfb2b6b254bcfd59fdce054ec274155e0373730b0810d7c96c6d22cc79e",
+ "manifest_registry": {
+  "bindings": {
+   "eval": {
+    "bound_by": [
+     "content_header_sha256"
+    ],
+    "content_sha256": "62562f25faa4ef0442dc714aa83fdf85e144f25292b0bf4ff04fcc1c0b50bb93",
+    "fingerprint": "37f5bbbad8851d3ee3ee624b3dd156b7a5a6f4302b288366f00fe508e17d417f",
+    "header_sha256": "2e96bce6f4f37ebad9606f8ea4a87d8f56d323aa3b8ad4339dd185c1c1db82b1",
+    "manifest_id": "MAIN_VALIDATION_5_100_131072",
+    "n_decisions": 644694
+   },
+   "train": {
+    "bound_by": [
+     "content_header_sha256"
+    ],
+    "content_sha256": "7cb2062e33112ec2ecf1aa1849020f29976d76878d1a81eb3f1c7bc556d2b693",
+    "fingerprint": "0ae0dff3d35e6476d803f9caea86befbd6010ce35e47979f4b0861732c91b370",
+    "header_sha256": "2e720abb04ac449e9a5a19e59f2d058dd217cc134aa21e16ff402666d811fd3a",
+    "manifest_id": "FULL_TRAIN_5_100_TIEBREAK",
+    "n_decisions": 26677600
+   }
+  },
+  "data_version": "CLEAN_V2_POP5100_V2",
+  "eval_manifest": "MAIN_VALIDATION_5_100_131072",
+  "file_sha256": "406b8bb11e1ee0fe7e0566894d026e33c033c2afe8aff6b5fe8c78d704d846b8",
+  "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/CFULL/C_FULL_02B_SASREC_s2026/REGISTRY_V2_TRAINER_VIEW.json",
+  "role": "MAIN",
+  "self_sha256": "c2c8d5e5c3a17ec5f1a01723303f3be7ede84543dc464c9c9bb756d6832f256a",
+  "train_manifest": "FULL_TRAIN_5_100_TIEBREAK"
+ },
+ "manifest_role": "MAIN",
+ "model_variant": "SASREC_D256_B3",
+ "model_variant_registry": {
+  "file_sha256": "3df9fdf706f525922c6d792212ba7878c932391231e93e35d871f926d8921eeb",
+  "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/contracts/model_variants/MODEL_VARIANT_REGISTRY.json",
+  "self_sha256": "db7beb26203fb658e25eea4e02f632589b8c14fc99b4cf058b187f5b5df963a8",
+  "variant": "SASREC_D256_B3"
+ },
+ "models_code_sha256": "a41fa79839851db09e008a0a4079bd145e2adb02d5653d238a227d8dcacf0bc2",
+ "numerics": {
+  "cuda_matmul_allow_tf32": false,
+  "cudnn_allow_tf32": false,
+  "cudnn_deterministic": true,
+  "deterministic_algorithms": true,
+  "deterministic_warn_only": false,
+  "float32_matmul_precision": "highest",
+  "intra_op_threads": 4,
+  "torch": "2.13.0+cu130"
+ },
+ "order_policy": "positions = Generator(PCG64(SeedSequence([0x56345452, seed, pass]))).permutation(N) over the canonical ascending-decision_id order; consecutive effective batches; tail batch at its own size",
+ "phase": "MAIN",
+ "planned_lr_table": {
+  "final_exposures": 160065600,
+  "last_lr": 4.000564296489972e-06,
+  "min_lr": 1.9194838739268772e-07,
+  "n_updates": 625260,
+  "phase": "MAIN",
+  "point": "end",
+  "schedule": "S0",
+  "sha256": "1b10fa50e38856355b8d6531fbd63b84f618ca0d13a15fae6a4b55f55db402ab"
+ },
+ "population": "COHORT",
+ "precision_id": "FP32_STRICT:matmul_tf32=off,cudnn_tf32=off,float32_matmul_precision=highest,deterministic_algorithms=STRICT",
+ "raw_init_sha256": "8442e290b7beef4e1bb76fa82803340f4aff0dfe28b5f6352589071d252bc10d",
+ "run_id": "C_FULL_02B_SASREC_s2026",
+ "run_label": "PRODUCTION",
+ "run_role": "MAIN",
+ "schedule": "v4train.schedule (G0 D6; G0B C3)",
+ "schema": {
+  "file": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/contracts/derived_schemas/L3S_NEAR_DUPLICATE_SESSION-minus-G11+G12a+G3+G4+G7.json",
+  "file_sha256": "626ca93e7f51606fe4269f4551a65c0246f85f9f199d2af92881dca971e8b759",
+  "kind": "DERIVED",
+  "registry": {
+   "file_sha256": "c23454cb7d34886e0374349b73a4d153907ebc56b17061926e193e221e4a0bc6",
+   "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/contracts/derived_schemas/REGISTRY.json",
+   "self_sha256": "06d1f13698129edd8621ed2bcff861f8c7bc6e2de3488cd7a04fdc53317a3896"
+  },
+  "schema_id": "L3S_NEAR_DUPLICATE_SESSION-minus-G11+G12a+G3+G4+G7",
+  "schema_self_sha256": "c53d47fe2555dd537e27e11d45a4e8b23739566e6b98179dcf521852aa918f87"
+ },
+ "schema_self_sha256": "c53d47fe2555dd537e27e11d45a4e8b23739566e6b98179dcf521852aa918f87",
+ "seed": 2026,
+ "shared_numel": 83881764,
+ "test_overrides": false,
+ "theta0_init_sha256": "fe075eddc6715e92d7c20066c89291ee4147d9aed9a28c939d4dcae626ded616",
+ "theta0_recentered": true,
+ "torch": "2.13.0+cu130",
+ "train_phase": "MAIN",
+ "train_provider": {
+  "fingerprint": "0ae0dff3d35e6476d803f9caea86befbd6010ce35e47979f4b0861732c91b370",
+  "manifest_id": "FULL_TRAIN_5_100_TIEBREAK"
+ },
+ "trainer_code_sha256": "f65e6fe76689395865dc304ba0cdcaf7e6a5d110c85340e5155e81b0f9ed8894",
+ "tuned_recipe": {
+  "g1b_pin": {
+   "gate": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/company/gates/G1B_APPROVED.json",
+   "gate_sha256": "0f9694854489ca114026cbced79c4df4b98b20f62d30d04dca5d1ca16c8cb5fe",
+   "parts": [
+    1,
+    "1R",
+    2
+   ],
+   "pinned": "0b0bc3b4d54d0444ab04045008d8401980ee724cae16a963598e59834175dc42"
+  },
+  "recipe": {
+   "ckpt_avg_carried_to_p4": true,
+   "dropout": [
+    0.1
+   ],
+   "family": "SASREC",
+   "mean_6.0_two_seeds": 0.13240232092215257,
+   "model_variant": "SASREC_D256_B3",
+   "paths": "V4-relative (TRAIN-02R3)",
+   "peak_lr": 0.00040005642964899735,
+   "recipe_id": "02B_SASREC",
+   "run_evidence": {
+    "stage1": {
+     "P2_SASREC_D256_B2_S0_s0": {
+      "result_rows_sha256": "e4d7df377a1696713cd1ee2957b30a5a6fd1c859a435fd11eb1ce7db30717037",
+      "run_dir": "runs_p2/SASREC/stage1/P2_SASREC_D256_B2_S0_s0_s2026",
+      "summary_sha256": "82a1cf685da60d93ca3da478eec0fd3343ff8e721b4612e62a0d28e927900d70"
+     },
+     "P2_SASREC_D256_B2_S0_s3": {
+      "result_rows_sha256": "80a8649c2a9f1a70129779c8c82f24fa080dbc2950748bf9897a1b83b4b8e4ad",
+      "run_dir": "runs_p2/SASREC/stage1/P2_SASREC_D256_B2_S0_s3_s2026",
+      "summary_sha256": "d2a96bb580fe44b221e1159efddad2a73aeffe77ca7a6eeb470231c4eb65faf9"
+     },
+     "P2_SASREC_D256_B2_S1_s1": {
+      "result_rows_sha256": "848ff726b86f44d2342b5486b8235dd2e5c505d65cf8a2edfa222ebd1fff6124",
+      "run_dir": "runs_p2/SASREC/stage1/P2_SASREC_D256_B2_S1_s1_s2026",
+      "summary_sha256": "5d0f45034cb8448f327a24009e8e2165182283df6bce85dc5953b009d8e65b3b"
+     },
+     "P2_SASREC_D256_B2_S1_s2": {
+      "result_rows_sha256": "650fb55328f019522f9678f490a97d48fd1cd3e607344d12e1f617e85f112181",
+      "run_dir": "runs_p2/SASREC/stage1/P2_SASREC_D256_B2_S1_s2_s2026",
+      "summary_sha256": "2c10829b573e59e9893104d4721a3af86fe92491cbb11df12dff67aa7e5bc459"
+     },
+     "P2_SASREC_D256_B3_S0_s0": {
+      "result_rows_sha256": "8c0a1312eb1429258423185b8a2bbcc521e38b4ede3be77da735144c1e9e8d1a",
+      "run_dir": "runs_p2/SASREC/stage1/P2_SASREC_D256_B3_S0_s0_s2026",
+      "summary_sha256": "e76db9515665dce3f2342526c590e0ec2bb2050dccfa480857bd24aa69b52ab2"
+     },
+     "P2_SASREC_D256_B3_S0_s3": {
+      "result_rows_sha256": "7fe0e73e07f10f10556cf177f840f5cccf186d02dc2e26e7951a15af8aa7c4bc",
+      "run_dir": "runs_p2/SASREC/stage1/P2_SASREC_D256_B3_S0_s3_s2026",
+      "summary_sha256": "736c0b3b0c75315b707ae55f3d74ac99dc4aa68ff2ca9036d0e7098a1fd856bc"
+     },
+     "P2_SASREC_D256_B3_S1_s1": {
+      "result_rows_sha256": "ddfa91d8a48460f8860471b20efd95d5c71266393157f9730aa506fe47d1e275",
+      "run_dir": "runs_p2/SASREC/stage1/P2_SASREC_D256_B3_S1_s1_s2026",
+      "summary_sha256": "3b3218accd80ed4bcae02f6a7330bac1f21c8770a6189031c37a22751040ffc1"
+     },
+     "P2_SASREC_D256_B3_S1_s2": {
+      "result_rows_sha256": "125b1c5a62cf12f38675a2c4c9f7d5a5f5e93941825817628f601fce6fdde661",
+      "run_dir": "runs_p2/SASREC/stage1/P2_SASREC_D256_B3_S1_s2_s2026",
+      "summary_sha256": "2fd7a34a12e6164fbe02ec1b9bd2e5700550ff5456fd9a5ae8d0532450afa351"
+     },
+     "P2_SASREC_D384_B2_S0_s0": {
+      "result_rows_sha256": "9c4bcf25e3eff2ffb359e5b3d367cbcd0d4a1256fcabacc6b4a47f9d69c4aa7b",
+      "run_dir": "runs_p2/SASREC/stage1/P2_SASREC_D384_B2_S0_s0_s2026",
+      "summary_sha256": "e61857ede37f55e129b777ba85373cf4e57b25ab9e5c1ff2aa905a75ebad4cfe"
+     },
+     "P2_SASREC_D384_B2_S0_s3": {
+      "result_rows_sha256": "2234a4b64e846664861c80c00450d4b1995f78ea9914d5f3d04fb7deedad2b49",
+      "run_dir": "runs_p2/SASREC/stage1/P2_SASREC_D384_B2_S0_s3_s2026",
+      "summary_sha256": "affb1940edaa5c94032d7d5b6eaf92b390bad964032bad20ad96c46115eff649"
+     },
+     "P2_SASREC_D384_B2_S1_s1": {
+      "result_rows_sha256": "375dc6aab147c229f3c33dab88544db29170ddcc2ef9465a86ea3346e17e2c0d",
+      "run_dir": "runs_p2/SASREC/stage1/P2_SASREC_D384_B2_S1_s1_s2026",
+      "summary_sha256": "89a2477ad006166ea2a987ae91222ce2ff665845c6b17383202d36cb9c4aa9a6"
+     },
+     "P2_SASREC_D384_B2_S1_s2": {
+      "result_rows_sha256": "5092159c453f3cf539ae2709798de14920c6e6a3b83589162350ed86c01599a0",
+      "run_dir": "runs_p2/SASREC/stage1/P2_SASREC_D384_B2_S1_s2_s2026",
+      "summary_sha256": "22fb9e985bbbb1226e7e64bfa1ddbd2083da36d67c28a10cd870c4355c9b3b30"
+     }
+    },
+    "stage2": {
+     "P2_SASREC_D256_B2_S0_s0": {
+      "result_rows_sha256": "bea1db3cdd4158a10e3c656a1f70f9904a4e80a8f1c40f9d9980da73dac6fe48",
+      "run_dir": "runs_p2/SASREC/stage2/P2_SASREC_D256_B2_S0_s0_s2027",
+      "summary_sha256": "e92bc0b50963fe4d4bf4bd3b207dba9ad8c75013b379aba002286b26f62f677d"
+     },
+     "P2_SASREC_D256_B3_S0_s0": {
+      "result_rows_sha256": "18b48fd5ea8133e2f7a87f67c4619a211bb4eb95817f9e32d806d964f5c1f20e",
+      "run_dir": "runs_p2/SASREC/stage2/P2_SASREC_D256_B3_S0_s0_s2027",
+      "summary_sha256": "852ede56264774ea700e58443c892f7222fbb97717cf76be1616957b1a1c9821"
+     },
+     "P2_SASREC_D384_B2_S0_s0": {
+      "result_rows_sha256": "e6817160582dbce21aa1484a4c3c7c54c338be737db8da904e02bd8164c51c53",
+      "run_dir": "runs_p2/SASREC/stage2/P2_SASREC_D384_B2_S0_s0_s2027",
+      "summary_sha256": "cdddaa82d761a34a3a9035adf18b2f04753d9f10534599ce362711fdcb2d596d"
+     }
+    }
+   },
+   "schedule": "S0",
+   "sha256": "9a2530874a3abd096eb2f9c9f4b02f012f4015ac80137bf9328b4f69c1527f6d",
+   "source_hp_id": "P2_SASREC_D256_B3_S0_s0",
+   "source_hp_sha256": "20a4f86ec1fb021707d8f057d9029e983070d952d5f3533dc974df1dd57a7045",
+   "stage1_file": {
+    "file_sha256": "fe92bec1ed22a65c17e0ccde724e27040513c10ea0681fcc0382d3fd8fa4441a",
+    "path": "runs_p2/P2_SASREC_STAGE1.json",
+    "self_sha256": "2d948bbdc3427a1b356a31dd6f4cfcbebce10122fe3abeee4da9dde89db7964e"
+   },
+   "stage2_file": {
+    "file_sha256": "206ff5989152e9bcd02df2e7dc56de040619e8c00ec543c3f0330a378be918a0",
+    "path": "runs_p2/P2_SASREC_STAGE2.json",
+    "self_sha256": "8bf4a706fcae012abe9ca13a28e42ce99c6311488703b75f034ff28dd0330ffa"
+   }
+  },
+  "recipe_id": "02B_SASREC",
+  "recipe_sha256": "9a2530874a3abd096eb2f9c9f4b02f012f4015ac80137bf9328b4f69c1527f6d",
+  "source_hp_id": "P2_SASREC_D256_B3_S0_s0",
+  "tuned_recipes_file_sha256": "1e31dda7d8f19df8117e8ddf87c76d91ba4bd2b5bc22dc4383301f5b510ac9ea",
+  "tuned_recipes_path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/contracts/hp_registry/TUNED_RECIPES_02B.json",
+  "tuned_recipes_self_sha256": "0b0bc3b4d54d0444ab04045008d8401980ee724cae16a963598e59834175dc42"
+ },
+ "utc": "2026-09-29T08:51:09Z"
+}

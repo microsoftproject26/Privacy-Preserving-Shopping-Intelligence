@@ -1,0 +1,603 @@
+{
+ "analysis": {
+  "confirmatory_inputs_read_only": "runs_ds3/TEST/REEVAL, runs_p2/TEST/REEVAL (sha256 bound above)",
+  "contrasts": [
+   {
+    "id": "A1_FA_WARM_PB100K-PRE100K|PB",
+    "kind": "delta",
+    "note": "the K21 analogue on the 100k base (unfrozen FL - its own server model)",
+    "pairs": [
+     [
+      "FA_WARM_PB100K|PB",
+      "PRE100K|PB"
+     ]
+    ]
+   },
+   {
+    "id": "A1f_FA_WARM_FROZEN_PB100K-PRE100K|PB",
+    "kind": "delta",
+    "note": "K21 analogue, frozen items",
+    "pairs": [
+     [
+      "FA_WARM_FROZEN_PB100K|PB",
+      "PRE100K|PB"
+     ]
+    ]
+   },
+   {
+    "id": "A2_FA_WARM_PB100K-PRE|PB",
+    "kind": "delta",
+    "note": "vs the 1.2M-user theta_pre (does FL on MAIN from a 100k base reach the big server model?)",
+    "pairs": [
+     [
+      "FA_WARM_PB100K|PB",
+      "PRE|PB"
+     ]
+    ]
+   },
+   {
+    "id": "A2f_FA_WARM_FROZEN_PB100K-PRE|PB",
+    "kind": "delta",
+    "pairs": [
+     [
+      "FA_WARM_FROZEN_PB100K|PB",
+      "PRE|PB"
+     ]
+    ]
+   },
+   {
+    "id": "A3_PRE100K-PRE|PB",
+    "kind": "delta",
+    "note": "the base-size gap FL has to close",
+    "pairs": [
+     [
+      "PRE100K|PB",
+      "PRE|PB"
+     ]
+    ]
+   },
+   {
+    "id": "A4_FA_WARM_PB100K-P2_WSTAR|PB",
+    "kind": "delta",
+    "pairs": [
+     [
+      "FA_WARM_PB100K|PB",
+      "P2_WSTAR|PB"
+     ]
+    ]
+   },
+   {
+    "id": "R_PRE100K/C_FULL|PB",
+    "kind": "ratio",
+    "pairs": [
+     [
+      "PRE100K|PB",
+      "C_FULL|PB"
+     ]
+    ]
+   },
+   {
+    "id": "R_FA_WARM_PB100K/C_FULL|PB",
+    "kind": "ratio",
+    "pairs": [
+     [
+      "FA_WARM_PB100K|PB",
+      "C_FULL|PB"
+     ]
+    ]
+   },
+   {
+    "id": "R_FA_WARM_FROZEN_PB100K/C_FULL|PB",
+    "kind": "ratio",
+    "pairs": [
+     [
+      "FA_WARM_FROZEN_PB100K|PB",
+      "C_FULL|PB"
+     ]
+    ]
+   },
+   {
+    "id": "R_PRE/C_FULL|PB",
+    "kind": "ratio",
+    "pairs": [
+     [
+      "PRE|PB",
+      "C_FULL|PB"
+     ]
+    ]
+   },
+   {
+    "id": "R_P2_WSTAR/C_FULL|PB",
+    "kind": "ratio",
+    "pairs": [
+     [
+      "P2_WSTAR|PB",
+      "C_FULL|PB"
+     ]
+    ]
+   },
+   {
+    "id": "A1_FA_WARM_PB100K-PRE100K|CB",
+    "kind": "delta",
+    "note": "the K21 analogue on the 100k base (unfrozen FL - its own server model)",
+    "pairs": [
+     [
+      "FA_WARM_PB100K|CB",
+      "PRE100K|CB"
+     ]
+    ]
+   },
+   {
+    "id": "A1f_FA_WARM_FROZEN_PB100K-PRE100K|CB",
+    "kind": "delta",
+    "note": "K21 analogue, frozen items",
+    "pairs": [
+     [
+      "FA_WARM_FROZEN_PB100K|CB",
+      "PRE100K|CB"
+     ]
+    ]
+   },
+   {
+    "id": "A2_FA_WARM_PB100K-PRE|CB",
+    "kind": "delta",
+    "note": "vs the 1.2M-user theta_pre (does FL on MAIN from a 100k base reach the big server model?)",
+    "pairs": [
+     [
+      "FA_WARM_PB100K|CB",
+      "PRE|CB"
+     ]
+    ]
+   },
+   {
+    "id": "A2f_FA_WARM_FROZEN_PB100K-PRE|CB",
+    "kind": "delta",
+    "pairs": [
+     [
+      "FA_WARM_FROZEN_PB100K|CB",
+      "PRE|CB"
+     ]
+    ]
+   },
+   {
+    "id": "A3_PRE100K-PRE|CB",
+    "kind": "delta",
+    "note": "the base-size gap FL has to close",
+    "pairs": [
+     [
+      "PRE100K|CB",
+      "PRE|CB"
+     ]
+    ]
+   },
+   {
+    "id": "A4_FA_WARM_PB100K-P2_WSTAR|CB",
+    "kind": "delta",
+    "pairs": [
+     [
+      "FA_WARM_PB100K|CB",
+      "P2_WSTAR|CB"
+     ]
+    ]
+   },
+   {
+    "id": "R_PRE100K/C_FULL|CB",
+    "kind": "ratio",
+    "pairs": [
+     [
+      "PRE100K|CB",
+      "C_FULL|CB"
+     ]
+    ]
+   },
+   {
+    "id": "R_FA_WARM_PB100K/C_FULL|CB",
+    "kind": "ratio",
+    "pairs": [
+     [
+      "FA_WARM_PB100K|CB",
+      "C_FULL|CB"
+     ]
+    ]
+   },
+   {
+    "id": "R_FA_WARM_FROZEN_PB100K/C_FULL|CB",
+    "kind": "ratio",
+    "pairs": [
+     [
+      "FA_WARM_FROZEN_PB100K|CB",
+      "C_FULL|CB"
+     ]
+    ]
+   },
+   {
+    "id": "R_PRE/C_FULL|CB",
+    "kind": "ratio",
+    "pairs": [
+     [
+      "PRE|CB",
+      "C_FULL|CB"
+     ]
+    ]
+   },
+   {
+    "id": "R_P2_WSTAR/C_FULL|CB",
+    "kind": "ratio",
+    "pairs": [
+     [
+      "P2_WSTAR|CB",
+      "C_FULL|CB"
+     ]
+    ]
+   }
+  ],
+  "entries": {
+   "C_FULL|CB": {
+    "arm": "C_FULL",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/TEST/REEVAL/C_FULL_s2026_CB/evals/MAIN_TEST.ranks_int32.npy",
+    "rule": "CONTROLLED_BUDGET",
+    "seed": 2026,
+    "sha256": "f1ae1a421808686ea6bc4ef224853f390449abb0b3f177627f64b46ba6e5ece5"
+   },
+   "C_FULL|PB": {
+    "arm": "C_FULL",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/TEST/REEVAL/C_FULL_s2026_PB/evals/MAIN_TEST.ranks_int32.npy",
+    "rule": "PRACTICAL_BEST",
+    "seed": 2026,
+    "sha256": "f1ae1a421808686ea6bc4ef224853f390449abb0b3f177627f64b46ba6e5ece5"
+   },
+   "FA_WARM_FROZEN_PB100K|CB": {
+    "arm": "FA_WARM_FROZEN_PB100K",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/TEST/REEVAL/FA_WARM_FROZEN_PB100K_s2026_CB/evals/MAIN_TEST.ranks_int32.npy",
+    "rule": "CONTROLLED_BUDGET",
+    "seed": 2026,
+    "sha256": null
+   },
+   "FA_WARM_FROZEN_PB100K|PB": {
+    "arm": "FA_WARM_FROZEN_PB100K",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/TEST/REEVAL/FA_WARM_FROZEN_PB100K_s2026_PB/evals/MAIN_TEST.ranks_int32.npy",
+    "rule": "PRACTICAL_BEST",
+    "seed": 2026,
+    "sha256": null
+   },
+   "FA_WARM_FROZEN|CB": {
+    "arm": "FA_WARM_FROZEN",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/TEST/REEVAL/FA_WARM_FROZEN_s2026_CB/evals/MAIN_TEST.ranks_int32.npy",
+    "rule": "CONTROLLED_BUDGET",
+    "seed": 2026,
+    "sha256": "9778deb246bb8fc799b185b8d50b5149b47d7876a1ead76c16d7fc2bb1fcbd9d"
+   },
+   "FA_WARM_FROZEN|PB": {
+    "arm": "FA_WARM_FROZEN",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/TEST/REEVAL/FA_WARM_FROZEN_s2026_PB/evals/MAIN_TEST.ranks_int32.npy",
+    "rule": "PRACTICAL_BEST",
+    "seed": 2026,
+    "sha256": "4ad035eb55bb3c5dbb21cfd8cb4ad6f8e71abe99e24ecf2cf4480f1e34e6fd4e"
+   },
+   "FA_WARM_PB100K|CB": {
+    "arm": "FA_WARM_PB100K",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/TEST/REEVAL/FA_WARM_PB100K_s2026_CB/evals/MAIN_TEST.ranks_int32.npy",
+    "rule": "CONTROLLED_BUDGET",
+    "seed": 2026,
+    "sha256": null
+   },
+   "FA_WARM_PB100K|PB": {
+    "arm": "FA_WARM_PB100K",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/TEST/REEVAL/FA_WARM_PB100K_s2026_PB/evals/MAIN_TEST.ranks_int32.npy",
+    "rule": "PRACTICAL_BEST",
+    "seed": 2026,
+    "sha256": null
+   },
+   "FA_WARM|CB": {
+    "arm": "FA_WARM",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/TEST/REEVAL/FA_WARM_s2026_CB/evals/MAIN_TEST.ranks_int32.npy",
+    "rule": "CONTROLLED_BUDGET",
+    "seed": 2026,
+    "sha256": "46fd194106ee1b89d68a91e2bbec60da2cdec81ee909892e091d942352a7f7e0"
+   },
+   "FA_WARM|PB": {
+    "arm": "FA_WARM",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/TEST/REEVAL/FA_WARM_s2026_PB/evals/MAIN_TEST.ranks_int32.npy",
+    "rule": "PRACTICAL_BEST",
+    "seed": 2026,
+    "sha256": "a3666778bdafd514e72fa2f047bc908e8c52f878d4c7522ba731a544a8c76f0f"
+   },
+   "P2_WSTAR|CB": {
+    "arm": "P2_WSTAR",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_p2/TEST/REEVAL/P2_WSTAR_s2026_CB/evals/MAIN_TEST.ranks_int32.npy",
+    "rule": "CONTROLLED_BUDGET",
+    "seed": 2026,
+    "sha256": "aeda8f8111eab89bdc772cb91e73b8f84886b922d486aea701a2fefb22c79406"
+   },
+   "P2_WSTAR|PB": {
+    "arm": "P2_WSTAR",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_p2/TEST/REEVAL/P2_WSTAR_s2026_PB/evals/MAIN_TEST.ranks_int32.npy",
+    "rule": "PRACTICAL_BEST",
+    "seed": 2026,
+    "sha256": "9b68caf0f50c144665657c4fd1bf2f54ee373527a01601b36752d928c40bd932"
+   },
+   "PRE100K|CB": {
+    "arm": "PRE100K",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/TEST/REEVAL/PRE100K_s2026_CB/evals/MAIN_TEST.ranks_int32.npy",
+    "rule": "CONTROLLED_BUDGET",
+    "seed": 2026,
+    "sha256": null
+   },
+   "PRE100K|PB": {
+    "arm": "PRE100K",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/TEST/REEVAL/PRE100K_s2026_CB/evals/MAIN_TEST.ranks_int32.npy",
+    "rule": "PRACTICAL_BEST",
+    "seed": 2026,
+    "sha256": null
+   },
+   "PRE|CB": {
+    "arm": "PRE",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/TEST/REEVAL/PRE_s2026_CB/evals/MAIN_TEST.ranks_int32.npy",
+    "rule": "CONTROLLED_BUDGET",
+    "seed": 2026,
+    "sha256": "6971cb46a4d0394f6e68755fe3f65752b39b56f8d1fc591e94f65d06aca00f67"
+   },
+   "PRE|PB": {
+    "arm": "PRE",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/TEST/REEVAL/PRE_s2026_PB/evals/MAIN_TEST.ranks_int32.npy",
+    "rule": "PRACTICAL_BEST",
+    "seed": 2026,
+    "sha256": "6971cb46a4d0394f6e68755fe3f65752b39b56f8d1fc591e94f65d06aca00f67"
+   }
+  },
+  "role": "MAIN_TEST",
+  "script": "x_rees46/x_analysis.py",
+  "validation_proof_entries": {
+   "C_FULL|CB": {
+    "arm": "C_FULL",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/REEVAL_A40/C_FULL_s2026_CB/evals/MAIN.ranks_int32.npy",
+    "rule": "CONTROLLED_BUDGET",
+    "seed": 2026,
+    "sha256": "89751c0dbf231ac5e52f390e952a9f7f9a9506488eb969647d04b63d45ed0e33"
+   },
+   "C_FULL|PB": {
+    "arm": "C_FULL",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/REEVAL_A40/C_FULL_s2026_PB/evals/MAIN.ranks_int32.npy",
+    "rule": "PRACTICAL_BEST",
+    "seed": 2026,
+    "sha256": "89751c0dbf231ac5e52f390e952a9f7f9a9506488eb969647d04b63d45ed0e33"
+   },
+   "FA_WARM_FROZEN_PB100K|CB": {
+    "arm": "FA_WARM_FROZEN_PB100K",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/PROOF/FA_WARM_FROZEN_PB100K_s2026_CB_MAIN/evals/MAIN.ranks_int32.npy",
+    "rule": "CONTROLLED_BUDGET",
+    "seed": 2026,
+    "sha256": null
+   },
+   "FA_WARM_FROZEN_PB100K|PB": {
+    "arm": "FA_WARM_FROZEN_PB100K",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/PROOF/FA_WARM_FROZEN_PB100K_s2026_PB_MAIN/evals/MAIN.ranks_int32.npy",
+    "rule": "PRACTICAL_BEST",
+    "seed": 2026,
+    "sha256": null
+   },
+   "FA_WARM_FROZEN|CB": {
+    "arm": "FA_WARM_FROZEN",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/REEVAL_A40/FA_WARM_FROZEN_s2026_CB/evals/MAIN.ranks_int32.npy",
+    "rule": "CONTROLLED_BUDGET",
+    "seed": 2026,
+    "sha256": null
+   },
+   "FA_WARM_FROZEN|PB": {
+    "arm": "FA_WARM_FROZEN",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/REEVAL_A40/FA_WARM_FROZEN_s2026_PB/evals/MAIN.ranks_int32.npy",
+    "rule": "PRACTICAL_BEST",
+    "seed": 2026,
+    "sha256": null
+   },
+   "FA_WARM_PB100K|CB": {
+    "arm": "FA_WARM_PB100K",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/PROOF/FA_WARM_PB100K_s2026_CB_MAIN/evals/MAIN.ranks_int32.npy",
+    "rule": "CONTROLLED_BUDGET",
+    "seed": 2026,
+    "sha256": null
+   },
+   "FA_WARM_PB100K|PB": {
+    "arm": "FA_WARM_PB100K",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/PROOF/FA_WARM_PB100K_s2026_PB_MAIN/evals/MAIN.ranks_int32.npy",
+    "rule": "PRACTICAL_BEST",
+    "seed": 2026,
+    "sha256": null
+   },
+   "FA_WARM|CB": {
+    "arm": "FA_WARM",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/REEVAL_A40/FA_WARM_s2026_CB/evals/MAIN.ranks_int32.npy",
+    "rule": "CONTROLLED_BUDGET",
+    "seed": 2026,
+    "sha256": null
+   },
+   "FA_WARM|PB": {
+    "arm": "FA_WARM",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/REEVAL_A40/FA_WARM_s2026_PB/evals/MAIN.ranks_int32.npy",
+    "rule": "PRACTICAL_BEST",
+    "seed": 2026,
+    "sha256": null
+   },
+   "PRE100K|CB": {
+    "arm": "PRE100K",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/PROOF/PRE100K_s2026_CB_MAIN/evals/MAIN.ranks_int32.npy",
+    "rule": "CONTROLLED_BUDGET",
+    "seed": 2026,
+    "sha256": null
+   },
+   "PRE100K|PB": {
+    "arm": "PRE100K",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/PROOF/PRE100K_s2026_CB_MAIN/evals/MAIN.ranks_int32.npy",
+    "rule": "PRACTICAL_BEST",
+    "seed": 2026,
+    "sha256": null
+   },
+   "PRE|CB": {
+    "arm": "PRE",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/REEVAL_A40/PRE_s2026_CB/evals/MAIN.ranks_int32.npy",
+    "rule": "CONTROLLED_BUDGET",
+    "seed": 2026,
+    "sha256": "827b5bf6d618575a24a1405201e224237e050e760d6f2ca3ea76dfad34b838a0"
+   },
+   "PRE|PB": {
+    "arm": "PRE",
+    "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/REEVAL_A40/PRE_s2026_PB/evals/MAIN.ranks_int32.npy",
+    "rule": "PRACTICAL_BEST",
+    "seed": 2026,
+    "sha256": "827b5bf6d618575a24a1405201e224237e050e760d6f2ca3ea76dfad34b838a0"
+   }
+  }
+ },
+ "authority": "owner approval DL 539 (exploratory TEST looks, labelled POST_HOC_EXPLORATORY, reported beside the confirmatory T0a results, never instead of them); Fable gate + register entry by Ops",
+ "binds": "checkpoints by sha256, the scoring tree by digest, the pinned scripts, the analysis spec and contrasts; no metric value was opened to build it (VALIDATION values of these runs were seen, DL 539)",
+ "bootstrap_seed": 20261004,
+ "code": {
+  "pinned_files": {
+   "exp_pb100/pb100_patch.py": "ca34486911c25bad99b4229aa2d6aaed82edb1f4603d9b442876c3c2a26cf18b",
+   "exp_pb100/reeval_pb100.py": "ef57f96ca0110667471a667970a1ab2543a8e40f0e1bf5cd257694515a48838b",
+   "tools/g2_run.py": "3893a49a71be49f5baf338b93195e2e885eecb9326705902913bd4d5e1abb44d",
+   "tools/p2_report.py": "934cc8a0e93f3edd44e5c950f89996149a1f2b26dd7737f9c78b383b7dff215e",
+   "tools/retention_report.py": "9a3b2c2a918ef2baacc5299426941f1eb94c366f5bb6aa7c29b4bfdbca0afe58",
+   "tools/test_exposure_register.py": "7d59e828f0d8514541ac9cd68393053e064f9c70df3e3655e9c4f0a34eae2622",
+   "x_rees46/reeval_x.py": "4d46e386cc6c725dc2ffaa56e416527e11ccb481ec0dadcaf142ccaa4c8e34c7",
+   "x_rees46/x_analysis.py": "509a9f9715ab124ca751f3ed5ebc6ad2240a9dd014d406f98271581c7c37b151"
+  },
+  "scoring_tree": {
+   "aggregate_sha256": "004cb6d4f6943315cec24da78e04657dc5e467a82b67402283464a9e22e00934",
+   "copied_from": "code_ds3r7 (unchanged bytes)",
+   "n_files": 684,
+   "name": "code_x1a",
+   "rule": "sha256(compact sort_keys JSON of {posix relpath: file sha256})"
+  }
+ },
+ "device_optional": [
+  {
+   "base": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_exp_pb100/FA_WARM_PB100K_s2026/ckpt/FL_FA_WARM_SMALL_s2026/best.pt",
+   "base_sha256": "600733ad48e4e3af944135ad292e32abcb612d1274d38552412949450a31c7f0",
+   "device_args": [
+    "--arm",
+    "FT_FA_WARM",
+    "--seed",
+    "2026",
+    "--role",
+    "MAIN_TEST",
+    "--run-dir",
+    "@OUT@",
+    "--n-shards",
+    "64",
+    "--base",
+    "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_exp_pb100/FA_WARM_PB100K_s2026/ckpt/FL_FA_WARM_SMALL_s2026/best.pt",
+    "--base-kind",
+    "fa_warm"
+   ],
+   "key": "FT_FA_WARM_PB100K_s2026",
+   "note": "OPTIONAL: per-user local FT on top of the best PB100 FL model (VALIDATION 0.1513 > FROZEN); about 3.5 h GPU (sitting step 7 MEASURED per FT part)",
+   "out_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/TEST/DEV/FT_FA_WARM_PB100K_MAIN_TEST_s2026",
+   "role": "MAIN_TEST",
+   "rule": "PRACTICAL_BEST",
+   "scorer": "device",
+   "seed": 2026,
+   "x_arm": "FT_FA_WARM_PB100K"
+  }
+ ],
+ "document": "EXP_PB100_TEST_LOCK",
+ "draft": false,
+ "format": "PPSI_V4_X_EXP_TEST_LOCK_1",
+ "label": "POST_HOC_EXPLORATORY",
+ "n_resamples": 1000,
+ "scorer_env": {
+  "PB100_NDEC": 1980666,
+  "PB100_SHA": "045e0836ed3843705c8e0ec500b1450c3f5ef4485a484ab0e8de24472e670362"
+ },
+ "sealed_arms": [
+  {
+   "arm_label": "PRE",
+   "checkpoint_id": "PRETRAIN_FOR_FL_SMALL_SASREC_D64_B2_s2026:endpoint_6.0",
+   "checkpoint_sha256": "22135cdf132eae1d405dd802acf1a756c9aba122e02c9a01f53876894bd58383",
+   "ckpt": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_exp_pb100/PRETRAIN_FOR_FL_SMALL_SASREC_D64_B2_PB100K_s2026/sealed/checkpoints/endpoint_6.0.pt",
+   "ckpt_kind": "central",
+   "key": "PRE100K_s2026_CB",
+   "note": "theta_pre(100k) = its endpoint_6.0 (no selection, as PRE); the same rank file serves the PRACTICAL_BEST pairs (PRE is rule-free in practice; confirmatory PRE PB = CB bytes)",
+   "out_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/TEST/REEVAL/PRE100K_s2026_CB",
+   "recipe_id": "SMALL_SASREC_D64_B2",
+   "role": "MAIN_TEST",
+   "rule": "CONTROLLED_BUDGET",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_exp_pb100/PRETRAIN_FOR_FL_SMALL_SASREC_D64_B2_PB100K_s2026",
+   "scorer": "reeval_pb100",
+   "seed": 2026,
+   "variant": "SASREC_D64_B2",
+   "x_arm": "PRE100K"
+  },
+  {
+   "arm_label": "FA_WARM",
+   "checkpoint_id": "FL_FA_WARM_SMALL_s2026:best",
+   "checkpoint_sha256": "600733ad48e4e3af944135ad292e32abcb612d1274d38552412949450a31c7f0",
+   "ckpt": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_exp_pb100/FA_WARM_PB100K_s2026/ckpt/FL_FA_WARM_SMALL_s2026/best.pt",
+   "ckpt_kind": "fl",
+   "key": "FA_WARM_PB100K_s2026_PB",
+   "out_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/TEST/REEVAL/FA_WARM_PB100K_s2026_PB",
+   "recipe_id": "SMALL_SASREC_D64_B2",
+   "role": "MAIN_TEST",
+   "rule": "PRACTICAL_BEST",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_exp_pb100/FA_WARM_PB100K_s2026",
+   "scorer": "reeval",
+   "seed": 2026,
+   "variant": "SASREC_D64_B2",
+   "x_arm": "FA_WARM_PB100K"
+  },
+  {
+   "arm_label": "FA_WARM",
+   "checkpoint_id": "FL_FA_WARM_SMALL_s2026:endpoint_6.0",
+   "checkpoint_sha256": "600733ad48e4e3af944135ad292e32abcb612d1274d38552412949450a31c7f0",
+   "ckpt": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_exp_pb100/FA_WARM_PB100K_s2026/ckpt/FL_FA_WARM_SMALL_s2026/endpoint_6.0.pt",
+   "ckpt_kind": "fl",
+   "key": "FA_WARM_PB100K_s2026_CB",
+   "out_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/TEST/REEVAL/FA_WARM_PB100K_s2026_CB",
+   "recipe_id": "SMALL_SASREC_D64_B2",
+   "role": "MAIN_TEST",
+   "rule": "CONTROLLED_BUDGET",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_exp_pb100/FA_WARM_PB100K_s2026",
+   "scorer": "reeval",
+   "seed": 2026,
+   "variant": "SASREC_D64_B2",
+   "x_arm": "FA_WARM_PB100K"
+  },
+  {
+   "arm_label": "FA_WARM_FROZEN",
+   "checkpoint_id": "FL_FA_WARM_FROZEN_SMALL_s2026:best",
+   "checkpoint_sha256": "26d074770de325a1e2b03993373f54d2c1e5a2b531a76a1d5ddeefd6dc6aa0a1",
+   "ckpt": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_exp_pb100/FA_WARM_FROZEN_PB100K_s2026/ckpt/FL_FA_WARM_FROZEN_SMALL_s2026/best.pt",
+   "ckpt_kind": "fl",
+   "key": "FA_WARM_FROZEN_PB100K_s2026_PB",
+   "out_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/TEST/REEVAL/FA_WARM_FROZEN_PB100K_s2026_PB",
+   "recipe_id": "SMALL_SASREC_D64_B2",
+   "role": "MAIN_TEST",
+   "rule": "PRACTICAL_BEST",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_exp_pb100/FA_WARM_FROZEN_PB100K_s2026",
+   "scorer": "reeval",
+   "seed": 2026,
+   "variant": "SASREC_D64_B2",
+   "x_arm": "FA_WARM_FROZEN_PB100K"
+  },
+  {
+   "arm_label": "FA_WARM_FROZEN",
+   "checkpoint_id": "FL_FA_WARM_FROZEN_SMALL_s2026:endpoint_6.0",
+   "checkpoint_sha256": "9ad0cef9c9ec5d979180a185d8277df9c47b871eac598bc3fa552b6290a4f0bf",
+   "ckpt": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_exp_pb100/FA_WARM_FROZEN_PB100K_s2026/ckpt/FL_FA_WARM_FROZEN_SMALL_s2026/endpoint_6.0.pt",
+   "ckpt_kind": "fl",
+   "key": "FA_WARM_FROZEN_PB100K_s2026_CB",
+   "out_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/TEST/REEVAL/FA_WARM_FROZEN_PB100K_s2026_CB",
+   "recipe_id": "SMALL_SASREC_D64_B2",
+   "role": "MAIN_TEST",
+   "rule": "CONTROLLED_BUDGET",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_exp_pb100/FA_WARM_FROZEN_PB100K_s2026",
+   "scorer": "reeval",
+   "seed": 2026,
+   "variant": "SASREC_D64_B2",
+   "x_arm": "FA_WARM_FROZEN_PB100K"
+  }
+ ],
+ "self_sha256": "923357424a9c7bc4ddae9cf336fec970b17614bb545e25120ea00880bcbd8c10",
+ "study": "PPSI V4 X-REES46",
+ "written_utc": "2026-10-07T11:10:18Z"
+}

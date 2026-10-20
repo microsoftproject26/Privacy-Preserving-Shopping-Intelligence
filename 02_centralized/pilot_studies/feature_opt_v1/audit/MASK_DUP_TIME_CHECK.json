@@ -1,0 +1,200 @@
+{
+ "label": "SAMPLE_NOT_POPULATION",
+ "buckets": [
+  0,
+  17,
+  42
+ ],
+ "per_split": {
+  "TRAIN": {
+   "pairs": {
+    "category_code_missing==main_category_missing": {
+     "n": 2460225,
+     "n_differ": 0
+    },
+    "has_history==has_history_mask": {
+     "n": 2460225,
+     "n_differ": 0
+    },
+    "has_history_mask==prev_user_event_available": {
+     "n": 2460225,
+     "n_differ": 0
+    },
+    "has_history_mask==recent_price_supported": {
+     "n": 2460225,
+     "n_differ": 204
+    },
+    "price_zero==price_missing": {
+     "n": 2460225,
+     "n_differ": 0
+    }
+   },
+   "times": {
+    "log1p_time_since_prev_user_event_s": {
+     "n_available": 2263793,
+     "n_unavailable": 196432,
+     "available_mean": 5.382222656240081,
+     "available_std": 3.180903920197989,
+     "available_q01_q50_q99": [
+      1.7917594909667969,
+      4.219507694244385,
+      14.253643951416016
+     ],
+     "unavailable_raw_distinct": [
+      0.0
+     ],
+     "all_rows_mean": 4.952489294124603,
+     "all_rows_std": 3.3820903512784684,
+     "fitted_spec": {
+      "clip_lo": 0.0,
+      "clip_hi": 14.877890586853027,
+      "mean": 4.950253279346413,
+      "std": 3.3790111405204004,
+      "constant": false
+     }
+    },
+    "log1p_time_since_prev_session_last_event_s": {
+     "n_available": 388183,
+     "n_unavailable": 2072042,
+     "available_mean": 11.819756803333894,
+     "available_std": 1.6625397949941583,
+     "available_q01_q50_q99": [
+      8.326032638549805,
+      11.984085083007812,
+      14.804590282440186
+     ],
+     "unavailable_raw_distinct": [
+      0.0
+     ],
+     "all_rows_mean": 1.8649630237838248,
+     "all_rows_std": 4.359064359197021,
+     "fitted_spec": {
+      "clip_lo": 0.0,
+      "clip_hi": 14.877890586853027,
+      "mean": 1.8615436239173029,
+      "std": 4.354925521013689,
+      "constant": false
+     }
+    },
+    "log1p_prev_raw_view_gap_s": {
+     "n_available": 2263793,
+     "n_unavailable": 196432,
+     "available_mean": 5.177290499063149,
+     "available_std": 3.263028649736014,
+     "available_q01_q50_q99": [
+      1.6094379425048828,
+      3.9512436389923096,
+      14.253643951416016
+     ],
+     "unavailable_raw_distinct": [
+      0.0
+     ],
+     "all_rows_mean": 4.7639195564412455,
+     "all_rows_std": 3.4302338023801573,
+     "fitted_spec": {
+      "clip_lo": 0.6931471824645996,
+      "clip_hi": 14.891372680664062,
+      "mean": 5.1736099894168595,
+      "std": 3.260352895552582,
+      "constant": false
+     }
+    }
+   }
+  },
+  "VALIDATION_SELECT": {
+   "pairs": {
+    "category_code_missing==main_category_missing": {
+     "n": 506612,
+     "n_differ": 0
+    },
+    "has_history==has_history_mask": {
+     "n": 506612,
+     "n_differ": 0
+    },
+    "has_history_mask==prev_user_event_available": {
+     "n": 506612,
+     "n_differ": 0
+    },
+    "has_history_mask==recent_price_supported": {
+     "n": 506612,
+     "n_differ": 72
+    },
+    "price_zero==price_missing": {
+     "n": 506612,
+     "n_differ": 0
+    }
+   },
+   "times": {
+    "log1p_time_since_prev_user_event_s": {
+     "n_available": 490041,
+     "n_unavailable": 16571,
+     "available_mean": 5.3642347370941765,
+     "available_std": 3.0312872954905496,
+     "available_q01_q50_q99": [
+      1.945910096168518,
+      4.276666164398193,
+      14.459070968627929
+     ],
+     "unavailable_raw_distinct": [
+      0.0
+     ],
+     "all_rows_mean": 5.188773567938318,
+     "all_rows_std": 3.1302673259524805,
+     "fitted_spec": {
+      "clip_lo": 0.0,
+      "clip_hi": 14.877890586853027,
+      "mean": 4.950253279346413,
+      "std": 3.3790111405204004,
+      "constant": false
+     }
+    },
+    "log1p_time_since_prev_session_last_event_s": {
+     "n_available": 81479,
+     "n_unavailable": 425133,
+     "available_mean": 11.496900122032745,
+     "available_std": 1.7778119852584524,
+     "available_q01_q50_q99": [
+      8.285008430480957,
+      11.370278358459473,
+      15.054323043823242
+     ],
+     "unavailable_raw_distinct": [
+      0.0
+     ],
+     "all_rows_mean": 1.8490598822039472,
+     "all_rows_std": 4.283428511668449,
+     "fitted_spec": {
+      "clip_lo": 0.0,
+      "clip_hi": 14.877890586853027,
+      "mean": 1.8615436239173029,
+      "std": 4.354925521013689,
+      "constant": false
+     }
+    },
+    "log1p_prev_raw_view_gap_s": {
+     "n_available": 490041,
+     "n_unavailable": 16571,
+     "available_mean": 5.146337884719476,
+     "available_std": 3.117318925295303,
+     "available_q01_q50_q99": [
+      1.7917594909667969,
+      3.9889841079711914,
+      14.459070968627929
+     ],
+     "unavailable_raw_distinct": [
+      0.0
+     ],
+     "all_rows_mean": 4.9780040018116765,
+     "all_rows_std": 3.1996537536663787,
+     "fitted_spec": {
+      "clip_lo": 0.6931471824645996,
+      "clip_hi": 14.891372680664062,
+      "mean": 5.1736099894168595,
+      "std": 3.260352895552582,
+      "constant": false
+     }
+    }
+   }
+  }
+ }
+}

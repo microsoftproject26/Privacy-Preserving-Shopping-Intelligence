@@ -1,0 +1,144 @@
+{
+ "config_sha256": "927a3ce491920a568aba45efd4b832ac16905be0bb8149096d2ad6196add54f1",
+ "controlled_budget": {
+  "efe": 6.0,
+  "mark": 6.0,
+  "value": 0.12977145193634299
+ },
+ "efe": 6.0,
+ "endpoint_checkpoint": null,
+ "endpoint_stats_reproduce_trainer_value": true,
+ "family": "SASREC",
+ "history_policy": "USER_HISTORY_L50",
+ "importance": null,
+ "importance_baseline_equals_controlled_budget": null,
+ "init_sha256": "b5ad972627bbd9a13a98d7df8e6daa2ed6db5a66d64385ee38c74f6f8a1bc437",
+ "manifests": {
+  "eval": "FS_VALIDATION_5_100_32768",
+  "eval_fingerprint": "7931f7036e775bf89c619f650b560a7098cb63793650e576b6bf2d23a47c039c",
+  "train": "FS_TRAIN_5_100_32768",
+  "train_fingerprint": "ee2d7d61fce1b60e8d80d665c58f6985fb52da3ed4fa9c50aabc9a17bdc7f83f"
+ },
+ "practical_best": {
+  "efe": 3.0,
+  "mark": 3.0,
+  "value": 0.1361234899192605
+ },
+ "result_file": "FS_RESULT.json",
+ "result_sha256": "4481624d729a3a2a51fa54856f69e78206fd53fcc4022c49bb546e090fb3f8b2",
+ "retention": [
+  {
+   "kind": "best",
+   "sha256": "b152a22135c72f9d64e500087fdb48a5becd28e82560ab3edcd7c7b82028a820",
+   "stage": "after_training",
+   "utc": "2026-09-27T00:25:58Z"
+  },
+  {
+   "kind": "endpoint_6.0",
+   "sha256": "499738977cdd08465df72ea682974e40feff50e70f07103534f978755d85f8af",
+   "stage": "final",
+   "utc": "2026-09-27T00:25:59Z"
+  }
+ ],
+ "retention_log_sha256": "4247b1efb1f2339956636baf9a34c896ee619c789d0f80a5e19f7ac91e1a2cf2",
+ "run_id": "FS__L0S_CLEAN_V2_SESSION__SASREC_s2027",
+ "run_label": "FEATURE_SEARCH_SCREEN",
+ "schema": {
+  "base": "FEATURE_SCHEMA_CLEAN_V2 2.1.0 self 55a244e1608bcdcdf6f1728595f534871b52154faebf2977e11ac1fb487052f9",
+  "file_sha256": "d24f20a08d48f8bb0184adab2a8034d9d183f319750f41d3ff52cb707eab5b19",
+  "n_information_channels": 58,
+  "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/contracts/derived_schemas/L0S_CLEAN_V2_SESSION.json",
+  "projection": {
+   "event_blocks_on": true,
+   "ext_columns": {
+    "user_context": [
+     "current_matches_session_mode",
+     "session_mode_share"
+    ],
+    "user_context_masks": [
+     "current_matches_session_mode_available"
+    ]
+   },
+   "extensions_dropped": [],
+   "index": {
+    "event_numeric_features": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14
+    ],
+    "event_quality_flags": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14
+    ],
+    "user_context": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11
+    ],
+    "user_context_masks": [
+     0,
+     1,
+     2,
+     3
+    ]
+   },
+   "is_identity": false,
+   "tokens_dropped": [],
+   "user_blocks_on": true
+  },
+  "schema_id": "L0S_CLEAN_V2_SESSION",
+  "self_sha256": "554c079a491bb5664cde017eadef21772342fccb70d54cbf78790b23dac6ce82",
+  "widths": {
+   "flags_dim": 15,
+   "numeric_dim": 15,
+   "tokens": 8,
+   "user_context_dim": 14,
+   "user_mask_dim": 5
+  }
+ },
+ "seed": 2027,
+ "shared_numel": 83097548,
+ "statistic": "CONTROLLED_BUDGET",
+ "still_improving": false,
+ "train_wall_s": 2427.5,
+ "trainer_rows_labelled_by_trainer": true,
+ "updates": 15132,
+ "userstats_file": "FS_USERSTATS.npz",
+ "userstats_sha256": "b2648e4590912c8f7603e0d520314771373931d87e1b0c5052622cf39059efb7",
+ "utc_end": "2026-09-27T00:25:59Z",
+ "weight_files_left": []
+}

@@ -1,0 +1,159 @@
+{
+ "task": "DATA-07",
+ "utc_start": "2026-09-29T12:32:27Z",
+ "host": "DESKTOP-KS1B8LQ",
+ "platform": "Windows-11-10.0.26200-SP0",
+ "python": "3.13.11",
+ "cpu_only": true,
+ "basetemp": "F:\\Queens University\\Microsoft Project\\eda\\.local_ai\\_pytest_tmp\\FABLE-DEEP3\\trunc",
+ "pytest_exit_code": 0,
+ "pytest_summary": "42 passed, 11 xfailed in 60.20s (0:01:00)",
+ "pytest_wall_s": 62.8,
+ "counts": {
+  "passed": 42,
+  "xfailed": 11
+ },
+ "negative_controls": {
+  "test_e11_rules::test_nc_deletion_invariance_extra_prior_event": "FAILED_AS_INTENDED",
+  "test_e11_rules::test_nc_leaking_builder_equals_e11_4": "FAILED_AS_INTENDED",
+  "test_e11_rules::test_nc_rule_coverage_unsupported_future": "FAILED_AS_INTENDED",
+  "test_studies::test_nc_events_to_x_interpolates": "FAILED_AS_INTENDED",
+  "test_studies::test_nc_t41_receipt_future_event_builder": "FAILED_AS_INTENDED",
+  "test_t40_support_panel::test_nc_support_includes_transition_into_query": "FAILED_AS_INTENDED",
+  "test_t40_support_panel::test_nc_shifted_panel_detected": "FAILED_AS_INTENDED",
+  "test_t40_support_panel::test_nc_later_query_panel_rederived": "FAILED_AS_INTENDED",
+  "test_t41_golden::test_nc_golden_future_event": "FAILED_AS_INTENDED",
+  "test_t41_golden::test_nc_golden_no_carry_in": "FAILED_AS_INTENDED",
+  "test_t41_golden::test_nc_golden_merged_stream": "FAILED_AS_INTENDED"
+ },
+ "negative_controls_all_failed_as_intended": true,
+ "nc_runxfail": {
+  "exit_code_expected_nonzero": 1,
+  "counts": {
+   "failure": 11
+  },
+  "all_fail_with_assertion": true,
+  "same_set_as_suite": true,
+  "per_control": {
+   "test_e11_rules::test_nc_deletion_invariance_extra_prior_event": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: {'n_checked': 40, 'n_changed': 40, 'changed_decisions': [100048834702, 100053000681, 100048285789, 100052229203, 100047471153, 100037585546, ...]}"
+   },
+   "test_e11_rules::test_nc_leaking_builder_equals_e11_4": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: assert not True"
+   },
+   "test_e11_rules::test_nc_rule_coverage_unsupported_future": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: assert False"
+   },
+   "test_studies::test_nc_events_to_x_interpolates": {
+    "status": "failure",
+    "exception_types": [],
+    "assertion": "assert 10 not in (5, 10)"
+   },
+   "test_studies::test_nc_t41_receipt_future_event_builder": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: assert 'FAIL' == 'PASS'"
+   },
+   "test_t40_support_panel::test_nc_support_includes_transition_into_query": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: assert 1 == 0"
+   },
+   "test_t40_support_panel::test_nc_shifted_panel_detected": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: assert False"
+   },
+   "test_t40_support_panel::test_nc_later_query_panel_rederived": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: assert False"
+   },
+   "test_t41_golden::test_nc_golden_future_event": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: T41 golden replay FAILED: diff rows {'attention_mask': 395, 'brand_tokens': 600, 'category_tokens': 582, 'current_matches_session_mode': 48, 'current_matches_session_mode_available': 4"
+   },
+   "test_t41_golden::test_nc_golden_no_carry_in": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: T41 golden replay FAILED: diff rows {'user_context': 17}, missing [], extra [], non-array []"
+   },
+   "test_t41_golden::test_nc_golden_merged_stream": {
+    "status": "failure",
+    "exception_types": [
+     "AssertionError"
+    ],
+    "assertion": "AssertionError: T41 golden replay FAILED: diff rows {'user_context': 436, 'user_context_masks': 12}, missing [], extra [], non-array []"
+   }
+  }
+ },
+ "integrity_before": {
+  "verify_snapshot_exit_code": 0,
+  "stderr_tail": "",
+  "pycache_dirs_under_snap_v1": [],
+  "pycache_dirs_in_owned": []
+ },
+ "integrity_after": {
+  "verify_snapshot_exit_code": 0,
+  "stderr_tail": "",
+  "pycache_dirs_under_snap_v1": [],
+  "pycache_dirs_in_owned": []
+ },
+ "locked_changed_files": [],
+ "locked_unchanged": true,
+ "locked_n_files": 117,
+ "locked_sha256": "8eb3fefeb53fe723fbd1ae469685c4fbfd0fe772363e768e946b26b9bdc2dfb8",
+ "snapshot_unchanged": true,
+ "owned_sha256": {
+  "v4trunc/__init__.py": "c7941db7b6ef214362e7747737092f3851ec83f4b6005891b0ce158f1e8cbc34",
+  "v4trunc/builder.py": "f73321fe3fc3a40f9211c127878ebc8026d2a02d78d0fb6388e65a2a9320dcb5",
+  "v4trunc/events.py": "1a0fc3d9d88921d236ee2e4f00a36039ed70249ecd014f127cf6c39ba265f6e6",
+  "v4trunc/golden.py": "019407cedeefedeaa6a0caf131f1d95d82687e81aba4aec73fca4a7f55a273dd",
+  "v4trunc/panel.py": "8fd8820e960a64559349c8fd82380d385c6986b887906ed34f1cc4d4ef5cc233",
+  "v4trunc/provider.py": "54ee6232a898cd807953cb9f7435767a7fda8401a092da63af62950eadd3af51",
+  "v4trunc/recompute.py": "6f8864af3c16726e62ee0211fe6a1575992a79ec6cf665325e23a30d7d448e21",
+  "v4trunc/rules.py": "31bc138efc1d3aaf79d0c79811675eb18b3bcbd70af43b44e53c93b381abd63c",
+  "tests_trunc/conftest.py": "5c7dace0002331185ed4c2da843077779d8a107ec066e7f7dcfc24389f60d258",
+  "tests_trunc/run_all.py": "92c5e61b097a34673f047e9bcfa0f4c41544b69900bea645f0dbd74cde1cc69b",
+  "tests_trunc/test_e11_rules.py": "7110ba8fb55baa7b0124283628d873bc95b495f4fabfe351641aefbcc91b8fbb",
+  "tests_trunc/test_studies.py": "9cdb3ea68ab4851ad5ab5b49a08c3f951442e4375cb7040ea5d526efc98c308a",
+  "tests_trunc/test_t40_support_panel.py": "5315252134b463d50ea23a36de249a5453a80fd870be267b0e89b0a5148476ba",
+  "tests_trunc/test_t41_golden.py": "2cf290ba9c2f366cc89967062c2620419bf011146a3246767dc766738557ef6b",
+  "tests_trunc/trunckit.py": "85eacba906044cbc439e82caf9f8b2e7b85be896477adeb8aeded2465b10ebf4",
+  "v4int/launch_trunc.py": "1f6304df1ba79ca9ee447a369e09e7556b50e26989906beb11db23b3c6cf4767"
+ },
+ "torch": "2.9.1+cpu",
+ "utc_end": "2026-09-29T12:34:04Z",
+ "receipt_sha256": {
+  "pytest_output.txt": "42e955cc4a4975d1d61881411fcf3fac2e975fde78d53051e60e604623319357",
+  "junit.xml": "6c6e0987156a8044e3778bc5ebe8bdcef9c2e6518b22d070add1eeb48525ec61",
+  "nc_runxfail_output.txt": "6bfafe4079cd4ab0b8a342e967a8cd689d42c3ee5ec98fa70ab400bb198686b8",
+  "nc_runxfail_junit.xml": "13d42d2edd03df7ee83760bd6562ac9e1cf26a6160f99a30eca17264f228911d"
+ },
+ "overall_exit_code": 0
+}

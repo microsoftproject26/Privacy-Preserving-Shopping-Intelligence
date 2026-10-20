@@ -1,0 +1,594 @@
+{
+ "arm": "FA_WARM",
+ "bytes": {
+  "ledger": [
+   287896,
+   334783894144,
+   334785045728,
+   0
+  ]
+ },
+ "checkpoints": {
+  "CONTROLLED_BUDGET": {
+   "file": "ckpt/BM_ml_1m_FA_WARM__B24_L50_D0.1__s0.001_c0.3_p1_t1e-06__preB96_L50_D0.2-best_s2026/endpoint_24.0.pt",
+   "mark": 24.0,
+   "sha256": "9949befee9a3b2f3ebe2bdbd74dfe4f1975054aa91ce80720cab716c1158fb7f"
+  },
+  "PRACTICAL_BEST": {
+   "file": "ckpt/BM_ml_1m_FA_WARM__B24_L50_D0.1__s0.001_c0.3_p1_t1e-06__preB96_L50_D0.2-best_s2026/best.pt",
+   "mark": 24.0,
+   "sha256": "9949befee9a3b2f3ebe2bdbd74dfe4f1975054aa91ce80720cab716c1158fb7f"
+  }
+ },
+ "early_stopped_at": null,
+ "evals": [
+  [
+   4,
+   208,
+   0.09436017659516367,
+   true,
+   "MAIN"
+  ],
+  [
+   8,
+   417,
+   0.09673112907573123,
+   true,
+   "MAIN"
+  ],
+  [
+   12,
+   627,
+   0.0951500742852986,
+   false,
+   "MAIN"
+  ],
+  [
+   16,
+   834,
+   0.09916298686276888,
+   true,
+   "MAIN"
+  ],
+  [
+   20,
+   1046,
+   0.1000297442870777,
+   true,
+   "MAIN"
+  ],
+  [
+   24,
+   1254,
+   0.09953410558917025,
+   false,
+   "MAIN"
+  ],
+  [
+   28,
+   1463,
+   0.10316369154974207,
+   true,
+   "MAIN"
+  ],
+  [
+   32,
+   1673,
+   0.10162281309915945,
+   false,
+   "MAIN"
+  ],
+  [
+   36,
+   1884,
+   0.1034602554223337,
+   true,
+   "MAIN"
+  ],
+  [
+   40,
+   2095,
+   0.1047731895434156,
+   true,
+   "MAIN"
+  ],
+  [
+   44,
+   2306,
+   0.10365655044952979,
+   false,
+   "MAIN"
+  ],
+  [
+   48,
+   2516,
+   0.10502642765145008,
+   true,
+   "MAIN"
+  ]
+ ],
+ "exploratory": "POST_HOC_X",
+ "frozen": null,
+ "init_from": {
+  "checkpoint_sha256": "6d5581a7a19c8445e807b5050f96303a6d884d4b934efd62142059c5054f5d8a",
+  "dataset": "ml_1m",
+  "fl_init_kind": "PRACTICAL_BEST@16.0_B96",
+  "kind": "PRE",
+  "pre_budget_efe": 96,
+  "pre_ckpt_rule": "PRACTICAL_BEST",
+  "pre_device_class": "NVIDIA_A40-FP32-DET",
+  "pre_dropout": [
+   0.2
+  ],
+  "pre_mark": 16.0,
+  "pre_run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_gpu/ml_1m/PRE__B96_L50_D0.2_s2026",
+  "run_id": "BM_ml_1m_PRE__B96_L50_D0.2_s2026",
+  "seed": 2026,
+  "state_digest": "996dc42a3688db99d2d91c4e4a35f60487b5f47d14327c052bd1c35e4e6432a6"
+ },
+ "kind": "fl",
+ "run_id": "BM_ml_1m_FA_WARM__B24_L50_D0.1__s0.001_c0.3_p1_t1e-06__preB96_L50_D0.2-best_s2026",
+ "spec": {
+  "arm": "FA_WARM",
+  "budget_efe": 24,
+  "cfg": {
+   "dp": null,
+   "dropout_p": 0.1,
+   "endpoint_efe": 24.0,
+   "endpoint_rounds": 2517,
+   "eval_every_half_efe": 4,
+   "exposure_point": "end",
+   "lr_peak_local": 0.3,
+   "lr_shape": "fl_const",
+   "max_attempts": 2,
+   "method": "FA",
+   "mu": 0.0,
+   "n_shards": 2,
+   "pf": null,
+   "seed": 2026,
+   "server_opt": {
+    "beta1": 0.9,
+    "beta2": 0.99,
+    "lr": 0.001,
+    "name": "fedadam",
+    "tau": 1e-06,
+    "v_init": "tau_squared"
+   },
+   "solver": {
+    "batch_size": 16,
+    "clip": 1.0,
+    "fused": null,
+    "lr": 0.3,
+    "optimizer": "sgd_m",
+    "passes": 1,
+    "weight_decay": 0.0
+   }
+  },
+  "client_lr": 0.1,
+  "client_opt": "sgd_m",
+  "data": {
+   "dataset": "ml_1m",
+   "fingerprint": "f4fd6f5b5095a0b25dd3b53cd20c8cd496d91c2eb6a3e0c16cba2e72a066aebd",
+   "n_clients": 6040,
+   "n_decisions": 982089
+  },
+  "dropout": [
+   0.1
+  ],
+  "early_stop_marks": null,
+  "effective": {
+   "client_lr": 0.3,
+   "endpoint_efe": 24.0,
+   "eval_every_half_efe": 4,
+   "local_passes": 1,
+   "rounds": 2517,
+   "server_lr": 0.001,
+   "server_tau": 1e-06
+  },
+  "exploratory": "POST_HOC_X",
+  "exposure_budget": {
+   "dropout_p": 0.1,
+   "endpoint_efe": 24.0,
+   "formula": "rounds = ceil(10 E N_clients / (576 P)) (launch_fl.fa_rounds at E EFE; = ceil(60 N / (576 P)) at E = 6)",
+   "group": 64,
+   "n_clients": 6040,
+   "passes": 1,
+   "rounds": 2517
+  },
+  "init_from": {
+   "checkpoint_sha256": "6d5581a7a19c8445e807b5050f96303a6d884d4b934efd62142059c5054f5d8a",
+   "dataset": "ml_1m",
+   "fl_init_kind": "PRACTICAL_BEST@16.0_B96",
+   "kind": "PRE",
+   "pre_budget_efe": 96,
+   "pre_ckpt_rule": "PRACTICAL_BEST",
+   "pre_device_class": "NVIDIA_A40-FP32-DET",
+   "pre_dropout": [
+    0.2
+   ],
+   "pre_mark": 16.0,
+   "pre_run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_bench_gpu/ml_1m/PRE__B96_L50_D0.2_s2026",
+   "run_id": "BM_ml_1m_PRE__B96_L50_D0.2_s2026",
+   "seed": 2026,
+   "state_digest": "996dc42a3688db99d2d91c4e4a35f60487b5f47d14327c052bd1c35e4e6432a6"
+  },
+  "knobs": {
+   "batch": 16,
+   "clip": 1.0,
+   "dropout_p": 0.1,
+   "endpoint_efe": 6.0,
+   "group": 64,
+   "m": 1024,
+   "max_attempts": 2,
+   "mu": 0.01,
+   "n_shards": 2,
+   "passes": 2,
+   "pf_clip": 1.0,
+   "pf_lam": 0.0001,
+   "rounds": 6827,
+   "rounds_1024": 384,
+   "s_cal_rounds": 20,
+   "s_cal_seed": 2026,
+   "sampling": "sweep",
+   "weight_decay": 1e-05
+  },
+  "local_passes": 1,
+  "lr_mult": 1.0,
+  "lr_peak_base": 0.0007114121116984968,
+  "lr_shape": "fl_const",
+  "max_len": 50,
+  "max_rounds": 2517,
+  "overrides": {
+   "budget_efe": 24,
+   "client_lr": 0.3,
+   "local_passes": 1,
+   "server_lr": 0.001,
+   "server_tau": 1e-06
+  },
+  "plan": {
+   "group_size": 64,
+   "sampling": "sweep"
+  },
+  "provenance": {
+   "ft_cell": "FT_C_f0.3_P4",
+   "pins": {
+    "device/SELECTION_FT_C.json": "e47965d2f4486fc2c30140a8ee14e79686a842decb091b3dff1de5646716c10c",
+    "fl/FL_TUNING_SELECTION.json": "9bca186e5025f5caa9e762f3c425fb3151923b79e60f01e6ecb063aac9c715ec",
+    "fl/FL_WARM_SELECTION_S7.json": "d67a0a851665495b092abbba4456f26a3423d6ef21665f5a0e2b65e2d78dc000",
+    "fl/FL_WARM_SELECTION_S8.json": "8b79d3052799dfa0ba208dce5db138da88aaa7024ba6511a374c59ce8c55a98a"
+   },
+   "tuning_winner_label": "fedadam|eta=0.01|m=1|shape=fl_const|client=sgd_m|clr=0.1|passes=1",
+   "warm_winners": {
+    "FA_WARM": "f=0.25|sf=0.1",
+    "FA_WARM_FROZEN": "f=1|sf=0.1"
+   }
+  },
+  "role": "MAIN",
+  "server_lr": 0.01,
+  "server_opt": "fedadam",
+  "upload_codec": null,
+  "variant": "SASREC_D64_B2",
+  "warm_lr_factor": 0.25,
+  "warm_server_lr_factor": 0.1
+ },
+ "spec_sha256": "c2a70b6391dff85de436fb0fc619bc6d7ce8aaedcc7bcb95d01cf7420d9abc82",
+ "status": "DONE_MAIN",
+ "summary": {
+  "counters": {
+   "coverage_by_sweep": {
+    "0": {
+     "clients": 5431,
+     "fraction": 0.8991721854304636
+    },
+    "1": {
+     "clients": 5472,
+     "fraction": 0.9059602649006623
+    },
+    "10": {
+     "clients": 5423,
+     "fraction": 0.8978476821192053
+    },
+    "11": {
+     "clients": 5442,
+     "fraction": 0.9009933774834437
+    },
+    "12": {
+     "clients": 5485,
+     "fraction": 0.9081125827814569
+    },
+    "13": {
+     "clients": 5430,
+     "fraction": 0.8990066225165563
+    },
+    "14": {
+     "clients": 5442,
+     "fraction": 0.9009933774834437
+    },
+    "15": {
+     "clients": 5411,
+     "fraction": 0.8958609271523179
+    },
+    "16": {
+     "clients": 5449,
+     "fraction": 0.9021523178807948
+    },
+    "17": {
+     "clients": 5429,
+     "fraction": 0.898841059602649
+    },
+    "18": {
+     "clients": 5411,
+     "fraction": 0.8958609271523179
+    },
+    "19": {
+     "clients": 5428,
+     "fraction": 0.8986754966887417
+    },
+    "2": {
+     "clients": 5478,
+     "fraction": 0.9069536423841059
+    },
+    "20": {
+     "clients": 5427,
+     "fraction": 0.8985099337748345
+    },
+    "21": {
+     "clients": 5430,
+     "fraction": 0.8990066225165563
+    },
+    "22": {
+     "clients": 5415,
+     "fraction": 0.8965231788079471
+    },
+    "23": {
+     "clients": 5444,
+     "fraction": 0.9013245033112582
+    },
+    "24": {
+     "clients": 5394,
+     "fraction": 0.893046357615894
+    },
+    "25": {
+     "clients": 5385,
+     "fraction": 0.8915562913907285
+    },
+    "26": {
+     "clients": 2712,
+     "fraction": 0.44900662251655626
+    },
+    "3": {
+     "clients": 5440,
+     "fraction": 0.9006622516556292
+    },
+    "4": {
+     "clients": 5437,
+     "fraction": 0.9001655629139073
+    },
+    "5": {
+     "clients": 5427,
+     "fraction": 0.8985099337748345
+    },
+    "6": {
+     "clients": 5431,
+     "fraction": 0.8991721854304636
+    },
+    "7": {
+     "clients": 5449,
+     "fraction": 0.9021523178807948
+    },
+    "8": {
+     "clients": 5451,
+     "fraction": 0.9024834437086092
+    },
+    "9": {
+     "clients": 5375,
+     "fraction": 0.8899006622516556
+    }
+   },
+   "efe": 23.835869254212195,
+   "exposures": 23408945,
+   "max_visits": 27,
+   "min_visits": 17,
+   "noop_visits": 0,
+   "retries": 0,
+   "rounds": 2517,
+   "steps": 1534478,
+   "steps_hist": {
+    "10": 5296,
+    "100": 25,
+    "109": 21,
+    "11": 3932,
+    "116": 23,
+    "12": 2886,
+    "13": 3542,
+    "14": 2761,
+    "145": 25,
+    "15": 2441,
+    "16": 2071,
+    "17": 1890,
+    "18": 1968,
+    "19": 2221,
+    "2": 25678,
+    "20": 1799,
+    "21": 1424,
+    "22": 1135,
+    "23": 1064,
+    "24": 1044,
+    "25": 1395,
+    "26": 1031,
+    "27": 862,
+    "28": 702,
+    "29": 661,
+    "3": 17968,
+    "30": 617,
+    "31": 623,
+    "32": 843,
+    "33": 685,
+    "34": 474,
+    "35": 588,
+    "36": 232,
+    "37": 412,
+    "38": 387,
+    "39": 412,
+    "4": 12438,
+    "40": 381,
+    "41": 163,
+    "42": 279,
+    "43": 313,
+    "44": 251,
+    "45": 242,
+    "46": 347,
+    "47": 190,
+    "48": 262,
+    "49": 162,
+    "5": 9967,
+    "50": 214,
+    "51": 96,
+    "52": 268,
+    "53": 259,
+    "54": 191,
+    "55": 221,
+    "56": 125,
+    "57": 116,
+    "58": 70,
+    "59": 113,
+    "6": 7663,
+    "60": 70,
+    "61": 75,
+    "62": 50,
+    "63": 115,
+    "64": 118,
+    "65": 24,
+    "66": 47,
+    "68": 26,
+    "7": 7801,
+    "70": 23,
+    "72": 48,
+    "73": 49,
+    "74": 24,
+    "76": 72,
+    "77": 73,
+    "78": 47,
+    "79": 50,
+    "8": 6647,
+    "80": 47,
+    "81": 22,
+    "82": 23,
+    "83": 26,
+    "84": 23,
+    "9": 4932,
+    "95": 47
+   },
+   "visits": 143948,
+   "wasted_steps": 0
+  },
+  "lr_table_digest": "d3edaa686d0d8d8eff64cca53cfbe1dd3afe61ef52cb792fb273cf0fad5cf814",
+  "rounds": 2517
+ },
+ "timing": {
+  "mean_round_s": 13.113392865336339,
+  "median_round_s": 12.975546259433031,
+  "n_clients": 6040,
+  "n_decisions": 982089,
+  "rounds_full_run": 2517,
+  "rounds_this_leg": 2517,
+  "wall_s_this_leg": 33006.98
+ },
+ "utc": "2026-10-08T04:41:56Z",
+ "validation": {
+  "CONTROLLED_BUDGET": {
+   "ALL": {
+    "hr@10": 0.21281881417687976,
+    "hr@20": 0.32477641603179863,
+    "mrr@20": 0.08038610921827587,
+    "n_unreachable": 0,
+    "n_users": 6038,
+    "ndcg@10": 0.10502642765145008,
+    "ndcg@20": 0.13321554976068728
+   },
+   "BAND": {
+    "hr@10": 0.2141280353200883,
+    "hr@20": 0.336644591611479,
+    "mrr@20": 0.08728835986232496,
+    "n_unreachable": 0,
+    "n_users": 906,
+    "ndcg@10": 0.10992676689357705,
+    "ndcg@20": 0.1410218949622183
+   },
+   "BAND_COVERED_TARGET": {
+    "hr@10": 0.21317186463171864,
+    "hr@20": 0.32531519575315193,
+    "mrr@20": 0.08051946374584434,
+    "n_unreachable": 0,
+    "n_users": 6028,
+    "ndcg@10": 0.10520065861968407,
+    "ndcg@20": 0.13343654436878397
+   },
+   "BAND_UNCOVERED_TARGET": {
+    "hr@10": 0.0,
+    "hr@20": 0.0,
+    "mrr@20": 0.0,
+    "n_unreachable": 0,
+    "n_users": 10,
+    "ndcg@10": 0.0,
+    "ndcg@20": 0.0
+   },
+   "OTHERS": {
+    "hr@10": 0.21258768511301637,
+    "hr@20": 0.32268121590023385,
+    "mrr@20": 0.07916759030099052,
+    "n_unreachable": 0,
+    "n_users": 5132,
+    "ndcg@10": 0.10416132489358432,
+    "ndcg@20": 0.13183742256805536
+   }
+  },
+  "PRACTICAL_BEST": {
+   "ALL": {
+    "hr@10": 0.21281881417687976,
+    "hr@20": 0.32477641603179863,
+    "mrr@20": 0.08038610921827587,
+    "n_unreachable": 0,
+    "n_users": 6038,
+    "ndcg@10": 0.10502642765145008,
+    "ndcg@20": 0.13321554976068728
+   },
+   "BAND": {
+    "hr@10": 0.2141280353200883,
+    "hr@20": 0.336644591611479,
+    "mrr@20": 0.08728835986232496,
+    "n_unreachable": 0,
+    "n_users": 906,
+    "ndcg@10": 0.10992676689357705,
+    "ndcg@20": 0.1410218949622183
+   },
+   "BAND_COVERED_TARGET": {
+    "hr@10": 0.21317186463171864,
+    "hr@20": 0.32531519575315193,
+    "mrr@20": 0.08051946374584434,
+    "n_unreachable": 0,
+    "n_users": 6028,
+    "ndcg@10": 0.10520065861968407,
+    "ndcg@20": 0.13343654436878397
+   },
+   "BAND_UNCOVERED_TARGET": {
+    "hr@10": 0.0,
+    "hr@20": 0.0,
+    "mrr@20": 0.0,
+    "n_unreachable": 0,
+    "n_users": 10,
+    "ndcg@10": 0.0,
+    "ndcg@20": 0.0
+   },
+   "OTHERS": {
+    "hr@10": 0.21258768511301637,
+    "hr@20": 0.32268121590023385,
+    "mrr@20": 0.07916759030099052,
+    "n_unreachable": 0,
+    "n_users": 5132,
+    "ndcg@10": 0.10416132489358432,
+    "ndcg@20": 0.13183742256805536
+   }
+  }
+ }
+}

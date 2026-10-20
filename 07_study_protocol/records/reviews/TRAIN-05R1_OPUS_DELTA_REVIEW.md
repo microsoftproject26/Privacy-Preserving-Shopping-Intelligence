@@ -1,0 +1,7 @@
+# TRAIN-05R1 — Opus delta review (verbatim summary of the reply; same reviewer; received 2026-09-28 ~00:16Z)
+VERDICT: ACCEPT (pending one server check; no further code change).
+Launcher refactor (launch_central.py:473-520, 633-647) verified against the frozen tar: launch-record keys/values/order identical; RunConfig construction untouched → no config-hash effect (Ops dry-run hashes are the final check).
+F1 closed (tuned_recipes.py:102-105 recorded vs recomputed configs; C2 from recomputed sel :212). F2 closed (unseal.py:218-221 C2 XOR no_c2). F3 closed (unseal.py:244-277 shared_numel from RUN_START, both seeds agree, in token; selection.py:262-266 refuses smoke/missing token). F4 OPEN (ops: register C2 / G1B 1R only after both D128 seeds are final). F5 closed (:261-262). F6 closed (:208-209,344,357). F7 closed (unseal.py:210-215). F8 closed (selection.py:312-329; rows carry eval_manifest_id trainer.py:541). F9 closed. F10 closed (test_train03.py:83 whole-number match).
+NEW (verify, not a defect): tuned_recipes.py:102 now requires the production P2_GRU_STAGE2.json configs == the current stage2_select recomputation; if the P2-era server tree wrote configs differing in any field, code_p3b refuses registry v1 (blocks D128 dry runs / D256 launch; cannot change a hash). Ops must load the production registry with code_p3b on the server first.
+Minor: test_train05.py:107-136 edits the shared module-scoped stage fixture in place (restored in finally); copying it first would be more robust.
+D128 runs unaffected.

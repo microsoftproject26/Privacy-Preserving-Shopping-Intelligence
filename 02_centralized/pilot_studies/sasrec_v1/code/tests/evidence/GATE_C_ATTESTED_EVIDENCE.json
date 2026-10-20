@@ -1,0 +1,894 @@
+{
+ "utc_start": "2026-09-23T23:26:53Z",
+ "hashes_start": {
+  "bench_campaign.py": "5346af2c0c44c14789b4fea89f9c8563d1b8e64e2a5f1424375f8c235f37c316",
+  "bench_sizing.py": "43f586c1aa9f0fba24892645cb8f004725f1cb5eecda95114a9ca2e4fa645fb6",
+  "ckpt_io.py": "51a9303dcf6fc438be2cf85c9caa72080109b0dfa3f978ee6038fa748b6a46bc",
+  "lock_retro.py": "5672f6b1c7b39dd0835d76d00cf4ff0d96c0c507d659093661e9b4c3e58365d7",
+  "paths.py": "beaae27159524e6e404b739d91b5e3c7fc201e55fdfeb559222128c691fa55be",
+  "precision.py": "45212e6b8c1f964a708a0def0b3cf61195b8811d5379903723f7d784f2444881",
+  "queue_runner.py": "9084c5098c65f99c73f6a91fa7a999f473a42399e8f2be977c7b9e3df9f2da91",
+  "render_report.py": "948eb14ae499edda308dfa962802e05797ac6e43cfd20aeaa0500e0bfc1b91fc",
+  "resources.py": "f181b19cbcf71ed9769be1126564c2b066c0769ce7ec214688ff112c3ee4010b",
+  "sasrec_data.py": "e0872eaf7dbd3b8fc70b6bdba9a8ba9cd235f6d0d60136fe055a85fa9b2beebf",
+  "sasrec_model.py": "d110b73a143b0710c4993ff382ab74cc5a198af54dcfbee8f490dbb68b860549",
+  "sasrec_objective.py": "5e03bf50a1f307f1b21dba4820ca69985e3a55ff73b808a3a0d219e75373ebed",
+  "sasrec_schedule.py": "5db6cede50b07478d289f3d1887d6f46c42edfb7db3f4a99b00b1aedcce50230",
+  "synthetic_store.py": "b8bf3a180ba03a5c1cd8f3d47e3e309723db414f75d65f045bdae53d7c4afaf4",
+  "tf32_parity_gate.py": "316e761f5771c55b166983f906d69275ec6986e3f4ec6cf2363c6fa9f42dd0e6",
+  "train_sasrec.py": "fae5d9c2d3a87d7aed05307b699125307750da63f597039ae1d4ec770b9c10c6",
+  "supervise_run.sh": "cf47c09846706428a4c79ff4ec0c6ab42eb3f001cf430e643e5541fd4e846ed9",
+  "reuse/baselines_full.py": "19578e5c3548c284e812e29fabe9eeec7e534f21aaafb92514a26100c9d52d88",
+  "reuse/eval_full.py": "6d2e413668a7356c11c18b4fb50b656c218f1205d0143a776927366ae2212d0c",
+  "reuse/evaluator.py": "e527b8c92cbcf46bc444c2860d1f42255218bf7637ca572d1e58c19a3cb40899",
+  "reuse/full_store.py": "4fca9e66c0910e3a8335ffc06ed9258b29f31f30f9590831a8899c451be4ae8b",
+  "reuse/index_utils.py": "bc86975bd4216aa402df69c9c7017d7367021d3705ac5a2faf79ef97450d53fc",
+  "reuse/lock_and_eval.py": "8fa1e6c17ac963707170ca4ab8c14522e56c95ef4d389edb169ea1e45dfb5bb5",
+  "reuse/model.py": "636d2ba18f850136721bf1ec2d923c1ee0f77c5726ea83a4be0bb786f46201e5",
+  "reuse/objective.py": "34ed90403e3065cc81797cf58ce3dee50e312a7e7d6d39c9b38b41066c02f54f",
+  "reuse/train.py": "d8500fa0bd37927594412edfb3f248fdb0352b6948b3e30cb97638dcf6597b60",
+  "reuse/vendor/rees46_eda/__init__.py": "921825af9559cfb2d2cd44264e62b6ee4ce6dcde615dc8e9e486b041db4f4c9f",
+  "reuse/vendor/rees46_eda/config.py": "42f1027acb1f1844b7c899bb4d93d7925fb466c846bf558d1bc75589b8d0b913",
+  "reuse/vendor/rees46_eda/loaders.py": "212b1b4ce4243956fd4be0ead22764190ca0cfbad22d5560fef8bbe67ecbac73",
+  "reuse/verify_frozen.py": "c1e800c1b6fd400a85f435e8f9a69c17d208c8af3a1d58ea213110cf13890073",
+  "reuse/window_cache.py": "3b61b65822fd18b722a76497a065ca49dc74a88993f65a04b0e78058fb78608e",
+  "tests/attest_gate_c.py": "0bdfedbd9db052065573178f26aa1d23765f6470025953f368a19c6fa322855a",
+  "tests/conftest.py": "870d6b7f1f3a7e29ab182e85de307fadb857b6bd1f1962545eb5dbbb890ad28e",
+  "tests/fixtures/fake_trainer.py": "94281c1094438408ddded28b729ddb7818f96877911dacfee8fa311f7fd04688",
+  "tests/mutants/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "tests/mutants/eval_mutants.py": "8a5590412de1348f743da7039fc242692ca68ef4e13f6cb84e09fdd8941ef0ca",
+  "tests/mutants/model_mutants.py": "2c5c8cf637ba7d7fa4b706b15be2f3ad9d563472543686d800b594c48a7b2870",
+  "tests/mutants/objective_mutants.py": "1af815dc37808238d6bacce9a159da46b3ecf98075c5af9a1a13ee7a087638a6",
+  "tests/mutants/schedule_mutants.py": "90951bf78c4f2694fe92c399af1a21e4d6868fb79ae196c79b68604de24b8cb5",
+  "tests/parity_store_vs_loader.py": "9b9dccf97c52c986b1826cede507df97532515e1c737f59c40426c62e8f3b8b5",
+  "tests/test_attention.py": "6f8f320898dba10f7ae34c1a281fe9425f810b943a0599476cfcab50100ff586",
+  "tests/test_data_adapter.py": "47194b9332c913ee6ade7d6a1dc787f0e48e0742dd132d38e710d0e65d9902c1",
+  "tests/test_eval_and_precision.py": "6030067b599d35b9b060cebdd3c3a319b0bf88153f20337ea6b62e0fab3a8fdd",
+  "tests/test_head_objective.py": "f0baac9b6cdaeef73232aec25742e0446e30a38845b76d75af95300903485a85",
+  "tests/test_rich.py": "9055a28071172d6d2a4b738a72c3f03b9b6cc00f9765564e176338dfdba2c316",
+  "tests/test_runtime.py": "772e3f35ee4d398de808b9946fb0f5e36cb9b5caef2924fff14ba080c5966856",
+  "tests/test_schedule_stopping.py": "aaf75315e2be2ffbdc2b687db336b0caac5ce1552fc16942fdbce1fddf51dce5",
+  "tests/test_trainer_exposure_resume.py": "d4539f43a42dc07808a269a720d4520dcf51ea12f281f66227f946ee45fa2ecf",
+  "config/run_registry.locked.json": "74414b384dea6a615c5aecb479d004f313c1776460a087684ecdcf658ca1b136",
+  "review/TF32_PARITY_PREREG.md": "3612bb87d9e4db93b28d1b1b99b3745a80475719d4713c69c8ad74f577f1460b"
+ },
+ "suite": {
+  "cmd": "/home/jovyan/venvs/ppsi-gpu/bin/python -m pytest tests/test_attention.py tests/test_head_objective.py tests/test_schedule_stopping.py tests/test_eval_and_precision.py tests/test_rich.py tests/test_trainer_exposure_resume.py tests/test_data_adapter.py tests/test_runtime.py -q -p no:cacheprovider --junitxml=/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/tests/evidence/GATE_C_SUITE_junit.xml",
+  "rc": 0,
+  "seconds": 363.1,
+  "tail": "testUnknownMarkWarning: Unknown pytest.mark.real - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html\n    @pytest.mark.real\n\ntests/test_data_adapter.py:281\n  /home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/code/tests/test_data_adapter.py:281: PytestUnknownMarkWarning: Unknown pytest.mark.real - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html\n    @pytest.mark.real\n\ntests/test_data_adapter.py:315\n  /home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/code/tests/test_data_adapter.py:315: PytestUnknownMarkWarning: Unknown pytest.mark.real - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html\n    @pytest.mark.real\n\ntests/test_data_adapter.py:524\n  /home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/code/tests/test_data_adapter.py:524: PytestUnknownMarkWarning: Unknown pytest.mark.real - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html\n    @pytest.mark.real\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n\u001b[33m\u001b[32m112 passed\u001b[0m, \u001b[33m\u001b[1m5 warnings\u001b[0m\u001b[33m in 359.38s (0:05:59)\u001b[0m\u001b[0m\n"
+ },
+ "suite_cases": [
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_attention",
+   "name": "test_fp64_hand_computed_matches_padded_reference",
+   "outcome": "passed",
+   "time": 0.043
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_attention",
+   "name": "test_future_mutation_does_not_leak_backward_or_forward",
+   "outcome": "passed",
+   "time": 0.029
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_attention",
+   "name": "test_causal_mask_direction_diagonal_and_no_nan",
+   "outcome": "passed",
+   "time": 0.007
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_attention",
+   "name": "test_eval_dropout_is_zero_and_repeated_evals_are_bitwise_identical",
+   "outcome": "passed",
+   "time": 0.011
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_attention",
+   "name": "test_unpadded_vs_padded_reference_outputs_and_gradients_agree",
+   "outcome": "passed",
+   "time": 0.039
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_attention",
+   "name": "test_pad_column_randomisation_leaves_output_unchanged[unpadded]",
+   "outcome": "passed",
+   "time": 0.01
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_attention",
+   "name": "test_pad_column_randomisation_leaves_output_unchanged[padded_reference]",
+   "outcome": "passed",
+   "time": 0.01
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_attention",
+   "name": "test_final_query_is_last_real_item_not_column_zero",
+   "outcome": "passed",
+   "time": 0.008
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_attention",
+   "name": "test_prefix_consistency_truncated_window_matches",
+   "outcome": "passed",
+   "time": 0.012
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_attention",
+   "name": "test_target_class_is_not_a_forward_argument",
+   "outcome": "passed",
+   "time": 0.002
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_head_objective",
+   "name": "test_head_weight_is_a_view_of_item_embed_and_appears_once_in_optimizer_groups",
+   "outcome": "passed",
+   "time": 0.002
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_head_objective",
+   "name": "test_known_class_map_gate_rejects_noncontiguous_map",
+   "outcome": "passed",
+   "time": 0.001
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_head_objective",
+   "name": "test_pad_row_stays_zero_after_100_updates",
+   "outcome": "passed",
+   "time": 2.149
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_head_objective",
+   "name": "test_logits_are_BK_and_no_BTK_tensor_is_ever_created",
+   "outcome": "passed",
+   "time": 0.005
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_head_objective",
+   "name": "test_ce_sum_matches_reference_and_independent_full_K_formula[0.0]",
+   "outcome": "passed",
+   "time": 0.003
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_head_objective",
+   "name": "test_ce_sum_matches_reference_and_independent_full_K_formula[0.05]",
+   "outcome": "passed",
+   "time": 0.002
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_head_objective",
+   "name": "test_uneven_microbatch_accumulation_matches_full_batch_gradient",
+   "outcome": "passed",
+   "time": 0.087
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_head_objective",
+   "name": "test_init_loss_is_approximately_ln_K",
+   "outcome": "passed",
+   "time": 0.01
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_schedule_stopping",
+   "name": "test_lr_at_boundaries_schedule_S_prime",
+   "outcome": "passed",
+   "time": 0.001
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_schedule_stopping",
+   "name": "test_lr_phase_labels_schedule_S_prime",
+   "outcome": "passed",
+   "time": 0.001
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_schedule_stopping",
+   "name": "test_floor_start_epoch_default_is_3",
+   "outcome": "passed",
+   "time": 0.001
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_schedule_stopping",
+   "name": "test_eval_epochs_floor_only",
+   "outcome": "passed",
+   "time": 0.001
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_schedule_stopping",
+   "name": "test_epoch_cap_fast_arms_reach_planned_6",
+   "outcome": "passed",
+   "time": 0.001
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_schedule_stopping",
+   "name": "test_epoch_cap_slow_arm_forces_5_or_4",
+   "outcome": "passed",
+   "time": 0.001
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_schedule_stopping",
+   "name": "test_epoch_cap_never_below_min_epochs",
+   "outcome": "passed",
+   "time": 0.001
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_schedule_stopping",
+   "name": "test_epoch_cap_uses_the_slower_arm_not_the_average",
+   "outcome": "passed",
+   "time": 0.001
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_schedule_stopping",
+   "name": "test_epoch_cap_safety_margin_negative_control",
+   "outcome": "passed",
+   "time": 0.001
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_schedule_stopping",
+   "name": "test_epoch_end_best_raw_max_tie_earlier_on_GRU_trajectories",
+   "outcome": "passed",
+   "time": 0.001
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_schedule_stopping",
+   "name": "test_epoch_end_exact_tie_keeps_earlier_epoch",
+   "outcome": "passed",
+   "time": 0.001
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_schedule_stopping",
+   "name": "test_floor_start_epoch_mutant_changes_epoch_end_miss_accounting",
+   "outcome": "passed",
+   "time": 0.001
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_schedule_stopping",
+   "name": "test_v1_gru_trajectories_never_stop_before_epoch5_and_match_hand_derived_misses",
+   "outcome": "passed",
+   "time": 0.001
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_schedule_stopping",
+   "name": "test_v1_pair_stopping_requires_BOTH_arms_and_both_stop_at_the_same_epoch",
+   "outcome": "passed",
+   "time": 0.001
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_schedule_stopping",
+   "name": "test_v1_early_stop_never_before_epoch5_randomised",
+   "outcome": "passed",
+   "time": 0.001
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_schedule_stopping",
+   "name": "test_fixed_epoch_stop_at_exactly_E_never_earlier[4]",
+   "outcome": "passed",
+   "time": 0.001
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_schedule_stopping",
+   "name": "test_fixed_epoch_stop_at_exactly_E_never_earlier[5]",
+   "outcome": "passed",
+   "time": 0.001
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_schedule_stopping",
+   "name": "test_fixed_epoch_stop_at_exactly_E_never_earlier[6]",
+   "outcome": "passed",
+   "time": 0.001
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_schedule_stopping",
+   "name": "test_equal_epoch_assertion_helper",
+   "outcome": "passed",
+   "time": 0.001
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_schedule_stopping",
+   "name": "test_select_configuration_tie_chain_metric_then_micro_recall",
+   "outcome": "passed",
+   "time": 0.001
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_schedule_stopping",
+   "name": "test_select_configuration_tie_chain_params_then_registry_order",
+   "outcome": "passed",
+   "time": 0.001
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_schedule_stopping",
+   "name": "test_select_configuration_no_eligible_runs",
+   "outcome": "passed",
+   "time": 0.001
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_eval_and_precision",
+   "name": "test_aggregate_end_to_end_matches_independent_reference[1]",
+   "outcome": "passed",
+   "time": 0.003
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_eval_and_precision",
+   "name": "test_aggregate_end_to_end_matches_independent_reference[2]",
+   "outcome": "passed",
+   "time": 0.003
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_eval_and_precision",
+   "name": "test_aggregate_end_to_end_matches_independent_reference[5]",
+   "outcome": "passed",
+   "time": 0.002
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_eval_and_precision",
+   "name": "test_aggregate_end_to_end_matches_independent_reference[10]",
+   "outcome": "passed",
+   "time": 0.002
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_eval_and_precision",
+   "name": "test_aggregate_end_to_end_matches_independent_reference[20]",
+   "outcome": "passed",
+   "time": 0.002
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_eval_and_precision",
+   "name": "test_aggregate_k10_and_k20_are_identical_given_max_rank_6",
+   "outcome": "passed",
+   "time": 0.004
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_eval_and_precision",
+   "name": "test_aggregate_closed_excludes_OOV_rows_end_to_end_gives_zero_credit",
+   "outcome": "passed",
+   "time": 0.002
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_eval_and_precision",
+   "name": "test_all_OOV_user_gets_zero_credit_but_stays_counted_in_end_to_end",
+   "outcome": "passed",
+   "time": 0.002
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_eval_and_precision",
+   "name": "test_rank_uses_the_live_target_score_same_tensor",
+   "outcome": "passed",
+   "time": 0.001
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_eval_and_precision",
+   "name": "test_rank_targets_is_chunk_size_independent",
+   "outcome": "passed",
+   "time": 0.002
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_eval_and_precision",
+   "name": "test_int64_large_scores_stay_exact_no_float32_collision",
+   "outcome": "passed",
+   "time": 0.001
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_eval_and_precision",
+   "name": "test_tf32_canary_and_assert_strict_fp32_on_gpu",
+   "outcome": "passed",
+   "time": 0.42
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_eval_and_precision",
+   "name": "test_assert_strict_fp32_raises_on_bad_matmul_precision",
+   "outcome": "passed",
+   "time": 0.002
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_eval_and_precision",
+   "name": "test_training_precision_tf32_and_strict_eval_roundtrip",
+   "outcome": "passed",
+   "time": 0.002
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_eval_and_precision",
+   "name": "test_strict_eval_gives_bitwise_identical_ranks_tf32_process_vs_fresh_strict_process",
+   "outcome": "passed",
+   "time": 13.189
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_eval_and_precision",
+   "name": "test_fingerprint_fails_closed_on_a_changed_population",
+   "outcome": "passed",
+   "time": 0.002
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_rich",
+   "name": "test_common_param_init_bit_identical_between_id_and_rich_same_seed",
+   "outcome": "passed",
+   "time": 0.017
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_rich",
+   "name": "test_side_disabled_rich_model_equals_id_model",
+   "outcome": "passed",
+   "time": 0.027
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_rich",
+   "name": "test_active_side_and_user_branches_have_finite_nonzero_gradients",
+   "outcome": "passed",
+   "time": 0.023
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_rich",
+   "name": "test_permuting_a_side_tensor_changes_output",
+   "outcome": "passed",
+   "time": 0.013
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_rich",
+   "name": "test_pad_position_side_field_change_does_not_affect_output",
+   "outcome": "passed",
+   "time": 0.017
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_trainer_exposure_resume",
+   "name": "test_synthetic_store_decision_ids_are_globally_unique_across_splits",
+   "outcome": "passed",
+   "time": 0.017
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_trainer_exposure_resume",
+   "name": "test_epoch_permutation_matches_default_rng_and_matched_arms_agree",
+   "outcome": "passed",
+   "time": 24.818
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_trainer_exposure_resume",
+   "name": "test_coverage_exactly_N_across_a_mid_epoch_resume",
+   "outcome": "passed",
+   "time": 17.146
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_trainer_exposure_resume",
+   "name": "test_interrupted_vs_uninterrupted_future_losses_identical",
+   "outcome": "passed",
+   "time": 29.53
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_trainer_exposure_resume",
+   "name": "test_u_equals_epochs_times_U_and_tail_is_counted",
+   "outcome": "passed",
+   "time": 8.522
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_trainer_exposure_resume",
+   "name": "test_fixed_epoch_stop_at_exactly_planned_epochs_never_earlier",
+   "outcome": "passed",
+   "time": 17.728
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_trainer_exposure_resume",
+   "name": "test_equal_epoch_assertion_holds_for_matched_arms",
+   "outcome": "passed",
+   "time": 34.929
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_data_adapter",
+   "name": "test_A1_train_loss_population_real",
+   "outcome": "passed",
+   "time": 93.509
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_data_adapter",
+   "name": "test_A1_duplicate_missing_detector_negative_control",
+   "outcome": "passed",
+   "time": 0.002
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_data_adapter",
+   "name": "test_A2_catalogue_bijective_from_file",
+   "outcome": "passed",
+   "time": 0.04
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_data_adapter",
+   "name": "test_A2_negative_control_broken_mapping_detected",
+   "outcome": "passed",
+   "time": 0.001
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_data_adapter",
+   "name": "test_A3_repack_preserves_order_and_alignment",
+   "outcome": "passed",
+   "time": 0.003
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_data_adapter",
+   "name": "test_A3_repack_idempotent_on_already_right_padded",
+   "outcome": "passed",
+   "time": 0.009
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_data_adapter",
+   "name": "test_A4_padding_batch_equivalence_poisoned_pad",
+   "outcome": "passed",
+   "time": 0.017
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_data_adapter",
+   "name": "test_A5_synthetic_lengths_1_2_49_50_present",
+   "outcome": "passed",
+   "time": 0.161
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_data_adapter",
+   "name": "test_A5_all_pad_row_raises",
+   "outcome": "passed",
+   "time": 0.002
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_data_adapter",
+   "name": "test_A5_prefix_position_51plus_cropped_to_last50_real",
+   "outcome": "passed",
+   "time": 19.583
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_data_adapter",
+   "name": "test_A6_missing_and_oov_features_survive_real",
+   "outcome": "passed",
+   "time": 13.416
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_data_adapter",
+   "name": "test_A6_adapter_does_not_mutate_values",
+   "outcome": "passed",
+   "time": 0.008
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_data_adapter",
+   "name": "test_A7_oov_target_distinct_branches",
+   "outcome": "passed",
+   "time": 0.002
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_data_adapter",
+   "name": "test_A7_negative_control_branches_collapse_without_mask",
+   "outcome": "passed",
+   "time": 0.002
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_data_adapter",
+   "name": "test_A8_repeated_target_legal_and_never_forwarded",
+   "outcome": "passed",
+   "time": 0.004
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_data_adapter",
+   "name": "test_A8_negative_control_forbidden_key_raises",
+   "outcome": "passed",
+   "time": 0.001
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_data_adapter",
+   "name": "test_synthetic_store_train_vs_decision_ids_disjoint",
+   "outcome": "passed",
+   "time": 0.472
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_data_adapter",
+   "name": "test_synthetic_store_decision_id_collision_negative_control",
+   "outcome": "passed",
+   "time": 0.001
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_data_adapter",
+   "name": "test_A9_synthetic_distinct_users_share_client_idx_2",
+   "outcome": "passed",
+   "time": 0.042
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_data_adapter",
+   "name": "test_A9_real_distinct_eval_users_share_client_idx_2",
+   "outcome": "passed",
+   "time": 4.667
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_data_adapter",
+   "name": "test_predictor_kwargs_id_and_rich_selection",
+   "outcome": "passed",
+   "time": 0.008
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_data_adapter",
+   "name": "test_predictor_kwargs_raises_on_corrupted_allowlist",
+   "outcome": "passed",
+   "time": 0.002
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_data_adapter",
+   "name": "test_forbidden_keys_never_intersect_real_allowlists",
+   "outcome": "passed",
+   "time": 0.001
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_data_adapter",
+   "name": "test_check_right_padded_positive_and_negative",
+   "outcome": "passed",
+   "time": 0.005
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_data_adapter",
+   "name": "test_build_training_store_rejects_bad_channels",
+   "outcome": "passed",
+   "time": 0.001
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_data_adapter",
+   "name": "test_build_eval_store_rejects_bad_split",
+   "outcome": "passed",
+   "time": 0.001
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_data_adapter",
+   "name": "test_build_eval_store_refuses_without_lock",
+   "outcome": "passed",
+   "time": 0.001
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_runtime",
+   "name": "test_ckpt_atomic_rotation_and_failure_injection",
+   "outcome": "passed",
+   "time": 0.046
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_runtime",
+   "name": "test_ckpt_disk_floor_refuses_write_no_corruption",
+   "outcome": "passed",
+   "time": 0.013
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_runtime",
+   "name": "test_reclaim_allowlist_safety",
+   "outcome": "passed",
+   "time": 0.003
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_runtime",
+   "name": "test_supervise_complete_and_stop_codes_no_retry",
+   "outcome": "passed",
+   "time": 9.103
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_runtime",
+   "name": "test_supervise_crash_resume_bounded_at_3",
+   "outcome": "passed",
+   "time": 15.057
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_runtime",
+   "name": "test_supervise_gpu_busy_bounded_at_12_retries",
+   "outcome": "passed",
+   "time": 29.443
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_runtime",
+   "name": "test_resources_uses_cgroup_not_cpu_count",
+   "outcome": "passed",
+   "time": 0.019
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_runtime",
+   "name": "test_resources_sampler_loop_writes_jsonl",
+   "outcome": "passed",
+   "time": 0.474
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_runtime",
+   "name": "test_plan_replica_concurrency",
+   "outcome": "passed",
+   "time": 0.002
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_runtime",
+   "name": "test_arm_from_epoch_records",
+   "outcome": "passed",
+   "time": 0.001
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_runtime",
+   "name": "test_compare_pair_summaries",
+   "outcome": "passed",
+   "time": 0.001
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_runtime",
+   "name": "test_queue_runner_end_to_end_simulated_termination",
+   "outcome": "passed",
+   "time": 5.433
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_runtime",
+   "name": "test_queue_runner_restart_resumes_no_duplicate",
+   "outcome": "passed",
+   "time": 5.375
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_runtime",
+   "name": "test_queue_runner_one_arm_stopped_other_still_finishes",
+   "outcome": "passed",
+   "time": 13.237
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_runtime",
+   "name": "test_maybe_compute_epoch_cap_orchestration_in_process",
+   "outcome": "passed",
+   "time": 0.008
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_runtime",
+   "name": "test_render_report_partial_when_nothing_present",
+   "outcome": "passed",
+   "time": 0.005
+  },
+  {
+   "file": ".local_ai.sasrec_v1.code.tests.test_runtime",
+   "name": "test_render_report_sanitizes_nan_strict_json",
+   "outcome": "passed",
+   "time": 0.111
+  }
+ ],
+ "suite_counts": {
+  "passed": 112,
+  "failure": 0,
+  "error": 0,
+  "skipped": 0
+ },
+ "integration": {
+  "a0": {
+   "cmd": "/home/jovyan/venvs/ppsi-gpu/bin/python train_sasrec.py --seed 2026 --test-tiny --tiny-planned-epochs 4 --precision-mode tf32 --run-id A0_ID256 --run-dir /home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/tests/opus_tiny/a0",
+   "rc": 0,
+   "seconds": 11.1,
+   "tail": "[2026-09-23T23:33:00Z] fresh run A0_ID256 seed=2026 n=4096 U=16 params=1849829 device=cuda:0 gpu=1 training=TF32 planned_epochs=4\n"
+  },
+  "a1": {
+   "cmd": "/home/jovyan/venvs/ppsi-gpu/bin/python train_sasrec.py --seed 2026 --test-tiny --tiny-planned-epochs 4 --precision-mode tf32 --run-id A1_RICH256 --run-dir /home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/tests/opus_tiny/a1",
+   "rc": 0,
+   "seconds": 11.7,
+   "tail": "[2026-09-23T23:33:12Z] fresh run A1_RICH256 seed=2026 n=4096 U=16 params=1899663 device=cuda:0 gpu=1 training=TF32 planned_epochs=4\n"
+  },
+  "crash": {
+   "cmd": "/home/jovyan/venvs/ppsi-gpu/bin/python train_sasrec.py --seed 2026 --test-tiny --tiny-planned-epochs 4 --precision-mode tf32 --run-id A0_ID256 --run-dir /home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/tests/opus_tiny/a0crash --stop-after-updates 37",
+   "rc": 99,
+   "seconds": 7.8,
+   "tail": "[2026-09-23T23:33:23Z] fresh run A0_ID256 seed=2026 n=4096 U=16 params=1849829 device=cuda:0 gpu=1 training=TF32 planned_epochs=4\n[2026-09-23T23:33:27Z] test hook: simulated crash after update 37\n"
+  },
+  "resume": {
+   "cmd": "/home/jovyan/venvs/ppsi-gpu/bin/python train_sasrec.py --seed 2026 --test-tiny --tiny-planned-epochs 4 --precision-mode tf32 --run-id A0_ID256 --run-dir /home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/tests/opus_tiny/a0crash --resume",
+   "rc": 0,
+   "seconds": 9.6,
+   "tail": "[2026-09-23T23:33:32Z] resumed from latest.pt u=37 epoch_idx0=2 offset=1280 eval_pending=False resume_count=1\n"
+  },
+  "checks": {
+   "a0_complete": true,
+   "a1_complete": true,
+   "crash_rc_is_99": true,
+   "resume_complete": true,
+   "resume_count": 1,
+   "resume_best_weights_bitwise_identical": true,
+   "resume_metrics_identical": true,
+   "a0_a1_perm_digests_equal": true,
+   "phases_a0": [
+    {
+     "warmup": 4,
+     "peak": 12,
+     "cosine": 0,
+     "floor": 0
+    },
+    {
+     "warmup": 0,
+     "peak": 0,
+     "cosine": 16,
+     "floor": 0
+    },
+    {
+     "warmup": 0,
+     "peak": 0,
+     "cosine": 0,
+     "floor": 16
+    },
+    {
+     "warmup": 0,
+     "peak": 0,
+     "cosine": 0,
+     "floor": 16
+    }
+   ],
+   "eval_epochs": [
+    3,
+    4
+   ],
+   "precision": [
+    "tf32",
+    "strict_fp32"
+   ],
+   "canary": {
+    "strict": {
+     "n": 1024,
+     "relative_error": 5.743312361709345e-07,
+     "threshold": 2e-05,
+     "looks_strict_fp32": true
+    },
+    "training_phase": {
+     "n": 1024,
+     "relative_error": 0.00029388600140803773,
+     "threshold": 2e-05,
+     "looks_strict_fp32": false
+    },
+    "eval_phase": {
+     "n": 1024,
+     "relative_error": 5.743312361709345e-07,
+     "threshold": 2e-05,
+     "looks_strict_fp32": true
+    }
+   },
+   "mechanics_fresh_process_equals_trainer_best": true,
+   "mechanics_bootstrap_present": true
+  },
+  "mechanics": {
+   "cmd": "/home/jovyan/venvs/ppsi-gpu/bin/python lock_retro.py eval --mechanics-split VALIDATION_SELECT --out-dir /home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/tests/opus_mech --lock /home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/tests/opus_mech/test_lock.json",
+   "rc": 0,
+   "seconds": 6.0,
+   "tail": "[2026-09-23T23:33:43Z] wrote /home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/tests/opus_mech/MECHANICS_RESULTS.json\n"
+  }
+ },
+ "hashes_end": {
+  "bench_campaign.py": "5346af2c0c44c14789b4fea89f9c8563d1b8e64e2a5f1424375f8c235f37c316",
+  "bench_sizing.py": "43f586c1aa9f0fba24892645cb8f004725f1cb5eecda95114a9ca2e4fa645fb6",
+  "ckpt_io.py": "51a9303dcf6fc438be2cf85c9caa72080109b0dfa3f978ee6038fa748b6a46bc",
+  "lock_retro.py": "5672f6b1c7b39dd0835d76d00cf4ff0d96c0c507d659093661e9b4c3e58365d7",
+  "paths.py": "beaae27159524e6e404b739d91b5e3c7fc201e55fdfeb559222128c691fa55be",
+  "precision.py": "45212e6b8c1f964a708a0def0b3cf61195b8811d5379903723f7d784f2444881",
+  "queue_runner.py": "9084c5098c65f99c73f6a91fa7a999f473a42399e8f2be977c7b9e3df9f2da91",
+  "render_report.py": "948eb14ae499edda308dfa962802e05797ac6e43cfd20aeaa0500e0bfc1b91fc",
+  "resources.py": "f181b19cbcf71ed9769be1126564c2b066c0769ce7ec214688ff112c3ee4010b",
+  "sasrec_data.py": "e0872eaf7dbd3b8fc70b6bdba9a8ba9cd235f6d0d60136fe055a85fa9b2beebf",
+  "sasrec_model.py": "d110b73a143b0710c4993ff382ab74cc5a198af54dcfbee8f490dbb68b860549",
+  "sasrec_objective.py": "5e03bf50a1f307f1b21dba4820ca69985e3a55ff73b808a3a0d219e75373ebed",
+  "sasrec_schedule.py": "5db6cede50b07478d289f3d1887d6f46c42edfb7db3f4a99b00b1aedcce50230",
+  "synthetic_store.py": "b8bf3a180ba03a5c1cd8f3d47e3e309723db414f75d65f045bdae53d7c4afaf4",
+  "tf32_parity_gate.py": "316e761f5771c55b166983f906d69275ec6986e3f4ec6cf2363c6fa9f42dd0e6",
+  "train_sasrec.py": "fae5d9c2d3a87d7aed05307b699125307750da63f597039ae1d4ec770b9c10c6",
+  "supervise_run.sh": "cf47c09846706428a4c79ff4ec0c6ab42eb3f001cf430e643e5541fd4e846ed9",
+  "reuse/baselines_full.py": "19578e5c3548c284e812e29fabe9eeec7e534f21aaafb92514a26100c9d52d88",
+  "reuse/eval_full.py": "6d2e413668a7356c11c18b4fb50b656c218f1205d0143a776927366ae2212d0c",
+  "reuse/evaluator.py": "e527b8c92cbcf46bc444c2860d1f42255218bf7637ca572d1e58c19a3cb40899",
+  "reuse/full_store.py": "4fca9e66c0910e3a8335ffc06ed9258b29f31f30f9590831a8899c451be4ae8b",
+  "reuse/index_utils.py": "bc86975bd4216aa402df69c9c7017d7367021d3705ac5a2faf79ef97450d53fc",
+  "reuse/lock_and_eval.py": "8fa1e6c17ac963707170ca4ab8c14522e56c95ef4d389edb169ea1e45dfb5bb5",
+  "reuse/model.py": "636d2ba18f850136721bf1ec2d923c1ee0f77c5726ea83a4be0bb786f46201e5",
+  "reuse/objective.py": "34ed90403e3065cc81797cf58ce3dee50e312a7e7d6d39c9b38b41066c02f54f",
+  "reuse/train.py": "d8500fa0bd37927594412edfb3f248fdb0352b6948b3e30cb97638dcf6597b60",
+  "reuse/vendor/rees46_eda/__init__.py": "921825af9559cfb2d2cd44264e62b6ee4ce6dcde615dc8e9e486b041db4f4c9f",
+  "reuse/vendor/rees46_eda/config.py": "42f1027acb1f1844b7c899bb4d93d7925fb466c846bf558d1bc75589b8d0b913",
+  "reuse/vendor/rees46_eda/loaders.py": "212b1b4ce4243956fd4be0ead22764190ca0cfbad22d5560fef8bbe67ecbac73",
+  "reuse/verify_frozen.py": "c1e800c1b6fd400a85f435e8f9a69c17d208c8af3a1d58ea213110cf13890073",
+  "reuse/window_cache.py": "3b61b65822fd18b722a76497a065ca49dc74a88993f65a04b0e78058fb78608e",
+  "tests/attest_gate_c.py": "0bdfedbd9db052065573178f26aa1d23765f6470025953f368a19c6fa322855a",
+  "tests/conftest.py": "870d6b7f1f3a7e29ab182e85de307fadb857b6bd1f1962545eb5dbbb890ad28e",
+  "tests/fixtures/fake_trainer.py": "94281c1094438408ddded28b729ddb7818f96877911dacfee8fa311f7fd04688",
+  "tests/mutants/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "tests/mutants/eval_mutants.py": "8a5590412de1348f743da7039fc242692ca68ef4e13f6cb84e09fdd8941ef0ca",
+  "tests/mutants/model_mutants.py": "2c5c8cf637ba7d7fa4b706b15be2f3ad9d563472543686d800b594c48a7b2870",
+  "tests/mutants/objective_mutants.py": "1af815dc37808238d6bacce9a159da46b3ecf98075c5af9a1a13ee7a087638a6",
+  "tests/mutants/schedule_mutants.py": "90951bf78c4f2694fe92c399af1a21e4d6868fb79ae196c79b68604de24b8cb5",
+  "tests/parity_store_vs_loader.py": "9b9dccf97c52c986b1826cede507df97532515e1c737f59c40426c62e8f3b8b5",
+  "tests/test_attention.py": "6f8f320898dba10f7ae34c1a281fe9425f810b943a0599476cfcab50100ff586",
+  "tests/test_data_adapter.py": "47194b9332c913ee6ade7d6a1dc787f0e48e0742dd132d38e710d0e65d9902c1",
+  "tests/test_eval_and_precision.py": "6030067b599d35b9b060cebdd3c3a319b0bf88153f20337ea6b62e0fab3a8fdd",
+  "tests/test_head_objective.py": "f0baac9b6cdaeef73232aec25742e0446e30a38845b76d75af95300903485a85",
+  "tests/test_rich.py": "9055a28071172d6d2a4b738a72c3f03b9b6cc00f9765564e176338dfdba2c316",
+  "tests/test_runtime.py": "772e3f35ee4d398de808b9946fb0f5e36cb9b5caef2924fff14ba080c5966856",
+  "tests/test_schedule_stopping.py": "aaf75315e2be2ffbdc2b687db336b0caac5ce1552fc16942fdbce1fddf51dce5",
+  "tests/test_trainer_exposure_resume.py": "d4539f43a42dc07808a269a720d4520dcf51ea12f281f66227f946ee45fa2ecf",
+  "config/run_registry.locked.json": "74414b384dea6a615c5aecb479d004f313c1776460a087684ecdcf658ca1b136",
+  "review/TF32_PARITY_PREREG.md": "3612bb87d9e4db93b28d1b1b99b3745a80475719d4713c69c8ad74f577f1460b"
+ },
+ "hashes_unchanged_during_run": true,
+ "utc_end": "2026-09-23T23:33:44Z",
+ "overall_pass": true
+}

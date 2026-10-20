@@ -1,0 +1,66 @@
+{
+ "amendment": 2,
+ "amends_registry_sha256": "a303bc3f4addcd8f66396232a85820d64ea31cabfc315936cb303139216af257",
+ "utc": "2026-09-25T09:24:07Z",
+ "owner_request": "2026-09-25 ~08:50Z: 'make it 5 epochs instead of 4' + 'what will make best acc' (accuracy is the priority; horizon extended up to +24 h)",
+ "decided_by": "claude-fable-5-1 (owner delegate): review/deep/FABLE_HIGH_RECALL_RESPONSE.md (Q1 + final plan)",
+ "disclosure": "post-hoc amendment AFTER full-VS epochs 3-4 of A0/A1 seed 2026 were seen; VC/TEST still unopened",
+ "new_deadline_utc": "2026-09-26T12:20:00Z",
+ "runs": {
+  "A1_RICH256_s2027": {
+   "what": "fresh third scored run, identical registry v3 recipe and Gate C hashes, seed 2027",
+   "gpu": 0,
+   "started_utc": "2026-09-25T09:21:26Z",
+   "epochs": 4,
+   "eval_epochs": [
+    3,
+    4
+   ],
+   "gates": "registry go_no_go_20k as amended (amendment 1); epoch-1 cohort < 0.95 x A1_s2026 epoch-1 cohort -> 'weak seed' (continue)"
+  },
+  "A1_RICH256_s2026_cool5": {
+   "what": "cooldown epoch 5 from latest.pt (end of epoch 4)",
+   "gpu": 1,
+   "latest_start_utc": "2026-09-25T21:00Z",
+   "lr": "1e-6 + (1e-4 - 1e-6)(1 - sqrt((u-4U)/U)), 4U<u<=5U",
+   "perm": "default_rng(2026+4)",
+   "gate": "continue iff cohort diag at 4U+40k and 4U+80k >= epoch-4 cohort (0.1806)"
+  },
+  "A0_ID256_s2026_cool5": {
+   "what": "same cooldown",
+   "gpu": 1,
+   "after": "A1_s2026_cool5",
+   "latest_start_utc": "2026-09-26T00:50Z",
+   "condition": "GO iff A1_s2026 e5 >= A1_s2026 e4"
+  },
+  "A1_RICH256_s2027_cool5": {
+   "what": "same cooldown for seed 2027",
+   "gpu": 0,
+   "after": "A1_s2027 epoch 4",
+   "latest_start_utc": "2026-09-26T04:30Z",
+   "condition": "GO iff A1_s2026 e5 >= A1_s2026 e4"
+  }
+ },
+ "reported_systems_fixed_now": {
+  "headline_single_model": "max full-VS macro MRR@20 over {A0_s2026, A1_s2026, A1_s2027} x evaluated epochs {3,4,5}; existing tie rule; vs GRU F0 with the user bootstrap",
+  "separate_systems": {
+   "S1": "ensemble A1_s2026 + A1_s2027",
+   "S2": "ensemble A0_s2026 + A1_s2026",
+   "S3": "ensemble A0_s2026 + A1_s2026 + A1_s2027",
+   "S4a": "uniform state_dict average of A1_s2026 epochs {3,4,5}",
+   "S4b": "uniform state_dict average of A1_s2027 epochs {3,4,5}"
+  },
+  "ensemble_rule": "equal weights fixed a priori; score = mean of per-model log-softmax over the K classes; strict FP32; members = each run's best epoch by the pre-registered rule; A0 receives item kwargs only",
+  "claims": "ensembles/averages are system-level results, never compared with GRU as model-vs-model",
+  "excluded": [
+   "VS-tuned weights",
+   "last-item mask",
+   "any other system"
+  ]
+ },
+ "hard_stops": {
+  "last_training_end_utc": "2026-09-26T06:30Z",
+  "last_eval_utc": "2026-09-26T09:30Z"
+ },
+ "why_sidecar": "running trainers pin the registry sha for exact resume"
+}

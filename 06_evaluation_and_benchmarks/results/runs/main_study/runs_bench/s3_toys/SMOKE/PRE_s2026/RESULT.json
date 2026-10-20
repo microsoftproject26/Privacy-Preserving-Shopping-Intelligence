@@ -1,0 +1,56 @@
+{
+ "arm": "PRE",
+ "checkpoints": {
+  "CONTROLLED_BUDGET": {
+   "bytes": 6573187,
+   "file": "ckpt/endpoint_6.0.pt",
+   "mark": 0.30523429116489803,
+   "sha256": "de38878134a715a06f5767ffe78611e3d404f64610b167053a1c495ce45ce049"
+  }
+ },
+ "kind": "central",
+ "label": "SMOKE_NOT_EVIDENCE",
+ "run_id": "BM_s3_toys_PRE_s2026_SMOKE",
+ "spec": {
+  "N_decisions": 16774,
+  "arm": "PRE",
+  "betas": [
+   0.9,
+   0.999
+  ],
+  "budget_efe": 6,
+  "dropout": [
+   0.1
+  ],
+  "early_stop_marks": null,
+  "effective_batch": 256,
+  "eps": 1e-08,
+  "exposure_point": "end",
+  "grad_clip": 1.0,
+  "init_sha256": "78dbfb462b7f9974630af3997e3aa1b4245c8cc1f4c37158a447e95f4d46270f",
+  "lr_table_sha256": "e5e934d9ee03224bf0d5ec4560c001bcda9d7f29338d6308e6c0d61d229d2055",
+  "marks": [
+   0.5,
+   1.0,
+   1.5,
+   2.0,
+   2.5,
+   3.0,
+   3.5,
+   4.0,
+   4.5,
+   5.0,
+   5.5,
+   6.0
+  ],
+  "max_len": 50,
+  "n_updates": 396,
+  "peak_lr": 0.0007114121116984968,
+  "schedule": "S0",
+  "seed": 2026,
+  "select_population": "BAND",
+  "variant": "SASREC_D64_B2",
+  "weight_decay": 1e-05
+ },
+ "status": "SMOKE_DONE_NOT_EVIDENCE"
+}

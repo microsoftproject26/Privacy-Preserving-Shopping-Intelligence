@@ -1,0 +1,118 @@
+{
+ "config_sha256": "f45ce0ab938d731aea5c76da2735148bf941b0e7f0d0e0ac7408fde2135c3932",
+ "controlled_budget": {
+  "efe": 6.0,
+  "mark": 6.0,
+  "value": 0.1298878751036297
+ },
+ "efe": 6.0,
+ "endpoint_checkpoint": null,
+ "endpoint_stats_reproduce_trainer_value": true,
+ "family": "SASREC",
+ "history_policy": "USER_HISTORY_L50",
+ "importance": null,
+ "importance_baseline_equals_controlled_budget": null,
+ "init_sha256": "9aef053c2833cb0cb666582cb40c32e490a57630ace2ab01109ae8ccf5823b4f",
+ "manifests": {
+  "eval": "FS_VALIDATION_5_100_32768",
+  "eval_fingerprint": "7931f7036e775bf89c619f650b560a7098cb63793650e576b6bf2d23a47c039c",
+  "train": "FS_TRAIN_5_100_32768",
+  "train_fingerprint": "ee2d7d61fce1b60e8d80d665c58f6985fb52da3ed4fa9c50aabc9a17bdc7f83f"
+ },
+ "practical_best": {
+  "efe": 3.0,
+  "mark": 3.0,
+  "value": 0.13564789253843323
+ },
+ "result_file": "FS_RESULT.json",
+ "result_sha256": "a3c74d9583d590edbb034d3bf957a30206ad5ab4eb82b3aac6c27b98a7d57362",
+ "retention": [
+  {
+   "kind": "best",
+   "sha256": "0a8944188057c78e37d1beb95a0c5b198b12d4add8ec4af8f532043fcccc2165",
+   "stage": "after_training",
+   "utc": "2026-09-27T03:40:36Z"
+  },
+  {
+   "kind": "endpoint_6.0",
+   "sha256": "9d724094605f8ca6c3a9312b9f395d5df0c06cc1bbec5f3d7deec96780172cf2",
+   "stage": "final",
+   "utc": "2026-09-27T03:40:37Z"
+  }
+ ],
+ "retention_log_sha256": "ae7c39ef427c213f18e9fdc117446808cbf411604e53f65c49c1106ded3e0746",
+ "run_id": "FS__L3S_NEAR_DUPLICATE_SESSION-minus-G11+G12a+G3+G4+G7__SASREC_s2027",
+ "run_label": "FEATURE_SEARCH_SCREEN",
+ "schema": {
+  "base": "FEATURE_SCHEMA_CLEAN_V2 2.1.0 self 55a244e1608bcdcdf6f1728595f534871b52154faebf2977e11ac1fb487052f9",
+  "file_sha256": "626ca93e7f51606fe4269f4551a65c0246f85f9f199d2af92881dca971e8b759",
+  "n_information_channels": 25,
+  "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/contracts/derived_schemas/L3S_NEAR_DUPLICATE_SESSION-minus-G11+G12a+G3+G4+G7.json",
+  "projection": {
+   "event_blocks_on": true,
+   "ext_columns": {
+    "user_context": [
+     "current_matches_session_mode",
+     "session_mode_share"
+    ],
+    "user_context_masks": [
+     "current_matches_session_mode_available"
+    ]
+   },
+   "extensions_dropped": [],
+   "index": {
+    "event_numeric_features": [
+     0,
+     8,
+     9,
+     11,
+     12,
+     13,
+     14
+    ],
+    "event_quality_flags": [
+     0,
+     12
+    ],
+    "user_context": [
+     6,
+     7,
+     8,
+     9
+    ],
+    "user_context_masks": [
+     0,
+     1,
+     2
+    ]
+   },
+   "is_identity": false,
+   "tokens_dropped": [
+    "main_category_tokens",
+    "daypart_tokens",
+    "weekday_tokens"
+   ],
+   "user_blocks_on": true
+  },
+  "schema_id": "L3S_NEAR_DUPLICATE_SESSION-minus-G11+G12a+G3+G4+G7",
+  "self_sha256": "c53d47fe2555dd537e27e11d45a4e8b23739566e6b98179dcf521852aa918f87",
+  "widths": {
+   "flags_dim": 2,
+   "numeric_dim": 7,
+   "tokens": 5,
+   "user_context_dim": 6,
+   "user_mask_dim": 4
+  }
+ },
+ "seed": 2027,
+ "shared_numel": 83092004,
+ "statistic": "CONTROLLED_BUDGET",
+ "still_improving": false,
+ "train_wall_s": 2398.7,
+ "trainer_rows_labelled_by_trainer": true,
+ "updates": 15132,
+ "userstats_file": "FS_USERSTATS.npz",
+ "userstats_sha256": "ce2bdba14657d1d334f04f2a7458fed4d88f3ef0422cba144033243bcbdf7e36",
+ "utc_end": "2026-09-27T03:40:37Z",
+ "weight_files_left": []
+}

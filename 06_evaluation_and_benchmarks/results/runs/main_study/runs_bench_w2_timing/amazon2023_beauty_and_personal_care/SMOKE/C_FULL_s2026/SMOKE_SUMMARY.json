@@ -1,0 +1,102 @@
+{
+ "arm": "C_FULL",
+ "epochs_run": 0.10001729147039044,
+ "label": "SMOKE_NOT_EVIDENCE",
+ "spec": {
+  "N_decisions": 4435713,
+  "arm": "C_FULL",
+  "betas": [
+   0.9,
+   0.999
+  ],
+  "budget_efe": 6,
+  "dropout": [
+   0.1
+  ],
+  "early_stop_marks": null,
+  "effective_batch": 256,
+  "eps": 1e-08,
+  "exposure_point": "end",
+  "grad_clip": 1.0,
+  "init_sha256": "859b90482d7ce199cad60a1f55cf3f0cb6fc8669ad2b7a9dce64f23b7a1e06c3",
+  "lr_table_sha256": "d3fdda4e13dc6b57fec7bc32c5cee731e7febba48a3961bbd28fd4a012b37d6f",
+  "marks": [
+   0.5,
+   1.0,
+   1.5,
+   2.0,
+   2.5,
+   3.0,
+   3.5,
+   4.0,
+   4.5,
+   5.0,
+   5.5,
+   6.0
+  ],
+  "max_len": 50,
+  "n_updates": 103968,
+  "peak_lr": 0.00040005642964899735,
+  "provenance": null,
+  "schedule": "S0",
+  "seed": 2026,
+  "select_population": "ALL",
+  "variant": "SASREC_D256_B3",
+  "weight_decay": 1e-05
+ },
+ "summary": {
+  "ALL": {
+   "hr@10": 0.008557621593141829,
+   "hr@20": 0.013735826482113652,
+   "mrr@20": 0.003922519566352176,
+   "n_unreachable": 0,
+   "n_users": 728824,
+   "ndcg@10": 0.004734097432438043,
+   "ndcg@20": 0.006025244668138848
+  },
+  "BAND": {
+   "hr@10": 0.008222285228239297,
+   "hr@20": 0.013490401236543896,
+   "mrr@20": 0.0037523838554355273,
+   "n_unreachable": 0,
+   "n_users": 109337,
+   "ndcg@10": 0.004516420212636468,
+   "ndcg@20": 0.0058354826595602635
+  },
+  "BAND_COVERED_TARGET": {
+   "hr@10": 0.0092228114122125,
+   "hr@20": 0.014803521732829778,
+   "mrr@20": 0.0042274197132263994,
+   "n_unreachable": 0,
+   "n_users": 676258,
+   "ndcg@10": 0.005102082085682127,
+   "ndcg@20": 0.006493591085076447
+  },
+  "BAND_UNCOVERED_TARGET": {
+   "hr@10": 0.0,
+   "hr@20": 0.0,
+   "mrr@20": 0.0,
+   "n_unreachable": 0,
+   "n_users": 52566,
+   "ndcg@10": 0.0,
+   "ndcg@20": 0.0
+  },
+  "OTHERS": {
+   "hr@10": 0.00861680713235306,
+   "hr@20": 0.013779143065149067,
+   "mrr@20": 0.003952547844951233,
+   "n_unreachable": 0,
+   "n_users": 619487,
+   "ndcg@10": 0.004772516598911989,
+   "ndcg@20": 0.006058736910481232
+  }
+ },
+ "timing": {
+  "eval_s": 1105.86,
+  "mean_step_s": 1.0668522353819854,
+  "median_step_s": 1.0510491635650396,
+  "n_steps_this_leg": 1733,
+  "n_updates_full_run": 103968,
+  "wall_s_this_leg": 1850.21
+ }
+}

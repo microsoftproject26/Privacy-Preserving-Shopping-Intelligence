@@ -1,0 +1,87 @@
+{
+ "receipt": "DATA-06 test run",
+ "utc": "2026-09-27T15:20:04Z",
+ "exit_code": 0,
+ "wall_s": 66.4,
+ "python": "3.11.14",
+ "platform": "Linux-6.8.0-117-generic-x86_64-with-glibc2.39",
+ "synthetic_only": false,
+ "counts": {
+  "passed": 9,
+  "xfailed": 7
+ },
+ "negative_controls": {
+  "n": 7,
+  "n_run": 7,
+  "n_skipped": 0,
+  "all_failed_as_intended": true
+ },
+ "summary_line": "\u001b[32m\u001b[32m\u001b[1m9 passed\u001b[0m, \u001b[33m7 xfailed\u001b[0m\u001b[32m in 63.74s (0:01:03)\u001b[0m\u001b[0m",
+ "cases": [
+  {
+   "test": "test_d6_real::test_real_no_manifest_or_file_contains_TEST",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d6_real::test_real_pool_and_band_hashes_match_census02",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d6_real::test_nc_real_main_and_calib_hash_are_not_the_same",
+   "outcome": "xfailed"
+  },
+  {
+   "test": "test_d6_real::test_real_expected_counts",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d6_real::test_nc_real_true_cold_A0_A1_sum_wrong",
+   "outcome": "xfailed"
+  },
+  {
+   "test": "test_d6_real::test_real_disjointness",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d6_real::test_nc_real_calib_within_main_must_not_be_disjoint",
+   "outcome": "xfailed"
+  },
+  {
+   "test": "test_d6_real::test_real_m01_m02_assertions_all_pairs",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d6_real::test_nc_real_tampered_table_changes_content_hash",
+   "outcome": "xfailed"
+  },
+  {
+   "test": "test_d6_real::test_real_true_cold_and_panels",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d6_real::test_real_build_receipt",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d6_real::test_nc_real_build_receipt_tamper",
+   "outcome": "xfailed"
+  },
+  {
+   "test": "test_d6_real::test_real_registry",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d6_real::test_nc_real_registry_tamper",
+   "outcome": "xfailed"
+  },
+  {
+   "test": "test_d6_real::test_real_manifest_on_disk_verification",
+   "outcome": "passed"
+  },
+  {
+   "test": "test_d6_real::test_nc_real_manifest_verification_detects_tamper",
+   "outcome": "xfailed"
+  }
+ ],
+ "stdout_tail": []
+}

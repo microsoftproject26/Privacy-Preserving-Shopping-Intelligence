@@ -1,0 +1,846 @@
+{
+ "authority": "contracts/PREG1_AMENDMENT_02R2.md \u00a71-\u00a74 (registered 2026-09-27; supersedes the LR / dropout assignment of 02R1 \u00a72); contracts/PREG1_AMENDMENT_02R1.md (the rest); TRAIN-02 item 1, TRAIN-02R1",
+ "cells": {
+  "GRU": [
+   {
+    "dropout_p": 0.1,
+    "lr_stratum": 0,
+    "schedule": "S0"
+   },
+   {
+    "dropout_p": 0.2,
+    "lr_stratum": 3,
+    "schedule": "S0"
+   },
+   {
+    "dropout_p": 0.3,
+    "lr_stratum": 5,
+    "schedule": "S0"
+   },
+   {
+    "dropout_p": 0.3,
+    "lr_stratum": 1,
+    "schedule": "S1"
+   },
+   {
+    "dropout_p": 0.2,
+    "lr_stratum": 2,
+    "schedule": "S1"
+   },
+   {
+    "dropout_p": 0.1,
+    "lr_stratum": 4,
+    "schedule": "S1"
+   }
+  ],
+  "SASREC": [
+   {
+    "dropout_p": 0.1,
+    "lr_stratum": 0,
+    "schedule": "S0"
+   },
+   {
+    "dropout_p": 0.3,
+    "lr_stratum": 3,
+    "schedule": "S0"
+   },
+   {
+    "dropout_p": 0.2,
+    "lr_stratum": 1,
+    "schedule": "S1"
+   },
+   {
+    "dropout_p": 0.2,
+    "lr_stratum": 2,
+    "schedule": "S1"
+   }
+  ],
+  "rule": "02R2 \u00a72: the same (schedule, stratum, p) cells for every size level of a family",
+  "sha256": "199c1b79a5011b68245ad61d6fd043e16133bf46f67df896b76527d964694488"
+ },
+ "disclosure": "02R2 \u00a75: within a size each schedule sees half of the LR strata, so the schedule and dropout effects remain partly confounded with LR; size is not",
+ "families": {
+  "GRU": [
+   {
+    "cell": {
+     "dropout_p": 0.1,
+     "lr_stratum": 0,
+     "model_variant": "GRU_D128",
+     "schedule": "S0"
+    },
+    "dropout": [
+     0.1,
+     0.05
+    ],
+    "dropout_p": 0.1,
+    "dropout_sites": [
+     "input",
+     "readout"
+    ],
+    "family": "GRU",
+    "hp_id": "P2_GRU_D128_S0_s0",
+    "index": 1,
+    "log10_peak_lr": -3.439545411947004,
+    "lr_stratum": 0,
+    "model_variant": "GRU_D128",
+    "peak_lr": 0.0003634582975885768,
+    "schedule": "S0",
+    "sha256": "6e4aeff9170040a9200b063d419f974e70f074d1ae26ab0accb8d85f1d9d9079"
+   },
+   {
+    "cell": {
+     "dropout_p": 0.2,
+     "lr_stratum": 3,
+     "model_variant": "GRU_D128",
+     "schedule": "S0"
+    },
+    "dropout": [
+     0.2,
+     0.1
+    ],
+    "dropout_p": 0.2,
+    "dropout_sites": [
+     "input",
+     "readout"
+    ],
+    "family": "GRU",
+    "hp_id": "P2_GRU_D128_S0_s3",
+    "index": 2,
+    "log10_peak_lr": -2.9395454119470044,
+    "lr_stratum": 3,
+    "model_variant": "GRU_D128",
+    "peak_lr": 0.001149356054867186,
+    "schedule": "S0",
+    "sha256": "a8262515bbedd3abd7c385ba9b32d1bda14ff140837e68445355ab3a16cd8cb4"
+   },
+   {
+    "cell": {
+     "dropout_p": 0.3,
+     "lr_stratum": 5,
+     "model_variant": "GRU_D128",
+     "schedule": "S0"
+    },
+    "dropout": [
+     0.3,
+     0.15
+    ],
+    "dropout_p": 0.3,
+    "dropout_sites": [
+     "input",
+     "readout"
+    ],
+    "family": "GRU",
+    "hp_id": "P2_GRU_D128_S0_s5",
+    "index": 3,
+    "log10_peak_lr": -2.606212078613671,
+    "lr_stratum": 5,
+    "model_variant": "GRU_D128",
+    "peak_lr": 0.0024762125558040553,
+    "schedule": "S0",
+    "sha256": "749828821bd24c9ef069f16efe86cb5660463401e1f3984dca29f2e4b3975c54"
+   },
+   {
+    "cell": {
+     "dropout_p": 0.3,
+     "lr_stratum": 1,
+     "model_variant": "GRU_D128",
+     "schedule": "S1"
+    },
+    "dropout": [
+     0.3,
+     0.15
+    ],
+    "dropout_p": 0.3,
+    "dropout_sites": [
+     "input",
+     "readout"
+    ],
+    "family": "GRU",
+    "hp_id": "P2_GRU_D128_S1_s1",
+    "index": 4,
+    "log10_peak_lr": -3.2728787452803374,
+    "lr_stratum": 1,
+    "model_variant": "GRU_D128",
+    "peak_lr": 0.000533483823011677,
+    "schedule": "S1",
+    "sha256": "a78dc59ee9868d2501028ed7195705ba98b07a88bd53bfcd30288f8c47214d0a"
+   },
+   {
+    "cell": {
+     "dropout_p": 0.2,
+     "lr_stratum": 2,
+     "model_variant": "GRU_D128",
+     "schedule": "S1"
+    },
+    "dropout": [
+     0.2,
+     0.1
+    ],
+    "dropout_p": 0.2,
+    "dropout_sites": [
+     "input",
+     "readout"
+    ],
+    "family": "GRU",
+    "hp_id": "P2_GRU_D128_S1_s2",
+    "index": 5,
+    "log10_peak_lr": -3.106212078613671,
+    "lr_stratum": 2,
+    "model_variant": "GRU_D128",
+    "peak_lr": 0.000783047164704761,
+    "schedule": "S1",
+    "sha256": "53a8cfc5926168899a68f9358abdf8199d363471ccfdaedf2adf1be81e74c4e8"
+   },
+   {
+    "cell": {
+     "dropout_p": 0.1,
+     "lr_stratum": 4,
+     "model_variant": "GRU_D128",
+     "schedule": "S1"
+    },
+    "dropout": [
+     0.1,
+     0.05
+    ],
+    "dropout_p": 0.1,
+    "dropout_sites": [
+     "input",
+     "readout"
+    ],
+    "family": "GRU",
+    "hp_id": "P2_GRU_D128_S1_s4",
+    "index": 6,
+    "log10_peak_lr": -2.7728787452803374,
+    "lr_stratum": 4,
+    "model_variant": "GRU_D128",
+    "peak_lr": 0.001687023975571048,
+    "schedule": "S1",
+    "sha256": "8fe3ecbbcd232aa2fc7833a458aad57c20b40f171013f319e5426c797f85506b"
+   },
+   {
+    "cell": {
+     "dropout_p": 0.1,
+     "lr_stratum": 0,
+     "model_variant": "GRU_D256",
+     "schedule": "S0"
+    },
+    "dropout": [
+     0.1,
+     0.05
+    ],
+    "dropout_p": 0.1,
+    "dropout_sites": [
+     "input",
+     "readout"
+    ],
+    "family": "GRU",
+    "hp_id": "P2_GRU_D256_S0_s0",
+    "index": 7,
+    "log10_peak_lr": -3.439545411947004,
+    "lr_stratum": 0,
+    "model_variant": "GRU_D256",
+    "peak_lr": 0.0003634582975885768,
+    "schedule": "S0",
+    "sha256": "d7b7c07653c5a94ac7cf498b11a40b79ad776cf60e0343ca5aa17113dd319005"
+   },
+   {
+    "cell": {
+     "dropout_p": 0.2,
+     "lr_stratum": 3,
+     "model_variant": "GRU_D256",
+     "schedule": "S0"
+    },
+    "dropout": [
+     0.2,
+     0.1
+    ],
+    "dropout_p": 0.2,
+    "dropout_sites": [
+     "input",
+     "readout"
+    ],
+    "family": "GRU",
+    "hp_id": "P2_GRU_D256_S0_s3",
+    "index": 8,
+    "log10_peak_lr": -2.9395454119470044,
+    "lr_stratum": 3,
+    "model_variant": "GRU_D256",
+    "peak_lr": 0.001149356054867186,
+    "schedule": "S0",
+    "sha256": "d521c8fd69666f19a62b6411afab485b1996947f733a66f1f486518faf90256f"
+   },
+   {
+    "cell": {
+     "dropout_p": 0.3,
+     "lr_stratum": 5,
+     "model_variant": "GRU_D256",
+     "schedule": "S0"
+    },
+    "dropout": [
+     0.3,
+     0.15
+    ],
+    "dropout_p": 0.3,
+    "dropout_sites": [
+     "input",
+     "readout"
+    ],
+    "family": "GRU",
+    "hp_id": "P2_GRU_D256_S0_s5",
+    "index": 9,
+    "log10_peak_lr": -2.606212078613671,
+    "lr_stratum": 5,
+    "model_variant": "GRU_D256",
+    "peak_lr": 0.0024762125558040553,
+    "schedule": "S0",
+    "sha256": "ab68921198ddb90ca33c7e3b474fe19396543781feee206587884bd9bdd8ff10"
+   },
+   {
+    "cell": {
+     "dropout_p": 0.3,
+     "lr_stratum": 1,
+     "model_variant": "GRU_D256",
+     "schedule": "S1"
+    },
+    "dropout": [
+     0.3,
+     0.15
+    ],
+    "dropout_p": 0.3,
+    "dropout_sites": [
+     "input",
+     "readout"
+    ],
+    "family": "GRU",
+    "hp_id": "P2_GRU_D256_S1_s1",
+    "index": 10,
+    "log10_peak_lr": -3.2728787452803374,
+    "lr_stratum": 1,
+    "model_variant": "GRU_D256",
+    "peak_lr": 0.000533483823011677,
+    "schedule": "S1",
+    "sha256": "1f5bc28763ce9a3448e1284f4ee363aac7b91a73a12b4b1002fd44b50eff30c1"
+   },
+   {
+    "cell": {
+     "dropout_p": 0.2,
+     "lr_stratum": 2,
+     "model_variant": "GRU_D256",
+     "schedule": "S1"
+    },
+    "dropout": [
+     0.2,
+     0.1
+    ],
+    "dropout_p": 0.2,
+    "dropout_sites": [
+     "input",
+     "readout"
+    ],
+    "family": "GRU",
+    "hp_id": "P2_GRU_D256_S1_s2",
+    "index": 11,
+    "log10_peak_lr": -3.106212078613671,
+    "lr_stratum": 2,
+    "model_variant": "GRU_D256",
+    "peak_lr": 0.000783047164704761,
+    "schedule": "S1",
+    "sha256": "43f831df0e11284938559d695751609f72b48f7c3272abc98bcd906d3b978bd9"
+   },
+   {
+    "cell": {
+     "dropout_p": 0.1,
+     "lr_stratum": 4,
+     "model_variant": "GRU_D256",
+     "schedule": "S1"
+    },
+    "dropout": [
+     0.1,
+     0.05
+    ],
+    "dropout_p": 0.1,
+    "dropout_sites": [
+     "input",
+     "readout"
+    ],
+    "family": "GRU",
+    "hp_id": "P2_GRU_D256_S1_s4",
+    "index": 12,
+    "log10_peak_lr": -2.7728787452803374,
+    "lr_stratum": 4,
+    "model_variant": "GRU_D256",
+    "peak_lr": 0.001687023975571048,
+    "schedule": "S1",
+    "sha256": "47822c07925a6fe260828df71b7f18c7bc016f4c9bdc8c2f7745ab08281c8ecf"
+   }
+  ],
+  "SASREC": [
+   {
+    "cell": {
+     "dropout_p": 0.1,
+     "lr_stratum": 0,
+     "model_variant": "SASREC_D256_B2",
+     "schedule": "S0"
+    },
+    "dropout": [
+     0.1
+    ],
+    "dropout_p": 0.1,
+    "dropout_sites": [
+     "all"
+    ],
+    "family": "SASREC",
+    "hp_id": "P2_SASREC_D256_B2_S0_s0",
+    "index": 1,
+    "log10_peak_lr": -3.3978787452803374,
+    "lr_stratum": 0,
+    "model_variant": "SASREC_D256_B2",
+    "peak_lr": 0.00040005642964899735,
+    "schedule": "S0",
+    "sha256": "71a346b90d4002ecdc97a5992a373c3c4e6c833d64ac44379feb10924d9325eb"
+   },
+   {
+    "cell": {
+     "dropout_p": 0.3,
+     "lr_stratum": 3,
+     "model_variant": "SASREC_D256_B2",
+     "schedule": "S0"
+    },
+    "dropout": [
+     0.3
+    ],
+    "dropout_p": 0.3,
+    "dropout_sites": [
+     "all"
+    ],
+    "family": "SASREC",
+    "hp_id": "P2_SASREC_D256_B2_S0_s3",
+    "index": 2,
+    "log10_peak_lr": -2.6478787452803374,
+    "lr_stratum": 3,
+    "model_variant": "SASREC_D256_B2",
+    "peak_lr": 0.0022496826279973683,
+    "schedule": "S0",
+    "sha256": "a816cd64e427e6a1049f2c27167c4b3769f88911aa75c64481989ac5358eb3a1"
+   },
+   {
+    "cell": {
+     "dropout_p": 0.2,
+     "lr_stratum": 1,
+     "model_variant": "SASREC_D256_B2",
+     "schedule": "S1"
+    },
+    "dropout": [
+     0.2
+    ],
+    "dropout_p": 0.2,
+    "dropout_sites": [
+     "all"
+    ],
+    "family": "SASREC",
+    "hp_id": "P2_SASREC_D256_B2_S1_s1",
+    "index": 3,
+    "log10_peak_lr": -3.1478787452803374,
+    "lr_stratum": 1,
+    "model_variant": "SASREC_D256_B2",
+    "peak_lr": 0.0007114121116984968,
+    "schedule": "S1",
+    "sha256": "5f9c9c0c1b9660047462d10d23c72cfee60b41b4d616a37ecf98d39c3629a4c7"
+   },
+   {
+    "cell": {
+     "dropout_p": 0.2,
+     "lr_stratum": 2,
+     "model_variant": "SASREC_D256_B2",
+     "schedule": "S1"
+    },
+    "dropout": [
+     0.2
+    ],
+    "dropout_p": 0.2,
+    "dropout_sites": [
+     "all"
+    ],
+    "family": "SASREC",
+    "hp_id": "P2_SASREC_D256_B2_S1_s2",
+    "index": 4,
+    "log10_peak_lr": -2.8978787452803374,
+    "lr_stratum": 2,
+    "model_variant": "SASREC_D256_B2",
+    "peak_lr": 0.0012650895102857473,
+    "schedule": "S1",
+    "sha256": "1c40c5535b38c974b9d0c185085b1ec4dc58442f21ecca8f18c45387b85402c1"
+   },
+   {
+    "cell": {
+     "dropout_p": 0.1,
+     "lr_stratum": 0,
+     "model_variant": "SASREC_D256_B3",
+     "schedule": "S0"
+    },
+    "dropout": [
+     0.1
+    ],
+    "dropout_p": 0.1,
+    "dropout_sites": [
+     "all"
+    ],
+    "family": "SASREC",
+    "hp_id": "P2_SASREC_D256_B3_S0_s0",
+    "index": 5,
+    "log10_peak_lr": -3.3978787452803374,
+    "lr_stratum": 0,
+    "model_variant": "SASREC_D256_B3",
+    "peak_lr": 0.00040005642964899735,
+    "schedule": "S0",
+    "sha256": "20a4f86ec1fb021707d8f057d9029e983070d952d5f3533dc974df1dd57a7045"
+   },
+   {
+    "cell": {
+     "dropout_p": 0.3,
+     "lr_stratum": 3,
+     "model_variant": "SASREC_D256_B3",
+     "schedule": "S0"
+    },
+    "dropout": [
+     0.3
+    ],
+    "dropout_p": 0.3,
+    "dropout_sites": [
+     "all"
+    ],
+    "family": "SASREC",
+    "hp_id": "P2_SASREC_D256_B3_S0_s3",
+    "index": 6,
+    "log10_peak_lr": -2.6478787452803374,
+    "lr_stratum": 3,
+    "model_variant": "SASREC_D256_B3",
+    "peak_lr": 0.0022496826279973683,
+    "schedule": "S0",
+    "sha256": "cf489d0c7ed99e33d34982dd40b46eca66366c3c7475db500cbc5f6bdbb14be5"
+   },
+   {
+    "cell": {
+     "dropout_p": 0.2,
+     "lr_stratum": 1,
+     "model_variant": "SASREC_D256_B3",
+     "schedule": "S1"
+    },
+    "dropout": [
+     0.2
+    ],
+    "dropout_p": 0.2,
+    "dropout_sites": [
+     "all"
+    ],
+    "family": "SASREC",
+    "hp_id": "P2_SASREC_D256_B3_S1_s1",
+    "index": 7,
+    "log10_peak_lr": -3.1478787452803374,
+    "lr_stratum": 1,
+    "model_variant": "SASREC_D256_B3",
+    "peak_lr": 0.0007114121116984968,
+    "schedule": "S1",
+    "sha256": "2f4f3c75691cb9c319c83e43b0107c58fb76043733a1553254f76b3821a59998"
+   },
+   {
+    "cell": {
+     "dropout_p": 0.2,
+     "lr_stratum": 2,
+     "model_variant": "SASREC_D256_B3",
+     "schedule": "S1"
+    },
+    "dropout": [
+     0.2
+    ],
+    "dropout_p": 0.2,
+    "dropout_sites": [
+     "all"
+    ],
+    "family": "SASREC",
+    "hp_id": "P2_SASREC_D256_B3_S1_s2",
+    "index": 8,
+    "log10_peak_lr": -2.8978787452803374,
+    "lr_stratum": 2,
+    "model_variant": "SASREC_D256_B3",
+    "peak_lr": 0.0012650895102857473,
+    "schedule": "S1",
+    "sha256": "3e028d9c3135ffc898f34dcef0656825747b581cd3482c999fc1d39d4f617017"
+   },
+   {
+    "cell": {
+     "dropout_p": 0.1,
+     "lr_stratum": 0,
+     "model_variant": "SASREC_D384_B2",
+     "schedule": "S0"
+    },
+    "dropout": [
+     0.1
+    ],
+    "dropout_p": 0.1,
+    "dropout_sites": [
+     "all"
+    ],
+    "family": "SASREC",
+    "hp_id": "P2_SASREC_D384_B2_S0_s0",
+    "index": 9,
+    "log10_peak_lr": -3.3978787452803374,
+    "lr_stratum": 0,
+    "model_variant": "SASREC_D384_B2",
+    "peak_lr": 0.00040005642964899735,
+    "schedule": "S0",
+    "sha256": "c54375a2102caf01c5efb2201f4d8fc451ee3490ae0ca88b29d189c55662acc9"
+   },
+   {
+    "cell": {
+     "dropout_p": 0.3,
+     "lr_stratum": 3,
+     "model_variant": "SASREC_D384_B2",
+     "schedule": "S0"
+    },
+    "dropout": [
+     0.3
+    ],
+    "dropout_p": 0.3,
+    "dropout_sites": [
+     "all"
+    ],
+    "family": "SASREC",
+    "hp_id": "P2_SASREC_D384_B2_S0_s3",
+    "index": 10,
+    "log10_peak_lr": -2.6478787452803374,
+    "lr_stratum": 3,
+    "model_variant": "SASREC_D384_B2",
+    "peak_lr": 0.0022496826279973683,
+    "schedule": "S0",
+    "sha256": "43d4895177a483615644c6fa43e8c691282175a7eb2da3ff83a7aa5827d76645"
+   },
+   {
+    "cell": {
+     "dropout_p": 0.2,
+     "lr_stratum": 1,
+     "model_variant": "SASREC_D384_B2",
+     "schedule": "S1"
+    },
+    "dropout": [
+     0.2
+    ],
+    "dropout_p": 0.2,
+    "dropout_sites": [
+     "all"
+    ],
+    "family": "SASREC",
+    "hp_id": "P2_SASREC_D384_B2_S1_s1",
+    "index": 11,
+    "log10_peak_lr": -3.1478787452803374,
+    "lr_stratum": 1,
+    "model_variant": "SASREC_D384_B2",
+    "peak_lr": 0.0007114121116984968,
+    "schedule": "S1",
+    "sha256": "71a4d225a201b858280fc726822346791e240b6b1ce83a17e2378bb99cc6d44f"
+   },
+   {
+    "cell": {
+     "dropout_p": 0.2,
+     "lr_stratum": 2,
+     "model_variant": "SASREC_D384_B2",
+     "schedule": "S1"
+    },
+    "dropout": [
+     0.2
+    ],
+    "dropout_p": 0.2,
+    "dropout_sites": [
+     "all"
+    ],
+    "family": "SASREC",
+    "hp_id": "P2_SASREC_D384_B2_S1_s2",
+    "index": 12,
+    "log10_peak_lr": -2.8978787452803374,
+    "lr_stratum": 2,
+    "model_variant": "SASREC_D384_B2",
+    "peak_lr": 0.0012650895102857473,
+    "schedule": "S1",
+    "sha256": "bda25bfdd212ad3baa90d27cdf7f563436ac237f3a61d31054464ded4e3b5ece"
+   }
+  ]
+ },
+ "fixed": {
+  "betas": [
+   0.9,
+   0.999
+  ],
+  "determinism_mode": "STRICT",
+  "efe": 6.0,
+  "effective_batch": 256,
+  "endpoint": 6.0,
+  "eps": 1e-08,
+  "eval_manifest_role": "CALIBRATION (CALIB_VALIDATION_5_100_32768); MAIN_VALIDATION never read",
+  "eval_marks": [
+   2.0,
+   4.0,
+   6.0
+  ],
+  "grad_clip": 1.0,
+  "label_smoothing": 0.0,
+  "optimizer": "AdamW (fused)",
+  "run_label": "HP_SEARCH",
+  "run_role": "TUNING",
+  "snapshot_marks": [
+   5.0,
+   5.5,
+   6.0
+  ],
+  "train_manifest_role": "CALIBRATION (CALIB_TRAIN_5_100_32768)",
+  "weight_decay": 1e-05,
+  "weight_decay_scope": "ndim>=2"
+ },
+ "format": "PPSI_V4_HP_REGISTRY_P2R2_1",
+ "lr_grid": {
+  "GRU": {
+   "n_strata": 6,
+   "strata": [
+    {
+     "log10_hi": -3.356212078613671,
+     "log10_lo": -3.5228787452803374,
+     "log10_mid": -3.439545411947004,
+     "peak_lr": 0.0003634582975885768,
+     "stratum": 0
+    },
+    {
+     "log10_hi": -3.189545411947004,
+     "log10_lo": -3.356212078613671,
+     "log10_mid": -3.2728787452803374,
+     "peak_lr": 0.000533483823011677,
+     "stratum": 1
+    },
+    {
+     "log10_hi": -3.0228787452803374,
+     "log10_lo": -3.189545411947004,
+     "log10_mid": -3.106212078613671,
+     "peak_lr": 0.000783047164704761,
+     "stratum": 2
+    },
+    {
+     "log10_hi": -2.856212078613671,
+     "log10_lo": -3.0228787452803374,
+     "log10_mid": -2.9395454119470044,
+     "peak_lr": 0.001149356054867186,
+     "stratum": 3
+    },
+    {
+     "log10_hi": -2.6895454119470044,
+     "log10_lo": -2.856212078613671,
+     "log10_mid": -2.7728787452803374,
+     "peak_lr": 0.001687023975571048,
+     "stratum": 4
+    },
+    {
+     "log10_hi": -2.5228787452803374,
+     "log10_lo": -2.6895454119470044,
+     "log10_mid": -2.606212078613671,
+     "peak_lr": 0.0024762125558040553,
+     "stratum": 5
+    }
+   ]
+  },
+  "SASREC": {
+   "n_strata": 4,
+   "strata": [
+    {
+     "log10_hi": -3.2728787452803374,
+     "log10_lo": -3.5228787452803374,
+     "log10_mid": -3.3978787452803374,
+     "peak_lr": 0.00040005642964899735,
+     "stratum": 0
+    },
+    {
+     "log10_hi": -3.0228787452803374,
+     "log10_lo": -3.2728787452803374,
+     "log10_mid": -3.1478787452803374,
+     "peak_lr": 0.0007114121116984968,
+     "stratum": 1
+    },
+    {
+     "log10_hi": -2.7728787452803374,
+     "log10_lo": -3.0228787452803374,
+     "log10_mid": -2.8978787452803374,
+     "peak_lr": 0.0012650895102857473,
+     "stratum": 2
+    },
+    {
+     "log10_hi": -2.5228787452803374,
+     "log10_lo": -2.7728787452803374,
+     "log10_mid": -2.6478787452803374,
+     "peak_lr": 0.0022496826279973683,
+     "stratum": 3
+    }
+   ]
+  },
+  "bounds": [
+   0.0003,
+   0.003
+  ],
+  "rule": "peak_lr(k) = 10 ** (log10(3e-4) + (k + 0.5) * (log10(3e-3) - log10(3e-4)) / n_strata); GRU n_strata 6, SASREC 4 (02R2 \u00a71)",
+  "sha256": "ca8686f5aef0732f92d8dddf6c113aadb09e484b0c4873695454c79f0d75815c"
+ },
+ "schedules": {
+  "S0": [
+   [
+    0.0,
+    0.0
+   ],
+   [
+    0.02,
+    1.0
+   ],
+   [
+    2.0,
+    1.0
+   ],
+   [
+    3.0,
+    0.1
+   ],
+   [
+    5.5,
+    0.1
+   ],
+   [
+    6.0,
+    0.01
+   ]
+  ],
+  "S1": [
+   [
+    0.0,
+    0.0
+   ],
+   [
+    0.02,
+    1.0
+   ],
+   [
+    4.2,
+    1.0
+   ],
+   [
+    6.0,
+    0.01
+   ]
+  ]
+ },
+ "seeds": {
+  "stage1": 2026,
+  "stage2": 2027
+ },
+ "selection": "02R1 \u00a73 (v4train.p2_driver): stage 2 = the best 6.0 value of each size level at seed 2027; tuned = the higher 2-seed mean at 6.0; tie |delta| <= 0.0005 -> fewer parameters, then the lower LR; exclusions: a non-finite loss or endpoint metric, or a 6.0 value < 0.5 x the family best; a size level without a valid 6.0 run is a Fable trigger; CKPT_AVG carried iff > +0.0005 on the 2-seed mean",
+ "self_sha256": "a3b48f20357e67606f6ec642e1ed68260cbe5070105bd001a85dd09b3bc5ca7b",
+ "supersedes": {
+  "file": "contracts/hp_registry/HP_REGISTRY_P2.json",
+  "format": "PPSI_V4_HP_REGISTRY_P2_1",
+  "self_sha256": "4b8a8cd4db22334314c5c4df62b0aa6ab15377c78bc33c5628b83ea4d3a7e7c2",
+  "status": "kept as the record; never launched (HP_SEARCH_VOID if it were)"
+ },
+ "task": "TRAIN-02 item 1 / TRAIN-02R1 (02R2 re-issue)"
+}

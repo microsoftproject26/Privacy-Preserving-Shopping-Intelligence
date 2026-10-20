@@ -1,0 +1,399 @@
+{
+  "TRAIN": {
+    "build": {
+      "cache_build_s": 119.98,
+      "cache_event_rows": 766020,
+      "cache_nbytes": 149218202,
+      "history_policy": "USER_HISTORY_L50",
+      "mean_window_length": 19.85665263819387,
+      "peak_rss_bytes_after": 6147866624,
+      "rss_bytes_after": 1536364544,
+      "rss_bytes_before": 615612416,
+      "total_s": 120.55,
+      "transform_state": {
+        "clip_extends_beyond_clean_v2": [],
+        "identity_with_clean_v2": true,
+        "scope": "NORMALIZERS_ONLY",
+        "source": "DEFAULT_CLEAN_V2 (the locked state)",
+        "transform_state_sha256": "2ff0ff4ec1d27d254972c2f212e81f5fee6277dc9cced31a6a5baf5b4b002727"
+      },
+      "verify_s": 0.51
+    },
+    "cache": {
+      "bucket_groups": 8,
+      "buckets": [
+        0,
+        63
+      ],
+      "build_s": 119.98,
+      "cache_nbytes": 149218202,
+      "group_log": [
+        {
+          "buckets": [
+            0,
+            7
+          ],
+          "group_store_rows": 6585061,
+          "index_alignment_decisions_checked": 5014110,
+          "kept_decisions": 79099,
+          "kept_rows": 94004,
+          "masks_dtype": "uint8",
+          "rss_bytes": 4886339584,
+          "s": 14.71
+        },
+        {
+          "buckets": [
+            8,
+            15
+          ],
+          "group_store_rows": 6585880,
+          "index_alignment_decisions_checked": 5014703,
+          "kept_decisions": 82318,
+          "kept_rows": 97779,
+          "masks_dtype": "uint8",
+          "rss_bytes": 5175869440,
+          "s": 14.93
+        },
+        {
+          "buckets": [
+            16,
+            23
+          ],
+          "group_store_rows": 6584508,
+          "index_alignment_decisions_checked": 5012658,
+          "kept_decisions": 81734,
+          "kept_rows": 97085,
+          "masks_dtype": "uint8",
+          "rss_bytes": 4056256512,
+          "s": 14.99
+        },
+        {
+          "buckets": [
+            24,
+            31
+          ],
+          "group_store_rows": 6564307,
+          "index_alignment_decisions_checked": 4996101,
+          "kept_decisions": 78869,
+          "kept_rows": 93398,
+          "masks_dtype": "uint8",
+          "rss_bytes": 4545687552,
+          "s": 14.93
+        },
+        {
+          "buckets": [
+            32,
+            39
+          ],
+          "group_store_rows": 6638935,
+          "index_alignment_decisions_checked": 5061136,
+          "kept_decisions": 82219,
+          "kept_rows": 97328,
+          "masks_dtype": "uint8",
+          "rss_bytes": 5224722432,
+          "s": 14.99
+        },
+        {
+          "buckets": [
+            40,
+            47
+          ],
+          "group_store_rows": 6597166,
+          "index_alignment_decisions_checked": 5025541,
+          "kept_decisions": 82740,
+          "kept_rows": 98056,
+          "masks_dtype": "uint8",
+          "rss_bytes": 5476995072,
+          "s": 14.91
+        },
+        {
+          "buckets": [
+            48,
+            55
+          ],
+          "group_store_rows": 6612909,
+          "index_alignment_decisions_checked": 5034164,
+          "kept_decisions": 79039,
+          "kept_rows": 93618,
+          "masks_dtype": "uint8",
+          "rss_bytes": 5276020736,
+          "s": 14.83
+        },
+        {
+          "buckets": [
+            56,
+            63
+          ],
+          "group_store_rows": 6591548,
+          "index_alignment_decisions_checked": 5022195,
+          "kept_decisions": 80049,
+          "kept_rows": 94752,
+          "masks_dtype": "uint8",
+          "rss_bytes": 5122244608,
+          "s": 14.58
+        }
+      ],
+      "history_policy": "USER_HISTORY_L50",
+      "kind": "loss",
+      "masks_dtype": "uint8",
+      "mean_window_length": 19.85665263819387,
+      "n_decisions": 646067,
+      "n_event_rows": 766020,
+      "peak_rss_bytes_after": 6147866624,
+      "splits": [
+        "TRAIN"
+      ],
+      "store_splits": [
+        "TRAIN"
+      ]
+    },
+    "fingerprint": "94ade68c5df4dcf8c2f3b29529b63dcb0193ab2e34ec529b467f628018c49f2e",
+    "history": {
+      "context_length": 50,
+      "decision_splits": [
+        "TRAIN"
+      ],
+      "history_policy": "USER_HISTORY_L50",
+      "per_event_channels": "stored per-event values (session-relative channels restart at each segment start)",
+      "resolver": "v4hist.windows/1",
+      "session_mode_features": {
+        "keys": {
+          "current_matches_session_mode": "float32 [B]",
+          "current_matches_session_mode_available": "float32 [B]",
+          "session_mode_main_category_tokens": "int64 [B, 50]",
+          "session_mode_share": "float32 [B]"
+        },
+        "main_category_vocab": 16,
+        "scope": "inside the 50-event window; ties -> most recent occurrence",
+        "status": "CANDIDATE (DECISION_LOG 48; droppable)",
+        "unknown_token": 1
+      },
+      "session_offset_tokens": {
+        "cap": 7,
+        "dtype": "int64",
+        "key": "session_offset_tokens",
+        "rule": "min(session_index(d) - session_index(j), 7) + 1; PAD 0; v1 behavioural session (gap > 3600 s over all raw blocks; never fence-reset)",
+        "vocab": 9
+      },
+      "store_splits": [
+        "TRAIN"
+      ],
+      "window_rule": "rows [max(user_start, r - (L - 1)), r] of the user's retained stream in (user_id, segment_index, position_in_segment) order"
+    },
+    "history_policy": "USER_HISTORY_L50",
+    "manifest_binding": {
+      "content_sha256": "b250bea272e3b497ace6bf2a2c6e46c29dc4a7ae518ac9e744f820baa325ae41",
+      "content_sha256_rule": "sha256 of the canonical JSON list [{table, row_count, table_content_sha256}] in the header's table order (REGISTRY_FS rules.content_sha256 = v4fs_data.fs_common.manifest_content_sha256), from the verified tables",
+      "header_content_sha256": "b91c79b521f0c0809dd54d39e393aaec3d1167d172436d4429974c2cc1e4423b",
+      "header_sha256": "5580e6592f91d338a59854865cb98e372416a053f02192f2a17f9ef0f9dafed4",
+      "manifest_id": "CALIB_TRAIN_5_100_32768"
+    },
+    "manifest_id": "CALIB_TRAIN_5_100_32768",
+    "n_decisions": 646067,
+    "provider": "v4int.StoreTrainProvider/2",
+    "split": "TRAIN",
+    "transform_state": {
+      "clip_extends_beyond_clean_v2": [],
+      "identity_with_clean_v2": true,
+      "scope": "NORMALIZERS_ONLY",
+      "source": "DEFAULT_CLEAN_V2 (the locked state)",
+      "transform_state_sha256": "2ff0ff4ec1d27d254972c2f212e81f5fee6277dc9cced31a6a5baf5b4b002727"
+    },
+    "verified": {
+      "canonical_ordered_decision_id_sha256": "83c854c76237228c333daec175fe7af567f950544803f0d7a1e1c45e4614e4f0",
+      "checks": {
+        "central_order.file_sha256_eq_registry": true,
+        "central_order.is_permutation": true,
+        "central_order.row_count_eq_registry": true,
+        "central_order.strictly_ascending": true,
+        "central_order.table_content_sha256_eq_registry": true,
+        "clients.file_sha256_eq_registry": true,
+        "clients.row_count_eq_registry": true,
+        "clients.table_content_sha256_eq_registry": true,
+        "decisions.file_sha256_eq_registry": true,
+        "decisions.old_split_train": true,
+        "decisions.order_hash_eq_header": true,
+        "decisions.row_count_eq_registry": true,
+        "decisions.table_content_sha256_eq_registry": true,
+        "decisions.target_class_in_range": true,
+        "decisions.target_status_observed": true,
+        "header.builder_code_sha256_eq_lock": true,
+        "header.candidate_order_eq_lock": true,
+        "header.catalogue_K_eq_lock": true,
+        "header.content_self_hash": true,
+        "header.data_protocol_lock_file_sha256_eq_lock_file": true,
+        "header.data_protocol_lock_sha256_eq_lock_self": true,
+        "header.data_version_eq_registry": true,
+        "header.dataset_version_eq_lock": true,
+        "header.eval_ordered_decision_id_sha256_eq_registry": true,
+        "header.manifest_id": true,
+        "header.n_decisions_eq_registry": true,
+        "header.n_eval_rows_eq_registry": true,
+        "header.n_rankable_rows_eq_registry": true,
+        "header.n_users_eq_registry": true,
+        "header.no_all_methods_lock": true,
+        "header.no_test_exposure_entry": true,
+        "header.ordered_decision_id_sha256_eq_registry": true,
+        "header.population_sha256_eq_registry": true,
+        "header.rankable_ordered_decision_id_sha256_eq_registry": true,
+        "header.schema_self_sha256_eq_lock": true,
+        "header.status_allowed": true,
+        "header.status_eq_registry_entry": true,
+        "header.tables_eq_registry": true,
+        "lock_self_sha256_recomputed": true,
+        "n_decisions_eq_header": true,
+        "n_decisions_eq_registry": true,
+        "ok_marker_matches_disk": true,
+        "registry.content_sha256": true,
+        "registry.header_content_sha256": true,
+        "registry.header_sha256": true,
+        "registry.self_sha256_verified": true,
+        "registry.source_lock_eq_lock": true,
+        "registry.transform_state_eq_lock": true
+      },
+      "checks_passed": 48,
+      "header_content_sha256": "b91c79b521f0c0809dd54d39e393aaec3d1167d172436d4429974c2cc1e4423b",
+      "header_file_sha256": "5580e6592f91d338a59854865cb98e372416a053f02192f2a17f9ef0f9dafed4",
+      "kind": "TRAIN",
+      "lock_file_sha256": "905ee4f9b39a7bb249a45f9bfa061a9ce2712b20b9aedecb362a6720bfa91b7d",
+      "lock_self_sha256": "bc699a97dd2fab054e5a5c00f9661dd32b0677941d3f23f2e4b81751b3b7b330",
+      "manifest_id": "CALIB_TRAIN_5_100_32768",
+      "n_decisions": 646067,
+      "ordered_decision_id_sha256": "c6aac708e67749d1cbb34620dbb6291000861931ad4e3787f4f01c07eb18394f",
+      "registry": {
+        "data_version": "CLEAN_V2_POP5100_V2",
+        "entry_content_sha256": "b250bea272e3b497ace6bf2a2c6e46c29dc4a7ae518ac9e744f820baa325ae41",
+        "entry_header_sha256": "5580e6592f91d338a59854865cb98e372416a053f02192f2a17f9ef0f9dafed4",
+        "file_sha256": "56dd0840cb50e89250a8b9a54dc1d4f621e9e6f9500ec44441cf07cb472ef740",
+        "path": "/home/jovyan/EID PROJECT NEW/DELIVERY_REVIEW/EXTENSIONS_20261013/ppsi_v4/contracts/manifest_registry/REGISTRY_V2.json",
+        "root": "/home/jovyan/EID PROJECT NEW/DELIVERY_REVIEW/EXTENSIONS_20261013/ppsi_v4",
+        "run_label": null,
+        "self_sha256": "f6a0820791ad39e84aa86ebde2c37c12e76a45be6034d9068621a2c431b21c41"
+      },
+      "tables": {
+        "central_order": {
+          "file": "CALIB_TRAIN_5_100_32768.central_order.parquet",
+          "file_sha256": "721500ac375829b1cc8bd294d0e696f3ff2194a41ed04d1ec092a1f2bc6bbd3d",
+          "row_count": 646067,
+          "table_content_sha256": "891a397df7419f88df6d71cce678279c15b9654a77bc8f7afad43848dc3c9630"
+        },
+        "clients": {
+          "file": "CALIB_TRAIN_5_100_32768.clients.parquet",
+          "file_sha256": "aab04ddea3592eca662590c4fda8146e3eea35b1d91896441317b1114a7fd798",
+          "row_count": 32768,
+          "table_content_sha256": "f011dbe73e2ec24887f98a09f42c3a5195489d1f9266f46b7a2dcb0e6f119524"
+        },
+        "decisions": {
+          "file": "CALIB_TRAIN_5_100_32768.decisions.parquet",
+          "file_sha256": "79d3ae96248fccd0cc55e09e9596ec2df7c6ca54be393faf978072b65d12f9db",
+          "row_count": 646067,
+          "table_content_sha256": "b86426692f5fddf295e89612c301f0ae836604c7c44657c89abdde726f577458"
+        }
+      },
+      "timings_s": {
+        "files_and_header": 0.05,
+        "lock_state_registry": 0.01,
+        "tables": 0.45,
+        "total": 0.51
+      },
+      "transform_state_file_sha256": "7dda2f56066c1ca11c32754fd2b701448a7d7920f3e68bf7facc77141f41ae7d",
+      "transform_state_self_sha256": "2ff0ff4ec1d27d254972c2f212e81f5fee6277dc9cced31a6a5baf5b4b002727",
+      "verified_by": "MANIFEST_REGISTRY"
+    }
+  },
+  "catalogue_K": 158486,
+  "document": "REES46_TRAINING_FREE_FIT",
+  "files_sha256": {
+    "MC.background_float32.npy": "9da142650e2d75c8b33518de1decccae5ebbbde8ea3df44d74743a0b6b02f81f",
+    "MC.matrix.npz": "20756b343fbf2cc4e53273a21ebf5445520e45b3e59b7e8d7fc785a962ceaff9",
+    "PCTM.background_float32.npy": "9cde48d9fd8f6f57616cb89f714507e1c15ed8018ff0eacf542bfa5314615de4",
+    "PCTM.matrix.npz": "368289072a858d91f67410986a5c68ef750dcb7c11921d81c050403a583a20ac",
+    "SeqRules.background_float32.npy": "9da142650e2d75c8b33518de1decccae5ebbbde8ea3df44d74743a0b6b02f81f",
+    "SeqRules.matrix.npz": "7877162598726d2e37b93b1e5cb847259afeca3a2e76e824d033fe8ee83a35e2",
+    "target_frequency_int64.npy": "ad466b0dfec8dd53cdadbed349e9c8a2d6b167b00cd046a238a07f6119f043b8"
+  },
+  "label": "POST_HOC_EXPLORATORY_DESCRIPTIVE",
+  "n_pairs_by_offset": [
+    645437,
+    619452,
+    592277,
+    564798,
+    537228,
+    509696,
+    483316,
+    458641,
+    435621,
+    414259
+  ],
+  "n_train_decisions": 646067,
+  "nnz_by_method": {
+    "MC": 430241,
+    "PCTM": 2972828,
+    "SeqRules": 1963198
+  },
+  "phase": "CALIBRATION",
+  "protocol": {
+    "document": "REES46_FIXED_TRAINING_FREE_V1",
+    "fit_scope": "eligible TRAIN decisions; one source-at-original-offset to target pair per decision",
+    "history_policy": "USER_HISTORY_L50",
+    "label": "POST_HOC_EXPLORATORY_DESCRIPTIVE",
+    "max_offset": 10,
+    "popularity_scope": "TRAIN target frequency, matching REES46 POP; not raw-event frequency",
+    "prediction_path": "rees46_training_free_exact_sparse_v1",
+    "ranking": "all frozen output classes, descending FP32 scores, ascending class ID ties; no seen filter",
+    "recipe_source": "capacity_probes/configs/table1.json Beauty; fixed transfer, no REES46 selection",
+    "recipes": {
+      "MC": {
+        "distance": 1
+      },
+      "PCTM": {
+        "counts": "inv:10:0.5",
+        "kernel": "exp:0.6",
+        "pop_boost": -0.04,
+        "tau": 11250.0
+      },
+      "SeqRules": {
+        "history_length": 10,
+        "history_weighting": "quadratic",
+        "idf_weight": false,
+        "pruning": 100,
+        "steps": 10,
+        "weighting": "log"
+      }
+    },
+    "registry_file_sha256": "56dd0840cb50e89250a8b9a54dc1d4f621e9e6f9500ec44441cf07cb472ef740",
+    "role_ids": {
+      "CALIBRATION": [
+        "CALIB_TRAIN_5_100_32768",
+        "CALIB_VALIDATION_5_100_32768"
+      ],
+      "MAIN": [
+        "MAIN_TRAIN_5_100_131072",
+        "MAIN_VALIDATION_5_100_131072"
+      ]
+    },
+    "selection": "NONE",
+    "test_supported": false
+  },
+  "registry": {
+    "file_sha256": "56dd0840cb50e89250a8b9a54dc1d4f621e9e6f9500ec44441cf07cb472ef740",
+    "path": "/home/jovyan/EID PROJECT NEW/DELIVERY_REVIEW/EXTENSIONS_20261013/ppsi_v4/contracts/manifest_registry/REGISTRY_V2.json"
+  },
+  "resource": {
+    "limit_bytes": 17179869184,
+    "n_checks": 327,
+    "peak_seen_bytes": 1721630720,
+    "rss_measurable_on_this_host": true
+  },
+  "source_binding": {
+    "adapter_sha256": "3fbc6730f49e982389a59b025a6c401a5f441cf04acdfbfcb9ad49b82fa2f046",
+    "evaluator_code_sha256": "61b64e61c1a2e4f5a6fecd42f0ad3b98de26562d13a07758573cc9496b8d962e",
+    "manifest_verifier_sha256": "383a756dffafe28c8cd9f6b17361121b2a617019c16d8d816197b09e86ce6fb2",
+    "protocol_sha256": "e9cdfbfd7a619ada1a3f8077d5a2c75eaa2c293ed8d59b2f8439bf9dec4d2103",
+    "provider_sha256": "87ecd99542a209976154608b244c8ffa23302584639d51be2d1ee1ce50f2c63f",
+    "registry_expected_sha256": "56dd0840cb50e89250a8b9a54dc1d4f621e9e6f9500ec44441cf07cb472ef740"
+  },
+  "status": "COMPLETE",
+  "utc": "2026-10-14T04:21:36.510325+00:00",
+  "wall_s": 146.03910853341222
+}

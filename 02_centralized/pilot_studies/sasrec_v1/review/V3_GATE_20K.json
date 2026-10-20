@@ -1,0 +1,107 @@
+{
+ "rule": "Waits until BOTH v3 anchors have logged update 20,000, then evaluates on\nTRAINING signals only (metrics.jsonl `update_agg`, 100-update means; windows of the 10 records\nending at the named update are used to reduce noise, declared here before any v3 data exists):\n  - mean_loss(19k..20k) <= mean_loss(9k..10k) - 0.02\n  - mean_grad_norm(19k..20k) <= 1.25 x mean_grad_norm(5k..6k)\n  - E_mean_row_norm(20k) <= 0.5\n  - [amendment 1, config/run_registry.v3_amendment_1.json] median row norms of E and W_out <= 5.0 absolute\n    and W_out ||mean row|| <= 1e-3; the original 3x-init outcome is reported, not gating\n  - every logged loss / grad norm finite",
+ "arms": {
+  "A0_ID256": {
+   "go": true,
+   "checks": {
+    "loss_decreasing": true,
+    "grad_norm_not_climbing": true,
+    "E_common_mode_bounded": true,
+    "E_median_row_norm_le_5_abs": true,
+    "W_median_row_norm_le_5_abs": true,
+    "W_common_mode_le_1e-3": true,
+    "all_finite": true
+   },
+   "original_criterion_4_outcome_reported_not_gating": {
+    "E_median_row_norm_le_3x_init": false,
+    "W_median_row_norm_le_3x_init": false
+   },
+   "descriptive_E_common_mode_ratio": 0.1029337289655449,
+   "values": {
+    "loss_9k_10k": 6.658581693172455,
+    "loss_19k_20k": 6.367663371086121,
+    "gn_5k_6k": 1.2710598497390748,
+    "gn_19k_20k": 0.8415173999667166,
+    "emb_at_100": {
+     "E_mean_row_norm": 0.0008745072991587222,
+     "E_median_row_norm": 0.3194734454154968,
+     "W_mean_row_norm": 2.64424859786061e-09,
+     "W_median_row_norm": 0.3183545768260956,
+     "b_mean": 1.1282632814135773e-12,
+     "b_std": 0.0006118190358392894
+    },
+    "emb_at_20k": {
+     "E_mean_row_norm": 0.141041100025177,
+     "E_median_row_norm": 1.3702126741409302,
+     "W_mean_row_norm": 8.411555896259415e-09,
+     "W_median_row_norm": 1.0624319314956665,
+     "b_mean": 0.0,
+     "b_std": 2.318713426589966
+    }
+   }
+  },
+  "A1_RICH256": {
+   "go": true,
+   "checks": {
+    "loss_decreasing": true,
+    "grad_norm_not_climbing": true,
+    "E_common_mode_bounded": true,
+    "E_median_row_norm_le_5_abs": true,
+    "W_median_row_norm_le_5_abs": true,
+    "W_common_mode_le_1e-3": true,
+    "all_finite": true
+   },
+   "original_criterion_4_outcome_reported_not_gating": {
+    "E_median_row_norm_le_3x_init": false,
+    "W_median_row_norm_le_3x_init": false
+   },
+   "descriptive_E_common_mode_ratio": 0.16609625644576714,
+   "values": {
+    "loss_9k_10k": 6.453695696830751,
+    "loss_19k_20k": 6.196331719398499,
+    "gn_5k_6k": 1.1685434629917144,
+    "gn_19k_20k": 0.8755703041553498,
+    "emb_at_100": {
+     "E_mean_row_norm": 0.0008740777266211808,
+     "E_median_row_norm": 0.31949102878570557,
+     "W_mean_row_norm": 2.591258541073671e-09,
+     "W_median_row_norm": 0.31900057196617126,
+     "b_mean": -9.026106251308619e-12,
+     "b_std": 0.0006109561654739082
+    },
+    "emb_at_20k": {
+     "E_mean_row_norm": 0.23063969612121582,
+     "E_median_row_norm": 1.3885905742645264,
+     "W_mean_row_norm": 8.59970494815343e-09,
+     "W_median_row_norm": 1.0047062635421753,
+     "b_mean": -6.1618217195302805e-09,
+     "b_std": 2.2438952922821045
+    }
+   }
+  }
+ },
+ "go": true,
+ "decided_utc": "2026-09-24T17:59:13Z",
+ "descriptive_thresholds": {
+  "40k_cohort": {
+   "A0_ID256": 0.113,
+   "A1_RICH256": 0.123
+  },
+  "80k_A0_on_track": 0.14,
+  "epoch1_A0_ge_GRU_epoch1": 0.156,
+  "epoch1_A0_unlikely_below": 0.145
+ },
+ "descriptive": {
+  "40k": {
+   "A0_ID256": 0.14548169076442719,
+   "A1_RICH256": 0.15152661502361298
+  },
+  "80k": {
+   "A0_ID256": 0.15046857297420502,
+   "A1_RICH256": 0.15645095705986023
+  },
+  "epoch1": {
+   "A0_ID256": 0.154240220785141
+  }
+ }
+}

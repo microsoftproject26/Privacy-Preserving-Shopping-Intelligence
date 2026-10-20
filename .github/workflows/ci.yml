@@ -38,7 +38,17 @@ jobs:
       - name: uv.lock matches pyproject.toml
         run: |
           if ! uv lock --check; then
-            echo "::error title=Run 'uv lock' and commit uv.lock::pyproject.toml changed but uv.lock was not regenerated. CI installs with --locked and will not resolve anything the lockfile does not already pin. Locally, 'uv run python scripts/check.py' catches this in under a second."
+            echo "::error title=Run 'uv lock' and commit uv.lock::pyproject.toml changed but uv.lock was not regenerated. CI installs with --locked and will not resolve anything the lockfile does not already pin. Locally, 'uv run python tools/check.py' catches this in under a second."
+            exit 1
+          fi
+
+      # The package map in pyproject.toml is generated from the stage folders. A folder that was
+      # added or moved without regenerating it installs nothing, and the import error appears far
+      # from the cause.
+      - name: Package map matches the stage folders
+        run: |
+          if ! python3 tools/list_packages.py --check; then
+            echo "::error title=Run 'uv run python tools/list_packages.py --write'::The package map in pyproject.toml does not match the stage code folders. Regenerate it, run 'uv lock', and commit both."
             exit 1
           fi
 
@@ -47,18 +57,23 @@ jobs:
           uv python install
           uv sync --locked --group dev
 
+      # Stage code, scripts and tests folders plus the repository tools. The research trees are
+      # limited to syntax errors in pyproject.toml, because their bytes are pinned.
       - name: Lint
         run: |
-          if ! uv run --locked ruff check ppsi scripts tests; then
-            echo "::error title=Lint failed::Most findings are mechanical. Run 'uv run --locked ruff check ppsi scripts tests --fix' locally, then review what remains."
+          if ! uv run --locked ruff check 0*/code 0*/scripts 0*/tests tools; then
+            echo "::error title=Lint failed::Most findings are mechanical. Run 'uv run --locked ruff check 0*/code 0*/scripts 0*/tests tools --fix' locally, then review what remains."
             exit 1
           fi
 
+      - name: Every mapped package imports
+        run: uv run --locked python tools/list_packages.py --import
+
       - name: Test
-        run: uv run --locked python -m pytest -q
+        run: uv run --locked python -m pytest -q -n auto
 
       - name: Environment smoke
-        run: uv run --locked python scripts/env_smoke.py
+        run: uv run --locked python tools/env_smoke.py
 
       - name: Contract smoke
-        run: uv run --locked python -X utf8 scripts/experiments/validate_experiment_contracts.py
+        run: uv run --locked python tools/prototype_view.py contract-smoke

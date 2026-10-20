@@ -1,0 +1,34 @@
+id,tier,question,contrast,kind,checkpoint_rule,metric,seeds,point,ci95_low,ci95_high,ci_vs_reference,holm,seed_2026,seed_2027,n_users
+K1,secondary,size cost: device-size central model vs the large central model,R(C_SMALL / C_BIG),retention_pct,practical_best,mrr@20,2026 2027,94.69,94.03,95.31,below,rejected,95.09,94.3,26254
+K2,secondary,cold federated model vs the large central model on the same users,R(FA / C_BIG),retention_pct,practical_best,mrr@20,2026 2027,85.11,84.3,85.9,below,rejected,85.18,85.04,26254
+K3,secondary,federation cost at matched model size,R(FA / C_SMALL),retention_pct,practical_best,mrr@20,2026 2027,89.88,89.15,90.62,below,rejected,89.58,90.18,26254
+K4,tertiary,"FedProx, random start",R(FP / C_BIG),retention_pct,practical_best,mrr@20,2026 2027,85.11,84.3,85.9,below,tertiary (unadjusted),85.19,85.03,26254
+K5,tertiary,"personalised FedAvg, random start",R(PF / C_BIG),retention_pct,practical_best,mrr@20,2026 2027,85.12,84.32,85.9,below,tertiary (unadjusted),85.18,85.06,26254
+K6,tertiary,cold federated model plus on-device fine-tuning,R(FT_FA / C_BIG),retention_pct,practical_best,mrr@20,2026 2027,87.56,86.75,88.33,below,tertiary (unadjusted),87.79,87.32,26254
+K7,tertiary,central device-size model plus on-device fine-tuning,R(FT_C / C_BIG),retention_pct,practical_best,mrr@20,2026 2027,96.35,95.7,97.02,below,tertiary (unadjusted),97.03,95.68,26254
+K8,secondary,device-only training,R(LO / C_BIG),retention_pct,practical_best,mrr@20,2026 2027,2.1,1.88,2.34,below,rejected,2.0,2.21,26254
+K9,tertiary,on-device fine-tuning gain over the central device-size model,FT_C − C_SMALL,delta,practical_best,mrr@20,2026 2027,0.00247,0.001955,0.002993,above,tertiary (unadjusted),0.002882,0.002058,26254
+K9b,secondary,on-device fine-tuning gain for users the base model never saw,FT_C − C_SMALL,delta,practical_best,mrr@20,2026,0.002732,0.001512,0.004171,above,rejected,0.002732,,6650
+K9c,secondary,on-device fine-tuning gain over the pretrained model,FT_PRE − PRE,delta,practical_best,mrr@20,2026 2027,0.002283,0.001588,0.003076,above,rejected,0.002367,0.002199,26254
+K10,tertiary,on-device fine-tuning gain after cold federated training,FT_FA − FA,delta,practical_best,mrr@20,2026 2027,0.003637,0.003105,0.004221,above,tertiary (unadjusted),0.003873,0.003401,26254
+K11,tertiary,collaboration value: cold federated model vs device-only training,FA − LO,delta,practical_best,mrr@20,2026 2027,0.123378,0.121064,0.125358,above,tertiary (unadjusted),0.123495,0.123262,26254
+K11b,secondary,cold federated model vs the last-item heuristic,FA − LAST,delta,practical_best,mrr@20,2026 2027,0.050933,0.048639,0.052886,above,rejected,0.05089,0.050976,26254
+K12,secondary,privacy cost at epsilon 8 (random start),R(DP8 / FA_1024),retention_pct,controlled_budget,mrr@20,2026 2027,98.52,97.7,99.38,below,rejected,100.72,96.31,26254
+K13,tertiary,"privacy cost at epsilon 1 (random start, one seed)",R(DP1 / FA_1024),retention_pct,controlled_budget,mrr@20,2026,94.38,92.53,96.0,below,tertiary (unadjusted),94.38,,26254
+K14,tertiary,cost of 8-bit uploads (random start),R(FA_Q8 / FA),retention_pct,practical_best,mrr@20,2026 2027,100.11,99.85,100.38,includes,tertiary (unadjusted),100.19,100.02,26254
+K15,tertiary,data advantage of the full-data central model,R(C_BIG / C_FULL),retention_pct,practical_best,mrr@20,2026,82.3,81.54,83.1,below,tertiary (unadjusted),82.3,,26254
+K16,tertiary,"cost of INT8 quantisation on device (ONNX, CPU)",R(INT8 / FP32) for C_SMALL,retention_pct,practical_best,mrr@20,2026,99.98,99.75,100.23,includes,tertiary (unadjusted),99.98,,16384
+K17,secondary,cold federated model vs the full-data central model,R(FA / C_FULL),retention_pct,practical_best,mrr@20,2026,70.1,69.19,70.94,below,rejected,70.1,,26254
+K18,tertiary,central device-size model plus fine-tuning vs the full-data central model,R(FT_C / C_FULL),retention_pct,practical_best,mrr@20,2026,79.85,79.09,80.74,below,tertiary (unadjusted),79.85,,26254
+K19,tertiary,device-only training vs the full-data central model,R(LO / C_FULL),retention_pct,practical_best,mrr@20,2026,1.64,1.45,1.88,below,tertiary (unadjusted),1.64,,26254
+K20,secondary,warm federated system vs the large central model on the federated users,R(FA_WARM_FROZEN / C_BIG),retention_pct,practical_best,mrr@20,2026 2027,107.39,106.5,108.32,above,rejected,107.64,107.15,26254
+K20b,primary,warm federated system vs its matched central reference (primary),R(FA_WARM_FROZEN / C_FULL),retention_pct,practical_best,mrr@20,2026 2027,88.49,87.73,89.18,below,not in a Holm family (read unadjusted),88.59,88.39,26254
+K20c,secondary,pretrained model alone vs the full-data central model,R(PRE / C_FULL),retention_pct,practical_best,mrr@20,2026,88.77,88.03,89.47,below,rejected,88.77,,26254
+K21,primary,value of federated training over the pretrained model alone (primary),FA_WARM_FROZEN − PRE,delta,practical_best,mrr@20,2026 2027,-0.000508,-0.000933,-3.7e-05,below,not in a Holm family (read unadjusted),-0.000332,-0.000685,26254
+K_INIT,secondary,value of the pretrained start for federated training,FA_WARM_FROZEN − FA,delta,practical_best,mrr@20,2026 2027,0.033119,0.031774,0.034516,above,rejected,0.033338,0.032899,26254
+P5,secondary,on-device fine-tuning gain after warm federated training,FT_FA_WARM_FROZEN − FA_WARM_FROZEN,delta,practical_best,mrr@20,2026 2027,0.002045,0.001324,0.002807,above,rejected,0.001831,0.002258,26254
+K4w,secondary,FedProx on the warm line,R(FP_WARM_FROZEN / C_FULL),retention_pct,practical_best,mrr@20,2026 2027,88.49,87.73,89.18,below,rejected,88.58,88.39,26254
+K5w,secondary,personalised FedAvg on the warm line,R(PF_WARM_FROZEN / C_FULL),retention_pct,practical_best,mrr@20,2026 2027,88.35,87.6,89.07,below,rejected,88.3,88.4,26254
+K12w,secondary,privacy cost at epsilon 8 on the warm line,R(DP8_FROZEN / FA_1024_WARM_FROZEN),retention_pct,controlled_budget,mrr@20,2026 2027,100.0,99.95,100.07,includes,not rejected,100.01,99.99,26254
+K13w,secondary,privacy cost at epsilon 1 on the warm line (one seed),R(DP1_WARM_FROZEN / FA_1024_WARM_FROZEN),retention_pct,controlled_budget,mrr@20,2026,100.03,99.92,100.15,includes,not rejected,100.03,,26254
+K14w,secondary,cost of 8-bit uploads on the warm line,R(FA_Q8_WARM_FROZEN / FA_WARM_FROZEN),retention_pct,practical_best,mrr@20,2026 2027,99.85,99.72,99.98,below,not rejected,99.68,100.02,26254

@@ -1,0 +1,173 @@
+{
+ "receipt": "DATA09_SERVER_RECEIPT",
+ "task": "DATA-09",
+ "overall_pass": true,
+ "checks": {
+  "build_receipt_pass": true,
+  "manifests_on_disk": true,
+  "ext_registry_rule": true,
+  "ext_gate_eq_open_gate": true,
+  "base_registry_pinned_by_lock_v2": true,
+  "loader_verify_self_hash": true,
+  "g0_integrity_all_match": true,
+  "tests_exit_0": true,
+  "tests_negative_controls_failed_as_intended": true,
+  "rss_guards_rc_0": true,
+  "no_pycache_in_owned_code": true
+ },
+ "date_u": {
+  "build_job_end_utc": "2026-10-03T15:34:50Z",
+  "build_job_start_utc": "2026-10-03T15:31:00Z",
+  "final_job_end_utc": "2026-10-03T15:35:58Z",
+  "final_job_start_utc": "2026-10-03T15:34:50Z"
+ },
+ "df": {
+  "df_after_build": "free_bytes_after_build=283001921536",
+  "df_after_final": "free_bytes_after_final=283001638912",
+  "df_before_build": "free_bytes_before_build=283071979520",
+  "df_before_final": "free_bytes_before_final=283001896960"
+ },
+ "rss_guards": [
+  {
+   "cmd": [
+    "/home/jovyan/venvs/ppsi-gpu/bin/python",
+    "-B",
+    "-m",
+    "v4data09.d9_build",
+    "--out",
+    "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/data_test"
+   ],
+   "rc": 0,
+   "killed_rss_guard": false,
+   "peak_rss_mib": 4323.9,
+   "limit_mib": 16384.0,
+   "wall_s": 229.7,
+   "end_utc": "2026-10-03T15:34:50Z"
+  },
+  {
+   "cmd": [
+    "/home/jovyan/venvs/ppsi-gpu/bin/python",
+    "-B",
+    "-m",
+    "v4data09.d9_finalize",
+    "verify"
+   ],
+   "rc": 0,
+   "killed_rss_guard": false,
+   "peak_rss_mib": 3940.3,
+   "limit_mib": 16384.0,
+   "wall_s": 16.5,
+   "end_utc": "2026-10-03T15:35:17Z"
+  }
+ ],
+ "data_test_bytes": 69506119,
+ "ext_registry": {
+  "path": "contracts/manifest_registry/REGISTRY_V2_TEST_EXT.json",
+  "file_sha256": "bfaa2118f366c154ae8180796703e222a3989101c3dc38919fc89a8116b4c2ba",
+  "self_sha256": "edae509681e1d449d49d91b24697f64cda98306c4e9011cadd39f81079dc7235",
+  "extends": {
+   "path": "contracts/manifest_registry/REGISTRY_V2.json",
+   "file_sha256": "56dd0840cb50e89250a8b9a54dc1d4f621e9e6f9500ec44441cf07cb472ef740",
+   "self_sha256": "f6a0820791ad39e84aa86ebde2c37c12e76a45be6034d9068621a2c431b21c41",
+   "rule": "every REGISTRY_V2 key / role / manifest is canonical-JSON identical here (v4data09.d9_registry.verify_test_ext_registry); additions only: the five TEST roles, the five RETRO_TEST manifests and the extension_* keys"
+  },
+  "extension_test_gate": {
+   "all_methods_lock_sha256": "04a3cd196149e2acf2ab5bb004f58c997199aa52e32f3c11c9ae647255beed23",
+   "test_exposure_register_entry_id": 5,
+   "test_exposure_register_entry_sha256": "01c0d071b4ab47d3daf36768b895cd25a15ce672106414faf82e7febff98e27c",
+   "rule": "v4data09.d9_gate.check_test_gate: ALL_METHODS_LOCK.json file sha256 == the FIRST TEST_EXPOSURE_REGISTER entry with access_purpose MANIFEST_BUILD and split RETRO_TEST; the register hash chain verifies (tools/test_exposure_register.py verify)"
+  }
+ },
+ "build_receipt_sha256": "c8977171344c9681c81857641932e3423c75f7787c25cc061e8d97a07a420f3f",
+ "test_gate": {
+  "all_methods_lock_sha256": "04a3cd196149e2acf2ab5bb004f58c997199aa52e32f3c11c9ae647255beed23",
+  "test_exposure_register_entry_id": 5,
+  "test_exposure_register_entry_sha256": "01c0d071b4ab47d3daf36768b895cd25a15ce672106414faf82e7febff98e27c",
+  "rule": "v4data09.d9_gate.check_test_gate: ALL_METHODS_LOCK.json file sha256 == the FIRST TEST_EXPOSURE_REGISTER entry with access_purpose MANIFEST_BUILD and split RETRO_TEST; the register hash chain verifies (tools/test_exposure_register.py verify)"
+ },
+ "tests": {
+  "exit_code": 0,
+  "counts": {
+   "passed": 70,
+   "xfailed": 27,
+   "skipped": 9
+  },
+  "negative_controls": {
+   "n": 29,
+   "n_run": 27,
+   "n_skipped": 2,
+   "all_failed_as_intended": true
+  },
+  "summary_line": "\u001b[32m\u001b[32m\u001b[1m70 passed\u001b[0m, \u001b[33m9 skipped\u001b[0m, \u001b[33m27 xfailed\u001b[0m\u001b[32m in 19.68s\u001b[0m\u001b[0m"
+ },
+ "tests_receipt_file_sha256": "d3d94ff7277a2de2a01c97850b16741f7820fc02fc0db4b97441db8cc9275526",
+ "manifests": {
+  "MAIN_RETRO_TEST_5_100_131072": {
+   "n_users": 36037,
+   "n_decisions": 300133,
+   "n_eval_rows": 229742,
+   "n_rankable_rows": 221719,
+   "content_sha256": "3e7acb9d8de0fcc1ca512c6104a714a5b1c12e45a105faf7bf44a5aadfd3bbf9",
+   "header_sha256": "200875979165cff13a28ae08db1b9d767d4b5d01481b157cdeeee2f38908fa49",
+   "header_content_sha256": "bdbee59cde2240f65de14f56514bda02fb92fb2bd02a52a64ee3ed07f3cbbaf4"
+  },
+  "UNEW_HOLDOUT_RETRO_TEST_32768": {
+   "n_users": 9033,
+   "n_decisions": 76703,
+   "n_eval_rows": 59094,
+   "n_rankable_rows": 57078,
+   "content_sha256": "389c9b940b2e9947d02332b974e5b603c339df4d04b963051488160f89811ea0",
+   "header_sha256": "72a0fbf1f6bd73853af259bdc6bdd1d9610a1bc2c56183c580b8bb92fe22a399",
+   "header_content_sha256": "00441da407db0add12369d8434c83a8ef30e6f7c1b83dd0f44317fe16d4c8bf7"
+  },
+  "TRUE_COLD_RETRO_TEST": {
+   "n_users": 325969,
+   "n_decisions": 2590172,
+   "n_eval_rows": 2049324,
+   "n_rankable_rows": 1986883,
+   "content_sha256": "bec01e65c90b3b472f3444e4f339f302b3f9802d977384bf32eb31950051fa8b",
+   "header_sha256": "9763bb78a632d87de76e36fa9c08c38bf875ed47ce97938c4c0180eaeda3c226",
+   "header_content_sha256": "30d0cc16cadcb6e065c7e207b8c30bb953ae87b4de3e97e019f931387bc4fcb8"
+  },
+  "SPARSE_PANEL_16384_RETRO_TEST": {
+   "n_users": 5648,
+   "n_decisions": 37502,
+   "n_eval_rows": 26909,
+   "n_rankable_rows": 26163,
+   "content_sha256": "5072977fe883affc4c8bc0bf80e693ad0969c2491488ce40d9488d42bc4b3785",
+   "header_sha256": "6258f459c266ab79f8d5dd492708a94e5cc003d261efe4d8826855215ccda73f",
+   "header_content_sha256": "e212a49fb13f57e5df3fbb5c291159710c8fede2f9bb10f866a4c0a03bd291d5"
+  },
+  "HEAVY_PANEL_16384_RETRO_TEST": {
+   "n_users": 11869,
+   "n_decisions": 297928,
+   "n_eval_rows": 252913,
+   "n_rankable_rows": 240281,
+   "content_sha256": "eb960c3521914e8c4d72c5c355529cc7bbe89daf4daa1f26321a8cb79f0bff29",
+   "header_sha256": "e8f8d6817d5e12e61cd8e81730e2e54f110739c90637b2ce4b078dcce3039d7b",
+   "header_content_sha256": "6dac5223145999dd0cb9f0189b8407764d1752f7e4a9f7f3d9a6fa660501371a"
+  }
+ },
+ "code": {
+  "d9_code_sha256": "0f90eb2d4e969668c2e54f2982beb50e70bfcef5804d8257d2fa083c693013c1",
+  "d9_code_sha256_rule": "v4data.common.code_tree_sha256 over code/v4data09/{__init__,d9_common,d9_gate,d9_read,d9_build}.py",
+  "d9_code_files_sha256": {
+   "__init__.py": "ecc1d2e54ff5e1b7f96e364297e3a497a886de1ef06b0bfae3243753ef9945ea",
+   "d9_common.py": "7a99911d5c90bfe9911b4c6779b8f0d4750fb59f98c14fafd4d52a6589e62ad0",
+   "d9_gate.py": "6a2e018d0f149fff58775d7b4f34241f43f5a08ee53d672c4ab70dfdcb3119bd",
+   "d9_read.py": "5fb176a8e55327b481c1226168ac94e364fd94203d541fb777282aca07c39755",
+   "d9_build.py": "de25f0b22fc9a8abe67742ab71dc85cd7f80de56f22fdaf37a44aa604a09e0d1"
+  },
+  "v4data06_files_sha256": {
+   "d6_common.py": "03cdd46249147293eb59b2ffc14cd910e8864694cf1b4695425680243308d946",
+   "d6_build.py": "277a2fdc08a4d8a2479ae07f9b6b2061ead60deb67e1db3c42ff699848f4d394"
+  },
+  "census_v2_core_sha256": "aca2fe3a69afaa6a38c75492acc3148a8ec5ccb7b79678af815acd8eef4d169a",
+  "v4fs_data_fs_common_sha256": "a152cbc23c3a344ce4ca0d78e83b252c87842fb9fb6843b04f2f9483517b28b1",
+  "test_exposure_register_tool_sha256": "7d59e828f0d8514541ac9cd68393053e064f9c70df3e3655e9c4f0a34eae2622",
+  "v4data_builder_code_sha256": "443254e9ed95e41a48076f91643c83fbc77355dc80bb6b111d8432703d3e34a5"
+ },
+ "finalize_code_sha256": "52a2a4c7c6ee0fd89e29aaaf92b2e3f7bf3ee8d79b31eddaeb09d325ddbaa179",
+ "test_split_read": "gated (build only)",
+ "receipt_sha256": "c828b42dec39a7a26d356f79aa08e7d5143998082654b6ad2f9541ada641388e"
+}

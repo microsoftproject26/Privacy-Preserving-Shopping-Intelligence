@@ -1,0 +1,770 @@
+{
+ "arm": "P2_W",
+ "arm_spec": {
+  "arm": "P2_W",
+  "cfg": {
+   "dp": null,
+   "dropout_p": 0.1,
+   "endpoint_efe": 24.0,
+   "endpoint_rounds": 13654,
+   "exposure_point": "end",
+   "lr_peak_local": 0.3,
+   "lr_shape": "fl_const",
+   "max_attempts": 2,
+   "method": "FA",
+   "mu": 0.0,
+   "n_shards": 2,
+   "pf": null,
+   "seed": 2026,
+   "server_opt": {
+    "beta1": 0.9,
+    "beta2": 0.99,
+    "lr": 3e-05,
+    "name": "fedadam",
+    "tau": 1e-06,
+    "v_init": "tau_squared"
+   },
+   "solver": {
+    "batch_size": 16,
+    "clip": 1.0,
+    "fused": null,
+    "item_lr_mult": 0.1,
+    "lr": 0.3,
+    "optimizer": "sgd_m",
+    "passes": 1,
+    "weight_decay": 0.0
+   }
+  },
+  "exposure_budget": {
+   "authority": "PREG1_AMENDMENT_06J \u00a73",
+   "dropout_p": 0.1,
+   "endpoint_efe": 24.0,
+   "formula": "X2: rounds = ceil(10 x 24 x N / (576 P)) (POST_HOC_EXPLORATORY budget)",
+   "group": 64,
+   "n_clients": 32768,
+   "passes": 1,
+   "rounds": 13654
+  },
+  "init_from": {
+   "checkpoint_bytes": 82853197,
+   "checkpoint_sha256": "22135cdf132eae1d405dd802acf1a756c9aba122e02c9a01f53876894bd58383",
+   "family": "SASREC",
+   "fl_init_kind": "endpoint_6.0",
+   "kind": "PRETRAIN_FOR_FL",
+   "model_variant": "SASREC_D64_B2",
+   "run_id": "PRETRAIN_FOR_FL_SMALL_SASREC_D64_B2_s2026",
+   "run_label": "PRETRAIN_FOR_FL",
+   "seed": 2026,
+   "state_digest": "3e1c48efe79a1f1a1377719c144af9fe8e8610060ea7cc18b6bff545b61ce4e2",
+   "train_manifest": "PRETRAIN_TRAIN_5_100_NONMAIN"
+  },
+  "lr_mult": 1.0,
+  "lr_peak_base": 0.0007114121116984968,
+  "max_rounds": 13654,
+  "p2_fixed": {
+   "authority": "PREG2 \u00a75.1",
+   "client_momentum": 0.9,
+   "client_opt": "sgd_m",
+   "clip": 1.0,
+   "dropout_p": 0.1,
+   "endpoint_efe": 6.0,
+   "group": 64,
+   "local_batch": 16,
+   "local_passes": 1,
+   "lr_shape": "fl_const",
+   "sampling": "sweep",
+   "weight_decay": 0.0
+  },
+  "p2_label": "fedadam|eta=3e-05|c=0.3|items=unfrozen|ilr=0.1",
+  "p2_recipe": {
+   "client_lr": 0.3,
+   "item_lr_mult": 0.1,
+   "items": "unfrozen",
+   "lora_lr_factor": null,
+   "lora_rank": null,
+   "personal_head": false,
+   "server_lr": 3e-05,
+   "server_opt": "fedadam",
+   "upload": "dense"
+  },
+  "plan": {
+   "group_size": 64,
+   "sampling": "sweep"
+  },
+  "role": "CALIBRATION",
+  "study": "PREG2",
+  "upload_codec": null
+ },
+ "arm_spec_sha256": "934a4f7fcc642bca389e61b87519ba2fab2af9edf275b26ea5f41ece17761123",
+ "best_half_efe": 13,
+ "best_metric": 0.146868232607526,
+ "bytes": {
+  "disclosure": "dropped clients (10% drop-out) are not charged a download (the ledger counts survivors)",
+  "fleet": {
+   "bytes_down": 65179664412016,
+   "bytes_up": 65179670706920,
+   "messages": 1573726,
+   "retry_bytes_down": 0,
+   "total": 130359335118936
+  },
+  "per_client": {
+   "max": 4473081144,
+   "mean": 3978251193.8151855,
+   "median": 3976072128.0,
+   "min": 2319375408,
+   "rule": "visits x (down + up) of that client"
+  },
+  "per_visit": {
+   "alias_bytes_not_sent": 0,
+   "bootstrap_bytes_once": 0,
+   "download_bytes": 82834832,
+   "private_bytes_sent": 0,
+   "private_resident_bytes": 0,
+   "send_plus_receive_bytes": 165669672,
+   "shared_numel": 20708708,
+   "upload_bytes": 82834840
+  }
+ },
+ "checkpoints": [
+  "best.pt",
+  "endpoint_6.0.pt"
+ ],
+ "counters": {
+  "coverage_by_sweep": {
+   "0": {
+    "clients": 29579,
+    "fraction": 0.902679443359375
+   },
+   "1": {
+    "clients": 29425,
+    "fraction": 0.897979736328125
+   },
+   "10": {
+    "clients": 29508,
+    "fraction": 0.9005126953125
+   },
+   "11": {
+    "clients": 29472,
+    "fraction": 0.8994140625
+   },
+   "12": {
+    "clients": 29540,
+    "fraction": 0.9014892578125
+   },
+   "13": {
+    "clients": 29506,
+    "fraction": 0.90045166015625
+   },
+   "14": {
+    "clients": 29426,
+    "fraction": 0.89801025390625
+   },
+   "15": {
+    "clients": 29583,
+    "fraction": 0.902801513671875
+   },
+   "16": {
+    "clients": 29546,
+    "fraction": 0.90167236328125
+   },
+   "17": {
+    "clients": 29475,
+    "fraction": 0.899505615234375
+   },
+   "18": {
+    "clients": 29521,
+    "fraction": 0.900909423828125
+   },
+   "19": {
+    "clients": 29415,
+    "fraction": 0.897674560546875
+   },
+   "2": {
+    "clients": 29527,
+    "fraction": 0.901092529296875
+   },
+   "20": {
+    "clients": 29524,
+    "fraction": 0.9010009765625
+   },
+   "21": {
+    "clients": 29533,
+    "fraction": 0.901275634765625
+   },
+   "22": {
+    "clients": 29496,
+    "fraction": 0.900146484375
+   },
+   "23": {
+    "clients": 29455,
+    "fraction": 0.898895263671875
+   },
+   "24": {
+    "clients": 29515,
+    "fraction": 0.900726318359375
+   },
+   "25": {
+    "clients": 29514,
+    "fraction": 0.90069580078125
+   },
+   "26": {
+    "clients": 19703,
+    "fraction": 0.601287841796875
+   },
+   "3": {
+    "clients": 29434,
+    "fraction": 0.89825439453125
+   },
+   "4": {
+    "clients": 29409,
+    "fraction": 0.897491455078125
+   },
+   "5": {
+    "clients": 29544,
+    "fraction": 0.901611328125
+   },
+   "6": {
+    "clients": 29539,
+    "fraction": 0.901458740234375
+   },
+   "7": {
+    "clients": 29486,
+    "fraction": 0.89984130859375
+   },
+   "8": {
+    "clients": 29646,
+    "fraction": 0.90472412109375
+   },
+   "9": {
+    "clients": 29542,
+    "fraction": 0.90155029296875
+   }
+  },
+  "efe": 24.000899287535194,
+  "exposures": 15506189,
+  "max_visits": 27,
+  "min_visits": 14,
+  "noop_visits": 0,
+  "retries": 0,
+  "rounds": 13654,
+  "steps": 1347198,
+  "steps_hist": {
+   "1": 477954,
+   "2": 174565,
+   "3": 66523,
+   "4": 35085,
+   "5": 18525,
+   "6": 11897,
+   "7": 2314
+  },
+  "visits": 786863,
+  "wasted_steps": 0
+ },
+ "done": true,
+ "evals": [
+  [
+   1,
+   283,
+   0.14398455620460796,
+   true,
+   "MAIN"
+  ],
+  [
+   2,
+   567,
+   0.1446602045947219,
+   true,
+   "MAIN"
+  ],
+  [
+   3,
+   852,
+   0.14496226404142842,
+   true,
+   "MAIN"
+  ],
+  [
+   4,
+   1138,
+   0.14571481455391336,
+   true,
+   "MAIN"
+  ],
+  [
+   5,
+   1421,
+   0.14595384159329083,
+   true,
+   "MAIN"
+  ],
+  [
+   6,
+   1706,
+   0.14634827967239245,
+   true,
+   "MAIN"
+  ],
+  [
+   7,
+   1992,
+   0.14622667729657512,
+   false,
+   "MAIN"
+  ],
+  [
+   8,
+   2276,
+   0.14626178947335836,
+   false,
+   "MAIN"
+  ],
+  [
+   9,
+   2564,
+   0.14655609191139107,
+   true,
+   "MAIN"
+  ],
+  [
+   10,
+   2850,
+   0.1466749806420364,
+   false,
+   "MAIN"
+  ],
+  [
+   11,
+   3134,
+   0.14655592365103842,
+   false,
+   "MAIN"
+  ],
+  [
+   12,
+   3416,
+   0.14642231251260193,
+   false,
+   "MAIN"
+  ],
+  [
+   13,
+   3702,
+   0.146868232607526,
+   true,
+   "MAIN"
+  ],
+  [
+   14,
+   3986,
+   0.1466224144577542,
+   false,
+   "MAIN"
+  ],
+  [
+   15,
+   4271,
+   0.14636752131414735,
+   false,
+   "MAIN"
+  ],
+  [
+   16,
+   4554,
+   0.146415004645869,
+   false,
+   "MAIN"
+  ],
+  [
+   17,
+   4840,
+   0.14623680006088108,
+   false,
+   "MAIN"
+  ],
+  [
+   18,
+   5121,
+   0.14612831445115348,
+   false,
+   "MAIN"
+  ],
+  [
+   19,
+   5405,
+   0.1463353452875442,
+   false,
+   "MAIN"
+  ],
+  [
+   20,
+   5691,
+   0.1461085235426263,
+   false,
+   "MAIN"
+  ],
+  [
+   21,
+   5977,
+   0.1464921502987888,
+   false,
+   "MAIN"
+  ],
+  [
+   22,
+   6261,
+   0.14636783890603702,
+   false,
+   "MAIN"
+  ],
+  [
+   23,
+   6545,
+   0.14627624262816522,
+   false,
+   "MAIN"
+  ],
+  [
+   24,
+   6828,
+   0.14626051525379508,
+   false,
+   "MAIN"
+  ],
+  [
+   25,
+   7111,
+   0.14611110858818918,
+   false,
+   "MAIN"
+  ],
+  [
+   26,
+   7393,
+   0.1461980856820196,
+   false,
+   "MAIN"
+  ],
+  [
+   27,
+   7681,
+   0.14625491536311877,
+   false,
+   "MAIN"
+  ],
+  [
+   28,
+   7964,
+   0.14636206454686043,
+   false,
+   "MAIN"
+  ],
+  [
+   29,
+   8250,
+   0.14631574287147486,
+   false,
+   "MAIN"
+  ],
+  [
+   30,
+   8534,
+   0.14575980181647458,
+   false,
+   "MAIN"
+  ],
+  [
+   31,
+   8815,
+   0.1461134912369806,
+   false,
+   "MAIN"
+  ],
+  [
+   32,
+   9100,
+   0.14627630391810695,
+   false,
+   "MAIN"
+  ],
+  [
+   33,
+   9385,
+   0.1458001342929625,
+   false,
+   "MAIN"
+  ],
+  [
+   34,
+   9669,
+   0.14587279805327247,
+   false,
+   "MAIN"
+  ],
+  [
+   35,
+   9955,
+   0.145731285447848,
+   false,
+   "MAIN"
+  ],
+  [
+   36,
+   10240,
+   0.14584140062654907,
+   false,
+   "MAIN"
+  ],
+  [
+   37,
+   10523,
+   0.14547560883331842,
+   false,
+   "MAIN"
+  ],
+  [
+   38,
+   10810,
+   0.14579274980719045,
+   false,
+   "MAIN"
+  ],
+  [
+   39,
+   11091,
+   0.1458854109784644,
+   false,
+   "MAIN"
+  ],
+  [
+   40,
+   11377,
+   0.14589352142646592,
+   false,
+   "MAIN"
+  ],
+  [
+   41,
+   11663,
+   0.1457616736070877,
+   false,
+   "MAIN"
+  ],
+  [
+   42,
+   11949,
+   0.14586285926864562,
+   false,
+   "MAIN"
+  ],
+  [
+   43,
+   12232,
+   0.1458701528803181,
+   false,
+   "MAIN"
+  ],
+  [
+   44,
+   12518,
+   0.14543335800178384,
+   false,
+   "MAIN"
+  ],
+  [
+   45,
+   12800,
+   0.14544124916625692,
+   false,
+   "MAIN"
+  ],
+  [
+   46,
+   13085,
+   0.14534304736059045,
+   false,
+   "MAIN"
+  ],
+  [
+   47,
+   13368,
+   0.14590025242455074,
+   false,
+   "MAIN"
+  ],
+  [
+   48,
+   13653,
+   0.14581426303219577,
+   false,
+   "MAIN"
+  ]
+ ],
+ "ledger": [
+  1573726,
+  65179664412016,
+  65179670706920,
+  0
+ ],
+ "lr_table": {
+  "E_total": 15506189,
+  "digest": "177d115bcdd47dd9cb2a7fbed8549aa8679d5d414df910810d028095470ed493",
+  "final_lr": 0.03,
+  "min_lr": 0.002197158341877838,
+  "n_rounds": 13654,
+  "planned_efe": 24.000899287535194
+ },
+ "lr_table_digest": "177d115bcdd47dd9cb2a7fbed8549aa8679d5d414df910810d028095470ed493",
+ "method": "FA",
+ "p2": {
+  "authority": "PREG2 \u00a75 (contracts/PREG2_FOLLOWUP_DRAFT \u00a75 as edited by FABLE_GATE_ENDGAME_SCRIPTS_20261003 \u00a79); PHASE2_IMPLEMENTATION_PLAN P2-02",
+  "label": "fedadam|eta=3e-05|c=0.3|items=unfrozen|ilr=0.1",
+  "post_run": null,
+  "pre_server": null,
+  "recipe": {
+   "client_lr": 0.3,
+   "item_lr_mult": 0.1,
+   "items": "unfrozen",
+   "lora_lr_factor": null,
+   "lora_rank": null,
+   "personal_head": false,
+   "server_lr": 3e-05,
+   "server_opt": "fedadam",
+   "upload": "dense"
+  }
+ },
+ "participation": {
+  "dropout_p": 0.1,
+  "dropped": 86993,
+  "endpoint_rounds": 13654,
+  "noop_rounds": 0,
+  "planned_efe": 24.000899287535194,
+  "rounds": 13654,
+  "sampled": 873856,
+  "survived": 786863
+ },
+ "phase": "MAIN",
+ "plan": {
+  "group_size": 64,
+  "keys_digest": "6780c81a3e7b0a59b0a01fe976a9436463fdd93cfb3df92ffe842ca8d64f3f91",
+  "manifest_hash": "94ade68c5df4dcf8c2f3b29529b63dcb0193ab2e34ec529b467f628018c49f2e",
+  "n_clients": 32768,
+  "partial_group_note": "none: N is a multiple of the group size",
+  "partial_group_policy": "SMALLER_FINAL_GROUP",
+  "partial_group_size": 0,
+  "rounds_per_sweep": 512,
+  "sampling": "seeded permutation sweeps without replacement (PCG64), fixed consecutive groups",
+  "seed": 2026
+ },
+ "rounds": 13654,
+ "run_id": "P2_W_FEDADAM_eta3e-05_c0.3_UNFROZEN_ilr0.1_XTAU1e-06_E24_P1_CALIB_s2026",
+ "server_digest": "5a0e555648f706dbbbd359bbb872eb1790306720956c53b67a3f5c3ddbed873d",
+ "server_opt": {
+  "cfg": {
+   "beta1": 0.9,
+   "beta2": 0.99,
+   "lr": 3e-05,
+   "name": "fedadam",
+   "tau": 1e-06,
+   "v_init": "tau_squared"
+  },
+  "moments_digest": "0d2f71a57d006f163bf4f0598fee8c9a23445ef40840a14a6baaac0975417d5e",
+  "steps": 13654
+ },
+ "status": "DONE_MAIN",
+ "store_digest": null,
+ "train_loss_log": {
+  "authority": "FL-15 R5 (REAL_WORLD_FL_PRACTICE_AUDIT_20260930 R5): per-round client training loss from fl VisitRecord.loss_sum (sum of the batch-mean CE over a visit's steps); descriptive monitoring only, numerics unchanged; z > 0 (DP) runs record nothing (an un-noised data-dependent release, the 06L_E E1 reading)",
+  "complete": true,
+  "fields": [
+   "client_mean_loss",
+   "finite",
+   "loss_sum",
+   "mean_step_loss",
+   "n_clients",
+   "n_steps",
+   "round"
+  ],
+  "file": "TRAIN_LOSS.jsonl",
+  "missing_rounds": [],
+  "rounds_expected": 13654,
+  "rounds_logged": 13654,
+  "sha256": "06b7c947323199802d7b4a9536437d4e681f30fd26718a3a3a2f93364186f5c1"
+ },
+ "update_norm_log": {
+  "authority": "PREG2 \u00a73.3 D1-ext: per round, per tensor group of the trained subset: ||Delta_agg||, the server step, ||theta - theta_pre||, cos(Delta_r, Delta_r-1), clients aggregated (omitted for z > 0); DESCRIPTIVE, never selects; post-noise server-side quantities only under DP (06L_E E1)",
+  "complete": true,
+  "cos_prev_unavailable_rounds": [
+   0
+  ],
+  "file": "UPDATE_NORM_LOG.jsonl",
+  "last_total_T": {
+   "agg_delta_l2": 0.007629656890256317,
+   "numel": 20708708,
+   "pre_dist_l2": 29.217664097160803,
+   "pre_l2": 811.989003090849,
+   "rel_pre_dist": 0.03598283226243619,
+   "step_l2": 0.004035184659506412
+  },
+  "missing_rounds": [],
+  "rounds_expected": 13654,
+  "rounds_logged": 13654,
+  "server_steps": 13654,
+  "sha256": "62302547df9faef6539dd369a5e43c351509995e6878359b58f73c415bc625b3",
+  "strictly_increasing": true,
+  "trained_keys": [
+   "output_embed",
+   "output_bias",
+   "side_gate",
+   "user_gate",
+   "item_embed.weight",
+   "pos_embed.weight",
+   "blocks.0.ln1.weight",
+   "blocks.0.ln1.bias",
+   "blocks.0.qkv.weight",
+   "blocks.0.qkv.bias",
+   "blocks.0.out.weight",
+   "blocks.0.out.bias",
+   "blocks.0.ln2.weight",
+   "blocks.0.ln2.bias",
+   "blocks.0.ff1.weight",
+   "blocks.0.ff1.bias",
+   "blocks.0.ff2.weight",
+   "blocks.0.ff2.bias",
+   "blocks.1.ln1.weight",
+   "blocks.1.ln1.bias",
+   "blocks.1.qkv.weight",
+   "blocks.1.qkv.bias",
+   "blocks.1.out.weight",
+   "blocks.1.out.bias",
+   "blocks.1.ln2.weight",
+   "blocks.1.ln2.bias",
+   "blocks.1.ff1.weight",
+   "blocks.1.ff1.bias",
+   "blocks.1.ff2.weight",
+   "blocks.1.ff2.bias",
+   "final_norm.weight",
+   "final_norm.bias",
+   "input_norm.weight",
+   "input_norm.bias",
+   "side_embeds.category_tokens.weight",
+   "side_embeds.brand_tokens.weight",
+   "side_embeds.session_offset_tokens.weight",
+   "side_embeds.session_mode_main_category_tokens.weight",
+   "numflag_proj.weight",
+   "numflag_proj.bias",
+   "side_proj.weight",
+   "side_proj.bias",
+   "side_norm.weight",
+   "side_norm.bias",
+   "user_mlp.weight",
+   "user_mlp.bias",
+   "user_proj.weight",
+   "user_proj.bias",
+   "user_norm.weight",
+   "user_norm.bias"
+  ],
+  "trained_numel": 20708708,
+  "unparsable_lines": 0
+ },
+ "wall_s_this_leg": 78136.43
+}

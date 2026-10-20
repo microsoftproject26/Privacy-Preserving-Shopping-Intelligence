@@ -1,0 +1,184 @@
+..........x...x...............xxx........................xx..........x.. [ 43%]
+......................xx........xxx................xxx.......xxx....xxxx [ 87%]
+.........xxx..x.x.x..                                                    [100%]
+=================================== PASSES ====================================
+_____________________ test_vocab_sizes_from_mapping_files _____________________
+---------------------------- Captured stdout call -----------------------------
+[v1 root] using F:\Queens University\Microsoft Project\eda\rees46_nextitem_v1 (candidates: ['F:\\Queens University\\Microsoft Project\\eda\\rees46_nextitem_v1', '\\home\\jovyan\\shared_data\\rees46_nextitem_v1']); torch 2.9.1+cpu
+__________ test_full_k_manifest_and_inventory_match_the_record[GRU] ___________
+---------------------------- Captured stdout call -----------------------------
+[v1 root] using F:\Queens University\Microsoft Project\eda\rees46_nextitem_v1; torch 2.9.1+cpu
+[init hash] GRU seed 2026: init cf93ccf024a15500c597f7d1b670ce89f07318bacb30eedf71501ceaf4ccfee1 raw cf93ccf024a15500c597f7d1b670ce89f07318bacb30eedf71501ceaf4ccfee1 vs the committed inventory record (torch 2.9.1+cpu)
+_________ test_full_k_manifest_and_inventory_match_the_record[SASREC] _________
+---------------------------- Captured stdout call -----------------------------
+[v1 root] using F:\Queens University\Microsoft Project\eda\rees46_nextitem_v1; torch 2.9.1+cpu
+[init hash] SASREC seed 2026: init e45e6e9db7b05306697f7969d71dc550e6435ac6c0e43c7f84828f331028a925 raw 6c0667dbc71ad059e01b044d783e794a5f087ada5294ec22b617880b1d739a8a vs the committed inventory record (torch 2.9.1+cpu)
+=========================== short test summary info ===========================
+PASSED tests_models\test_build_adapter.py::test_build_is_deterministic_per_seed[GRU]
+PASSED tests_models\test_build_adapter.py::test_build_is_deterministic_per_seed[SASREC]
+PASSED tests_models\test_build_adapter.py::test_sasrec_theta0_is_recentered_and_gru_is_raw
+PASSED tests_models\test_build_adapter.py::test_adapter_protocol_and_registration[GRU]
+PASSED tests_models\test_build_adapter.py::test_adapter_protocol_and_registration[SASREC]
+PASSED tests_models\test_build_adapter.py::test_post_step_hooks[GRU]
+PASSED tests_models\test_build_adapter.py::test_post_step_hooks[SASREC]
+PASSED tests_models\test_build_adapter.py::test_v2_families_run_through_the_fl_core[GRU]
+PASSED tests_models\test_build_adapter.py::test_v2_families_run_through_the_fl_core[SASREC]
+PASSED tests_models\test_build_adapter.py::test_recentering_idempotence_is_measured
+PASSED tests_models\test_diff_doc_and_isolation.py::test_diff_document_matches_the_live_diff
+PASSED tests_models\test_diff_doc_and_isolation.py::test_removed_lines_are_width_lines_only
+PASSED tests_models\test_diff_doc_and_isolation.py::test_snapshot_isolation_hashes_and_no_bytecode
+PASSED tests_models\test_inventory.py::test_vocab_sizes_from_mapping_files
+PASSED tests_models\test_inventory.py::test_full_k_manifest_and_inventory_match_the_record[GRU]
+PASSED tests_models\test_inventory.py::test_full_k_manifest_and_inventory_match_the_record[SASREC]
+PASSED tests_models\test_inventory.py::test_v1_root_candidates_and_build_specific_registry
+PASSED tests_models\test_parity_snapshot.py::test_parity_same_seed_builds_identical_state[GRU]
+PASSED tests_models\test_parity_snapshot.py::test_parity_same_seed_builds_identical_state[SASREC]
+PASSED tests_models\test_parity_snapshot.py::test_parity_logits_eval_bitwise[GRU-unpadded]
+PASSED tests_models\test_parity_snapshot.py::test_parity_logits_eval_bitwise[SASREC-unpadded]
+PASSED tests_models\test_parity_snapshot.py::test_parity_logits_eval_bitwise[SASREC-padded_reference]
+PASSED tests_models\test_parity_snapshot.py::test_parity_train_mode_logits_and_gradients_bitwise[GRU-unpadded]
+PASSED tests_models\test_parity_snapshot.py::test_parity_train_mode_logits_and_gradients_bitwise[SASREC-unpadded]
+PASSED tests_models\test_parity_snapshot.py::test_parity_train_mode_logits_and_gradients_bitwise[SASREC-padded_reference]
+PASSED tests_models\test_parity_snapshot.py::test_v2_widths_change_only_the_two_width_matrices[GRU]
+PASSED tests_models\test_parity_snapshot.py::test_v2_widths_change_only_the_two_width_matrices[SASREC]
+PASSED tests_models\test_parity_snapshot.py::test_v2_layer_sizes_match_the_contract
+PASSED tests_models\test_schema01_derived.py::test_l0_derived_is_bitwise_the_model01_build[GRU]
+PASSED tests_models\test_schema01_derived.py::test_l0_derived_is_bitwise_the_model01_build[SASREC]
+PASSED tests_models\test_schema01_derived.py::test_l0_derived_sasrec_padded_reference_is_bitwise
+PASSED tests_models\test_schema01_derived.py::test_l0_theta0_equals_the_registered_hash_full_k[GRU]
+PASSED tests_models\test_schema01_derived.py::test_l0_theta0_equals_the_registered_hash_full_k[SASREC]
+PASSED tests_models\test_schema01_derived.py::test_projection_selects_the_named_columns_of_a_hand_built_batch
+PASSED tests_models\test_schema01_derived.py::test_adapter_checks_the_base_layout_then_projects[GRU]
+PASSED tests_models\test_schema01_derived.py::test_adapter_checks_the_base_layout_then_projects[SASREC]
+PASSED tests_models\test_schema01_derived.py::test_dropped_channels_cannot_change_the_output[GRU]
+PASSED tests_models\test_schema01_derived.py::test_dropped_channels_cannot_change_the_output[SASREC]
+PASSED tests_models\test_schema01_derived.py::test_rung_widths_and_parameter_counts_at_full_k[L0_CLEAN_V2]
+PASSED tests_models\test_schema01_derived.py::test_rung_widths_and_parameter_counts_at_full_k[L1_EXACT]
+PASSED tests_models\test_schema01_derived.py::test_rung_widths_and_parameter_counts_at_full_k[L2_RARE]
+PASSED tests_models\test_schema01_derived.py::test_rung_widths_and_parameter_counts_at_full_k[L3_NEAR_DUPLICATE]
+PASSED tests_models\test_schema01_derived.py::test_rung_widths_and_parameter_counts_at_full_k[L4_SPARSE_AVAILABILITY]
+PASSED tests_models\test_schema01_derived.py::test_rung_widths_and_parameter_counts_at_full_k[L5_NO_USER_CONTEXT_BLOCK]
+PASSED tests_models\test_schema01_derived.py::test_rung_widths_and_parameter_counts_at_full_k[L6_NO_POOLED_POPULARITY]
+PASSED tests_models\test_schema01_derived.py::test_rung_widths_and_parameter_counts_at_full_k[L7_NO_DERIVABLE_SEGMENT_SUMMARIES]
+PASSED tests_models\test_schema01_derived.py::test_rung_widths_and_parameter_counts_at_full_k[L8_ID_PLUS_MINIMAL_CONTEXT]
+PASSED tests_models\test_schema01_derived.py::test_rung_widths_and_parameter_counts_at_full_k[L9_ID_ONLY_ANCHOR]
+PASSED tests_models\test_schema01_derived.py::test_user_branch_absent_at_l5[GRU]
+PASSED tests_models\test_schema01_derived.py::test_user_branch_absent_at_l5[SASREC]
+PASSED tests_models\test_schema01_derived.py::test_l9_is_the_item_only_topology
+PASSED tests_models\test_schema01_derived.py::test_derived_schema_refusals
+PASSED tests_models\test_schema01r1_extensions.py::test_extension_embeddings_shape_and_pad_row[GRU]
+PASSED tests_models\test_schema01r1_extensions.py::test_extension_embeddings_shape_and_pad_row[SASREC]
+PASSED tests_models\test_schema01r1_extensions.py::test_extension_tokens_pad_invariance_and_real_positions[GRU-unpadded]
+PASSED tests_models\test_schema01r1_extensions.py::test_extension_tokens_pad_invariance_and_real_positions[SASREC-unpadded]
+PASSED tests_models\test_schema01r1_extensions.py::test_extension_tokens_pad_invariance_and_real_positions[SASREC-padded_reference]
+PASSED tests_models\test_schema01r1_extensions.py::test_g13_values_and_mask_are_appended_columns
+PASSED tests_models\test_schema01r1_extensions.py::test_l0_l3_outputs_ignore_the_new_keys[GRU]
+PASSED tests_models\test_schema01r1_extensions.py::test_l0_l3_outputs_ignore_the_new_keys[SASREC]
+PASSED tests_models\test_schema01r1_extensions.py::test_session_schema_parameter_counts_full_k[L0S_CLEAN_V2_SESSION]
+PASSED tests_models\test_schema01r1_extensions.py::test_session_schema_parameter_counts_full_k[L3S_NEAR_DUPLICATE_SESSION]
+PASSED tests_models\test_schema_widths.py::test_schema_widths_and_self_hash
+PASSED tests_models\test_schema_widths.py::test_schema_tampering_is_refused
+PASSED tests_models\test_schema_widths.py::test_models_refuse_wrong_widths[all_v1_widths-GRU]
+PASSED tests_models\test_schema_widths.py::test_models_refuse_wrong_widths[all_v1_widths-SASREC]
+PASSED tests_models\test_schema_widths.py::test_models_refuse_wrong_widths[flags_14-GRU]
+PASSED tests_models\test_schema_widths.py::test_models_refuse_wrong_widths[flags_14-SASREC]
+PASSED tests_models\test_schema_widths.py::test_models_refuse_wrong_widths[masks_v1_6-GRU]
+PASSED tests_models\test_schema_widths.py::test_models_refuse_wrong_widths[masks_v1_6-SASREC]
+PASSED tests_models\test_schema_widths.py::test_models_refuse_wrong_widths[numeric_v1_19-GRU]
+PASSED tests_models\test_schema_widths.py::test_models_refuse_wrong_widths[numeric_v1_19-SASREC]
+PASSED tests_models\test_schema_widths.py::test_models_refuse_wrong_widths[offset_numeric19_flags11-GRU]
+PASSED tests_models\test_schema_widths.py::test_models_refuse_wrong_widths[offset_numeric19_flags11-SASREC]
+PASSED tests_models\test_schema_widths.py::test_models_refuse_wrong_widths[offset_uctx14_masks2-GRU]
+PASSED tests_models\test_schema_widths.py::test_models_refuse_wrong_widths[offset_uctx14_masks2-SASREC]
+PASSED tests_models\test_schema_widths.py::test_models_refuse_wrong_widths[user_ctx_11-GRU]
+PASSED tests_models\test_schema_widths.py::test_models_refuse_wrong_widths[user_ctx_11-SASREC]
+PASSED tests_models\test_schema_widths.py::test_models_accept_the_schema_widths[GRU]
+PASSED tests_models\test_schema_widths.py::test_models_accept_the_schema_widths[SASREC]
+PASSED tests_models\test_schema_widths.py::test_adapter_refuses_wrong_name_arrays_and_view[GRU]
+PASSED tests_models\test_schema_widths.py::test_adapter_refuses_wrong_name_arrays_and_view[SASREC]
+PASSED tests_models\test_schema_widths.py::test_v1_checkpoint_cannot_load_into_v2[GRU]
+PASSED tests_models\test_schema_widths.py::test_v1_checkpoint_cannot_load_into_v2[SASREC]
+PASSED tests_models\test_schema_widths.py::test_gru_spec_without_user_widths_is_refused
+PASSED tests_models\test_schema_widths.py::test_sasrec_rich_without_widths_is_refused
+PASSED tests_models\test_t15_causal.py::test_t15_future_perturbation_leaves_prefix_unchanged[unpadded]
+PASSED tests_models\test_t15_causal.py::test_t15_future_perturbation_leaves_prefix_unchanged[padded_reference]
+PASSED tests_models\test_t15_causal.py::test_t15_query_of_prefix_equals_readout_at_p[unpadded]
+PASSED tests_models\test_t15_causal.py::test_t15_query_of_prefix_equals_readout_at_p[padded_reference]
+PASSED tests_models\test_t15_causal.py::test_t15_gradient_leakage[eval-unpadded]
+PASSED tests_models\test_t15_causal.py::test_t15_gradient_leakage[eval-padded_reference]
+PASSED tests_models\test_t15_causal.py::test_t15_gradient_leakage[train-unpadded]
+PASSED tests_models\test_t15_causal.py::test_t15_gradient_leakage[train-padded_reference]
+PASSED tests_models\test_t16_padding.py::test_t16_right_padding_width_invariance[GRU-unpadded]
+PASSED tests_models\test_t16_padding.py::test_t16_right_padding_width_invariance[SASREC-unpadded]
+PASSED tests_models\test_t16_padding.py::test_t16_right_padding_width_invariance[SASREC-padded_reference]
+PASSED tests_models\test_t16_padding.py::test_t16_pad_content_invariance_and_zero_pad_gradient[GRU-unpadded]
+PASSED tests_models\test_t16_padding.py::test_t16_pad_content_invariance_and_zero_pad_gradient[SASREC-unpadded]
+PASSED tests_models\test_t16_padding.py::test_t16_pad_content_invariance_and_zero_pad_gradient[SASREC-padded_reference]
+PASSED tests_models\test_t16_padding.py::test_t16_batch_composition_invariance[GRU-unpadded]
+PASSED tests_models\test_t16_padding.py::test_t16_batch_composition_invariance[SASREC-unpadded]
+PASSED tests_models\test_t16_padding.py::test_t16_batch_composition_invariance[SASREC-padded_reference]
+PASSED tests_models\test_t16_padding.py::test_t16_readout_is_the_last_real_event[GRU-unpadded]
+PASSED tests_models\test_t16_padding.py::test_t16_readout_is_the_last_real_event[SASREC-unpadded]
+PASSED tests_models\test_t16_padding.py::test_t16_readout_is_the_last_real_event[SASREC-padded_reference]
+PASSED tests_models\test_t16_padding.py::test_t16_no_all_padding_row[GRU]
+PASSED tests_models\test_t16_padding.py::test_t16_no_all_padding_row[SASREC]
+PASSED tests_models\test_t16_padding.py::test_t16_padded_reference_finite_and_pad_rows_zero
+PASSED tests_models\test_t16_padding.py::test_t16_masked_sdpa_conventions
+PASSED tests_models\test_t17_loss.py::test_t17_one_contribution_per_decision[GRU]
+PASSED tests_models\test_t17_loss.py::test_t17_one_contribution_per_decision[SASREC]
+PASSED tests_models\test_t17_loss.py::test_t17_tail_normalization_sum_then_divide_once[GRU]
+PASSED tests_models\test_t17_loss.py::test_t17_tail_normalization_sum_then_divide_once[SASREC]
+PASSED tests_models\test_t17_loss.py::test_t17_accumulator_counts_and_refuses_empty
+PASSED tests_models\test_t17_loss.py::test_t17_fl_tail_batch_normalized_by_its_own_size[GRU]
+PASSED tests_models\test_t17_loss.py::test_t17_fl_tail_batch_normalized_by_its_own_size[SASREC]
+PASSED tests_models\test_t18_heads_memory.py::test_t18_gru_tied_alias_counted_once
+PASSED tests_models\test_t18_heads_memory.py::test_t18_sasrec_input_and_output_tables_distinct
+PASSED tests_models\test_t18_heads_memory.py::test_t18_no_BLK_tensor_in_forward_and_backward[GRU]
+PASSED tests_models\test_t18_heads_memory.py::test_t18_no_BLK_tensor_in_forward_and_backward[SASREC]
+PASSED tests_models\test_t19_memorization_monitors.py::test_t19_synthetic_memorization_with_monitors[GRU]
+PASSED tests_models\test_t19_memorization_monitors.py::test_t19_synthetic_memorization_with_monitors[SASREC]
+PASSED tests_models\test_t19_memorization_monitors.py::test_t19_gradient_monitor_flags_degenerate_gradients[GRU]
+PASSED tests_models\test_t19_memorization_monitors.py::test_t19_gradient_monitor_flags_degenerate_gradients[SASREC]
+PASSED tests_models\test_t19_memorization_monitors.py::test_t19_dead_in_train_flag_columns_get_zero_gradient[GRU]
+PASSED tests_models\test_t19_memorization_monitors.py::test_t19_dead_in_train_flag_columns_get_zero_gradient[SASREC]
+PASSED tests_models\test_t19_memorization_monitors.py::test_t19_sasrec_recentering_keeps_the_common_mode_at_zero
+PASSED tests_models\test_t19_memorization_monitors.py::test_t19_sasrec_common_mode_drifts_without_recentering
+PASSED tests_models\test_t19_memorization_monitors.py::test_t19_gru_tied_table_drift_monitor
+PASSED tests_models\test_train04_sasrec_d64_b2.py::test_variant_registered_with_the_exact_spec
+PASSED tests_models\test_train04_sasrec_d64_b2.py::test_downstream_small_not_a_p2_contest_size
+PASSED tests_models\test_train04_sasrec_d64_b2.py::test_every_pre_existing_variant_topology_unchanged
+PASSED tests_models\test_train04_sasrec_d64_b2.py::test_inventory_numbers_full_catalogue
+PASSED tests_models\test_train04_sasrec_d64_b2.py::test_theta0_determinism_and_seed_dependence
+PASSED tests_models\test_train04_sasrec_d64_b2.py::test_forward_pass_tiny_synthetic_vocab
+XFAIL tests_models\test_build_adapter.py::test_nc_unrecentered_theta0 - NEGATIVE CONTROL: a build that forgets the C7 recentering leaves a visible common mode in theta0
+XFAIL tests_models\test_diff_doc_and_isolation.py::test_nc_tampered_diff_document - NEGATIVE CONTROL: a document whose hunk text was edited no longer matches the live diff
+XFAIL tests_models\test_parity_snapshot.py::test_nc_parity_gru_activation_mutant - NEGATIVE CONTROL: copy error: GRU numeric+flag activation GELU -> ReLU (same weights)
+XFAIL tests_models\test_parity_snapshot.py::test_nc_parity_sasrec_concat_order_mutant - NEGATIVE CONTROL: copy error: SASRec side residual concatenates flags before numerics (same weights)
+XFAIL tests_models\test_parity_snapshot.py::test_nc_parity_init_order_mutant - NEGATIVE CONTROL: a V2 build whose init consumes the RNG in another order (different seed) is not the snapshot init
+XFAIL tests_models\test_schema01_derived.py::test_nc_projection_dropping_item_tokens - NEGATIVE CONTROL: a projection that drops item_tokens removes the task's item-ID sequence
+XFAIL tests_models\test_schema01_derived.py::test_nc_l0_build_not_bitwise - NEGATIVE CONTROL: an L0 build whose token channels are in a non-canonical order (init order) is not bitwise the MODEL-01 build
+XFAIL tests_models\test_schema01r1_extensions.py::test_nc_projection_without_the_g13_mask - NEGATIVE CONTROL: a projection that appends the G13 values but forgets their availability mask
+XFAIL tests_models\test_schema_widths.py::test_nc_snapshot_gru_accepts_offsetting_widths - NEGATIVE CONTROL: the snapshot GRU (hard-coded widths, no check) silently accepts numeric 23 + flags 11 = 34
+XFAIL tests_models\test_schema_widths.py::test_nc_snapshot_sasrec_accepts_offsetting_widths - NEGATIVE CONTROL: the snapshot SASRec (hard-coded widths, no check) silently accepts user ctx 14 + masks 4 = 18
+XFAIL tests_models\test_t15_causal.py::test_nc_t15_future_perturbation_without_causal_mask[unpadded] - NEGATIVE CONTROL: causal mask disabled: a future event changes an earlier hidden state
+XFAIL tests_models\test_t15_causal.py::test_nc_t15_future_perturbation_without_causal_mask[padded_reference] - NEGATIVE CONTROL: causal mask disabled: a future event changes an earlier hidden state
+XFAIL tests_models\test_t15_causal.py::test_nc_t15_gradient_leakage_without_causal_mask - NEGATIVE CONTROL: causal mask disabled: gradient leaks from h_p into future inputs
+XFAIL tests_models\test_t16_padding.py::test_nc_t16_last_column_readout[GRU] - NEGATIVE CONTROL: readout taken at the last stored column instead of the last real event
+XFAIL tests_models\test_t16_padding.py::test_nc_t16_last_column_readout[SASREC] - NEGATIVE CONTROL: readout taken at the last stored column instead of the last real event
+XFAIL tests_models\test_t16_padding.py::test_nc_t16_inverted_sdpa_mask - NEGATIVE CONTROL: SDPA called with the inverted boolean convention (True = masked, the nn.MultiheadAttention key_padding style)
+XFAIL tests_models\test_t17_loss.py::test_nc_t17_mean_of_means[GRU] - NEGATIVE CONTROL: mean of microbatch means (the tail microbatch is over-weighted)
+XFAIL tests_models\test_t17_loss.py::test_nc_t17_mean_of_means[SASREC] - NEGATIVE CONTROL: mean of microbatch means (the tail microbatch is over-weighted)
+XFAIL tests_models\test_t17_loss.py::test_nc_t17_divide_by_batch_size - NEGATIVE CONTROL: dividing by the row count B instead of the contributing-decision count
+XFAIL tests_models\test_t18_heads_memory.py::test_nc_t18_gru_untied_copy - NEGATIVE CONTROL: GRU head is an untied COPY of the item rows (a second parameter, double-counted)
+XFAIL tests_models\test_t18_heads_memory.py::test_nc_t18_sasrec_tied_head - NEGATIVE CONTROL: SASRec head tied back to the input table (the v2 failure configuration)
+XFAIL tests_models\test_t18_heads_memory.py::test_nc_t18_dense_all_position_logits[GRU] - NEGATIVE CONTROL: dense all-position logits materialize a [B, L, K] tensor
+XFAIL tests_models\test_t18_heads_memory.py::test_nc_t18_dense_all_position_logits[SASREC] - NEGATIVE CONTROL: dense all-position logits materialize a [B, L, K] tensor
+XFAIL tests_models\test_t19_memorization_monitors.py::test_nc_t19_blind_query_cannot_memorize - NEGATIVE CONTROL: an input-blind query (q * 0) cannot memorize random targets
+XFAIL tests_models\test_t19_memorization_monitors.py::test_nc_t19_finiteness_only_monitor - NEGATIVE CONTROL: a monitor that only checks finiteness misses an all-zero gradient
+XFAIL tests_models\test_t19_memorization_monitors.py::test_nc_t19_no_recentering_fails_gauge_check - NEGATIVE CONTROL: without per-step recentering the SASRec head leaves the recentered gauge
+XFAIL tests_models\test_train04_sasrec_d64_b2.py::test_nc_size_order_would_wrongly_include_it - NEGATIVE CONTROL: SASREC_D64_B2 wrongly believed to be a P2 contest size (it must NOT be in SIZE_ORDER)
+XFAIL tests_models\test_train04_sasrec_d64_b2.py::test_nc_pre_existing_variant_hash_check_has_teeth - NEGATIVE CONTROL: a tampered SASREC_D256_B2 entry must be caught by the pinned pre-existing-variants hash
+XFAIL tests_models\test_train04_sasrec_d64_b2.py::test_nc_would_wrongly_match_sasrec_d256_b2_size - NEGATIVE CONTROL: SASREC_D64_B2 must be strictly smaller than the current SASREC_D256_B2 build, not equal to it
+136 passed, 29 xfailed in 45.33s
+
+--- stderr ---

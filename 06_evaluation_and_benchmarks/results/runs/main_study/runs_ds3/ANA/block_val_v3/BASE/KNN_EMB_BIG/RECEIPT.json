@@ -1,0 +1,55 @@
+{
+  "baseline": "KNN_EMB",
+  "method": "KNN_EMB_BIG",
+  "config": {
+    "sknn_k": null,
+    "sknn_sample_size": null,
+    "grid": false,
+    "item_table_path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_p3/SASREC/02B_SASREC_s2026/sealed/checkpoints/best.pt",
+    "item_table_sha256": "df35157f8ea93762ffed75048a43217d8ce1406de208b8429fd3f04af226c749",
+    "family": "SASREC",
+    "table_role": "BIG",
+    "fit_chunk": null,
+    "eval_batch": 1024,
+    "eval_config": {
+      "frozen": true,
+      "path": "precomputed_scores",
+      "score_block": 158486,
+      "class_chunk": 32768,
+      "eval_batch": 1024,
+      "cache_bytes": 1073741824,
+      "metric_accumulation": "FP64",
+      "eval_device_class": "A16-FP32-DET",
+      "device_class_frozen": "A16-FP32-DET",
+      "lock_sha256": "0308640a79ef5fccb50bc456ee8f3ff1d506095c757e3b24fbb7b9c2e058238e",
+      "lock_version": "1.0.0",
+      "eval_batch_amendment_id": null,
+      "eval_stream": "EVAL_ROWS_ONLY"
+    }
+  },
+  "v4base_code_sha256": "27c17216541efedbbbb2b6beb37414aad5bbfe6a4841e72e02f179a03d3f4fca",
+  "evaluator_code_sha256": "61b64e61c1a2e4f5a6fecd42f0ad3b98de26562d13a07758573cc9496b8d962e",
+  "wall_s": 3268.334,
+  "n_rows": 48,
+  "grid": null,
+  "resource": {
+    "limit_bytes": 17179869184,
+    "peak_seen_bytes": 3383361536,
+    "n_checks": 317,
+    "rss_measurable_on_this_host": true
+  },
+  "low_priority": {
+    "torch_num_threads": 4,
+    "os_nice_available": true,
+    "os_nice_result": 19,
+    "nice_increment_requested": 10
+  },
+  "ranks": {
+    "ranks_file": "ranks_int32.npy",
+    "ranks_sha256": "aefcbf823cdcaf2914d9178feb9a025b2e02b6c56226ea7367bf7d94f83a9ca6",
+    "n_tied_file": "n_tied_int32.npy",
+    "n_tied_sha256": "2ca91821c52caa2d93b2804cf78477a8b922ab0e56543c8228e44642a1e7fc5a",
+    "rows_sha256": "25e23f9e8fc2e931c18e83c196b149578031e1674246cb3582fe9a8c3e7d8eb6",
+    "self_sha256": "e174ecf874981e49edf752ff96ea4f6f41263426c2b9e0ea97fa7c0b5761b872"
+  }
+}

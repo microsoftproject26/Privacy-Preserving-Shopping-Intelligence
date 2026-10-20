@@ -542,3 +542,17 @@ artifacts/experiment-results/*
 # results/ holds the final aggregate result tables (one row per arm, contrast or dataset; no
 # user_id, no per-user or per-decision rows). Re-include their CSV files and nothing else.
 !results/**/*.csv
+
+# build outputs
+*.egg-info/
+.venv/
+
+# --- curated results of the stage folders --------------------------------
+# Aggregated result tables, receipts and summaries of the stage folders and the pilot-study record.
+# They hold no user-level rows (checked when they were added). Logs stay out; full run records and
+# checkpoints are published as release assets.
+!0*/results/**/*.csv
+!0*/results/**/*.tsv
+!0*/results/**/out/
+!02_centralized/pilot_studies/**/*.csv
+!02_centralized/pilot_studies/**/out/

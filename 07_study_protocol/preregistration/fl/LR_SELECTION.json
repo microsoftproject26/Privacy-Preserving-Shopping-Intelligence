@@ -1,0 +1,80 @@
+{
+ "applies_to": [
+  "FA",
+  "FP",
+  "PF",
+  "FA_1024",
+  "DP",
+  "S_CAL",
+  "FA_Q8"
+ ],
+ "best_value_lr_mult": 2.0,
+ "eval_manifest_id": "CALIB_VALIDATION_5_100_32768",
+ "format": "PPSI_V4_FL_LR_SELECTION_1",
+ "lr_peak_base": 0.0007114121116984968,
+ "metric": "CALIB_VALIDATION E2E client-macro MRR@20 at PRACTICAL_BEST",
+ "order": [
+  1.0,
+  0.5,
+  2.0
+ ],
+ "rule": "select the multiplier with the highest CALIB_VALIDATION client-macro MRR@20 (E2E) at PRACTICAL_BEST; every multiplier within |delta| <= 0.0005 of the best is tied; the tied multiplier closest to 1 wins (order 1, 0.5, 2) \u2014 PREG1_AMENDMENT_06B \u00a71",
+ "runs": [
+  {
+   "arm_spec_sha256": "ecfa591ce0eec2598048ee1f065a448bd2c7f33e2aab61f6eb070f208b85bbc3",
+   "eval_manifest_id": "CALIB_VALIDATION_5_100_32768",
+   "lr_mult": 1.0,
+   "lr_peak_base": 0.0007114121116984968,
+   "max_of_12_marks": 0.023507176808579878,
+   "practical_best_mark": 2.5,
+   "result_rows_sha256": "41aa16a20d049e706bb494dbb91d39c6fc830eec3fc350f2c93478d4a5ec6e13",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/LRSCREEN/x1",
+   "run_id": "FL_FA_LRSCREEN_x1_CALIB_s2026",
+   "run_summary_sha256": "b00c92f2bef7080551d39967298074632dd53914121358ddc6ba489e7f3b61f6",
+   "split": "VALIDATION",
+   "value": 0.023472999619809514
+  },
+  {
+   "arm_spec_sha256": "599ae82313ff96357aabe9bf733afcf252ff28214ed7bf5b1de1143764cc79f4",
+   "eval_manifest_id": "CALIB_VALIDATION_5_100_32768",
+   "lr_mult": 0.5,
+   "lr_peak_base": 0.0007114121116984968,
+   "max_of_12_marks": 0.020289379478991763,
+   "practical_best_mark": 5.0,
+   "result_rows_sha256": "c0a007221ca3058a4f48b47122a1025f5867c542166028d559ebb128d2225703",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/LRSCREEN/x0.5",
+   "run_id": "FL_FA_LRSCREEN_x0.5_CALIB_s2026",
+   "run_summary_sha256": "7a44c970fe73c77571042517d7e37337e0e724346eb6df1886af6114ffc2210b",
+   "split": "VALIDATION",
+   "value": 0.020263155927244314
+  },
+  {
+   "arm_spec_sha256": "6988f42d738fcf394dd4f70b5c84b36f2c6df6dfcca160867bb559857c22bc70",
+   "eval_manifest_id": "CALIB_VALIDATION_5_100_32768",
+   "lr_mult": 2.0,
+   "lr_peak_base": 0.0007114121116984968,
+   "max_of_12_marks": 0.025562024102856924,
+   "practical_best_mark": 1.5,
+   "result_rows_sha256": "54d58ca8ebf96c8fc3558764413bc1c5ad93fcbcad11a81d2b5fb521a3774996",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/LRSCREEN/x2",
+   "run_id": "FL_FA_LRSCREEN_x2_CALIB_s2026",
+   "run_summary_sha256": "c7293ca4ce5d14cb5141c4c69a82adb0f694ea3ebc69663dcd95b40790fd681c",
+   "split": "VALIDATION",
+   "value": 0.025562024102856924
+  }
+ ],
+ "selected_lr_mult": 2.0,
+ "self_sha256": "1e944cd8e1c1312201727527692c2bfdc178a5864c1c69db597a698cc025ef23",
+ "task": "FL-05 v4int.lr_screen",
+ "tie_set": [
+  2.0
+ ],
+ "tie_tolerance": 0.0005,
+ "unchanged": "PF personal LR, FedProx mu, the FT grid, LO (amendment 06B \u00a71)",
+ "utc": "2026-09-29T09:11:37Z",
+ "values": {
+  "0.5": 0.020263155927244314,
+  "1": 0.023472999619809514,
+  "2": 0.025562024102856924
+ }
+}

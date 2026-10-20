@@ -1,0 +1,498 @@
+{
+ "arm": "P2_WSTAR_DP8",
+ "arm_spec": {
+  "arm": "P2_WSTAR_DP8",
+  "cfg": {
+   "dp": {
+    "clip_norm": 0.1469018692266005,
+    "denominator": 1024,
+    "noise_multiplier": 0.5642
+   },
+   "dropout_p": 0.0,
+   "endpoint_efe": 6.0,
+   "endpoint_rounds": 384,
+   "exposure_point": "end",
+   "lr_peak_local": 0.1,
+   "lr_shape": "fl_const",
+   "max_attempts": 2,
+   "method": "FA",
+   "mu": 0.0,
+   "n_shards": 2,
+   "pf": null,
+   "seed": 2027,
+   "server_opt": {
+    "beta1": 0.9,
+    "beta2": 0.99,
+    "lr": 3e-05,
+    "name": "fedadam",
+    "tau": 1e-06,
+    "v_init": "tau_squared"
+   },
+   "solver": {
+    "batch_size": 16,
+    "clip": 1.0,
+    "fused": null,
+    "item_lr_mult": 0.1,
+    "lr": 0.1,
+    "optimizer": "sgd_m",
+    "passes": 2,
+    "weight_decay": 0.0
+   }
+  },
+  "init_from": {
+   "checkpoint_bytes": 82853197,
+   "checkpoint_sha256": "22135cdf132eae1d405dd802acf1a756c9aba122e02c9a01f53876894bd58383",
+   "family": "SASREC",
+   "fl_init_kind": "endpoint_6.0",
+   "kind": "PRETRAIN_FOR_FL",
+   "model_variant": "SASREC_D64_B2",
+   "run_id": "PRETRAIN_FOR_FL_SMALL_SASREC_D64_B2_s2026",
+   "run_label": "PRETRAIN_FOR_FL",
+   "seed": 2026,
+   "state_digest": "3e1c48efe79a1f1a1377719c144af9fe8e8610060ea7cc18b6bff545b61ce4e2",
+   "train_manifest": "PRETRAIN_TRAIN_5_100_NONMAIN"
+  },
+  "lr_mult": 1.0,
+  "lr_peak_base": 0.0007114121116984968,
+  "max_rounds": 384,
+  "p2_dp": {
+   "N": 131072,
+   "T": 384,
+   "accountant": "the registered RDP record (DP_Z_RECORD_FL04 via load_z); no new accountant",
+   "delta": 5e-06,
+   "disclosure_D_i": "a small-step recipe over 384 rounds may move theta little; that is the registered mechanism's answer, not a defect to tune away (PREG2 \u00a75.5 D-i)",
+   "epsilon": 8.0,
+   "m": 1024,
+   "noise_multiplier": 0.5642,
+   "s_cal_rounds": 20,
+   "s_cal_seed": 2026,
+   "semantics": "DP",
+   "stage": "WD"
+  },
+  "p2_dp_fixed": {
+   "authority": "PREG2 \u00a75.5 / Fable E-O4d: passes 2 / batch 16 for BOTH FA1024 and DP (DL 219 rule)",
+   "client_momentum": 0.9,
+   "client_opt": "sgd_m",
+   "clip": 1.0,
+   "dropout_p": 0.0,
+   "local_batch": 16,
+   "local_passes": 2,
+   "lr_shape": "fl_const",
+   "sampling": "poisson",
+   "weight_decay": 0.0
+  },
+  "p2_label": "fedadam|eta=3e-05|c=0.1|items=unfrozen|ilr=0.1",
+  "p2_recipe": {
+   "client_lr": 0.1,
+   "item_lr_mult": 0.1,
+   "items": "unfrozen",
+   "lora_lr_factor": null,
+   "lora_rank": null,
+   "personal_head": false,
+   "server_lr": 3e-05,
+   "server_opt": "fedadam",
+   "upload": "dense"
+  },
+  "p2_s_record_sha256": "4036d841f31b4baed5e9bee92269e2845ab90c23750f3f6ac45472e7c4dd2741",
+  "p2_selection": null,
+  "plan": {
+   "group_size": 1024,
+   "sampling": "poisson"
+  },
+  "role": "MAIN",
+  "study": "PREG2",
+  "upload_codec": null
+ },
+ "arm_spec_sha256": "a62815908fa66fdda3411857aa0c0e503c1b0690d18d9179b14222cbccf70905",
+ "best_half_efe": 9,
+ "best_metric": 0.14607776220162397,
+ "bytes": {
+  "disclosure": "dropped clients (10% drop-out) are not charged a download (the ledger counts survivors)",
+  "fleet": {
+   "bytes_down": 32617540457312,
+   "bytes_up": 32617543607440,
+   "messages": 787532,
+   "retry_bytes_down": 0,
+   "total": 65235084064752
+  },
+  "per_client": {
+   "max": 2153705736,
+   "mean": 497704193.6092529,
+   "median": 497009016.0,
+   "min": 0,
+   "rule": "visits x (down + up) of that client"
+  },
+  "per_visit": {
+   "alias_bytes_not_sent": 0,
+   "bootstrap_bytes_once": 0,
+   "download_bytes": 82834832,
+   "private_bytes_sent": 0,
+   "private_resident_bytes": 0,
+   "send_plus_receive_bytes": 165669672,
+   "shared_numel": 20708708,
+   "upload_bytes": 82834840
+  }
+ },
+ "checkpoints": [
+  "best.pt",
+  "endpoint_6.0.pt"
+ ],
+ "counters": {
+  "coverage_by_sweep": {
+   "0": {
+    "clients": 83385,
+    "fraction": 0.6361770629882812
+   },
+   "1": {
+    "clients": 83113,
+    "fraction": 0.6341018676757812
+   },
+   "2": {
+    "clients": 82758,
+    "fraction": 0.6313934326171875
+   }
+  },
+  "efe": 6.00606002992531,
+  "exposures": 15542338,
+  "max_visits": 13,
+  "min_visits": 0,
+  "noop_visits": 0,
+  "retries": 0,
+  "rounds": 384,
+  "steps": 1348990,
+  "steps_hist": {
+   "10": 9476,
+   "12": 5974,
+   "14": 1111,
+   "2": 238927,
+   "4": 87215,
+   "6": 34115,
+   "8": 16948
+  },
+  "visits": 393766,
+  "wasted_steps": 0
+ },
+ "done": true,
+ "dp": {
+  "clip_norm": 0.1469018692266005,
+  "denominator": 1024,
+  "noise_multiplier": 0.5642,
+  "rounds_logged": 0
+ },
+ "dp_noise_dimension": {
+  "frozen_keys_excluded": [],
+  "rule": "fl.dp clips / noises the manifest's shared (uploaded) keys only; accounting (z, q, T, delta) unchanged",
+  "uploaded_keys": [
+   "output_embed",
+   "output_bias",
+   "side_gate",
+   "user_gate",
+   "item_embed.weight",
+   "pos_embed.weight",
+   "blocks.0.ln1.weight",
+   "blocks.0.ln1.bias",
+   "blocks.0.qkv.weight",
+   "blocks.0.qkv.bias",
+   "blocks.0.out.weight",
+   "blocks.0.out.bias",
+   "blocks.0.ln2.weight",
+   "blocks.0.ln2.bias",
+   "blocks.0.ff1.weight",
+   "blocks.0.ff1.bias",
+   "blocks.0.ff2.weight",
+   "blocks.0.ff2.bias",
+   "blocks.1.ln1.weight",
+   "blocks.1.ln1.bias",
+   "blocks.1.qkv.weight",
+   "blocks.1.qkv.bias",
+   "blocks.1.out.weight",
+   "blocks.1.out.bias",
+   "blocks.1.ln2.weight",
+   "blocks.1.ln2.bias",
+   "blocks.1.ff1.weight",
+   "blocks.1.ff1.bias",
+   "blocks.1.ff2.weight",
+   "blocks.1.ff2.bias",
+   "final_norm.weight",
+   "final_norm.bias",
+   "input_norm.weight",
+   "input_norm.bias",
+   "side_embeds.category_tokens.weight",
+   "side_embeds.brand_tokens.weight",
+   "side_embeds.session_offset_tokens.weight",
+   "side_embeds.session_mode_main_category_tokens.weight",
+   "numflag_proj.weight",
+   "numflag_proj.bias",
+   "side_proj.weight",
+   "side_proj.bias",
+   "side_norm.weight",
+   "side_norm.bias",
+   "user_mlp.weight",
+   "user_mlp.bias",
+   "user_proj.weight",
+   "user_proj.bias",
+   "user_norm.weight",
+   "user_norm.bias"
+  ],
+  "uploaded_numel": 20708708
+ },
+ "evals": [
+  [
+   1,
+   31,
+   0.1452315584898889,
+   true,
+   "MAIN"
+  ],
+  [
+   2,
+   63,
+   0.14541823433655945,
+   false,
+   "MAIN"
+  ],
+  [
+   3,
+   95,
+   0.14543370427689647,
+   true,
+   "MAIN"
+  ],
+  [
+   4,
+   127,
+   0.14558144723846697,
+   false,
+   "MAIN"
+  ],
+  [
+   5,
+   159,
+   0.14566034162586816,
+   true,
+   "MAIN"
+  ],
+  [
+   6,
+   191,
+   0.14575604597778924,
+   false,
+   "MAIN"
+  ],
+  [
+   7,
+   223,
+   0.14587727908430764,
+   true,
+   "MAIN"
+  ],
+  [
+   8,
+   255,
+   0.14598067618166877,
+   false,
+   "MAIN"
+  ],
+  [
+   9,
+   287,
+   0.14607776220162397,
+   true,
+   "MAIN"
+  ],
+  [
+   10,
+   319,
+   0.14609044202526414,
+   false,
+   "MAIN"
+  ],
+  [
+   11,
+   351,
+   0.1462027466050992,
+   false,
+   "MAIN"
+  ],
+  [
+   12,
+   383,
+   0.1462257491634635,
+   false,
+   "MAIN"
+  ]
+ ],
+ "ledger": [
+  787532,
+  32617540457312,
+  32617543607440,
+  0
+ ],
+ "lr_table": {
+  "E_total": 15526656,
+  "digest": "13c81a58e497d460b636f14fedf7419622f0b10447cd8a1e3ad4f4f4b13e37bc",
+  "final_lr": 0.010000000000000002,
+  "min_lr": 0.010000000000000002,
+  "n_rounds": 384,
+  "planned_efe": 6.0
+ },
+ "lr_table_digest": "13c81a58e497d460b636f14fedf7419622f0b10447cd8a1e3ad4f4f4b13e37bc",
+ "method": "FA",
+ "p2": {
+  "authority": "PREG2 \u00a75.5 (Fable gate FABLE_GATE_ENDGAME_SCRIPTS_20261003 \u00a79.2 E-O4d); PHASE2_IMPLEMENTATION_PLAN P2-08a (Part A); registered z / accounting = DP_Z_RECORD_FL04 (amendment 06 \u00a72 Q5)",
+  "dp_chain": {
+   "N": 131072,
+   "T": 384,
+   "accountant": "the registered RDP record (DP_Z_RECORD_FL04 via load_z); no new accountant",
+   "delta": 5e-06,
+   "disclosure_D_i": "a small-step recipe over 384 rounds may move theta little; that is the registered mechanism's answer, not a defect to tune away (PREG2 \u00a75.5 D-i)",
+   "epsilon": 8.0,
+   "m": 1024,
+   "noise_multiplier": 0.5642,
+   "s_cal_rounds": 20,
+   "s_cal_seed": 2026,
+   "semantics": "DP",
+   "stage": "WD"
+  },
+  "label": "fedadam|eta=3e-05|c=0.1|items=unfrozen|ilr=0.1",
+  "post_run": null,
+  "pre_server": null,
+  "recipe": {
+   "client_lr": 0.1,
+   "item_lr_mult": 0.1,
+   "items": "unfrozen",
+   "lora_lr_factor": null,
+   "lora_rank": null,
+   "personal_head": false,
+   "server_lr": 3e-05,
+   "server_opt": "fedadam",
+   "upload": "dense"
+  },
+  "selection": null
+ },
+ "participation": {
+  "E_realised_total": 15542338,
+  "E_total_expected": 15526656,
+  "cohort_size_max": 1132,
+  "cohort_size_min": 944,
+  "dropout_p": 0.0,
+  "dropped": 0,
+  "empty_rounds": 0,
+  "endpoint_rounds": 384,
+  "inclusion_probability": 0.0078125,
+  "noise_only_rounds": 0,
+  "noop_rounds": 0,
+  "planned_efe": 6.0,
+  "rounds": 384,
+  "sampled": 393766,
+  "sampling": "poisson",
+  "survived": 393766
+ },
+ "phase": "MAIN",
+ "plan": {
+  "group_size": 1024,
+  "inclusion_probability": 0.0078125,
+  "inclusion_rule": "u_i ~ Uniform{0..N-1} (PCG64, derive_seed(seed, 'poisson', r)); member iff u_i < group_size",
+  "keys_digest": "8356cab11d62e5fc3c99cf0594dbfade304f27947cbdd7cd39f4a25294bf44eb",
+  "manifest_hash": "5d5cd03679232d2214b9977189e9719acc3dc06842a7e03d08b3bc268f64f039",
+  "n_clients": 131072,
+  "rounds_per_sweep": 128,
+  "sampling": "independent Poisson participation per client per round (q = min(group_size, N) / N); variable cohort size (may be 0); logical order = sorted keys; 'sweeps' are blocks of rounds_per_sweep rounds",
+  "sampling_mode": "poisson",
+  "seed": 2027
+ },
+ "rounds": 384,
+ "run_id": "P2_WSTAR_DP8_FEDADAM_eta3e-05_c0.1_UNFROZEN_ilr0.1_XTAU1e-06_E6_P1_SMALL_s2027",
+ "server_digest": "496c4c2dd269947c155472e392e66aedfe38519e978fc2484934fd9adbee1613",
+ "server_opt": {
+  "cfg": {
+   "beta1": 0.9,
+   "beta2": 0.99,
+   "lr": 3e-05,
+   "name": "fedadam",
+   "tau": 1e-06,
+   "v_init": "tau_squared"
+  },
+  "moments_digest": "a7b08ed0b233effac6fc19292ef3738737c5cedec2e4a723f3c6d986f5848104",
+  "steps": 384
+ },
+ "status": "DONE_MAIN",
+ "store_digest": null,
+ "update_norm_log": {
+  "authority": "PREG2 \u00a73.3 D1-ext: per round, per tensor group of the trained subset: ||Delta_agg||, the server step, ||theta - theta_pre||, cos(Delta_r, Delta_r-1), clients aggregated (omitted for z > 0); DESCRIPTIVE, never selects; post-noise server-side quantities only under DP (06L_E E1)",
+  "complete": true,
+  "cos_prev_unavailable_rounds": [
+   0
+  ],
+  "file": "UPDATE_NORM_LOG.jsonl",
+  "last_total_T": {
+   "agg_delta_l2": 0.36834767928624074,
+   "numel": 20708708,
+   "pre_dist_l2": 3.3897457301300133,
+   "pre_l2": 811.989003090849,
+   "rel_pre_dist": 0.004174620243903418,
+   "step_l2": 0.031133514315393372
+  },
+  "missing_rounds": [],
+  "rounds_expected": 384,
+  "rounds_logged": 384,
+  "server_steps": 384,
+  "sha256": "c116d2a9bd09c374592253f9c4aae54ea93dd24130cf50312cb3cadd40ec3505",
+  "strictly_increasing": true,
+  "trained_keys": [
+   "output_embed",
+   "output_bias",
+   "side_gate",
+   "user_gate",
+   "item_embed.weight",
+   "pos_embed.weight",
+   "blocks.0.ln1.weight",
+   "blocks.0.ln1.bias",
+   "blocks.0.qkv.weight",
+   "blocks.0.qkv.bias",
+   "blocks.0.out.weight",
+   "blocks.0.out.bias",
+   "blocks.0.ln2.weight",
+   "blocks.0.ln2.bias",
+   "blocks.0.ff1.weight",
+   "blocks.0.ff1.bias",
+   "blocks.0.ff2.weight",
+   "blocks.0.ff2.bias",
+   "blocks.1.ln1.weight",
+   "blocks.1.ln1.bias",
+   "blocks.1.qkv.weight",
+   "blocks.1.qkv.bias",
+   "blocks.1.out.weight",
+   "blocks.1.out.bias",
+   "blocks.1.ln2.weight",
+   "blocks.1.ln2.bias",
+   "blocks.1.ff1.weight",
+   "blocks.1.ff1.bias",
+   "blocks.1.ff2.weight",
+   "blocks.1.ff2.bias",
+   "final_norm.weight",
+   "final_norm.bias",
+   "input_norm.weight",
+   "input_norm.bias",
+   "side_embeds.category_tokens.weight",
+   "side_embeds.brand_tokens.weight",
+   "side_embeds.session_offset_tokens.weight",
+   "side_embeds.session_mode_main_category_tokens.weight",
+   "numflag_proj.weight",
+   "numflag_proj.bias",
+   "side_proj.weight",
+   "side_proj.bias",
+   "side_norm.weight",
+   "side_norm.bias",
+   "user_mlp.weight",
+   "user_mlp.bias",
+   "user_proj.weight",
+   "user_proj.bias",
+   "user_norm.weight",
+   "user_norm.bias"
+  ],
+  "trained_numel": 20708708,
+  "unparsable_lines": 0
+ },
+ "wall_s_this_leg": 44103.91
+}

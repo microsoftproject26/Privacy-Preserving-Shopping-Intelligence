@@ -1,0 +1,168 @@
+{
+ "authority": [
+  "contracts/PREG1_AMENDMENT_06B.md §2 (K1–K16 verbatim)",
+  "contracts/PREG1_AMENDMENT_06D.md §3 (rule map), §4 (hierarchy)",
+  "contracts/PREG1_AMENDMENT_06E.md section 2 (registered seeds)",
+  "contracts/PREG1_AMENDMENT_06I.md section 1 (K17-K19)"
+ ],
+ "confirmatory_contrasts": [
+  {
+   "contrast": "R(C_SMALL / C_BIG)",
+   "id": "K1",
+   "question": "size cost"
+  },
+  {
+   "contrast": "R(FA / C_BIG)",
+   "id": "K2",
+   "question": "federated retention (headline)"
+  },
+  {
+   "contrast": "R(FA / C_SMALL)",
+   "id": "K3",
+   "question": "federation cost at matched size"
+  },
+  {
+   "contrast": "R(FP / C_BIG)",
+   "id": "K4",
+   "question": "FedProx retention"
+  },
+  {
+   "contrast": "R(PF / C_BIG)",
+   "id": "K5",
+   "question": "personalised-FL retention"
+  },
+  {
+   "contrast": "R(FT_FA / C_BIG)",
+   "id": "K6",
+   "question": "deployed on-device system (FL + local fine-tune)"
+  },
+  {
+   "contrast": "R(FT_C / C_BIG)",
+   "id": "K7",
+   "question": "cloud-trained + local fine-tune"
+  },
+  {
+   "contrast": "R(LO / C_BIG)",
+   "id": "K8",
+   "question": "device-only retention"
+  },
+  {
+   "contrast": "FT_C − C_SMALL",
+   "id": "K9",
+   "question": "local fine-tuning gain (paired Δ)"
+  },
+  {
+   "contrast": "FT_FA − FA",
+   "id": "K10",
+   "question": "local fine-tuning gain after FL (paired Δ)"
+  },
+  {
+   "contrast": "FA − LO",
+   "id": "K11",
+   "question": "collaboration value (paired Δ)"
+  },
+  {
+   "contrast": "R(DP8 / FA_1024)",
+   "id": "K12",
+   "question": "privacy cost at ε = 8"
+  },
+  {
+   "contrast": "R(DP1 / FA_1024)",
+   "id": "K13",
+   "question": "privacy cost at ε = 1 (seed 2026)"
+  },
+  {
+   "contrast": "R(FA_Q8 / FA)",
+   "id": "K14",
+   "question": "compression cost (8-bit uploads)"
+  },
+  {
+   "contrast": "R(C_BIG / C_FULL)",
+   "id": "K15",
+   "question": "cloud data advantage (seed 2026; if C_FULL runs)"
+  },
+  {
+   "contrast": "R(INT8 / FP32) for C_SMALL",
+   "id": "K16",
+   "question": "on-device quantisation cost (seed 2026)"
+  },
+  {
+   "contrast": "R(FA / C_FULL)",
+   "id": "K17",
+   "question": "federated retention vs the full-data cloud model (seed 2026)"
+  },
+  {
+   "contrast": "R(FT_C / C_FULL)",
+   "id": "K18",
+   "question": "cloud-trained + local fine-tune vs the full-data cloud model (seed 2026)"
+  },
+  {
+   "contrast": "R(LO / C_FULL)",
+   "id": "K19",
+   "question": "device-only vs the full-data cloud model (seed 2026)"
+  }
+ ],
+ "confirmatory_rule_map": {
+  "K12": "CONTROLLED_BUDGET",
+  "K13": "CONTROLLED_BUDGET"
+ },
+ "default_confirmatory_rule": "PRACTICAL_BEST",
+ "default_seeds": [
+  2026,
+  2027
+ ],
+ "dp_disclosure": "K12/K13 PRACTICAL_BEST ratios are DESCRIPTIVE: best-of-12 checkpoint selection on the users' own validation data is not covered by the DP accountant (06D §3).",
+ "format": "PPSI_V4_ANA_CONTRASTS_2",
+ "hierarchy": {
+  "primary": [
+   "K2"
+  ],
+  "secondary": [
+   "K1",
+   "K3",
+   "K8",
+   "K12",
+   "K17"
+  ],
+  "tertiary": [
+   "K4",
+   "K5",
+   "K6",
+   "K7",
+   "K9",
+   "K10",
+   "K11",
+   "K13",
+   "K14",
+   "K15",
+   "K16",
+   "K18",
+   "K19"
+  ]
+ },
+ "multiplicity_statement": "19 pre-registered contrasts; unadjusted 95% paired user-bootstrap percentile CIs (1,000 resamples, seed 20260926); the hierarchy above is stated with the results; every other number is DESCRIPTIVE (06D section 4; 06I section 1).",
+ "registered_seeds": {
+  "K13": [
+   2026
+  ],
+  "K15": [
+   2026
+  ],
+  "K16": [
+   2026
+  ],
+  "K17": [
+   2026
+  ],
+  "K18": [
+   2026
+  ],
+  "K19": [
+   2026
+  ]
+ },
+ "registered_utc": "2026-09-29T12:12Z",
+ "self_sha256": "bac7aa4f70692e5bc93dc472dff4e3d49893d257763ae8dbb94859d4beab8771",
+ "status": "PRE_LOCK: used for the VALIDATION preflight; copied verbatim into ALL_METHODS_LOCK.json",
+ "supersedes": "company/gates/ANA_CONTRASTS.json (K1-K16 verbatim; K17-K19 added by 06I section 1)"
+}

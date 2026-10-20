@@ -1,0 +1,47 @@
+{
+  "baseline": "KNN_EMB",
+  "method": "KNN_EMB_BIG",
+  "config": {
+    "sknn_k": null,
+    "sknn_sample_size": null,
+    "grid": false,
+    "item_table_path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_p3/SASREC/02B_SASREC_s2026/sealed/checkpoints/best.pt",
+    "item_table_sha256": "df35157f8ea93762ffed75048a43217d8ce1406de208b8429fd3f04af226c749",
+    "family": "SASREC",
+    "table_role": "BIG",
+    "fit_chunk": null,
+    "eval_batch": 1024,
+    "eval_config": {
+      "frozen": true,
+      "path": "precomputed_scores",
+      "score_block": 158486,
+      "class_chunk": 32768,
+      "eval_batch": 1024,
+      "cache_bytes": 1073741824,
+      "metric_accumulation": "FP64",
+      "eval_device_class": "A16-FP32-DET",
+      "device_class_frozen": "A16-FP32-DET",
+      "lock_sha256": "0308640a79ef5fccb50bc456ee8f3ff1d506095c757e3b24fbb7b9c2e058238e",
+      "lock_version": "1.0.0",
+      "eval_batch_amendment_id": null,
+      "eval_stream": "EVAL_ROWS_ONLY"
+    }
+  },
+  "v4base_code_sha256": "b1293abfc87c196217ecd155e50052c6319aaea03cdc861c030f79da8d2251b4",
+  "evaluator_code_sha256": "61b64e61c1a2e4f5a6fecd42f0ad3b98de26562d13a07758573cc9496b8d962e",
+  "wall_s": 3187.247,
+  "n_rows": 48,
+  "grid": null,
+  "resource": {
+    "limit_bytes": 17179869184,
+    "peak_seen_bytes": 3333689344,
+    "n_checks": 317,
+    "rss_measurable_on_this_host": true
+  },
+  "low_priority": {
+    "torch_num_threads": 4,
+    "os_nice_available": true,
+    "os_nice_result": 19,
+    "nice_increment_requested": 10
+  }
+}

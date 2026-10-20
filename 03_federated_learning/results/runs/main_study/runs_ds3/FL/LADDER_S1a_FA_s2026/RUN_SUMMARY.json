@@ -1,0 +1,262 @@
+{
+ "arm": "FA",
+ "arm_spec": {
+  "arm": "FA",
+  "cfg": {
+   "dp": null,
+   "dropout_p": 0.1,
+   "endpoint_efe": 6.0,
+   "endpoint_rounds": 6827,
+   "exposure_point": "end",
+   "lr_peak_local": 0.0014228242233969937,
+   "max_attempts": 2,
+   "method": "FA",
+   "mu": 0.0,
+   "n_shards": 2,
+   "pf": null,
+   "seed": 2026,
+   "solver": {
+    "batch_size": 16,
+    "clip": 1.0,
+    "fused": true,
+    "lr": 0.0014228242233969937,
+    "passes": 2,
+    "weight_decay": 1e-05
+   }
+  },
+  "knobs": {
+   "batch": 16,
+   "clip": 1.0,
+   "dropout_p": 0.1,
+   "endpoint_efe": 6.0,
+   "group": 64,
+   "m": 1024,
+   "max_attempts": 2,
+   "mu": 0.01,
+   "n_shards": 2,
+   "passes": 2,
+   "pf_clip": 1.0,
+   "pf_lam": 0.0001,
+   "rounds": 6827,
+   "rounds_1024": 384,
+   "s_cal_rounds": 20,
+   "s_cal_seed": 2026,
+   "sampling": "sweep",
+   "weight_decay": 1e-05
+  },
+  "lr_mult": 2.0,
+  "lr_peak_base": 0.0007114121116984968,
+  "max_rounds": 6827,
+  "plan": {
+   "group_size": 64,
+   "sampling": "sweep"
+  },
+  "role": "MAIN",
+  "upload_codec": null
+ },
+ "arm_spec_sha256": "25e0332ae62ddd9cd0840c6f381161ad2889488214a65e01c5d4cb86be87a51e",
+ "best_half_efe": 3,
+ "best_metric": 0.032395935448650014,
+ "bytes": {
+  "disclosure": "dropped clients (10% drop-out) are not charged a download (the ledger counts survivors)",
+  "fleet": {
+   "bytes_down": 32593766860528,
+   "bytes_up": 32593770008360,
+   "messages": 786958,
+   "retry_bytes_down": 0,
+   "total": 65187536868888
+  },
+  "per_client": {
+   "max": 662678688,
+   "mean": 497341437.29315186,
+   "median": 497009016.0,
+   "min": 0,
+   "rule": "visits x (down + up) of that client"
+  },
+  "per_visit": {
+   "alias_bytes_not_sent": 0,
+   "bootstrap_bytes_once": 0,
+   "download_bytes": 82834832,
+   "private_bytes_sent": 0,
+   "private_resident_bytes": 0,
+   "send_plus_receive_bytes": 165669672,
+   "shared_numel": 20708708,
+   "upload_bytes": 82834840
+  }
+ },
+ "checkpoints": [
+  "best.pt",
+  "endpoint_6.0.pt"
+ ],
+ "counters": {
+  "coverage_by_sweep": {
+   "0": {
+    "clients": 117965,
+    "fraction": 0.9000015258789062
+   },
+   "1": {
+    "clients": 117978,
+    "fraction": 0.9001007080078125
+   },
+   "2": {
+    "clients": 118168,
+    "fraction": 0.90155029296875
+   },
+   "3": {
+    "clients": 39368,
+    "fraction": 0.30035400390625
+   }
+  },
+  "efe": 6.00338514616412,
+  "exposures": 15535416,
+  "max_visits": 4,
+  "min_visits": 0,
+  "noop_visits": 0,
+  "retries": 0,
+  "rounds": 6827,
+  "steps": 1348528,
+  "steps_hist": {
+   "10": 9537,
+   "12": 6013,
+   "14": 1109,
+   "2": 238695,
+   "4": 87245,
+   "6": 33967,
+   "8": 16913
+  },
+  "visits": 393479,
+  "wasted_steps": 0
+ },
+ "done": true,
+ "evals": [
+  [
+   1,
+   571,
+   0.02767011419876022,
+   true,
+   "MAIN"
+  ],
+  [
+   2,
+   1136,
+   0.028970630317507438,
+   true,
+   "MAIN"
+  ],
+  [
+   3,
+   1704,
+   0.032395935448650014,
+   true,
+   "MAIN"
+  ],
+  [
+   4,
+   2275,
+   0.030031603975147356,
+   false,
+   "MAIN"
+  ],
+  [
+   5,
+   2845,
+   0.03092825443386924,
+   false,
+   "MAIN"
+  ],
+  [
+   6,
+   3413,
+   0.02954164039188187,
+   false,
+   "MAIN"
+  ],
+  [
+   7,
+   3984,
+   0.02922646622772435,
+   false,
+   "MAIN"
+  ],
+  [
+   8,
+   4549,
+   0.029250865416906392,
+   false,
+   "MAIN"
+  ],
+  [
+   9,
+   5118,
+   0.029744908949034827,
+   false,
+   "MAIN"
+  ],
+  [
+   10,
+   5682,
+   0.02910145007769159,
+   false,
+   "MAIN"
+  ],
+  [
+   11,
+   6253,
+   0.02869387189081262,
+   false,
+   "MAIN"
+  ],
+  [
+   12,
+   6826,
+   0.028648348961037698,
+   false,
+   "MAIN"
+  ]
+ ],
+ "ledger": [
+  786958,
+  32593766860528,
+  32593770008360,
+  0
+ ],
+ "lr_table": {
+  "E_total": 15535416,
+  "digest": "19461a147090a5db03684c1633dc9d99f3818fe6d98b523269410111b5ffe27f",
+  "final_lr": 1.422824223396993e-05,
+  "min_lr": 1.422824223396993e-05,
+  "n_rounds": 6827,
+  "planned_efe": 6.00338514616412
+ },
+ "lr_table_digest": "19461a147090a5db03684c1633dc9d99f3818fe6d98b523269410111b5ffe27f",
+ "method": "FA",
+ "participation": {
+  "dropout_p": 0.1,
+  "dropped": 43449,
+  "endpoint_rounds": 6827,
+  "noop_rounds": 0,
+  "planned_efe": 6.00338514616412,
+  "rounds": 6827,
+  "sampled": 436928,
+  "survived": 393479
+ },
+ "phase": "MAIN",
+ "plan": {
+  "group_size": 64,
+  "keys_digest": "8356cab11d62e5fc3c99cf0594dbfade304f27947cbdd7cd39f4a25294bf44eb",
+  "manifest_hash": "5d5cd03679232d2214b9977189e9719acc3dc06842a7e03d08b3bc268f64f039",
+  "n_clients": 131072,
+  "partial_group_note": "none: N is a multiple of the group size",
+  "partial_group_policy": "SMALLER_FINAL_GROUP",
+  "partial_group_size": 0,
+  "rounds_per_sweep": 2048,
+  "sampling": "seeded permutation sweeps without replacement (PCG64), fixed consecutive groups",
+  "seed": 2026
+ },
+ "rounds": 6827,
+ "run_id": "FL_FA_SMALL_s2026",
+ "server_digest": "44bbb4a5d4aabfbfce1a3a298cbc9e6803ef45767bc91b1e400825b920734c64",
+ "status": "DONE_MAIN",
+ "store_digest": null,
+ "wall_s_this_leg": 72106.63
+}

@@ -1,0 +1,71 @@
+{
+ "checkpoint_bytes": 85146389,
+ "checkpoint_sha256": "f1a15d29e8253e8d5c40c91e498cc76f129691f0073b8903b2ec48382686f813",
+ "counters": {
+  "coverage_by_sweep": {
+   "0": {
+    "clients": 8,
+    "fraction": 1.0
+   }
+  },
+  "efe": 2.0,
+  "exposures": 136,
+  "max_visits": 1,
+  "min_visits": 1,
+  "noop_visits": 0,
+  "retries": 0,
+  "rounds": 3,
+  "steps": 18,
+  "steps_hist": {
+   "2": 7,
+   "4": 1
+  },
+  "visits": 8,
+  "wasted_steps": 0
+ },
+ "env": {
+  "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+  "cuda": "13.0",
+  "python": "3.11.14",
+  "torch": "2.13.0+cu130"
+ },
+ "files_after_cleanup": [],
+ "lr_log": [
+  [
+   0,
+   0.001
+  ],
+  [
+   1,
+   0.001
+  ],
+  [
+   2,
+   0.001
+  ]
+ ],
+ "mode": "strict",
+ "numerics": {
+  "cuda_matmul_allow_tf32": false,
+  "cudnn_allow_tf32": false,
+  "cudnn_deterministic": true,
+  "deterministic_algorithms": true,
+  "deterministic_warn_only": false,
+  "float32_matmul_precision": "highest",
+  "intra_op_threads": 4,
+  "torch": "2.13.0+cu130"
+ },
+ "phase": "second",
+ "removal_log": [
+  {
+   "bytes": 85146389,
+   "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_g1/fl_determinism/tmp_ckpt_run2/resume-GRU/latest.pt",
+   "reason": "run complete: the resumable is not retained (disk plan rule 2)",
+   "sha256": "f1a15d29e8253e8d5c40c91e498cc76f129691f0073b8903b2ec48382686f813",
+   "utc": "2026-09-26T16:51:50Z"
+  }
+ ],
+ "resumed_from_cursor": 2,
+ "rounds": 3,
+ "server_sha256": "72cb6c91e49376def0a40ba4aa00f18155828eb98a3185bece99d532719b6ca9"
+}

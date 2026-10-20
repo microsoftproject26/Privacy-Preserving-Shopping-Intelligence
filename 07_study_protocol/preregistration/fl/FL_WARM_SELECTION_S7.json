@@ -1,0 +1,160 @@
+{
+ "arm": "FA_WARM",
+ "authority": "PREG1_AMENDMENT_06K \u00a72-\u00a73, 06M_B B2, 06J \u00a74(i)-(ii) / (v)",
+ "best_candidate": "f=0.25|sf=0.1",
+ "device": {
+  "device_pin_sha256": "db744ca3f0da27ac7b65c41b4b32f2c68ec9d0bd66bbc0dc33e874a226834e6b",
+  "eval_device_class": "NVIDIA_A40-FP32-DET"
+ },
+ "eval_manifest_id": "CALIB_VALIDATION_5_100_32768",
+ "excluded": [],
+ "format": "PPSI_V4_FL_WARM_SELECTION_2",
+ "gain": 0.03458519431267135,
+ "incumbent": "f=1|sf=1",
+ "init_from": {
+  "checkpoint_bytes": 82853197,
+  "checkpoint_sha256": "cf08588c11f019cc760f129ba7ba6b23806297660e0170f9938436a5cb88cf78",
+  "family": "SASREC",
+  "fl_init_kind": "endpoint_6.0",
+  "kind": "PRETRAIN_FOR_FL",
+  "model_variant": "SASREC_D64_B2",
+  "run_id": "PRETRAIN_FOR_FL_SMALL_SASREC_D64_B2_s2026",
+  "run_label": "PRETRAIN_FOR_FL",
+  "seed": 2026,
+  "state_digest": "ee33345be4f20b61a53cd80fa11e1af702031bfcd1425af490825cd0019dc54a",
+  "train_manifest": "PRETRAIN_TRAIN_5_100_NONMAIN"
+ },
+ "local_factors": [
+  1.0,
+  0.25
+ ],
+ "lr_peak_base": 0.0007114121116984968,
+ "metric": "CALIB_VALIDATION E2E client-macro MRR@20 at PRACTICAL_BEST",
+ "min_gain": 0.002,
+ "no_measurable_gain": false,
+ "rule": "warm-start screen (06M_B B2, amends 06K \u00a72-\u00a73): the highest CALIB_VALIDATION E2E client-macro MRR@20 at PRACTICAL_BEST over the 4 runs at the tuning selection's point from one theta_pre \u2014 S7 FA_WARM {m*, m*/4} x {eta*, eta*/10} (FedAdam) or {eta*, eta*/4} (FedAvgM / FedAvg); S8 FA_WARM_FROZEN {m*, 4 m*} x the same server axis; the 06J rule restricted to these runs: the 0.0005 tie band, then 06J \u00a74(ii) with the incumbent (m*, eta*): the best candidate replaces it only if it gains >= 0.002, else no measurable gain and (m*, eta*) carries on; ties -> (m*, eta*); non-finite values excluded and recorded (06J \u00a74(v)); raw values",
+ "runs": [
+  {
+   "arm": "FA_WARM",
+   "arm_spec_sha256": "25a6040a73236ee12f8f59b7363699578824131f18b98cedc7533b76bbec7187",
+   "eval_manifest_id": "CALIB_VALIDATION_5_100_32768",
+   "lr_mult": 1.0,
+   "lr_peak_base": 0.0007114121116984968,
+   "max_of_12_marks": 0.13599709734421242,
+   "practical_best_mark": 0.5,
+   "result_rows_sha256": "ca46f5ccca745ca51181d3d0dfb88065c5ffe0462e012fc7da632c740d1c1098",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/S7S8_T/S7Ta",
+   "run_id": "FL_FA_WARM_LRSCREEN_FEDADAM_eta0.01_FLCONST_SGDM_lr0.1_P1_x1_CALIB_s2026",
+   "run_summary_sha256": "3cc7ac49740cb14f39010d6ec7ac414f2b041e4c1a27dc3fe363c950063a4abc",
+   "split": "VALIDATION",
+   "value": 0.13599709734421242,
+   "warm_lr_factor": 1.0,
+   "warm_server_lr_factor": 1.0
+  },
+  {
+   "arm": "FA_WARM",
+   "arm_spec_sha256": "816c21c988233828a10c219a5e7a5495155bc769bce0c648791de8d11965058a",
+   "eval_manifest_id": "CALIB_VALIDATION_5_100_32768",
+   "lr_mult": 1.0,
+   "lr_peak_base": 0.0007114121116984968,
+   "max_of_12_marks": 0.1677459036371252,
+   "practical_best_mark": 0.5,
+   "result_rows_sha256": "b40e82432ae49526802a0af7fe6b3c496ed19e2c1f2f68d5940c5028401b2623",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/S7S8_T/S7Tc",
+   "run_id": "FL_FA_WARM_LRSCREEN_FEDADAM_eta0.01_FLCONST_SGDM_lr0.1_P1_x1_sf0.1_CALIB_s2026",
+   "run_summary_sha256": "2a8ba3dfe6da78aabbe55a1cf366ea98204542caa0cdf92103457d458e84f305",
+   "split": "VALIDATION",
+   "value": 0.1677459036371252,
+   "warm_lr_factor": 1.0,
+   "warm_server_lr_factor": 0.1
+  },
+  {
+   "arm": "FA_WARM",
+   "arm_spec_sha256": "58d2574ed523cd4a96fa6cba404767196938ba919c41ed4269afd9f2390596c5",
+   "eval_manifest_id": "CALIB_VALIDATION_5_100_32768",
+   "lr_mult": 1.0,
+   "lr_peak_base": 0.0007114121116984968,
+   "max_of_12_marks": 0.1561754762934899,
+   "practical_best_mark": 0.5,
+   "result_rows_sha256": "1e49b23b58598a949659e68a78ba5396f24521a08a24acea1181f0362e90b8ba",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/S7S8_T/S7Tb",
+   "run_id": "FL_FA_WARM_LRSCREEN_FEDADAM_eta0.01_FLCONST_SGDM_lr0.1_P1_x1_wf0.25_CALIB_s2026",
+   "run_summary_sha256": "226813251151e6965fe3c3f58558212f42bb5bf0a175e11362768eed0ce46ee0",
+   "split": "VALIDATION",
+   "value": 0.1561754762934899,
+   "warm_lr_factor": 0.25,
+   "warm_server_lr_factor": 1.0
+  },
+  {
+   "arm": "FA_WARM",
+   "arm_spec_sha256": "f5a28339f783883e0558bf825e32b29cca39790c9ac7aecd89c38296e55e795f",
+   "eval_manifest_id": "CALIB_VALIDATION_5_100_32768",
+   "lr_mult": 1.0,
+   "lr_peak_base": 0.0007114121116984968,
+   "max_of_12_marks": 0.17058954613447513,
+   "practical_best_mark": 0.5,
+   "result_rows_sha256": "11d1df8681a9e9399fc0be0662c96340e758d5d3875e1b1c91b7b789419aaa0a",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/S7S8_T/S7Td",
+   "run_id": "FL_FA_WARM_LRSCREEN_FEDADAM_eta0.01_FLCONST_SGDM_lr0.1_P1_x1_wf0.25_sf0.1_CALIB_s2026",
+   "run_summary_sha256": "24acb80d2b9235b1f4c155fa2c42bfd1ad279a879e6871ab154170cc2335d299",
+   "split": "VALIDATION",
+   "value": 0.17058229165688377,
+   "warm_lr_factor": 0.25,
+   "warm_server_lr_factor": 0.1
+  }
+ ],
+ "screened": [
+  "f=1|sf=1",
+  "f=1|sf=0.1",
+  "f=0.25|sf=1",
+  "f=0.25|sf=0.1"
+ ],
+ "self_sha256": "c7bd76d61e0bdf8494556eace553fa9a27255edfac1d3750181bc1abe9239c18",
+ "server_axis": {
+  "eta_star": 0.01,
+  "factors": [
+   1.0,
+   0.1
+  ],
+  "fedavg_note": null,
+  "optimizer": "fedadam",
+  "server_lrs": {
+   "0.1": 0.001,
+   "1": 0.01
+  }
+ },
+ "stage": "S7",
+ "task": "FL-15 v4int.lr_screen select-warm (2-D)",
+ "tie_band_set": [
+  "f=0.25|sf=0.1"
+ ],
+ "tie_order": "(m*, eta*) first, then fewer changed axes, then the smaller |log2| of the local factor, then of the server-LR factor",
+ "tie_set": [
+  "f=0.25|sf=0.1"
+ ],
+ "tie_tolerance": 0.0005,
+ "tuning_selection": {
+  "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/contracts/fl/FL_TUNING_SELECTION.json",
+  "self_sha256": "d361d6a33ad07eaacaa74c349165a1ae220778394bb132d54f54d9590d3596f8",
+  "sha256": "9bca186e5025f5caa9e762f3c425fb3151923b79e60f01e6ecb063aac9c715ec",
+  "stage": "S4",
+  "winner": "fedadam|eta=0.01|m=1|shape=fl_const|client=sgd_m|clr=0.1|passes=1"
+ },
+ "utc": "2026-09-30T23:53:46Z",
+ "values": {
+  "f=0.25|sf=0.1": 0.17058229165688377,
+  "f=0.25|sf=1": 0.1561754762934899,
+  "f=1|sf=0.1": 0.1677459036371252,
+  "f=1|sf=1": 0.13599709734421242
+ },
+ "winner": {
+  "label": "f=0.25|sf=0.1",
+  "server_lr": 0.001,
+  "warm_lr_factor": 0.25,
+  "warm_server_lr_factor": 0.1
+ },
+ "winner_factor": 0.25,
+ "winner_local_lr_rule": "local LR = factor x the tuning selection's local LR (m* x SMALL peak, or the client SGD LR)",
+ "winner_server_lr_factor": 0.1,
+ "winner_server_lr_rule": "server LR = eta* / 10 (FedAdam) or eta* / 4 (FedAvgM / FedAvg) at factor != 1"
+}

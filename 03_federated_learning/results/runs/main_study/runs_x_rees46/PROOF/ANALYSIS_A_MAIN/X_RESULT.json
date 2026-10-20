@@ -1,0 +1,4304 @@
+{
+ "bootstrap": "make_plan seed 20261004, 1000",
+ "contrasts": [
+  {
+   "hr@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     0.013362713986954482,
+     0.016016747184417483
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.12962417819644784,
+    "improved_share": 0.22389853792562064,
+    "kind": "delta",
+    "metric": "hr@10",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "FA_WARM_PB100K|2026|PRACTICAL_BEST|MAIN",
+      "b": "PRE100K|2026|PRACTICAL_BEST|MAIN",
+      "ci95": [
+       0.013362713986954482,
+       0.016016747184417483
+      ],
+      "harmed_share": 0.12962417819644784,
+      "improved_share": 0.22389853792562064,
+      "point": 0.014658630549950091,
+      "seed": 2026,
+      "tied_share": 0.6464772838779315,
+      "value_a": 0.3216129838694232,
+      "value_b": 0.3069543533194731
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.04761904761904756,
+     "P25": 0.0,
+     "P50": 0.0,
+     "P75": 0.0,
+     "P90": 0.10000000000000009
+    },
+    "point": 0.014658630549950091,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 0.014658630549950091
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.6464772838779315,
+    "worst_decile_mean_delta": -0.1795638324013071
+   },
+   "id": "A1_FA_WARM_PB100K-PRE100K|PB",
+   "kind": "delta",
+   "label": "POST_HOC_EXPLORATORY",
+   "mrr@20": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     0.005676748998428022,
+     0.007180628000737753
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.32084682563045824,
+    "improved_share": 0.4394073201844765,
+    "kind": "delta",
+    "metric": "mrr@20",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "FA_WARM_PB100K|2026|PRACTICAL_BEST|MAIN",
+      "b": "PRE100K|2026|PRACTICAL_BEST|MAIN",
+      "ci95": [
+       0.005676748998428022,
+       0.007180628000737753
+      ],
+      "harmed_share": 0.32084682563045824,
+      "improved_share": 0.4394073201844765,
+      "point": 0.006476590307367802,
+      "seed": 2026,
+      "tied_share": 0.23974585418506525,
+      "value_a": 0.15130936548370646,
+      "value_b": 0.14483277517633866
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.04048399656758791,
+     "P25": -0.007502325890483778,
+     "P50": 0.0,
+     "P75": 0.01985544884117548,
+     "P90": 0.05767857142857146
+    },
+    "point": 0.006476590307367802,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 0.006476590307367802
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.23974585418506525,
+    "tost_q1_margin": {
+     "ci90": [
+      0.005804716910774087,
+      0.007110197653889094
+     ],
+     "equivalent": false,
+     "margin": [
+      -0.0005,
+      0.0005
+     ],
+     "status": "COMPUTED"
+    },
+    "worst_decile_mean_delta": -0.11111478057337928
+   },
+   "ndcg@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     0.007284089657388716,
+     0.008714773429914726
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.2838779315081935,
+    "improved_share": 0.3962074379354332,
+    "kind": "delta",
+    "metric": "ndcg@10",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "FA_WARM_PB100K|2026|PRACTICAL_BEST|MAIN",
+      "b": "PRE100K|2026|PRACTICAL_BEST|MAIN",
+      "ci95": [
+       0.007284089657388716,
+       0.008714773429914726
+      ],
+      "harmed_share": 0.2838779315081935,
+      "improved_share": 0.3962074379354332,
+      "point": 0.00805267233980922,
+      "seed": 2026,
+      "tied_share": 0.31991463055637326,
+      "value_a": 0.1858203688500457,
+      "value_b": 0.17776769651023647
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.0443663105778631,
+     "P25": -0.005820330046041917,
+     "P50": 0.0,
+     "P75": 0.02310781397553563,
+     "P90": 0.0688847077511475
+    },
+    "point": 0.00805267233980922,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 0.00805267233980922
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.31991463055637326,
+    "worst_decile_mean_delta": -0.11352460664079497
+   },
+   "note": "the K21 analogue on the 100k base (unfrozen FL - its own server model)",
+   "pairs": [
+    [
+     "FA_WARM_PB100K|PB",
+     "PRE100K|PB"
+    ]
+   ]
+  },
+  {
+   "hr@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     0.007635514715611998,
+     0.010341695814278028
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.15091747620449417,
+    "improved_share": 0.20520557354528504,
+    "kind": "delta",
+    "metric": "hr@10",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "FA_WARM_FROZEN_PB100K|2026|PRACTICAL_BEST|MAIN",
+      "b": "PRE100K|2026|PRACTICAL_BEST|MAIN",
+      "ci95": [
+       0.007635514715611998,
+       0.010341695814278028
+      ],
+      "harmed_share": 0.15091747620449417,
+      "improved_share": 0.20520557354528504,
+      "point": 0.00895587147884186,
+      "seed": 2026,
+      "tied_share": 0.6438769502502207,
+      "value_a": 0.315910224798315,
+      "value_b": 0.3069543533194731
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.0625,
+     "P25": 0.0,
+     "P50": 0.0,
+     "P75": 0.0,
+     "P90": 0.09999999999999998
+    },
+    "point": 0.00895587147884186,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 0.00895587147884186
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.6438769502502207,
+    "worst_decile_mean_delta": -0.2034193373100558
+   },
+   "id": "A1f_FA_WARM_FROZEN_PB100K-PRE100K|PB",
+   "kind": "delta",
+   "label": "POST_HOC_EXPLORATORY",
+   "mrr@20": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     0.0033987864207025527,
+     0.004869380605941702
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.3433421646550878,
+    "improved_share": 0.4164213521734864,
+    "kind": "delta",
+    "metric": "mrr@20",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "FA_WARM_FROZEN_PB100K|2026|PRACTICAL_BEST|MAIN",
+      "b": "PRE100K|2026|PRACTICAL_BEST|MAIN",
+      "ci95": [
+       0.0033987864207025527,
+       0.004869380605941702
+      ],
+      "harmed_share": 0.3433421646550878,
+      "improved_share": 0.4164213521734864,
+      "point": 0.004149634166197541,
+      "seed": 2026,
+      "tied_share": 0.24023648317142576,
+      "value_a": 0.1489824093425362,
+      "value_b": 0.14483277517633866
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.04505432841152655,
+     "P25": -0.010280203281778928,
+     "P50": 0.0,
+     "P75": 0.017244075660567258,
+     "P90": 0.05555555555555558
+    },
+    "point": 0.004149634166197541,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 0.004149634166197541
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.24023648317142576,
+    "tost_q1_margin": {
+     "ci90": [
+      0.003493297959807366,
+      0.004711098494930996
+     ],
+     "equivalent": false,
+     "margin": [
+      -0.0005,
+      0.0005
+     ],
+     "status": "COMPUTED"
+    },
+    "worst_decile_mean_delta": -0.11913511604220153
+   },
+   "ndcg@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     0.004119081892825645,
+     0.00557117595404372
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.30966048474143854,
+    "improved_share": 0.37116082818172896,
+    "kind": "delta",
+    "metric": "ndcg@10",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "FA_WARM_FROZEN_PB100K|2026|PRACTICAL_BEST|MAIN",
+      "b": "PRE100K|2026|PRACTICAL_BEST|MAIN",
+      "ci95": [
+       0.004119081892825645,
+       0.00557117595404372
+      ],
+      "harmed_share": 0.30966048474143854,
+      "improved_share": 0.37116082818172896,
+      "point": 0.004860746096290197,
+      "seed": 2026,
+      "tied_share": 0.3191786870768325,
+      "value_a": 0.18262844260652666,
+      "value_b": 0.17776769651023647
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.051587221517022205,
+     "P25": -0.00959507267388137,
+     "P50": 0.0,
+     "P75": 0.01941180055841418,
+     "P90": 0.06552974573981271
+    },
+    "point": 0.004860746096290197,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 0.004860746096290197
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.3191786870768325,
+    "worst_decile_mean_delta": -0.1240378282886088
+   },
+   "note": "K21 analogue, frozen items",
+   "pairs": [
+    [
+     "FA_WARM_FROZEN_PB100K|PB",
+     "PRE100K|PB"
+    ]
+   ]
+  },
+  {
+   "hr@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     -0.04108737948002131,
+     -0.03756227964141332
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.3392208811696595,
+    "improved_share": 0.12412913354921008,
+    "kind": "delta",
+    "metric": "hr@10",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "FA_WARM_PB100K|2026|PRACTICAL_BEST|MAIN",
+      "b": "PRE|2026|PRACTICAL_BEST|MAIN",
+      "ci95": [
+       -0.04108737948002131,
+       -0.03756227964141332
+      ],
+      "harmed_share": 0.3392208811696595,
+      "improved_share": 0.12412913354921008,
+      "point": -0.03928229694876684,
+      "seed": 2026,
+      "tied_share": 0.5366499852811304,
+      "value_a": 0.3216129838694232,
+      "value_b": 0.36089528081819006
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.2,
+     "P25": -0.07407407407407413,
+     "P50": 0.0,
+     "P75": 0.0,
+     "P90": 0.05555555555555558
+    },
+    "point": -0.03928229694876684,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": -0.03928229694876684
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.5366499852811304,
+    "worst_decile_mean_delta": -0.3949742327296814
+   },
+   "id": "A2_FA_WARM_PB100K-PRE|PB",
+   "kind": "delta",
+   "label": "POST_HOC_EXPLORATORY",
+   "mrr@20": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     -0.022742049647553917,
+     -0.020491301432470587
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.5280885094691394,
+    "improved_share": 0.2840005887547836,
+    "kind": "delta",
+    "metric": "mrr@20",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "FA_WARM_PB100K|2026|PRACTICAL_BEST|MAIN",
+      "b": "PRE|2026|PRACTICAL_BEST|MAIN",
+      "ci95": [
+       -0.022742049647553917,
+       -0.020491301432470587
+      ],
+      "harmed_share": 0.5280885094691394,
+      "improved_share": 0.2840005887547836,
+      "point": -0.021586831424343228,
+      "seed": 2026,
+      "tied_share": 0.18791090177607694,
+      "value_a": 0.15130936548370646,
+      "value_b": 0.1728961969080497
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.11011904761904763,
+     "P25": -0.0461900037792895,
+     "P50": -0.0042995344234133814,
+     "P75": 0.005718005952381004,
+     "P90": 0.05110795454545496
+    },
+    "point": -0.021586831424343228,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": -0.021586831424343228
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.18791090177607694,
+    "tost_q1_margin": {
+     "ci90": [
+      -0.0225355179857436,
+      -0.020644856934322657
+     ],
+     "equivalent": false,
+     "margin": [
+      -0.0005,
+      0.0005
+     ],
+     "status": "COMPUTED"
+    },
+    "worst_decile_mean_delta": -0.2289745338227979
+   },
+   "ndcg@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     -0.026440526354387654,
+     -0.02422782718211075
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.4942841723089,
+    "improved_share": 0.2514964184083996,
+    "kind": "delta",
+    "metric": "ndcg@10",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "FA_WARM_PB100K|2026|PRACTICAL_BEST|MAIN",
+      "b": "PRE|2026|PRACTICAL_BEST|MAIN",
+      "ci95": [
+       -0.026440526354387654,
+       -0.02422782718211075
+      ],
+      "harmed_share": 0.4942841723089,
+      "improved_share": 0.2514964184083996,
+      "point": -0.025294262481168978,
+      "seed": 2026,
+      "tied_share": 0.2542194092827004,
+      "value_a": 0.1858203688500457,
+      "value_b": 0.21111463133121466
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.12601111781821947,
+     "P25": -0.05596524691260524,
+     "P50": 0.0,
+     "P75": 0.0004801434522571854,
+     "P90": 0.05555555555555555
+    },
+    "point": -0.025294262481168978,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": -0.025294262481168978
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.2542194092827004,
+    "worst_decile_mean_delta": -0.2394360123798868
+   },
+   "note": "vs the 1.2M-user theta_pre (does FL on MAIN from a 100k base reach the big server model?)",
+   "pairs": [
+    [
+     "FA_WARM_PB100K|PB",
+     "PRE|PB"
+    ]
+   ]
+  },
+  {
+   "hr@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     -0.04685101823786269,
+     -0.043237602885624615
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.35425865960160924,
+    "improved_share": 0.11549406338926503,
+    "kind": "delta",
+    "metric": "hr@10",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "FA_WARM_FROZEN_PB100K|2026|PRACTICAL_BEST|MAIN",
+      "b": "PRE|2026|PRACTICAL_BEST|MAIN",
+      "ci95": [
+       -0.04685101823786269,
+       -0.043237602885624615
+      ],
+      "harmed_share": 0.35425865960160924,
+      "improved_share": 0.11549406338926503,
+      "point": -0.04498505601987507,
+      "seed": 2026,
+      "tied_share": 0.5302472770091257,
+      "value_a": 0.315910224798315,
+      "value_b": 0.36089528081819006
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.20000000000000007,
+     "P25": -0.08333333333333333,
+     "P50": 0.0,
+     "P75": 0.0,
+     "P90": 0.047619047619047616
+    },
+    "point": -0.04498505601987507,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": -0.04498505601987507
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.5302472770091257,
+    "worst_decile_mean_delta": -0.4126818466073067
+   },
+   "id": "A2f_FA_WARM_FROZEN_PB100K-PRE|PB",
+   "kind": "delta",
+   "label": "POST_HOC_EXPLORATORY",
+   "mrr@20": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     -0.02503821365474164,
+     -0.022798730243865594
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.5402315768815622,
+    "improved_share": 0.27256893337258364,
+    "kind": "delta",
+    "metric": "mrr@20",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "FA_WARM_FROZEN_PB100K|2026|PRACTICAL_BEST|MAIN",
+      "b": "PRE|2026|PRACTICAL_BEST|MAIN",
+      "ci95": [
+       -0.02503821365474164,
+       -0.022798730243865594
+      ],
+      "harmed_share": 0.5402315768815622,
+      "improved_share": 0.27256893337258364,
+      "point": -0.02391378756551349,
+      "seed": 2026,
+      "tied_share": 0.18719948974585418,
+      "value_a": 0.1489824093425362,
+      "value_b": 0.1728961969080497
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.11480170358537224,
+     "P25": -0.04921466321820661,
+     "P50": -0.006128463782207088,
+     "P75": 0.004060163182405831,
+     "P90": 0.04999999999999999
+    },
+    "point": -0.02391378756551349,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": -0.02391378756551349
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.18719948974585418,
+    "tost_q1_margin": {
+     "ci90": [
+      -0.024853701830615825,
+      -0.023000558984133262
+     ],
+     "equivalent": false,
+     "margin": [
+      -0.0005,
+      0.0005
+     ],
+     "status": "COMPUTED"
+    },
+    "worst_decile_mean_delta": -0.2345615274847026
+   },
+   "ndcg@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     -0.029622956575706034,
+     -0.027436661871358844
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.5091256991463056,
+    "improved_share": 0.2378814640368953,
+    "kind": "delta",
+    "metric": "ndcg@10",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "FA_WARM_FROZEN_PB100K|2026|PRACTICAL_BEST|MAIN",
+      "b": "PRE|2026|PRACTICAL_BEST|MAIN",
+      "ci95": [
+       -0.029622956575706034,
+       -0.027436661871358844
+      ],
+      "harmed_share": 0.5091256991463056,
+      "improved_share": 0.2378814640368953,
+      "point": -0.028486188724688,
+      "seed": 2026,
+      "tied_share": 0.2529928368167991,
+      "value_a": 0.18262844260652666,
+      "value_b": 0.21111463133121466
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.13250672256798784,
+     "P25": -0.0600683342326825,
+     "P50": -0.002384283141468539,
+     "P75": 0.0,
+     "P90": 0.05383456975917413
+    },
+    "point": -0.028486188724688,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": -0.028486188724688
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.2529928368167991,
+    "worst_decile_mean_delta": -0.24796819562842548
+   },
+   "note": null,
+   "pairs": [
+    [
+     "FA_WARM_FROZEN_PB100K|PB",
+     "PRE|PB"
+    ]
+   ]
+  },
+  {
+   "hr@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     -0.05581608686197919,
+     -0.05214952842653116
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.38396624472573837,
+    "improved_share": 0.1141203022274556,
+    "kind": "delta",
+    "metric": "hr@10",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "PRE100K|2026|PRACTICAL_BEST|MAIN",
+      "b": "PRE|2026|PRACTICAL_BEST|MAIN",
+      "ci95": [
+       -0.05581608686197919,
+       -0.05214952842653116
+      ],
+      "harmed_share": 0.38396624472573837,
+      "improved_share": 0.1141203022274556,
+      "point": -0.05394092749871693,
+      "seed": 2026,
+      "tied_share": 0.501913453046806,
+      "value_a": 0.3069543533194731,
+      "value_b": 0.36089528081819006
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.25,
+     "P25": -0.1,
+     "P50": 0.0,
+     "P75": 0.0,
+     "P90": 0.04999999999999993
+    },
+    "point": -0.05394092749871693,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": -0.05394092749871693
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.501913453046806,
+    "worst_decile_mean_delta": -0.4481228579138889
+   },
+   "id": "A3_PRE100K-PRE|PB",
+   "kind": "delta",
+   "label": "POST_HOC_EXPLORATORY",
+   "mrr@20": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     -0.029184788803609925,
+     -0.026882391166811802
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.5557599842998724,
+    "improved_share": 0.26189775291924244,
+    "kind": "delta",
+    "metric": "mrr@20",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "PRE100K|2026|PRACTICAL_BEST|MAIN",
+      "b": "PRE|2026|PRACTICAL_BEST|MAIN",
+      "ci95": [
+       -0.029184788803609925,
+       -0.026882391166811802
+      ],
+      "harmed_share": 0.5557599842998724,
+      "improved_share": 0.26189775291924244,
+      "point": -0.02806342173171103,
+      "seed": 2026,
+      "tied_share": 0.18234226278088508,
+      "value_a": 0.14483277517633866,
+      "value_b": 0.1728961969080497
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.12574302232854864,
+     "P25": -0.05560345684631229,
+     "P50": -0.009261823416235188,
+     "P75": 0.00258420725674487,
+     "P90": 0.050924976582871324
+    },
+    "point": -0.02806342173171103,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": -0.02806342173171103
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.18234226278088508,
+    "tost_q1_margin": {
+     "ci90": [
+      -0.02903724454296016,
+      -0.027086604189589896
+     ],
+     "equivalent": false,
+     "margin": [
+      -0.0005,
+      0.0005
+     ],
+     "status": "COMPUTED"
+    },
+    "worst_decile_mean_delta": -0.25395566261840635
+   },
+   "ndcg@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     -0.03445570082438286,
+     -0.032182358036336824
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.5226425277205378,
+    "improved_share": 0.2320675105485232,
+    "kind": "delta",
+    "metric": "ndcg@10",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "PRE100K|2026|PRACTICAL_BEST|MAIN",
+      "b": "PRE|2026|PRACTICAL_BEST|MAIN",
+      "ci95": [
+       -0.03445570082438286,
+       -0.032182358036336824
+      ],
+      "harmed_share": 0.5226425277205378,
+      "improved_share": 0.2320675105485232,
+      "point": -0.0333469348209782,
+      "seed": 2026,
+      "tied_share": 0.24528996173093906,
+      "value_a": 0.17776769651023647,
+      "value_b": 0.21111463133121466
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.14589010711390205,
+     "P25": -0.06932344192660694,
+     "P50": -0.006700550314699166,
+     "P75": 0.0,
+     "P90": 0.055209566338497225
+    },
+    "point": -0.0333469348209782,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": -0.0333469348209782
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.24528996173093906,
+    "worst_decile_mean_delta": -0.2689001541358036
+   },
+   "note": "the base-size gap FL has to close",
+   "pairs": [
+    [
+     "PRE100K|PB",
+     "PRE|PB"
+    ]
+   ]
+  },
+  {
+   "hr@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     -0.041092154612252206,
+     -0.03756668311884084
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.33892650377784317,
+    "improved_share": 0.12368756746148563,
+    "kind": "delta",
+    "metric": "hr@10",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "FA_WARM_PB100K|2026|PRACTICAL_BEST|MAIN",
+      "b": "P2_WSTAR|2026|PRACTICAL_BEST|MAIN",
+      "ci95": [
+       -0.041092154612252206,
+       -0.03756668311884084
+      ],
+      "harmed_share": 0.33892650377784317,
+      "improved_share": 0.12368756746148563,
+      "point": -0.03930502331499042,
+      "seed": 2026,
+      "tied_share": 0.5373859287606711,
+      "value_a": 0.3216129838694232,
+      "value_b": 0.36091800718441364
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.2,
+     "P25": -0.07407407407407407,
+     "P50": 0.0,
+     "P75": 0.0,
+     "P90": 0.05555555555555555
+    },
+    "point": -0.03930502331499042,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": -0.03930502331499042
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.5373859287606711,
+    "worst_decile_mean_delta": -0.3950970075747426
+   },
+   "id": "A4_FA_WARM_PB100K-P2_WSTAR|PB",
+   "kind": "delta",
+   "label": "POST_HOC_EXPLORATORY",
+   "mrr@20": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     -0.022689240830410913,
+     -0.020458152987696057
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.5278431949759592,
+    "improved_share": 0.2842459032479639,
+    "kind": "delta",
+    "metric": "mrr@20",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "FA_WARM_PB100K|2026|PRACTICAL_BEST|MAIN",
+      "b": "P2_WSTAR|2026|PRACTICAL_BEST|MAIN",
+      "ci95": [
+       -0.022689240830410913,
+       -0.020458152987696057
+      ],
+      "harmed_share": 0.5278431949759592,
+      "improved_share": 0.2842459032479639,
+      "point": -0.02155099932889548,
+      "seed": 2026,
+      "tied_share": 0.18791090177607694,
+      "value_a": 0.15130936548370646,
+      "value_b": 0.17286036481260195
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.10989571150097469,
+     "P25": -0.046083010205606345,
+     "P50": -0.0042016806722689,
+     "P75": 0.005685865060865064,
+     "P90": 0.051032831462893766
+    },
+    "point": -0.02155099932889548,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": -0.02155099932889548
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.18791090177607694,
+    "tost_q1_margin": {
+     "ci90": [
+      -0.022485347956730014,
+      -0.020602562893090856
+     ],
+     "equivalent": false,
+     "margin": [
+      -0.0005,
+      0.0005
+     ],
+     "status": "COMPUTED"
+    },
+    "worst_decile_mean_delta": -0.22884146565500654
+   },
+   "ndcg@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     -0.02640301754545958,
+     -0.024211129903339276
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.4937935433225395,
+    "improved_share": 0.25193798449612403,
+    "kind": "delta",
+    "metric": "ndcg@10",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "FA_WARM_PB100K|2026|PRACTICAL_BEST|MAIN",
+      "b": "P2_WSTAR|2026|PRACTICAL_BEST|MAIN",
+      "ci95": [
+       -0.02640301754545958,
+       -0.024211129903339276
+      ],
+      "harmed_share": 0.4937935433225395,
+      "improved_share": 0.25193798449612403,
+      "point": -0.025275502185679255,
+      "seed": 2026,
+      "tied_share": 0.25426847218133647,
+      "value_a": 0.1858203688500457,
+      "value_b": 0.21109587103572494
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.1260042153201693,
+     "P25": -0.05581403082177316,
+     "P50": 0.0,
+     "P75": 0.0005893801761767611,
+     "P90": 0.05540751973424666
+    },
+    "point": -0.025275502185679255,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": -0.025275502185679255
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.25426847218133647,
+    "worst_decile_mean_delta": -0.23930041715585976
+   },
+   "note": null,
+   "pairs": [
+    [
+     "FA_WARM_PB100K|PB",
+     "P2_WSTAR|PB"
+    ]
+   ]
+  },
+  {
+   "hr@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     77.87052953947507,
+     78.8576381022956
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.4606270238445687,
+    "improved_share": 0.08524678638013934,
+    "kind": "retained",
+    "metric": "hr@10",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       77.87052953947507,
+       78.8576381022956
+      ],
+      "den": "C_FULL|2026|PRACTICAL_BEST|MAIN",
+      "harmed_share": 0.4606270238445687,
+      "improved_share": 0.08524678638013934,
+      "n_resamples_zero_denominator": 0,
+      "num": "PRE100K|2026|PRACTICAL_BEST|MAIN",
+      "point": 78.37587852528577,
+      "seed": 2026,
+      "tied_share": 0.4541261897752919,
+      "value_den": 0.3916439076602413,
+      "value_num": 0.3069543533194731
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.30434782608695654,
+     "P25": -0.15,
+     "P50": 0.0,
+     "P75": 0.0,
+     "P90": 0.0
+    },
+    "point": 78.37587852528577,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 78.37587852528577
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.4541261897752919,
+    "worst_decile_mean_delta": -0.5293173697338033
+   },
+   "id": "R_PRE100K/C_FULL|PB",
+   "kind": "ratio",
+   "label": "POST_HOC_EXPLORATORY",
+   "mrr@20": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     73.97929111570828,
+     75.20097298736933
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.6237611618094397,
+    "improved_share": 0.20957217152389362,
+    "kind": "retained",
+    "metric": "mrr@20",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       73.97929111570828,
+       75.20097298736933
+      ],
+      "den": "C_FULL|2026|PRACTICAL_BEST|MAIN",
+      "harmed_share": 0.6237611618094397,
+      "improved_share": 0.20957217152389362,
+      "n_resamples_zero_denominator": 0,
+      "num": "PRE100K|2026|PRACTICAL_BEST|MAIN",
+      "point": 74.58219050602642,
+      "seed": 2026,
+      "tied_share": 0.16666666666666666,
+      "value_den": 0.19419217133966563,
+      "value_num": 0.14483277517633866
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.17361128897332456,
+     "P25": -0.08501704409834109,
+     "P50": -0.024999999999999998,
+     "P75": 0.0,
+     "P90": 0.04235840548340552
+    },
+    "point": 74.58219050602642,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 74.58219050602642
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.16666666666666666,
+    "worst_decile_mean_delta": -0.3244007880562175
+   },
+   "ndcg@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     75.08050046443967,
+     76.13265448864443
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.5990334608968698,
+    "improved_share": 0.1778530075556864,
+    "kind": "retained",
+    "metric": "ndcg@10",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       75.08050046443967,
+       76.13265448864443
+      ],
+      "den": "C_FULL|2026|PRACTICAL_BEST|MAIN",
+      "harmed_share": 0.5990334608968698,
+      "improved_share": 0.1778530075556864,
+      "n_resamples_zero_denominator": 0,
+      "num": "PRE100K|2026|PRACTICAL_BEST|MAIN",
+      "point": 75.59716622511232,
+      "seed": 2026,
+      "tied_share": 0.22311353154744382,
+      "value_den": 0.23515127006332748,
+      "value_num": 0.17776769651023647
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.19739015077613659,
+     "P25": -0.1031629889207426,
+     "P50": -0.03132007776347657,
+     "P75": 0.0,
+     "P90": 0.04363270494862178
+    },
+    "point": 75.59716622511232,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 75.59716622511232
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.22311353154744382,
+    "worst_decile_mean_delta": -0.3387296642893659
+   },
+   "note": null,
+   "pairs": [
+    [
+     "PRE100K|PB",
+     "C_FULL|PB"
+    ]
+   ]
+  },
+  {
+   "hr@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     81.6044063695119,
+     82.60633159491594
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.4275586301638701,
+    "improved_share": 0.09687469335688352,
+    "kind": "retained",
+    "metric": "hr@10",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       81.6044063695119,
+       82.60633159491594
+      ],
+      "den": "C_FULL|2026|PRACTICAL_BEST|MAIN",
+      "harmed_share": 0.4275586301638701,
+      "improved_share": 0.09687469335688352,
+      "n_resamples_zero_denominator": 0,
+      "num": "FA_WARM_PB100K|2026|PRACTICAL_BEST|MAIN",
+      "point": 82.11872509157699,
+      "seed": 2026,
+      "tied_share": 0.4755666764792464,
+      "value_den": 0.3916439076602413,
+      "value_num": 0.3216129838694232
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.26086956521739135,
+     "P25": -0.12500000000000003,
+     "P50": 0.0,
+     "P75": 0.0,
+     "P90": 0.0
+    },
+    "point": 82.11872509157699,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 82.11872509157699
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.4755666764792464,
+    "worst_decile_mean_delta": -0.4888232596762644
+   },
+   "id": "R_FA_WARM_PB100K/C_FULL|PB",
+   "kind": "ratio",
+   "label": "POST_HOC_EXPLORATORY",
+   "mrr@20": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     77.2245435117319,
+     78.48593424161386
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.5975615739377882,
+    "improved_share": 0.2332204886664704,
+    "kind": "retained",
+    "metric": "mrr@20",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       77.2245435117319,
+       78.48593424161386
+      ],
+      "den": "C_FULL|2026|PRACTICAL_BEST|MAIN",
+      "harmed_share": 0.5975615739377882,
+      "improved_share": 0.2332204886664704,
+      "n_resamples_zero_denominator": 0,
+      "num": "FA_WARM_PB100K|2026|PRACTICAL_BEST|MAIN",
+      "point": 77.91733541052388,
+      "seed": 2026,
+      "tied_share": 0.16921793739574134,
+      "value_den": 0.19419217133966563,
+      "value_num": 0.15130936548370646
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.16666666666666666,
+     "P25": -0.07800600967445001,
+     "P50": -0.019047619047619042,
+     "P75": 0.0,
+     "P90": 0.047633526761072006
+    },
+    "point": 77.91733541052388,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 77.91733541052388
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.16921793739574134,
+    "worst_decile_mean_delta": -0.30860949582025893
+   },
+   "ndcg@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     78.45500687810703,
+     79.50593919237947
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.5752134236090668,
+    "improved_share": 0.19912177411441467,
+    "kind": "retained",
+    "metric": "ndcg@10",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       78.45500687810703,
+       79.50593919237947
+      ],
+      "den": "C_FULL|2026|PRACTICAL_BEST|MAIN",
+      "harmed_share": 0.5752134236090668,
+      "improved_share": 0.19912177411441467,
+      "n_resamples_zero_denominator": 0,
+      "num": "FA_WARM_PB100K|2026|PRACTICAL_BEST|MAIN",
+      "point": 79.0216309697172,
+      "seed": 2026,
+      "tied_share": 0.2256648022765185,
+      "value_den": 0.23515127006332748,
+      "value_num": 0.1858203688500457
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.1833386565074025,
+     "P25": -0.09311273226978722,
+     "P50": -0.02315615351261394,
+     "P75": 0.0,
+     "P90": 0.048815389267383186
+    },
+    "point": 79.0216309697172,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 79.0216309697172
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.2256648022765185,
+    "worst_decile_mean_delta": -0.3187154536836217
+   },
+   "note": null,
+   "pairs": [
+    [
+     "FA_WARM_PB100K|PB",
+     "C_FULL|PB"
+    ]
+   ]
+  },
+  {
+   "hr@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     80.1384212420211,
+     81.13501360785432
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.43955450888038466,
+    "improved_share": 0.09214012363850456,
+    "kind": "retained",
+    "metric": "hr@10",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       80.1384212420211,
+       81.13501360785432
+      ],
+      "den": "C_FULL|2026|PRACTICAL_BEST|MAIN",
+      "harmed_share": 0.43955450888038466,
+      "improved_share": 0.09214012363850456,
+      "n_resamples_zero_denominator": 0,
+      "num": "FA_WARM_FROZEN_PB100K|2026|PRACTICAL_BEST|MAIN",
+      "point": 80.66261688727026,
+      "seed": 2026,
+      "tied_share": 0.4683053674811108,
+      "value_den": 0.3916439076602413,
+      "value_num": 0.315910224798315
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.2857142857142857,
+     "P25": -0.1428571428571428,
+     "P50": 0.0,
+     "P75": 0.0,
+     "P90": 0.0
+    },
+    "point": 80.66261688727026,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 80.66261688727026
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.4683053674811108,
+    "worst_decile_mean_delta": -0.5057579752207608
+   },
+   "id": "R_FA_WARM_FROZEN_PB100K/C_FULL|PB",
+   "kind": "ratio",
+   "label": "POST_HOC_EXPLORATORY",
+   "mrr@20": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     76.09298595515459,
+     77.29841645994081
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.6056324207634187,
+    "improved_share": 0.22770091256991462,
+    "kind": "retained",
+    "metric": "mrr@20",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       76.09298595515459,
+       77.29841645994081
+      ],
+      "den": "C_FULL|2026|PRACTICAL_BEST|MAIN",
+      "harmed_share": 0.6056324207634187,
+      "improved_share": 0.22770091256991462,
+      "n_resamples_zero_denominator": 0,
+      "num": "FA_WARM_FROZEN_PB100K|2026|PRACTICAL_BEST|MAIN",
+      "point": 76.71906046199356,
+      "seed": 2026,
+      "tied_share": 0.16666666666666666,
+      "value_den": 0.19419217133966563,
+      "value_num": 0.1489824093425362
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.16666666666666669,
+     "P25": -0.08213845479712353,
+     "P50": -0.020833333333333336,
+     "P75": 0.0,
+     "P90": 0.0467700817700819
+    },
+    "point": 76.71906046199356,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 76.71906046199356
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.16666666666666666,
+    "worst_decile_mean_delta": -0.3158864043222225
+   },
+   "ndcg@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     77.11994086230864,
+     78.15899403282398
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.5836277107251496,
+    "improved_share": 0.19362672946717693,
+    "kind": "retained",
+    "metric": "ndcg@10",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       77.11994086230864,
+       78.15899403282398
+      ],
+      "den": "C_FULL|2026|PRACTICAL_BEST|MAIN",
+      "harmed_share": 0.5836277107251496,
+      "improved_share": 0.19362672946717693,
+      "n_resamples_zero_denominator": 0,
+      "num": "FA_WARM_FROZEN_PB100K|2026|PRACTICAL_BEST|MAIN",
+      "point": 77.66423824006728,
+      "seed": 2026,
+      "tied_share": 0.22274555980767344,
+      "value_den": 0.23515127006332748,
+      "value_num": 0.18262844260652666
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.18835819859608718,
+     "P25": -0.0977954582812284,
+     "P50": -0.02607947420749703,
+     "P75": 0.0,
+     "P90": 0.047619047619047616
+    },
+    "point": 77.66423824006728,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 77.66423824006728
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.22274555980767344,
+    "worst_decile_mean_delta": -0.32853181495641876
+   },
+   "note": null,
+   "pairs": [
+    [
+     "FA_WARM_FROZEN_PB100K|PB",
+     "C_FULL|PB"
+    ]
+   ]
+  },
+  {
+   "hr@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     91.74691593365459,
+     92.56397995719269
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.3137572367775488,
+    "improved_share": 0.13676282994799333,
+    "kind": "retained",
+    "metric": "hr@10",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       91.74691593365459,
+       92.56397995719269
+      ],
+      "den": "C_FULL|2026|PRACTICAL_BEST|MAIN",
+      "harmed_share": 0.3137572367775488,
+      "improved_share": 0.13676282994799333,
+      "n_resamples_zero_denominator": 0,
+      "num": "PRE|2026|PRACTICAL_BEST|MAIN",
+      "point": 92.14883054718004,
+      "seed": 2026,
+      "tied_share": 0.5494799332744579,
+      "value_den": 0.3916439076602413,
+      "value_num": 0.36089528081819006
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.16666666666666669,
+     "P25": -0.05882352941176472,
+     "P50": 0.0,
+     "P75": 0.0,
+     "P90": 0.06451612903225812
+    },
+    "point": 92.14883054718004,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 92.14883054718004
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.5494799332744579,
+    "worst_decile_mean_delta": -0.3624691693238821
+   },
+   "id": "R_PRE/C_FULL|PB",
+   "kind": "ratio",
+   "label": "POST_HOC_EXPLORATORY",
+   "mrr@20": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     88.48125577270983,
+     89.55655331750542
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.5252428613482485,
+    "improved_share": 0.295800215876754,
+    "kind": "retained",
+    "metric": "mrr@20",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       88.48125577270983,
+       89.55655331750542
+      ],
+      "den": "C_FULL|2026|PRACTICAL_BEST|MAIN",
+      "harmed_share": 0.5252428613482485,
+      "improved_share": 0.295800215876754,
+      "n_resamples_zero_denominator": 0,
+      "num": "PRE|2026|PRACTICAL_BEST|MAIN",
+      "point": 89.03355666466766,
+      "seed": 2026,
+      "tied_share": 0.17895692277499756,
+      "value_den": 0.19419217133966563,
+      "value_num": 0.1728961969080497
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.11434553872053868,
+     "P25": -0.047979797979798,
+     "P50": -0.00420376358719015,
+     "P75": 0.007692307692307697,
+     "P90": 0.054558080808080875
+    },
+    "point": 89.03355666466766,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 89.03355666466766
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.17895692277499756,
+    "worst_decile_mean_delta": -0.23094243200759323
+   },
+   "ndcg@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     89.34353391715884,
+     90.20639450315772
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.5034098714552055,
+    "improved_share": 0.2579481895790403,
+    "kind": "retained",
+    "metric": "ndcg@10",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       89.34353391715884,
+       90.20639450315772
+      ],
+      "den": "C_FULL|2026|PRACTICAL_BEST|MAIN",
+      "harmed_share": 0.5034098714552055,
+      "improved_share": 0.2579481895790403,
+      "n_resamples_zero_denominator": 0,
+      "num": "PRE|2026|PRACTICAL_BEST|MAIN",
+      "point": 89.77822287515623,
+      "seed": 2026,
+      "tied_share": 0.23864193896575409,
+      "value_den": 0.23515127006332748,
+      "value_num": 0.21111463133121466
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.12383672702724922,
+     "P25": -0.056406331906690546,
+     "P50": -0.0011486916598913502,
+     "P75": 0.0019955961323945906,
+     "P90": 0.058727373531241585
+    },
+    "point": 89.77822287515623,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 89.77822287515623
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.23864193896575409,
+    "worst_decile_mean_delta": -0.23165284334797248
+   },
+   "note": null,
+   "pairs": [
+    [
+     "PRE|PB",
+     "C_FULL|PB"
+    ]
+   ]
+  },
+  {
+   "hr@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     91.75854048029039,
+     92.57474750232375
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.3140270827200471,
+    "improved_share": 0.13695908154253753,
+    "kind": "retained",
+    "metric": "hr@10",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       91.75854048029039,
+       92.57474750232375
+      ],
+      "den": "C_FULL|2026|PRACTICAL_BEST|MAIN",
+      "harmed_share": 0.3140270827200471,
+      "improved_share": 0.13695908154253753,
+      "n_resamples_zero_denominator": 0,
+      "num": "P2_WSTAR|2026|PRACTICAL_BEST|MAIN",
+      "point": 92.15463336085314,
+      "seed": 2026,
+      "tied_share": 0.5490138357374154,
+      "value_den": 0.3916439076602413,
+      "value_num": 0.36091800718441364
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.16666666666666669,
+     "P25": -0.05882352941176472,
+     "P50": 0.0,
+     "P75": 0.0,
+     "P90": 0.06666666666666665
+    },
+    "point": 92.15463336085314,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 92.15463336085314
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.5490138357374154,
+    "worst_decile_mean_delta": -0.3624561143891089
+   },
+   "id": "R_P2_WSTAR/C_FULL|PB",
+   "kind": "ratio",
+   "label": "POST_HOC_EXPLORATORY",
+   "mrr@20": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     88.46390967432302,
+     89.54191585452227
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.5258561475811991,
+    "improved_share": 0.29526052399175745,
+    "kind": "retained",
+    "metric": "mrr@20",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       88.46390967432302,
+       89.54191585452227
+      ],
+      "den": "C_FULL|2026|PRACTICAL_BEST|MAIN",
+      "harmed_share": 0.5258561475811991,
+      "improved_share": 0.29526052399175745,
+      "n_resamples_zero_denominator": 0,
+      "num": "P2_WSTAR|2026|PRACTICAL_BEST|MAIN",
+      "point": 89.01510479032042,
+      "seed": 2026,
+      "tied_share": 0.17888332842704346,
+      "value_den": 0.19419217133966563,
+      "value_num": 0.17286036481260195
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.1145845866755793,
+     "P25": -0.04814814814814815,
+     "P50": -0.0042016806722689065,
+     "P75": 0.007675438596491225,
+     "P90": 0.05476190476190478
+    },
+    "point": 89.01510479032042,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 89.01510479032042
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.17888332842704346,
+    "worst_decile_mean_delta": -0.23107560189113574
+   },
+   "ndcg@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     89.33145441599082,
+     90.20352193201138
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.5035079972524776,
+    "improved_share": 0.2580953782749485,
+    "kind": "retained",
+    "metric": "ndcg@10",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       89.33145441599082,
+       90.20352193201138
+      ],
+      "den": "C_FULL|2026|PRACTICAL_BEST|MAIN",
+      "harmed_share": 0.5035079972524776,
+      "improved_share": 0.2580953782749485,
+      "n_resamples_zero_denominator": 0,
+      "num": "P2_WSTAR|2026|PRACTICAL_BEST|MAIN",
+      "point": 89.7702449061303,
+      "seed": 2026,
+      "tied_share": 0.23839662447257384,
+      "value_den": 0.23515127006332748,
+      "value_num": 0.21109587103572494
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.12415289234693459,
+     "P25": -0.056538515762529475,
+     "P50": -0.0011103754709036653,
+     "P75": 0.002163825774091077,
+     "P90": 0.05882251835029997
+    },
+    "point": 89.7702449061303,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 89.7702449061303
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.23839662447257384,
+    "worst_decile_mean_delta": -0.23179668362320272
+   },
+   "note": null,
+   "pairs": [
+    [
+     "P2_WSTAR|PB",
+     "C_FULL|PB"
+    ]
+   ]
+  },
+  {
+   "hr@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     0.013362713986954482,
+     0.016016747184417483
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.12962417819644784,
+    "improved_share": 0.22389853792562064,
+    "kind": "delta",
+    "metric": "hr@10",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "FA_WARM_PB100K|2026|CONTROLLED_BUDGET|MAIN",
+      "b": "PRE100K|2026|CONTROLLED_BUDGET|MAIN",
+      "ci95": [
+       0.013362713986954482,
+       0.016016747184417483
+      ],
+      "harmed_share": 0.12962417819644784,
+      "improved_share": 0.22389853792562064,
+      "point": 0.014658630549950091,
+      "seed": 2026,
+      "tied_share": 0.6464772838779315,
+      "value_a": 0.3216129838694232,
+      "value_b": 0.3069543533194731
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.04761904761904756,
+     "P25": 0.0,
+     "P50": 0.0,
+     "P75": 0.0,
+     "P90": 0.10000000000000009
+    },
+    "point": 0.014658630549950091,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 0.014658630549950091
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.6464772838779315,
+    "worst_decile_mean_delta": -0.1795638324013071
+   },
+   "id": "A1_FA_WARM_PB100K-PRE100K|CB",
+   "kind": "delta",
+   "label": "POST_HOC_EXPLORATORY",
+   "mrr@20": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     0.005676748998428022,
+     0.007180628000737753
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.32084682563045824,
+    "improved_share": 0.4394073201844765,
+    "kind": "delta",
+    "metric": "mrr@20",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "FA_WARM_PB100K|2026|CONTROLLED_BUDGET|MAIN",
+      "b": "PRE100K|2026|CONTROLLED_BUDGET|MAIN",
+      "ci95": [
+       0.005676748998428022,
+       0.007180628000737753
+      ],
+      "harmed_share": 0.32084682563045824,
+      "improved_share": 0.4394073201844765,
+      "point": 0.006476590307367802,
+      "seed": 2026,
+      "tied_share": 0.23974585418506525,
+      "value_a": 0.15130936548370646,
+      "value_b": 0.14483277517633866
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.04048399656758791,
+     "P25": -0.007502325890483778,
+     "P50": 0.0,
+     "P75": 0.01985544884117548,
+     "P90": 0.05767857142857146
+    },
+    "point": 0.006476590307367802,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 0.006476590307367802
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.23974585418506525,
+    "tost_q1_margin": {
+     "ci90": [
+      0.005804716910774087,
+      0.007110197653889094
+     ],
+     "equivalent": false,
+     "margin": [
+      -0.0005,
+      0.0005
+     ],
+     "status": "COMPUTED"
+    },
+    "worst_decile_mean_delta": -0.11111478057337928
+   },
+   "ndcg@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     0.007284089657388716,
+     0.008714773429914726
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.2838779315081935,
+    "improved_share": 0.3962074379354332,
+    "kind": "delta",
+    "metric": "ndcg@10",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "FA_WARM_PB100K|2026|CONTROLLED_BUDGET|MAIN",
+      "b": "PRE100K|2026|CONTROLLED_BUDGET|MAIN",
+      "ci95": [
+       0.007284089657388716,
+       0.008714773429914726
+      ],
+      "harmed_share": 0.2838779315081935,
+      "improved_share": 0.3962074379354332,
+      "point": 0.00805267233980922,
+      "seed": 2026,
+      "tied_share": 0.31991463055637326,
+      "value_a": 0.1858203688500457,
+      "value_b": 0.17776769651023647
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.0443663105778631,
+     "P25": -0.005820330046041917,
+     "P50": 0.0,
+     "P75": 0.02310781397553563,
+     "P90": 0.0688847077511475
+    },
+    "point": 0.00805267233980922,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 0.00805267233980922
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.31991463055637326,
+    "worst_decile_mean_delta": -0.11352460664079497
+   },
+   "note": "the K21 analogue on the 100k base (unfrozen FL - its own server model)",
+   "pairs": [
+    [
+     "FA_WARM_PB100K|CB",
+     "PRE100K|CB"
+    ]
+   ]
+  },
+  {
+   "hr@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     0.009150151917868237,
+     0.011880488475897337
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.14878324011382593,
+    "improved_share": 0.2153615935629477,
+    "kind": "delta",
+    "metric": "hr@10",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "FA_WARM_FROZEN_PB100K|2026|CONTROLLED_BUDGET|MAIN",
+      "b": "PRE100K|2026|CONTROLLED_BUDGET|MAIN",
+      "ci95": [
+       0.009150151917868237,
+       0.011880488475897337
+      ],
+      "harmed_share": 0.14878324011382593,
+      "improved_share": 0.2153615935629477,
+      "point": 0.010492132130441978,
+      "seed": 2026,
+      "tied_share": 0.6358551663232264,
+      "value_a": 0.3174464854499151,
+      "value_b": 0.3069543533194731
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.0625,
+     "P25": 0.0,
+     "P50": 0.0,
+     "P75": 0.0,
+     "P90": 0.1
+    },
+    "point": 0.010492132130441978,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 0.010492132130441978
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.6358551663232264,
+    "worst_decile_mean_delta": -0.2037764538541915
+   },
+   "id": "A1f_FA_WARM_FROZEN_PB100K-PRE100K|CB",
+   "kind": "delta",
+   "label": "POST_HOC_EXPLORATORY",
+   "mrr@20": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     0.0035238656629630917,
+     0.005058015589805759
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.34184574624668823,
+    "improved_share": 0.4199538808752821,
+    "kind": "delta",
+    "metric": "mrr@20",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "FA_WARM_FROZEN_PB100K|2026|CONTROLLED_BUDGET|MAIN",
+      "b": "PRE100K|2026|CONTROLLED_BUDGET|MAIN",
+      "ci95": [
+       0.0035238656629630917,
+       0.005058015589805759
+      ],
+      "harmed_share": 0.34184574624668823,
+      "improved_share": 0.4199538808752821,
+      "point": 0.004304291482044531,
+      "seed": 2026,
+      "tied_share": 0.23820037287802964,
+      "value_a": 0.1491370666583832,
+      "value_b": 0.14483277517633866
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.04568036130536131,
+     "P25": -0.010167081707828735,
+     "P50": 0.0,
+     "P75": 0.018354537327751608,
+     "P90": 0.05769230769230768
+    },
+    "point": 0.004304291482044531,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 0.004304291482044531
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.23820037287802964,
+    "tost_q1_margin": {
+     "ci90": [
+      0.003621615173172124,
+      0.004902446481067969
+     ],
+     "equivalent": false,
+     "margin": [
+      -0.0005,
+      0.0005
+     ],
+     "status": "COMPUTED"
+    },
+    "worst_decile_mean_delta": -0.12170762650816158
+   },
+   "ndcg@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     0.0045878545666043465,
+     0.006107816176954115
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.30632420763418705,
+    "improved_share": 0.376925718771465,
+    "kind": "delta",
+    "metric": "ndcg@10",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "FA_WARM_FROZEN_PB100K|2026|CONTROLLED_BUDGET|MAIN",
+      "b": "PRE100K|2026|CONTROLLED_BUDGET|MAIN",
+      "ci95": [
+       0.0045878545666043465,
+       0.006107816176954115
+      ],
+      "harmed_share": 0.30632420763418705,
+      "improved_share": 0.376925718771465,
+      "point": 0.005362908315489773,
+      "seed": 2026,
+      "tied_share": 0.316750073594348,
+      "value_a": 0.18313060482572624,
+      "value_b": 0.17776769651023647
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.051441248965025985,
+     "P25": -0.009394644371036931,
+     "P50": 0.0,
+     "P75": 0.02065163014508008,
+     "P90": 0.06768440003870124
+    },
+    "point": 0.005362908315489773,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 0.005362908315489773
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.316750073594348,
+    "worst_decile_mean_delta": -0.12571555309887833
+   },
+   "note": "K21 analogue, frozen items",
+   "pairs": [
+    [
+     "FA_WARM_FROZEN_PB100K|CB",
+     "PRE100K|CB"
+    ]
+   ]
+  },
+  {
+   "hr@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     -0.04108737948002131,
+     -0.03756227964141332
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.3392208811696595,
+    "improved_share": 0.12412913354921008,
+    "kind": "delta",
+    "metric": "hr@10",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "FA_WARM_PB100K|2026|CONTROLLED_BUDGET|MAIN",
+      "b": "PRE|2026|CONTROLLED_BUDGET|MAIN",
+      "ci95": [
+       -0.04108737948002131,
+       -0.03756227964141332
+      ],
+      "harmed_share": 0.3392208811696595,
+      "improved_share": 0.12412913354921008,
+      "point": -0.03928229694876684,
+      "seed": 2026,
+      "tied_share": 0.5366499852811304,
+      "value_a": 0.3216129838694232,
+      "value_b": 0.36089528081819006
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.2,
+     "P25": -0.07407407407407413,
+     "P50": 0.0,
+     "P75": 0.0,
+     "P90": 0.05555555555555558
+    },
+    "point": -0.03928229694876684,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": -0.03928229694876684
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.5366499852811304,
+    "worst_decile_mean_delta": -0.3949742327296814
+   },
+   "id": "A2_FA_WARM_PB100K-PRE|CB",
+   "kind": "delta",
+   "label": "POST_HOC_EXPLORATORY",
+   "mrr@20": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     -0.022742049647553917,
+     -0.020491301432470587
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.5280885094691394,
+    "improved_share": 0.2840005887547836,
+    "kind": "delta",
+    "metric": "mrr@20",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "FA_WARM_PB100K|2026|CONTROLLED_BUDGET|MAIN",
+      "b": "PRE|2026|CONTROLLED_BUDGET|MAIN",
+      "ci95": [
+       -0.022742049647553917,
+       -0.020491301432470587
+      ],
+      "harmed_share": 0.5280885094691394,
+      "improved_share": 0.2840005887547836,
+      "point": -0.021586831424343228,
+      "seed": 2026,
+      "tied_share": 0.18791090177607694,
+      "value_a": 0.15130936548370646,
+      "value_b": 0.1728961969080497
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.11011904761904763,
+     "P25": -0.0461900037792895,
+     "P50": -0.0042995344234133814,
+     "P75": 0.005718005952381004,
+     "P90": 0.05110795454545496
+    },
+    "point": -0.021586831424343228,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": -0.021586831424343228
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.18791090177607694,
+    "tost_q1_margin": {
+     "ci90": [
+      -0.0225355179857436,
+      -0.020644856934322657
+     ],
+     "equivalent": false,
+     "margin": [
+      -0.0005,
+      0.0005
+     ],
+     "status": "COMPUTED"
+    },
+    "worst_decile_mean_delta": -0.2289745338227979
+   },
+   "ndcg@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     -0.026440526354387654,
+     -0.02422782718211075
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.4942841723089,
+    "improved_share": 0.2514964184083996,
+    "kind": "delta",
+    "metric": "ndcg@10",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "FA_WARM_PB100K|2026|CONTROLLED_BUDGET|MAIN",
+      "b": "PRE|2026|CONTROLLED_BUDGET|MAIN",
+      "ci95": [
+       -0.026440526354387654,
+       -0.02422782718211075
+      ],
+      "harmed_share": 0.4942841723089,
+      "improved_share": 0.2514964184083996,
+      "point": -0.025294262481168978,
+      "seed": 2026,
+      "tied_share": 0.2542194092827004,
+      "value_a": 0.1858203688500457,
+      "value_b": 0.21111463133121466
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.12601111781821947,
+     "P25": -0.05596524691260524,
+     "P50": 0.0,
+     "P75": 0.0004801434522571854,
+     "P90": 0.05555555555555555
+    },
+    "point": -0.025294262481168978,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": -0.025294262481168978
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.2542194092827004,
+    "worst_decile_mean_delta": -0.2394360123798868
+   },
+   "note": "vs the 1.2M-user theta_pre (does FL on MAIN from a 100k base reach the big server model?)",
+   "pairs": [
+    [
+     "FA_WARM_PB100K|CB",
+     "PRE|CB"
+    ]
+   ]
+  },
+  {
+   "hr@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     -0.04514418069464379,
+     -0.041763589528093496
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.349229712491414,
+    "improved_share": 0.11900206064174271,
+    "kind": "delta",
+    "metric": "hr@10",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "FA_WARM_FROZEN_PB100K|2026|CONTROLLED_BUDGET|MAIN",
+      "b": "PRE|2026|CONTROLLED_BUDGET|MAIN",
+      "ci95": [
+       -0.04514418069464379,
+       -0.041763589528093496
+      ],
+      "harmed_share": 0.349229712491414,
+      "improved_share": 0.11900206064174271,
+      "point": -0.04344879536827495,
+      "seed": 2026,
+      "tied_share": 0.5317682268668433,
+      "value_a": 0.3174464854499151,
+      "value_b": 0.36089528081819006
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.2,
+     "P25": -0.08000000000000002,
+     "P50": 0.0,
+     "P75": 0.0,
+     "P90": 0.05222672064777914
+    },
+    "point": -0.04344879536827495,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": -0.04344879536827495
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.5317682268668433,
+    "worst_decile_mean_delta": -0.41038594613026813
+   },
+   "id": "A2f_FA_WARM_FROZEN_PB100K-PRE|CB",
+   "kind": "delta",
+   "label": "POST_HOC_EXPLORATORY",
+   "mrr@20": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     -0.02486157922704398,
+     -0.022708848757910727
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.5389804729663429,
+    "improved_share": 0.2744087920714356,
+    "kind": "delta",
+    "metric": "mrr@20",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "FA_WARM_FROZEN_PB100K|2026|CONTROLLED_BUDGET|MAIN",
+      "b": "PRE|2026|CONTROLLED_BUDGET|MAIN",
+      "ci95": [
+       -0.02486157922704398,
+       -0.022708848757910727
+      ],
+      "harmed_share": 0.5389804729663429,
+      "improved_share": 0.2744087920714356,
+      "point": -0.0237591302496665,
+      "seed": 2026,
+      "tied_share": 0.18661073496222158,
+      "value_a": 0.1491370666583832,
+      "value_b": 0.1728961969080497
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.11412633571947295,
+     "P25": -0.04877185565301326,
+     "P50": -0.005952380952380938,
+     "P75": 0.004361690824985668,
+     "P90": 0.04999999999999999
+    },
+    "point": -0.0237591302496665,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": -0.0237591302496665
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.18661073496222158,
+    "tost_q1_margin": {
+     "ci90": [
+      -0.024708946583729637,
+      -0.022905565736942857
+     ],
+     "equivalent": false,
+     "margin": [
+      -0.0005,
+      0.0005
+     ],
+     "status": "COMPUTED"
+    },
+    "worst_decile_mean_delta": -0.23557006973456457
+   },
+   "ndcg@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     -0.029099308309051154,
+     -0.026921398120686776
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.5051270729074674,
+    "improved_share": 0.24210087331959573,
+    "kind": "delta",
+    "metric": "ndcg@10",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "FA_WARM_FROZEN_PB100K|2026|CONTROLLED_BUDGET|MAIN",
+      "b": "PRE|2026|CONTROLLED_BUDGET|MAIN",
+      "ci95": [
+       -0.029099308309051154,
+       -0.026921398120686776
+      ],
+      "harmed_share": 0.5051270729074674,
+      "improved_share": 0.24210087331959573,
+      "point": -0.027984026505488424,
+      "seed": 2026,
+      "tied_share": 0.2527720537729369,
+      "value_a": 0.18313060482572624,
+      "value_b": 0.21111463133121466
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.13147197350977205,
+     "P25": -0.05913627629555386,
+     "P50": -0.0017629471164901794,
+     "P75": 0.0,
+     "P90": 0.05447869567385096
+    },
+    "point": -0.027984026505488424,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": -0.027984026505488424
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.2527720537729369,
+    "worst_decile_mean_delta": -0.24804426235337812
+   },
+   "note": null,
+   "pairs": [
+    [
+     "FA_WARM_FROZEN_PB100K|CB",
+     "PRE|CB"
+    ]
+   ]
+  },
+  {
+   "hr@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     -0.05581608686197919,
+     -0.05214952842653116
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.38396624472573837,
+    "improved_share": 0.1141203022274556,
+    "kind": "delta",
+    "metric": "hr@10",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "PRE100K|2026|CONTROLLED_BUDGET|MAIN",
+      "b": "PRE|2026|CONTROLLED_BUDGET|MAIN",
+      "ci95": [
+       -0.05581608686197919,
+       -0.05214952842653116
+      ],
+      "harmed_share": 0.38396624472573837,
+      "improved_share": 0.1141203022274556,
+      "point": -0.05394092749871693,
+      "seed": 2026,
+      "tied_share": 0.501913453046806,
+      "value_a": 0.3069543533194731,
+      "value_b": 0.36089528081819006
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.25,
+     "P25": -0.1,
+     "P50": 0.0,
+     "P75": 0.0,
+     "P90": 0.04999999999999993
+    },
+    "point": -0.05394092749871693,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": -0.05394092749871693
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.501913453046806,
+    "worst_decile_mean_delta": -0.4481228579138889
+   },
+   "id": "A3_PRE100K-PRE|CB",
+   "kind": "delta",
+   "label": "POST_HOC_EXPLORATORY",
+   "mrr@20": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     -0.029184788803609925,
+     -0.026882391166811802
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.5557599842998724,
+    "improved_share": 0.26189775291924244,
+    "kind": "delta",
+    "metric": "mrr@20",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "PRE100K|2026|CONTROLLED_BUDGET|MAIN",
+      "b": "PRE|2026|CONTROLLED_BUDGET|MAIN",
+      "ci95": [
+       -0.029184788803609925,
+       -0.026882391166811802
+      ],
+      "harmed_share": 0.5557599842998724,
+      "improved_share": 0.26189775291924244,
+      "point": -0.02806342173171103,
+      "seed": 2026,
+      "tied_share": 0.18234226278088508,
+      "value_a": 0.14483277517633866,
+      "value_b": 0.1728961969080497
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.12574302232854864,
+     "P25": -0.05560345684631229,
+     "P50": -0.009261823416235188,
+     "P75": 0.00258420725674487,
+     "P90": 0.050924976582871324
+    },
+    "point": -0.02806342173171103,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": -0.02806342173171103
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.18234226278088508,
+    "tost_q1_margin": {
+     "ci90": [
+      -0.02903724454296016,
+      -0.027086604189589896
+     ],
+     "equivalent": false,
+     "margin": [
+      -0.0005,
+      0.0005
+     ],
+     "status": "COMPUTED"
+    },
+    "worst_decile_mean_delta": -0.25395566261840635
+   },
+   "ndcg@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     -0.03445570082438286,
+     -0.032182358036336824
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.5226425277205378,
+    "improved_share": 0.2320675105485232,
+    "kind": "delta",
+    "metric": "ndcg@10",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "PRE100K|2026|CONTROLLED_BUDGET|MAIN",
+      "b": "PRE|2026|CONTROLLED_BUDGET|MAIN",
+      "ci95": [
+       -0.03445570082438286,
+       -0.032182358036336824
+      ],
+      "harmed_share": 0.5226425277205378,
+      "improved_share": 0.2320675105485232,
+      "point": -0.0333469348209782,
+      "seed": 2026,
+      "tied_share": 0.24528996173093906,
+      "value_a": 0.17776769651023647,
+      "value_b": 0.21111463133121466
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.14589010711390205,
+     "P25": -0.06932344192660694,
+     "P50": -0.006700550314699166,
+     "P75": 0.0,
+     "P90": 0.055209566338497225
+    },
+    "point": -0.0333469348209782,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": -0.0333469348209782
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.24528996173093906,
+    "worst_decile_mean_delta": -0.2689001541358036
+   },
+   "note": "the base-size gap FL has to close",
+   "pairs": [
+    [
+     "PRE100K|CB",
+     "PRE|CB"
+    ]
+   ]
+  },
+  {
+   "hr@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     -0.0406146035943286,
+     -0.037162576257461
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.33703758218035523,
+    "improved_share": 0.12277990383671868,
+    "kind": "delta",
+    "metric": "hr@10",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "FA_WARM_PB100K|2026|CONTROLLED_BUDGET|MAIN",
+      "b": "P2_WSTAR|2026|CONTROLLED_BUDGET|MAIN",
+      "ci95": [
+       -0.0406146035943286,
+       -0.037162576257461
+      ],
+      "harmed_share": 0.33703758218035523,
+      "improved_share": 0.12277990383671868,
+      "point": -0.038888085191184585,
+      "seed": 2026,
+      "tied_share": 0.5401825139829262,
+      "value_a": 0.3216129838694232,
+      "value_b": 0.3605010690606078
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.19999999999999998,
+     "P25": -0.07142857142857151,
+     "P50": 0.0,
+     "P75": 0.0,
+     "P90": 0.055555555555555525
+    },
+    "point": -0.038888085191184585,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": -0.038888085191184585
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.5401825139829262,
+    "worst_decile_mean_delta": -0.3922359959625748
+   },
+   "id": "A4_FA_WARM_PB100K-P2_WSTAR|CB",
+   "kind": "delta",
+   "label": "POST_HOC_EXPLORATORY",
+   "mrr@20": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     -0.02242046098158842,
+     -0.02029212476063503
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.5269600628005102,
+    "improved_share": 0.284368560494554,
+    "kind": "delta",
+    "metric": "mrr@20",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "FA_WARM_PB100K|2026|CONTROLLED_BUDGET|MAIN",
+      "b": "P2_WSTAR|2026|CONTROLLED_BUDGET|MAIN",
+      "ci95": [
+       -0.02242046098158842,
+       -0.02029212476063503
+      ],
+      "harmed_share": 0.5269600628005102,
+      "improved_share": 0.284368560494554,
+      "point": -0.021351914361903618,
+      "seed": 2026,
+      "tied_share": 0.18867137670493572,
+      "value_a": 0.15130936548370646,
+      "value_b": 0.17266127984561008
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.10939392452785307,
+     "P25": -0.04560582646520145,
+     "P50": -0.004067887676956299,
+     "P75": 0.0057057516518756665,
+     "P90": 0.05029698793892339
+    },
+    "point": -0.021351914361903618,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": -0.021351914361903618
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.18867137670493572,
+    "tost_q1_margin": {
+     "ci90": [
+      -0.022306866748850598,
+      -0.020435871010235862
+     ],
+     "equivalent": false,
+     "margin": [
+      -0.0005,
+      0.0005
+     ],
+     "status": "COMPUTED"
+    },
+    "worst_decile_mean_delta": -0.227311701922315
+   },
+   "ndcg@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     -0.026152855425086684,
+     -0.023944457662893062
+    ],
+    "harmed_rule": "per-user macro delta (seed mean) < 0, over the paired user set",
+    "harmed_share": 0.4925424394073202,
+    "improved_share": 0.251913453046806,
+    "kind": "delta",
+    "metric": "ndcg@10",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "a": "FA_WARM_PB100K|2026|CONTROLLED_BUDGET|MAIN",
+      "b": "P2_WSTAR|2026|CONTROLLED_BUDGET|MAIN",
+      "ci95": [
+       -0.026152855425086684,
+       -0.023944457662893062
+      ],
+      "harmed_share": 0.4925424394073202,
+      "improved_share": 0.251913453046806,
+      "point": -0.025021456496164385,
+      "seed": 2026,
+      "tied_share": 0.2555441075458738,
+      "value_a": 0.1858203688500457,
+      "value_b": 0.21084182534621007
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.125,
+     "P25": -0.05547148379638869,
+     "P50": 0.0,
+     "P75": 0.0005784444699282985,
+     "P90": 0.055177191444040985
+    },
+    "point": -0.025021456496164385,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": -0.025021456496164385
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.2555441075458738,
+    "worst_decile_mean_delta": -0.23742906129404195
+   },
+   "note": null,
+   "pairs": [
+    [
+     "FA_WARM_PB100K|CB",
+     "P2_WSTAR|CB"
+    ]
+   ]
+  },
+  {
+   "hr@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     77.87052953947507,
+     78.8576381022956
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.4606270238445687,
+    "improved_share": 0.08524678638013934,
+    "kind": "retained",
+    "metric": "hr@10",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       77.87052953947507,
+       78.8576381022956
+      ],
+      "den": "C_FULL|2026|CONTROLLED_BUDGET|MAIN",
+      "harmed_share": 0.4606270238445687,
+      "improved_share": 0.08524678638013934,
+      "n_resamples_zero_denominator": 0,
+      "num": "PRE100K|2026|CONTROLLED_BUDGET|MAIN",
+      "point": 78.37587852528577,
+      "seed": 2026,
+      "tied_share": 0.4541261897752919,
+      "value_den": 0.3916439076602413,
+      "value_num": 0.3069543533194731
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.30434782608695654,
+     "P25": -0.15,
+     "P50": 0.0,
+     "P75": 0.0,
+     "P90": 0.0
+    },
+    "point": 78.37587852528577,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 78.37587852528577
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.4541261897752919,
+    "worst_decile_mean_delta": -0.5293173697338033
+   },
+   "id": "R_PRE100K/C_FULL|CB",
+   "kind": "ratio",
+   "label": "POST_HOC_EXPLORATORY",
+   "mrr@20": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     73.97929111570828,
+     75.20097298736933
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.6237611618094397,
+    "improved_share": 0.20957217152389362,
+    "kind": "retained",
+    "metric": "mrr@20",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       73.97929111570828,
+       75.20097298736933
+      ],
+      "den": "C_FULL|2026|CONTROLLED_BUDGET|MAIN",
+      "harmed_share": 0.6237611618094397,
+      "improved_share": 0.20957217152389362,
+      "n_resamples_zero_denominator": 0,
+      "num": "PRE100K|2026|CONTROLLED_BUDGET|MAIN",
+      "point": 74.58219050602642,
+      "seed": 2026,
+      "tied_share": 0.16666666666666666,
+      "value_den": 0.19419217133966563,
+      "value_num": 0.14483277517633866
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.17361128897332456,
+     "P25": -0.08501704409834109,
+     "P50": -0.024999999999999998,
+     "P75": 0.0,
+     "P90": 0.04235840548340552
+    },
+    "point": 74.58219050602642,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 74.58219050602642
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.16666666666666666,
+    "worst_decile_mean_delta": -0.3244007880562175
+   },
+   "ndcg@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     75.08050046443967,
+     76.13265448864443
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.5990334608968698,
+    "improved_share": 0.1778530075556864,
+    "kind": "retained",
+    "metric": "ndcg@10",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       75.08050046443967,
+       76.13265448864443
+      ],
+      "den": "C_FULL|2026|CONTROLLED_BUDGET|MAIN",
+      "harmed_share": 0.5990334608968698,
+      "improved_share": 0.1778530075556864,
+      "n_resamples_zero_denominator": 0,
+      "num": "PRE100K|2026|CONTROLLED_BUDGET|MAIN",
+      "point": 75.59716622511232,
+      "seed": 2026,
+      "tied_share": 0.22311353154744382,
+      "value_den": 0.23515127006332748,
+      "value_num": 0.17776769651023647
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.19739015077613659,
+     "P25": -0.1031629889207426,
+     "P50": -0.03132007776347657,
+     "P75": 0.0,
+     "P90": 0.04363270494862178
+    },
+    "point": 75.59716622511232,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 75.59716622511232
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.22311353154744382,
+    "worst_decile_mean_delta": -0.3387296642893659
+   },
+   "note": null,
+   "pairs": [
+    [
+     "PRE100K|CB",
+     "C_FULL|CB"
+    ]
+   ]
+  },
+  {
+   "hr@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     81.6044063695119,
+     82.60633159491594
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.4275586301638701,
+    "improved_share": 0.09687469335688352,
+    "kind": "retained",
+    "metric": "hr@10",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       81.6044063695119,
+       82.60633159491594
+      ],
+      "den": "C_FULL|2026|CONTROLLED_BUDGET|MAIN",
+      "harmed_share": 0.4275586301638701,
+      "improved_share": 0.09687469335688352,
+      "n_resamples_zero_denominator": 0,
+      "num": "FA_WARM_PB100K|2026|CONTROLLED_BUDGET|MAIN",
+      "point": 82.11872509157699,
+      "seed": 2026,
+      "tied_share": 0.4755666764792464,
+      "value_den": 0.3916439076602413,
+      "value_num": 0.3216129838694232
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.26086956521739135,
+     "P25": -0.12500000000000003,
+     "P50": 0.0,
+     "P75": 0.0,
+     "P90": 0.0
+    },
+    "point": 82.11872509157699,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 82.11872509157699
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.4755666764792464,
+    "worst_decile_mean_delta": -0.4888232596762644
+   },
+   "id": "R_FA_WARM_PB100K/C_FULL|CB",
+   "kind": "ratio",
+   "label": "POST_HOC_EXPLORATORY",
+   "mrr@20": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     77.2245435117319,
+     78.48593424161386
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.5975615739377882,
+    "improved_share": 0.2332204886664704,
+    "kind": "retained",
+    "metric": "mrr@20",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       77.2245435117319,
+       78.48593424161386
+      ],
+      "den": "C_FULL|2026|CONTROLLED_BUDGET|MAIN",
+      "harmed_share": 0.5975615739377882,
+      "improved_share": 0.2332204886664704,
+      "n_resamples_zero_denominator": 0,
+      "num": "FA_WARM_PB100K|2026|CONTROLLED_BUDGET|MAIN",
+      "point": 77.91733541052388,
+      "seed": 2026,
+      "tied_share": 0.16921793739574134,
+      "value_den": 0.19419217133966563,
+      "value_num": 0.15130936548370646
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.16666666666666666,
+     "P25": -0.07800600967445001,
+     "P50": -0.019047619047619042,
+     "P75": 0.0,
+     "P90": 0.047633526761072006
+    },
+    "point": 77.91733541052388,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 77.91733541052388
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.16921793739574134,
+    "worst_decile_mean_delta": -0.30860949582025893
+   },
+   "ndcg@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     78.45500687810703,
+     79.50593919237947
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.5752134236090668,
+    "improved_share": 0.19912177411441467,
+    "kind": "retained",
+    "metric": "ndcg@10",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       78.45500687810703,
+       79.50593919237947
+      ],
+      "den": "C_FULL|2026|CONTROLLED_BUDGET|MAIN",
+      "harmed_share": 0.5752134236090668,
+      "improved_share": 0.19912177411441467,
+      "n_resamples_zero_denominator": 0,
+      "num": "FA_WARM_PB100K|2026|CONTROLLED_BUDGET|MAIN",
+      "point": 79.0216309697172,
+      "seed": 2026,
+      "tied_share": 0.2256648022765185,
+      "value_den": 0.23515127006332748,
+      "value_num": 0.1858203688500457
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.1833386565074025,
+     "P25": -0.09311273226978722,
+     "P50": -0.02315615351261394,
+     "P75": 0.0,
+     "P90": 0.048815389267383186
+    },
+    "point": 79.0216309697172,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 79.0216309697172
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.2256648022765185,
+    "worst_decile_mean_delta": -0.3187154536836217
+   },
+   "note": null,
+   "pairs": [
+    [
+     "FA_WARM_PB100K|CB",
+     "C_FULL|CB"
+    ]
+   ]
+  },
+  {
+   "hr@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     80.55838671250002,
+     81.5297800796155
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.4352860366990482,
+    "improved_share": 0.09363654204690414,
+    "kind": "retained",
+    "metric": "hr@10",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       80.55838671250002,
+       81.5297800796155
+      ],
+      "den": "C_FULL|2026|CONTROLLED_BUDGET|MAIN",
+      "harmed_share": 0.4352860366990482,
+      "improved_share": 0.09363654204690414,
+      "n_resamples_zero_denominator": 0,
+      "num": "FA_WARM_FROZEN_PB100K|2026|CONTROLLED_BUDGET|MAIN",
+      "point": 81.054876442839,
+      "seed": 2026,
+      "tied_share": 0.47107742125404767,
+      "value_den": 0.3916439076602413,
+      "value_num": 0.3174464854499151
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.2857142857142857,
+     "P25": -0.13636363636363635,
+     "P50": 0.0,
+     "P75": 0.0,
+     "P90": 0.0
+    },
+    "point": 81.054876442839,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 81.054876442839
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.47107742125404767,
+    "worst_decile_mean_delta": -0.5011189093665153
+   },
+   "id": "R_FA_WARM_FROZEN_PB100K/C_FULL|CB",
+   "kind": "ratio",
+   "label": "POST_HOC_EXPLORATORY",
+   "mrr@20": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     76.11635114346748,
+     77.39896484794988
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.6054607006181926,
+    "improved_share": 0.22689137474241977,
+    "kind": "retained",
+    "metric": "mrr@20",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       76.11635114346748,
+       77.39896484794988
+      ],
+      "den": "C_FULL|2026|CONTROLLED_BUDGET|MAIN",
+      "harmed_share": 0.6054607006181926,
+      "improved_share": 0.22689137474241977,
+      "n_resamples_zero_denominator": 0,
+      "num": "FA_WARM_FROZEN_PB100K|2026|CONTROLLED_BUDGET|MAIN",
+      "point": 76.79870183722515,
+      "seed": 2026,
+      "tied_share": 0.16764792463938769,
+      "value_den": 0.19419217133966563,
+      "value_num": 0.1491370666583832
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.16666666666666669,
+     "P25": -0.0816688828027837,
+     "P50": -0.020788506365429442,
+     "P75": 0.0,
+     "P90": 0.047198188020556746
+    },
+    "point": 76.79870183722515,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 76.79870183722515
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.16764792463938769,
+    "worst_decile_mean_delta": -0.31641183320080835
+   },
+   "ndcg@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     77.31256645606709,
+     78.36395552899994
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.5821558237660681,
+    "improved_share": 0.1941664213521735,
+    "kind": "retained",
+    "metric": "ndcg@10",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       77.31256645606709,
+       78.36395552899994
+      ],
+      "den": "C_FULL|2026|CONTROLLED_BUDGET|MAIN",
+      "harmed_share": 0.5821558237660681,
+      "improved_share": 0.1941664213521735,
+      "n_resamples_zero_denominator": 0,
+      "num": "FA_WARM_FROZEN_PB100K|2026|CONTROLLED_BUDGET|MAIN",
+      "point": 77.87778682905187,
+      "seed": 2026,
+      "tied_share": 0.22367775488175842,
+      "value_den": 0.23515127006332748,
+      "value_num": 0.18313060482572624
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.18785171456109012,
+     "P25": -0.09671320180863541,
+     "P50": -0.02534014602014089,
+     "P75": 0.0,
+     "P90": 0.04761904761904766
+    },
+    "point": 77.87778682905187,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 77.87778682905187
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.22367775488175842,
+    "worst_decile_mean_delta": -0.32709166851502436
+   },
+   "note": null,
+   "pairs": [
+    [
+     "FA_WARM_FROZEN_PB100K|CB",
+     "C_FULL|CB"
+    ]
+   ]
+  },
+  {
+   "hr@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     91.74691593365459,
+     92.56397995719269
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.3137572367775488,
+    "improved_share": 0.13676282994799333,
+    "kind": "retained",
+    "metric": "hr@10",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       91.74691593365459,
+       92.56397995719269
+      ],
+      "den": "C_FULL|2026|CONTROLLED_BUDGET|MAIN",
+      "harmed_share": 0.3137572367775488,
+      "improved_share": 0.13676282994799333,
+      "n_resamples_zero_denominator": 0,
+      "num": "PRE|2026|CONTROLLED_BUDGET|MAIN",
+      "point": 92.14883054718004,
+      "seed": 2026,
+      "tied_share": 0.5494799332744579,
+      "value_den": 0.3916439076602413,
+      "value_num": 0.36089528081819006
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.16666666666666669,
+     "P25": -0.05882352941176472,
+     "P50": 0.0,
+     "P75": 0.0,
+     "P90": 0.06451612903225812
+    },
+    "point": 92.14883054718004,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 92.14883054718004
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.5494799332744579,
+    "worst_decile_mean_delta": -0.3624691693238821
+   },
+   "id": "R_PRE/C_FULL|CB",
+   "kind": "ratio",
+   "label": "POST_HOC_EXPLORATORY",
+   "mrr@20": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     88.48125577270983,
+     89.55655331750542
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.5252428613482485,
+    "improved_share": 0.295800215876754,
+    "kind": "retained",
+    "metric": "mrr@20",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       88.48125577270983,
+       89.55655331750542
+      ],
+      "den": "C_FULL|2026|CONTROLLED_BUDGET|MAIN",
+      "harmed_share": 0.5252428613482485,
+      "improved_share": 0.295800215876754,
+      "n_resamples_zero_denominator": 0,
+      "num": "PRE|2026|CONTROLLED_BUDGET|MAIN",
+      "point": 89.03355666466766,
+      "seed": 2026,
+      "tied_share": 0.17895692277499756,
+      "value_den": 0.19419217133966563,
+      "value_num": 0.1728961969080497
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.11434553872053868,
+     "P25": -0.047979797979798,
+     "P50": -0.00420376358719015,
+     "P75": 0.007692307692307697,
+     "P90": 0.054558080808080875
+    },
+    "point": 89.03355666466766,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 89.03355666466766
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.17895692277499756,
+    "worst_decile_mean_delta": -0.23094243200759323
+   },
+   "ndcg@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     89.34353391715884,
+     90.20639450315772
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.5034098714552055,
+    "improved_share": 0.2579481895790403,
+    "kind": "retained",
+    "metric": "ndcg@10",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       89.34353391715884,
+       90.20639450315772
+      ],
+      "den": "C_FULL|2026|CONTROLLED_BUDGET|MAIN",
+      "harmed_share": 0.5034098714552055,
+      "improved_share": 0.2579481895790403,
+      "n_resamples_zero_denominator": 0,
+      "num": "PRE|2026|CONTROLLED_BUDGET|MAIN",
+      "point": 89.77822287515623,
+      "seed": 2026,
+      "tied_share": 0.23864193896575409,
+      "value_den": 0.23515127006332748,
+      "value_num": 0.21111463133121466
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.12383672702724922,
+     "P25": -0.056406331906690546,
+     "P50": -0.0011486916598913502,
+     "P75": 0.0019955961323945906,
+     "P90": 0.058727373531241585
+    },
+    "point": 89.77822287515623,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 89.77822287515623
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.23864193896575409,
+    "worst_decile_mean_delta": -0.23165284334797248
+   },
+   "note": null,
+   "pairs": [
+    [
+     "PRE|CB",
+     "C_FULL|CB"
+    ]
+   ]
+  },
+  {
+   "hr@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     91.64213967694651,
+     92.45827944912052
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.3149592777941321,
+    "improved_share": 0.13546266313413796,
+    "kind": "retained",
+    "metric": "hr@10",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       91.64213967694651,
+       92.45827944912052
+      ],
+      "den": "C_FULL|2026|CONTROLLED_BUDGET|MAIN",
+      "harmed_share": 0.3149592777941321,
+      "improved_share": 0.13546266313413796,
+      "n_resamples_zero_denominator": 0,
+      "num": "P2_WSTAR|2026|CONTROLLED_BUDGET|MAIN",
+      "point": 92.04817488782425,
+      "seed": 2026,
+      "tied_share": 0.54957805907173,
+      "value_den": 0.3916439076602413,
+      "value_num": 0.3605010690606078
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.16666666666666669,
+     "P25": -0.06060606060606061,
+     "P50": 0.0,
+     "P75": 0.0,
+     "P90": 0.0625
+    },
+    "point": 92.04817488782425,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 92.04817488782425
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.54957805907173,
+    "worst_decile_mean_delta": -0.3639875552871972
+   },
+   "id": "R_P2_WSTAR/C_FULL|CB",
+   "kind": "ratio",
+   "label": "POST_HOC_EXPLORATORY",
+   "mrr@20": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     88.37241669655432,
+     89.42049008918207
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.5258316161318811,
+    "improved_share": 0.2952114610931214,
+    "kind": "retained",
+    "metric": "mrr@20",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       88.37241669655432,
+       89.42049008918207
+      ],
+      "den": "C_FULL|2026|CONTROLLED_BUDGET|MAIN",
+      "harmed_share": 0.5258316161318811,
+      "improved_share": 0.2952114610931214,
+      "n_resamples_zero_denominator": 0,
+      "num": "P2_WSTAR|2026|CONTROLLED_BUDGET|MAIN",
+      "point": 88.91258522652008,
+      "seed": 2026,
+      "tied_share": 0.17895692277499756,
+      "value_den": 0.19419217133966563,
+      "value_num": 0.17266127984561008
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.11488349326971617,
+     "P25": -0.04831500682410127,
+     "P50": -0.00421087547193251,
+     "P75": 0.007482240055112944,
+     "P90": 0.05399146261375368
+    },
+    "point": 88.91258522652008,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 88.91258522652008
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.17895692277499756,
+    "worst_decile_mean_delta": -0.2325990776845524
+   },
+   "ndcg@10": {
+    "W_sha256": "fba3b4c05b35d60becc84203618cd2470fe4c7fde39d0a2b2cf5f794608e2961",
+    "ci95": [
+     89.22743144186056,
+     90.08780705154737
+    ],
+    "harmed_rule": "per-user macro difference numerator - denominator (seed mean) < 0, over the paired user set (06L-C C15)",
+    "harmed_share": 0.5036551859483859,
+    "improved_share": 0.257653812187224,
+    "kind": "retained",
+    "metric": "ndcg@10",
+    "n_decisions": 519714,
+    "n_seeds": 1,
+    "n_users": 40764,
+    "per_seed": [
+     {
+      "ci95": [
+       89.22743144186056,
+       90.08780705154737
+      ],
+      "den": "C_FULL|2026|CONTROLLED_BUDGET|MAIN",
+      "harmed_share": 0.5036551859483859,
+      "improved_share": 0.257653812187224,
+      "n_resamples_zero_denominator": 0,
+      "num": "P2_WSTAR|2026|CONTROLLED_BUDGET|MAIN",
+      "point": 89.66220989979313,
+      "seed": 2026,
+      "tied_share": 0.23869100186439016,
+      "value_den": 0.23515127006332748,
+      "value_num": 0.21084182534621007
+     }
+    ],
+    "per_user_delta_quantiles": {
+     "P10": -0.12413970319634827,
+     "P25": -0.05649503214849396,
+     "P50": -0.001287708053946241,
+     "P75": 0.0020396525052946285,
+     "P90": 0.05816301763054572
+    },
+    "point": 89.66220989979313,
+    "population": "MAIN/ALL",
+    "seed_stats": {
+     "label": "DESCRIPTIVE",
+     "per_seed_points": {
+      "2026": 89.66220989979313
+     },
+     "rule": "SEED_SENSITIVE = (max - min of the per-seed points) > half the width of the seed-mean 95% CI",
+     "seed_sensitive": null,
+     "status": "SINGLE_SEED"
+    },
+    "seeds": [
+     2026
+    ],
+    "statistic": "macro_e2e",
+    "tied_share": 0.23869100186439016,
+    "worst_decile_mean_delta": -0.2335284886640921
+   },
+   "note": null,
+   "pairs": [
+    [
+     "P2_WSTAR|CB",
+     "C_FULL|CB"
+    ]
+   ]
+  }
+ ],
+ "eval_manifest_id": "MAIN_VALIDATION_5_100_131072",
+ "inputs": {
+  "C_FULL|CB": {
+   "arm": "C_FULL",
+   "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/REEVAL_A40/C_FULL_s2026_CB/evals/MAIN.ranks_int32.npy",
+   "rule": "CONTROLLED_BUDGET",
+   "seed": 2026,
+   "sha256": "89751c0dbf231ac5e52f390e952a9f7f9a9506488eb969647d04b63d45ed0e33"
+  },
+  "C_FULL|PB": {
+   "arm": "C_FULL",
+   "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/REEVAL_A40/C_FULL_s2026_PB/evals/MAIN.ranks_int32.npy",
+   "rule": "PRACTICAL_BEST",
+   "seed": 2026,
+   "sha256": "89751c0dbf231ac5e52f390e952a9f7f9a9506488eb969647d04b63d45ed0e33"
+  },
+  "FA_WARM_FROZEN_PB100K|CB": {
+   "arm": "FA_WARM_FROZEN_PB100K",
+   "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/PROOF/FA_WARM_FROZEN_PB100K_s2026_CB_MAIN/evals/MAIN.ranks_int32.npy",
+   "rule": "CONTROLLED_BUDGET",
+   "seed": 2026,
+   "sha256": "dc0f7ec444e39df01e0e0d8291a0e5961e6865e258d3bc5d27611f7a6e60674e"
+  },
+  "FA_WARM_FROZEN_PB100K|PB": {
+   "arm": "FA_WARM_FROZEN_PB100K",
+   "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/PROOF/FA_WARM_FROZEN_PB100K_s2026_PB_MAIN/evals/MAIN.ranks_int32.npy",
+   "rule": "PRACTICAL_BEST",
+   "seed": 2026,
+   "sha256": "da55e5dd96bea01b3fb1e9af804401ee3aa6a8c688168f2bc84601f1a151de91"
+  },
+  "FA_WARM_PB100K|CB": {
+   "arm": "FA_WARM_PB100K",
+   "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/PROOF/FA_WARM_PB100K_s2026_CB_MAIN/evals/MAIN.ranks_int32.npy",
+   "rule": "CONTROLLED_BUDGET",
+   "seed": 2026,
+   "sha256": "eea735c494990787eb0f62658c34dd466324d487b23f06649c6b490c6aaa7aa3"
+  },
+  "FA_WARM_PB100K|PB": {
+   "arm": "FA_WARM_PB100K",
+   "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/PROOF/FA_WARM_PB100K_s2026_PB_MAIN/evals/MAIN.ranks_int32.npy",
+   "rule": "PRACTICAL_BEST",
+   "seed": 2026,
+   "sha256": "eea735c494990787eb0f62658c34dd466324d487b23f06649c6b490c6aaa7aa3"
+  },
+  "P2_WSTAR|CB": {
+   "arm": "P2_WSTAR",
+   "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_p2/MAIN/P2_WSTAR_SMALL_s2026/evals/eval_6.0.ranks_int32.npy",
+   "rule": "CONTROLLED_BUDGET",
+   "seed": 2026,
+   "sha256": "b40a80274f208534666a89bdf9a1a4b5d7dba9fa20c74bfdb739fc4568662160",
+   "source": "in-run MAIN_VALIDATION eval, mark 6.0"
+  },
+  "P2_WSTAR|PB": {
+   "arm": "P2_WSTAR",
+   "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_p2/MAIN/P2_WSTAR_SMALL_s2026/evals/eval_0.5.ranks_int32.npy",
+   "rule": "PRACTICAL_BEST",
+   "seed": 2026,
+   "sha256": "23f17993e49206e38d776bc834b4b6712643457fc9f951c37f56759e848df322",
+   "source": "in-run MAIN_VALIDATION eval, mark 0.5"
+  },
+  "PRE100K|CB": {
+   "arm": "PRE100K",
+   "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/PROOF/PRE100K_s2026_CB_MAIN/evals/MAIN.ranks_int32.npy",
+   "rule": "CONTROLLED_BUDGET",
+   "seed": 2026,
+   "sha256": "d5943394a418065e1bd778e548b1853bf41b3d992f14f1684e041131cc591f89"
+  },
+  "PRE100K|PB": {
+   "arm": "PRE100K",
+   "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_x_rees46/PROOF/PRE100K_s2026_CB_MAIN/evals/MAIN.ranks_int32.npy",
+   "rule": "PRACTICAL_BEST",
+   "seed": 2026,
+   "sha256": "d5943394a418065e1bd778e548b1853bf41b3d992f14f1684e041131cc591f89"
+  },
+  "PRE|CB": {
+   "arm": "PRE",
+   "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/REEVAL_A40/PRE_s2026_CB/evals/MAIN.ranks_int32.npy",
+   "rule": "CONTROLLED_BUDGET",
+   "seed": 2026,
+   "sha256": "827b5bf6d618575a24a1405201e224237e050e760d6f2ca3ea76dfad34b838a0"
+  },
+  "PRE|PB": {
+   "arm": "PRE",
+   "ranks": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/REEVAL_A40/PRE_s2026_PB/evals/MAIN.ranks_int32.npy",
+   "rule": "PRACTICAL_BEST",
+   "seed": 2026,
+   "sha256": "827b5bf6d618575a24a1405201e224237e050e760d6f2ca3ea76dfad34b838a0"
+  }
+ },
+ "label": "POST_HOC_EXPLORATORY",
+ "metrics": [
+  "mrr@20 (primary)",
+  "ndcg@10",
+  "hr@10"
+ ],
+ "points": {
+  "C_FULL|CB": {
+   "hr@10": 0.3916439076602413,
+   "mrr@20": 0.19419217133966563,
+   "ndcg@10": 0.23515127006332748
+  },
+  "C_FULL|PB": {
+   "hr@10": 0.3916439076602413,
+   "mrr@20": 0.19419217133966563,
+   "ndcg@10": 0.23515127006332748
+  },
+  "FA_WARM_FROZEN_PB100K|CB": {
+   "hr@10": 0.3174464854499151,
+   "mrr@20": 0.1491370666583832,
+   "ndcg@10": 0.18313060482572624
+  },
+  "FA_WARM_FROZEN_PB100K|PB": {
+   "hr@10": 0.315910224798315,
+   "mrr@20": 0.1489824093425362,
+   "ndcg@10": 0.18262844260652666
+  },
+  "FA_WARM_PB100K|CB": {
+   "hr@10": 0.3216129838694232,
+   "mrr@20": 0.15130936548370646,
+   "ndcg@10": 0.1858203688500457
+  },
+  "FA_WARM_PB100K|PB": {
+   "hr@10": 0.3216129838694232,
+   "mrr@20": 0.15130936548370646,
+   "ndcg@10": 0.1858203688500457
+  },
+  "P2_WSTAR|CB": {
+   "hr@10": 0.3605010690606078,
+   "mrr@20": 0.17266127984561008,
+   "ndcg@10": 0.21084182534621007
+  },
+  "P2_WSTAR|PB": {
+   "hr@10": 0.36091800718441364,
+   "mrr@20": 0.17286036481260195,
+   "ndcg@10": 0.21109587103572494
+  },
+  "PRE100K|CB": {
+   "hr@10": 0.3069543533194731,
+   "mrr@20": 0.14483277517633866,
+   "ndcg@10": 0.17776769651023647
+  },
+  "PRE100K|PB": {
+   "hr@10": 0.3069543533194731,
+   "mrr@20": 0.14483277517633866,
+   "ndcg@10": 0.17776769651023647
+  },
+  "PRE|CB": {
+   "hr@10": 0.36089528081819006,
+   "mrr@20": 0.1728961969080497,
+   "ndcg@10": 0.21111463133121466
+  },
+  "PRE|PB": {
+   "hr@10": 0.36089528081819006,
+   "mrr@20": 0.1728961969080497,
+   "ndcg@10": 0.21111463133121466
+  }
+ },
+ "register_binding": null,
+ "role": "MAIN",
+ "tools": {
+  "p2_report.py": "934cc8a0e93f3edd44e5c950f89996149a1f2b26dd7737f9c78b383b7dff215e",
+  "retention_report.py": "9a3b2c2a918ef2baacc5299426941f1eb94c366f5bb6aa7c29b4bfdbca0afe58",
+  "x_analysis.py": "509a9f9715ab124ca751f3ed5ebc6ad2240a9dd014d406f98271581c7c37b151"
+ },
+ "utc": "2026-10-07T11:08:50Z"
+}

@@ -1,0 +1,385 @@
+{
+ "arm": "FA",
+ "bytes": {
+  "ledger": [
+   232520,
+   763088321360,
+   763089251440,
+   0
+  ]
+ },
+ "checkpoints": {
+  "CONTROLLED_BUDGET": {
+   "file": "ckpt/BM_s3_toys_FA_s2027/endpoint_6.0.pt",
+   "mark": 6.0,
+   "sha256": "1112243c79be48039e93e8eb733460caf50cfc6ec6c3c8790b77c284d5d7f2e2"
+  },
+  "PRACTICAL_BEST": {
+   "file": "ckpt/BM_s3_toys_FA_s2027/best.pt",
+   "mark": 6.0,
+   "sha256": "1112243c79be48039e93e8eb733460caf50cfc6ec6c3c8790b77c284d5d7f2e2"
+  }
+ },
+ "evals": [
+  [
+   1,
+   166,
+   0.003468985614303423,
+   true,
+   "MAIN"
+  ],
+  [
+   2,
+   335,
+   0.0022044969008603713,
+   false,
+   "MAIN"
+  ],
+  [
+   3,
+   502,
+   0.001700367716848934,
+   false,
+   "MAIN"
+  ],
+  [
+   4,
+   675,
+   0.0023805731612162977,
+   false,
+   "MAIN"
+  ],
+  [
+   5,
+   839,
+   0.002307176409578216,
+   false,
+   "MAIN"
+  ],
+  [
+   6,
+   1011,
+   0.002315560774340787,
+   false,
+   "MAIN"
+  ],
+  [
+   7,
+   1178,
+   0.0019114183051550317,
+   false,
+   "MAIN"
+  ],
+  [
+   8,
+   1347,
+   0.0036788284996243925,
+   true,
+   "MAIN"
+  ],
+  [
+   9,
+   1516,
+   0.0049774455754938544,
+   true,
+   "MAIN"
+  ],
+  [
+   10,
+   1683,
+   0.002557595062768568,
+   false,
+   "MAIN"
+  ],
+  [
+   11,
+   1853,
+   0.007813499762412256,
+   true,
+   "MAIN"
+  ],
+  [
+   12,
+   2022,
+   0.00966264222972722,
+   true,
+   "MAIN"
+  ]
+ ],
+ "frozen": null,
+ "init_from": null,
+ "kind": "fl",
+ "run_id": "BM_s3_toys_FA_s2027",
+ "spec": {
+  "arm": "FA",
+  "cfg": {
+   "dp": null,
+   "dropout_p": 0.1,
+   "endpoint_efe": 6.0,
+   "endpoint_rounds": 2023,
+   "exposure_point": "end",
+   "lr_peak_local": 0.1,
+   "lr_shape": "fl_const",
+   "max_attempts": 2,
+   "method": "FA",
+   "mu": 0.0,
+   "n_shards": 2,
+   "pf": null,
+   "seed": 2027,
+   "server_opt": {
+    "beta1": 0.9,
+    "beta2": 0.99,
+    "lr": 0.01,
+    "name": "fedadam",
+    "tau": 0.001,
+    "v_init": "tau_squared"
+   },
+   "solver": {
+    "batch_size": 16,
+    "clip": 1.0,
+    "fused": null,
+    "lr": 0.1,
+    "optimizer": "sgd_m",
+    "passes": 1,
+    "weight_decay": 0.0
+   }
+  },
+  "client_lr": 0.1,
+  "client_opt": "sgd_m",
+  "data": {
+   "dataset": "s3_toys",
+   "fingerprint": "b83ff25694004525faeb3c9b262fc9bbfd6fa2a8223f5548539a19d8b3198ea1",
+   "n_clients": 19412,
+   "n_decisions": 109361
+  },
+  "dropout": [
+   0.1
+  ],
+  "exposure_budget": {
+   "dropout_p": 0.1,
+   "endpoint_efe": 6.0,
+   "formula": "rounds = ceil(60 N_clients / (576 P)) (launch_fl.fa_rounds, 06J \u00a73)",
+   "group": 64,
+   "n_clients": 19412,
+   "passes": 1,
+   "rounds": 2023
+  },
+  "knobs": {
+   "batch": 16,
+   "clip": 1.0,
+   "dropout_p": 0.1,
+   "endpoint_efe": 6.0,
+   "group": 64,
+   "m": 1024,
+   "max_attempts": 2,
+   "mu": 0.01,
+   "n_shards": 2,
+   "passes": 2,
+   "pf_clip": 1.0,
+   "pf_lam": 0.0001,
+   "rounds": 6827,
+   "rounds_1024": 384,
+   "s_cal_rounds": 20,
+   "s_cal_seed": 2026,
+   "sampling": "sweep",
+   "weight_decay": 1e-05
+  },
+  "local_passes": 1,
+  "lr_mult": 1.0,
+  "lr_peak_base": 0.0007114121116984968,
+  "lr_shape": "fl_const",
+  "max_len": 50,
+  "max_rounds": 2023,
+  "plan": {
+   "group_size": 64,
+   "sampling": "sweep"
+  },
+  "provenance": {
+   "ft_cell": "FT_C_f0.3_P4",
+   "pins": {
+    "device/SELECTION_FT_C.json": "e47965d2f4486fc2c30140a8ee14e79686a842decb091b3dff1de5646716c10c",
+    "fl/FL_TUNING_SELECTION.json": "9bca186e5025f5caa9e762f3c425fb3151923b79e60f01e6ecb063aac9c715ec",
+    "fl/FL_WARM_SELECTION_S7.json": "d67a0a851665495b092abbba4456f26a3423d6ef21665f5a0e2b65e2d78dc000",
+    "fl/FL_WARM_SELECTION_S8.json": "8b79d3052799dfa0ba208dce5db138da88aaa7024ba6511a374c59ce8c55a98a"
+   },
+   "tuning_winner_label": "fedadam|eta=0.01|m=1|shape=fl_const|client=sgd_m|clr=0.1|passes=1",
+   "warm_winners": {
+    "FA_WARM": "f=0.25|sf=0.1",
+    "FA_WARM_FROZEN": "f=1|sf=0.1"
+   }
+  },
+  "role": "MAIN",
+  "server_lr": 0.01,
+  "server_opt": "fedadam",
+  "upload_codec": null,
+  "variant": "SASREC_D64_B2"
+ },
+ "spec_sha256": "66a7644fcef9ecd02f896dc081130fe7313828ba0277e67143cb8929c48a3131",
+ "status": "DONE_MAIN",
+ "summary": {
+  "counters": {
+   "coverage_by_sweep": {
+    "0": {
+     "clients": 17457,
+     "fraction": 0.8992890995260664
+    },
+    "1": {
+     "clients": 17489,
+     "fraction": 0.9009375643931589
+    },
+    "2": {
+     "clients": 17444,
+     "fraction": 0.89861941067381
+    },
+    "3": {
+     "clients": 17402,
+     "fraction": 0.8964558005357511
+    },
+    "4": {
+     "clients": 17469,
+     "fraction": 0.899907273851226
+    },
+    "5": {
+     "clients": 17546,
+     "fraction": 0.9038738924376675
+    },
+    "6": {
+     "clients": 11453,
+     "fraction": 0.5899958788378322
+    }
+   },
+   "efe": 5.9995702307038155,
+   "exposures": 656119,
+   "max_visits": 7,
+   "min_visits": 2,
+   "noop_visits": 0,
+   "retries": 0,
+   "rounds": 2023,
+   "steps": 125287,
+   "steps_hist": {
+    "1": 110418,
+    "10": 12,
+    "11": 4,
+    "2": 4165,
+    "3": 999,
+    "35": 7,
+    "4": 365,
+    "5": 177,
+    "6": 36,
+    "7": 50,
+    "8": 21,
+    "9": 6
+   },
+   "visits": 116260,
+   "wasted_steps": 0
+  },
+  "lr_table_digest": "001b4dc78fa3308dcfba278a1c1e1c6dfadfa14cac422ad9ec892c047bf35cee",
+  "rounds": 2023
+ },
+ "timing": {
+  "mean_round_s": 0.7015578916625065,
+  "median_round_s": 0.672650907188654,
+  "n_clients": 19412,
+  "n_decisions": 109361,
+  "rounds_full_run": 2023,
+  "rounds_this_leg": 2023,
+  "wall_s_this_leg": 1419.77
+ },
+ "utc": "2026-10-02T03:24:49Z",
+ "validation": {
+  "CONTROLLED_BUDGET": {
+   "ALL": {
+    "hr@10": 0.017294946147473074,
+    "hr@20": 0.02625310687655344,
+    "mrr@20": 0.007941989701586391,
+    "n_unreachable": 0,
+    "n_users": 19312,
+    "ndcg@10": 0.00966264222972722,
+    "ndcg@20": 0.011900576524071742
+   },
+   "BAND": {
+    "hr@10": 0.02171664943123061,
+    "hr@20": 0.030334367459496726,
+    "mrr@20": 0.009795280660496881,
+    "n_unreachable": 0,
+    "n_users": 2901,
+    "ndcg@10": 0.012127654159024474,
+    "ndcg@20": 0.014329061563940726
+   },
+   "BAND_COVERED_TARGET": {
+    "hr@10": 0.02170816091174276,
+    "hr@20": 0.03310494539040771,
+    "mrr@20": 0.009984978350681578,
+    "n_unreachable": 0,
+    "n_users": 14741,
+    "ndcg@10": 0.012139242923001687,
+    "ndcg@20": 0.014985845279090505
+   },
+   "BAND_UNCOVERED_TARGET": {
+    "hr@10": 0.0030627871362940277,
+    "hr@20": 0.004156639684970466,
+    "mrr@20": 0.001353563607446784,
+    "n_unreachable": 0,
+    "n_users": 4571,
+    "ndcg@10": 0.001675862352335202,
+    "ndcg@20": 0.0019509053978998762
+   },
+   "OTHERS": {
+    "hr@10": 0.016513314240448478,
+    "hr@20": 0.025531655596855767,
+    "mrr@20": 0.007614380349822371,
+    "n_unreachable": 0,
+    "n_users": 16411,
+    "ndcg@10": 0.009226897935845597,
+    "ndcg@20": 0.011471289149709428
+   }
+  },
+  "PRACTICAL_BEST": {
+   "ALL": {
+    "hr@10": 0.017294946147473074,
+    "hr@20": 0.02625310687655344,
+    "mrr@20": 0.007941989701586391,
+    "n_unreachable": 0,
+    "n_users": 19312,
+    "ndcg@10": 0.00966264222972722,
+    "ndcg@20": 0.011900576524071742
+   },
+   "BAND": {
+    "hr@10": 0.02171664943123061,
+    "hr@20": 0.030334367459496726,
+    "mrr@20": 0.009795280660496881,
+    "n_unreachable": 0,
+    "n_users": 2901,
+    "ndcg@10": 0.012127654159024474,
+    "ndcg@20": 0.014329061563940726
+   },
+   "BAND_COVERED_TARGET": {
+    "hr@10": 0.02170816091174276,
+    "hr@20": 0.03310494539040771,
+    "mrr@20": 0.009984978350681578,
+    "n_unreachable": 0,
+    "n_users": 14741,
+    "ndcg@10": 0.012139242923001687,
+    "ndcg@20": 0.014985845279090505
+   },
+   "BAND_UNCOVERED_TARGET": {
+    "hr@10": 0.0030627871362940277,
+    "hr@20": 0.004156639684970466,
+    "mrr@20": 0.001353563607446784,
+    "n_unreachable": 0,
+    "n_users": 4571,
+    "ndcg@10": 0.001675862352335202,
+    "ndcg@20": 0.0019509053978998762
+   },
+   "OTHERS": {
+    "hr@10": 0.016513314240448478,
+    "hr@20": 0.025531655596855767,
+    "mrr@20": 0.007614380349822371,
+    "n_unreachable": 0,
+    "n_users": 16411,
+    "ndcg@10": 0.009226897935845597,
+    "ndcg@20": 0.011471289149709428
+   }
+  }
+ }
+}

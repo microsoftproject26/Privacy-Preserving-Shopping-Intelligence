@@ -1,0 +1,472 @@
+{
+ "arm": "P2_W",
+ "arm_spec": {
+  "arm": "P2_W",
+  "cfg": {
+   "dp": null,
+   "dropout_p": 0.1,
+   "endpoint_efe": 6.0,
+   "endpoint_rounds": 3414,
+   "exposure_point": "end",
+   "lr_peak_local": 0.01,
+   "lr_shape": "fl_const",
+   "max_attempts": 2,
+   "method": "FA",
+   "mu": 0.0,
+   "n_shards": 2,
+   "pf": null,
+   "seed": 2026,
+   "server_opt": {
+    "beta1": 0.9,
+    "beta2": 0.99,
+    "lr": 0.0003,
+    "name": "fedadam",
+    "tau": 0.001,
+    "v_init": "tau_squared"
+   },
+   "solver": {
+    "batch_size": 16,
+    "clip": 1.0,
+    "fused": null,
+    "lr": 0.01,
+    "optimizer": "sgd_m",
+    "passes": 1,
+    "weight_decay": 0.0
+   }
+  },
+  "exposure_budget": {
+   "authority": "PREG1_AMENDMENT_06J \u00a73",
+   "dropout_p": 0.1,
+   "endpoint_efe": 6.0,
+   "formula": "rounds = ceil(6.0 x N_dec / (64 x 0.9 x P x N_dec / N_clients)) = ceil(60 N_clients / (576 P))",
+   "group": 64,
+   "n_clients": 32768,
+   "passes": 1,
+   "rounds": 3414
+  },
+  "frozen_item_tables": [
+   "item_embed.weight",
+   "output_embed",
+   "output_bias"
+  ],
+  "init_from": {
+   "checkpoint_bytes": 82853197,
+   "checkpoint_sha256": "cf08588c11f019cc760f129ba7ba6b23806297660e0170f9938436a5cb88cf78",
+   "family": "SASREC",
+   "fl_init_kind": "endpoint_6.0",
+   "kind": "PRETRAIN_FOR_FL",
+   "model_variant": "SASREC_D64_B2",
+   "run_id": "PRETRAIN_FOR_FL_SMALL_SASREC_D64_B2_s2026",
+   "run_label": "PRETRAIN_FOR_FL",
+   "seed": 2026,
+   "state_digest": "ee33345be4f20b61a53cd80fa11e1af702031bfcd1425af490825cd0019dc54a",
+   "train_manifest": "PRETRAIN_TRAIN_5_100_NONMAIN"
+  },
+  "lr_mult": 1.0,
+  "lr_peak_base": 0.0007114121116984968,
+  "max_rounds": 3414,
+  "p2_fixed": {
+   "authority": "PREG2 \u00a75.1",
+   "client_momentum": 0.9,
+   "client_opt": "sgd_m",
+   "clip": 1.0,
+   "dropout_p": 0.1,
+   "endpoint_efe": 6.0,
+   "group": 64,
+   "local_batch": 16,
+   "local_passes": 1,
+   "lr_shape": "fl_const",
+   "sampling": "sweep",
+   "weight_decay": 0.0
+  },
+  "p2_label": "fedadam|eta=0.0003|c=0.01",
+  "p2_recipe": {
+   "client_lr": 0.01,
+   "item_lr_mult": null,
+   "items": "frozen",
+   "lora_lr_factor": null,
+   "lora_rank": null,
+   "personal_head": false,
+   "server_lr": 0.0003,
+   "server_opt": "fedadam",
+   "upload": "dense"
+  },
+  "plan": {
+   "group_size": 64,
+   "sampling": "sweep"
+  },
+  "role": "CALIBRATION",
+  "study": "PREG2",
+  "upload_codec": null
+ },
+ "arm_spec_sha256": "748f4e255c24303906ad07a3cdc58216a5be133856cb58b517887800ae311303",
+ "best_half_efe": 1,
+ "best_metric": 0.17124562209306515,
+ "bytes": {
+  "disclosure": "dropped clients (10% drop-out) are not charged a download (the ledger counts survivors)",
+  "fleet": {
+   "bytes_down": 207514998184,
+   "bytes_up": 207516571328,
+   "frozen_download_once_bytes": 2679752097792,
+   "frozen_download_once_clients": 32768,
+   "messages": 393286,
+   "retry_bytes_down": 0,
+   "total": 415031569512,
+   "total_incl_frozen_once": 3094783667304
+  },
+  "frozen_bootstrap_note": "per_visit.bootstrap_bytes_once also contains the frozen tables (they are FIXED buffers after the freeze), so it repeats per_visit.frozen_bytes_once for those keys; no total adds both (per_client_incl_frozen_once and fleet.total_incl_frozen_once use frozen_bytes_once only). A client dropped at its first visit is not charged the table download (the ledger counts survivors; 06A \u00a73 rule)",
+  "frozen_disclosure": "frozen item tables: downloaded once per client at its first (surviving) visit, never uploaded; the ledger / per-visit bytes count the uploaded parameters only",
+  "per_client": {
+   "max": 14774088,
+   "mean": 12665758.346923828,
+   "median": 12663504.0,
+   "min": 4221168,
+   "rule": "visits x (down + up) of that client"
+  },
+  "per_client_incl_frozen_once": {
+   "max": 96553632,
+   "mean": 94445302.34692383,
+   "median": 94443048.0,
+   "min": 86000712,
+   "rule": "visits x (down + up) + the frozen tables once if visited"
+  },
+  "per_visit": {
+   "alias_bytes_not_sent": 0,
+   "bootstrap_bytes_once": 81779544,
+   "download_bytes": 1055288,
+   "frozen_bytes_once": 81779544,
+   "frozen_disclosure": "the frozen item tables are downloaded ONCE per client (first visit) and never uploaded; per-visit bytes count the uploaded parameters only",
+   "frozen_keys": [
+    "item_embed.weight",
+    "output_embed",
+    "output_bias"
+   ],
+   "frozen_numel": 20444886,
+   "private_bytes_sent": 0,
+   "private_resident_bytes": 0,
+   "send_plus_receive_bytes": 2110584,
+   "shared_numel": 263822,
+   "upload_bytes": 1055296,
+   "uploaded_numel": 263822
+  }
+ },
+ "checkpoints": [
+  "best.pt",
+  "endpoint_6.0.pt"
+ ],
+ "counters": {
+  "coverage_by_sweep": {
+   "0": {
+    "clients": 29579,
+    "fraction": 0.902679443359375
+   },
+   "1": {
+    "clients": 29425,
+    "fraction": 0.897979736328125
+   },
+   "2": {
+    "clients": 29527,
+    "fraction": 0.901092529296875
+   },
+   "3": {
+    "clients": 29434,
+    "fraction": 0.89825439453125
+   },
+   "4": {
+    "clients": 29409,
+    "fraction": 0.897491455078125
+   },
+   "5": {
+    "clients": 29544,
+    "fraction": 0.901611328125
+   },
+   "6": {
+    "clients": 19725,
+    "fraction": 0.601959228515625
+   }
+  },
+  "efe": 5.9956119102198375,
+  "exposures": 3873567,
+  "max_visits": 7,
+  "min_visits": 2,
+  "noop_visits": 0,
+  "retries": 0,
+  "rounds": 3414,
+  "steps": 336582,
+  "steps_hist": {
+   "1": 119469,
+   "2": 43585,
+   "3": 16669,
+   "4": 8751,
+   "5": 4648,
+   "6": 2955,
+   "7": 566
+  },
+  "visits": 196643,
+  "wasted_steps": 0
+ },
+ "done": true,
+ "evals": [
+  [
+   1,
+   283,
+   0.17124562209306515,
+   true,
+   "MAIN"
+  ],
+  [
+   2,
+   566,
+   0.17094554481243965,
+   false,
+   "MAIN"
+  ],
+  [
+   3,
+   851,
+   0.1707379187050821,
+   false,
+   "MAIN"
+  ],
+  [
+   4,
+   1137,
+   0.17070048324656084,
+   false,
+   "MAIN"
+  ],
+  [
+   5,
+   1420,
+   0.17071828718727494,
+   false,
+   "MAIN"
+  ],
+  [
+   6,
+   1705,
+   0.1705738897843375,
+   false,
+   "MAIN"
+  ],
+  [
+   7,
+   1990,
+   0.17043496498010546,
+   false,
+   "MAIN"
+  ],
+  [
+   8,
+   2274,
+   0.1706197628658168,
+   false,
+   "MAIN"
+  ],
+  [
+   9,
+   2563,
+   0.1706763232438481,
+   false,
+   "MAIN"
+  ],
+  [
+   10,
+   2848,
+   0.1703883188581146,
+   false,
+   "MAIN"
+  ],
+  [
+   11,
+   3132,
+   0.17044891326014922,
+   false,
+   "MAIN"
+  ],
+  [
+   12,
+   3413,
+   0.17043176566591794,
+   false,
+   "MAIN"
+  ]
+ ],
+ "frozen_item_tables": {
+  "frozen_bytes": 81779544,
+  "frozen_keys": [
+   "item_embed.weight",
+   "output_embed",
+   "output_bias"
+  ],
+  "frozen_numel": 20444886,
+  "manifest_digest": "5863a02b48ed4e9f9a348c66f28e63280565c73a4b5fccb30ffcf1995ab03162",
+  "shared_bytes": 1055288,
+  "shared_numel": 263822
+ },
+ "ledger": [
+  393286,
+  207514998184,
+  207516571328,
+  0
+ ],
+ "lr_table": {
+  "E_total": 3873567,
+  "digest": "0fdf5acc88b6469b24d489a4b06aa7ee5c9240fe21cf03bacc31ab776adf1ef0",
+  "final_lr": 0.001,
+  "min_lr": 0.00029291154071470416,
+  "n_rounds": 3414,
+  "planned_efe": 5.9956119102198375
+ },
+ "lr_table_digest": "0fdf5acc88b6469b24d489a4b06aa7ee5c9240fe21cf03bacc31ab776adf1ef0",
+ "method": "FA",
+ "p2": {
+  "authority": "PREG2 \u00a75 (contracts/PREG2_FOLLOWUP_DRAFT \u00a75 as edited by FABLE_GATE_ENDGAME_SCRIPTS_20261003 \u00a79); PHASE2_IMPLEMENTATION_PLAN P2-02",
+  "label": "fedadam|eta=0.0003|c=0.01",
+  "post_run": null,
+  "pre_server": null,
+  "recipe": {
+   "client_lr": 0.01,
+   "item_lr_mult": null,
+   "items": "frozen",
+   "lora_lr_factor": null,
+   "lora_rank": null,
+   "personal_head": false,
+   "server_lr": 0.0003,
+   "server_opt": "fedadam",
+   "upload": "dense"
+  }
+ },
+ "participation": {
+  "dropout_p": 0.1,
+  "dropped": 21853,
+  "endpoint_rounds": 3414,
+  "noop_rounds": 0,
+  "planned_efe": 5.9956119102198375,
+  "rounds": 3414,
+  "sampled": 218496,
+  "survived": 196643
+ },
+ "phase": "MAIN",
+ "plan": {
+  "group_size": 64,
+  "keys_digest": "6780c81a3e7b0a59b0a01fe976a9436463fdd93cfb3df92ffe842ca8d64f3f91",
+  "manifest_hash": "94ade68c5df4dcf8c2f3b29529b63dcb0193ab2e34ec529b467f628018c49f2e",
+  "n_clients": 32768,
+  "partial_group_note": "none: N is a multiple of the group size",
+  "partial_group_policy": "SMALLER_FINAL_GROUP",
+  "partial_group_size": 0,
+  "rounds_per_sweep": 512,
+  "sampling": "seeded permutation sweeps without replacement (PCG64), fixed consecutive groups",
+  "seed": 2026
+ },
+ "rounds": 3414,
+ "run_id": "P2_W_FEDADAM_eta0.0003_c0.01_CALIB_s2026",
+ "server_digest": "b2212b34dc9d078eacadc2923b9b64e0a58c92d6a1baa100ae8fbd00ee2b6249",
+ "server_opt": {
+  "cfg": {
+   "beta1": 0.9,
+   "beta2": 0.99,
+   "lr": 0.0003,
+   "name": "fedadam",
+   "tau": 0.001,
+   "v_init": "tau_squared"
+  },
+  "moments_digest": "96ace0936dd58050ba1e20a03418e9d2b852535ee280fc6af2b54fb8bb28f57f",
+  "steps": 3414
+ },
+ "status": "DONE_MAIN",
+ "store_digest": null,
+ "train_loss_log": {
+  "authority": "FL-15 R5 (REAL_WORLD_FL_PRACTICE_AUDIT_20260930 R5): per-round client training loss from fl VisitRecord.loss_sum (sum of the batch-mean CE over a visit's steps); descriptive monitoring only, numerics unchanged; z > 0 (DP) runs record nothing (an un-noised data-dependent release, the 06L_E E1 reading)",
+  "complete": true,
+  "fields": [
+   "client_mean_loss",
+   "finite",
+   "loss_sum",
+   "mean_step_loss",
+   "n_clients",
+   "n_steps",
+   "round"
+  ],
+  "file": "TRAIN_LOSS.jsonl",
+  "missing_rounds": [],
+  "rounds_expected": 3414,
+  "rounds_logged": 3414,
+  "sha256": "8d7d1eac9b36e9178218c63acb729b7b970fd5ac125b4eb228c2166dc3e4ce69"
+ },
+ "update_norm_log": {
+  "authority": "PREG2 \u00a73.3 D1-ext: per round, per tensor group of the trained subset: ||Delta_agg||, the server step, ||theta - theta_pre||, cos(Delta_r, Delta_r-1), clients aggregated (omitted for z > 0); DESCRIPTIVE, never selects; post-noise server-side quantities only under DP (06L_E E1)",
+  "complete": true,
+  "cos_prev_unavailable_rounds": [
+   0
+  ],
+  "file": "UPDATE_NORM_LOG.jsonl",
+  "last_total_T": {
+   "agg_delta_l2": 0.0009647043746888352,
+   "numel": 263822,
+   "pre_dist_l2": 0.337584862852509,
+   "pre_l2": 183.6536448327408,
+   "rel_pre_dist": 0.0018381604305210397,
+   "step_l2": 7.045436414404573e-05
+  },
+  "missing_rounds": [],
+  "rounds_expected": 3414,
+  "rounds_logged": 3414,
+  "server_steps": 3414,
+  "sha256": "186b3d5ad19224d20ea8b88d2672e930b8701585e52ec1a295c5928e4eeb9807",
+  "strictly_increasing": true,
+  "trained_keys": [
+   "side_gate",
+   "user_gate",
+   "pos_embed.weight",
+   "blocks.0.ln1.weight",
+   "blocks.0.ln1.bias",
+   "blocks.0.qkv.weight",
+   "blocks.0.qkv.bias",
+   "blocks.0.out.weight",
+   "blocks.0.out.bias",
+   "blocks.0.ln2.weight",
+   "blocks.0.ln2.bias",
+   "blocks.0.ff1.weight",
+   "blocks.0.ff1.bias",
+   "blocks.0.ff2.weight",
+   "blocks.0.ff2.bias",
+   "blocks.1.ln1.weight",
+   "blocks.1.ln1.bias",
+   "blocks.1.qkv.weight",
+   "blocks.1.qkv.bias",
+   "blocks.1.out.weight",
+   "blocks.1.out.bias",
+   "blocks.1.ln2.weight",
+   "blocks.1.ln2.bias",
+   "blocks.1.ff1.weight",
+   "blocks.1.ff1.bias",
+   "blocks.1.ff2.weight",
+   "blocks.1.ff2.bias",
+   "final_norm.weight",
+   "final_norm.bias",
+   "input_norm.weight",
+   "input_norm.bias",
+   "side_embeds.category_tokens.weight",
+   "side_embeds.brand_tokens.weight",
+   "side_embeds.session_offset_tokens.weight",
+   "side_embeds.session_mode_main_category_tokens.weight",
+   "numflag_proj.weight",
+   "numflag_proj.bias",
+   "side_proj.weight",
+   "side_proj.bias",
+   "side_norm.weight",
+   "side_norm.bias",
+   "user_mlp.weight",
+   "user_mlp.bias",
+   "user_proj.weight",
+   "user_proj.bias",
+   "user_norm.weight",
+   "user_norm.bias"
+  ],
+  "trained_numel": 263822,
+  "unparsable_lines": 0
+ },
+ "wall_s_this_leg": 25621.41
+}

@@ -1,0 +1,80 @@
+{
+ "utc_start": "2026-09-25T09:28:11Z",
+ "code_sha256": {
+  "continue_cooldown.py": "2f33832fff1b9d57a79786a73d42e5de5398e6ae906fec1425af96f47453ae18",
+  "train_sasrec.py": "270b1b15007337e2093b4fbcf713ee0303ea4602910c3ec62462ff7faeb969d3",
+  "sasrec_model.py": "ec8763112e8f81c3d43538e48cb947c7106e75f0be7350347d3eaf639ad8fb71",
+  "sasrec_schedule.py": "5db6cede50b07478d289f3d1887d6f46c42edfb7db3f4a99b00b1aedcce50230",
+  "precision.py": "45212e6b8c1f964a708a0def0b3cf61195b8811d5379903723f7d784f2444881",
+  "ckpt_io.py": "51a9303dcf6fc438be2cf85c9caa72080109b0dfa3f978ee6038fa748b6a46bc"
+ },
+ "steps": {
+  "source": {
+   "cmd": "/home/jovyan/venvs/ppsi-gpu/bin/python train_sasrec.py --run-id A1_RICH256 --run-dir /home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/tests/opus_cool/src --seed 2026 --test-tiny --tiny-planned-epochs 4 --precision-mode tf32",
+   "rc": 0,
+   "seconds": 11.6,
+   "tail": "[2026-09-25T09:28:15Z] fresh run A1_RICH256 seed=2026 n=4096 U=16 params=2155407 device=cuda:0 gpu=1 training=TF32 planned_epochs=4\n"
+  },
+  "cooldown": {
+   "cmd": "/home/jovyan/venvs/ppsi-gpu/bin/python continue_cooldown.py --source-run-dir /home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/tests/opus_cool/src --run-id A1_RICH256 --run-dir /home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/tests/opus_cool/src_cool5 --log-every-update --seed 2026 --test-tiny --tiny-planned-epochs 4 --precision-mode tf32",
+   "rc": 0,
+   "seconds": 7.5,
+   "tail": "[2026-09-25T09:28:27Z] cooldown continuation of src: u=64 epoch 5 lr 0.0001->1e-06 (1-sqrt), best so far epoch 4 = 0.2745618522167206\n"
+  },
+  "cooldown_crash": {
+   "cmd": "/home/jovyan/venvs/ppsi-gpu/bin/python continue_cooldown.py --source-run-dir /home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/tests/opus_cool/b --run-id A1_RICH256 --run-dir /home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/tests/opus_cool/b_cool5 --stop-after-updates 71 --seed 2026 --test-tiny --tiny-planned-epochs 4 --precision-mode tf32",
+   "rc": 99,
+   "seconds": 7.0,
+   "tail": "[2026-09-25T09:28:35Z] cooldown continuation of b: u=64 epoch 5 lr 0.0001->1e-06 (1-sqrt), best so far epoch 4 = 0.2745618522167206\n[2026-09-25T09:28:37Z] test hook: simulated crash after update 71\n"
+  },
+  "cooldown_resume": {
+   "cmd": "/home/jovyan/venvs/ppsi-gpu/bin/python continue_cooldown.py --source-run-dir /home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/tests/opus_cool/b --run-id A1_RICH256 --run-dir /home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/tests/opus_cool/b_cool5 --resume --seed 2026 --test-tiny --tiny-planned-epochs 4 --precision-mode tf32",
+   "rc": 0,
+   "seconds": 7.5,
+   "tail": "[2026-09-25T09:28:42Z] resumed from latest.pt u=71 epoch_idx0=4 offset=1792 eval_pending=False resume_count=1\n"
+  },
+  "firewall_negative": {
+   "cmd": "/home/jovyan/venvs/ppsi-gpu/bin/python continue_cooldown.py --source-run-dir /home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/tests/opus_cool/src --run-id A1_RICH256 --seed 2026 --run-dir /home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/tests/opus_cool/src_cool5",
+   "rc": 5,
+   "seconds": 1.8,
+   "tail": "CONFIG ERROR: cooldown firewall: /home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/review/GATE_C_COOLDOWN_PASS.json missing (Fable review required)\n"
+  },
+  "guard_negative": {
+   "cmd": "/home/jovyan/venvs/ppsi-gpu/bin/python continue_cooldown.py --source-run-dir /home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/tests/opus_cool/src --run-id A1_RICH256 --seed 2026 --run-dir /home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/sasrec_v1/tests/opus_cool/src_cool5 --stop-after-updates 5",
+   "rc": 5,
+   "seconds": 1.9,
+   "tail": "CONFIG ERROR: test-only options require --test-tiny\n"
+  }
+ },
+ "checks": {
+  "source_complete": true,
+  "cooldown_complete": true,
+  "epochs_5_updates_5U": true,
+  "epoch5_all_floor_phase": true,
+  "epoch5_first_lr_matches": true,
+  "epoch5_last_lr_is_1e-6": true,
+  "epoch5_evaluated": true,
+  "best_over_3_4_5": true,
+  "epoch5_perm_digest": true,
+  "source_untouched": true,
+  "crash_rc_99": true,
+  "resume_complete": true,
+  "resume_bitwise_identical_weights": true,
+  "resume_identical_metrics": true,
+  "epoch5_weights_saved": true,
+  "test_hook_refused_without_tiny": true,
+  "firewall_refuses_without_pass": true
+ },
+ "U": 16,
+ "lr_epoch5_first_last": [
+  7.525e-05,
+  1e-06
+ ],
+ "epoch5_macro_mrr20": 0.29070040583610535,
+ "best": [
+  5,
+  0.29070040583610535
+ ],
+ "overall_pass": true,
+ "utc_end": "2026-09-25T09:28:49Z"
+}

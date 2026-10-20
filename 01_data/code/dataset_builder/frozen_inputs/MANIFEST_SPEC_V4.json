@@ -1,0 +1,471 @@
+{
+  "spec_id": "MANIFEST_SPEC_V4",
+  "spec_version": "1.2.0",
+  "revision": "R2 (EVAL-01R2, 2026-09-26): the binding G0(b) ruling REV/G0B_PROTOCOL_FABLE_POSITION.md is applied. CEN_LEGACY_BARRIER = 170 BU rows only; the 140 AB VS->VC rows move to CEN_AMBIGUOUS_NEXT_BARRIER (C5), with the censor LOCK_VALUES checked. M04 = candidate A (C4); new M04W_WARM_TRUNCATION_PANEL; M04S binding (C6); h = 0, FIXED_20 and one query per sub-panel confirmed (C6).",
+  "revision_history": "R1 (EVAL-01R1, 2026-09-26): QA-01 receipts incorporated. Code-derived status and block definitions; censor classes re-derived (CEN_AMBIGUOUS_WITHIN replaced by CEN_AMBIGUOUS_NEXT_BARRIER; CEN_RIGHT_EDGE is BU only); cohort rankable/OOV and cold-strata expected counts; the M04 definition is raised to Fable (candidate A vs the QA-01 candidate B).",
+  "status": "SPEC_NOT_BUILT",
+  "tag": "PLAN",
+  "task": "EVAL-01",
+  "written_date_utc": "2026-09-26",
+  "contains_test_numbers": false,
+  "contains_model_outcomes": false,
+  "companion_documents": {
+    "evaluation_contract": "V4/contracts/EVALUATION_CONTRACT_V4.md",
+    "client_contract": "V4/contracts/CLIENT_CONTRACT_V1.md"
+  },
+  "path_roots": {
+    "V4": "F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4",
+    "PKG": "F:/Queens University/Microsoft Project/eda/PPSI_SINGLE_BACKBONE_V4_2026_09_26/PPSI_SINGLE_BACKBONE_V4_2026_09_26",
+    "CEN": "F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/g0/data_census",
+    "G0": "F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/g0",
+    "QA1": "F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/g0/receipts_qa01",
+    "REV": "F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/company/reviews",
+    "REUSE": "F:/Queens University/Microsoft Project/eda/.local_ai/ppsi_v4/code/snap_v1/reuse",
+    "DS1": "F:/Queens University/Microsoft Project/eda/rees46_nextitem_v1"
+  },
+  "authority": [
+    "PKG/03_DATA_PROTOCOL.md section 2 L9-L15, section 3 L18-L20, section 4 L23-L24, section 9 L50-L51",
+    "PKG/04_CATALOGUE_OOV_AND_POPULATION.md section 2 L9-L16, section 3 L19-L23, section 4 L26-L28, section 5 L31",
+    "PKG/09_EVALUATION_AND_COLD_START.md section 1 L4-L6, section 2 L9-L10, section 4 L19-L20, section 5 L23-L28",
+    "PKG/12_ACCEPTANCE_TESTS.md T02 L7, T03-T07 L8-L12, T23 L32, T35-T41 L46-L52, T45 L58, T48 L61",
+    "REV/G0_PLAN_FABLE_POSITION.md decisions 1 L13-L17, 2 L19-L21, 3 L23-L25, 7 L40-L47, 8 L49 and LOCK_VALUES L55-L65",
+    "REV/G0B_PROTOCOL_FABLE_POSITION.md (binding G0(b) ruling): C1 L11-L14, C3 L18, C4 L20, C5 L22, C6 L24 and LOCK_VALUES delta L30-L35"
+  ],
+  "build_sequence": {
+    "before_data_protocol_lock": ["M01_COHORT_TRAIN", "M05_CALIB_TRAIN", "M02_VALIDATION_WARM", "M06_CALIB_VALIDATION_WARM", "M03_COLD_PANEL_VAL", "M04_COLD_H_PANEL", "M04W_WARM_TRUNCATION_PANEL", "M04S_FEW_SHOT_SELECTION_PANEL", "BOOTSTRAP_W for each registered E2E user set"],
+    "rule": "All pre-lock manifests are built and hashed before DATA_PROTOCOL_LOCK / POPULATION_PLAN. The lock records their header hashes. No model sees a V4 VALIDATION score before the lock (PKG/03 section 9 L51).",
+    "only_after_fable_approval": [],
+    "only_after_fable_approval_note": "empty since R2: M04S was approved by REV/G0B_PROTOCOL_FABLE_POSITION.md C6 L24",
+    "only_after_all_methods_lock": ["M07_TEST_WARM", "M08_TEST_COLD_PANEL", "M09_TEST_COLD_H_PANEL (optional; only if ALL_METHODS_LOCK registers it)"]
+  },
+  "global_rules": {
+    "no_raw_ids": {
+      "rule": "No manifest, header, bootstrap file or register may contain a raw source identifier string. Only integer handles, the decision_id surrogate, and the salted pseudonym client_key_hex are allowed.",
+      "forbidden_columns": ["user_id", "product_id", "target_product_id", "user_session_raw", "derived_session_id", "category_id", "brand_resolved", "category_code", "client_idx"],
+      "allowed_identifier_columns": ["decision_id", "client_key_hex", "selection_key", "client_ord", "eval_user_key", "target_class", "query_decision_id", "support_decision_id", "permitted_first_decision_id"],
+      "allowed_string_columns": "Only the enum-typed columns declared in 'enums', plus client_key_hex (exactly 64 lowercase hexadecimal characters).",
+      "build_check": "The builder fails if a column name is in forbidden_columns, if any string column is neither enum-typed nor client_key_hex, if an enum value is unregistered, or if a client_key_hex value fails the pattern ^[0-9a-f]{64}$.",
+      "note_client_idx": "client_idx is forbidden as a column because it is the shared OOV token 2 for TRAIN-absent users (G0/feature_map/FEATURE_LOCALITY_MAP.md L178-L182). It is never an identity (CLIENT_CONTRACT_V1 C1.3).",
+      "source": ["V4/OWNER_SCOPE_V4.md constraints: no raw user IDs in shared reports", "CEN/CENSUS_README.md L5-L8", "DS1/DATA_CONTRACT.md L177-L207"]
+    },
+    "identity": {
+      "client_key_hex": "sha256(b'PPSI_V4_POPULATION_20260926' + b'|' + user_id.encode('utf-8')).hexdigest(), lowercase, 64 characters",
+      "selection_key": "int.from_bytes(sha256(b'PPSI_V4_POPULATION_20260926' + b'|' + user_id.encode('utf-8')).digest()[:8], 'big'), i.e. the first 16 hex characters of client_key_hex read as unsigned 64-bit big-endian; stored as uint64",
+      "selection_key_source": "CEN/COHORT_PROJECTIONS.json L4",
+      "salt": "PPSI_V4_POPULATION_20260926",
+      "uniqueness": "Within every manifest, and across the union of all manifests built so far, the count of distinct client_key_hex must equal the count of distinct user_id strings. Any collision is fatal. No two users of the universe U may share a selection_key; if they do, BLOCK and escalate.",
+      "client_ord_and_eval_user_key": "0-based dense rank of client_key_hex in ascending order, among the users present in that manifest; int64. Named client_ord in TRAIN manifests and eval_user_key in evaluation manifests. Cross-manifest joins use client_key_hex only.",
+      "source": ["CLIENT_CONTRACT_V1 section 1", "PKG/12 T02 L7", "PKG/09 section 1 L5"]
+    },
+    "timestamps": {
+      "encoding": "int64 microseconds since 1970-01-01T00:00:00Z (UTC), converted exactly from the ledger timestamp, with a round-trip assertion",
+      "sentinel_no_observed_target": -1,
+      "nulls": "forbidden in every column; sentinels only",
+      "bounds_us_note": "Split bounds are the half-open UTC intervals of EVALUATION_CONTRACT_V4 section 1.1 (PKG/03 section 2 L9-L13)."
+    },
+    "ordering": {
+      "train_manifests": "clients table ascending client_ord; decisions table ascending (client_ord, decision_id), so each client's rows form one contiguous range (PKG/12 T23 L32)",
+      "central_canonical_order": "ascending decision_id (GRU1 FULL_RUN_PROTOCOL.md L33), stored as a derived permutation with its own sha256",
+      "evaluation_manifests": "decisions table ascending decision_id (canonical order, GRU1 FULL_RUN_PROTOCOL.md L33, L61); users table ascending eval_user_key",
+      "cold_h_tables": "panel_queries ascending (panel_type enum order, h, eval_user_key); panel_support ascending (panel_type, h, eval_user_key, support_decision_id)"
+    },
+    "hashing": {
+      "algorithm": "sha256, lowercase hex",
+      "table_content_sha256": "sha256 over, for each column in the declared field order: uint32 little-endian byte length of the column name, the UTF-8 column name, one uint8 dtype code (1 int64, 2 uint64, 3 int32, 4 int8, 5 bool as uint8 0/1, 6 string), then the column payload in manifest row order. Fixed-width values are contiguous little-endian bytes. Each string value is a uint32 little-endian byte length followed by its UTF-8 bytes. The hash is independent of the Parquet writer.",
+      "ordered_decision_id_sha256": "sha256 over the int64 little-endian decision_id column, all rows, in manifest order",
+      "eval_ordered_decision_id_sha256": "the same, restricted to rows with eval_mask = true. This is the RESULT_ROW query_order_hash (PKG/templates/RESULT_ROW.template.json L11) and the prediction alignment key (PKG/09 section 1 L6).",
+      "rankable_ordered_decision_id_sha256": "the same, restricted to rows with rankable = true. T35 uses it to prove the rankable sets are identical across methods.",
+      "population_sha256": "sha256 over the concatenation of each selected user's 8-byte big-endian selection_key, in ascending key order (the definition of CEN/COHORT_PROJECTIONS.json L5)",
+      "user_set_sha256": "sha256 over the concatenated 32-byte digests (client_key_hex decoded), in ascending order, of the users in a given evaluated user set; identifies a bootstrap W",
+      "candidate_order_hash": "sha256 over, for output_class = 0..K-1 ascending: the int64 little-endian output_class, the uint32 little-endian byte length of product_id, then the product_id UTF-8 bytes, read from the frozen catalogue. It binds the class order that the tie rule depends on (EVALUATION_CONTRACT_V4 E6.1).",
+      "file_sha256": "sha256 of the written file bytes; integrity only, not identity",
+      "forbidden": "Python hash(), delimiter-joined identifier strings, and float-encoded identifiers (PKG/03 section 1 L5; DS1/DATA_CONTRACT.md L188-L193)"
+    },
+    "file_format": {
+      "tables": "one Parquet file per table: <manifest_id>.<table>.parquet",
+      "header": "<manifest_id>.header.json (strict JSON, no NaN)",
+      "atomicity": "write to a temporary file, fsync, verify the hashes, then rename. The success marker <manifest_id>.OK is written last and only after verification (PKG/12 T45 L58, T46 L59).",
+      "location": "V4/manifests/ locally and on the server (PENDING: Operations Director)"
+    },
+    "counts_by_cause": {
+      "rule": "Every manifest header carries counts by cause (PKG/03 section 9 L50).",
+      "fields": ["n_label_time_excluded", "n_oov_below_support", "n_oov_absent_from_train", "n_activity_filtered (must be 0: no user-activity filter, PKG/04 section 3 L19)", "n_split_reassigned (old VS/VC relabelled to VALIDATION)", "n_censor_CEN_NO_NEXT", "n_censor_CEN_LEGACY_BARRIER", "n_censor_CEN_RIGHT_EDGE", "n_censor_CEN_AMBIGUOUS_NEXT_BARRIER", "n_invalid_source_quarantined"]
+    },
+    "test_gate": {
+      "rule": "No RETRO_TEST row, label or feature is read, and no TEST manifest is built, unless ALL_METHODS_LOCK.json exists, its sha256 verifies, and a TEST_EXPOSURE_REGISTER entry with access_purpose MANIFEST_BUILD was appended first. The builder and the loader both refuse otherwise.",
+      "source": ["PKG/09 section 2 L10", "PKG/01_OPUS_MASTER_PROMPT.md L19", "PKG/13_PHASES_DELIVERABLES_AND_CLOSURE.md L22", "PKG/12 T48 L61"]
+    }
+  },
+  "enums": {
+    "old_split": ["TRAIN", "VALIDATION_SELECT", "VALIDATION_CONFIRM", "TEST"],
+    "v4_split": ["TRAIN", "VALIDATION", "RETRO_TEST"],
+    "subperiod": ["VAL_A_20191116_20191120", "VAL_B_20191120_20191123", "NONE"],
+    "target_status": ["OBSERVED_IN_PARTITION", "NO_OBSERVED_NEXT", "AMBIGUOUS_BOUNDARY", "BOUNDARY_UNRESOLVED", "OBSERVED_MATURED_IN_GRACE"],
+    "target_status_source": "CEN/CENSUS_README.md L121-L126 (values). Code-derived definitions: pipeline5.py:122-132, quoted in QA1/BOUNDARY_DEFINITIONS.md L49-L60 and L73-L113. NO_OBSERVED_NEXT, AMBIGUOUS_BOUNDARY and BOUNDARY_UNRESOLVED have target_product_id NULL, so has_observed_target, loss_mask and eval_mask are FALSE and target_class = -1 in every split (pipeline6.py:386-404; BOUNDARY_DEFINITIONS.md L115-L153).",
+    "next_split": ["TRAIN", "VALIDATION_SELECT", "VALIDATION_CONFIRM", "TEST", "LABEL_GRACE", "NONE"],
+    "next_block_type": ["SINGLE_ITEM", "AMBIGUOUS_TIME_BLOCK_BARRIER", "INVALID_PRODUCT_BARRIER", "NONE"],
+    "next_block_type_note": "The three block types are code-defined at pipeline4.py:78-81 (QA1/BOUNDARY_DEFINITIONS.md L17-L34). NONE means there is no next raw block (next_block_ts IS NULL). INVALID_PRODUCT_BARRIER never pairs with AMBIGUOUS_BOUNDARY in this dataset (BOUNDARY_DEFINITIONS.md L171-L172). Any other value stops the build.",
+    "censor_class": ["NONE", "CEN_NO_NEXT", "CEN_LEGACY_BARRIER", "CEN_RIGHT_EDGE", "CEN_AMBIGUOUS_NEXT_BARRIER"],
+    "censor_class_rules": "EVALUATION_CONTRACT_V4 section 2.2 (R2) and E2.1. CEN_NO_NEXT: status NO_OBSERVED_NEXT. CEN_LEGACY_BARRIER: status BOUNDARY_UNRESOLVED, old split VALIDATION_SELECT, next_split VALIDATION_CONFIRM. CEN_RIGHT_EDGE: status BOUNDARY_UNRESOLVED with next_split TEST or LABEL_GRACE. CEN_AMBIGUOUS_NEXT_BARRIER: every AMBIGUOUS_BOUNDARY row, including the 140 VS->VC rows (REV/G0B_PROTOCOL_FABLE_POSITION.md C5 L22). Precedence unchanged: CEN_LEGACY_BARRIER > CEN_RIGHT_EDGE > CEN_AMBIGUOUS_NEXT_BARRIER > CEN_NO_NEXT. NONE iff eval_mask = true.",
+    "censor_lock_values_full_validation": {
+      "CEN_LEGACY_BARRIER": 170,
+      "CEN_AMBIGUOUS_NEXT_BARRIER": 4489,
+      "CEN_RIGHT_EDGE": 152,
+      "CEN_NO_NEXT": 3064778,
+      "source": "REV/G0B_PROTOCOL_FABLE_POSITION.md L32",
+      "verified_against": "G0/BARRIER_COUNT.json L21 (170) and L16 (152); CEN/SPLIT_COUNTS.json L83 (4489) and L82 (3064778); with 11288056 OBSERVED_IN_PARTITION rows (L81) they sum to the 14357645 decisions (L73)"
+    },
+    "panel_label": ["COLD_START", "WARM_TRUNCATION", "RECIPE_SELECTION"],
+    "oov_cause": ["NONE", "BELOW_SUPPORT", "ABSENT_FROM_TRAIN", "NOT_APPLICABLE"],
+    "meta_token_state": ["KNOWN", "MISSING", "OOV", "NOT_APPLICABLE"],
+    "cold_stratum": ["WARM", "COLD_NO_TRAIN_EVENTS", "COLD_TRAIN_EVENTS_NO_LABEL"],
+    "panel_type": ["FIXED_50", "FIXED_20", "ALL_AVAILABLE"]
+  },
+  "field_dictionary": {
+    "decision_id": {"dtype": "int64", "definition": "Derived surrogate source_file_id * 1e11 + source_row_number; not a source or user identifier", "source": "DS1/DATA_CONTRACT.md L202-L204"},
+    "client_key_hex": {"dtype": "string(64 hex)", "definition": "Salted full sha256 pseudonym of user_id", "source": "global_rules.identity"},
+    "selection_key": {"dtype": "uint64", "definition": "First 8 bytes of the client_key_hex digest, big-endian", "source": "CEN/COHORT_PROJECTIONS.json L4"},
+    "client_ord": {"dtype": "int64", "definition": "Dense rank of client_key_hex within a TRAIN manifest", "source": "global_rules.identity"},
+    "eval_user_key": {"dtype": "int64", "definition": "Dense rank of client_key_hex within an evaluation manifest; the macro and bootstrap grouping key", "source": "REUSE/evaluator.py L140; REUSE/eval_full.py L364-L367"},
+    "decision_ts_us": {"dtype": "int64", "definition": "Decision time, UTC microseconds", "source": "global_rules.timestamps"},
+    "target_ts_us": {"dtype": "int64", "definition": "Observed target time, UTC microseconds; -1 if there is no observed target", "source": "global_rules.timestamps"},
+    "old_split": {"dtype": "enum old_split", "definition": "Split label in the frozen ledger", "source": "CEN/SPLIT_COUNTS.json L8-L69"},
+    "v4_split": {"dtype": "enum v4_split", "definition": "V4 split by half-open UTC bounds on decision_ts", "source": "PKG/03 section 2 L9-L12"},
+    "subperiod": {"dtype": "enum subperiod", "definition": "VAL_A for VALIDATION decisions in [2019-11-16, 2019-11-20); VAL_B for [2019-11-20, 2019-11-23); otherwise NONE", "source": "REV/G0_PLAN_FABLE_POSITION.md L25, L58"},
+    "target_status": {"dtype": "enum target_status", "definition": "Ledger target status", "source": "CEN/CENSUS_README.md L121-L126"},
+    "next_split": {"dtype": "enum next_split", "definition": "Ledger split of the next block; NONE if there is none", "source": "G0/barrier_count.py L10"},
+    "next_block_type": {"dtype": "enum next_block_type", "definition": "Ledger type of the next block; NONE if there is none", "source": "G0/barrier_count.py L10"},
+    "loss_mask": {"dtype": "bool", "definition": "Frozen ledger loss mask", "source": "DS1/DATA_CONTRACT.md L55"},
+    "eval_mask": {"dtype": "bool", "definition": "Frozen ledger eval mask; measured equal to has_observed_target in future partitions", "source": "DS1/DATA_CONTRACT.md L56; CEN/CENSUS_README.md L62-L66"},
+    "target_class": {"dtype": "int64", "definition": "Compact output class 0..158485, or -1 when there is no rankable target", "source": "DS1/DATA_CONTRACT.md L54, L130-L131"},
+    "target_oov": {"dtype": "bool", "definition": "Observed target outside the catalogue", "source": "DS1/DATA_CONTRACT.md L132-L134"},
+    "target_train_support": {"dtype": "int64", "definition": "TRAIN support count of the target product (TRAIN ledger rows with that product as the context item); -1 if there is no observed target", "source": "CEN/CATALOGUE_SUPPORT.json L3"},
+    "oov_cause": {"dtype": "enum oov_cause", "definition": "ABSENT_FROM_TRAIN if target_oov and support = 0; BELOW_SUPPORT if target_oov and 1 <= support <= 4; NONE if the target is rankable; NOT_APPLICABLE if there is no observed target", "source": "PKG/04 section 2 L11-L12"},
+    "rankable": {"dtype": "bool", "definition": "eval_mask AND target_class >= 0", "source": "REUSE/eval_full.py L162"},
+    "target_class_cohort_train_positives": {"dtype": "int64", "definition": "Number of cohort-TRAIN eligible examples whose target_class equals this row's target_class, counted over M01 (or M05 for calibration manifests); -1 if the row is not rankable. Diagnostic only: identifies ranked classes that no cohort client trained on.", "source": "QA1/COHORT_RECEIPTS.json L6, L51-L54"},
+    "censor_class": {"dtype": "enum censor_class", "definition": "Censoring class for rows with eval_mask = false; NONE otherwise", "source": "EVALUATION_CONTRACT_V4 section 2.2"},
+    "target_category_state": {"dtype": "enum meta_token_state", "definition": "Category token state of the target product under the frozen end-of-TRAIN metadata snapshot; NOT_APPLICABLE if there is no observed target", "source": "PKG/04 section 2 L13; G0/feature_map/FEATURE_LOCALITY_MAP.md L233-L237"},
+    "target_brand_state": {"dtype": "enum meta_token_state", "definition": "As above, for brand", "source": "same"},
+    "target_main_category_state": {"dtype": "enum meta_token_state", "definition": "As above, for main category", "source": "same"},
+    "cold_stratum": {"dtype": "enum cold_stratum", "definition": "WARM if >= 1 eligible TRAIN example; COLD_NO_TRAIN_EVENTS if 0 TRAIN ledger rows; COLD_TRAIN_EVENTS_NO_LABEL if >= 1 TRAIN ledger row and 0 eligible examples", "source": "REV/G0_PLAN_FABLE_POSITION.md L17; CLIENT_CONTRACT_V1 C3.2"},
+    "n_train_events": {"dtype": "int64", "definition": "User's TRAIN ledger row count", "source": "CLIENT_CONTRACT_V1 C3.2"},
+    "n_eligible_train_examples": {"dtype": "int64", "definition": "User's TRAIN-eligible example count", "source": "CEN/CLIENT_CENSUS.json L3"},
+    "in_calib_prefix": {"dtype": "bool", "definition": "User is among the 65,536 smallest selection keys", "source": "CEN/COHORT_PROJECTIONS.json L3880; REV/G0_PLAN_FABLE_POSITION.md L44"}
+  },
+  "common_header_fields": [
+    "manifest_id", "spec_id", "spec_version", "status", "build_utc", "builder_code_sha256",
+    "dataset_version_hash", "dataset_code_hash", "feature_schema_version", "feature_schema_self_sha256", "data_protocol_lock_sha256", "population_lock_sha256", "salt",
+    "catalogue_K", "candidate_order_hash", "parent_manifests", "tables",
+    "ordered_decision_id_sha256", "eval_ordered_decision_id_sha256", "rankable_ordered_decision_id_sha256",
+    "population_sha256", "n_users", "n_decisions", "n_eval_rows", "n_rankable_rows",
+    "counts_by_cause", "expected_counts_check", "observed_enum_values",
+    "previously_seen_evaluation_period", "all_methods_lock_sha256", "test_exposure_register_entry_id"
+  ],
+  "common_header_values": {
+    "dataset_version_hash": "860e5a1c3a81b8e4bbfeff4f245fa37638a43e4f260df179585964d2d4da8dbd",
+    "dataset_version_hash_source": "CEN/CENSUS_README.md L3-L5",
+    "dataset_code_hash": "02fbb07147ed9c0ba54092dd4ee042ce6af42a06145178017999fb7b242dde73",
+    "dataset_code_hash_source": "QA1/CODE_AND_FLAG_CHECKS.json L4-L9 (recomputed from the local source; equal to protocol.resolved.yaml and VERSION.json)",
+    "feature_schema_version": "2.1.0",
+    "feature_schema_self_sha256": "55a244e1608bcdcdf6f1728595f534871b52154faebf2977e11ac1fb487052f9",
+    "feature_schema_source": "V4/contracts/FEATURE_SCHEMA_CLEAN_V2.json L3-L5. The header records the schema version and self-hash current at build; the builder recomputes the self-hash with the canonicalization in L5 and stops on any mismatch.",
+    "salt": "PPSI_V4_POPULATION_20260926",
+    "catalogue_K": 158486,
+    "catalogue_K_source": "REV/G0_PLAN_FABLE_POSITION.md L57; CEN/CATALOGUE_SUPPORT.json L7-L13",
+    "previously_seen_evaluation_period": true,
+    "previously_seen_source": "PKG/03 section 4 L24; PKG/templates/RESULT_ROW.template.json L44",
+    "data_protocol_lock_sha256": "PENDING until DATA_PROTOCOL_LOCK; the header is re-issued with it before training",
+    "all_methods_lock_sha256": "null for pre-lock manifests; required for TEST manifests",
+    "tables_entry_shape": "each entry: table, row_count, table_content_sha256, file_sha256",
+    "expected_counts_check_shape": "each entry: field, expected, expected_source, observed, match (bool); any false blocks the build"
+  },
+  "manifests": [
+    {
+      "manifest_id": "M01_COHORT_TRAIN",
+      "purpose": "Supervised TRAIN examples of the locked cohort, for Central, FA, FP, PF, CPF and LO, plus the family contest",
+      "population": "cohort(262144): the 262,144 smallest selection keys of U (users with >= 1 TRAIN-eligible example at support >= 5)",
+      "population_source": "CEN/COHORT_PROJECTIONS.json L3-L5; REV/G0_PLAN_FABLE_POSITION.md L13-L16, L56",
+      "row_filter": "old_split = TRAIN AND loss_mask = true AND target_class >= 0 AND target_ts < 2019-11-16T00:00:00Z",
+      "row_filter_source": "CEN/CLIENT_CENSUS.json L3; PKG/03 section 3 L18",
+      "tables": [
+        {"table": "clients", "grain": "one row per cohort client", "order": "client_ord ascending",
+         "fields": ["client_ord", "client_key_hex", "selection_key", "n_eligible_train_examples", "row_start", "row_count", "in_calib_prefix"],
+         "field_notes": {"row_start": "int64 offset of the client's first row in the decisions table", "row_count": "int64 number of the client's rows; equals n_eligible_train_examples"}},
+        {"table": "decisions", "grain": "one row per supervised TRAIN example", "order": "(client_ord, decision_id) ascending",
+         "fields": ["decision_id", "client_ord", "decision_ts_us", "target_ts_us", "target_class", "target_status", "old_split"]}
+      ],
+      "expected_counts": [
+        {"field": "n_users", "expected": 262144, "source": "CEN/COHORT_PROJECTIONS.json L3884"},
+        {"field": "n_decisions", "expected": 3906929, "source": "CEN/COHORT_PROJECTIONS.json L3885"},
+        {"field": "population_sha256", "expected": "54e1d3c2539fd4cd7fe22d2b8ef91bed1a786d69be27867406bb19141ac48184", "source": "CEN/COHORT_PROJECTIONS.json L7188"},
+        {"field": "per_client_examples_min", "expected": 1, "source": "CEN/COHORT_PROJECTIONS.json L3887"},
+        {"field": "per_client_examples_p50", "expected": 6, "source": "CEN/COHORT_PROJECTIONS.json L3890"},
+        {"field": "per_client_examples_max", "expected": 3014, "source": "CEN/COHORT_PROJECTIONS.json L3896"},
+        {"field": "n_in_calib_prefix", "expected": 65536, "source": "CEN/COHORT_PROJECTIONS.json L3880 (prefix hash); L1588"}
+      ],
+      "assertions": [
+        "every target_ts_us < TRAIN_END and != -1 (PKG/12 T04 L9)",
+        "every target_class in [0, 158485]; every target_status = OBSERVED_IN_PARTITION",
+        "every client has row_count >= 1 (no zero-label clients in the warm cohort; CLIENT_CONTRACT_V1 C4.2)",
+        "client row ranges are contiguous, disjoint and cover every decisions row (PKG/12 T23 L32)",
+        "client_key_hex unique; no two users share a selection_key",
+        "the calibration prefix is exactly the first 65,536 clients in client_ord order (nested prefix, CEN/COHORT_PROJECTIONS.json L13043-L13046)"
+      ],
+      "derived": ["central_canonical_order permutation (ascending decision_id) with its sha256"]
+    },
+    {
+      "manifest_id": "M05_CALIB_TRAIN",
+      "purpose": "CALIB_PARTITION for the central LR calibration and the FL mu/lambda/local-LR calibration",
+      "population": "the nested 65,536 prefix of M01 (in_calib_prefix = true)",
+      "population_source": "REV/G0_PLAN_FABLE_POSITION.md L44, L56",
+      "parent": "M01_COHORT_TRAIN",
+      "tables": "same schema as M01; client_ord re-densified within M05",
+      "expected_counts": [
+        {"field": "n_users", "expected": 65536, "source": "CEN/COHORT_PROJECTIONS.json L1588"},
+        {"field": "n_decisions", "expected": 990362, "source": "CEN/COHORT_PROJECTIONS.json L1589"},
+        {"field": "population_sha256", "expected": "3d680aa7222fb5c9246d03fe6088464c78095d90a344e3453acb68e98d53a6f4", "source": "CEN/COHORT_PROJECTIONS.json L3880"}
+      ],
+      "assertions": ["every M05 row is an M01 row with identical field values (join on decision_id)"]
+    },
+    {
+      "manifest_id": "M02_VALIDATION_WARM",
+      "purpose": "PRIMARY evaluation manifest: family selection, checkpoint selection and every VALIDATION comparison",
+      "population": "every VALIDATION decision (old VALIDATION_SELECT or VALIDATION_CONFIRM) of M01 clients, including censored rows so that the counts by cause are reproducible",
+      "population_source": "REV/G0_PLAN_FABLE_POSITION.md L49; PKG/03 section 2 L11, L14-L15",
+      "tables": [
+        {"table": "users", "grain": "one row per cohort client with >= 1 VALIDATION decision", "order": "eval_user_key ascending",
+         "fields": ["eval_user_key", "client_key_hex", "n_validation_decisions", "n_eval_rows", "n_rankable_rows"]},
+        {"table": "decisions", "grain": "one row per VALIDATION decision", "order": "decision_id ascending",
+         "fields": ["decision_id", "eval_user_key", "decision_ts_us", "target_ts_us", "old_split", "v4_split", "subperiod", "target_status", "next_split", "next_block_type", "eval_mask", "target_class", "target_oov", "target_train_support", "oov_cause", "rankable", "target_class_cohort_train_positives", "censor_class", "target_category_state", "target_brand_state", "target_main_category_state"]}
+      ],
+      "expected_counts": [
+        {"field": "n_eval_rows", "expected": 808610, "source": "CEN/COHORT_PROJECTIONS.json L6056; QA1/COHORT_RECEIPTS.json L47"},
+        {"field": "n_users_with_ge1_eval_row", "expected": 62368, "source": "CEN/COHORT_PROJECTIONS.json L6057"},
+        {"field": "n_rankable_rows", "expected": 801762, "source": "QA1/COHORT_RECEIPTS.json L45"},
+        {"field": "n_oov_rows", "expected": 6848, "source": "QA1/COHORT_RECEIPTS.json L46"},
+        {"field": "n_classes_with_ge1_cohort_train_positive", "expected": 133154, "source": "QA1/COHORT_RECEIPTS.json L51"},
+        {"field": "n_validation_target_classes_with_zero_cohort_train_positives", "expected": 5158, "source": "QA1/COHORT_RECEIPTS.json L54"},
+        {"field": "counts_by_cause", "expected": "PENDING_RECEIPT", "source": "builder"}
+      ],
+      "assertions": [
+        "decision_ts_us in [2019-11-16T00:00Z, 2019-11-23T00:00Z) (PKG/12 T03 L8)",
+        "eval_mask == (target_status = OBSERVED_IN_PARTITION) (MEASURED for full VALIDATION: CEN/SPLIT_COUNTS.json L76, L81)",
+        "censor_class = NONE iff eval_mask; exactly one censor_class otherwise",
+        "rankable == eval_mask AND target_class >= 0; target_oov implies eval_mask AND target_class = -1",
+        "no eval row has target_ts_us >= VALIDATION_END (CEN/LABEL_TIME_AUDIT.json L20-L23)",
+        "subperiod VAL_A iff old_split = VALIDATION_SELECT; VAL_B iff old_split = VALIDATION_CONFIRM",
+        "every client_key_hex is present in M01.clients"
+      ]
+    },
+    {
+      "manifest_id": "M06_CALIB_VALIDATION_WARM",
+      "purpose": "Calibration-only VALIDATION manifest for M05 (LR, mu, lambda and local-LR selection); never used for family selection or headline claims",
+      "population": "the M02 rows of in_calib_prefix users",
+      "population_source": "REV/G0_PLAN_FABLE_POSITION.md L37, L44",
+      "parent": "M02_VALIDATION_WARM",
+      "tables": "same schema as M02; eval_user_key re-densified within M06",
+      "expected_counts": [
+        {"field": "n_eval_rows", "expected": 200985, "source": "CEN/COHORT_PROJECTIONS.json L3084; QA1/COHORT_RECEIPTS.json L26"},
+        {"field": "n_users_with_ge1_eval_row", "expected": 15487, "source": "CEN/COHORT_PROJECTIONS.json L3085"},
+        {"field": "n_rankable_rows", "expected": 199276, "source": "QA1/COHORT_RECEIPTS.json L24"},
+        {"field": "n_oov_rows", "expected": 1709, "source": "QA1/COHORT_RECEIPTS.json L25"},
+        {"field": "n_classes_with_ge1_cohort_train_positive", "expected": 90545, "source": "QA1/COHORT_RECEIPTS.json L30"},
+        {"field": "n_validation_target_classes_with_zero_cohort_train_positives", "expected": 7619, "source": "QA1/COHORT_RECEIPTS.json L33"}
+      ],
+      "assertions": ["every M06 row equals its M02 row on every field except eval_user_key"]
+    },
+    {
+      "manifest_id": "M03_COLD_PANEL_VAL",
+      "purpose": "Secondary cold-user evaluation for every method (COLD_PANEL_VAL)",
+      "population": "every VALIDATION decision of users with >= 1 VALIDATION eval row and zero TRAIN-eligible examples",
+      "population_source": "CEN/CLIENT_CENSUS.json L3971; REV/G0_PLAN_FABLE_POSITION.md L17",
+      "tables": [
+        {"table": "users", "grain": "one row per cold user", "order": "eval_user_key ascending",
+         "fields": ["eval_user_key", "client_key_hex", "selection_key", "cold_stratum", "n_train_events", "n_validation_decisions", "n_eval_rows", "n_rankable_rows"]},
+        {"table": "decisions", "grain": "one row per VALIDATION decision", "order": "decision_id ascending",
+         "fields": "same as M02.decisions"}
+      ],
+      "expected_counts": [
+        {"field": "n_users_with_ge1_eval_row", "expected": 381295, "source": "CEN/CLIENT_CENSUS.json L3971"},
+        {"field": "n_users_COLD_NO_TRAIN_EVENTS", "expected": 299035, "source": "QA1/COLD_STRATA.json L15"},
+        {"field": "n_eval_rows_COLD_NO_TRAIN_EVENTS", "expected": 2270516, "source": "QA1/COLD_STRATA.json L16"},
+        {"field": "n_users_COLD_TRAIN_EVENTS_NO_LABEL", "expected": 82260, "source": "QA1/COLD_STRATA.json L11"},
+        {"field": "n_eval_rows_COLD_TRAIN_EVENTS_NO_LABEL", "expected": 587149, "source": "QA1/COLD_STRATA.json L12"},
+        {"field": "n_rankable_rows", "expected": "PENDING_RECEIPT", "source": "builder"}
+      ],
+      "assertions": [
+        "cold_stratum != WARM for every user; n_eligible_train_examples = 0 for every user",
+        "COLD_NO_TRAIN_EVENTS iff the user is absent from DS1 mappings/clients.parquet (row count = TRAIN distinct users, CEN/CENSUS_README.md L82-L87)",
+        "no user of M03 is in M01 (disjoint from the warm cohort)",
+        "all M02 assertions that apply to decisions"
+      ]
+    },
+    {
+      "manifest_id": "M04_COLD_H_PANEL",
+      "purpose": "Cold-start h-truncation study (CONTEXT_ONLY and FEW_SHOT_ADAPTATION), h in {0, 1, 5, 10, 20, 50}",
+      "panel_label": "COLD_START",
+      "definition_status": "BINDING: candidate A (REV/G0B_PROTOCOL_FABLE_POSITION.md C4 L20, LOCK_VALUES L34)",
+      "population": "the 16,384 M03 (cold) users with the smallest population selection_key (salt PPSI_V4_POPULATION_20260926)",
+      "population_source": "REV/G0B_PROTOCOL_FABLE_POSITION.md L20, L34; REV/G0_PLAN_FABLE_POSITION.md L17, L56; PKG/09 section 5 L23-L27; CLIENT_CONTRACT_V1 C3.4",
+      "historical_only_receipt": {
+        "status": "HISTORICAL_ONLY: QA-01 candidate B, not a V4 panel (REV/G0B_PROTOCOL_FABLE_POSITION.md L20)",
+        "population": "all VALIDATION(union) users with >= 50 VALIDATION(union) decision rows of any kind, warm or cold; the 16,384 smallest keys under int.from_bytes(sha256(b'PPSI_V4_COLD_H_20260926' + b'|' + user_id.encode('utf-8')).digest()[:8], 'big')",
+        "source": "QA1/COLD_H_PANEL.json L3-L5",
+        "qualifying_users": 45572,
+        "qualifying_users_source": "QA1/COLD_H_PANEL.json L9",
+        "selected_users": 16384,
+        "selected_users_source": "QA1/COLD_H_PANEL.json L10-L12",
+        "selected_keys_sha256_hex": "1ce796f115cf347199e83736f84ff679a67897898eaf7fa2b7bfa81a88bfed91",
+        "selected_keys_sha256_source": "QA1/COLD_H_PANEL.json L13",
+        "warm_users": 13767,
+        "cold_users": 2617,
+        "warm_cold_source": "QA1/COLD_H_PANEL.json L14-L16"
+      },
+      "tables": [
+        {"table": "panel_users", "grain": "one row per panel user", "order": "eval_user_key ascending",
+         "fields": ["eval_user_key", "client_key_hex", "selection_key", "cold_stratum", "fixed50_eligible", "fixed20_eligible"],
+         "field_notes": {"fixed50_eligible": "bool: has an E2E VALIDATION decision with >= 50 prior observed events", "fixed20_eligible": "bool: the same with >= 20", "selection_key": "the population selection key (salt PPSI_V4_POPULATION_20260926); no other salt is used for any V4 panel", "cold_stratum": "COLD_NO_TRAIN_EVENTS or COLD_TRAIN_EVENTS_NO_LABEL in M04 and M04S; WARM in M04W"}},
+        {"table": "panel_queries", "grain": "one row per (panel_type, h, user) where the user is eligible", "order": "(panel_type, h, eval_user_key) ascending",
+         "fields": ["panel_type", "h", "eval_user_key", "query_decision_id", "query_decision_ts_us", "n_prior_events_available", "n_permitted_events", "permitted_first_decision_id", "n_support_labels", "query_rankable", "query_target_class"],
+         "field_notes": {"h": "int32 in {0,1,5,10,20,50}; FIXED_20 uses h <= 20", "permitted_first_decision_id": "decision_id of the earliest permitted prior event; -1 when h = 0", "n_permitted_events": "equals h"}},
+        {"table": "panel_support", "grain": "one row per support label", "order": "(panel_type, h, eval_user_key, support_decision_id) ascending",
+         "fields": ["panel_type", "h", "eval_user_key", "support_decision_id", "support_target_ts_us", "support_target_class"]}
+      ],
+      "query_rules": "EVALUATION_CONTRACT_V4 section 11.2: an observed event is a TRAIN or VALIDATION ledger row of the user, ordered by (decision_ts, decision_id); the query's own event is not counted in h; FIXED panels use one query per user, the same for every h; ALL_AVAILABLE(h) uses the earliest E2E VALIDATION decision with >= h prior events",
+      "support_rules": "EVALUATION_CONTRACT_V4 section 11.3: the source event is in the permitted history; the target is observed, uncensored and target_class >= 0; support_target_ts_us < query_decision_ts_us strictly",
+      "expected_counts": [
+        {"field": "n_users", "expected": 16384, "source": "REV/G0B_PROTOCOL_FABLE_POSITION.md L20, L34; REV/G0_PLAN_FABLE_POSITION.md L56"},
+        {"field": "n_warm", "expected": 0, "source": "candidate A draws from M03 only (REV/G0B_PROTOCOL_FABLE_POSITION.md L20)"},
+        {"field": "population_sha256", "expected": "PENDING_RECEIPT (computed at build)", "source": "builder"},
+        {"field": "stratum_mix_COLD_NO_TRAIN_EVENTS_vs_COLD_TRAIN_EVENTS_NO_LABEL", "expected": "PENDING_RECEIPT (reported, never used to select)", "source": "builder"},
+        {"field": "eligibility_counts_FIXED_50_FIXED_20_ALL_AVAILABLE_h", "expected": "PENDING_RECEIPT (reported, never used to select)", "source": "builder"}
+      ],
+      "assertions": [
+        "every support_target_ts_us < query_decision_ts_us of the same (panel_type, h, user) (PKG/12 T40 L51)",
+        "no support label is the query transition, and the query target is never support",
+        "n_support_labels may be 0 (h = 1 must allow 0 labels, T40)",
+        "FIXED_50 and FIXED_20: query_decision_id is identical for every h of a user",
+        "ALL_AVAILABLE(h): n_prior_events_available >= h",
+        "exactly one query per user per sub-panel (and per h for ALL_AVAILABLE)",
+        "the panel users are exactly the first 16,384 M03 users in ascending population selection_key; every one has cold_stratum != WARM"
+      ],
+      "status_notes": "Confirmed by REV/G0B_PROTOCOL_FABLE_POSITION.md C6 L24: h = 0 means the query event only (context length 1), FIXED_20 is added, one query per user per sub-panel. LIMITATION: FIXED_50 support is small, so ALL_AVAILABLE and FIXED_20 carry the study (G0B risks L42)."
+    },
+    {
+      "manifest_id": "M04W_WARM_TRUNCATION_PANEL",
+      "panel_label": "WARM_TRUNCATION",
+      "purpose": "Warm-history truncation panel for the T41 leakage negative control and the warm-p_u evaluation of PKG/09 section 5 L27. It is never labelled or pooled as cold start.",
+      "definition_status": "BINDING (REV/G0B_PROTOCOL_FABLE_POSITION.md C4 L20, LOCK_VALUES L34)",
+      "population": "the 16,384 users with the smallest population selection_key among the M02 users with >= 1 E2E VALIDATION row (62,368 users); nested in the population key order; no new salt",
+      "population_source": "REV/G0B_PROTOCOL_FABLE_POSITION.md L20, L34; REV/G0_PLAN_FABLE_POSITION.md L49; CEN/COHORT_PROJECTIONS.json L6057",
+      "parent": "M02_VALIDATION_WARM",
+      "tables": "same schema as M04 (panel_users, panel_queries, panel_support); cold_stratum = WARM for every user",
+      "query_rules": "as M04",
+      "support_rules": "as M04",
+      "expected_counts": [
+        {"field": "n_users", "expected": 16384, "source": "REV/G0B_PROTOCOL_FABLE_POSITION.md L34"},
+        {"field": "population_sha256", "expected": "PENDING_RECEIPT (computed at build)", "source": "builder"},
+        {"field": "eligibility_counts_FIXED_50_FIXED_20_ALL_AVAILABLE_h", "expected": "PENDING_RECEIPT (reported, never used to select)", "source": "builder"}
+      ],
+      "assertions": [
+        "every panel user is an M01 client and an M02 user with >= 1 E2E row",
+        "the panel is exactly the first 16,384 such users in ascending population selection_key",
+        "cold_stratum = WARM for every user",
+        "all M04 query and support assertions"
+      ],
+      "note": "INFERENCE: this is not the 16,384-user cohort prefix (CEN/COHORT_PROJECTIONS.json L1584), which includes cohort users with no VALIDATION query."
+    },
+    {
+      "manifest_id": "M04S_FEW_SHOT_SELECTION_PANEL",
+      "panel_label": "RECIPE_SELECTION",
+      "status": "BINDING (REV/G0B_PROTOCOL_FABLE_POSITION.md C6 L24, LOCK_VALUES L34)",
+      "purpose": "Disjoint VALIDATION panel for selecting the frozen FEW_SHOT adaptation recipe (PKG/09 section 5 L26)",
+      "population": "the M03 users at population selection_key ranks 16,384 to 32,767 (0-based), disjoint from M04",
+      "tables": "same schema as M04",
+      "expected_counts": [
+        {"field": "n_users", "expected": 16384, "source": "ranks 16,384 to 32,767 (REV/G0B_PROTOCOL_FABLE_POSITION.md L24)"}
+      ],
+      "rule": "The recipe grid (p_u-only adaptation for PF and CPF, full local-model adaptation for LO, local passes {1, 2, 4}, locked personal LR and lambda) is registered at ARCHITECTURE_LOCK. It is selected once, on M04S FIXED_20, before any M04 outcome. M04 outcomes never select a recipe."
+    },
+    {
+      "manifest_id": "M07_TEST_WARM",
+      "status": "BUILD_ONLY_AFTER_ALL_METHODS_LOCK",
+      "purpose": "Retrospective TEST for the registered methods on the cohort",
+      "population": "every RETRO_TEST decision (ledger old_split = TEST) of M01 clients, including censored rows",
+      "precondition": "global_rules.test_gate",
+      "tables": "same schema as M02, with v4_split = RETRO_TEST, subperiod = NONE, target_status including OBSERVED_MATURED_IN_GRACE, and an extra bool field grace_matured",
+      "censor_rules": "As EVALUATION_CONTRACT_V4 section 2.2, with VALIDATION_END replaced by the end of LABEL_GRACE (2019-12-01T00:00Z) for maturation; LABEL_GRACE matures RETRO_TEST targets only (PKG/03 section 2 L13, section 3 L19). OBSERVED_MATURED_IN_GRACE is a TEST tail decision whose next run-run falls in LABEL_GRACE (pipeline5.py:122-132; QA1/BOUNDARY_DEFINITIONS.md L78-L85).",
+      "build_time_check": "Verify from pipeline5.py:59-76 (rr_next) that grace maturation respects the session constraint of PKG/03 section 3 L19. The receipt describes rr_next as fence-ignoring within the same behavioural run (BOUNDARY_DEFINITIONS.md L66-L69, L78-L81).",
+      "expected_counts": "none pre-registered; the G0 TEST structural counts are compared only after the lock, as an integrity check",
+      "header_extra": ["all_methods_lock_sha256 (required)", "test_exposure_register_entry_id (required)"]
+    },
+    {
+      "manifest_id": "M08_TEST_COLD_PANEL",
+      "status": "BUILD_ONLY_AFTER_ALL_METHODS_LOCK",
+      "purpose": "Retrospective TEST on cold users",
+      "population": "every RETRO_TEST decision of users with >= 1 RETRO_TEST eval row and zero TRAIN-eligible examples",
+      "precondition": "global_rules.test_gate",
+      "tables": "same schema as M03, with the M07 changes",
+      "expected_counts": "none pre-registered"
+    },
+    {
+      "manifest_id": "M09_TEST_COLD_H_PANEL",
+      "status": "OPTIONAL_BUILD_ONLY_IF_REGISTERED_IN_ALL_METHODS_LOCK",
+      "purpose": "Retrospective TEST replication of the h study, only if ALL_METHODS_LOCK registers it",
+      "precondition": "global_rules.test_gate",
+      "tables": "same schema as M04, with queries drawn from RETRO_TEST decisions",
+      "expected_counts": "none pre-registered"
+    }
+  ],
+  "bootstrap": {
+    "id_pattern": "BOOT_<manifest_id>[_<panel_type>_h<h>]",
+    "unit": "user (eval_user_key) of one E2E user set: users with >= 1 eval_mask row in the population",
+    "n_resamples": 1000,
+    "seed": 20260926,
+    "seed_source": "REV/G0_PLAN_FABLE_POSITION.md L49, L64; PKG/09 section 4 L19",
+    "algorithm": "users sorted ascending by eval_user_key; rng = numpy.random.default_rng(20260926); for r in range(1000): W[r] = rng.integers(0, n_users, size=n_users); stored or regenerated as int32 row-major [1000, n_users]",
+    "algorithm_source": "REUSE/eval_full.py L418-L421, L433-L436 (seed changed from the legacy default 2026 at L405)",
+    "header_fields": ["boot_id", "manifest_id", "user_set_sha256", "n_users", "n_resamples", "seed", "numpy_version", "W_sha256"],
+    "W_sha256": "sha256 over the int32 little-endian row-major bytes of W",
+    "sharing_rule": "One W per distinct E2E user set, reused by every method, seed and contrast on that set. RANKABLE statistics use the same draw (users with an empty rankable set are skipped with multiplicity). The FIXED cold panels share one W across h; ALL_AVAILABLE has one W per h.",
+    "regeneration_rule": "W may be regenerated instead of stored; its registered W_sha256 is verified before every use",
+    "required_sets": ["M02 E2E users (expected n_users 62368, CEN/COHORT_PROJECTIONS.json L6057)", "M03 E2E users (expected 381295, CEN/CLIENT_CENSUS.json L3971)", "M04 FIXED_50, FIXED_20 and each ALL_AVAILABLE(h)", "M04W FIXED_50, FIXED_20 and each ALL_AVAILABLE(h)", "M04S: none required; recipe selection uses point estimates on FIXED_20", "M06 E2E users (expected 15487, CEN/COHORT_PROJECTIONS.json L3085), optional, descriptive only"]
+  },
+  "registers": {
+    "TEST_EXPOSURE_REGISTER": {
+      "file": "TEST_EXPOSURE_REGISTER.json (PKG/13_PHASES_DELIVERABLES_AND_CLOSURE.md L22); location PENDING (Operations Director)",
+      "structure": "strict JSON object {register_id, spec_version, entries: [...]}; append-only; each entry is hash-chained through prev_entry_sha256",
+      "entry_fields": {
+        "entry_id": "int, sequential from 1",
+        "utc": "ISO-8601 UTC timestamp",
+        "actor_role": "company role, e.g. OPERATIONS_DIRECTOR or EVALUATION_LEAD; never a personal identifier beyond the role",
+        "source": "dataset_version_hash plus the files or manifests read",
+        "split": "RETRO_TEST or LEGACY_TEST",
+        "access_purpose": "one of HISTORICAL_PRIOR_EXPOSURE, STRUCTURAL_COUNT, MANIFEST_BUILD, LOCKED_EVALUATION, RESTART_INCOMPLETE, INTEGRITY_CHECK",
+        "observations": "one of NONE, COUNTS_ONLY, METRICS; plus a free-text description without values for pre-lock entries",
+        "decision": "the decision taken on this exposure; must be NO_FEEDBACK for every entry after ALL_METHODS_LOCK",
+        "all_methods_lock_sha256": "required except for HISTORICAL_PRIOR_EXPOSURE and STRUCTURAL_COUNT entries",
+        "manifest_header_sha256": "string or null",
+        "model_checkpoint_sha256": "list of strings",
+        "code_sha256": "list of strings",
+        "receipt_path": "string",
+        "prev_entry_sha256": "sha256 of the previous entry's canonical JSON, or null for entry 1",
+        "entry_sha256": "sha256 of this entry's canonical JSON excluding entry_sha256"
+      },
+      "source": ["PKG/03 section 4 L24 (source, split, access purpose, observations, decision, timestamp)", "PKG/09 section 2 L10"],
+      "seed_entries_required": [
+        "HISTORICAL_PRIOR_EXPOSURE: earlier campaigns' TEST evaluations, by path and date only, no values (PKG/09 section 2 L10: old TEST has been observed); PENDING, Operations Director",
+        "STRUCTURAL_COUNT: the G0 data census files that contain RETRO_TEST structural counts (CEN/SPLIT_COUNTS.json L54-L69 and L87-L102, CEN/CLIENT_CENSUS.json L3973-L3977, CEN/LABEL_TIME_AUDIT.json L29-L33, G0/BARRIER_COUNT.json L4-L6); counts only, no model outcome",
+        "STRUCTURAL_COUNT: the QA-01 receipts that contain RETRO_TEST structural counts (QA1/BOUNDARY_DEFINITIONS.md L164 and L195-L196, QA1/COLD_STRATA.json L19-L28); counts only, no model outcome"
+      ]
+    }
+  },
+  "pending": [
+    {"id": "MP1", "item": "Prose definitions of AMBIGUOUS_BOUNDARY and BOUNDARY_UNRESOLVED, and the next_block_type values", "owner": "RESOLVED in R1 by QA-01 (QA1/BOUNDARY_DEFINITIONS.md)"},
+    {"id": "MP2", "item": "Resolved in R1: M02/M06 rankable and OOV counts, class counts, cold-strata counts (QA1/COHORT_RECEIPTS.json, QA1/COLD_STRATA.json). Still open: counts_by_cause for every manifest, and M03/M04 rankable counts", "owner": "PENDING_RECEIPT (builder)"},
+    {"id": "MP3", "item": "data_protocol_lock_sha256 and the I_META_RANDOM snapshot hash in every header", "owner": "DATA_PROTOCOL_LOCK"},
+    {"id": "MP4", "item": "M04 population, M04S approval, h = 0 / FIXED_20 / one query per user, placement of the 140 AMBIGUOUS VS->VC rows", "owner": "RESOLVED by G0(b): REV/G0B_PROTOCOL_FABLE_POSITION.md C4 L20, C5 L22, C6 L24"},
+    {"id": "MP6", "item": "F-1 values written into FEATURE_SCHEMA_CLEAN_V2 normalized_channels_v2 and rezero_map_v2 (version bump, self-hash) before any manifest header records the feature contract", "owner": "RESOLVED by DATA in schema version 2.1.0 (V4/contracts/FEATURE_SCHEMA_CLEAN_V2.json L3-L4, L555, L567)"},
+    {"id": "MP5", "item": "Manifest and register storage locations", "owner": "Operations Director"}
+  ]
+}

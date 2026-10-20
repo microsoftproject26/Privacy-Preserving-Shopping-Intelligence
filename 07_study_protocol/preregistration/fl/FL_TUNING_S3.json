@@ -1,0 +1,214 @@
+{
+ "applies_to": [
+  "FA",
+  "FP",
+  "PF",
+  "FA_1024",
+  "DP",
+  "S_CAL",
+  "FA_Q8"
+ ],
+ "best_candidate": "fedadam|eta=0.01|m=1|shape=fl_const|client=sgd_m|clr=0.1",
+ "client_sgd": {
+  "clip": 1.0,
+  "dampening": 0.0,
+  "fresh_per_visit": true,
+  "momentum": 0.9,
+  "nesterov": false,
+  "weight_decay": 0.0
+ },
+ "configs": [
+  {
+   "arm_spec_sha256": "2e224389bc44451541453eb75deeaaced68fb6fc914106b0e535e9af796e22c1",
+   "client_lr": null,
+   "client_opt": "adamw_fresh",
+   "excluded": false,
+   "incumbent": true,
+   "label": "fedadam|eta=0.01|m=1",
+   "local_batch": 16,
+   "local_passes": 2,
+   "lr_mult": 1.0,
+   "lr_shape": "central",
+   "optimizer": "fedadam",
+   "practical_best_mark": 3.0,
+   "result_rows_sha256": "4715f61d228f8e87b2955dcf3749adc5570fd2b9d90a4bf380f67abdbdb45750",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/LRSCREEN_S2/FEDADAM_eta0.01_x1",
+   "run_id": "FL_FA_LRSCREEN_FEDADAM_eta0.01_x1_CALIB_s2026",
+   "run_summary_sha256": "a1f616b661e2ca2c26a719395b4ecab4aa764b9282fb8cfa32920e4eb20594db",
+   "server_lr": 0.01,
+   "server_tau": 0.001,
+   "value": 0.03424720824257383
+  },
+  {
+   "arm_spec_sha256": "88b9ebcb8d1a8fb808d29c44f92fd9a5c0914180d9e59d766703448863a17da0",
+   "client_lr": null,
+   "client_opt": "adamw_fresh",
+   "excluded": false,
+   "incumbent": false,
+   "label": "fedadam|eta=0.01|m=1|shape=fl_const",
+   "local_batch": 16,
+   "local_passes": 2,
+   "lr_mult": 1.0,
+   "lr_shape": "fl_const",
+   "optimizer": "fedadam",
+   "practical_best_mark": 2.5,
+   "result_rows_sha256": "e26a4dd3b948e49816e51ed56eda7caa3279aa294315e13890b918132b778cbe",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/LRSCREEN_S3/W_FEDADAM_eta0.01_FLCONST_ADAMW",
+   "run_id": "FL_FA_LRSCREEN_FEDADAM_eta0.01_FLCONST_x1_CALIB_s2026",
+   "run_summary_sha256": "8dd8bd42a102a00bfb7910ab2768d5fbf0567bfcfbaf691d5b38bb591a946482",
+   "server_lr": 0.01,
+   "server_tau": 0.001,
+   "value": 0.03310358844387769
+  },
+  {
+   "arm_spec_sha256": "aee78520410d3b445811191a7ae7bbf784e6dd4a1f100b7c6b050149ecee1db3",
+   "client_lr": 0.01,
+   "client_opt": "sgd_m",
+   "excluded": false,
+   "incumbent": false,
+   "label": "fedadam|eta=0.01|m=1|shape=fl_const|client=sgd_m|clr=0.01",
+   "local_batch": 16,
+   "local_passes": 2,
+   "lr_mult": 1.0,
+   "lr_shape": "fl_const",
+   "optimizer": "fedadam",
+   "practical_best_mark": 6.0,
+   "result_rows_sha256": "d9f9a5f9594f15e281933341b716e8306f40f9d01edcec8e2d7c6ccadfc46662",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/LRSCREEN_S3/W_FEDADAM_eta0.01_FLCONST_SGD0.01",
+   "run_id": "FL_FA_LRSCREEN_FEDADAM_eta0.01_FLCONST_SGDM_lr0.01_x1_CALIB_s2026",
+   "run_summary_sha256": "43713395f498986a1aba48eff5149e208c753b66819cb7d58b553d56ab3e7730",
+   "server_lr": 0.01,
+   "server_tau": 0.001,
+   "value": 0.05877465671485746
+  },
+  {
+   "arm_spec_sha256": "12c82ebe45550194d1d57e937370b7a4e74be67ac8ebb2171fa99dab9ace6151",
+   "client_lr": 0.1,
+   "client_opt": "sgd_m",
+   "excluded": false,
+   "incumbent": false,
+   "label": "fedadam|eta=0.01|m=1|shape=fl_const|client=sgd_m|clr=0.1",
+   "local_batch": 16,
+   "local_passes": 2,
+   "lr_mult": 1.0,
+   "lr_shape": "fl_const",
+   "optimizer": "fedadam",
+   "practical_best_mark": 6.0,
+   "result_rows_sha256": "16eb3b1d147b7337dec64c8377d653498a23e0fb9533771d973b9226c7a9dfe5",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/LRSCREEN_S3/A2_FEDADAM_eta0.01_FLCONST_SGD0.1",
+   "run_id": "FL_FA_LRSCREEN_FEDADAM_eta0.01_FLCONST_SGDM_lr0.1_x1_CALIB_s2026",
+   "run_summary_sha256": "c49d5f0fe7fb3de4b67c602eae408178635668477d42ecc3ab3b2c29cde61fc8",
+   "server_lr": 0.01,
+   "server_tau": 0.001,
+   "value": 0.09493602962038139
+  },
+  {
+   "arm_spec_sha256": "3611b4163aecbfa1c08f0fc04e17904e3808ac50b89d9f2e9e80b56a2470618d",
+   "client_lr": 1.0,
+   "client_opt": "sgd_m",
+   "excluded": false,
+   "incumbent": false,
+   "label": "fedadam|eta=0.01|m=1|shape=fl_const|client=sgd_m|clr=1",
+   "local_batch": 16,
+   "local_passes": 2,
+   "lr_mult": 1.0,
+   "lr_shape": "fl_const",
+   "optimizer": "fedadam",
+   "practical_best_mark": 6.0,
+   "result_rows_sha256": "31c5b88958d95ec54494646cf8b98e5540964238e32b6d72ed23f08f736ef55d",
+   "run_dir": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/runs_ds3/LRSCREEN_S3/A2_FEDADAM_eta0.01_FLCONST_SGD1.0",
+   "run_id": "FL_FA_LRSCREEN_FEDADAM_eta0.01_FLCONST_SGDM_lr1_x1_CALIB_s2026",
+   "run_summary_sha256": "c1f92cfa06e12a1d76a1b448ef150f62a2848567ba808494e0e04f8ce46dfd9b",
+   "server_lr": 0.01,
+   "server_tau": 0.001,
+   "value": 0.08238094941224547
+  }
+ ],
+ "device": {
+  "device_pin_sha256": "db744ca3f0da27ac7b65c41b4b32f2c68ec9d0bd66bbc0dc33e874a226834e6b",
+  "eval_device_class": "NVIDIA_A40-FP32-DET"
+ },
+ "edges": [],
+ "eval_manifest_id": "CALIB_VALIDATION_5_100_32768",
+ "excluded": [],
+ "fedadam": {
+  "algorithm": "Reddi et al. 2021 ICLR Alg. 2 (FEDADAM), no bias correction, m_0 = 0, v_0 = tau^2",
+  "beta1": 0.9,
+  "beta2": 0.99,
+  "tau": 0.001,
+  "v_init": "tau_squared"
+ },
+ "fedavgm": {
+  "algorithm": "Hsu, Qi & Brown 2019 server momentum",
+  "beta1": 0.9,
+  "lr": 1.0
+ },
+ "first_selection": {
+  "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/contracts/fl/FL_TUNING_S2.json",
+  "self_sha256": "89afd1c759ee0249b0fe7b024f842c7ea2e800d9ee9c9ce9fb119fc8b898150b",
+  "sha256": "24080b1eb515fcddba0fcd0f23b69c69ee2635c5530836f9de7ab6c6e5e8263d"
+ },
+ "format": "PPSI_V4_FL_TUNING_SELECTION_1",
+ "gain": 0.06068882137780756,
+ "incumbent": "fedadam|eta=0.01|m=1",
+ "lr_peak_base": 0.0007114121116984968,
+ "m_star": 8.0,
+ "metric": "CALIB_VALIDATION E2E client-macro MRR@20 at PRACTICAL_BEST",
+ "min_gain": 0.002,
+ "no_measurable_gain": false,
+ "required": [
+  "fedadam|eta=0.01|m=1|shape=fl_const",
+  "fedadam|eta=0.01|m=1|shape=fl_const|client=sgd_m|clr=0.01",
+  "fedadam|eta=0.01|m=1|shape=fl_const|client=sgd_m|clr=0.1",
+  "fedadam|eta=0.01|m=1|shape=fl_const|client=sgd_m|clr=1"
+ ],
+ "rule": "S3 winner: the highest CALIB_VALIDATION E2E client-macro MRR@20 at PRACTICAL_BEST over the S3 set (AdamW-fresh x FL_CONST, SGD-m0.9 x FL_CONST lr {0.01, 0.1, 1.0} on the S2 winner, the registered 06J SGD edge runs, and the 06L A2 cells FedAdam eta_s 0.01 tau 1e-3 x m 1 x FL_CONST x SGD-m0.9 lr {0.1, 1.0}) and the S2 winner (the incumbent); non-finite values excluded and recorded; |delta| <= 0.0005 ties -> incumbent, then AdamW before SGD, then the smaller SGD lr, then FedAvg family before FedAdam \u2014 PREG1_AMENDMENT_06I \u00a73 / 06J \u00a72 / 06L A2 (06L_D D2); 06J \u00a74(ii): if the best candidate (the highest finite non-incumbent value) gains < 0.002 over the incumbent, the stage is recorded 'no measurable gain' and the incumbent carries on (winner = incumbent, tie set = [incumbent])",
+ "self_sha256": "d665665e4691d55ce7c032dd1f53266b7fceccaf5e38c60d19cae153cf9bec23",
+ "stage": "S3",
+ "stage_history": [
+  {
+   "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/contracts/fl/LR_SELECTION_EXT.json",
+   "self_sha256": "e23431af959ec0d508a0f907a3066f784492fc45f91b7a878e83d97ec4f41a5e",
+   "sha256": "7d922e4a249acf45009b3e98ec8f72f34dc25fce5972476ddd2120f51e1393dc",
+   "stage": "S1b",
+   "winner": "fedavg|m=8"
+  },
+  {
+   "path": "/home/jovyan/ahmedabdelhamed01/Privacy-Preserving-Shopping-Intelligence/.local_ai/ppsi_v4/contracts/fl/FL_TUNING_S2.json",
+   "self_sha256": "89afd1c759ee0249b0fe7b024f842c7ea2e800d9ee9c9ce9fb119fc8b898150b",
+   "sha256": "24080b1eb515fcddba0fcd0f23b69c69ee2635c5530836f9de7ab6c6e5e8263d",
+   "stage": "S2",
+   "winner": "fedadam|eta=0.01|m=1"
+  }
+ ],
+ "task": "FL-10 v4int.lr_screen select-joint",
+ "tie_band_set": [
+  "fedadam|eta=0.01|m=1|shape=fl_const|client=sgd_m|clr=0.1"
+ ],
+ "tie_order": "incumbent, then AdamW before SGD, then the smaller SGD lr, then FedAvg family before FedAdam",
+ "tie_set": [
+  "fedadam|eta=0.01|m=1|shape=fl_const|client=sgd_m|clr=0.1"
+ ],
+ "tie_tolerance": 0.0005,
+ "unchanged": "PF personal LR, FedProx mu, the FT grid, LO, beta1 / beta2 / tau defaults, passes / batch (amendments 06B \u00a71 / 06F / 06G / 06I / 06J)",
+ "utc": "2026-09-30T11:05:36Z",
+ "values": {
+  "fedadam|eta=0.01|m=1": 0.03424720824257383,
+  "fedadam|eta=0.01|m=1|shape=fl_const": 0.03310358844387769,
+  "fedadam|eta=0.01|m=1|shape=fl_const|client=sgd_m|clr=0.01": 0.05877465671485746,
+  "fedadam|eta=0.01|m=1|shape=fl_const|client=sgd_m|clr=0.1": 0.09493602962038139,
+  "fedadam|eta=0.01|m=1|shape=fl_const|client=sgd_m|clr=1": 0.08238094941224547
+ },
+ "winner": {
+  "client_lr": 0.1,
+  "client_opt": "sgd_m",
+  "label": "fedadam|eta=0.01|m=1|shape=fl_const|client=sgd_m|clr=0.1",
+  "local_batch": 16,
+  "local_passes": 2,
+  "lr_mult": 1.0,
+  "lr_shape": "fl_const",
+  "optimizer": "fedadam",
+  "server_lr": 0.01,
+  "server_tau": 0.001
+ }
+}

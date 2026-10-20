@@ -1,0 +1,159 @@
+{
+  "seed": 20260922,
+  "B": 256,
+  "L": 50,
+  "K_syn": 1000,
+  "max_updates": 300,
+  "optimizer": "Adam",
+  "lr": 0.01,
+  "dropout": 0.0,
+  "weight_decay": 0.0,
+  "device": "cuda:0",
+  "gpu_name": "NVIDIA A16",
+  "torch_version": "2.13.0+cu130",
+  "cuda_available": true,
+  "arms": {
+    "F0_item_only": {
+      "group": "F0_item_only",
+      "initial_loss": 8.043073654174805,
+      "final_loss": 2.7148041681357427e-07,
+      "final_top1": 1.0,
+      "updates_run": 300,
+      "loss_ratio": 3.3753317262320575e-08,
+      "history_first_5": [
+        {
+          "step": 0,
+          "loss": 8.043073654174805,
+          "top1": 0.00390625
+        },
+        {
+          "step": 1,
+          "loss": 0.893579363822937,
+          "top1": 0.87890625
+        },
+        {
+          "step": 2,
+          "loss": 0.011012953706085682,
+          "top1": 1.0
+        },
+        {
+          "step": 3,
+          "loss": 0.0090705631300807,
+          "top1": 1.0
+        },
+        {
+          "step": 4,
+          "loss": 0.005690558347851038,
+          "top1": 1.0
+        }
+      ],
+      "history_last_5": [
+        {
+          "step": 295,
+          "loss": 2.803279812724213e-07,
+          "top1": 1.0
+        },
+        {
+          "step": 296,
+          "loss": 2.789309974104981e-07,
+          "top1": 1.0
+        },
+        {
+          "step": 297,
+          "loss": 2.7706835226126714e-07,
+          "top1": 1.0
+        },
+        {
+          "step": 298,
+          "loss": 2.7474004582472844e-07,
+          "top1": 1.0
+        },
+        {
+          "step": 299,
+          "loss": 2.7380872325011296e-07,
+          "top1": 1.0
+        }
+      ],
+      "pass": true,
+      "loss_threshold": 0.40215368270874025,
+      "top1_threshold": 0.95
+    },
+    "F4_rich_side_information": {
+      "group": "F4_rich_side_information",
+      "initial_loss": 8.036149978637695,
+      "final_loss": 3.441235776335816e-07,
+      "final_top1": 1.0,
+      "updates_run": 300,
+      "loss_ratio": 4.2821945651631324e-08,
+      "history_first_5": [
+        {
+          "step": 0,
+          "loss": 8.036149978637695,
+          "top1": 0.00390625
+        },
+        {
+          "step": 1,
+          "loss": 0.9453848004341125,
+          "top1": 0.85546875
+        },
+        {
+          "step": 2,
+          "loss": 0.09411394596099854,
+          "top1": 0.9765625
+        },
+        {
+          "step": 3,
+          "loss": 0.0035794181749224663,
+          "top1": 1.0
+        },
+        {
+          "step": 4,
+          "loss": 0.015160100534558296,
+          "top1": 0.9921875
+        }
+      ],
+      "history_last_5": [
+        {
+          "step": 295,
+          "loss": 3.5343677495802694e-07,
+          "top1": 1.0
+        },
+        {
+          "step": 296,
+          "loss": 3.51574129808796e-07,
+          "top1": 1.0
+        },
+        {
+          "step": 297,
+          "loss": 3.4831452921935124e-07,
+          "top1": 1.0
+        },
+        {
+          "step": 298,
+          "loss": 3.464518840701203e-07,
+          "top1": 1.0
+        },
+        {
+          "step": 299,
+          "loss": 3.4598622278281255e-07,
+          "top1": 1.0
+        }
+      ],
+      "pass": true,
+      "loss_threshold": 0.4018074989318848,
+      "top1_threshold": 0.95
+    }
+  },
+  "negative_control": {
+    "description": "F0-shaped model trained on the SAME true targets as the F0 positive arm, but every row's item_tokens replaced by one constant token -- learning beyond majority-class guessing is impossible.",
+    "majority_class_rate": 0.01171875,
+    "threshold_top1_le": 0.06171875,
+    "final_top1": 0.0078125,
+    "final_loss": 40.07041931152344,
+    "initial_loss": 9.13355541229248,
+    "updates_run": 300,
+    "pass": true
+  },
+  "elapsed_s": 21.538928508758545,
+  "overall_pass": true
+}

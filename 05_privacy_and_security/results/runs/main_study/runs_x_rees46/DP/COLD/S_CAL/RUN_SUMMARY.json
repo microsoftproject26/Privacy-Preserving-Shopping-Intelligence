@@ -1,0 +1,230 @@
+{
+ "arm": "S_CAL",
+ "arm_spec": {
+  "arm": "S_CAL",
+  "cfg": {
+   "dp": {
+    "clip_norm": null,
+    "denominator": 1024,
+    "noise_multiplier": 0.0
+   },
+   "dropout_p": 0.0,
+   "endpoint_efe": 6.0,
+   "endpoint_rounds": 384,
+   "exposure_point": "end",
+   "lr_peak_local": 0.1,
+   "lr_shape": "fl_const",
+   "max_attempts": 2,
+   "method": "FA",
+   "mu": 0.0,
+   "n_shards": 2,
+   "pf": null,
+   "seed": 2026,
+   "server_opt": {
+    "beta1": 0.9,
+    "beta2": 0.99,
+    "lr": 0.001,
+    "name": "fedadam",
+    "tau": 1e-06,
+    "v_init": "tau_squared"
+   },
+   "solver": {
+    "batch_size": 16,
+    "clip": 1.0,
+    "fused": null,
+    "lr": 0.1,
+    "optimizer": "sgd_m",
+    "passes": 2,
+    "weight_decay": 0.0
+   }
+  },
+  "client_lr": 0.1,
+  "client_opt": "sgd_m",
+  "knobs": {
+   "batch": 16,
+   "clip": 1.0,
+   "dropout_p": 0.1,
+   "endpoint_efe": 6.0,
+   "group": 64,
+   "m": 1024,
+   "max_attempts": 2,
+   "mu": 0.01,
+   "n_shards": 2,
+   "passes": 2,
+   "pf_clip": 1.0,
+   "pf_lam": 0.0001,
+   "rounds": 6827,
+   "rounds_1024": 384,
+   "s_cal_rounds": 20,
+   "s_cal_seed": 2026,
+   "sampling": "sweep",
+   "weight_decay": 1e-05
+  },
+  "lr_mult": 1.0,
+  "lr_peak_base": 0.0007114121116984968,
+  "lr_shape": "fl_const",
+  "max_rounds": 20,
+  "plan": {
+   "group_size": 1024,
+   "sampling": "poisson"
+  },
+  "role": "MAIN",
+  "server_lr": 0.001,
+  "server_opt": "fedadam",
+  "server_tau": 1e-06,
+  "upload_codec": null
+ },
+ "arm_spec_sha256": "7f3637db316dfe7d06c7f15857f3748cee98ab445be78e162ecdeabdfb1273a2",
+ "best_half_efe": null,
+ "best_metric": null,
+ "bytes": {
+  "disclosure": "dropped clients (10% drop-out) are not charged a download (the ledger counts survivors)",
+  "fleet": {
+   "bytes_down": 1708468410000,
+   "bytes_up": 1708468575000,
+   "messages": 41250,
+   "retry_bytes_down": 0,
+   "total": 3416936985000
+  },
+  "per_client": {
+   "max": 662678688,
+   "mean": 26069160.346984863,
+   "median": 0.0,
+   "min": 0,
+   "rule": "visits x (down + up) of that client"
+  },
+  "per_visit": {
+   "alias_bytes_not_sent": 0,
+   "bootstrap_bytes_once": 0,
+   "download_bytes": 82834832,
+   "private_bytes_sent": 0,
+   "private_resident_bytes": 0,
+   "send_plus_receive_bytes": 165669672,
+   "shared_numel": 20708708,
+   "upload_bytes": 82834840
+  }
+ },
+ "counters": {
+  "coverage_by_sweep": {
+   "0": {
+    "clients": 19167,
+    "fraction": 0.14623260498046875
+   }
+  },
+  "efe": 0.3152993149329772,
+  "exposures": 815924,
+  "max_visits": 4,
+  "min_visits": 0,
+  "noop_visits": 0,
+  "retries": 0,
+  "rounds": 20,
+  "steps": 70922,
+  "steps_hist": {
+   "10": 491,
+   "12": 324,
+   "14": 56,
+   "2": 12459,
+   "4": 4572,
+   "6": 1825,
+   "8": 898
+  },
+  "visits": 20625,
+  "wasted_steps": 0
+ },
+ "done": false,
+ "dp": {
+  "clip_norm": null,
+  "denominator": 1024,
+  "noise_multiplier": 0.0,
+  "rounds_logged": 20
+ },
+ "evals": [],
+ "ledger": [
+  41250,
+  1708468410000,
+  1708468575000,
+  0
+ ],
+ "lr_table": {
+  "E_total": 15526656,
+  "digest": "af94db5682d606cebfdbe9ca8390338c87d916fb0a6803860c03a1a2e3b51de4",
+  "final_lr": 0.010000000000000002,
+  "min_lr": 0.010000000000000002,
+  "n_rounds": 384,
+  "planned_efe": 6.0
+ },
+ "lr_table_digest": "af94db5682d606cebfdbe9ca8390338c87d916fb0a6803860c03a1a2e3b51de4",
+ "method": "FA",
+ "participation": {
+  "E_realised_total": 15541872,
+  "E_total_expected": 15526656,
+  "cohort_size_max": 1090,
+  "cohort_size_min": 983,
+  "dropout_p": 0.0,
+  "dropped": 0,
+  "empty_rounds": 0,
+  "endpoint_rounds": 384,
+  "inclusion_probability": 0.0078125,
+  "noise_only_rounds": 0,
+  "noop_rounds": 0,
+  "planned_efe": 6.0,
+  "rounds": 20,
+  "sampled": 20625,
+  "sampling": "poisson",
+  "survived": 20625
+ },
+ "phase": "MAIN",
+ "plan": {
+  "group_size": 1024,
+  "inclusion_probability": 0.0078125,
+  "inclusion_rule": "u_i ~ Uniform{0..N-1} (PCG64, derive_seed(seed, 'poisson', r)); member iff u_i < group_size",
+  "keys_digest": "8356cab11d62e5fc3c99cf0594dbfade304f27947cbdd7cd39f4a25294bf44eb",
+  "manifest_hash": "5d5cd03679232d2214b9977189e9719acc3dc06842a7e03d08b3bc268f64f039",
+  "n_clients": 131072,
+  "rounds_per_sweep": 128,
+  "sampling": "independent Poisson participation per client per round (q = min(group_size, N) / N); variable cohort size (may be 0); logical order = sorted keys; 'sweeps' are blocks of rounds_per_sweep rounds",
+  "sampling_mode": "poisson",
+  "seed": 2026
+ },
+ "rounds": 20,
+ "run_id": "FL_S_CAL_SMALL_s2026",
+ "s_record": {
+  "S": 0.28821225448207666,
+  "n_norms": 20625,
+  "self_sha256": "af8cb78160d2b4c3023dfe9659fc947fa88eb805a6996717f35189acdbcba9e1"
+ },
+ "server_digest": "de2b9423f1da7e5d3ebbaff0a3e454b8dfe1b38c9a34039298f641de2104fdb8",
+ "server_opt": {
+  "cfg": {
+   "beta1": 0.9,
+   "beta2": 0.99,
+   "lr": 0.001,
+   "name": "fedadam",
+   "tau": 1e-06,
+   "v_init": "tau_squared"
+  },
+  "moments_digest": "77af33304b1adcb45e7d912af66f75db1401c8b91114308fcef474675809ca48",
+  "steps": 20
+ },
+ "status": "DONE_S_CAL",
+ "store_digest": null,
+ "train_loss_log": {
+  "authority": "FL-15 R5 (REAL_WORLD_FL_PRACTICE_AUDIT_20260930 R5): per-round client training loss from fl VisitRecord.loss_sum (sum of the batch-mean CE over a visit's steps); descriptive monitoring only, numerics unchanged; z > 0 (DP) runs record nothing (an un-noised data-dependent release, the 06L_E E1 reading)",
+  "complete": true,
+  "fields": [
+   "client_mean_loss",
+   "finite",
+   "loss_sum",
+   "mean_step_loss",
+   "n_clients",
+   "n_steps",
+   "round"
+  ],
+  "file": "TRAIN_LOSS.jsonl",
+  "missing_rounds": [],
+  "rounds_expected": 20,
+  "rounds_logged": 20,
+  "sha256": "e54f593ce9057a248b259e018de27f3d5c6662347709695452b9efaffe5ce2b1"
+ },
+ "wall_s_this_leg": 2194.68
+}
