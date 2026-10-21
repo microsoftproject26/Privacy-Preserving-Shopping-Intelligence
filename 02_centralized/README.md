@@ -13,7 +13,7 @@ rehearsal).
 1. **Pilot studies (20-26 September 2026).** On the frozen two-month dataset, a GRU pilot
    (ContextGRU-v1, full-catalogue cross-entropy over 158,486 products) failed its registered
    gate at two passes (macro MRR@20 0.100795 item-only, 0.101160 with side channels, against
-   0.13308 for a transition rule; verdict NO_GO) and was followed by an authorised full run
+   0.13308 for a transition rule; verdict NO_GO) and was followed by an authorized full run
    whose item-only arm locked at 0.173874 on the selection split. Validation. The SASRec pilot
    then beat that lock by +0.00755 at epoch 3 (validation); its locked headline
    (rich arm, seed 2027, cooldown epoch 5) reached 0.186513 on the selection split and, on the
@@ -54,7 +54,7 @@ rehearsal).
 | `code/v4models` -> `code/model_variants` (import name `v4models`) | Model builders of the research tree (`gru_v2.py`, `sasrec_v2.py`, inventory, monitors) | Main study |
 | `code/v4train` -> `code/central_trainer` (import name `v4train`, as used in the recorded runs) | Training drivers of the contest and references (`p2_driver.py`, `p3_driver.py`), recipes, registries, calibration, bootstrap intervals | Main study |
 | `code/experiment_extensions/pretraining` -> `code/closure_experiments/pretraining` (import name `experiment_extensions.pretraining`) | Closure-phase pretraining extensions (second seed) | Closure phase |
-| `pilot_studies/` | Record of the pilot-study campaigns (frozen record) | Pilot studies |
+| `pilot_studies/` | Record of the pilot-study campaigns (frozen record; agent working notes, reviewer briefs, runtime markers and transfer tarballs are not published, so a few kept files name documents that are not here) | Pilot studies |
 | `scripts/prototype/{model,baselines,t2,t3,t5,t8}` | Prototype model scripts (architecture comparison, tasks) | Prototype stage |
 | `tests/prototype/{baselines,central,models,seqrec,training}`, `tests/research/` (renamed: `tests_baselines` was `tests_base`, `tests_feature_search` was `tests_fs`, `tests_model_variants` was `tests_models`, `tests_central_trainer{,_gpu}` was `tests_train{,_gpu}`) | CPU tests and research suites | Prototype / main study |
 

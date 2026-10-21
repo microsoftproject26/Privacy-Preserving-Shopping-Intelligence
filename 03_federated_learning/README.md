@@ -11,12 +11,12 @@ exploratory tau-fixed re-runs that diagnosed the FedAdam scaling fault.
 
 1. **Prototype federated plumbing (August-September 2026).** Flower-based FedAvg with
    experiment contracts; a real-data smoke run reproduced an independent weighted average to
-   within 2.384e-7, and the scoped T1 pilot kept 88.38% of a matched centralised pilot (0.112683
+   within 2.384e-7, and the scoped T1 pilot kept 88.38% of a matched centralized pilot (0.112683
    against 0.099591 macro MRR on the category-change slice). Validation (pilot numbers are not
    comparable with main-study retentions). Descriptive for the plumbing checks.
 2. **Federated recipe tuning stages (28 September - 1 October 2026), on CALIB.** Registered,
    strictly sequential screens, all descriptive: stage 0 FedAvg as registered 0.023473; local
-   learning rate x8 (stage 1b) 0.028796; FedAdam server optimiser (stage 2) 0.034247; constant
+   learning rate x8 (stage 1b) 0.028796; FedAdam server optimizer (stage 2) 0.034247; constant
    rate shape with client SGD (stage 3) 0.094936; one local pass (stage 4) 0.107562 - a
    cumulative factor of 4.58. Warm screens at the stage-4 point: all-weights warm training
    (stage 7) 0.170582; frozen item tables (stage 8) 0.170709, which became the warm recipe.
@@ -39,7 +39,7 @@ exploratory tau-fixed re-runs that diagnosed the FedAdam scaling fault.
    smallest server step; the tuned warm-start federated model is close to the pretrain by
    construction. Descriptive.
 7. **Tau-fixed re-runs, after the test evaluation.** Exploratory: the registered FedAdam
-   stabiliser tau = 1e-3 was far larger than the update norms (~1e-7), and the tuned
+   stabilizer tau = 1e-3 was far larger than the update norms (~1e-7), and the tuned
    warm-start federated model moved only about 0.06% from the pretrain in 13,654 rounds. The
    tau-fixed warm run minus the pretrain is +0.00022 [-0.00011, 0.00057] (T2 look, B1), so the
    confirmatory answer is robust to the fault; the corrected cold arm is worse than the
@@ -56,7 +56,7 @@ exploratory tau-fixed re-runs that diagnosed the FedAdam scaling fault.
 
 | Package | What it does | Origin |
 |---|---|---|
-| `code/ppsi/federated` | Federated arms of the public package: client training, finetune, local-only, personalisation | Main study (public port) |
+| `code/ppsi/federated` | Federated arms of the public package: client training, finetune, local-only, personalization | Main study (public port) |
 | `code/ppsi/fedsim` | The federated simulator: FedAdam and its tau, FedAvgM, Poisson sampling, clipping and DP noise, 8-bit stochastic-rounding uploads | Main study (public port) |
 | `code/fl` -> `code/federated_core` (import name `fl`, as used in the recorded runs) | Research-tree federated engine: launchers, receipts, communication records, GPU receipts | Main study |
 | `code/x_rees46` -> `code/tau_fixed_reruns` (run by path) | Exploratory tau-fixed re-runs (`launch_fl_x*.py`, `reeval_x*.py`, `x_analysis.py`) and their register entries | Closure phase |
@@ -90,10 +90,10 @@ tuning-ladder, retention and update-norm figures.
 
 ## Known limitations
 
-The registered FedAdam stabiliser (tau = 1e-3) was badly scaled for the observed update sizes;
+The registered FedAdam stabilizer (tau = 1e-3) was badly scaled for the observed update sizes;
 the code default keeps 1e-3 so the registered runs stay reproducible, and 1e-6 is recommended.
 The tau-fixed re-runs changed several ingredients at once (tau with the server step, the
 item-table policy or the budget), so no gain is attributed to tau alone. Frozen item tables
 mean the warm arm never trains the (about 98% of) item-table parameters and scores zero for
 targets outside the pretraining band. Without differential privacy an update reveals the viewed
-items; "only weights leave the device" is data minimisation, not privacy.
+items; "only weights leave the device" is data minimization, not privacy.
